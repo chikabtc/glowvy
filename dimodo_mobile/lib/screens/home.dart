@@ -54,7 +54,7 @@ class HomeScreenState extends State<HomeScreen>
     } catch (err) {}
   }
 
-//testing master brandh
+//testing codemagic
   @override
   Widget build(BuildContext context) {
     kRateMyApp.init().then((_) {});
