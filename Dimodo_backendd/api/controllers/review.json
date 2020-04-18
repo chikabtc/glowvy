@@ -1,0 +1,242 @@
+{
+    "meta": {
+        "code": 200,
+        "count": 1
+    },
+    "data": {
+        "statistics": {
+            "satisfaction": 5,
+            "wearing_sensations": [{
+                    "id": "WS01",
+                    "name": "너무 커요",
+                    "description": "너무 커요",
+                    "ratio": 0
+                },
+                {
+                    "id": "WS02",
+                    "name": "조금 커요",
+                    "description": "조금 커요",
+                    "ratio": 31
+                },
+                {
+                    "id": "WS03",
+                    "name": "잘 맞아요",
+                    "description": "잘 맞아요",
+                    "ratio": 69
+                },
+                {
+                    "id": "WS04",
+                    "name": "조금 작아요",
+                    "description": "조금 작아요",
+                    "ratio": 0
+                },
+                {
+                    "id": "WS05",
+                    "name": "많이 작아요",
+                    "description": "많이 작아요",
+                    "ratio": 0
+                }
+            ]
+        },
+        "photo_reviews": {
+            "total_count": 5,
+            "reviews": [{
+                    "id": "3751175",
+                    "created_time": "1583914628",
+                    "type": "photo",
+                    "text": "예뻐요 겉에 맨투맨이 조금 촌스러운 느낌이 있긴 하지만 안에 나시랑 레이어드 해서 입으면 정말 너무 예뻐요!",
+                    "like_count": 0,
+                    "comment_count": 0,
+                    "is_liked": false,
+                    "product": {
+                        "id": "13823493",
+                        "parent_id": "13823496",
+                        "option_name": "블랙",
+                        "seller_id": "16166"
+                    },
+                    "user": {
+                        "id": "2850313",
+                        "name": "sunnyj03",
+                        "image_url": "https://image.brandi.me/user/empty_profile.jpg",
+                        "height": 168,
+                        "shirt_size": "66",
+                        "pants_size": "77",
+                        "footwear_size": "250"
+                    },
+                    "evaluation": {
+                        "satisfaction": "5",
+                        "wearing_sensation_code": "WS03",
+                        "wearing_sensation": "잘 맞아요"
+                    },
+                    "images": [{
+                        "id": 2155521,
+                        "image_thumbnail_url": "https://image.brandi.me/media/2020/03/11/2850313_1583914628_image1_S.jpg",
+                        "image_medium_url": "https://image.brandi.me/media/2020/03/11/2850313_1583914628_image1_M.jpg",
+                        "image_url": "https://image.brandi.me/media/2020/03/11/2850313_1583914628_image1_L.jpg"
+                    }]
+                },
+                {
+                    "id": "3750277",
+                    "created_time": "1583905731",
+                    "type": "photo",
+                    "text": "바지에 넣어서 입을려고 했는데 ,, 그러긴엔 좀 기장이 길어서 구냥 꺼내 입어야 될듯하네욤 ㅠㅠ 전체적인 핏은 이뻐요 !!",
+                    "like_count": 0,
+                    "comment_count": 0,
+                    "is_liked": false,
+                    "product": {
+                        "id": "13823493",
+                        "parent_id": "13823496",
+                        "option_name": "블랙",
+                        "seller_id": "16166"
+                    },
+                    "user": {
+                        "id": "113405",
+                        "name": "f_302130020125747",
+                        "image_url": "https://image.brandi.me/user/2020/01/09/113405_1578579453_L.jpg",
+                        "height": 158,
+                        "shirt_size": "55",
+                        "pants_size": "55",
+                        "footwear_size": "230"
+                    },
+                    "evaluation": {
+                        "satisfaction": "5",
+                        "wearing_sensation_code": "WS02",
+                        "wearing_sensation": "조금 커요"
+                    },
+                    "images": [{
+                        "id": 2154943,
+                        "image_thumbnail_url": "https://image.brandi.me/media/2020/03/11/113405_1583905730_image1_S.jpg",
+                        "image_medium_url": "https://image.brandi.me/media/2020/03/11/113405_1583905730_image1_M.jpg",
+                        "image_url": "https://image.brandi.me/media/2020/03/11/113405_1583905730_image1_L.jpg"
+                    }]
+                },
+                {
+                    "id": "3748248",
+                    "created_time": "1583888760",
+                    "type": "photo",
+                    "text": "친구한테 선물해줬는데 너무 마음에 들어했어용 이뻐용 !!",
+                    "like_count": 0,
+                    "comment_count": 0,
+                    "is_liked": false,
+                    "product": {
+                        "id": "13823494",
+                        "parent_id": "13823496",
+                        "option_name": "그레이",
+                        "seller_id": "16166"
+                    },
+                    "user": {
+                        "id": "531730",
+                        "name": "dnql1223",
+                        "image_url": "https://image.brandi.me/user/2017/05/29/720458194792400_1496047687_L.jpg",
+                        "height": 155,
+                        "shirt_size": "44",
+                        "pants_size": "44",
+                        "footwear_size": "225"
+                    },
+                    "evaluation": {
+                        "satisfaction": "5",
+                        "wearing_sensation_code": "WS03",
+                        "wearing_sensation": "잘 맞아요"
+                    },
+                    "images": [{
+                        "id": 2153648,
+                        "image_thumbnail_url": "https://image.brandi.me/media/2020/03/11/531730_1583888759_image1_S.jpg",
+                        "image_medium_url": "https://image.brandi.me/media/2020/03/11/531730_1583888759_image1_M.jpg",
+                        "image_url": "https://image.brandi.me/media/2020/03/11/531730_1583888759_image1_L.jpg"
+                    }]
+                }
+            ]
+        },
+        "text_reviews": {
+            "total_count": 8,
+            "reviews": [{
+                    "id": "3752244",
+                    "created_time": "1583923327",
+                    "type": "text",
+                    "text": "옷 너무 편하고 좋아요 그리고 나시가 좀 잘 늘어나고 밑단이 길어요 여리야리 저럿핏은 내몸이 아니라서 그렇고 그래도 좋음",
+                    "like_count": 0,
+                    "comment_count": 0,
+                    "is_liked": false,
+                    "product": {
+                        "id": "13823494",
+                        "parent_id": "13823496",
+                        "option_name": "그레이",
+                        "seller_id": "16166"
+                    },
+                    "user": {
+                        "id": "1090184",
+                        "name": "whwldnsj3717",
+                        "image_url": "https://image.brandi.me/user/empty_profile.jpg",
+                        "height": 168,
+                        "shirt_size": "66",
+                        "pants_size": "66",
+                        "footwear_size": "245"
+                    },
+                    "evaluation": {
+                        "satisfaction": "5",
+                        "wearing_sensation_code": "WS02",
+                        "wearing_sensation": "조금 커요"
+                    }
+                },
+                {
+                    "id": "3751504",
+                    "created_time": "1583917585",
+                    "type": "text",
+                    "text": "편하게 입기 좋을거같아요~~~~~~~:::::;;\n날풀리면 입어야겠어요",
+                    "like_count": 0,
+                    "comment_count": 0,
+                    "is_liked": false,
+                    "product": {
+                        "id": "13823494",
+                        "parent_id": "13823496",
+                        "option_name": "그레이",
+                        "seller_id": "16166"
+                    },
+                    "user": {
+                        "id": "1236146",
+                        "name": "rmaskthdthd",
+                        "image_url": "https://image.brandi.me/user/empty_profile.jpg",
+                        "height": 174,
+                        "shirt_size": "55",
+                        "pants_size": "55",
+                        "footwear_size": "240"
+                    },
+                    "evaluation": {
+                        "satisfaction": "4",
+                        "wearing_sensation_code": "WS03",
+                        "wearing_sensation": "잘 맞아요"
+                    }
+                },
+                {
+                    "id": "3740330",
+                    "created_time": "1583785167",
+                    "type": "text",
+                    "text": "특이하게 이뻐서 평범하지 않아서 샀는데 이뻤어요 집 근처 나갈때 자주 입고다녀요 이뻐영",
+                    "like_count": 0,
+                    "comment_count": 0,
+                    "is_liked": false,
+                    "product": {
+                        "id": "13823494",
+                        "parent_id": "13823496",
+                        "option_name": "그레이",
+                        "seller_id": "16166"
+                    },
+                    "user": {
+                        "id": "163251",
+                        "name": "666628426825932",
+                        "image_url": "https://image.brandi.me/user/2016/08/30/666628426825932_1472542023_L.jpg",
+                        "height": 160,
+                        "shirt_size": "55",
+                        "pants_size": "44",
+                        "footwear_size": "225"
+                    },
+                    "evaluation": {
+                        "satisfaction": "5",
+                        "wearing_sensation_code": "WS03",
+                        "wearing_sensation": "잘 맞아요"
+                    }
+                }
+            ]
+        }
+    }
+}

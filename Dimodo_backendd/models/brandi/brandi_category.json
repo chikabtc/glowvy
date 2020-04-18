@@ -1,0 +1,577 @@
+{
+    "meta": {
+        "code": 200,
+        "count": 57
+    },
+    "data": [{
+            "id": "1",
+            "name": "루트",
+            "name_eng": "root",
+            "name_kor": "루트",
+            "image_url": "https://image.brandi.me/category/image/f_market_menu_icon_list_34shopmarket.png",
+            "depth": 1,
+            "order": 1,
+            "parent_id": null
+        },
+        {
+            "id": "3",
+            "name": "아우터",
+            "name_eng": "Outwear",
+            "name_kor": "아우터",
+            "image_url": "https://image.brandi.me/category/image/0b8cd8803762d6d5aeccdb2087044837.png",
+            "depth": 2,
+            "order": 1,
+            "parent_id": "1"
+        },
+        {
+            "id": "2",
+            "name": "상의",
+            "name_eng": "Top",
+            "name_kor": "상의",
+            "image_url": "https://image.brandi.me/category/image/ccff89d76759de6e8582edfe7a141f64.png",
+            "depth": 2,
+            "order": 2,
+            "parent_id": "1"
+        },
+        {
+            "id": "47",
+            "name": "스커트",
+            "name_eng": "Skirt",
+            "name_kor": "스커트",
+            "image_url": "https://image.brandi.me/category/image/87d11d8f44c6b683f84b5feae4d3ceb4.png",
+            "depth": 2,
+            "order": 3,
+            "parent_id": "1"
+        },
+        {
+            "id": "50",
+            "name": "바지",
+            "name_eng": "Pants",
+            "name_kor": "바지",
+            "image_url": "https://image.brandi.me/category/image/51d1271ee0205cd99be828009a7ac810.png",
+            "depth": 2,
+            "order": 4,
+            "parent_id": "1"
+        },
+        {
+            "id": "33",
+            "name": "원피스",
+            "name_eng": "Onepiece",
+            "name_kor": "원피스",
+            "image_url": "https://image.brandi.me/category/image/495f8f4b7322ddc2854b52af98559ee8.png",
+            "depth": 2,
+            "order": 5,
+            "parent_id": "1"
+        },
+        {
+            "id": "5",
+            "name": "신발",
+            "name_eng": "Shoes",
+            "name_kor": "신발",
+            "image_url": "https://image.brandi.me/category/image/3fac40120ad6855153542d724e8d9467.png",
+            "depth": 2,
+            "order": 6,
+            "parent_id": "1"
+        },
+        {
+            "id": "6",
+            "name": "가방",
+            "name_eng": "Bags",
+            "name_kor": "가방",
+            "image_url": "https://image.brandi.me/category/image/82d281323973ac67672e6ce55006425e.png",
+            "depth": 2,
+            "order": 7,
+            "parent_id": "1"
+        },
+        {
+            "id": "10",
+            "name": "잡화",
+            "name_eng": "Accessories",
+            "name_kor": "잡화",
+            "image_url": "https://image.brandi.me/category/image/7d539aff25a3583624f6278a9d3c7539.png",
+            "depth": 2,
+            "order": 9,
+            "parent_id": "1"
+        },
+        {
+            "id": "119",
+            "name": "주얼리",
+            "name_eng": "Jewelry",
+            "name_kor": "주얼리",
+            "image_url": "https://image.brandi.me/category/image/95542a89293388aede3cbadb2cf39c00.png",
+            "depth": 2,
+            "order": 10,
+            "parent_id": "1"
+        },
+        {
+            "id": "107",
+            "name": "라이프웨어",
+            "name_eng": "Lifewere",
+            "name_kor": "라이프웨어",
+            "image_url": "https://image.brandi.me/category/image/2a7e0068ffa56e651a69c65e09a97aff.png",
+            "depth": 2,
+            "order": 11,
+            "parent_id": "1"
+        },
+        {
+            "id": "32",
+            "name": "선택안함",
+            "name_eng": "Unknown",
+            "name_kor": "선택안함",
+            "image_url": "https://image.brandi.me/category/image/afebc5c4fdc1c3a781f19cf44225c5d9.png",
+            "depth": 2,
+            "order": 13,
+            "parent_id": "1"
+        },
+        {
+            "id": "362",
+            "name": "빅사이즈",
+            "name_eng": "BigSize",
+            "name_kor": "빅사이즈",
+            "image_url": "https://image.brandi.me/category/image/190308_f_market_menu_icon_list_big_fin.png",
+            "depth": 2,
+            "order": 13,
+            "parent_id": "1"
+        },
+        {
+            "id": "17",
+            "name": "니트",
+            "name_eng": "Knit",
+            "name_kor": "니트",
+            "image_url": "https://image.brandi.me/category/image/bdb315ccd16e711da44c11b2c6531af3.png",
+            "depth": 3,
+            "order": 1,
+            "parent_id": "2"
+        },
+        {
+            "id": "13",
+            "name": "티셔츠",
+            "name_eng": "T-Shirt",
+            "name_kor": "티셔츠",
+            "image_url": "https://image.brandi.me/category/image/bdb315ccd16e711da44c11b2c6531af3.png",
+            "depth": 3,
+            "order": 2,
+            "parent_id": "2"
+        },
+        {
+            "id": "15",
+            "name": "블라우스/셔츠",
+            "name_eng": "Blouse",
+            "name_kor": "블라우스",
+            "image_url": "https://image.brandi.me/category/image/bdb315ccd16e711da44c11b2c6531af3.png",
+            "depth": 3,
+            "order": 3,
+            "parent_id": "2"
+        },
+        {
+            "id": "120",
+            "name": "후드/맨투맨",
+            "name_eng": "Hoodie/MTM",
+            "name_kor": "후드/맨투맨",
+            "image_url": "https://image.brandi.me/category/image/ccff89d76759de6e8582edfe7a141f64.png",
+            "depth": 3,
+            "order": 4,
+            "parent_id": "2"
+        },
+        {
+            "id": "19",
+            "name": "베스트",
+            "name_eng": "Vest",
+            "name_kor": "베스트",
+            "image_url": "https://image.brandi.me/category/image/bdb315ccd16e711da44c11b2c6531af3.png",
+            "depth": 3,
+            "order": 5,
+            "parent_id": "2"
+        },
+        {
+            "id": "21",
+            "name": "코트",
+            "name_eng": "Coat",
+            "name_kor": "코트",
+            "image_url": "https://image.brandi.me/category/image/0b8cd8803762d6d5aeccdb2087044837.png",
+            "depth": 3,
+            "order": 1,
+            "parent_id": "3"
+        },
+        {
+            "id": "22",
+            "name": "점퍼",
+            "name_eng": "Jumper",
+            "name_kor": "점퍼",
+            "image_url": "https://image.brandi.me/category/image/0b8cd8803762d6d5aeccdb2087044837.png",
+            "depth": 3,
+            "order": 2,
+            "parent_id": "3"
+        },
+        {
+            "id": "20",
+            "name": "재킷",
+            "name_eng": "Jacket",
+            "name_kor": "재킷",
+            "image_url": "https://image.brandi.me/category/image/0b8cd8803762d6d5aeccdb2087044837.png",
+            "depth": 3,
+            "order": 3,
+            "parent_id": "3"
+        },
+        {
+            "id": "18",
+            "name": "가디건",
+            "name_eng": "Cardigian",
+            "name_kor": "가디건",
+            "image_url": "https://image.brandi.me/category/image/bdb315ccd16e711da44c11b2c6531af3.png",
+            "depth": 3,
+            "order": 4,
+            "parent_id": "3"
+        },
+        {
+            "id": "52",
+            "name": "스니커즈",
+            "name_eng": "Sneakers",
+            "name_kor": "스니커즈",
+            "image_url": "https://image.brandi.me/category/image/1e3c5a9c4c7f2d3b9edb3a4cbffb5b44.png",
+            "depth": 3,
+            "order": 1,
+            "parent_id": "5"
+        },
+        {
+            "id": "122",
+            "name": "부츠",
+            "name_eng": "Boots",
+            "name_kor": "부츠",
+            "image_url": "https://image.brandi.me/category/image/3fac40120ad6855153542d724e8d9467.png",
+            "depth": 3,
+            "order": 2,
+            "parent_id": "5"
+        },
+        {
+            "id": "54",
+            "name": "힐",
+            "name_eng": "heel",
+            "name_kor": "힐",
+            "image_url": "https://image.brandi.me/category/image/a0062df2b468ccae324740de3d04048f.png",
+            "depth": 3,
+            "order": 3,
+            "parent_id": "5"
+        },
+        {
+            "id": "55",
+            "name": "플랫/로퍼",
+            "name_eng": "loafers",
+            "name_kor": "플랫/로퍼",
+            "image_url": "https://image.brandi.me/category/image/c91aba1f84824f97522b749b0b1a283d.png",
+            "depth": 3,
+            "order": 4,
+            "parent_id": "5"
+        },
+        {
+            "id": "56",
+            "name": "샌들",
+            "name_eng": "Sandal",
+            "name_kor": "샌들",
+            "image_url": "https://image.brandi.me/category/image/fd3ac76e6258f4ceb1152b5d738098f6.png",
+            "depth": 3,
+            "order": 5,
+            "parent_id": "5"
+        },
+        {
+            "id": "57",
+            "name": "크로스백",
+            "name_eng": "Cross bag",
+            "name_kor": "크로스백",
+            "image_url": "https://image.brandi.me/category/image/578de85258e2c8a50b334bf191f8f792.png",
+            "depth": 3,
+            "order": 1,
+            "parent_id": "6"
+        },
+        {
+            "id": "58",
+            "name": "클러치",
+            "name_eng": "clutch",
+            "name_kor": "클러치",
+            "image_url": "https://image.brandi.me/category/image/c2f5868ea112459519568dc470dc98ef.png",
+            "depth": 3,
+            "order": 2,
+            "parent_id": "6"
+        },
+        {
+            "id": "59",
+            "name": "숄더백",
+            "name_eng": "Shoulder bag",
+            "name_kor": "숄더백",
+            "image_url": "https://image.brandi.me/category/image/aeab59ad9a9024639619642f11767b7d.png",
+            "depth": 3,
+            "order": 3,
+            "parent_id": "6"
+        },
+        {
+            "id": "60",
+            "name": "토트백",
+            "name_eng": "Tote bags",
+            "name_kor": "토트백",
+            "image_url": "https://image.brandi.me/category/image/583253e8779bc2459dce6193fcfe72ad.png",
+            "depth": 3,
+            "order": 4,
+            "parent_id": "6"
+        },
+        {
+            "id": "123",
+            "name": "백팩",
+            "name_eng": "Backpack",
+            "name_kor": "백팩",
+            "image_url": "https://image.brandi.me/category/image/82d281323973ac67672e6ce55006425e.png",
+            "depth": 3,
+            "order": 5,
+            "parent_id": "6"
+        },
+        {
+            "id": "124",
+            "name": "휴대폰케이스",
+            "name_eng": "Phonecase",
+            "name_kor": "휴대폰케이스",
+            "image_url": "https://image.brandi.me/category/image/7d539aff25a3583624f6278a9d3c7539.png",
+            "depth": 3,
+            "order": 1,
+            "parent_id": "10"
+        },
+        {
+            "id": "35",
+            "name": "지갑/파우치",
+            "name_eng": "Wallet",
+            "name_kor": "지갑/파우치",
+            "image_url": "https://image.brandi.me/category/image/7d539aff25a3583624f6278a9d3c7539.png",
+            "depth": 3,
+            "order": 2,
+            "parent_id": "10"
+        },
+        {
+            "id": "66",
+            "name": "스카프/머플러",
+            "name_eng": "Scarf",
+            "name_kor": "스카프",
+            "image_url": "https://image.brandi.me/category/image/7361b8cee938456bc1ec3070e9615b42.png",
+            "depth": 3,
+            "order": 3,
+            "parent_id": "10"
+        },
+        {
+            "id": "34",
+            "name": "모자",
+            "name_eng": "Hats",
+            "name_kor": "모자",
+            "image_url": "https://image.brandi.me/category/image/7d539aff25a3583624f6278a9d3c7539.png",
+            "depth": 3,
+            "order": 4,
+            "parent_id": "10"
+        },
+        {
+            "id": "105",
+            "name": "양말",
+            "name_eng": "SOCKS",
+            "name_kor": "양말",
+            "image_url": "https://image.brandi.me/category/image/8e927befa3756897591de2e60289b60a.png",
+            "depth": 3,
+            "order": 5,
+            "parent_id": "10"
+        },
+        {
+            "id": "36",
+            "name": "시계",
+            "name_eng": "Watch",
+            "name_kor": "시계",
+            "image_url": "https://image.brandi.me/category/image/7d539aff25a3583624f6278a9d3c7539.png",
+            "depth": 3,
+            "order": 6,
+            "parent_id": "10"
+        },
+        {
+            "id": "125",
+            "name": "아이웨어",
+            "name_eng": "Eyeware",
+            "name_kor": "아이웨어",
+            "image_url": "https://image.brandi.me/category/image/7d539aff25a3583624f6278a9d3c7539.png",
+            "depth": 3,
+            "order": 7,
+            "parent_id": "10"
+        },
+        {
+            "id": "44",
+            "name": "기타",
+            "name_eng": "Etc",
+            "name_kor": "기타",
+            "image_url": "https://image.brandi.me/category/image/822d805ba19923898af3d88c14c68f0e.png",
+            "depth": 3,
+            "order": 8,
+            "parent_id": "10"
+        },
+        {
+            "id": "48",
+            "name": "미니스커트",
+            "name_eng": "miniskirt",
+            "name_kor": "미니스커트",
+            "image_url": "https://image.brandi.me/category/image/d8708c4e794c35937c8551c88a840efa.png",
+            "depth": 3,
+            "order": 1,
+            "parent_id": "47"
+        },
+        {
+            "id": "49",
+            "name": "롱스커트",
+            "name_eng": "longskirt",
+            "name_kor": "롱스커트",
+            "image_url": "https://image.brandi.me/category/image/990a71a9cc62f68616756a3040e34682.png",
+            "depth": 3,
+            "order": 2,
+            "parent_id": "47"
+        },
+        {
+            "id": "25",
+            "name": "청바지",
+            "name_eng": "Denim",
+            "name_kor": "청바지",
+            "image_url": "https://image.brandi.me/category/image/971c562c14317bab4d277adda18dd000.png",
+            "depth": 3,
+            "order": 1,
+            "parent_id": "50"
+        },
+        {
+            "id": "24",
+            "name": "슬랙스",
+            "name_eng": "Slacks",
+            "name_kor": "슬랙스",
+            "image_url": "https://image.brandi.me/category/image/971c562c14317bab4d277adda18dd000.png",
+            "depth": 3,
+            "order": 2,
+            "parent_id": "50"
+        },
+        {
+            "id": "51",
+            "name": "반바지",
+            "name_eng": "Shorts",
+            "name_kor": "반바지",
+            "image_url": "https://image.brandi.me/category/image/e3684e340a21f9d4e7adc569d81faa84.png",
+            "depth": 3,
+            "order": 3,
+            "parent_id": "50"
+        },
+        {
+            "id": "121",
+            "name": "레깅스",
+            "name_eng": "Leggings",
+            "name_kor": "레깅스",
+            "image_url": "https://image.brandi.me/category/image/51d1271ee0205cd99be828009a7ac810.png",
+            "depth": 3,
+            "order": 4,
+            "parent_id": "50"
+        },
+        {
+            "id": "108",
+            "name": "언더웨어",
+            "name_eng": "UNDERWEAR",
+            "name_kor": "언더웨어",
+            "image_url": "https://image.brandi.me/category/image/6190ab209f37bbe5700a86e758b7562e.png",
+            "depth": 3,
+            "order": 1,
+            "parent_id": "107"
+        },
+        {
+            "id": "109",
+            "name": "홈웨어",
+            "name_eng": "HOMEWEAR",
+            "name_kor": "홈웨어",
+            "image_url": "https://image.brandi.me/category/image/d42fc973929ac5a2c9a07aeb36623da2.png",
+            "depth": 3,
+            "order": 2,
+            "parent_id": "107"
+        },
+        {
+            "id": "368",
+            "name": "스윔웨어",
+            "name_eng": "SWIM WEAR",
+            "name_kor": "스윔웨어",
+            "image_url": "https://image.brandi.me",
+            "depth": 3,
+            "order": 3,
+            "parent_id": "107"
+        },
+        {
+            "id": "127",
+            "name": "귀걸이",
+            "name_eng": "Earing",
+            "name_kor": "귀걸이",
+            "image_url": "https://image.brandi.me/category/image/95542a89293388aede3cbadb2cf39c00.png",
+            "depth": 3,
+            "order": 1,
+            "parent_id": "119"
+        },
+        {
+            "id": "128",
+            "name": "목걸이/팔찌",
+            "name_eng": "Necklace/Bracelet",
+            "name_kor": "목걸이/팔찌",
+            "image_url": "https://image.brandi.me/category/image/95542a89293388aede3cbadb2cf39c00.png",
+            "depth": 3,
+            "order": 2,
+            "parent_id": "119"
+        },
+        {
+            "id": "129",
+            "name": "반지",
+            "name_eng": "Ring",
+            "name_kor": "반지",
+            "image_url": "https://image.brandi.me/category/image/95542a89293388aede3cbadb2cf39c00.png",
+            "depth": 3,
+            "order": 3,
+            "parent_id": "119"
+        },
+        {
+            "id": "363",
+            "name": "아우터",
+            "name_eng": "OUTER",
+            "name_kor": "아우터",
+            "image_url": "https://image.brandi.me",
+            "depth": 3,
+            "order": 1,
+            "parent_id": "362"
+        },
+        {
+            "id": "364",
+            "name": "상의",
+            "name_eng": "TOP",
+            "name_kor": "상의",
+            "image_url": "https://image.brandi.me",
+            "depth": 3,
+            "order": 2,
+            "parent_id": "362"
+        },
+        {
+            "id": "365",
+            "name": "스커트",
+            "name_eng": "SKIRT",
+            "name_kor": "스커트",
+            "image_url": "https://image.brandi.me",
+            "depth": 3,
+            "order": 3,
+            "parent_id": "362"
+        },
+        {
+            "id": "366",
+            "name": "바지",
+            "name_eng": "PANTS",
+            "name_kor": "바지",
+            "image_url": "https://image.brandi.me",
+            "depth": 3,
+            "order": 4,
+            "parent_id": "362"
+        },
+        {
+            "id": "367",
+            "name": "드레스",
+            "name_eng": "DRESS",
+            "name_kor": "드레스",
+            "image_url": "https://image.brandi.me",
+            "depth": 3,
+            "order": 5,
+            "parent_id": "362"
+        }
+    ]
+}

@@ -1,0 +1,175 @@
+POST http://localhost:3000/email/subject HTTP/1.1
+Content-Type: application/json
+
+{
+    email : "huynhnhanqsuoc@gmail.com"
+}
+
+###
+POST http://localhost:3000/api/account/signup HTTP/1.1
+
+{
+    "full_name" : "Huỳnh Song!!!",
+    "password" : "12312123",
+    "email" : "mrsong23.dev@gmail.com",
+    "user_name" : "mrsong.dev"
+}
+
+### 
+POST http://localhost:3000/api/account/signin HTTP/1.1
+Content-Type: application/json
+Authorization :
+
+{
+    "email" : "huynhnhanquoc@gmail.com",
+    "password" : "songsong"
+}
+### 
+POST http://localhost:3000/oauth2/facebook/login/EAAHrgSaOBFMBAOIbKmU7vRZCZCeGIZCYjxK9vtZB1nN6ZBunU5eWTs875lajG0h7jvAYkUzwU8TRvUnWAUs1B8hoRrkhbv756rQuJxdz9miMvkWBnRI8vssOFULXTwWKvzjRjBnsSXsGPITTJRgtAPVc0ZAUw0WrSZCI08wQVPGdS8dp14n8GKOyaCIzGgCG5NUmWWB6DRr8v86UkW7BdrBL8Oy9ZAsdvZAL7PRcvCZCyhxQZDZD HTTP/1.1
+Content-Type: application/json
+Authorization :
+
+# {
+#     "email" : "huynhnhanquoc@gmail.com",
+#     "password" : "songsong"
+# }
+
+### 
+POST http://localhost:3000/oauth2/google/login/ya29.a0Adw1xeX16Rm7RBszXbufoMJetc097IYG5OfPOjhPLcqXYIQUqn11Xmn3bxDey53GS3oEhL_5CUPbtaJWemikFkIm-4hZNB86Y4lzoOvM8-W3aJJohih16Qw3g0XIOnOUqzD1RlYeOMapNTZyR2iclBauUXMhAg-uV_g HTTP/1.1
+Content-Type: application/json
+Authorization :
+
+# {
+#     "email" : "huynhnhanquoc@gmail.com",
+#     "password" : "songsong"
+# }
+
+
+
+
+### 
+POST http://localhost:3000/api/password/forgot HTTP/1.1
+Content-Type: application/json
+Authorization :
+
+{
+    "email" : "huynhnhanquoc@gmail.com"
+}
+
+### 
+POST http://localhost:3000/api/password/checkpin HTTP/1.1
+Content-Type: application/json
+TokenPinResetPassword : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Nzc3ODg4NTYsImlhdCI6MTU3Nzc4Nzk1NiwiaWRfYWNjb3VudCI6MywiaWRfcGluIjozM30.0Y-LztcPUDCln-BIgfbZCkfvklfv8YkGLUn6RHedBqE
+
+{
+    "pin" : "232543"
+}
+
+### 
+POST http://localhost:3000/api/password/reset HTTP/1.1
+Content-Type: application/json
+TokenResetPassword : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Nzc2OTgzMjgsImlhdCI6MTU3NzY5NzQyOCwiaWRfYWNjb3VudCI6M30.7edB_TKnEd_IP-OJJA7oJOIAdP6NR_2cIisqyXDFIpA
+
+{
+    "new" : "songsong",
+    "confirm_new" : "songsong"
+}
+
+### 
+POST http://localhost:3000/api/address/update HTTP/1.1
+Content-Type: application/json
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODEyNTE2NDEsImlhdCI6MTU3ODY1OTY0MSwiaWQiOjMsInJpZCI6MSwic2Vzc2lvbiI6IjE1Nzc1MjU3Njk3OTY2NzAxOTUiLCJzaWQiOjI2LCJ0b2tlbiI6Ik9Pejg5RGE3dzd5dHYyV2pleFVvWW9hUCIsInhpZCI6IjE1ZTQ3ZjU0NWNjMTUyZWNPT3o4OURhN3c3eXR2MldqZXhVb1lvYVAyNiJ9.N5_hNwZq1fA59P03n3CkVgbA1vR06OSufLPoAF9qy5Q
+
+{   
+	"street" :     "108 Huynh Thuc Khang",
+	"ward_id"  :     4529,
+	"telephone" :     "0782297679" 
+}
+
+
+###
+GET http://localhost:3000/api/address/get HTTP/1.1
+Content-Type: application/json
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODEyNTE2NDEsImlhdCI6MTU3ODY1OTY0MSwiaWQiOjMsInJpZCI6MSwic2Vzc2lvbiI6IjE1Nzc1MjU3Njk3OTY2NzAxOTUiLCJzaWQiOjI2LCJ0b2tlbiI6Ik9Pejg5RGE3dzd5dHYyV2pleFVvWW9hUCIsInhpZCI6IjE1ZTQ3ZjU0NWNjMTUyZWNPT3o4OURhN3c3eXR2MldqZXhVb1lvYVAyNiJ9.N5_hNwZq1fA59P03n3CkVgbA1vR06OSufLPoAF9qy5Q
+
+### 
+GET http://localhost:3000/api/provinces/all HTTP/1.1
+Content-Type: application/json
+
+### 
+GET http://localhost:3000/api/districts/id=202 HTTP/1.1
+Content-Type: application/json
+
+### 
+GET http://localhost:3000/api/wards/id=1454 HTTP/1.1
+Content-Type: application/json
+
+
+
+### 
+GET http://localhost:3000/api/categories/all0?start=0&count=200 HTTP/1.1
+Content-Type: application/json
+
+### 
+GET http://localhost:3000/api/products/categories=0?start=0&count=200 HTTP/1.1
+Content-Type: application/json
+
+###
+GET http://localhost:3000/api/products/shop=4178 HTTP/1.1
+Content-Type: application/json
+
+### 
+GET http://localhost:3000/api/products/category=10 HTTP/1.1
+Content-Type: application/json
+
+### 
+GET http://localhost:3000/api/products/id=8522629/sr=brandi HTTP/1.1
+Content-Type: application/json
+
+
+### 
+POST http://localhost:3000/api/cart/new HTTP/1.1
+Content-Type: application/json
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODc3MjY4ODIsImlhdCI6MTU4NTEzNDg4MiwiaWQiOjExLCJyaWQiOjEsInNlc3Npb24iOiIxNTg1MTA2NzA2NzE1MjgzMDk3Iiwic2lkIjoxMiwidG9rZW4iOiJFY3RPcDYxY042ck5QUmp1RVFxQmdDdmYiLCJ4aWQiOiIxNWZmNmUyNmM4ZGE5NjZiRWN0T3A2MWNONnJOUFJqdUVRcUJnQ3ZmMTIifQ.btuzJK46kGfudsraK9JPt3djD10kIkDZ08CcrRPP8hQ
+
+{   
+	"product_id" :     7
+}
+
+### 
+POST http://localhost:3000/api/cart/update HTTP/1.1
+Content-Type: application/json
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODA4ODQwOTcsImlhdCI6MTU3ODI5MjA5NywiaWQiOjM5LCJyaWQiOjEsInNlc3Npb24iOiIxNTc4MjkyMDY1NjMyNTY3NjI3Iiwic2lkIjo2MywidG9rZW4iOiJmWDh3STJkbTVxQlZRTzhUUzg0MlFEUk8iLCJ4aWQiOiIxNWU3Mzg0NTgzZDhjMTRhZlg4d0kyZG01cUJWUU84VFM4NDJRRFJPNjMifQ.MFJsc_a6Xs8jpFcZ5Lyv-WjJMzfcrMbEfzMEzqoVYsE
+
+{   
+	"id" :    37,
+    "quantity" : 0
+}
+
+### 
+POST http://localhost:3000/api/order/new HTTP/1.1
+Content-Type: application/json
+Authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1ODA4ODQwOTcsImlhdCI6MTU3ODI5MjA5NywiaWQiOjM5LCJyaWQiOjEsInNlc3Npb24iOiIxNTc4MjkyMDY1NjMyNTY3NjI3Iiwic2lkIjo2MywidG9rZW4iOiJmWDh3STJkbTVxQlZRTzhUUzg0MlFEUk8iLCJ4aWQiOiIxNWU3Mzg0NTgzZDhjMTRhZlg4d0kyZG01cUJWUU84VFM4NDJRRFJPNjMifQ.MFJsc_a6Xs8jpFcZ5Lyv-WjJMzfcrMbEfzMEzqoVYsE
+
+{   
+	"cart" :    7
+}
+
+
+###
+GET https://cf-api-c.brandi.me/v1/web/main?version=42&is-web=true HTTP/1.1
+Content-Type: application/json
+Authorization : 3b17176f2eb5fdffb9bafdcc3e4bc192b013813caddccd0aad20c23ed272f076_1423639497
+
+
+###
+GET https://cf-api-c.brandi.me/v1/web/products/14489933 HTTP/1.1
+Authorization : 3b17176f2eb5fdffb9bafdcc3e4bc192b013813caddccd0aad20c23ed272f076_1423639497
+
+###
+GET https://cf-api-c.brandi.me/v1/web/products/14489933 HTTP/1.1
+Authorization : 3b17176f2eb5fdffb9bafdcc3e4bc192b013813caddccd0aad20c23ed272f076_1423639497
+
+###
+GET https://cf-api-c.brandi.me/v1/web/sellers/3201/products?offset=0&limit=100&type=reg HTTP/1.1
+Authorization : 3b17176f2eb5fdffb9bafdcc3e4bc192b013813caddccd0aad20c23ed272f076_1423639497

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "199541424798",
+    "firebase_url": "https://dimodo-5e659.firebaseio.com",
+    "project_id": "dimodo-5e659",
+    "storage_bucket": "dimodo-5e659.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:199541424798:android:b4446dfd770a2e6a36318f",
+        "android_client_info": {
+          "package_name": "app.dimodo.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "199541424798-erq29ft8oprd4i389gauodgbh8bm80e1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIgXRbcNdqTrxfWavz7Hb8mJ5qS6mvZjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "199541424798-3eta30c6bolpcrevspajcqm3ohh5ccnk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "199541424798-1ccf2g196esns6e74ruvrt4utfa7dhhr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "app.dimodo.iOS"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

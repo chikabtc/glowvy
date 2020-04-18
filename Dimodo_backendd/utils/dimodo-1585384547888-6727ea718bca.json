@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "dimodo-1585384547888",
+  "private_key_id": "6727ea718bca2b303e34036bcfb7b079ef191709",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDQoQXqID82LOJv\nFS3PriAt3DZXiV21s0y67Snk3hrp+PxATf9dQllc89pQYtHXuvVgQNRxegcsD23s\ni+t+f+jmiuYuQkNiHq2dreApodiUT4qEvyUn+i1SwOGl2aql3ECzK8H+J+wvwhqt\nL2gddSAQTxEe62eoVr56cSLfyjyMmfoioXk5Sk00LM7pPf0EpkcOpuSpTu/it7Fm\nUYr2DouukhrzB8U/J8kahmmzol0Bq3U5Amt6MbVHI7amohOmG7oAt2NEWTE72wIA\n2NM+qDgbEg1datOI5ZFBFOmS8ZGxEuxMEaWLWdJnJNFzAvHTSWcMDLkN+Qhax4/p\nrBlrWCwpAgMBAAECggEADEufH/0aSJi02BfbETEpiZZfuAE7HfslD6OsS0YZNzaS\ntD38iawgPOGMuV3XkOOedDeh5ZWr4EmBAJa+8F+8s8CWH/4M/1aARCmUC1QT4eq9\npsTmnVBp1SWTrtzxCREd2Ylfx5kl+usRPClt9QV6+CcWwtgcDfBdzbTG+cIvFxid\nRxO7YC8xoSQdE/5Qx9QxoXLnzhdgYknJkdS0sNDk4RmvTclqD0aVBpQkpyjnmcqb\nxsEvtKn2tnXc8y9KTA1r2BcQnv3JOK63ztOMsDXvE4i1sV6JRKV4S1zrGhLglAi7\nvs8fJoECyygK6prFQkAfrroN/yXjGnXcMBqZCD4U0QKBgQDoD0JtPPP4IT65fzYb\nL/VsETAy6VSy5heTATt6p5g40YcDHWJvogsewrrJWA1yG7B/P32IBXkY0ckOLDbK\nFEhzTop+qIG75lbxGy776Bgvyc8X+3LDbKOhSYmzKXfCEmT5Bvh7i6LAXQjM0bPb\nJrbds10l7aJ0WVRG+ybXLZ3s0QKBgQDmJvTeX6ujqy08AdYv0RjJLzAr8kn1bReQ\nx2DgV8TcgwN+Z8vewIEvQfx577kW5UU/mtLHaaQdI4BC+6qpNug8ZZxjOb6Sjrps\nxoVk67ocHu+LzQvlg1lt7485j5SHTjHBW6A60UiC8gkfkleOgf64DQkrzFf8jGBo\n9LLmgMM/2QKBgCRXF2jx7abC1gbIhBmX1hAZVPn0Dj6Bx9lOjRj1G+Jx9XmoZVzj\n/GfRyNx0/I4NBgO3VpoxeThIyfp9NAtLR9k+yHNzQfXB6YWSYzYxr2/0Y4j26I7v\n+WPtlzHGYamzpbpVvB3kzRTgvNsOT+MW2fY3+3NQFmuv/YGsHPX/f8axAoGABbQB\nbWFBh5S+UjZZcGXmD1Y0A2LFomdJpjTKmcSTBEPa2k8IJkTu7pTcBMmD9KVJygG0\nJ2zevDoc+4vw9rB9oMGD1pGfv1H6HKfutkmBGyFJHlW+bbmLhcXh7rM4IwI1CW2T\n0uFMwrHst/OQZ9+gyD7Kc2Nk6sUvvmoR5NRcAkECgYBWQzXrpjpuXz34Xi/lasY/\nsdGH1EQkp7YFgh2K2d+Oah7m0Bu3+Vo7ByPwfs6oClVw20d8Ssb22FmHXO9zZwl7\nCcr8uBkjcuJ3c3wKwZ9nJbbtolzd+R6xPhqob67UpWPNrOcQEukmYlAXAzZVmRnF\n2PiGy1Z7BxP5N/tkGLRUsg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "dimodo-translate@dimodo-1585384547888.iam.gserviceaccount.com",
+  "client_id": "115353129762461380717",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dimodo-translate%40dimodo-1585384547888.iam.gserviceaccount.com"
+}

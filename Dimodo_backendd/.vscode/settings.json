@@ -1,0 +1,4 @@
+{
+    "maven.view": "hierarchical",
+    "rest-client.decodeEscapedUnicodeCharacters": true
+}
