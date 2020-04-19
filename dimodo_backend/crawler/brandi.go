@@ -45,8 +45,9 @@ const brandiAuth = "3b17176f2eb5fdffb9bafdcc3e4bc192b013813caddccd0aad20c23ed272
 //etc-9
 //brandi: :: bags(6) accessories(10) jewerly(119) crossbag(57) clutch(58) shouldebag(59) totebags(60) backpack(123) phonecase(124) wallet(35) scarf(66) hats(34) socks(105) watch(36)eyeware (125) earing(127) necklace(128) ring(129) outer(363) top(364)
 //this approach doesn't work..
+//47 categories
 func (c *crawler) AddNewProductsByCategories() {
-	var categories = make(map[int][]int64)
+	var categories = make(map[int][]int)
 	categories[1] = append(categories[1], 13, 15, 120, 19, 18)
 	categories[2] = append(categories[2], 366, 50, 25, 24, 51, 121)
 	categories[3] = append(categories[3], 33, 367)
@@ -59,19 +60,11 @@ func (c *crawler) AddNewProductsByCategories() {
 	for parentId, childrenIds := range categories {
 		for _, categoryId := range childrenIds {
 			fmt.Println("calling product by category:", +categoryId, "parent id: ", parentId)
-			c.GetPopularProductsByCategory(parentId, categoryId, 50)
+			c.GetPopularProductsByCategory(parentId, categoryId, 30)
 		}
 	}
 	// c.GetMainProducts()
 }
-
-// //Return Parent CateID is used when the product doesn't have parent categoryID
-// //could just use the existing category model of brandi (it doesn't matter)
-// func (c *crawler) ReturnParentCateID(categoryId int) {
-
-// 	return
-
-// }
 
 func (c *crawler) events(i int64) {
 	// get api
@@ -96,14 +89,14 @@ func (c *crawler) events(i int64) {
 		fmt.Println("Error")
 	}
 	for _, k := range product.Data.ProductGroups[0].Products {
-		c.ProductById(k.ID)
+		c.ProductById(k.ID, "events")
 	}
 	fmt.Println(url)
 }
 
-func (c *crawler) GetPopularProductsByCategory(parentId int, idx int64, limit int) {
+func (c *crawler) GetPopularProductsByCategory(parentId int, idx int, limit int) {
 	// get api
-	id := strconv.FormatInt(idx, 10)
+	id := strconv.Itoa(idx)
 
 	limits := strconv.Itoa(limit)
 
@@ -122,30 +115,31 @@ func (c *crawler) GetPopularProductsByCategory(parentId int, idx int64, limit in
 	var products brandi.Products
 	// fmt.Println(body)
 	err := json.Unmarshal(body, &products)
-	dot, _ := dotsql.LoadFromFile("sql/queries/brandi.pgsql")
+	// dot, _ := dotsql.LoadFromFile("sql/queries/brandi.pgsql")
 
 	if err != nil {
 		bugsnag.Notify(err)
 		fmt.Println("Error")
 	}
-	translator, _ := translate.NewTranslator()
+	// translator, _ := translate.NewTranslator()
 
 	for _, p := range products.Data {
 		// fmt.Println(p.ID + " cate " + id)
 		// time.Sleep(1 * time.Second)
-		name, err := translator.TranslateText(translate.Ko, translate.Vi, p.Name)
+		err := c.CreateProductById(p.ID, "", idx)
+		// name, err := translator.TranslateText(translate.Ko, translate.Vi, p.Name)
 
-		_, err = dot.Exec(c.DB, "sqlCreateProducts",
-			p.ID,
-			p.Price,
-			p.SalePrice,
-			p.SalePercent,
-			0,
-			name,
-			parentId,
-			p.ImageURL,
-			"",
-		)
+		// _, err = dot.Exec(c.DB, "sqlCreateProducts",
+		// 	p.ID,
+		// 	p.Price,
+		// 	p.SalePrice,
+		// 	p.SalePercent,
+		// 	0,
+		// 	name,
+		// 	parentId,
+		// 	p.ImageURL,
+		// 	"",
+		// )
 		if err != nil {
 			bugsnag.Notify(err)
 			fmt.Println(err.Error())
@@ -190,8 +184,8 @@ func (c *crawler) GetPopularProductsByShopId(idx int, limits int) []models.Produ
 			fmt.Println(err)
 		}
 		sid, _ := strconv.Atoi(p.ID)
-
 		id, _ := strconv.Atoi(fmt.Sprint(strconv.Itoa(rand.Intn(1000000)) + p.ID))
+
 		products[i] = models.Product{
 			Id:           id,
 			Sid:          sid,
@@ -221,10 +215,10 @@ func (c *crawler) GetPopularProductsByShopId(idx int, limits int) []models.Produ
 }
 
 func (c *crawler) GetMainProducts() {
-	dot, _ := dotsql.LoadFromFile("sql/queries/brandi.pgsql")
+	// dot, _ := dotsql.LoadFromFile("sql/queries/brandi.pgsql")
 
 	url := "https://cf-api-c.brandi.me/v1/web/main?version=42&is-web=true"
-	fmt.Println(url)
+	fmt.Println("GetMainProducts: ", url)
 	req, _ := http.NewRequest("GET", url, nil)
 	req.Header.Add("Authorization", brandiAuth)
 	res, _ := http.DefaultClient.Do(req)
@@ -239,27 +233,28 @@ func (c *crawler) GetMainProducts() {
 	var zone1 = main.Data.Zoning1
 	var zone2 = main.Data.Zoning2
 	var recommend = main.Data.Recommend.Products
-	translator, _ := translate.NewTranslator()
+	// translator, _ := translate.NewTranslator()
 
 	for _, zone := range zone1 {
 		for _, p := range zone.Products {
 			//make it async await !! hmm,,, not sure. but they definitely  returned []
-			name, err := translator.TranslateText(translate.Ko, translate.Vi, p.Name)
-			if err != nil {
-				bugsnag.Notify(err)
-				panic(err)
-			}
-			_, err = dot.Exec(c.DB, "sqlCreateProducts",
-				p.ID,
-				p.Price,
-				p.SalePrice,
-				p.SalePercent,
-				p.PurchaseCount,
-				name,
-				0,
-				p.ImageURL,
-				"trending",
-			)
+			err := c.CreateProductById(p.ID, "trending", 0)
+			// name, err := translator.TranslateText(translate.Ko, translate.Vi, p.Name)
+			// if err != nil {
+			// 	bugsnag.Notify(err)
+			// 	panic(err)
+			// }
+			// _, err = dot.Exec(c.DB, "sqlCreateProducts",
+			// 	p.ID,
+			// 	p.Price,
+			// 	p.SalePrice,
+			// 	p.SalePercent,
+			// 	p.PurchaseCount,
+			// 	name,
+			// 	0,
+			// 	p.ImageURL,
+			// 	"trending",
+			// )
 			if err != nil {
 				bugsnag.Notify(err)
 				fmt.Println(err.Error())
@@ -269,22 +264,24 @@ func (c *crawler) GetMainProducts() {
 
 	for _, zone := range zone2 {
 		for _, p := range zone.Products {
-			name, err := translator.TranslateText(translate.Ko, translate.Vi, p.Name)
-			if err != nil {
-				bugsnag.Notify(err)
-				panic(err)
-			}
-			_, err = dot.Exec(c.DB, "sqlCreateProducts",
-				p.ID,
-				p.Price,
-				p.SalePrice,
-				p.SalePercent,
-				p.PurchaseCount,
-				name,
-				0,
-				p.ImageURL,
-				"trending",
-			)
+			// name, err := translator.TranslateText(translate.Ko, translate.Vi, p.Name)
+			// if err != nil {
+			// 	bugsnag.Notify(err)
+			// 	panic(err)
+			// }
+			// _, err = dot.Exec(c.DB, "sqlCreateProducts",
+			// 	p.ID,
+			// 	p.Price,
+			// 	p.SalePrice,
+			// 	p.SalePercent,
+			// 	p.PurchaseCount,
+			// 	name,
+			// 	0,
+			// 	p.ImageURL,
+			// 	"trending",
+			// )
+			err := c.CreateProductById(p.ID, "trending", 0)
+
 			if err != nil {
 				bugsnag.Notify(err)
 				fmt.Println(err.Error())
@@ -293,25 +290,27 @@ func (c *crawler) GetMainProducts() {
 	}
 
 	for _, p := range recommend {
-		name, err := translator.TranslateText(translate.Ko, translate.Vi, p.Name)
-		if err != nil {
-			bugsnag.Notify(err)
-			panic(err)
-		}
+		err := c.CreateProductById(p.ID, "trending", 0)
+
+		// name, err := translator.TranslateText(translate.Ko, translate.Vi, p.Name)
+		// if err != nil {
+		// 	bugsnag.Notify(err)
+		// 	panic(err)
+		// }
 		// if p.SalePercent == nil {
 		// 	p.SalePercent = 0
 		// }
-		_, err = dot.Exec(c.DB, "sqlCreateProducts",
-			p.ID,
-			p.Price,
-			p.SalePrice,
-			p.SalePercent,
-			p.PurchaseCount,
-			name,
-			0,
-			p.ImageURL,
-			"trending",
-		)
+		// _, err = dot.Exec(c.DB, "sqlCreateProducts",
+		// 	p.ID,
+		// 	p.Price,
+		// 	p.SalePrice,
+		// 	p.SalePercent,
+		// 	p.PurchaseCount,
+		// 	name,
+		// 	0,
+		// 	p.ImageURL,
+		// 	"trending",
+		// )
 		if err != nil {
 			bugsnag.Notify(err)
 			fmt.Println(err.Error())
@@ -321,7 +320,7 @@ func (c *crawler) GetMainProducts() {
 	return
 }
 
-func (c *crawler) ProductById(id string) {
+func (c *crawler) ProductById(id string, tag string) {
 	url := `https://cf-api-c.brandi.me/v1/web/products/` + id
 
 	req, _ := http.NewRequest("GET", url, nil)
@@ -351,7 +350,7 @@ func (c *crawler) ProductById(id string) {
 		bProduct.Data.CategoryId,
 		bProduct.Data.ImageThumbnailURL,
 		bProduct.Data.AddInfo,
-		"trending",
+		tag,
 	)
 	if err != nil {
 		bugsnag.Notify(err)
@@ -447,9 +446,9 @@ func (c *crawler) ProductDetailById(bProductId string) error {
 }
 
 //private crawler usually used to run by hands
-func (c *crawler) CreateProductById(bProductId string) error {
+func (c *crawler) CreateProductById(bProductId string, tag string, cateId int) error {
 	url := "https://cf-api-c.brandi.me/v1/web/products/" + bProductId
-	fmt.Println(url)
+	fmt.Println("createProductByID: ", url)
 	req, _ := http.NewRequest("GET", url, nil)
 	req.Header.Add("Authorization", brandiAuth)
 	res, _ := http.DefaultClient.Do(req)
@@ -507,8 +506,8 @@ func (c *crawler) CreateProductById(bProductId string) error {
 		optionBytes,
 		seller,
 		sizeDetailBytes,
-		bp.Data.CategoryId[0].ID,
-		"trending",
+		cateId,
+		tag,
 	)
 	if err != nil {
 		bugsnag.Notify(err)

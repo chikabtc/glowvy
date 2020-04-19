@@ -39,7 +39,3 @@ func NewCrawler() *crawler {
 	fmt.Println("Run Port :", cfg.Port)
 	return &c
 }
-
-func main() {
-
-}

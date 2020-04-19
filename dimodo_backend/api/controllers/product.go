@@ -263,7 +263,7 @@ func (p *Product) CreateProductById(w http.ResponseWriter, r *http.Request) {
 	}
 	// var product *models.Product
 	crawler := crawler.NewCrawler()
-	err = crawler.CreateProductById(params["id"])
+	err = crawler.CreateProductById(params["id"], "", 0)
 
 	// product, err = p.ps.ProductDetailById(id)
 

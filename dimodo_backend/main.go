@@ -2,6 +2,7 @@ package main
 
 import (
 	"dimodo_backend/api"
+	"dimodo_backend/crawler"
 	"errors"
 	"fmt"
 	"time"
@@ -19,26 +20,25 @@ func main() {
 	})
 
 	c := cron.New()
-	// crawler := crawler.NewCrawler()
+	crawler := crawler.NewCrawler()
 
-	err := c.AddFunc("0 0 13 * * ?", func() {
-		fmt.Println(time.Now().Format(time.RFC850))
+	err := c.AddFunc("0 0 21 * * ?", func() {
+		start := time.Now()
 		cronMessage := errors.New("   crawling new products...")
-
 		bugsnag.Notify(cronMessage)
 
-		// fmt.Println(("adding new "))
-		// get main products
-		// crawler.GetMainProducts()
-		// // new popular products by category
-		// crawler.AddNewProductsByCategories()
+		crawler.GetMainProducts()
+		crawler.AddNewProductsByCategories()
+		elapsed := time.Since(start)
+
+		crawlTime := fmt.Errorf("crawling 1500 products took %s", elapsed)
+		bugsnag.Notify(crawlTime)
 	})
 	if err != nil {
 		bugsnag.Notify(err)
-
 	}
-	c.Start()
 
 	api := api.NewAPI()
 	api.Run()
+
 }
