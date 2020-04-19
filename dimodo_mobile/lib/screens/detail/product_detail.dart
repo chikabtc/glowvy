@@ -298,27 +298,29 @@ class _ProductDetailState extends State<ProductDetail>
                                                       .sliverOverlapAbsorberHandleFor(
                                                           context),
                                                 ),
-                                                if (name == "other products")
-                                                  ProductModel
-                                                      .showProductListByCategory(
-                                                          cateId: 7,
-                                                          context: context)
-                                                else if (name !=
-                                                    "other products")
-                                                  SliverList(
-                                                    delegate:
-                                                        SliverChildBuilderDelegate(
-                                                      (BuildContext context,
-                                                          int i) {
+                                                SliverList(
+                                                  delegate:
+                                                      SliverChildBuilderDelegate(
+                                                    (BuildContext context,
+                                                        int i) {
+                                                      if (name ==
+                                                          "other products")
+                                                        return ProductModel
+                                                            .showProductListByCategory(
+                                                                cateId: 7,
+                                                                context:
+                                                                    context);
+                                                      else if (name !=
+                                                          "other products")
                                                         return name == "Reviews"
                                                             ? Reviews(snapshot
                                                                 .data.sid)
                                                             : ProductDescription(
                                                                 snapshot.data);
-                                                      },
-                                                      childCount: 1,
-                                                    ),
+                                                    },
+                                                    childCount: 1,
                                                   ),
+                                                ),
                                               ],
                                             );
                                           },
