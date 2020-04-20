@@ -60,9 +60,10 @@ func (c *crawler) AddNewProductsByCategories() {
 	for parentId, childrenIds := range categories {
 		for _, categoryId := range childrenIds {
 			fmt.Println("calling product by category:", +categoryId, "parent id: ", parentId)
-			c.GetPopularProductsByCategory(parentId, categoryId, 30)
+			c.GetPopularProductsByCategory(parentId, categoryId, 10)
 		}
 	}
+	return
 	// c.GetMainProducts()
 }
 
@@ -100,7 +101,7 @@ func (c *crawler) GetPopularProductsByCategory(parentId int, idx int, limit int)
 
 	limits := strconv.Itoa(limit)
 
-	url := "https://cf-api-c.brandi.me/v1/web/categories/" + id + "/products?offset=0&" + limits + "&order=popular&type=all"
+	url := "https://cf-api-c.brandi.me/v1/web/categories/" + id + "/products?offset=0&limit" + limits + "&order=popular&type=all"
 	fmt.Println(url)
 
 	req, _ := http.NewRequest("GET", url, nil)
@@ -418,7 +419,7 @@ func (c *crawler) ProductDetailById(bProductId string) error {
 	var seller = models.Seller{}
 	seller.ID = bp.Data.Seller.ID
 
-	fmt.Printf("seller info : %v \n", bp.Data.Seller)
+	// fmt.Printf("seller info : %v \n", bp.Data.Seller)
 
 	optionBytes, _ := json.Marshal(productOptions)
 	sizeDetailBytes, _ := json.Marshal(SizeDetail(bp.Data.Text))
@@ -447,6 +448,27 @@ func (c *crawler) ProductDetailById(bProductId string) error {
 
 //private crawler usually used to run by hands
 func (c *crawler) CreateProductById(bProductId string, tag string, cateId int) error {
+	//check if the product doesn't exist in the db --> avoid wasting computing resources
+	var isProductAvailable bool
+	row, err := c.dot.QueryRow(c.DB, "CheckProduct", bProductId)
+
+	if err != nil {
+		fmt.Println("fail to run sql:", err)
+		bugsnag.Notify(err)
+		return nil
+	}
+
+	if err := row.Scan(&isProductAvailable); err != nil {
+		fmt.Println("fail to scan review", err)
+		return nil
+	}
+
+	if isProductAvailable {
+		fmt.Println("attempted to create a new product when a product already exists")
+		// bugsnag.Notify(errors.New("attempted to create a new product when a product already exists"))
+		return nil
+	}
+
 	url := "https://cf-api-c.brandi.me/v1/web/products/" + bProductId
 	fmt.Println("createProductByID: ", url)
 	req, _ := http.NewRequest("GET", url, nil)
@@ -485,21 +507,21 @@ func (c *crawler) CreateProductById(bProductId string, tag string, cateId int) e
 	var seller = models.Seller{}
 	seller.ID = bp.Data.Seller.ID
 
-	fmt.Printf("seller info : %v \n", bp.Data.Seller)
+	// fmt.Printf("seller info : %v \n", bp.Data.Seller)
 
 	optionBytes, _ := json.Marshal(productOptions)
 	sizeDetailBytes, _ := json.Marshal(SizeDetail(bp.Data.Text))
 	// var tags []string
 	// tags = append(tags, "")
 
-	_, err := c.dot.Exec(c.DB, "CreateProduct",
+	_, err = c.dot.Exec(c.DB, "CreateProduct",
 		bp.Data.ID,
 		name,
 		bp.Data.Price,
 		bp.Data.SalePrice,
 		bp.Data.SalePercent,
 		bp.Data.PurchaseCount,
-		bp.Data.Images[0].ImageURL,
+		bp.Data.Images[0].ImageMediumURL,
 		desc,
 		pq.Array(SliderImages(bp)),
 		pq.Array(ImagesFromHTML(bp.Data.Text)),
@@ -635,7 +657,7 @@ func ImagesFromHTML(s string) []string {
 		}
 	}
 	f(doc)
-	fmt.Println(imgs)
+	// fmt.Println(imgs)
 	return imgs
 }
 func SliderImages(bp brandi.Product) []string {
@@ -643,7 +665,7 @@ func SliderImages(bp brandi.Product) []string {
 	for _, img := range bp.Data.Images {
 		imgs = append(imgs, img.ImageURL)
 	}
-	fmt.Println(imgs)
+	// fmt.Println(imgs)
 	return imgs
 }
 
@@ -702,7 +724,7 @@ func SizeDetail(s string) []models.SizeDetail {
 		})
 		sizeDetails = append(sizeDetails, sizeDetail)
 	})
-	fmt.Println("sizeDetails:", sizeDetails)
+	// fmt.Println("sizeDetails:", sizeDetails)
 	return sizeDetails
 }
 

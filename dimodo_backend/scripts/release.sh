@@ -1,9 +1,4 @@
 #!/bin/bash
-hello:
-	echo "Deploy Golang TO Server"
-
-hello:
-	echo "See you"
 # build:
 # 	GOOS=linux GOARCH=amd64 go build .
 # to-server:
@@ -17,7 +12,7 @@ hello:
 # with your own domain or IP address.
 
 # Change to the directory with our code that we plan to work from
-cd "/Users/root/Development/Projects/Dimodo/dimodo_backend"
+cd "/Users/present/Development/Projects/Dimodo/dimodo_app/dimodo_backend"
 
 echo "==== Releasing dimodo_backend ===="
 echo "  Deleting the local binary if it exists (so it isn't uploaded)..."

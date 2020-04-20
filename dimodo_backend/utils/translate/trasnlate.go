@@ -105,6 +105,7 @@ func (t *Translator) TranslateText(sourceLang, targetLang, text string) (string,
 		fmt.Println("ggTranslate couldn't translate, now trying ppg translate")
 
 		result, err = PpgTranslateText(sourceLang, targetLang, text)
+		fmt.Println("pgg translated: ", result)
 		if err != nil {
 			bugsnag.Notify(err)
 			fmt.Println("err: ", err)

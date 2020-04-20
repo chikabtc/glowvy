@@ -103,3 +103,13 @@ WHERE
       WHERE
          sid = $1);
 
+--name: CheckProduct
+SELECT
+   EXISTS (
+      SELECT
+         1
+      FROM
+         product
+      WHERE
+         sid = $1);
+
