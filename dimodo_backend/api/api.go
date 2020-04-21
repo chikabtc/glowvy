@@ -2,6 +2,7 @@ package api
 
 import (
 	"dimodo_backend/api/controllers"
+	"dimodo_backend/crawler"
 	"dimodo_backend/models"
 	"fmt"
 
@@ -26,7 +27,7 @@ type Controllers struct {
 }
 
 //NewAPI loads configuration files and initializes the router, DB, models, and controller objects.
-func NewAPI() *API {
+func NewAPI(crawler crawler.Crawler) *API {
 	boolPtr := flag.Bool("prod", false, "Provide a flag in prodction. This ensures that a config.json file is provided before the application starts")
 	flag.Parse()
 	//boolPtr is a pointer to a boolean, so we need to use
@@ -53,7 +54,7 @@ func NewAPI() *API {
 		userC:    controllers.NewUser(ms.User, ms.Mail, cfg.Name, cfg.Domain),
 		addressC: controllers.NewAddress(ms.Address),
 		cartC:    controllers.NewCart(ms.Cart),
-		productC: controllers.NewProduct(ms.Product),
+		productC: controllers.NewProduct(ms.Product, crawler),
 	}
 
 	a := API{

@@ -47,6 +47,7 @@ func (a *API) InitializeRoutes() {
 	a.r.HandleFunc("/api/products/review/id={id:[0-9]+}/sr={sr:[a-z]+}", productC.ProductReviewsById).Methods("GET")
 
 	a.r.HandleFunc("/api/private/products/id={id:[0-9]+}/sr={sr:[a-z]+}", productC.CreateProductById).Methods("GET")
+	a.r.HandleFunc("/api/product/updatethumbnails", productC.UpdateThumbnailImages).Methods("GET")
 
 	// a.r.HandleFunc("/api/products/detail/id={id:[0-9]+}", productC.ProductById).Methods("GET")
 
@@ -63,6 +64,7 @@ func (a *API) InitializeRoutes() {
 	a.r.HandleFunc("/api/cart/delete", cartC.DeleteCartItem).Methods("POST")
 	a.r.HandleFunc("/api/order/new", cartC.CreateOrder).Methods("POST")
 	a.r.HandleFunc("/api/order/all", cartC.OrderHistoryByUserID).Methods("GET")
+
 	// a.r.HandleFunc("/api/cart/no", cartC.CreateCartItem).Methods("POST")
 	// var err = errors.New("this is an test error")
 	// sentry.CaptureException(err)

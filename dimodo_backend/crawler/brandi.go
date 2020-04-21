@@ -47,7 +47,7 @@ const brandiAuth = "3b17176f2eb5fdffb9bafdcc3e4bc192b013813caddccd0aad20c23ed272
 //brandi: :: bags(6) accessories(10) jewerly(119) crossbag(57) clutch(58) shouldebag(59) totebags(60) backpack(123) phonecase(124) wallet(35) scarf(66) hats(34) socks(105) watch(36)eyeware (125) earing(127) necklace(128) ring(129) outer(363) top(364)
 //this approach doesn't work..
 //47 categories
-func (c *crawler) AddNewProductsByCategories() {
+func (c *Crawler) AddNewProductsByCategories() {
 	var categories = make(map[int][]int)
 	categories[1] = append(categories[1], 13, 15, 120, 19, 18)
 	categories[2] = append(categories[2], 366, 50, 25, 24, 51, 121)
@@ -68,7 +68,7 @@ func (c *crawler) AddNewProductsByCategories() {
 	// c.GetMainProducts()
 }
 
-func (c *crawler) events(i int64) {
+func (c *Crawler) events(i int64) {
 	// get api
 	i = i * 100
 	offset := strconv.FormatInt(i, 10)
@@ -96,7 +96,7 @@ func (c *crawler) events(i int64) {
 	fmt.Println(url)
 }
 
-func (c *crawler) GetPopularProductsByCategory(parentId int, idx int, limit int) {
+func (c *Crawler) GetPopularProductsByCategory(parentId int, idx int, limit int) {
 	// get api
 	id := strconv.Itoa(idx)
 
@@ -142,7 +142,7 @@ func (c *crawler) GetPopularProductsByCategory(parentId int, idx int, limit int)
 	return
 }
 
-func (c *crawler) GetPopularProductsByShopId(idx int, limits int) []models.Product {
+func (c *Crawler) GetPopularProductsByShopId(idx int, limits int) []models.Product {
 	id := strconv.Itoa(idx)
 	limit := strconv.Itoa(limits)
 
@@ -212,7 +212,7 @@ func (c *crawler) GetPopularProductsByShopId(idx int, limits int) []models.Produ
 	return products
 }
 
-func (c *crawler) GetMainProducts() {
+func (c *Crawler) GetMainProducts() {
 	// dot, _ := dotsql.LoadFromFile("sql/queries/brandi.pgsql")
 
 	url := "https://cf-api-c.brandi.me/v1/web/main?version=42&is-web=true"
@@ -275,7 +275,7 @@ func (c *crawler) GetMainProducts() {
 	return
 }
 
-func (c *crawler) ProductById(id string, tag string) {
+func (c *Crawler) ProductById(id string, tag string) {
 	url := `https://cf-api-c.brandi.me/v1/web/products/` + id
 
 	req, _ := http.NewRequest("GET", url, nil)
@@ -338,7 +338,7 @@ func (c *crawler) ProductById(id string, tag string) {
 	fmt.Println(bProduct.Data.Seller.ID)
 }
 
-func (c *crawler) ProductDetailById(bProductId string) error {
+func (c *Crawler) ProductDetailById(bProductId string) error {
 	url := "https://cf-api-c.brandi.me/v1/web/products/" + bProductId
 	fmt.Println(url)
 	req, _ := http.NewRequest("GET", url, nil)
@@ -412,7 +412,7 @@ func (c *crawler) ProductDetailById(bProductId string) error {
 }
 
 //private crawler usually used to run by hands
-func (c *crawler) CreateProductById(bProductId string, tag string, cateId int) error {
+func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) error {
 	//check if the product doesn't exist in the db --> avoid wasting computing resources
 	var isProductAvailable bool
 	row, err := c.dot.QueryRow(c.DB, "CheckProduct", bProductId)
@@ -510,7 +510,7 @@ func (c *crawler) CreateProductById(bProductId string, tag string, cateId int) e
 	return err
 }
 
-func (c *crawler) GetPhotoReviewsFromBrandi(bProductId string, offset, limit string) *brandi.Reviews {
+func (c *Crawler) GetPhotoReviewsFromBrandi(bProductId string, offset, limit string) *brandi.Reviews {
 	//recursive fetching... just like the brandi when the user clicks the reviews then call more
 	photoReviewURL := "https://cf-api-v2.brandi.me/v2/web/products/" + bProductId + "/reviews?version=28&limit=" + limit + "&offset=" + offset + "&tab-type=photo"
 
@@ -568,7 +568,7 @@ func (c *crawler) GetPhotoReviewsFromBrandi(bProductId string, offset, limit str
 
 	return &reviews
 }
-func (c *crawler) GetTextReviewsFromBrandi(bProductId string, offset, limit string) *brandi.Reviews {
+func (c *Crawler) GetTextReviewsFromBrandi(bProductId string, offset, limit string) *brandi.Reviews {
 	textReviewURL := "https://cf-api-v2.brandi.me/v2/web/products/" + bProductId + "/reviews?version=28&limit=" + limit + "&offset=" + offset + "&tab-type=text"
 
 	fmt.Println(textReviewURL)
@@ -731,4 +731,31 @@ func ProductEtcInfo(s string) models.ProductEtcInfo {
 	})
 	fmt.Println(etcInfo)
 	return etcInfo
+}
+
+// =============================================================================
+// Private Functions
+// =============================================================================
+func (c *Crawler) ImageThumbnailByProductId(bProductId string) (string, error) {
+
+	url := "https://cf-api-c.brandi.me/v1/web/products/" + bProductId
+	fmt.Println("getting thumbnail: ", url)
+	req, _ := http.NewRequest("GET", url, nil)
+	req.Header.Add("Authorization", brandiAuth)
+	client := http.Client{Timeout: time.Second * 10}
+	res, err := client.Do(req)
+	if err != nil {
+		bugsnag.Notify(err)
+		return "", err
+	}
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+	var bp brandi.Product
+	if err := json.Unmarshal(body, &bp); err != nil {
+		return "", err
+	}
+	// fmt.Println("medium url", bp.Data.Images[0].ImageMediumURL)
+
+	return bp.Data.Images[0].ImageMediumURL, nil
 }

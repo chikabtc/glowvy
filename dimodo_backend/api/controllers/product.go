@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"time"
 
 	"github.com/bugsnag/bugsnag-go"
 	"github.com/gorilla/mux"
@@ -16,11 +17,13 @@ import (
 
 type Product struct {
 	ps models.ProductService
+	cw crawler.Crawler
 }
 
-func NewProduct(ps models.ProductService) *Product {
+func NewProduct(ps models.ProductService, cw crawler.Crawler) *Product {
 	return &Product{
 		ps: ps,
+		cw: cw,
 	}
 }
 
@@ -89,8 +92,8 @@ func (p *Product) ProductDetailById(w http.ResponseWriter, r *http.Request) {
 			//3. if unavailalble, call product api of Brandi and save product detail
 		} else {
 			//crawler fucking use config --> need to use different server
-			crawler := crawler.NewCrawler()
-			err = crawler.ProductDetailById(params["id"])
+			// crawler := crawler.NewCrawler()
+			err = p.cw.ProductDetailById(params["id"])
 			// if err != nil {
 			bugsnag.Notify(err)
 			product, err = p.ps.ProductDetailById(id)
@@ -180,8 +183,8 @@ func (p *Product) ProductsByShopId(w http.ResponseWriter, r *http.Request) {
 	}
 	var products []models.Product
 
-	crawler := crawler.NewCrawler()
-	products = crawler.GetPopularProductsByShopId(id, count)
+	// crawler := crawler.NewCrawler()
+	products = p.cw.GetPopularProductsByShopId(id, count)
 
 	if err != nil {
 		bugsnag.Notify(err)
@@ -227,9 +230,9 @@ func (p *Product) ProductReviewsById(w http.ResponseWriter, r *http.Request) {
 	} else {
 		//call review api of Brandi
 		//save the returned reviews to the database
-		c := crawler.NewCrawler()
-		c.GetPhotoReviewsFromBrandi(params["id"], r.FormValue("offset"), r.FormValue("limit"))
-		c.GetTextReviewsFromBrandi(params["id"], r.FormValue("offset"), r.FormValue("limit"))
+		// c := crawler.NewCrawler()
+		p.cw.GetPhotoReviewsFromBrandi(params["id"], r.FormValue("offset"), r.FormValue("limit"))
+		p.cw.GetTextReviewsFromBrandi(params["id"], r.FormValue("offset"), r.FormValue("limit"))
 		reviews, err = p.ps.ReviewsByProductID(id, offset, limit)
 		if err != nil {
 			bugsnag.Notify(err)
@@ -262,11 +265,36 @@ func (p *Product) CreateProductById(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	// var product *models.Product
-	crawler := crawler.NewCrawler()
-	err = crawler.CreateProductById(params["id"], "", 0)
+
+	err = p.cw.CreateProductById(params["id"], "", 0)
 
 	// product, err = p.ps.ProductDetailById(id)
 
+	if err != nil {
+		bugsnag.Notify(err)
+		resp.Json(w, r, http.StatusBadRequest, resp.WithError(err))
+		return
+	}
+	resp.Json(w, r, http.StatusOK, resp.WithSuccess(err))
+}
+
+func (p *Product) UpdateThumbnailImages(w http.ResponseWriter, r *http.Request) {
+	sids, err := p.ps.GetAllSidsWithBigThumbnail()
+
+	for _, sid := range sids {
+		time.Sleep(2 * time.Second)
+		// fmt.Println("sid to fix: ", sid)
+
+		thumbnail, err := p.cw.ImageThumbnailByProductId(sid)
+		if err != nil {
+			fmt.Println("ImageThumbnailByProductId err: ", err)
+		}
+
+		err = p.ps.UpdateThumbnailImage(sid, thumbnail)
+		if err != nil {
+			fmt.Println("UpdateThumbnailImage err: ", err)
+		}
+	}
 	if err != nil {
 		bugsnag.Notify(err)
 		resp.Json(w, r, http.StatusBadRequest, resp.WithError(err))

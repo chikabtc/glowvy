@@ -154,3 +154,22 @@ FROM
 WHERE
     seller ->> 'id' = $1;
 
+--name:	UpdateThumbnailImage
+UPDATE
+    product
+SET
+    thumbnail = $2
+WHERE
+    sid = $1;
+
+--name:	GetAllSidsWithBigThumbnail
+SELECT
+    sid
+FROM
+    product
+WHERE
+    position('_L' IN thumbnail) > 0
+ORDER BY
+    id DESC OFFSET 0
+LIMIT 1000;
+

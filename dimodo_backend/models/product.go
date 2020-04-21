@@ -24,6 +24,8 @@ type ProductService interface {
 	CheckIfShopExists(shopId int) (bool, error)
 	FindProductByID(id int) (*Product, error)
 	ProductDetailById(id int) (*Product, error)
+	UpdateThumbnailImage(productSid string, thumbnail string) error
+	GetAllSidsWithBigThumbnail() ([]string, error)
 }
 
 type productService struct {
@@ -461,4 +463,45 @@ func (ps *productService) ReviewsByProductID(productId, start, count int) (*Revi
 		reviews.Reviews = append(reviews.Reviews, review)
 	}
 	return &reviews, nil
+}
+
+// =============================================================================
+// Private Functions only used manually by developers to edit db
+// =============================================================================
+func (ps *productService) UpdateThumbnailImage(productSid string, thumbnail string) error {
+	_, err := ps.dot.QueryRow(ps.DB, "UpdateThumbnailImage", productSid, thumbnail)
+	if err != nil {
+		// bugsnag.Notify(err)
+		fmt.Println("UpdateThumbnailImage: ", err)
+		return err
+	}
+	return nil
+}
+
+//get sid of product whose thumbnail contains image_L
+func (ps *productService) GetAllSidsWithBigThumbnail() ([]string, error) {
+	sids := make([]string, 0)
+
+	rows, err := ps.dot.Query(ps.DB, "GetAllSidsWithBigThumbnail")
+	if err != nil {
+		// bugsnag.Notify(err)
+		fmt.Println("GetAllSidsWithBigThumbnail: ", err)
+		return nil, err
+	}
+
+	var sid string
+	defer rows.Close()
+
+	for rows.Next() {
+		if err := rows.Scan(
+			&sid,
+		); err != nil {
+			fmt.Println("fail to GetAllSidsWithBigThumbnail ", err)
+			return nil, err
+		}
+		sids = append(sids, sid)
+
+	}
+	fmt.Println("sid counts: ", len(sids))
+	return sids, nil
 }

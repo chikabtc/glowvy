@@ -8,13 +8,13 @@ import (
 	"github.com/gchaincl/dotsql"
 )
 
-type crawler struct {
+type Crawler struct {
 	DB  *sql.DB
 	dot *dotsql.DotSql
 }
 
 //NewAPI loads configuration files and initializes the router, DB, models, and controller objects.
-func NewCrawler() *crawler {
+func NewCrawler() *Crawler {
 	//boolPtr is a pointer to a boolean, so we need to use
 	//*boolPtr to get the boolean value and pass it into our
 	//LoadingConfig function
@@ -29,7 +29,7 @@ func NewCrawler() *crawler {
 
 	dot, _ := dotsql.LoadFromFile("sql/queries/brandi.pgsql")
 
-	c := crawler{
+	c := Crawler{
 		DB:  db,
 		dot: dot,
 	}
