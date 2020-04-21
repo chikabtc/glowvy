@@ -22,7 +22,7 @@ func main() {
 	c := cron.New()
 	crawler := crawler.NewCrawler()
 
-	err := c.AddFunc("0 9 18 * * ?", func() {
+	err := c.AddFunc("0 0 11 * * ?", func() {
 		start := time.Now()
 		cronMessage := errors.New("   crawling new products...")
 		bugsnag.Notify(cronMessage)

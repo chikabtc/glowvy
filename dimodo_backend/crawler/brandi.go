@@ -7,6 +7,7 @@ import (
 	"log"
 	"math/rand"
 	"strings"
+	"time"
 
 	"encoding/json"
 	"fmt"
@@ -108,39 +109,30 @@ func (c *crawler) GetPopularProductsByCategory(parentId int, idx int, limit int)
 
 	req.Header.Add("Authorization", brandiAuth)
 
-	res, _ := http.DefaultClient.Do(req)
+	client := http.Client{Timeout: time.Second * 10}
+	res, err := client.Do(req)
+	if err != nil {
+		bugsnag.Notify(err)
+		return
+	}
 
 	defer res.Body.Close()
 	body, _ := ioutil.ReadAll(res.Body)
 	// decode
 	var products brandi.Products
 	// fmt.Println(body)
-	err := json.Unmarshal(body, &products)
+	err = json.Unmarshal(body, &products)
 	// dot, _ := dotsql.LoadFromFile("sql/queries/brandi.pgsql")
 
 	if err != nil {
 		bugsnag.Notify(err)
 		fmt.Println("Error")
 	}
-	// translator, _ := translate.NewTranslator()
 
 	for _, p := range products.Data {
-		// fmt.Println(p.ID + " cate " + id)
-		// time.Sleep(1 * time.Second)
-		err := c.CreateProductById(p.ID, "", idx)
-		// name, err := translator.TranslateText(translate.Ko, translate.Vi, p.Name)
 
-		// _, err = dot.Exec(c.DB, "sqlCreateProducts",
-		// 	p.ID,
-		// 	p.Price,
-		// 	p.SalePrice,
-		// 	p.SalePercent,
-		// 	0,
-		// 	name,
-		// 	parentId,
-		// 	p.ImageURL,
-		// 	"",
-		// )
+		err := c.CreateProductById(p.ID, "", parentId)
+
 		if err != nil {
 			bugsnag.Notify(err)
 			fmt.Println(err.Error())
@@ -161,13 +153,18 @@ func (c *crawler) GetPopularProductsByShopId(idx int, limits int) []models.Produ
 
 	req.Header.Add("Authorization", brandiAuth)
 
-	res, _ := http.DefaultClient.Do(req)
+	client := http.Client{Timeout: time.Second * 10}
+	res, err := client.Do(req)
+	if err != nil {
+		bugsnag.Notify(err)
+		return nil
+	}
 
 	defer res.Body.Close()
 	body, _ := ioutil.ReadAll(res.Body)
 
 	var bProducts brandi.Products
-	err := json.Unmarshal(body, &bProducts)
+	err = json.Unmarshal(body, &bProducts)
 	products := make([]models.Product, len(bProducts.Data))
 
 	if err != nil {
@@ -222,7 +219,13 @@ func (c *crawler) GetMainProducts() {
 	fmt.Println("GetMainProducts: ", url)
 	req, _ := http.NewRequest("GET", url, nil)
 	req.Header.Add("Authorization", brandiAuth)
-	res, _ := http.DefaultClient.Do(req)
+	client := http.Client{Timeout: time.Second * 10}
+	res, err := client.Do(req)
+	if err != nil {
+		bugsnag.Notify(err)
+		return
+	}
+
 	defer res.Body.Close()
 	body, _ := ioutil.ReadAll(res.Body)
 	var main brandi.MainProducts
@@ -240,22 +243,7 @@ func (c *crawler) GetMainProducts() {
 		for _, p := range zone.Products {
 			//make it async await !! hmm,,, not sure. but they definitely  returned []
 			err := c.CreateProductById(p.ID, "trending", 0)
-			// name, err := translator.TranslateText(translate.Ko, translate.Vi, p.Name)
-			// if err != nil {
-			// 	bugsnag.Notify(err)
-			// 	panic(err)
-			// }
-			// _, err = dot.Exec(c.DB, "sqlCreateProducts",
-			// 	p.ID,
-			// 	p.Price,
-			// 	p.SalePrice,
-			// 	p.SalePercent,
-			// 	p.PurchaseCount,
-			// 	name,
-			// 	0,
-			// 	p.ImageURL,
-			// 	"trending",
-			// )
+
 			if err != nil {
 				bugsnag.Notify(err)
 				fmt.Println(err.Error())
@@ -265,22 +253,7 @@ func (c *crawler) GetMainProducts() {
 
 	for _, zone := range zone2 {
 		for _, p := range zone.Products {
-			// name, err := translator.TranslateText(translate.Ko, translate.Vi, p.Name)
-			// if err != nil {
-			// 	bugsnag.Notify(err)
-			// 	panic(err)
-			// }
-			// _, err = dot.Exec(c.DB, "sqlCreateProducts",
-			// 	p.ID,
-			// 	p.Price,
-			// 	p.SalePrice,
-			// 	p.SalePercent,
-			// 	p.PurchaseCount,
-			// 	name,
-			// 	0,
-			// 	p.ImageURL,
-			// 	"trending",
-			// )
+
 			err := c.CreateProductById(p.ID, "trending", 0)
 
 			if err != nil {
@@ -293,25 +266,6 @@ func (c *crawler) GetMainProducts() {
 	for _, p := range recommend {
 		err := c.CreateProductById(p.ID, "trending", 0)
 
-		// name, err := translator.TranslateText(translate.Ko, translate.Vi, p.Name)
-		// if err != nil {
-		// 	bugsnag.Notify(err)
-		// 	panic(err)
-		// }
-		// if p.SalePercent == nil {
-		// 	p.SalePercent = 0
-		// }
-		// _, err = dot.Exec(c.DB, "sqlCreateProducts",
-		// 	p.ID,
-		// 	p.Price,
-		// 	p.SalePrice,
-		// 	p.SalePercent,
-		// 	p.PurchaseCount,
-		// 	name,
-		// 	0,
-		// 	p.ImageURL,
-		// 	"trending",
-		// )
 		if err != nil {
 			bugsnag.Notify(err)
 			fmt.Println(err.Error())
@@ -328,7 +282,12 @@ func (c *crawler) ProductById(id string, tag string) {
 
 	req.Header.Add("Authorization", brandiAuth)
 
-	res, _ := http.DefaultClient.Do(req)
+	client := http.Client{Timeout: time.Second * 10}
+	res, err := client.Do(req)
+	if err != nil {
+		bugsnag.Notify(err)
+		return
+	}
 
 	defer res.Body.Close()
 	body, _ := ioutil.ReadAll(res.Body)
@@ -336,7 +295,7 @@ func (c *crawler) ProductById(id string, tag string) {
 	// var product models.Product
 	var bProduct brandi.Product
 
-	err := json.Unmarshal(body, &bProduct)
+	err = json.Unmarshal(body, &bProduct)
 	if err != nil {
 		bugsnag.Notify(err)
 		fmt.Println("Error")
@@ -384,7 +343,13 @@ func (c *crawler) ProductDetailById(bProductId string) error {
 	fmt.Println(url)
 	req, _ := http.NewRequest("GET", url, nil)
 	req.Header.Add("Authorization", brandiAuth)
-	res, _ := http.DefaultClient.Do(req)
+	client := http.Client{Timeout: time.Second * 10}
+	res, err := client.Do(req)
+	if err != nil {
+		bugsnag.Notify(err)
+		return err
+	}
+
 	defer res.Body.Close()
 	body, _ := ioutil.ReadAll(res.Body)
 	var bp brandi.Product
@@ -424,7 +389,7 @@ func (c *crawler) ProductDetailById(bProductId string) error {
 	optionBytes, _ := json.Marshal(productOptions)
 	sizeDetailBytes, _ := json.Marshal(SizeDetail(bp.Data.Text))
 
-	_, err := c.dot.Exec(c.DB, "AddProductDetailsById",
+	_, err = c.dot.Exec(c.DB, "AddProductDetailsById",
 		bp.Data.ID,
 		bp.Data.Price,
 		bp.Data.SalePrice,
@@ -473,7 +438,13 @@ func (c *crawler) CreateProductById(bProductId string, tag string, cateId int) e
 	fmt.Println("createProductByID: ", url)
 	req, _ := http.NewRequest("GET", url, nil)
 	req.Header.Add("Authorization", brandiAuth)
-	res, _ := http.DefaultClient.Do(req)
+	client := http.Client{Timeout: time.Second * 10}
+	res, err := client.Do(req)
+	if err != nil {
+		bugsnag.Notify(err)
+		return err
+	}
+
 	defer res.Body.Close()
 	body, _ := ioutil.ReadAll(res.Body)
 	var bp brandi.Product
@@ -539,14 +510,20 @@ func (c *crawler) CreateProductById(bProductId string, tag string, cateId int) e
 	return err
 }
 
-func (c *crawler) GetPhotoReviewsFromBrandi(bProductId string, offset, limit string) brandi.Reviews {
+func (c *crawler) GetPhotoReviewsFromBrandi(bProductId string, offset, limit string) *brandi.Reviews {
 	//recursive fetching... just like the brandi when the user clicks the reviews then call more
 	photoReviewURL := "https://cf-api-v2.brandi.me/v2/web/products/" + bProductId + "/reviews?version=28&limit=" + limit + "&offset=" + offset + "&tab-type=photo"
 
 	// fmt.Println(photoReviewURL)
 	req, _ := http.NewRequest("GET", photoReviewURL, nil)
 	req.Header.Add("Authorization", brandiAuth)
-	res, _ := http.DefaultClient.Do(req)
+	client := http.Client{Timeout: time.Second * 10}
+	res, err := client.Do(req)
+	if err != nil {
+		bugsnag.Notify(err)
+		return nil
+	}
+
 	defer res.Body.Close()
 	body, _ := ioutil.ReadAll(res.Body)
 	var reviews brandi.Reviews
@@ -589,15 +566,21 @@ func (c *crawler) GetPhotoReviewsFromBrandi(bProductId string, offset, limit str
 
 	//todo: save to the db
 
-	return reviews
+	return &reviews
 }
-func (c *crawler) GetTextReviewsFromBrandi(bProductId string, offset, limit string) brandi.Reviews {
+func (c *crawler) GetTextReviewsFromBrandi(bProductId string, offset, limit string) *brandi.Reviews {
 	textReviewURL := "https://cf-api-v2.brandi.me/v2/web/products/" + bProductId + "/reviews?version=28&limit=" + limit + "&offset=" + offset + "&tab-type=text"
 
 	fmt.Println(textReviewURL)
 	req, _ := http.NewRequest("GET", textReviewURL, nil)
 	req.Header.Add("Authorization", brandiAuth)
-	res, _ := http.DefaultClient.Do(req)
+	client := http.Client{Timeout: time.Second * 10}
+	res, err := client.Do(req)
+	if err != nil {
+		bugsnag.Notify(err)
+		return nil
+	}
+
 	defer res.Body.Close()
 	body, _ := ioutil.ReadAll(res.Body)
 	var reviews brandi.Reviews
@@ -630,7 +613,7 @@ func (c *crawler) GetTextReviewsFromBrandi(bProductId string, offset, limit stri
 		}
 	}
 
-	return reviews
+	return &reviews
 }
 
 //Images  imgs out of html string
