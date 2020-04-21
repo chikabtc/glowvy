@@ -151,7 +151,7 @@ class SettingScreenState extends State<SettingScreen>
                         color: kDefaultBackground,
                       ),
                       SettingCard(
-                        title: S.of(context).orders,
+                        title: S.of(context).orderHistory,
                         onTap: () => widget.user == null
                             ? Navigator.pushNamed(context, "/login")
                             : Navigator.pushNamed(context, "/orders"),
@@ -178,7 +178,7 @@ class SettingScreenState extends State<SettingScreen>
                                 await FlutterMailer.send(MailOptions(
                                   body: '',
                                   subject: 'Feedback',
-                                  recipients: ['hbpfreem@gmail.com'],
+                                  recipients: ['support@dimodo.com'],
                                 ))
                               }),
                       kFullDivider,

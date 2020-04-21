@@ -230,6 +230,7 @@ class S implements WidgetsLocalizations {
   String get events => "Events";
   String get featureProducts => "Feature Products";
   String get fullName => "Name";
+  String get firstName => "First Name";
   String get fullNameIsRequired => "The first name field is required";
   String get generalSetting => "General Setting";
   String get getNotification => "Get Notification";
@@ -440,7 +441,7 @@ class $vi extends S {
   String get orderSubmitted => "Đã gửi đơn đặt hàng";
   String get oneStepLeft => "Một bước còn lại";
   String get transferDescription =>
-      "Gói của bạn dự kiến ​​sẽ gặp bạn. Chỉ mất ba phút để gửi tiền vào tài khoản bên dưới";
+      "Đơn hàng ​​sẽ được giao đến bạn. Chỉ mất ba phút để thanh toán vào tài khoản bên dưới";
   String get bankAccountHolder => "Tài khoản";
   String get payment => "Accounts";
   String get paymentMethods => "Payment method";
@@ -724,7 +725,9 @@ class $vi extends S {
   @override
   String get orderSuccessTitle1 => "You've successfully placed the order";
   @override
-  String get fullName => "Họ";
+  String get fullName => "Họ và tên";
+  @override
+  String get firstName => "Tên";
   @override
   String get phoneNumber => "Số điện thoại";
   @override
