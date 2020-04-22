@@ -109,7 +109,7 @@ class _ProductDetailState extends State<ProductDetail>
                                     actions: <Widget>[
                                       IconButton(
                                         onPressed: () =>
-                                            Navigator.popAndPushNamed(
+                                            Navigator.pushReplacementNamed(
                                                 context, "/cart", arguments: {
                                           "showBackSpace": true
                                         }),
