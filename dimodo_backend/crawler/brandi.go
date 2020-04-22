@@ -755,7 +755,8 @@ func (c *Crawler) ImageThumbnailByProductId(bProductId string) (string, error) {
 	if err := json.Unmarshal(body, &bp); err != nil {
 		return "", err
 	}
-	// fmt.Println("medium url", bp.Data.Images[0].ImageMediumURL)
+
+	fmt.Println("medium url", bp.Data.Images[0].ImageMediumURL)
 
 	return bp.Data.Images[0].ImageMediumURL, nil
 }

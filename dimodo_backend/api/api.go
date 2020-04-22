@@ -27,7 +27,7 @@ type Controllers struct {
 }
 
 //NewAPI loads configuration files and initializes the router, DB, models, and controller objects.
-func NewAPI(crawler crawler.Crawler) *API {
+func NewAPI(crawler *crawler.Crawler) *API {
 	boolPtr := flag.Bool("prod", false, "Provide a flag in prodction. This ensures that a config.json file is provided before the application starts")
 	flag.Parse()
 	//boolPtr is a pointer to a boolean, so we need to use

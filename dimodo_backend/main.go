@@ -42,7 +42,7 @@ func main() {
 
 	// crawler.GetMainProducts()
 
-	api := api.NewAPI(*crawler)
+	api := api.NewAPI(crawler)
 	api.Run()
 
 }

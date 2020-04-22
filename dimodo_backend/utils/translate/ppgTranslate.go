@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"time"
 
 	"github.com/bugsnag/bugsnag-go"
 )
@@ -53,10 +54,11 @@ func PpgTranslateText(sourceLang, targetLang, text string) (string, error) {
 	req.Header.Add("X-NCP-APIGW-API-KEY", ppGoAPIKey)
 	req.Header.Add("Content-Type", "application/json")
 
-	resp, err := http.DefaultClient.Do(req)
+	client := http.Client{Timeout: time.Second * 10}
+	resp, err := client.Do(req)
 	if err != nil {
 		bugsnag.Notify(err)
-		fmt.Println("http.DefaultClient.Do(req) error", err)
+		return "", err
 	}
 
 	defer resp.Body.Close()

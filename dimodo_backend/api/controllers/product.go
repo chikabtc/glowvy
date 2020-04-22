@@ -17,10 +17,10 @@ import (
 
 type Product struct {
 	ps models.ProductService
-	cw crawler.Crawler
+	cw *crawler.Crawler
 }
 
-func NewProduct(ps models.ProductService, cw crawler.Crawler) *Product {
+func NewProduct(ps models.ProductService, cw *crawler.Crawler) *Product {
 	return &Product{
 		ps: ps,
 		cw: cw,
