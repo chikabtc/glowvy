@@ -1,6 +1,0 @@
-framework module device_apps {
-  umbrella header "device_apps-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -20,7 +20,7 @@ class CartModel with ChangeNotifier {
   Address address;
   Billing billing;
   String currency;
-  double shippingFeePerItem = 70000;
+  double shippingFeePerItem = 60000;
   double totalShippingFee = 0;
   double totalServiceFee = 0;
   double totalImportTax = 0;

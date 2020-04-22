@@ -434,7 +434,7 @@ class $vi extends S {
   String get serviceFee => "Phí dịch vụ";
   String get serviceFeeDescription =>
       "Dịch vụ giúp chúng tôi chạy nền tảng của chúng tôi và cung cấp trải nghiệm tốt hơn";
-  String get submitOrder => "Gửi đơn hàng";
+  String get submitOrder => "ĐẶT MUA";
   String get needHelp => "Cần trợ giúp?";
   String get askUs => "Hỏi chúng tôi";
   String get whereToDeliver => "Bạn cần chúng tôi giao hàng ở đâu?";
