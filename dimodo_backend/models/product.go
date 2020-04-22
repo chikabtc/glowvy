@@ -24,7 +24,7 @@ type ProductService interface {
 	CheckIfShopExists(shopId int) (bool, error)
 	FindProductByID(id int) (*Product, error)
 	ProductDetailById(id int) (*Product, error)
-	UpdateThumbnailImage(productSid string, thumbnail string) error
+	UpdateThumbnailImage(productSid string, thumbnail string) (bool, error)
 	GetAllSidsWithBigThumbnail() ([]string, error)
 }
 
@@ -468,14 +468,14 @@ func (ps *productService) ReviewsByProductID(productId, start, count int) (*Revi
 // =============================================================================
 // Private Functions only used manually by developers to edit db
 // =============================================================================
-func (ps *productService) UpdateThumbnailImage(productSid string, thumbnail string) error {
-	_, err := ps.dot.QueryRow(ps.DB, "UpdateThumbnailImage", productSid, thumbnail)
+func (ps *productService) UpdateThumbnailImage(productSid string, thumbnail string) (bool, error) {
+	_, err := ps.dot.Exec(ps.DB, "UpdateThumbnailImage", productSid, thumbnail)
 	if err != nil {
 		// bugsnag.Notify(err)
 		fmt.Println("UpdateThumbnailImage: ", err)
-		return err
+		return false, err
 	}
-	return nil
+	return true, nil
 }
 
 //get sid of product whose thumbnail contains image_L

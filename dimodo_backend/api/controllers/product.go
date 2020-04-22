@@ -290,10 +290,11 @@ func (p *Product) UpdateThumbnailImages(w http.ResponseWriter, r *http.Request) 
 			fmt.Println("ImageThumbnailByProductId err: ", err)
 		}
 
-		err = p.ps.UpdateThumbnailImage(sid, thumbnail)
+		isSuccess, err := p.ps.UpdateThumbnailImage(sid, thumbnail)
 		if err != nil {
 			fmt.Println("UpdateThumbnailImage err: ", err)
 		}
+		fmt.Println("updatating thumbnail success? ", isSuccess)
 	}
 	if err != nil {
 		bugsnag.Notify(err)

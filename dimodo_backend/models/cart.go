@@ -76,7 +76,7 @@ func (cs *cartService) AllCartItems(cart_id int) ([]Cart_item, error) {
 }
 
 func (cs *cartService) CreateCartItem(item Cart_item) (int, error) {
-	_, err := cs.dot.QueryRow(cs.DB, "CreateCartItem", item.User_id, item.Option_id, item.Product_id, item.Quantity, item.Option)
+	_, err := cs.dot.Exec(cs.DB, "CreateCartItem", item.User_id, item.Option_id, item.Product_id, item.Quantity, item.Option)
 	fmt.Printf("cart item unmarshalled: %v %v %v \n", item.Option_id, item.Quantity, item.Option)
 	if err != nil {
 		bugsnag.Notify(err)
@@ -102,13 +102,13 @@ func (cs *cartService) UpdateItemCart(item *Cart_item) error {
 }
 
 func (cs *cartService) DeleteCartItem(item *Cart_item) error {
-	row, err := cs.dot.QueryRow(cs.DB, "RemoveCartItem", item.User_id, item.Option_id)
+	_, err := cs.dot.Exec(cs.DB, "RemoveCartItem", item.User_id, item.Option_id)
 	if err != nil {
 		bugsnag.Notify(err)
 		fmt.Println("RemoveCartItem: ", err)
 		// msgError := fmt.Sprintf("Invalid request payload. Error: %s", err.Error())
 		return err
-		row.Scan(&item.User_id)
+		// row.Scan(&item.User_id)
 	}
 	return nil
 }

@@ -457,7 +457,9 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 	desc, _ := translator.TranslateText(translate.Ko, translate.Vi, Description(bp.Data.Text))
 	// fmt.Println("this is descr: ", desc)
 	name, _ := translator.TranslateText(translate.Ko, translate.Vi, Description(bp.Data.Name))
-
+	if name == " " || len(name) < 4 || name == "[" {
+		return fmt.Errorf("both translator fails to translate properly")
+	}
 	//type conversion from BrandiProduct to dimodoProduct
 	var productOptions = []models.Option{}
 	var translatedOptions = bp.Data.Options
