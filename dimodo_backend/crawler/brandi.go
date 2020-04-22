@@ -17,7 +17,6 @@ import (
 
 	"github.com/PuerkitoBio/goquery"
 	"github.com/bugsnag/bugsnag-go"
-	"github.com/gchaincl/dotsql"
 	"github.com/lib/pq"
 	_ "github.com/lib/pq"
 	"golang.org/x/net/html"
@@ -68,33 +67,33 @@ func (c *Crawler) AddNewProductsByCategories() {
 	// c.GetMainProducts()
 }
 
-func (c *Crawler) events(i int64) {
-	// get api
-	i = i * 100
-	offset := strconv.FormatInt(i, 10)
-	url := "https://cf-api-c.brandi.me/v1/web/events/4663?&limit=100&offset=" + offset
+// func (c *Crawler) events(i int64) {
+// 	// get api
+// 	i = i * 100
+// 	offset := strconv.FormatInt(i, 10)
+// 	url := "https://cf-api-c.brandi.me/v1/web/events/4663?&limit=100&offset=" + offset
 
-	req, _ := http.NewRequest("GET", url, nil)
+// 	req, _ := http.NewRequest("GET", url, nil)
 
-	req.Header.Add("Authorization", brandiAuth)
+// 	req.Header.Add("Authorization", brandiAuth)
 
-	res, _ := http.DefaultClient.Do(req)
+// 	res, _ := http.DefaultClient.Do(req)
 
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
-	// decode
-	var product brandi.MyJsonName
-	// fmt.Println(body)
-	err := json.Unmarshal(body, &product)
-	if err != nil {
-		bugsnag.Notify(err)
-		fmt.Println("Error")
-	}
-	for _, k := range product.Data.ProductGroups[0].Products {
-		c.ProductById(k.ID, "events")
-	}
-	fmt.Println(url)
-}
+// 	defer res.Body.Close()
+// 	body, _ := ioutil.ReadAll(res.Body)
+// 	// decode
+// 	var product brandi.MyJsonName
+// 	// fmt.Println(body)
+// 	err := json.Unmarshal(body, &product)
+// 	if err != nil {
+// 		bugsnag.Notify(err)
+// 		fmt.Println("Error")
+// 	}
+// 	for _, k := range product.Data.ProductGroups[0].Products {
+// 		c.ProductById(k.ID, "events")
+// 	}
+// 	fmt.Println(url)
+// }
 
 func (c *Crawler) GetPopularProductsByCategory(parentId int, idx int, limit int) {
 	// get api
@@ -118,11 +117,8 @@ func (c *Crawler) GetPopularProductsByCategory(parentId int, idx int, limit int)
 
 	defer res.Body.Close()
 	body, _ := ioutil.ReadAll(res.Body)
-	// decode
 	var products brandi.Products
-	// fmt.Println(body)
 	err = json.Unmarshal(body, &products)
-	// dot, _ := dotsql.LoadFromFile("sql/queries/brandi.pgsql")
 
 	if err != nil {
 		bugsnag.Notify(err)
@@ -174,8 +170,6 @@ func (c *Crawler) GetPopularProductsByShopId(idx int, limits int) []models.Produ
 	translator, _ := translate.NewTranslator()
 
 	for i, p := range bProducts.Data {
-		// fmt.Println(p.ID + " cate " + id)
-		// time.Sleep(1 * time.Second)
 		name, err := translator.TranslateText(translate.Ko, translate.Vi, p.Name)
 		if err != nil {
 			bugsnag.Notify(err)
@@ -193,28 +187,13 @@ func (c *Crawler) GetPopularProductsByShopId(idx int, limits int) []models.Produ
 			Sale_price:   p.SalePrice,
 			Thumbnail:    p.ImageThumbnailURL,
 		}
-
-		// sid, _ := strconv.Atoi(p.ID)
-		// _, err = c.dot.Exec(c.DB, "AddProductsByShopId",
-		// 	sid,
-		// 	name,
-		// 	p.Price,
-		// 	p.SalePercent,
-		// 	p.SalePrice,
-		// 	p.ImageThumbnailURL,
-		// )
-		// if err != nil {
 		bugsnag.Notify(err)
-		// 	fmt.Println("AddProductsByShopId fail to insert:", err)
-		// }
 		bProducts.Data[i] = p
 	}
 	return products
 }
 
 func (c *Crawler) GetMainProducts() {
-	// dot, _ := dotsql.LoadFromFile("sql/queries/brandi.pgsql")
-
 	url := "https://cf-api-c.brandi.me/v1/web/main?version=42&is-web=true"
 	fmt.Println("GetMainProducts: ", url)
 	req, _ := http.NewRequest("GET", url, nil)
@@ -271,71 +250,6 @@ func (c *Crawler) GetMainProducts() {
 			fmt.Println(err.Error())
 		}
 	}
-	fmt.Println(url)
-	return
-}
-
-func (c *Crawler) ProductById(id string, tag string) {
-	url := `https://cf-api-c.brandi.me/v1/web/products/` + id
-
-	req, _ := http.NewRequest("GET", url, nil)
-
-	req.Header.Add("Authorization", brandiAuth)
-
-	client := http.Client{Timeout: time.Second * 10}
-	res, err := client.Do(req)
-	if err != nil {
-		bugsnag.Notify(err)
-		return
-	}
-
-	defer res.Body.Close()
-	body, _ := ioutil.ReadAll(res.Body)
-	// decode
-	// var product models.Product
-	var bProduct brandi.Product
-
-	err = json.Unmarshal(body, &bProduct)
-	if err != nil {
-		bugsnag.Notify(err)
-		fmt.Println("Error")
-	}
-
-	dot, _ := dotsql.LoadFromFile("sql/queries/brandi.pgsql")
-
-	_, err = dot.Exec(c.DB, "sqlCreateProducts",
-		bProduct.Data.ID,
-		bProduct.Data.Price,
-		bProduct.Data.Name,
-		bProduct.Data.CategoryId,
-		bProduct.Data.ImageThumbnailURL,
-		bProduct.Data.AddInfo,
-		tag,
-	)
-	if err != nil {
-		bugsnag.Notify(err)
-		fmt.Println(err.Error())
-	}
-
-	_, err = dot.Exec(c.DB, "createBrandiSeller",
-		bProduct.Data.Seller.KakaoTalkID,
-		bProduct.Data.Seller.KakaoYellowID,
-		bProduct.Data.Seller.Email,
-		bProduct.Data.Seller.ID,
-		bProduct.Data.Seller.Telephone,
-		bProduct.Data.Seller.Name,
-		bProduct.Data.Seller.EnName,
-		bProduct.Data.Seller.Address1,
-		bProduct.Data.Seller.BookmarkCount,
-		bProduct.Data.Seller.BusinessInfo.BusinessName,
-		bProduct.Data.Seller.BusinessInfo.BusinessCode,
-		bProduct.Data.Seller.BusinessInfo.RepresentativeName,
-		bProduct.Data.Seller.BusinessInfo.MailOrderBusinessCode)
-	if err != nil {
-		bugsnag.Notify(err)
-		fmt.Println(err.Error())
-	}
-	fmt.Println(bProduct.Data.Seller.ID)
 }
 
 func (c *Crawler) ProductDetailById(bProductId string) error {
@@ -355,7 +269,6 @@ func (c *Crawler) ProductDetailById(bProductId string) error {
 	var bp brandi.Product
 	if err := json.Unmarshal(body, &bp); err != nil {
 		panic(err)
-		return err
 	}
 
 	translator, _ := translate.NewTranslator()
@@ -401,7 +314,6 @@ func (c *Crawler) ProductDetailById(bProductId string) error {
 		optionBytes,
 		seller,
 		sizeDetailBytes,
-		// bp.Data.CategoryId[0].ID,
 	)
 	if err != nil {
 		bugsnag.Notify(err)
@@ -411,9 +323,8 @@ func (c *Crawler) ProductDetailById(bProductId string) error {
 	return err
 }
 
-//private crawler usually used to run by hands
 func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) error {
-	//check if the product doesn't exist in the db --> avoid wasting computing resources
+	//check if the product already exists in db
 	var isProductAvailable bool
 	row, err := c.dot.QueryRow(c.DB, "CheckProduct", bProductId)
 
@@ -456,8 +367,8 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 	translator, _ := translate.NewTranslator()
 	desc, _ := translator.TranslateText(translate.Ko, translate.Vi, Description(bp.Data.Text))
 	// fmt.Println("this is descr: ", desc)
-	name, _ := translator.TranslateText(translate.Ko, translate.Vi, Description(bp.Data.Name))
-	if name == " " || len(name) < 4 || name == "[" {
+	translatedName, _ := translator.TranslateText(translate.Ko, translate.Vi, bp.Data.Name)
+	if translatedName == " " || len(translatedName) < 4 || translatedName == "[" {
 		return fmt.Errorf("both translator fails to translate properly")
 	}
 	//type conversion from BrandiProduct to dimodoProduct
@@ -480,16 +391,13 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 	var seller = models.Seller{}
 	seller.ID = bp.Data.Seller.ID
 
-	// fmt.Printf("seller info : %v \n", bp.Data.Seller)
-
 	optionBytes, _ := json.Marshal(productOptions)
 	sizeDetailBytes, _ := json.Marshal(SizeDetail(bp.Data.Text))
-	// var tags []string
-	// tags = append(tags, "")
 
 	_, err = c.dot.Exec(c.DB, "CreateProduct",
 		bp.Data.ID,
-		name,
+		bp.Data.Name,
+		translatedName,
 		bp.Data.Price,
 		bp.Data.SalePrice,
 		bp.Data.SalePercent,
@@ -535,8 +443,6 @@ func (c *Crawler) GetPhotoReviewsFromBrandi(bProductId string, offset, limit str
 	translator, _ := translate.NewTranslator()
 
 	for _, r := range reviews.Data {
-		// fmt.Println(r.ID + " review ")
-		// time.Sleep(1 * time.Second)
 		text, err := translator.TranslateText(translate.Ko, translate.Vi, r.Text)
 		var images []string
 
@@ -564,10 +470,6 @@ func (c *Crawler) GetPhotoReviewsFromBrandi(bProductId string, offset, limit str
 			fmt.Println(err.Error())
 		}
 	}
-	//save images... what is the best way to save a list of images???????
-
-	//todo: save to the db
-
 	return &reviews
 }
 func (c *Crawler) GetTextReviewsFromBrandi(bProductId string, offset, limit string) *brandi.Reviews {
@@ -592,11 +494,7 @@ func (c *Crawler) GetTextReviewsFromBrandi(bProductId string, offset, limit stri
 	//todo: save to the db
 	translator, _ := translate.NewTranslator()
 	for _, r := range reviews.Data {
-		// fmt.Println(" review id", r.ID)
-		// time.Sleep(1 * time.Second)
 		text, err := translator.TranslateText(translate.Ko, translate.Vi, r.Text)
-		// images := make([]string, len(reviews.Data))
-
 		if err != nil {
 			bugsnag.Notify(err)
 			fmt.Println(err)
@@ -642,7 +540,6 @@ func ImagesFromHTML(s string) []string {
 		}
 	}
 	f(doc)
-	// fmt.Println(imgs)
 	return imgs
 }
 func SliderImages(bp brandi.Product) []string {
@@ -650,7 +547,6 @@ func SliderImages(bp brandi.Product) []string {
 	for _, img := range bp.Data.Images {
 		imgs = append(imgs, img.ImageURL)
 	}
-	// fmt.Println(imgs)
 	return imgs
 }
 
@@ -671,11 +567,8 @@ func Description(s string) string {
 		el.Remove()
 	})
 	doc.Find(".brandiProductSizeInfo").Remove()
-	//iterate different sizes (s, m, l, free)
 	//iterate the <td> tag. The first tag that has "class="brandiSelectedTxt" will be the size.
 	doc.Find("brandiProductSizeInfo").Remove()
-
-	// fmt.Println("description", doc.Text())
 	return doc.Text()
 }
 

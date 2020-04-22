@@ -27,7 +27,7 @@ SELECT
     cart_item.option,
     cart_item.option_id,
     product.sid,
-    product.sname,
+    product.name,
     product.thumbnail,
     product.sprice,
     product.sale_price,
@@ -36,7 +36,7 @@ FROM
     cart_item,
     product
 WHERE
-    CAST(cart_item.product_id AS VARCHAR) = product.sid
+    CAST(cart_item.product_id AS varchar) = product.sid
     AND cart_item.user_id = $1;
 
 --name:	SubItemCartQuery
@@ -112,7 +112,7 @@ SELECT
     order_item.option,
     order_item.option_id,
     product.sid,
-    product.sname,
+    product.name,
     product.thumbnail,
     product.sprice,
     product.sale_price,
@@ -121,7 +121,7 @@ FROM
     order_item,
     product
 WHERE
-    CAST(order_item.product_id AS VARCHAR) = product.sid
+    CAST(order_item.product_id AS varchar) = product.sid
     AND order_item.order_id = $1;
 
 --name: OrdersByUserID

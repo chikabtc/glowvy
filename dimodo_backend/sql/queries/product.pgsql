@@ -2,7 +2,7 @@
 SELECT
     product.id,
     product.sprice,
-    product.sname,
+    product.name,
     product.thumbnail
 FROM
     product
@@ -25,7 +25,7 @@ SELECT DISTINCT
     product.sale_price,
     product.sale_percent,
     COALESCE(product.purchase_count, 0) AS purchase_count,
-    product.sname,
+    product.name,
     product.thumbnail
 FROM
     product,
@@ -45,7 +45,7 @@ SELECT DISTINCT
     product.sale_price,
     product.sale_percent,
     COALESCE(product.purchase_count, 0) AS purchase_count,
-    product.sname,
+    product.name,
     product.thumbnail
 FROM
     product,
@@ -65,7 +65,7 @@ SELECT DISTINCT
     product.sale_price,
     product.sale_percent,
     COALESCE(product.purchase_count, 0) AS purchase_count,
-    product.sname,
+    product.name,
     product.thumbnail
 FROM
     product,
@@ -79,7 +79,7 @@ LIMIT $3;
 SELECT
     id,
     sprice,
-    sname,
+    name,
     image
 FROM
     product
@@ -129,7 +129,7 @@ WHERE
 --name: ProductDetailById
 SELECT
     product.Sid,
-    product.sname,
+    product.name,
     product.sprice,
     product.sale_percent,
     product.sale_price,
@@ -170,6 +170,5 @@ FROM
 WHERE
     position('_L' IN thumbnail) > 0
 ORDER BY
-    id DESC OFFSET 0
-LIMIT 1000;
+    id DESC;
 

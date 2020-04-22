@@ -39,6 +39,7 @@ func main() {
 	}
 
 	c.Start()
+	crawler.GetMainProducts()
 
 	// crawler.GetMainProducts()
 
