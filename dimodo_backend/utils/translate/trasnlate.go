@@ -63,7 +63,7 @@ func NewTranslator() (*Translator, error) {
 }
 
 //if papago translation fails then try google translation
-func (t *Translator) TranslateText(sourceLang, targetLang, text string) (string, error) {
+func TranslateText(sourceLang, targetLang, text string) (string, error) {
 	if text == "" {
 		return "", nil
 	}
@@ -73,9 +73,9 @@ func (t *Translator) TranslateText(sourceLang, targetLang, text string) (string,
 	if err != nil {
 		bugsnag.Notify(err)
 		fmt.Printf("NewTranslationClient: %v \n", err)
-
 		return "", fmt.Errorf("NewTranslationClient: %v", err)
 	}
+	defer client.Close()
 	req := &translatepb.TranslateTextRequest{
 		Parent:             fmt.Sprintf("projects/%s/locations/global", ggcProjectID),
 		SourceLanguageCode: sourceLang,

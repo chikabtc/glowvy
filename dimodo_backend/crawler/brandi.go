@@ -167,10 +167,10 @@ func (c *Crawler) GetPopularProductsByShopId(idx int, limits int) []models.Produ
 		bugsnag.Notify(err)
 		fmt.Println("Error")
 	}
-	translator, _ := translate.NewTranslator()
+	//translator, _ := translate.NewTranslator()
 
 	for i, p := range bProducts.Data {
-		name, err := translator.TranslateText(translate.Ko, translate.Vi, p.Name)
+		name, err := translate.TranslateText(translate.Ko, translate.Vi, p.Name)
 		if err != nil {
 			bugsnag.Notify(err)
 			fmt.Println(err)
@@ -268,8 +268,8 @@ func (c *Crawler) ProductDetailById(bProductId string) error {
 		panic(err)
 	}
 
-	translator, _ := translate.NewTranslator()
-	desc, _ := translator.TranslateText(translate.Ko, translate.Vi, Description(bp.Data.Text))
+	//translator, _ := translate.NewTranslator()
+	desc, _ := translate.TranslateText(translate.Ko, translate.Vi, Description(bp.Data.Text))
 	if desc == "" {
 		desc = " "
 	}
@@ -297,7 +297,7 @@ func (c *Crawler) ProductDetailById(bProductId string) error {
 	// fmt.Printf("seller info : %v \n", bp.Data.Seller)
 
 	optionBytes, _ := json.Marshal(productOptions)
-	sizeDetailBytes, _ := json.Marshal(SizeDetail(bp.Data.Text))
+	sizeDetailBytes, _ := json.Marshal(c.SizeDetail(bp.Data.Text))
 
 	_, err = c.dot.Exec(c.DB, "AddProductDetailsById",
 		bp.Data.ID,
@@ -360,9 +360,9 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 		return err
 	}
 
-	translator, _ := translate.NewTranslator()
-	desc, _ := translator.TranslateText(translate.Ko, translate.Vi, Description(bp.Data.Text))
-	translatedName, _ := translator.TranslateText(translate.Ko, translate.Vi, bp.Data.Name)
+	//translator, _ := translate.NewTranslator()
+	desc, _ := translate.TranslateText(translate.Ko, translate.Vi, Description(bp.Data.Text))
+	translatedName, _ := translate.TranslateText(translate.Ko, translate.Vi, bp.Data.Name)
 	if translatedName == " " || len(translatedName) < 4 || translatedName == "[" {
 		return fmt.Errorf("both translator fails to translate properly: discarded product")
 	}
@@ -387,7 +387,7 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 	seller.ID = bp.Data.Seller.ID
 
 	optionBytes, _ := json.Marshal(productOptions)
-	sizeDetailBytes, _ := json.Marshal(SizeDetail(bp.Data.Text))
+	sizeDetailBytes, _ := json.Marshal(c.SizeDetail(bp.Data.Text))
 
 	_, err = c.dot.Exec(c.DB, "CreateProduct",
 		bp.Data.ID,
@@ -435,10 +435,10 @@ func (c *Crawler) GetPhotoReviewsFromBrandi(bProductId string, offset, limit str
 	if err := json.Unmarshal(body, &reviews); err != nil {
 		panic(err)
 	}
-	translator, _ := translate.NewTranslator()
+	//translator, _ := translate.NewTranslator()
 
 	for _, r := range reviews.Data {
-		text, err := translator.TranslateText(translate.Ko, translate.Vi, r.Text)
+		text, err := translate.TranslateText(translate.Ko, translate.Vi, r.Text)
 		var images []string
 
 		for _, image := range r.Images {
@@ -487,9 +487,9 @@ func (c *Crawler) GetTextReviewsFromBrandi(bProductId string, offset, limit stri
 		panic(err)
 	}
 	//todo: save to the db
-	translator, _ := translate.NewTranslator()
+	// //translator, _ := translate.NewTranslator()
 	for _, r := range reviews.Data {
-		text, err := translator.TranslateText(translate.Ko, translate.Vi, r.Text)
+		text, err := translate.TranslateText(translate.Ko, translate.Vi, r.Text)
 		if err != nil {
 			bugsnag.Notify(err)
 			fmt.Println(err)
@@ -575,8 +575,8 @@ func Description(s string) string {
 }
 
 //todo: need fucking comments as to why sizeDetails need to be list
-func SizeDetail(s string) []models.SizeDetail {
-	translator, _ := translate.NewTranslator()
+func (c *Crawler) SizeDetail(s string) []models.SizeDetail {
+	//translator, _ := translate.NewTranslator()
 
 	var sizeDetails []models.SizeDetail
 	p := strings.NewReader(s)
@@ -594,7 +594,7 @@ func SizeDetail(s string) []models.SizeDetail {
 		//iterate over the size detail and create sizeDetail object
 		//append sizeDetail object per iteration
 		s.Find("td").Each(func(i int, s *goquery.Selection) {
-			size, _ := translator.TranslateText(translate.Ko, translate.Vi, sizeHeaders[i])
+			size, _ := translate.TranslateText(translate.Ko, translate.Vi, sizeHeaders[i])
 
 			sizeDetail.Attributes = append(sizeDetail.Attributes, models.Attribute{
 				Title: size,
