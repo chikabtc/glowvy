@@ -8,7 +8,6 @@ import (
 	"time"
 
 	"github.com/bugsnag/bugsnag-go"
-	"github.com/robfig/cron"
 )
 
 func main() {
@@ -19,26 +18,36 @@ func main() {
 		ProjectPackages: []string{"main", "gitlab.com/parkerfreeman/dimodo"},
 	})
 
-	c := cron.New()
+	// c := cron.New()
 	crawler := crawler.NewCrawler()
 
-	err := c.AddFunc("0 3 0 * * ?", func() {
-		start := time.Now()
-		cronMessage := errors.New("   crawling new products...")
-		bugsnag.Notify(cronMessage)
+	// err := c.AddFunc("0 42 11 * * ?", func() {
+	// 	start := time.Now()
+	// 	cronMessage := errors.New("   crawling new products...")
+	// 	bugsnag.Notify(cronMessage)
 
-		crawler.GetMainProducts()
-		crawler.AddNewProductsByCategories()
-		elapsed := time.Since(start)
+	// 	crawler.GetMainProducts()
+	// 	crawler.AddNewProductsByCategories()
+	// 	elapsed := time.Since(start)
 
-		crawlTime := fmt.Errorf("crawling 1500 products took %s", elapsed)
-		bugsnag.Notify(crawlTime)
-	})
-	if err != nil {
-		bugsnag.Notify(err)
-	}
-	c.Start()
+	// 	crawlTime := fmt.Errorf("crawling 1500 products took %s", elapsed)
+	// 	bugsnag.Notify(crawlTime)
+	// })
+	// if err != nil {
+	// 	bugsnag.Notify(err)
+	// }
+	// c.Start()
 
+	start := time.Now()
+	cronMessage := errors.New("   crawling new products...")
+	bugsnag.Notify(cronMessage)
+
+	crawler.GetMainProducts()
+	crawler.AddNewProductsByCategories()
+	elapsed := time.Since(start)
+
+	crawlTime := fmt.Errorf("crawling 1500 products took %s", elapsed)
+	bugsnag.Notify(crawlTime)
 	api := api.NewAPI(crawler)
 	api.Run()
 
