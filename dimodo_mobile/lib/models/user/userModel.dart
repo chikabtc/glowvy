@@ -10,7 +10,7 @@ import '../address/address.dart';
 
 class UserModel with ChangeNotifier {
   UserModel() {
-    //get user data from local storage
+    //todo: make the init functions synchronosu
     getUser();
     getShippingAddress();
   }

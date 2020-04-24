@@ -69,7 +69,7 @@ class _OrderSummaryState extends State<OrderSummary> {
           currency: currency,
           title: S.of(context).total,
           subTitle:
-              S.of(context).total + " of ${widget.model.totalCartQuantity}",
+              S.of(context).totalItems + " (${widget.model.totalCartQuantity})",
           fee: Tools.getCurrecyFormatted(widget.model.getTotal(),
               currency: currency),
         ),
@@ -115,6 +115,7 @@ class OrderSummaryCard extends StatelessWidget {
               Expanded(
                 child: DynamicText(
                   subTitle,
+                  textAlign: TextAlign.start,
                   style: kBaseTextStyle.copyWith(
                       fontWeight: isBankTransferSummary
                           ? FontWeight.w600

@@ -51,7 +51,7 @@ class S implements WidgetsLocalizations {
   String get selectShipping => "Select Shipping";
   String get chooseShipping => "Choose Shipping";
   String get save => "Save";
-  String get deliverArea => "Deliver Area";
+  String get deliveryArea => "Delivery Area";
 
 // =============================================================================
 // Cart Page
@@ -64,6 +64,7 @@ class S implements WidgetsLocalizations {
   String get categoryScreenDescription =>
       "Alo~ What kind of clothes are you looking for?";
   String get total => "Total";
+  String get totalItems => "Total Items";
   String get totalTax => "Total tax";
 
   String get checkout => "Checkout";
@@ -286,7 +287,7 @@ class S implements WidgetsLocalizations {
   String get productRating => "Your rating";
   String get products => "Products";
   String get ratingFirst => "Please rating before you send your comment";
-  String get readReviews => "Reviews";
+  String get reviews => "Reviews";
   String get recentSearches => "Recent Searches";
   String get recentView => "Your Recent View";
   String get recents => "Recent";
@@ -353,6 +354,7 @@ class S implements WidgetsLocalizations {
   String get yourNote => "Your note";
   String get zipCode => "Zip-code";
   String get zipCodeIsRequired => "The zip code field is required";
+  // String get otherProducts => "Other zip code field is required";
   String sale(String percent) => "Sale $percent %";
   String weFoundProducts(String length) => "We found $length products";
   String youHavePoints(String point) => "You have $point points";
@@ -378,6 +380,8 @@ class $vi extends S {
   String get shipping => "Vận Chuyển";
   @override
   String get orders => "Đặt Hàng";
+  String get deliveryArea => "Tỉnh /Thành phố";
+
   @override
   String get viewAll => "Xem Tất Cả";
   @override
@@ -454,6 +458,7 @@ class $vi extends S {
   String get shippingTo => "Vận chuyển đến";
   String get localKoreanShips => "Cửa hàng Hàn Quốc địa phương";
   String get seoulKorea => "Seoul, Hàn Quốc";
+  String get manageShippingAddress => "Địa Chỉ Của Tôi";
 
   @override
   String get all => "TẤT CẢ";
@@ -508,7 +513,7 @@ class $vi extends S {
   @override
   String get youMayAlsoLike => "Các sản phẩm tương tự";
   @override
-  String get koreanShippingFee => "Phí ship từ Hàn Quốc: 70,000₫";
+  String get koreanShippingFee => "Phí ship từ Hàn Quốc: 60,000₫";
   @override
   String get shipFrom => "Giao hàng từ";
   @override
@@ -767,6 +772,8 @@ class $vi extends S {
   @override
   String get total => "Tổng";
   @override
+  String get totalItems => "Tổng tiền hàng";
+  @override
   String get stateIsRequired => "Tên tỉnh không được bỏ trống";
   @override
   String get selectTheSize => "Chọn kích thước";
@@ -774,7 +781,7 @@ class $vi extends S {
   String get ratingFirst =>
       "Vui lòng đánh giá trước khi bạn gửi bình luận của bạn";
   @override
-  String get readReviews => "Xem phản hồi";
+  String get reviews => "NHẬN XÉT";
   @override
   String get checkout => "Thanh toán";
   @override
@@ -824,6 +831,7 @@ class $vi extends S {
   String get generalSetting => "Cài đặt chung";
   @override
   String get username => "Username";
+
   @override
   String youHavePoints(String point) => "Bạn có $point điểm";
   @override

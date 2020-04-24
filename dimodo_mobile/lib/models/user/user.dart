@@ -74,7 +74,7 @@ class User {
   User.fromLocalJson(Map<String, dynamic> json) {
     try {
       // print("fromLocalJsonUser: $json");
-      accessToken = json['AccessToken'];
+      accessToken = json['access_token'];
       address = json["Address"];
       var user = json['Account'];
       id = user['id'];

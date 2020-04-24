@@ -111,15 +111,15 @@ class AppModel with ChangeNotifier {
           final appJson = await rootBundle.loadString(kAppConfig);
           appConfig = convert.jsonDecode(appJson);
           // // load local config
-          // String path = "lib/common/config_$locale.json";
-          // print("path app config:$path");
-          // try {
-          //   final appJson = await rootBundle.loadString(path);
-          //   appConfig = convert.jsonDecode(appJson);
-          // } catch (e) {
-          //   final appJson = await rootBundle.loadString(kAppConfig);
-          //   appConfig = convert.jsonDecode(appJson);
-          // }
+          String path = "lib/common/config_$locale.json";
+          print("path app config:$path");
+          try {
+            final appJson = await rootBundle.loadString(path);
+            appConfig = convert.jsonDecode(appJson);
+          } catch (e) {
+            final appJson = await rootBundle.loadString(kAppConfig);
+            appConfig = convert.jsonDecode(appJson);
+          }
         }
       }
       isLoading = false;

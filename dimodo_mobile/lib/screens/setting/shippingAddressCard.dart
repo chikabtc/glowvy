@@ -92,6 +92,7 @@ class ShippingAddressSmallCard extends StatelessWidget {
                       address.ward.name +
                       "  " +
                       address.street,
+                  textAlign: TextAlign.start,
                   style: kBaseTextStyle.copyWith(
                       fontSize: 12,
                       fontWeight: FontWeight.w600,

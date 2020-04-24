@@ -46,7 +46,9 @@ class _CartState extends State<Cart> with SingleTickerProviderStateMixin {
               : false,
           cartItem: model.getCartItemById(key),
           onRemove: () {
-            model.removeItemFromCart(key, userModel);
+            setState(() {
+              model.removeItemFromCart(key, userModel);
+            });
           },
           onChangeQuantity: (val) {
             Provider.of<CartModel>(context, listen: false)
@@ -81,44 +83,47 @@ class _CartState extends State<Cart> with SingleTickerProviderStateMixin {
               );
             return Scaffold(
                 bottomNavigationBar: snapshot.data.totalCartQuantity > 0
-                    ? Container(
-                        height: 104,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            ShoppingCartSummary(model: snapshot.data),
-                            Container(
-                              height: 56,
-                              color: Colors.white,
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 9.0, bottom: 7, left: 16, right: 16),
-                                child: MaterialButton(
-                                    elevation: 0,
-                                    padding: EdgeInsets.all(0),
-                                    color: kPinkAccent,
-                                    minWidth: screenSize.width,
-                                    height: 40,
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            new BorderRadius.circular(25.0),
-                                        side: BorderSide(
-                                            color: kPinkAccent, width: 1.5)),
-                                    child: DynamicText(S.of(context).checkout,
-                                        style: kBaseTextStyle.copyWith(
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white)),
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ConfirmOrder()));
-                                    }),
+                    ? SafeArea(
+                        bottom: true,
+                        child: Container(
+                          height: 104,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              ShoppingCartSummary(model: snapshot.data),
+                              Container(
+                                height: 56,
+                                color: Colors.white,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 9.0, bottom: 7, left: 16, right: 16),
+                                  child: MaterialButton(
+                                      elevation: 0,
+                                      padding: EdgeInsets.all(0),
+                                      color: kPinkAccent,
+                                      minWidth: screenSize.width,
+                                      height: 40,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              new BorderRadius.circular(25.0),
+                                          side: BorderSide(
+                                              color: kPinkAccent, width: 1.5)),
+                                      child: DynamicText(S.of(context).checkout,
+                                          style: kBaseTextStyle.copyWith(
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.white)),
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ConfirmOrder()));
+                                      }),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       )
                     : null,

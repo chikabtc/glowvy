@@ -8,7 +8,7 @@ import 'package:Dimodo/screens/categories/sub_category.dart';
 import 'package:Dimodo/screens/checkout/orderSubmitted.dart';
 import 'package:Dimodo/screens/detail/product_detail.dart';
 import 'package:Dimodo/screens/orders.dart';
-import 'package:Dimodo/screens/setting/shipping_address.dart';
+import 'package:Dimodo/screens/setting/add_shipping_address.dart';
 import 'package:Dimodo/screens/setting/reset_password.dart';
 import 'package:Dimodo/screens/setting/manage_address.dart';
 import 'package:after_layout/after_layout.dart';
@@ -212,13 +212,14 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
                       print("arguments: ${arguments.toJson}");
                       // the details page for one specific user
                       return MaterialPageRoute<bool>(
-                          builder: (BuildContext context) => ShippingAddress(
+                          builder: (BuildContext context) => AddShippingAddress(
                                 address: arguments,
                               ));
                     } else {
                       // a route showing the list of all users
                       return MaterialPageRoute<bool>(
-                          builder: (BuildContext context) => ShippingAddress());
+                          builder: (BuildContext context) =>
+                              AddShippingAddress());
                     }
                     break;
 

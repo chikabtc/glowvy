@@ -1,22 +1,21 @@
+import 'package:Dimodo/models/order/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../common/styles.dart';
 import '../../common/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../models/product/product.dart';
+import '../../models/app.dart';
 import '../../models/product/productModel.dart';
 import '../../models/user/userModel.dart';
 import 'product_title.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/generated/i18n.dart';
-import 'package:Dimodo/widgets/login_animation.dart';
 import 'productOption.dart';
-import 'package:Dimodo/models/order/cart.dart';
 import 'image_feature.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'review.dart';
-import 'package:Dimodo/common/tools.dart';
 import 'product_description.dart';
 
 class ProductDetail extends StatefulWidget {
@@ -35,7 +34,7 @@ class _ProductDetailState extends State<ProductDetail>
   Size screenSize;
   var bottomPopupHeightFactor;
 
-  List<String> tabList = ["Description", "Reviews", "other products"];
+  List<String> tabList = [];
 
   List<String> colors = ["Red", "Orange", "Blue"];
   List<String> sizes = ["S", "M", "L"];
@@ -45,6 +44,7 @@ class _ProductDetailState extends State<ProductDetail>
   Future<Product> product;
   bool isLoggedIn = false;
   bool loaded = false;
+  CartModel cartModel;
 
   @override
   void initState() {
@@ -61,6 +61,73 @@ class _ProductDetailState extends State<ProductDetail>
   Widget build(BuildContext context) {
     isLoggedIn = Provider.of<UserModel>(context, listen: false).isLoggedIn;
     screenSize = MediaQuery.of(context).size;
+    cartModel = Provider.of<CartModel>(context, listen: false);
+    try {
+      tabList = [];
+      final tabs = Provider.of<AppModel>(context, listen: false)
+          .appConfig['Tabs'] as List;
+      for (var tab in tabs) {
+        tabList.add(tab["name"]);
+      }
+      print("local cate: $tabList'");
+    } catch (err) {
+      isLoading = false;
+      var message =
+          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
+              err.toString();
+
+      print("error: $message");
+    }
+
+    List<Widget> renderTabViews(Product product) {
+      List<Widget> tabViews = [];
+
+      tabList.asMap().forEach((index, name) {
+        tabViews.add(SafeArea(
+          top: false,
+          bottom: false,
+          child: Builder(
+            // This Builder is needed to provide a BuildContext that is "inside"
+            // the NestedScrollView, so that sliverOverlapAbsorberHandleFor() can
+            // find the NestedScrollView.
+            builder: (BuildContext context) {
+              return CustomScrollView(
+                physics: const AlwaysScrollableScrollPhysics(),
+                // The "controller" and "primary" members should be left
+                // unset, so that the NestedScrollView can control this
+                // inner scroll view.
+                // If the "controller" property is set, then this scroll
+                // view will not be associated with the NestedScrollView.
+                // The PageStorageKey should be unique to this ScrollView;
+                // it allows the list to remember its scroll position when
+                // the tab view is not on the screen.
+                key: PageStorageKey<String>(name),
+                slivers: <Widget>[
+                  SliverOverlapInjector(
+                    // This is the flip side of the SliverOverlapAbsorber above.
+                    handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
+                        context),
+                  ),
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (BuildContext context, int i) {
+                        if (index == 0) return ProductDescription(product);
+                        if (index == 1) return Reviews(product.sid);
+                        if (index == 2)
+                          return ProductModel.showProductListByCategory(
+                              cateId: 7, context: context);
+                      },
+                      childCount: 1,
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+        ));
+      });
+      return tabViews;
+    }
 
     return Container(
         color: Theme.of(context).backgroundColor,
@@ -107,20 +174,48 @@ class _ProductDetailState extends State<ProductDetail>
                                       },
                                     ),
                                     actions: <Widget>[
-                                      IconButton(
-                                        onPressed: () =>
-                                            Navigator.pushReplacementNamed(
-                                                context, "/cart", arguments: {
-                                          "showBackSpace": true
-                                        }),
-                                        icon: SvgPicture.asset(
-                                          "assets/icons/cart-product-detail.svg",
-                                          width: 24 *
-                                              kSizeConfig.containerMultiplier,
-                                          height: 24 *
-                                              kSizeConfig.containerMultiplier,
+                                      Stack(children: <Widget>[
+                                        IconButton(
+                                          onPressed: () =>
+                                              Navigator.pushReplacementNamed(
+                                                  context, "/cart", arguments: {
+                                            "showBackSpace": true
+                                          }),
+                                          icon: SvgPicture.asset(
+                                            "assets/icons/cart-product-detail.svg",
+                                            width: 24 *
+                                                kSizeConfig.containerMultiplier,
+                                            height: 24 *
+                                                kSizeConfig.containerMultiplier,
+                                          ),
                                         ),
-                                      )
+                                        if (cartModel.totalCartQuantity > 0)
+                                          Positioned(
+                                            right: 7.5,
+                                            top: 7.5,
+                                            child: Container(
+                                              padding: EdgeInsets.all(1),
+                                              decoration: new BoxDecoration(
+                                                color: Colors.red,
+                                                borderRadius:
+                                                    BorderRadius.circular(8),
+                                              ),
+                                              constraints: BoxConstraints(
+                                                minWidth: 16,
+                                                minHeight: 16,
+                                              ),
+                                              child: new Text(
+                                                cartModel.totalCartQuantity
+                                                    .toString(),
+                                                style: new TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 10,
+                                                ),
+                                                textAlign: TextAlign.center,
+                                              ),
+                                            ),
+                                          )
+                                      ])
                                     ],
                                     backgroundColor: Colors.white,
                                     pinned: true,
@@ -270,64 +365,8 @@ class _ProductDetailState extends State<ProductDetail>
                                     height: 1,
                                   )
                                 : TabBarView(
-                                    children: tabList.map((String name) {
-                                      return SafeArea(
-                                        top: false,
-                                        bottom: false,
-                                        child: Builder(
-                                          // This Builder is needed to provide a BuildContext that is "inside"
-                                          // the NestedScrollView, so that sliverOverlapAbsorberHandleFor() can
-                                          // find the NestedScrollView.
-                                          builder: (BuildContext context) {
-                                            return CustomScrollView(
-                                              physics:
-                                                  const AlwaysScrollableScrollPhysics(),
-                                              // The "controller" and "primary" members should be left
-                                              // unset, so that the NestedScrollView can control this
-                                              // inner scroll view.
-                                              // If the "controller" property is set, then this scroll
-                                              // view will not be associated with the NestedScrollView.
-                                              // The PageStorageKey should be unique to this ScrollView;
-                                              // it allows the list to remember its scroll position when
-                                              // the tab view is not on the screen.
-                                              key: PageStorageKey<String>(name),
-                                              slivers: <Widget>[
-                                                SliverOverlapInjector(
-                                                  // This is the flip side of the SliverOverlapAbsorber above.
-                                                  handle: NestedScrollView
-                                                      .sliverOverlapAbsorberHandleFor(
-                                                          context),
-                                                ),
-                                                SliverList(
-                                                  delegate:
-                                                      SliverChildBuilderDelegate(
-                                                    (BuildContext context,
-                                                        int i) {
-                                                      if (name ==
-                                                          "other products")
-                                                        return ProductModel
-                                                            .showProductListByCategory(
-                                                                cateId: 7,
-                                                                context:
-                                                                    context);
-                                                      else if (name !=
-                                                          "other products")
-                                                        return name == "Reviews"
-                                                            ? Reviews(snapshot
-                                                                .data.sid)
-                                                            : ProductDescription(
-                                                                snapshot.data);
-                                                    },
-                                                    childCount: 1,
-                                                  ),
-                                                ),
-                                              ],
-                                            );
-                                          },
-                                        ),
-                                      );
-                                    }).toList(),
-                                  ))));
+                                    physics: NeverScrollableScrollPhysics(),
+                                    children: renderTabViews(snapshot.data)))));
               }),
         ));
   }

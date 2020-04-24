@@ -8,6 +8,7 @@ import 'package:Dimodo/common/styles.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
+import 'package:flutter/services.dart';
 
 class SignupScreen extends StatefulWidget {
   final bool fromCart;
@@ -137,6 +138,9 @@ class _SignupScreenState extends State<SignupScreen>
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+            statusBarBrightness: Brightness.light) // Or Brightness.dark
+        );
     TextStyle buttonTextStyle =
         Theme.of(context).textTheme.button.copyWith(fontSize: 16);
     final screenSize = MediaQuery.of(context).size;

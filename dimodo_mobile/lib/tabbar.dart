@@ -219,21 +219,20 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
             right: 0,
             top: 0,
             child: Container(
-              height: 20,
-              padding: const EdgeInsets.all(1),
-              decoration: BoxDecoration(
+              padding: EdgeInsets.all(1),
+              decoration: new BoxDecoration(
                 color: Colors.red,
                 borderRadius: BorderRadius.circular(8),
               ),
               constraints: BoxConstraints(
                 minWidth: 16,
-                minHeight: 15,
+                minHeight: 16,
               ),
-              child: Text(
+              child: new Text(
                 totalCart.toString(),
-                style: TextStyle(
+                style: new TextStyle(
                   color: Colors.white,
-                  fontSize: 12,
+                  fontSize: 10,
                 ),
                 textAlign: TextAlign.center,
               ),

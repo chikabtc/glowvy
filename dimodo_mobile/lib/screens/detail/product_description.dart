@@ -65,7 +65,8 @@ class _ProductDescriptionState extends State<ProductDescription>
     // if \n has more than 4, replace them with null string
     String formattedDescription;
     if (widget.product.description != null) {
-      formattedDescription = widget.product.description.replaceAll('\n\n', "");
+      formattedDescription =
+          widget.product.description.replaceAll('\n\n\n\n\n\n', "");
     }
 
     return Container(
