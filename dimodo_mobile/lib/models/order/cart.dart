@@ -101,7 +101,7 @@ class CartModel with ChangeNotifier {
 
   void updateFees() async {
     // getShippingAddress();
-    getCartDataFromLocal();
+    // getCartDataFromLocal();
     getCurrency();
     getShippingFee();
     // getImportTax();
@@ -112,6 +112,7 @@ class CartModel with ChangeNotifier {
 
   Future<CartModel> getAllCartItems(UserModel userModel) async {
     if (userModel.isLoggedIn) {
+      print("loading");
       var items = await _services.allCartItems(userModel);
       if (items != null) {
         items.forEach((item) {

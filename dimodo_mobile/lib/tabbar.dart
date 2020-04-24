@@ -173,17 +173,20 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
                     color: Colors.white,
                     width: screenSize.width /
                         (2 / (screenSize.height / screenSize.width)),
-                    child: TabBar(
-                      onTap: (index) {
-                        setState(() {
-                          currentPage = index;
-                        });
-                      },
-                      tabs: renderTabbar(),
-                      labelColor: Colors.red,
-                      unselectedLabelColor: Colors.white,
-                      indicatorColor: Colors.transparent,
-                    ),
+                    child: Consumer<CartModel>(
+                        builder: (context, cartModel, child) {
+                      return TabBar(
+                        onTap: (index) {
+                          setState(() {
+                            currentPage = index;
+                          });
+                        },
+                        tabs: renderTabbar(cartModel),
+                        labelColor: Colors.red,
+                        unselectedLabelColor: Colors.white,
+                        indicatorColor: Colors.transparent,
+                      );
+                    }),
                   ),
                 ),
               ),
@@ -192,9 +195,9 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
         ));
   }
 
-  List<Widget> renderTabbar() {
-    var totalCart =
-        Provider.of<CartModel>(context, listen: false).totalCartQuantity;
+  List<Widget> renderTabbar(CartModel cartModel) {
+    var totalCart = cartModel.totalCartQuantity;
+
     final tabData = Provider.of<AppModel>(context, listen: false)
         .appConfig['TabBar'] as List;
     List<Widget> list = [];

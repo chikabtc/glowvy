@@ -33,6 +33,7 @@ class _CartState extends State<Cart> with SingleTickerProviderStateMixin {
 
   List<Widget> _createShoppingCartRows(CartModel model) {
     final userModel = Provider.of<UserModel>(context, listen: false); //
+
     var countKeys = 0;
 
     return model.cartItems.keys.map(
@@ -46,9 +47,7 @@ class _CartState extends State<Cart> with SingleTickerProviderStateMixin {
               : false,
           cartItem: model.getCartItemById(key),
           onRemove: () {
-            setState(() {
-              model.removeItemFromCart(key, userModel);
-            });
+            model.removeItemFromCart(key, userModel);
           },
           onChangeQuantity: (val) {
             Provider.of<CartModel>(context, listen: false)
@@ -61,128 +60,118 @@ class _CartState extends State<Cart> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    bool isLoggedIn = Provider.of<UserModel>(context).isLoggedIn;
+
     final screenSize = MediaQuery.of(context).size;
-    final userModel = Provider.of<UserModel>(context, listen: false);
-    final totlaq = Provider.of<CartModel>(context, listen: false)
-        .getAllCartItems(userModel);
-    print("userModel: ${userModel.user}");
+
+    Provider.of<CartModel>(context, listen: false)
+        .getAllCartItems(Provider.of<UserModel>(context, listen: false));
+
     bool showBackSpace = false;
     final Map arguments = ModalRoute.of(context).settings.arguments as Map;
     if (arguments != null) showBackSpace = arguments['showBackSpace'];
 
-    return Consumer<UserModel>(builder: (context, value, child) {
-      return FutureBuilder(
-          future: Provider.of<CartModel>(context, listen: false)
-              .getAllCartItems(value),
-          builder: (BuildContext context, AsyncSnapshot<CartModel> snapshot) {
-            if (!snapshot.hasData)
-              return Container(
-                width: screenSize.width,
-                height: 300,
-                child: CupertinoActivityIndicator(animating: true),
-              );
-            return Scaffold(
-                bottomNavigationBar: snapshot.data.totalCartQuantity > 0
-                    ? SafeArea(
-                        bottom: true,
-                        child: Container(
-                          height: 104,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: <Widget>[
-                              ShoppingCartSummary(model: snapshot.data),
-                              Container(
-                                height: 56,
-                                color: Colors.white,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      top: 9.0, bottom: 7, left: 16, right: 16),
-                                  child: MaterialButton(
-                                      elevation: 0,
-                                      padding: EdgeInsets.all(0),
-                                      color: kPinkAccent,
-                                      minWidth: screenSize.width,
-                                      height: 40,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              new BorderRadius.circular(25.0),
-                                          side: BorderSide(
-                                              color: kPinkAccent, width: 1.5)),
-                                      child: DynamicText(S.of(context).checkout,
-                                          style: kBaseTextStyle.copyWith(
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.white)),
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ConfirmOrder()));
-                                      }),
-                                ),
-                              ),
-                            ],
+    return Consumer<CartModel>(builder: (context, cartModel, child) {
+      return Scaffold(
+          bottomNavigationBar: cartModel.totalCartQuantity > 0
+              ? SafeArea(
+                  bottom: true,
+                  child: Container(
+                    height: 104,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        ShoppingCartSummary(model: cartModel),
+                        Container(
+                          height: 56,
+                          color: Colors.white,
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                top: 9.0, bottom: 7, left: 16, right: 16),
+                            child: MaterialButton(
+                                elevation: 0,
+                                padding: EdgeInsets.all(0),
+                                color: kPinkAccent,
+                                minWidth: screenSize.width,
+                                height: 40,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        new BorderRadius.circular(25.0),
+                                    side: BorderSide(
+                                        color: kPinkAccent, width: 1.5)),
+                                child: DynamicText(S.of(context).checkout,
+                                    style: kBaseTextStyle.copyWith(
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white)),
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              ConfirmOrder()));
+                                }),
                           ),
                         ),
-                      )
-                    : null,
-                backgroundColor: Theme.of(context).backgroundColor,
-                body: SafeArea(
-                    top: false,
-                    child: Container(
-                      height: screenSize.height,
-                      decoration: BoxDecoration(
-                          color: Theme.of(context).backgroundColor),
-                      child: CustomScrollView(slivers: [
-                        SliverAppBar(
-                          brightness: Brightness.light,
-                          leading: showBackSpace
-                              ? IconButton(
-                                  icon: CommonIcons.arrowBackward,
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                )
-                              : Container(),
-                          elevation: 0,
-                          backgroundColor: kPinkAccent,
-                          pinned: true,
-                          flexibleSpace: FlexibleSpaceBar(
-                            title: DynamicText(S.of(context).cart,
-                                style: kBaseTextStyle.copyWith(
-                                    fontSize: 17,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600)),
-                          ),
+                      ],
+                    ),
+                  ),
+                )
+              : null,
+          backgroundColor: Theme.of(context).backgroundColor,
+          body: SafeArea(
+              top: false,
+              child: Container(
+                height: screenSize.height,
+                decoration:
+                    BoxDecoration(color: Theme.of(context).backgroundColor),
+                child: CustomScrollView(slivers: [
+                  SliverAppBar(
+                    brightness: Brightness.light,
+                    leading: showBackSpace
+                        ? IconButton(
+                            icon: CommonIcons.arrowBackward,
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          )
+                        : Container(),
+                    elevation: 0,
+                    backgroundColor: kPinkAccent,
+                    pinned: true,
+                    flexibleSpace: FlexibleSpaceBar(
+                      title: DynamicText(S.of(context).cart,
+                          style: kBaseTextStyle.copyWith(
+                              fontSize: 17,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600)),
+                    ),
+                  ),
+                  if (cartModel.totalCartQuantity == 0)
+                    SliverList(
+                        delegate: SliverChildListDelegate([EmptyCart()])),
+                  if (cartModel.totalCartQuantity == 0)
+                    SliverList(
+                        delegate: SliverChildListDelegate([
+                      ProductModel.showProductListByCategory(
+                          cateId: 9, context: context)
+                    ])),
+                  if (cartModel.totalCartQuantity > 0)
+                    //futureBuilder
+                    SliverList(
+                        delegate: SliverChildListDelegate([
+                      Container(
+                        height: screenSize.height -
+                            MediaQuery.of(context).padding.top -
+                            MediaQuery.of(context).padding.bottom -
+                            100,
+                        child: Column(
+                          children: _createShoppingCartRows(cartModel),
                         ),
-                        if (snapshot.data.totalCartQuantity == 0)
-                          SliverList(
-                              delegate: SliverChildListDelegate([EmptyCart()])),
-                        if (snapshot.data.totalCartQuantity == 0)
-                          SliverList(
-                              delegate: SliverChildListDelegate([
-                            ProductModel.showProductListByCategory(
-                                cateId: 9, context: context)
-                          ])),
-                        if (snapshot.data.totalCartQuantity > 0)
-                          //futureBuilder
-                          SliverList(
-                              delegate: SliverChildListDelegate([
-                            Container(
-                              height: screenSize.height -
-                                  MediaQuery.of(context).padding.top -
-                                  MediaQuery.of(context).padding.bottom -
-                                  100,
-                              child: Column(
-                                children:
-                                    _createShoppingCartRows(snapshot.data),
-                              ),
-                            ),
-                          ])),
-                      ]),
-                    )));
-          });
+                      ),
+                    ])),
+                ]),
+              )));
     });
   }
 

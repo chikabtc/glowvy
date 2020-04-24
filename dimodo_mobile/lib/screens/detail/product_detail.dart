@@ -174,48 +174,54 @@ class _ProductDetailState extends State<ProductDetail>
                                       },
                                     ),
                                     actions: <Widget>[
-                                      Stack(children: <Widget>[
-                                        IconButton(
-                                          onPressed: () =>
-                                              Navigator.pushReplacementNamed(
-                                                  context, "/cart", arguments: {
-                                            "showBackSpace": true
-                                          }),
-                                          icon: SvgPicture.asset(
-                                            "assets/icons/cart-product-detail.svg",
-                                            width: 24 *
-                                                kSizeConfig.containerMultiplier,
-                                            height: 24 *
-                                                kSizeConfig.containerMultiplier,
-                                          ),
-                                        ),
-                                        if (cartModel.totalCartQuantity > 0)
-                                          Positioned(
-                                            right: 7.5,
-                                            top: 7.5,
-                                            child: Container(
-                                              padding: EdgeInsets.all(1),
-                                              decoration: new BoxDecoration(
-                                                color: Colors.red,
-                                                borderRadius:
-                                                    BorderRadius.circular(8),
-                                              ),
-                                              constraints: BoxConstraints(
-                                                minWidth: 16,
-                                                minHeight: 16,
-                                              ),
-                                              child: new Text(
-                                                cartModel.totalCartQuantity
-                                                    .toString(),
-                                                style: new TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 10,
-                                                ),
-                                                textAlign: TextAlign.center,
-                                              ),
+                                      Consumer<CartModel>(
+                                          builder: (context, value, child) {
+                                        return Stack(children: <Widget>[
+                                          IconButton(
+                                            onPressed: () =>
+                                                Navigator.pushReplacementNamed(
+                                                    context, "/cart",
+                                                    arguments: {
+                                                  "showBackSpace": true
+                                                }),
+                                            icon: SvgPicture.asset(
+                                              "assets/icons/cart-product-detail.svg",
+                                              width: 24 *
+                                                  kSizeConfig
+                                                      .containerMultiplier,
+                                              height: 24 *
+                                                  kSizeConfig
+                                                      .containerMultiplier,
                                             ),
-                                          )
-                                      ])
+                                          ),
+                                          if (value.totalCartQuantity > 0)
+                                            Positioned(
+                                              right: 7.5,
+                                              top: 7.5,
+                                              child: Container(
+                                                padding: EdgeInsets.all(1),
+                                                decoration: new BoxDecoration(
+                                                  color: Colors.red,
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
+                                                constraints: BoxConstraints(
+                                                  minWidth: 16,
+                                                  minHeight: 16,
+                                                ),
+                                                child: new Text(
+                                                  cartModel.totalCartQuantity
+                                                      .toString(),
+                                                  style: new TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 10,
+                                                  ),
+                                                  textAlign: TextAlign.center,
+                                                ),
+                                              ),
+                                            )
+                                        ]);
+                                      })
                                     ],
                                     backgroundColor: Colors.white,
                                     pinned: true,

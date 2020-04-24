@@ -69,7 +69,7 @@ class _OrderSummaryState extends State<OrderSummary> {
           currency: currency,
           title: S.of(context).total,
           subTitle:
-              S.of(context).totalItems + " (${widget.model.totalCartQuantity})",
+              "(${widget.model.totalCartQuantity}) " + S.of(context).totalItems,
           fee: Tools.getCurrecyFormatted(widget.model.getTotal(),
               currency: currency),
         ),

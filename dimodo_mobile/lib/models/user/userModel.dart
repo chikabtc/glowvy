@@ -1,3 +1,4 @@
+import 'package:Dimodo/models/order/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:localstorage/localstorage.dart';
@@ -11,14 +12,19 @@ import '../address/address.dart';
 class UserModel with ChangeNotifier {
   UserModel() {
     //todo: make the init functions synchronosu
-    getUser();
-    getShippingAddress();
+    initData();
   }
 
   Services _service = Services();
   User user;
   bool isLoggedIn = false;
   bool loading = false;
+  CartModel cartModel = CartModel();
+
+  Future<void> initData() async {
+    await getUser();
+    await getShippingAddress();
+  }
 
   void login({email, password, Function success, Function fail}) async {
     try {
@@ -31,11 +37,10 @@ class UserModel with ChangeNotifier {
 
       //get all the data from server here
       user.address = await _service.getAddress(token: user.accessToken);
-      //ah it may have something to do with local loading, address loaded from the local..
-      //load address during the setting??
-      // print("Address from login in : ${user.address.toJson()}");
 
       isLoggedIn = true;
+      cartModel.getAllCartItems(this);
+
       saveUser(user);
       success(user);
       loading = false;
@@ -61,6 +66,8 @@ class UserModel with ChangeNotifier {
 
           print('accessToken$accessToken');
           isLoggedIn = true;
+          cartModel.getAllCartItems(this);
+
           saveUser(user);
           success(user);
           break;
@@ -80,41 +87,6 @@ class UserModel with ChangeNotifier {
     }
   }
 
-  // void loginFB({Function success, Function fail}) async {
-  //   try {
-  //     //likley the sdk problem (version deployment targeT_ )
-  //     final FacebookLoginResult result =
-  //         await FacebookLogin().logIn(['email', 'public_profile']);
-
-  //     switch (result.status) {
-  //       case FacebookLoginStatus.loggedIn:
-  //         final FacebookAccessToken accessToken = result.accessToken;
-  //         print("fb accessToken: ${accessToken.token}");
-
-  //         user = await _service.loginFacebook(token: accessToken.token);
-  //         // user.address = await _service.getAddress(token: user.accessToken);
-
-  //         print(' accessToken${user.accessToken}');
-  //         isLoggedIn = true;
-  //         saveUser(user);
-  //         success(user);
-  //         break;
-  //       case FacebookLoginStatus.cancelledByUser:
-  //         fail('The login is cancel');
-  //         break;
-  //       case FacebookLoginStatus.error:
-  //         fail('Error: ${result.errorMessage}');
-  //         break;
-  //     }
-
-  //     notifyListeners();
-  //   } catch (err) {
-  //     fail(
-  //         "There is an issue with the app during request the data, please contact admin for fixing the issues " +
-  //             err.toString());
-  //   }
-  // }
-
   void loginGoogle({Function success, Function fail}) async {
     try {
       GoogleSignIn _googleSignIn = GoogleSignIn(
@@ -129,8 +101,10 @@ class UserModel with ChangeNotifier {
 
       user = await _service.loginGoogle(token: auth.accessToken);
       user.address = await _service.getAddress(token: user.accessToken);
-
       isLoggedIn = true;
+
+      cartModel.getAllCartItems(this);
+
       print("lgogogo: ${user.toJson()}");
       saveUser(user);
       success(user);
@@ -158,7 +132,7 @@ class UserModel with ChangeNotifier {
     }
   }
 
-  void getUser() async {
+  Future getUser() async {
     final LocalStorage storage = new LocalStorage("Dimodo");
     try {
       final ready = await storage.ready;
@@ -168,6 +142,8 @@ class UserModel with ChangeNotifier {
           user = User.fromJson(json);
           // print("got user: $user");
           isLoggedIn = true;
+          cartModel.getAllCartItems(this);
+
           notifyListeners();
         } else {
           print("fail to get users");
@@ -178,9 +154,11 @@ class UserModel with ChangeNotifier {
     }
   }
 
-  void getShippingAddress() async {
+  Future getShippingAddress() async {
     final LocalStorage storage = new LocalStorage("Dimodo");
-    user.address = await _service.getAddress(token: user.accessToken);
+    if (user.accessToken != null && user != null) {
+      user.address = await _service.getAddress(token: user.accessToken);
+    }
 
     try {
       final ready = await storage.ready;
