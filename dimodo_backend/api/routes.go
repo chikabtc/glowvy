@@ -47,11 +47,7 @@ func (a *API) InitializeRoutes() {
 	a.r.HandleFunc("/api/products/review/id={id:[0-9]+}/sr={sr:[a-z]+}", productC.ProductReviewsById).Methods("GET")
 
 	a.r.HandleFunc("/api/private/products/id={id:[0-9]+}/sr={sr:[a-z]+}", productC.CreateProductById).Methods("GET")
-	a.r.HandleFunc("/api/product/updatethumbnails", productC.UpdateThumbnailImages).Methods("GET")
-
-	// a.r.HandleFunc("/api/products/detail/id={id:[0-9]+}", productC.ProductById).Methods("GET")
-
-	// a.r.HandleFunc("/api/products/category={id:[0-9]+}", productC.FindCategoryProducts).Methods("GET")
+	// a.r.HandleFunc("/api/product/updatethumbnails", productC.UpdateThumbnailImages).Methods("GET")
 
 	//			Category
 	a.r.HandleFunc("/api/categories/all", productC.AllCategories).Methods("GET")
@@ -69,10 +65,6 @@ func (a *API) InitializeRoutes() {
 	// var err = errors.New("this is an test error")
 	// sentry.CaptureException(err)
 
-	// bugsnag.Notify(err)
-	// fmt.Errorf("this is an %s error", "internal server")
-	// fmt.Errorf("bugsnag yo and sentry to")
-	// bugsnag.Notify(fmt.Errorf("Test error"))
 	http.ListenAndServe(fmt.Sprintf(":%d", a.cfg.Port),
 		bugsnag.Handler(a.r))
 }

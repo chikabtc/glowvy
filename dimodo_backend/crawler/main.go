@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 
+	"dimodo_backend/utils/translate"
+
 	"github.com/bugsnag/bugsnag-go"
 	"github.com/gchaincl/dotsql"
 )
@@ -11,6 +13,7 @@ import (
 type Crawler struct {
 	DB  *sql.DB
 	dot *dotsql.DotSql
+	tr  *translate.Translator
 }
 
 //NewAPI loads configuration files and initializes the router, DB, models, and controller objects.
@@ -28,10 +31,12 @@ func NewCrawler() *Crawler {
 	}
 
 	dot, _ := dotsql.LoadFromFile("sql/queries/brandi.pgsql")
+	tr, _ := translate.NewTranslator()
 
 	c := Crawler{
 		DB:  db,
 		dot: dot,
+		tr:  tr,
 	}
 
 	fmt.Println("Project -", cfg.Name)

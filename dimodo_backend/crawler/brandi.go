@@ -60,7 +60,7 @@ func (c *Crawler) AddNewProductsByCategories() {
 	for parentId, childrenIds := range categories {
 		for _, categoryId := range childrenIds {
 			fmt.Println("calling product by category:", +categoryId, "parent id: ", parentId)
-			c.GetPopularProductsByCategory(parentId, categoryId, 10)
+			c.GetPopularProductsByCategory(parentId, categoryId, 30)
 		}
 	}
 	return
@@ -101,7 +101,7 @@ func (c *Crawler) GetPopularProductsByCategory(parentId int, idx int, limit int)
 
 	limits := strconv.Itoa(limit)
 
-	url := "https://cf-api-c.brandi.me/v1/web/categories/" + id + "/products?offset=0&limit" + limits + "&order=popular&type=all"
+	url := "https://cf-api-c.brandi.me/v1/web/categories/" + id + "/products?offset=0&limit=" + limits + "&order=popular&type=all"
 	fmt.Println(url)
 
 	req, _ := http.NewRequest("GET", url, nil)
@@ -204,7 +204,6 @@ func (c *Crawler) GetMainProducts() {
 		bugsnag.Notify(err)
 		return
 	}
-
 	defer res.Body.Close()
 	body, _ := ioutil.ReadAll(res.Body)
 	var main brandi.MainProducts
@@ -212,11 +211,9 @@ func (c *Crawler) GetMainProducts() {
 		panic(err)
 	}
 
-	// translator, _ := translate.NewTranslator()
 	var zone1 = main.Data.Zoning1
 	var zone2 = main.Data.Zoning2
 	var recommend = main.Data.Recommend.Products
-	// translator, _ := translate.NewTranslator()
 
 	for _, zone := range zone1 {
 		for _, p := range zone.Products {
@@ -271,8 +268,8 @@ func (c *Crawler) ProductDetailById(bProductId string) error {
 		panic(err)
 	}
 
-	translator, _ := translate.NewTranslator()
-	desc, _ := translator.TranslateText(translate.Ko, translate.Vi, Description(bp.Data.Text))
+	// translator, _ := translate.NewTranslator()
+	desc, _ := c.tr.TranslateText(translate.Ko, translate.Vi, Description(bp.Data.Text))
 	if desc == "" {
 		desc = " "
 	}
@@ -300,7 +297,7 @@ func (c *Crawler) ProductDetailById(bProductId string) error {
 	// fmt.Printf("seller info : %v \n", bp.Data.Seller)
 
 	optionBytes, _ := json.Marshal(productOptions)
-	sizeDetailBytes, _ := json.Marshal(SizeDetail(bp.Data.Text))
+	sizeDetailBytes, _ := json.Marshal(c.SizeDetail(bp.Data.Text))
 
 	_, err = c.dot.Exec(c.DB, "AddProductDetailsById",
 		bp.Data.ID,
@@ -355,8 +352,8 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 		bugsnag.Notify(err)
 		return err
 	}
-
 	defer res.Body.Close()
+
 	body, _ := ioutil.ReadAll(res.Body)
 	var bp brandi.Product
 	if err := json.Unmarshal(body, &bp); err != nil {
@@ -364,12 +361,11 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 		return err
 	}
 
-	translator, _ := translate.NewTranslator()
-	desc, _ := translator.TranslateText(translate.Ko, translate.Vi, Description(bp.Data.Text))
-	// fmt.Println("this is descr: ", desc)
-	translatedName, _ := translator.TranslateText(translate.Ko, translate.Vi, bp.Data.Name)
+	// translator, _ := translate.NewTranslator()
+	desc, _ := c.tr.TranslateText(translate.Ko, translate.Vi, Description(bp.Data.Text))
+	translatedName, _ := c.tr.TranslateText(translate.Ko, translate.Vi, bp.Data.Name)
 	if translatedName == " " || len(translatedName) < 4 || translatedName == "[" {
-		return fmt.Errorf("both translator fails to translate properly")
+		return fmt.Errorf("both translator fails to translate properly: discarded product")
 	}
 	//type conversion from BrandiProduct to dimodoProduct
 	var productOptions = []models.Option{}
@@ -392,7 +388,7 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 	seller.ID = bp.Data.Seller.ID
 
 	optionBytes, _ := json.Marshal(productOptions)
-	sizeDetailBytes, _ := json.Marshal(SizeDetail(bp.Data.Text))
+	sizeDetailBytes, _ := json.Marshal(c.SizeDetail(bp.Data.Text))
 
 	_, err = c.dot.Exec(c.DB, "CreateProduct",
 		bp.Data.ID,
@@ -417,7 +413,7 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 		fmt.Println("CreateProductById: ", err.Error())
 		return err
 	}
-	return err
+	return nil
 }
 
 func (c *Crawler) GetPhotoReviewsFromBrandi(bProductId string, offset, limit string) *brandi.Reviews {
@@ -440,10 +436,10 @@ func (c *Crawler) GetPhotoReviewsFromBrandi(bProductId string, offset, limit str
 	if err := json.Unmarshal(body, &reviews); err != nil {
 		panic(err)
 	}
-	translator, _ := translate.NewTranslator()
+	// translator, _ := translate.NewTranslator()
 
 	for _, r := range reviews.Data {
-		text, err := translator.TranslateText(translate.Ko, translate.Vi, r.Text)
+		text, err := c.tr.TranslateText(translate.Ko, translate.Vi, r.Text)
 		var images []string
 
 		for _, image := range r.Images {
@@ -492,9 +488,9 @@ func (c *Crawler) GetTextReviewsFromBrandi(bProductId string, offset, limit stri
 		panic(err)
 	}
 	//todo: save to the db
-	translator, _ := translate.NewTranslator()
+	// translator, _ := translate.NewTranslator()
 	for _, r := range reviews.Data {
-		text, err := translator.TranslateText(translate.Ko, translate.Vi, r.Text)
+		text, err := c.tr.TranslateText(translate.Ko, translate.Vi, r.Text)
 		if err != nil {
 			bugsnag.Notify(err)
 			fmt.Println(err)
@@ -516,7 +512,7 @@ func (c *Crawler) GetTextReviewsFromBrandi(bProductId string, offset, limit stri
 	return &reviews
 }
 
-//Images  imgs out of html string
+//Images  imgs out of html string//we could take text from it and display
 func ImagesFromHTML(s string) []string {
 	var imgs []string
 	doc, err := html.Parse(strings.NewReader(s))
@@ -540,6 +536,9 @@ func ImagesFromHTML(s string) []string {
 		}
 	}
 	f(doc)
+	//delete the zoom image from brandi
+	imgs = imgs[:len(s)-1]
+
 	return imgs
 }
 func SliderImages(bp brandi.Product) []string {
@@ -573,8 +572,8 @@ func Description(s string) string {
 }
 
 //todo: need fucking comments as to why sizeDetails need to be list
-func SizeDetail(s string) []models.SizeDetail {
-	translator, _ := translate.NewTranslator()
+func (c *Crawler) SizeDetail(s string) []models.SizeDetail {
+	// translator, _ := translate.NewTranslator()
 
 	var sizeDetails []models.SizeDetail
 	p := strings.NewReader(s)
@@ -592,7 +591,7 @@ func SizeDetail(s string) []models.SizeDetail {
 		//iterate over the size detail and create sizeDetail object
 		//append sizeDetail object per iteration
 		s.Find("td").Each(func(i int, s *goquery.Selection) {
-			size, _ := translator.TranslateText(translate.Ko, translate.Vi, sizeHeaders[i])
+			size, _ := c.tr.TranslateText(translate.Ko, translate.Vi, sizeHeaders[i])
 
 			sizeDetail.Attributes = append(sizeDetail.Attributes, models.Attribute{
 				Title: size,

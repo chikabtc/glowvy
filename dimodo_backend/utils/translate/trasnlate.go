@@ -10,8 +10,6 @@ import (
 )
 
 const (
-
-	//google
 	ggcProjectID = "dimodo-1585384547888"
 	Ko           = "ko"
 	Vi           = "vi"
