@@ -25,7 +25,7 @@ class DynamicText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(text,
         maxLines: maxLines == null ? null : maxLines,
-        textAlign: textAlign ?? TextAlign.justify,
+        textAlign: textAlign ?? TextAlign.start,
         style: style.copyWith(
 
             // fontWeight: FontWeight.w600,

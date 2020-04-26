@@ -1,3 +1,4 @@
+import 'package:Dimodo/generated/i18n.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../common/tools.dart';
@@ -92,7 +93,7 @@ class ProductCard extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       Text(
-                        product.salePrice != "null"
+                        product.salePercent != 0
                             ? Tools.getPriceProduct(product, "VND",
                                 onSale: true)
                             : Tools.getPriceProduct(product, "VND",
@@ -103,8 +104,7 @@ class ProductCard extends StatelessWidget {
                             fontWeight: FontWeight.bold),
                       ),
                       SizedBox(width: 8),
-                      if (product.salePercent != "null" &&
-                          product.salePercent != "0" &&
+                      if (product.salePercent != 0 &&
                           product.salePercent != null)
                         Opacity(
                           opacity: 0.5,
@@ -132,7 +132,7 @@ class ProductCard extends StatelessWidget {
                   if (product.purchaseCount != null)
                     Container(
                       child: Text(
-                        "${product.purchaseCount} been sold",
+                        "${product.purchaseCount} ${S.of(context).beenSold}",
                         textAlign: TextAlign.end,
                         maxLines: 1,
                         style: kBaseTextStyle.copyWith(

@@ -11,10 +11,22 @@ part 'order.g.dart';
 class Order {
   int orderId;
   bool isPaid;
+  double totalShipping;
+  double totalFee;
+  int userId;
+  int addressId;
   int dateCreated;
   List<CartItem> orderItems = [];
 
-  Order({this.orderId, this.isPaid, this.dateCreated, this.orderItems});
+  Order(
+      {this.orderId,
+      this.isPaid,
+      this.dateCreated,
+      this.orderItems,
+      this.userId,
+      this.totalShipping,
+      this.totalFee,
+      this.addressId});
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
   Map<String, dynamic> toJson() => _$OrderToJson(this);

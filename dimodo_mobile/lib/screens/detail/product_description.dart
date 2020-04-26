@@ -2,12 +2,8 @@ import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 import '../../common/constants.dart';
-import 'package:webview_flutter/webview_flutter.dart';
-import 'dart:convert';
 import 'package:flutter/cupertino.dart';
-import 'dart:math' show max;
 import 'package:Dimodo/models/product/product.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
 
 class ProductDescription extends StatefulWidget {
   Product product;
@@ -25,7 +21,7 @@ class _ProductDescriptionState extends State<ProductDescription>
     with AutomaticKeepAliveClientMixin<ProductDescription> {
   @override
   bool get wantKeepAlive => true;
-  @override
+
   Widget renderSizeDetail() {
     var sizeDetailWidget = <Widget>[];
     //create a concanteanated string
@@ -51,7 +47,7 @@ class _ProductDescriptionState extends State<ProductDescription>
     //create a concanteanated string
     var images = widget.product.descImages;
     images.forEach((img) {
-      print("image to render: $img");
+      // print("image to render: $img");
       imagesWidget.add(Image.network(
         img,
       ));

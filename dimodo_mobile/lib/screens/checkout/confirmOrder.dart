@@ -39,6 +39,12 @@ class _ConfirmOrderState extends State<ConfirmOrder>
         duration: new Duration(milliseconds: 3000), vsync: this);
   }
 
+  @override
+  void dispose() {
+    submitButtonController.dispose();
+    super.dispose();
+  }
+
   List<Widget> _createShoppingCartRows(CartModel model) {
     final userModel = Provider.of<UserModel>(context, listen: false); //
 
@@ -86,19 +92,21 @@ class _ConfirmOrderState extends State<ConfirmOrder>
 
   void createOrder() async {
     print("created order");
-    final LocalStorage storage = new LocalStorage('data_order');
     final cartModel = Provider.of<CartModel>(context, listen: false);
     final userModel = Provider.of<UserModel>(context, listen: false);
     final orderModel = Provider.of<OrderModel>(context, listen: false);
 
-    var listOrder = [];
-
     try {
       _playAnimation();
       isLoading = false;
-      var order = await orderModel.createOrder(userModel: userModel);
-      //pass arguments and cartModel
-      //passing argument is not working
+      var order = Order();
+      order.totalShipping = cartModel.getShippingFee();
+      order.totalFee = cartModel.getTotal();
+      order.userId = userModel.user.id;
+      order.addressId = userModel.user.address.id;
+
+      await orderModel.createOrder(order: order, userModel: userModel);
+
       Navigator.pushReplacementNamed(context, "/order_submitted",
           arguments: {'cartModel': cartModel});
     } catch (err) {

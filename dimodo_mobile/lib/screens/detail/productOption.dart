@@ -75,6 +75,45 @@ class _ProductOptionState extends State<ProductOption>
             : "${chosenOptions[0]} / ${chosenOptions[1]}");
     cartModel.addProductToCart(cartItem: cartItem, userModel: userModel);
     Navigator.of(context).pop();
+    Future.delayed(const Duration(milliseconds: 300), () {
+      showAddedToCartAlert();
+    });
+  }
+
+  Future<void> showAddedToCartAlert() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true, // user can tap anywhere to dismiss the popup!
+      builder: (BuildContext buildContext) {
+        return AlertDialog(
+          title: DynamicText(
+            S.of(context).addedToYourCart,
+            style: kBaseTextStyle,
+          ),
+          // content: SingleChildScrollView(
+          //   child: ListBody(
+          //     children: <Widget>[
+          //       DynamicText(
+          //         'You\’re like me. I’m never satisfied.',
+          //         style: kBaseTextStyle,
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          actions: <Widget>[
+            FlatButton(
+              child: DynamicText(
+                'Ok',
+                style: kBaseTextStyle,
+              ),
+              onPressed: () {
+                Navigator.of(buildContext).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   //returns the product_id of the option with the same attribute Value

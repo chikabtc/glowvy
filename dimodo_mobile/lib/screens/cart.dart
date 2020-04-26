@@ -2,18 +2,12 @@ import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import '../common/tools.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import '../common/config.dart';
 import '../generated/i18n.dart';
 import '../models/order/cart.dart';
-import '../services/index.dart';
 import '../widgets/cart_item.dart';
-import '../models/app.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/models/product/productModel.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'checkout/confirmOrder.dart';
 import 'shoppingCartSummary.dart';
 import 'package:flutter/cupertino.dart';
@@ -59,13 +53,14 @@ class _CartState extends State<Cart> with SingleTickerProviderStateMixin {
   }
 
   @override
-  Widget build(BuildContext context) {
-    bool isLoggedIn = Provider.of<UserModel>(context).isLoggedIn;
-
-    final screenSize = MediaQuery.of(context).size;
-
+  void initState() {
     Provider.of<CartModel>(context, listen: false)
         .getAllCartItems(Provider.of<UserModel>(context, listen: false));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
 
     bool showBackSpace = false;
     final Map arguments = ModalRoute.of(context).settings.arguments as Map;
@@ -157,7 +152,6 @@ class _CartState extends State<Cart> with SingleTickerProviderStateMixin {
                           cateId: 9, context: context)
                     ])),
                   if (cartModel.totalCartQuantity > 0)
-                    //futureBuilder
                     SliverList(
                         delegate: SliverChildListDelegate([
                       Container(

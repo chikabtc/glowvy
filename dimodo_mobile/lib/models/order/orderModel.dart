@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../services/index.dart';
 import '../user/userModel.dart';
-import 'cart.dart';
 import 'order.dart';
 
 class OrderModel extends ChangeNotifier {
@@ -32,17 +31,18 @@ class OrderModel extends ChangeNotifier {
     }
   }
 
-  Future<Order> createOrder({UserModel userModel}) async {
+  Future<Order> createOrder({Order order, UserModel userModel}) async {
     try {
       isLoading = true;
       notifyListeners();
-      Order order = await _service.createOrder(userModel: userModel);
+      Order createdOrder =
+          await _service.createOrder(order: order, userModel: userModel);
       page = 1;
       errMsg = null;
       isLoading = false;
       endPage = false;
       notifyListeners();
-      return order;
+      return createdOrder;
     } catch (err) {
       errMsg =
           "There is an issue with the app during request the data, please contact admin for fixing the issues " +

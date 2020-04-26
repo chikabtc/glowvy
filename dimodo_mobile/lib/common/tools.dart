@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:Dimodo/models/product/product.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
@@ -146,21 +147,21 @@ class Tools {
     }
   }
 
-  static String getPriceProductValue(product, String currency, {bool onSale}) {
-    String price = product.salePrice != null
-        ? product.salePrice.toString()
-        : product.price.toString();
+  static String getPriceProductValue(Product product, String currency,
+      {bool onSale}) {
+    String price =
+        onSale ? product.salePrice.toString() : product.price.toString();
     var basePrice = double.parse(price);
     var convertedP = basePrice * 19;
     return convertedP.toString();
-    if (product.multiCurrencies != null &&
-        product.multiCurrencies[currency] != null) {
-      return product.multiCurrencies[currency]["price"];
-    } else {}
+    // if (product.multiCurrencies != null &&
+    //     product.multiCurrencies[currency] != null) {
+    //   return product.multiCurrencies[currency]["price"];
   }
 
   static String getPriceProduct(product, String currency, {bool onSale}) {
     String price = getPriceProductValue(product, currency, onSale: onSale);
+
     return getCurrecyFormatted(price, currency: currency);
   }
 

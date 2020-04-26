@@ -27,8 +27,7 @@ class ProductDetail extends StatefulWidget {
   _ProductDetailState createState() => _ProductDetailState();
 }
 
-class _ProductDetailState extends State<ProductDetail>
-    with TickerProviderStateMixin {
+class _ProductDetailState extends State<ProductDetail> {
   int quantity = 1;
   bool isLoading = false;
   Size screenSize;
@@ -44,7 +43,6 @@ class _ProductDetailState extends State<ProductDetail>
   Future<Product> product;
   bool isLoggedIn = false;
   bool loaded = false;
-  CartModel cartModel;
 
   @override
   void initState() {
@@ -59,9 +57,7 @@ class _ProductDetailState extends State<ProductDetail>
 
   @override
   Widget build(BuildContext context) {
-    isLoggedIn = Provider.of<UserModel>(context, listen: false).isLoggedIn;
     screenSize = MediaQuery.of(context).size;
-    cartModel = Provider.of<CartModel>(context, listen: false);
     try {
       tabList = [];
       final tabs = Provider.of<AppModel>(context, listen: false)
@@ -167,11 +163,17 @@ class _ProductDetailState extends State<ProductDetail>
                                         52 * 1.2 +
                                         40,
                                     brightness: Brightness.light,
-                                    leading: IconButton(
-                                      icon: CommonIcons.arrowBackward,
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
+                                    leading: GestureDetector(
+                                      onTap: () => Navigator.of(context).pop(),
+                                      child: Container(
+                                        width: 30,
+                                        child: IconButton(
+                                          icon: CommonIcons.arrowBackward,
+                                          // onPressed: () {
+                                          //   Navigator.of(context).pop();
+                                          // },
+                                        ),
+                                      ),
                                     ),
                                     actions: <Widget>[
                                       Consumer<CartModel>(
@@ -179,7 +181,7 @@ class _ProductDetailState extends State<ProductDetail>
                                         return Stack(children: <Widget>[
                                           IconButton(
                                             onPressed: () =>
-                                                Navigator.pushReplacementNamed(
+                                                Navigator.pushNamed(
                                                     context, "/cart",
                                                     arguments: {
                                                   "showBackSpace": true
@@ -210,7 +212,7 @@ class _ProductDetailState extends State<ProductDetail>
                                                   minHeight: 16,
                                                 ),
                                                 child: new Text(
-                                                  cartModel.totalCartQuantity
+                                                  value.totalCartQuantity
                                                       .toString(),
                                                   style: new TextStyle(
                                                     color: Colors.white,
@@ -382,6 +384,8 @@ class _ProductDetailState extends State<ProductDetail>
 
     tabList.asMap().forEach((index, item) {
       list.add(Container(
+        // padding: EdgeInsets.symmetric(horizontal: 5),
+        alignment: Alignment.center,
         height: 40,
         child: Tab(
           text: item,

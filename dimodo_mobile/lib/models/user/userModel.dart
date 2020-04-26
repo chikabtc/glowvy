@@ -19,7 +19,7 @@ class UserModel with ChangeNotifier {
   User user;
   bool isLoggedIn = false;
   bool loading = false;
-  CartModel cartModel = CartModel();
+  // CartModel cartModel = CartModel();
 
   Future<void> initData() async {
     await getUser();
@@ -39,7 +39,6 @@ class UserModel with ChangeNotifier {
       user.address = await _service.getAddress(token: user.accessToken);
 
       isLoggedIn = true;
-      cartModel.getAllCartItems(this);
 
       saveUser(user);
       success(user);
@@ -66,7 +65,6 @@ class UserModel with ChangeNotifier {
 
           print('accessToken$accessToken');
           isLoggedIn = true;
-          cartModel.getAllCartItems(this);
 
           saveUser(user);
           success(user);
@@ -103,8 +101,6 @@ class UserModel with ChangeNotifier {
       user.address = await _service.getAddress(token: user.accessToken);
       isLoggedIn = true;
 
-      cartModel.getAllCartItems(this);
-
       print("lgogogo: ${user.toJson()}");
       saveUser(user);
       success(user);
@@ -140,10 +136,9 @@ class UserModel with ChangeNotifier {
         final json = storage.getItem(kLocalKey["userInfo"]);
         if (json != null) {
           user = User.fromJson(json);
+
           // print("got user: $user");
           isLoggedIn = true;
-          cartModel.getAllCartItems(this);
-
           notifyListeners();
         } else {
           print("fail to get users");

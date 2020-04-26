@@ -140,6 +140,7 @@ class _AddShippingAddressState extends State<AddShippingAddress>
                                 CustomTextFormField(
                                     nameController: _streetNameController,
                                     labelText: S.of(context).streetName,
+                                    isMaxLineOne: true,
                                     address: address),
                                 Container(
                                     color: Colors.white,
@@ -438,6 +439,7 @@ class CustomTextFormField extends StatelessWidget {
   final bool isEnabled;
   final bool isNumber;
   final bool isReviewForm;
+  final bool isMaxLineOne;
 
   final TextEditingController nameController;
 
@@ -446,6 +448,7 @@ class CustomTextFormField extends StatelessWidget {
       this.labelText,
       this.nameController,
       this.onTap,
+      this.isMaxLineOne = false,
       this.isReviewForm = false,
       this.isEnabled = true,
       this.isNumber = false});
@@ -458,7 +461,7 @@ class CustomTextFormField extends StatelessWidget {
       child: TextFormField(
           keyboardType:
               isNumber ? TextInputType.number : TextInputType.multiline,
-          maxLines: 2,
+          maxLines: isMaxLineOne ? 1 : 2,
           onTap: onTap,
           enabled: isEnabled,
           controller: nameController,
@@ -499,29 +502,6 @@ class CustomTextFormField extends StatelessWidget {
             } else if (labelText == S.of(context).streetName) {
               address.street = value;
             }
-
-            // switch (labelText) {
-            //   case :
-            //     address.recipientName = value;
-            //     print("name updated: $value");
-            //     break;
-            //   case "Phone Number":
-            //     address.phoneNumber = value;
-            //     print("pho updated: $value");
-
-            //     break;
-            //   case "Province":
-            //     address.ward.province.name = value;
-            //     print("pro updated: $value");
-
-            //     break;
-            //   case "Street Name":
-            //     address.street = value;
-            //     print("str updated: $value");
-
-            //     break;
-            //   default:
-            // }
             print("address updated: ${address.toJson()}");
           }),
     );

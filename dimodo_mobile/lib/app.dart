@@ -107,7 +107,6 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
   final _category = CategoryModel();
   final _wishlist = WishListModel();
   final _user = UserModel();
-  final _productDetail = ProductDetail();
   final _shippingMethod = ShippingMethodModel();
   final _paymentMethod = PaymentMethodModel();
   final _order = OrderModel();

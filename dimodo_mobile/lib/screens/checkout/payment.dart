@@ -34,7 +34,7 @@
 //     super.initState();
 
 //     Future.delayed(Duration.zero, () {
-//       final cartModel = Provider.of<Order>(context);
+//       final cartModel = Provider.of<CartModel>(context);
 //       final userModel = Provider.of<UserModel>(context, listen: false);
 //       Provider.of<PaymentMethodModel>(context).getPaymentMethods(
 //           address: cartModel.address,
@@ -45,7 +45,7 @@
 
 //   @override
 //   Widget build(BuildContext context) {
-//     final cartModel = Provider.of<Order>(context);
+//     final cartModel = Provider.of<CartModel>(context);
 //     final paymentMethodModel = Provider.of<PaymentMethodModel>(context);
 
 //     return ListenableProvider.value(
@@ -302,7 +302,7 @@
 //     bool isLoggedIn = Provider.of<UserModel>(context, listen: false).loggedIn;
 
 //     widget.onLoading(true);
-//     final cartModel = Provider.of<Order>(context);
+//     final cartModel = Provider.of<CartModel>(context);
 //     final userModel = Provider.of<UserModel>(context, listen: false);
 //     try {
 //       final order = await Services()

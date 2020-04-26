@@ -33,18 +33,14 @@ class ProductTitle extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 DynamicText(
-                  product.salePrice != "null"
-                      ? Tools.getPriceProduct(product, "VND", onSale: true)
-                      : Tools.getPriceProduct(product, "VND", onSale: false),
+                  Tools.getPriceProduct(product, "VND", onSale: true),
                   style: kBaseTextStyle.copyWith(
                       color: kPinkAccent,
                       fontSize: 16,
                       fontWeight: FontWeight.bold),
                 ),
                 SizedBox(width: 8),
-                if (product.salePercent != "null" &&
-                    product.salePercent != "0" &&
-                    product.salePercent != null)
+                if (product.salePercent != null)
                   Container(
                     decoration: BoxDecoration(
                       color: kLightPink,
@@ -64,7 +60,7 @@ class ProductTitle extends StatelessWidget {
                   )
               ]),
           SizedBox(height: 3),
-          if (product.salePrice != "null")
+          if (product.salePrice != null)
             Container(
               width: MediaQuery.of(context).size.width,
               child: DynamicText(

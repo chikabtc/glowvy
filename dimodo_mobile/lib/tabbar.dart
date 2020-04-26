@@ -167,27 +167,23 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
                 bottom: true,
                 child: FittedBox(
                   child: Container(
-                    // padding: EdgeInsets.only(
-                    //     bottom: MediaQuery.of(context).padding.bottom),
-                    height: 50,
-                    color: Colors.white,
-                    width: screenSize.width /
-                        (2 / (screenSize.height / screenSize.width)),
-                    child: Consumer<CartModel>(
-                        builder: (context, cartModel, child) {
-                      return TabBar(
+                      // padding: EdgeInsets.only(
+                      //     bottom: MediaQuery.of(context).padding.bottom),
+                      height: 50,
+                      color: Colors.white,
+                      width: screenSize.width /
+                          (2 / (screenSize.height / screenSize.width)),
+                      child: TabBar(
                         onTap: (index) {
                           setState(() {
                             currentPage = index;
                           });
                         },
-                        tabs: renderTabbar(cartModel),
+                        tabs: renderTabbar(),
                         labelColor: Colors.red,
                         unselectedLabelColor: Colors.white,
                         indicatorColor: Colors.transparent,
-                      );
-                    }),
-                  ),
+                      )),
                 ),
               ),
             ),
@@ -195,15 +191,12 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
         ));
   }
 
-  List<Widget> renderTabbar(CartModel cartModel) {
-    var totalCart = cartModel.totalCartQuantity;
-
+  List<Widget> renderTabbar() {
     final tabData = Provider.of<AppModel>(context, listen: false)
         .appConfig['TabBar'] as List;
     List<Widget> list = [];
 
     tabData.asMap().forEach((index, item) {
-      // final isAssetIcon = item["icon"].toString().contains("assets");
       list.add(Tab(
           // iconMargin: EdgeInsets.only(bottom: 0),
           child: Stack(children: <Widget>[
@@ -217,30 +210,33 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
             height: 24 * kSizeConfig.containerMultiplier,
           ),
         ),
-        if (totalCart > 0 && item["layout"] == "cart")
-          Positioned(
-            right: 0,
-            top: 0,
-            child: Container(
-              padding: EdgeInsets.all(1),
-              decoration: new BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(8),
-              ),
-              constraints: BoxConstraints(
-                minWidth: 16,
-                minHeight: 16,
-              ),
-              child: new Text(
-                totalCart.toString(),
-                style: new TextStyle(
-                  color: Colors.white,
-                  fontSize: 10,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          )
+        if (item["layout"] == "cart")
+          Consumer<CartModel>(builder: (context, cartModel, child) {
+            return Positioned(
+                right: 0,
+                top: 0,
+                child: cartModel.totalCartQuantity > 0
+                    ? Container(
+                        padding: EdgeInsets.all(1),
+                        decoration: new BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        constraints: BoxConstraints(
+                          minWidth: 16,
+                          minHeight: 16,
+                        ),
+                        child: new Text(
+                          cartModel.totalCartQuantity.toString(),
+                          style: new TextStyle(
+                            color: Colors.white,
+                            fontSize: 10,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      )
+                    : Container());
+          }),
       ])));
     });
 

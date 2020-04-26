@@ -794,6 +794,7 @@ class DimodoServices implements BaseServices {
           headers: {"Authorization": "Bearer ${userModel.user.accessToken}"});
       Map<String, dynamic> jsonDecode =
           convert.jsonDecode(utf8.decode(response.bodyBytes));
+      print("getmyorders: $jsonDecode");
       List<Order> list = [];
       // print("getMyorders: ${jsonDecode["Data"]}");
 
@@ -834,21 +835,23 @@ class DimodoServices implements BaseServices {
   }
 
   @override
-  Future<Order> createOrder(
-      {CartModel cartModel, UserModel userModel, bool paid}) async {
+  Future<Order> createOrder({Order order, UserModel userModel}) async {
     try {
+      print("order json: ${order.toJson()}");
       final http.Response response = await http.post(
           "http://dimodo.app/api/order/new",
-          headers: {"Authorization": "Bearer ${userModel.user.accessToken}"});
+          headers: {"Authorization": "Bearer ${userModel.user.accessToken}"},
+          body: convert.jsonEncode(order));
 
       Map<String, dynamic> jsonDecode = convert.jsonDecode(response.body);
       bool result = jsonDecode["Success"];
-      var order = Order.fromJson(jsonDecode["Data"]);
+
+      var returnedOrder = Order.fromJson(jsonDecode["Data"]);
       print("jsonDecode $jsonDecode");
       print('Order isSuccessFul??  $result');
 
       if (result == true) {
-        return order;
+        return returnedOrder;
       } else {
         throw ("Incorrect PIN");
       }

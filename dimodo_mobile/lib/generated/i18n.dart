@@ -65,6 +65,7 @@ class S implements WidgetsLocalizations {
       "Alo~ What kind of clothes are you looking for?";
   String get total => "Total";
   String get totalItems => "Total Items";
+  String get addedToYourCart => "Added to your cart successfully";
   String get totalTax => "Total tax";
 
   String get checkout => "Checkout";
@@ -171,7 +172,7 @@ class S implements WidgetsLocalizations {
   String get address => "Address";
   String get transactionSuccess => "Transaction success";
   String get trendDesign => "Trend Design";
-  String get koreanShippingFee => "Korean Shipping fee: 70,000₫";
+  String get koreanShippingFee => "Korean Shipping fee: 60,000₫";
   String get shipFrom => "Ship from";
   String get serviceIncludes => "Service includes";
   String get quanlityGuarantee => "Quality Guarantee";
@@ -354,6 +355,7 @@ class S implements WidgetsLocalizations {
   String get yourNote => "Your note";
   String get zipCode => "Zip-code";
   String get zipCodeIsRequired => "The zip code field is required";
+  String get beenSold => "been sold";
   // String get otherProducts => "Other zip code field is required";
   String sale(String percent) => "Sale $percent %";
   String weFoundProducts(String length) => "We found $length products";
@@ -371,6 +373,11 @@ class $vi extends S {
 
   @override
   String get clickToSignIn => "Kích  Để Đăng Nhập";
+  String get continueShopping => "Tiếp tục mua sắm";
+
+  String get askServiceQuality => "Sản phẩm có đáp ứng được mong đợi của bạn??";
+  String get askForFeedback =>
+      "Hãy cho chúng tôi biết về những gì bạn thích và những gì bạn không thích về mua hàng của bạn";
 
   @override
   String get privacyPolicy => "Chính Sách Bảo Mật";
@@ -381,6 +388,7 @@ class $vi extends S {
   @override
   String get orders => "Đặt Hàng";
   String get deliveryArea => "Tỉnh /Thành phố";
+  String get addAddress => "Thêm địa chỉ mới";
 
   @override
   String get viewAll => "Xem Tất Cả";
@@ -432,7 +440,7 @@ class $vi extends S {
   String get includingTaxAndFee => "bao gồm thuế & phí";
   String get deliveryMethod => "Phương thức phân phối";
   String get deliveryMethodDescription =>
-      "SVận chuyển bằng đường hàng không - 10 ngày";
+      "Vận chuyển bằng đường hàng không - 10 ngày";
   String get importTax => "Thuế nhập khẩu";
   String get importTaxDescription => "Thuế nhập khẩu Hàn Quốc (10%)";
   String get serviceFee => "Phí dịch vụ";
@@ -453,12 +461,16 @@ class $vi extends S {
   String get bankTransfer => "Chuyển khoản ngân hàng";
 
   String get accountHolder => "Chủ tài khoản";
+  //hottest design in vietnamese
+  String get trendDesign => "Xu hướng Hot nhất";
   String get totalAmount => "Tổng số tiền";
   String get shippingFrom => "Vận chuyển từ";
   String get shippingTo => "Vận chuyển đến";
   String get localKoreanShips => "Cửa hàng Hàn Quốc địa phương";
   String get seoulKorea => "Seoul, Hàn Quốc";
   String get manageShippingAddress => "Địa Chỉ Của Tôi";
+  String get writeReview => "Viết nhận xét của bạn";
+  String get send => "Gửi";
 
   @override
   String get all => "TẤT CẢ";
@@ -591,6 +603,8 @@ class $vi extends S {
   @override
   String get size => "Kích thước";
   @override
+  String get addedToYourCart => "Thêm vào giỏ hàng thành công!";
+  @override
   String get subtotal => "Tổng phụ";
   @override
   String get emptyCartSubtitle =>
@@ -621,6 +635,8 @@ class $vi extends S {
   String get login => "Đăng nhập";
   @override
   String get products => "Sản phẩm";
+  @override
+  String get beenSold => "Đã bán";
   @override
   String get goBackToShipping => "Quay lại giao hàng";
   @override

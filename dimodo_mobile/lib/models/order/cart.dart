@@ -241,8 +241,9 @@ class CartModel with ChangeNotifier {
 
   double getSubTotal() {
     subTotal = cartItems.keys.fold(0.0, (sum, key) {
-      String price =
-          Tools.getPriceProductValue(cartItems[key].product, currency);
+      String price = Tools.getPriceProductValue(
+          cartItems[key].product, currency,
+          onSale: true);
       // print("subtotal item price: $price");
       if (price.isNotEmpty) {
         subTotalFee = sum + double.parse(price) * cartItems[key].quantity;

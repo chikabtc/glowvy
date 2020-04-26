@@ -247,7 +247,7 @@ class _OrderSubmittedState extends State<OrderSubmitted>
                     icon: CommonIcons.arrowBackwardWhite,
                     onPressed: () {
                       cartModel.clearCart();
-                      Navigator.of(context).pop();
+                      Navigator.of(context).popAndPushNamed("/home");
                     },
                   ),
                   elevation: 0,

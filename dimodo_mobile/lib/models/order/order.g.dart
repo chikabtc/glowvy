@@ -15,12 +15,20 @@ Order _$OrderFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : CartItem.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    userId: json['user_id'] as int,
+    totalShipping: (json['total_shipping'] as num)?.toDouble(),
+    totalFee: (json['total_fee'] as num)?.toDouble(),
+    addressId: json['address_id'] as int,
   );
 }
 
 Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
       'order_id': instance.orderId,
       'is_paid': instance.isPaid,
+      'total_shipping': instance.totalShipping,
+      'total_fee': instance.totalFee,
+      'user_id': instance.userId,
+      'address_id': instance.addressId,
       'date_created': instance.dateCreated,
       'order_items': instance.orderItems,
     };

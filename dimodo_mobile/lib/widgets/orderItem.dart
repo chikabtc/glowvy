@@ -39,7 +39,6 @@ class _OrderItemRowState extends State<OrderItemRow> {
     final screenSize = MediaQuery.of(context).size;
     String currency = Provider.of<AppModel>(context, listen: false).currency;
     print("thesales price : ${widget.cartItem.product.salePrice}");
-    final price = Tools.getPriceProduct(widget.cartItem.product, currency);
 
     return Container(
       color: Colors.white,
@@ -133,9 +132,8 @@ class _OrderItemRowState extends State<OrderItemRow> {
                                       ),
                                       DynamicText(
                                           Tools.getPriceProduct(
-                                            widget.cartItem.product,
-                                            "VND",
-                                          ),
+                                              widget.cartItem.product, "VND",
+                                              onSale: true),
                                           style: kBaseTextStyle.copyWith(
                                               fontSize: 12,
                                               fontWeight: FontWeight.w500,

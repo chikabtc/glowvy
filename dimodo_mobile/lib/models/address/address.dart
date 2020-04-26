@@ -6,6 +6,7 @@ part 'address.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Address {
+  int id;
   String recipientName;
   String street;
   Ward ward;
