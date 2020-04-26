@@ -251,8 +251,8 @@ func (ps *productService) ProductsByCategoryID(categoryID, start, count int) ([]
 			&product.Purchase_count,
 			&product.Name,
 			&product.Thumbnail); err != nil {
+			bugsnag.Notify(err)
 			fmt.Println("fail to Next", err)
-
 			return nil, err
 		}
 

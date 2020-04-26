@@ -6,12 +6,12 @@ build:
 	GOOS=linux GOARCH=amd64 go build .
 
 to-server:
-	ssh root@139.180.131.81
+	ssh root@dimodo.app
 	# rm  app/dimodo_backend
 	kill -9 $(sudo lsof -t -i:80)
 	exit .
 copy-toserver:
-	scp dimodo_backend root@139.180.131.81:~/
+	scp dimodo_backend root@dimodo.app:~/
 
 
 	

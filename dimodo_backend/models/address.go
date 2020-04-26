@@ -67,6 +67,7 @@ func (as *addressService) GetAddess(userID int) (*Address, error) {
 	row, err := as.dot.QueryRow(as.DB, "getAddrssQuery", userID)
 
 	row.Scan(
+		&address.Id,
 		&address.Recipient_name,
 		&address.PhoneNumber,
 		&address.Street,

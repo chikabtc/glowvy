@@ -4,6 +4,7 @@ import (
 	"dimodo_backend/api/controllers"
 	"dimodo_backend/crawler"
 	"dimodo_backend/models"
+	"dimodo_backend/sql/queries/utils"
 	"fmt"
 
 	"flag"
@@ -50,10 +51,12 @@ func NewAPI(crawler *crawler.Crawler) *API {
 		panic(err)
 	}
 
+	slack := utils.NewSlackService()
+
 	cs := Controllers{
 		userC:    controllers.NewUser(ms.User, ms.Mail, cfg.Name, cfg.Domain),
 		addressC: controllers.NewAddress(ms.Address),
-		cartC:    controllers.NewCart(ms.Cart),
+		cartC:    controllers.NewCart(ms.Cart, slack),
 		productC: controllers.NewProduct(ms.Product, crawler),
 	}
 

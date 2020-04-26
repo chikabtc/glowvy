@@ -12,10 +12,11 @@ import (
 type CartService interface {
 	AllCartItems(cart_id int) ([]Cart_item, error)
 	CreateCartItem(item Cart_item) (int, error)
-	CreateOrder(authID int) (*Order, error)
+	CreateOrder(order Order) (*Order, error)
 	UpdateItemCart(item *Cart_item) error
 	DeleteCartItem(item *Cart_item) error
 	OrderHistoryByUserID(authID int) ([]Order, error)
+	OrderDetailByOrderID(orderID int) (*Order, error)
 }
 
 type cartService struct {
@@ -113,18 +114,23 @@ func (cs *cartService) DeleteCartItem(item *Cart_item) error {
 	return nil
 }
 
-func (cs *cartService) CreateOrder(authID int) (*Order, error) {
-	var order Order
-	row, err := cs.dot.QueryRow(cs.DB, "NewOrder", authID)
+//todo: calculate the total shipping and fees usign SQL
+func (cs *cartService) CreateOrder(order Order) (*Order, error) {
+	//move all the cart items to the order items and order
+	fmt.Println("save userid: ", order.User_id)
+	row, err := cs.dot.QueryRow(cs.DB, "CreateOrder", order.User_id, order.Address_id, order.Total_shipping, order.Total_fee)
 	if err != nil {
 		bugsnag.Notify(err)
-		fmt.Println("NewOrder: ", err)
+		fmt.Println("CreateOrder: ", err)
 		// msgError := fmt.Sprintf("Invalid request payload. Error: %s", err.Error())
 		return nil, err
 	}
 	if err = row.Scan(
 		&order.Id,
 		&order.User_id,
+		&order.Address_id,
+		&order.Total_shipping,
+		&order.Total_fee,
 		&order.Date_created,
 		&order.Is_paid,
 	); err != nil {
@@ -176,7 +182,10 @@ func (cs *cartService) OrderHistoryByUserID(authID int) ([]Order, error) {
 		var order Order
 		if err := rows.Scan(
 			&order.Id,
-			&order.Is_paid,
+			&order.User_id,
+			&order.Address_id,
+			&order.Total_shipping,
+			&order.Total_fee,
 			&order.Date_created,
 		); err != nil {
 			fmt.Println("fail to scan OrdersByUserID: ", err)
@@ -215,9 +224,70 @@ func (cs *cartService) OrderHistoryByUserID(authID int) ([]Order, error) {
 		}
 		orders[i].OrderItems = orderItems
 	}
+
 	if orders == nil {
 		orders = make([]Order, 0)
 	}
 
 	return orders, nil
+}
+
+func (cs *cartService) OrderDetailByOrderID(orderID int) (*Order, error) {
+	var order *Order
+
+	// rows, err := cs.dot.Query(cs.DB, "OrderDetailByUserID", orderID)
+	// if err != nil {
+	// 	bugsnag.Notify(err)
+	// 	fmt.Println("OrdersByUserID", err)
+	// 	return nil, err
+	// }
+	// defer rows.Close()
+	// for rows.Next() {
+	// 	var order Order
+	// 	if err := rows.Scan(
+	// 		&order.Id,
+	// 		&order.Is_paid,
+	// 		&order.Date_created,
+	// 	); err != nil {
+	// 		fmt.Println("fail to scan OrdersByUserID: ", err)
+	// 		return nil, err
+	// 	}
+	// 	orders = append(orders, order)
+
+	// }
+	// for i, order := range orders {
+	// 	orderItems := []Order_item{}
+
+	// 	rows, err = cs.dot.Query(cs.DB, "OrderItemsByID", order.Id)
+	// 	if err != nil {
+	// 		bugsnag.Notify(err)
+	// 		fmt.Println("OrderItemsByID", err)
+	// 		return nil, err
+	// 	}
+	// 	defer rows.Close()
+	// 	for rows.Next() {
+	// 		var item Order_item
+	// 		if err := rows.Scan(
+	// 			&item.Id,
+	// 			&item.Quantity,
+	// 			&item.Option,
+	// 			&item.Option_id,
+	// 			&item.Product.Id,
+	// 			&item.Product.Name,
+	// 			&item.Product.Thumbnail,
+	// 			&item.Product.Price,
+	// 			&item.Product.Sale_price,
+	// 			&item.Product.Sale_percent); err != nil {
+	// 			fmt.Println("fail to scan OrderItemsByID: ", err)
+	// 			return nil, err
+	// 		}
+	// 		orderItems = append(orderItems, item)
+	// 	}
+	// 	orders[i].OrderItems = orderItems
+	// }
+	// if orders == nil {
+	// 	orders = make([]Order, 0)
+	// }
+
+	return order, nil
 }

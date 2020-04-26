@@ -60,7 +60,7 @@ func (c *Crawler) AddNewProductsByCategories() {
 	for parentId, childrenIds := range categories {
 		for _, categoryId := range childrenIds {
 			fmt.Println("calling product by category:", +categoryId, "parent id: ", parentId)
-			c.GetPopularProductsByCategory(parentId, categoryId, 30)
+			c.GetPopularProductsByCategory(parentId, categoryId, 10)
 		}
 	}
 	return
@@ -128,7 +128,6 @@ func (c *Crawler) GetPopularProductsByCategory(parentId int, idx int, limit int)
 	for _, p := range products.Data {
 
 		err := c.CreateProductById(p.ID, "", parentId)
-
 		if err != nil {
 			bugsnag.Notify(err)
 			fmt.Println(err.Error())
@@ -276,9 +275,8 @@ func (c *Crawler) ProductDetailById(bProductId string) error {
 
 	//type conversion from BrandiProduct to dimodoProduct
 	var productOptions = []models.Option{}
-	var translatedOptions = bp.Data.Options
 
-	for i, option := range bp.Data.Options {
+	for _, option := range bp.Data.Options {
 		var newOption = option
 		//translate the title only once
 		for index, attribute := range option.Attributes {
@@ -287,7 +285,6 @@ func (c *Crawler) ProductDetailById(bProductId string) error {
 			newOption.Attributes[index].Title = title
 			newOption.Attributes[index].Value = value
 		}
-		translatedOptions[i] = newOption
 		productOptions = append(productOptions, newOption)
 	}
 
@@ -346,7 +343,7 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 	fmt.Println("createProductByID: ", url)
 	req, _ := http.NewRequest("GET", url, nil)
 	req.Header.Add("Authorization", brandiAuth)
-	client := http.Client{Timeout: time.Second * 10}
+	client := http.Client{Timeout: time.Second * 50}
 	res, err := client.Do(req)
 	if err != nil {
 		bugsnag.Notify(err)
@@ -364,13 +361,18 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 	desc, _ := translate.TranslateText(translate.Ko, translate.Vi, Description(bp.Data.Text))
 	translatedName, _ := translate.TranslateText(translate.Ko, translate.Vi, bp.Data.Name)
 	if translatedName == " " || len(translatedName) < 4 || translatedName == "[" {
-		return fmt.Errorf("both translator fails to translate properly: discarded product")
+		//log this info
+		fmt.Println("both translator fails to translate properly: discarded product")
+		return nil
 	}
 	//type conversion from BrandiProduct to dimodoProduct
+	//Korean options
+	var sProductOptions = []models.Option{}
+	//vietnaemse options
 	var productOptions = []models.Option{}
-	var translatedOptions = bp.Data.Options
 
-	for i, option := range bp.Data.Options {
+	for _, option := range bp.Data.Options {
+		var sOption = option
 		var newOption = option
 		//translate the title only once
 		for index, attribute := range option.Attributes {
@@ -379,7 +381,7 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 			newOption.Attributes[index].Title = title
 			newOption.Attributes[index].Value = value
 		}
-		translatedOptions[i] = newOption
+		sProductOptions = append(sProductOptions, sOption)
 		productOptions = append(productOptions, newOption)
 	}
 
@@ -387,6 +389,7 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 	seller.ID = bp.Data.Seller.ID
 
 	optionBytes, _ := json.Marshal(productOptions)
+	sOptionBytes, _ := json.Marshal(sProductOptions)
 	sizeDetailBytes, _ := json.Marshal(c.SizeDetail(bp.Data.Text))
 
 	_, err = c.dot.Exec(c.DB, "CreateProduct",
@@ -402,6 +405,7 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 		pq.Array(SliderImages(bp)),
 		pq.Array(ImagesFromHTML(bp.Data.Text)),
 		optionBytes,
+		sOptionBytes,
 		seller,
 		sizeDetailBytes,
 		cateId,

@@ -438,6 +438,7 @@ func (us *userService) HanleAfterLoginFacebook(content []byte) (*User, error) {
 func (us *userService) SignUpWithFacebook(user *User) error {
 	fmt.Printf("User Name: %v \n", user.User_name)
 	row, err := us.dot.QueryRow(us.DB, "QuerySignUpAuthFaceBook",
+
 		user.User_name,
 		user.Email,
 		user.Facebook_id,

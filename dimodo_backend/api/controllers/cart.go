@@ -2,22 +2,27 @@ package controllers
 
 import (
 	"dimodo_backend/models"
+	"dimodo_backend/sql/queries/utils"
 	"dimodo_backend/utils/jwt"
 	resp "dimodo_backend/utils/respond"
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"strconv"
 
 	"github.com/bugsnag/bugsnag-go"
+	"github.com/leekchan/accounting"
 )
 
 type Cart struct {
-	cs models.CartService
+	cs    models.CartService
+	slack *utils.Slack
 }
 
-func NewCart(cs models.CartService) *Cart {
+func NewCart(cs models.CartService, slack *utils.Slack) *Cart {
 	return &Cart{
-		cs: cs,
+		cs:    cs,
+		slack: slack,
 	}
 }
 
@@ -102,16 +107,64 @@ func (c *Cart) DeleteCartItem(w http.ResponseWriter, r *http.Request) {
 }
 
 //create new order by generating new id and creation time and moving cart_items to the order_detail tables
+//it also sends slack notification when the user creates an order
 func (c *Cart) CreateOrder(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 	auth := jwt.Payload(r)
-	order, err := c.cs.CreateOrder(auth.Id)
+	//parse shipping fee, address, and total fees
+	var order *models.Order
+
+	decoder := json.NewDecoder(r.Body)
+	if err := decoder.Decode(&order); err != nil {
+		msgError := fmt.Sprintf("Invalid request payload. Error: %s", err.Error())
+		resp.Json(w, r, http.StatusBadRequest, resp.WithError(msgError))
+		return
+	}
+	defer r.Body.Close()
+	order.User_id = auth.Id
+	fmt.Println("order userid: ", auth.Id)
+
+	order, err := c.cs.CreateOrder(*order)
+
 	if err != nil {
 		bugsnag.Notify(err)
 		resp.Json(w, r, http.StatusBadRequest, resp.WithError(err))
 		return
 	}
+	userId := strconv.Itoa(order.User_id)
+	orderId := strconv.Itoa(order.Id)
+	// totalFee := fmt.Sprintf("%g", order.Total_fee)
+	ac := accounting.Accounting{}
+	totalFee := ac.FormatMoney(order.Total_fee)
+	values := map[string]string{"text": "userId " + userId + " submitted order of " + totalFee + "₫ (orderId: " + orderId + ")"}
+
+	orderBytes, _ := json.Marshal(values)
+
+	err = c.slack.UpdateLiveSalesOnSlack(orderBytes)
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("fail to update live sale to slack", err)
+	}
+
 	resp.Json(w, r, http.StatusOK, resp.WithSuccess(order))
+}
+
+func (c *Cart) OrderDetailByOrderID(w http.ResponseWriter, r *http.Request) {
+	defer r.Body.Close()
+	auth := jwt.Payload(r)
+	orders, err := c.cs.OrderDetailByOrderID(auth.Id)
+	if err != nil {
+		bugsnag.Notify(err)
+		resp.Json(w, r, http.StatusBadRequest, resp.WithError(err))
+		return
+	}
+
+	//order
+	//address/
+	//user info
+	//
+
+	resp.Json(w, r, http.StatusOK, resp.WithSuccess(orders))
 }
 
 func (c *Cart) OrderHistoryByUserID(w http.ResponseWriter, r *http.Request) {

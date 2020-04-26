@@ -8,7 +8,7 @@
 # 	exit .
 # copy-toserver:
 # 	scp dimodo root@178.128.58.60:~/
-# NOTE: Be sure to replace all instances of 139.180.131.81
+# NOTE: Be sure to replace all instances of dimodo.app
 # with your own domain or IP address.
 
 # Change to the directory with our code that we plan to work from
@@ -24,25 +24,25 @@ env GOOS=linux GOARCH=amd64 go build -o dimodo
 echo "  Code built successfully!"
 
 echo "  Deleting existing code..."
-ssh root@139.180.131.81 "rm -rf go/src/dimodo_backend"
+ssh root@dimodo.app "rm -rf go/src/dimodo_backend"
 echo "  Code deleted successfully!"
 
 
 echo "  Uploading code..."
-rsync -avr --exclude '.git/*' --exclude 'tmp/*' --exclude 'images/*' ./ root@139.180.131.81:/root/go/src/dimodo_backend/
+rsync -avr --exclude '.git/*' --exclude 'tmp/*' --exclude 'images/*' ./ root@dimodo.app:/root/go/src/dimodo_backend/
 echo "  Code uploaded successfully!"
 
 # echo "  Moving Caddyfile..."
-# ssh root@139.180.131.81 "cd /root/app; \
+# ssh root@dimodo.app "cd /root/app; \
 #   cp /root/go/src/dimodo_backend/Caddyfile ."
 # echo "  Caddyfile moved successfully!"
 
 echo "  Restarting the server..."
-ssh root@139.180.131.81 "sudo service dimodo restart"
+ssh root@dimodo.app "sudo service dimodo restart"
 echo "  Server restarted successfully!"
 
 # echo "  Restarting Caddy server..."
-# ssh root@139.180.131.81 "sudo service caddy restart"
+# ssh root@dimodo.app "sudo service caddy restart"
 # echo "  Caddy restarted successfully!"
 
 echo "==== Done releasing dimodo_backend ===="

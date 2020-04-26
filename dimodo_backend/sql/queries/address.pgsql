@@ -66,6 +66,7 @@ WITH account AS (
         id = $1
 )
 SELECT
+    address.id,
     recipient_name,
     telephone,
     street,

@@ -66,12 +66,12 @@ FROM
 WHERE
     user_id = $1;
 
---name:	NewOrder
+--name:	CreateOrder
 WITH newOrder AS (
-INSERT INTO orders (user_id, is_paid, creater)
-        VALUES ($1, FALSE, $1)
+INSERT INTO orders (user_id, address_id, total_shipping, total_fee, is_paid, creater)
+        VALUES ($1, $2, $3, $4, FALSE, $1)
     RETURNING
-        id, user_id, created_at, is_paid
+        id, user_id, address_id, total_shipping, total_fee, created_at, is_paid
 ), moved_rows AS (
     DELETE FROM cart_item
     WHERE cart_item.user_id = $1
@@ -100,8 +100,11 @@ INSERT INTO order_item (user_id, option_id, product_id, quantity, option, create
 SELECT
     newOrder.id,
     newOrder.user_id,
+    newOrder.address_id,
+    newOrder.total_shipping,
+    newOrder.total_fee,
     newOrder.created_at,
-    neworder.is_paid
+    newOrder.is_paid
 FROM
     newOrder;
 
@@ -127,7 +130,10 @@ WHERE
 --name: OrdersByUserID
 SELECT
     id,
-    is_paid,
+    user_id,
+    address_id,
+    total_shipping,
+    total_fee,
     created_at
 FROM
     orders

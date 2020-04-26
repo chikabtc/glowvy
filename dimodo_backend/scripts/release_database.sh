@@ -8,5 +8,5 @@ echo "  dimodo_dev dumped successfully!"
 #need to recreate the db in the remote
 
 echo "  Restoring dimodo_prod..."
-ssh root@139.180.131.81 "gunzip -c dimodo.pgsql.gz | psql dimodo -U postgres"
+ssh root@dimodo.app "gunzip -c dimodo.pgsql.gz | psql dimodo -U postgres"
 echo "  dimodo_prod restored successfully"

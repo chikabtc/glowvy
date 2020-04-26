@@ -76,7 +76,7 @@ INSERT INTO product (sid, name, price, sale_percent, sale_price, thumbnail, crea
    VALUES ($1, $2, $3, $4, $5, $6, 1);
 
 --name: CreateProduct
-INSERT INTO product (sid, sname, name, sprice, sale_price, sale_percent, purchase_count, thumbnail, description, slider_images, desc_images, options, seller, size_details, category_id, tags, creater)
+INSERT INTO product (sid, sname, name, sprice, sale_price, sale_percent, purchase_count, thumbnail, description, slider_images, desc_images, options, soptions, seller, size_details, category_id, tags, creater)
 SELECT
    CAST($1 AS varchar),
    $2,
