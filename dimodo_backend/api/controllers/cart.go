@@ -152,7 +152,8 @@ func (c *Cart) CreateOrder(w http.ResponseWriter, r *http.Request) {
 func (c *Cart) OrderDetailByOrderID(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 	auth := jwt.Payload(r)
-	orders, err := c.cs.OrderDetailByOrderID(auth.Id)
+	//returns order, address, and user info
+	order, err := c.cs.OrderDetailByOrderID(auth.Id)
 	if err != nil {
 		bugsnag.Notify(err)
 		resp.Json(w, r, http.StatusBadRequest, resp.WithError(err))
@@ -164,7 +165,7 @@ func (c *Cart) OrderDetailByOrderID(w http.ResponseWriter, r *http.Request) {
 	//user info
 	//
 
-	resp.Json(w, r, http.StatusOK, resp.WithSuccess(orders))
+	resp.Json(w, r, http.StatusOK, resp.WithSuccess(order))
 }
 
 func (c *Cart) OrderHistoryByUserID(w http.ResponseWriter, r *http.Request) {

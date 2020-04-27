@@ -234,6 +234,8 @@ func (cs *cartService) OrderHistoryByUserID(authID int) ([]Order, error) {
 
 func (cs *cartService) OrderDetailByOrderID(orderID int) (*Order, error) {
 	var order *Order
+	// var user *user
+	// var address *address
 
 	// rows, err := cs.dot.Query(cs.DB, "OrderDetailByUserID", orderID)
 	// if err != nil {
