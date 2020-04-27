@@ -106,7 +106,8 @@ class UserModel with ChangeNotifier {
       success(user);
       notifyListeners();
     } catch (err) {
-      fail("Canceled Google Sign in");
+      print("Canceled Google Sign in: $err");
+      fail("Canceled Google Sign in: $err");
     }
   }
 
