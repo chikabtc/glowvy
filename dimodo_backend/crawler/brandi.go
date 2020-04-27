@@ -60,7 +60,7 @@ func (c *Crawler) AddNewProductsByCategories() {
 	for parentId, childrenIds := range categories {
 		for _, categoryId := range childrenIds {
 			fmt.Println("calling product by category:", +categoryId, "parent id: ", parentId)
-			c.GetPopularProductsByCategory(parentId, categoryId, 10)
+			c.GetPopularProductsByCategory(parentId, categoryId, 5)
 		}
 	}
 	return
