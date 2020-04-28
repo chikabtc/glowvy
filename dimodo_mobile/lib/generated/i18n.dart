@@ -172,7 +172,7 @@ class S implements WidgetsLocalizations {
   String get address => "Address";
   String get transactionSuccess => "Transaction success";
   String get trendDesign => "Trend Design";
-  String get koreanShippingFee => "Korean Shipping fee: 60,000₫";
+  String get koreanShippingFee => "Korean Shipping fee: 50,000₫";
   String get shipFrom => "Ship from";
   String get serviceIncludes => "Service includes";
   String get quanlityGuarantee => "Quality Guarantee";
@@ -525,7 +525,7 @@ class $vi extends S {
   @override
   String get youMayAlsoLike => "Các sản phẩm tương tự";
   @override
-  String get koreanShippingFee => "Phí ship từ Hàn Quốc: 60,000₫";
+  String get koreanShippingFee => "Phí ship từ Hàn Quốc: 50,000₫";
   @override
   String get shipFrom => "Giao hàng từ";
   @override
