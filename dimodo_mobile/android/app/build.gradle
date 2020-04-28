@@ -42,6 +42,11 @@ android {
         disable 'InvalidPackage'
         checkReleaseBuilds false
     }
+    configurations.all {
+    resolutionStrategy {
+        force 'com.android.support:support-v4:27.1.0'
+        }
+    }
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
