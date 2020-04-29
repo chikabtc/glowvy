@@ -11,6 +11,7 @@ import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/productAttribute.dart';
 import 'package:Dimodo/models/brandi/option.dart';
 import 'package:Dimodo/models/order/cart.dart';
+import 'package:Dimodo/widgets/webview.dart';
 
 import 'package:Dimodo/models/user/userModel.dart';
 import '../../common/constants.dart';
@@ -469,21 +470,6 @@ class _ProductOptionState extends State<ProductOption>
                             ),
                           ),
                         ),
-
-                        // Padding(
-                        //   padding: EdgeInsets.only(left: 16.0),
-                        //   child: Container(
-                        //     height: screenSize.height * heightFactor -
-                        //         AppBar().preferredSize.height,
-                        //     child: ListView(
-                        //       // shrinkWrap: true,
-                        //       // crossAxisAlignment: CrossAxisAlignment.start,
-                        //       children: <Widget>[
-
-                        //       ],
-                        //     ),
-                        //   ),
-                        // )
                       ],
                     )),
               );
@@ -512,7 +498,7 @@ class _ProductOptionState extends State<ProductOption>
           children: <Widget>[
             MaterialButton(
                 elevation: 0,
-                minWidth: (screenSize.width - 48) * 0.33,
+                minWidth: (screenSize.width - 48) * 0.5,
                 height: 48,
                 shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(25.0),
@@ -520,12 +506,13 @@ class _ProductOptionState extends State<ProductOption>
                 child: DynamicText(S.of(context).support,
                     style: kBaseTextStyle.copyWith(
                         fontWeight: FontWeight.w600, color: kPinkAccent)),
-                onPressed: CustomerSupport.openFacebookMessenger),
+                onPressed: () =>
+                    CustomerSupport.openFacebookMessenger(context)),
             SizedBox(width: 16),
             MaterialButton(
                 elevation: 0,
                 color: kPinkAccent,
-                minWidth: (screenSize.width - 48) * 0.66,
+                minWidth: (screenSize.width - 48) * 0.5,
                 height: 48,
                 shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(25.0),

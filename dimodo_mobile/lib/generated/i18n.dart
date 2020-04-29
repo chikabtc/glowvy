@@ -93,6 +93,8 @@ class S implements WidgetsLocalizations {
   String get quantity => "Quantity";
   String get size => "Size";
   String get color => "Color";
+  String get translatedByGoogle => "translated by Google Translate";
+  String get soldByKoreanShopDirectShipping => "Korean Brand Direct Supply";
 
   // ===========================================================================
   // Confirm Order Page
@@ -172,10 +174,13 @@ class S implements WidgetsLocalizations {
   String get address => "Address";
   String get transactionSuccess => "Transaction success";
   String get trendDesign => "Trend Design";
-  String get koreanShippingFee => "Korean Shipping fee: 50,000₫";
-  String get shipFrom => "Ship from";
+  String get koreanShippingFee => "Korean Shipping fee: 50,000₫ per item";
+  String get shipFromKorea => "Ship from Korea";
   String get serviceIncludes => "Service includes";
   String get quanlityGuarantee => "Quality Guarantee";
+  String get importTaxIncluded => "Import Tax Included";
+  String get importTaxFeeDescription =>
+      "The goods you have purchased already include import taxes for cross-border e-commerce. Individual goods are borne by the merchant, you do not need to pay.";
 
   String get koreanShipping => "Korean Shipping";
   String get trustReviews => "Trust Reviews";
@@ -425,10 +430,6 @@ class $vi extends S {
   String get shippingDescription =>
       "Chúng tôi nhận được gói của bạn từ các cửa hàng Hàn Quốc trong vòng 3-5 ngày. Phải mất một tuần nữa để gửi nó đến cửa của bạn tại Việt Nam";
 
-  // ===========================================================================
-  // To translate
-  // ===========================================================================
-
   String get name => "Name";
 
 // =============================================================================
@@ -471,7 +472,18 @@ class $vi extends S {
   String get manageShippingAddress => "Địa Chỉ Của Tôi";
   String get writeReview => "Viết nhận xét của bạn";
   String get send => "Gửi";
+  // ===========================================================================
+  // To Trnaslate
+  // ===========================================================================
+  String get importTaxIncluded => "Import Tax Included";
+  String get translatedByGoogle => "translated by Google Translate";
+  String get soldByKoreanShopDirectShipping => "Korean Brand Direct Supply";
 
+  String get importTaxFeeDescription =>
+      "The goods you have purchased already include import taxes for cross-border e-commerce. Individual goods are borne by the merchant, you do not need to pay.";
+// =============================================================================
+// To trnaslate
+// =============================================================================
   @override
   String get all => "TẤT CẢ";
   @override
@@ -527,7 +539,7 @@ class $vi extends S {
   @override
   String get koreanShippingFee => "Phí ship từ Hàn Quốc: 50,000₫";
   @override
-  String get shipFrom => "Giao hàng từ";
+  String get shipFromKorea => "Giao hàng từ";
   @override
   String get serviceIncludes => "Dịch vụ bao gồm";
   @override

@@ -155,10 +155,10 @@ class _ProductDetailState extends State<ProductDetail> {
                                     expandedHeight: screenSize.height * 0.52 +
                                         //title static heigt (31) and font sizes total 41 and 0.9 is the number for the height of the font
                                         //52 is the fontsizes of the service container texts.
-                                        //70 is the static height of the service contaienr
+                                        //100 is the static height of the service contaienr
                                         //40 is the tabbar height
                                         51 +
-                                        70 +
+                                        100 +
                                         41 * 1.2 +
                                         52 * 1.2 +
                                         40,
@@ -281,7 +281,7 @@ class _ProductDetailState extends State<ProductDetail> {
                                                                   S
                                                                       .of(
                                                                           context)
-                                                                      .shipFrom,
+                                                                      .shipFromKorea,
                                                                   style: kBaseTextStyle.copyWith(
                                                                       fontSize:
                                                                           13,
@@ -309,7 +309,7 @@ class _ProductDetailState extends State<ProductDetail> {
                                                                   S
                                                                       .of(
                                                                           context)
-                                                                      .serviceIncludes,
+                                                                      .importTaxIncluded,
                                                                   style: kBaseTextStyle.copyWith(
                                                                       fontSize:
                                                                           13,
@@ -322,7 +322,7 @@ class _ProductDetailState extends State<ProductDetail> {
                                                                   S
                                                                       .of(
                                                                           context)
-                                                                      .quanlityGuarantee,
+                                                                      .importTaxFeeDescription,
                                                                   style: kBaseTextStyle.copyWith(
                                                                       fontSize:
                                                                           12,

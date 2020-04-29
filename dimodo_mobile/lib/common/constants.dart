@@ -135,8 +135,8 @@ RateMyApp kRateMyApp = RateMyApp();
 
 //fb://messaging?id=%@
 String kFacebookFBID = "105086787660550";
-String kFBProtocolUrl = "fb://profile/$kFacebookFBID";
-String kFBFallbackUrl = "https://www.m.me/Dimodo.vn";
+String kFBDimodoPage = "fb://profile/$kFacebookFBID";
+String kFBMessenger = "https://www.m.me/Dimodo.vn";
 
 String kAccessToken;
 

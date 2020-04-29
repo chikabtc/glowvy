@@ -13,6 +13,7 @@ import 'package:timeago/timeago.dart' as timeago;
 import 'config.dart';
 import 'constants.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:Dimodo/widgets/webview.dart';
 
 enum kSize { small, medium, large }
 
@@ -287,14 +288,20 @@ class Validator {
 }
 
 class CustomerSupport {
-  static void openFacebookMessenger() async {
+  //open in the in-app-browser instead of goign to the different
+  static void openFacebookMessenger(context) async {
     try {
-      bool launched = await launch(kFBProtocolUrl, forceSafariVC: false);
+      bool launched = await launch(kFBMessenger, forceSafariVC: false);
+      // Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //         builder: (context) => WebView(
+      //             url: "https://www.m.me/Dimodo.vn", title: "Ask Anything!")));
       if (!launched) {
-        await launch(kFBFallbackUrl, forceSafariVC: false);
+        await launch(kFBDimodoPage, forceSafariVC: false);
       }
     } catch (e) {
-      await launch(kFBFallbackUrl, forceSafariVC: false);
+      await launch(kFBDimodoPage, forceSafariVC: false);
     }
   }
 }

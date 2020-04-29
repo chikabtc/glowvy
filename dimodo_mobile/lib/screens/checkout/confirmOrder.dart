@@ -256,8 +256,9 @@ class _ConfirmOrderState extends State<ConfirmOrder>
                                           style: kBaseTextStyle.copyWith(
                                               fontWeight: FontWeight.w600,
                                               color: kPinkAccent)),
-                                      onPressed: CustomerSupport
-                                          .openFacebookMessenger),
+                                      onPressed: () =>
+                                          CustomerSupport.openFacebookMessenger(
+                                              context)),
                                 ],
                               ),
                             )

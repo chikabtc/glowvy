@@ -22,29 +22,31 @@ class _WebViewState extends State<WebView> {
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         leading: IconButton(
-                  icon: CommonIcons.arrowBackward,
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                ),
+          icon: CommonIcons.arrowBackward,
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
         backgroundColor: Theme.of(context).backgroundColor,
         elevation: 0.0,
         title: Text(widget.title ?? ''),
       ),
-      body: Stack(
-        children: <Widget>[
-          _widget.WebView(
-            initialUrl: widget.url,
-            onPageFinished: (_) {
-              setState(() {
-                isLoading = false;
-              });
-            },
-            javascriptMode: _widget.JavascriptMode.unrestricted,
-          ),
-          if (isLoading)
-            kLoadingWidget(context),
-        ],
+      body: SafeArea(
+        bottom: true,
+        child: Stack(
+          children: <Widget>[
+            _widget.WebView(
+              initialUrl: widget.url,
+              onPageFinished: (_) {
+                setState(() {
+                  isLoading = false;
+                });
+              },
+              javascriptMode: _widget.JavascriptMode.unrestricted,
+            ),
+            if (isLoading) kLoadingWidget(context),
+          ],
+        ),
       ),
     );
   }

@@ -6,6 +6,7 @@ import 'dart:async';
 import 'package:sentry/sentry.dart';
 import 'package:firebase_performance/firebase_performance.dart';
 import 'app.dart';
+import 'package:intercom_flutter/intercom_flutter.dart';
 
 final SentryClient _sentry = new SentryClient(
     dsn:
@@ -28,6 +29,9 @@ void main() async {
 
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    // await Intercom.initialize('yv3r4jqb',
+    //     iosApiKey: 'ios_sdk-c0e0878e033afeeede7962ae597d44a50a44feec',
+    //     androidApiKey: 'android_sdk-72dc317cf2edf118401bb597c733976806b63905');
 
     runApp(Dimodo());
   }, onError: (error, stackTrace) async {

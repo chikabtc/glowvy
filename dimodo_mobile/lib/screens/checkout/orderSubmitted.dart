@@ -17,6 +17,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'orderSummary.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/tools.dart';
 
 class OrderSubmitted extends StatefulWidget {
   OrderSubmitted();
@@ -53,18 +54,6 @@ class _OrderSubmittedState extends State<OrderSubmitted>
         );
       },
     ).toList();
-  }
-
-  void openFacebookMessenger() async {
-    print("submitttt");
-    try {
-      bool launched = await launch(kFBProtocolUrl, forceSafariVC: false);
-      if (!launched) {
-        await launch(kFBFallbackUrl, forceSafariVC: false);
-      }
-    } catch (e) {
-      await launch(kFBFallbackUrl, forceSafariVC: false);
-    }
   }
 
   void onOrderConfirmed(context) {
@@ -321,7 +310,9 @@ class _OrderSubmittedState extends State<OrderSubmitted>
                                         fontWeight: FontWeight.w600,
                                         fontSize: 14,
                                         color: kPinkAccent)),
-                                onPressed: openFacebookMessenger),
+                                onPressed: () =>
+                                    CustomerSupport.openFacebookMessenger(
+                                        context)),
                           ),
                         ),
                         Container(height: 10, color: kDefaultBackground),

@@ -9,6 +9,7 @@ import '../../screens/detail/product_detail.dart';
 import '../../common/styles.dart';
 import 'package:transparent_image/transparent_image.dart';
 import '../../widgets/customWidgets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -65,12 +66,21 @@ class ProductCard extends StatelessWidget {
                   fit: BoxFit.cover,
                   child: GestureDetector(
                     onTap: () => onTapProduct(context),
-                    child: FadeInImage.memoryNetwork(
-                      placeholder: kTransparentImage,
-                      image: product.thumbnail,
+                    child: CachedNetworkImage(
+                      imageUrl: product.thumbnail,
                       width: 100,
                       height: 100,
+                      // placeholder: (context, url) =>
+                      //     CircularProgressIndicator(),
+                      // errorWidget: (context, url, error) => Icon(Icons.error),
                     ),
+
+                    // FadeInImage.memoryNetwork(
+                    //   placeholder: kTransparentImage,
+                    //   image: ,
+                    //   width: 100,
+                    //   height: 100,
+                    // ),
                   ),
                 )),
           ),

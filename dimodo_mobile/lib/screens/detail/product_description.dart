@@ -4,12 +4,10 @@ import 'package:flutter/material.dart';
 import '../../common/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:Dimodo/models/product/product.dart';
+import 'package:Dimodo/generated/i18n.dart';
 
 class ProductDescription extends StatefulWidget {
   Product product;
-  // final String description;
-  // List<String> images;
-  // String sizeDetail;
 
   ProductDescription(this.product);
 
@@ -71,11 +69,38 @@ class _ProductDescriptionState extends State<ProductDescription>
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(children: <Widget>[
-            DynamicText(
-              "id: ${widget.product.sid.toString()}",
-              style: kBaseTextStyle.copyWith(fontSize: 12, color: kDarkAccent),
-              textAlign: TextAlign.start,
-            ),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Container(
+                    decoration: BoxDecoration(
+                      color: kDefaultBackground,
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                    ),
+                    child: DynamicText(
+                      "id: ${widget.product.sid.toString()}",
+                      style: kBaseTextStyle.copyWith(
+                          fontSize: 12, color: kDarkAccent),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: kDefaultBackground,
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                    ),
+                    child: Row(children: <Widget>[
+                      Image.asset(
+                          "assets/icons/product_detail/google-translate.png"),
+                      DynamicText(
+                        S.of(context).translatedByGoogle,
+                        style: kBaseTextStyle.copyWith(
+                            fontSize: 12, color: kDarkAccent),
+                        textAlign: TextAlign.start,
+                      ),
+                    ]),
+                  ),
+                ]),
             SizedBox(height: 50),
             renderSizeDetail(),
             widget.product.description != null

@@ -5,6 +5,7 @@ import '../../models/product/product.dart';
 import '../../models/product/productModel.dart';
 import '../../widgets/customWidgets.dart';
 import '../../common/tools.dart';
+import 'package:Dimodo/generated/i18n.dart';
 
 class ProductTitle extends StatelessWidget {
   final Product product;
@@ -16,10 +17,6 @@ class ProductTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     ProductVariation productVariation;
     productVariation = Provider.of<ProductModel>(context).productVariation;
-    // print("product sale: ${product.salePercent}");
-    if (product.salePercent is String) {
-      // print("null is string!?");
-    }
 
     return Container(
       color: Colors.white,
@@ -70,6 +67,23 @@ class ProductTitle extends StatelessWidget {
                       fontSize: 12,
                       color: kDarkSecondary.withOpacity(0.5))),
             ),
+          SizedBox(height: 5),
+          Container(
+            // width: 212,
+            decoration: BoxDecoration(
+              color: kDefaultBackground,
+              borderRadius: BorderRadius.all(Radius.circular(5)),
+            ),
+            child: Row(children: <Widget>[
+              Image.asset("assets/icons/product_detail/korean-flag.png"),
+              DynamicText(
+                S.of(context).soldByKoreanShopDirectShipping,
+                style: kBaseTextStyle.copyWith(
+                    fontSize: 12, color: kDarkSecondary.withOpacity(0.7)),
+                textAlign: TextAlign.start,
+              ),
+            ]),
+          ),
           SizedBox(height: 5),
           Container(
             width: MediaQuery.of(context).size.width,
