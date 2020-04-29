@@ -83,6 +83,7 @@ class _ProductListState extends State<ProductList>
   }
 
   @override
+  //testing codemagic1
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final widthContent = (screenSize.width / 2);
@@ -103,49 +104,12 @@ class _ProductListState extends State<ProductList>
               shrinkWrap: true,
               itemCount: widget.products.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                //p
                 childAspectRatio: 0.75,
                 crossAxisCount: 2,
-                // crossAxisSpacing: 0.0,q
-                // mainAxisSpacing: 0.0,
               ),
               itemBuilder: (BuildContext context, int index) => ProductCard(
                   product: widget.products[index], width: widthContent),
             ),
           );
   }
-  // @override
-  // Widget build(BuildContext context) {
-  //   final screenSize = MediaQuery.of(context).size;
-  //   final widthContent = (screenSize.width / 2);
-
-  //   return widget.products == null
-  //       ? SliverList(
-  //           delegate: SliverChildListDelegate([
-  //           Container(
-  //             width: screenSize.width,
-  //             height: 300,
-  //             child: CupertinoActivityIndicator(animating: true),
-  //           ),
-  //         ]))
-  //       : SliverPadding(
-  //           padding: const EdgeInsets.only(left: 3.0, right: 3.0, bottom: 70.0),
-  //           sliver: SliverGrid(
-  //             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-  //               //p
-  //               childAspectRatio: 0.75,
-  //               crossAxisCount: 2,
-  //               // crossAxisSpacing: 0.0,q
-  //               // mainAxisSpacing: 0.0,
-  //             ),
-  //             delegate: new SliverChildBuilderDelegate(
-  //               (context, index) => ProductCard(
-  //                   product: widget.products[index], width: widthContent),
-  //               childCount: widget.products.length,
-  //             ),
-  //           ),
-  //         );
-  // }
 }
-
-//if no product, show loading icon, else show product list (get notified when the list is updated)
