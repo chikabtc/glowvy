@@ -102,11 +102,19 @@ class S implements WidgetsLocalizations {
 
   String get confirmToOrder => "Confirm to order";
   String get includingTaxAndFee => "including tax & fee";
+  String get includedInPrice => "included in price";
   String get deliveryMethod => "Delivery Method";
   String get deliveryMethodDescription => "Shipping by Air - 10 days";
   String get importTax => "Import Tax";
   String get importTaxDescription => "Korean Import Tax (10%)";
   String get serviceFee => "Service fee";
+  String get genuineSecurity => "Genuine Security";
+  String get genuineSecurityDescription =>
+      "If item is inauthentic, the buyer will be refunded the full amount they paid for the items";
+  String get returnPolicy => "Return Policy";
+  String get returnPolicyDescription =>
+      "Within 7 days (included) of the date of receipt confirmation, if there is any product quality problem description, leakage, loss, (not including subjective reasons), you can apply for a return";
+
   String get serviceFeeDescription =>
       "The service helps us run our platform and offer better experiences";
   String get submitOrder => "Submit order";

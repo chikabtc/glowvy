@@ -1,8 +1,6 @@
 import 'package:Dimodo/common/styles.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../../models/product/product.dart';
-import '../../models/product/productModel.dart';
 import '../../widgets/customWidgets.dart';
 import '../../common/tools.dart';
 import 'package:Dimodo/generated/i18n.dart';
@@ -15,15 +13,12 @@ class ProductTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ProductVariation productVariation;
-    productVariation = Provider.of<ProductModel>(context).productVariation;
-
     return Container(
       color: Colors.white,
-      // height: 88,
       padding: EdgeInsets.all(10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Row(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -40,17 +35,17 @@ class ProductTitle extends StatelessWidget {
                 if (product.salePercent != null)
                   Container(
                     decoration: BoxDecoration(
-                      color: kLightPink,
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      color: kPinkAccent,
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
                     ),
                     child: Padding(
-                      padding: EdgeInsets.only(left: 2, right: 2),
+                      padding: EdgeInsets.only(left: 3, right: 3),
                       child: DynamicText(
                         "-${product.salePercent}%",
                         textAlign: TextAlign.center,
                         style: kBaseTextStyle.copyWith(
-                            color: kPinkAccent,
-                            fontSize: 10,
+                            color: kDefaultBackground,
+                            fontSize: 14,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
@@ -69,20 +64,30 @@ class ProductTitle extends StatelessWidget {
             ),
           SizedBox(height: 5),
           Container(
-            // width: 212,
+            // width: 245,
             decoration: BoxDecoration(
               color: kDefaultBackground,
-              borderRadius: BorderRadius.all(Radius.circular(5)),
+              borderRadius: BorderRadius.all(Radius.circular(20)),
             ),
-            child: Row(children: <Widget>[
-              Image.asset("assets/icons/product_detail/korean-flag.png"),
-              DynamicText(
-                S.of(context).soldByKoreanShopDirectShipping,
-                style: kBaseTextStyle.copyWith(
-                    fontSize: 12, color: kDarkSecondary.withOpacity(0.7)),
-                textAlign: TextAlign.start,
-              ),
-            ]),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 7.0),
+              child: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
+                Image.asset("assets/icons/product_detail/korean-flag.png"),
+                SizedBox(width: 5),
+                DynamicText(
+                  S.of(context).soldByKoreanShopDirectShipping,
+                  style: kBaseTextStyle.copyWith(
+                      fontSize: 12, color: kDarkSecondary.withOpacity(0.7)),
+                  textAlign: TextAlign.start,
+                ),
+              ]),
+            ),
+            //  DynamicText(
+            //   S.of(context).soldByKoreanShopDirectShipping,
+            //   style: kBaseTextStyle.copyWith(
+            //       fontSize: 12, color: kDarkSecondary.withOpacity(0.7)),
+            //   textAlign: TextAlign.start,
+            // ),
           ),
           SizedBox(height: 5),
           Container(

@@ -20,7 +20,7 @@ class CartModel with ChangeNotifier {
   Address address;
   Billing billing;
   String currency;
-  double shippingFeePerItem = 60000;
+  double shippingFeePerItem = 50000;
   double totalShippingFee = 0;
   double totalServiceFee = 0;
   double totalImportTax = 0;
@@ -268,7 +268,7 @@ class CartModel with ChangeNotifier {
 
   double getTotal() {
     // print("subTotal: $subTotalFee");
-    totalFee = getSubTotal() + getServiceFee() + getShippingFee();
+    totalFee = getSubTotal() + getShippingFee();
     // print("getTotal: $totalFee");
 
     return totalFee;

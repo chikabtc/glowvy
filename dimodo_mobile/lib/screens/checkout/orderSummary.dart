@@ -54,11 +54,23 @@ class _OrderSummaryState extends State<OrderSummary> {
         SizedBox(height: 20),
         OrderSummaryCard(
           currency: currency,
-          title: S.of(context).serviceFee,
-          subTitle: S.of(context).serviceFee,
-          fee: Tools.getCurrecyFormatted(widget.model.getServiceFee(),
-              currency: currency),
+          title: S.of(context).importTax,
+          subTitle: S.of(context).includedInPrice,
+          fee: Tools.getCurrecyFormatted(0.0, currency: currency),
         ),
+        SizedBox(height: 20),
+        OrderSummaryCard(
+          currency: currency,
+          title: S.of(context).genuineSecurity,
+          subTitle: S.of(context).genuineSecurityDescription,
+          fee: null,
+        ),
+        SizedBox(height: 20),
+        OrderSummaryCard(
+            currency: currency,
+            title: S.of(context).returnPolicy,
+            subTitle: S.of(context).returnPolicyDescription,
+            fee: null),
         SizedBox(height: 20),
         Divider(
           color: kDarkSecondary.withOpacity(0.1),
@@ -124,8 +136,8 @@ class OrderSummaryCard extends StatelessWidget {
                       color: isBankTransferSummary ? kDarkBG : kDarkSecondary),
                 ),
               ),
-              Spacer(),
-              if (!isBankTransferSummary)
+              if (fee != null) Spacer(),
+              if (!isBankTransferSummary && fee != null)
                 DynamicText(
                   fee,
                   style: kBaseTextStyle.copyWith(

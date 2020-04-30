@@ -269,7 +269,7 @@ class _LoginPageState extends State<LoginScreen>
                         height: 16.0,
                       ),
                       StaggerAnimation(
-                        titleButton: S.of(context).signInWithEmail,
+                        buttonTitle: S.of(context).signInWithEmail,
                         buttonController: _loginButtonController.view,
                         onTap: () {
                           if (!isLoading) {

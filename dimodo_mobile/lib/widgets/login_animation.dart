@@ -7,7 +7,8 @@ class StaggerAnimation extends StatelessWidget {
   final VoidCallback onTap;
   final Color btnColor;
   final Color btnTitleColor;
-  final String titleButton;
+  final String buttonTitle;
+  final double height;
 
   StaggerAnimation(
       {Key key,
@@ -15,7 +16,8 @@ class StaggerAnimation extends StatelessWidget {
       this.onTap,
       this.btnColor,
       this.btnTitleColor,
-      this.titleButton = "Sign In"})
+      this.height = 40,
+      this.buttonTitle = "Sign In"})
       : buttonSqueezeanimation = new Tween(
           begin: 320.0,
           end: 50.0,
@@ -54,7 +56,7 @@ class StaggerAnimation extends StatelessWidget {
       },
       child: Container(
           width: kScreenSizeWidth,
-          height: 48,
+          height: height,
           alignment: FractionalOffset.center,
           decoration: new BoxDecoration(
             color: btnColor == null ? Theme.of(context).buttonColor : btnColor,
@@ -62,7 +64,7 @@ class StaggerAnimation extends StatelessWidget {
           ),
           child: buttonSqueezeanimation.value > 75.0
               ? new DynamicText(
-                  titleButton,
+                  buttonTitle,
                   style: kBaseTextStyle.copyWith(
                       fontWeight: FontWeight.w600,
                       fontSize: 14,

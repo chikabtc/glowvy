@@ -448,7 +448,7 @@ class _ProductOptionState extends State<ProductOption>
                               child: Consumer<UserModel>(
                                   builder: (context, model, child) {
                                 return StaggerAnimation(
-                                  titleButton: S.of(context).addToCart,
+                                  buttonTitle: S.of(context).addToCart,
                                   btnColor: isProductChosen()
                                       ? kPinkAccent
                                       : kDarkAccent.withOpacity(0.4),
@@ -499,7 +499,7 @@ class _ProductOptionState extends State<ProductOption>
             MaterialButton(
                 elevation: 0,
                 minWidth: (screenSize.width - 48) * 0.5,
-                height: 48,
+                height: 40,
                 shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(25.0),
                     side: BorderSide(color: kPinkAccent, width: 1.5)),
@@ -513,7 +513,7 @@ class _ProductOptionState extends State<ProductOption>
                 elevation: 0,
                 color: kPinkAccent,
                 minWidth: (screenSize.width - 48) * 0.5,
-                height: 48,
+                height: 40,
                 shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(25.0),
                     side: BorderSide(color: kPinkAccent, width: 1.5)),

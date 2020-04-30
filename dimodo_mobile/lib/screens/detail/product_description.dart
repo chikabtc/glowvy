@@ -85,6 +85,7 @@ class _ProductDescriptionState extends State<ProductDescription>
                     ),
                   ),
                   Container(
+                    padding: EdgeInsets.symmetric(horizontal: 5),
                     decoration: BoxDecoration(
                       color: kDefaultBackground,
                       borderRadius: BorderRadius.all(Radius.circular(5)),

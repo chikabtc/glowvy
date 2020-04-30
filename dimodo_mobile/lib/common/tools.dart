@@ -153,6 +153,7 @@ class Tools {
     String price =
         onSale ? product.salePrice.toString() : product.price.toString();
     var basePrice = double.parse(price);
+
     var convertedP = basePrice * 19;
     return convertedP.toString();
     // if (product.multiCurrencies != null &&

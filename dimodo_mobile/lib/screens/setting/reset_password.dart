@@ -228,7 +228,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen>
                           )),
                       SizedBox(height: 16.0),
                       StaggerAnimation(
-                          titleButton: S.of(context).resetpassword,
+                          buttonTitle: S.of(context).resetpassword,
                           buttonController: _resetButtonController.view,
                           onTap: () {
                             _resetPassword();

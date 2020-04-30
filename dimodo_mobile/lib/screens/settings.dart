@@ -170,7 +170,8 @@ class SettingScreenState extends State<SettingScreen>
                       kFullDivider,
                       SettingCard(
                           title: S.of(context).customerSupport,
-                          onTap: CustomerSupport.openFacebookMessenger),
+                          onTap: () =>
+                              CustomerSupport.openFacebookMessenger(context)),
                       kFullDivider,
                       SettingCard(
                           title: S.of(context).feedback,

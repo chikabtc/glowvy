@@ -6,7 +6,6 @@ import '../../common/constants.dart';
 import '../../widgets/image_galery.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../common/constants.dart';
 import '../../common/styles.dart';
 import '../../generated/i18n.dart';
 import '../../models/review.dart';
@@ -99,50 +98,89 @@ class _StateReviews extends State<Reviews>
                   ),
                 ),
               )
-            : Column(
-                children: <Widget>[
-                  ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      itemCount: reviews.length,
-                      itemBuilder: (context, i) =>
-                          renderItem(context, reviews[i])),
-                  isLoading
-                      ? SpinKitCircle(
-                          color: kPinkAccent,
-                          size: 23.0 * kSizeConfig.containerMultiplier)
-                      : isEnd
-                          ? SvgPicture.asset(
-                              'assets/icons/heart-ballon.svg',
-                              width: 30,
-                              height: 42,
-                            )
-                          : MaterialButton(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(6.0),
-                              ),
-                              elevation: 0,
-                              onPressed: () {
-                                setState(() {
-                                  isLoading = true;
-                                });
-                                getReviews();
-                              },
-                              height: 40,
-                              minWidth: 62,
-                              color: kLightBG,
-                              child: Center(
-                                  child: DynamicText(
-                                "Load More",
-                                style: kBaseTextStyle.copyWith(
-                                    fontSize: 15,
-                                    color: kDarkSecondary,
-                                    fontWeight: FontWeight.w600),
-                              )),
+            : Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: <Widget>[
+                    SizedBox(height: 18),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          // Container(
+                          //   padding: EdgeInsets.only(left: 16),
+                          //   child: DynamicText(
+                          //     "Reviews",
+                          //     style: kBaseTextStyle.copyWith(
+                          //         fontSize: 13,
+                          //         fontWeight: FontWeight.w600,
+                          //         color: kDarkAccent),
+                          //     textAlign: TextAlign.start,
+                          //   ),
+                          // ),
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 5),
+                            decoration: BoxDecoration(
+                              color: kDefaultBackground,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(5)),
                             ),
-                  Container(height: 10)
-                ],
+                            child: Row(children: <Widget>[
+                              Image.asset(
+                                  "assets/icons/product_detail/google-translate.png"),
+                              DynamicText(
+                                S.of(context).translatedByGoogle,
+                                style: kBaseTextStyle.copyWith(
+                                    fontSize: 12,
+                                    color: kDarkAccent.withOpacity(0.7)),
+                                textAlign: TextAlign.start,
+                              ),
+                            ]),
+                          ),
+                        ]),
+                    // SizedBox(height: 50),
+                    ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        itemCount: reviews.length,
+                        itemBuilder: (context, i) =>
+                            renderItem(context, reviews[i])),
+                    isLoading
+                        ? SpinKitCircle(
+                            color: kPinkAccent,
+                            size: 23.0 * kSizeConfig.containerMultiplier)
+                        : isEnd
+                            ? SvgPicture.asset(
+                                'assets/icons/heart-ballon.svg',
+                                width: 30,
+                                height: 42,
+                              )
+                            : MaterialButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(6.0),
+                                ),
+                                elevation: 0,
+                                onPressed: () {
+                                  setState(() {
+                                    isLoading = true;
+                                  });
+                                  getReviews();
+                                },
+                                height: 40,
+                                minWidth: 62,
+                                color: kLightBG,
+                                child: Center(
+                                    child: DynamicText(
+                                  "Load More",
+                                  style: kBaseTextStyle.copyWith(
+                                      fontSize: 15,
+                                      color: kDarkSecondary,
+                                      fontWeight: FontWeight.w600),
+                                )),
+                              ),
+                    Container(height: 10)
+                  ],
+                ),
               ));
   }
 
@@ -183,57 +221,54 @@ class _StateReviews extends State<Reviews>
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(2.0)),
       margin: EdgeInsets.only(bottom: 10.0),
-      child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                //todo: assign the same profile pic
-                Image.asset(
-                  'assets/icons/account/profile${rng.nextInt(2)}.png',
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              //todo: assign the same profile pic
+              Image.asset(
+                'assets/icons/account/profile${rng.nextInt(2)}.png',
+              ),
+              SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    DynamicText(review.user.name,
+                        style: TextStyle(
+                            fontSize: 13, fontWeight: FontWeight.w600)),
+                    DynamicText(review.product.optionName,
+                        style: TextStyle(
+                            color: kDarkSecondary.withOpacity(0.5),
+                            fontSize: 11,
+                            fontWeight: FontWeight.w500)),
+                    SizedBox(height: 10),
+                    DynamicText(sanitizedText,
+                        style: kBaseTextStyle.copyWith(
+                            fontSize: 13, fontWeight: FontWeight.w600)),
+                    if (review.images.length != 0)
+                      Container(
+                        height: 150,
+                        child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: renderImgs(context, review)),
+                      ),
+                    // Row(children: renderImgs(context, review)),
+                    SizedBox(height: 12),
+                  ],
                 ),
-                SizedBox(width: 10),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      DynamicText(review.user.name,
-                          style: TextStyle(
-                              fontSize: 13, fontWeight: FontWeight.w600)),
-                      DynamicText(review.product.optionName,
-                          style: TextStyle(
-                              color: kDarkSecondary.withOpacity(0.5),
-                              fontSize: 11,
-                              fontWeight: FontWeight.w500)),
-                      SizedBox(height: 10),
-                      DynamicText(sanitizedText,
-                          style: kBaseTextStyle.copyWith(
-                              fontSize: 13, fontWeight: FontWeight.w600)),
-                      if (review.images.length != 0)
-                        Container(
-                          height: 150,
-                          child: ListView(
-                              scrollDirection: Axis.horizontal,
-                              children: renderImgs(context, review)),
-                        ),
-                      // Row(children: renderImgs(context, review)),
-                      SizedBox(height: 12),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            Container(
-              height: 5,
-              width: kScreenSizeWidth,
-              color: kDefaultBackground,
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+          Container(
+            height: 5,
+            width: kScreenSizeWidth,
+            color: kDefaultBackground,
+          ),
+        ],
       ),
     );
   }

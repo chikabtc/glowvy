@@ -200,7 +200,7 @@ class _ConfirmOrderState extends State<ConfirmOrder>
                                 padding: const EdgeInsets.only(
                                     top: 9.0, bottom: 7, left: 16, right: 16),
                                 child: StaggerAnimation(
-                                  titleButton: S.of(context).submitOrder,
+                                  buttonTitle: S.of(context).submitOrder,
                                   buttonController: submitButtonController.view,
                                   onTap: () {
                                     if (user.address == null) {

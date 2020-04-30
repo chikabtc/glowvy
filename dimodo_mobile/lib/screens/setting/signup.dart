@@ -306,7 +306,7 @@ class _SignupScreenState extends State<SignupScreen>
                       ),
                       SizedBox(height: 10),
                       StaggerAnimation(
-                          titleButton: S.of(context).signup,
+                          buttonTitle: S.of(context).signup,
                           buttonController: _loginButtonController.view,
                           onTap: () {
                             _submitRegister(fullName, email, password);

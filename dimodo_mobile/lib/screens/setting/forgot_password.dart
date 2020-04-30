@@ -247,7 +247,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                           )),
                       SizedBox(height: 16.0),
                       StaggerAnimation(
-                          titleButton: isEmailSent
+                          buttonTitle: isEmailSent
                               ? S.of(context).enter
                               : S.of(context).send,
                           buttonController: _loginButtonController.view,
