@@ -59,7 +59,7 @@ func (a *API) InitializeRoutes() {
 	a.r.HandleFunc("/api/cart/update", cartC.UpdateCartItem).Methods("POST")
 	a.r.HandleFunc("/api/cart/delete", cartC.DeleteCartItem).Methods("POST")
 	a.r.HandleFunc("/api/order/new", cartC.CreateOrder).Methods("POST")
-	a.r.HandleFunc("/api/order/detail/id={id:[0-9]+}/sr={sr:[a-z]+}", cartC.OrderDetailByOrderID).Methods("POST")
+	a.r.HandleFunc("/api/order/detail/id={id:[0-9]+}", cartC.OrderDetailByOrderID).Methods("GET")
 	a.r.HandleFunc("/api/order/all", cartC.OrderHistoryByUserID).Methods("GET")
 
 	// a.r.HandleFunc("/api/cart/no", cartC.CreateCartItem).Methods("POST")

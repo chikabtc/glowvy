@@ -1,0 +1,319 @@
+{
+    "meta": {
+        "code": 200,
+        "count": 1
+    },
+    "data": {
+        "statistics": {
+            "satisfaction": 5,
+            "wearing_sensations": [{
+                    "id": "WS01",
+                    "name": "너무 커요",
+                    "description": "너무 커요",
+                    "ratio": 0
+                },
+                {
+                    "id": "WS02",
+                    "name": "조금 커요",
+                    "description": "조금 커요",
+                    "ratio": 8
+                },
+                {
+                    "id": "WS03",
+                    "name": "잘 맞아요",
+                    "description": "잘 맞아요",
+                    "ratio": 90
+                },
+                {
+                    "id": "WS04",
+                    "name": "조금 작아요",
+                    "description": "조금 작아요",
+                    "ratio": 2
+                },
+                {
+                    "id": "WS05",
+                    "name": "많이 작아요",
+                    "description": "많이 작아요",
+                    "ratio": 0
+                }
+            ]
+        },
+        "photo_reviews": {
+            "total_count": 63,
+            "reviews": [{
+                    "id": "4063413",
+                    "created_time": "1587994870",
+                    "type": "photo",
+                    "text": "제가 생각했던 크롭 기장이에요 ! \n잘맞고 다른색으로도 구매할께요 ㅎ",
+                    "like_count": 0,
+                    "comment_count": 0,
+                    "is_liked": false,
+                    "product": {
+                        "id": "14486988",
+                        "parent_id": "14486990",
+                        "option_name": "블랙\/one(44~66size)",
+                        "seller_id": "1447"
+                    },
+                    "user": {
+                        "id": "1056396",
+                        "name": "dbe04075",
+                        "image_url": "https:\/\/image.brandi.me\/user\/2018\/01\/07\/2085187895034630_1515329268_L.jpg",
+                        "height": 166,
+                        "shirt_size": "55",
+                        "pants_size": "55",
+                        "footwear_size": "240"
+                    },
+                    "evaluation": {
+                        "satisfaction": "5",
+                        "wearing_sensation_code": "WS03",
+                        "wearing_sensation": "잘 맞아요"
+                    },
+                    "images": [{
+                        "id": 2356081,
+                        "image_thumbnail_url": "https:\/\/image.brandi.me\/media\/2020\/04\/27\/1056396_1587994868_image1_S.jpg",
+                        "image_medium_url": "https:\/\/image.brandi.me\/media\/2020\/04\/27\/1056396_1587994868_image1_M.jpg",
+                        "image_url": "https:\/\/image.brandi.me\/media\/2020\/04\/27\/1056396_1587994868_image1_L.jpg"
+                    }]
+                },
+                {
+                    "id": "4056877",
+                    "created_time": "1587897103",
+                    "type": "photo",
+                    "text": "와이거좀 미친듯... 너무이뻐요...\n왜고민했나싶어요\n아근데 겨울쿨톤은 검정사시는게더나을듯!\n너무 화이트가 화사해서 오히려얼굴이죽기는해요ㅠ",
+                    "like_count": 1,
+                    "comment_count": 0,
+                    "is_liked": false,
+                    "product": {
+                        "id": "14486986",
+                        "parent_id": "14486990",
+                        "option_name": "화이트(모델착용)\/one(44~66size)",
+                        "seller_id": "1447"
+                    },
+                    "user": {
+                        "id": "1976995",
+                        "name": "mail001",
+                        "image_url": "https:\/\/image.brandi.me\/user\/2019\/05\/07\/108534385031754201449_1557228378_L.jpg",
+                        "height": 160,
+                        "shirt_size": "55",
+                        "pants_size": "55",
+                        "footwear_size": "230"
+                    },
+                    "evaluation": {
+                        "satisfaction": "5",
+                        "wearing_sensation_code": "WS03",
+                        "wearing_sensation": "잘 맞아요"
+                    },
+                    "images": [{
+                        "id": 2352001,
+                        "image_thumbnail_url": "https:\/\/image.brandi.me\/media\/2020\/04\/26\/1976995_1587897101_image1_S.jpg",
+                        "image_medium_url": "https:\/\/image.brandi.me\/media\/2020\/04\/26\/1976995_1587897101_image1_M.jpg",
+                        "image_url": "https:\/\/image.brandi.me\/media\/2020\/04\/26\/1976995_1587897101_image1_L.jpg"
+                    }]
+                },
+                {
+                    "id": "4056305",
+                    "created_time": "1587888309",
+                    "type": "photo",
+                    "text": "여리여리하게 잘 맞아요\n검은색으로 하나더 살까싶어요ㅎㅎㅎㅎ그만큼 이쁨",
+                    "like_count": 1,
+                    "comment_count": 0,
+                    "is_liked": false,
+                    "product": {
+                        "id": "14486986",
+                        "parent_id": "14486990",
+                        "option_name": "화이트(모델착용)\/one(44~66size)",
+                        "seller_id": "1447"
+                    },
+                    "user": {
+                        "id": "1277165",
+                        "name": "jeonge4023",
+                        "image_url": "https:\/\/image.brandi.me\/user\/2020\/04\/14\/1277165_1586858770_L.jpg",
+                        "height": 152,
+                        "shirt_size": "55",
+                        "pants_size": "55",
+                        "footwear_size": "230"
+                    },
+                    "evaluation": {
+                        "satisfaction": "5",
+                        "wearing_sensation_code": "WS03",
+                        "wearing_sensation": "잘 맞아요"
+                    },
+                    "images": [{
+                        "id": 2351595,
+                        "image_thumbnail_url": "https:\/\/image.brandi.me\/media\/2020\/04\/26\/1277165_1587888308_image1_S.jpg",
+                        "image_medium_url": "https:\/\/image.brandi.me\/media\/2020\/04\/26\/1277165_1587888308_image1_M.jpg",
+                        "image_url": "https:\/\/image.brandi.me\/media\/2020\/04\/26\/1277165_1587888308_image1_L.jpg"
+                    }]
+                }
+            ]
+        },
+        "text_reviews": {
+            "total_count": 34,
+            "reviews": [{
+                    "id": "4055065",
+                    "created_time": "1587872297",
+                    "type": "text",
+                    "text": "아니 너무예뻐요 증말;;진짜 맨날 이것만 입고싶네요 색깔도 진짜찐짥!!!!!넘 내스탈 ㅜㅠㅠ",
+                    "like_count": 1,
+                    "comment_count": 0,
+                    "is_liked": false,
+                    "product": {
+                        "id": "14486989",
+                        "parent_id": "14486990",
+                        "option_name": "민트\/one(44~66size)",
+                        "seller_id": "1447"
+                    },
+                    "user": {
+                        "id": "2234990",
+                        "name": "young_n_wild",
+                        "image_url": "https:\/\/image.brandi.me\/user\/empty_profile.jpg",
+                        "height": 154,
+                        "shirt_size": "55",
+                        "pants_size": "66",
+                        "footwear_size": "225"
+                    },
+                    "evaluation": {
+                        "satisfaction": "5",
+                        "wearing_sensation_code": "WS03",
+                        "wearing_sensation": "잘 맞아요"
+                    }
+                },
+                {
+                    "id": "4054011",
+                    "created_time": "1587840948",
+                    "type": "text",
+                    "text": "세상에 보자마자 너무 이뻐서 샀는데 넉넉하구 잘맞아요❤️ 넘모 이뿌자낭😆 이뿌이뿌🥰",
+                    "like_count": 1,
+                    "comment_count": 0,
+                    "is_liked": false,
+                    "product": {
+                        "id": "14486986",
+                        "parent_id": "14486990",
+                        "option_name": "화이트(모델착용)\/one(44~66size)",
+                        "seller_id": "1447"
+                    },
+                    "user": {
+                        "id": "1775508",
+                        "name": "oyuna5",
+                        "image_url": "https:\/\/image.brandi.me\/user\/2019\/02\/21\/116371040583269954825_1550750098_L.jpg",
+                        "height": 158,
+                        "shirt_size": "66",
+                        "pants_size": "66",
+                        "footwear_size": "235"
+                    },
+                    "evaluation": {
+                        "satisfaction": "5",
+                        "wearing_sensation_code": "WS03",
+                        "wearing_sensation": "잘 맞아요"
+                    }
+                },
+                {
+                    "id": "4045088",
+                    "created_time": "1587702587",
+                    "type": "text",
+                    "text": "제 키에 크롭 적당하게 되는게 없어서 살때도 긴가민가 하면서 샀는데 넘 이뻐용 ㅠ 얇긴한데 이제 봄여름이니까 자주 입을 것 같아용~!",
+                    "like_count": 1,
+                    "comment_count": 0,
+                    "is_liked": false,
+                    "product": {
+                        "id": "14486986",
+                        "parent_id": "14486990",
+                        "option_name": "화이트(모델착용)\/one(44~66size)",
+                        "seller_id": "1447"
+                    },
+                    "user": {
+                        "id": "1828822",
+                        "name": "bobi125",
+                        "image_url": "https:\/\/image.brandi.me\/user\/2019\/03\/19\/568344633660808_1552945268_L.jpg",
+                        "height": 156,
+                        "shirt_size": "55",
+                        "pants_size": "55",
+                        "footwear_size": "235"
+                    },
+                    "evaluation": {
+                        "satisfaction": "5",
+                        "wearing_sensation_code": "WS03",
+                        "wearing_sensation": "잘 맞아요"
+                    }
+                }
+            ]
+        }
+    }
+} // Generated by https://quicktype.io
+
+type BrandiReviews struct {
+    Meta Meta `json:"meta"`
+    Data Data `json:"data"`
+}
+
+type Data struct {
+    Statistics Statistics `json:"statistics"`
+    PhotoReviews Reviews `json:"photo_reviews"`
+    TextReviews Reviews `json:"text_reviews"`
+}
+
+type Reviews struct {
+    TotalCount int64 `json:"total_count"`
+    Reviews[] Review `json:"reviews"`
+}
+
+type Review struct {
+    ID string `json:"id"`
+    CreatedTime string `json:"created_time"`
+    Type string `json:"type"`
+    Text string `json:"text"`
+    LikeCount int64 `json:"like_count"`
+    CommentCount int64 `json:"comment_count"`
+    IsLiked bool `json:"is_liked"`
+    Product Product `json:"product"`
+    User User `json:"user"`
+    Evaluation Evaluation `json:"evaluation"`
+    Images[] Image `json:"images"`
+}
+
+type Evaluation struct {
+    Satisfaction string `json:"satisfaction"`
+    WearingSensationCode string `json:"wearing_sensation_code"`
+    WearingSensation string `json:"wearing_sensation"`
+}
+
+type Image struct {
+    ID int64 `json:"id"`
+    ImageThumbnailURL string `json:"image_thumbnail_url"`
+    ImageMediumURL string `json:"image_medium_url"`
+    ImageURL string `json:"image_url"`
+}
+
+type Product struct {
+    ID string `json:"id"`
+    ParentID string `json:"parent_id"`
+    OptionName string `json:"option_name"`
+    SellerID string `json:"seller_id"`
+}
+
+type User struct {
+    ID string `json:"id"`
+    Name string `json:"name"`
+    ImageURL string `json:"image_url"`
+    Height int64 `json:"height"`
+    ShirtSize string `json:"shirt_size"`
+    PantsSize string `json:"pants_size"`
+    FootwearSize string `json:"footwear_size"`
+}
+
+type Statistics struct {
+    Satisfaction int64 `json:"satisfaction"`
+    WearingSensations[] WearingSensation `json:"wearing_sensations"`
+}
+
+type WearingSensation struct {
+    ID string `json:"id"`
+    Name string `json:"name"`
+    Description string `json:"description"`
+    Ratio int64 `json:"ratio"`
+}
+
+type Meta struct {
+    Code int64 `json:"code"`
+    Count int64 `json:"count"`
+}

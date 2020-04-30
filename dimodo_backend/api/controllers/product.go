@@ -28,7 +28,6 @@ func NewProduct(ps models.ProductService, cw *crawler.Crawler) *Product {
 }
 
 //				categories			//
-
 type Categories struct {
 	Id    int         `json:"id,omitempty"`
 	Name  string      `json:"name,omitempty"`
@@ -231,6 +230,8 @@ func (p *Product) ProductReviewsById(w http.ResponseWriter, r *http.Request) {
 		//call review api of Brandi
 		//save the returned reviews to the database
 		// c := crawler.NewCrawler()
+		//get the reviews
+
 		p.cw.GetPhotoReviewsFromBrandi(params["id"], r.FormValue("offset"), r.FormValue("limit"))
 		p.cw.GetTextReviewsFromBrandi(params["id"], r.FormValue("offset"), r.FormValue("limit"))
 		reviews, err = p.ps.ReviewsByProductID(id, offset, limit)

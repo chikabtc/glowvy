@@ -11,6 +11,7 @@ import (
 	"strconv"
 
 	"github.com/bugsnag/bugsnag-go"
+	"github.com/gorilla/mux"
 	"github.com/leekchan/accounting"
 )
 
@@ -151,9 +152,12 @@ func (c *Cart) CreateOrder(w http.ResponseWriter, r *http.Request) {
 
 func (c *Cart) OrderDetailByOrderID(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
-	auth := jwt.Payload(r)
+	// auth := jwt.Payload(r)
+	params := mux.Vars(r)
+	orderId, err := strconv.Atoi(params["id"])
+
 	//returns order, address, and user info
-	order, err := c.cs.OrderDetailByOrderID(auth.Id)
+	order, err := c.cs.OrderDetailByOrderID(orderId)
 	if err != nil {
 		bugsnag.Notify(err)
 		resp.Json(w, r, http.StatusBadRequest, resp.WithError(err))

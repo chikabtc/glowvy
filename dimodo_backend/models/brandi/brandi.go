@@ -368,3 +368,57 @@ type Meta struct {
 	Code  int64 `json:"code"`
 	Count int64 `json:"count"`
 }
+
+type BrandiReviews struct {
+	Meta Meta `json:"meta"`
+	Data Data `json:"data"`
+}
+
+type Review struct {
+	ID           string     `json:"id"`
+	CreatedTime  string     `json:"created_time"`
+	Type         string     `json:"type"`
+	Text         string     `json:"text"`
+	LikeCount    int64      `json:"like_count"`
+	CommentCount int64      `json:"comment_count"`
+	IsLiked      bool       `json:"is_liked"`
+	Product      Product    `json:"product"`
+	User         User       `json:"user"`
+	Evaluation   Evaluation `json:"evaluation"`
+	Images       []Image    `json:"images"`
+}
+
+type Evaluation struct {
+	Satisfaction         string `json:"satisfaction"`
+	WearingSensationCode string `json:"wearing_sensation_code"`
+	WearingSensation     string `json:"wearing_sensation"`
+}
+
+type Image struct {
+	ID                int64  `json:"id"`
+	ImageThumbnailURL string `json:"image_thumbnail_url"`
+	ImageMediumURL    string `json:"image_medium_url"`
+	ImageURL          string `json:"image_url"`
+}
+
+type User struct {
+	ID           string `json:"id"`
+	Name         string `json:"name"`
+	ImageURL     string `json:"image_url"`
+	Height       int64  `json:"height"`
+	ShirtSize    string `json:"shirt_size"`
+	PantsSize    string `json:"pants_size"`
+	FootwearSize string `json:"footwear_size"`
+}
+
+type BrandiStatistics struct {
+	Satisfaction      int64              `json:"satisfaction"`
+	WearingSensations []WearingSensation `json:"wearing_sensations"`
+}
+
+type WearingSensation struct {
+	ID          string `json:"id"`
+	Name        string `json:"name"`
+	Description string `json:"description"`
+	Ratio       int64  `json:"ratio"`
+}

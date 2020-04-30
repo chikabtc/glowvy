@@ -7,19 +7,19 @@ echo "  Deleting previous dumped db file on the server..."
 ssh root@dimodo.app "rm dimodo.pgsql.gz"
 echo "  deleted previous dumped file successfully!"
 
-echo "  Dumping the latest db on the server..."
-ssh root@dimodo.app "pg_dump -U postgres -d dimodo | gzip > dimodo.pgsql.gz"
+echo "  Dumping the latest db on the local..."
+pg_dump -U postgres -d dimodo | gzip > dimodo.pgsql.gz
 echo "  db dumped successfully!"
 
-echo "  Sending the dumped db file to local..."
-scp root@dimodo.app:/root/dimodo.pgsql.gz /Users/present/Development/Projects/Dimodo/dimodo_app/dimodo_backend
+echo "  Sending the dumped db file to server..."
+scp dimodo.pgsql.gz root@dimodo.app:~/
 echo "  dumped db file sent successfully!"
 
 echo "  Killing local db connections"
 psql -c "SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'dimodo'";
 echo "  killed all db connections successfully..."
 
-echo "  Deleting the local dimodo db..."
+echo "  Deleting the production dimodo db..."
 dropdb 'dimodo';
 echo "  deleted the local dimodo db successfully..."
 

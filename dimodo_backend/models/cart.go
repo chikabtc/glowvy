@@ -2,6 +2,7 @@ package models
 
 import (
 	"database/sql"
+	"dimodo_backend/utils"
 	"fmt"
 
 	"github.com/bugsnag/bugsnag-go"
@@ -233,63 +234,115 @@ func (cs *cartService) OrderHistoryByUserID(authID int) ([]Order, error) {
 }
 
 func (cs *cartService) OrderDetailByOrderID(orderID int) (*Order, error) {
-	var order *Order
-	// var user *user
-	// var address *address
+	var order Order
+	var user User
+	var address Address
+	fmt.Println("order id", orderID)
 
-	// rows, err := cs.dot.Query(cs.DB, "OrderDetailByUserID", orderID)
-	// if err != nil {
-	// 	bugsnag.Notify(err)
-	// 	fmt.Println("OrdersByUserID", err)
-	// 	return nil, err
-	// }
-	// defer rows.Close()
-	// for rows.Next() {
-	// 	var order Order
-	// 	if err := rows.Scan(
-	// 		&order.Id,
-	// 		&order.Is_paid,
-	// 		&order.Date_created,
-	// 	); err != nil {
-	// 		fmt.Println("fail to scan OrdersByUserID: ", err)
-	// 		return nil, err
-	// 	}
-	// 	orders = append(orders, order)
+	//get order detail
+	row, err := cs.dot.QueryRow(cs.DB, "OrderDetailByOrderID", orderID)
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("OrdersByUserID", err)
+		return nil, err
+	}
+	err = row.Scan(
+		&order.Id,
+		&order.User_id,
+		&order.Address_id,
+		&order.Total_fee,
+		&order.Total_shipping,
+		&order.Is_paid)
 
-	// }
-	// for i, order := range orders {
-	// 	orderItems := []Order_item{}
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("fail to scan order", err)
+		return nil, err
+	}
 
-	// 	rows, err = cs.dot.Query(cs.DB, "OrderItemsByID", order.Id)
-	// 	if err != nil {
-	// 		bugsnag.Notify(err)
-	// 		fmt.Println("OrderItemsByID", err)
-	// 		return nil, err
-	// 	}
-	// 	defer rows.Close()
-	// 	for rows.Next() {
-	// 		var item Order_item
-	// 		if err := rows.Scan(
-	// 			&item.Id,
-	// 			&item.Quantity,
-	// 			&item.Option,
-	// 			&item.Option_id,
-	// 			&item.Product.Id,
-	// 			&item.Product.Name,
-	// 			&item.Product.Thumbnail,
-	// 			&item.Product.Price,
-	// 			&item.Product.Sale_price,
-	// 			&item.Product.Sale_percent); err != nil {
-	// 			fmt.Println("fail to scan OrderItemsByID: ", err)
-	// 			return nil, err
-	// 		}
-	// 		orderItems = append(orderItems, item)
-	// 	}
-	// 	orders[i].OrderItems = orderItems
-	// }
-	// if orders == nil {
-	// 	orders = make([]Order, 0)
-	// }
+	orderItems := []Order_item{}
+	rows, err := cs.dot.Query(cs.DB, "OrderItemsByID", order.Id)
 
-	return order, nil
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("OrderItemsByID", err)
+		return nil, err
+	}
+	defer rows.Close()
+	for rows.Next() {
+		var item Order_item
+		if err := rows.Scan(
+			&item.Id,
+			&item.Quantity,
+			&item.Option,
+			&item.Option_id,
+			&item.Product.Id,
+			&item.Product.Name,
+			&item.Product.Thumbnail,
+			&item.Product.Price,
+			&item.Product.Sale_price,
+			&item.Product.Sale_percent); err != nil {
+			fmt.Println("fail to scan OrderItemsByID: ", err)
+			return nil, err
+		}
+		orderItems = append(orderItems, item)
+	}
+	order.OrderItems = orderItems
+
+	//get user
+	utils.PrintJson(user)
+	row, err = cs.dot.QueryRow(cs.DB, "GetUserById", order.User_id)
+	row.Scan(
+		&user.Id,
+		&user.User_name,
+		&user.Email,
+		&user.Password,
+		&user.Full_name,
+		&user.Display_name,
+		&user.Phone,
+		&user.Avatar,
+		&user.Birthday,
+		&user.Rid,
+		&user.Xid,
+		&user.Sid,
+		&user.Token,
+		&user.Session,
+		&user.Signer,
+		&user.Active,
+	)
+	if err != nil {
+		bugsnag.Notify(err)
+		return nil, err
+	}
+
+	//todo: current data structure only support one address. Improve it later
+	row, err = cs.dot.QueryRow(cs.DB, "getAddrssQuery", order.User_id)
+
+	row.Scan(
+		&address.Id,
+		&address.Recipient_name,
+		&address.PhoneNumber,
+		&address.Street,
+		&address.Ward.Province.Name,
+		&address.Ward.District.Name,
+		&address.Ward.Name)
+
+	if err != nil {
+		bugsnag.Notify(err)
+		switch err {
+		case sql.ErrNoRows:
+			print("no row found")
+			return nil, ErrNotFound
+		default:
+			return nil, err
+		}
+	}
+	if address.Recipient_name == "" {
+		return nil, nil
+	}
+
+	order.User = user
+	order.Address = address
+
+	return &order, nil
 }

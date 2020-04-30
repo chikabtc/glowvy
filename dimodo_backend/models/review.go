@@ -1,8 +1,9 @@
 package models
 
 type Reviews struct {
-	TotalCount int      `json:"total_count"`
-	Reviews    []Review `json:"reviews"`
+	TotalCount   int      `json:"total_count"`
+	AverageScore int      `json:"average_socre"`
+	Reviews      []Review `json:"reviews"`
 }
 
 type ReviewProduct struct {
@@ -17,6 +18,7 @@ type Review struct {
 	CreatedTime string `json:"created_time"`
 	Type        string `json:"type"`
 	Text        string `json:"text"`
+	Score       int    `json:"score"`
 	// LikeCount    int64  `json:"like_count"`
 	// CommentCount int64  `json:"comment_count"`
 	// IsLiked      bool   `json:"is_liked"`

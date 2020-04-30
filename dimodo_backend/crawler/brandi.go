@@ -419,6 +419,59 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 	return err
 }
 
+func (c *Crawler) GetReviewMetaData(bProductId string, offset, limit string) *brandi.Reviews {
+	//recursive fetching... just like the brandi when the user clicks the reviews then call more
+
+	photoReviewURL := "https://cf-api-v2.brandi.me/v2/web/products/" + bProductId + "/reviews?version=28&limit=0&offset=0"
+
+	req, _ := http.NewRequest("GET", photoReviewURL, nil)
+	req.Header.Add("Authorization", brandiAuth)
+	client := http.Client{Timeout: time.Second * 10}
+	res, err := client.Do(req)
+	if err != nil {
+		bugsnag.Notify(err)
+		return nil
+	}
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+	var reviews brandi.Reviews
+	if err := json.Unmarshal(body, &reviews); err != nil {
+		panic(err)
+	}
+	//translator, _ := translate.NewTranslator()
+
+	for _, r := range reviews.Data {
+		text, err := translate.TranslateText(translate.Ko, translate.Vi, r.Text)
+		var images []string
+
+		for _, image := range r.Images {
+			if image.ImageURL != "" {
+				fmt.Println("image url", image.ImageURL)
+				images = append(images, image.ImageURL)
+			}
+		}
+
+		if err != nil {
+			bugsnag.Notify(err)
+			fmt.Println(err)
+		}
+
+		_, err = c.dot.Exec(c.DB, "CreateReviews",
+			bProductId,
+			r.ID,
+			r.User.Name,
+			text,
+			pq.Array(images),
+		)
+		if err != nil {
+			bugsnag.Notify(err)
+			fmt.Println(err.Error())
+		}
+	}
+	return &reviews
+}
+
 func (c *Crawler) GetPhotoReviewsFromBrandi(bProductId string, offset, limit string) *brandi.Reviews {
 	//recursive fetching... just like the brandi when the user clicks the reviews then call more
 	photoReviewURL := "https://cf-api-v2.brandi.me/v2/web/products/" + bProductId + "/reviews?version=28&limit=" + limit + "&offset=" + offset + "&tab-type=photo"

@@ -142,3 +142,68 @@ WHERE
 ORDER BY
     id DESC;
 
+--name: GetUserById
+SELECT
+    users.Id,
+    users.User_name,
+    users.Email,
+    users.Password,
+    users.Full_name,
+    users.Display_name,
+    users.Phone,
+    users.Avatar,
+    users.Birthday,
+    users.Rid,
+    users.Xid,
+    users.Sid,
+    users.Token,
+    users.Session,
+    users.signer,
+    users.Active
+FROM
+    users
+WHERE
+    user_id = $1;
+
+--name: OrderDetailByOrderID
+SELECT
+    id,
+    user_id,
+    address_id,
+    total_shipping,
+    total_fee,
+    is_paid
+FROM
+    orders
+WHERE
+    id = $1;
+
+-- name: getAddrssQuery
+WITH account AS (
+    SELECT
+        address_id
+    FROM
+        users
+    WHERE
+        id = $1
+)
+SELECT
+    address.id,
+    recipient_name,
+    telephone,
+    street,
+    province.NAME,
+    district.NAME,
+    ward.NAME
+FROM
+    address,
+    account,
+    ward,
+    district,
+    province
+WHERE
+    address.ward_id = ward.id
+    AND ward.province_id = province.id
+    AND ward.district_id = district.id
+    AND address.id = account.address_id;
+
