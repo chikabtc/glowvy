@@ -242,12 +242,16 @@ func (p *Product) ProductReviewsById(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(params["sr"])
-	reviews.TotalCount = len(reviews.Reviews)
+
+	averageScore, totalCount := p.cw.GetReviewMetaData(params["id"])
+	reviews.AverageSatisfaction = averageScore
+	reviews.TotalCount = totalCount
 
 	if err != nil {
 		bugsnag.Notify(err)
 		resp.Json(w, r, http.StatusBadRequest, resp.WithError(err))
 	}
+
 	resp.Json(w, r, http.StatusOK, resp.WithSuccess(reviews))
 }
 

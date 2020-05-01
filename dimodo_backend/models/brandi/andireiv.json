@@ -16,19 +16,19 @@
                     "id": "WS02",
                     "name": "조금 커요",
                     "description": "조금 커요",
-                    "ratio": 8
+                    "ratio": 6
                 },
                 {
                     "id": "WS03",
                     "name": "잘 맞아요",
                     "description": "잘 맞아요",
-                    "ratio": 90
+                    "ratio": 94
                 },
                 {
                     "id": "WS04",
                     "name": "조금 작아요",
                     "description": "조금 작아요",
-                    "ratio": 2
+                    "ratio": 0
                 },
                 {
                     "id": "WS05",
@@ -39,28 +39,98 @@
             ]
         },
         "photo_reviews": {
-            "total_count": 63,
+            "total_count": 13,
             "reviews": [{
-                    "id": "4063413",
-                    "created_time": "1587994870",
+                    "id": "3997369",
+                    "created_time": "1587091093",
                     "type": "photo",
-                    "text": "제가 생각했던 크롭 기장이에요 ! \n잘맞고 다른색으로도 구매할께요 ㅎ",
+                    "text": "색상이 생각이랑 조금 다른 것 같아요\n그래도 무난하게 쓰기에는 괜찮네요",
                     "like_count": 0,
                     "comment_count": 0,
                     "is_liked": false,
                     "product": {
-                        "id": "14486988",
-                        "parent_id": "14486990",
-                        "option_name": "블랙\/one(44~66size)",
-                        "seller_id": "1447"
+                        "id": "14078186",
+                        "parent_id": "14078190",
+                        "option_name": "01 구아바 모히토인척(L132A)",
+                        "seller_id": "11555"
                     },
                     "user": {
-                        "id": "1056396",
-                        "name": "dbe04075",
-                        "image_url": "https:\/\/image.brandi.me\/user\/2018\/01\/07\/2085187895034630_1515329268_L.jpg",
-                        "height": 166,
+                        "id": "2045937",
+                        "name": "erab0315",
+                        "image_url": "https://image.brandi.me/user/empty_profile.jpg",
+                        "height": 160,
                         "shirt_size": "55",
-                        "pants_size": "55",
+                        "pants_size": "66",
+                        "footwear_size": "235"
+                    },
+                    "evaluation": {
+                        "satisfaction": "5",
+                        "wearing_sensation_code": "WS03",
+                        "wearing_sensation": "잘 맞아요"
+                    },
+                    "images": [{
+                        "id": 2313772,
+                        "image_thumbnail_url": "https://image.brandi.me/media/2020/04/17/2045937_1587091091_image1_S.jpg",
+                        "image_medium_url": "https://image.brandi.me/media/2020/04/17/2045937_1587091091_image1_M.jpg",
+                        "image_url": "https://image.brandi.me/media/2020/04/17/2045937_1587091091_image1_L.jpg"
+                    }]
+                },
+                {
+                    "id": "3995629",
+                    "created_time": "1587057516",
+                    "type": "photo",
+                    "text": "와우맨 딱 제가 생각한대로 너무 예쁘네요. 딥한 컬러 너무 쥬아용~\n근데 한 가지 아쉬운건 지속력이 물틴트치고 좀 아쉽네요.ㅠ 그리고 한 개 더 말하자면 각질이 많이 생겨요 이거 바르고,, 근데 그건 원래 물틴트가 그런거라 별루 신경 안써요~",
+                    "like_count": 0,
+                    "comment_count": 0,
+                    "is_liked": false,
+                    "product": {
+                        "id": "14078189",
+                        "parent_id": "14078190",
+                        "option_name": "04 블랙베리 데낄라인척(L135A)",
+                        "seller_id": "11555"
+                    },
+                    "user": {
+                        "id": "2405927",
+                        "name": "dltjgus9810",
+                        "image_url": "https://image.brandi.me/user/empty_profile.jpg",
+                        "height": 168,
+                        "shirt_size": "66",
+                        "pants_size": "77",
+                        "footwear_size": "250"
+                    },
+                    "evaluation": {
+                        "satisfaction": "4",
+                        "wearing_sensation_code": "00",
+                        "wearing_sensation": "해당 없음"
+                    },
+                    "images": [{
+                        "id": 2312810,
+                        "image_thumbnail_url": "https://image.brandi.me/media/2020/04/17/2405927_1587057514_image1_S.jpg",
+                        "image_medium_url": "https://image.brandi.me/media/2020/04/17/2405927_1587057514_image1_M.jpg",
+                        "image_url": "https://image.brandi.me/media/2020/04/17/2405927_1587057514_image1_L.jpg"
+                    }]
+                },
+                {
+                    "id": "3972339",
+                    "created_time": "1586748238",
+                    "type": "photo",
+                    "text": "정말 착색 빨리되어서 금새 예쁘게발라야해요!\n그래도 예브게 바르면 뭐먹거나 그 위에 립밤 다시 발라도 안지워져서 좋은 것같아요!! 색상은 미스였지만 ㅜㅜ",
+                    "like_count": 0,
+                    "comment_count": 0,
+                    "is_liked": false,
+                    "product": {
+                        "id": "14078186",
+                        "parent_id": "14078190",
+                        "option_name": "01 구아바 모히토인척(L132A)",
+                        "seller_id": "11555"
+                    },
+                    "user": {
+                        "id": "1762693",
+                        "name": "mjeewh",
+                        "image_url": "https://image.brandi.me/user/empty_profile.jpg",
+                        "height": 161,
+                        "shirt_size": "55",
+                        "pants_size": "66",
                         "footwear_size": "240"
                     },
                     "evaluation": {
@@ -69,108 +139,38 @@
                         "wearing_sensation": "잘 맞아요"
                     },
                     "images": [{
-                        "id": 2356081,
-                        "image_thumbnail_url": "https:\/\/image.brandi.me\/media\/2020\/04\/27\/1056396_1587994868_image1_S.jpg",
-                        "image_medium_url": "https:\/\/image.brandi.me\/media\/2020\/04\/27\/1056396_1587994868_image1_M.jpg",
-                        "image_url": "https:\/\/image.brandi.me\/media\/2020\/04\/27\/1056396_1587994868_image1_L.jpg"
-                    }]
-                },
-                {
-                    "id": "4056877",
-                    "created_time": "1587897103",
-                    "type": "photo",
-                    "text": "와이거좀 미친듯... 너무이뻐요...\n왜고민했나싶어요\n아근데 겨울쿨톤은 검정사시는게더나을듯!\n너무 화이트가 화사해서 오히려얼굴이죽기는해요ㅠ",
-                    "like_count": 1,
-                    "comment_count": 0,
-                    "is_liked": false,
-                    "product": {
-                        "id": "14486986",
-                        "parent_id": "14486990",
-                        "option_name": "화이트(모델착용)\/one(44~66size)",
-                        "seller_id": "1447"
-                    },
-                    "user": {
-                        "id": "1976995",
-                        "name": "mail001",
-                        "image_url": "https:\/\/image.brandi.me\/user\/2019\/05\/07\/108534385031754201449_1557228378_L.jpg",
-                        "height": 160,
-                        "shirt_size": "55",
-                        "pants_size": "55",
-                        "footwear_size": "230"
-                    },
-                    "evaluation": {
-                        "satisfaction": "5",
-                        "wearing_sensation_code": "WS03",
-                        "wearing_sensation": "잘 맞아요"
-                    },
-                    "images": [{
-                        "id": 2352001,
-                        "image_thumbnail_url": "https:\/\/image.brandi.me\/media\/2020\/04\/26\/1976995_1587897101_image1_S.jpg",
-                        "image_medium_url": "https:\/\/image.brandi.me\/media\/2020\/04\/26\/1976995_1587897101_image1_M.jpg",
-                        "image_url": "https:\/\/image.brandi.me\/media\/2020\/04\/26\/1976995_1587897101_image1_L.jpg"
-                    }]
-                },
-                {
-                    "id": "4056305",
-                    "created_time": "1587888309",
-                    "type": "photo",
-                    "text": "여리여리하게 잘 맞아요\n검은색으로 하나더 살까싶어요ㅎㅎㅎㅎ그만큼 이쁨",
-                    "like_count": 1,
-                    "comment_count": 0,
-                    "is_liked": false,
-                    "product": {
-                        "id": "14486986",
-                        "parent_id": "14486990",
-                        "option_name": "화이트(모델착용)\/one(44~66size)",
-                        "seller_id": "1447"
-                    },
-                    "user": {
-                        "id": "1277165",
-                        "name": "jeonge4023",
-                        "image_url": "https:\/\/image.brandi.me\/user\/2020\/04\/14\/1277165_1586858770_L.jpg",
-                        "height": 152,
-                        "shirt_size": "55",
-                        "pants_size": "55",
-                        "footwear_size": "230"
-                    },
-                    "evaluation": {
-                        "satisfaction": "5",
-                        "wearing_sensation_code": "WS03",
-                        "wearing_sensation": "잘 맞아요"
-                    },
-                    "images": [{
-                        "id": 2351595,
-                        "image_thumbnail_url": "https:\/\/image.brandi.me\/media\/2020\/04\/26\/1277165_1587888308_image1_S.jpg",
-                        "image_medium_url": "https:\/\/image.brandi.me\/media\/2020\/04\/26\/1277165_1587888308_image1_M.jpg",
-                        "image_url": "https:\/\/image.brandi.me\/media\/2020\/04\/26\/1277165_1587888308_image1_L.jpg"
+                        "id": 2297670,
+                        "image_thumbnail_url": "https://image.brandi.me/media/2020/04/13/1762693_1586748235_image1_S.jpg",
+                        "image_medium_url": "https://image.brandi.me/media/2020/04/13/1762693_1586748235_image1_M.jpg",
+                        "image_url": "https://image.brandi.me/media/2020/04/13/1762693_1586748235_image1_L.jpg"
                     }]
                 }
             ]
         },
         "text_reviews": {
-            "total_count": 34,
+            "total_count": 5,
             "reviews": [{
-                    "id": "4055065",
-                    "created_time": "1587872297",
+                    "id": "3866467",
+                    "created_time": "1585385085",
                     "type": "text",
-                    "text": "아니 너무예뻐요 증말;;진짜 맨날 이것만 입고싶네요 색깔도 진짜찐짥!!!!!넘 내스탈 ㅜㅠㅠ",
-                    "like_count": 1,
+                    "text": "자연스럽게 립컬러표현이 되어서 좋네용!! 다음구매의사있습니답!!",
+                    "like_count": 0,
                     "comment_count": 0,
                     "is_liked": false,
                     "product": {
-                        "id": "14486989",
-                        "parent_id": "14486990",
-                        "option_name": "민트\/one(44~66size)",
-                        "seller_id": "1447"
+                        "id": "14078188",
+                        "parent_id": "14078190",
+                        "option_name": "03 플럼 마티니인척(L134A)",
+                        "seller_id": "11555"
                     },
                     "user": {
-                        "id": "2234990",
-                        "name": "young_n_wild",
-                        "image_url": "https:\/\/image.brandi.me\/user\/empty_profile.jpg",
-                        "height": 154,
-                        "shirt_size": "55",
-                        "pants_size": "66",
-                        "footwear_size": "225"
+                        "id": "2414773",
+                        "name": "wlsxo0_01",
+                        "image_url": "https://image.brandi.me/user/empty_profile.jpg",
+                        "height": 170,
+                        "shirt_size": "77",
+                        "pants_size": "77",
+                        "footwear_size": "245"
                     },
                     "evaluation": {
                         "satisfaction": "5",
@@ -179,56 +179,56 @@
                     }
                 },
                 {
-                    "id": "4054011",
-                    "created_time": "1587840948",
+                    "id": "3852346",
+                    "created_time": "1585208336",
                     "type": "text",
-                    "text": "세상에 보자마자 너무 이뻐서 샀는데 넉넉하구 잘맞아요❤️ 넘모 이뿌자낭😆 이뿌이뿌🥰",
-                    "like_count": 1,
+                    "text": "좋아좋아좋아좋아좋아좋아좋아좋아좋아좋아좋아좋아좋아좋아좋아좋아좋아좋아좋아좋아",
+                    "like_count": 0,
                     "comment_count": 0,
                     "is_liked": false,
                     "product": {
-                        "id": "14486986",
-                        "parent_id": "14486990",
-                        "option_name": "화이트(모델착용)\/one(44~66size)",
-                        "seller_id": "1447"
+                        "id": "14078186",
+                        "parent_id": "14078190",
+                        "option_name": "01 구아바 모히토인척(L132A)",
+                        "seller_id": "11555"
                     },
                     "user": {
-                        "id": "1775508",
-                        "name": "oyuna5",
-                        "image_url": "https:\/\/image.brandi.me\/user\/2019\/02\/21\/116371040583269954825_1550750098_L.jpg",
-                        "height": 158,
-                        "shirt_size": "66",
-                        "pants_size": "66",
-                        "footwear_size": "235"
-                    },
-                    "evaluation": {
-                        "satisfaction": "5",
-                        "wearing_sensation_code": "WS03",
-                        "wearing_sensation": "잘 맞아요"
-                    }
-                },
-                {
-                    "id": "4045088",
-                    "created_time": "1587702587",
-                    "type": "text",
-                    "text": "제 키에 크롭 적당하게 되는게 없어서 살때도 긴가민가 하면서 샀는데 넘 이뻐용 ㅠ 얇긴한데 이제 봄여름이니까 자주 입을 것 같아용~!",
-                    "like_count": 1,
-                    "comment_count": 0,
-                    "is_liked": false,
-                    "product": {
-                        "id": "14486986",
-                        "parent_id": "14486990",
-                        "option_name": "화이트(모델착용)\/one(44~66size)",
-                        "seller_id": "1447"
-                    },
-                    "user": {
-                        "id": "1828822",
-                        "name": "bobi125",
-                        "image_url": "https:\/\/image.brandi.me\/user\/2019\/03\/19\/568344633660808_1552945268_L.jpg",
-                        "height": 156,
+                        "id": "2805535",
+                        "name": "hy0824",
+                        "image_url": "https://image.brandi.me/user/2020/01/19/160382561938363_1579365043_L.jpg",
+                        "height": 163,
                         "shirt_size": "55",
                         "pants_size": "55",
-                        "footwear_size": "235"
+                        "footwear_size": "240"
+                    },
+                    "evaluation": {
+                        "satisfaction": "5",
+                        "wearing_sensation_code": "WS03",
+                        "wearing_sensation": "잘 맞아요"
+                    }
+                },
+                {
+                    "id": "3849910",
+                    "created_time": "1585189762",
+                    "type": "text",
+                    "text": "색상 흔한거 같디만 생얼에 너무 잘 맞아요\n지속력도 좋네여",
+                    "like_count": 1,
+                    "comment_count": 1,
+                    "is_liked": false,
+                    "product": {
+                        "id": "14078187",
+                        "parent_id": "14078190",
+                        "option_name": "02 체리 크러쉬인척(L133A)",
+                        "seller_id": "11555"
+                    },
+                    "user": {
+                        "id": "753061",
+                        "name": "ff270",
+                        "image_url": "https://image.brandi.me/user/empty_profile.jpg",
+                        "height": 173,
+                        "shirt_size": "55",
+                        "pants_size": "66",
+                        "footwear_size": "250"
                     },
                     "evaluation": {
                         "satisfaction": "5",
@@ -241,12 +241,12 @@
     }
 } // Generated by https://quicktype.io
 
-type BrandiReviews struct {
+type ReviewMeta struct {
     Meta Meta `json:"meta"`
     Data Data `json:"data"`
 }
 
-type Data struct {
+type MetaData struct {
     Statistics Statistics `json:"statistics"`
     PhotoReviews Reviews `json:"photo_reviews"`
     TextReviews Reviews `json:"text_reviews"`

@@ -34,6 +34,11 @@ type Products struct {
 	} `json:"meta"`
 }
 
+type MetaReviews struct {
+	TotalCount int64    `json:"total_count"`
+	Reviews    []Review `json:"reviews"`
+}
+
 type MyJsonName struct {
 	Data struct {
 		DateText      string        `json:"date_text"`
@@ -297,6 +302,24 @@ type RecommendProduct struct {
 	Seller            Seller     `json:"seller"`
 }
 
+type MetaData struct {
+	Statistics   ReviewStatistics `json:"statistics"`
+	PhotoReviews MetaReviews      `json:"photo_reviews"`
+	TextReviews  MetaReviews      `json:"text_reviews"`
+}
+
+type ReviewStatistics struct {
+	Satisfaction      int64              `json:"satisfaction"`
+	WearingSensations []WearingSensation `json:"wearing_sensations"`
+}
+
+type WearingSensation struct {
+	ID          string `json:"id"`
+	Name        string `json:"name"`
+	Description string `json:"description"`
+	Ratio       int64  `json:"ratio"`
+}
+
 type Seller struct {
 	Address1      string `json:"address1"`
 	Address2      string `json:"address2"`
@@ -370,8 +393,8 @@ type Meta struct {
 }
 
 type BrandiReviews struct {
-	Meta Meta `json:"meta"`
-	Data Data `json:"data"`
+	Meta     Meta     `json:"meta"`
+	MetaData MetaData `json:"data"`
 }
 
 type Review struct {
@@ -414,11 +437,4 @@ type User struct {
 type BrandiStatistics struct {
 	Satisfaction      int64              `json:"satisfaction"`
 	WearingSensations []WearingSensation `json:"wearing_sensations"`
-}
-
-type WearingSensation struct {
-	ID          string `json:"id"`
-	Name        string `json:"name"`
-	Description string `json:"description"`
-	Ratio       int64  `json:"ratio"`
 }

@@ -354,6 +354,7 @@ func (ps *productService) ProductDetailById(id int) (*Product, error) {
 		&product.Sale_price,
 		&product.Description,
 		&product.Thumbnail,
+		&product.Purchase_count,
 		pq.Array(&product.SliderImages),
 		pq.Array(&product.DescImages),
 		&product.Seller,

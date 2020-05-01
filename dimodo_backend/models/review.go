@@ -1,9 +1,9 @@
 package models
 
 type Reviews struct {
-	TotalCount   int      `json:"total_count"`
-	AverageScore int      `json:"average_socre"`
-	Reviews      []Review `json:"reviews"`
+	TotalCount          int64    `json:"total_count"`
+	AverageSatisfaction int64    `json:"average_satisfaction"`
+	Reviews             []Review `json:"reviews"`
 }
 
 type ReviewProduct struct {

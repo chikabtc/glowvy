@@ -135,6 +135,7 @@ SELECT
     product.sale_price,
     product.description,
     product.thumbnail,
+    product.purchase_count,
     product.slider_images,
     product.desc_images,
     product.seller,
