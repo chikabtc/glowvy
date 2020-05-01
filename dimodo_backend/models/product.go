@@ -463,6 +463,9 @@ func (ps *productService) ReviewsByProductID(productId, start, count int) (*Revi
 		// review.Images
 		reviews.Reviews = append(reviews.Reviews, review)
 	}
+	if reviews.Reviews == nil {
+		reviews.Reviews = []Review{}
+	}
 	return &reviews, nil
 }
 
