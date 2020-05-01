@@ -44,7 +44,8 @@ class _ProductDetailState extends State<ProductDetail> {
   List<String> sizes = ["S", "M", "L"];
   String color;
   String chosenSize;
-  Reviews metaReviews = Reviews();
+  Reviews metaReviews =
+      Reviews(totalCount: 0, averageSatisfaction: 100, reviews: <Review>[]);
 
   Future<Product> product;
   bool isLoggedIn = false;
@@ -54,7 +55,6 @@ class _ProductDetailState extends State<ProductDetail> {
   @override
   void initState() {
     super.initState();
-    metaReviews.reviews = <Review>[];
     services.getReviews(widget.product.sid, offset, limit).then((onValue) {
       setState(() {
         metaReviews = onValue;
@@ -74,7 +74,7 @@ class _ProductDetailState extends State<ProductDetail> {
   Future<bool> getReviews() async {
     var loadedReviews =
         await services.getReviews(widget.product.sid, offset, limit);
-    if (loadedReviews.reviews.length == 0) {
+    if (loadedReviews.totalCount == 0) {
       return false;
     }
     setState(() {
@@ -168,6 +168,8 @@ class _ProductDetailState extends State<ProductDetail> {
           child: FutureBuilder<Product>(
               future: product,
               builder: (BuildContext context, AsyncSnapshot<Product> snapshot) {
+                var reviewHeight = metaReviews.totalCount == 0 ? 0 : 90;
+
                 return Scaffold(
                     //todo: check whether the item is loaded or not
                     bottomNavigationBar: snapshot.data != null
@@ -193,11 +195,13 @@ class _ProductDetailState extends State<ProductDetail> {
                                         //115 is the static height of the service contaienr
                                         //40 is the tabbar height
                                         51 +
-                                        100 +
-                                        155 +
+                                        60 +
+                                        105 +
                                         41 * 1.2 +
                                         52 * 1.2 +
-                                        40,
+                                        40 +
+                                        reviewHeight,
+
                                     // 179,
 
                                     brightness: Brightness.light,
@@ -330,13 +334,6 @@ class _ProductDetailState extends State<ProductDetail> {
                                                           color:
                                                               kDefaultBackground,
                                                         ),
-                                                        Container(
-                                                          height: 5,
-                                                          width:
-                                                              screenSize.width,
-                                                          color:
-                                                              kDefaultBackground,
-                                                        ),
                                                         GestureDetector(
                                                           onTap: () => Navigator.push(
                                                               context,
@@ -346,7 +343,6 @@ class _ProductDetailState extends State<ProductDetail> {
                                                                           metaReviews,
                                                                           getReviews))),
                                                           child: Container(
-                                                            // height: 151,
                                                             width: screenSize
                                                                 .width,
                                                             color: Colors.white,
@@ -369,26 +365,26 @@ class _ProductDetailState extends State<ProductDetail> {
                                                                               color: kDarkSecondary,
                                                                               fontWeight: FontWeight.w600)),
                                                                       Spacer(),
-                                                                      Row(
-                                                                        crossAxisAlignment:
-                                                                            CrossAxisAlignment.center,
-                                                                        children: <
-                                                                            Widget>[
-                                                                          DynamicText(
-                                                                              S.of(context).satisfaction + " ${metaReviews.averageSatisfaction}%",
-                                                                              style: kBaseTextStyle.copyWith(fontSize: 12, color: kPinkAccent, fontWeight: FontWeight.w600)),
-                                                                          CommonIcons
-                                                                              .arrowForwardPink
-                                                                        ],
-                                                                      ),
+                                                                      if (metaReviews
+                                                                              .totalCount !=
+                                                                          0)
+                                                                        Row(
+                                                                          crossAxisAlignment:
+                                                                              CrossAxisAlignment.center,
+                                                                          children: <
+                                                                              Widget>[
+                                                                            DynamicText(S.of(context).satisfaction + " ${metaReviews.averageSatisfaction}%",
+                                                                                style: kBaseTextStyle.copyWith(fontSize: 12, color: kPinkAccent, fontWeight: FontWeight.w600)),
+                                                                            CommonIcons.arrowForwardPink
+                                                                          ],
+                                                                        ),
                                                                     ],
                                                                   ),
                                                                 ),
                                                                 SizedBox(
-                                                                    height: 10),
+                                                                    height: 5),
                                                                 if (metaReviews
-                                                                        .reviews
-                                                                        .length !=
+                                                                        .totalCount !=
                                                                     0)
                                                                   Padding(
                                                                     padding: const EdgeInsets
@@ -402,7 +398,14 @@ class _ProductDetailState extends State<ProductDetail> {
                                                                             context,
                                                                         review:
                                                                             metaReviews.reviews[0]),
-                                                                  )
+                                                                  ),
+                                                                Container(
+                                                                  height: 5,
+                                                                  width:
+                                                                      kScreenSizeWidth,
+                                                                  color:
+                                                                      kDefaultBackground,
+                                                                ),
                                                               ],
                                                             ),
                                                           ),

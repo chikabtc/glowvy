@@ -94,39 +94,43 @@ class _StateReviews extends State<ReviewScreen>
                           child: Column(
                             children: <Widget>[
                               SizedBox(height: 18),
-                              Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: <Widget>[
-                                    DynamicText(
-                                        "${S.of(context).reviews} (${metaReviews.totalCount})",
-                                        style: kBaseTextStyle.copyWith(
-                                            fontSize: 13,
-                                            color: kDarkSecondary,
-                                            fontWeight: FontWeight.w600)),
-                                    Spacer(),
-                                    Container(
-                                      padding:
-                                          EdgeInsets.symmetric(horizontal: 5),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(5)),
-                                      ),
-                                      child: Row(children: <Widget>[
-                                        Image.asset(
-                                            "assets/icons/product_detail/google-translate.png"),
-                                        DynamicText(
-                                          S.of(context).translatedByGoogle,
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 6.0),
+                                child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: <Widget>[
+                                      DynamicText(
+                                          "${S.of(context).reviews} (${metaReviews.totalCount})",
                                           style: kBaseTextStyle.copyWith(
-                                              fontSize: 12,
-                                              color:
-                                                  kDarkAccent.withOpacity(0.7)),
-                                          textAlign: TextAlign.start,
+                                              fontSize: 13,
+                                              color: kDarkSecondary,
+                                              fontWeight: FontWeight.w600)),
+                                      Spacer(),
+                                      Container(
+                                        padding:
+                                            EdgeInsets.symmetric(horizontal: 5),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(5)),
                                         ),
-                                      ]),
-                                    ),
-                                  ]),
+                                        child: Row(children: <Widget>[
+                                          Image.asset(
+                                              "assets/icons/product_detail/google-translate.png"),
+                                          DynamicText(
+                                            S.of(context).translatedByGoogle,
+                                            style: kBaseTextStyle.copyWith(
+                                                fontSize: 12,
+                                                color: kDarkAccent
+                                                    .withOpacity(0.7)),
+                                            textAlign: TextAlign.start,
+                                          ),
+                                        ]),
+                                      ),
+                                    ]),
+                              ),
                               ListView.builder(
                                   physics: const NeverScrollableScrollPhysics(),
                                   scrollDirection: Axis.vertical,

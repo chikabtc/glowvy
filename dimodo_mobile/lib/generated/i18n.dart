@@ -117,7 +117,7 @@ class S implements WidgetsLocalizations {
       "If item is inauthentic, Dimodo will refund buyers the full amount they paid for the items";
   String get returnPolicy => "Return Policy";
   String get returnPolicyDescription =>
-      "If there is any product quality problem (not including subjective reasons), you can apply for a return within 7 days purchase. ";
+      "If there is any product quality problem (not including subjective reasons), you can apply for a return within 7 days purchase.";
 
   String get serviceFeeDescription =>
       "The service helps us run our platform and offer better experiences";
@@ -493,16 +493,17 @@ class $vi extends S {
       "Korean Brand Direct Supply Overseas";
   String get includedInPrice => "included in price";
   String get shipFromKorea => "Giao hàng từ";
-  String get dimodoGuarantee => "Origin of Security";
+  String get dimodoGuarantee => "Dimdodo Guarantee";
   String get dimodoGuaranteeDescription =>
       "If item is inauthentic, the buyer will be refunded the full amount they paid for the items";
   String get returnPolicy => "Return Policy";
   String get returnPolicyDescription =>
-      "Within 7 days (included) of the date of receipt confirmation, if there is any product quality problem description, leakage, loss, (not including subjective reasons), you can apply for a return";
+      "If there is any product quality problem (not including subjective reasons), you can apply for a return within 7 days purchase.";
   String get importTaxFeeDescription =>
       "The goods you have purchased already include import taxes for cross-border e-commerce.";
   String get askQuestion => "Ask question";
   String get koreanShippingFee => "Korean Shipping fee: 50,000₫ per item";
+  String get satisfaction => "Satisfaction";
 
 // =============================================================================
 // To trnaslate

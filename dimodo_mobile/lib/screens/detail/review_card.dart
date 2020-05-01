@@ -97,11 +97,12 @@ class ReviewCard extends StatelessWidget {
               ),
             ],
           ),
-          Container(
-            height: 5,
-            width: kScreenSizeWidth,
-            color: kDefaultBackground,
-          ),
+          if (!isPreview)
+            Container(
+              height: 5,
+              width: kScreenSizeWidth,
+              color: kDefaultBackground,
+            ),
         ],
       ),
     );
