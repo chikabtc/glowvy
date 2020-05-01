@@ -196,6 +196,7 @@ const kMessageTextFieldDecoration = InputDecoration(
 );
 
 var kBaseTextStyle = TextStyle(
+  height: 1.25,
   fontFamily: "BeVietnam",
   color: kDarkBG,
   fontSize: 15.0,

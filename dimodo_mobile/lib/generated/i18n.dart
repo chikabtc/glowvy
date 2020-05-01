@@ -75,6 +75,7 @@ class S implements WidgetsLocalizations {
   // ===========================================================================
   String get noOrdersDescription => "You’ve just been eye shopping";
   String get continueShopping => "Continue Shopping";
+  String get askQuestion => "Ask question";
 
 // =============================================================================
 // Write Review Page
@@ -94,7 +95,9 @@ class S implements WidgetsLocalizations {
   String get size => "Size";
   String get color => "Color";
   String get translatedByGoogle => "translated by Google Translate";
-  String get soldByKoreanShopDirectShipping => "Korean Brand Direct Supply";
+  String get soldByKoreanShopDirectShipping =>
+      "Korean Brand Direct Supply Overseas";
+  // String get soldByKoreanShopDirectShipping => "Korean Brand Direct Supply";
 
   // ===========================================================================
   // Confirm Order Page
@@ -106,14 +109,15 @@ class S implements WidgetsLocalizations {
   String get deliveryMethod => "Delivery Method";
   String get deliveryMethodDescription => "Shipping by Air - 10 days";
   String get importTax => "Import Tax";
+  String get satisfaction => "Satisfaction";
   String get importTaxDescription => "Korean Import Tax (10%)";
   String get serviceFee => "Service fee";
-  String get genuineSecurity => "Genuine Security";
-  String get genuineSecurityDescription =>
-      "If item is inauthentic, the buyer will be refunded the full amount they paid for the items";
+  String get dimodoGuarantee => "Dimodo Guarantee";
+  String get dimodoGuaranteeDescription =>
+      "If item is inauthentic, Dimodo will refund buyers the full amount they paid for the items";
   String get returnPolicy => "Return Policy";
   String get returnPolicyDescription =>
-      "Within 7 days (included) of the date of receipt confirmation, if there is any product quality problem description, leakage, loss, (not including subjective reasons), you can apply for a return";
+      "If there is any product quality problem (not including subjective reasons), you can apply for a return within 7 days purchase. ";
 
   String get serviceFeeDescription =>
       "The service helps us run our platform and offer better experiences";
@@ -188,7 +192,7 @@ class S implements WidgetsLocalizations {
   String get quanlityGuarantee => "Quality Guarantee";
   String get importTaxIncluded => "Import Tax Included";
   String get importTaxFeeDescription =>
-      "The goods you have purchased already include import taxes for cross-border e-commerce. Individual goods are borne by the merchant, you do not need to pay.";
+      "This product already includes import taxes for cross-border e-commerce.";
 
   String get koreanShipping => "Korean Shipping";
   String get trustReviews => "Trust Reviews";
@@ -485,10 +489,21 @@ class $vi extends S {
   // ===========================================================================
   String get importTaxIncluded => "Import Tax Included";
   String get translatedByGoogle => "translated by Google Translate";
-  String get soldByKoreanShopDirectShipping => "Korean Brand Direct Supply";
-
+  String get soldByKoreanShopDirectShipping =>
+      "Korean Brand Direct Supply Overseas";
+  String get includedInPrice => "included in price";
+  String get shipFromKorea => "Giao hàng từ";
+  String get dimodoGuarantee => "Origin of Security";
+  String get dimodoGuaranteeDescription =>
+      "If item is inauthentic, the buyer will be refunded the full amount they paid for the items";
+  String get returnPolicy => "Return Policy";
+  String get returnPolicyDescription =>
+      "Within 7 days (included) of the date of receipt confirmation, if there is any product quality problem description, leakage, loss, (not including subjective reasons), you can apply for a return";
   String get importTaxFeeDescription =>
-      "The goods you have purchased already include import taxes for cross-border e-commerce. Individual goods are borne by the merchant, you do not need to pay.";
+      "The goods you have purchased already include import taxes for cross-border e-commerce.";
+  String get askQuestion => "Ask question";
+  String get koreanShippingFee => "Korean Shipping fee: 50,000₫ per item";
+
 // =============================================================================
 // To trnaslate
 // =============================================================================
@@ -544,10 +559,8 @@ class $vi extends S {
   String get transactionSuccess => "Đã thanh toán";
   @override
   String get youMayAlsoLike => "Các sản phẩm tương tự";
-  @override
-  String get koreanShippingFee => "Phí ship từ Hàn Quốc: 50,000₫";
-  @override
-  String get shipFromKorea => "Giao hàng từ";
+
+  // String get koreanShippingFee => "Phí ship từ Hàn Quốc: 50,000₫";
   @override
   String get serviceIncludes => "Dịch vụ bao gồm";
   @override

@@ -1,10 +1,18 @@
+import 'package:Dimodo/common/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CommonIcons {
-  static final SvgPicture arrowForward =
-      SvgPicture.asset('assets/icons/arrow_forward.svg', width: 24);
+  static final SvgPicture arrowForward = SvgPicture.asset(
+    'assets/icons/arrow_forward.svg',
+    width: 24,
+  );
+  static final SvgPicture arrowForwardPink = SvgPicture.asset(
+    'assets/icons/arrow-forward-pink.svg',
+    width: 24,
+  );
+
   static final SvgPicture arrowBackward =
       SvgPicture.asset('assets/icons/arrow_backward.svg', width: 24);
   static final SvgPicture arrowBackwardWhite = SvgPicture.asset(

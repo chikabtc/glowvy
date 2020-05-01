@@ -156,6 +156,7 @@ class _AddShippingAddressState extends State<AddShippingAddress>
                                         bottom: 40.0,
                                       ),
                                       child: StaggerAnimation(
+                                        height: 48,
                                         buttonTitle: S.of(context).save,
                                         buttonController:
                                             _loginButtonController.view,

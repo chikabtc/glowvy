@@ -61,8 +61,8 @@ class _OrderSummaryState extends State<OrderSummary> {
         SizedBox(height: 20),
         OrderSummaryCard(
           currency: currency,
-          title: S.of(context).genuineSecurity,
-          subTitle: S.of(context).genuineSecurityDescription,
+          title: S.of(context).dimodoGuarantee,
+          subTitle: S.of(context).dimodoGuaranteeDescription,
           fee: null,
         ),
         SizedBox(height: 20),

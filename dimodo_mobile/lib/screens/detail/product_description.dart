@@ -29,6 +29,7 @@ class _ProductDescriptionState extends State<ProductDescription>
         sizeDetail.attributes.forEach((attribute) {
           sizeDetailWidget.add(DynamicText(
             "${attribute.title} ${attribute.value}",
+            textAlign: TextAlign.start,
             style: kBaseTextStyle.copyWith(fontSize: 12),
           ));
         });
@@ -36,6 +37,7 @@ class _ProductDescriptionState extends State<ProductDescription>
     }
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: sizeDetailWidget,
     );
   }
@@ -68,55 +70,59 @@ class _ProductDescriptionState extends State<ProductDescription>
         width: kScreenSizeWidth,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(children: <Widget>[
-            Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(
-                      color: kDefaultBackground,
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                    ),
-                    child: DynamicText(
-                      "id: ${widget.product.sid.toString()}",
-                      style: kBaseTextStyle.copyWith(
-                          fontSize: 12, color: kDarkAccent),
-                      textAlign: TextAlign.start,
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 5),
-                    decoration: BoxDecoration(
-                      color: kDefaultBackground,
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                    ),
-                    child: Row(children: <Widget>[
-                      Image.asset(
-                          "assets/icons/product_detail/google-translate.png"),
-                      DynamicText(
-                        S.of(context).translatedByGoogle,
+          child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 5),
+                        decoration: BoxDecoration(
+                          color: kDefaultBackground,
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                        ),
+                        child: DynamicText(
+                          "id: ${widget.product.sid.toString()}",
+                          style: kBaseTextStyle.copyWith(
+                              fontSize: 12, color: kDarkAccent),
+                          textAlign: TextAlign.start,
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 5),
+                        decoration: BoxDecoration(
+                          color: kDefaultBackground,
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                        ),
+                        child: Row(children: <Widget>[
+                          Image.asset(
+                              "assets/icons/product_detail/google-translate.png"),
+                          DynamicText(
+                            S.of(context).translatedByGoogle,
+                            style: kBaseTextStyle.copyWith(
+                                fontSize: 12, color: kDarkAccent),
+                            textAlign: TextAlign.start,
+                          ),
+                        ]),
+                      ),
+                    ]),
+                SizedBox(height: 50),
+                renderSizeDetail(),
+                SizedBox(height: 35),
+                widget.product.description != null
+                    ? DynamicText(
+                        formattedDescription,
                         style: kBaseTextStyle.copyWith(
                             fontSize: 12, color: kDarkAccent),
                         textAlign: TextAlign.start,
-                      ),
-                    ]),
-                  ),
-                ]),
-            SizedBox(height: 50),
-            renderSizeDetail(),
-            widget.product.description != null
-                ? DynamicText(
-                    formattedDescription,
-                    style: kBaseTextStyle.copyWith(
-                        fontSize: 12, color: kDarkAccent),
-                    textAlign: TextAlign.start,
-                  )
-                : Container(width: 0, height: 0),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 8.0, top: 30.0),
-              child: renderDescriptionImgs(),
-            )
-          ]),
+                      )
+                    : Container(width: 0, height: 0),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0, top: 30.0),
+                  child: renderDescriptionImgs(),
+                )
+              ]),
         ));
   }
 }

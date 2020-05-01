@@ -154,7 +154,8 @@ class Tools {
         onSale ? product.salePrice.toString() : product.price.toString();
     var basePrice = double.parse(price);
 
-    var convertedP = basePrice * 19;
+    //exchange rate
+    var convertedP = basePrice * 21.5;
     return convertedP.toString();
     // if (product.multiCurrencies != null &&
     //     product.multiCurrencies[currency] != null) {

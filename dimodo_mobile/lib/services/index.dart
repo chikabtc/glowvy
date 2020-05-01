@@ -4,7 +4,7 @@ import '../models/category.dart';
 import '../models/order/order.dart';
 import '../models/payment_method.dart';
 import '../models/product/product.dart';
-import '../models/review.dart';
+import '../models/reviews.dart';
 import '../models/shipping_method.dart';
 import '../models/user/user.dart';
 import '../models/user/userModel.dart';
@@ -34,7 +34,7 @@ abstract class BaseServices {
 
   Future<User> loginGoogle({String token});
 
-  Future<List<Review>> getReviews(productId, int offset, int limit);
+  Future<Reviews> getReviews(productId, int offset, int limit);
 
 // =============================================================================
 // CART
@@ -200,7 +200,7 @@ class Services implements BaseServices {
   }
 
   @override
-  Future<List<Review>> getReviews(productId, int offset, int limit) async {
+  Future<Reviews> getReviews(productId, int offset, int limit) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {

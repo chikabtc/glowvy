@@ -34,22 +34,30 @@ class ProductTitle extends StatelessWidget {
                 SizedBox(width: 8),
                 if (product.salePercent != null)
                   Container(
+                    height: 18,
+                    width: 44,
                     decoration: BoxDecoration(
                       color: kPinkAccent,
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
                     ),
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 3, right: 3),
-                      child: DynamicText(
+                    child: Center(
+                      child: Text(
                         "-${product.salePercent}%",
                         textAlign: TextAlign.center,
                         style: kBaseTextStyle.copyWith(
                             color: kDefaultBackground,
                             fontSize: 14,
+                            height: 1.3,
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                  )
+                  ),
+                Spacer(),
+                if (product.purchaseCount != null)
+                  DynamicText("${product.purchaseCount} sold",
+                      style: kBaseTextStyle.copyWith(
+                          fontSize: 10,
+                          color: kDarkSecondary.withOpacity(0.5))),
               ]),
           SizedBox(height: 3),
           if (product.salePrice != null)

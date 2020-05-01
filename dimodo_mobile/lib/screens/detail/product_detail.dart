@@ -1,4 +1,6 @@
 import 'package:Dimodo/models/order/cart.dart';
+import 'package:Dimodo/models/review.dart';
+import 'package:Dimodo/models/reviews.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../common/styles.dart';
@@ -7,7 +9,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../models/product/product.dart';
 import '../../models/app.dart';
 import '../../models/product/productModel.dart';
-import '../../models/user/userModel.dart';
 import 'product_title.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/generated/i18n.dart';
@@ -15,8 +16,11 @@ import 'productOption.dart';
 import 'image_feature.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'review.dart';
+import 'reviewScreen.dart';
+import 'review_card.dart';
+import 'cartAction.dart';
 import 'product_description.dart';
+import '../../services/index.dart';
 
 class ProductDetail extends StatefulWidget {
   final Product product;
@@ -32,6 +36,7 @@ class _ProductDetailState extends State<ProductDetail> {
   bool isLoading = false;
   Size screenSize;
   var bottomPopupHeightFactor;
+  final services = Services();
 
   List<String> tabList = [];
 
@@ -39,20 +44,48 @@ class _ProductDetailState extends State<ProductDetail> {
   List<String> sizes = ["S", "M", "L"];
   String color;
   String chosenSize;
+  Reviews metaReviews = Reviews();
 
   Future<Product> product;
   bool isLoggedIn = false;
   bool loaded = false;
-
+  int offset = 0;
+  int limit = 3;
   @override
   void initState() {
     super.initState();
+    metaReviews.reviews = <Review>[];
+    services.getReviews(widget.product.sid, offset, limit).then((onValue) {
+      setState(() {
+        metaReviews = onValue;
+        print("reviews received: ${metaReviews.toJson()}");
+      });
+      offset += 3;
+    });
   }
 
 //14403197
   void didChangeDependencies() {
     product =
         Provider.of<ProductModel>(context).getProduct(id: widget.product.sid);
+    super.didChangeDependencies();
+  }
+
+  Future<bool> getReviews() async {
+    var loadedReviews =
+        await services.getReviews(widget.product.sid, offset, limit);
+    if (loadedReviews.reviews.length == 0) {
+      return false;
+    }
+    setState(() {
+      isLoading = false;
+      loadedReviews.reviews.forEach((element) {
+        metaReviews.reviews.add(element);
+      });
+      //
+    });
+    offset += 3;
+    return true;
   }
 
   @override
@@ -108,10 +141,12 @@ class _ProductDetailState extends State<ProductDetail> {
                     delegate: SliverChildBuilderDelegate(
                       (BuildContext context, int i) {
                         if (index == 0) return ProductDescription(product);
-                        if (index == 1) return Reviews(product.sid);
-                        if (index == 2)
+                        if (index == 1)
                           return ProductModel.showProductListByCategory(
                               cateId: 7, context: context);
+                        // if (index == 2)
+                        //   return ProductModel.showProductListByCategory(
+                        //       cateId: 7, context: context);
                       },
                       childCount: 1,
                     ),
@@ -140,7 +175,7 @@ class _ProductDetailState extends State<ProductDetail> {
                         : null,
                     backgroundColor: Colors.white,
                     body: DefaultTabController(
-                        length: 3,
+                        length: 2,
                         child: NestedScrollView(
                             physics:
                                 ScrollPhysics(parent: BouncingScrollPhysics()),
@@ -155,13 +190,16 @@ class _ProductDetailState extends State<ProductDetail> {
                                     expandedHeight: screenSize.height * 0.52 +
                                         //title static heigt (31) and font sizes total 41 and 0.9 is the number for the height of the font
                                         //52 is the fontsizes of the service container texts.
-                                        //125 is the static height of the service contaienr
+                                        //115 is the static height of the service contaienr
                                         //40 is the tabbar height
                                         51 +
-                                        125 +
+                                        100 +
+                                        155 +
                                         41 * 1.2 +
                                         52 * 1.2 +
                                         40,
+                                    // 179,
+
                                     brightness: Brightness.light,
                                     leading: GestureDetector(
                                       onTap: () => Navigator.of(context).pop(),
@@ -175,56 +213,7 @@ class _ProductDetailState extends State<ProductDetail> {
                                         ),
                                       ),
                                     ),
-                                    actions: <Widget>[
-                                      Consumer<CartModel>(
-                                          builder: (context, value, child) {
-                                        return Stack(children: <Widget>[
-                                          IconButton(
-                                            onPressed: () =>
-                                                Navigator.pushNamed(
-                                                    context, "/cart",
-                                                    arguments: {
-                                                  "showBackSpace": true
-                                                }),
-                                            icon: SvgPicture.asset(
-                                              "assets/icons/cart-product-detail.svg",
-                                              width: 24 *
-                                                  kSizeConfig
-                                                      .containerMultiplier,
-                                              height: 24 *
-                                                  kSizeConfig
-                                                      .containerMultiplier,
-                                            ),
-                                          ),
-                                          if (value.totalCartQuantity > 0)
-                                            Positioned(
-                                              right: 7.5,
-                                              top: 7.5,
-                                              child: Container(
-                                                padding: EdgeInsets.all(1),
-                                                decoration: new BoxDecoration(
-                                                  color: Colors.red,
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                ),
-                                                constraints: BoxConstraints(
-                                                  minWidth: 16,
-                                                  minHeight: 16,
-                                                ),
-                                                child: new Text(
-                                                  value.totalCartQuantity
-                                                      .toString(),
-                                                  style: new TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 10,
-                                                  ),
-                                                  textAlign: TextAlign.center,
-                                                ),
-                                              ),
-                                            )
-                                        ]);
-                                      })
-                                    ],
+                                    actions: <Widget>[CartAction()],
                                     backgroundColor: Colors.white,
                                     pinned: true,
                                     floating: false,
@@ -348,17 +337,76 @@ class _ProductDetailState extends State<ProductDetail> {
                                                           color:
                                                               kDefaultBackground,
                                                         ),
-                                                        // Container(
-                                                        //   height: 145,
-                                                        //   width:
-                                                        //       screenSize.width,
-                                                        //   color:
-                                                        //       kDefaultBackground,
-                                                        //   child: Row(
-                                                        //     children: <
-                                                        //         Widget>[],
-                                                        //   ),
-                                                        // ),
+                                                        GestureDetector(
+                                                          onTap: () => Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder: (context) =>
+                                                                      ReviewScreen(
+                                                                          metaReviews,
+                                                                          getReviews))),
+                                                          child: Container(
+                                                            // height: 151,
+                                                            width: screenSize
+                                                                .width,
+                                                            color: Colors.white,
+                                                            child: Column(
+                                                              children: <
+                                                                  Widget>[
+                                                                Container(
+                                                                  height: 56,
+                                                                  padding: EdgeInsets
+                                                                      .symmetric(
+                                                                          horizontal:
+                                                                              16),
+                                                                  child: Row(
+                                                                    children: <
+                                                                        Widget>[
+                                                                      DynamicText(
+                                                                          "${S.of(context).reviews} (${metaReviews.totalCount})",
+                                                                          style: kBaseTextStyle.copyWith(
+                                                                              fontSize: 12,
+                                                                              color: kDarkSecondary,
+                                                                              fontWeight: FontWeight.w600)),
+                                                                      Spacer(),
+                                                                      Row(
+                                                                        crossAxisAlignment:
+                                                                            CrossAxisAlignment.center,
+                                                                        children: <
+                                                                            Widget>[
+                                                                          DynamicText(
+                                                                              S.of(context).satisfaction + " ${metaReviews.averageSatisfaction}%",
+                                                                              style: kBaseTextStyle.copyWith(fontSize: 12, color: kPinkAccent, fontWeight: FontWeight.w600)),
+                                                                          CommonIcons
+                                                                              .arrowForwardPink
+                                                                        ],
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                SizedBox(
+                                                                    height: 10),
+                                                                if (metaReviews
+                                                                        .reviews
+                                                                        .length !=
+                                                                    0)
+                                                                  Padding(
+                                                                    padding: const EdgeInsets
+                                                                            .symmetric(
+                                                                        horizontal:
+                                                                            10.0),
+                                                                    child: ReviewCard(
+                                                                        isPreview:
+                                                                            true,
+                                                                        context:
+                                                                            context,
+                                                                        review:
+                                                                            metaReviews.reviews[0]),
+                                                                  )
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
                                                       ],
                                                     )),
                                               ],
