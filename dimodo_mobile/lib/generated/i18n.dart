@@ -487,23 +487,24 @@ class $vi extends S {
   // ===========================================================================
   // To Trnaslate
   // ===========================================================================
-  String get importTaxIncluded => "Import Tax Included";
-  String get translatedByGoogle => "translated by Google Translate";
+  String get importTaxIncluded => "Đã bao gồm thuế nhập khẩu";
+  String get translatedByGoogle => "dịch bởi Google Dịch";
   String get soldByKoreanShopDirectShipping =>
-      "Korean Brand Direct Supply Overseas";
-  String get includedInPrice => "included in price";
-  String get shipFromKorea => "Giao hàng từ";
-  String get dimodoGuarantee => "Dimdodo Guarantee";
+      "Được cung cấp trực tiếp từ Hàn Quốc";
+  String get includedInPrice => "Giá đã bao gồm";
+  String get shipFromKorea => "Giao hàng từ Hàn Quốc";
+  String get dimodoGuarantee => "chính sách bảo hành của Dimodo";
   String get dimodoGuaranteeDescription =>
-      "If item is inauthentic, the buyer will be refunded the full amount they paid for the items";
-  String get returnPolicy => "Return Policy";
+      "nếu như hàng hóa thực tế nhận hàng không đúng với mô tả, khách hàng sẽ được hoàn trả lại số tiền đã thanh toán.";
+  String get returnPolicy => "Chính sách trả hàng";
   String get returnPolicyDescription =>
-      "If there is any product quality problem (not including subjective reasons), you can apply for a return within 7 days purchase.";
+      "Nếu như có bất kì vấn đề về chất lượng sản phẩm( không bao gồm các lý do chủ quan), khách hàng có thể đăng kí hoàn trả trong 7 ngày kể từ ngày nhận hàng";
   String get importTaxFeeDescription =>
-      "The goods you have purchased already include import taxes for cross-border e-commerce.";
-  String get askQuestion => "Ask question";
-  String get koreanShippingFee => "Korean Shipping fee: 50,000₫ per item";
-  String get satisfaction => "Satisfaction";
+      "Hàng hóa bạn đăng kí mua đã được tính thuế thương mại nhập khẩu";
+  String get askQuestion => "Đặt câu hỏi cho chúng tôi";
+  String get koreanShippingFee =>
+      "Phí vận chuyển từ Hàn Quốc: 50.000 Vnd mỗi sản phẩm";
+  String get satisfaction => "Đánh giá trung bình";
 
 // =============================================================================
 // To trnaslate

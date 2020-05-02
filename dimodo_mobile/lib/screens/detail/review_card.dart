@@ -63,7 +63,7 @@ class ReviewCard extends StatelessWidget {
             children: <Widget>[
               //todo: assign the same profile pic
               Image.asset(
-                'assets/icons/account/profile${rng.nextInt(2)}.png',
+                'assets/icons/account/profile${1}.png',
               ),
               SizedBox(width: 10),
               Expanded(

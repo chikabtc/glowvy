@@ -503,7 +503,7 @@ class _ProductOptionState extends State<ProductOption>
                 shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(25.0),
                     side: BorderSide(color: kPinkAccent, width: 1.5)),
-                child: DynamicText(S.of(context).askQuestion,
+                child: DynamicText(S.of(context).support,
                     style: kBaseTextStyle.copyWith(
                         fontWeight: FontWeight.w600, color: kPinkAccent)),
                 onPressed: () =>
