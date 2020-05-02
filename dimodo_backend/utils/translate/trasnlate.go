@@ -102,12 +102,14 @@ func TranslateText(sourceLang, targetLang, text string) (string, error) {
 	if result == " " || len(result) < 4 || result == "[" {
 		fmt.Println("ggTranslate couldn't translate, now trying ppg translate")
 
-		result, err = PpgTranslateText(sourceLang, targetLang, text)
-		fmt.Println("pgg translated: ", result)
-		if err != nil {
-			bugsnag.Notify(err)
-			fmt.Println("err: ", err)
-		}
+		return "", fmt.Errorf("ggTranslate couldn't translate")
+
+		// result, err = PpgTranslateText(sourceLang, targetLang, text)
+		// fmt.Println("pgg translated: ", result)
+		// if err != nil {
+		// 	bugsnag.Notify(err)
+		// 	fmt.Println("err: ", err)
+		// }
 	}
 	return result, err
 
