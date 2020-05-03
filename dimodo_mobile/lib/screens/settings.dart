@@ -179,7 +179,7 @@ class SettingScreenState extends State<SettingScreen>
                                 await FlutterMailer.send(MailOptions(
                                   body: '',
                                   subject: 'Feedback',
-                                  recipients: ['support@dimodo.com'],
+                                  recipients: ['support@dimodo.inbox.ai'],
                                 ))
                               }),
                       kFullDivider,
