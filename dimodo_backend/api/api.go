@@ -14,17 +14,17 @@ import (
 )
 
 type API struct {
-	r   *mux.Router
-	cs  Controllers
-	ms  *models.Services
-	cfg *Config
+	R   *mux.Router
+	Cs  Controllers
+	Ms  *models.Services
+	Cfg *Config
 }
 
 type Controllers struct {
-	userC    *controllers.User
-	addressC *controllers.Address
-	productC *controllers.Product
-	cartC    *controllers.Cart
+	UserC    *controllers.User
+	AddressC *controllers.Address
+	ProductC *controllers.Product
+	CartC    *controllers.Cart
 }
 
 //NewAPI loads configuration files and initializes the router, DB, models, and controller objects.
@@ -54,17 +54,17 @@ func NewAPI(crawler *crawler.Crawler) *API {
 	slack := utils.NewSlackService()
 
 	cs := Controllers{
-		userC:    controllers.NewUser(ms.User, ms.Mail, cfg.Name, cfg.Domain),
-		addressC: controllers.NewAddress(ms.Address),
-		cartC:    controllers.NewCart(ms.Cart, slack),
-		productC: controllers.NewProduct(ms.Product, crawler),
+		UserC:    controllers.NewUser(ms.User, ms.Mail, cfg.Name, cfg.Domain),
+		AddressC: controllers.NewAddress(ms.Address),
+		CartC:    controllers.NewCart(ms.Cart, slack),
+		ProductC: controllers.NewProduct(ms.Product, crawler),
 	}
 
 	a := API{
-		r:   mux.NewRouter(),
-		cs:  cs,
-		ms:  ms,
-		cfg: &cfg,
+		R:   mux.NewRouter(),
+		Cs:  cs,
+		Ms:  ms,
+		Cfg: &cfg,
 	}
 
 	fmt.Println("Project -", cfg.Name)
@@ -76,5 +76,5 @@ func NewAPI(crawler *crawler.Crawler) *API {
 func (a *API) Run() {
 	a.InitializeRoutes()
 	// a.CORS()
-	defer a.ms.Close()
+	defer a.Ms.Close()
 }

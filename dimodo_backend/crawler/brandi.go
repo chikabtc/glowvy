@@ -46,8 +46,9 @@ const brandiAuth = "3b17176f2eb5fdffb9bafdcc3e4bc192b013813caddccd0aad20c23ed272
 //brandi: :: bags(6) accessories(10) jewerly(119) crossbag(57) clutch(58) shouldebag(59) totebags(60) backpack(123) phonecase(124) wallet(35) scarf(66) hats(34) socks(105) watch(36)eyeware (125) earing(127) necklace(128) ring(129) outer(363) top(364)
 //this approach doesn't work..
 //47 categories
-func (c *Crawler) AddNewProductsByCategories() {
+func (c *Crawler) AddNewProductsByCategories() error {
 	var categories = make(map[int][]int)
+	var err error
 	categories[1] = append(categories[1], 13, 15, 120, 19, 18)
 	categories[2] = append(categories[2], 366, 50, 25, 24, 51, 121)
 	categories[3] = append(categories[3], 33, 367)
@@ -60,10 +61,11 @@ func (c *Crawler) AddNewProductsByCategories() {
 	for parentId, childrenIds := range categories {
 		for _, categoryId := range childrenIds {
 			fmt.Println("calling product by category:", +categoryId, "parent id: ", parentId)
-			c.GetPopularProductsByCategory(parentId, categoryId, 5)
+			err = c.GetPopularProductsByCategory(parentId, categoryId, 5)
+			return err
 		}
 	}
-	return
+	return err
 	// c.GetMainProducts()
 }
 
@@ -95,7 +97,7 @@ func (c *Crawler) AddNewProductsByCategories() {
 // 	fmt.Println(url)
 // }
 
-func (c *Crawler) GetPopularProductsByCategory(parentId int, idx int, limit int) {
+func (c *Crawler) GetPopularProductsByCategory(parentId int, idx int, limit int) error {
 	// get api
 	id := strconv.Itoa(idx)
 
@@ -112,7 +114,7 @@ func (c *Crawler) GetPopularProductsByCategory(parentId int, idx int, limit int)
 	res, err := client.Do(req)
 	if err != nil {
 		bugsnag.Notify(err)
-		return
+		return err
 	}
 
 	defer res.Body.Close()
@@ -134,7 +136,7 @@ func (c *Crawler) GetPopularProductsByCategory(parentId int, idx int, limit int)
 		}
 	}
 	fmt.Println(url)
-	return
+	return err
 }
 
 func (c *Crawler) GetPopularProductsByShopId(idx int, limits int) []models.Product {
@@ -192,7 +194,7 @@ func (c *Crawler) GetPopularProductsByShopId(idx int, limits int) []models.Produ
 	return products
 }
 
-func (c *Crawler) GetMainProducts() {
+func (c *Crawler) GetMainProducts() error {
 	url := "https://cf-api-c.brandi.me/v1/web/main?version=42&is-web=true"
 	fmt.Println("GetMainProducts: ", url)
 	req, _ := http.NewRequest("GET", url, nil)
@@ -201,7 +203,7 @@ func (c *Crawler) GetMainProducts() {
 	res, err := client.Do(req)
 	if err != nil {
 		bugsnag.Notify(err)
-		return
+		return err
 	}
 	defer res.Body.Close()
 	body, _ := ioutil.ReadAll(res.Body)
@@ -246,6 +248,7 @@ func (c *Crawler) GetMainProducts() {
 			fmt.Println(err.Error())
 		}
 	}
+	return err
 }
 
 func (c *Crawler) ProductDetailById(bProductId string) (*models.Product, error) {
@@ -655,4 +658,40 @@ func (c *Crawler) ImageThumbnailByProductId(bProductId string) (string, error) {
 	fmt.Println("medium url", bp.Data.Images[0].ImageMediumURL)
 
 	return bp.Data.Images[0].ImageMediumURL, nil
+}
+
+func (c *Crawler) UpdatePrices() error {
+	sids := make([]string, 0)
+
+	rows, err := c.dot.Query(c.DB, "GetSidsOfAllProducts")
+	if err != nil {
+		// bugsnag.Notify(err)
+		fmt.Println("GetSidsOfAllProducts: ", err)
+		return err
+	}
+
+	var sid string
+	defer rows.Close()
+
+	for rows.Next() {
+		if err := rows.Scan(
+			&sid,
+		); err != nil {
+			fmt.Println("fail to GetSidsOfAllProducts ", err)
+			return err
+		}
+		time.Sleep(2 * time.Second)
+		product, err := c.ProductDetailById(sid)
+		_, err = c.dot.Exec(c.DB, "UpdatePrice", product.Price, product.Sale_price, product.Sale_percent, product.Sid)
+		if err != nil {
+			// bugsnag.Notify(err)
+			fmt.Println("UpdatePrice: ", err)
+			return err
+		}
+		sids = append(sids, sid)
+
+	}
+	fmt.Println("sid counts: ", len(sids))
+	return err
+
 }

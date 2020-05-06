@@ -17,7 +17,7 @@ type ProductService interface {
 	AllCategories() ([]Category, error)
 	ProductsByCategoryID(categoryID, start, count int, sortBy string) ([]Product, error)
 	ProductsByShopId(shopId, start, count int) ([]Product, error)
-	ProductsByTags(tags string, start, count int) ([]Product, error)
+	ProductsByTags(tags string, start, count int, sortBy string) ([]Product, error)
 	ReviewsByProductID(productId, start, count int) (*Reviews, error)
 	CountReviews(productId, start, count int) (int, error)
 	CheckOptions(productId int) (bool, error)
@@ -294,9 +294,9 @@ func (ps *productService) ProductsByShopId(shopId, start, count int) ([]Product,
 	return products, nil
 }
 
-func (ps *productService) ProductsByTags(tags string, start, count int) ([]Product, error) {
+func (ps *productService) ProductsByTags(tags string, start, count int, sortBy string) ([]Product, error) {
 	fmt.Println("tag : ", tags)
-	rows, err := ps.dot.Query(ps.DB, "ProductsByTags", tags, start, count)
+	rows, err := ps.dot.Query(ps.DB, "ProductsByTags", tags, start, count, sortBy)
 	if err != nil {
 		bugsnag.Notify(err)
 		fmt.Println("ProductsByTags", err)
@@ -540,7 +540,7 @@ func (ps *productService) GetSidsOfAllProducts() ([]string, error) {
 }
 
 func (ps *productService) UpdatePrice(product *Product) (bool, error) {
-	_, err := ps.dot.Exec(ps.DB, "UpdatePrice", product.Sprice, product.Sale_price, product.Sale_percent, product.Sid)
+	_, err := ps.dot.Exec(ps.DB, "UpdatePrice", product.Price, product.Sale_price, product.Sale_percent, product.Sid)
 	if err != nil {
 		// bugsnag.Notify(err)
 		fmt.Println("UpdatePrice: ", err)

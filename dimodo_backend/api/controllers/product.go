@@ -117,6 +117,8 @@ func (p *Product) ProductsByCategoryId(w http.ResponseWriter, r *http.Request) {
 func (p *Product) ProductsByTags(w http.ResponseWriter, r *http.Request) {
 	count, _ := strconv.Atoi(r.FormValue("count"))
 	start, _ := strconv.Atoi(r.FormValue("start"))
+	sortBy := r.FormValue("sort_by")
+
 	if count > 24 || count < 1 {
 		count = count
 	}
@@ -131,7 +133,7 @@ func (p *Product) ProductsByTags(w http.ResponseWriter, r *http.Request) {
 	// 	resp.Json(w, r, http.StatusBadRequest, resp.WithError(msgError))
 	// 	return
 	// }
-	products, err := p.ps.ProductsByTags(tag, start, count)
+	products, err := p.ps.ProductsByTags(tag, start, count, sortBy)
 	if err != nil {
 		bugsnag.Notify(err)
 		resp.Json(w, r, http.StatusInternalServerError, resp.WithError(err.Error()))
@@ -284,6 +286,29 @@ func (p *Product) UpdateProductPrices(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	resp.Json(w, r, http.StatusOK, resp.WithSuccess(err))
+}
+
+func (p *Product) UpdateProductPrice(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+
+	id := params["id"]
+
+	product, err := p.cw.ProductDetailById(id)
+	if err != nil {
+		fmt.Println("ProductDetailById err: ", err)
+	}
+
+	isSuccess, err := p.ps.UpdatePrice(product)
+	if err != nil {
+		fmt.Println("UpdateProductPrices err: ", err)
+	}
+
+	if err != nil {
+		bugsnag.Notify(err)
+		resp.Json(w, r, http.StatusBadRequest, resp.WithError(err))
+		return
+	}
+	resp.Json(w, r, http.StatusOK, resp.WithSuccess(isSuccess))
 }
 
 func (p *Product) UpdateThumbnailImages(w http.ResponseWriter, r *http.Request) {
