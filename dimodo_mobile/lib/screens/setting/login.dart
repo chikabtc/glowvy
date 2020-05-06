@@ -73,7 +73,7 @@ class _LoginPageState extends State<LoginScreen>
       // Navigator.of(context).pop(user);
     } else {
       final snackBar = SnackBar(
-          content: DynamicText(S.of(context).welcome + ' $user !',
+          content: DynamicText(S.of(context).welcome + ' ${user.fullName} !',
               style: kBaseTextStyle.copyWith(color: Colors.white)));
       Scaffold.of(context).showSnackBar(snackBar);
 

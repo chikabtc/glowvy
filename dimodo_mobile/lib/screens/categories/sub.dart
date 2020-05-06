@@ -56,7 +56,8 @@ class SubCategoriesState extends State<SubCategories> {
         Expanded(
           child: FutureBuilder<List<Product>>(
             future: _service.fetchProductsByCategory(
-                categoryId: widget.categories[selectedIndex].id),
+                categoryId: widget.categories[selectedIndex].id,
+                sortBy: "-sale_price"),
             builder:
                 (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
               var products = snapshot.data;

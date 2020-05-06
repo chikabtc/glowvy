@@ -113,10 +113,7 @@ class CategoryCardItem extends StatelessWidget {
       onTap: hasChildren
           ? null
           : () {
-              ProductModel.showList(
-                  context: context,
-                  cateId: category.id,
-                  cateName: category.name);
+              ProductModel.showList(context: context, category: category);
             },
       child: FittedBox(
         fit: BoxFit.cover,
@@ -197,10 +194,7 @@ class SubItem extends StatelessWidget {
               Expanded(child: Text(category.name)),
               InkWell(
                 onTap: () {
-                  ProductModel.showList(
-                      context: context,
-                      cateId: category.id,
-                      cateName: category.name);
+                  ProductModel.showList(context: context, category: category);
                 },
                 child: Text(
                   "${category.totalProduct} items",
@@ -211,10 +205,7 @@ class SubItem extends StatelessWidget {
               IconButton(
                   icon: Icon(Icons.keyboard_arrow_right),
                   onPressed: () {
-                    ProductModel.showList(
-                        context: context,
-                        cateId: category.id,
-                        cateName: category.name);
+                    ProductModel.showList(context: context, category: category);
                   })
             ],
           ),

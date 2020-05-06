@@ -5,9 +5,7 @@ import '../../common/constants.dart';
 import '../../generated/i18n.dart';
 import '../../models/category.dart';
 import '../../widgets/cardlist/index.dart';
-import '../../widgets/grid_category.dart';
 import 'card.dart';
-import 'column.dart';
 import 'sub.dart';
 
 class CategoriesScreen extends StatefulWidget {
@@ -33,7 +31,8 @@ class CategoriesScreenState extends State<CategoriesScreen>
   @override
   void initState() {
     super.initState();
-    controller = AnimationController(duration: Duration(milliseconds: 300), vsync: this);
+    controller =
+        AnimationController(duration: Duration(milliseconds: 300), vsync: this);
     animation = Tween<double>(begin: 0, end: 60).animate(controller);
     animation.addListener(() {
       setState(() {});
@@ -62,7 +61,7 @@ class CategoriesScreenState extends State<CategoriesScreen>
     final category = Provider.of<CategoryModel>(context);
     final screenSize = MediaQuery.of(context).size;
 
-    return ListenableProvider.value (
+    return ListenableProvider.value(
         value: category,
         child: Consumer<CategoryModel>(
           builder: (context, value, child) {
@@ -83,11 +82,8 @@ class CategoriesScreenState extends State<CategoriesScreen>
             return Scaffold(
               backgroundColor: Theme.of(context).backgroundColor,
               body: SafeArea(
-                  child: [
-                    'grid',
-                    'column',
-                    'subCategories'
-                  ].contains(widget.layout)
+                  child: ['grid', 'column', 'subCategories']
+                          .contains(widget.layout)
                       ? Column(
                           children: <Widget>[
                             Container(
@@ -95,13 +91,22 @@ class CategoriesScreenState extends State<CategoriesScreen>
                               child: FittedBox(
                                 fit: BoxFit.cover,
                                 child: Container(
-                                  width: screenSize.width / (2 / (screenSize.height / screenSize.width)),
+                                  width: screenSize.width /
+                                      (2 /
+                                          (screenSize.height /
+                                              screenSize.width)),
                                   child: Padding(
                                     child: Text(
                                       S.of(context).category,
-                                      style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                          fontSize: 27,
+                                          fontWeight: FontWeight.bold),
                                     ),
-                                    padding: EdgeInsets.only(top: 10, left: 10, bottom: 20, right: 10),
+                                    padding: EdgeInsets.only(
+                                        top: 10,
+                                        left: 10,
+                                        bottom: 20,
+                                        right: 10),
                                   ),
                                 ),
                               ),
@@ -118,13 +123,22 @@ class CategoriesScreenState extends State<CategoriesScreen>
                               child: FittedBox(
                                 fit: BoxFit.cover,
                                 child: Container(
-                                  width: screenSize.width / (2 / (screenSize.height / screenSize.width)),
+                                  width: screenSize.width /
+                                      (2 /
+                                          (screenSize.height /
+                                              screenSize.width)),
                                   child: Padding(
                                     child: Text(
                                       S.of(context).category,
-                                      style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                          fontSize: 27,
+                                          fontWeight: FontWeight.bold),
                                     ),
-                                    padding: EdgeInsets.only(top: 10, left: 10, bottom: 20, right: 10),
+                                    padding: EdgeInsets.only(
+                                        top: 10,
+                                        left: 10,
+                                        bottom: 20,
+                                        right: 10),
                                   ),
                                 ),
                               ),
@@ -141,14 +155,11 @@ class CategoriesScreenState extends State<CategoriesScreen>
     switch (widget.layout) {
       case 'card':
         return CardCategories(value.categories);
-      case 'column':
-        return ColumnCategories(value.categories);
       case 'subCategories':
         return SubCategories(value.categories);
       case 'animation':
         return HorizonMenu();
-      case 'grid':
-        return GridCategory();
+
       default:
         return CardCategories(value.categories);
     }

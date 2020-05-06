@@ -81,7 +81,9 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
                   delegate: SliverChildListDelegate([
                     Container(color: Colors.transparent, height: 21),
                     ProductModel.showProductListByCategory(
-                        cateId: currentCate.id, context: context)
+                        cateId: currentCate.id,
+                        sortBy: "sale_price",
+                        context: context)
                   ]),
                 ),
               ])),

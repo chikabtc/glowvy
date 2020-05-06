@@ -117,8 +117,7 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
             padding: EdgeInsets.only(left: 20),
           ),
           onTap: () {
-            ProductModel.showList(
-                context: context, cateId: category.id, cateName: category.name);
+            ProductModel.showList(context: context, category: category);
           },
         ),
       );

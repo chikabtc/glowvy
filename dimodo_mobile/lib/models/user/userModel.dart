@@ -35,7 +35,6 @@ class UserModel with ChangeNotifier {
         password: password,
       );
 
-      //get all the data from server here
       user.address = await _service.getAddress(token: user.accessToken);
 
       isLoggedIn = true;
@@ -98,7 +97,9 @@ class UserModel with ChangeNotifier {
       print('google accessToken: $token');
 
       user = await _service.loginGoogle(token: auth.accessToken);
-      user.address = await _service.getAddress(token: user.accessToken);
+      if (user.accessToken != null) {
+        user.address = await _service.getAddress(token: user.accessToken);
+      }
       isLoggedIn = true;
 
       print("lgogogo: ${user.toJson()}");
@@ -152,7 +153,7 @@ class UserModel with ChangeNotifier {
 
   Future getShippingAddress() async {
     final LocalStorage storage = new LocalStorage("Dimodo");
-    if (user.accessToken != null && user != null) {
+    if (user != null) {
       user.address = await _service.getAddress(token: user.accessToken);
     }
 

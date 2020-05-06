@@ -21,8 +21,7 @@ class RelatedProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     Future<List<Product>> getRelativeProducts() => _memoizer.runOnce(() {
           return services.fetchProductsByCategory(
-            categoryId: product.categoryId,
-          );
+              categoryId: product.categoryId, sortBy: "-sale_price");
         });
 
     return LayoutBuilder(

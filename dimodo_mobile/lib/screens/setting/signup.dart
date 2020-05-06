@@ -105,21 +105,21 @@ class _SignupScreenState extends State<SignupScreen>
 
   void _welcomeMessage(user, context) {
     if (widget.fromCart) {
-      Navigator.of(context).pop(user);
+      // Navigator.of(context).pop(user);
     } else {
       final snackBar = SnackBar(
-          content: DynamicText(S.of(context).welcome + ' ${user.name} !',
-              style: kBaseTextStyle));
+          content: DynamicText(S.of(context).welcome + ' ${user.fullName} !',
+              style: kBaseTextStyle.copyWith(color: Colors.white)));
       Scaffold.of(context).showSnackBar(snackBar);
-      Future.delayed(const Duration(milliseconds: 500), () {
-        Navigator.of(context).pushReplacementNamed('/setting');
-      });
+
+      Navigator.of(context).pop();
     }
   }
 
   void _failMessage(message, context) {
     /// Showing Error messageSnackBarDemo
     /// Ability so close message
+    print("Warning: $message");
     final snackBar = SnackBar(
       content: DynamicText('Warning: $message', style: kBaseTextStyle),
       duration: Duration(seconds: 30),
@@ -172,6 +172,7 @@ class _SignupScreenState extends State<SignupScreen>
         },
         fail: (message) {
           //hideLoading();
+
           _stopAnimation();
           _failMessage(message, context);
         },

@@ -48,7 +48,7 @@ class ProductModel with ChangeNotifier {
     }
   }
 
-  void getProductsList({categoryId}) async {
+  void getProductsList({categoryId, sortBy}) async {
     try {
       if (categoryId != null) {
         this.categoryId = categoryId;
@@ -57,8 +57,8 @@ class ProductModel with ChangeNotifier {
       isEnd = false;
       notifyListeners();
 
-      final products =
-          await service.fetchProductsByCategory(categoryId: categoryId);
+      final products = await service.fetchProductsByCategory(
+          categoryId: categoryId, sortBy: sortBy);
       if (products.isEmpty) {
         isEnd = true;
       }
@@ -108,7 +108,7 @@ class ProductModel with ChangeNotifier {
     }
   }
 
-  void fetchProductsByCategory({categoryId, lang, page}) async {
+  void fetchProductsByCategory({categoryId, lang, page, sortBy}) async {
     try {
       if (categoryId != null) {
         this.categoryId = categoryId;
@@ -117,8 +117,8 @@ class ProductModel with ChangeNotifier {
       isEnd = false;
       notifyListeners();
 
-      final products =
-          await service.fetchProductsByCategory(categoryId: categoryId);
+      final products = await service.fetchProductsByCategory(
+          categoryId: categoryId, sortBy: sortBy);
       if (products.isEmpty) {
         isEnd = true;
       }
@@ -151,8 +151,13 @@ class ProductModel with ChangeNotifier {
 
   /// Show Products in Slider View
   static showList(
-      {cateId, cateName, context, List<Product> products, config, noRouting}) {
-    var categoryId = cateId ?? config['category'];
+      {Category category,
+      sortBy,
+      context,
+      List<Product> products,
+      config,
+      noRouting}) {
+    var categoryId = category.id == null ? config['category'] : category.id;
     final product = Provider.of<ProductModel>(context, listen: false);
 
     // for caching current products list
@@ -168,9 +173,7 @@ class ProductModel with ChangeNotifier {
     if (categoryId != null) product.setCategoryId(categoryId: categoryId);
 
     product.setProductsList(List<Product>()); //clear old products
-    product.getProductsList(
-      categoryId: categoryId,
-    );
+    product.getProductsList(categoryId: categoryId, sortBy: sortBy);
 
     if (noRouting == null)
       Navigator.push(
@@ -181,7 +184,7 @@ class ProductModel with ChangeNotifier {
       return SubCategoryScreen(category: categoryId);
   }
 
-  static showSubCategoryPage(Category category, context) {
+  static showSubCategoryPage(Category category, String sortBy, context) {
     final product = Provider.of<ProductModel>(context, listen: false);
     print("show subcate");
     print("cate id: ${category.name}");
@@ -196,7 +199,7 @@ class ProductModel with ChangeNotifier {
             builder: (context) => SubCategoryScreen(category: category)));
   }
 
-  static showProductListByCategory({cateId, context}) {
+  static showProductListByCategory({cateId, sortBy, context}) {
     var categoryId = cateId;
     final product = Provider.of<ProductModel>(context, listen: false);
 
@@ -207,7 +210,8 @@ class ProductModel with ChangeNotifier {
     //rebuilding three times
     // product.setProductsList(List<Product>()); //clear old products
     return FutureBuilder<List<Product>>(
-      future: service.fetchProductsByCategory(categoryId: cateId),
+      future:
+          service.fetchProductsByCategory(categoryId: cateId, sortBy: sortBy),
       builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
         return ProductList(
           products: snapshot.data,

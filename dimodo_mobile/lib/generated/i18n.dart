@@ -487,6 +487,13 @@ class $vi extends S {
   // ===========================================================================
   // To Trnaslate
   // ===========================================================================
+
+  String get enterYourEmail => "Nhập email";
+  String get password => "Mật khẩu từ 6 đến 32 ký tự";
+
+// =============================================================================
+// To trnaslate
+// =============================================================================
   String get importTaxIncluded => "Đã bao gồm thuế nhập khẩu";
   String get translatedByGoogle => "dịch bởi Google Dịch";
   String get soldByKoreanShopDirectShipping =>
@@ -505,10 +512,6 @@ class $vi extends S {
   String get koreanShippingFee =>
       "Phí vận chuyển từ Hàn Quốc: 50.000 Vnd mỗi sản phẩm";
   String get satisfaction => "Đánh giá trung bình";
-
-// =============================================================================
-// To trnaslate
-// =============================================================================
   @override
   String get all => "TẤT CẢ";
   @override
@@ -585,8 +588,7 @@ class $vi extends S {
   String get cart => "Giỏ hàng";
   @override
   String get logout => "Đăng xuất";
-  @override
-  String get password => "Password";
+
   @override
   String get recentSearches => "Tìm kiếm gần đây";
   @override
@@ -682,8 +684,7 @@ class $vi extends S {
   String get arabic => "Tiếng Ả Rập";
   @override
   String get outOfStock => "Hết hàng";
-  @override
-  String get enterYourEmail => "Enter your email";
+
   @override
   String get addToCart => "Thêm vào giỏ hàng";
   @override

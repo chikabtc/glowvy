@@ -90,12 +90,6 @@ class ProductTitle extends StatelessWidget {
                 ),
               ]),
             ),
-            //  DynamicText(
-            //   S.of(context).soldByKoreanShopDirectShipping,
-            //   style: kBaseTextStyle.copyWith(
-            //       fontSize: 12, color: kDarkSecondary.withOpacity(0.7)),
-            //   textAlign: TextAlign.start,
-            // ),
           ),
           SizedBox(height: 5),
           Container(

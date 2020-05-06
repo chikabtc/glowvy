@@ -24,7 +24,7 @@ import 'package:connectivity/connectivity.dart';
 abstract class BaseServices {
   Future<List<Category>> getCategories({lang});
 
-  Future<List<Product>> fetchProductsByCategory({categoryId});
+  Future<List<Product>> fetchProductsByCategory({categoryId, sortBy});
 
   Future<List<Product>> fetchProductsByTag({tag});
 
@@ -125,13 +125,12 @@ class Services implements BaseServices {
   }
 
   @override
-  Future<List<Product>> fetchProductsByCategory({categoryId}) async {
+  Future<List<Product>> fetchProductsByCategory({categoryId, sortBy}) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
       return serviceApi.fetchProductsByCategory(
-        categoryId: categoryId,
-      );
+          categoryId: categoryId, sortBy: sortBy);
     } else {
       //TODO: add no connection popup
       throw Exception("No internet connection");

@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/models/category.dart';
-import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/generated/i18n.dart';
 
@@ -39,7 +38,8 @@ class CategoryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => ProductModel.showSubCategoryPage(category, context),
+      onTap: () =>
+          ProductModel.showSubCategoryPage(category, "+sale_price", context),
       child: Column(children: <Widget>[
         // SvgPicture.asset(category.image, width: 48, height: 48),
         Image.asset(category.image),
