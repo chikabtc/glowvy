@@ -152,6 +152,11 @@ class Tools {
       {bool onSale}) {
     String price =
         onSale ? product.salePrice.toString() : product.price.toString();
+    // print("price: $price and sid: ${product.sid}");
+    // if (price == null) {
+    //   // print
+
+    // }
     var basePrice = double.parse(price);
 
     //exchange rate

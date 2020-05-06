@@ -18,23 +18,32 @@ FROM
     Category;
 
 --name: ProductsByCategoryID
-SELECT DISTINCT
-    product.id,
-    product.sid,
-    product.sprice,
-    product.sale_price,
-    product.sale_percent,
-    COALESCE(product.purchase_count, 0) AS purchase_count,
-    product.name,
-    product.thumbnail
-FROM
-    product,
-    category,
-    category_default
-WHERE
-    product.category_id = $1
+SELECT
+    *
+FROM ( SELECT DISTINCT
+        product.id,
+        product.sid,
+        product.sprice,
+        product.sale_price,
+        product.sale_percent,
+        COALESCE(product.purchase_count, 0) AS purchase_count,
+        product.name,
+        product.thumbnail
+    FROM
+        product,
+        category
+    WHERE
+        product.category_id = $1) sub
 ORDER BY
-    id DESC OFFSET $2
+    CASE WHEN $4 = 'sale_price' THEN
+        sale_price
+    END ASC,
+    CASE WHEN $4 = '-sale_price' THEN
+        sale_price
+    END DESC,
+    CASE WHEN $4 = 'id' THEN
+        id
+    END DESC OFFSET $2
 LIMIT $3;
 
 --name: ProductsByTags
@@ -172,4 +181,19 @@ WHERE
     position('_L' IN thumbnail) > 0
 ORDER BY
     id DESC;
+
+--name:	GetSidsOfAllProducts
+SELECT
+    sid
+FROM
+    product;
+
+--name:	UpdatePrice
+UPDATE
+    product
+SET
+    sprice = $1,
+    sale_price = $2 sale_percent = $3
+WHERE
+    sid = $4;
 

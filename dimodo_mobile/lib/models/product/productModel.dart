@@ -199,19 +199,17 @@ class ProductModel with ChangeNotifier {
             builder: (context) => SubCategoryScreen(category: category)));
   }
 
-  static showProductListByCategory({cateId, sortBy, context}) {
-    var categoryId = cateId;
+  static showProductListByCategory({cateId, sortBy, context, limit}) {
     final product = Provider.of<ProductModel>(context, listen: false);
-
     product.setCategoryId(
-      categoryId: categoryId,
+      categoryId: cateId,
     );
 
     //rebuilding three times
     // product.setProductsList(List<Product>()); //clear old products
     return FutureBuilder<List<Product>>(
-      future:
-          service.fetchProductsByCategory(categoryId: cateId, sortBy: sortBy),
+      future: service.fetchProductsByCategory(
+          categoryId: cateId, sortBy: sortBy, limit: limit),
       builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
         return ProductList(
           products: snapshot.data,
@@ -220,9 +218,9 @@ class ProductModel with ChangeNotifier {
     );
   }
 
-  static showProductListByTag({tag, context}) {
+  static showProductListByTag({tag, context, sortBy}) {
     return FutureBuilder<List<Product>>(
-      future: service.fetchProductsByTag(tag: tag),
+      future: service.fetchProductsByTag(tag: tag, sortBy: sortBy),
       builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
         return ProductList(
           products: snapshot.data,

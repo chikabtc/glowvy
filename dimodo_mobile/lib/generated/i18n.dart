@@ -315,6 +315,7 @@ class S implements WidgetsLocalizations {
   String get trendingKorea => "Trending in Korea";
   String get editorPicks => "Editor's Picks";
   // String get theBeautyHallOfFame => "The Beauty Hall Of Fame";
+  String get lowPrice => "Low Price";
 
   String get reset => "Reset";
   String get review => "review";
@@ -584,6 +585,7 @@ class $vi extends S {
   String get getNotification => "Lấy thông báo";
   @override
   String get signUp => "Sign Up";
+  String get lowPrice => "GIÁ THẤP";
   @override
   String get cart => "Giỏ hàng";
   @override

@@ -62,6 +62,9 @@ class ImageFeature extends StatelessWidget {
           width: screenSize.width,
           height: screenSize.height * 0.52,
           child: Swiper(
+            physics: product.sliderImages.length == 1
+                ? NeverScrollableScrollPhysics()
+                : AlwaysScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int i) {
               return Image.network(
                 product.sliderImages[i],

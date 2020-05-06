@@ -15,7 +15,7 @@ import (
 
 type ProductService interface {
 	AllCategories() ([]Category, error)
-	ProductsByCategoryID(categoryID, start, count int) ([]Product, error)
+	ProductsByCategoryID(categoryID, start, count int, sortBy string) ([]Product, error)
 	ProductsByShopId(shopId, start, count int) ([]Product, error)
 	ProductsByTags(tags string, start, count int) ([]Product, error)
 	ReviewsByProductID(productId, start, count int) (*Reviews, error)
@@ -26,6 +26,8 @@ type ProductService interface {
 	ProductDetailById(id int) (*Product, error)
 	UpdateThumbnailImage(productSid string, thumbnail string) (bool, error)
 	GetAllSidsWithBigThumbnail() ([]string, error)
+	GetSidsOfAllProducts() ([]string, error)
+	UpdatePrice(product *Product) (bool, error)
 }
 
 type productService struct {
@@ -230,8 +232,8 @@ func (ps *productService) AllCategories() ([]Category, error) {
 }
 
 //Categories include the home categories as well which is 0
-func (ps *productService) ProductsByCategoryID(categoryID, start, count int) ([]Product, error) {
-	rows, err := ps.dot.Query(ps.DB, "ProductsByCategoryID", categoryID, start, count)
+func (ps *productService) ProductsByCategoryID(categoryID, start, count int, sortBy string) ([]Product, error) {
+	rows, err := ps.dot.Query(ps.DB, "ProductsByCategoryID", categoryID, start, count, sortBy)
 	if err != nil {
 		bugsnag.Notify(err)
 		fmt.Println("ProductsByCategoryID", err)
@@ -508,4 +510,41 @@ func (ps *productService) GetAllSidsWithBigThumbnail() ([]string, error) {
 	}
 	fmt.Println("sid counts: ", len(sids))
 	return sids, nil
+}
+
+func (ps *productService) GetSidsOfAllProducts() ([]string, error) {
+	sids := make([]string, 0)
+
+	rows, err := ps.dot.Query(ps.DB, "GetSidsOfAllProducts")
+	if err != nil {
+		// bugsnag.Notify(err)
+		fmt.Println("GetSidsOfAllProducts: ", err)
+		return nil, err
+	}
+
+	var sid string
+	defer rows.Close()
+
+	for rows.Next() {
+		if err := rows.Scan(
+			&sid,
+		); err != nil {
+			fmt.Println("fail to GetSidsOfAllProducts ", err)
+			return nil, err
+		}
+		sids = append(sids, sid)
+
+	}
+	fmt.Println("sid counts: ", len(sids))
+	return sids, nil
+}
+
+func (ps *productService) UpdatePrice(product *Product) (bool, error) {
+	_, err := ps.dot.Exec(ps.DB, "UpdatePrice", product.Sprice, product.Sale_price, product.Sale_percent, product.Sid)
+	if err != nil {
+		// bugsnag.Notify(err)
+		fmt.Println("UpdatePrice: ", err)
+		return false, err
+	}
+	return true, nil
 }

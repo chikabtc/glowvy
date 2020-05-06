@@ -77,31 +77,7 @@ func (p *Product) ProductDetailById(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	var product *models.Product
-
-	switch params["sr"] {
-	case "brandi":
-		//check if options are available not
-		isOptionAvailable, _ := p.ps.CheckOptions(id)
-		if isOptionAvailable {
-			product, err = p.ps.ProductDetailById(id)
-			if err != nil {
-				bugsnag.Notify(err)
-				fmt.Println(err)
-			}
-			//3. if unavailalble, call product api of Brandi and save product detail
-		} else {
-			//crawler fucking use config --> need to use different server
-			// crawler := crawler.NewCrawler()
-			err = p.cw.ProductDetailById(params["id"])
-			// if err != nil {
-			bugsnag.Notify(err)
-			product, err = p.ps.ProductDetailById(id)
-			if err != nil {
-				bugsnag.Notify(err)
-				fmt.Println(err)
-			}
-		}
-	}
+	product, err = p.ps.ProductDetailById(id)
 
 	if err != nil {
 		bugsnag.Notify(err)
@@ -113,6 +89,8 @@ func (p *Product) ProductDetailById(w http.ResponseWriter, r *http.Request) {
 func (p *Product) ProductsByCategoryId(w http.ResponseWriter, r *http.Request) {
 	count, _ := strconv.Atoi(r.FormValue("count"))
 	start, _ := strconv.Atoi(r.FormValue("start"))
+	sortBy := r.FormValue("sort_by")
+	fmt.Println("sortBy: ", sortBy)
 	if count > 24 || count < 1 {
 		count = count
 	}
@@ -127,7 +105,7 @@ func (p *Product) ProductsByCategoryId(w http.ResponseWriter, r *http.Request) {
 		resp.Json(w, r, http.StatusBadRequest, resp.WithError(msgError))
 		return
 	}
-	products, err := p.ps.ProductsByCategoryID(id, start, count)
+	products, err := p.ps.ProductsByCategoryID(id, start, count, sortBy)
 	if err != nil {
 		bugsnag.Notify(err)
 		resp.Json(w, r, http.StatusInternalServerError, resp.WithError(err.Error()))
@@ -283,12 +261,36 @@ func (p *Product) CreateProductById(w http.ResponseWriter, r *http.Request) {
 	resp.Json(w, r, http.StatusOK, resp.WithSuccess(err))
 }
 
+func (p *Product) UpdateProductPrices(w http.ResponseWriter, r *http.Request) {
+	sids, err := p.ps.GetSidsOfAllProducts()
+
+	for _, sid := range sids {
+		time.Sleep(2 * time.Second)
+
+		product, err := p.cw.ProductDetailById(sid)
+		if err != nil {
+			fmt.Println("ProductDetailById err: ", err)
+		}
+
+		isSuccess, err := p.ps.UpdatePrice(product)
+		if err != nil {
+			fmt.Println("UpdateProductPrices err: ", err)
+		}
+		fmt.Println("UpdateProductPrices? ", isSuccess)
+	}
+	if err != nil {
+		bugsnag.Notify(err)
+		resp.Json(w, r, http.StatusBadRequest, resp.WithError(err))
+		return
+	}
+	resp.Json(w, r, http.StatusOK, resp.WithSuccess(err))
+}
+
 func (p *Product) UpdateThumbnailImages(w http.ResponseWriter, r *http.Request) {
 	sids, err := p.ps.GetAllSidsWithBigThumbnail()
 
 	for _, sid := range sids {
 		time.Sleep(2 * time.Second)
-		// fmt.Println("sid to fix: ", sid)
 
 		thumbnail, err := p.cw.ImageThumbnailByProductId(sid)
 		if err != nil {

@@ -24,9 +24,10 @@ import 'package:connectivity/connectivity.dart';
 abstract class BaseServices {
   Future<List<Category>> getCategories({lang});
 
-  Future<List<Product>> fetchProductsByCategory({categoryId, sortBy});
+  Future<List<Product>> fetchProductsByCategory(
+      {categoryId, sortBy, limit = 200});
 
-  Future<List<Product>> fetchProductsByTag({tag});
+  Future<List<Product>> fetchProductsByTag({tag, sortBy});
 
   Future<List<Product>> fetchProductsByShop({shopId});
 
@@ -125,12 +126,13 @@ class Services implements BaseServices {
   }
 
   @override
-  Future<List<Product>> fetchProductsByCategory({categoryId, sortBy}) async {
+  Future<List<Product>> fetchProductsByCategory(
+      {categoryId, sortBy, limit = 200}) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
       return serviceApi.fetchProductsByCategory(
-          categoryId: categoryId, sortBy: sortBy);
+          categoryId: categoryId, sortBy: sortBy, limit: limit);
     } else {
       //TODO: add no connection popup
       throw Exception("No internet connection");
@@ -138,13 +140,11 @@ class Services implements BaseServices {
   }
 
   @override
-  Future<List<Product>> fetchProductsByTag({tag}) async {
+  Future<List<Product>> fetchProductsByTag({tag, sortBy}) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.fetchProductsByTag(
-        tag: tag,
-      );
+      return serviceApi.fetchProductsByTag(tag: tag, sortBy: sortBy);
     } else {
       //TODO: add no connection popup
       throw Exception("No internet connection");

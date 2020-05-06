@@ -7,6 +7,8 @@ import 'package:Dimodo/models/product/productModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:Dimodo/models/category.dart';
 import 'package:after_layout/after_layout.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:Dimodo/generated/i18n.dart';
 
 class SubCategoryScreen extends StatefulWidget {
   final User user;
@@ -28,6 +30,10 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
         AutomaticKeepAliveClientMixin {
   List<Widget> _tabView;
   int currentPage = 0;
+  bool isAscending = false;
+  String highToLow = "-sale_price";
+  String lowToHigh = "sale_price";
+
   Category currentCate;
 
   @override
@@ -46,7 +52,6 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     print("build");
-
     TextStyle textStyle = Theme.of(context)
         .textTheme
         .body2
@@ -76,13 +81,64 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
                           fontSize: 18,
                           color: Colors.black,
                           fontWeight: FontWeight.w600)),
+                  bottom: PreferredSize(
+                    preferredSize: const Size.fromHeight(40.0),
+                    child: Container(
+                      height: 40,
+                      color: Colors.white,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () {
+                              //reload the list with different sorting
+                              setState(() {
+                                isAscending = !isAscending;
+                              });
+                            },
+                            child: Container(
+                                decoration: new BoxDecoration(
+                                  color:
+                                      isAscending ? Colors.white : kLightPink,
+                                  borderRadius: BorderRadius.circular(6),
+                                ),
+                                padding: EdgeInsets.symmetric(horizontal: 6),
+                                height: 24,
+                                // width: 98,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    isAscending
+                                        ? Image.asset(
+                                            "assets/icons/filter-sort.png")
+                                        : Image.asset(
+                                            "assets/icons/filter-sort-active.png"),
+                                    DynamicText(
+                                      S.of(context).lowPrice,
+                                      textAlign: TextAlign.center,
+                                      style: kBaseTextStyle.copyWith(
+                                          fontSize: 12,
+                                          color: isAscending
+                                              ? kDarkSecondary
+                                              : kDarkAccent),
+                                    ),
+                                  ],
+                                )),
+                          ),
+                          SizedBox(width: 16)
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
                 SliverList(
                   delegate: SliverChildListDelegate([
-                    Container(color: Colors.transparent, height: 21),
+                    Container(color: Colors.transparent, height: 14),
                     ProductModel.showProductListByCategory(
                         cateId: currentCate.id,
-                        sortBy: "sale_price",
+                        sortBy: isAscending ? highToLow : lowToHigh,
+                        limit: 2500,
                         context: context)
                   ]),
                 ),

@@ -91,7 +91,7 @@ class _ProductListState extends State<ProductList>
     return widget.products == null
         ? Container(
             width: screenSize.width,
-            height: 300,
+            height: 500,
             child: CupertinoActivityIndicator(animating: true),
           )
         : Padding(

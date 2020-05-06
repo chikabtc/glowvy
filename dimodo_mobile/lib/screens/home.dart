@@ -207,7 +207,7 @@ class HomeScreenState extends State<HomeScreen>
                           ),
                         ),
                         ProductModel.showProductListByTag(
-                            context: context, tag: "star"),
+                            context: context, tag: "star", sortBy: "id"),
                       ],
                     )),
                 Padding(
@@ -219,7 +219,7 @@ class HomeScreenState extends State<HomeScreen>
                   ),
                 ),
                 ProductModel.showProductListByTag(
-                    context: context, tag: "trending"),
+                    context: context, tag: "trending", sortBy: "id"),
               ])),
               // ProductModel.showProductListByTag(context: context, tag: "event"),
               SliverList(

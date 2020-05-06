@@ -48,6 +48,7 @@ func (a *API) InitializeRoutes() {
 
 	a.r.HandleFunc("/api/private/products/id={id:[0-9]+}/sr={sr:[a-z]+}", productC.CreateProductById).Methods("GET")
 	// a.r.HandleFunc("/api/product/updatethumbnails", productC.UpdateThumbnailImages).Methods("GET")
+	a.r.HandleFunc("/api/product/updateProductPrices", productC.UpdateProductPrices).Methods("GET")
 
 	//			Category
 	a.r.HandleFunc("/api/categories/all", productC.AllCategories).Methods("GET")

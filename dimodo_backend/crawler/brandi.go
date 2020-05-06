@@ -248,7 +248,7 @@ func (c *Crawler) GetMainProducts() {
 	}
 }
 
-func (c *Crawler) ProductDetailById(bProductId string) error {
+func (c *Crawler) ProductDetailById(bProductId string) (*models.Product, error) {
 	url := "https://cf-api-c.brandi.me/v1/web/products/" + bProductId
 	fmt.Println(url)
 	req, _ := http.NewRequest("GET", url, nil)
@@ -257,7 +257,7 @@ func (c *Crawler) ProductDetailById(bProductId string) error {
 	res, err := client.Do(req)
 	if err != nil {
 		bugsnag.Notify(err)
-		return err
+		return nil, err
 	}
 
 	defer res.Body.Close()
@@ -266,55 +266,20 @@ func (c *Crawler) ProductDetailById(bProductId string) error {
 	if err := json.Unmarshal(body, &bp); err != nil {
 		panic(err)
 	}
+	sid, _ := strconv.Atoi(bp.Data.ID)
 
-	//translator, _ := translate.NewTranslator()
-	desc, _ := translate.TranslateText(translate.Ko, translate.Vi, Description(bp.Data.Text))
-	if desc == "" {
-		desc = " "
+	product := models.Product{
+		Sid:          sid,
+		Price:        bp.Data.Price,
+		Sale_price:   bp.Data.SalePrice,
+		Sale_percent: bp.Data.SalePercent,
 	}
-
-	//type conversion from BrandiProduct to dimodoProduct
-	var productOptions = []models.Option{}
-
-	for _, option := range bp.Data.Options {
-		var newOption = option
-		//translate the title only once
-		for index, attribute := range option.Attributes {
-			title, _ := translate.PpgTranslateText(translate.Ko, translate.Vi, attribute.Title)
-			value, _ := translate.PpgTranslateText(translate.Ko, translate.Vi, attribute.Value)
-			newOption.Attributes[index].Title = title
-			newOption.Attributes[index].Value = value
-		}
-		productOptions = append(productOptions, newOption)
-	}
-
-	var seller = models.Seller{}
-	seller.ID = bp.Data.Seller.ID
-
-	// fmt.Printf("seller info : %v \n", bp.Data.Seller)
-
-	optionBytes, _ := json.Marshal(productOptions)
-	sizeDetailBytes, _ := json.Marshal(c.SizeDetail(bp.Data.Text))
-
-	_, err = c.dot.Exec(c.DB, "AddProductDetailsById",
-		bp.Data.ID,
-		bp.Data.Price,
-		bp.Data.SalePrice,
-		bp.Data.SalePercent,
-		bp.Data.PurchaseCount,
-		desc,
-		pq.Array(SliderImages(bp)),
-		pq.Array(ImagesFromHTML(bp.Data.Text)),
-		optionBytes,
-		seller,
-		sizeDetailBytes,
-	)
 	if err != nil {
 		bugsnag.Notify(err)
 		fmt.Println("AddProductDetailsById: ", err.Error())
-		return err
+		return nil, err
 	}
-	return err
+	return &product, err
 }
 
 func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) error {
