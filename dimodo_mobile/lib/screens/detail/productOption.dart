@@ -91,16 +91,6 @@ class _ProductOptionState extends State<ProductOption>
             S.of(context).addedToYourCart,
             style: kBaseTextStyle,
           ),
-          // content: SingleChildScrollView(
-          //   child: ListBody(
-          //     children: <Widget>[
-          //       DynamicText(
-          //         'You\’re like me. I’m never satisfied.',
-          //         style: kBaseTextStyle,
-          //       ),
-          //     ],
-          //   ),
-          // ),
           actions: <Widget>[
             FlatButton(
               child: DynamicText(

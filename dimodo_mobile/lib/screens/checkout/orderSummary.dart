@@ -7,6 +7,7 @@ import '../../generated/i18n.dart';
 import '../../models/order/cart.dart';
 import '../../models/app.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class OrderSummary extends StatefulWidget {
   OrderSummary({this.model});
@@ -37,6 +38,32 @@ class _OrderSummaryState extends State<OrderSummary> {
     Scaffold.of(context).showSnackBar(snackBar);
   }
 
+  Future<void> showShippingInfo() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true, // user can tap anywhere to dismiss the popup!
+      builder: (BuildContext buildContext) {
+        return AlertDialog(
+          title: DynamicText(
+            S.of(context).shippingFeePolicy,
+            style: kBaseTextStyle,
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: DynamicText(
+                'Ok',
+                style: kBaseTextStyle,
+              ),
+              onPressed: () {
+                Navigator.of(buildContext).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final currency = Provider.of<AppModel>(context, listen: false).currency;
@@ -45,6 +72,7 @@ class _OrderSummaryState extends State<OrderSummary> {
       children: <Widget>[
         SizedBox(height: 20),
         OrderSummaryCard(
+          showExtraInfo: () async => showShippingInfo(),
           currency: currency,
           title: S.of(context).deliveryMethod,
           subTitle: S.of(context).deliveryMethodDescription,
@@ -99,6 +127,7 @@ class OrderSummaryCard extends StatelessWidget {
   final String fee;
   final bool isTotalFee;
   final bool isBankTransferSummary;
+  final Function showExtraInfo;
 
   OrderSummaryCard(
       {this.currency,
@@ -106,49 +135,59 @@ class OrderSummaryCard extends StatelessWidget {
       this.subTitle,
       this.fee,
       this.isBankTransferSummary = false,
+      this.showExtraInfo,
       this.isTotalFee = false});
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          DynamicText(
-            title,
-            style: kBaseTextStyle.copyWith(
-                fontSize: isBankTransferSummary ? 12 : 13,
-                fontWeight:
-                    isBankTransferSummary ? FontWeight.w500 : FontWeight.w600,
-                color: isBankTransferSummary ? kDarkSecondary : kDarkBG),
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Expanded(
-                child: DynamicText(
-                  subTitle,
-                  textAlign: TextAlign.start,
-                  style: kBaseTextStyle.copyWith(
-                      fontWeight: isBankTransferSummary
-                          ? FontWeight.w600
-                          : FontWeight.w500,
-                      fontSize: isBankTransferSummary ? 15 : 12,
-                      color: isBankTransferSummary ? kDarkBG : kDarkSecondary),
-                ),
+    return GestureDetector(
+      onTap: showExtraInfo,
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: <
+          Widget>[
+        Row(
+          children: <Widget>[
+            DynamicText(
+              title,
+              style: kBaseTextStyle.copyWith(
+                  fontSize: isBankTransferSummary ? 12 : 13,
+                  fontWeight:
+                      isBankTransferSummary ? FontWeight.w500 : FontWeight.w600,
+                  color: isBankTransferSummary ? kDarkSecondary : kDarkBG),
+            ),
+            showExtraInfo != null
+                ? Center(child: SvgPicture.asset('assets/icons/cart/info.svg'))
+                : Container()
+          ],
+        ),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              child: DynamicText(
+                subTitle,
+                textAlign: TextAlign.start,
+                style: kBaseTextStyle.copyWith(
+                    fontWeight: isBankTransferSummary
+                        ? FontWeight.w600
+                        : FontWeight.w500,
+                    fontSize: isBankTransferSummary ? 15 : 12,
+                    color: isBankTransferSummary ? kDarkBG : kDarkSecondary),
               ),
-              if (fee != null) Spacer(),
-              if (!isBankTransferSummary && fee != null)
-                DynamicText(
-                  fee,
-                  style: kBaseTextStyle.copyWith(
-                      fontSize: 12,
-                      fontWeight: isBankTransferSummary
-                          ? FontWeight.w600
-                          : FontWeight.w500,
-                      color: isTotalFee ? kPinkAccent : kDefaultFontColor),
-                ),
-            ],
-          ),
-        ]);
+            ),
+            if (fee != null) Spacer(),
+            if (!isBankTransferSummary && fee != null)
+              DynamicText(
+                fee,
+                style: kBaseTextStyle.copyWith(
+                    fontSize: 12,
+                    fontWeight: isBankTransferSummary
+                        ? FontWeight.w600
+                        : FontWeight.w500,
+                    color: isTotalFee ? kPinkAccent : kDefaultFontColor),
+              ),
+          ],
+        ),
+      ]),
+    );
   }
 }

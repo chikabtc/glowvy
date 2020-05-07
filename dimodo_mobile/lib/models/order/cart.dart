@@ -262,9 +262,18 @@ class CartModel with ChangeNotifier {
   }
 
   double getShippingFee() {
-    totalShippingFee = totalCartQuantity * shippingFeePerItem;
+    if (subTotal < 1000000) {
+      return 50000;
+    } else if (subTotal < 2000000) {
+      return 100000;
+    } else {
+      return 0;
+    }
+    // totalShippingFee = totalCartQuantity * shippingFeePerItem;
     return totalShippingFee;
   }
+
+  // double getShippingFees
 
   double getTotal() {
     // print("subTotal: $subTotalFee");

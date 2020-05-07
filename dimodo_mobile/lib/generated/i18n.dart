@@ -118,6 +118,8 @@ class S implements WidgetsLocalizations {
   String get returnPolicy => "Return Policy";
   String get returnPolicyDescription =>
       "If there is any product quality problem (not including subjective reasons), you can apply for a return within 7 days purchase.";
+  String get shippingFeePolicy =>
+      "Order below 500,000₫\nShipping fee is 50,000₫\n\nOrder below 2,000,000₫\nShipping fee is 100,000₫\n\nOrder above 2,000,000₫\nShipping is free";
 
   String get serviceFeeDescription =>
       "The service helps us run our platform and offer better experiences";
@@ -415,6 +417,8 @@ class $vi extends S {
   @override
   String get feedback => "Phản Hồi";
   @override
+  String get shippingFeePolicy =>
+      "đặt hàng dưới 500,000₫\nPhí vận chuyển là 50,000₫\n\nđặt hàng dưới 2,000,000₫\nPhí vận chuyển là 100,000₫\n\nđơn hàng trên 2,000,000₫\nChi phi vận chuyển la miên phi";
   String get shippingAddress => "Địa Chỉ Giao Hàng";
   @override
   String get paymentMethod => "Phương Thức Thanh Toán";

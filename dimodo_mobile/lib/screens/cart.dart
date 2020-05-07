@@ -149,7 +149,7 @@ class _CartState extends State<Cart> with SingleTickerProviderStateMixin {
                     SliverList(
                         delegate: SliverChildListDelegate([
                       ProductModel.showProductListByCategory(
-                          cateId: 9, context: context)
+                          cateId: 9, sortBy: "id", limit: 200, context: context)
                     ])),
                   if (cartModel.totalCartQuantity > 0)
                     SliverList(

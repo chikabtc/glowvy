@@ -143,7 +143,10 @@ class _ProductDetailState extends State<ProductDetail> {
                         if (index == 0) return ProductDescription(product);
                         if (index == 1)
                           return ProductModel.showProductListByCategory(
-                              cateId: 7, context: context);
+                              cateId: 7,
+                              sortBy: "sale_price",
+                              limit: 200,
+                              context: context);
                         // if (index == 2)
                         //   return ProductModel.showProductListByCategory(
                         //       cateId: 7, context: context);
