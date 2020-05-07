@@ -155,10 +155,10 @@ class _CartState extends State<Cart> with SingleTickerProviderStateMixin {
                     SliverList(
                         delegate: SliverChildListDelegate([
                       Container(
-                        height: screenSize.height -
-                            MediaQuery.of(context).padding.top -
-                            MediaQuery.of(context).padding.bottom -
-                            100,
+                        // height: screenSize.height -
+                        //     MediaQuery.of(context).padding.top -
+                        //     MediaQuery.of(context).padding.bottom -
+                        //     100,
                         child: Column(
                           children: _createShoppingCartRows(cartModel),
                         ),
