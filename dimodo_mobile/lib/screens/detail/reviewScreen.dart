@@ -161,8 +161,10 @@ class _StateReviews extends State<ReviewScreen>
                                               isLoading = true;
                                             });
                                             isEnd = await widget.onLoadMore();
-                                            print("isend?? $isEnd");
-                                            isLoading = false;
+                                            setState(() {
+                                              print("isend?? $isEnd");
+                                              isLoading = false;
+                                            });
                                           },
                                           height: 40,
                                           minWidth: 62,

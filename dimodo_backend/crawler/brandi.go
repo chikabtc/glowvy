@@ -405,16 +405,20 @@ func (c *Crawler) GetReviewMetaData(bProductId string) (int64, int64) {
 
 	defer res.Body.Close()
 	body, _ := ioutil.ReadAll(res.Body)
-	// "statistics": {
-	// 	"satisfaction": 5,
-	// 	"wearing_sensations": [{
 	var reviews brandi.BrandiReviews
 	if err := json.Unmarshal(body, &reviews); err != nil {
 		panic(err)
 	}
 	totalCount := reviews.MetaData.PhotoReviews.TotalCount + reviews.MetaData.TextReviews.TotalCount
+	var averageScore int64
+	for _, score := range reviews.MetaData.Statistics.WearingSensations {
+		if averageScore < score.Ratio {
+			averageScore = score.Ratio
+		}
+	}
+	fmt.Println("score ", averageScore)
 
-	return reviews.MetaData.Statistics.WearingSensations[2].Ratio, totalCount
+	return averageScore, totalCount
 }
 
 func (c *Crawler) GetPhotoReviewsFromBrandi(bProductId string, offset, limit string) *brandi.Reviews {
