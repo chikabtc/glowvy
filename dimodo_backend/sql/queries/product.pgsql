@@ -191,19 +191,3 @@ WHERE
 ORDER BY
     id DESC;
 
---name:	GetSidsOfAllProducts
-SELECT
-    sid
-FROM
-    product;
-
---name:	UpdatePrice
-UPDATE
-    product
-SET
-    sprice = $1,
-    sale_price = $2,
-    sale_percent = $3
-WHERE
-    sid = $4;
-

@@ -115,3 +115,19 @@ SELECT
       WHERE
          sid = $1);
 
+--name:	GetSidsOfAllProducts
+SELECT
+   sid
+FROM
+   product;
+
+--name:	UpdatePrice
+UPDATE
+   product
+SET
+   sprice = $1,
+   sale_price = $2,
+   sale_percent = $3
+WHERE
+   sid = $4;
+
