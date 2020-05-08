@@ -1,11 +1,9 @@
-import 'package:Dimodo/models/order/cart.dart';
 import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/models/reviews.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../common/styles.dart';
 import '../../common/constants.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../../models/product/product.dart';
 import '../../models/app.dart';
 import '../../models/product/productModel.dart';
@@ -74,7 +72,7 @@ class _ProductDetailState extends State<ProductDetail> {
   Future<bool> getReviews() async {
     var loadedReviews =
         await services.getReviews(widget.product.sid, offset, limit);
-    if (loadedReviews.totalCount == 0) {
+    if (loadedReviews.reviews.length == 0) {
       return true;
     }
     setState(() {
@@ -338,83 +336,76 @@ class _ProductDetailState extends State<ProductDetail> {
                                                               kDefaultBackground,
                                                         ),
                                                         GestureDetector(
-                                                          onTap: () => Navigator.push(
-                                                              context,
-                                                              MaterialPageRoute(
-                                                                  builder: (context) =>
-                                                                      ReviewScreen(
-                                                                          metaReviews,
-                                                                          getReviews))),
-                                                          child: FutureBuilder(
-                                                              future: services
-                                                                  .getReviews(
-                                                                      widget
-                                                                          .product
-                                                                          .sid,
-                                                                      offset,
-                                                                      limit),
-                                                              builder: (BuildContext
-                                                                      context,
-                                                                  AsyncSnapshot<
-                                                                          Reviews>
-                                                                      snapshot) {
-                                                                offset += 3;
-                                                                return snapshot
-                                                                            .data !=
-                                                                        null
-                                                                    ? Container(
-                                                                        width: screenSize
-                                                                            .width,
-                                                                        color: Colors
-                                                                            .white,
-                                                                        child:
-                                                                            Column(
-                                                                          children: <
-                                                                              Widget>[
-                                                                            Container(
-                                                                              height: 56,
-                                                                              padding: EdgeInsets.symmetric(horizontal: 16),
-                                                                              child: Row(
-                                                                                children: <Widget>[
-                                                                                  DynamicText("${S.of(context).reviews} (${snapshot.data.totalCount})", style: kBaseTextStyle.copyWith(fontSize: 12, color: kDarkSecondary, fontWeight: FontWeight.w600)),
-                                                                                  Spacer(),
-                                                                                  if (metaReviews.totalCount != 0)
-                                                                                    Row(
-                                                                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                                                                      children: <Widget>[
-                                                                                        DynamicText(S.of(context).satisfaction + " ${snapshot.data.averageSatisfaction}%", style: kBaseTextStyle.copyWith(fontSize: 12, color: kPinkAccent, fontWeight: FontWeight.w600)),
-                                                                                        CommonIcons.arrowForwardPink
-                                                                                      ],
-                                                                                    ),
-                                                                                ],
-                                                                              ),
-                                                                            ),
-                                                                            SizedBox(height: 5),
-                                                                            if (metaReviews.totalCount !=
-                                                                                0)
-                                                                              Padding(
-                                                                                padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                                                                                child: ReviewCard(isPreview: true, context: context, review: metaReviews.reviews[0]),
-                                                                              ),
-                                                                            Container(
-                                                                              height: 5,
-                                                                              width: kScreenSizeWidth,
-                                                                              color: kDefaultBackground,
-                                                                            ),
-                                                                          ],
+                                                            onTap: () => Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder: (context) =>
+                                                                        ReviewScreen(
+                                                                            metaReviews,
+                                                                            getReviews))),
+                                                            child: !isLoading
+                                                                ? Container(
+                                                                    width: screenSize
+                                                                        .width,
+                                                                    color: Colors
+                                                                        .white,
+                                                                    child:
+                                                                        Column(
+                                                                      children: <
+                                                                          Widget>[
+                                                                        Container(
+                                                                          height:
+                                                                              56,
+                                                                          padding:
+                                                                              EdgeInsets.symmetric(horizontal: 16),
+                                                                          child:
+                                                                              Row(
+                                                                            children: <Widget>[
+                                                                              DynamicText("${S.of(context).reviews} (${metaReviews.totalCount})", style: kBaseTextStyle.copyWith(fontSize: 12, color: kDarkSecondary, fontWeight: FontWeight.w600)),
+                                                                              Spacer(),
+                                                                              if (metaReviews.totalCount != 0)
+                                                                                Row(
+                                                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                                                  children: <Widget>[
+                                                                                    DynamicText(S.of(context).satisfaction + " ${metaReviews.averageSatisfaction}%", style: kBaseTextStyle.copyWith(fontSize: 12, color: kPinkAccent, fontWeight: FontWeight.w600)),
+                                                                                    CommonIcons.arrowForwardPink
+                                                                                  ],
+                                                                                ),
+                                                                            ],
+                                                                          ),
                                                                         ),
-                                                                      )
-                                                                    : Container(
-                                                                        width: screenSize
-                                                                            .width,
-                                                                        height:
-                                                                            90,
-                                                                        child: CupertinoActivityIndicator(
-                                                                            animating:
-                                                                                true),
-                                                                      );
-                                                              }),
-                                                        ),
+                                                                        SizedBox(
+                                                                            height:
+                                                                                5),
+                                                                        if (metaReviews.totalCount !=
+                                                                            0)
+                                                                          Padding(
+                                                                            padding:
+                                                                                const EdgeInsets.symmetric(horizontal: 10.0),
+                                                                            child: ReviewCard(
+                                                                                isPreview: true,
+                                                                                context: context,
+                                                                                review: metaReviews.reviews[0]),
+                                                                          ),
+                                                                        Container(
+                                                                          height:
+                                                                              5,
+                                                                          width:
+                                                                              kScreenSizeWidth,
+                                                                          color:
+                                                                              kDefaultBackground,
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  )
+                                                                : Container(
+                                                                    width: screenSize
+                                                                        .width,
+                                                                    height: 90,
+                                                                    child: CupertinoActivityIndicator(
+                                                                        animating:
+                                                                            true),
+                                                                  )),
                                                       ],
                                                     )),
                                               ],
