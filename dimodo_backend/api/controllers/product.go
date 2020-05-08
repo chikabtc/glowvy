@@ -274,7 +274,7 @@ func (p *Product) UpdateProductPrices(w http.ResponseWriter, r *http.Request) {
 			fmt.Println("ProductDetailById err: ", err)
 		}
 
-		isSuccess, err := p.ps.UpdatePrice(product)
+		isSuccess, err := p.ps.UpdateProduct(product)
 		if err != nil {
 			fmt.Println("UpdateProductPrices err: ", err)
 		}
@@ -298,7 +298,7 @@ func (p *Product) UpdateProductPrice(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("ProductDetailById err: ", err)
 	}
 
-	isSuccess, err := p.ps.UpdatePrice(product)
+	isSuccess, err := p.ps.UpdateProduct(product)
 	if err != nil {
 		fmt.Println("UpdateProductPrices err: ", err)
 	}

@@ -109,13 +109,15 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
                                   mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    isAscending
-                                        ? Image.asset(
-                                            "assets/icons/filter-sort.png")
-                                        : Image.asset(
-                                            "assets/icons/filter-sort-active.png"),
+                                    // isAscending
+                                    //     ? Image.asset(
+                                    //         "assets/icons/filter-sort.png")
+                                    Image.asset(
+                                        "assets/icons/filter-sort-active.png"),
                                     DynamicText(
-                                      S.of(context).lowPrice,
+                                      isAscending
+                                          ? S.of(context).highestToLowest
+                                          : S.of(context).lowestToHighest,
                                       textAlign: TextAlign.center,
                                       style: kBaseTextStyle.copyWith(
                                           fontSize: 12,

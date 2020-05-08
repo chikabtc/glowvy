@@ -318,6 +318,8 @@ class S implements WidgetsLocalizations {
   String get editorPicks => "Editor's Picks";
   // String get theBeautyHallOfFame => "The Beauty Hall Of Fame";
   String get lowPrice => "Low Price";
+  String get lowestToHighest => "Lowest To Highest";
+  String get highestToLowest => "Highest To Lowest";
 
   String get reset => "Reset";
   String get review => "review";
@@ -543,6 +545,9 @@ class $vi extends S {
   String get bannerDescription => "Hình ảnh của người nổi tiếng";
   @override
   String get bannerTitle => "Mua sắm tiện lợi cùng nhau";
+  String get lowestToHighest => "Từ thấp đến cao";
+  String get highestToLowest => "Từ cao đến thấp";
+
   @override
   String get trendingKorea => "Xu hướng Hàn Quốc";
   @override

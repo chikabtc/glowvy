@@ -191,3 +191,13 @@ WHERE
 ORDER BY
     id DESC;
 
+--name:	UpdateProduct
+UPDATE
+    product
+SET
+    sprice = $1,
+    sale_price = $2,
+    sale_percent = $3 category_id = $4 options = $5
+WHERE
+    sid = $6;
+

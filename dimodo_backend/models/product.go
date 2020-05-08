@@ -27,7 +27,7 @@ type ProductService interface {
 	UpdateThumbnailImage(productSid string, thumbnail string) (bool, error)
 	GetAllSidsWithBigThumbnail() ([]string, error)
 	GetSidsOfAllProducts() ([]string, error)
-	UpdatePrice(product *Product) (bool, error)
+	UpdateProduct(product *Product) (bool, error)
 }
 
 type productService struct {
@@ -539,11 +539,11 @@ func (ps *productService) GetSidsOfAllProducts() ([]string, error) {
 	return sids, nil
 }
 
-func (ps *productService) UpdatePrice(product *Product) (bool, error) {
-	_, err := ps.dot.Exec(ps.DB, "UpdatePrice", product.Price, product.Sale_price, product.Sale_percent, product.Sid)
+func (ps *productService) UpdateProduct(product *Product) (bool, error) {
+	_, err := ps.dot.Exec(ps.DB, "UpdateProduct", product.Price, product.Sale_price, product.Sale_percent, product.Category_id, product.Options, product.Sid)
 	if err != nil {
 		// bugsnag.Notify(err)
-		fmt.Println("UpdatePrice: ", err)
+		fmt.Println("UpdateProduct: ", err)
 		return false, err
 	}
 	return true, nil

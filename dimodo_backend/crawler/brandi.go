@@ -69,6 +69,28 @@ func (c *Crawler) AddNewProductsByCategories() error {
 	// c.GetMainProducts()
 }
 
+func (c *Crawler) findCategoryId(cateId string) int {
+	categoryId, _ := strconv.Atoi(cateId)
+	var categories = make(map[int][]int)
+	categories[1] = append(categories[1], 13, 15, 120, 19, 18)
+	categories[2] = append(categories[2], 366, 50, 25, 24, 51, 121)
+	categories[3] = append(categories[3], 33, 367)
+	categories[4] = append(categories[4], 47, 48, 49, 365)
+	categories[5] = append(categories[5], 21, 22, 28)
+	categories[6] = append(categories[6], 52, 122, 54, 55, 56)
+	categories[7] = append(categories[7], 107)
+	categories[8] = append(categories[8], 354)
+	categories[9] = append(categories[9], 6, 10, 119, 57, 58, 59, 60, 123, 124, 35, 66, 34, 105, 36, 125, 127, 128, 129, 363, 364)
+	for parentId, childrenIds := range categories {
+		for _, cateId := range childrenIds {
+			if categoryId == cateId {
+				return parentId
+			}
+		}
+	}
+	return 0
+}
+
 // func (c *Crawler) events(i int64) {
 // 	// get api
 // 	i = i * 100
@@ -270,12 +292,39 @@ func (c *Crawler) ProductDetailById(bProductId string) (*models.Product, error) 
 		panic(err)
 	}
 	sid, _ := strconv.Atoi(bp.Data.ID)
+	var sProductOptions = []models.Option{}
+	//vietnaemse options
+	var productOptions = []models.Option{}
+
+	for _, option := range bp.Data.Options {
+		var sOption = option
+		var newOption = option
+		//translate the title only once
+		for index, attribute := range option.Attributes {
+			title, _ := translate.PpgTranslateText(translate.Ko, translate.Vi, attribute.Title)
+			value, _ := translate.PpgTranslateText(translate.Ko, translate.Vi, attribute.Value)
+			newOption.Attributes[index].Title = title
+			newOption.Attributes[index].Value = value
+		}
+		sProductOptions = append(sProductOptions, sOption)
+		productOptions = append(productOptions, newOption)
+	}
+
+	var seller = models.Seller{}
+	seller.ID = bp.Data.Seller.ID
+	cateId := c.findCategoryId(bp.Data.CategoryId[0].ID)
+
+	// sizeDetailBytes, _ := json.Marshal(c.SizeDetail(bp.Data.Text))
+	adjustedPrice := int(float64(bp.Data.Price) * 1.1)
+	adjustedSalePrice := int(float64(bp.Data.SalePrice) * 1.1)
 
 	product := models.Product{
 		Sid:          sid,
-		Price:        bp.Data.Price,
-		Sale_price:   bp.Data.SalePrice,
+		Price:        adjustedPrice,
+		Sale_price:   adjustedSalePrice,
 		Sale_percent: bp.Data.SalePercent,
+		Options:      productOptions,
+		Category_id:  cateId,
 	}
 	if err != nil {
 		bugsnag.Notify(err)
@@ -664,7 +713,7 @@ func (c *Crawler) ImageThumbnailByProductId(bProductId string) (string, error) {
 	return bp.Data.Images[0].ImageMediumURL, nil
 }
 
-func (c *Crawler) UpdatePrices() error {
+func (c *Crawler) UpdateProducts() error {
 	sids := make([]string, 0)
 
 	rows, err := c.dot.Query(c.DB, "GetSidsOfAllProducts")
@@ -686,10 +735,18 @@ func (c *Crawler) UpdatePrices() error {
 		}
 		time.Sleep(2 * time.Second)
 		product, err := c.ProductDetailById(sid)
-		_, err = c.dot.Exec(c.DB, "UpdatePrice", product.Price, product.Sale_price, product.Sale_percent, product.Sid)
 		if err != nil {
-			// bugsnag.Notify(err)
-			fmt.Println("UpdatePrice: ", err)
+			bugsnag.Notify(err)
+			fmt.Println("ProductDetailById: ", err)
+			return err
+		}
+
+		optionBytes, _ := json.Marshal(product.Options)
+
+		_, err = c.dot.Exec(c.DB, "UpdateProduct", product.Price, product.Sale_price, product.Sale_percent, product.Category_id, optionBytes, product.Sid)
+		if err != nil {
+			bugsnag.Notify(err)
+			fmt.Println("UpdateProduct: ", err)
 			return err
 		}
 		sids = append(sids, sid)

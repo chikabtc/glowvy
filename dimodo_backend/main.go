@@ -27,7 +27,7 @@ func main() {
 		start := time.Now()
 		cronMessage := errors.New("   updating products...")
 		bugsnag.Notify(cronMessage)
-		err := crawler.UpdatePrices()
+		err := crawler.UpdateProducts()
 		if err != nil {
 			bugsnag.Notify(cronMessage)
 		}
@@ -67,6 +67,10 @@ func main() {
 
 	c.Start()
 
+	// err = crawler.UpdateProducts()
+	// if err != nil {
+	// 	bugsnag.Notify(cronMessage)
+	// }
 	api.Run()
 
 }
