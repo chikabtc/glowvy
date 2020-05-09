@@ -25,21 +25,21 @@ import (
 const brandiAuth = "3b17176f2eb5fdffb9bafdcc3e4bc192b013813caddccd0aad20c23ed272f076_1423639497"
 
 //mainPage-0
-//top-1
+//top-1: 40,000
 //brandi: :: t-shirts(13), blouse(15), hoodie(120), vest(19), cardigan(18)
-//pants-2
+//pants-2 50,000
 //brandi: :: PANTS(366) pants(50) denim(25) slacks(24) shorts(51) leggings(121)
-//dress-3
+//dress-3 50,000
 //brandi: :: onepiece(33) dress(367)
-//skirt-4
+//skirt-4 40,000
 //brandi: :: skirt(47) miniskirt(48) longskirt(49) SKIRT(365)
-//coat-5
+//coat-5 50,000
 //brandi: :: coat(21) jumper(22) jacket(20)
-//shoes-6
+//shoes-6 70,000
 //brandi: :: sneakers(52) boots(122) heel(54) loader(55) sandal(56)
-//lifeware-7
+//lifeware-7 50,000
 //brandi: :: lifeware(107)
-//cosmetics-8
+//cosmetics-8 40,000
 //brandi: :: beauty root(354),
 
 //etc-9
@@ -296,16 +296,13 @@ func (c *Crawler) ProductDetailById(bProductId string) (*models.Product, error) 
 	//vietnaemse options
 	var productOptions = []models.Option{}
 
+	//just update the sold out property.. it's hard to update...
+	//get the title and value from db..? and just update issoldout property.
+	//can directly manipulate the jsonb..
 	for _, option := range bp.Data.Options {
 		var sOption = option
 		var newOption = option
 		//translate the title only once
-		for index, attribute := range option.Attributes {
-			title, _ := translate.PpgTranslateText(translate.Ko, translate.Vi, attribute.Title)
-			value, _ := translate.PpgTranslateText(translate.Ko, translate.Vi, attribute.Value)
-			newOption.Attributes[index].Title = title
-			newOption.Attributes[index].Value = value
-		}
 		sProductOptions = append(sProductOptions, sOption)
 		productOptions = append(productOptions, newOption)
 	}
@@ -741,7 +738,30 @@ func (c *Crawler) UpdateProducts() error {
 			return err
 		}
 
-		optionBytes, _ := json.Marshal(product.Options)
+		var productOptionsBytes []uint8
+		var originalProductOptions = []models.Option{}
+
+		row, err := c.dot.QueryRow(c.DB, "GetProductOption", product.Sid)
+
+		if err != nil {
+			fmt.Println("fail to run sql:", err)
+			bugsnag.Notify(err)
+			return nil
+		}
+
+		if err := row.Scan(&productOptionsBytes); err != nil {
+			fmt.Println("fail to scan review", err)
+			return nil
+		}
+		_ = json.Unmarshal([]byte(productOptionsBytes), &originalProductOptions)
+
+		//just update the sold out property.. it's hard to update...
+		//get the title and value from db..? and just update issoldout property.
+		//can directly manipulate the jsonb..
+		for index, _ := range originalProductOptions {
+			originalProductOptions[index].IsSoldOut = product.Options[index].IsSoldOut
+		}
+		optionBytes, _ := json.Marshal(originalProductOptions)
 
 		_, err = c.dot.Exec(c.DB, "UpdateProduct", product.Price, product.Sale_price, product.Sale_percent, product.Category_id, optionBytes, product.Sid)
 		if err != nil {

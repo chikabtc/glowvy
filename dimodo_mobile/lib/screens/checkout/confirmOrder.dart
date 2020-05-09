@@ -53,7 +53,6 @@ class _ConfirmOrderState extends State<ConfirmOrder>
     return model.cartItems.keys.map(
       (key) {
         countKeys++;
-        print("countkeys: $countKeys");
         return OrderItemRow(
           isDividerNeeded: model.cartItems.length > 1 &&
                   model.cartItems.keys.length != countKeys

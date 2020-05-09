@@ -152,19 +152,9 @@ class Tools {
       {bool onSale}) {
     String price =
         onSale ? product.salePrice.toString() : product.price.toString();
-    // print("price: $price and sid: ${product.sid}");
-    // if (price == null) {
-    //   // print
-
-    // }
     var basePrice = double.parse(price);
-
-    //exchange rate
     var convertedP = basePrice * 21.5;
     return convertedP.toString();
-    // if (product.multiCurrencies != null &&
-    //     product.multiCurrencies[currency] != null) {
-    //   return product.multiCurrencies[currency]["price"];
   }
 
   static String getPriceProduct(product, String currency, {bool onSale}) {

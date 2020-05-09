@@ -133,3 +133,11 @@ SET
 WHERE
    sid = $6;
 
+--name:	GetProductOption
+SELECT
+   options
+FROM
+   product
+WHERE
+   sid = $1;
+

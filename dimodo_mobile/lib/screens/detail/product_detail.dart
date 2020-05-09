@@ -161,6 +161,32 @@ class _ProductDetailState extends State<ProductDetail> {
       return tabViews;
     }
 
+    Future<void> showShippingInfo() async {
+      return showDialog<void>(
+        context: context,
+        barrierDismissible: true, // user can tap anywhere to dismiss the popup!
+        builder: (BuildContext buildContext) {
+          return AlertDialog(
+            title: DynamicText(
+              S.of(context).shippingFeePolicy,
+              style: kBaseTextStyle,
+            ),
+            actions: <Widget>[
+              FlatButton(
+                child: DynamicText(
+                  'Ok',
+                  style: kBaseTextStyle,
+                ),
+                onPressed: () {
+                  Navigator.of(buildContext).pop();
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
     return Container(
         color: Theme.of(context).backgroundColor,
         child: SafeArea(
@@ -169,7 +195,7 @@ class _ProductDetailState extends State<ProductDetail> {
           child: FutureBuilder<Product>(
               future: product,
               builder: (BuildContext context, AsyncSnapshot<Product> snapshot) {
-                var reviewHeight = metaReviews.totalCount == 0 ? 0 : 90;
+                var reviewHeight = metaReviews.totalCount == 0 ? 0 : 110;
 
                 return Scaffold(
                     //todo: check whether the item is loaded or not
@@ -266,66 +292,68 @@ class _ProductDetailState extends State<ProductDetail> {
                                                                   right: 16,
                                                                   top: 20,
                                                                   bottom: 20),
-                                                          child: Column(
-                                                            crossAxisAlignment:
-                                                                CrossAxisAlignment
-                                                                    .start,
-                                                            children: <Widget>[
-                                                              DynamicText(
-                                                                  S
-                                                                      .of(
-                                                                          context)
-                                                                      .shipFromKorea,
-                                                                  style: kBaseTextStyle.copyWith(
-                                                                      fontSize:
-                                                                          13,
-                                                                      color:
-                                                                          kDarkSecondary,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600)),
-                                                              DynamicText(
-                                                                  S
-                                                                      .of(
-                                                                          context)
-                                                                      .koreanShippingFee,
-                                                                  style: kBaseTextStyle.copyWith(
-                                                                      fontSize:
-                                                                          12,
-                                                                      color:
-                                                                          kDarkAccent,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500)),
-                                                              SizedBox(
-                                                                  height: 20),
-                                                              DynamicText(
-                                                                  S
-                                                                      .of(
-                                                                          context)
-                                                                      .importTaxIncluded,
-                                                                  style: kBaseTextStyle.copyWith(
-                                                                      fontSize:
-                                                                          13,
-                                                                      color:
-                                                                          kDarkSecondary,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w600)),
-                                                              DynamicText(
-                                                                  S
-                                                                      .of(
-                                                                          context)
-                                                                      .importTaxFeeDescription,
-                                                                  style: kBaseTextStyle.copyWith(
-                                                                      fontSize:
-                                                                          12,
-                                                                      color:
-                                                                          kDarkAccent,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w500)),
-                                                            ],
+                                                          child:
+                                                              GestureDetector(
+                                                            onTap: () =>
+                                                                showShippingInfo(),
+                                                            child: Column(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: <
+                                                                  Widget>[
+                                                                DynamicText(
+                                                                    S
+                                                                        .of(
+                                                                            context)
+                                                                        .shipFromKorea,
+                                                                    style: kBaseTextStyle.copyWith(
+                                                                        fontSize:
+                                                                            13,
+                                                                        color:
+                                                                            kDarkSecondary,
+                                                                        fontWeight:
+                                                                            FontWeight.w600)),
+                                                                DynamicText(
+                                                                    S
+                                                                        .of(
+                                                                            context)
+                                                                        .koreanShippingFee,
+                                                                    style: kBaseTextStyle.copyWith(
+                                                                        fontSize:
+                                                                            12,
+                                                                        color:
+                                                                            kDarkAccent,
+                                                                        fontWeight:
+                                                                            FontWeight.w500)),
+                                                                SizedBox(
+                                                                    height: 20),
+                                                                DynamicText(
+                                                                    S
+                                                                        .of(
+                                                                            context)
+                                                                        .importTaxIncluded,
+                                                                    style: kBaseTextStyle.copyWith(
+                                                                        fontSize:
+                                                                            13,
+                                                                        color:
+                                                                            kDarkSecondary,
+                                                                        fontWeight:
+                                                                            FontWeight.w600)),
+                                                                DynamicText(
+                                                                    S
+                                                                        .of(
+                                                                            context)
+                                                                        .importTaxFeeDescription,
+                                                                    style: kBaseTextStyle.copyWith(
+                                                                        fontSize:
+                                                                            12,
+                                                                        color:
+                                                                            kDarkAccent,
+                                                                        fontWeight:
+                                                                            FontWeight.w500)),
+                                                              ],
+                                                            ),
                                                           ),
                                                         ),
                                                         Container(

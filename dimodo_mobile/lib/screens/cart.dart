@@ -33,7 +33,7 @@ class _CartState extends State<Cart> with SingleTickerProviderStateMixin {
     return model.cartItems.keys.map(
       (key) {
         countKeys++;
-        print("countkeys: $countKeys");
+        // print("countkeys: $countKeys");
         return CartItemRow(
           isDividerNeeded: model.cartItems.length > 1 &&
                   model.cartItems.keys.length != countKeys

@@ -262,18 +262,44 @@ class CartModel with ChangeNotifier {
   }
 
   double getShippingFee() {
-    if (subTotal < 1000000) {
-      return 50000;
-    } else if (subTotal < 2000000) {
-      return 100000;
-    } else {
+    if (subTotal > 2000000) {
       return 0;
+    } else {
+      var sum = cartItems.keys.fold(0, (value, i) {
+        print("current value: $value");
+        return value + calculateShippingFee(cartItems[i]).toInt();
+      });
+      print("sum :$sum");
+
+      return sum.toDouble();
     }
-    // totalShippingFee = totalCartQuantity * shippingFeePerItem;
-    return totalShippingFee;
   }
 
-  // double getShippingFees
+  double calculateShippingFee(CartItem item) {
+    switch (item.product.categoryId) {
+      case 1:
+        return 30000;
+      case 2:
+        return 50000;
+      case 3:
+        return 50000;
+      case 4:
+        return 40000;
+      case 5:
+        return 50000;
+      case 6:
+        return 80000;
+      case 7:
+        return 40000;
+      case 8:
+        return 30000;
+      case 9:
+        return 30000;
+        break;
+      default:
+        return 40000;
+    }
+  }
 
   double getTotal() {
     // print("subTotal: $subTotalFee");

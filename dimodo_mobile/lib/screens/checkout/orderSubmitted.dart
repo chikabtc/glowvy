@@ -44,7 +44,6 @@ class _OrderSubmittedState extends State<OrderSubmitted>
     return model.cartItems.keys.map(
       (key) {
         countKeys++;
-        print("countkeys: $countKeys");
         return OrderItemRow(
           isDividerNeeded: model.cartItems.length > 1 &&
                   model.cartItems.keys.length != countKeys
