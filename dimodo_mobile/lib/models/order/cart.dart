@@ -266,8 +266,8 @@ class CartModel with ChangeNotifier {
       return 0;
     } else {
       var sum = cartItems.keys.fold(0, (value, i) {
-        print("current value: $value");
-        return value + calculateShippingFee(cartItems[i]).toInt();
+        print("category id of product: ${cartItems[i].product.categoryId}");
+        return value + calculateShippingFee(cartItems[i].product).toInt();
       });
       print("sum :$sum");
 
@@ -275,8 +275,10 @@ class CartModel with ChangeNotifier {
     }
   }
 
-  double calculateShippingFee(CartItem item) {
-    switch (item.product.categoryId) {
+  double calculateShippingFee(Product item) {
+    print("category id of product: ${item.categoryId}");
+
+    switch (item.categoryId) {
       case 1:
         return 30000;
       case 2:
@@ -288,24 +290,21 @@ class CartModel with ChangeNotifier {
       case 5:
         return 50000;
       case 6:
-        return 80000;
+        return 60000;
       case 7:
         return 40000;
       case 8:
         return 30000;
       case 9:
         return 30000;
-        break;
       default:
         return 40000;
+        break;
     }
   }
 
   double getTotal() {
-    // print("subTotal: $subTotalFee");
     totalFee = getSubTotal() + getShippingFee();
-    // print("getTotal: $totalFee");
-
     return totalFee;
   }
 

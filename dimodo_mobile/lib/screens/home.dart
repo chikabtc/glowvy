@@ -11,9 +11,10 @@ import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/models/category.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_mailer/flutter_mailer.dart';
+import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:flutter/services.dart';
+import '../models/order/cart.dart';
 
 class HomeScreen extends StatefulWidget {
   final User user;
@@ -72,6 +73,8 @@ class HomeScreenState extends State<HomeScreen>
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
             statusBarBrightness: Brightness.light) // Or Brightness.dark
         );
+    Provider.of<CartModel>(context, listen: false)
+        .getAllCartItems(Provider.of<UserModel>(context, listen: false));
 
     return Scaffold(
       body: Container(

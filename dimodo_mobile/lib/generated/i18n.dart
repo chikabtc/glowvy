@@ -119,7 +119,7 @@ class S implements WidgetsLocalizations {
   String get returnPolicyDescription =>
       "If there is any product quality problem (not including subjective reasons), you can apply for a return within 7 days purchase.";
   String get shippingFeePolicy =>
-      "Order below 500,000₫\nShipping fee is 50,000₫\n\nOrder below 2,000,000₫\nShipping fee is 100,000₫\n\nOrder above 2,000,000₫\nShipping is free";
+      "Shipping fee is calculated by the weight.\n\nIf you have questions about shipping fee, please contact us anytime\n\nShipping is free for orders above 2,000,000₫\n";
 
   String get serviceFeeDescription =>
       "The service helps us run our platform and offer better experiences";
@@ -188,7 +188,7 @@ class S implements WidgetsLocalizations {
   String get address => "Address";
   String get transactionSuccess => "Transaction success";
   String get trendDesign => "Trend Design";
-  String get koreanShippingFee => "Korean Shipping fee: 50,000₫ per item";
+  String get koreanShippingFee => "Korean Shipping fee per item: ";
   String get shipFromKorea => "Ship from Korea";
   String get serviceIncludes => "Service includes";
   String get quanlityGuarantee => "Quality Guarantee";
@@ -420,7 +420,7 @@ class $vi extends S {
   String get feedback => "Phản Hồi";
   @override
   String get shippingFeePolicy =>
-      "đặt hàng dưới 500,000₫\nPhí vận chuyển là 50,000₫\n\nđặt hàng dưới 2,000,000₫\nPhí vận chuyển là 100,000₫\n\nđơn hàng trên 2,000,000₫\nChi phi vận chuyển la miên phi";
+      "Phí vận chuyển được tính theo trọng lượng.\n\nNếu bạn có thắc mắc về phí vận chuyển, vui lòng liên hệ với chúng tôi bất cứ lúc nào \n\nVận chuyển miễn phí cho các đơn hàng trên 2.000.000 Mb\n";
   String get shippingAddress => "Địa Chỉ Giao Hàng";
   @override
   String get paymentMethod => "Phương Thức Thanh Toán";
@@ -516,8 +516,7 @@ class $vi extends S {
   String get importTaxFeeDescription =>
       "Hàng hóa bạn đăng kí mua đã được tính thuế thương mại nhập khẩu";
   String get askQuestion => "Đặt câu hỏi cho chúng tôi";
-  String get koreanShippingFee =>
-      "Phí vận chuyển từ Hàn Quốc: 50.000 Vnd mỗi sản phẩm";
+  String get koreanShippingFee => "Phí vận chuyển từ Hàn Quốc mỗi sản phẩm: ";
   String get satisfaction => "Đánh giá trung bình";
   @override
   String get all => "TẤT CẢ";
@@ -575,7 +574,6 @@ class $vi extends S {
   @override
   String get youMayAlsoLike => "Các sản phẩm tương tự";
 
-  // String get koreanShippingFee => "Phí ship từ Hàn Quốc: 50,000₫";
   @override
   String get serviceIncludes => "Dịch vụ bao gồm";
   @override

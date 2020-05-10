@@ -1,5 +1,4 @@
 import 'package:Dimodo/common/styles.dart';
-import 'package:Dimodo/services/index.dart';
 import 'package:Dimodo/widgets/orderItem.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -15,12 +14,9 @@ import '../../models/order/order.dart';
 import '../setting/shippingAddressCard.dart';
 
 import 'package:Dimodo/widgets/login_animation.dart';
-import '../../widgets/cart_item.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'orderSubmitted.dart';
 import 'orderSummary.dart';
-import 'package:localstorage/localstorage.dart';
 
 class ConfirmOrder extends StatefulWidget {
   @override

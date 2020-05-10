@@ -8,7 +8,6 @@ part 'product.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Product {
-  //probably this
   int id;
   String thumbnail;
   String name;

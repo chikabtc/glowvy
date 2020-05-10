@@ -26,7 +26,7 @@ const brandiAuth = "3b17176f2eb5fdffb9bafdcc3e4bc192b013813caddccd0aad20c23ed272
 
 //mainPage-0
 //top-1: 40,000
-//brandi: :: t-shirts(13), blouse(15), hoodie(120), vest(19), cardigan(18)
+//brandi: :: t-shirts(13), blouse(15), hoodie(120), vest(19), cardigan(18) outer(363) top(364)
 //pants-2 50,000
 //brandi: :: PANTS(366) pants(50) denim(25) slacks(24) shorts(51) leggings(121)
 //dress-3 50,000
@@ -38,26 +38,28 @@ const brandiAuth = "3b17176f2eb5fdffb9bafdcc3e4bc192b013813caddccd0aad20c23ed272
 //shoes-6 70,000
 //brandi: :: sneakers(52) boots(122) heel(54) loader(55) sandal(56)
 //lifeware-7 50,000
-//brandi: :: lifeware(107)
+//brandi: :: lifeware(107) underwear(108)
 //cosmetics-8 40,000
-//brandi: :: beauty root(354),
+//brandi: :: beauty root(354), skin care(355) make up (356)  body hair (357) nail and hair (369) inner beauty (358) beauty etc(359)
 
 //etc-9
-//brandi: :: bags(6) accessories(10) jewerly(119) crossbag(57) clutch(58) shouldebag(59) totebags(60) backpack(123) phonecase(124) wallet(35) scarf(66) hats(34) socks(105) watch(36)eyeware (125) earing(127) necklace(128) ring(129) outer(363) top(364)
+//brandi: :: bags(6) accessories(10) jewerly(119) crossbag(57) clutch(58) shouldebag(59) totebags(60) backpack(123) phonecase(124) wallet(35) scarf(66) hats(34) socks(105) watch(36)eyeware (125) earing(127) necklace(128) ring(129)
 //this approach doesn't work..
 //47 categories
+//call by category..nope.. need to know all cate.
+
 func (c *Crawler) AddNewProductsByCategories() error {
 	var categories = make(map[int][]int)
 	var err error
-	categories[1] = append(categories[1], 13, 15, 120, 19, 18)
+	categories[1] = append(categories[1], 13, 15, 120, 19, 18, 363, 364)
 	categories[2] = append(categories[2], 366, 50, 25, 24, 51, 121)
 	categories[3] = append(categories[3], 33, 367)
 	categories[4] = append(categories[4], 47, 48, 49, 365)
 	categories[5] = append(categories[5], 21, 22, 28)
 	categories[6] = append(categories[6], 52, 122, 54, 55, 56)
-	categories[7] = append(categories[7], 107)
-	categories[8] = append(categories[8], 354)
-	categories[9] = append(categories[9], 6, 10, 119, 57, 58, 59, 60, 123, 124, 35, 66, 34, 105, 36, 125, 127, 128, 129, 363, 364)
+	categories[7] = append(categories[7], 107, 108)
+	categories[8] = append(categories[8], 354, 355, 356, 357, 358, 359)
+	categories[9] = append(categories[9], 6, 10, 119, 57, 58, 59, 60, 123, 124, 35, 66, 34, 105, 36, 125, 127, 128, 129)
 	for parentId, childrenIds := range categories {
 		for _, categoryId := range childrenIds {
 			fmt.Println("calling product by category:", +categoryId, "parent id: ", parentId)
@@ -66,7 +68,6 @@ func (c *Crawler) AddNewProductsByCategories() error {
 		}
 	}
 	return err
-	// c.GetMainProducts()
 }
 
 func (c *Crawler) findCategoryId(cateId string) int {
@@ -78,7 +79,7 @@ func (c *Crawler) findCategoryId(cateId string) int {
 	categories[4] = append(categories[4], 47, 48, 49, 365)
 	categories[5] = append(categories[5], 21, 22, 28)
 	categories[6] = append(categories[6], 52, 122, 54, 55, 56)
-	categories[7] = append(categories[7], 107)
+	categories[7] = append(categories[7], 107, 108)
 	categories[8] = append(categories[8], 354)
 	categories[9] = append(categories[9], 6, 10, 119, 57, 58, 59, 60, 123, 124, 35, 66, 34, 105, 36, 125, 127, 128, 129, 363, 364)
 	for parentId, childrenIds := range categories {
@@ -309,7 +310,7 @@ func (c *Crawler) ProductDetailById(bProductId string) (*models.Product, error) 
 
 	var seller = models.Seller{}
 	seller.ID = bp.Data.Seller.ID
-	cateId := c.findCategoryId(bp.Data.CategoryId[0].ID)
+	// cateId := c.findCategoryId(bp.Data.CategoryId[0].ID)
 
 	// sizeDetailBytes, _ := json.Marshal(c.SizeDetail(bp.Data.Text))
 	adjustedPrice := int(float64(bp.Data.Price) * 1.1)
@@ -321,7 +322,7 @@ func (c *Crawler) ProductDetailById(bProductId string) (*models.Product, error) 
 		Sale_price:   adjustedSalePrice,
 		Sale_percent: bp.Data.SalePercent,
 		Options:      productOptions,
-		Category_id:  cateId,
+		// Category_id:  cateId,
 	}
 	if err != nil {
 		bugsnag.Notify(err)

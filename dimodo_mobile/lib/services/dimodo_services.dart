@@ -136,6 +136,7 @@ class DimodoServices implements BaseServices {
       final product = body['Data'];
 
       if (body["Success"] == true) {
+        print("json product: ${product["category_id"]}");
         return Product.fromJson(product);
       } else {
         var message = body["Error"];
@@ -769,7 +770,6 @@ class DimodoServices implements BaseServices {
           return list;
         }
         for (var cartItem in cartItems) {
-          print("cartItem : ${cartItem}");
           list.add(CartItem.fromJson(cartItem));
         }
         return list;

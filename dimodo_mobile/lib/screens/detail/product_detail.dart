@@ -19,6 +19,8 @@ import 'review_card.dart';
 import 'cartAction.dart';
 import 'product_description.dart';
 import '../../services/index.dart';
+import '../../models/order/cart.dart';
+import 'package:Dimodo/common/tools.dart';
 
 class ProductDetail extends StatefulWidget {
   final Product product;
@@ -88,6 +90,8 @@ class _ProductDetailState extends State<ProductDetail> {
 
   @override
   Widget build(BuildContext context) {
+    var cartModel = Provider.of<CartModel>(context);
+    print("calculate cate: ${widget.product.categoryId}");
     screenSize = MediaQuery.of(context).size;
     try {
       tabList = [];
@@ -238,9 +242,6 @@ class _ProductDetailState extends State<ProductDetail> {
                                         width: 30,
                                         child: IconButton(
                                           icon: CommonIcons.arrowBackward,
-                                          // onPressed: () {
-                                          //   Navigator.of(context).pop();
-                                          // },
                                         ),
                                       ),
                                     ),
@@ -315,10 +316,8 @@ class _ProductDetailState extends State<ProductDetail> {
                                                                         fontWeight:
                                                                             FontWeight.w600)),
                                                                 DynamicText(
-                                                                    S
-                                                                        .of(
-                                                                            context)
-                                                                        .koreanShippingFee,
+                                                                    S.of(context).koreanShippingFee +
+                                                                        "${Tools.getCurrecyFormatted(cartModel.calculateShippingFee(snapshot.data))}",
                                                                     style: kBaseTextStyle.copyWith(
                                                                         fontSize:
                                                                             12,

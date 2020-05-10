@@ -23,7 +23,7 @@ func main() {
 	crawler := crawler.NewCrawler()
 	api := api.NewAPI(crawler)
 
-	err := c.AddFunc("0 36 11 * * ?", func() {
+	err := c.AddFunc("0 0 3 * * ?", func() {
 		start := time.Now()
 		cronMessage := errors.New("   updating products...")
 		bugsnag.Notify(cronMessage)
@@ -67,14 +67,6 @@ func main() {
 
 	c.Start()
 
-	crawler.UpdateProducts()
-	// if err != nil {
-	// 	bugsnag.Notify(cronMessage)
-	// }
-	// err = crawler.UpdateProducts()
-	// if err != nil {
-	// 	bugsnag.Notify(cronMessage)
-	// }
 	api.Run()
 
 }

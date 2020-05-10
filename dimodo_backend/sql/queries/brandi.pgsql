@@ -128,10 +128,9 @@ SET
    sprice = $1,
    sale_price = $2,
    sale_percent = $3,
-   category_id = $4,
-   options = $5
+   options = $4
 WHERE
-   sid = $6;
+   sid = $5;
 
 --name:	GetProductOption
 SELECT
