@@ -69,6 +69,7 @@ class S implements WidgetsLocalizations {
   String get totalTax => "Total tax";
 
   String get checkout => "Checkout";
+  String get selectOrEnterCoupon => "Select or Enter Coupon";
 
   // ===========================================================================
   // Order Page
@@ -491,6 +492,7 @@ class $vi extends S {
   String get manageShippingAddress => "Địa Chỉ Của Tôi";
   String get writeReview => "Viết nhận xét của bạn";
   String get send => "Gửi";
+  String get selectOrEnterCoupon => "Chọn Hoặc Nhập Mã";
   // ===========================================================================
   // To Trnaslate
   // ===========================================================================

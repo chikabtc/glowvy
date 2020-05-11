@@ -10,12 +10,10 @@ import '../../common/config.dart';
 import '../../generated/i18n.dart';
 import '../../models/order/cart.dart';
 import '../../models/user/userModel.dart';
-import '../../widgets/cart_item.dart';
 import '../../models/app.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'orderSummary.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/tools.dart';
 

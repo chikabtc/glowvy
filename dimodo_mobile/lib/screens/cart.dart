@@ -11,6 +11,8 @@ import 'package:Dimodo/models/product/productModel.dart';
 import 'checkout/confirmOrder.dart';
 import 'shoppingCartSummary.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:Dimodo/common/constants.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Cart extends StatefulWidget {
   final PageController controller;
@@ -24,6 +26,8 @@ class Cart extends StatefulWidget {
 
 class _CartState extends State<Cart> with SingleTickerProviderStateMixin {
   bool isLoading = false;
+  var bottomPopupHeightFactor;
+  var screenSize;
 
   List<Widget> _createShoppingCartRows(CartModel model) {
     final userModel = Provider.of<UserModel>(context, listen: false); //
@@ -52,15 +56,13 @@ class _CartState extends State<Cart> with SingleTickerProviderStateMixin {
   }
 
   @override
-  void initState() {
-    Provider.of<CartModel>(context, listen: false)
-        .getAllCartItems(Provider.of<UserModel>(context, listen: false));
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-
+    screenSize = MediaQuery.of(context).size;
+    bottomPopupHeightFactor = 1 -
+        (AppBar().preferredSize.height +
+                60 +
+                MediaQuery.of(context).padding.bottom) /
+            kScreenSizeHeight;
     bool showBackSpace = false;
     final Map arguments = ModalRoute.of(context).settings.arguments as Map;
     if (arguments != null) showBackSpace = arguments['showBackSpace'];
@@ -153,6 +155,33 @@ class _CartState extends State<Cart> with SingleTickerProviderStateMixin {
                   if (cartModel.totalCartQuantity > 0)
                     SliverList(
                         delegate: SliverChildListDelegate([
+                      SizedBox(height: 5),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: <Widget>[
+                            GestureDetector(
+                              onTap: () => onOrderConfirmed(context),
+                              child: Container(
+                                padding: EdgeInsets.all(5),
+                                height: 40,
+                                decoration: new BoxDecoration(
+                                  color: kPinkAccent,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Center(
+                                  child: DynamicText(
+                                      S.of(context).selectOrEnterCoupon,
+                                      style: kBaseTextStyle.copyWith(
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white)),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5,
+                            )
+                          ]),
+                      SizedBox(height: 5),
                       Container(
                         // height: screenSize.height -
                         //     MediaQuery.of(context).padding.top -
@@ -166,6 +195,142 @@ class _CartState extends State<Cart> with SingleTickerProviderStateMixin {
                 ]),
               )));
     });
+  }
+
+  void onOrderConfirmed(context) {
+    showModalBottomSheet(
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) {
+              return FractionallySizedBox(
+                heightFactor: bottomPopupHeightFactor,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: kDefaultBackground,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20)),
+                  ),
+                  width: screenSize.width,
+                  height: screenSize.height * bottomPopupHeightFactor -
+                      AppBar().preferredSize.height,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Stack(children: <Widget>[
+                        Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  topRight: Radius.circular(20)),
+                            ),
+                            height: AppBar().preferredSize.height,
+                            width: kScreenSizeWidth,
+                            child: Center(
+                              child: DynamicText(S.of(context).writeReview,
+                                  style: kBaseTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w600)),
+                            )),
+                        Positioned(
+                          top: 6,
+                          right: 0,
+                          child: IconButton(
+                              icon: SvgPicture.asset(
+                                  'assets/icons/address/close-popup.svg'),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              }),
+                        )
+                      ]),
+                      Container(
+                          width: 200,
+                          height: 236,
+                          child: FittedBox(
+                            fit: BoxFit.cover,
+                            child: Image.asset(
+                                'assets/icons/cart/received-package-illustration.png'),
+                          )),
+                      // SizedBox(height: 20),
+                      DynamicText(S.of(context).askServiceQuality,
+                          style: kBaseTextStyle.copyWith(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          textAlign: TextAlign.center),
+                      SizedBox(height: 28),
+                      Container(
+                        height: 140,
+                        color: Colors.white,
+                        padding: EdgeInsets.only(left: 16),
+                        child: TextFormField(
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            cursorColor: kPinkAccent,
+                            style: kBaseTextStyle.copyWith(
+                                fontSize: 15 * kSizeConfig.textMultiplier,
+                                fontWeight: FontWeight.w600),
+                            decoration: InputDecoration(
+                                hintText: S.of(context).askForFeedback,
+                                hintStyle: kBaseTextStyle.copyWith(
+                                    fontSize: 14,
+                                    color: kDarkSecondary.withOpacity(0.5)),
+                                border: InputBorder.none,
+                                hintMaxLines: 3,
+                                labelStyle: kBaseTextStyle.copyWith(
+                                    fontSize: 15 * kSizeConfig.textMultiplier,
+                                    fontWeight: FontWeight.w600,
+                                    color: kDarkAccent.withOpacity(0.5)),
+                                focusColor: kPinkAccent,
+                                fillColor: kPinkAccent,
+                                hoverColor: kPinkAccent),
+                            validator: (val) {
+                              return val.isEmpty
+                                  ? S.of(context).fullNameIsRequired
+                                  : null;
+                            },
+                            onChanged: (String value) {}),
+                      ),
+                      // Expanded(
+                      //   child: Align(
+                      //     alignment: FractionalOffset.bottomCenter,
+                      //     child: Padding(
+                      //       padding: const EdgeInsets.only(
+                      //           left: 16, right: 16, bottom: 40.0),
+                      //       child: MaterialButton(
+                      //           elevation: 0,
+                      //           color: kPinkAccent,
+                      //           minWidth: kScreenSizeWidth,
+                      //           height: 40,
+                      //           shape: RoundedRectangleBorder(
+                      //               borderRadius:
+                      //                   new BorderRadius.circular(25.0),
+                      //               side: BorderSide(
+                      //                   color: kPinkAccent, width: 1.5)),
+                      //           child: DynamicText(S.of(context).send,
+                      //               style: kBaseTextStyle.copyWith(
+                      //                   fontSize: 14,
+                      //                   fontWeight: FontWeight.w600,
+                      //                   color: Colors.white)),
+                      //           onPressed: ()
+                      //               ),
+                      //     ),
+                      //   ),
+                      // ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          );
+        });
   }
 
   void doCheckout() async {

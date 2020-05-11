@@ -44,7 +44,6 @@ class CategoryModel with ChangeNotifier {
         localCates.add(Category.fromJson(cate));
       }
       categories = localCates;
-      print("local cate: $categories'");
 
       isLoading = false;
       message = null;

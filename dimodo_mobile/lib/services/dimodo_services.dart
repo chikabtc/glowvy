@@ -136,7 +136,6 @@ class DimodoServices implements BaseServices {
       final product = body['Data'];
 
       if (body["Success"] == true) {
-        print("json product: ${product["category_id"]}");
         return Product.fromJson(product);
       } else {
         var message = body["Error"];
@@ -205,7 +204,6 @@ class DimodoServices implements BaseServices {
       if ((body["Success"] == false)) {
         throw Exception(body["Success"]);
       } else {
-        print("category products length: ${products.length}");
         for (var item in products) {
           list.add(Product.fromJson(item));
         }
@@ -474,7 +472,6 @@ class DimodoServices implements BaseServices {
   @override
   Future<bool> updateAddress({Address address, token}) async {
     try {
-      print("address token: ${address.ward.toJson()}");
       final http.Response response =
           await http.post("http://dimodo.app/api/address/update",
               headers: {"Authorization": "Bearer $token"},
@@ -499,8 +496,9 @@ class DimodoServices implements BaseServices {
   Future<Address> getAddress({token}) async {
     print("getaddress token: $token");
     try {
-      final http.Response response = await http
-          .get("http://dimodo.app/api/address/get", headers: {
+      var url = "http://dimodo.app/api/address/get";
+      print(url);
+      final http.Response response = await http.get(url, headers: {
         "Authorization": "Bearer $token",
         'Content-Type': 'application/json'
       });
@@ -754,7 +752,7 @@ class DimodoServices implements BaseServices {
   @override
   Future<List<CartItem>> allCartItems(UserModel userModel) async {
     try {
-      print("address token: ${userModel.user.accessToken}");
+      print("allCartItems token: ${userModel.user.accessToken}");
 
       final http.Response response = await http.get(
         "http://dimodo.app/api/cart/all",
@@ -788,14 +786,13 @@ class DimodoServices implements BaseServices {
   @override
   Future<List<Order>> getMyOrders({UserModel userModel, int page}) async {
     try {
+      print("getMyOrders accessToken: ${userModel.user.accessToken}");
       final http.Response response = await http.get(
           "http://dimodo.app/api/order/all",
           headers: {"Authorization": "Bearer ${userModel.user.accessToken}"});
       Map<String, dynamic> jsonDecode =
           convert.jsonDecode(utf8.decode(response.bodyBytes));
-      print("getmyorders: $jsonDecode");
       List<Order> list = [];
-      // print("getMyorders: ${jsonDecode["Data"]}");
 
       if (jsonDecode["Success"] == true && jsonDecode["Data"].length != 0) {
         for (var item in jsonDecode["Data"]) {

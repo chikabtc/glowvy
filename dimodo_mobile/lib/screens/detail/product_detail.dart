@@ -58,7 +58,7 @@ class _ProductDetailState extends State<ProductDetail> {
     services.getReviews(widget.product.sid, offset, limit).then((onValue) {
       setState(() {
         metaReviews = onValue;
-        print("reviews received: ${metaReviews.toJson()}");
+        // print("reviews received: ${metaReviews.toJson()}");
       });
       offset += 3;
     });
@@ -91,7 +91,6 @@ class _ProductDetailState extends State<ProductDetail> {
   @override
   Widget build(BuildContext context) {
     var cartModel = Provider.of<CartModel>(context);
-    print("calculate cate: ${widget.product.categoryId}");
     screenSize = MediaQuery.of(context).size;
     try {
       tabList = [];
@@ -100,7 +99,6 @@ class _ProductDetailState extends State<ProductDetail> {
       for (var tab in tabs) {
         tabList.add(tab["name"]);
       }
-      print("local cate: $tabList'");
     } catch (err) {
       isLoading = false;
       var message =

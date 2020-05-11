@@ -138,8 +138,6 @@ class UserModel with ChangeNotifier {
         final json = storage.getItem(kLocalKey["userInfo"]);
         if (json != null) {
           user = User.fromJson(json);
-
-          // print("got user: $user");
           isLoggedIn = true;
           notifyListeners();
         } else {

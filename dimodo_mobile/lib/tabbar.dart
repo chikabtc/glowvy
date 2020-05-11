@@ -14,7 +14,7 @@ import 'screens/user.dart';
 import 'models/app.dart';
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'common/styles.dart';
+import 'package:Dimodo/models/user/userModel.dart';
 
 class MainTabs extends StatefulWidget {
   @override
@@ -40,6 +40,11 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
     Provider.of<CategoryModel>(context, listen: false).getLocalCategories(
         context,
         lang: Provider.of<AppModel>(context, listen: false).locale);
+    //wait for the user to login..
+    Future.delayed(const Duration(milliseconds: 1000), () {
+      Provider.of<CartModel>(context, listen: false)
+          .getAllCartItems(Provider.of<UserModel>(context, listen: false));
+    });
   }
 
   Widget tabView(Map<String, dynamic> data) {
@@ -47,7 +52,9 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
       case 'category':
         return CategoryScreen();
       case 'cart':
-        return CartScreen();
+        var cartScreen = CartScreen();
+
+        return cartScreen;
       case 'profile':
         return UserScreen();
       case 'dynamic':
@@ -166,8 +173,6 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
                 bottom: true,
                 child: FittedBox(
                   child: Container(
-                      // padding: EdgeInsets.only(
-                      //     bottom: MediaQuery.of(context).padding.bottom),
                       height: 50,
                       color: Colors.white,
                       width: screenSize.width /

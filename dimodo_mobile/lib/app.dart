@@ -103,10 +103,10 @@ class MyApp extends StatefulWidget {
 
 class DimodoState extends State<MyApp> with AfterLayoutMixin {
   final _app = AppModel();
+  final _userModel = UserModel();
   final _product = ProductModel();
   final _category = CategoryModel();
   final _wishlist = WishListModel();
-  final _user = UserModel();
   final _shippingMethod = ShippingMethodModel();
   final _paymentMethod = PaymentMethodModel();
   final _order = OrderModel();
@@ -175,7 +175,6 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
             providers: [
               Provider<ProductModel>.value(value: _product),
               Provider<CategoryModel>.value(value: _category),
-              Provider<UserModel>.value(value: _user),
               Provider<WishListModel>.value(value: _wishlist),
               Provider<ShippingMethodModel>.value(value: _shippingMethod),
               Provider<PaymentMethodModel>.value(value: _paymentMethod),
@@ -183,7 +182,7 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
               Provider<SearchModel>.value(value: _search),
               Provider<RecentModel>.value(value: _recent),
               ChangeNotifierProvider(create: (_) => AddressModel()),
-              ChangeNotifierProvider(create: (_) => UserModel()),
+              ChangeNotifierProvider(create: (_) => _userModel),
               ChangeNotifierProvider(create: (_) => CartModel()),
               ChangeNotifierProvider(create: (_) => CategoryModel()),
             ],
@@ -231,17 +230,11 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
                 "/login": (context) => LoginScreen(),
                 "/register": (context) => SignupScreen(),
                 "/cart": (context) => CartScreen(),
-                // '/wishlist': (context) => WishList(),
-                // '/checkout': (context) => Checkout(),
                 '/orders': (context) => OrdersScreen(),
                 '/order_submitted': (context) => OrderSubmitted(),
                 '/manage_address': (context) => ManageShippingScreen(),
-
-                // '/notify': (context) => Notifications(),
                 '/setting': (context) => SettingScreen(),
                 '/category': (context) => CategoryScreen(),
-                // '/add_address': (context) => ShippingAddress(),
-
                 '/sub_category': (context) => SubCategoryScreen(),
                 '/forgot_password': (context) => ForgotPasswordScreen(),
                 '/reset_password': (context) => ResetPasswordScreen(),

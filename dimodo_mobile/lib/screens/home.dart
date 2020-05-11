@@ -58,6 +58,7 @@ class HomeScreenState extends State<HomeScreen>
 //testing codemagic
   @override
   Widget build(BuildContext context) {
+    print("building home");
     kRateMyApp.init().then((_) {});
 
     final screenSize = MediaQuery.of(context).size;
@@ -73,8 +74,7 @@ class HomeScreenState extends State<HomeScreen>
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
             statusBarBrightness: Brightness.light) // Or Brightness.dark
         );
-    Provider.of<CartModel>(context, listen: false)
-        .getAllCartItems(Provider.of<UserModel>(context, listen: false));
+    //it will rebuild cartScreens when it's not ready... in the tab..?
 
     return Scaffold(
       body: Container(
@@ -173,23 +173,6 @@ class HomeScreenState extends State<HomeScreen>
                           ),
                         ]),
                   ),
-                  // Padding(
-                  //   padding: const EdgeInsets.only(top: 16, bottom: 10),
-                  //   child: Column(
-                  //     crossAxisAlignment: CrossAxisAlignment.start,
-                  //     mainAxisAlignment: MainAxisAlignment.center,
-                  //     children: <Widget>[
-                  //       Padding(
-                  //         padding: const EdgeInsets.only(left: 16),
-                  //         child: DynamicText(
-                  //           S.of(context).trendingKorea,
-                  //           style: kBaseTextStyle.copyWith(
-                  //               fontSize: 15, fontWeight: FontWeight.w600),
-                  //         ),
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
                 ]),
               ),
               SliverList(

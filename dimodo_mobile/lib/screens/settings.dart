@@ -12,9 +12,6 @@ import 'package:share/share.dart';
 import 'dart:io' show Platform;
 import 'package:flutter_mailer/flutter_mailer.dart';
 import 'setting/language.dart';
-import '../models/order/cart.dart';
-import 'package:Dimodo/models/user/userModel.dart';
-import 'package:provider/provider.dart';
 
 class SettingScreen extends StatefulWidget {
   final User user;
@@ -62,8 +59,6 @@ class SettingScreenState extends State<SettingScreen>
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    // Provider.of<CartModel>(context, listen: false)
-    //     .getAllCartItems(Provider.of<UserModel>(context, listen: false));
 
     kRateMyApp.init().then((_) {});
 

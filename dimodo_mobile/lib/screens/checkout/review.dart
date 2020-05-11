@@ -235,15 +235,6 @@ class ShippingAddressInfo extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Expanded(
-                //   child: Text(
-                //     shipping.email,
-                //     style: TextStyle(
-                //       fontSize: 14,
-                //       color: Theme.of(context).accentColor,
-                //     ),
-                //   ),
-                // )
               ],
             ),
           ),

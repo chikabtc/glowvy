@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
+import '../../models/order/cart.dart';
 
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/common/styles.dart';
@@ -86,19 +87,43 @@ class _SignupScreenState extends State<SignupScreen>
     } on TickerCanceled {}
   }
 
+  _submitRegister(fullName, email, password) {
+    print("registering: ${fullName + " " + email + " " + password}");
+    if (!email.contains("@")) {
+      _snackBar('Please input valid email format');
+    } else if (fullName == null || email == null || password == null) {
+      _snackBar('Please input fill in all fields');
+    } else {
+      Provider.of<UserModel>(context, listen: false).createUser(
+          fullName: fullName,
+          password: password,
+          email: email,
+          success: _welcomeDiaLog,
+          fail: _failMess);
+    }
+  }
+
   _loginFacebook(context) async {
     //showLoading();
     _playAnimation();
     Provider.of<UserModel>(context, listen: false).loginFB(
       success: (user) {
-        //hideLoading();
-        _stopAnimation();
-        _welcomeMessage(user, context);
+        _onLoginSuccess(user, context);
       },
       fail: (message) {
-        //hideLoading();
-        _stopAnimation();
-        _failMessage(message, context);
+        _onLoginFailure(message, context);
+      },
+    );
+  }
+
+  _loginGoogle(context) async {
+    _playAnimation();
+    Provider.of<UserModel>(context, listen: false).loginGoogle(
+      success: (user) {
+        _onLoginSuccess(user, context);
+      },
+      fail: (message) {
+        _onLoginFailure(message, context);
       },
     );
   }
@@ -136,6 +161,18 @@ class _SignupScreenState extends State<SignupScreen>
       ..showSnackBar(snackBar);
   }
 
+  _onLoginSuccess(user, context) {
+    Provider.of<CartModel>(context, listen: false)
+        .getAllCartItems(Provider.of<UserModel>(context, listen: false));
+    _stopAnimation();
+    _welcomeMessage(user, context);
+  }
+
+  _onLoginFailure(message, context) {
+    _stopAnimation();
+    _failMessage(message, context);
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -145,39 +182,6 @@ class _SignupScreenState extends State<SignupScreen>
         Theme.of(context).textTheme.button.copyWith(fontSize: 16);
     final screenSize = MediaQuery.of(context).size;
     parentContext = context;
-
-    _submitRegister(fullName, email, password) {
-      print("registering: ${fullName + " " + email + " " + password}");
-      if (!email.contains("@")) {
-        _snackBar('Please input valid email format');
-      } else if (fullName == null || email == null || password == null) {
-        _snackBar('Please input fill in all fields');
-      } else {
-        Provider.of<UserModel>(context, listen: false).createUser(
-            fullName: fullName,
-            password: password,
-            email: email,
-            success: _welcomeDiaLog,
-            fail: _failMess);
-      }
-    }
-
-    _loginGoogle(context) async {
-      _playAnimation();
-      Provider.of<UserModel>(context, listen: false).loginGoogle(
-        success: (user) {
-          //hideLoading();
-          _stopAnimation();
-          _welcomeMessage(user, context);
-        },
-        fail: (message) {
-          //hideLoading();
-
-          _stopAnimation();
-          _failMessage(message, context);
-        },
-      );
-    }
 
     return Scaffold(
       resizeToAvoidBottomInset: false,

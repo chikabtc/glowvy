@@ -9,6 +9,7 @@ import 'package:apple_sign_in/apple_sign_in.dart';
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
+import 'package:Dimodo/models/order/cart.dart';
 
 class LoginScreen extends StatefulWidget {
   final bool fromCart;
@@ -103,17 +104,59 @@ class _LoginPageState extends State<LoginScreen>
       ..showSnackBar(snackBar);
   }
 
+  _loginEmail(context) async {
+    if (email == null || password == null) {
+      var snackBar = SnackBar(
+          content: DynamicText(S.of(context).pleaseInput,
+              style: kBaseTextStyle.copyWith(color: Colors.white)));
+      Scaffold.of(context).showSnackBar(snackBar);
+    } else {
+      _playAnimation();
+      Provider.of<UserModel>(context, listen: false).login(
+        email: email.trim(),
+        password: password.trim(),
+        success: (user) {
+          _onLoginSuccess(user, context);
+        },
+        fail: (message) {
+          _onLoginFailure(message, context);
+        },
+      );
+    }
+  }
+
   _loginFacebook(context) async {
     _playAnimation();
     Provider.of<UserModel>(context, listen: false).loginFB(
       success: (user) {
-        _stopAnimation();
-        _welcomeMessage(user, context);
+        _onLoginSuccess(user, context);
       },
       fail: (message) {
-        //hideLoading();
-        _stopAnimation();
-        _failMessage(message, context);
+        _onLoginFailure(message, context);
+      },
+    );
+  }
+
+  _onLoginSuccess(user, context) {
+    Provider.of<CartModel>(context, listen: false)
+        .getAllCartItems(Provider.of<UserModel>(context, listen: false));
+    _stopAnimation();
+    _welcomeMessage(user, context);
+  }
+
+  _onLoginFailure(message, context) {
+    _stopAnimation();
+    _failMessage(message, context);
+  }
+
+  _loginGoogle(context) async {
+    _playAnimation();
+    Provider.of<UserModel>(context, listen: false).loginGoogle(
+      success: (user) {
+        _onLoginSuccess(user, context);
+      },
+      fail: (message) {
+        _onLoginFailure(message, context);
       },
     );
   }
@@ -124,48 +167,6 @@ class _LoginPageState extends State<LoginScreen>
         Theme.of(context).textTheme.button.copyWith(fontSize: 16);
     parentContext = context;
     final screenSize = MediaQuery.of(context).size;
-
-    _login(context) async {
-      if (email == null || password == null) {
-        var snackBar = SnackBar(
-            content: DynamicText(S.of(context).pleaseInput,
-                style: kBaseTextStyle.copyWith(color: Colors.white)));
-        Scaffold.of(context).showSnackBar(snackBar);
-      } else {
-        _playAnimation();
-        Provider.of<UserModel>(context, listen: false).login(
-          email: email.trim(),
-          password: password.trim(),
-          success: (user) {
-            _stopAnimation();
-            // print('user successfully logged in $user');
-            _welcomeMessage(user, context);
-          },
-          fail: (message) {
-            print('user failed to log in $message');
-
-            _stopAnimation();
-            _failMessage(message, context);
-          },
-        );
-      }
-    }
-
-    _loginGoogle(context) async {
-      _playAnimation();
-      Provider.of<UserModel>(context, listen: false).loginGoogle(
-        success: (user) {
-          //hideLoading();
-          _stopAnimation();
-          _welcomeMessage(user, context);
-        },
-        fail: (message) {
-          //hideLoading();
-          _stopAnimation();
-          _failMessage(message, context);
-        },
-      );
-    }
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -273,7 +274,7 @@ class _LoginPageState extends State<LoginScreen>
                         buttonController: _loginButtonController.view,
                         onTap: () {
                           if (!isLoading) {
-                            _login(context);
+                            _loginEmail(context);
                           }
                         },
                       ),

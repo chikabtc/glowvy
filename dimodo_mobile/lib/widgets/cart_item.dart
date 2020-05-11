@@ -37,8 +37,6 @@ class _CartItemRowState extends State<CartItemRow> {
   Widget build(BuildContext context) {
     quantity = widget.cartItem.quantity;
     final screenSize = MediaQuery.of(context).size;
-    String currency = Provider.of<AppModel>(context, listen: false).currency;
-    print("thesales price : ${widget.cartItem.product.salePrice}");
 
     return Container(
       color: Colors.white,

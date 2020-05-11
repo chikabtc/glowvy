@@ -25,43 +25,21 @@ class CategoryScreen extends StatefulWidget {
 class CategoryScreenState extends State<CategoryScreen>
     with TickerProviderStateMixin, WidgetsBindingObserver {
   bool enabledNotification = true;
-
+  List<Widget> categoryButtons = [];
   @override
   void initState() {
     super.initState();
-
-    Future.delayed(Duration.zero, () async {
-      checkNotificationPermission();
-    });
-  }
-
-  void checkNotificationPermission() async {
-    try {
-      NotificationPermissions.getNotificationPermissionStatus().then((status) {
-        if (mounted)
-          setState(() {
-            enabledNotification = status == PermissionStatus.granted;
-          });
-      });
-    } catch (err) {}
   }
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     print("rebuilding category!");
-    Provider.of<CategoryModel>(context, listen: false).getLocalCategories;
 
     final categories =
         Provider.of<CategoryModel>(context, listen: false).categories;
 
-    List<Widget> categoryButtons = [];
-
-    createCategoryButton(List<Category> categories) {
-      categories.forEach((cate) => categoryButtons.add(CategoryButton(cate)));
-    }
-
-    createCategoryButton(categories);
+    categories.forEach((cate) => categoryButtons.add(CategoryButton(cate)));
 
     TextStyle textStyle = Theme.of(context)
         .textTheme
@@ -71,7 +49,6 @@ class CategoryScreenState extends State<CategoryScreen>
     return Scaffold(
       body: Container(
         color: Colors.white,
-        // margin: EdgeInsets.only(left: 7, right: 7),
         width: screenSize.width,
         height: screenSize.height,
         child: CustomScrollView(
@@ -133,6 +110,5 @@ class CategoryScreenState extends State<CategoryScreen>
     );
   }
 
-  @override
   bool get wantKeepAlive => true;
 }

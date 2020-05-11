@@ -17,6 +17,8 @@ class CartModel with ChangeNotifier {
     updateFees();
   }
 
+  UserModel userModel;
+
   Address address;
   Billing billing;
   String currency;
@@ -100,17 +102,15 @@ class CartModel with ChangeNotifier {
   }
 
   void updateFees() async {
-    // getShippingAddress();
-    // getCartDataFromLocal();
     getCurrency();
     getShippingFee();
-    // getImportTax();
     getSubTotal();
     getServiceFee();
     getTotal();
   }
 
   Future<CartModel> getAllCartItems(UserModel userModel) async {
+    print("get all carts");
     if (userModel.isLoggedIn) {
       print("loading");
       var items = await _services.allCartItems(userModel);
@@ -119,6 +119,8 @@ class CartModel with ChangeNotifier {
           cartItems[item.optionId] = item;
         });
       }
+    } else {
+      print("getAllCartItems failed because not logged in");
     }
     notifyListeners();
 
@@ -266,18 +268,14 @@ class CartModel with ChangeNotifier {
       return 0;
     } else {
       var sum = cartItems.keys.fold(0, (value, i) {
-        print("category id of product: ${cartItems[i].product.categoryId}");
         return value + calculateShippingFee(cartItems[i].product).toInt();
       });
-      print("sum :$sum");
 
       return sum.toDouble();
     }
   }
 
   double calculateShippingFee(Product item) {
-    print("category id of product: ${item.categoryId}");
-
     switch (item.categoryId) {
       case 1:
         return 30000;

@@ -2,10 +2,8 @@ import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/models/order/cart.dart';
 import 'package:Dimodo/models/order/cartItem.dart';
 import 'package:Dimodo/models/order/order.dart';
-import 'package:Dimodo/models/order/orderItem.dart';
 import 'package:Dimodo/models/order/orderModel.dart';
 import 'package:Dimodo/widgets/orderItem.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
@@ -13,11 +11,7 @@ import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
-
-import 'package:Dimodo/widgets/cart_item.dart';
-import 'package:after_layout/after_layout.dart';
 
 class OrdersScreen extends StatefulWidget {
   @override
@@ -26,11 +20,10 @@ class OrdersScreen extends StatefulWidget {
   }
 }
 
-class OrdersScreenState extends State<OrdersScreen>
-    with TickerProviderStateMixin, WidgetsBindingObserver, AfterLayoutMixin {
-  User user;
+class OrdersScreenState extends State<OrdersScreen> {
   OrderModel _orderModel;
   bool isOrderComplete;
+  UserModel userModel;
 
   @override
   void initState() {
@@ -45,14 +38,12 @@ class OrdersScreenState extends State<OrdersScreen>
             child: GestureDetector(
               onTap: () {
                 Map<int, CartItem> orderItems = {};
-                print("order items count :${order.orderItems.length}");
                 order.orderItems
                     .forEach((item) => orderItems[item.optionId] = item);
-                //1. create cartModel from order object
                 var cartModel = CartModel();
+
                 cartModel.addCartItems(orderItems);
-                // print("pass orderItems: ${orderItems}");
-                // //2. navigate to the order detail page
+
                 Navigator.pushNamed(context, "/order_submitted", arguments: {
                   'cartModel': cartModel,
                   'isOrderConfirmed': order.isPaid
@@ -121,11 +112,11 @@ class OrdersScreenState extends State<OrdersScreen>
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     _orderModel = Provider.of<OrderModel>(context, listen: false);
-    // _orderModel.getMyOrders(
-    //     userModel: Provider.of<UserModel>(context, listen: false));
+    print("building ordersScreen");
 
     return Consumer<UserModel>(
       builder: (context, userModel, child) {
+        userModel = userModel;
         return Scaffold(
           body: Container(
               color: kLightBG,
@@ -169,7 +160,7 @@ class OrdersScreenState extends State<OrdersScreen>
                     else if (snapshot.data.length == 0)
                       return SliverList(
                           delegate: SliverChildListDelegate([EmptyOrders()]));
-                    else if (snapshot.data.length > 0)
+                    else
                       return SliverList(
                         delegate: SliverChildListDelegate([
                           Column(children: _createOrders(snapshot.data)),
@@ -192,12 +183,6 @@ class OrdersScreenState extends State<OrdersScreen>
         );
       },
     );
-  }
-
-  @override
-  void afterFirstLayout(BuildContext context) {
-    Provider.of<OrderModel>(context, listen: false)
-        .getMyOrders(userModel: Provider.of<UserModel>(context, listen: false));
   }
 }
 
