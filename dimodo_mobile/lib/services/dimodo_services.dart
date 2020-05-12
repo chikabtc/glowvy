@@ -130,7 +130,7 @@ class DimodoServices implements BaseServices {
   Future<Product> getProduct(id) async {
     try {
       final http.Response response =
-          await http.get("http://dimodo.app/api/products/id=$id/sr=brandi");
+          await http.get("http://localhost:80/api/products/id=$id/sr=brandi");
 
       final body = convert.jsonDecode(utf8.decode(response.bodyBytes));
       final product = body['Data'];
@@ -159,7 +159,7 @@ class DimodoServices implements BaseServices {
       // print(params);
 
       var uri =
-          'http://dimodo.app/api/products/review/id=$id/sr=brandi?offset=$offset&limit=$limit';
+          'http://localhost:80/api/products/review/id=$id/sr=brandi?offset=$offset&limit=$limit';
       print(uri);
 
       final http.Response response = await http.get(uri);
@@ -193,7 +193,7 @@ class DimodoServices implements BaseServices {
     try {
       List<Product> list = [];
       var url =
-          "http://dimodo.app/api/products/categories=$categoryId?start=0&count=$limit&sort_by=$sortBy";
+          "http://localhost:80/api/products/categories=$categoryId?start=0&count=$limit&sort_by=$sortBy";
       print(url);
       final http.Response response =
           await http.get(url, headers: {'Content-Type': 'application/json'});
@@ -221,7 +221,7 @@ class DimodoServices implements BaseServices {
     try {
       List<Product> list = [];
       var url =
-          "http://dimodo.app/api/products/tag=$tag?start=0&count=200&sort_by=$sortBy";
+          "http://localhost:80/api/products/tag=$tag?start=0&count=200&sort_by=$sortBy";
       print(url);
 
       final http.Response response =
@@ -249,7 +249,7 @@ class DimodoServices implements BaseServices {
   Future<List<Product>> fetchProductsByShop({shopId}) async {
     try {
       List<Product> list = [];
-      var url = "http://dimodo.app/api/products/shop=$shopId?limit=10";
+      var url = "http://localhost:80/api/products/shop=$shopId?limit=10";
       print(url);
       final http.Response response =
           await http.get(url, headers: {'Content-Type': 'application/json'});
@@ -281,7 +281,7 @@ class DimodoServices implements BaseServices {
     try {
       print("fullname ${fullName} email ${email} password ${password}");
       final http.Response response = await http.post(
-          "http://dimodo.app/api/account/signup",
+          "http://localhost:80/api/account/signup",
           body: json.encode(
               {"full_name": fullName, "email": email, "password": password}));
 
@@ -312,7 +312,7 @@ class DimodoServices implements BaseServices {
   Future<User> login({email, password}) async {
     try {
       final http.Response response = await http.post(
-          "http://dimodo.app/api/account/signin",
+          "http://localhost:80/api/account/signin",
           body: convert.jsonEncode({'email': email, 'password': password}));
 
       final body = convert.jsonDecode(utf8.decode(response.bodyBytes));
@@ -337,8 +337,9 @@ class DimodoServices implements BaseServices {
     // const accessTokenLifeTime = 120960000000;
     print("facebook login token: $token");
     try {
-      final http.Response response = await http
-          .post("http://dimodo.app/oauth2/facebook/login/$token", body: token);
+      final http.Response response = await http.post(
+          "http://localhost:80/oauth2/facebook/login/$token",
+          body: token);
 
       var jsonDecode = convert.jsonDecode(response.body);
       print('facebook jsondecode: $jsonDecode');
@@ -357,7 +358,7 @@ class DimodoServices implements BaseServices {
   Future<User> loginGoogle({String token}) async {
     print("google login : $token");
     try {
-      var url = "http://dimodo.app/oauth2/google/login/$token";
+      var url = "http://localhost:80/oauth2/google/login/$token";
       print(url);
       final http.Response response = await http.post(url, body: token);
       var body = convert.jsonDecode(response.body);
@@ -381,7 +382,7 @@ class DimodoServices implements BaseServices {
     print("email received: $email");
     try {
       final http.Response response = await http.post(
-          "http://dimodo.app/api/password/forgot",
+          "http://localhost:80/api/password/forgot",
           body: convert.jsonEncode({"email": email}));
       Map<String, dynamic> jsonDecode = convert.jsonDecode(response.body);
       String token = jsonDecode["Data"];
@@ -406,7 +407,7 @@ class DimodoServices implements BaseServices {
     print("pin received: $pin token received: $token");
     try {
       final http.Response response = await http.post(
-          "http://dimodo.app/api/password/checkpin",
+          "http://localhost:80/api/password/checkpin",
           body: convert.jsonEncode({"pin": pin}),
           headers: {"TokenPinResetPassword": "Bearer $token"});
 
@@ -431,7 +432,7 @@ class DimodoServices implements BaseServices {
     print("pin received: $password");
     try {
       final http.Response response = await http.post(
-          "http://dimodo.app/api/password/reset",
+          "http://localhost:80/api/password/reset",
           body: convert.jsonEncode({"new": password, "confirm_new": password}),
           headers: {"TokenResetPassword": "Bearer $accessToken"});
 
@@ -473,7 +474,7 @@ class DimodoServices implements BaseServices {
   Future<bool> updateAddress({Address address, token}) async {
     try {
       final http.Response response =
-          await http.post("http://dimodo.app/api/address/update",
+          await http.post("http://localhost:80/api/address/update",
               headers: {"Authorization": "Bearer $token"},
               body: jsonEncode({
                 "recipient_name": address.recipientName,
@@ -496,7 +497,7 @@ class DimodoServices implements BaseServices {
   Future<Address> getAddress({token}) async {
     print("getaddress token: $token");
     try {
-      var url = "http://dimodo.app/api/address/get";
+      var url = "http://localhost:80/api/address/get";
       print(url);
       final http.Response response = await http.get(url, headers: {
         "Authorization": "Bearer $token",
@@ -520,7 +521,7 @@ class DimodoServices implements BaseServices {
   Future<List<Province>> getProvinces() async {
     try {
       final http.Response response =
-          await http.get("http://dimodo.app/api/provinces/all");
+          await http.get("http://localhost:80/api/provinces/all");
 
       Map<String, dynamic> body = json.decode(utf8.decode(response.bodyBytes));
       var provincesJsons = body["Data"];
@@ -539,9 +540,9 @@ class DimodoServices implements BaseServices {
   @override
   Future<List<District>> getDistricts({int provinceId}) async {
     try {
-      print("http://dimodo.app/api/districts/id=$provinceId");
+      print("http://localhost:80/api/districts/id=$provinceId");
       final http.Response response =
-          await http.get("http://dimodo.app/api/districts/id=$provinceId");
+          await http.get("http://localhost:80/api/districts/id=$provinceId");
 
       Map<String, dynamic> body = json.decode(utf8.decode(response.bodyBytes));
       // print("body: ${body["Data"]}");
@@ -563,7 +564,7 @@ class DimodoServices implements BaseServices {
   Future<List<Ward>> getWards({int districtId}) async {
     try {
       final http.Response response =
-          await http.get("http://dimodo.app/api/wards/id=$districtId");
+          await http.get("http://localhost:80/api/wards/id=$districtId");
 
       Map<String, dynamic> body = json.decode(utf8.decode(response.bodyBytes));
       var wardJsons = body["Data"];
@@ -682,7 +683,7 @@ class DimodoServices implements BaseServices {
       print("cart item option: ${cartItem.optionId}");
 
       final http.Response response = await http.post(
-          "http://dimodo.app/api/cart/new",
+          "http://localhost:80/api/cart/new",
           headers: {"Authorization": "Bearer ${userModel.user.accessToken}"},
           body: jsonEncode({
             "product_id": cartItem.product.sid,
@@ -706,7 +707,7 @@ class DimodoServices implements BaseServices {
   Future<int> updateCartItem(CartItem cartItem, UserModel userModel) async {
     try {
       final http.Response response = await http.post(
-          "http://dimodo.app/api/cart/update",
+          "http://localhost:80/api/cart/update",
           headers: {"Authorization": "Bearer ${userModel.user.accessToken}"},
           body: jsonEncode({
             "product_id": cartItem.product.sid,
@@ -730,7 +731,7 @@ class DimodoServices implements BaseServices {
   Future<int> deleteCartItem(CartItem cartItem, UserModel userModel) async {
     try {
       final http.Response response = await http.post(
-          "http://dimodo.app/api/cart/delete",
+          "http://localhost:80/api/cart/delete",
           headers: {"Authorization": "Bearer ${userModel.user.accessToken}"},
           body: jsonEncode({
             "product_id": cartItem.product.sid,
@@ -755,7 +756,7 @@ class DimodoServices implements BaseServices {
       print("allCartItems token: ${userModel.user.accessToken}");
 
       final http.Response response = await http.get(
-        "http://dimodo.app/api/cart/all",
+        "http://localhost:80/api/cart/all",
         headers: {"Authorization": "Bearer ${userModel.user.accessToken}"},
       );
 
@@ -780,6 +781,37 @@ class DimodoServices implements BaseServices {
     }
   }
 
+  @override
+  Future<List<Coupon>> getCoupons(UserModel userModel) async {
+    try {
+      print("getCoupons token: ${userModel.user.accessToken}");
+
+      final http.Response response = await http.get(
+        "http://localhost:80/api/cart/coupons/all",
+        headers: {"Authorization": "Bearer ${userModel.user.accessToken}"},
+      );
+
+      Map<String, dynamic> body =
+          convert.jsonDecode(utf8.decode(response.bodyBytes));
+      final cartItems = body['Data'];
+      if (body["Success"] == true) {
+        List<Coupon> list = [];
+        if (cartItems == null) {
+          return list;
+        }
+        for (var cartItem in cartItems) {
+          list.add(Coupon.fromJson(cartItem));
+        }
+        return list;
+      } else {
+        var message = body["Error"];
+        throw Exception("failed to retreieve coupons: ${message}");
+      }
+    } catch (err) {
+      throw "err: $err";
+    }
+  }
+
   // ===========================================================================
   // ORDER MANAGEMENT
   // ===========================================================================
@@ -788,7 +820,7 @@ class DimodoServices implements BaseServices {
     try {
       print("getMyOrders accessToken: ${userModel.user.accessToken}");
       final http.Response response = await http.get(
-          "http://dimodo.app/api/order/all",
+          "http://localhost:80/api/order/all",
           headers: {"Authorization": "Bearer ${userModel.user.accessToken}"});
       Map<String, dynamic> jsonDecode =
           convert.jsonDecode(utf8.decode(response.bodyBytes));
@@ -835,7 +867,7 @@ class DimodoServices implements BaseServices {
     try {
       print("order json: ${order.toJson()}");
       final http.Response response = await http.post(
-          "http://dimodo.app/api/order/new",
+          "http://localhost:80/api/order/new",
           headers: {"Authorization": "Bearer ${userModel.user.accessToken}"},
           body: convert.jsonEncode(order));
 

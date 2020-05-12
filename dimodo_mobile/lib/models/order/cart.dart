@@ -1,3 +1,4 @@
+import 'package:Dimodo/models/coupon.dart';
 import 'package:Dimodo/models/order/cartItem.dart';
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
@@ -29,10 +30,13 @@ class CartModel with ChangeNotifier {
   double subTotalFee = 0;
   double totalFee = 0;
   double subTotal = 0;
+  double totalDiscounts = 0;
   Services _services = Services();
 
   // The productIDs and product Object currently in the cart.
   Map<int, CartItem> cartItems = {};
+  //selected coupons
+  List<Coupon> selectedCoupons = [];
 
   // The IDs and quantities of products currently in the cart.
 
@@ -69,6 +73,9 @@ class CartModel with ChangeNotifier {
       updateQuantityCartLocal(key: key, quantity: quantity);
       var count = await _services.updateCartItem(cartItems[key], userModel);
       updateFees();
+      if (totalCartQuantity == 0) {
+        selectedCoupons.clear();
+      }
       notifyListeners();
     }
   }
@@ -98,6 +105,7 @@ class CartModel with ChangeNotifier {
   void clearCart() {
     clearCartLocal();
     cartItems.clear();
+    selectedCoupons.clear();
     notifyListeners();
   }
 
@@ -125,6 +133,29 @@ class CartModel with ChangeNotifier {
     notifyListeners();
 
     return this;
+  }
+
+  void setCoupon(Coupon coupon) async {
+    if (!selectedCoupons.contains(coupon)) {
+      selectedCoupons.add(coupon);
+    } else {
+      selectedCoupons.remove(coupon);
+    }
+    notifyListeners();
+  }
+
+  Future<List<Coupon>> getAllCoupons(UserModel userModel) async {
+    List<Coupon> coupons = [];
+    if (userModel.isLoggedIn) {
+      print("loading");
+      var items = await _services.getCoupons(userModel);
+      return items;
+    } else {
+      print("getAllCoupons failed because not logged in");
+    }
+    notifyListeners();
+
+    return coupons;
   }
 
   void saveCartToLocal(CartItem cartItem) async {
@@ -302,8 +333,19 @@ class CartModel with ChangeNotifier {
   }
 
   double getTotal() {
-    totalFee = getSubTotal() + getShippingFee();
+    totalFee = getSubTotal() + getShippingFee() - getTotalDiscounts();
     return totalFee;
+  }
+
+  double getTotalDiscounts() {
+    var sum = selectedCoupons.fold(0.0, (value, coupon) {
+      if (coupon.discountType == "FreeShip") {
+        return value + getShippingFee();
+      }
+      // return value;
+      return value + coupon.discountAmount.toDouble();
+    });
+    return sum;
   }
 
   double getImportTax() {

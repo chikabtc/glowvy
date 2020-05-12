@@ -95,7 +95,7 @@ abstract class BaseServices {
 
   Future<Product> getProduct(id);
 
-  // Future<Coupons> getCoupons();
+  Future<List<Coupon>> getCoupons(UserModel userModel);
 
   Future<AfterShip> getAllTracking();
 
@@ -467,16 +467,16 @@ class Services implements BaseServices {
     }
   }
 
-  // @override
-  // Future<Coupons> getCoupons() async {
-  //   var connectivityResult = await (Connectivity().checkConnectivity());
-  //   if (connectivityResult == ConnectivityResult.mobile ||
-  //       connectivityResult == ConnectivityResult.wifi) {
-  //     return serviceApi.getCoupons();
-  //   } else {
-  //     throw Exception("No internet connection");
-  //   }
-  // }
+  @override
+  Future<List<Coupon>> getCoupons(userModel) async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      return serviceApi.getCoupons(userModel);
+    } else {
+      throw Exception("No internet connection");
+    }
+  }
 
   @override
   Future<AfterShip> getAllTracking() async {

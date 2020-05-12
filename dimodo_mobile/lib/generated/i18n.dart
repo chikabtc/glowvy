@@ -57,6 +57,7 @@ class S implements WidgetsLocalizations {
 // Cart Page
 // =============================================================================
   String get emptyCartSubtitle => "No Products in the cart yet";
+  String get noCouponsAvailable => "No Coupons Available";
   String get emptyWishlistSubtitle => "No Products in the cart yet";
   String get youMayAlsoLike => "You may also like";
 

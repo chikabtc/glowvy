@@ -44,9 +44,6 @@ class _ShoppingCartSummaryState extends State<ShoppingCartSummary> {
   @override
   Widget build(BuildContext context) {
     final currency = Provider.of<AppModel>(context, listen: false).currency;
-    final formatter = new NumberFormat.currency(
-        symbol: defaultCurrency['symbol'],
-        decimalDigits: defaultCurrency['decimalDigits']);
 
     return Container(
         height: 48,
@@ -68,13 +65,34 @@ class _ShoppingCartSummaryState extends State<ShoppingCartSummary> {
               Center(child: SvgPicture.asset('assets/icons/cart/info.svg')),
               Spacer(),
               //not updating properly...why?
-              DynamicText(
-                Tools.getCurrecyFormatted(widget.model.getTotal(),
-                    currency: currency),
-                style: kBaseTextStyle.copyWith(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: kPinkAccent),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  DynamicText(
+                    Tools.getCurrecyFormatted(widget.model.getTotal(),
+                        currency: currency),
+                    style: kBaseTextStyle.copyWith(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: kPinkAccent),
+                  ),
+                  Row(
+                    children: <Widget>[
+                      Image.asset('assets/icons/cart/coupon.png'),
+                      DynamicText(
+                        "-" +
+                            Tools.getCurrecyFormatted(
+                                widget.model.getTotalDiscounts(),
+                                currency: currency),
+                        style: kBaseTextStyle.copyWith(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            color: kPinkAccent),
+                      ),
+                    ],
+                  )
+                ],
               ),
             ],
           ),

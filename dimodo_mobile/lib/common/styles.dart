@@ -35,6 +35,8 @@ const kDarkBgLight = Color(0xfff9f9f9);
 const kBadgeColor = Colors.red;
 const kPureWhite = Color(0xffffffff);
 const kDarkSecondary = Color(0xff808080);
+// const kLightPurple = Color(0xff7A5AE8).withOpacity(0.1);
+const kAccentPurple = Color(0xff7A5AE8);
 
 const kProductTitleStyleLarge = const TextStyle(
     fontFamily: "BeVietnam", fontSize: 18, fontWeight: FontWeight.bold);
