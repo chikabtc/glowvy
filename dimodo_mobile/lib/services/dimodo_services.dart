@@ -484,9 +484,6 @@ class DimodoServices implements BaseServices {
               }));
 
       Map<String, dynamic> body = convert.jsonDecode(response.body);
-
-      print("body: $body");
-
       return body["isSuccess"];
     } catch (err) {
       throw "err: $err";
@@ -545,9 +542,7 @@ class DimodoServices implements BaseServices {
           await http.get("http://localhost:80/api/districts/id=$provinceId");
 
       Map<String, dynamic> body = json.decode(utf8.decode(response.bodyBytes));
-      // print("body: ${body["Data"]}");
       var districtJsons = body["Data"];
-      // print("districtJsons: $districtJsons");
       List<District> list = [];
 
       for (var item in districtJsons) {
@@ -693,10 +688,6 @@ class DimodoServices implements BaseServices {
           }));
 
       Map<String, dynamic> body = convert.jsonDecode(response.body);
-      // var totalQuantity = body["totalQuantiy"];
-
-      // print("body: $body");
-
       return 1;
     } catch (err) {
       throw "err: $err";
@@ -706,6 +697,7 @@ class DimodoServices implements BaseServices {
   @override
   Future<int> updateCartItem(CartItem cartItem, UserModel userModel) async {
     try {
+      print("update quantity: ${cartItem.quantity}");
       final http.Response response = await http.post(
           "http://localhost:80/api/cart/update",
           headers: {"Authorization": "Bearer ${userModel.user.accessToken}"},
@@ -717,10 +709,6 @@ class DimodoServices implements BaseServices {
           }));
 
       Map<String, dynamic> body = convert.jsonDecode(response.body);
-      // var totalQuantity = body["totalQuantiy"];
-
-      print("body: $body");
-
       return 1;
     } catch (err) {
       throw "err: $err";
@@ -740,10 +728,6 @@ class DimodoServices implements BaseServices {
           }));
 
       Map<String, dynamic> body = convert.jsonDecode(response.body);
-      // var totalQuantity = body["totalQuantiy"];
-
-      print("body: $body");
-
       return 1;
     } catch (err) {
       throw "err: $err";
@@ -828,6 +812,7 @@ class DimodoServices implements BaseServices {
 
       if (jsonDecode["Success"] == true && jsonDecode["Data"].length != 0) {
         for (var item in jsonDecode["Data"]) {
+          print("order: ${item}");
           list.add(Order.fromJson(item));
         }
         return list;
@@ -863,9 +848,8 @@ class DimodoServices implements BaseServices {
   }
 
   @override
-  Future<Order> createOrder({Order order, UserModel userModel}) async {
+  Future<Order> submitOrder({Order order, UserModel userModel}) async {
     try {
-      print("order json: ${order.toJson()}");
       final http.Response response = await http.post(
           "http://localhost:80/api/order/new",
           headers: {"Authorization": "Bearer ${userModel.user.accessToken}"},
@@ -874,12 +858,12 @@ class DimodoServices implements BaseServices {
       Map<String, dynamic> jsonDecode = convert.jsonDecode(response.body);
       bool result = jsonDecode["Success"];
 
-      var returnedOrder = Order.fromJson(jsonDecode["Data"]);
+      var createdOrder = Order.fromJson(jsonDecode["Data"]);
       print("jsonDecode $jsonDecode");
       print('Order isSuccessFul??  $result');
 
       if (result == true) {
-        return returnedOrder;
+        return createdOrder;
       } else {
         throw ("Incorrect PIN");
       }

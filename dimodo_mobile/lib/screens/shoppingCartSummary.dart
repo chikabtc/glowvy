@@ -44,6 +44,7 @@ class _ShoppingCartSummaryState extends State<ShoppingCartSummary> {
   @override
   Widget build(BuildContext context) {
     final currency = Provider.of<AppModel>(context, listen: false).currency;
+    print("rebuilding summ");
 
     return Container(
         height: 48,
@@ -64,7 +65,6 @@ class _ShoppingCartSummaryState extends State<ShoppingCartSummary> {
               ),
               Center(child: SvgPicture.asset('assets/icons/cart/info.svg')),
               Spacer(),
-              //not updating properly...why?
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,

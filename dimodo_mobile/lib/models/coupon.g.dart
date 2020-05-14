@@ -10,10 +10,10 @@ Coupon _$CouponFromJson(Map<String, dynamic> json) {
   return Coupon(
     json['id'] as int,
     json['user_id'] as int,
-    json['code'],
-    json['description'],
+    json['code'] as String,
+    json['description'] as String,
     json['discount_amount'] as int,
-    json['discount_type'],
+    json['discount_type'] as String,
     json['discount_percentage'] as int,
     json['minimum_amount'] as int,
     json['maximum_amount'] as int,

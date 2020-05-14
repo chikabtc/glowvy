@@ -13,7 +13,6 @@ class OrderSummary extends StatefulWidget {
   OrderSummary({this.model});
 
   final CartModel model;
-
   @override
   _OrderSummaryState createState() => _OrderSummaryState();
 }
@@ -72,6 +71,13 @@ class _OrderSummaryState extends State<OrderSummary> {
       children: <Widget>[
         SizedBox(height: 20),
         OrderSummaryCard(
+            currency: currency,
+            isDiscount: true,
+            title: S.of(context).discount,
+            subTitle: S.of(context).discount,
+            fee: Tools.getCurrecyFormatted(widget.model.getTotalDiscounts())),
+        SizedBox(height: 20),
+        OrderSummaryCard(
           showExtraInfo: () async => showShippingInfo(),
           currency: currency,
           title: S.of(context).deliveryMethod,
@@ -120,18 +126,19 @@ class _OrderSummaryState extends State<OrderSummary> {
 }
 
 class OrderSummaryCard extends StatelessWidget {
-  // final CartModel model;
   final String currency;
   final String title;
   final String subTitle;
   final String fee;
   final bool isTotalFee;
+  final bool isDiscount;
   final bool isBankTransferSummary;
   final Function showExtraInfo;
 
   OrderSummaryCard(
       {this.currency,
       this.title,
+      this.isDiscount = false,
       this.subTitle,
       this.fee,
       this.isBankTransferSummary = false,
@@ -177,13 +184,15 @@ class OrderSummaryCard extends StatelessWidget {
             if (fee != null) Spacer(),
             if (!isBankTransferSummary && fee != null)
               DynamicText(
-                fee,
+                isDiscount ? "-" + fee : fee,
                 style: kBaseTextStyle.copyWith(
                     fontSize: 12,
                     fontWeight: isBankTransferSummary
                         ? FontWeight.w600
                         : FontWeight.w500,
-                    color: isTotalFee ? kPinkAccent : kDefaultFontColor),
+                    color: isTotalFee
+                        ? kPinkAccent
+                        : isDiscount ? kPinkAccent : kDefaultFontColor),
               ),
           ],
         ),

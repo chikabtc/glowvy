@@ -23,7 +23,7 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class CategoryScreenState extends State<CategoryScreen>
-    with TickerProviderStateMixin, WidgetsBindingObserver {
+    with AutomaticKeepAliveClientMixin<CategoryScreen> {
   bool enabledNotification = true;
   List<Widget> categoryButtons = [];
   @override
@@ -33,6 +33,7 @@ class CategoryScreenState extends State<CategoryScreen>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     final screenSize = MediaQuery.of(context).size;
     print("rebuilding category!");
 
@@ -110,5 +111,6 @@ class CategoryScreenState extends State<CategoryScreen>
     );
   }
 
+  @override
   bool get wantKeepAlive => true;
 }

@@ -3,14 +3,10 @@ import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
 import '../../common/constants.dart';
 import '../../services/index.dart';
-import '../app.dart';
-import 'package:flutter/services.dart';
 import '../../widgets/product/product_list.dart';
 import '../../models/category.dart';
 
 import 'package:Dimodo/screens/categories/sub_category.dart';
-import '../brandi/option.dart';
-import '../sizeDetail.dart';
 import 'product.dart';
 
 class ProductModel with ChangeNotifier {
@@ -200,13 +196,6 @@ class ProductModel with ChangeNotifier {
   }
 
   static showProductListByCategory({cateId, sortBy, context, limit}) {
-    final product = Provider.of<ProductModel>(context, listen: false);
-    product.setCategoryId(
-      categoryId: cateId,
-    );
-
-    //rebuilding three times
-    // product.setProductsList(List<Product>()); //clear old products
     return FutureBuilder<List<Product>>(
       future: service.fetchProductsByCategory(
           categoryId: cateId, sortBy: sortBy, limit: limit),
@@ -218,9 +207,20 @@ class ProductModel with ChangeNotifier {
     );
   }
 
-  static showProductListByTag({tag, context, sortBy}) {
+  static showProductListByTag({future, tag, context, sortBy}) {
     return FutureBuilder<List<Product>>(
       future: service.fetchProductsByTag(tag: tag, sortBy: sortBy),
+      builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
+        return ProductList(
+          products: snapshot.data,
+        );
+      },
+    );
+  }
+
+  static showProductList({future}) {
+    return FutureBuilder<List<Product>>(
+      future: future,
       builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
         return ProductList(
           products: snapshot.data,

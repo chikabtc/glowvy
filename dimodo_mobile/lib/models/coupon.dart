@@ -5,9 +5,9 @@ part 'coupon.g.dart';
 class Coupon {
   int id;
   int userId;
-  var code;
-  var description;
-  var discountType;
+  String code;
+  String description;
+  String discountType;
   int discountAmount;
   int discountPercentage;
   int minimumAmount;

@@ -30,7 +30,7 @@ class CartModel with ChangeNotifier {
   double subTotalFee = 0;
   double totalFee = 0;
   double subTotal = 0;
-  double totalDiscounts = 0;
+  double totalDiscounts = 0.0;
   Services _services = Services();
 
   // The productIDs and product Object currently in the cart.
@@ -53,11 +53,12 @@ class CartModel with ChangeNotifier {
     print("Adding this product: ${cartItem.product.salePrice}");
     if (!cartItems.containsKey(key)) {
       cartItems[key] = cartItem;
-      cartItems[key].quantity = cartItem.quantity;
+      cartItems[key].quantity = 1;
+      await _services.createCartItem(cartItem, userModel);
     } else {
       cartItems[key].quantity += cartItem.quantity;
+      await _services.updateCartItem(cartItems[key], userModel);
     }
-    var count = await _services.createCartItem(cartItem, userModel);
 
     notifyListeners();
   }
@@ -71,10 +72,17 @@ class CartModel with ChangeNotifier {
     if (cartItems.containsKey(key)) {
       cartItems[key].quantity = quantity;
       updateQuantityCartLocal(key: key, quantity: quantity);
-      var count = await _services.updateCartItem(cartItems[key], userModel);
+      await _services.updateCartItem(cartItems[key], userModel);
       updateFees();
       if (totalCartQuantity == 0) {
         selectedCoupons.clear();
+        //if the subTotal is above 2 million VND, cancel the free ship coupon
+      } else if (subTotal > 2000000) {
+        selectedCoupons.forEach((coupon) {
+          if (coupon.discountType == "FreeShip") {
+            selectedCoupons.remove(coupon);
+          }
+        });
       }
       notifyListeners();
     }
@@ -92,6 +100,10 @@ class CartModel with ChangeNotifier {
         cartItems[key].quantity--;
       }
     }
+    if (totalCartQuantity == 0) {
+      selectedCoupons.clear();
+      totalDiscounts = 0;
+    }
 
     notifyListeners();
   }
@@ -106,7 +118,7 @@ class CartModel with ChangeNotifier {
     clearCartLocal();
     cartItems.clear();
     selectedCoupons.clear();
-    notifyListeners();
+    totalDiscounts = 0;
   }
 
   void updateFees() async {
@@ -141,6 +153,7 @@ class CartModel with ChangeNotifier {
     } else {
       selectedCoupons.remove(coupon);
     }
+
     notifyListeners();
   }
 
@@ -153,7 +166,6 @@ class CartModel with ChangeNotifier {
     } else {
       print("getAllCoupons failed because not logged in");
     }
-    notifyListeners();
 
     return coupons;
   }
@@ -299,7 +311,9 @@ class CartModel with ChangeNotifier {
       return 0;
     } else {
       var sum = cartItems.keys.fold(0, (value, i) {
-        return value + calculateShippingFee(cartItems[i].product).toInt();
+        return value +
+            calculateShippingFee(cartItems[i].product).toInt() *
+                cartItems[i].quantity;
       });
 
       return sum.toDouble();
@@ -338,14 +352,19 @@ class CartModel with ChangeNotifier {
   }
 
   double getTotalDiscounts() {
-    var sum = selectedCoupons.fold(0.0, (value, coupon) {
-      if (coupon.discountType == "FreeShip") {
-        return value + getShippingFee();
-      }
-      // return value;
-      return value + coupon.discountAmount.toDouble();
-    });
-    return sum;
+    if (selectedCoupons.length > 0) {
+      totalDiscounts = selectedCoupons.fold(0.0, (value, coupon) {
+        if (coupon.discountType == "FreeShip") {
+          return value + getShippingFee();
+        } else {
+          return value + coupon.discountAmount.toDouble();
+        }
+      });
+    } else {
+      totalDiscounts = 0;
+    }
+    print("getTotalDiscounts $totalDiscounts");
+    return totalDiscounts;
   }
 
   double getImportTax() {

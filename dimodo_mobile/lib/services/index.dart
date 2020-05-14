@@ -47,7 +47,7 @@ abstract class BaseServices {
   Future deleteCartItem(CartItem cartItem, UserModel user);
   Future<List<CartItem>> allCartItems(UserModel userModel);
 
-  Future<Order> createOrder({Order order, UserModel userModel});
+  Future<Order> submitOrder({Order order, UserModel userModel});
 
   Future<List<Order>> getMyOrders({UserModel userModel, int page});
 
@@ -348,11 +348,11 @@ class Services implements BaseServices {
   }
 
   @override
-  Future<Order> createOrder({Order order, UserModel userModel}) async {
+  Future<Order> submitOrder({Order order, UserModel userModel}) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.createOrder(order: order, userModel: userModel);
+      return serviceApi.submitOrder(order: order, userModel: userModel);
     } else {
       throw Exception("No internet connection");
     }

@@ -11,7 +11,6 @@ import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/productAttribute.dart';
 import 'package:Dimodo/models/brandi/option.dart';
 import 'package:Dimodo/models/order/cart.dart';
-import 'package:Dimodo/widgets/webview.dart';
 
 import 'package:Dimodo/models/user/userModel.dart';
 import '../../common/constants.dart';
@@ -51,7 +50,6 @@ class _ProductOptionState extends State<ProductOption>
   void parseOptions(Product product) {
     var options = product.options;
     //check whether there are two options
-    print("before parsing options: ${options[0].toJson()}");
     if (options == null) {
       return;
     }
@@ -86,6 +84,10 @@ class _ProductOptionState extends State<ProductOption>
       context: context,
       barrierDismissible: true, // user can tap anywhere to dismiss the popup!
       builder: (BuildContext buildContext) {
+        // Future.delayed(const Duration(milliseconds: 1500), () {
+        //   Navigator.of(buildContext).pop();
+        // });
+
         return AlertDialog(
           title: DynamicText(
             S.of(context).addedToYourCart,

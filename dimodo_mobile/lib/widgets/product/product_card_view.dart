@@ -3,12 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../common/tools.dart';
 import '../../models/product/product.dart';
-import '../../models/product/recent_product.dart';
 import '../../models/app.dart';
 import '../../screens/detail/product_detail.dart';
 import '../../common/styles.dart';
-import 'package:transparent_image/transparent_image.dart';
-import '../../widgets/customWidgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class ProductCard extends StatelessWidget {
@@ -47,9 +44,6 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currency = Provider.of<AppModel>(context, listen: false).currency;
-    final baseFont = Theme.of(context).textTheme.body2;
-
     return Card(
       color: Colors.white,
       elevation: 0,
@@ -74,13 +68,6 @@ class ProductCard extends StatelessWidget {
                       //     CircularProgressIndicator(),
                       // errorWidget: (context, url, error) => Icon(Icons.error),
                     ),
-
-                    // FadeInImage.memoryNetwork(
-                    //   placeholder: kTransparentImage,
-                    //   image: ,
-                    //   width: 100,
-                    //   height: 100,
-                    // ),
                   ),
                 )),
           ),
@@ -95,7 +82,7 @@ class ProductCard extends StatelessWidget {
                   Text(
                     product.name ?? 'not found',
                     maxLines: 1,
-                    style: baseFont.copyWith(
+                    style: kBaseTextStyle.copyWith(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
                     ),

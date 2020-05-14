@@ -1,3 +1,4 @@
+import 'package:Dimodo/models/coupon.dart';
 import 'package:Dimodo/models/order/cartItem.dart';
 
 import '../address/address.dart';
@@ -13,10 +14,12 @@ class Order {
   bool isPaid;
   double totalShipping;
   double totalFee;
+  double totalDiscounts;
   int userId;
   int addressId;
   int dateCreated;
   List<CartItem> orderItems = [];
+  List<Coupon> appliedCoupons = [];
 
   Order(
       {this.orderId,
@@ -26,6 +29,8 @@ class Order {
       this.userId,
       this.totalShipping,
       this.totalFee,
+      this.appliedCoupons,
+      this.totalDiscounts,
       this.addressId});
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);

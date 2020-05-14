@@ -1,12 +1,10 @@
 import 'dart:async';
 import 'dart:ui';
-
 import 'package:Dimodo/models/address/address.dart';
 import 'package:Dimodo/screens/cart.dart';
 import 'package:Dimodo/screens/category.dart';
 import 'package:Dimodo/screens/categories/sub_category.dart';
 import 'package:Dimodo/screens/checkout/orderSubmitted.dart';
-import 'package:Dimodo/screens/detail/product_detail.dart';
 import 'package:Dimodo/screens/orders.dart';
 import 'package:Dimodo/screens/setting/add_shipping_address.dart';
 import 'package:Dimodo/screens/setting/reset_password.dart';
@@ -20,7 +18,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'common/config.dart';
 import 'common/constants.dart';
 import 'common/styles.dart';
@@ -61,7 +58,6 @@ class _AppState extends State<Dimodo> with SingleTickerProviderStateMixin {
             statusBarBrightness: Brightness.light) // Or Brightness.dark
         );
 
-    /// For Flare Image
     if (kSplashScreen.lastIndexOf('flr') > 0) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -105,7 +101,6 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
   final _app = AppModel();
   final _userModel = UserModel();
   final _product = ProductModel();
-  final _category = CategoryModel();
   final _wishlist = WishListModel();
   final _shippingMethod = ShippingMethodModel();
   final _paymentMethod = PaymentMethodModel();
@@ -153,6 +148,7 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
 
   @override
   Widget build(BuildContext context) {
+    print("building app.dart");
     if (isChecking) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -174,7 +170,6 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
           return MultiProvider(
             providers: [
               Provider<ProductModel>.value(value: _product),
-              Provider<CategoryModel>.value(value: _category),
               Provider<WishListModel>.value(value: _wishlist),
               Provider<ShippingMethodModel>.value(value: _shippingMethod),
               Provider<PaymentMethodModel>.value(value: _paymentMethod),
@@ -207,7 +202,6 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
                 switch (settings.name) {
                   case '/add_address':
                     if (arguments is Address) {
-                      print("arguments: ${arguments.toJson}");
                       // the details page for one specific user
                       return MaterialPageRoute<bool>(
                           builder: (BuildContext context) => AddShippingAddress(
@@ -220,7 +214,6 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
                               AddShippingAddress());
                     }
                     break;
-
                   default:
                     return null;
                 }

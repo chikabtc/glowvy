@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:notification_permissions/notification_permissions.dart';
 import 'package:provider/provider.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/generated/i18n.dart';
@@ -9,12 +8,12 @@ import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/widgets/categories/CategoryButton.dart';
 import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/models/category.dart';
+import 'package:Dimodo/models/product/product.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:flutter/services.dart';
-import '../models/order/cart.dart';
+import 'package:Dimodo/services/index.dart';
 
 class HomeScreen extends StatefulWidget {
   final User user;
@@ -29,35 +28,25 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeScreenState extends State<HomeScreen>
-    with
-        TickerProviderStateMixin,
-        WidgetsBindingObserver,
-        AutomaticKeepAliveClientMixin {
-  bool enabledNotification = true;
+    with AutomaticKeepAliveClientMixin<HomeScreen> {
+  Services service = Services();
+  Future<List<Product>> getProductByTagStar;
+  Future<List<Product>> getProductByTagTrending;
 
   @override
   void initState() {
     super.initState();
-
-    Future.delayed(Duration.zero, () async {
-      checkNotificationPermission();
-    });
+    getProductByTagStar = service.fetchProductsByTag(tag: "star", sortBy: "id");
+    getProductByTagTrending =
+        service.fetchProductsByTag(tag: "trending", sortBy: "id");
   }
 
-  void checkNotificationPermission() async {
-    try {
-      NotificationPermissions.getNotificationPermissionStatus().then((status) {
-        if (mounted)
-          setState(() {
-            enabledNotification = status == PermissionStatus.granted;
-          });
-      });
-    } catch (err) {}
-  }
+  @override
+  bool get wantKeepAlive => true;
 
-//testing codemagic
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     print("building home");
     kRateMyApp.init().then((_) {});
 
@@ -74,12 +63,10 @@ class HomeScreenState extends State<HomeScreen>
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
             statusBarBrightness: Brightness.light) // Or Brightness.dark
         );
-    //it will rebuild cartScreens when it's not ready... in the tab..?
 
     return Scaffold(
       body: Container(
         color: kLightBG,
-        // margin: EdgeInsets.only(left: 7, right: 7),
         width: screenSize.width,
         height: screenSize.height,
         child: CustomScrollView(
@@ -192,8 +179,8 @@ class HomeScreenState extends State<HomeScreen>
                                 fontSize: 15, fontWeight: FontWeight.w600),
                           ),
                         ),
-                        ProductModel.showProductListByTag(
-                            context: context, tag: "star", sortBy: "id"),
+                        ProductModel.showProductList(
+                            future: getProductByTagStar),
                       ],
                     )),
                 Padding(
@@ -204,10 +191,8 @@ class HomeScreenState extends State<HomeScreen>
                         fontSize: 15, fontWeight: FontWeight.w600),
                   ),
                 ),
-                ProductModel.showProductListByTag(
-                    context: context, tag: "trending", sortBy: "id"),
+                ProductModel.showProductList(future: getProductByTagTrending),
               ])),
-              // ProductModel.showProductListByTag(context: context, tag: "event"),
               SliverList(
                 delegate: SliverChildListDelegate([
                   SvgPicture.asset(
@@ -215,70 +200,6 @@ class HomeScreenState extends State<HomeScreen>
                     width: 30,
                     height: 42,
                   ),
-                  // SizedBox(height: 16.5),
-                  // DynamicText(
-                  //   "Oh! It seems to hit the bottom. \n Btw, do you like our app?",
-                  //   style: kBaseTextStyle.copyWith(
-                  //       color: kDarkSecondary,
-                  //       fontSize: 16,
-                  //       fontWeight: FontWeight.w600),
-                  //   textAlign: TextAlign.center,
-                  // ),
-                  // SizedBox(height: 15),
-                  // Container(
-                  //   padding: EdgeInsets.only(right: 16, left: 16),
-                  //   width: screenSize.width,
-                  //   child: Column(
-                  //     children: <Widget>[
-                  //       MaterialButton(
-                  //           elevation: 0,
-                  //           color: Theme.of(context).buttonColor,
-                  //           minWidth: screenSize.width - 32,
-                  //           height: 48,
-                  //           shape: RoundedRectangleBorder(
-                  //               borderRadius: new BorderRadius.circular(25.0),
-                  //               side: BorderSide(color: kPinkAccent, width: 1.5)),
-                  //           child: DynamicText(S.of(context).yesGood,
-                  //               style: kBaseTextStyle.copyWith(
-                  //                   fontWeight: FontWeight.w600,
-                  //                   fontSize: 14,
-                  //                   color: Colors.white)),
-                  //           onPressed: () {
-                  //             kRateMyApp
-                  //                 .showRateDialog(context)
-                  //                 .then((v) => setState(() {}));
-                  //             // if (!isLoading) {
-                  //             Navigator.of(context)
-                  //                 .pushReplacementNamed('/setting');
-                  //             // }
-                  //           }),
-                  //       SizedBox(height: 10),
-                  //       MaterialButton(
-                  //           elevation: 0,
-                  //           minWidth: screenSize.width - 32,
-                  //           height: 48,
-                  //           shape: RoundedRectangleBorder(
-                  //               borderRadius: new BorderRadius.circular(25.0),
-                  //               side: BorderSide(color: kPinkAccent, width: 1.5)),
-                  //           child: DynamicText(S.of(context).noSendUsSuggestions,
-                  //               style: kBaseTextStyle.copyWith(
-                  //                   fontWeight: FontWeight.w600,
-                  //                   fontSize: 14,
-                  //                   color: kPinkAccent)),
-                  //           onPressed: () async {
-                  //             await FlutterMailer.send(MailOptions(
-                  //               body: '',
-                  //               subject: 'Feedback',
-                  //               recipients: ['hbpfreem@gmail.com'],
-                  //             ));
-                  //             // if (!isLoading) {
-                  //             // Navigator.of(context)
-                  //             //     .pushReplacementNamed('/forgot_password');
-                  //             // }l
-                  //           }),
-                  //     ],
-                  //   ),
-                  // ),
                   SizedBox(height: 70),
                 ]),
               )
@@ -286,7 +207,4 @@ class HomeScreenState extends State<HomeScreen>
       ),
     );
   }
-
-  @override
-  bool get wantKeepAlive => true;
 }

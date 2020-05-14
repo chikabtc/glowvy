@@ -31,12 +31,12 @@ class OrderModel extends ChangeNotifier {
     }
   }
 
-  Future<Order> createOrder({Order order, UserModel userModel}) async {
+  Future<Order> submitOrder({Order order, UserModel userModel}) async {
     try {
       isLoading = true;
       notifyListeners();
       Order createdOrder =
-          await _service.createOrder(order: order, userModel: userModel);
+          await _service.submitOrder(order: order, userModel: userModel);
       page = 1;
       errMsg = null;
       isLoading = false;

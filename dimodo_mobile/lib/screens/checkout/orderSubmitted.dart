@@ -1,21 +1,20 @@
 import 'package:Dimodo/common/styles.dart';
-import 'package:Dimodo/models/order/orderItem.dart';
+import 'package:Dimodo/models/order/order.dart';
 import 'package:Dimodo/widgets/orderItem.dart';
 import 'package:flutter_mailer/flutter_mailer.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../../common/tools.dart';
 import 'package:provider/provider.dart';
-import '../../common/config.dart';
 import '../../generated/i18n.dart';
 import '../../models/order/cart.dart';
 import '../../models/user/userModel.dart';
-import '../../models/app.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'orderSummary.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/tools.dart';
+import 'bankTransferSummary.dart';
 
 class OrderSubmitted extends StatefulWidget {
   OrderSubmitted();
@@ -30,13 +29,13 @@ class _OrderSubmittedState extends State<OrderSubmitted>
   var bottomPopupHeightFactor;
   var screenSize;
   bool isOrderConfirmed = false;
+  bool isOrderHistory = false;
   CartModel cartModel;
+  Order order;
 
   List<Widget> _createCartItems(
     CartModel model,
   ) {
-    final userModel = Provider.of<UserModel>(context, listen: false); //
-
     var countKeys = 0;
 
     return model.cartItems.keys.map(
@@ -208,7 +207,9 @@ class _OrderSubmittedState extends State<OrderSubmitted>
     final Map arguments = ModalRoute.of(context).settings.arguments as Map;
     if (arguments != null) print(arguments['cartModel']);
     cartModel = arguments['cartModel'];
+    print("cartModel discount: ${cartModel.totalDiscounts}");
     isOrderConfirmed = arguments['isOrderConfirmed'] ?? false;
+    isOrderHistory = arguments['isOrderHistory'] ?? false;
 
     screenSize = MediaQuery.of(context).size;
     bottomPopupHeightFactor = 1 -
@@ -233,7 +234,9 @@ class _OrderSubmittedState extends State<OrderSubmitted>
                     icon: CommonIcons.arrowBackwardWhite,
                     onPressed: () {
                       cartModel.clearCart();
-                      Navigator.of(context).popAndPushNamed("/home");
+                      isOrderHistory
+                          ? Navigator.pop(context)
+                          : Navigator.popAndPushNamed(context, '/home');
                     },
                   ),
                   elevation: 0,
@@ -419,9 +422,6 @@ class _OrderSubmittedState extends State<OrderSubmitted>
     showLoading();
     try {
       hideLoading();
-
-      // widget.controller.animateTo(1,
-      //     duration: Duration(milliseconds: 250), curve: Curves.easeInOut);
     } catch (err) {
       hideLoading();
       Fluttertoast.showToast(
@@ -445,85 +445,5 @@ class _OrderSubmittedState extends State<OrderSubmitted>
     setState(() {
       isLoading = false;
     });
-  }
-}
-
-class BankTransferSummary extends StatefulWidget {
-  BankTransferSummary({this.model});
-
-  final CartModel model;
-
-  @override
-  _BankTransferSummaryState createState() => _BankTransferSummaryState();
-}
-
-class _BankTransferSummaryState extends State<BankTransferSummary> {
-  Map<String, dynamic> defaultCurrency = kAdvanceConfig['DefaultCurrency'];
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  void showError(String message) {
-    final snackBar = SnackBar(
-      content: Text('Warning: $message'),
-      duration: Duration(seconds: 30),
-      action: SnackBarAction(
-        label: S.of(context).close,
-        onPressed: () {},
-      ),
-    );
-    Scaffold.of(context).showSnackBar(snackBar);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final currency = Provider.of<AppModel>(context, listen: false).currency;
-
-    return Container(
-        color: Colors.white,
-        child: Column(
-          children: <Widget>[
-            SizedBox(height: 20),
-            OrderSummaryCard(
-              isBankTransferSummary: true,
-              currency: currency,
-              title: S.of(context).paymentMethod,
-              subTitle: S.of(context).bankTransfer,
-              fee: Tools.getCurrecyFormatted(widget.model.getTotal(),
-                  currency: currency),
-            ),
-            SizedBox(height: 20),
-            OrderSummaryCard(
-              isBankTransferSummary: true,
-              currency: currency,
-              title: S.of(context).bankInfo,
-              subTitle: "Shinhan Bank Vietnam 700-014-783205",
-              fee: Tools.getCurrecyFormatted(widget.model.getTotal(),
-                  currency: currency),
-            ),
-            SizedBox(height: 20),
-            OrderSummaryCard(
-              isBankTransferSummary: true,
-              currency: currency,
-              title: S.of(context).accountHolder,
-              subTitle: "Hongbeom Park",
-              fee: Tools.getCurrecyFormatted(widget.model.getTotal(),
-                  currency: currency),
-            ),
-            SizedBox(height: 20),
-            OrderSummaryCard(
-              isBankTransferSummary: true,
-              isTotalFee: true,
-              currency: currency,
-              title: S.of(context).totalAmount,
-              subTitle: Tools.getCurrecyFormatted(widget.model.getTotal()),
-              fee: Tools.getCurrecyFormatted(widget.model.getTotal(),
-                  currency: currency),
-            ),
-            SizedBox(height: 20),
-          ],
-        ));
   }
 }

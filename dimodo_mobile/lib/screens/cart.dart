@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/models/coupon.dart';
+import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -14,9 +15,9 @@ import 'package:Dimodo/models/product/productModel.dart';
 import 'checkout/confirmOrder.dart';
 import 'shoppingCartSummary.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:Dimodo/common/constants.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:Dimodo/widgets/login_animation.dart';
+import 'coupon_card.dart';
+import 'coupon_bottom_modal.dart';
+import 'package:Dimodo/services/index.dart';
 
 class Cart extends StatefulWidget {
   final PageController controller;
@@ -29,31 +30,27 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart>
-    with SingleTickerProviderStateMixin, TickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, AutomaticKeepAliveClientMixin<Cart> {
   bool isLoading = false;
   Timer timer;
   var timeout = const Duration(seconds: 2);
+  static Services service = Services();
 
-  var bottomPopupHeightFactor;
   var screenSize;
   CartModel cartModel;
   UserModel userModel;
   List<Coupon> coupons = [];
-  AnimationController addToCartButtonController;
+  Future<List<Coupon>> _getAllCoupons;
+  Future<List<Product>> _getProductsByCategory;
 
   @override
   void initState() {
     super.initState();
     cartModel = Provider.of<CartModel>(context, listen: false);
     userModel = Provider.of<UserModel>(context, listen: false);
-    cartModel.getAllCoupons(userModel).then((onValues) {
-      setState(() {
-        coupons = onValues;
-        print("coupon1: ${coupons[0].toJson()}");
-      });
-    });
-    addToCartButtonController = new AnimationController(
-        duration: new Duration(milliseconds: 3000), vsync: this);
+    _getAllCoupons = cartModel.getAllCoupons(userModel);
+    _getProductsByCategory = service.fetchProductsByCategory(
+        categoryId: "9", sortBy: "sale_price", limit: 200);
   }
 
   List<Widget> _createShoppingCartRows(CartModel model) {
@@ -81,18 +78,19 @@ class _CartState extends State<Cart>
   }
 
   @override
+  bool get wantKeepAlive => true;
+  @override
   Widget build(BuildContext context) {
-    screenSize = MediaQuery.of(context).size;
-    bottomPopupHeightFactor = 1 -
-        (AppBar().preferredSize.height +
-                60 +
-                MediaQuery.of(context).padding.bottom) /
-            kScreenSizeHeight;
+    super.build(context);
+    print("building cart screen!");
+
     bool showBackSpace = false;
     final Map arguments = ModalRoute.of(context).settings.arguments as Map;
     if (arguments != null) showBackSpace = arguments['showBackSpace'];
+    screenSize = MediaQuery.of(context).size;
 
     return Consumer<CartModel>(builder: (context, cartModel, child) {
+      print("building cart contents!");
       return Scaffold(
           bottomNavigationBar: cartModel.totalCartQuantity > 0
               ? SafeArea(
@@ -168,45 +166,32 @@ class _CartState extends State<Cart>
                               fontWeight: FontWeight.w600)),
                     ),
                   ),
-                  if (cartModel.totalCartQuantity == 0)
-                    SliverList(
-                        delegate: SliverChildListDelegate([EmptyCart()])),
-                  if (cartModel.totalCartQuantity == 0)
-                    SliverList(
-                        delegate: SliverChildListDelegate([
-                      ProductModel.showProductListByCategory(
-                          cateId: 9, sortBy: "id", limit: 200, context: context)
-                    ])),
-                  if (cartModel.totalCartQuantity > 0)
-                    SliverList(
-                        delegate: SliverChildListDelegate([
-                      CouponCard(
-                          // coupon: "choose",
+                  SliverList(
+                      delegate: SliverChildListDelegate([
+                    Consumer<CartModel>(builder: (context, cartModel, child) {
+                      return CouponCard(
+                          coupon: cartModel.selectedCoupons.length != 0
+                              ? cartModel.selectedCoupons[0]
+                              : null,
                           onTap: onSelectCoupons,
                           context: context,
-                          isSelector: true),
+                          isSelected: cartModel.selectedCoupons.length == 0
+                              ? false
+                              : true,
+                          isSelector: true);
+                    }),
+                    if (cartModel.totalCartQuantity == 0) EmptyCart(),
+                    if (cartModel.totalCartQuantity == 0)
+                      ProductModel.showProductList(
+                          future: _getProductsByCategory),
+                    if (cartModel.totalCartQuantity > 0)
                       Column(
                         children: _createShoppingCartRows(cartModel),
                       ),
-                    ])),
+                  ])),
                 ]),
               )));
     });
-  }
-
-  _toggle() {
-    setState(() {
-      isLoading = !isLoading;
-    });
-  }
-
-  hideToast(StateSetter setState) {
-    timer = Timer(timeout, () {
-      setState(() {
-        isLoading = false;
-      });
-    });
-    return timer;
   }
 
   onSelectCoupons(context) {
@@ -218,151 +203,17 @@ class _CartState extends State<Cart>
         ),
         context: context,
         builder: (context) {
-          return StatefulBuilder(
-            builder: (BuildContext context, StateSetter setState) {
-              return FractionallySizedBox(
-                heightFactor: bottomPopupHeightFactor,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20)),
-                  ),
-                  width: screenSize.width,
-                  height: screenSize.height * bottomPopupHeightFactor -
-                      AppBar().preferredSize.height,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Stack(children: <Widget>[
-                        Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20),
-                                  topRight: Radius.circular(20)),
-                            ),
-                            height: AppBar().preferredSize.height,
-                            width: kScreenSizeWidth,
-                            child: Center(
-                              child: DynamicText(S.of(context).discount,
-                                  style: kBaseTextStyle.copyWith(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w600)),
-                            )),
-                        Positioned(
-                          top: 6,
-                          right: 0,
-                          child: IconButton(
-                              icon: SvgPicture.asset(
-                                  'assets/icons/address/close-popup.svg'),
-                              onPressed: () {
-                                isLoading = false;
-                                Navigator.pop(context);
-                              }),
-                        ),
-                      ]),
-                      SizedBox(height: 20),
-                      (coupons.length == 0)
-                          ? Padding(
-                              padding: const EdgeInsets.only(top: 200.0),
-                              child: DynamicText(
-                                S.of(context).noCouponsAvailable,
-                                style: kBaseTextStyle.copyWith(
-                                    fontSize: 13, fontWeight: FontWeight.w600),
-                              ),
-                            )
-                          : Container(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 16.0),
-                                    child: DynamicText(
-                                      S.of(context).couponCode,
-                                      style: kBaseTextStyle.copyWith(
-                                          fontSize: 13,
-                                          fontWeight: FontWeight.w600),
-                                    ),
-                                  ),
-                                  for (var i = 0; i < coupons.length; i++)
-                                    CouponCard(
-                                        coupon: coupons[i] ?? "free",
-                                        onTap: () {
-                                          cartModel.setCoupon(coupons[i]);
-                                          setState(() {
-                                            isLoading = true;
-                                          });
-                                          hideToast(setState);
-                                        },
-                                        context: context,
-                                        isSelector: false),
-                                ],
-                              ),
-                            ),
-                      Spacer(),
-                      IgnorePointer(
-                          ignoring: !isLoading,
-                          child: AnimatedOpacity(
-                            opacity: isLoading ? 1 : 0,
-                            duration: Duration(milliseconds: 200),
-                            child: Container(
-                              height: 72,
-                              width: 100,
-                              decoration: BoxDecoration(
-                                  color: kGrey200,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(8))),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: <Widget>[
-                                  SvgPicture.asset(
-                                      'assets/icons/cart/checkMark.svg'),
-                                  SizedBox(height: 6),
-                                  Center(
-                                    child: DynamicText(
-                                      S.of(context).username,
-                                      textAlign: TextAlign.center,
-                                      style: kBaseTextStyle.copyWith(
-                                          fontSize: 12, color: kDarkSecondary),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          )),
-                      Expanded(
-                        child: Align(
-                          alignment: FractionalOffset.bottomCenter,
-                          child: Padding(
-                              padding: const EdgeInsets.only(
-                                left: 16,
-                                right: 16,
-                                bottom: 40.0,
-                              ),
-                              child: StaggerAnimation(
-                                  buttonController: addToCartButtonController,
-                                  buttonTitle: S.of(context).done,
-                                  btnColor: kPinkAccent,
-                                  btnTitleColor: Colors.white,
-                                  onTap: () {
-                                    setState(() {
-                                      isLoading = false;
-                                    });
-                                  })),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
-          );
-        }).then((void value) {
-      isLoading = false;
-      timer.cancel();
-    });
+          print("AsyncSnapshot");
+
+          return FutureBuilder<List<Coupon>>(
+              future: _getAllCoupons,
+              builder:
+                  (BuildContext context, AsyncSnapshot<List<Coupon>> snapshot) {
+                if (snapshot.data != null) coupons = snapshot.data;
+
+                return CouponBottomModal(coupons: coupons);
+              });
+        });
   }
 
   void doCheckout() async {
@@ -397,123 +248,6 @@ class _CartState extends State<Cart>
   }
 }
 
-class CouponCard extends StatefulWidget {
-  final Function onTap;
-  final Coupon coupon;
-  final context;
-  final isSelector;
-
-  CouponCard({this.coupon, this.onTap, this.context, this.isSelector});
-
-  @override
-  _CouponCardState createState() => _CouponCardState();
-}
-
-class _CouponCardState extends State<CouponCard> {
-  bool isSelected = false;
-
-  onCouponSelected() {
-    Navigator.of(widget.context).pop();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 16, right: 16, top: 10, bottom: 10),
-      child:
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-        Expanded(
-          child: MaterialButton(
-            onPressed: () {
-              widget.isSelector
-                  ? widget.onTap(context)
-                  : setState(() {
-                      isSelected = !isSelected;
-                      widget.onTap();
-                    });
-            },
-            height: 56,
-            elevation: 0,
-            color: kAccentPurple.withOpacity(0.1),
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            shape: RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(6.0),
-            ),
-            child: Center(
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: DynamicText(
-                        widget.isSelector ? "" : widget.coupon.discountType,
-                        textAlign: TextAlign.center,
-                        style: kBaseTextStyle.copyWith(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 17,
-                            color: isSelected
-                                ? kAccentPurple.withOpacity(0.1)
-                                : kAccentPurple)),
-                  ),
-                  Column(
-                    children: <Widget>[
-                      Container(
-                        width: 9,
-                        height: 9,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle, color: Colors.white),
-                      ),
-                      DotWidget(
-                        totalWidth: 200,
-                        dashColor: kAccentPurple.withOpacity(1),
-                        dashHeight: 1.5,
-                        dashWidth: 0.7,
-                      ),
-                      Container(
-                        width: 9,
-                        height: 9,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle, color: Colors.white),
-                      ),
-                    ],
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: 56,
-                      alignment: Alignment.center,
-                      decoration: new BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Container(
-                        height: 36,
-                        // width: 160,
-                        decoration: new BoxDecoration(
-                          color: kAccentPurple,
-                          borderRadius: BorderRadius.circular(25),
-                        ),
-                        child: Center(
-                          child: DynamicText(
-                            "nhận phiếu giảm giá",
-                            textAlign: TextAlign.center,
-                            style: kBaseTextStyle.copyWith(
-                                fontSize: 14,
-                                color: isSelected
-                                    ? kAccentPurple.withOpacity(0.1)
-                                    : Colors.white,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ]),
-    );
-  }
-}
-
 class EmptyCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -528,7 +262,6 @@ class EmptyCart extends StatelessWidget {
                   'assets/icons/cart/empty-cart-illustration.png',
                 ),
               ),
-              // SizedBox(height: 20),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0),
                 child: DynamicText(S.of(context).emptyCartSubtitle,
@@ -575,37 +308,6 @@ class _CartScreenState extends State<CartScreen> {
       children: <Widget>[
         Cart(controller: pageController, isModal: widget.isModal),
       ],
-    );
-  }
-}
-
-class DotWidget extends StatelessWidget {
-  final double totalWidth, dashWidth, emptyWidth, dashHeight;
-  final Color dashColor;
-
-  const DotWidget({
-    this.totalWidth = 260,
-    this.dashWidth = 10,
-    this.emptyWidth = 5,
-    this.dashHeight = 2,
-    this.dashColor = Colors.black,
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: List.generate(
-        totalWidth ~/ (dashWidth + emptyWidth),
-        (i) => Container(
-          width: dashWidth,
-          height: dashHeight,
-          color:
-              i % 2 == 0 ? Colors.transparent : kAccentPurple.withOpacity(0.2),
-          // margin: EdgeInsets.only(left: emptyWidth / 2, right: emptyWidth / 2),
-        ),
-      ),
     );
   }
 }

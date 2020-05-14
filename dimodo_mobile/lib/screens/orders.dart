@@ -24,10 +24,15 @@ class OrdersScreenState extends State<OrdersScreen> {
   OrderModel _orderModel;
   bool isOrderComplete;
   UserModel userModel;
+  Future<List<Order>> _ordersFuture;
 
   @override
   void initState() {
     super.initState();
+    _orderModel = Provider.of<OrderModel>(context, listen: false);
+
+    _ordersFuture = _orderModel.getMyOrders(
+        userModel: Provider.of<UserModel>(context, listen: false));
   }
 
   List<Widget> _createOrders(List<Order> orders) {
@@ -41,11 +46,15 @@ class OrdersScreenState extends State<OrdersScreen> {
                 order.orderItems
                     .forEach((item) => orderItems[item.optionId] = item);
                 var cartModel = CartModel();
+                if (order.totalDiscounts != null) {
+                  cartModel.totalDiscounts = order.totalDiscounts;
+                }
 
                 cartModel.addCartItems(orderItems);
 
                 Navigator.pushNamed(context, "/order_submitted", arguments: {
                   'cartModel': cartModel,
+                  'isOrderHistory': true,
                   'isOrderConfirmed': order.isPaid
                 });
               },
@@ -111,7 +120,6 @@ class OrdersScreenState extends State<OrdersScreen> {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    _orderModel = Provider.of<OrderModel>(context, listen: false);
     print("building ordersScreen");
 
     return Consumer<UserModel>(
@@ -143,9 +151,7 @@ class OrdersScreenState extends State<OrdersScreen> {
                   ),
                 ),
                 FutureBuilder<List<Order>>(
-                  future: _orderModel.getMyOrders(
-                      userModel:
-                          Provider.of<UserModel>(context, listen: false)),
+                  future: _ordersFuture,
                   builder: (BuildContext context,
                       AsyncSnapshot<List<Order>> snapshot) {
                     if (snapshot.data == null)

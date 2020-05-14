@@ -85,7 +85,7 @@ class _ConfirmOrderState extends State<ConfirmOrder>
     } on TickerCanceled {}
   }
 
-  void createOrder() async {
+  void submitOrder() async {
     print("created order");
     final cartModel = Provider.of<CartModel>(context, listen: false);
     final userModel = Provider.of<UserModel>(context, listen: false);
@@ -96,11 +96,14 @@ class _ConfirmOrderState extends State<ConfirmOrder>
       isLoading = false;
       var order = Order();
       order.totalShipping = cartModel.getShippingFee();
+      print("order total shipping: ${order.totalShipping}");
       order.totalFee = cartModel.getTotal();
+      order.totalDiscounts = cartModel.getTotalDiscounts();
       order.userId = userModel.user.id;
       order.addressId = userModel.user.address.id;
+      order.appliedCoupons = cartModel.selectedCoupons;
 
-      await orderModel.createOrder(order: order, userModel: userModel);
+      await orderModel.submitOrder(order: order, userModel: userModel);
 
       Navigator.pushReplacementNamed(context, "/order_submitted",
           arguments: {'cartModel': cartModel});
@@ -205,7 +208,7 @@ class _ConfirmOrderState extends State<ConfirmOrder>
                                     }
                                     //should have address saved if not go to the address setting page
                                     else if (!isLoading) {
-                                      createOrder();
+                                      submitOrder();
                                     }
                                   },
                                 ),

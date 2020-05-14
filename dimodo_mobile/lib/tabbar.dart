@@ -52,9 +52,7 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
       case 'category':
         return CategoryScreen();
       case 'cart':
-        var cartScreen = CartScreen();
-
-        return cartScreen;
+        return CartScreen();
       case 'profile':
         return UserScreen();
       case 'dynamic':

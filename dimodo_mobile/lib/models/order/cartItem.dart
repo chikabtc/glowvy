@@ -14,7 +14,7 @@ class CartItem {
   CartItem({
     this.option,
     this.optionId,
-    this.quantity,
+    this.quantity = 1,
     this.product,
   });
 
