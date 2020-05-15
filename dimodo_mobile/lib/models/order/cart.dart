@@ -47,17 +47,16 @@ class CartModel with ChangeNotifier {
   // CART Manipulation
   // ===========================================================================
   // Adds a product to the cart.
-  void addProductToCart(
-      {CartItem cartItem, UserModel userModel, isSaveLocal = true}) async {
+  void addProductToCart({CartItem cartItem, isSaveLocal = true}) async {
     var key = cartItem.optionId;
     print("Adding this product: ${cartItem.product.salePrice}");
     if (!cartItems.containsKey(key)) {
       cartItems[key] = cartItem;
       cartItems[key].quantity = 1;
-      await _services.createCartItem(cartItem, userModel);
+      await _services.createCartItem(cartItem);
     } else {
       cartItems[key].quantity += cartItem.quantity;
-      await _services.updateCartItem(cartItems[key], userModel);
+      await _services.updateCartItem(cartItems[key]);
     }
 
     notifyListeners();
@@ -68,11 +67,11 @@ class CartModel with ChangeNotifier {
     updateFees();
   }
 
-  void updateQuantity(int key, int quantity, UserModel userModel) async {
+  void updateQuantity(int key, int quantity) async {
     if (cartItems.containsKey(key)) {
       cartItems[key].quantity = quantity;
       updateQuantityCartLocal(key: key, quantity: quantity);
-      await _services.updateCartItem(cartItems[key], userModel);
+      await _services.updateCartItem(cartItems[key]);
       updateFees();
       if (totalCartQuantity == 0) {
         selectedCoupons.clear();
@@ -89,11 +88,11 @@ class CartModel with ChangeNotifier {
   }
 
   // Removes an item from the cart.
-  void removeItemFromCart(int key, UserModel userModel) async {
+  void removeItemFromCart(int key) async {
     if (cartItems.containsKey(key)) {
       removeProductLocal(key);
       if (cartItems[key].quantity == 1) {
-        var count = await _services.deleteCartItem(cartItems[key], userModel);
+        var count = await _services.deleteCartItem(cartItems[key]);
 
         cartItems.remove(key);
       } else {
@@ -133,7 +132,7 @@ class CartModel with ChangeNotifier {
     print("get all carts");
     if (userModel.isLoggedIn) {
       print("loading");
-      var items = await _services.allCartItems(userModel);
+      var items = await _services.allCartItems();
       if (items != null) {
         items.forEach((item) {
           cartItems[item.optionId] = item;
@@ -161,7 +160,7 @@ class CartModel with ChangeNotifier {
     List<Coupon> coupons = [];
     if (userModel.isLoggedIn) {
       print("loading");
-      var items = await _services.getCoupons(userModel);
+      var items = await _services.getCoupons();
       return items;
     } else {
       print("getAllCoupons failed because not logged in");

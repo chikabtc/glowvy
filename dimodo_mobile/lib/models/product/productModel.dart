@@ -53,7 +53,7 @@ class ProductModel with ChangeNotifier {
       isEnd = false;
       notifyListeners();
 
-      final products = await service.fetchProductsByCategory(
+      final products = await service.getProductsByCategory(
           categoryId: categoryId, sortBy: sortBy);
       if (products.isEmpty) {
         isEnd = true;
@@ -113,7 +113,7 @@ class ProductModel with ChangeNotifier {
       isEnd = false;
       notifyListeners();
 
-      final products = await service.fetchProductsByCategory(
+      final products = await service.getProductsByCategory(
           categoryId: categoryId, sortBy: sortBy);
       if (products.isEmpty) {
         isEnd = true;
@@ -197,7 +197,7 @@ class ProductModel with ChangeNotifier {
 
   static showProductListByCategory({cateId, sortBy, context, limit}) {
     return FutureBuilder<List<Product>>(
-      future: service.fetchProductsByCategory(
+      future: service.getProductsByCategory(
           categoryId: cateId, sortBy: sortBy, limit: limit),
       builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
         return ProductList(
@@ -209,7 +209,7 @@ class ProductModel with ChangeNotifier {
 
   static showProductListByTag({future, tag, context, sortBy}) {
     return FutureBuilder<List<Product>>(
-      future: service.fetchProductsByTag(tag: tag, sortBy: sortBy),
+      future: service.getProductsByTag(tag: tag, sortBy: sortBy),
       builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
         return ProductList(
           products: snapshot.data,
@@ -233,7 +233,7 @@ class ProductModel with ChangeNotifier {
     //rebuildintag three times
     // product.setProductsList(List<Product>()); //clear old products
     return FutureBuilder<List<Product>>(
-      future: service.fetchProductsByShop(shopId: shopId),
+      future: service.getProductsByShop(shopId: shopId),
       builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
         return ProductList(
           products: snapshot.data,

@@ -42,8 +42,6 @@ class _ConfirmOrderState extends State<ConfirmOrder>
   }
 
   List<Widget> _createShoppingCartRows(CartModel model) {
-    final userModel = Provider.of<UserModel>(context, listen: false); //
-
     var countKeys = 0;
 
     return model.cartItems.keys.map(
@@ -56,11 +54,11 @@ class _ConfirmOrderState extends State<ConfirmOrder>
               : false,
           cartItem: model.getCartItemById(key),
           onRemove: () {
-            model.removeItemFromCart(key, userModel);
+            model.removeItemFromCart(key);
           },
           onChangeQuantity: (val) {
             Provider.of<CartModel>(context, listen: false)
-                .updateQuantity(key, val, userModel);
+                .updateQuantity(key, val);
           },
         );
       },
@@ -103,7 +101,7 @@ class _ConfirmOrderState extends State<ConfirmOrder>
       order.addressId = userModel.user.address.id;
       order.appliedCoupons = cartModel.selectedCoupons;
 
-      await orderModel.submitOrder(order: order, userModel: userModel);
+      await orderModel.submitOrder(order: order);
 
       Navigator.pushReplacementNamed(context, "/order_submitted",
           arguments: {'cartModel': cartModel});

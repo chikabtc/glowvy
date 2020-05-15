@@ -168,11 +168,11 @@ class _ReviewState extends State<Review> {
         return CartItemRow(
           cartItem: model.getCartItemById(key),
           onRemove: () {
-            model.removeItemFromCart(key, userModel);
+            model.removeItemFromCart(key);
           },
           onChangeQuantity: (val) {
             Provider.of<CartModel>(context, listen: false)
-                .updateQuantity(key, val, userModel);
+                .updateQuantity(key, val);
           },
         );
       },

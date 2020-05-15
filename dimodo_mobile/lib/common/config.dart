@@ -4,8 +4,7 @@ import '../common/constants.dart';
 /// Server config
 //todo: Dimodo Server
 const serverConfig = {
-  "type": "woo",
-  "url": "http://demo.mstore.io",
+  "url": "http://dimodo.app",
   "consumerKey": "ck_b7594bc4391db4b56c635fe6da1072a53ca4535a",
   "consumerSecret": "cs_980b9edb120e15bd2a8b668cacc734f7eca0ba40",
   "forgetPassword": "http://demo.mstore.io/wp-login.php?action=lostpassword"
@@ -146,13 +145,6 @@ const PaypalConfig = {
   "enabled": true,
   "returnUrl": "http://return.example.com",
   "cancelUrl": "http://cancel.example.com",
-};
-
-const RazorpayConfig = {
-  "keyId": "rzp_test_WHBBYP8YoqmqwB",
-  "callbackUrl": "http://example.com",
-  "paymentMethodId": "razorpay",
-  "enabled": true
 };
 
 const TapConfig = {

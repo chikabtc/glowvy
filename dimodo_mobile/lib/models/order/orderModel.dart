@@ -11,11 +11,11 @@ class OrderModel extends ChangeNotifier {
   int page = 1;
   bool endPage = false;
 
-  Future<List<Order>> getMyOrders({UserModel userModel}) async {
+  Future<List<Order>> getMyOrders() async {
     try {
       isLoading = true;
       notifyListeners();
-      myOrders = await _service.getMyOrders(userModel: userModel);
+      myOrders = await _service.getMyOrders();
       page = 1;
       errMsg = null;
       isLoading = false;
@@ -31,12 +31,11 @@ class OrderModel extends ChangeNotifier {
     }
   }
 
-  Future<Order> submitOrder({Order order, UserModel userModel}) async {
+  Future<Order> submitOrder({Order order}) async {
     try {
       isLoading = true;
       notifyListeners();
-      Order createdOrder =
-          await _service.submitOrder(order: order, userModel: userModel);
+      Order createdOrder = await _service.submitOrder(order: order);
       page = 1;
       errMsg = null;
       isLoading = false;
@@ -58,7 +57,7 @@ class OrderModel extends ChangeNotifier {
       isLoading = true;
       page = page + 1;
       notifyListeners();
-      var orders = await _service.getMyOrders(userModel: userModel, page: page);
+      var orders = await _service.getMyOrders();
       myOrders = [...myOrders, ...orders];
       if (orders.length == 0) endPage = true;
       errMsg = null;

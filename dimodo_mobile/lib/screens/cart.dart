@@ -49,7 +49,7 @@ class _CartState extends State<Cart>
     cartModel = Provider.of<CartModel>(context, listen: false);
     userModel = Provider.of<UserModel>(context, listen: false);
     _getAllCoupons = cartModel.getAllCoupons(userModel);
-    _getProductsByCategory = service.fetchProductsByCategory(
+    _getProductsByCategory = service.getProductsByCategory(
         categoryId: "9", sortBy: "sale_price", limit: 200);
   }
 
@@ -66,11 +66,11 @@ class _CartState extends State<Cart>
               : false,
           cartItem: model.getCartItemById(key),
           onRemove: () {
-            model.removeItemFromCart(key, userModel);
+            model.removeItemFromCart(key);
           },
           onChangeQuantity: (val) {
             Provider.of<CartModel>(context, listen: false)
-                .updateQuantity(key, val, userModel);
+                .updateQuantity(key, val);
           },
         );
       },

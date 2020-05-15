@@ -12,24 +12,24 @@ class CategoryModel with ChangeNotifier {
   bool isLoading = true;
   String message;
 
-  void getCategories({lang}) async {
-    try {
-      categories = await _service.getCategories(lang: lang);
-      isLoading = false;
-      message = null;
-      for (Category cat in categories) {
-        categoryList[cat.id] = cat;
-      }
-//      print(categories);
-      notifyListeners();
-    } catch (err) {
-      isLoading = false;
-      message =
-          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
-              err.toString();
-      notifyListeners();
-    }
-  }
+//   void getCategories({lang}) async {
+//     try {
+//       categories = await _service.getCategories(lang: lang);
+//       isLoading = false;
+//       message = null;
+//       for (Category cat in categories) {
+//         categoryList[cat.id] = cat;
+//       }
+// //      print(categories);
+//       notifyListeners();
+//     } catch (err) {
+//       isLoading = false;
+//       message =
+//           "There is an issue with the app during request the data, please contact admin for fixing the issues " +
+//               err.toString();
+//       notifyListeners();
+//     }
+//   }
 
   void getLocalCategories(context, {lang}) async {
     print("Try to get localCate!");

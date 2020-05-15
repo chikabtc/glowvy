@@ -36,9 +36,9 @@ class HomeScreenState extends State<HomeScreen>
   @override
   void initState() {
     super.initState();
-    getProductByTagStar = service.fetchProductsByTag(tag: "star", sortBy: "id");
+    getProductByTagStar = service.getProductsByTag(tag: "star", sortBy: "id");
     getProductByTagTrending =
-        service.fetchProductsByTag(tag: "trending", sortBy: "id");
+        service.getProductsByTag(tag: "trending", sortBy: "id");
   }
 
   @override

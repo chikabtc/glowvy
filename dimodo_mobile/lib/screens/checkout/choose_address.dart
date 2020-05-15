@@ -25,18 +25,6 @@ class _StateChooseShipping extends State<ChooseShipping> {
     // getUserInfor();
   }
 
-  void getUserInfor() async {
-    final LocalStorage storage = new LocalStorage("Dimodo");
-    final userJson = storage.getItem(kLocalKey["userInfo"]);
-    if (userJson != null) {
-      final User user =
-          await Services().getUserInfor(id: User.fromLocalJson(userJson).id);
-      setState(() {
-        this.user = user;
-      });
-    }
-  }
-
   void getDatafromLocal() async {
     final LocalStorage storage = new LocalStorage("shipping");
     List<Address> _list = [];

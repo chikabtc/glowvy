@@ -26,7 +26,7 @@ class _StateMenuCard extends State<MenuCard> {
   Future<List<Product>> getProductFromCategory(
       {categoryId, minPrice, maxPrice, orderBy, order, lang, page}) async {
     Services _service = Services();
-    final product = await _service.fetchProductsByCategory(
+    final product = await _service.getProductsByCategory(
       categoryId: categoryId,
     );
     return product;
@@ -37,7 +37,7 @@ class _StateMenuCard extends State<MenuCard> {
     List<List<Product>> products = [];
     Services _service = Services();
     for (var category in widget.categories) {
-      var product = await _service.fetchProductsByCategory(
+      var product = await _service.getProductsByCategory(
         categoryId: category.id,
       );
       products.add(product);

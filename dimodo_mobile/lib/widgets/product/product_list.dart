@@ -59,23 +59,23 @@ class _ProductListState extends State<ProductList>
     }
   }
 
-  _loadProduct() async {
-    var newProducts = await _service.searchProducts(page: _page);
-    _products = [..._products, ...newProducts];
-  }
+  // _loadProduct() async {
+  //   var newProducts = await _service.searchProducts(page: _page);
+  //   _products = [..._products, ...newProducts];
+  // }
 
-  _onRefresh() async {
-    _page = 1;
-    _products = [];
-    _loadProduct();
-    _refreshController.refreshCompleted();
-  }
+  // _onRefresh() async {
+  //   _page = 1;
+  //   _products = [];
+  //   _loadProduct();
+  //   _refreshController.refreshCompleted();
+  // }
 
-  _onLoading() async {
-    _page = _page + 1;
-    _loadProduct();
-    _refreshController.loadComplete();
-  }
+  // _onLoading() async {
+  //   _page = _page + 1;
+  //   _loadProduct();
+  //   _refreshController.loadComplete();
+  // }
 
   void dispose() {
     _refreshController.dispose();

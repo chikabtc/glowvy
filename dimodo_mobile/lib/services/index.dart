@@ -1,35 +1,25 @@
 import 'package:Dimodo/models/order/cartItem.dart';
-
-import '../models/category.dart';
 import '../models/order/order.dart';
-import '../models/payment_method.dart';
 import '../models/product/product.dart';
 import '../models/reviews.dart';
-import '../models/shipping_method.dart';
 import '../models/user/user.dart';
-import '../models/user/userModel.dart';
 
 import '../models/address/address.dart';
 import '../models/address/ward.dart';
 import '../models/address/district.dart';
 import '../models/address/province.dart';
-import '../models/order/cart.dart';
 import '../models/coupon.dart';
-import '../models/aftership.dart';
-import '../models/order/order_note.dart';
 
 import './dimodo_services.dart';
 import 'package:connectivity/connectivity.dart';
 
 abstract class BaseServices {
-  Future<List<Category>> getCategories({lang});
-
-  Future<List<Product>> fetchProductsByCategory(
+  Future<List<Product>> getProductsByCategory(
       {categoryId, sortBy, limit = 200});
 
-  Future<List<Product>> fetchProductsByTag({tag, sortBy});
+  Future<List<Product>> getProductsByTag({tag, sortBy});
 
-  Future<List<Product>> fetchProductsByShop({shopId});
+  Future<List<Product>> getProductsByShop({shopId});
 
   Future<User> loginFacebook({String token});
 
@@ -37,21 +27,17 @@ abstract class BaseServices {
 
   Future<Reviews> getReviews(productId, int offset, int limit);
 
-// =============================================================================
 // CART
 // =============================================================================
-  // Future<Cart> fetchCartItems({CartModel cartModel, UserModel user});
-  //receive the quantity of the chosen product
-  Future<int> createCartItem(CartItem cartItem, UserModel userModel);
-  Future updateCartItem(CartItem cartItem, UserModel user);
-  Future deleteCartItem(CartItem cartItem, UserModel user);
-  Future<List<CartItem>> allCartItems(UserModel userModel);
+  Future<int> createCartItem(CartItem cartItem);
+  Future updateCartItem(CartItem cartItem);
+  Future deleteCartItem(CartItem cartItem);
+  Future<List<CartItem>> allCartItems();
 
-  Future<Order> submitOrder({Order order, UserModel userModel});
+  Future<Order> submitOrder({Order order});
 
-  Future<List<Order>> getMyOrders({UserModel userModel, int page});
+  Future<List<Order>> getMyOrders();
 
-  Future updateOrder(orderId, {status});
 // =============================================================================
 // SHIPPING & PAYMENTS
 // =============================================================================
@@ -61,19 +47,9 @@ abstract class BaseServices {
 
   Future<List<Ward>> getWards({int districtId});
 
-  Future<bool> updateAddress({Address address, String token});
+  Future<bool> updateAddress({Address address, String accessToken});
 
   Future<Address> getAddress({String token});
-
-  Future<List<ShippingMethod>> getShippingMethods(
-      {Address address, String token});
-
-  Future<List<PaymentMethod>> getPaymentMethods(
-      {Address address, ShippingMethod shippingMethod, String token});
-
-  Future<List<Product>> searchProducts({name, page});
-
-  Future<User> getUserInfo(accessToken);
 
   Future<User> createUser({
     fullName,
@@ -95,17 +71,7 @@ abstract class BaseServices {
 
   Future<Product> getProduct(id);
 
-  Future<List<Coupon>> getCoupons(UserModel userModel);
-
-  Future<AfterShip> getAllTracking();
-
-  Future<List<OrderNote>> getOrderNote({UserModel userModel, int orderId});
-
-  Future<Null> createReview({int productId, Map<String, dynamic> data});
-
-  Future<User> getUserInfor({int id});
-
-  Future<Map<String, dynamic>> getHomeCache();
+  Future<List<Coupon>> getCoupons();
 }
 
 class Services implements BaseServices {
@@ -126,12 +92,12 @@ class Services implements BaseServices {
   }
 
   @override
-  Future<List<Product>> fetchProductsByCategory(
+  Future<List<Product>> getProductsByCategory(
       {categoryId, sortBy, limit = 200}) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.fetchProductsByCategory(
+      return serviceApi.getProductsByCategory(
           categoryId: categoryId, sortBy: sortBy, limit: limit);
     } else {
       //TODO: add no connection popup
@@ -140,11 +106,11 @@ class Services implements BaseServices {
   }
 
   @override
-  Future<List<Product>> fetchProductsByTag({tag, sortBy}) async {
+  Future<List<Product>> getProductsByTag({tag, sortBy}) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.fetchProductsByTag(tag: tag, sortBy: sortBy);
+      return serviceApi.getProductsByTag(tag: tag, sortBy: sortBy);
     } else {
       //TODO: add no connection popup
       throw Exception("No internet connection");
@@ -152,26 +118,15 @@ class Services implements BaseServices {
   }
 
   @override
-  Future<List<Product>> fetchProductsByShop({shopId}) async {
+  Future<List<Product>> getProductsByShop({shopId}) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.fetchProductsByShop(
+      return serviceApi.getProductsByShop(
         shopId: shopId,
       );
     } else {
       //TODO: add no connection popup
-      throw Exception("No internet connection");
-    }
-  }
-
-  @override
-  Future<List<Category>> getCategories({lang = "en"}) async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile ||
-        connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.getCategories(lang: lang);
-    } else {
       throw Exception("No internet connection");
     }
   }
@@ -210,11 +165,12 @@ class Services implements BaseServices {
   }
 
   @override
-  Future<bool> updateAddress({Address address, String token}) async {
+  Future<bool> updateAddress({Address address, String accessToken}) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.updateAddress(address: address, token: token);
+      return serviceApi.updateAddress(
+          address: address, accessToken: accessToken);
     } else {
       throw Exception("No internet connection");
     }
@@ -264,117 +220,70 @@ class Services implements BaseServices {
     }
   }
 
-  @override
-  Future<List<ShippingMethod>> getShippingMethods(
-      {Address address, String token}) async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile ||
-        connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.getShippingMethods(address: address, token: token);
-    } else {
-      throw Exception("No internet connection");
-    }
-  }
-
-  @override
-  Future<List<PaymentMethod>> getPaymentMethods(
-      {Address address, ShippingMethod shippingMethod, String token}) async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile ||
-        connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.getPaymentMethods(
-          address: address, shippingMethod: shippingMethod, token: token);
-    } else {
-      throw Exception("No internet connection");
-    }
-  }
-
   // ===========================================================================
   // CART
   // ===========================================================================
   @override
-  Future<int> createCartItem(CartItem cartItem, UserModel userModel) async {
+  Future<int> createCartItem(CartItem cartItem) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.createCartItem(cartItem, userModel);
+      return serviceApi.createCartItem(cartItem);
     } else {
       throw Exception("No internet connection");
     }
   }
 
   @override
-  Future<int> updateCartItem(CartItem cartItem, UserModel userModel) async {
+  Future<int> updateCartItem(CartItem cartItem) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.updateCartItem(cartItem, userModel);
+      return serviceApi.updateCartItem(cartItem);
     } else {
       throw Exception("No internet connection");
     }
   }
 
   @override
-  Future<int> deleteCartItem(CartItem cartItem, UserModel userModel) async {
+  Future<int> deleteCartItem(CartItem cartItem) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.deleteCartItem(cartItem, userModel);
+      return serviceApi.deleteCartItem(cartItem);
     } else {
       throw Exception("No internet connection");
     }
   }
 
   @override
-  Future<List<CartItem>> allCartItems(UserModel userModel) async {
+  Future<List<CartItem>> allCartItems() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.allCartItems(userModel);
+      return serviceApi.allCartItems();
     } else {
       throw Exception("No internet connection");
     }
   }
 
   @override
-  Future<List<Order>> getMyOrders({UserModel userModel, int page}) async {
+  Future<List<Order>> getMyOrders() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.getMyOrders(userModel: userModel, page: page);
+      return serviceApi.getMyOrders();
     } else {
       throw Exception("No internet connection");
     }
   }
 
   @override
-  Future<Order> submitOrder({Order order, UserModel userModel}) async {
+  Future<Order> submitOrder({Order order}) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.submitOrder(order: order, userModel: userModel);
-    } else {
-      throw Exception("No internet connection");
-    }
-  }
-
-  @override
-  Future updateOrder(orderId, {status}) async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile ||
-        connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.updateOrder(orderId, status: status);
-    } else {
-      throw Exception("No internet connection");
-    }
-  }
-
-  @override
-  Future<List<Product>> searchProducts({name, page}) async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile ||
-        connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.searchProducts(name: name, page: page);
+      return serviceApi.submitOrder(order: order);
     } else {
       throw Exception("No internet connection");
     }
@@ -432,17 +341,6 @@ class Services implements BaseServices {
   }
 
   @override
-  Future<User> getUserInfo(accessToken) async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile ||
-        connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.getUserInfo(accessToken);
-    } else {
-      throw Exception("No internet connection");
-    }
-  }
-
-  @override
   Future<User> login({email, password}) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
@@ -468,67 +366,11 @@ class Services implements BaseServices {
   }
 
   @override
-  Future<List<Coupon>> getCoupons(userModel) async {
+  Future<List<Coupon>> getCoupons() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.getCoupons(userModel);
-    } else {
-      throw Exception("No internet connection");
-    }
-  }
-
-  @override
-  Future<AfterShip> getAllTracking() async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile ||
-        connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.getAllTracking();
-    } else {
-      throw Exception("No internet connection");
-    }
-  }
-
-  @override
-  Future<List<OrderNote>> getOrderNote(
-      {UserModel userModel, int orderId}) async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile ||
-        connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.getOrderNote(userModel: userModel, orderId: orderId);
-    } else {
-      throw Exception("No internet connection");
-    }
-  }
-
-  @override
-  Future<Null> createReview({int productId, Map<String, dynamic> data}) async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile ||
-        connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.createReview(productId: productId, data: data);
-    } else {
-      throw Exception("No internet connection");
-    }
-  }
-
-  @override
-  Future<User> getUserInfor({int id}) async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile ||
-        connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.getUserInfor(id: id);
-    } else {
-      throw Exception("No internet connection");
-    }
-  }
-
-  @override
-  Future<Map<String, dynamic>> getHomeCache() async {
-    var connectivityResult = await (Connectivity().checkConnectivity());
-    if (connectivityResult == ConnectivityResult.mobile ||
-        connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.getHomeCache();
+      return serviceApi.getCoupons();
     } else {
       throw Exception("No internet connection");
     }

@@ -1,4 +1,3 @@
-import 'package:Dimodo/models/order/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:localstorage/localstorage.dart';
@@ -34,6 +33,7 @@ class UserModel with ChangeNotifier {
         email: email,
         password: password,
       );
+      kAccessToken = user.accessToken;
 
       user.address = await _service.getAddress(token: user.accessToken);
 
@@ -138,6 +138,7 @@ class UserModel with ChangeNotifier {
         final json = storage.getItem(kLocalKey["userInfo"]);
         if (json != null) {
           user = User.fromJson(json);
+          kAccessToken = user.accessToken;
           isLoggedIn = true;
           notifyListeners();
         } else {
@@ -290,7 +291,7 @@ class UserModel with ChangeNotifier {
     try {
       this.user.address = address;
       var isSuccess =
-          await _service.updateAddress(address: address, token: token);
+          await _service.updateAddress(address: address, accessToken: token);
       success(isSuccess);
       saveUser(user);
       notifyListeners();

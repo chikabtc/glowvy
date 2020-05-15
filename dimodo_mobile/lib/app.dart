@@ -28,11 +28,8 @@ import 'models/order/cart.dart';
 import 'models/category.dart';
 import 'models/order/orderModel.dart';
 import 'models/address/addressModel.dart';
-import 'models/payment_method.dart';
 import 'models/product/productModel.dart';
 import 'models/product/recent_product.dart';
-import 'models/search.dart';
-import 'models/shipping_method.dart';
 import 'models/user/userModel.dart';
 import 'models/wishlist.dart';
 import 'screens//setting/login.dart';
@@ -102,10 +99,7 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
   final _userModel = UserModel();
   final _product = ProductModel();
   final _wishlist = WishListModel();
-  final _shippingMethod = ShippingMethodModel();
-  final _paymentMethod = PaymentMethodModel();
   final _order = OrderModel();
-  final _search = SearchModel();
   final _recent = RecentModel();
   bool isFirstSeen = false;
   bool isChecking = true;
@@ -171,10 +165,7 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
             providers: [
               Provider<ProductModel>.value(value: _product),
               Provider<WishListModel>.value(value: _wishlist),
-              Provider<ShippingMethodModel>.value(value: _shippingMethod),
-              Provider<PaymentMethodModel>.value(value: _paymentMethod),
               Provider<OrderModel>.value(value: _order),
-              Provider<SearchModel>.value(value: _search),
               Provider<RecentModel>.value(value: _recent),
               ChangeNotifierProvider(create: (_) => AddressModel()),
               ChangeNotifierProvider(create: (_) => _userModel),

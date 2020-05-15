@@ -55,7 +55,7 @@ class SubCategoriesState extends State<SubCategories> {
         ),
         Expanded(
           child: FutureBuilder<List<Product>>(
-            future: _service.fetchProductsByCategory(
+            future: _service.getProductsByCategory(
                 categoryId: widget.categories[selectedIndex].id,
                 sortBy: "-sale_price"),
             builder:

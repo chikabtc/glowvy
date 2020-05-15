@@ -130,11 +130,6 @@ class AppModel with ChangeNotifier {
       notifyListeners();
     }
   }
-
-  void updateProductListLayout(layout) {
-    productListLayout = layout;
-    notifyListeners();
-  }
 }
 
 class App {

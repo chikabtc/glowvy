@@ -31,8 +31,7 @@ class OrdersScreenState extends State<OrdersScreen> {
     super.initState();
     _orderModel = Provider.of<OrderModel>(context, listen: false);
 
-    _ordersFuture = _orderModel.getMyOrders(
-        userModel: Provider.of<UserModel>(context, listen: false));
+    _ordersFuture = _orderModel.getMyOrders();
   }
 
   List<Widget> _createOrders(List<Order> orders) {

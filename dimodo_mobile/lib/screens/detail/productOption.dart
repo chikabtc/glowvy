@@ -62,7 +62,7 @@ class _ProductOptionState extends State<ProductOption>
     }
   }
 
-  void addToCart(Product product, UserModel userModel) {
+  void addToCart(Product product) {
     final cartModel = Provider.of<CartModel>(context, listen: false); //
     print("adding to cart price: ${product.salePrice}");
     var cartItem = CartItem(
@@ -72,7 +72,7 @@ class _ProductOptionState extends State<ProductOption>
         option: isSingleOption
             ? chosenOptions[0]
             : "${chosenOptions[0]} / ${chosenOptions[1]}");
-    cartModel.addProductToCart(cartItem: cartItem, userModel: userModel);
+    cartModel.addProductToCart(cartItem: cartItem);
     Navigator.of(context).pop();
     Future.delayed(const Duration(milliseconds: 300), () {
       showAddedToCartAlert();
@@ -452,7 +452,7 @@ class _ProductOptionState extends State<ProductOption>
                                   onTap: isProductChosen()
                                       ? () {
                                           (model.isLoggedIn)
-                                              ? addToCart(widget.product, model)
+                                              ? addToCart(widget.product)
                                               : Navigator.pushNamed(
                                                   context, "/login");
                                         }
