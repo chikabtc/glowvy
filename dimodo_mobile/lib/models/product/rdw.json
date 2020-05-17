@@ -1,0 +1,40 @@
+{
+    "id": 11981,
+    "thumbnail": "https://image.brandi.me/cproduct/2020/03/05/14325715_1583410609_image1_M.jpg",
+    "name": "(Số lượng có hạn) Áo thun tròn màu trái cây mùa xuân (5 màu)",
+    "sale_price": 17600,
+    "purchase_count": 684,
+    "price": 17600,
+    "categoryName": "main",
+    "productEtcInfo": {},
+    "seller": {
+        "address1": "",
+        "address2": "",
+        "bookmark_count": 0,
+        "business_info": {
+            "business_code": "",
+            "business_name": "",
+            "mail_order_business_code": "",
+            "representative_name": ""
+        },
+        "email": "",
+        "en_name": "",
+        "id": "",
+        "image_url": "",
+        "name": "",
+        "operation_time": "",
+        "tags": null,
+        "telephone": "",
+        "text": "",
+        "type": {
+            "id": "",
+            "name": ""
+        }
+    },
+    "add_info": null,
+    "tags": [{
+        "id": 5,
+        "sname": "trending"
+    }],
+    "sid": 14325715
+}

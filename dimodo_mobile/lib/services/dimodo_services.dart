@@ -152,7 +152,7 @@ class DimodoServices implements BaseServices {
   }
 
   @override
-  Future<List<Product>> getProductsByTag({tag, sortBy}) async {
+  Future<List<Product>> getProductsByTag({int tag, String sortBy}) async {
     try {
       List<Product> list = [];
       var body = await getAsync(

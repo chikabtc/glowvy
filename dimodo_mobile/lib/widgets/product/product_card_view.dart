@@ -80,13 +80,33 @@ class ProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    product.name ?? 'not found',
+                    "[${product.tags[0].sname}]  ${product.categoryName} " ??
+                        "not found",
                     maxLines: 1,
                     style: kBaseTextStyle.copyWith(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
+                  SizedBox(height: 3),
+                  if (product.salePercent != 0 && product.salePercent != null)
+                    Row(
+                      children: <Widget>[
+                        Padding(
+                          padding: EdgeInsets.only(left: 4),
+                          child: Text(
+                            "${product.salePercent}%",
+                            textAlign: TextAlign.center,
+                            style: kBaseTextStyle.copyWith(
+                                color: kAccentRed,
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Image.asset("assets/icons/home/coupon.png")
+                      ],
+                    ),
+                  SizedBox(height: 7),
                   Row(
                     children: <Widget>[
                       Text(
@@ -101,43 +121,20 @@ class ProductCard extends StatelessWidget {
                             fontWeight: FontWeight.bold),
                       ),
                       SizedBox(width: 8),
-                      if (product.salePercent != 0 &&
-                          product.salePercent != null)
-                        Opacity(
-                          opacity: 0.5,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: kLightPink,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5)),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.only(left: 4, right: 4),
-                              child: Text(
-                                "-${product.salePercent}%",
-                                textAlign: TextAlign.center,
-                                style: kBaseTextStyle.copyWith(
-                                    color: kPinkAccent,
-                                    fontSize: 10,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
+                      if (product.purchaseCount != null)
+                        Container(
+                          child: Text(
+                            "${product.purchaseCount} ${S.of(context).beenSold}",
+                            textAlign: TextAlign.end,
+                            maxLines: 1,
+                            style: kBaseTextStyle.copyWith(
+                                color: kDarkSecondary.withOpacity(0.5),
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold),
                           ),
-                        )
+                        ),
                     ],
                   ),
-                  if (product.purchaseCount != null)
-                    Container(
-                      child: Text(
-                        "${product.purchaseCount} ${S.of(context).beenSold}",
-                        textAlign: TextAlign.end,
-                        maxLines: 1,
-                        style: kBaseTextStyle.copyWith(
-                            color: kDarkSecondary.withOpacity(0.5),
-                            fontSize: 10,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
                 ],
               ),
             ),

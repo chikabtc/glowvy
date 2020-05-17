@@ -4,13 +4,15 @@ part 'tag.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Tag {
-  String id;
+  int id;
   String name;
+  String sname;
   String type;
 
   Tag({
     this.id,
     this.name,
+    this.sname,
     this.type,
   });
   factory Tag.fromJson(Map<String, dynamic> json) => _$TagFromJson(json);

@@ -4,19 +4,23 @@ import 'package:json_annotation/json_annotation.dart';
 import 'seller.dart';
 import 'productEtcInfo.dart';
 import 'addInfo.dart';
+import 'tag.dart';
 part 'product.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Product {
   int id;
+  int sid;
   String thumbnail;
   String name;
   String description;
   List<String> descImages;
   List<String> sliderImages;
+  List<Tag> tags;
   int salePrice;
   int price;
   int categoryId;
+  String categoryName;
   int salePercent;
   int purchaseCount;
 
@@ -25,7 +29,6 @@ class Product {
   ProductEtcInfo productEtcInfo;
   Seller seller;
   List<AddInfo> addInfo;
-  int sid;
 
   Product({
     this.id,
@@ -34,10 +37,12 @@ class Product {
     this.description,
     this.descImages,
     this.sliderImages,
+    this.tags,
     this.salePrice,
     this.salePercent,
     this.price,
     this.categoryId,
+    this.categoryName,
     this.purchaseCount,
     this.sizeDetails,
     this.options,

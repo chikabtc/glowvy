@@ -17,7 +17,7 @@ abstract class BaseServices {
   Future<List<Product>> getProductsByCategory(
       {categoryId, sortBy, limit = 200});
 
-  Future<List<Product>> getProductsByTag({tag, sortBy});
+  Future<List<Product>> getProductsByTag({int tag, String sortBy});
 
   Future<List<Product>> getProductsByShop({shopId});
 
@@ -106,7 +106,7 @@ class Services implements BaseServices {
   }
 
   @override
-  Future<List<Product>> getProductsByTag({tag, sortBy}) async {
+  Future<List<Product>> getProductsByTag({int tag, String sortBy}) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {

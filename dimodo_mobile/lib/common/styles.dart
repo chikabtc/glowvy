@@ -19,6 +19,7 @@ const kErrorRed = Color(0xFFe74c3c);
 const kSurfaceWhite = Color(0xFFFFFBFA);
 const kDefaultBackground = Color(0xfff9f9f9);
 // const kDefaultBackground = Color(0xffE5E5E5);
+const kAccentRed = Color(0xffDB3022);
 
 /// color for theme
 const kLightPrimary = Color(0xfffcfcff);

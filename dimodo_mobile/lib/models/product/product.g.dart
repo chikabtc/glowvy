@@ -16,10 +16,14 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
         (json['desc_images'] as List)?.map((e) => e as String)?.toList(),
     sliderImages:
         (json['slider_images'] as List)?.map((e) => e as String)?.toList(),
+    tags: (json['tags'] as List)
+        ?.map((e) => e == null ? null : Tag.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     salePrice: json['sale_price'] as int,
     salePercent: json['sale_percent'] as int,
     price: json['price'] as int,
     categoryId: json['category_id'] as int,
+    categoryName: json['category_name'] as String,
     purchaseCount: json['purchase_count'] as int,
     sizeDetails: (json['size_details'] as List)
         ?.map((e) =>
@@ -46,14 +50,17 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'id': instance.id,
+      'sid': instance.sid,
       'thumbnail': instance.thumbnail,
       'name': instance.name,
       'description': instance.description,
       'desc_images': instance.descImages,
       'slider_images': instance.sliderImages,
+      'tags': instance.tags,
       'sale_price': instance.salePrice,
       'price': instance.price,
       'category_id': instance.categoryId,
+      'category_name': instance.categoryName,
       'sale_percent': instance.salePercent,
       'purchase_count': instance.purchaseCount,
       'size_details': instance.sizeDetails,
@@ -61,5 +68,4 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'product_etc_info': instance.productEtcInfo,
       'seller': instance.seller,
       'add_info': instance.addInfo,
-      'sid': instance.sid,
     };

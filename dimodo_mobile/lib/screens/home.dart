@@ -36,9 +36,8 @@ class HomeScreenState extends State<HomeScreen>
   @override
   void initState() {
     super.initState();
-    getProductByTagStar = service.getProductsByTag(tag: "star", sortBy: "id");
-    getProductByTagTrending =
-        service.getProductsByTag(tag: "trending", sortBy: "id");
+    getProductByTagStar = service.getProductsByTag(tag: 5, sortBy: "id");
+    getProductByTagTrending = service.getProductsByTag(tag: 6, sortBy: "id");
   }
 
   @override
@@ -166,7 +165,7 @@ class HomeScreenState extends State<HomeScreen>
                   delegate: SliverChildListDelegate([
                 Container(height: 5),
                 Container(
-                    color: Colors.white,
+                    color: kDefaultBackground,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -191,7 +190,7 @@ class HomeScreenState extends State<HomeScreen>
                         fontSize: 15, fontWeight: FontWeight.w600),
                   ),
                 ),
-                ProductModel.showProductList(future: getProductByTagTrending),
+                // ProductModel.showProductList(future: getProductByTagTrending),
               ])),
               SliverList(
                 delegate: SliverChildListDelegate([
