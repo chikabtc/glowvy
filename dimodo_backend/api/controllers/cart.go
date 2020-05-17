@@ -65,6 +65,20 @@ func (c *Cart) AllCartItems(w http.ResponseWriter, r *http.Request) {
 	resp.Json(w, r, http.StatusOK, resp.WithSuccess(cartItems))
 }
 
+func (c *Cart) AvailableCoupons(w http.ResponseWriter, r *http.Request) {
+	//get user id from JWT token ?? how does this work?
+	auth := jwt.Payload(r)
+	print("authId: ", auth.Id)
+
+	availableCoupons, err := c.cs.AvailableCoupons(auth.Id)
+	if err != nil {
+		bugsnag.Notify(err)
+		resp.Json(w, r, http.StatusBadRequest, resp.WithError(err))
+		return
+	}
+	resp.Json(w, r, http.StatusOK, resp.WithSuccess(availableCoupons))
+}
+
 func (c *Cart) UpdateCartItem(w http.ResponseWriter, r *http.Request) {
 	var item models.Cart_item
 	decoder := json.NewDecoder(r.Body)

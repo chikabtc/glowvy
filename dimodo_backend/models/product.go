@@ -15,9 +15,9 @@ import (
 
 type ProductService interface {
 	AllCategories() ([]Category, error)
-	ProductsByCategoryID(categoryID, start, count int, sortBy string) ([]Product, error)
+	ProductsByCategoryID(categoryID, sortBy string, start, count int) ([]Product, error)
 	ProductsByShopId(shopId, start, count int) ([]Product, error)
-	ProductsByTags(tags string, start, count int, sortBy string) ([]Product, error)
+	ProductsByTags(tagId string, sortBy string, start, count int) ([]Product, error)
 	ReviewsByProductID(productId, start, count int) (*Reviews, error)
 	CountReviews(productId, start, count int) (int, error)
 	CheckOptions(productId int) (bool, error)
@@ -105,21 +105,21 @@ type Option struct {
 }
 
 type Product struct {
-	Id             int      `json:"id,omitempty"`
-	Thumbnail      string   `json:"thumbnail,omitempty"`
-	Name           string   `json:"name,omitempty"`
-	Description    string   `json:"description,omitempty"`
-	DescImages     []string `json:"desc_images,omitempty"`
-	SliderImages   []string `json:"slider_images,omitempty"`
-	Sale_price     int      `json:"sale_price,omitempty"`
-	Sale_percent   int      `json:"sale_percent,omitempty"`
-	Purchase_count int      `json:"purchase_count,omitempty"`
-	Price          int      `json:"price,omitempty"`
-	Category_id    int      `json:"category_id,omitempty"`
-	Barcode        string   `json:"barcode,omitempty"`
-	//size detail might include different sizes like s or m, or Free
-	SizeDetails []SizeDetail `json:"size_details,omitempty"`
-	Options     []Option     `json:"options,omitempty"`
+	Id             int          `json:"id,omitempty"`
+	Thumbnail      string       `json:"thumbnail,omitempty"`
+	Name           string       `json:"name,omitempty"`
+	Description    string       `json:"description,omitempty"`
+	DescImages     []string     `json:"desc_images,omitempty"`
+	SliderImages   []string     `json:"slider_images,omitempty"`
+	Sale_price     int          `json:"sale_price,omitempty"`
+	Sale_percent   int          `json:"sale_percent,omitempty"`
+	Purchase_count int          `json:"purchase_count,omitempty"`
+	Price          int          `json:"price,omitempty"`
+	CategoryId     int          `json:"category_id,omitempty"`
+	CategoryName   string       `json:"categoryName,omitempty"`
+	Barcode        string       `json:"barcode,omitempty"`
+	SizeDetails    []SizeDetail `json:"size_details,omitempty"`
+	Options        []Option     `json:"options,omitempty"`
 
 	ProductEtcInfo ProductEtcInfo `json:"productEtcInfo,omitempty"`
 	Seller         Seller         `json:"seller"`
@@ -127,10 +127,18 @@ type Product struct {
 		Key  string `json:"key"`
 		Text string `json:"text"`
 	} `json:"add_info"`
+	Tags   []Tag  `json:"tags,omitempty"`
 	Sid    int    `json:"sid,omitempty"`
 	Sprice int    `json:"sprice,omitempty"`
 	Sname  string `json:"sname,omitempty"`
 	Surl   string `json:"surl,omitempty"`
+}
+
+type Tag struct {
+	Id    int    `json:"id"`
+	Name  string `json:"name,omitempty"`
+	Sname string `json:"sname"`
+	Type  string `json:"type,omitempty"`
 }
 
 type Seller struct {
@@ -164,39 +172,35 @@ type Seller struct {
 	} `json:"type"`
 }
 
-const brandiAuth = "3b17176f2eb5fdffb9bafdcc3e4bc192b013813caddccd0aad20c23ed272f076_1423639497"
+func (t Tag) Value() (driver.Value, error) {
+	return json.Marshal(t)
+}
 
-// Make the Attrs struct implement the driver.Valuer interface. This method
-// simply returns the JSON-encoded representation of the struct.
-// func (o Option) Value() (driver.Value, error) {
-// 	return json.Marshal(o)
-// }
+// Make the Attrs struct implement the sql.Scanner interface. This method
+// simply decodes a JSON-encoded value into the struct fields.
+func (t *Tag) Scan(value interface{}) error {
+	b, ok := value.([]byte)
+	if !ok {
+		return errors.New("type assertion to []byte failed")
+	}
 
-// // Make the Attrs struct implement the sql.Scanner interface. This method
-// // simply decodes a JSON-encoded value into the struct fields.
-// func (o *Option) Scan(value interface{}) error {
-// 	b, ok := value.([]byte)
-// 	if !ok {
-// 		return errors.New("type assertion to []byte failed")
-// 	}
+	return json.Unmarshal(b, &t)
+}
 
-// 	return json.Unmarshal(b, &o)
-// }
+func (t Product) Value() (driver.Value, error) {
+	return json.Marshal(t)
+}
 
-// func (s SizeDetail) Value() (driver.Value, error) {
-// 	return json.Marshal(s)
-// }
+// Make the Attrs struct implement the sql.Scanner interface. This method
+// simply decodes a JSON-encoded value into the struct fields.
+func (t *Product) Scan(value interface{}) error {
+	b, ok := value.([]byte)
+	if !ok {
+		return errors.New("type assertion to []byte failed")
+	}
 
-// // Make the Attrs struct implement the sql.Scanner interface. This method
-// // simply decodes a JSON-encoded value into the struct fields.
-// func (s *SizeDetail) Scan(value interface{}) error {
-// 	b, ok := value.([]byte)
-// 	if !ok {
-// 		return errors.New("type assertion to []byte failed")
-// 	}
-
-// 	return json.Unmarshal(b, &s)
-// }
+	return json.Unmarshal(b, &t)
+}
 
 func (s Seller) Value() (driver.Value, error) {
 	return json.Marshal(s)
@@ -232,13 +236,14 @@ func (ps *productService) AllCategories() ([]Category, error) {
 }
 
 //Categories include the home categories as well which is 0
-func (ps *productService) ProductsByCategoryID(categoryID, start, count int, sortBy string) ([]Product, error) {
-	rows, err := ps.dot.Query(ps.DB, "ProductsByCategoryID", categoryID, start, count, sortBy)
+func (ps *productService) ProductsByCategoryID(categoryID, sortBy string, start, count int) ([]Product, error) {
+	rows, err := ps.dot.Query(ps.DB, "ProductsByCategoryID", categoryID, sortBy, start, count)
 	if err != nil {
 		bugsnag.Notify(err)
 		fmt.Println("ProductsByCategoryID", err)
 		return nil, err
 	}
+	var tags []uint8
 
 	defer rows.Close()
 	products := []Product{}
@@ -247,17 +252,23 @@ func (ps *productService) ProductsByCategoryID(categoryID, start, count int, sor
 		if err := rows.Scan(
 			&product.Id,
 			&product.Sid,
+			&product.Name,
+			&product.Thumbnail,
 			&product.Price,
 			&product.Sale_price,
 			&product.Sale_percent,
 			&product.Purchase_count,
-			&product.Name,
-			&product.Thumbnail); err != nil {
+			&product.CategoryName,
+			&product.CategoryId,
+			&tags); err != nil {
 			bugsnag.Notify(err)
 			fmt.Println("fail to Next", err)
 			return nil, err
 		}
-
+		err = json.Unmarshal([]byte(tags), &product.Tags)
+		if err != nil {
+			fmt.Println("fail to unmarshall tags: ", err)
+		}
 		products = append(products, product)
 	}
 	return products, nil
@@ -294,12 +305,14 @@ func (ps *productService) ProductsByShopId(shopId, start, count int) ([]Product,
 	return products, nil
 }
 
-func (ps *productService) ProductsByTags(tags string, start, count int, sortBy string) ([]Product, error) {
-	fmt.Println("tag : ", tags)
-	rows, err := ps.dot.Query(ps.DB, "ProductsByTags", tags, start, count, sortBy)
+func (ps *productService) ProductsByTags(tagId string, sortBy string, start, count int) ([]Product, error) {
+	fmt.Println("sortBy : ", sortBy)
+	var tags []uint8
+
+	rows, err := ps.dot.Query(ps.DB, "ProductsByTags", tagId, sortBy, start, count)
 	if err != nil {
 		bugsnag.Notify(err)
-		fmt.Println("ProductsByTags", err)
+		fmt.Println("ProductsByTags err", err)
 		return nil, err
 	}
 
@@ -315,14 +328,23 @@ func (ps *productService) ProductsByTags(tags string, start, count int, sortBy s
 			&product.Sale_percent,
 			&product.Purchase_count,
 			&product.Name,
-			&product.Thumbnail); err != nil {
+			&product.Thumbnail,
+			&product.CategoryId,
+			&product.CategoryName,
+			&tags,
+		); err != nil {
 			fmt.Println("fail to Next ProductsByShopId", err)
 
 			return nil, err
 		}
+		err = json.Unmarshal([]byte(tags), &product.Tags)
+		if err != nil {
+			fmt.Println("fail to unmarshall tags: ", err)
+		}
 
 		products = append(products, product)
 	}
+
 	return products, nil
 }
 
@@ -340,6 +362,7 @@ func (ps *productService) FindProductByID(id int) (*Product, error) {
 func (ps *productService) ProductDetailById(id int) (*Product, error) {
 	product := Product{Sid: id}
 	var productOptions []uint8
+	var tags []uint8
 	var sizeDetails []uint8
 
 	fmt.Println("product detail by id")
@@ -348,6 +371,7 @@ func (ps *productService) ProductDetailById(id int) (*Product, error) {
 		bugsnag.Notify(err)
 		return nil, err
 	}
+
 	err = row.Scan(
 		&product.Sid,
 		&product.Name,
@@ -359,20 +383,31 @@ func (ps *productService) ProductDetailById(id int) (*Product, error) {
 		&product.Purchase_count,
 		pq.Array(&product.SliderImages),
 		pq.Array(&product.DescImages),
+		&tags,
 		&product.Seller,
 		&sizeDetails,
-		&product.Category_id,
+		&product.CategoryId,
+		&product.CategoryName,
 		&productOptions,
-		// &product.SizeDetails,
-		// &product.Options,
 	)
 	if err != nil {
 		bugsnag.Notify(err)
 		fmt.Println("fail to scan productDetailById", err)
 	}
 
-	_ = json.Unmarshal([]byte(productOptions), &product.Options)
-	_ = json.Unmarshal([]byte(sizeDetails), &product.SizeDetails)
+	err = json.Unmarshal([]byte(productOptions), &product.Options)
+	if err != nil {
+		fmt.Println("fail to unmarshall productOptions: ", err)
+	}
+	err = json.Unmarshal([]byte(sizeDetails), &product.SizeDetails)
+	if err != nil {
+		fmt.Println("fail to unmarshall sizeDetails: ", err)
+	}
+	err = json.Unmarshal([]byte(tags), &product.Tags)
+	if err != nil {
+		fmt.Println("fail to unmarshall tags: ", err)
+	}
+	fmt.Println("json tags: ", product.Tags)
 
 	return &product, nil
 }
@@ -540,7 +575,7 @@ func (ps *productService) GetSidsOfAllProducts() ([]string, error) {
 }
 
 func (ps *productService) UpdateProduct(product *Product) (bool, error) {
-	_, err := ps.dot.Exec(ps.DB, "UpdateProduct", product.Price, product.Sale_price, product.Sale_percent, product.Category_id, product.Options, product.Sid)
+	_, err := ps.dot.Exec(ps.DB, "UpdateProduct", product.Price, product.Sale_price, product.Sale_percent, product.CategoryId, product.Options, product.Sid)
 	if err != nil {
 		// bugsnag.Notify(err)
 		fmt.Println("UpdateProduct: ", err)

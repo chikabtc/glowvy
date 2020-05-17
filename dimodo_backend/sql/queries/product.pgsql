@@ -18,62 +18,98 @@ FROM
     Category;
 
 --name: ProductsByCategoryID
-SELECT
-    *
-FROM ( SELECT DISTINCT
-        product.id,
-        product.sid,
-        product.sprice,
-        product.sale_price,
-        product.sale_percent,
-        COALESCE(product.purchase_count, 0) AS purchase_count,
-        product.name,
-        product.thumbnail
+WITH matching_product_sids AS (
+    SELECT DISTINCT
+        sid
     FROM
-        product,
-        category
+        product
     WHERE
-        product.category_id = $1) sub
+        product.category_id = $1
+)
+SELECT
+    product.id,
+    product.sid,
+    product.name,
+    product.thumbnail,
+    product.sprice,
+    product.sale_price,
+    product.sale_percent,
+    COALESCE(product.purchase_count, 0) AS purchase_count,
+    category.sname,
+    product.category_id,
+    json_agg(json_build_object('sname', tags.sname, 'id', tags.id, 'type', tags.type))
+FROM
+    product,
+    product_tags,
+    matching_product_sids,
+    category,
+    tags
+WHERE
+    matching_product_sids.sid = product.sid
+    AND category.id = product.category_id
+    AND product_tags.product_id = matching_product_sids.sid
+    AND tags.id = product_tags.tag_id
+GROUP BY
+    product.id,
+    category.sname
 ORDER BY
-    CASE WHEN $4 = 'sale_price' THEN
-        sale_price
+    CASE WHEN $2 = 'sale_price' THEN
+        product.sale_price
     END ASC,
-    CASE WHEN $4 = '-sale_price' THEN
-        sale_price
+    CASE WHEN $2 = '-sale_price' THEN
+        product.sale_price
     END DESC,
-    CASE WHEN $4 = 'id' THEN
-        id
-    END DESC OFFSET $2
-LIMIT $3;
+    CASE WHEN $2 = 'id' THEN
+        product.id
+    END DESC OFFSET $3
+LIMIT $4;
 
 --name: ProductsByTags
-SELECT
-    *
-FROM ( SELECT DISTINCT
-        product.id,
-        product.sid,
-        product.sprice,
-        product.sale_price,
-        product.sale_percent,
-        COALESCE(product.purchase_count, 0) AS purchase_count,
-        product.name,
-        product.thumbnail
+WITH matching_product_sids AS (
+    SELECT DISTINCT
+        product_id
     FROM
-        product,
-        category
+        product_tags
     WHERE
-        product.tags = $1) sub
+        product_tags.tag_id = $1
+)
+SELECT
+    product.id,
+    product.sid,
+    product.sprice,
+    product.sale_price,
+    product.sale_percent,
+    COALESCE(product.purchase_count, 0) AS purchase_count,
+    product.name,
+    product.thumbnail,
+    product.category_id,
+    category.sname,
+    json_agg(json_build_object('sname', tags.sname, 'id', tags.id, 'type', tags.type))
+FROM
+    product,
+    product_tags,
+    matching_product_sids,
+    category,
+    tags
+WHERE
+    matching_product_sids.product_id = product.sid
+    AND category.id = product.category_id
+    AND product_tags.product_id = matching_product_sids.product_id
+    AND tags.id = product_tags.tag_id
+GROUP BY
+    product.id,
+    category.sname
 ORDER BY
-    CASE WHEN $4 = 'sale_price' THEN
-        sale_price
+    CASE WHEN $2 = 'sale_price' THEN
+        product.sale_price
     END ASC,
-    CASE WHEN $4 = '-sale_price' THEN
-        sale_price
+    CASE WHEN $2 = '-sale_price' THEN
+        product.sale_price
     END DESC,
-    CASE WHEN $4 = 'id' THEN
-        id
-    END DESC OFFSET $2
-LIMIT $3;
+    CASE WHEN $2 = 'id' THEN
+        product.id
+    END DESC OFFSET $3
+LIMIT $4;
 
 --name: ProductsByShopId
 SELECT DISTINCT
@@ -145,6 +181,16 @@ WHERE
     product.sid = $1;
 
 --name: ProductDetailById
+WITH item_tags AS (
+    SELECT
+        json_agg(tags)
+    FROM
+        product_tags,
+        tags
+    WHERE
+        product_tags.product_id = $1
+        AND product_tags.tag_id = tags.id
+)
 SELECT
     product.Sid,
     product.name,
@@ -156,14 +202,19 @@ SELECT
     product.purchase_count,
     product.slider_images,
     product.desc_images,
+    item_tags.json_agg,
     product.seller,
     product.size_details,
     product.category_id,
+    category.sname,
     product.options
 FROM
-    product
+    product,
+    item_tags,
+    category
 WHERE
-    product.sid = $1;
+    product.sid = $1
+    AND category.id = product.category_id;
 
 --name:	CheckIfShopExists
 SELECT
@@ -191,13 +242,13 @@ WHERE
 ORDER BY
     id DESC;
 
---name:	UpdateProduct
-UPDATE
+--name:	GetAllSidsWithBigThumbnail
+SELECT DISTINCT
+    sid
+FROM
     product
-SET
-    sprice = $1,
-    sale_price = $2,
-    sale_percent = $3 category_id = $4 options = $5
 WHERE
-    sid = $6;
-
+    sid NOT IN ( SELECT DISTINCT
+            product_tags.product_id
+        FROM
+            product_tags

@@ -40,7 +40,7 @@ func (a *API) InitializeRoutes() {
 
 	//			Product
 	a.R.HandleFunc("/api/products/categories={id:[0-9]+}", productC.ProductsByCategoryId).Methods("GET")
-	a.R.HandleFunc("/api/products/tag={tag:[a-z]+}", productC.ProductsByTags).Methods("GET")
+	a.R.HandleFunc("/api/products/tag={tag:[0-9]+}", productC.ProductsByTags).Methods("GET")
 	// a.r.HandleFunc("/api/products//related/id={id:[0-9]+}", productC.RelatedProducts).Methods("GET")
 	a.R.HandleFunc("/api/products/shop={id:[0-9]+}", productC.ProductsByShopId).Methods("GET")
 	a.R.HandleFunc("/api/products/id={id:[0-9]+}/sr={sr:[a-z]+}", productC.ProductDetailById).Methods("GET")
@@ -57,6 +57,7 @@ func (a *API) InitializeRoutes() {
 	//			Cart
 	a.R.HandleFunc("/api/cart/new", cartC.CreateCartItem).Methods("POST")
 	a.R.HandleFunc("/api/cart/all", cartC.AllCartItems).Methods("GET")
+	a.R.HandleFunc("/api/cart/coupons/all", cartC.AvailableCoupons).Methods("GET")
 
 	a.R.HandleFunc("/api/cart/update", cartC.UpdateCartItem).Methods("POST")
 	a.R.HandleFunc("/api/cart/delete", cartC.DeleteCartItem).Methods("POST")

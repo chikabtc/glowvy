@@ -105,7 +105,7 @@ func (p *Product) ProductsByCategoryId(w http.ResponseWriter, r *http.Request) {
 		resp.Json(w, r, http.StatusBadRequest, resp.WithError(msgError))
 		return
 	}
-	products, err := p.ps.ProductsByCategoryID(id, start, count, sortBy)
+	products, err := p.ps.ProductsByCategoryID(fmt.Sprintln(id), sortBy, start, count)
 	if err != nil {
 		bugsnag.Notify(err)
 		resp.Json(w, r, http.StatusInternalServerError, resp.WithError(err.Error()))
@@ -126,15 +126,16 @@ func (p *Product) ProductsByTags(w http.ResponseWriter, r *http.Request) {
 		start = 0
 	}
 	params := mux.Vars(r)
-	tag := params["tag"]
+	tagId := params["tag"]
 	// if err != nil {
 	// 	bugsnag.Notify(err)
 	// 	msgError := fmt.Sprintf("Invalid actions Id. Error: %s", err)
 	// 	resp.Json(w, r, http.StatusBadRequest, resp.WithError(msgError))
 	// 	return
 	// }
-	products, err := p.ps.ProductsByTags(tag, start, count, sortBy)
+	products, err := p.ps.ProductsByTags(tagId, sortBy, start, count)
 	if err != nil {
+		fmt.Println(err)
 		bugsnag.Notify(err)
 		resp.Json(w, r, http.StatusInternalServerError, resp.WithError(err.Error()))
 		return

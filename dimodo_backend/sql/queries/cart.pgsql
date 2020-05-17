@@ -28,6 +28,7 @@ SELECT
     cart_item.option_id,
     product.sid,
     product.name,
+    product.category_id,
     product.thumbnail,
     product.sprice,
     product.sale_price,
@@ -38,6 +39,27 @@ FROM
 WHERE
     CAST(cart_item.product_id AS varchar) = product.sid
     AND cart_item.user_id = $1;
+
+--name:	AvailableCoupons
+SELECT
+    coupon.id,
+    coupon.user_id,
+    coupon.code,
+    coupon.description,
+    coupon.discount_type,
+    coupon.discount_amount,
+    coupon.discount_percentage,
+    coupon.usage_limit,
+    coupon.usage_count,
+    coupon.minimum_amount,
+    coupon.maximum_amount,
+    coupon.date_created,
+    coupon.date_expires
+FROM
+    coupon
+WHERE
+    user_id = $1
+    AND usage_count < usage_limit;
 
 --name:	SubItemCartQuery
 UPDATE
@@ -68,10 +90,10 @@ WHERE
 
 --name:	CreateOrder
 WITH newOrder AS (
-INSERT INTO orders (user_id, address_id, total_shipping, total_fee, is_paid, creater)
-        VALUES ($1, $2, $3, $4, FALSE, $1)
+INSERT INTO orders (user_id, address_id, total_shipping, total_fee, total_discounts, creater)
+        VALUES ($1, $2, $3, $4, $5, $1)
     RETURNING
-        id, user_id, address_id, total_shipping, total_fee, created_at, is_paid
+        id, user_id, address_id, total_shipping, total_fee, total_discounts, created_at, is_paid
 ), moved_rows AS (
     DELETE FROM cart_item
     WHERE cart_item.user_id = $1
@@ -103,10 +125,20 @@ SELECT
     newOrder.address_id,
     newOrder.total_shipping,
     newOrder.total_fee,
+    newOrder.total_discounts,
     newOrder.created_at,
     newOrder.is_paid
 FROM
     newOrder;
+
+--name: UpdateCouponUsageCount
+UPDATE
+    coupon
+SET
+    usage_count = usage_count + 1
+WHERE
+    id = $1
+    AND user_id = $2;
 
 --name:	OrderItemsByID
 SELECT
@@ -115,6 +147,7 @@ SELECT
     order_item.option,
     order_item.option_id,
     product.sid,
+    product.category_id,
     product.name,
     product.thumbnail,
     product.sprice,
@@ -131,9 +164,11 @@ WHERE
 SELECT
     id,
     user_id,
+    is_paid,
     address_id,
     total_shipping,
     total_fee,
+    total_discounts,
     created_at
 FROM
     orders

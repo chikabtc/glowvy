@@ -1,5 +1,5 @@
 --name: sqlCreateProducts
-INSERT INTO product (sid, sprice, sale_price, sale_percent, purchase_count, name, category_id, thumbnail, tags, creater)
+INSERT INTO product (sid, sprice, sale_price, sale_percent, purchase_count, name, category_id, thumbnail, creater)
 SELECT
    CAST($1 AS varchar),
    $2,
@@ -9,7 +9,6 @@ SELECT
    $6,
    $7,
    $8,
-   $9,
    1
 WHERE
    NOT EXISTS (
@@ -121,16 +120,28 @@ SELECT
 FROM
    product;
 
+--name:	GetAllTaglessSids
+SELECT DISTINCT
+   sid
+FROM
+   product
+WHERE
+   sid NOT IN ( SELECT DISTINCT
+         product_tags.product_id
+      FROM
+         product_tags);
+
 --name:	UpdateProduct
 UPDATE
    product
 SET
-   sprice = $1,
-   sale_price = $2,
-   sale_percent = $3,
-   options = $4
+   sprice = $2,
+   sale_price = $3,
+   sale_percent = $4,
+   category_id = $5,
+   options = $6
 WHERE
-   sid = $5;
+   sid = $1;
 
 --name:	GetProductOption
 SELECT
@@ -139,4 +150,19 @@ FROM
    product
 WHERE
    sid = $1;
+
+--name:	AddTag
+WITH new_tag AS (
+INSERT INTO tags (sname)
+      VALUES ($1)
+   ON CONFLICT
+      DO NOTHING
+   RETURNING
+      *)
+   INSERT INTO product_tags (product_id, tag_id)
+   SELECT
+      $2,
+      new_tag.id
+   FROM
+      new_tag;
 
