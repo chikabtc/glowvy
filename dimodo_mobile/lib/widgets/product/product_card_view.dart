@@ -44,6 +44,10 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var tag = product.tags.length == 1
+        ? product.tags[0].sname
+        : product.tags[1].sname;
+
     return Card(
       color: Colors.white,
       elevation: 0,
@@ -80,33 +84,32 @@ class ProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "[${product.tags[0].sname}]  ${product.categoryName} " ??
-                        "not found",
+                    "$tag ${product.categoryName} " ?? "not found",
                     maxLines: 1,
                     style: kBaseTextStyle.copyWith(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  SizedBox(height: 3),
-                  if (product.salePercent != 0 && product.salePercent != null)
-                    Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.only(left: 4),
-                          child: Text(
-                            "${product.salePercent}%",
-                            textAlign: TextAlign.center,
-                            style: kBaseTextStyle.copyWith(
-                                color: kAccentRed,
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        Image.asset("assets/icons/home/coupon.png")
-                      ],
-                    ),
-                  SizedBox(height: 7),
+                  // SizedBox(height: 3),
+                  // if (product.salePercent != 0 && product.salePercent != null)
+                  //   Row(
+                  //     children: <Widget>[
+                  //       Padding(
+                  //         padding: EdgeInsets.only(left: 4),
+                  //         child: Text(
+                  //           "${product.salePercent}%",
+                  //           textAlign: TextAlign.center,
+                  //           style: kBaseTextStyle.copyWith(
+                  //               color: kAccentRed,
+                  //               fontSize: 10,
+                  //               fontWeight: FontWeight.bold),
+                  //         ),
+                  //       ),
+                  //       Image.asset("assets/icons/home/coupon.png")
+                  //     ],
+                  //   ),
+                  // SizedBox(height: 7),
                   Row(
                     children: <Widget>[
                       Text(

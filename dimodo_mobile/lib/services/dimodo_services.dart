@@ -14,7 +14,6 @@ import '../models/order/order.dart';
 import '../models/product/product.dart';
 import '../models/reviews.dart';
 import '../models/user/user.dart';
-import '../models/user/userModel.dart';
 import 'index.dart';
 import 'dart:io';
 import '../common/constants.dart';

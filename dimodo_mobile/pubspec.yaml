@@ -64,7 +64,7 @@ dependencies:
   firebase_core: 0.4.3+1
   firebase_auth: 0.15.2
   firestore_ui: 1.7.2
-  flutter_webview_plugin: 0.3.10
+  flutter_webview_plugin: 0.3.8
   connectivity: 0.4.6+1
   random_string: 1.1.0
   google_maps_flutter: 0.5.21+15

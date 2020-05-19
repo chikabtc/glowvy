@@ -36,8 +36,8 @@ class HomeScreenState extends State<HomeScreen>
   @override
   void initState() {
     super.initState();
-    getProductByTagStar = service.getProductsByTag(tag: 5, sortBy: "id");
-    getProductByTagTrending = service.getProductsByTag(tag: 6, sortBy: "id");
+    getProductByTagStar = service.getProductsByTag(tag: 6, sortBy: "id");
+    getProductByTagTrending = service.getProductsByTag(tag: 5, sortBy: "id");
   }
 
   @override
@@ -190,7 +190,7 @@ class HomeScreenState extends State<HomeScreen>
                         fontSize: 15, fontWeight: FontWeight.w600),
                   ),
                 ),
-                // ProductModel.showProductList(future: getProductByTagTrending),
+                ProductModel.showProductList(future: getProductByTagTrending),
               ])),
               SliverList(
                 delegate: SliverChildListDelegate([

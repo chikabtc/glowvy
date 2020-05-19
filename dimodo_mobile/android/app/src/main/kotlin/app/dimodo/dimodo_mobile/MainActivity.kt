@@ -1,4 +1,4 @@
-package app.dimodo.dimodo_mobile
+package app.dimodo.android
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

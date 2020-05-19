@@ -96,19 +96,21 @@ class _ProductListState extends State<ProductList>
           )
         : Padding(
             padding: const EdgeInsets.only(left: 3.0, right: 3),
-            child: GridView.builder(
-              addAutomaticKeepAlives: true,
-              padding: const EdgeInsets.all(0.0),
+            child: CupertinoScrollbar(
+              child: GridView.builder(
+                addAutomaticKeepAlives: true,
+                padding: const EdgeInsets.all(0.0),
 
-              physics: ScrollPhysics(), // to disable GridView's scrolling
-              shrinkWrap: true,
-              itemCount: widget.products.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 0.75,
-                crossAxisCount: 2,
+                physics: ScrollPhysics(), // to disable GridView's scrolling
+                shrinkWrap: true,
+                itemCount: widget.products.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  childAspectRatio: 0.8,
+                  crossAxisCount: 2,
+                ),
+                itemBuilder: (BuildContext context, int index) => ProductCard(
+                    product: widget.products[index], width: widthContent),
               ),
-              itemBuilder: (BuildContext context, int index) => ProductCard(
-                  product: widget.products[index], width: widthContent),
             ),
           );
   }
