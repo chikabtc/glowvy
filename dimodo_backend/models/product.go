@@ -115,8 +115,8 @@ type Product struct {
 	Sale_percent   int          `json:"sale_percent,omitempty"`
 	Purchase_count int          `json:"purchase_count,omitempty"`
 	Price          int          `json:"price,omitempty"`
-	CategoryId     int          `json:"category_id,omitempty"`
-	CategoryName   string       `json:"categoryName,omitempty"`
+	CategoryId     int          `json:"category_id"`
+	CategoryName   string       `json:"category_name,omitempty"`
 	Barcode        string       `json:"barcode,omitempty"`
 	SizeDetails    []SizeDetail `json:"size_details,omitempty"`
 	Options        []Option     `json:"options,omitempty"`
@@ -373,6 +373,7 @@ func (ps *productService) ProductDetailById(id int) (*Product, error) {
 	}
 
 	err = row.Scan(
+		&product.Id,
 		&product.Sid,
 		&product.Name,
 		&product.Price,

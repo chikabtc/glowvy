@@ -22,9 +22,11 @@ WITH matching_product_sids AS (
     SELECT DISTINCT
         sid
     FROM
-        product
+        product,
+        category
     WHERE
-        product.category_id = $1
+        product.category_id = category.id
+        AND category.parent = $1
 )
 SELECT
     product.id,
@@ -192,6 +194,7 @@ WITH item_tags AS (
         AND product_tags.tag_id = tags.id
 )
 SELECT
+    product.Id,
     product.Sid,
     product.name,
     product.sprice,
@@ -251,4 +254,5 @@ WHERE
     sid NOT IN ( SELECT DISTINCT
             product_tags.product_id
         FROM
-            product_tags
+            product_tags;
+

@@ -17,13 +17,15 @@ func main() {
 		APIKey: "e01a6cf99f5bdf480b010b80e45f8c66",
 		// The import paths for the Go packages containing your source files
 		ProjectPackages: []string{"main", "gitlab.com/parkerfreeman/dimodo"},
+
+		NotifyReleaseStages: []string{"production"},
 	})
 
 	c := cron.New()
 	crawler := crawler.NewCrawler()
 	api := api.NewAPI(crawler)
 
-	err := c.AddFunc("0 56 4 * * ?", func() {
+	err := c.AddFunc("0 50 10 * * ?", func() {
 		start := time.Now()
 		cronMessage := errors.New("   updating products...")
 		bugsnag.Notify(cronMessage)
@@ -64,7 +66,6 @@ func main() {
 	if err != nil {
 		bugsnag.Notify(err)
 	}
-
 	c.Start()
 	api.Run()
 

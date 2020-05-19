@@ -75,7 +75,7 @@ INSERT INTO product (sid, name, price, sale_percent, sale_price, thumbnail, crea
    VALUES ($1, $2, $3, $4, $5, $6, 1);
 
 --name: CreateProduct
-INSERT INTO product (sid, sname, name, sprice, sale_price, sale_percent, purchase_count, thumbnail, description, slider_images, desc_images, options, soptions, seller, size_details, category_id, tags, creater)
+INSERT INTO product (sid, sname, name, sprice, sale_price, sale_percent, purchase_count, thumbnail, description, slider_images, desc_images, options, soptions, seller, size_details, category_id, creater)
 SELECT
    CAST($1 AS varchar),
    $2,
@@ -116,9 +116,22 @@ SELECT
 
 --name:	GetSidsOfAllProducts
 SELECT
+   sid,
+   id
+FROM
+   product
+WHERE
+   id < 11009
+ORDER BY
+   id DESC;
+
+--name:	GetAllCategoryZeroProducts
+SELECT
    sid
 FROM
-   product;
+   product
+WHERE
+   category_id = 0;
 
 --name:	GetAllTaglessSids
 SELECT DISTINCT
@@ -166,3 +179,55 @@ INSERT INTO tags (sname)
    FROM
       new_tag;
 
+--name:	AddTagToProductTags
+WITH selected_tag AS (
+   SELECT
+      tags.sname,
+      tags.id
+   FROM
+      tags
+   WHERE
+      tags.sname = $1)
+INSERT INTO product_tags (product_id, tag_id)
+SELECT
+   $2,
+   selected_tag.id
+FROM
+   selected_tag;
+
+--name: checkIfTagForProductExists
+WITH selected_tag AS (
+   SELECT
+      tags.sname,
+      tags.id
+   FROM
+      tags
+   WHERE
+      tags.sname = $1
+)
+SELECT
+   EXISTS (
+      SELECT
+         1
+      FROM
+         product_tags,
+         selected_tag
+      WHERE
+         product_tags.tag_id = selected_tag.id
+         AND product_tags.product_id = $2
+      LIMIT 1);
+
+--name: GetAllSidsWithFewerThanTags
+SELECT
+   COUNT(*) AS tags_count,
+   pt.product_id
+FROM
+   "product_tags" AS pt,
+   "product" AS p
+WHERE
+   pt.product_id = p.sid
+GROUP BY
+   p.sid,
+   pt.product_id
+HAVING
+   count(pt) < 2

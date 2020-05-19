@@ -1,11 +1,13 @@
 package crawler
 
 import (
+	"bufio"
 	"dimodo_backend/models"
 	"dimodo_backend/models/brandi"
 	"dimodo_backend/utils/translate"
 	"log"
 	"math/rand"
+	"os"
 	"strings"
 	"time"
 
@@ -24,11 +26,18 @@ import (
 
 const brandiAuth = "3b17176f2eb5fdffb9bafdcc3e4bc192b013813caddccd0aad20c23ed272f076_1423639497"
 
+//exceptions outer
+//cardigan(371)
+//16 --> bags in dimodo 6--> bags on brandi
+
 //mainPage-0
 //top-1: 40,000
-//brandi: :: t-shirts(13), blouse(15), hoodie(120), vest(19), cardigan(18) outer(363) top(364)
+//brandi: :: t-shirts(13), blouse(15), hoodie(120), vest(19), cardigan(18) outer(363) top-big(364), knit(17) short sleeve t shirtS(374) top-knit (375)
+//민소매/나시(379)
+//셔츠/블라우스(378)
+
 //pants-2 50,000
-//brandi: :: PANTS(366) pants(50) denim(25) slacks(24) shorts(51) leggings(121)
+//brandi: :: big size PANTS(366) denim(25) slacks(24) shorts(51) leggings(121)
 //dress-3 50,000
 //brandi: :: onepiece(33) dress(367)
 //skirt-4 40,000
@@ -36,30 +45,31 @@ const brandiAuth = "3b17176f2eb5fdffb9bafdcc3e4bc192b013813caddccd0aad20c23ed272
 //coat-5 50,000
 //brandi: :: coat(21) jumper(22) jacket(20)
 //shoes-6 70,000
-//brandi: :: sneakers(52) boots(122) heel(54) loader(55) sandal(56)
+//brandi: :: sneakers(52) boots(122) heel(54) loader(55) loadfer(273) sandal(56) boot(271) SNEAKER(272) 샌들/슬리퍼(275)shoes-etc(387) running(385)
 //lifeware-7 50,000
-//brandi: :: lifeware(107) underwear(108)
+//brandi: :: lifeware(107) underwear(108) panty (402) homeware(109) swimwear (368) set(403) bra(401)
 //cosmetics-8 40,000
-//brandi: :: beauty root(354), skin care(355) make up (356)  body hair (357) nail and hair (369) inner beauty (358) beauty etc(359)
+//brandi: :: beauty root(354), skin care(355) make up (356)  body hair (357) nail and hair (369) inner beauty (358) 360(base) 361(color), nail (369)
 
 //etc-9
-//brandi: :: bags(6) accessories(10) jewerly(119) crossbag(57) clutch(58) shouldebag(59) totebags(60) backpack(123) phonecase(124) wallet(35) scarf(66) hats(34) socks(105) watch(36)eyeware (125) earing(127) necklace(128) ring(129)
-//this approach doesn't work..
+//brandi: :: bags(6) accessories(10) jewerly(119) crossbag(57) clutch(58) shouldebag(59) totebags(60) backpack(123) phonecase(124) wallet(35) scarf(66) hats(34) socks(105) watch(36)eyeware (125) earing(127) necklace(128) ring(129)beauty etc(359)
+//shoulder bag(278)
+
 //47 categories
 //call by category..nope.. need to know all cate.
 
 func (c *Crawler) AddNewProductsByCategories() error {
 	var categories = make(map[int][]int)
 	var err error
-	categories[1] = append(categories[1], 13, 15, 120, 19, 18, 363, 364)
+	categories[1] = append(categories[1], 13, 15, 120, 17, 19, 18, 363, 364, 374, 379, 371, 375)
 	categories[2] = append(categories[2], 366, 50, 25, 24, 51, 121)
 	categories[3] = append(categories[3], 33, 367)
 	categories[4] = append(categories[4], 47, 48, 49, 365)
-	categories[5] = append(categories[5], 21, 22, 28)
-	categories[6] = append(categories[6], 52, 122, 54, 55, 56)
-	categories[7] = append(categories[7], 107, 108)
-	categories[8] = append(categories[8], 354, 355, 356, 357, 358, 359)
-	categories[9] = append(categories[9], 6, 10, 119, 57, 58, 59, 60, 123, 124, 35, 66, 34, 105, 36, 125, 127, 128, 129)
+	categories[5] = append(categories[5], 21, 22, 20)
+	categories[6] = append(categories[6], 52, 122, 54, 55, 56, 272, 275, 387, 385)
+	categories[7] = append(categories[7], 107, 108, 109, 368, 403, 402, 401)
+	categories[8] = append(categories[8], 354, 355, 356, 357, 358, 360, 361, 369)
+	categories[9] = append(categories[9], 6, 10, 119, 57, 58, 59, 60, 123, 124, 35, 66, 34, 105, 36, 125, 127, 128, 129, 278, 359)
 	for parentId, childrenIds := range categories {
 		for _, categoryId := range childrenIds {
 			fmt.Println("calling product by category:", +categoryId, "parent id: ", parentId)
@@ -73,52 +83,57 @@ func (c *Crawler) AddNewProductsByCategories() error {
 func (c *Crawler) findCategoryId(cateId string) int {
 	categoryId, _ := strconv.Atoi(cateId)
 	var categories = make(map[int][]int)
-	categories[1] = append(categories[1], 13, 15, 120, 19, 18)
+	categories[1] = append(categories[1], 13, 15, 120, 17, 19, 18, 363, 364, 374, 379, 371, 375)
 	categories[2] = append(categories[2], 366, 50, 25, 24, 51, 121)
 	categories[3] = append(categories[3], 33, 367)
 	categories[4] = append(categories[4], 47, 48, 49, 365)
-	categories[5] = append(categories[5], 21, 22, 28)
-	categories[6] = append(categories[6], 52, 122, 54, 55, 56)
-	categories[7] = append(categories[7], 107, 108)
-	categories[8] = append(categories[8], 354)
-	categories[9] = append(categories[9], 6, 10, 119, 57, 58, 59, 60, 123, 124, 35, 66, 34, 105, 36, 125, 127, 128, 129, 363, 364)
+	categories[5] = append(categories[5], 21, 22, 20)
+	categories[6] = append(categories[6], 52, 122, 54, 55, 56, 272, 275, 387, 385)
+	categories[7] = append(categories[7], 107, 108, 109, 368, 403, 402, 401)
+	categories[8] = append(categories[8], 354, 355, 356, 357, 358, 360, 361, 369)
+	categories[9] = append(categories[9], 6, 10, 119, 57, 58, 59, 60, 123, 124, 35, 66, 34, 105, 36, 125, 127, 128, 129, 278, 359)
 	for parentId, childrenIds := range categories {
 		for _, cateId := range childrenIds {
 			if categoryId == cateId {
+				fmt.Println("parentId", parentId)
 				return parentId
 			}
 		}
 	}
+	f, err := os.OpenFile("unknowncates.txt", os.O_APPEND|os.O_WRONLY, 0600)
+	if err != nil {
+		panic(err)
+	}
+
+	defer f.Close()
+	// Splits on newlines by default.
+	file, err := os.Open("unknowncates.txt")
+	if err != nil {
+		return 0
+	}
+	defer file.Close()
+	scanner := bufio.NewScanner(file)
+
+	line := 1
+	// https://golang.org/pkg/bufio/#Scanner.Scan
+	for scanner.Scan() {
+		if strings.Contains(scanner.Text(), cateId) {
+			fmt.Println("duplicate it!")
+			return 0
+		}
+		line++
+	}
+
+	if err := scanner.Err(); err != nil {
+		fmt.Println("fail to scan!", err)
+	}
+
+	if _, err = f.WriteString(fmt.Sprint("\n\n ", cateId)); err != nil {
+		panic(err)
+	}
+	f.Close()
 	return 0
 }
-
-// func (c *Crawler) events(i int64) {
-// 	// get api
-// 	i = i * 100
-// 	offset := strconv.FormatInt(i, 10)
-// 	url := "https://cf-api-c.brandi.me/v1/web/events/4663?&limit=100&offset=" + offset
-
-// 	req, _ := http.NewRequest("GET", url, nil)
-
-// 	req.Header.Add("Authorization", brandiAuth)
-
-// 	res, _ := http.DefaultClient.Do(req)
-
-// 	defer res.Body.Close()
-// 	body, _ := ioutil.ReadAll(res.Body)
-// 	// decode
-// 	var product brandi.MyJsonName
-// 	// fmt.Println(body)
-// 	err := json.Unmarshal(body, &product)
-// 	if err != nil {
-// 		bugsnag.Notify(err)
-// 		fmt.Println("Error")
-// 	}
-// 	for _, k := range product.Data.ProductGroups[0].Products {
-// 		c.ProductById(k.ID, "events")
-// 	}
-// 	fmt.Println(url)
-// }
 
 func (c *Crawler) GetPopularProductsByCategory(parentId int, idx int, limit int) error {
 	// get api
@@ -279,7 +294,7 @@ func (c *Crawler) ProductDetailById(bProductId string) (*models.Product, error) 
 	fmt.Println(url)
 	req, _ := http.NewRequest("GET", url, nil)
 	req.Header.Add("Authorization", brandiAuth)
-	client := http.Client{Timeout: time.Second * 10}
+	client := http.Client{Timeout: time.Second * 30}
 	res, err := client.Do(req)
 	if err != nil {
 		bugsnag.Notify(err)
@@ -293,8 +308,9 @@ func (c *Crawler) ProductDetailById(bProductId string) (*models.Product, error) 
 		panic(err)
 	}
 	sid, _ := strconv.Atoi(bp.Data.ID)
+	//options in Korean
 	var sProductOptions = []models.Option{}
-	//vietnaemse options
+	//options in vietnaemse
 	var productOptions = []models.Option{}
 
 	//just update the sold out property.. it's hard to update...
@@ -314,16 +330,38 @@ func (c *Crawler) ProductDetailById(bProductId string) (*models.Product, error) 
 	// sizeDetailBytes, _ := json.Marshal(c.SizeDetail(bp.Data.Text))
 	adjustedPrice := int(float64(bp.Data.Price) * 1.1)
 	adjustedSalePrice := int(float64(bp.Data.SalePrice) * 1.1)
+	cateId, err := strconv.Atoi(bp.Data.CategoryId[0].ID)
+
 	//add tags from brandi
 	for _, bTag := range bp.Data.Tags {
-		var tag = models.Tag{}
-		id, _ := strconv.Atoi(bTag.ID)
-		tag.Id = id
-		tag.Name = bTag.Name
-		_, err := c.dot.Exec(c.DB, "AddTag", tag.Name, bp.Data.ID)
+		row, err := c.dot.Exec(c.DB, "AddTag", bTag.Name, bp.Data.ID)
 		if err != nil {
 			fmt.Println(err)
 			bugsnag.Notify(err)
+		}
+		fmt.Println("tag name :" + bTag.Name + " sid :" + bp.Data.ID)
+
+		//if the tag already exists, then insert the tag to the product_tags
+		//if the tag that belongs to the product exists, then do nothing
+		if row != nil {
+			fmt.Println("nil row")
+
+			var isProductTagExists bool
+
+			row, err := c.dot.QueryRow(c.DB, "checkIfTagForProductExists", bTag.Name, bp.Data.ID)
+			row.Scan(&isProductTagExists)
+
+			if err != nil {
+				fmt.Println(err)
+				bugsnag.Notify(err)
+			}
+			if !isProductTagExists {
+				_, err = c.dot.Exec(c.DB, "AddTagToProductTags", bTag.Name, bp.Data.ID)
+				if err != nil {
+					fmt.Println(err)
+					// bugsnag.Notify(err)
+				}
+			}
 		}
 	}
 	product := models.Product{
@@ -332,7 +370,7 @@ func (c *Crawler) ProductDetailById(bProductId string) (*models.Product, error) 
 		Sale_price:   adjustedSalePrice,
 		Sale_percent: bp.Data.SalePercent,
 		Options:      productOptions,
-		// Category_id:  cateId,
+		CategoryId:   cateId,
 	}
 	if err != nil {
 		bugsnag.Notify(err)
@@ -340,6 +378,45 @@ func (c *Crawler) ProductDetailById(bProductId string) (*models.Product, error) 
 		return nil, err
 	}
 	return &product, err
+}
+
+func (c *Crawler) AddTags(bp brandi.Product) error {
+	var err error
+	for _, bTag := range bp.Data.Tags {
+		row, err := c.dot.Exec(c.DB, "AddTag", bTag.Name, bp.Data.ID)
+		if err != nil {
+			bugsnag.Notify(err)
+			return err
+		}
+		fmt.Println("tag name :" + bTag.Name + " sid :" + bp.Data.ID)
+
+		//if the tag already exists, then insert the tag to the product_tags
+		//if the tag that belongs to the product exists, then do nothing
+		if row != nil {
+			fmt.Println("nil row")
+
+			var isProductTagExists bool
+
+			row, err := c.dot.QueryRow(c.DB, "checkIfTagForProductExists", bTag.Name, bp.Data.ID)
+			row.Scan(&isProductTagExists)
+
+			if err != nil {
+
+				fmt.Println(err)
+				bugsnag.Notify(err)
+				return err
+			}
+			if !isProductTagExists {
+				_, err = c.dot.Exec(c.DB, "AddTagToProductTags", bTag.Name, bp.Data.ID)
+				if err != nil {
+					fmt.Println(err)
+					// bugsnag.Notify(err)
+					return err
+				}
+			}
+		}
+	}
+	return err
 }
 
 func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) error {
@@ -431,13 +508,7 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 			bugsnag.Notify(err)
 		}
 	}
-
-	//add tag generated by our backend
-	_, err = c.dot.Exec(c.DB, "AddTag", tag, bp.Data.ID)
-	if err != nil {
-		fmt.Println(err)
-		bugsnag.Notify(err)
-	}
+	c.AddTags(bp)
 
 	_, err = c.dot.Exec(c.DB, "CreateProduct",
 		bp.Data.ID,
@@ -743,24 +814,27 @@ func (c *Crawler) ImageThumbnailByProductId(bProductId string) (string, error) {
 func (c *Crawler) UpdateProducts() error {
 	sids := make([]string, 0)
 
-	rows, err := c.dot.Query(c.DB, "GetAllTaglessSids")
+	rows, err := c.dot.Query(c.DB, "GetSidsOfAllProducts")
 	if err != nil {
 		// bugsnag.Notify(err)
-		fmt.Println("GetAllTaglessSids: ", err)
+		fmt.Println("GetSidsOfAllProducts: ", err)
 		return err
 	}
 
 	var sid string
+	var id string
 	defer rows.Close()
 
 	for rows.Next() {
 		if err := rows.Scan(
 			&sid,
+			&id,
 		); err != nil {
 			fmt.Println("fail to GetSidsOfAllProducts ", err)
 			return err
 		}
-		time.Sleep(2 * time.Second)
+		fmt.Println("ProductId: ", id)
+		time.Sleep(4 * time.Second)
 		product, err := c.ProductDetailById(sid)
 		if err != nil {
 			bugsnag.Notify(err)
