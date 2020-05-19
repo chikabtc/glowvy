@@ -4,7 +4,6 @@ import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import 'dart:async';
 import 'package:sentry/sentry.dart';
-import 'package:firebase_performance/firebase_performance.dart';
 import 'app.dart';
 
 final SentryClient _sentry = new SentryClient(
@@ -69,33 +68,5 @@ Future<Null> _reportError(dynamic error, dynamic stackTrace) async {
     print('Success! Event ID: ${response.eventId}');
   } else {
     print('Failed to report to Sentry.io: ${response.error}');
-  }
-}
-
-class _MetricHttpClient extends BaseClient {
-  _MetricHttpClient(this._inner);
-
-  final Client _inner;
-
-  @override
-  Future<StreamedResponse> send(BaseRequest request) async {
-    final HttpMetric metric = FirebasePerformance.instance
-        .newHttpMetric(request.url.toString(), HttpMethod.Get);
-
-    await metric.start();
-
-    StreamedResponse response;
-    try {
-      response = await _inner.send(request);
-      metric
-        ..responsePayloadSize = response.contentLength
-        ..responseContentType = response.headers['Content-Type']
-        ..requestPayloadSize = request.contentLength
-        ..httpResponseCode = response.statusCode;
-    } finally {
-      await metric.stop();
-    }
-
-    return response;
   }
 }

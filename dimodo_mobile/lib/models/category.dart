@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../services/index.dart';
-import 'package:html_unescape/html_unescape.dart';
 import 'package:provider/provider.dart';
 import 'app.dart';
 
@@ -69,10 +68,6 @@ class Category {
   int totalProduct;
 
   Category.fromJson(Map<String, dynamic> parsedJson) {
-    id = parsedJson["id"];
-    name = HtmlUnescape().convert(parsedJson["name"]);
-    image = parsedJson["image"];
-
     var categoryList = List();
     if (parsedJson["subCategories"] != null) {
       for (var cate in parsedJson["subCategories"]) {

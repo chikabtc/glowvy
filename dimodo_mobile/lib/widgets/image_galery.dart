@@ -41,7 +41,8 @@ class PicSwiper extends StatefulWidget {
   _PicSwiperState createState() => _PicSwiperState();
 }
 
-class _PicSwiperState extends State<PicSwiper> with SingleTickerProviderStateMixin {
+class _PicSwiperState extends State<PicSwiper>
+    with SingleTickerProviderStateMixin {
   var rebuildIndex = StreamController<int>.broadcast();
   var rebuildSwiper = StreamController<bool>.broadcast();
   AnimationController _animationController;
@@ -56,8 +57,8 @@ class _PicSwiperState extends State<PicSwiper> with SingleTickerProviderStateMix
   @override
   void initState() {
     currentIndex = widget.index;
-    _animationController =
-        AnimationController(duration: const Duration(milliseconds: 150), vsync: this);
+    _animationController = AnimationController(
+        duration: const Duration(milliseconds: 150), vsync: this);
     super.initState();
   }
 
@@ -91,11 +92,13 @@ class _PicSwiperState extends State<PicSwiper> with SingleTickerProviderStateMix
                   initGestureConfigHandler: (state) {
                     double initialScale = 1.0;
 
-                    if (state.extendedImageInfo != null && state.extendedImageInfo.image != null) {
+                    if (state.extendedImageInfo != null &&
+                        state.extendedImageInfo.image != null) {
                       initialScale = _initalScale(
                           size: size,
                           initialScale: initialScale,
-                          imageSize: Size(state.extendedImageInfo.image.width.toDouble(),
+                          imageSize: Size(
+                              state.extendedImageInfo.image.width.toDouble(),
                               state.extendedImageInfo.image.height.toDouble()));
                     }
                     return GestureConfig(
@@ -130,9 +133,11 @@ class _PicSwiperState extends State<PicSwiper> with SingleTickerProviderStateMix
                     animationListener = () {
                       //print(_animation.value);
                       state.handleDoubleTap(
-                          scale: _animation.value, doubleTapPosition: pointerDownPosition);
+                          scale: _animation.value,
+                          doubleTapPosition: pointerDownPosition);
                     };
-                    _animation = _animationController.drive(Tween<double>(begin: begin, end: end));
+                    _animation = _animationController
+                        .drive(Tween<double>(begin: begin, end: end));
 
                     _animation.addListener(animationListener);
 
@@ -169,7 +174,8 @@ class _PicSwiperState extends State<PicSwiper> with SingleTickerProviderStateMix
                   bottom: 0.0,
                   left: 0.0,
                   right: 0.0,
-                  child: MySwiperPlugin(widget.pics, currentIndex, rebuildIndex),
+                  child:
+                      MySwiperPlugin(widget.pics, currentIndex, rebuildIndex),
                 );
               },
               initialData: true,
@@ -177,9 +183,10 @@ class _PicSwiperState extends State<PicSwiper> with SingleTickerProviderStateMix
             ),
             Positioned(
               child: IconButton(
-                icon: Icon(Icons.close),
-                onPressed: (){Navigator.pop(context);}
-              ),
+                  icon: Icon(Icons.close),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
               top: 10,
               right: 10,
             )
@@ -204,12 +211,14 @@ class _PicSwiperState extends State<PicSwiper> with SingleTickerProviderStateMix
     var n1 = imageSize.height / imageSize.width;
     var n2 = size.height / size.width;
     if (n1 > n2) {
-      final FittedSizes fittedSizes = applyBoxFit(BoxFit.contain, imageSize, size);
+      final FittedSizes fittedSizes =
+          applyBoxFit(BoxFit.contain, imageSize, size);
       //final Size sourceSize = fittedSizes.source;
       Size destinationSize = fittedSizes.destination;
       return size.width / destinationSize.width;
     } else if (n1 / n2 < 1 / 4) {
-      final FittedSizes fittedSizes = applyBoxFit(BoxFit.contain, imageSize, size);
+      final FittedSizes fittedSizes =
+          applyBoxFit(BoxFit.contain, imageSize, size);
       //final Size sourceSize = fittedSizes.source;
       Size destinationSize = fittedSizes.destination;
       return size.height / destinationSize.height;

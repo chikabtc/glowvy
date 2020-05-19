@@ -13,7 +13,6 @@ import 'package:timeago/timeago.dart' as timeago;
 import 'config.dart';
 import 'constants.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:Dimodo/widgets/webview.dart';
 
 enum kSize { small, medium, large }
 

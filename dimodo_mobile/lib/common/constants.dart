@@ -131,8 +131,15 @@ var kDivider = Divider(
 );
 
 SizeConfig kSizeConfig;
-RateMyApp kRateMyApp = RateMyApp();
-
+RateMyApp kRateMyApp = RateMyApp(
+  preferencesPrefix: 'rateMyApp_',
+  minDays: 7,
+  minLaunches: 10,
+  remindDays: 7,
+  remindLaunches: 10,
+  googlePlayIdentifier: 'app.dimodo.android',
+  appStoreIdentifier: '1506979635',
+);
 //fb://messaging?id=%@
 String kFacebookFBID = "105086787660550";
 String kFBDimodoPage = "fb://profile/$kFacebookFBID";

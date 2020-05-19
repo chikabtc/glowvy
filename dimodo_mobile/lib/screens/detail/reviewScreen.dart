@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
-import 'dart:math';
 import '../../common/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

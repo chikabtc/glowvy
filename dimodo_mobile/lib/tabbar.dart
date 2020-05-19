@@ -1,5 +1,4 @@
 import 'package:Dimodo/screens/category.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:Dimodo/common/sizeConfig.dart';
 import 'package:provider/provider.dart';
@@ -25,8 +24,6 @@ class MainTabs extends StatefulWidget {
 
 class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  final _auth = FirebaseAuth.instance;
-  FirebaseUser loggedInUser;
   int currentPage = 0;
   String currentTitle = "Home";
   Color currentColor = Colors.deepPurple;
@@ -68,19 +65,6 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
       setState(() {
         _tabView.add(tabView(Map.from(tabData[i])));
       });
-    }
-  }
-
-  void getCurrentUser() async {
-    try {
-      final user = await _auth.currentUser();
-      if (user != null) {
-        setState(() {
-          loggedInUser = user;
-        });
-      }
-    } catch (e) {
-      print(e);
     }
   }
 
@@ -130,18 +114,8 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
     return list;
   }
 
-  bool checkIsAdmin() {
-    if (loggedInUser.email == config.adminEmail) {
-      isAdmin = true;
-    } else {
-      isAdmin = false;
-    }
-    return isAdmin;
-  }
-
   @override
   void initState() {
-    getCurrentUser();
     super.initState();
   }
 

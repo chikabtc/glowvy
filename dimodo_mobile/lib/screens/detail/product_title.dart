@@ -13,6 +13,9 @@ class ProductTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var tag = product.tags.length == 1
+        ? product.tags[0].sname
+        : product.tags[1].sname;
     return Container(
       color: Colors.white,
       padding: EdgeInsets.all(10),
@@ -95,7 +98,7 @@ class ProductTitle extends StatelessWidget {
           Container(
             width: MediaQuery.of(context).size.width,
             child: DynamicText(
-              productName,
+              "$tag ${product.categoryName}",
               style: kBaseTextStyle.copyWith(
                   fontSize: 13, fontWeight: FontWeight.w600),
             ),
