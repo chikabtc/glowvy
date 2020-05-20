@@ -874,3 +874,35 @@ func (c *Crawler) UpdateProducts() error {
 	fmt.Println("sid counts: ", len(sids))
 	return err
 }
+
+// func (c *Crawler) TranslateTags(bProductId string) error {
+// 	rows, err := c.dot.Query(c.DB, "GetAllTagsWithoutName")
+// 	if err != nil {
+// 		// bugsnag.Notify(err)
+// 		fmt.Println("GetAllTagsWithoutName: ", err)
+// 		return err
+// 	}
+
+// 	defer rows.Close()
+
+// 	for rows.Next() {
+// 		var sname string
+// 		var id int
+// 		var
+// 		if err := rows.Scan(
+// 			&sname,
+// 			&id,
+// 		); err != nil {
+// 			fmt.Println("fail to GetSidsOfAllProducts ", err)
+// 			return err
+// 		}
+
+// 		_, err = c.dot.Exec(c.DB, "UpdateTagName", sname, product.Price, product.Sale_price, product.Sale_percent, product.CategoryId, optionBytes)
+// 		if err != nil {
+// 			bugsnag.Notify(err)
+// 			fmt.Println("UpdateProduct: ", err)
+// 			return err
+// 		}
+
+// 	}
+// }

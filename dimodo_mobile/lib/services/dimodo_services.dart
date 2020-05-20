@@ -23,7 +23,7 @@ class DimodoServices implements BaseServices {
   factory DimodoServices() => _instance;
 
   // String accessToken;
-  bool isProd = false;
+  bool isProd = true;
 
   DimodoServices._internal();
 

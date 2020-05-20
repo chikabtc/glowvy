@@ -228,4 +228,22 @@ GROUP BY
    p.sid,
    pt.product_id
 HAVING
-   count(pt) < 2
+   count(pt) < 2;
+
+--name: GetAllTagsWithoutName
+SELECT
+   tags.sname,
+   tags.id
+FROM
+   tags
+WHERE
+   name IS NULL;
+
+--name :UpdateTagName
+UPDATE
+   tags
+SET
+   name = $1
+WHERE
+   id = $2;
+

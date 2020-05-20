@@ -21,16 +21,16 @@ echo "  killed all db connections successfully..."
 
 echo "  Deleting the production dimodo db..."
 dropdb 'dimodo';
-echo "  deleted the local dimodo db successfully..."
+echo "  deleted the production dimodo db successfully..."
 
-echo "  Creating the local dimodo db..."
+echo "  Creating the production dimodo db..."
 createdb 'dimodo';
-echo "  created the local dimodo db successfully..."
+echo "  created the production dimodo db successfully..."
 
 
 echo "  Restoring the latest dimodo db on local..."
 gunzip -c dimodo.pgsql.gz | psql dimodo -U postgres
 echo "  restored the lastest dimodo db on local..."
 
-echo "==== Done updating local dimodo db ===="
+echo "==== Done updating production dimodo db ===="
 
