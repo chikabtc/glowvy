@@ -7,7 +7,7 @@ import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/widgets/categories/CategoryButton.dart';
-import 'package:Dimodo/models/category.dart';
+import 'package:Dimodo/models/categoryModel.dart';
 import 'package:flutter/cupertino.dart';
 
 class CategoryScreen extends StatefulWidget {
@@ -39,6 +39,9 @@ class CategoryScreenState extends State<CategoryScreen>
 
     final categories =
         Provider.of<CategoryModel>(context, listen: false).categories;
+    print("categories length: ${categories.length}");
+
+    print("categories?: ${categories[0].image}");
 
     categories.forEach((cate) => categoryButtons.add(CategoryButton(cate)));
 

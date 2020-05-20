@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../common/tools.dart';
-import '../../../models/category.dart';
+import '../../../models/categoryModel.dart';
 import '../../../models/product/productModel.dart';
 
 /// The category icon circle list

@@ -5,7 +5,6 @@ import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
-import 'package:apple_sign_in/apple_sign_in.dart';
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
@@ -38,12 +37,7 @@ class _LoginPageState extends State<LoginScreen>
   }
 
   @override
-  void afterFirstLayout(BuildContext context) async {
-    try {
-      isAvailableApple = await AppleSignIn.isAvailable();
-      setState(() {});
-    } catch (e) {}
-  }
+  void afterFirstLayout(BuildContext context) async {}
 
   @override
   void dispose() {

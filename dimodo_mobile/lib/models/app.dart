@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import '../common/constants.dart';
 import 'package:provider/provider.dart';
-import '../models/category.dart';
+import '../models/categoryModel.dart';
 import '../services/index.dart';
 import '../common/config.dart';
 import 'package:shared_preferences/shared_preferences.dart';

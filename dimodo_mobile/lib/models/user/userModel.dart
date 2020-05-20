@@ -34,10 +34,9 @@ class UserModel with ChangeNotifier {
         password: password,
       );
       kAccessToken = user.accessToken;
+      isLoggedIn = true;
 
       user.address = await _service.getAddress(token: user.accessToken);
-
-      isLoggedIn = true;
 
       saveUser(user);
       success(user);
@@ -61,9 +60,12 @@ class UserModel with ChangeNotifier {
           //TODO: return error if the user logging with FB fails
           user = await _service.loginFacebook(token: accessToken.token);
           // user.address = await _service.getAddress(token: user.accessToken);
+          kAccessToken = user.accessToken;
+          isLoggedIn = true;
+
+          user.address = await _service.getAddress(token: user.accessToken);
 
           print('accessToken$accessToken');
-          isLoggedIn = true;
 
           saveUser(user);
           success(user);
@@ -97,10 +99,12 @@ class UserModel with ChangeNotifier {
       print('google accessToken: $token');
 
       user = await _service.loginGoogle(token: auth.accessToken);
+      kAccessToken = user.accessToken;
+      isLoggedIn = true;
+
       if (user.accessToken != null) {
         user.address = await _service.getAddress(token: user.accessToken);
       }
-      isLoggedIn = true;
 
       print("lgogogo: ${user.toJson()}");
       saveUser(user);

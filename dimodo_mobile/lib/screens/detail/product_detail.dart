@@ -56,10 +56,12 @@ class _ProductDetailState extends State<ProductDetail> {
   void initState() {
     super.initState();
     services.getReviews(widget.product.sid, offset, limit).then((onValue) {
-      setState(() {
-        metaReviews = onValue;
-      });
-      offset += 3;
+      if (this.mounted) {
+        setState(() {
+          metaReviews = onValue;
+        });
+        offset += 3;
+      }
     });
   }
 
@@ -216,7 +218,6 @@ class _ProductDetailState extends State<ProductDetail> {
                                 handle: NestedScrollView
                                     .sliverOverlapAbsorberHandleFor(context),
                                 child: SliverAppBar(
-                                  //imageFeature (0.5) + 70 + texts(dynamic! 13 * 4 dynamic text)
                                   expandedHeight: screenSize.height * 0.52 +
                                       //title static heigt (31) and font sizes total 41 and 0.9 is the number for the height of the font
                                       //52 is the fontsizes of the service container texts.

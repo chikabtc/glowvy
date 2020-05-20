@@ -218,8 +218,6 @@ class _ProductOptionState extends State<ProductOption>
         }
       });
     }
-    // print(
-    //     "chosenValue: $chosenValue, chosenKey: $chosenKey, isSoldOut :$isSoldOut");
     return isSoldOut;
   }
 

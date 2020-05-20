@@ -179,7 +179,7 @@
       "name": "ALL",
       "image": "assets/icons/categories/all.png",
       "id": 0,
-      "parent": "all",
+      "parent": 0,
       "subCategories": [{
         "name": "long dress",
         "id": 2,
@@ -192,7 +192,7 @@
       "name": "TOP",
       "image": "assets/icons/categories/top.png",
       "id": 1,
-      "parent": "all",
+      "parent": 1,
       "subCategories": [{
           "name": "long dress",
           "id": 2,
@@ -210,7 +210,7 @@
       "name": "COAT",
       "image": "assets/icons/categories/coat.png",
       "id": 5,
-      "parent": "all",
+      "parent": 5,
       "subCategories": [{
         "name": "long dress",
         "id": 2,
@@ -221,7 +221,7 @@
       "name": "PANT",
       "image": "assets/icons/categories/pants.png",
       "id": 2,
-      "parent": "all",
+      "parent": 2,
       "subCategories": [{
         "name": "long dress",
         "id": 2,
@@ -232,7 +232,7 @@
       "name": "SKIRT",
       "image": "assets/icons/categories/skirt.png",
       "id": 4,
-      "parent": "all",
+      "parent": 4,
       "subCategories": [{
         "name": "long dress",
         "id": 2,
@@ -243,7 +243,7 @@
       "name": "DRESS",
       "image": "assets/icons/categories/dress.png",
       "id": 3,
-      "parent": "all",
+      "parent": 3,
       "subCategories": [{
         "name": "long dress",
         "id": 2,
@@ -254,7 +254,7 @@
       "name": "SHOE",
       "image": "assets/icons/categories/shoes.png",
       "id": 6,
-      "parent": "all",
+      "parent": 6,
       "subCategories": [{
         "name": "long dress",
         "id": 2,
@@ -265,7 +265,7 @@
       "name": "UNDIE",
       "image": "assets/icons/categories/lifeware.png",
       "id": 7,
-      "parent": "all",
+      "parent": 7,
       "subCategories": [{
         "name": "long dress",
         "id": 2,
@@ -276,7 +276,7 @@
       "name": "COSME",
       "image": "assets/icons/categories/cosmetics.png",
       "id": 8,
-      "parent": "all",
+      "parent": 8,
       "subCategories": [{
         "name": "long dress",
         "id": 2,

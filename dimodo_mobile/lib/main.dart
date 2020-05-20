@@ -5,12 +5,14 @@ import 'package:provider/provider.dart';
 import 'dart:async';
 import 'package:sentry/sentry.dart';
 import 'app.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final SentryClient _sentry = new SentryClient(
     dsn:
         "https://866bdef953574dbdb81a7da5d08411da@o376105.ingest.sentry.io/5197560");
 
 void main() async {
+  SharedPreferences.setMockInitialValues({});
   FlutterError.onError = (FlutterErrorDetails details) async {
     if (isInDebugMode) {
       // In development mode simply print to console.

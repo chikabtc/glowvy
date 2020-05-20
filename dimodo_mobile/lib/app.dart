@@ -10,6 +10,7 @@ import 'package:Dimodo/screens/setting/add_shipping_address.dart';
 import 'package:Dimodo/screens/setting/reset_password.dart';
 import 'package:Dimodo/screens/setting/manage_address.dart';
 import 'package:after_layout/after_layout.dart';
+import 'package:localstorage/localstorage.dart';
 import 'screens/staticLaunchScreen.dart';
 import 'package:flare_splash_screen/flare_splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,7 @@ import 'common/tools.dart';
 import 'generated/i18n.dart';
 import 'models/app.dart';
 import 'models/order/cart.dart';
-import 'models/category.dart';
+import 'models/categoryModel.dart';
 import 'models/order/orderModel.dart';
 import 'models/address/addressModel.dart';
 import 'models/product/productModel.dart';
@@ -110,13 +111,17 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
   }
 
   Future checkFirstSeen() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool _seen = (prefs.getBool('seen') ?? false);
+    final LocalStorage storage = new LocalStorage("Dimodo");
+    final ready = await storage.ready;
+
+    bool _seen = storage.getItem("seen") ?? false;
+    print("isSeen?: ${storage.getItem('seen')}?");
 
     if (_seen)
       return false;
     else {
-      prefs.setBool('seen', true);
+      storage.setItem('seen', true);
+
       return true;
     }
   }

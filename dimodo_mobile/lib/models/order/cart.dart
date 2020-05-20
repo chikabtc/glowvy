@@ -11,7 +11,7 @@ import '../../common/constants.dart';
 import '../../common/tools.dart';
 import '../../services/index.dart';
 import '../../common/config.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 
 class CartModel with ChangeNotifier {
   CartModel() {
@@ -118,10 +118,10 @@ class CartModel with ChangeNotifier {
     cartItems.clear();
     selectedCoupons.clear();
     totalDiscounts = 0;
+    notifyListeners();
   }
 
   void updateFees() async {
-    getCurrency();
     getShippingFee();
     getSubTotal();
     getServiceFee();
@@ -263,16 +263,6 @@ class CartModel with ChangeNotifier {
       }
     } catch (err) {
       print(err);
-    }
-  }
-
-  Future getCurrency() async {
-    try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      currency = prefs.getString("currency") ??
-          (kAdvanceConfig['DefaultCurrency'] as Map)['currency'];
-    } catch (e) {
-      currency = (kAdvanceConfig['DefaultCurrency'] as Map)['currency'];
     }
   }
 

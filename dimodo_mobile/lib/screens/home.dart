@@ -7,6 +7,7 @@ import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/widgets/categories/CategoryButton.dart';
 import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/models/categoryModel.dart';
 import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:flutter/cupertino.dart';

@@ -1,14 +1,8 @@
-import 'package:Dimodo/common/constants.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:provider/provider.dart';
-
-import '../../common/config.dart';
-import '../../common/tools.dart';
 import '../../models/product/product.dart';
-import '../../models/product/productModel.dart';
 import '../../widgets/image_galery.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 
 class ImageFeature extends StatelessWidget {
@@ -19,8 +13,6 @@ class ImageFeature extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-    ProductVariation productVariation;
-    productVariation = Provider.of<ProductModel>(context).productVariation;
 
     _onShowGallery(context, [index = 0]) {
       showDialog<void>(
@@ -28,32 +20,6 @@ class ImageFeature extends StatelessWidget {
           builder: (BuildContext context) {
             return ImageGalery(images: product.sliderImages, index: index);
           });
-    }
-
-    List<Widget> renderImgs(BoxConstraints constraints) {
-      List<Container> imgs = [];
-      product.sliderImages.asMap().forEach((i, item) {
-        var img = Container(
-            width: double.maxFinite,
-            child: Stack(
-              children: <Widget>[
-                Positioned(
-                  top: double.parse(kProductDetail['marginTop'].toString()),
-                  child: Hero(
-                    tag: 'product-${product.id}',
-                    child: Tools.image(
-                      url: product.sliderImages[i],
-                      fit: BoxFit.cover,
-                      width: constraints.maxWidth,
-                      size: kSize.large,
-                    ),
-                  ),
-                ),
-              ],
-            ));
-        imgs.add(img);
-      });
-      return imgs;
     }
 
     return LayoutBuilder(
@@ -66,9 +32,10 @@ class ImageFeature extends StatelessWidget {
                 ? NeverScrollableScrollPhysics()
                 : AlwaysScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int i) {
-              return Image.network(
-                product.sliderImages[i],
-                fit: BoxFit.cover,
+              // print("image render: ${product.sliderImages[i]}");
+              return CachedNetworkImage(
+                imageUrl: product.sliderImages[i],
+                errorWidget: (context, url, error) => Icon(Icons.error),
               );
             },
             itemCount: product.sliderImages.length,

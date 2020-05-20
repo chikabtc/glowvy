@@ -58,13 +58,15 @@ class DimodoServices implements BaseServices {
 
   postAsync({String endPoint, data, Map<String, String> headers}) async {
     var url = '$baseUrl/$endPoint';
-    print("baseURL: $url");
     var headers = kAccessToken != null
         ? {
             "Authorization": "Bearer $kAccessToken",
             'Content-Type': 'application/json'
           }
         : {'Content-Type': 'application/json'};
+
+    print("baseURL: $url");
+    print("headers: $headers");
 
     if (headers != null) headers = headers;
 
@@ -89,6 +91,7 @@ class DimodoServices implements BaseServices {
       final product = body['Data'];
 
       if (body["Success"] == true) {
+        print("product: ${product['options']}");
         return Product.fromJson(product);
       } else {
         var message = body["Error"];
@@ -593,8 +596,9 @@ class DimodoServices implements BaseServices {
     Order order,
   }) async {
     try {
+      print("order to submit: ${order.toJson()}");
       final body = await postAsync(
-          endPoint: "api/order/all", data: convert.jsonEncode(order));
+          endPoint: "api/order/new", data: convert.jsonEncode(order));
 
       bool result = body["Success"];
 
@@ -608,6 +612,7 @@ class DimodoServices implements BaseServices {
         throw ("Incorrect PIN");
       }
     } catch (e) {
+      print("submitorder : err$e");
       throw e;
     }
   }

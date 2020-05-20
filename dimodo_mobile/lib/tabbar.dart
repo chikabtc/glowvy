@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'common/config.dart' as config;
 import 'common/constants.dart';
 import 'models/order/cart.dart';
+import 'models/categoryModel.dart';
 import 'models/category.dart';
 import 'models/product/productModel.dart';
 import 'screens/cart.dart';
@@ -34,6 +35,7 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
   void afterFirstLayout(BuildContext context) {
     print("after first layout!!");
     loadTabBar();
+    print("locale: ${Provider.of<AppModel>(context, listen: false).locale}");
     Provider.of<CategoryModel>(context, listen: false).getLocalCategories(
         context,
         lang: Provider.of<AppModel>(context, listen: false).locale);

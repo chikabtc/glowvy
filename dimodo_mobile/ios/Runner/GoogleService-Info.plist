@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>CLIENT_ID</key>
+		<string>199541424798-1ccf2g196esns6e74ruvrt4utfa7dhhr.apps.googleusercontent.com</string>
+		<key>REVERSED_CLIENT_ID</key>
+		<string>com.googleusercontent.apps.199541424798-1ccf2g196esns6e74ruvrt4utfa7dhhr</string>
+		<key>API_KEY</key>
+		<string>AIzaSyBLZf_1eXOOYApLzVgUpVOXuGj-BXsZF4k</string>
+		<key>GCM_SENDER_ID</key>
+		<string>199541424798</string>
+		<key>PLIST_VERSION</key>
+		<string>1</string>
+		<key>BUNDLE_ID</key>
+		<string>app.dimodo.iOS</string>
+		<key>PROJECT_ID</key>
+		<string>dimodo-5e659</string>
+		<key>STORAGE_BUCKET</key>
+		<string>dimodo-5e659.appspot.com</string>
+		<key>IS_ADS_ENABLED</key>
+		<false />
+		<key>IS_ANALYTICS_ENABLED</key>
+		<false />
+		<key>IS_APPINVITE_ENABLED</key>
+		<true />
+		<key>IS_GCM_ENABLED</key>
+		<true />
+		<key>IS_SIGNIN_ENABLED</key>
+		<true />
+		<key>GOOGLE_APP_ID</key>
+		<string>1:199541424798:ios:1e36d0627ec54c1436318f</string>
+		<key>DATABASE_URL</key>
+		<string>https://dimodo-5e659.firebaseio.com</string>
+
+	</dict>
+</plist>
