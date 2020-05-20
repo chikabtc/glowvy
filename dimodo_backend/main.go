@@ -25,7 +25,7 @@ func main() {
 	crawler := crawler.NewCrawler()
 	api := api.NewAPI(crawler)
 
-	err := c.AddFunc("0 50 10 * * ?", func() {
+	err := c.AddFunc("0 0 3 * * ?", func() {
 		start := time.Now()
 		cronMessage := errors.New("   updating products...")
 		bugsnag.Notify(cronMessage)
@@ -43,26 +43,26 @@ func main() {
 		bugsnag.Notify(err)
 	}
 
-	err = c.AddFunc("0 0 5 * * ?", func() {
-		start := time.Now()
-		cronMessage := errors.New("   crawling new products...")
-		bugsnag.Notify(cronMessage)
+	// err = c.AddFunc("0 0 5 * * ?", func() {
+	// 	start := time.Now()
+	// 	cronMessage := errors.New("   crawling new products...")
+	// 	bugsnag.Notify(cronMessage)
 
-		err := crawler.GetMainProducts()
-		if err != nil {
-			bugsnag.Notify(cronMessage)
+	// 	err := crawler.GetMainProducts()
+	// 	if err != nil {
+	// 		bugsnag.Notify(cronMessage)
 
-		}
-		err = crawler.AddNewProductsByCategories()
-		if err != nil {
-			bugsnag.Notify(cronMessage)
+	// 	}
+	// 	err = crawler.AddNewProductsByCategories()
+	// 	if err != nil {
+	// 		bugsnag.Notify(cronMessage)
 
-		}
-		elapsed := time.Since(start)
+	// 	}
+	// 	elapsed := time.Since(start)
 
-		crawlTime := fmt.Errorf("crawling 1000 products took %s", elapsed)
-		bugsnag.Notify(crawlTime)
-	})
+	// 	crawlTime := fmt.Errorf("crawling 1000 products took %s", elapsed)
+	// 	bugsnag.Notify(crawlTime)
+	// })
 	if err != nil {
 		bugsnag.Notify(err)
 	}

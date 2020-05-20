@@ -402,14 +402,14 @@ func (c *Crawler) AddTags(bp brandi.Product) error {
 
 			if err != nil {
 
-				fmt.Println(err)
+				fmt.Println("checkIfTagForProductExists: ", err)
 				bugsnag.Notify(err)
 				return err
 			}
 			if !isProductTagExists {
 				_, err = c.dot.Exec(c.DB, "AddTagToProductTags", bTag.Name, bp.Data.ID)
 				if err != nil {
-					fmt.Println(err)
+					fmt.Println("AddTagToProductTags: ", err)
 					// bugsnag.Notify(err)
 					return err
 				}
@@ -461,12 +461,12 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 
 	//translator, _ := translate.NewTranslator()
 	desc, _ := translate.TranslateText(translate.Ko, translate.Vi, Description(bp.Data.Text))
-	translatedName, _ := translate.TranslateText(translate.Ko, translate.Vi, bp.Data.Name)
-	if translatedName == " " || len(translatedName) < 4 || translatedName == "[" {
-		//log this info
-		fmt.Println("both translator fails to translate properly: discarded product")
-		return nil
-	}
+	// translatedName, _ := translate.TranslateText(translate.Ko, translate.Vi, bp.Data.Name)
+	// if translatedName == " " || len(translatedName) < 4 || translatedName == "[" {
+	// 	//log this info
+	// 	fmt.Println("both translator fails to translate properly: discarded product")
+	// 	return nil
+	// }
 	//type conversion from BrandiProduct to dimodoProduct
 	//Korean options
 	var sProductOptions = []models.Option{}
@@ -496,24 +496,9 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 	adjustedPrice := int(float64(bp.Data.Price) * 1.1)
 	adjustedSalePrice := int(float64(bp.Data.SalePrice) * 1.1)
 
-	//add tags from brandi
-	for _, bTag := range bp.Data.Tags {
-		var tag = models.Tag{}
-		id, _ := strconv.Atoi(bTag.ID)
-		tag.Id = id
-		tag.Name = bTag.Name
-		_, err := c.dot.Exec(c.DB, "AddTag", tag.Name, bp.Data.ID)
-		if err != nil {
-			fmt.Println(err)
-			bugsnag.Notify(err)
-		}
-	}
-	c.AddTags(bp)
-
 	_, err = c.dot.Exec(c.DB, "CreateProduct",
 		bp.Data.ID,
 		bp.Data.Name,
-		translatedName,
 		adjustedPrice,
 		adjustedSalePrice,
 		bp.Data.SalePercent,
@@ -532,6 +517,10 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 		bugsnag.Notify(err)
 		fmt.Println("CreateProductById: ", err.Error())
 		return err
+	}
+	err = c.AddTags(bp)
+	if err != nil {
+		bugsnag.Notify(err)
 	}
 	return err
 }
