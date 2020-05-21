@@ -84,7 +84,7 @@ class ProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "$tag ${product.categoryName} " ?? "not found",
+                    "${product.name} " ?? "not found",
                     maxLines: 1,
                     style: kBaseTextStyle.copyWith(
                       fontSize: 12,

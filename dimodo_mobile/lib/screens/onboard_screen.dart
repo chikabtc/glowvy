@@ -1,5 +1,6 @@
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../common/constants.dart';
 import '../common/config.dart' as config;
 import '../common/styles.dart';
@@ -14,6 +15,15 @@ class OnBoardScreen extends StatefulWidget {
 class _OnBoardScreenState extends State<OnBoardScreen> {
   List<Widget> pages = [];
   final isRequiredLogin = config.kAdvanceConfig['IsRequiredLogin'];
+  PageController _pageController = PageController(
+    initialPage: 0,
+  );
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   void initState() {
@@ -68,23 +78,50 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
 
     for (int i = 0; i < config.onBoardingData.length; i++) {
       var page = Container(
-        color: kLightPink,
+        color: kDefaultBackground,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          // mainAxisAlignment: MainAxisAlignment.center,
+          // crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 40),
-            Center(
+            SizedBox(height: 60),
+            //make the image fit
+            Container(
+              width: screenSize.width,
               child: Image.asset(
                 config.onBoardingData[i]['image'],
+                fit: BoxFit.contain,
               ),
             ),
             SizedBox(height: 20),
-            DynamicText(config.onBoardingData[i]['title'],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 22.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  Expanded(
+                    child: FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Text(config.onBoardingData[i]['title'],
+                          textAlign: TextAlign.center,
+                          style: kBaseTextStyle.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: kDefaultFontColor,
+                            decoration: TextDecoration.none,
+                          )),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 10),
+            DynamicText(config.onBoardingData[i]['desc'],
                 style: kBaseTextStyle.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: kDefaultFontColor,
+                    color: kDarkSecondary,
                     decoration: TextDecoration.none,
-                    fontSize: 24)),
+                    fontSize: 12)),
             Expanded(
               child: Align(
                 alignment: FractionalOffset.bottomCenter,
@@ -95,7 +132,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                       MaterialButton(
                           elevation: 0,
                           minWidth: 180,
-                          color: kPinkAccent,
+                          color: kDarkAccent,
                           height: 48,
                           shape: RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(25.0),
@@ -109,16 +146,26 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                             Navigator.pushNamed(context, "/home");
                           }),
                     Padding(
-                      padding: const EdgeInsets.only(
-                        top: 33,
-                        left: 16,
-                        right: 16,
-                        bottom: 40.0,
-                      ),
-                      child: Image.asset(
-                        config.onBoardingData[i]['indicator'],
-                      ),
-                    ),
+                        padding: const EdgeInsets.only(
+                          top: 33,
+                          left: 16,
+                          right: 16,
+                          bottom: 40.0,
+                        ),
+                        child: SmoothPageIndicator(
+                          controller: _pageController, // PageController
+                          count: 3,
+                          effect: SlideEffect(
+                              spacing: 5.0,
+                              radius: 2.5,
+                              dotWidth: 5.0,
+                              dotHeight: 5.0,
+                              paintStyle: PaintingStyle.fill,
+                              strokeWidth: 1.5,
+                              dotColor: Colors.grey,
+                              activeDotColor:
+                                  kDarkAccent), // your preferred effect
+                        )),
                   ],
                 ),
               ),
@@ -129,10 +176,11 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
       pages.add(page);
     }
     return Container(
-      color: kLightPink,
+      color: kDefaultBackground,
       height: kSizeConfig.screenHeight,
       child: SafeArea(
         child: PageView.builder(
+          controller: _pageController,
           itemBuilder: (context, i) {
             return pages[i];
           },

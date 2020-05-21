@@ -17,7 +17,7 @@ Map<dynamic, Widget> _outputAndHome = {};
 
 class CustomSplash extends StatefulWidget {
   CustomSplash(
-      {@required String imagePath,
+      {String imagePath,
       @required Widget home,
       Function customFunction,
       int duration,
@@ -28,7 +28,7 @@ class CustomSplash extends StatefulWidget {
       Map<dynamic, Widget> outputAndHome}) {
     assert(duration != null);
     assert(home != null);
-    assert(imagePath != null);
+    // assert(imagePath != null);
 
     _home = home;
     _duration = duration;
@@ -49,6 +49,7 @@ class _CustomSplashState extends State<CustomSplash>
     with SingleTickerProviderStateMixin {
   AnimationController _animationController;
   Animation _animation;
+  Widget launchImage;
 
   @override
   void initState() {
@@ -59,6 +60,12 @@ class _CustomSplashState extends State<CustomSplash>
     _animation = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
         parent: _animationController, curve: Curves.easeInCirc));
     _animationController.forward();
+    launchImage = _imagePath != null
+        ? DecoratedBox(
+            decoration: new BoxDecoration(
+                image: new DecorationImage(
+                    image: AssetImage(_imagePath), fit: BoxFit.fill)))
+        : Container();
   }
 
   @override
@@ -85,11 +92,8 @@ class _CustomSplashState extends State<CustomSplash>
                   child: Container(
                       height: 800,
                       width: 414,
-                      child: DecoratedBox(
-                          decoration: new BoxDecoration(
-                              image: new DecorationImage(
-                                  image: AssetImage(_imagePath),
-                                  fit: BoxFit.fill))))));
+                      color: Colors.white,
+                      child: launchImage)));
         }
       case 'zoom-in':
         {
@@ -101,28 +105,8 @@ class _CustomSplashState extends State<CustomSplash>
                       child: Container(
                           height: 800,
                           width: 414,
-                          child: DecoratedBox(
-                              decoration: new BoxDecoration(
-                                  image: new DecorationImage(
-                                      image: AssetImage(_imagePath),
-                                      fit: BoxFit.fill)))))));
-        }
-      case 'zoom-out':
-        {
-          return ScaleTransition(
-              scale: Tween(begin: 1.5, end: 0.6).animate(CurvedAnimation(
-                  parent: _animationController, curve: Curves.easeInCirc)),
-              child: Center(
-                  child: SizedBox(
-                      height: _logoSize,
-                      child: Container(
-                          height: 800,
-                          width: 414,
-                          child: DecoratedBox(
-                              decoration: new BoxDecoration(
-                                  image: new DecorationImage(
-                                      image: AssetImage(_imagePath),
-                                      fit: BoxFit.fill)))))));
+                          color: Colors.white,
+                          child: launchImage))));
         }
       case 'top-down':
         {
@@ -134,11 +118,8 @@ class _CustomSplashState extends State<CustomSplash>
                       child: Container(
                           height: 800,
                           width: 414,
-                          child: DecoratedBox(
-                              decoration: new BoxDecoration(
-                                  image: new DecorationImage(
-                                      image: AssetImage(_imagePath),
-                                      fit: BoxFit.fill)))))));
+                          color: Colors.white,
+                          child: launchImage))));
         }
     }
   }
@@ -161,11 +142,6 @@ class _CustomSplashState extends State<CustomSplash>
           });
 
     return Container(
-        height: 800,
-        width: 414,
-        child: DecoratedBox(
-            decoration: new BoxDecoration(
-                image: new DecorationImage(
-                    image: AssetImage(_imagePath), fit: BoxFit.fill))));
+        height: 800, width: 414, color: Colors.white, child: launchImage);
   }
 }

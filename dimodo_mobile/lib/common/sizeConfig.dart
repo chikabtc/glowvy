@@ -12,8 +12,8 @@ class SizeConfig {
   SizeConfig(screenSize) {
     screenWidth = screenSize.width;
     screenHeight = screenSize.height;
-    heightDifferences = screenHeight / baseHeight ;
-    widthDifferences = screenWidth / baseWidth ;
+    heightDifferences = screenHeight / baseHeight;
+    widthDifferences = screenWidth / baseWidth;
 
     if (widthDifferences > 1.1) {
       widthDifferences = widthDifferences * 0.9;

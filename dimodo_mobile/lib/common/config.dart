@@ -108,30 +108,28 @@ const String adminEmail = "admininspireui@gmail.com";
 /// the welcome screen data
 List onBoardingData = [
   {
-    "title": "Meet Good Quality",
-    "image": "assets/images/onboarding/onboarding1.png",
+    "title": "Shop Genuine Korean Brands",
+    "image": "assets/images/onboarding/onborading-illustration-1.png",
     "indicator": "assets/images/onboarding/logo1.png",
     "widthImage": "400",
     "heightImage": "395",
-    "desc": "Dimodo is on the way to serve you. "
+    "desc": "Guaranteed the quality of Korean standard products. "
   },
   {
-    "title": "Discover Fashion Inspiration",
-    "image": "assets/images/onboarding/onboarding2.png",
+    "title": "With Guaranteed Support",
+    "image": "assets/images/onboarding/onborading-illustration-2.png",
     "indicator": "assets/images/onboarding/logo2.png",
     "widthImage": "400",
     "heightImage": "395",
-    "desc":
-        "See all things happening around you just by a click in your phone. "
-            "Fast, convenient and clean."
+    "desc": "Genuine security and 7 days after sales worry free."
   },
   {
-    "title": "Made & Design in Korean",
-    "image": "assets/images/onboarding/onboarding3.png",
+    "title": "Into Ulzzang Fashion Trend",
+    "image": "assets/images/onboarding/onborading-illustration-3.png",
     "indicator": "assets/images/onboarding/logo3.png",
     "widthImage": "400",
     "heightImage": "395",
-    "desc": "Waiting no more, let's see what we get!"
+    "desc": "Directly ship from Korea with a reasonable price!"
   },
 ];
 

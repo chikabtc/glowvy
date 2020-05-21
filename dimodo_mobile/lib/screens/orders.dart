@@ -103,16 +103,19 @@ class OrdersScreenState extends State<OrdersScreen> {
     Order order,
   }) {
     List<Widget> list = [];
-    order.orderItems.asMap().forEach((i, item) => list.add(
-          OrderItemRow(
-            isDividerNeeded:
-                order.orderItems.length > 1 && order.orderItems.length - 1 != i
-                    ? true
-                    : false,
-            cartItem: item,
-            isOrder: true,
-          ),
-        ));
+    if (order.orderItems != null) {
+      order.orderItems.asMap().forEach((i, item) => list.add(
+            OrderItemRow(
+              isDividerNeeded: order.orderItems.length > 1 &&
+                      order.orderItems.length - 1 != i
+                  ? true
+                  : false,
+              cartItem: item,
+              isOrder: true,
+            ),
+          ));
+    }
+
     return list;
   }
 

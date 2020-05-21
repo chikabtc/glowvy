@@ -52,29 +52,28 @@ class _AppState extends State<Dimodo> with SingleTickerProviderStateMixin {
             statusBarBrightness: Brightness.light) // Or Brightness.dark
         );
 
-    if (kSplashScreen.lastIndexOf('flr') > 0) {
-      return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        navigatorObservers: [],
-        home: SplashScreen.navigate(
-          name: kSplashScreen,
-          startAnimation: 'Dimodo',
-          backgroundColor: Colors.white,
-          next: (object) => MyApp(),
-          until: () => Future.delayed(Duration(seconds: 2)),
-        ),
-      );
-    }
+    // if (kSplashScreen.lastIndexOf('flr') > 0) {
+    //   return MaterialApp(
+    //     debugShowCheckedModeBanner: false,
+    //     navigatorObservers: [],
+    //     home: SplashScreen.navigate(
+    //       // name: kSplashScreen,
+    //       startAnimation: 'Dimodo',
+    //       backgroundColor: Colors.white,
+    //       next: (object) => MyApp(),
+    //       until: () => Future.delayed(Duration(seconds: 2)),
+    //     ),
+    //   );
+    // }
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorObservers: [],
       home: CustomSplash(
-        imagePath: kSplashScreen,
-        backGroundColor: kLightPink,
+        backGroundColor: Colors.white,
         animationEffect: 'fade-in',
         home: MyApp(),
-        duration: 2500,
+        duration: 2000,
       ),
     );
   }
@@ -132,7 +131,7 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
   }
 
   Widget renderFirstScreen() {
-    if (isFirstSeen) return OnBoardScreen();
+    if (!isFirstSeen) return OnBoardScreen();
     if (kAdvanceConfig['IsRequiredLogin'] && !isLoggedIn) return LoginScreen();
     return MainTabs();
   }
