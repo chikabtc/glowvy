@@ -16,14 +16,14 @@ import (
 )
 
 type Product struct {
-	ps models.ProductService
-	cw *crawler.Crawler
+	Ps models.ProductService
+	Cw *crawler.Crawler
 }
 
 func NewProduct(ps models.ProductService, cw *crawler.Crawler) *Product {
 	return &Product{
-		ps: ps,
-		cw: cw,
+		Ps: ps,
+		Cw: cw,
 	}
 }
 
@@ -35,7 +35,7 @@ type Categories struct {
 }
 
 func (p *Product) AllCategories(w http.ResponseWriter, r *http.Request) {
-	categories, err := p.ps.AllCategories()
+	categories, err := p.Ps.AllCategories()
 	// print("categories: ", *categories)
 	if err != nil {
 		bugsnag.Notify(err)
@@ -77,7 +77,7 @@ func (p *Product) ProductDetailById(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	var product *models.Product
-	product, err = p.ps.ProductDetailById(id)
+	product, err = p.Ps.ProductDetailById(id)
 
 	if err != nil {
 		bugsnag.Notify(err)
@@ -105,7 +105,7 @@ func (p *Product) ProductsByCategoryId(w http.ResponseWriter, r *http.Request) {
 		resp.Json(w, r, http.StatusBadRequest, resp.WithError(msgError))
 		return
 	}
-	products, err := p.ps.ProductsByCategoryID(fmt.Sprintln(id), sortBy, start, count)
+	products, err := p.Ps.ProductsByCategoryID(fmt.Sprintln(id), sortBy, start, count)
 	if err != nil {
 		bugsnag.Notify(err)
 		resp.Json(w, r, http.StatusInternalServerError, resp.WithError(err.Error()))
@@ -133,7 +133,7 @@ func (p *Product) ProductsByTags(w http.ResponseWriter, r *http.Request) {
 	// 	resp.Json(w, r, http.StatusBadRequest, resp.WithError(msgError))
 	// 	return
 	// }
-	products, err := p.ps.ProductsByTags(tagId, sortBy, start, count)
+	products, err := p.Ps.ProductsByTags(tagId, sortBy, start, count)
 	if err != nil {
 		fmt.Println(err)
 		bugsnag.Notify(err)
@@ -164,7 +164,7 @@ func (p *Product) ProductsByShopId(w http.ResponseWriter, r *http.Request) {
 	var products []models.Product
 
 	// crawler := crawler.NewCrawler()
-	products = p.cw.GetPopularProductsByShopId(id, count)
+	products = p.Cw.GetPopularProductsByShopId(id, count)
 
 	if err != nil {
 		bugsnag.Notify(err)
@@ -197,11 +197,11 @@ func (p *Product) ProductReviewsById(w http.ResponseWriter, r *http.Request) {
 	var reviews *models.Reviews
 	// //returns a new dimodo product object based on the parentId
 	//1. check if the product reviews exist in the database
-	reviewsAvailable, _ := p.ps.CountReviews(id, offset, limit)
+	reviewsAvailable, _ := p.Ps.CountReviews(id, offset, limit)
 
 	//2. if available, retrieve and return them from the db
 	if reviewsAvailable > 0 {
-		reviews, err = p.ps.ReviewsByProductID(id, offset, limit)
+		reviews, err = p.Ps.ReviewsByProductID(id, offset, limit)
 		if err != nil {
 			bugsnag.Notify(err)
 			fmt.Println(err)
@@ -213,9 +213,9 @@ func (p *Product) ProductReviewsById(w http.ResponseWriter, r *http.Request) {
 		// c := crawler.NewCrawler()
 		//get the reviews
 
-		p.cw.GetPhotoReviewsFromBrandi(params["id"], r.FormValue("offset"), r.FormValue("limit"))
-		p.cw.GetTextReviewsFromBrandi(params["id"], r.FormValue("offset"), r.FormValue("limit"))
-		reviews, err = p.ps.ReviewsByProductID(id, offset, limit)
+		p.Cw.GetPhotoReviewsFromBrandi(params["id"], r.FormValue("offset"), r.FormValue("limit"))
+		p.Cw.GetTextReviewsFromBrandi(params["id"], r.FormValue("offset"), r.FormValue("limit"))
+		reviews, err = p.Ps.ReviewsByProductID(id, offset, limit)
 		if err != nil {
 			bugsnag.Notify(err)
 			fmt.Println(err)
@@ -224,7 +224,7 @@ func (p *Product) ProductReviewsById(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println(params["sr"])
 
-	averageScore, totalCount := p.cw.GetReviewMetaData(params["id"])
+	averageScore, totalCount := p.Cw.GetReviewMetaData(params["id"])
 	reviews.AverageSatisfaction = averageScore
 	reviews.TotalCount = totalCount
 
@@ -252,7 +252,7 @@ func (p *Product) CreateProductById(w http.ResponseWriter, r *http.Request) {
 	}
 	// var product *models.Product
 
-	err = p.cw.CreateProductById(params["id"], "", 0)
+	err = p.Cw.CreateProductById(params["id"], "", 0)
 
 	// product, err = p.ps.ProductDetailById(id)
 
@@ -265,17 +265,17 @@ func (p *Product) CreateProductById(w http.ResponseWriter, r *http.Request) {
 }
 
 func (p *Product) UpdateProductPrices(w http.ResponseWriter, r *http.Request) {
-	sids, err := p.ps.GetSidsOfAllProducts()
+	sids, err := p.Ps.GetSidsOfAllProducts()
 
 	for _, sid := range sids {
 		time.Sleep(2 * time.Second)
 
-		product, err := p.cw.ProductDetailById(sid)
+		product, err := p.Cw.ProductDetailById(sid)
 		if err != nil {
 			fmt.Println("ProductDetailById err: ", err)
 		}
 
-		isSuccess, err := p.ps.UpdateProduct(product)
+		isSuccess, err := p.Ps.UpdateProduct(product)
 		if err != nil {
 			fmt.Println("UpdateProductPrices err: ", err)
 		}
@@ -294,12 +294,12 @@ func (p *Product) UpdateProductPrice(w http.ResponseWriter, r *http.Request) {
 
 	id := params["id"]
 
-	product, err := p.cw.ProductDetailById(id)
+	product, err := p.Cw.ProductDetailById(id)
 	if err != nil {
 		fmt.Println("ProductDetailById err: ", err)
 	}
 
-	isSuccess, err := p.ps.UpdateProduct(product)
+	isSuccess, err := p.Ps.UpdateProduct(product)
 	if err != nil {
 		fmt.Println("UpdateProductPrices err: ", err)
 	}
@@ -313,17 +313,17 @@ func (p *Product) UpdateProductPrice(w http.ResponseWriter, r *http.Request) {
 }
 
 func (p *Product) UpdateThumbnailImages(w http.ResponseWriter, r *http.Request) {
-	sids, err := p.ps.GetAllSidsWithBigThumbnail()
+	sids, err := p.Ps.GetAllSidsWithBigThumbnail()
 
 	for _, sid := range sids {
 		time.Sleep(2 * time.Second)
 
-		thumbnail, err := p.cw.ImageThumbnailByProductId(sid)
+		thumbnail, err := p.Cw.ImageThumbnailByProductId(sid)
 		if err != nil {
 			fmt.Println("ImageThumbnailByProductId err: ", err)
 		}
 
-		isSuccess, err := p.ps.UpdateThumbnailImage(sid, thumbnail)
+		isSuccess, err := p.Ps.UpdateThumbnailImage(sid, thumbnail)
 		if err != nil {
 			fmt.Println("UpdateThumbnailImage err: ", err)
 		}

@@ -32,15 +32,14 @@ WHERE
 
 -- name: UpdateAddress
 WITH addressnew AS (
-INSERT INTO address (recipient_name, street, ward_id, telephone, is_default, user_id, creater)
+INSERT INTO address (recipient_name, street, ward_id, telephone, user_id, creater)
     SELECT
         $1,
         $2,
         $3,
         $4,
-        TRUE,
         $5,
-        $5
+        1
     FROM
         users
     WHERE

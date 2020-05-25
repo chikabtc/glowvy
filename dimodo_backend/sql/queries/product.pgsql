@@ -37,9 +37,9 @@ SELECT
     product.sale_price,
     product.sale_percent,
     COALESCE(product.purchase_count, 0) AS purchase_count,
-    category.sname,
+    category.name,
     product.category_id,
-    json_agg(json_build_object('sname', tags.sname, 'id', tags.id, 'type', tags.type))
+    json_agg(json_build_object('name', tags.name, 'sname', tags.sname, 'id', tags.id, 'type', tags.type))
 FROM
     product,
     product_tags,
@@ -53,7 +53,7 @@ WHERE
     AND tags.id = product_tags.tag_id
 GROUP BY
     product.id,
-    category.sname
+    category.name
 ORDER BY
     CASE WHEN $2 = 'sale_price' THEN
         product.sale_price
@@ -85,7 +85,7 @@ SELECT
     product.name,
     product.thumbnail,
     product.category_id,
-    category.sname,
+    category.name,
     json_agg(json_build_object('sname', tags.sname, 'id', tags.id, 'type', tags.type))
 FROM
     product,
@@ -100,7 +100,7 @@ WHERE
     AND tags.id = product_tags.tag_id
 GROUP BY
     product.id,
-    category.sname
+    category.name
 ORDER BY
     CASE WHEN $2 = 'sale_price' THEN
         product.sale_price
@@ -209,7 +209,7 @@ SELECT
     product.seller,
     product.size_details,
     product.category_id,
-    category.sname,
+    category.name,
     product.options
 FROM
     product,
@@ -255,4 +255,47 @@ WHERE
             product_tags.product_id
         FROM
             product_tags;
+
+--name: GetAllProducts
+SELECT
+    *
+FROM
+    product;
+
+--name: GetAllSids
+SELECT
+    sid
+FROM
+    product;
+
+--name: AlgolioProductDetailById
+WITH item_tags AS (
+    SELECT
+        json_agg(tags)
+    FROM
+        product_tags,
+        tags
+    WHERE
+        product_tags.product_id = $1
+        AND product_tags.tag_id = tags.id
+)
+SELECT
+    product.Sid,
+    product.name,
+    product.sprice,
+    product.sale_percent,
+    product.sale_price,
+    product.thumbnail,
+    product.purchase_count,
+    item_tags.json_agg,
+    product.seller,
+    category.sname
+    -- product.options
+FROM
+    product,
+    item_tags,
+    category
+WHERE
+    product.sid = $1
+    AND category.id = product.category_id;
 

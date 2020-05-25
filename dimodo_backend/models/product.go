@@ -7,6 +7,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+	"strconv"
 
 	"github.com/bugsnag/bugsnag-go"
 	"github.com/gchaincl/dotsql"
@@ -28,6 +29,7 @@ type ProductService interface {
 	GetAllSidsWithBigThumbnail() ([]string, error)
 	GetSidsOfAllProducts() ([]string, error)
 	UpdateProduct(product *Product) (bool, error)
+	GetAllProducts() ([]Product, error)
 }
 
 type productService struct {
@@ -365,7 +367,7 @@ func (ps *productService) ProductDetailById(id int) (*Product, error) {
 	var tags []uint8
 	var sizeDetails []uint8
 
-	fmt.Println("product detail by id")
+	fmt.Println("product detail by id: ", id)
 	row, err := ps.dot.QueryRow(ps.DB, "ProductDetailById", id)
 	if err != nil {
 		bugsnag.Notify(err)
@@ -551,10 +553,10 @@ func (ps *productService) GetAllSidsWithBigThumbnail() ([]string, error) {
 func (ps *productService) GetSidsOfAllProducts() ([]string, error) {
 	sids := make([]string, 0)
 
-	rows, err := ps.dot.Query(ps.DB, "GetSidsOfAllProducts")
+	rows, err := ps.dot.Query(ps.DB, "GetAllSids")
 	if err != nil {
 		// bugsnag.Notify(err)
-		fmt.Println("GetSidsOfAllProducts: ", err)
+		fmt.Println("GetAllSids: ", err)
 		return nil, err
 	}
 
@@ -565,7 +567,7 @@ func (ps *productService) GetSidsOfAllProducts() ([]string, error) {
 		if err := rows.Scan(
 			&sid,
 		); err != nil {
-			fmt.Println("fail to GetSidsOfAllProducts ", err)
+			fmt.Println("fail to GetAllSids ", err)
 			return nil, err
 		}
 		sids = append(sids, sid)
@@ -583,4 +585,65 @@ func (ps *productService) UpdateProduct(product *Product) (bool, error) {
 		return false, err
 	}
 	return true, nil
+}
+
+func (ps *productService) GetAllProducts() ([]Product, error) {
+	sids, _ := ps.GetSidsOfAllProducts()
+	products := make([]Product, 0)
+
+	for _, sid := range sids {
+		id, _ := strconv.Atoi(sid)
+		product, err := ps.AlgolioProductDetailById(id)
+		if err == nil {
+			products = append(products, *product)
+
+		}
+
+	}
+
+	return products, nil
+}
+
+func (ps *productService) AlgolioProductDetailById(id int) (*Product, error) {
+	product := Product{Sid: id}
+	// var productOptions []uint8
+	var tags []uint8
+
+	fmt.Println("product detail by id: ", id)
+	row, err := ps.dot.QueryRow(ps.DB, "AlgolioProductDetailById", id)
+	if err != nil {
+		bugsnag.Notify(err)
+		return nil, err
+	}
+
+	err = row.Scan(
+		&product.Sid,
+		&product.Name,
+		&product.Price,
+		&product.Sale_percent,
+		&product.Sale_price,
+		&product.Thumbnail,
+		&product.Purchase_count,
+		&tags,
+		&product.Seller,
+		&product.CategoryName,
+		// &productOptions,
+	)
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("fail to scan AlgolioProductDetailById", err)
+	}
+
+	// err = json.Unmarshal([]byte(productOptions), &product.Options)
+	// if err != nil {
+	// 	fmt.Println("fail to unmarshall productOptions: ", err)
+	// }
+
+	err = json.Unmarshal([]byte(tags), &product.Tags)
+	if err != nil {
+		fmt.Println("fail to unmarshall tags: ", err)
+	}
+	fmt.Println("json tags: ", product.Tags)
+
+	return &product, nil
 }

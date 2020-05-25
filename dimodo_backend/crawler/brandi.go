@@ -875,34 +875,40 @@ func (c *Crawler) UpdateProducts() error {
 	return err
 }
 
-// func (c *Crawler) TranslateTags(bProductId string) error {
-// 	rows, err := c.dot.Query(c.DB, "GetAllTagsWithoutName")
-// 	if err != nil {
-// 		// bugsnag.Notify(err)
-// 		fmt.Println("GetAllTagsWithoutName: ", err)
-// 		return err
-// 	}
+func (c *Crawler) TranslateTags() error {
+	rows, err := c.dot.Query(c.DB, "GetAllTagsWithoutName")
+	if err != nil {
+		// bugsnag.Notify(err)
+		fmt.Println("GetAllTagsWithoutName: ", err)
+		return err
+	}
 
-// 	defer rows.Close()
+	defer rows.Close()
 
-// 	for rows.Next() {
-// 		var sname string
-// 		var id int
-// 		var
-// 		if err := rows.Scan(
-// 			&sname,
-// 			&id,
-// 		); err != nil {
-// 			fmt.Println("fail to GetSidsOfAllProducts ", err)
-// 			return err
-// 		}
+	for rows.Next() {
+		var tagSname string
+		var tagId int
+		if err := rows.Scan(
+			&tagSname,
+			&tagId,
+		); err != nil {
+			fmt.Println("fail to GetAllTagsWithoutName ", err)
+			return err
+		}
+		name, err := translate.TranslateText(translate.Ko, translate.En, tagSname)
+		fmt.Println("tag name: ", name)
+		if err != nil {
+			bugsnag.Notify(err)
+			fmt.Println(err)
+		}
 
-// 		_, err = c.dot.Exec(c.DB, "UpdateTagName", sname, product.Price, product.Sale_price, product.Sale_percent, product.CategoryId, optionBytes)
-// 		if err != nil {
-// 			bugsnag.Notify(err)
-// 			fmt.Println("UpdateProduct: ", err)
-// 			return err
-// 		}
+		_, err = c.dot.Exec(c.DB, "UpdateTagName", name, tagId)
+		if err != nil {
+			bugsnag.Notify(err)
+			fmt.Println("UpdateProduct: ", err)
+			return err
+		}
 
-// 	}
-// }
+	}
+	return err
+}

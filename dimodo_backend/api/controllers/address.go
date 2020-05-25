@@ -57,7 +57,7 @@ func (a *Address) UpdateAddress(w http.ResponseWriter, r *http.Request) {
 	}
 	defer r.Body.Close()
 
-	address.Id = auth.Id
+	address.User_id = auth.Id
 	if err := a.as.UpdateAddress(&address); err != nil {
 		resp.Json(w, r, http.StatusInternalServerError, resp.WithError(err.Error()))
 		return

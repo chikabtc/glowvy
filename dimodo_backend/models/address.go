@@ -101,7 +101,7 @@ func (as *addressService) UpdateAddress(address *Address) error {
 		address.Street,
 		address.Ward_id,
 		address.PhoneNumber,
-		address.Id,
+		address.User_id,
 	)
 	if err != nil {
 		bugsnag.Notify(err)

@@ -8,6 +8,7 @@ require (
 	cloud.google.com/go/storage v1.5.0
 	github.com/PuerkitoBio/goquery v1.5.1
 	github.com/abadojack/whatlanggo v1.0.1
+	github.com/algolia/algoliasearch-client-go/v3 v3.4.0
 	github.com/antchfx/htmlquery v1.2.2 // indirect
 	github.com/antchfx/xmlquery v1.2.3 // indirect
 	github.com/antchfx/xpath v1.1.4 // indirect
@@ -23,6 +24,8 @@ require (
 	github.com/gobwas/glob v0.2.3 // indirect
 	github.com/gocolly/colly v1.2.0 // indirect
 	github.com/gofrs/uuid v3.2.0+incompatible // indirect
+	github.com/golang-migrate/migrate v3.5.4+incompatible // indirect
+	github.com/golang-migrate/migrate/v4 v4.11.0
 	github.com/golang/protobuf v1.3.4 // indirect
 	github.com/gorilla/handlers v1.4.2
 	github.com/gorilla/mux v1.7.4

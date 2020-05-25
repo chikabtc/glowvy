@@ -8,6 +8,8 @@ import (
 	"time"
 
 	"github.com/bugsnag/bugsnag-go"
+	_ "github.com/golang-migrate/migrate/v4/source/file"
+	_ "github.com/lib/pq"
 	"github.com/robfig/cron"
 )
 
@@ -42,6 +44,18 @@ func main() {
 	if err != nil {
 		bugsnag.Notify(err)
 	}
+
+	// client := search.NewClient("50G6MO803G", "ab5eb7ec7552bb7865f3819a2b08f462")
+	// index := client.InitIndex("products")
+
+	// allProducts, err := api.Cs.ProductC.Ps.GetAllProducts()
+	// fmt.Println("length: ", len(allProducts))
+	// for _, product := range allProducts {
+	// 	_, err = index.SaveObjects(product, opt.AutoGenerateObjectIDIfNotExist(true))
+	// 	if err != nil {
+	// 		fmt.Println("fail to save to agolio: ", err, "productId: ", product.Sid)
+	// 	}
+	// }
 
 	// err = c.AddFunc("0 0 5 * * ?", func() {
 	// 	start := time.Now()

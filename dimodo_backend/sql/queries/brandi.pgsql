@@ -239,7 +239,7 @@ FROM
 WHERE
    name IS NULL;
 
---name :UpdateTagName
+--name: UpdateTagName
 UPDATE
    tags
 SET
