@@ -45,6 +45,20 @@ func (p *Product) AllCategories(w http.ResponseWriter, r *http.Request) {
 	resp.Json(w, r, http.StatusOK, resp.WithSuccess(categories))
 }
 
+func (p *Product) GetSubCategories(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+
+	id, err := strconv.Atoi(params["id"])
+	categories, err := p.Ps.GetSubCategories(id)
+	// print("categories: ", *categories)
+	if err != nil {
+		bugsnag.Notify(err)
+		resp.Json(w, r, http.StatusInternalServerError, resp.WithError(err.Error()))
+		return
+	}
+	resp.Json(w, r, http.StatusOK, resp.WithSuccess(categories))
+}
+
 const QueryAllCategories = "SELECT id,name,image FROM category_default"
 
 func AllCategories(db *sql.DB) ([]Categories, error) {

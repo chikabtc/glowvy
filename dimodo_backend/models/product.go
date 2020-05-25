@@ -16,6 +16,7 @@ import (
 
 type ProductService interface {
 	AllCategories() ([]Category, error)
+	GetSubCategories(parentId int) ([]Category, error)
 	ProductsByCategoryID(categoryID, sortBy string, start, count int) ([]Product, error)
 	ProductsByShopId(shopId, start, count int) ([]Product, error)
 	ProductsByTags(tagId string, sortBy string, start, count int) ([]Product, error)
@@ -68,9 +69,10 @@ func NewProductService(db *sql.DB) ProductService {
 //cosmetics?
 
 type Category struct {
-	Id    int         `json:"id,omitempty"`
-	Name  string      `json:"name,omitempty"`
-	Image null.String `json:"image,omitempty"`
+	Id       int         `json:"id,omitempty"`
+	ParentId int         `json:"parent_id,omitempty"`
+	Name     string      `json:"name,omitempty"`
+	Image    null.String `json:"image,omitempty"`
 }
 
 type Attribute struct {
@@ -230,6 +232,24 @@ func (ps *productService) AllCategories() ([]Category, error) {
 	for rows.Next() {
 		var category Category
 		if err := rows.Scan(&category.Id, &category.Name, &category.Image); err != nil {
+			return nil, err
+		}
+		categories = append(categories, category)
+	}
+	return categories, nil
+}
+
+func (ps *productService) GetSubCategories(parentId int) ([]Category, error) {
+	rows, err := ps.dot.Query(ps.DB, "GetSubCategories", parentId)
+	if err != nil {
+		bugsnag.Notify(err)
+		return nil, err
+	}
+	defer rows.Close()
+	categories := []Category{}
+	for rows.Next() {
+		var category Category
+		if err := rows.Scan(&category.Id, &category.ParentId, &category.Name, &category.Image); err != nil {
 			return nil, err
 		}
 		categories = append(categories, category)

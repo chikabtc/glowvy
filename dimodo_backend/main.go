@@ -27,11 +27,16 @@ func main() {
 	crawler := crawler.NewCrawler()
 	api := api.NewAPI(crawler)
 
-	err := c.AddFunc("0 0 3 * * ?", func() {
+	err := c.AddFunc("0 52 14 * * ?", func() {
 		start := time.Now()
 		cronMessage := errors.New("   updating products...")
 		bugsnag.Notify(cronMessage)
-		err := crawler.UpdateProducts()
+		err := crawler.TranslateTags()
+		if err != nil {
+			bugsnag.Notify(cronMessage)
+
+		}
+		err = crawler.UpdateProducts()
 		if err != nil {
 			bugsnag.Notify(cronMessage)
 		}
@@ -77,10 +82,9 @@ func main() {
 	// 	crawlTime := fmt.Errorf("crawling 1000 products took %s", elapsed)
 	// 	bugsnag.Notify(crawlTime)
 	// })
-	if err != nil {
-		bugsnag.Notify(err)
-	}
-	// crawler.TranslateTags()
+	// if err != nil {
+	// 	bugsnag.Notify(err)
+	// }
 	c.Start()
 	api.Run()
 

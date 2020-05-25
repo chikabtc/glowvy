@@ -299,3 +299,14 @@ WHERE
     product.sid = $1
     AND category.id = product.category_id;
 
+--name: GetSubCategories
+SELECT
+    category.id,
+    category.parent_id,
+    category.name,
+    category.image
+FROM
+    category
+WHERE
+    parent_id = $1;
+

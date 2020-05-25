@@ -53,6 +53,7 @@ func (a *API) InitializeRoutes() {
 
 	//			Category
 	a.R.HandleFunc("/api/categories/all", productC.AllCategories).Methods("GET")
+	a.R.HandleFunc("/api/categories/categories={id:[0-9]+}", productC.GetSubCategories).Methods("GET")
 
 	//			Cart
 	a.R.HandleFunc("/api/cart/new", cartC.CreateCartItem).Methods("POST")
