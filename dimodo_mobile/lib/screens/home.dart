@@ -88,17 +88,17 @@ class HomeScreenState extends State<HomeScreen>
                     ),
                   ),
                 ),
-                // actions: <Widget>[
-                //   IconButton(
-                //     icon: Image.asset(
-                //       "assets/icons/search/search.png",
-                //       fit: BoxFit.cover,
-                //       height: 24,
-                //     ),
-                //     onPressed: () =>
-                //         Navigator.pushNamed(context, "/search_screen"),
-                //   ),
-                // ],
+                actions: <Widget>[
+                  IconButton(
+                    icon: Image.asset(
+                      "assets/icons/search/search.png",
+                      fit: BoxFit.cover,
+                      height: 24,
+                    ),
+                    onPressed: () =>
+                        Navigator.pushNamed(context, "/search_screen"),
+                  ),
+                ],
               ),
               SliverList(
                 delegate: SliverChildListDelegate([

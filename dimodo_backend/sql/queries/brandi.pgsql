@@ -232,7 +232,7 @@ HAVING
 
 --name: GetAllTagsWithoutName
 SELECT
-   tags.sname,
+   tags.en_name,
    tags.id
 FROM
    tags

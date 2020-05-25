@@ -80,6 +80,7 @@ func main() {
 	if err != nil {
 		bugsnag.Notify(err)
 	}
+	// crawler.TranslateTags()
 	c.Start()
 	api.Run()
 

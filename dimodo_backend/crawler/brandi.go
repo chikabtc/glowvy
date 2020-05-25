@@ -895,7 +895,7 @@ func (c *Crawler) TranslateTags() error {
 			fmt.Println("fail to GetAllTagsWithoutName ", err)
 			return err
 		}
-		name, err := translate.TranslateText(translate.Ko, translate.En, tagSname)
+		name, err := translate.TranslateText(translate.En, translate.Vi, tagSname)
 		fmt.Println("tag name: ", name)
 		if err != nil {
 			bugsnag.Notify(err)

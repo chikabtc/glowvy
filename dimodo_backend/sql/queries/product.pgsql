@@ -39,7 +39,7 @@ SELECT
     COALESCE(product.purchase_count, 0) AS purchase_count,
     category.name,
     product.category_id,
-    json_agg(json_build_object('name', tags.name, 'sname', tags.sname, 'id', tags.id, 'type', tags.type))
+    json_agg(json_build_object('name', tags.en_name, 'sname', tags.sname, 'id', tags.id, 'type', tags.type))
 FROM
     product,
     product_tags,
@@ -86,7 +86,7 @@ SELECT
     product.thumbnail,
     product.category_id,
     category.name,
-    json_agg(json_build_object('sname', tags.sname, 'id', tags.id, 'type', tags.type))
+    json_agg(json_build_object('sname', tags.en_name, 'id', tags.id, 'type', tags.type))
 FROM
     product,
     product_tags,
