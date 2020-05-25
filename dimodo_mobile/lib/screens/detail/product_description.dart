@@ -1,4 +1,5 @@
 import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -50,9 +51,11 @@ class _ProductDescriptionState extends State<ProductDescription>
     images.forEach((img) {
       // print("image to render: $img");
       if (img != null && img != "") {
-        imagesWidget.add(CachedNetworkImage(
-            imageUrl: img,
-            errorWidget: (context, url, error) => Icon(Icons.error)));
+        imagesWidget.add(Tools.image(
+          url: img,
+          fit: BoxFit.cover,
+          size: kSize.large,
+        ));
       }
     });
     return Column(

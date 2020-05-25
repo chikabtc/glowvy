@@ -29,6 +29,14 @@ class ManageShippingScreenState extends State<ManageShippingScreen>
     //when getting user info, we get address info as well.
   }
 
+  renderAddressCards() {
+    List<Widget> lists = [];
+    user.addresses.forEach((element) {
+      lists.add(ShippingAddressCard(user.defaultAddress));
+    });
+    return lists;
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -59,22 +67,54 @@ class ManageShippingScreenState extends State<ManageShippingScreen>
                           fontWeight: FontWeight.w600)),
                 ),
               ),
-              if (value.user.address == null)
+              if (value.user.defaultAddress == null)
                 SliverList(
                     delegate: SliverChildListDelegate([EmptyShipping()])),
-              if (value.user.address != null)
+              if (value.user.defaultAddress != null)
                 SliverList(
                   delegate: SliverChildListDelegate([
                     Container(
+                      height: screenSize.height -
+                          AppBar().preferredSize.height -
+                          MediaQuery.of(context).padding.bottom -
+                          MediaQuery.of(context).padding.top,
                       color: kLightBG,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          ShippingAddressCard(value.user.address),
+                          ShippingAddressCard(value.user.defaultAddress),
                           SizedBox(
                             height: 42,
                           ),
+                          // Expanded(
+                          //   child: Align(
+                          //     alignment: FractionalOffset.bottomCenter,
+                          //     child: Padding(
+                          //       padding: const EdgeInsets.only(
+                          //           bottom: 40.0, left: 16, right: 16),
+                          //       child: MaterialButton(
+                          //           elevation: 0,
+                          //           color: Colors.transparent,
+                          //           minWidth: screenSize.width,
+                          //           height: 48,
+                          //           shape: RoundedRectangleBorder(
+                          //               borderRadius:
+                          //                   new BorderRadius.circular(25.0),
+                          //               side: BorderSide(
+                          //                   color: kPinkAccent, width: 1.5)),
+                          //           child: DynamicText(S.of(context).addAddress,
+                          //               style: kBaseTextStyle.copyWith(
+                          //                   fontWeight: FontWeight.w600,
+                          //                   fontSize: 14,
+                          //                   color: kPinkAccent)),
+                          //           onPressed: () {
+                          //             Navigator.of(context)
+                          //                 .pushNamed('/add_address');
+                          //           }),
+                          //     ),
+                          //   ),
+                          // ),
                         ],
                       ),
                     ),

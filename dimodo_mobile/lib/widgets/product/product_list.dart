@@ -11,6 +11,7 @@ class ProductList extends StatefulWidget {
   List<Product> products;
   final bool isFetching;
   final bool isEnd;
+  bool isNameAvailable;
 
   final String layout;
   final Function onRefresh;
@@ -21,6 +22,7 @@ class ProductList extends StatefulWidget {
     // this.errMsg,
     this.products,
     // this.width,
+    this.isNameAvailable = false,
     this.padding = 8.0,
     this.onRefresh,
     this.onLoadMore,
@@ -109,7 +111,9 @@ class _ProductListState extends State<ProductList>
                   crossAxisCount: 2,
                 ),
                 itemBuilder: (BuildContext context, int index) => ProductCard(
-                    product: widget.products[index], width: widthContent),
+                    isNameAvailable: widget.isNameAvailable,
+                    product: widget.products[index],
+                    width: widthContent),
               ),
             ),
           );

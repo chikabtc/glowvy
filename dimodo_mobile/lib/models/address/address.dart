@@ -10,13 +10,16 @@ class Address {
   String recipientName;
   String street;
   Ward ward;
+  int wardId;
   String phoneNumber;
+  bool isDefault;
 
   Address({
     this.recipientName,
     this.street,
     this.ward,
     this.phoneNumber,
+    this.isDefault,
   });
 
   factory Address.fromJson(Map<String, dynamic> json) =>

@@ -178,7 +178,7 @@ class _OrderSubmittedState extends State<OrderSubmitted>
                                       await FlutterMailer.send(MailOptions(
                                         body: '',
                                         subject: 'Feedback',
-                                        recipients: ['support@dimodo.app'],
+                                        recipients: ['hbpfreeman@gmail.com'],
                                         isHTML: true,
                                       ))
                                     }),
@@ -197,7 +197,7 @@ class _OrderSubmittedState extends State<OrderSubmitted>
   @override
   Widget build(BuildContext context) {
     final address =
-        Provider.of<UserModel>(context, listen: false).user.address; //
+        Provider.of<UserModel>(context, listen: false).user.defaultAddress; //
     var fullAddress = address.recipientName +
         ", " +
         address.street +

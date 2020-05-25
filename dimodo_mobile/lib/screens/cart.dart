@@ -174,6 +174,8 @@ class _CartState extends State<Cart>
                               ? cartModel.selectedCoupons[0]
                               : null,
                           onTap: onSelectCoupons,
+                          isCouponApplicable:
+                              cartModel.totalCartQuantity > 0 ? true : false,
                           context: context,
                           isSelected: cartModel.selectedCoupons.length == 0
                               ? false
@@ -183,6 +185,7 @@ class _CartState extends State<Cart>
                     if (cartModel.totalCartQuantity == 0) EmptyCart(),
                     if (cartModel.totalCartQuantity == 0)
                       ProductModel.showProductList(
+                          isNameAvailable: false,
                           future: _getProductsByCategory),
                     if (cartModel.totalCartQuantity > 0)
                       Column(

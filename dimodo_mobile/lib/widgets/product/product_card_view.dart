@@ -18,6 +18,7 @@ class ProductCard extends StatelessWidget {
   final height;
   final bool hideDetail;
   final offset;
+  bool isNameAvailable;
 
   ProductCard({
     this.product,
@@ -29,6 +30,7 @@ class ProductCard extends StatelessWidget {
     this.height,
     this.offset,
     this.hideDetail = false,
+    this.isNameAvailable = false,
   });
 
   onTapProduct(context) {
@@ -63,16 +65,24 @@ class ProductCard extends StatelessWidget {
                 child: FittedBox(
                   fit: BoxFit.cover,
                   child: GestureDetector(
-                    onTap: () => onTapProduct(context),
-                    child: CachedNetworkImage(
-                      imageUrl: product.thumbnail,
-                      width: 100,
-                      height: 100,
-                      // placeholder: (context, url) =>
-                      //     CircularProgressIndicator(),
-                      // errorWidget: (context, url, error) => Icon(Icons.error),
-                    ),
-                  ),
+                      onTap: () => onTapProduct(context),
+                      child: Tools.image(
+                        url: product.thumbnail,
+                        fit: BoxFit.cover,
+                        width: 100,
+                        height: 100,
+                        size: kSize.large,
+                      )
+
+                      // CachedNetworkImage(
+                      //   imageUrl: product.thumbnail,
+                      //   width: 100,
+                      //   height: 100,
+                      //   // placeholder: (context, url) =>
+                      //   //     CircularProgressIndicator(),
+                      //   // errorWidget: (context, url, error) => Icon(Icons.error),
+                      // ),
+                      ),
                 )),
           ),
           // // item name
@@ -84,7 +94,10 @@ class ProductCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    "${product.name} " ?? "not found",
+                    !isNameAvailable
+                        ? "${product.tags[0].name} ${product.categoryName} " ??
+                            "not found"
+                        : "${product.name}",
                     maxLines: 1,
                     style: kBaseTextStyle.copyWith(
                       fontSize: 12,

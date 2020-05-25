@@ -24,6 +24,6 @@ class SizeConfig {
     }
 
     textMultiplier = widthDifferences * heightDifferences;
-    containerMultiplier = widthDifferences;
+    containerMultiplier = widthDifferences * heightDifferences;
   }
 }

@@ -15,6 +15,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:flutter/services.dart';
 import 'package:Dimodo/services/index.dart';
+import 'package:algolia/algolia.dart';
 
 class HomeScreen extends StatefulWidget {
   final User user;
@@ -88,101 +89,145 @@ class HomeScreenState extends State<HomeScreen>
                     ),
                   ),
                 ),
+                // actions: <Widget>[
+                //   IconButton(
+                //     icon: Image.asset(
+                //       "assets/icons/search/search.png",
+                //       fit: BoxFit.cover,
+                //       height: 24,
+                //     ),
+                //     onPressed: () =>
+                //         Navigator.pushNamed(context, "/search_screen"),
+                //   ),
+                // ],
               ),
               SliverList(
                 delegate: SliverChildListDelegate([
                   Container(
-                    color: kLightPink,
-                    height: 100,
+                    width: screenSize.width,
+                    child: Image.asset(
+                      "assets/icons/home/top-banner.png",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(left: 16, top: 15, bottom: 15),
+                    color: Colors.white,
                     width: screenSize.width,
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         DynamicText(
-                          S.of(context).bannerTitle,
+                          S.of(context).dimodoSupport,
                           style: kBaseTextStyle.copyWith(
                               // fontFamily: "Gill Sans",
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24,
-                              color: kPinkAccent),
+                              fontWeight: FontWeight.w600,
+                              fontSize: 13,
+                              color: kDarkAccent),
                         ),
                         // SizedBox(height: ,)
-                        DynamicText(
-                          S.of(context).bannerDescription,
-                          style: kBaseTextStyle.copyWith(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 15,
-                              color: kPinkAccent),
+                        Column(
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                SvgPicture.asset(
+                                    "assets/icons/home/banner-support-1.svg"),
+                                DynamicText(
+                                  S.of(context).genuineSecurity,
+                                  style: kBaseTextStyle.copyWith(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 12,
+                                      color: kDarkSecondary),
+                                ),
+                              ],
+                            ),
+                            // SizedBox(height: 10),
+                            Row(
+                              children: <Widget>[
+                                SvgPicture.asset(
+                                    "assets/icons/home/banner-support-2.svg"),
+                                DynamicText(
+                                  S.of(context).sevenDayWorryFree,
+                                  style: kBaseTextStyle.copyWith(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 12,
+                                      color: kDarkSecondary),
+                                ),
+                              ],
+                            ),
+                          ],
                         )
                       ],
                     ),
                   ),
-                  Container(
-                    color: Colors.white,
-                    height: 71,
-                    width: screenSize.width,
-                    child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Image.asset("assets/icons/home/globe.png"),
-                              DynamicText(
-                                S.of(context).trendDesign,
-                                style: kBaseTextStyle.copyWith(
-                                    fontSize: 10, fontWeight: FontWeight.w500),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Image.asset("assets/icons/home/mail.png"),
-                              DynamicText(
-                                S.of(context).koreanShipping,
-                                style: kBaseTextStyle.copyWith(
-                                    fontSize: 10, fontWeight: FontWeight.w500),
-                              )
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              Image.asset("assets/icons/home/review.png"),
-                              DynamicText(
-                                S.of(context).trustReviews,
-                                style: kBaseTextStyle.copyWith(
-                                    fontSize: 10, fontWeight: FontWeight.w500),
-                              )
-                            ],
-                          ),
-                        ]),
-                  ),
+                  // Container(
+                  //   color: Colors.white,
+                  //   height: 71,
+                  //   width: screenSize.width,
+                  //   child: Row(
+                  //       crossAxisAlignment: CrossAxisAlignment.start,
+                  //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //       children: <Widget>[
+                  //         Column(
+                  //           mainAxisAlignment: MainAxisAlignment.center,
+                  //           children: <Widget>[
+                  //             Image.asset("assets/icons/home/globe.png"),
+                  //             DynamicText(
+                  //               S.of(context).trendDesign,
+                  //               style: kBaseTextStyle.copyWith(
+                  //                   fontSize: 10, fontWeight: FontWeight.w500),
+                  //             )
+                  //           ],
+                  //         ),
+                  //         Column(
+                  //           mainAxisAlignment: MainAxisAlignment.center,
+                  //           children: <Widget>[
+                  //             Image.asset("assets/icons/home/mail.png"),
+                  //             DynamicText(
+                  //               S.of(context).koreanShipping,
+                  //               style: kBaseTextStyle.copyWith(
+                  //                   fontSize: 10, fontWeight: FontWeight.w500),
+                  //             )
+                  //           ],
+                  //         ),
+                  //         Column(
+                  //           mainAxisAlignment: MainAxisAlignment.center,
+                  //           children: <Widget>[
+                  //             Image.asset("assets/icons/home/review.png"),
+                  //             DynamicText(
+                  //               S.of(context).trustReviews,
+                  //               style: kBaseTextStyle.copyWith(
+                  //                   fontSize: 10, fontWeight: FontWeight.w500),
+                  //             )
+                  //           ],
+                  //         ),
+                  //       ]),
+                  // ),
                 ]),
               ),
               SliverList(
                   delegate: SliverChildListDelegate([
                 Container(height: 5),
-                Container(
-                    color: kDefaultBackground,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: 16, bottom: 10, left: 16),
-                          child: DynamicText(
-                            S.of(context).editorPicks,
-                            style: kBaseTextStyle.copyWith(
-                                fontSize: 15, fontWeight: FontWeight.w600),
-                          ),
-                        ),
-                        ProductModel.showProductList(
-                            future: getProductByTagStar),
-                      ],
-                    )),
+                // Container(
+                //     color: kDefaultBackground,
+                //     child: Column(
+                //       crossAxisAlignment: CrossAxisAlignment.start,
+                //       children: <Widget>[
+                //         Padding(
+                //           padding: const EdgeInsets.only(
+                //               top: 16, bottom: 10, left: 16),
+                //           child: DynamicText(
+                //             S.of(context).editorPicks,
+                //             style: kBaseTextStyle.copyWith(
+                //                 fontSize: 15, fontWeight: FontWeight.w600),
+                //           ),
+                //         ),
+                //         ProductModel.showProductList(
+                //             isNameAvailable: false,
+                //             future: getProductByTagStar),
+                //       ],
+                //     )),
                 Padding(
                   padding: const EdgeInsets.only(top: 16, bottom: 10, left: 16),
                   child: DynamicText(
@@ -191,7 +236,8 @@ class HomeScreenState extends State<HomeScreen>
                         fontSize: 15, fontWeight: FontWeight.w600),
                   ),
                 ),
-                ProductModel.showProductList(future: getProductByTagTrending),
+                ProductModel.showProductList(
+                    future: getProductByTagTrending, isNameAvailable: true),
               ])),
               SliverList(
                 delegate: SliverChildListDelegate([

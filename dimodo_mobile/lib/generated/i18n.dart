@@ -67,6 +67,7 @@ class S implements WidgetsLocalizations {
   String get total => "Total";
   String get totalItems => "Total Items";
   String get addedToYourCart => "Added to your cart successfully";
+  String get addAtLeastOneItemToSeeCoupons => "Added to your cart successfully";
   String get totalTax => "Total tax";
 
   String get checkout => "Checkout";
@@ -115,6 +116,7 @@ class S implements WidgetsLocalizations {
   String get importTaxDescription => "Korean Import Tax (10%)";
   String get serviceFee => "Service fee";
   String get dimodoGuarantee => "Dimodo Guarantee";
+  String get dimodoSupport => "Dimodo Support";
   String get dimodoGuaranteeDescription =>
       "If item is inauthentic, Dimodo will refund buyers the full amount they paid for the items";
   String get returnPolicy => "Return Policy";
@@ -201,6 +203,7 @@ class S implements WidgetsLocalizations {
   String get koreanShipping => "Korean Shipping";
   String get trustReviews => "Trust Reviews";
   String get bannerDescription => "Dress like a Korean celeb";
+  String get genuineSecurity => "Genuine Security";
   String get bannerTitle => "Shopping Korea Together";
   String get apply => "Apply";
   String get arabic => "Arabic";
@@ -377,6 +380,7 @@ class S implements WidgetsLocalizations {
   String get youMightAlsoLike => "You might also like";
   String get yourBagIsEmpty => "Your bag is empty";
   String get yourNote => "Your note";
+  String get sevenDayWorryFree => "7 days after sales worry freee";
   String get zipCode => "Zip-code";
   String get zipCodeIsRequired => "The zip code field is required";
   String get beenSold => "been sold";
@@ -511,6 +515,7 @@ class $vi extends S {
   String get includedInPrice => "Giá đã bao gồm";
   String get shipFromKorea => "Giao hàng từ Hàn Quốc";
   String get dimodoGuarantee => "chính sách bảo hành của Dimodo";
+  String get dimodoSupport => "Hỗ trợ Dimodo";
   String get dimodoGuaranteeDescription =>
       "nếu như hàng hóa thực tế nhận hàng không đúng với mô tả, khách hàng sẽ được hoàn trả lại số tiền đã thanh toán.";
   String get returnPolicy => "Chính sách trả hàng";
@@ -545,6 +550,9 @@ class $vi extends S {
   String get trustReviews => "Đánh giá";
   @override
   String get bannerDescription => "Hình ảnh của người nổi tiếng";
+  String get genuineSecurity => "Genuine Security";
+  String get sevenDayWorryFree => "7 days after sales worry freee";
+
   @override
   String get bannerTitle => "Mua sắm tiện lợi cùng nhau";
   String get lowestToHighest => "Từ thấp đến cao";

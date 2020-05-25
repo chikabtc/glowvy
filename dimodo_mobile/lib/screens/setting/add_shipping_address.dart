@@ -335,6 +335,7 @@ class _AddShippingAddressState extends State<AddShippingAddress>
                 onTap: () async {
                   address.ward.name = addressModel.wards[index].name;
                   address.ward.id = addressModel.wards[index].id;
+                  address.wardId = addressModel.wards[index].id;
                   print("chosen ward: ${address.ward.name}");
 
                   updateState();

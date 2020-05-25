@@ -180,7 +180,8 @@ class ProductModel with ChangeNotifier {
       return SubCategoryScreen(category: categoryId);
   }
 
-  static showSubCategoryPage(Category category, String sortBy, context) {
+  static showSubCategoryPage(Category category, String sortBy, context,
+      {bool isNameAvailable}) {
     final product = Provider.of<ProductModel>(context, listen: false);
     print("show subcate");
     print("cate id: ${category.name}");
@@ -195,13 +196,15 @@ class ProductModel with ChangeNotifier {
             builder: (context) => SubCategoryScreen(category: category)));
   }
 
-  static showProductListByCategory({cateId, sortBy, context, limit}) {
+  static showProductListByCategory(
+      {cateId, sortBy, context, limit, isNameAvailable = false}) {
     return FutureBuilder<List<Product>>(
       future: service.getProductsByCategory(
           categoryId: cateId, sortBy: sortBy, limit: limit),
       builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
         return ProductList(
           products: snapshot.data,
+          isNameAvailable: isNameAvailable,
         );
       },
     );
@@ -218,12 +221,13 @@ class ProductModel with ChangeNotifier {
     );
   }
 
-  static showProductList({future}) {
+  static showProductList({isNameAvailable, future}) {
     return FutureBuilder<List<Product>>(
       future: future,
       builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
         return ProductList(
           products: snapshot.data,
+          isNameAvailable: isNameAvailable,
         );
       },
     );

@@ -1,21 +1,26 @@
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/models/coupon.dart';
+import 'package:Dimodo/models/order/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:Dimodo/common/tools.dart';
+import 'package:Dimodo/generated/i18n.dart';
+import 'package:provider/provider.dart';
 
 class CouponCard extends StatefulWidget {
   final Function onTap;
   final Coupon coupon;
   final context;
   final isSelector;
-  bool isSelected;
+  final bool isSelected;
+  final bool isCouponApplicable;
 
   CouponCard(
       {this.coupon,
       this.onTap,
       this.context,
+      this.isCouponApplicable = true,
       this.isSelector,
       this.isSelected = false});
 
@@ -31,6 +36,41 @@ class _CouponCardState extends State<CouponCard> {
   }
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  Future<void> showAddedToCartAlert() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true, // user can tap anywhere to dismiss the popup!
+      builder: (BuildContext buildContext) {
+        // Future.delayed(const Duration(milliseconds: 1500), () {
+        //   Navigator.of(buildContext).pop();
+        // });
+
+        return AlertDialog(
+          title: DynamicText(
+            S.of(context).addedToYourCart,
+            style: kBaseTextStyle,
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: DynamicText(
+                'Ok',
+                style: kBaseTextStyle,
+              ),
+              onPressed: () {
+                Navigator.of(buildContext).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     // print("description: ${widget.coupon.description}");
     isSelected = widget.isSelected;
@@ -41,12 +81,16 @@ class _CouponCardState extends State<CouponCard> {
         Expanded(
           child: MaterialButton(
             onPressed: () {
-              widget.isSelector
-                  ? widget.onTap(context)
-                  : setState(() {
-                      isSelected = !isSelected;
-                      widget.onTap();
-                    });
+              if (!widget.isCouponApplicable) {
+                showAddedToCartAlert();
+              } else {
+                widget.isSelector
+                    ? widget.onTap(context)
+                    : setState(() {
+                        isSelected = !isSelected;
+                        widget.onTap();
+                      });
+              }
             },
             height: 70,
             elevation: 0,

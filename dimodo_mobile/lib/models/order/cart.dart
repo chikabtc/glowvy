@@ -349,8 +349,6 @@ class CartModel with ChangeNotifier {
           return value + coupon.discountAmount.toDouble();
         }
       });
-    } else {
-      totalDiscounts = 0;
     }
     print("getTotalDiscounts $totalDiscounts");
     return totalDiscounts;

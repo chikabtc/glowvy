@@ -1,3 +1,4 @@
+import 'package:Dimodo/common/tools.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -33,10 +34,18 @@ class ImageFeature extends StatelessWidget {
                 : AlwaysScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int i) {
               // print("image render: ${product.sliderImages[i]}");
-              return CachedNetworkImage(
-                imageUrl: product.sliderImages[i],
-                errorWidget: (context, url, error) => Icon(Icons.error),
-              );
+              return Hero(
+                  tag: 'product-${product.id}',
+                  child: Tools.image(
+                    url: product.sliderImages[i],
+                    fit: BoxFit.cover,
+                    width: constraints.maxWidth,
+                    size: kSize.large,
+                  ));
+//  CachedNetworkImage(
+//                 imageUrl: product.sliderImages[i],
+//                 errorWidget: (context, url, error) => Icon(Icons.error),
+//               );
             },
             itemCount: product.sliderImages.length,
             pagination: new SwiperPagination(

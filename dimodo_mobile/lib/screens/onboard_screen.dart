@@ -157,11 +157,11 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                           count: 3,
                           effect: SlideEffect(
                               spacing: 5.0,
-                              radius: 2.5,
+                              radius: 5,
                               dotWidth: 5.0,
                               dotHeight: 5.0,
                               paintStyle: PaintingStyle.fill,
-                              strokeWidth: 1.5,
+                              strokeWidth: 1.0,
                               dotColor: Colors.grey,
                               activeDotColor:
                                   kDarkAccent), // your preferred effect

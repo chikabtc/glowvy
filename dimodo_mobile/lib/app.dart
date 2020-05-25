@@ -6,6 +6,7 @@ import 'package:Dimodo/screens/category.dart';
 import 'package:Dimodo/screens/categories/sub_category.dart';
 import 'package:Dimodo/screens/checkout/orderSubmitted.dart';
 import 'package:Dimodo/screens/orders.dart';
+import 'package:Dimodo/screens/search_screen.dart';
 import 'package:Dimodo/screens/setting/add_shipping_address.dart';
 import 'package:Dimodo/screens/setting/reset_password.dart';
 import 'package:Dimodo/screens/setting/manage_address.dart';
@@ -131,7 +132,7 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
   }
 
   Widget renderFirstScreen() {
-    if (!isFirstSeen) return OnBoardScreen();
+    if (isFirstSeen) return OnBoardScreen();
     if (kAdvanceConfig['IsRequiredLogin'] && !isLoggedIn) return LoginScreen();
     return MainTabs();
   }
@@ -205,6 +206,7 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
               },
               routes: <String, WidgetBuilder>{
                 "/home": (context) => MainTabs(),
+                "/search_screen": (context) => SearchScreen(),
                 "/login": (context) => LoginScreen(),
                 "/register": (context) => SignupScreen(),
                 "/cart": (context) => CartScreen(),

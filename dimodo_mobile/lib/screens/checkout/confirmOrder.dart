@@ -98,7 +98,7 @@ class _ConfirmOrderState extends State<ConfirmOrder>
       order.totalFee = cartModel.getTotal();
       order.totalDiscounts = cartModel.getTotalDiscounts();
       order.userId = userModel.user.id;
-      order.addressId = userModel.user.address.id;
+      order.addressId = userModel.user.defaultAddress.id;
       order.appliedCoupons = cartModel.selectedCoupons;
 
       await orderModel.submitOrder(order: order);
@@ -161,8 +161,8 @@ class _ConfirmOrderState extends State<ConfirmOrder>
                           child: DynamicText(S.of(context).whereToDeliver,
                               style: kBaseTextStyle.copyWith(
                                   fontSize: 17, fontWeight: FontWeight.w600))),
-                      if (user.address != null)
-                        ShippingAddressSmallCard(user.address),
+                      if (user.defaultAddress != null)
+                        ShippingAddressSmallCard(user.defaultAddress),
                       // if (user.address == null)
 
                       Container(
@@ -200,7 +200,7 @@ class _ConfirmOrderState extends State<ConfirmOrder>
                                   buttonTitle: S.of(context).submitOrder,
                                   buttonController: submitButtonController.view,
                                   onTap: () {
-                                    if (user.address == null) {
+                                    if (user.defaultAddress == null) {
                                       Navigator.pushNamed(
                                           context, "/manage_address");
                                     }

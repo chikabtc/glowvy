@@ -19,6 +19,8 @@ abstract class BaseServices {
 
   Future<List<Product>> getProductsByTag({int tag, String sortBy});
 
+  Future<List<Product>> getProductsBySearch({String searchText});
+
   Future<List<Product>> getProductsByShop({shopId});
 
   Future<User> loginFacebook({String token});
@@ -124,6 +126,21 @@ class Services implements BaseServices {
         connectivityResult == ConnectivityResult.wifi) {
       return serviceApi.getProductsByShop(
         shopId: shopId,
+      );
+    } else {
+      //TODO: add no connection popup
+      throw Exception("No internet connection");
+    }
+  }
+
+  @override
+  Future<List<Product>> getProductsBySearch(
+      {String searchText, String sortBy}) async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      return serviceApi.getProductsBySearch(
+        searchText: searchText,
       );
     } else {
       //TODO: add no connection popup

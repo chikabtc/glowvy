@@ -224,6 +224,7 @@ class _LoginPageState extends State<LoginScreen>
                               Center(
                             child: TextField(
                               controller: _emailController,
+                              cursorColor: kPinkAccent,
                               onChanged: (value) => email = value,
                               decoration: InputDecoration(
                                 border: InputBorder.none,
@@ -247,6 +248,7 @@ class _LoginPageState extends State<LoginScreen>
                           child: // Group 6
                               Center(
                             child: TextField(
+                                cursorColor: kPinkAccent,
                                 onChanged: (value) => password = value,
                                 obscureText: true,
                                 controller: _passwordController,

@@ -56,6 +56,7 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
         .textTheme
         .body2
         .copyWith(fontSize: 15, color: kDefaultFontColor);
+    var isNameAvailable = widget.category.id == 8 ? true : false;
 
     return Scaffold(
       body: Container(
@@ -141,6 +142,7 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
                         cateId: currentCate.id,
                         sortBy: isAscending ? highToLow : lowToHigh,
                         limit: 2500,
+                        isNameAvailable: isNameAvailable,
                         context: context)
                   ]),
                 ),

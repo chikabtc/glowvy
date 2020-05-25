@@ -245,6 +245,7 @@ class _SignupScreenState extends State<SignupScreen>
                           child: // Group 6
                               Center(
                             child: TextField(
+                              cursorColor: kPinkAccent,
                               onChanged: (value) => fullName = value,
                               decoration: InputDecoration(
                                 border: InputBorder.none,
@@ -269,6 +270,7 @@ class _SignupScreenState extends State<SignupScreen>
                               Center(
                             child: TextField(
                               controller: _emailController,
+                              cursorColor: kPinkAccent,
                               onChanged: (value) => email = value,
                               keyboardType: TextInputType.emailAddress,
                               decoration: InputDecoration(
@@ -293,6 +295,7 @@ class _SignupScreenState extends State<SignupScreen>
                           child: // Group 6
                               Center(
                             child: TextField(
+                              cursorColor: kPinkAccent,
                               onChanged: (value) => password = value,
                               obscureText: true,
                               decoration: InputDecoration(

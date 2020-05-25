@@ -14,13 +14,16 @@ User _$UserFromJson(Map<String, dynamic> json) {
     json['email'] as String,
     json['picture'] as String,
     json['access_token'] as String,
-    json['address'] == null
+    json['default_address'] == null
         ? null
-        : Address.fromJson(json['address'] as Map<String, dynamic>),
+        : Address.fromJson(json['default_address'] as Map<String, dynamic>),
     json['billing'] == null
         ? null
         : Billing.fromJson(json['billing'] as Map<String, dynamic>),
-  );
+  )..addresses = (json['addresses'] as List)
+      ?.map(
+          (e) => e == null ? null : Address.fromJson(e as Map<String, dynamic>))
+      ?.toList();
 }
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
@@ -30,6 +33,7 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'email': instance.email,
       'picture': instance.picture,
       'access_token': instance.accessToken,
-      'address': instance.address,
+      'default_address': instance.defaultAddress,
+      'addresses': instance.addresses,
       'billing': instance.billing,
     };

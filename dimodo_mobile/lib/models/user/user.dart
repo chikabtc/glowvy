@@ -12,10 +12,12 @@ class User {
   String email;
   String picture;
   String accessToken;
-  Address address;
+  Address defaultAddress;
+  List<Address> addresses;
+
   Billing billing;
   User(this.id, this.loggedIn, this.fullName, this.email, this.picture,
-      this.accessToken, this.address, this.billing);
+      this.accessToken, this.defaultAddress, this.billing);
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);
@@ -32,7 +34,7 @@ class User {
       fullName = user.fullName;
       email = user.email;
       picture = user.picture;
-      address = user.address;
+      defaultAddress = user.defaultAddress;
     } catch (e) {
       print(e.toString());
     }
@@ -74,12 +76,12 @@ class User {
     try {
       // print("fromLocalJsonUser: $json");
       accessToken = json['access_token'];
-      address = json["Address"];
+      defaultAddress = json["Address"];
       var user = json['Account'];
       id = user['id'];
       fullName = user['full_name'];
       email = user['email'];
-      address = user['address'];
+      defaultAddress = user['address'];
 
       // picture = user['picture'];
     } catch (e) {

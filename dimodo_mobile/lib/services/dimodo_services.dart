@@ -17,6 +17,7 @@ import '../models/user/user.dart';
 import 'index.dart';
 import 'dart:io';
 import '../common/constants.dart';
+import 'package:algolia/algolia.dart';
 
 class DimodoServices implements BaseServices {
   static final DimodoServices _instance = DimodoServices._internal();
@@ -26,6 +27,11 @@ class DimodoServices implements BaseServices {
   bool isProd = true;
 
   DimodoServices._internal();
+
+  static Algolia algolia = Algolia.init(
+    applicationId: '50G6MO803G',
+    apiKey: 'ab5eb7ec7552bb7865f3819a2b08f462',
+  );
 
   String isSecure;
   String baseUrl = "http://dimodo.app";
@@ -44,15 +50,11 @@ class DimodoServices implements BaseServices {
     print("accessToken: $kAccessToken");
 
     headers = kAccessToken != null
-        ? {
-            "Authorization": "Bearer $kAccessToken",
-            'Content-Type': 'application/json'
-          }
+        ? {"Authorization": "Bearer $kAccessToken"}
         : {'Content-Type': 'application/json'};
 
     final http.Response response = await http.get(url, headers: headers);
     Map<String, dynamic> body = json.decode(utf8.decode(response.bodyBytes));
-
     return body;
   }
 
@@ -61,9 +63,8 @@ class DimodoServices implements BaseServices {
     var headers = kAccessToken != null
         ? {
             "Authorization": "Bearer $kAccessToken",
-            'Content-Type': 'application/json'
           }
-        : {'Content-Type': 'application/json'};
+        : null;
 
     print("baseURL: $url");
     print("headers: $headers");
@@ -146,6 +147,41 @@ class DimodoServices implements BaseServices {
         }
         return list;
       }
+    } catch (e) {
+      print("Error: $e");
+
+      throw e;
+    }
+  }
+
+  @override
+  Future<List<Product>> getProductsBySearch({searchText}) async {
+    try {
+      AlgoliaQuery query =
+          algolia.instance.index('products').search(searchText);
+
+      List<Product> list = [];
+
+      // Perform multiple facetFilters
+      // query = query.setFacetFilter('status:published');
+      // query = query.setFacetFilter('isDelete:false');
+
+      // Get Result/Objects
+      AlgoliaQuerySnapshot querySnap = await query.getObjects();
+      List<AlgoliaObjectSnapshot> results = querySnap.hits;
+      print("querySnap: ${querySnap}");
+
+      // print('Hits count: ${objectData}');
+
+      if ((querySnap.hits.length == 0)) {
+        return list;
+      } else {
+        results.forEach((item) {
+          list.add(Product.fromJson(item.data));
+        });
+        return list;
+      }
+      return list;
     } catch (e) {
       print("Error: $e");
 
@@ -373,8 +409,15 @@ class DimodoServices implements BaseServices {
   @override
   Future<bool> updateAddress({Address address, String accessToken}) async {
     try {
+      print("address : ${address.toJson()}");
       final body = await postAsync(
-          endPoint: "api/address/update", data: address.toJson());
+          endPoint: "api/address/update",
+          data: jsonEncode({
+            "recipient_name": address.recipientName,
+            "street": address.street,
+            "ward_id": address.ward.id,
+            "phone_number": address.phoneNumber
+          }));
       return body["isSuccess"];
     } catch (err) {
       throw "err: $err";

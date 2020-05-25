@@ -36,7 +36,7 @@ class UserModel with ChangeNotifier {
       kAccessToken = user.accessToken;
       isLoggedIn = true;
 
-      user.address = await _service.getAddress(token: user.accessToken);
+      user.defaultAddress = await _service.getAddress(token: user.accessToken);
 
       saveUser(user);
       success(user);
@@ -63,7 +63,8 @@ class UserModel with ChangeNotifier {
           kAccessToken = user.accessToken;
           isLoggedIn = true;
 
-          user.address = await _service.getAddress(token: user.accessToken);
+          user.defaultAddress =
+              await _service.getAddress(token: user.accessToken);
 
           print('accessToken$accessToken');
 
@@ -103,7 +104,8 @@ class UserModel with ChangeNotifier {
       isLoggedIn = true;
 
       if (user.accessToken != null) {
-        user.address = await _service.getAddress(token: user.accessToken);
+        user.defaultAddress =
+            await _service.getAddress(token: user.accessToken);
       }
 
       print("lgogogo: ${user.toJson()}");
@@ -157,7 +159,7 @@ class UserModel with ChangeNotifier {
   Future getShippingAddress() async {
     final LocalStorage storage = new LocalStorage("Dimodo");
     if (user != null) {
-      user.address = await _service.getAddress(token: user.accessToken);
+      user.defaultAddress = await _service.getAddress(token: user.accessToken);
     }
 
     try {
@@ -165,7 +167,7 @@ class UserModel with ChangeNotifier {
       if (ready) {
         final json = storage.getItem(kLocalKey["shippingAddress"]);
         if (json != null) {
-          user.address = Address.fromJson(json);
+          user.defaultAddress = Address.fromJson(json);
           print("got address: $user");
           notifyListeners();
         } else {
@@ -293,7 +295,7 @@ class UserModel with ChangeNotifier {
   void updateAddress(
       {Address address, String token, Function success, Function fail}) async {
     try {
-      this.user.address = address;
+      this.user.defaultAddress = address;
       var isSuccess =
           await _service.updateAddress(address: address, accessToken: token);
       success(isSuccess);
