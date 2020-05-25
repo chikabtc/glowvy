@@ -380,7 +380,7 @@ class S implements WidgetsLocalizations {
   String get youMightAlsoLike => "You might also like";
   String get yourBagIsEmpty => "Your bag is empty";
   String get yourNote => "Your note";
-  String get sevenDayWorryFree => "7 days after sales worry freee";
+  String get sevenDayWorryFree => "Return within 7 days after sales";
   String get zipCode => "Zip-code";
   String get zipCodeIsRequired => "The zip code field is required";
   String get beenSold => "been sold";
@@ -551,7 +551,7 @@ class $vi extends S {
   @override
   String get bannerDescription => "Hình ảnh của người nổi tiếng";
   String get genuineSecurity => "Genuine Security";
-  String get sevenDayWorryFree => "7 days after sales worry freee";
+  String get sevenDayWorryFree => "Return within 7 days after sales";
 
   @override
   String get bannerTitle => "Mua sắm tiện lợi cùng nhau";

@@ -15,7 +15,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:flutter/services.dart';
 import 'package:Dimodo/services/index.dart';
-import 'package:algolia/algolia.dart';
 
 class HomeScreen extends StatefulWidget {
   final User user;
@@ -133,6 +132,7 @@ class HomeScreenState extends State<HomeScreen>
                               children: <Widget>[
                                 SvgPicture.asset(
                                     "assets/icons/home/banner-support-1.svg"),
+                                SizedBox(width: 4.3),
                                 DynamicText(
                                   S.of(context).genuineSecurity,
                                   style: kBaseTextStyle.copyWith(
@@ -147,6 +147,7 @@ class HomeScreenState extends State<HomeScreen>
                               children: <Widget>[
                                 SvgPicture.asset(
                                     "assets/icons/home/banner-support-2.svg"),
+                                SizedBox(width: 4.3),
                                 DynamicText(
                                   S.of(context).sevenDayWorryFree,
                                   style: kBaseTextStyle.copyWith(

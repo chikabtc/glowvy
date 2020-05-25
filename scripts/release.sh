@@ -1,15 +1,7 @@
 #!/bin/bash
-# build:
-# 	GOOS=linux GOARCH=amd64 go build .
-# to-server:
-# 	ssh root@178.128.58.60
-# 	rm dimodo
-# 	kill -9 $(sudo lsof -t -i:80)
-# 	exit .
-# copy-toserver:
-# 	scp dimodo root@178.128.58.60:~/
-# NOTE: Be sure to replace all instances of dimodo.app
-# with your own domain or IP address.
+# release.sh will merge the new commits back to master
+# push the develop and master to the remote
+# and checkout back to the develop branch
 
 # Change to the directory with our code that we plan to work from
 cd "/Users/present/Development/Projects/Dimodo/dimodo_app"
