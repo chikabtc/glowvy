@@ -71,7 +71,7 @@ func NewProductService(db *sql.DB) ProductService {
 type Category struct {
 	Id       int         `json:"id,omitempty"`
 	ParentId int         `json:"parent_id,omitempty"`
-	Name     string      `json:"name,omitempty"`
+	Name     null.String `json:"name,omitempty"`
 	Image    null.String `json:"image,omitempty"`
 }
 
@@ -259,12 +259,34 @@ func (ps *productService) GetSubCategories(parentId int) ([]Category, error) {
 
 //Categories include the home categories as well which is 0
 func (ps *productService) ProductsByCategoryID(categoryID, sortBy string, start, count int) ([]Product, error) {
-	rows, err := ps.dot.Query(ps.DB, "ProductsByCategoryID", categoryID, sortBy, start, count)
+	//if cateId is smaller than 10, it's a parent cateid
+	fmt.Println("categoryId: ", categoryID)
+	categoryId, err := strconv.Atoi(categoryID)
 	if err != nil {
-		bugsnag.Notify(err)
-		fmt.Println("ProductsByCategoryID", err)
-		return nil, err
+		fmt.Println("fail to convert categoryID to int :", err)
 	}
+	var rows *sql.Rows
+	parentMaxId := int(10)
+
+	if categoryId < parentMaxId {
+		fmt.Println("ProductsByParentCategoryID")
+		rows, err = ps.dot.Query(ps.DB, "ProductsByParentCategoryID", categoryID, sortBy, start, count)
+		if err != nil {
+			bugsnag.Notify(err)
+			fmt.Println("ProductsByParentCategoryID", err)
+			return nil, err
+		}
+	} else {
+		fmt.Println("ProductsByCategoryID")
+
+		rows, err = ps.dot.Query(ps.DB, "ProductsByCategoryID", categoryID, sortBy, start, count)
+		if err != nil {
+			bugsnag.Notify(err)
+			fmt.Println("ProductsByCategoryID", err)
+			return nil, err
+		}
+	}
+
 	var tags []uint8
 
 	defer rows.Close()

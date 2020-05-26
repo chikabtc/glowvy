@@ -48,7 +48,7 @@ func (p *Product) AllCategories(w http.ResponseWriter, r *http.Request) {
 func (p *Product) GetSubCategories(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 
-	id, err := strconv.Atoi(params["id"])
+	id, err := strconv.Atoi(params["parentId"])
 	categories, err := p.Ps.GetSubCategories(id)
 	// print("categories: ", *categories)
 	if err != nil {
@@ -112,14 +112,8 @@ func (p *Product) ProductsByCategoryId(w http.ResponseWriter, r *http.Request) {
 		start = 0
 	}
 	params := mux.Vars(r)
-	id, err := strconv.Atoi(params["id"])
-	if err != nil {
-		bugsnag.Notify(err)
-		msgError := fmt.Sprintf("Invalid actions Id. Error: %s", err)
-		resp.Json(w, r, http.StatusBadRequest, resp.WithError(msgError))
-		return
-	}
-	products, err := p.Ps.ProductsByCategoryID(fmt.Sprintln(id), sortBy, start, count)
+
+	products, err := p.Ps.ProductsByCategoryID(params["id"], sortBy, start, count)
 	if err != nil {
 		bugsnag.Notify(err)
 		resp.Json(w, r, http.StatusInternalServerError, resp.WithError(err.Error()))

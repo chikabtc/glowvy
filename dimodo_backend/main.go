@@ -27,16 +27,12 @@ func main() {
 	crawler := crawler.NewCrawler()
 	api := api.NewAPI(crawler)
 
-	err := c.AddFunc("0 52 14 * * ?", func() {
+	err := c.AddFunc("0 0 3 * * ?", func() {
 		start := time.Now()
 		cronMessage := errors.New("   updating products...")
 		bugsnag.Notify(cronMessage)
-		err := crawler.TranslateTags()
-		if err != nil {
-			bugsnag.Notify(cronMessage)
 
-		}
-		err = crawler.UpdateProducts()
+		err := crawler.UpdateProducts()
 		if err != nil {
 			bugsnag.Notify(cronMessage)
 		}
@@ -49,6 +45,26 @@ func main() {
 	if err != nil {
 		bugsnag.Notify(err)
 	}
+
+	// err = c.AddFunc("0 4 16 * * ?", func() {
+	// 	start := time.Now()
+	// 	cronMessage := errors.New("   translating tags ...")
+	// 	bugsnag.Notify(cronMessage)
+
+	// 	err := crawler.TranslateTags()
+
+	// 	if err != nil {
+	// 		bugsnag.Notify(cronMessage)
+	// 	}
+
+	// 	elapsed := time.Since(start)
+
+	// 	crawlTime := fmt.Errorf("updating all products prices %s", elapsed)
+	// 	bugsnag.Notify(crawlTime)
+	// })
+	// if err != nil {
+	// 	bugsnag.Notify(err)
+	// }
 
 	// client := search.NewClient("50G6MO803G", "ab5eb7ec7552bb7865f3819a2b08f462")
 	// index := client.InitIndex("products")
@@ -85,6 +101,7 @@ func main() {
 	// if err != nil {
 	// 	bugsnag.Notify(err)
 	// }
+	// crawler.TranslateTags()
 	c.Start()
 	api.Run()
 

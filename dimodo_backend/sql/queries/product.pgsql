@@ -17,7 +17,7 @@ SELECT
 FROM
     Category;
 
---name: ProductsByCategoryID
+--name: ProductsByParentCategoryID
 WITH matching_product_sids AS (
     SELECT DISTINCT
         sid
@@ -26,7 +26,54 @@ WITH matching_product_sids AS (
         category
     WHERE
         product.category_id = category.id
-        AND category.parent = $1
+        AND category.parent_id = $1
+)
+SELECT
+    product.id,
+    product.sid,
+    product.name,
+    product.thumbnail,
+    product.sprice,
+    product.sale_price,
+    product.sale_percent,
+    COALESCE(product.purchase_count, 0) AS purchase_count,
+    category.name,
+    product.category_id,
+    json_agg(json_build_object('name', tags.en_name, 'sname', tags.sname, 'id', tags.id, 'type', tags.type))
+FROM
+    product,
+    product_tags,
+    matching_product_sids,
+    category,
+    tags
+WHERE
+    matching_product_sids.sid = product.sid
+    AND category.id = product.category_id
+    AND product_tags.product_id = matching_product_sids.sid
+    AND tags.id = product_tags.tag_id
+GROUP BY
+    product.id,
+    category.name
+ORDER BY
+    CASE WHEN $2 = 'sale_price' THEN
+        product.sale_price
+    END ASC,
+    CASE WHEN $2 = '-sale_price' THEN
+        product.sale_price
+    END DESC,
+    CASE WHEN $2 = 'id' THEN
+        product.id
+    END DESC OFFSET $3
+LIMIT $4;
+
+--name: ProductsByCategoryID
+WITH matching_product_sids AS (
+    SELECT DISTINCT
+        sid
+    FROM
+        product
+    WHERE
+        product.category_id = $1
 )
 SELECT
     product.id,
