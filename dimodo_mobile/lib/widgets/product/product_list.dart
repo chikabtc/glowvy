@@ -1,3 +1,5 @@
+import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -96,26 +98,41 @@ class _ProductListState extends State<ProductList>
             height: 350,
             child: CupertinoActivityIndicator(animating: true),
           )
-        : Padding(
-            padding: const EdgeInsets.only(left: 3.0, right: 3),
-            child: CupertinoScrollbar(
-              child: GridView.builder(
-                addAutomaticKeepAlives: true,
-                padding: const EdgeInsets.all(0.0),
-
-                physics: ScrollPhysics(), // to disable GridView's scrolling
-                shrinkWrap: true,
-                itemCount: widget.products.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 0.8,
-                  crossAxisCount: 2,
+        : widget.products.length == 0
+            ? Container(
+                width: screenSize.width,
+                height: screenSize.height / 2,
+                child: Center(
+                  child: DynamicText(
+                    "no products found",
+                    style: kBaseTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: kPinkAccent),
+                  ),
                 ),
-                itemBuilder: (BuildContext context, int index) => ProductCard(
-                    isNameAvailable: widget.isNameAvailable,
-                    product: widget.products[index],
-                    width: widthContent),
-              ),
-            ),
-          );
+              )
+            : Padding(
+                padding: const EdgeInsets.only(left: 3.0, right: 3),
+                child: CupertinoScrollbar(
+                  child: GridView.builder(
+                    addAutomaticKeepAlives: true,
+                    padding: const EdgeInsets.all(0.0),
+
+                    physics: ScrollPhysics(), // to disable GridView's scrolling
+                    shrinkWrap: true,
+                    itemCount: widget.products.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      childAspectRatio: 0.8,
+                      crossAxisCount: 2,
+                    ),
+                    itemBuilder: (BuildContext context, int index) =>
+                        ProductCard(
+                            isNameAvailable: widget.isNameAvailable,
+                            product: widget.products[index],
+                            width: widthContent),
+                  ),
+                ),
+              );
   }
 }

@@ -179,12 +179,7 @@
       "name": "ALL",
       "image": "assets/icons/categories/all.png",
       "id": 0,
-      "parent": 0,
-      "subCategories": [{
-        "name": "long dress",
-        "id": 2,
-        "parent": 1
-      }]
+      "parent_id": 0
     },
 
 
@@ -192,96 +187,50 @@
       "name": "TOP",
       "image": "assets/icons/categories/top.png",
       "id": 1,
-      "parent": 1,
-      "subCategories": [{
-          "name": "long dress",
-          "id": 2,
-          "parent": 1
-        },
-        {
-          "name": "long dress",
-          "id": 2,
-          "parent": 1
-        }
-      ]
+      "parent_id": 1
     },
 
     {
       "name": "COAT",
       "image": "assets/icons/categories/coat.png",
       "id": 5,
-      "parent": 5,
-      "subCategories": [{
-        "name": "long dress",
-        "id": 2,
-        "parent": 1
-      }]
+      "parent_id": 5
 
     }, {
       "name": "PANT",
       "image": "assets/icons/categories/pants.png",
       "id": 2,
-      "parent": 2,
-      "subCategories": [{
-        "name": "long dress",
-        "id": 2,
-        "parent": 1
-      }]
+      "parent_id": 2
     },
     {
       "name": "SKIRT",
       "image": "assets/icons/categories/skirt.png",
       "id": 4,
-      "parent": 4,
-      "subCategories": [{
-        "name": "long dress",
-        "id": 2,
-        "parent": 1
-      }]
+      "parent_id": 4
 
     }, {
       "name": "DRESS",
       "image": "assets/icons/categories/dress.png",
       "id": 3,
-      "parent": 3,
-      "subCategories": [{
-        "name": "long dress",
-        "id": 2,
-        "parent": 1
-      }]
+      "parent_id": 3
     },
     {
       "name": "SHOE",
       "image": "assets/icons/categories/shoes.png",
       "id": 6,
-      "parent": 6,
-      "subCategories": [{
-        "name": "long dress",
-        "id": 2,
-        "parent": 1
-      }]
+      "parent_id": 6
     },
     {
       "name": "UNDIE",
       "image": "assets/icons/categories/lifeware.png",
       "id": 7,
-      "parent": 7,
-      "subCategories": [{
-        "name": "long dress",
-        "id": 2,
-        "parent": 1
-      }]
+      "parent_id": 7
     },
     {
       "name": "COSME",
       "image": "assets/icons/categories/cosmetics.png",
       "id": 8,
-      "parent": 8,
-      "subCategories": [{
-        "name": "long dress",
-        "id": 2,
-        "parent": 1
-      }]
+      "parent_id": 8
     }
   ]
 }

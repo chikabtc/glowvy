@@ -4,17 +4,17 @@ part 'category.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Category {
   int id;
-  int parent;
+  int parentId;
   String name;
   String image;
-  List<dynamic> subCategories;
+  List<Category> subCategories;
 
   Category({
     this.id,
     this.name,
     this.image,
-    this.parent,
     this.subCategories,
+    this.parentId,
   });
   factory Category.fromJson(Map<String, dynamic> json) =>
       _$CategoryFromJson(json);

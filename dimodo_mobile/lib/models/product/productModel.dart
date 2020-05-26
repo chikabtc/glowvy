@@ -145,40 +145,40 @@ class ProductModel with ChangeNotifier {
     notifyListeners();
   }
 
-  /// Show Products in Slider View
-  static showList(
-      {Category category,
-      sortBy,
-      context,
-      List<Product> products,
-      config,
-      noRouting}) {
-    var categoryId = category.id == null ? config['category'] : category.id;
-    final product = Provider.of<ProductModel>(context, listen: false);
+  // /// Show Products in Slider View
+  // static showList(
+  //     {Category category,
+  //     sortBy,
+  //     context,
+  //     List<Product> products,
+  //     config,
+  //     noRouting}) {
+  //   var categoryId = category.id == null ? config['category'] : category.id;
+  //   final product = Provider.of<ProductModel>(context, listen: false);
 
-    // for caching current products list
-    if (products != null && products.length > 0) {
-      product.setProductsList(products);
-      return Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => SubCategoryScreen(category: categoryId)));
-    }
+  //   // for caching current products list
+  //   if (products != null && products.length > 0) {
+  //     product.setProductsList(products);
+  //     return Navigator.push(
+  //         context,
+  //         MaterialPageRoute(
+  //             builder: (context) => SubCategoryScreen(category: categoryId)));
+  //   }
 
-    // for fetching beforehand
-    if (categoryId != null) product.setCategoryId(categoryId: categoryId);
+  //   // for fetching beforehand
+  //   if (categoryId != null) product.setCategoryId(categoryId: categoryId);
 
-    product.setProductsList(List<Product>()); //clear old products
-    product.getProductsList(categoryId: categoryId, sortBy: sortBy);
+  //   product.setProductsList(List<Product>()); //clear old products
+  //   product.getProductsList(categoryId: categoryId, sortBy: sortBy);
 
-    if (noRouting == null)
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => SubCategoryScreen(category: categoryId)));
-    else
-      return SubCategoryScreen(category: categoryId);
-  }
+  //   if (noRouting == null)
+  //     Navigator.push(
+  //         context,
+  //         MaterialPageRoute(
+  //             builder: (context) => SubCategoryScreen(category: categoryId)));
+  //   else
+  //     return SubCategoryScreen(category: categoryId);
+  // }
 
   static showSubCategoryPage(Category category, String sortBy, context,
       {bool isNameAvailable}) {
@@ -190,6 +190,7 @@ class ProductModel with ChangeNotifier {
     product.setCategoryId(categoryId: category.id);
     product.setProductsList(List<Product>()); //clear old products
     // _service.fetchProductsByCategory(categoryId: category.id);
+
     Navigator.push(
         context,
         MaterialPageRoute(

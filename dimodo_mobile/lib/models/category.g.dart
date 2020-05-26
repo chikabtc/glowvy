@@ -11,14 +11,17 @@ Category _$CategoryFromJson(Map<String, dynamic> json) {
     id: json['id'] as int,
     name: json['name'] as String,
     image: json['image'] as String,
-    parent: json['parent'] as int,
-    subCategories: json['sub_categories'] as List,
+    subCategories: (json['sub_categories'] as List)
+        ?.map((e) =>
+            e == null ? null : Category.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
+    parentId: json['parent_id'] as int,
   );
 }
 
 Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
       'id': instance.id,
-      'parent': instance.parent,
+      'parent_id': instance.parentId,
       'name': instance.name,
       'image': instance.image,
       'sub_categories': instance.subCategories,

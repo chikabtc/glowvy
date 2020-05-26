@@ -1,3 +1,4 @@
+import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/order/cartItem.dart';
 import '../models/order/order.dart';
 import '../models/product/product.dart';
@@ -22,6 +23,7 @@ abstract class BaseServices {
   Future<List<Product>> getProductsBySearch({String searchText});
 
   Future<List<Product>> getProductsByShop({shopId});
+  Future<List<Category>> getSubCategories({parentId});
 
   Future<User> loginFacebook({String token});
 
@@ -141,6 +143,20 @@ class Services implements BaseServices {
         connectivityResult == ConnectivityResult.wifi) {
       return serviceApi.getProductsBySearch(
         searchText: searchText,
+      );
+    } else {
+      //TODO: add no connection popup
+      throw Exception("No internet connection");
+    }
+  }
+
+  @override
+  Future<List<Category>> getSubCategories({parentId}) async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      return serviceApi.getSubCategories(
+        parentId: parentId,
       );
     } else {
       //TODO: add no connection popup

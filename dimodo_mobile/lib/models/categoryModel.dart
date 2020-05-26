@@ -22,7 +22,12 @@ class CategoryModel with ChangeNotifier {
       var localCates = List<Category>();
 
       for (var cate in localCategories) {
-        localCates.add(Category.fromJson(cate));
+        var cates =
+            await _service.getSubCategories(parentId: cate["parent_id"]);
+        // cate.subCategories = cates;
+        var category = Category.fromJson(cate);
+        category.subCategories = cates;
+        localCates.add(category);
       }
       categories = localCates;
 

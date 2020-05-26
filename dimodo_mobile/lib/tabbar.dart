@@ -70,52 +70,6 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
     }
   }
 
-  List showCategories() {
-    final categories =
-        Provider.of<CategoryModel>(context, listen: false).categories;
-    List<Widget> widgets = [];
-
-    if (categories != null) {
-      var list = categories.where((item) => item.parent == 0).toList();
-      for (var index in list) {
-        widgets.add(
-          ExpansionTile(
-            title: Padding(
-              padding: const EdgeInsets.only(left: 0.0),
-              child: Text(
-                index.name.toUpperCase(),
-                style: TextStyle(
-                  fontSize: 14,
-                ),
-              ),
-            ),
-            children: getChildren(categories, index),
-          ),
-        );
-      }
-    }
-    return widgets;
-  }
-
-  List getChildren(List<Category> categories, Category category) {
-    List<Widget> list = [];
-    var children = categories.where((o) => o.parent == category.id).toList();
-    if (children.length == 0) {
-      list.add(
-        ListTile(
-          leading: Padding(
-            child: Text(category.name),
-            padding: EdgeInsets.only(left: 20),
-          ),
-          onTap: () {
-            ProductModel.showList(context: context, category: category);
-          },
-        ),
-      );
-    }
-    return list;
-  }
-
   @override
   void initState() {
     super.initState();

@@ -50,7 +50,7 @@ class _CartState extends State<Cart>
     userModel = Provider.of<UserModel>(context, listen: false);
     _getAllCoupons = cartModel.getAllCoupons(userModel);
     _getProductsByCategory = service.getProductsByCategory(
-        categoryId: "9", sortBy: "sale_price", limit: 200);
+        categoryId: "7", sortBy: "sale_price", limit: 200);
   }
 
   List<Widget> _createShoppingCartRows(CartModel model) {

@@ -3,6 +3,7 @@ import 'dart:convert' as convert;
 import 'dart:convert' show utf8;
 import 'dart:convert';
 import "dart:core";
+import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/order/cartItem.dart';
 import 'package:http/http.dart' as http;
 import '../models/address/address.dart';
@@ -24,7 +25,7 @@ class DimodoServices implements BaseServices {
   factory DimodoServices() => _instance;
 
   // String accessToken;
-  bool isProd = true;
+  bool isProd = false;
 
   DimodoServices._internal();
 
@@ -161,11 +162,6 @@ class DimodoServices implements BaseServices {
           algolia.instance.index('products').search(searchText);
 
       List<Product> list = [];
-
-      // Perform multiple facetFilters
-      // query = query.setFacetFilter('status:published');
-      // query = query.setFacetFilter('isDelete:false');
-
       // Get Result/Objects
       AlgoliaQuerySnapshot querySnap = await query.getObjects();
       List<AlgoliaObjectSnapshot> results = querySnap.hits;
@@ -181,7 +177,29 @@ class DimodoServices implements BaseServices {
         });
         return list;
       }
-      return list;
+    } catch (e) {
+      print("Error: $e");
+
+      throw e;
+    }
+  }
+
+  @override
+  Future<List<Category>> getSubCategories({parentId}) async {
+    try {
+      List<Category> list = [];
+      var body = await getAsync(endPoint: "api/categories/parentId=$parentId");
+
+      final categories = body["Data"];
+
+      if ((body["Success"] == false)) {
+        throw Exception(body["Success"]);
+      } else {
+        for (var item in categories) {
+          list.add(Category.fromJson(item));
+        }
+        return list;
+      }
     } catch (e) {
       print("Error: $e");
 
