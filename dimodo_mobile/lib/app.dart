@@ -11,6 +11,7 @@ import 'package:Dimodo/screens/setting/add_shipping_address.dart';
 import 'package:Dimodo/screens/setting/reset_password.dart';
 import 'package:Dimodo/screens/setting/manage_address.dart';
 import 'package:after_layout/after_layout.dart';
+import 'package:firebase_analytics/observer.dart';
 import 'package:localstorage/localstorage.dart';
 import 'screens/staticLaunchScreen.dart';
 import 'package:flare_splash_screen/flare_splash_screen.dart';
@@ -40,6 +41,7 @@ import 'tabbar.dart';
 import 'package:Dimodo/screens/setting/forgot_password.dart';
 import 'screens/settings.dart';
 import 'package:flutter/services.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 class Dimodo extends StatefulWidget {
   @override
@@ -52,24 +54,13 @@ class _AppState extends State<Dimodo> with SingleTickerProviderStateMixin {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
             statusBarBrightness: Brightness.light) // Or Brightness.dark
         );
-
-    // if (kSplashScreen.lastIndexOf('flr') > 0) {
-    //   return MaterialApp(
-    //     debugShowCheckedModeBanner: false,
-    //     navigatorObservers: [],
-    //     home: SplashScreen.navigate(
-    //       // name: kSplashScreen,
-    //       startAnimation: 'Dimodo',
-    //       backgroundColor: Colors.white,
-    //       next: (object) => MyApp(),
-    //       until: () => Future.delayed(Duration(seconds: 2)),
-    //     ),
-    //   );
-    // }
+    FirebaseAnalytics analytics = FirebaseAnalytics();
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      navigatorObservers: [],
+      navigatorObservers: [
+        FirebaseAnalyticsObserver(analytics: analytics),
+      ],
       home: CustomSplash(
         backGroundColor: Colors.white,
         animationEffect: 'fade-in',
@@ -97,6 +88,7 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
   bool isFirstSeen = false;
   bool isChecking = true;
   bool isLoggedIn = false;
+  FirebaseAnalytics analytics = FirebaseAnalytics();
 
   @override
   void afterFirstLayout(BuildContext context) async {
@@ -173,7 +165,9 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
               debugShowCheckedModeBanner: false,
               locale: new Locale(
                   Provider.of<AppModel>(context, listen: false).locale, ""),
-              navigatorObservers: [],
+              navigatorObservers: [
+                FirebaseAnalyticsObserver(analytics: analytics),
+              ],
               localizationsDelegates: [
                 S.delegate,
                 GlobalMaterialLocalizations.delegate,

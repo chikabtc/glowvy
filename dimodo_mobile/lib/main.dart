@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:http/http.dart';
 import 'package:provider/provider.dart';
 import 'dart:async';
 import 'package:sentry/sentry.dart';
 import 'app.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:amplitude_flutter/amplitude.dart';
+import 'package:amplitude_flutter/identify.dart';
 
 final SentryClient _sentry = new SentryClient(
     dsn:
         "https://866bdef953574dbdb81a7da5d08411da@o376105.ingest.sentry.io/5197560");
 
 void main() async {
-  SharedPreferences.setMockInitialValues({});
   FlutterError.onError = (FlutterErrorDetails details) async {
     if (isInDebugMode) {
       // In development mode simply print to console.
@@ -23,12 +23,46 @@ void main() async {
       Zone.current.handleUncaughtError(details.exception, details.stack);
     }
   };
+
   await runZoned<Future<Null>>(() async {
     WidgetsFlutterBinding.ensureInitialized();
     Provider.debugCheckInvalidValueType = null;
 
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+    final Amplitude analytics = Amplitude.getInstance(instanceName: "Dimodo");
+
+    var apiKey = "78f34e041572ba05a597df3c0a9d3f23";
+
+    // Initialize SDK
+    analytics.init(apiKey);
+
+    // Enable COPPA privacy guard. This is useful when you choose not to report sensitive user information.
+    analytics.enableCoppaControl();
+
+    // Set user Id
+    analytics.setUserId("test_user");
+
+    // Turn on automatic session events
+    analytics.trackingSessionEvents(true);
+
+    // Log an event
+    analytics.logEvent('Dimodo startup',
+        eventProperties: {'friend_num': 10, 'is_heavy_user': true});
+
+    // Identify
+    final Identify identify1 = Identify()
+      ..set('identify_test',
+          'identify sent at ${DateTime.now().millisecondsSinceEpoch}')
+      ..add('identify_count', 1);
+    analytics.identify(identify1);
+
+    // Set group
+    analytics.setGroup('orgId', 15);
+
+    // Group identify
+    final Identify identify2 = Identify()..set('identify_count', 1);
+    analytics.groupIdentify('orgId', '15', identify2);
 
     runApp(Dimodo());
   }, onError: (error, stackTrace) async {

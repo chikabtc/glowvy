@@ -23,8 +23,10 @@ dependencies:
     sdk: flutter
   http: 0.12.0+2
   path_provider: ^1.6.8
+  firebase_analytics: ^5.0.14
   path: 1.6.4
   smooth_page_indicator: ^0.1.4
+  amplitude_flutter: ^2.0.0
   flutter_spinkit: "^4.1.2"
   sentry: ">=3.0.0 <4.0.0"
   webview_flutter: ^0.3.19+9

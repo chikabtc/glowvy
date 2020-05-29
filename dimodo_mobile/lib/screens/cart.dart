@@ -90,8 +90,27 @@ class _CartState extends State<Cart>
     screenSize = MediaQuery.of(context).size;
 
     return Consumer<CartModel>(builder: (context, cartModel, child) {
-      print("building cart contents!");
       return Scaffold(
+          appBar: AppBar(
+            brightness: Brightness.light,
+            leading: showBackSpace
+                ? IconButton(
+                    icon: CommonIcons.arrowBackward,
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  )
+                : Container(),
+            elevation: 0,
+            backgroundColor: kPinkAccent,
+            flexibleSpace: FlexibleSpaceBar(
+              title: DynamicText(S.of(context).cart,
+                  style: kBaseTextStyle.copyWith(
+                      fontSize: 17,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600)),
+            ),
+          ),
           bottomNavigationBar: cartModel.totalCartQuantity > 0
               ? SafeArea(
                   bottom: true,
@@ -138,62 +157,31 @@ class _CartState extends State<Cart>
                 )
               : null,
           backgroundColor: Theme.of(context).backgroundColor,
-          body: SafeArea(
-              top: false,
-              child: Container(
-                height: screenSize.height,
-                decoration:
-                    BoxDecoration(color: Theme.of(context).backgroundColor),
-                child: CustomScrollView(slivers: [
-                  SliverAppBar(
-                    brightness: Brightness.light,
-                    leading: showBackSpace
-                        ? IconButton(
-                            icon: CommonIcons.arrowBackward,
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          )
-                        : Container(),
-                    elevation: 0,
-                    backgroundColor: kPinkAccent,
-                    pinned: true,
-                    flexibleSpace: FlexibleSpaceBar(
-                      title: DynamicText(S.of(context).cart,
-                          style: kBaseTextStyle.copyWith(
-                              fontSize: 17,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w600)),
-                    ),
-                  ),
-                  SliverList(
-                      delegate: SliverChildListDelegate([
-                    Consumer<CartModel>(builder: (context, cartModel, child) {
-                      return CouponCard(
-                          coupon: cartModel.selectedCoupons.length != 0
-                              ? cartModel.selectedCoupons[0]
-                              : null,
-                          onTap: onSelectCoupons,
-                          isCouponApplicable:
-                              cartModel.totalCartQuantity > 0 ? true : false,
-                          context: context,
-                          isSelected: cartModel.selectedCoupons.length == 0
-                              ? false
-                              : true,
-                          isSelector: true);
-                    }),
-                    if (cartModel.totalCartQuantity == 0) EmptyCart(),
-                    if (cartModel.totalCartQuantity == 0)
-                      ProductModel.showProductList(
-                          isNameAvailable: false,
-                          future: _getProductsByCategory),
-                    if (cartModel.totalCartQuantity > 0)
-                      Column(
-                        children: _createShoppingCartRows(cartModel),
-                      ),
-                  ])),
-                ]),
-              )));
+          body: ListView(
+            children: <Widget>[
+              Consumer<CartModel>(builder: (context, cartModel, child) {
+                return CouponCard(
+                    coupon: cartModel.selectedCoupons.length != 0
+                        ? cartModel.selectedCoupons[0]
+                        : null,
+                    onTap: onSelectCoupons,
+                    isCouponApplicable:
+                        cartModel.totalCartQuantity > 0 ? true : false,
+                    context: context,
+                    isSelected:
+                        cartModel.selectedCoupons.length == 0 ? false : true,
+                    isSelector: true);
+              }),
+              if (cartModel.totalCartQuantity == 0) EmptyCart(),
+              if (cartModel.totalCartQuantity == 0)
+                ProductModel.showProductList(
+                    isNameAvailable: false, future: _getProductsByCategory),
+              if (cartModel.totalCartQuantity > 0)
+                Column(
+                  children: _createShoppingCartRows(cartModel),
+                ),
+            ],
+          ));
     });
   }
 

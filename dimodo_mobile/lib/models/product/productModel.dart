@@ -11,18 +11,20 @@ import 'product.dart';
 
 class ProductModel with ChangeNotifier {
   static Services service = Services();
-  List<List<Product>> products;
+  List<Product> products;
   String message;
 
   /// current select product id/name
   int categoryId;
+  int _tagId;
+  String _sortBy;
   String categoryName;
 
   //list products for products screen
   bool isFetching = false;
-  List<Product> productsList;
+  bool isEnd = false;
+
   String errMsg;
-  bool isEnd;
 
 //ProductVariation can be used for layout variation
   ProductVariation productVariation;
@@ -53,19 +55,11 @@ class ProductModel with ChangeNotifier {
       isEnd = false;
       notifyListeners();
 
-      final products = await service.getProductsByCategory(
+      products = await service.getProductsByCategory(
           categoryId: categoryId, sortBy: sortBy);
       if (products.isEmpty) {
         isEnd = true;
       }
-      print("setting list!!!!: $products");
-      productsList = products;
-
-      // if (page == 0 || page == 1) {
-      //   productsList = products;
-      // } else {
-      //   productsList = []..addAll(productsList)..addAll(products);
-      // }
       isFetching = false;
       errMsg = null;
       notifyListeners();
@@ -104,7 +98,7 @@ class ProductModel with ChangeNotifier {
     }
   }
 
-  void fetchProductsByCategory({categoryId, lang, page, sortBy}) async {
+  void fetchProductsByCategory({categoryId, start, limit, sortBy}) async {
     try {
       if (categoryId != null) {
         this.categoryId = categoryId;
@@ -114,18 +108,12 @@ class ProductModel with ChangeNotifier {
       notifyListeners();
 
       final products = await service.getProductsByCategory(
-          categoryId: categoryId, sortBy: sortBy);
+          categoryId: categoryId, start: start, limit: limit, sortBy: sortBy);
       if (products.isEmpty) {
         isEnd = true;
       }
-      print("setting list!!!!: $products");
-      productsList = products;
+      this.products = products;
 
-      // if (page == 0 || page == 1) {
-      //   productsList = products;
-      // } else {
-      //   productsList = []..addAll(productsList)..addAll(products);
-      // }
       isFetching = false;
       errMsg = null;
       notifyListeners();
@@ -139,46 +127,11 @@ class ProductModel with ChangeNotifier {
   }
 
   void setProductsList(products) {
-    productsList = products;
+    products = products;
     isFetching = false;
     isEnd = false;
     notifyListeners();
   }
-
-  // /// Show Products in Slider View
-  // static showList(
-  //     {Category category,
-  //     sortBy,
-  //     context,
-  //     List<Product> products,
-  //     config,
-  //     noRouting}) {
-  //   var categoryId = category.id == null ? config['category'] : category.id;
-  //   final product = Provider.of<ProductModel>(context, listen: false);
-
-  //   // for caching current products list
-  //   if (products != null && products.length > 0) {
-  //     product.setProductsList(products);
-  //     return Navigator.push(
-  //         context,
-  //         MaterialPageRoute(
-  //             builder: (context) => SubCategoryScreen(category: categoryId)));
-  //   }
-
-  //   // for fetching beforehand
-  //   if (categoryId != null) product.setCategoryId(categoryId: categoryId);
-
-  //   product.setProductsList(List<Product>()); //clear old products
-  //   product.getProductsList(categoryId: categoryId, sortBy: sortBy);
-
-  //   if (noRouting == null)
-  //     Navigator.push(
-  //         context,
-  //         MaterialPageRoute(
-  //             builder: (context) => SubCategoryScreen(category: categoryId)));
-  //   else
-  //     return SubCategoryScreen(category: categoryId);
-  // }
 
   static showSubCategoryPage(Category category, String sortBy, context,
       {bool isNameAvailable}) {
@@ -198,52 +151,68 @@ class ProductModel with ChangeNotifier {
   }
 
   static showProductListByCategory(
-      {cateId, sortBy, context, limit, isNameAvailable = false}) {
+      {cateId, sortBy, context, limit, isNameAvailable = false, onLoadMore}) {
     return FutureBuilder<List<Product>>(
       future: service.getProductsByCategory(
-          categoryId: cateId, sortBy: sortBy, limit: limit),
+        categoryId: cateId,
+        // start: start,
+        limit: limit,
+        sortBy: sortBy,
+      ),
       builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
         return ProductList(
           products: snapshot.data,
+          onLoadMore: onLoadMore,
           isNameAvailable: isNameAvailable,
         );
       },
     );
   }
 
-  static showProductListByTag({future, tag, context, sortBy}) {
-    return FutureBuilder<List<Product>>(
-      future: service.getProductsByTag(tag: tag, sortBy: sortBy),
-      builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
-        return ProductList(
-          products: snapshot.data,
-        );
-      },
-    );
-  }
-
-  static showProductList({isNameAvailable, future}) {
+  static Widget showProductList(
+      {isNameAvailable,
+      future,
+      showFiler = false,
+      disableScroll = false,
+      Function onLoadMore,
+      sortBy}) {
     return FutureBuilder<List<Product>>(
       future: future,
       builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
         return ProductList(
           products: snapshot.data,
+          onLoadMore: onLoadMore,
+          showFilter: showFiler,
+          disableScrolling: disableScroll,
           isNameAvailable: isNameAvailable,
         );
       },
     );
   }
 
-  static showProductListByShop({shopId, context}) {
-    //rebuildintag three times
-    // product.setProductsList(List<Product>()); //clear old products
-    return FutureBuilder<List<Product>>(
-      future: service.getProductsByShop(shopId: shopId),
-      builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
-        return ProductList(
-          products: snapshot.data,
-        );
-      },
+  void getProductsByTag({tag, start, limit, sortBy}) async {
+    _tagId = tag;
+    _sortBy = sortBy;
+
+    this.products = await service.getProductsByTag(
+      tag: _tagId,
+      sortBy: _sortBy,
+      start: start,
+      count: limit,
     );
+    print("new products2323 length: ${products.length}");
   }
+
+  // void getProductsBy({tag, start, limit, sortBy}) async {
+  //   _tagId = tag;
+  //   _sortBy = sortBy;
+
+  //   this.products = await service.getProductsByTag(
+  //     tag: _tagId,
+  //     sortBy: _sortBy,
+  //     start: start,
+  //     count: limit,
+  //   );
+  //   print("new products2323 length: ${products.length}");
+  // }
 }

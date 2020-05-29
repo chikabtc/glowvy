@@ -1,6 +1,5 @@
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
-import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/services/index.dart';
@@ -30,6 +29,7 @@ class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController searchController = TextEditingController();
   String searchText;
   bool showResults = false;
+  bool isTextFieldSelected = false;
 
   @override
   void initState() {
@@ -77,6 +77,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: TextField(
+                                onTap: () => isTextFieldSelected = true,
                                 cursorColor: kPinkAccent,
                                 controller: searchController,
                                 onChanged: (value) {
@@ -88,6 +89,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 onSubmitted: (value) {
                                   setState(() {
                                     showResults = true;
+                                    isTextFieldSelected = false;
                                     getProductBySearch =
                                         service.getProductsBySearch(
                                             searchText: searchText,
@@ -109,7 +111,7 @@ class _SearchScreenState extends State<SearchScreen> {
                               ),
                             ),
                           ),
-                          showResults
+                          !isTextFieldSelected
                               ? Container(width: 46)
                               : Container(
                                   width: 56,
@@ -179,99 +181,99 @@ class _SearchScreenState extends State<SearchScreen> {
                           ],
                         ),
                       ),
-                      Visibility(
-                          visible: !showResults,
-                          child: Container(
-                              padding:
-                                  EdgeInsets.only(left: 16, right: 16, top: 20),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  DynamicText(
-                                    S.of(context).searchForItems,
-                                    textAlign: TextAlign.center,
-                                    style: kBaseTextStyle.copyWith(
-                                        fontSize: 12, color: kDarkSecondary),
-                                  ),
-                                  SizedBox(height: 10),
-                                  Row(
-                                    // mainAxisAlignment:
-                                    //     MainAxisAlignment.spaceAround,
-                                    children: <Widget>[
-                                      Container(
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          color: kDefaultBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(30),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 20.0),
-                                          child: Center(
-                                            child: DynamicText(
-                                              S.of(context).cancel,
-                                              textAlign: TextAlign.center,
-                                              style: kBaseTextStyle.copyWith(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: kDarkSecondary),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(height: 10),
-                                      Container(
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          color: kDefaultBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(30),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 20.0),
-                                          child: Center(
-                                            child: DynamicText(
-                                              S.of(context).cancel,
-                                              textAlign: TextAlign.center,
-                                              style: kBaseTextStyle.copyWith(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: kDarkSecondary),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(height: 10),
-                                      Container(
-                                        height: 30 *
-                                            kSizeConfig.containerMultiplier,
-                                        decoration: BoxDecoration(
-                                          color: kDefaultBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(30),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 20.0),
-                                          child: Center(
-                                            child: DynamicText(
-                                              S.of(context).cancel,
-                                              textAlign: TextAlign.center,
-                                              style: kBaseTextStyle.copyWith(
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: kDarkSecondary),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(height: 10),
-                                    ],
-                                  ),
-                                ],
-                              ))),
+                      // Visibility(
+                      //     visible: !showResults,
+                      //     child: Container(
+                      //         padding:
+                      //             EdgeInsets.only(left: 16, right: 16, top: 20),
+                      //         child: Column(
+                      //           crossAxisAlignment: CrossAxisAlignment.start,
+                      //           children: <Widget>[
+                      //             DynamicText(
+                      //               S.of(context).peopleAreSearching,
+                      //               textAlign: TextAlign.center,
+                      //               style: kBaseTextStyle.copyWith(
+                      //                   fontSize: 12, color: kDarkSecondary),
+                      //             ),
+                      //             SizedBox(height: 10),
+                      //             Row(
+                      //               // mainAxisAlignment:
+                      //               //     MainAxisAlignment.spaceAround,
+                      //               children: <Widget>[
+                      //                 Container(
+                      //                   height: 30,
+                      //                   decoration: BoxDecoration(
+                      //                     color: kDefaultBackground,
+                      //                     borderRadius:
+                      //                         BorderRadius.circular(30),
+                      //                   ),
+                      //                   child: Padding(
+                      //                     padding: const EdgeInsets.symmetric(
+                      //                         horizontal: 20.0),
+                      //                     child: Center(
+                      //                       child: DynamicText(
+                      //                         S.of(context).cancel,
+                      //                         textAlign: TextAlign.center,
+                      //                         style: kBaseTextStyle.copyWith(
+                      //                             fontSize: 13,
+                      //                             fontWeight: FontWeight.w600,
+                      //                             color: kDarkSecondary),
+                      //                       ),
+                      //                     ),
+                      //                   ),
+                      //                 ),
+                      //                 SizedBox(width: 10),
+                      //                 Container(
+                      //                   height: 30,
+                      //                   decoration: BoxDecoration(
+                      //                     color: kDefaultBackground,
+                      //                     borderRadius:
+                      //                         BorderRadius.circular(30),
+                      //                   ),
+                      //                   child: Padding(
+                      //                     padding: const EdgeInsets.symmetric(
+                      //                         horizontal: 20.0),
+                      //                     child: Center(
+                      //                       child: DynamicText(
+                      //                         S.of(context).cancel,
+                      //                         textAlign: TextAlign.center,
+                      //                         style: kBaseTextStyle.copyWith(
+                      //                             fontSize: 13,
+                      //                             fontWeight: FontWeight.w600,
+                      //                             color: kDarkSecondary),
+                      //                       ),
+                      //                     ),
+                      //                   ),
+                      //                 ),
+                      //                 SizedBox(width: 10),
+                      //                 Container(
+                      //                   height: 30 *
+                      //                       kSizeConfig.containerMultiplier,
+                      //                   decoration: BoxDecoration(
+                      //                     color: kDefaultBackground,
+                      //                     borderRadius:
+                      //                         BorderRadius.circular(30),
+                      //                   ),
+                      //                   child: Padding(
+                      //                     padding: const EdgeInsets.symmetric(
+                      //                         horizontal: 20.0),
+                      //                     child: Center(
+                      //                       child: DynamicText(
+                      //                         S.of(context).cancel,
+                      //                         textAlign: TextAlign.center,
+                      //                         style: kBaseTextStyle.copyWith(
+                      //                             fontSize: 13,
+                      //                             fontWeight: FontWeight.w600,
+                      //                             color: kDarkSecondary),
+                      //                       ),
+                      //                     ),
+                      //                   ),
+                      //                 ),
+                      //                 SizedBox(width: 10),
+                      //               ],
+                      //             ),
+                      //           ],
+                      //         ))),
                       Visibility(
                         child: ProductModel.showProductList(
                             isNameAvailable: false, future: getProductBySearch),

@@ -68,7 +68,6 @@ class _PicSwiperState extends State<PicSwiper>
     rebuildSwiper.close();
     _animationController?.dispose();
     clearGestureDetailsCache();
-    //cancelToken?.cancel();
     super.dispose();
   }
 

@@ -12,8 +12,8 @@ class ImageFeature extends StatelessWidget {
   ImageFeature(this.product);
 
   @override
-  Widget build(BuildContext context) {
-    var screenSize = MediaQuery.of(context).size;
+  Widget build(BuildContext parentContext) {
+    var screenSize = MediaQuery.of(parentContext).size;
 
     _onShowGallery(context, [index = 0]) {
       showDialog<void>(
@@ -24,7 +24,7 @@ class ImageFeature extends StatelessWidget {
     }
 
     return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
+      builder: (BuildContext buildcontext, BoxConstraints constraints) {
         return Container(
           width: screenSize.width,
           height: screenSize.height * 0.52,
@@ -33,19 +33,17 @@ class ImageFeature extends StatelessWidget {
                 ? NeverScrollableScrollPhysics()
                 : AlwaysScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int i) {
-              // print("image render: ${product.sliderImages[i]}");
-              return Hero(
-                  tag: 'product-${product.id}',
-                  child: Tools.image(
-                    url: product.sliderImages[i],
-                    fit: BoxFit.cover,
-                    width: constraints.maxWidth,
-                    size: kSize.large,
-                  ));
-//  CachedNetworkImage(
-//                 imageUrl: product.sliderImages[i],
-//                 errorWidget: (context, url, error) => Icon(Icons.error),
-//               );
+              return GestureDetector(
+                onTap: () => _onShowGallery(context, i),
+                child: Hero(
+                    tag: 'product-${product.id}',
+                    child: Tools.image(
+                      url: product.sliderImages[i],
+                      fit: BoxFit.cover,
+                      width: constraints.maxWidth,
+                      size: kSize.large,
+                    )),
+              );
             },
             itemCount: product.sliderImages.length,
             pagination: new SwiperPagination(

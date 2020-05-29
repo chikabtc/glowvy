@@ -1,3 +1,4 @@
+import 'package:Dimodo/widgets/product/product_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
@@ -38,11 +39,21 @@ class HomeScreenState extends State<HomeScreen>
   void initState() {
     super.initState();
     getProductByTagStar = service.getProductsByTag(tag: 6, sortBy: "id");
-    getProductByTagTrending = service.getProductsByTag(tag: 5, sortBy: "id");
+    getProductByTagTrending =
+        service.getProductsByTag(tag: 5, sortBy: "id", start: 0, count: 200);
   }
 
   @override
   bool get wantKeepAlive => true;
+
+  void onLoadMore(start, limit) {
+    Provider.of<ProductModel>(context, listen: false).getProductsByTag(
+      tag: 5,
+      sortBy: "id",
+      start: start,
+      limit: limit,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,56 +63,62 @@ class HomeScreenState extends State<HomeScreen>
 
     final screenSize = MediaQuery.of(context).size;
 
-    final categories = Provider.of<CategoryModel>(context).categories;
-    List<Widget> categoryButtons = [];
-
-    createCategoryButton(List<Category> categories) {
-      categories.forEach((cate) => categoryButtons.add(CategoryButton(cate)));
-    }
-
-    createCategoryButton(categories);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
             statusBarBrightness: Brightness.light) // Or Brightness.dark
         );
+    var safePadding = MediaQuery.of(context).padding.top;
 
     return Scaffold(
-      body: Container(
-        color: kLightBG,
-        width: screenSize.width,
-        height: screenSize.height,
-        child: CustomScrollView(
-            physics: const AlwaysScrollableScrollPhysics(),
-            slivers: <Widget>[
-              SliverAppBar(
-                brightness: Brightness.light,
-                leading: Container(),
-                elevation: 0,
-                backgroundColor: Colors.white,
-                pinned: false,
-                flexibleSpace: Center(
-                  child: SafeArea(
-                    top: true,
-                    child: Image.asset(
-                      "assets/images/applogo.png",
-                      fit: BoxFit.cover,
-                      height: 12,
-                    ),
-                  ),
-                ),
-                actions: <Widget>[
-                  IconButton(
-                    icon: Image.asset(
-                      "assets/icons/search/search.png",
-                      fit: BoxFit.cover,
-                      height: 24,
-                    ),
-                    onPressed: () =>
-                        Navigator.pushNamed(context, "/search_screen"),
-                  ),
-                ],
+        appBar: AppBar(
+          brightness: Brightness.light,
+          leading: Container(),
+          elevation: 0,
+          // pinned: true,
+          backgroundColor: Colors.white,
+          title: Center(
+            child: SafeArea(
+              top: true,
+              child: Image.asset(
+                "assets/images/applogo.png",
+                fit: BoxFit.cover,
+                height: 12,
               ),
-              SliverList(
-                delegate: SliverChildListDelegate([
+            ),
+          ),
+          // expandedHeight: 221,
+          actions: <Widget>[
+            IconButton(
+              icon: Image.asset(
+                "assets/icons/search/search.png",
+                fit: BoxFit.cover,
+                height: 24,
+              ),
+              onPressed: () => Navigator.pushNamed(context, "/search_screen"),
+            ),
+          ],
+        ),
+        body: Container(
+          color: kLightBG,
+          width: screenSize.width,
+          height: screenSize.height,
+          child: NotificationListener<ScrollNotification>(
+            onNotification: (ScrollNotification scrollInfo) {
+              var productModel =
+                  Provider.of<ProductModel>(context, listen: false);
+
+              if (!productModel.isFetching &&
+                  scrollInfo.metrics.pixels ==
+                      scrollInfo.metrics.maxScrollExtent) {
+                // _loadData();
+                // isLoading = true;
+                // setState(() {});
+              }
+              return false;
+            },
+            child: Scrollbar(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
                   Container(
                     width: screenSize.width,
                     child: Image.asset(
@@ -120,138 +137,62 @@ class HomeScreenState extends State<HomeScreen>
                         DynamicText(
                           S.of(context).dimodoSupport,
                           style: kBaseTextStyle.copyWith(
-                              // fontFamily: "Gill Sans",
                               fontWeight: FontWeight.w600,
                               fontSize: 13,
                               color: kDarkAccent),
                         ),
-                        // SizedBox(height: ,)
-                        Column(
+                        Row(
                           children: <Widget>[
-                            Row(
-                              children: <Widget>[
-                                SvgPicture.asset(
-                                    "assets/icons/home/banner-support-1.svg"),
-                                SizedBox(width: 4.3),
-                                DynamicText(
-                                  S.of(context).genuineSecurity,
-                                  style: kBaseTextStyle.copyWith(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 12,
-                                      color: kDarkSecondary),
-                                ),
-                              ],
-                            ),
-                            // SizedBox(height: 10),
-                            Row(
-                              children: <Widget>[
-                                SvgPicture.asset(
-                                    "assets/icons/home/banner-support-2.svg"),
-                                SizedBox(width: 4.3),
-                                DynamicText(
-                                  S.of(context).sevenDayWorryFree,
-                                  style: kBaseTextStyle.copyWith(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 12,
-                                      color: kDarkSecondary),
-                                ),
-                              ],
+                            SvgPicture.asset(
+                                "assets/icons/home/banner-support-1.svg"),
+                            SizedBox(width: 4.3),
+                            DynamicText(
+                              S.of(context).genuineSecurity,
+                              style: kBaseTextStyle.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 12,
+                                  color: kDarkSecondary),
                             ),
                           ],
-                        )
+                        ),
+                        Row(
+                          children: <Widget>[
+                            SvgPicture.asset(
+                                "assets/icons/home/banner-support-2.svg"),
+                            SizedBox(width: 4.3),
+                            DynamicText(
+                              S.of(context).sevenDayWorryFree,
+                              style: kBaseTextStyle.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 12,
+                                  color: kDarkSecondary),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
-                  // Container(
-                  //   color: Colors.white,
-                  //   height: 71,
-                  //   width: screenSize.width,
-                  //   child: Row(
-                  //       crossAxisAlignment: CrossAxisAlignment.start,
-                  //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //       children: <Widget>[
-                  //         Column(
-                  //           mainAxisAlignment: MainAxisAlignment.center,
-                  //           children: <Widget>[
-                  //             Image.asset("assets/icons/home/globe.png"),
-                  //             DynamicText(
-                  //               S.of(context).trendDesign,
-                  //               style: kBaseTextStyle.copyWith(
-                  //                   fontSize: 10, fontWeight: FontWeight.w500),
-                  //             )
-                  //           ],
-                  //         ),
-                  //         Column(
-                  //           mainAxisAlignment: MainAxisAlignment.center,
-                  //           children: <Widget>[
-                  //             Image.asset("assets/icons/home/mail.png"),
-                  //             DynamicText(
-                  //               S.of(context).koreanShipping,
-                  //               style: kBaseTextStyle.copyWith(
-                  //                   fontSize: 10, fontWeight: FontWeight.w500),
-                  //             )
-                  //           ],
-                  //         ),
-                  //         Column(
-                  //           mainAxisAlignment: MainAxisAlignment.center,
-                  //           children: <Widget>[
-                  //             Image.asset("assets/icons/home/review.png"),
-                  //             DynamicText(
-                  //               S.of(context).trustReviews,
-                  //               style: kBaseTextStyle.copyWith(
-                  //                   fontSize: 10, fontWeight: FontWeight.w500),
-                  //             )
-                  //           ],
-                  //         ),
-                  //       ]),
-                  // ),
-                ]),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(top: 21, bottom: 10, left: 16),
+                    child: DynamicText(
+                      S.of(context).trendingKorea,
+                      style: kBaseTextStyle.copyWith(
+                          fontSize: 15, fontWeight: FontWeight.w600),
+                    ),
+                  ),
+                  Expanded(
+                    child: ProductModel.showProductList(
+                        isNameAvailable: true,
+                        disableScroll: false,
+                        future: getProductByTagTrending,
+                        onLoadMore: onLoadMore),
+                  ),
+                ],
               ),
-              SliverList(
-                  delegate: SliverChildListDelegate([
-                Container(height: 5),
-                // Container(
-                //     color: kDefaultBackground,
-                //     child: Column(
-                //       crossAxisAlignment: CrossAxisAlignment.start,
-                //       children: <Widget>[
-                //         Padding(
-                //           padding: const EdgeInsets.only(
-                //               top: 16, bottom: 10, left: 16),
-                //           child: DynamicText(
-                //             S.of(context).editorPicks,
-                //             style: kBaseTextStyle.copyWith(
-                //                 fontSize: 15, fontWeight: FontWeight.w600),
-                //           ),
-                //         ),
-                //         ProductModel.showProductList(
-                //             isNameAvailable: false,
-                //             future: getProductByTagStar),
-                //       ],
-                //     )),
-                Padding(
-                  padding: const EdgeInsets.only(top: 16, bottom: 10, left: 16),
-                  child: DynamicText(
-                    S.of(context).trendingKorea,
-                    style: kBaseTextStyle.copyWith(
-                        fontSize: 15, fontWeight: FontWeight.w600),
-                  ),
-                ),
-                ProductModel.showProductList(
-                    future: getProductByTagTrending, isNameAvailable: true),
-              ])),
-              SliverList(
-                delegate: SliverChildListDelegate([
-                  SvgPicture.asset(
-                    'assets/icons/heart-ballon.svg',
-                    width: 30,
-                    height: 42,
-                  ),
-                  SizedBox(height: 70),
-                ]),
-              )
-            ]),
-      ),
-    );
+            ),
+//
+          ),
+        ));
   }
 }

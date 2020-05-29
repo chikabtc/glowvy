@@ -333,6 +333,7 @@ class S implements WidgetsLocalizations {
   String get saveToWishList => "Save to WishList";
   String get search => "Search";
   String get searchForItems => "Search for Items";
+  String get peopleAreSearching => "People are searching";
   String get searchInput => "Please write input in search field";
   String get searchingAddress => "Searching Address";
   String get seeAll => "See All";
@@ -870,6 +871,7 @@ class $vi extends S {
   String get apply => "Đồng ý";
   @override
   String get searchForItems => "Tìm kiếm mặt hàng";
+  String get peopleAreSearching => "People are searching";
   @override
   String get clear => "Xóa";
   @override

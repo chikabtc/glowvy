@@ -25,7 +25,7 @@ class DimodoServices implements BaseServices {
   factory DimodoServices() => _instance;
 
   // String accessToken;
-  bool isProd = false;
+  bool isProd = true;
 
   DimodoServices._internal();
 
@@ -131,12 +131,12 @@ class DimodoServices implements BaseServices {
 
   @override
   Future<List<Product>> getProductsByCategory(
-      {categoryId, sortBy, limit = 200}) async {
+      {categoryId, sortBy, start, limit = 200}) async {
     try {
       List<Product> list = [];
       var body = await getAsync(
           endPoint:
-              "api/products/categories=$categoryId?start=0&count=$limit&sort_by=$sortBy");
+              "api/products/categories=$categoryId?start=$start&count=$limit&sort_by=$sortBy");
 
       final products = body["Data"];
 
@@ -208,13 +208,16 @@ class DimodoServices implements BaseServices {
   }
 
   @override
-  Future<List<Product>> getProductsByTag({int tag, String sortBy}) async {
+  Future<List<Product>> getProductsByTag(
+      {int tag, int start, int count, String sortBy}) async {
     try {
       List<Product> list = [];
       var body = await getAsync(
-          endPoint: "api/products/tag=$tag?start=0&count=200&sort_by=$sortBy");
+          endPoint:
+              "api/products/tag=$tag?start=$start&count=$count&sort_by=$sortBy");
 
       final products = body["Data"];
+      print("databody: $products");
 
       if ((body["Success"] == false)) {
         throw Exception(body["Success"]);
