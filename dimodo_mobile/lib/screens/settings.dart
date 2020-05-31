@@ -171,7 +171,7 @@ class SettingScreenState extends State<SettingScreen>
                             await FlutterMailer.send(MailOptions(
                               body: '',
                               subject: 'Feedback',
-                              recipients: ['support@dimodo.inbox.ai'],
+                              recipients: ['parker@dimodo.app'],
                             ))
                           }),
                   kFullDivider,
@@ -225,7 +225,7 @@ class SettingScreenState extends State<SettingScreen>
                           MaterialPageRoute(
                               builder: (context) => WebView(
                                   url: "https://bit.ly/measurepmf",
-                                  title: "DIMODO PRIVACY POLICY")))),
+                                  title: "DIMODO user survey⭐️")))),
                   SettingCard(
                       title: S.of(context).language,
                       onTap: () => Navigator.push(context,

@@ -38,11 +38,6 @@ class _SearchScreenState extends State<SearchScreen> {
         service.getProductsBySearch(searchText: "드레스", sortBy: "id");
   }
 
-  //need to use is
-  // void search() async {
-  //   var products = await service.getProductsBySearch(searchText: searchText);
-  // }
-
   @override
   Widget build(BuildContext context) {
     screenSize = MediaQuery.of(context).size;
@@ -114,7 +109,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           !isTextFieldSelected
                               ? Container(width: 46)
                               : Container(
-                                  width: 56,
+                                  // width: 56,
                                   padding: EdgeInsets.only(right: 16, left: 10),
                                   child: GestureDetector(
                                     onTap: () => setState(() {

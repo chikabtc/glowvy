@@ -23,6 +23,7 @@ const kAccentRed = Color(0xffDB3022);
 
 /// color for theme
 const kLightPrimary = Color(0xfffcfcff);
+const kPinkError = Color(0xfffED4D4D);
 const kLightAccent = Color(0xFF546E7A);
 const kDarkAccent = Color(0xFF393E46);
 const kPinkAccent = Color(0xffe85a81);

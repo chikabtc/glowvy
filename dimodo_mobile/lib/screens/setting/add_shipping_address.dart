@@ -15,9 +15,11 @@ import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
+import 'customTextFormField.dart';
+import 'package:Dimodo/widgets/circular_checkbox.dart';
 
 class AddShippingAddress extends StatefulWidget {
-  Address address;
+  final Address address;
 
   AddShippingAddress({this.address});
   @override
@@ -30,26 +32,29 @@ class _AddShippingAddressState extends State<AddShippingAddress>
   TextEditingController _phoneNumberController = TextEditingController();
 
   TextEditingController _streetNameController = TextEditingController();
-  TextEditingController _deliverArea = TextEditingController();
+  TextEditingController _provinceController = TextEditingController();
+  TextEditingController _districtWardController = TextEditingController();
   AnimationController _loginButtonController;
 
-  Address address =
-      Address(ward: Ward(district: District(), province: Province()));
+  Address address = Address(
+      ward: Ward(district: District(), province: Province()), isDefault: false);
   int currentPage = 0;
   AddressModel addressModel = AddressModel();
   bool isLoading = false;
+  bool isEditing = false;
   User user;
+
   List<District> districts = [];
   List<Ward> wards = [];
 
   @override
   void initState() {
     super.initState();
+    isEditing = widget.address != null ? true : false;
     _loginButtonController = new AnimationController(
         duration: new Duration(milliseconds: 3000), vsync: this);
 
     if (widget.address != null) {
-      // print("Got saved address");
       address = widget.address;
       WidgetsBinding.instance.addPostFrameCallback((_) => updateState());
     }
@@ -69,7 +74,6 @@ class _AddShippingAddressState extends State<AddShippingAddress>
     return Scaffold(
       body: GestureDetector(
         onTap: () {
-          // call this method here to hide soft keyboard
           FocusScope.of(context).requestFocus(new FocusNode());
         },
         child: Container(
@@ -90,7 +94,10 @@ class _AddShippingAddressState extends State<AddShippingAddress>
                 backgroundColor: Colors.white,
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
-                  title: DynamicText(S.of(context).addAddress,
+                  title: DynamicText(
+                      widget.address != null
+                          ? S.of(context).editShippingAddress
+                          : S.of(context).addAddress,
                       style: kBaseTextStyle.copyWith(
                           fontSize: 15,
                           color: kDarkAccent,
@@ -120,28 +127,113 @@ class _AddShippingAddressState extends State<AddShippingAddress>
                                     nameController: _nameController,
                                     labelText: S.of(context).fullName,
                                     address: address),
+                                Container(
+                                  height: 10,
+                                  color: kDefaultBackground,
+                                ),
                                 CustomTextFormField(
                                     isNumber: true,
                                     nameController: _phoneNumberController,
                                     labelText: S.of(context).phoneNumber,
+                                    hintText:
+                                        S.of(context).intputReceiverPhoneNumber,
                                     address: address),
+                                Container(
+                                  height: 10,
+                                  color: kDefaultBackground,
+                                ),
                                 GestureDetector(
                                   onTap: () => showAreas(context),
                                   child: Container(
                                     color: Colors.white,
                                     width: screenSize.width,
                                     child: CustomTextFormField(
-                                        nameController: _deliverArea,
+                                        nameController: _provinceController,
                                         isEnabled: false,
-                                        labelText: S.of(context).deliveryArea,
+                                        labelText: S.of(context).province,
+                                        address: address),
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () => showAreas(context),
+                                  child: Container(
+                                    color: Colors.white,
+                                    width: screenSize.width,
+                                    child: CustomTextFormField(
+                                        nameController: _districtWardController,
+                                        isEnabled: false,
+                                        labelText: S.of(context).district +
+                                            " / " +
+                                            S.of(context).ward,
                                         address: address),
                                   ),
                                 ),
                                 CustomTextFormField(
                                     nameController: _streetNameController,
                                     labelText: S.of(context).streetName,
+                                    isBorderNeeded: false,
                                     isMaxLineOne: true,
                                     address: address),
+                                Container(
+                                  height: 10,
+                                  color: kDefaultBackground,
+                                ),
+                                Container(
+                                  padding: EdgeInsets.only(top: 16, left: 16),
+                                  color: Colors.white,
+                                  child: GestureDetector(
+                                    onTap: () => setState(() {
+                                      address.isDefault = !address.isDefault;
+                                    }),
+                                    child: Row(
+                                      children: <Widget>[
+                                        ClipRRect(
+                                          clipBehavior: Clip.hardEdge,
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(5)),
+                                          child: SizedBox(
+                                            width: Checkbox.width,
+                                            height: Checkbox.width,
+                                            child: Container(
+                                              decoration: new BoxDecoration(
+                                                border: Border.all(
+                                                  color: kDarkSecondary,
+                                                  width: 2,
+                                                ),
+                                                borderRadius:
+                                                    new BorderRadius.circular(
+                                                        5),
+                                              ),
+                                              child: Theme(
+                                                data: ThemeData(
+                                                  unselectedWidgetColor:
+                                                      Colors.transparent,
+                                                ),
+                                                child: Checkbox(
+                                                  activeColor: kPinkAccent,
+                                                  value: address.isDefault,
+                                                  onChanged: (bool value) {
+                                                    setState(() {
+                                                      address.isDefault = value;
+                                                    });
+                                                  },
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(width: 12),
+                                        DynamicText(
+                                          "Set as default",
+                                          style: kBaseTextStyle.copyWith(
+                                              fontSize: 13,
+                                              fontWeight: FontWeight.w500,
+                                              color: kDarkAccent),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
                                 Container(
                                     color: Colors.white,
                                     height: 48,
@@ -155,16 +247,48 @@ class _AddShippingAddressState extends State<AddShippingAddress>
                                         right: 16,
                                         bottom: 40.0,
                                       ),
-                                      child: StaggerAnimation(
-                                        height: 48,
-                                        buttonTitle: S.of(context).save,
-                                        buttonController:
-                                            _loginButtonController.view,
-                                        onTap: () {
-                                          if (!isLoading) {
-                                            _updateAddress(address, context);
-                                          }
-                                        },
+                                      child: Column(
+                                        children: <Widget>[
+                                          StaggerAnimation(
+                                            height: 48,
+                                            buttonTitle: S.of(context).save,
+                                            buttonController:
+                                                _loginButtonController.view,
+                                            onTap: () {
+                                              if (!isLoading) {
+                                                widget.address != null
+                                                    ? _updateAddress(
+                                                        address, context)
+                                                    : _createAddress(
+                                                        address, context);
+                                              }
+                                            },
+                                          ),
+                                          SizedBox(height: 27),
+                                          isEditing
+                                              ? GestureDetector(
+                                                  onTap: () => _deleteAddress(
+                                                      address, context),
+                                                  child: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: <Widget>[
+                                                      SvgPicture.asset(
+                                                          "assets/icons/address/trash.svg"),
+                                                      DynamicText(
+                                                        S.of(context).cancel,
+                                                        style: kBaseTextStyle
+                                                            .copyWith(
+                                                                color:
+                                                                    kDarkSecondary,
+                                                                fontSize: 13),
+                                                      )
+                                                    ],
+                                                  ),
+                                                )
+                                              : Container()
+                                        ],
                                       ),
                                     ),
                                   ),
@@ -212,9 +336,7 @@ class _AddShippingAddressState extends State<AddShippingAddress>
       duration: Duration(seconds: 30),
       action: SnackBarAction(
         label: S.of(context).close,
-        onPressed: () {
-          // Some code to undo the change.
-        },
+        onPressed: () {},
       ),
     );
 
@@ -243,15 +365,46 @@ class _AddShippingAddressState extends State<AddShippingAddress>
     );
   }
 
+  _createAddress(Address address, context) async {
+    print("address to create:${address.toJson()}");
+    _playAnimation();
+    Provider.of<UserModel>(context, listen: false).createAddress(
+      address: address,
+      success: (isSuccess) {
+        _stopAnimation();
+        Navigator.of(context).pop();
+      },
+      fail: (message) {
+        print("msg: $message");
+        _stopAnimation();
+        // _failMessage(message, context);
+      },
+    );
+  }
+
+  _deleteAddress(Address address, context) async {
+    print("address to delete:${address.toJson()}");
+    _playAnimation();
+    Provider.of<UserModel>(context, listen: false).deleteAddress(
+      address: address,
+      success: (isSuccess) {
+        _stopAnimation();
+        Navigator.of(context).pop();
+      },
+      fail: (message) {
+        print("msg: $message");
+        _stopAnimation();
+      },
+    );
+  }
+
   void updateState() async {
     setState(() {
       _nameController.text = address.recipientName;
       _phoneNumberController.text = address.phoneNumber.toString();
-      _deliverArea.text = address.ward.province.name +
-          "   " +
-          address.ward.district.name +
-          "   " +
-          address.ward.name;
+      _provinceController.text = address.ward.province.name;
+      _districtWardController.text =
+          address.ward.district.name + "   " + address.ward.name;
       _streetNameController.text = address.street;
     });
   }
@@ -432,80 +585,4 @@ class _AddShippingAddressState extends State<AddShippingAddress>
   }
 
   bool get wantKeepAlive => true;
-}
-
-class CustomTextFormField extends StatelessWidget {
-  final Address address;
-  final labelText;
-  final Function onTap;
-  final bool isEnabled;
-  final bool isNumber;
-  final bool isReviewForm;
-  final bool isMaxLineOne;
-
-  final TextEditingController nameController;
-
-  CustomTextFormField(
-      {this.address,
-      this.labelText,
-      this.nameController,
-      this.onTap,
-      this.isMaxLineOne = false,
-      this.isReviewForm = false,
-      this.isEnabled = true,
-      this.isNumber = false});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      padding: EdgeInsets.only(left: 16),
-      child: TextFormField(
-          keyboardType:
-              isNumber ? TextInputType.number : TextInputType.multiline,
-          maxLines: isMaxLineOne ? 1 : 2,
-          onTap: onTap,
-          enabled: isEnabled,
-          controller: nameController,
-          cursorColor: kPinkAccent,
-          style: kBaseTextStyle.copyWith(
-              fontSize: 15 * kSizeConfig.textMultiplier,
-              fontWeight: FontWeight.w600),
-          decoration: InputDecoration(
-              enabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: kDarkSecondary.withOpacity(0.1)),
-              ),
-              focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: kDarkSecondary.withOpacity(0.1)),
-              ),
-              disabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: kDarkSecondary.withOpacity(0.1)),
-              ),
-              labelText: labelText,
-              labelStyle: kBaseTextStyle.copyWith(
-                  fontSize: 15 * kSizeConfig.textMultiplier,
-                  fontWeight: FontWeight.w600,
-                  color: kDarkAccent.withOpacity(0.5)),
-              focusColor: kPinkAccent,
-              fillColor: kPinkAccent,
-              hoverColor: kPinkAccent),
-          validator: (val) {
-            return val.isEmpty ? S.of(context).fullNameIsRequired : null;
-          },
-          onChanged: (String value) {
-            // var name = S.of(context).name
-            if (labelText == S.of(context).fullName) {
-              print("is it updating?");
-              address.recipientName = value;
-            } else if (labelText == S.of(context).phoneNumber) {
-              address.phoneNumber = value;
-            } else if (labelText == S.of(context).province) {
-              address.phoneNumber = value;
-            } else if (labelText == S.of(context).streetName) {
-              address.street = value;
-            }
-            print("address updated: ${address.toJson()}");
-          }),
-    );
-  }
 }

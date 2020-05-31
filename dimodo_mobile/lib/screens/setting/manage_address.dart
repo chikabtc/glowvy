@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter/rendering.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/generated/i18n.dart';
@@ -12,6 +13,9 @@ import 'package:Dimodo/models/user/userModel.dart';
 import 'shippingAddressCard.dart';
 
 class ManageShippingScreen extends StatefulWidget {
+  bool isFromOrderScreen;
+
+  ManageShippingScreen({this.isFromOrderScreen = false});
   @override
   State<StatefulWidget> createState() {
     return ManageShippingScreenState();
@@ -22,17 +26,21 @@ class ManageShippingScreenState extends State<ManageShippingScreen>
     with TickerProviderStateMixin, WidgetsBindingObserver {
   bool enabledNotification = true;
   User user;
-
+  var isFromConfirm;
   @override
   void initState() {
     super.initState();
-    //when getting user info, we get address info as well.
   }
 
-  renderAddressCards() {
+  List<Widget> renderAddressCards(User user) {
     List<Widget> lists = [];
+    print("renderAddressCardsddd: ${user.addresses[0].toJson()}");
+
     user.addresses.forEach((element) {
-      lists.add(ShippingAddressCard(user.defaultAddress));
+      lists.add(ShippingAddressCard(
+        address: element,
+        isFromOrderScreen: isFromConfirm,
+      ));
     });
     return lists;
   }
@@ -40,6 +48,10 @@ class ManageShippingScreenState extends State<ManageShippingScreen>
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
+    final Map arguments = ModalRoute.of(context).settings.arguments as Map;
+    if (arguments != null)
+      isFromConfirm = arguments['isFromConfirmOrderScreen'];
+    print("isFromConfirmOrderScreen: ${isFromConfirm}");
 
     return Consumer<UserModel>(builder: (context, value, child) {
       return Scaffold(
@@ -66,11 +78,20 @@ class ManageShippingScreenState extends State<ManageShippingScreen>
                           color: kDarkAccent,
                           fontWeight: FontWeight.w600)),
                 ),
+                actions: <Widget>[
+                  IconButton(
+                      icon: SvgPicture.asset(
+                          "assets/icons/address/square_add.svg"),
+                      onPressed: () =>
+                          Navigator.of(context).pushNamed('/add_address')),
+                ],
               ),
-              if (value.user.defaultAddress == null)
+              if (value.user.addresses == null ||
+                  value.user.addresses.length == 0)
                 SliverList(
                     delegate: SliverChildListDelegate([EmptyShipping()])),
-              if (value.user.defaultAddress != null)
+              if (value.user.addresses != null &&
+                  value.user.addresses.length != 0)
                 SliverList(
                   delegate: SliverChildListDelegate([
                     Container(
@@ -82,40 +103,7 @@ class ManageShippingScreenState extends State<ManageShippingScreen>
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          ShippingAddressCard(value.user.defaultAddress),
-                          SizedBox(
-                            height: 42,
-                          ),
-                          // Expanded(
-                          //   child: Align(
-                          //     alignment: FractionalOffset.bottomCenter,
-                          //     child: Padding(
-                          //       padding: const EdgeInsets.only(
-                          //           bottom: 40.0, left: 16, right: 16),
-                          //       child: MaterialButton(
-                          //           elevation: 0,
-                          //           color: Colors.transparent,
-                          //           minWidth: screenSize.width,
-                          //           height: 48,
-                          //           shape: RoundedRectangleBorder(
-                          //               borderRadius:
-                          //                   new BorderRadius.circular(25.0),
-                          //               side: BorderSide(
-                          //                   color: kPinkAccent, width: 1.5)),
-                          //           child: DynamicText(S.of(context).addAddress,
-                          //               style: kBaseTextStyle.copyWith(
-                          //                   fontWeight: FontWeight.w600,
-                          //                   fontSize: 14,
-                          //                   color: kPinkAccent)),
-                          //           onPressed: () {
-                          //             Navigator.of(context)
-                          //                 .pushNamed('/add_address');
-                          //           }),
-                          //     ),
-                          //   ),
-                          // ),
-                        ],
+                        children: renderAddressCards(value.user),
                       ),
                     ),
                   ]),
@@ -144,15 +132,16 @@ class EmptyShipping extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 SizedBox(height: 120),
-                Container(
-                    width: 200,
-                    height: 236,
-                    child: FittedBox(
-                      fit: BoxFit.cover,
-                      child: Image.asset(
-                          'assets/icons/address/empty-shipping-address-illustration.png'),
-                    )),
-                // SizedBox(height: 20),
+                Center(
+                  child: Container(
+                      width: 270,
+                      height: 236,
+                      child: FittedBox(
+                        fit: BoxFit.cover,
+                        child: Image.asset(
+                            'assets/icons/address/empty-shipping-address-illustration.png'),
+                      )),
+                ),
                 DynamicText(S.of(context).noAddress,
                     style: kBaseTextStyle.copyWith(
                         fontSize: 12,
@@ -160,30 +149,6 @@ class EmptyShipping extends StatelessWidget {
                         color: kDarkSecondary),
                     textAlign: TextAlign.center),
                 SizedBox(height: 50),
-                Expanded(
-                  child: Align(
-                    alignment: FractionalOffset.bottomCenter,
-                    child: Padding(
-                      padding: const EdgeInsets.only(bottom: 40.0),
-                      child: MaterialButton(
-                          elevation: 0,
-                          color: Colors.transparent,
-                          minWidth: screenSize.width,
-                          height: 48,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(25.0),
-                              side: BorderSide(color: kPinkAccent, width: 1.5)),
-                          child: DynamicText(S.of(context).addAddress,
-                              style: kBaseTextStyle.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14,
-                                  color: kPinkAccent)),
-                          onPressed: () {
-                            Navigator.of(context).pushNamed('/add_address');
-                          }),
-                    ),
-                  ),
-                ),
               ],
             ),
           ],

@@ -13,7 +13,7 @@ class User {
   String picture;
   String accessToken;
   Address defaultAddress;
-  List<Address> addresses;
+  List<Address> addresses = [];
 
   Billing billing;
   User(this.id, this.loggedIn, this.fullName, this.email, this.picture,
@@ -25,16 +25,14 @@ class User {
   User.fromJsonEmail(Map<String, dynamic> json) {
     try {
       var user = User.fromJson(json["Account"]);
-
-      // print("fromJsonEmail: $user");
       accessToken = json["AccessToken"];
-      print("userFromJsonEmail accessToken: $accessToken");
       id = user.id;
       loggedIn = user.loggedIn;
       fullName = user.fullName;
       email = user.email;
       picture = user.picture;
       defaultAddress = user.defaultAddress;
+      addresses = user.addresses;
     } catch (e) {
       print(e.toString());
     }
@@ -76,12 +74,12 @@ class User {
     try {
       // print("fromLocalJsonUser: $json");
       accessToken = json['access_token'];
-      defaultAddress = json["Address"];
       var user = json['Account'];
       id = user['id'];
       fullName = user['full_name'];
       email = user['email'];
       defaultAddress = user['address'];
+      addresses = user['addresses'];
 
       // picture = user['picture'];
     } catch (e) {

@@ -69,7 +69,7 @@ class OrdersScreenState extends State<OrdersScreen> {
                         children: <Widget>[
                           DynamicText(
                               order.isPaid
-                                  ? S.of(context).orderDetail
+                                  ? S.of(context).yourOrderDetail
                                   : S.of(context).orderSubmitted,
                               style: kBaseTextStyle.copyWith(
                                   fontSize: 17, fontWeight: FontWeight.w600)),
@@ -213,12 +213,12 @@ class EmptyOrders extends StatelessWidget {
               children: <Widget>[
                 SizedBox(height: 120),
                 Container(
-                    width: 200,
+                    width: 270,
                     height: 236,
                     child: FittedBox(
                       fit: BoxFit.cover,
                       child: Image.asset(
-                          'assets/icons/order/empty-order-illustration.png'),
+                          'assets/images/empty-order-illustration.png'),
                     )),
                 // SizedBox(height: 20),
                 DynamicText(S.of(context).noOrdersDescription,

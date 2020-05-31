@@ -52,9 +52,12 @@ abstract class BaseServices {
 
   Future<List<Ward>> getWards({int districtId});
 
-  Future<bool> updateAddress({Address address, String accessToken});
+  Future<Address> updateAddress({Address address, String accessToken});
 
-  Future<Address> getAddress({String token});
+  Future<Address> createAddress({Address address});
+  Future<bool> deleteAddress({Address address});
+
+  Future<List<Address>> getAllAddresses({String token});
 
   Future<User> createUser({
     fullName,
@@ -201,7 +204,29 @@ class Services implements BaseServices {
   }
 
   @override
-  Future<bool> updateAddress({Address address, String accessToken}) async {
+  Future<List<Province>> getProvinces() async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      return serviceApi.getProvinces();
+    } else {
+      throw Exception("No internet connection");
+    }
+  }
+
+  @override
+  Future<Address> createAddress({Address address}) async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      return serviceApi.createAddress(address: address);
+    } else {
+      throw Exception("No internet connection");
+    }
+  }
+
+  @override
+  Future<Address> updateAddress({Address address, String accessToken}) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
@@ -213,11 +238,11 @@ class Services implements BaseServices {
   }
 
   @override
-  Future<List<Province>> getProvinces() async {
+  Future<bool> deleteAddress({Address address, String accessToken}) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.getProvinces();
+      return serviceApi.deleteAddress(address: address);
     } else {
       throw Exception("No internet connection");
     }
@@ -246,11 +271,11 @@ class Services implements BaseServices {
   }
 
   @override
-  Future<Address> getAddress({String token}) async {
+  Future<List<Address>> getAllAddresses({String token}) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.getAddress(token: token);
+      return serviceApi.getAllAddresses(token: token);
     } else {
       throw Exception("No internet connection");
     }

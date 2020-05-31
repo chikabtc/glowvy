@@ -67,6 +67,11 @@ class CartModel with ChangeNotifier {
     updateFees();
   }
 
+  void chooseAddress(Address address) {
+    this.address = address;
+    notifyListeners();
+  }
+
   void updateQuantity(int key, int quantity) async {
     if (cartItems.containsKey(key)) {
       cartItems[key].quantity = quantity;

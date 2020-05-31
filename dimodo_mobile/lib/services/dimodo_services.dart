@@ -25,7 +25,7 @@ class DimodoServices implements BaseServices {
   factory DimodoServices() => _instance;
 
   // String accessToken;
-  bool isProd = true;
+  bool isProd = false;
 
   DimodoServices._internal();
 
@@ -428,16 +428,42 @@ class DimodoServices implements BaseServices {
   // ===========================================================================
 
   @override
-  Future<bool> updateAddress({Address address, String accessToken}) async {
+  Future<Address> updateAddress({Address address, String accessToken}) async {
     try {
       print("address : ${address.toJson()}");
       final body = await postAsync(
           endPoint: "api/address/update",
           data: jsonEncode({
             "recipient_name": address.recipientName,
+            "id": address.id,
             "street": address.street,
             "ward_id": address.ward.id,
-            "phone_number": address.phoneNumber
+            "phone_number": address.phoneNumber,
+            "is_default": address.isDefault,
+          }));
+      if (body["Success"] == true && body["Data"] != null) {
+        return Address.fromJson(body["Data"]);
+      } else {
+        return null;
+      }
+    } catch (err) {
+      throw "err: $err";
+    }
+  }
+
+  @override
+  Future<bool> deleteAddress({Address address, String accessToken}) async {
+    try {
+      print("address to delete: ${address.toJson()}");
+      final body = await postAsync(
+          endPoint: "api/address/delete",
+          data: jsonEncode({
+            "id": address.id,
+            "recipient_name": address.recipientName,
+            "street": address.street,
+            "ward_id": address.ward.id,
+            "phone_number": address.phoneNumber,
+            "is_default": address.isDefault,
           }));
       return body["isSuccess"];
     } catch (err) {
@@ -446,12 +472,43 @@ class DimodoServices implements BaseServices {
   }
 
   @override
-  Future<Address> getAddress({token}) async {
+  Future<Address> createAddress({Address address}) async {
     try {
-      final body = await getAsync(endPoint: "api/address/get");
+      List<Address> addresses = [];
+
+      print("address : ${address.toJson()}");
+      final body = await postAsync(
+          endPoint: "api/address/create",
+          data: jsonEncode({
+            "id": address.id,
+            "recipient_name": address.recipientName,
+            "street": address.street,
+            "ward_id": address.ward.id,
+            "phone_number": address.phoneNumber,
+            "is_default": address.isDefault,
+          }));
       if (body["Success"] == true && body["Data"] != null) {
-        Address address = Address.fromJson(body["Data"]);
-        return address;
+        return Address.fromJson(body["Data"]);
+      } else {
+        return null;
+      }
+    } catch (err) {
+      throw "err: $err";
+    }
+  }
+
+  @override
+  Future<List<Address>> getAllAddresses({token}) async {
+    try {
+      List<Address> addresses = [];
+      final body = await getAsync(endPoint: "api/address/get");
+
+      if (body["Success"] == true && body["Data"] != null) {
+        print("received ::: ${body["Data"]}");
+        for (var item in body["Data"]) {
+          addresses.add(Address.fromJson(item));
+        }
+        return addresses;
       } else {
         return null;
       }

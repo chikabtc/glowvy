@@ -92,7 +92,7 @@ class _OrderItemRowState extends State<OrderItemRow> {
                                   padding: const EdgeInsets.only(right: 36.0),
                                   child: Container(
                                     padding: EdgeInsets.only(
-                                        bottom: 2, top: 2, left: 5, right: 5),
+                                        bottom: 2, top: 2, left: 8, right: 8),
                                     decoration: BoxDecoration(
                                         color: kLightBG,
                                         borderRadius: BorderRadius.all(

@@ -18,7 +18,6 @@ class UserModel with ChangeNotifier {
   User user;
   bool isLoggedIn = false;
   bool loading = false;
-  // CartModel cartModel = CartModel();
 
   Future<void> initData() async {
     await getUser();
@@ -36,7 +35,7 @@ class UserModel with ChangeNotifier {
       kAccessToken = user.accessToken;
       isLoggedIn = true;
 
-      user.defaultAddress = await _service.getAddress(token: user.accessToken);
+      user.addresses = await _service.getAllAddresses(token: user.accessToken);
 
       saveUser(user);
       success(user);
@@ -63,8 +62,8 @@ class UserModel with ChangeNotifier {
           kAccessToken = user.accessToken;
           isLoggedIn = true;
 
-          user.defaultAddress =
-              await _service.getAddress(token: user.accessToken);
+          user.addresses =
+              await _service.getAllAddresses(token: user.accessToken);
 
           print('accessToken$accessToken');
 
@@ -104,8 +103,8 @@ class UserModel with ChangeNotifier {
       isLoggedIn = true;
 
       if (user.accessToken != null) {
-        user.defaultAddress =
-            await _service.getAddress(token: user.accessToken);
+        user.addresses =
+            await _service.getAllAddresses(token: user.accessToken);
       }
 
       print("lgogogo: ${user.toJson()}");
@@ -159,15 +158,18 @@ class UserModel with ChangeNotifier {
   Future getShippingAddress() async {
     final LocalStorage storage = new LocalStorage("Dimodo");
     if (user != null) {
-      user.defaultAddress = await _service.getAddress(token: user.accessToken);
+      user.addresses = await _service.getAllAddresses(token: user.accessToken);
     }
 
     try {
       final ready = await storage.ready;
       if (ready) {
-        final json = storage.getItem(kLocalKey["shippingAddress"]);
+        final json = storage.getItem(kLocalKey["addresses"]);
         if (json != null) {
-          user.defaultAddress = Address.fromJson(json);
+          for (var item in json) {
+            user.addresses.add(Address.fromJson(item));
+          }
+
           print("got address: $user");
           notifyListeners();
         } else {
@@ -295,9 +297,62 @@ class UserModel with ChangeNotifier {
   void updateAddress(
       {Address address, String token, Function success, Function fail}) async {
     try {
-      this.user.defaultAddress = address;
-      var isSuccess =
-          await _service.updateAddress(address: address, accessToken: token);
+      var returnedAddress = await _service.updateAddress(address: address);
+      if (address.isDefault) {
+        user.addresses.forEach((element) {
+          if (element != address) {
+            element.isDefault = false;
+          }
+          user.defaultAddress = address;
+        });
+      }
+      var originalIndex = this.user.addresses.indexOf(address, 0);
+      this.user.addresses[originalIndex] = address;
+
+      success(true);
+      saveUser(user);
+      notifyListeners();
+    } catch (err) {
+      fail(
+          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
+              err.toString());
+      notifyListeners();
+    }
+  }
+
+  void createAddress({Address address, Function success, Function fail}) async {
+    try {
+      var returnedAddress = await _service.createAddress(address: address);
+      if (user.addresses == null) {
+        user.addresses = [];
+      }
+      this.user.addresses.add(address);
+      if (address.isDefault) {
+        user.addresses.forEach((element) {
+          if (element != address) {
+            element.isDefault = false;
+          }
+          user.defaultAddress = address;
+        });
+      }
+      address.id = returnedAddress.id;
+
+      success(true);
+      saveUser(user);
+      notifyListeners();
+    } catch (err) {
+      fail(
+          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
+              err.toString());
+      notifyListeners();
+    }
+  }
+
+  void deleteAddress({Address address, Function success, Function fail}) async {
+    try {
+      var isSuccess = await _service.deleteAddress(address: address);
+      user.addresses.remove(address);
+
       success(isSuccess);
       saveUser(user);
       notifyListeners();

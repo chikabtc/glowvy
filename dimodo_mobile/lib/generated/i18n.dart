@@ -48,15 +48,19 @@ class S implements WidgetsLocalizations {
   String get name => "Name";
   String get noAddress => "No Shipping Address added yet";
   String get addAddress => "Add Shipping Address";
+  String get editShippingAddress => "Edit Shipping Address";
   String get selectShipping => "Select Shipping";
   String get chooseShipping => "Choose Shipping";
   String get save => "Save";
   String get deliveryArea => "Delivery Area";
+  String get defaultString => "Default";
+  String get district => "District";
+  String get ward => "Ward";
 
 // =============================================================================
 // Cart Page
 // =============================================================================
-  String get emptyCartSubtitle => "No Products in the cart yet";
+  String get emptyCartSubtitle => "Shopping cart is empty go fill it up";
   String get noCouponsAvailable => "No Coupons Available";
   String get emptyWishlistSubtitle => "No Products in the cart yet";
   String get youMayAlsoLike => "You may also like";
@@ -84,6 +88,8 @@ class S implements WidgetsLocalizations {
 // Write Review Page
 // =============================================================================
   String get askServiceQuality => "Does the product meet your expectations?";
+  String get surveyDescription =>
+      "We appreciate you are trying our current feature we’ve been building in Dimodo. It will take 10 mins to collect your feedback about our product?";
   String get askForFeedback =>
       "Talk about what you like and what you don’t like about your purchase";
   String get writeReview => "Write your review";
@@ -157,7 +163,7 @@ class S implements WidgetsLocalizations {
   // ===========================================================================
   String get shippingDescription =>
       "We receive your packages from Korean shops within 3-5 days. It takes another week to ship it to your doorway in Vietnam";
-  String get orderDetail => "Order details";
+  String get yourOrderDetail => "Your Order details";
   String get thankYouForUsingDimodo => "Thank you for using Dimodo";
 
   String get confirmReceivePackage => "Confirm received the package";
@@ -305,6 +311,7 @@ class S implements WidgetsLocalizations {
   String get password => "Password";
   String get phoneIsRequired => "The phone number field is required";
   String get phoneNumber => "Phone Number";
+  String get intputReceiverPhoneNumber => "Please input reciever phone number";
   String get placeMyOrder => "Place My Order";
   String get pleaseInput => "Please input fill in all fields";
   String get point => "Point";
@@ -385,6 +392,7 @@ class S implements WidgetsLocalizations {
   String get zipCode => "Zip-code";
   String get zipCodeIsRequired => "The zip code field is required";
   String get beenSold => "been sold";
+  String get takeSurvey => "Take a survey";
   // String get otherProducts => "Other zip code field is required";
   String sale(String percent) => "Sale $percent %";
   String weFoundProducts(String length) => "We found $length products";
@@ -407,7 +415,8 @@ class $vi extends S {
   String get askServiceQuality => "Sản phẩm có đáp ứng được mong đợi của bạn??";
   String get askForFeedback =>
       "Hãy cho chúng tôi biết về những gì bạn thích và những gì bạn không thích về mua hàng của bạn";
-
+  String get surveyDescription =>
+      "We appreciate you are trying our current feature we’ve been building in Dimodo. It will take 10 mins to collect your feedback about our product?";
   @override
   String get privacyPolicy => "Chính Sách Bảo Mật";
   @override
@@ -418,6 +427,10 @@ class $vi extends S {
   String get orders => "Đặt Hàng";
   String get deliveryArea => "Tỉnh /Thành phố";
   String get addAddress => "Thêm địa chỉ mới";
+  String get editShippingAddress => "Edit Shipping Address";
+
+  String get district => "district";
+  String get ward => "ward";
 
   @override
   String get viewAll => "Xem Tất Cả";
@@ -486,6 +499,7 @@ class $vi extends S {
   String get paymentMethods => "Payment method";
   String get bankInfo => "Thông tin ngân hàng";
   String get bankTransfer => "Chuyển khoản ngân hàng";
+  String get intputReceiverPhoneNumber => "Please input reciever phone number";
 
   String get accountHolder => "Chủ tài khoản";
   //hottest design in vietnamese
@@ -533,6 +547,9 @@ class $vi extends S {
   String get top => "ÁO";
   @override
   String get coat => "ÁO KHOÁC";
+  String get defaultString => "Default";
+  String get takeSurvey => "Take a survey";
+
   @override
   String get pant => "QUẦN";
   @override
@@ -664,9 +681,8 @@ class $vi extends S {
   String get addedToYourCart => "Thêm vào giỏ hàng thành công!";
   @override
   String get subtotal => "Tổng phụ";
-  @override
-  String get emptyCartSubtitle =>
-      "Có vẻ như bạn chưa thêm bất kì sản phẩm nào vào túi. Bắt đầu mua sắm để làm đầy nó.";
+  String get emptyCartSubtitle => "Shopping cart is empty go fill it up";
+
   @override
   String get orderNotes => "Ghi chú đặt hàng";
   @override
@@ -894,7 +910,7 @@ class $vi extends S {
   @override
   String get signIn => "Sign In";
   @override
-  String get orderDetail => "Chi tiết đơn hàng";
+  String get yourOrderDetail => "Chi tiết đơn hàng";
   @override
   String get recents => "Gần đây";
   @override

@@ -113,110 +113,116 @@ class _CartItemRowState extends State<CartItemRow> {
                               ],
                             ),
                             SizedBox(height: 3),
-                            if (widget.cartItem.product.salePercent != "null" &&
-                                widget.cartItem.product.salePercent != "0" &&
-                                widget.cartItem.product.salePercent != null)
-                              Container(
-                                padding: EdgeInsets.only(left: 3, right: 3),
-                                decoration: BoxDecoration(
-                                    color: kLightPink,
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(6),
-                                    )),
-                                child: DynamicText(
-                                  "-${widget.cartItem.product.salePercent}%",
-                                  style: kBaseTextStyle.copyWith(
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
-                                      color: kPinkAccent),
+                            if (widget.cartItem.product.salePercent != null)
+                              Opacity(
+                                opacity: 0.5,
+                                child: Container(
+                                  padding: EdgeInsets.only(left: 3, right: 3),
+                                  decoration: BoxDecoration(
+                                      color: kPinkAccent,
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(6),
+                                      )),
+                                  child: DynamicText(
+                                    "-${widget.cartItem.product.salePercent}%",
+                                    style: kBaseTextStyle.copyWith(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
                                 ),
                               ),
-                            SizedBox(height: 17),
-                            Container(
-                              height: 24,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: <Widget>[
-                                  DynamicText(
-                                      Tools.getPriceProduct(
-                                          widget.cartItem.product, "VND",
-                                          onSale: true),
-                                      style: kBaseTextStyle.copyWith(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.bold,
-                                          color: widget.isOrder
-                                              ? kDarkSecondary
-                                              : kPinkAccent)),
-                                  Spacer(),
-                                  Row(
+                            SizedBox(height: 25),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: <Widget>[
+                                Container(
+                                  height: 24,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: <Widget>[
-                                      Container(
-                                        width: 24,
-                                        height: 24,
-                                        child: IconButton(
-                                            padding: EdgeInsets.all(0),
-                                            icon: SvgPicture.asset(
-                                                'assets/icons/product_detail/substract-stepper.svg'),
-                                            onPressed: () {
-                                              setState(() {
-                                                if (quantity == 1) {
-                                                  return;
-                                                }
-                                                quantity -= 1;
-
-                                                widget
-                                                    .onChangeQuantity(quantity);
-                                              });
-
-                                              // widget.cartItem.onChangeQuantity(
-                                              //     widget.cartItem.quantity);
-                                            }),
-                                      ),
-                                      SizedBox(width: 3),
-                                      Container(
-                                        height: 24,
-                                        width: 32,
-                                        decoration: BoxDecoration(
-                                            color: Colors.transparent,
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(6.0)),
-                                            border: Border.all(
-                                                style: BorderStyle.solid,
-                                                color: kGrey200,
-                                                width: 1.5)),
-                                        child: DynamicText(
-                                          quantity.toString(),
-                                          textAlign: TextAlign.center,
+                                      DynamicText(
+                                          Tools.getPriceProduct(
+                                              widget.cartItem.product, "VND",
+                                              onSale: true),
                                           style: kBaseTextStyle.copyWith(
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w600,
-                                              color: kDarkSecondary),
-                                        ),
-                                      ),
-                                      SizedBox(width: 3),
-                                      Container(
-                                        width: 24,
-                                        height: 24,
-                                        child: IconButton(
-                                            padding: EdgeInsets.all(0),
-                                            color: Colors.red,
-                                            icon: SvgPicture.asset(
-                                                'assets/icons/product_detail/add-stepper.svg'),
-                                            onPressed: () {
-                                              setState(() {
-                                                if (quantity == 10) {
-                                                  return;
-                                                }
-                                                quantity += 1;
-                                                widget
-                                                    .onChangeQuantity(quantity);
-                                              });
-                                            }),
-                                      ),
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold,
+                                              color: widget.isOrder
+                                                  ? kDarkSecondary
+                                                  : kPinkAccent)),
+                                      Spacer(),
+                                      Row(
+                                        children: <Widget>[
+                                          Container(
+                                            width: 24,
+                                            height: 24,
+                                            child: IconButton(
+                                                padding: EdgeInsets.all(0),
+                                                icon: SvgPicture.asset(
+                                                    'assets/icons/product_detail/substract-stepper.svg'),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    if (quantity == 1) {
+                                                      return;
+                                                    }
+                                                    quantity -= 1;
+
+                                                    widget.onChangeQuantity(
+                                                        quantity);
+                                                  });
+
+                                                  // widget.cartItem.onChangeQuantity(
+                                                  //     widget.cartItem.quantity);
+                                                }),
+                                          ),
+                                          SizedBox(width: 3),
+                                          Container(
+                                            height: 24,
+                                            width: 32,
+                                            decoration: BoxDecoration(
+                                                color: Colors.transparent,
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(6.0)),
+                                                border: Border.all(
+                                                    style: BorderStyle.solid,
+                                                    color: kGrey200,
+                                                    width: 1.5)),
+                                            child: DynamicText(
+                                              quantity.toString(),
+                                              textAlign: TextAlign.center,
+                                              style: kBaseTextStyle.copyWith(
+                                                  fontSize: 13,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: kDarkSecondary),
+                                            ),
+                                          ),
+                                          SizedBox(width: 3),
+                                          Container(
+                                            width: 24,
+                                            height: 24,
+                                            child: IconButton(
+                                                padding: EdgeInsets.all(0),
+                                                color: Colors.red,
+                                                icon: SvgPicture.asset(
+                                                    'assets/icons/product_detail/add-stepper.svg'),
+                                                onPressed: () {
+                                                  setState(() {
+                                                    if (quantity == 10) {
+                                                      return;
+                                                    }
+                                                    quantity += 1;
+                                                    widget.onChangeQuantity(
+                                                        quantity);
+                                                  });
+                                                }),
+                                          ),
+                                        ],
+                                      )
                                     ],
-                                  )
-                                ],
-                              ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),

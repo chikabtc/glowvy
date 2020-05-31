@@ -111,81 +111,85 @@ class _ProductListState extends State<ProductList>
                           scrollInfo.metrics.pixels ==
                               scrollInfo.metrics.maxScrollExtent) {
                         _loadData();
-                        isLoading = true;
-                        // setState(() {});
+                        setState(() {
+                          isLoading = true;
+                        });
                       }
                       return false;
                     },
-                    child: Column(
-                      children: <Widget>[
-                        widget.showFilter
-                            ? Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: <Widget>[
-                                  GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        isAscending = !isAscending;
-                                        _products.sort((a, b) => isAscending
-                                            ? b.salePrice.compareTo(a.salePrice)
-                                            : a.salePrice
-                                                .compareTo(b.salePrice));
-                                      });
-                                    },
-                                    child: Container(
-                                        decoration: new BoxDecoration(
-                                          color: isAscending
-                                              ? Colors.white
-                                              : kLightPink,
-                                          borderRadius:
-                                              BorderRadius.circular(6),
-                                        ),
-                                        padding:
-                                            EdgeInsets.symmetric(horizontal: 6),
-                                        height: 24,
-                                        // width: 98,
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            isAscending
-                                                ? Image.asset(
-                                                    "assets/icons/filter-sort.png")
-                                                : Image.asset(
-                                                    "assets/icons/filter-sort-active.png"),
-                                            DynamicText(
+                    child: Scrollbar(
+                      child: ListView(
+                        shrinkWrap: true,
+                        physics: ScrollPhysics(),
+                        children: <Widget>[
+                          widget.showFilter
+                              ? Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: <Widget>[
+                                    GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          isAscending = !isAscending;
+                                          _products.sort((a, b) => isAscending
+                                              ? b.salePrice
+                                                  .compareTo(a.salePrice)
+                                              : a.salePrice
+                                                  .compareTo(b.salePrice));
+                                        });
+                                      },
+                                      child: Container(
+                                          decoration: new BoxDecoration(
+                                            color: isAscending
+                                                ? Colors.white
+                                                : kLightPink,
+                                            borderRadius:
+                                                BorderRadius.circular(6),
+                                          ),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 6),
+                                          height: 24,
+                                          // width: 98,
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
                                               isAscending
-                                                  ? S
-                                                      .of(context)
-                                                      .highestToLowest
-                                                  : S
-                                                      .of(context)
-                                                      .lowestToHighest,
-                                              textAlign: TextAlign.center,
-                                              style: kBaseTextStyle.copyWith(
-                                                  fontSize: 12,
-                                                  color: isAscending
-                                                      ? kDarkSecondary
-                                                      : kDarkAccent),
-                                            ),
-                                          ],
-                                        )),
-                                  ),
-                                  SizedBox(width: 16)
-                                ],
-                              )
-                            : Container(),
-                        SizedBox(height: 12),
-                        Expanded(
-                          child: Scrollbar(
+                                                  ? Image.asset(
+                                                      "assets/icons/filter-sort.png")
+                                                  : Image.asset(
+                                                      "assets/icons/filter-sort-active.png"),
+                                              DynamicText(
+                                                isAscending
+                                                    ? S
+                                                        .of(context)
+                                                        .highestToLowest
+                                                    : S
+                                                        .of(context)
+                                                        .lowestToHighest,
+                                                textAlign: TextAlign.center,
+                                                style: kBaseTextStyle.copyWith(
+                                                    fontSize: 12,
+                                                    color: isAscending
+                                                        ? kDarkSecondary
+                                                        : kDarkAccent),
+                                              ),
+                                            ],
+                                          )),
+                                    ),
+                                    SizedBox(width: 16)
+                                  ],
+                                )
+                              : Container(),
+                          SizedBox(height: 12),
+                          Scrollbar(
                             controller: _scrollController,
                             child: GridView.builder(
                               addAutomaticKeepAlives: true,
                               padding: const EdgeInsets.all(0.0),
                               physics: widget.disableScrolling
                                   ? NeverScrollableScrollPhysics()
-                                  : AlwaysScrollableScrollPhysics(),
+                                  : ScrollPhysics(),
                               shrinkWrap: true,
                               itemCount: _products.length,
                               gridDelegate:
@@ -200,21 +204,21 @@ class _ProductListState extends State<ProductList>
                                       width: widthContent),
                             ),
                           ),
-                        ),
-                        isLoading
-                            ? SpinKitCircle(
-                                color: kPinkAccent,
-                                size: 23.0 * kSizeConfig.containerMultiplier)
-                            : isEnd
-                                ? SvgPicture.asset(
-                                    'assets/icons/heart-ballon.svg',
-                                    width: 30,
-                                    height: 42,
-                                  )
-                                : Container(),
-                        Container(height: 10),
-                        SizedBox(height: 12),
-                      ],
+                          isLoading
+                              ? SpinKitCircle(
+                                  color: kPinkAccent,
+                                  size: 23.0 * kSizeConfig.containerMultiplier)
+                              : isEnd
+                                  ? SvgPicture.asset(
+                                      'assets/icons/heart-ballon.svg',
+                                      width: 30,
+                                      height: 42,
+                                    )
+                                  : Container(),
+                          Container(height: 10),
+                          SizedBox(height: 12),
+                        ],
+                      ),
                     )));
   }
 }

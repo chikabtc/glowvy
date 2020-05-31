@@ -11,11 +11,10 @@ import '../../models/user/userModel.dart';
 import 'package:Dimodo/common/tools.dart';
 
 import '../../models/order/order.dart';
-import '../setting/shippingAddressCard.dart';
+import '../setting/shipping_address_small_card.dart';
 
 import 'package:Dimodo/widgets/login_animation.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'orderSummary.dart';
 
 class ConfirmOrder extends StatefulWidget {
@@ -28,6 +27,7 @@ class _ConfirmOrderState extends State<ConfirmOrder>
   bool isLoading = false;
   AnimationController submitButtonController;
   User user;
+  var cartModel;
   @override
   void initState() {
     super.initState();
@@ -85,7 +85,7 @@ class _ConfirmOrderState extends State<ConfirmOrder>
 
   void submitOrder() async {
     print("created order");
-    final cartModel = Provider.of<CartModel>(context, listen: false);
+    cartModel = Provider.of<CartModel>(context, listen: false);
     final userModel = Provider.of<UserModel>(context, listen: false);
     final orderModel = Provider.of<OrderModel>(context, listen: false);
 
@@ -94,7 +94,6 @@ class _ConfirmOrderState extends State<ConfirmOrder>
       isLoading = false;
       var order = Order();
       order.totalShipping = cartModel.getShippingFee();
-      print("order total shipping: ${order.totalShipping}");
       order.totalFee = cartModel.getTotal();
       order.totalDiscounts = cartModel.getTotalDiscounts();
       order.userId = userModel.user.id;
@@ -108,9 +107,7 @@ class _ConfirmOrderState extends State<ConfirmOrder>
     } catch (err) {
       isLoading = false;
       _stopAnimation();
-      final snackBar = SnackBar(
-        content: Text(err.toString()),
-      );
+
       print(err.toString());
       // Scaffold.of(context).showSnackBar(snackBar);
     }
@@ -154,23 +151,47 @@ class _ConfirmOrderState extends State<ConfirmOrder>
                     ),
                     SliverList(
                         delegate: SliverChildListDelegate([
-                      Container(
-                          color: Colors.white,
-                          padding:
-                              EdgeInsets.only(left: 16, top: 30, bottom: 12),
-                          child: DynamicText(S.of(context).whereToDeliver,
-                              style: kBaseTextStyle.copyWith(
-                                  fontSize: 17, fontWeight: FontWeight.w600))),
-                      if (user.defaultAddress != null)
+                      if (model.address == null)
                         ShippingAddressSmallCard(user.defaultAddress),
-                      // if (user.address == null)
-
+                      if (model.address != null)
+                        ShippingAddressSmallCard(model.address),
+                      if (user.addresses.length == 0)
+                        ListTile(
+                          contentPadding: EdgeInsets.only(
+                              top: 16.0, bottom: 14, left: 16, right: 16),
+                          onTap: () => {
+                            Navigator.pushNamed(
+                              context,
+                              "/manage_address",
+                            )
+                          },
+                          title: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: <Widget>[
+                              DynamicText(S.of(context).shippingAddress,
+                                  style: kBaseTextStyle.copyWith(
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.w600,
+                                  )),
+                              SizedBox(width: 5),
+                              DynamicText(S.of(context).pleaseInput,
+                                  style: kBaseTextStyle.copyWith(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w500,
+                                      color: kPinkError)),
+                            ],
+                          ),
+                          trailing: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[CommonIcons.arrowForward]),
+                        ),
                       Container(
                           height: 10, color: Theme.of(context).backgroundColor),
                       Container(
                           color: Colors.white,
-                          padding: EdgeInsets.only(left: 16),
-                          child: DynamicText(S.of(context).orderDetail,
+                          padding: EdgeInsets.only(left: 16, top: 30),
+                          child: DynamicText(S.of(context).yourOrderDetail,
                               style: kBaseTextStyle.copyWith(
                                   fontSize: 17, fontWeight: FontWeight.w600))),
                       Container(
@@ -201,8 +222,10 @@ class _ConfirmOrderState extends State<ConfirmOrder>
                                   buttonController: submitButtonController.view,
                                   onTap: () {
                                     if (user.defaultAddress == null) {
+                                      var isFromOrderPage = true;
                                       Navigator.pushNamed(
-                                          context, "/manage_address");
+                                          context, "/manage_address",
+                                          arguments: isFromOrderPage);
                                     }
                                     //should have address saved if not go to the address setting page
                                     else if (!isLoading) {
@@ -212,52 +235,41 @@ class _ConfirmOrderState extends State<ConfirmOrder>
                                 ),
                               ),
                             ),
-                            Container(
-                              padding: EdgeInsets.only(top: 20, bottom: 30),
-                              child: Column(
-                                children: <Widget>[
-                                  SvgPicture.asset(
-                                    'assets/icons/heart-ballon.svg',
-                                    width: 30,
-                                    height: 42,
-                                  ),
-                                  SizedBox(height: 16.5),
-                                  DynamicText(
-                                    S.of(context).needHelp,
-                                    style: kBaseTextStyle.copyWith(
-                                        color: kDarkSecondary,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w600),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  SizedBox(height: 15),
-                                  Container(
-                                    padding:
-                                        EdgeInsets.only(right: 16, left: 16),
-                                    width: screenSize.width,
-                                    child: Column(
-                                      children: <Widget>[],
-                                    ),
-                                  ),
-                                  MaterialButton(
-                                      elevation: 0,
-                                      color: Colors.transparent,
-                                      minWidth: screenSize.width * 0.3,
-                                      height: 40,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              new BorderRadius.circular(25.0),
-                                          side: BorderSide(
-                                              color: kPinkAccent, width: 1.5)),
-                                      child: DynamicText(S.of(context).askUs,
-                                          style: kBaseTextStyle.copyWith(
-                                              fontWeight: FontWeight.w600,
-                                              color: kPinkAccent)),
-                                      onPressed: () =>
-                                          CustomerSupport.openFacebookMessenger(
-                                              context)),
-                                ],
-                              ),
+                            Column(
+                              children: <Widget>[
+                                Container(
+                                    height: 10, color: kDefaultBackground),
+                                Image.asset(
+                                  'assets/images/support-illustration.png',
+                                ),
+                                SizedBox(height: 5),
+                                DynamicText(
+                                  S.of(context).needHelp,
+                                  style: kBaseTextStyle.copyWith(
+                                      color: kDarkSecondary,
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w500),
+                                  textAlign: TextAlign.center,
+                                ),
+                                SizedBox(height: 20),
+                                MaterialButton(
+                                    elevation: 0,
+                                    color: kDarkAccent,
+                                    minWidth: screenSize.width * 0.3,
+                                    height: 36,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            new BorderRadius.circular(36.0),
+                                        side: BorderSide(width: 1.5)),
+                                    child: DynamicText(S.of(context).askUs,
+                                        style: kBaseTextStyle.copyWith(
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white)),
+                                    onPressed: () =>
+                                        CustomerSupport.openFacebookMessenger(
+                                            context)),
+                                SizedBox(height: 60)
+                              ],
                             )
                           ],
                         ),
@@ -273,8 +285,6 @@ class _ConfirmOrderState extends State<ConfirmOrder>
     showLoading();
     try {
       hideLoading();
-      // widget.controller.animateTo(1,
-      //     duration: Duration(milliseconds: 250), curve: Curves.easeInOut);
     } catch (err) {
       hideLoading();
       Fluttertoast.showToast(
@@ -298,50 +308,5 @@ class _ConfirmOrderState extends State<ConfirmOrder>
     setState(() {
       isLoading = false;
     });
-  }
-}
-
-class OrderSummaryCard extends StatelessWidget {
-  // final CartModel model;
-  final String currency;
-  final String title;
-  final String subTitle;
-  final String fee;
-  final bool isTotalFee;
-
-  OrderSummaryCard(
-      {this.currency,
-      this.title,
-      this.subTitle,
-      this.fee,
-      this.isTotalFee = false});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          DynamicText(title,
-              style: kBaseTextStyle.copyWith(
-                  fontSize: 13, fontWeight: FontWeight.w600)),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              DynamicText(
-                subTitle,
-                style: kBaseTextStyle.copyWith(
-                    fontSize: 12, color: kDarkSecondary),
-              ),
-              Spacer(),
-              DynamicText(
-                fee,
-                style: kBaseTextStyle.copyWith(
-                    fontSize: 13,
-                    fontWeight: FontWeight.bold,
-                    color: isTotalFee ? kPinkAccent : Colors.black),
-              ),
-            ],
-          ),
-        ]);
   }
 }

@@ -182,6 +182,8 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
                 switch (settings.name) {
                   case '/add_address':
                     if (arguments is Address) {
+                      print("bullshit2");
+
                       // the details page for one specific user
                       return MaterialPageRoute<bool>(
                           builder: (BuildContext context) => AddShippingAddress(
@@ -194,6 +196,17 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
                               AddShippingAddress());
                     }
                     break;
+                  case '/manage_address':
+                    if (arguments is bool) {
+                      print("bullshit");
+                      return MaterialPageRoute<bool>(
+                          builder: (BuildContext context) =>
+                              ManageShippingScreen(
+                                isFromOrderScreen: arguments,
+                              ));
+                    }
+                    break;
+
                   default:
                     return null;
                 }

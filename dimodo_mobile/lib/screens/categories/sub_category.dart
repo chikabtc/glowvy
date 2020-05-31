@@ -8,8 +8,6 @@ import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/models/product/productModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:Dimodo/models/category.dart';
-import 'package:after_layout/after_layout.dart';
-import 'package:Dimodo/generated/i18n.dart';
 import 'package:provider/provider.dart';
 
 class SubCategoryScreen extends StatefulWidget {
@@ -114,7 +112,7 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
                                     categoryId: currentCate.id,
                                     sortBy: lowToHigh,
                                     start: 0,
-                                    limit: 100);
+                                    limit: 6);
                           });
                         },
                         tabs: renderTabbar(),

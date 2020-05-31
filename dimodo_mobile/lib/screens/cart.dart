@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/models/coupon.dart';
 import 'package:Dimodo/models/product/product.dart';
@@ -91,76 +92,80 @@ class _CartState extends State<Cart>
 
     return Consumer<CartModel>(builder: (context, cartModel, child) {
       return Scaffold(
-          appBar: AppBar(
-            brightness: Brightness.light,
-            leading: showBackSpace
-                ? IconButton(
-                    icon: CommonIcons.arrowBackward,
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                  )
-                : Container(),
-            elevation: 0,
-            backgroundColor: kPinkAccent,
-            flexibleSpace: FlexibleSpaceBar(
-              title: DynamicText(S.of(context).cart,
-                  style: kBaseTextStyle.copyWith(
-                      fontSize: 17,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600)),
-            ),
-          ),
-          bottomNavigationBar: cartModel.totalCartQuantity > 0
-              ? SafeArea(
-                  bottom: true,
-                  child: Container(
-                    height: 104,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: <Widget>[
-                        ShoppingCartSummary(model: cartModel),
-                        Container(
-                          height: 56,
-                          color: Colors.white,
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                top: 9.0, bottom: 7, left: 16, right: 16),
-                            child: MaterialButton(
-                                elevation: 0,
-                                padding: EdgeInsets.all(0),
-                                color: kPinkAccent,
-                                minWidth: screenSize.width,
-                                height: 40,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                        new BorderRadius.circular(25.0),
-                                    side: BorderSide(
-                                        color: kPinkAccent, width: 1.5)),
-                                child: DynamicText(S.of(context).checkout,
-                                    style: kBaseTextStyle.copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.white)),
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              ConfirmOrder()));
-                                }),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+        appBar: AppBar(
+          brightness: Brightness.light,
+          leading: showBackSpace
+              ? IconButton(
+                  icon: CommonIcons.arrowBackward,
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
                 )
-              : null,
-          backgroundColor: Theme.of(context).backgroundColor,
-          body: ListView(
-            children: <Widget>[
-              Consumer<CartModel>(builder: (context, cartModel, child) {
-                return CouponCard(
+              : Container(),
+          elevation: 0,
+          backgroundColor: kPinkAccent,
+          flexibleSpace: FlexibleSpaceBar(
+            title: DynamicText(S.of(context).cart,
+                style: kBaseTextStyle.copyWith(
+                    fontSize: 17,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600)),
+          ),
+        ),
+        bottomNavigationBar: cartModel.totalCartQuantity > 0
+            ? SafeArea(
+                bottom: true,
+                child: Container(
+                  height: 104,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      ShoppingCartSummary(model: cartModel),
+                      Container(
+                        height: 56,
+                        color: Colors.white,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              top: 9.0, bottom: 7, left: 16, right: 16),
+                          child: MaterialButton(
+                              elevation: 0,
+                              padding: EdgeInsets.all(0),
+                              color: kPinkAccent,
+                              minWidth: screenSize.width,
+                              height: 40,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: new BorderRadius.circular(25.0),
+                                  side: BorderSide(
+                                      color: kPinkAccent, width: 1.5)),
+                              child: DynamicText(S.of(context).checkout,
+                                  style: kBaseTextStyle.copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white)),
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => ConfirmOrder()));
+                              }),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            : null,
+        backgroundColor: Theme.of(context).backgroundColor,
+        body: Consumer<CartModel>(builder: (context, cartModel, child) {
+          if (cartModel.totalCartQuantity == 0) return EmptyCart();
+          // if (cartModel.totalCartQuantity == 0)
+          //   ProductModel.showProductList(
+          //       isNameAvailable: false, future: _getProductsByCategory),
+          if (cartModel.totalCartQuantity > 0)
+            return ListView(
+              // shrinkWrap: true,
+              children: <Widget>[
+                CouponCard(
                     coupon: cartModel.selectedCoupons.length != 0
                         ? cartModel.selectedCoupons[0]
                         : null,
@@ -170,18 +175,14 @@ class _CartState extends State<Cart>
                     context: context,
                     isSelected:
                         cartModel.selectedCoupons.length == 0 ? false : true,
-                    isSelector: true);
-              }),
-              if (cartModel.totalCartQuantity == 0) EmptyCart(),
-              if (cartModel.totalCartQuantity == 0)
-                ProductModel.showProductList(
-                    isNameAvailable: false, future: _getProductsByCategory),
-              if (cartModel.totalCartQuantity > 0)
+                    isSelector: true),
                 Column(
-                  children: _createShoppingCartRows(cartModel),
-                ),
-            ],
-          ));
+                    // shrinkWrap: true,
+                    children: _createShoppingCartRows(cartModel)),
+              ],
+            );
+        }),
+      );
     });
   }
 
@@ -242,38 +243,59 @@ class _CartState extends State<Cart>
 class EmptyCart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Center(
-                child: Image.asset(
-                  'assets/icons/cart/empty-cart-illustration.png',
-                ),
+    final screenSize = MediaQuery.of(context).size;
+    final topPadding = MediaQuery.of(context).padding.top;
+    var userModel = Provider.of<UserModel>(context, listen: false);
+
+    return Container(
+        height: screenSize.height - topPadding,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Center(
+              child: Image.asset(
+                'assets/images/empty-cart-illustration.png',
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.0),
-                child: DynamicText(S.of(context).emptyCartSubtitle,
-                    style: kBaseTextStyle.copyWith(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                        color: kDarkSecondary),
-                    textAlign: TextAlign.center),
-              ),
-              SizedBox(height: 50),
-            ]),
-        Padding(
-          padding: const EdgeInsets.only(left: 7.0),
-          child: DynamicText(
-            S.of(context).youMayAlsoLike,
-            style: kBaseTextStyle.copyWith(
-                fontSize: 15, fontWeight: FontWeight.w600),
-          ),
-        ),
-      ],
-    );
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: DynamicText(S.of(context).emptyCartSubtitle,
+                  style: kBaseTextStyle.copyWith(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                      color: kDarkSecondary),
+                  textAlign: TextAlign.center),
+            ),
+            userModel.isLoggedIn
+                ? Container()
+                : Expanded(
+                    child: Align(
+                      alignment: FractionalOffset.bottomCenter,
+                      child: GestureDetector(
+                        onTap: () => Navigator.pushNamed(context, "/login"),
+                        child: Container(
+                          height: 48,
+                          padding: EdgeInsets.only(
+                            left: 16,
+                            right: 16,
+                          ),
+                          color: kLightPink,
+                          width: kScreenSizeWidth,
+                          child: Center(
+                            child: DynamicText(
+                              "Login to synchronize your shopping cart ",
+                              style: kBaseTextStyle.copyWith(
+                                  fontWeight: FontWeight.w500,
+                                  color: kPinkAccent,
+                                  fontSize: 12),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+          ],
+        ));
   }
 }
 
