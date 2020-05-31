@@ -32,7 +32,9 @@ func (a *API) InitializeRoutes() {
 	a.R.HandleFunc("/email/subject", userC.SubjectEmail).Methods("POST")
 
 	//			Address					//
+	a.R.HandleFunc("/api/address/create", addressC.CreateAddress).Methods("POST")
 	a.R.HandleFunc("/api/address/get", addressC.GetAddess).Methods("GET")
+	a.R.HandleFunc("/api/address/delete", addressC.DeleteAddress).Methods("POST")
 	a.R.HandleFunc("/api/address/update", addressC.UpdateAddress).Methods("POST")
 	a.R.HandleFunc("/api/districts/id={id:[0-9]+}", addressC.DistrictsByID).Methods("GET")
 	a.R.HandleFunc("/api/wards/id={id:[0-9]+}", addressC.WardsByID).Methods("GET")

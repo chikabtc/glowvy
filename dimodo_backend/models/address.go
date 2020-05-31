@@ -9,11 +9,13 @@ import (
 )
 
 type AddressService interface {
-	GetAddess(userID int) (*Address, error)
+	GetAddess(userID int) ([]Address, error)
+	CreateAddress(address *Address) (*Address, error)
+	UpdateAddress(address *Address) (*Address, error)
+	DeleteAddress(address *Address) error
 	ListDistrictsByID(id int) ([]District, error)
 	ListWardsByID(id int) ([]Ward, error)
 	AllProvinces() ([]Province, error)
-	UpdateAddress(address *Address) error
 }
 
 type addressService struct {
@@ -29,7 +31,7 @@ type Address struct {
 	Ward           Ward   `json:"ward,omitempty"`
 	PhoneNumber    string `json:"phone_number,omitempty"`
 	User_id        int    `json:"user_id,omitempty"`
-	Is_default     bool   `json:"is_default,omitempty"`
+	Is_default     bool   `json:"is_default"`
 }
 
 type Province struct {
@@ -61,20 +63,68 @@ func NewAddressService(db *sql.DB) AddressService {
 	}
 }
 
-func (as *addressService) GetAddess(userID int) (*Address, error) {
-	var address Address
+func (as *addressService) GetAddess(userID int) ([]Address, error) {
+	var addresses []Address
 	//todo: current data structure only support one address. Improve it later
-	row, err := as.dot.QueryRow(as.DB, "getAddrssQuery", userID)
+	rows, err := as.dot.Query(as.DB, "GetAllAddresses", userID)
 
-	row.Scan(
+	for rows.Next() {
+		var address Address
+
+		rows.Scan(
+			&address.Id,
+			&address.Recipient_name,
+			&address.PhoneNumber,
+			&address.Street,
+			&address.Ward.Province.Name,
+			&address.Ward.District.Name,
+			&address.Ward.Name,
+			&address.Is_default)
+
+		if err != nil {
+			bugsnag.Notify(err)
+			switch err {
+			case sql.ErrNoRows:
+				print("no row found")
+				return nil, ErrNotFound
+			default:
+				return nil, err
+			}
+		}
+
+		addresses = append(addresses, address)
+
+	}
+
+	return addresses, nil
+}
+
+func (as *addressService) CreateAddress(address *Address) (*Address, error) {
+	if address.Is_default {
+		err := as.MakeAllAddressesNonDefault(address.User_id)
+		if err != nil {
+			bugsnag.Notify(err)
+			fmt.Println("err:", err)
+		}
+	}
+	row, err := as.dot.QueryRow(as.DB, "CreateAddress",
+		address.Recipient_name,
+		address.Street,
+		address.Ward_id,
+		address.PhoneNumber,
+		address.User_id,
+		address.Is_default)
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("CreateAddress err:", err)
+	}
+	err = row.Scan(
 		&address.Id,
-		&address.Recipient_name,
-		&address.PhoneNumber,
-		&address.Street,
-		&address.Ward.Province.Name,
-		&address.Ward.District.Name,
-		&address.Ward.Name)
-
+	)
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("CreateAddress err:", err)
+	}
 	if err != nil {
 		bugsnag.Notify(err)
 		switch err {
@@ -85,23 +135,72 @@ func (as *addressService) GetAddess(userID int) (*Address, error) {
 			return nil, err
 		}
 	}
-	if address.Recipient_name == "" {
-		return nil, nil
+
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("err:", err)
 	}
-
-	return &address, nil
-
+	return address, err
 }
-func (as *addressService) UpdateAddress(address *Address) error {
-	fmt.Println("address", address.Id)
-	print("wrad id: ", address.Ward.Id)
-
-	_, err := as.dot.Exec(as.DB, "UpdateAddress",
+func (as *addressService) UpdateAddress(address *Address) (*Address, error) {
+	if address.Is_default {
+		err := as.MakeAllAddressesNonDefault(address.User_id)
+		if err != nil {
+			bugsnag.Notify(err)
+			fmt.Println("err:", err)
+		}
+	}
+	//todo: current data structure only support one address. Improve it later
+	row, err := as.dot.QueryRow(as.DB, "UpdateAddress",
 		address.Recipient_name,
 		address.Street,
 		address.Ward_id,
 		address.PhoneNumber,
-		address.User_id,
+		address.Is_default,
+		address.Id,
+	)
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("CreateAddress err:", err)
+	}
+	err = row.Scan(
+		&address.Id,
+	)
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("CreateAddress err:", err)
+	}
+	if err != nil {
+		bugsnag.Notify(err)
+		switch err {
+		case sql.ErrNoRows:
+			print("no row found")
+			return nil, ErrNotFound
+		default:
+			return nil, err
+		}
+	}
+
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("err:", err)
+	}
+	return address, err
+}
+
+func (as *addressService) MakeAllAddressesNonDefault(userId int) error {
+	_, err := as.dot.Exec(as.DB, "MakeAllAddressesNonDefault", userId)
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("err:", err)
+	}
+	return err
+}
+func (as *addressService) DeleteAddress(address *Address) error {
+	fmt.Println("addresss id to delete", address.Id)
+
+	_, err := as.dot.Exec(as.DB, "DeleteAddress",
+		address.Id,
 	)
 	if err != nil {
 		bugsnag.Notify(err)

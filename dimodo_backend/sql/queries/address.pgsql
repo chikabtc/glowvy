@@ -31,50 +31,49 @@ WHERE
     province_id = $1;
 
 -- name: UpdateAddress
-WITH addressnew AS (
-INSERT INTO address (recipient_name, street, ward_id, telephone, user_id, creater)
-    SELECT
-        $1,
-        $2,
-        $3,
-        $4,
-        $5,
-        1
-    FROM
-        users
-    WHERE
-        id = $5
-    RETURNING
-        id)
 UPDATE
-    users
+    address
 SET
-    address_id = addressnew.id
-FROM
-    addressnew
+    recipient_name = $1,
+    street = $2,
+    ward_id = $3,
+    phone_number = $4,
+    is_default = $5
 WHERE
-    users.id = $5;
+    address.id = $6
+RETURNING
+    user_id;
 
--- name: getAddrssQuery
-WITH account AS (
-    SELECT
-        address_id
-    FROM
-        users
-    WHERE
-        id = $1
-)
+--name: DeleteAddress
+DELETE FROM address
+WHERE address.id = $1;
+
+--name: MakeAllAddressesNonDefault
+UPDATE
+    address
+SET
+    is_default = FALSE
+WHERE
+    address.user_id = $1;
+
+--name: CreateAddress
+INSERT INTO address (recipient_name, street, ward_id, phone_number, user_id, is_default, creater)
+    VALUES ($1, $2, $3, $4, $5, $6, 1)
+RETURNING
+    id;
+
+-- name: GetAllAddresses
 SELECT
     address.id,
     recipient_name,
-    telephone,
+    phone_number,
     street,
     province.NAME,
     district.NAME,
-    ward.NAME
+    ward.NAME,
+    address.is_default
 FROM
     address,
-    account,
     ward,
     district,
     province
@@ -82,5 +81,5 @@ WHERE
     address.ward_id = ward.id
     AND ward.province_id = province.id
     AND ward.district_id = district.id
-    AND address.id = account.address_id;
+    AND address.user_id = $1;
 

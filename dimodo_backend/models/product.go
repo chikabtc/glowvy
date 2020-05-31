@@ -126,7 +126,7 @@ type Product struct {
 	Options        []Option     `json:"options,omitempty"`
 
 	ProductEtcInfo ProductEtcInfo `json:"productEtcInfo,omitempty"`
-	Seller         Seller         `json:"seller"`
+	Seller         Seller         `json:"seller,omitempty"`
 	AddInfo        []struct {
 		Key  string `json:"key"`
 		Text string `json:"text"`

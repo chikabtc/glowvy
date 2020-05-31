@@ -74,7 +74,7 @@ type Order struct {
 	Total_shipping  float64      `json:"total_shipping,omitempty"`
 	Total_fee       float64      `json:"total_fee,omitempty"`
 	Total_discounts float64      `json:"total_discounts"`
-	Date_created    int          `json:"date_created,omitempty"`
+	Date_created    int64        `json:"date_created,omitempty"`
 	OrderItems      []Order_item `json:"order_items,omitempty"`
 	AppliedCoupons  []Coupon     `json:"applied_coupons,omitempty"`
 	Is_paid         bool         `json:"is_paid"`

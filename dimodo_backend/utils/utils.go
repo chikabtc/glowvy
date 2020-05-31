@@ -224,3 +224,17 @@ func PrintJson(obj interface{}) {
 	temp, _ := json.MarshalIndent(obj, "", "  ")
 	fmt.Println(string(temp))
 }
+func GetHoursPassed(start int64) int {
+	startTime := strconv.Itoa(int(start))
+	t1, err := strconv.ParseInt(startTime, 10, 64)
+	if err != nil {
+		panic(err)
+	}
+	tm := time.Unix(t1, 0)
+	fmt.Println(tm)
+
+	t2 := time.Now()
+	du := t2.Sub(tm).Hours()
+	fmt.Println("duration: ", du)
+	return int(du)
+}

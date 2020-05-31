@@ -58,11 +58,53 @@ func (a *Address) UpdateAddress(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 
 	address.User_id = auth.Id
-	if err := a.as.UpdateAddress(&address); err != nil {
+	addresses, err := a.as.UpdateAddress(&address)
+	if err != nil {
+		resp.Json(w, r, http.StatusInternalServerError, resp.WithError(err.Error()))
+		return
+	}
+	resp.Json(w, r, http.StatusOK, resp.WithSuccess(addresses))
+}
+
+func (a *Address) DeleteAddress(w http.ResponseWriter, r *http.Request) {
+	auth := jwt.Payload(r)
+	utils.PrintJson(auth)
+	var address models.Address
+	decoder := json.NewDecoder(r.Body)
+	if err := decoder.Decode(&address); err != nil {
+		msgError := fmt.Sprintf("Invalid request payload. Error: %s", err.Error())
+		resp.Json(w, r, http.StatusBadRequest, resp.WithError(msgError))
+		return
+	}
+	defer r.Body.Close()
+
+	address.User_id = auth.Id
+	if err := a.as.DeleteAddress(&address); err != nil {
 		resp.Json(w, r, http.StatusInternalServerError, resp.WithError(err.Error()))
 		return
 	}
 	resp.Json(w, r, http.StatusOK, resp.WithSuccess(address))
+}
+
+func (a *Address) CreateAddress(w http.ResponseWriter, r *http.Request) {
+	auth := jwt.Payload(r)
+	utils.PrintJson(auth)
+	var address models.Address
+	decoder := json.NewDecoder(r.Body)
+	if err := decoder.Decode(&address); err != nil {
+		msgError := fmt.Sprintf("Invalid request payload. Error: %s", err.Error())
+		resp.Json(w, r, http.StatusBadRequest, resp.WithError(msgError))
+		return
+	}
+	defer r.Body.Close()
+
+	address.User_id = auth.Id
+	addresses, err := a.as.CreateAddress(&address)
+	if err != nil {
+		resp.Json(w, r, http.StatusInternalServerError, resp.WithError(err.Error()))
+		return
+	}
+	resp.Json(w, r, http.StatusOK, resp.WithSuccess(addresses))
 }
 
 func (a *Address) DistrictsByID(w http.ResponseWriter, r *http.Request) {
