@@ -97,7 +97,7 @@ class _ConfirmOrderState extends State<ConfirmOrder>
       order.totalFee = cartModel.getTotal();
       order.totalDiscounts = cartModel.getTotalDiscounts();
       order.userId = userModel.user.id;
-      order.addressId = userModel.user.defaultAddress.id;
+      order.addressId = cartModel.address.id;
       order.appliedCoupons = cartModel.selectedCoupons;
 
       await orderModel.submitOrder(order: order);

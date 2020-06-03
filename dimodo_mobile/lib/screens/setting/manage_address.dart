@@ -32,14 +32,14 @@ class ManageShippingScreenState extends State<ManageShippingScreen>
     super.initState();
   }
 
-  List<Widget> renderAddressCards(User user) {
+  List<Widget> renderAddressCards(User user, bool isFromOrderScreen) {
     List<Widget> lists = [];
     print("renderAddressCardsddd: ${user.addresses[0].toJson()}");
 
     user.addresses.forEach((element) {
       lists.add(ShippingAddressCard(
         address: element,
-        isFromOrderScreen: isFromConfirm,
+        isFromOrderScreen: isFromOrderScreen,
       ));
     });
     return lists;
@@ -49,9 +49,12 @@ class ManageShippingScreenState extends State<ManageShippingScreen>
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final Map arguments = ModalRoute.of(context).settings.arguments as Map;
-    if (arguments != null)
+    if (arguments != null) {
       isFromConfirm = arguments['isFromConfirmOrderScreen'];
-    print("isFromConfirmOrderScreen: ${isFromConfirm}");
+      print("isFromConfirmOrderScreen: ${isFromConfirm}");
+    } else {
+      isFromConfirm = false;
+    }
 
     return Consumer<UserModel>(builder: (context, value, child) {
       return Scaffold(
@@ -103,7 +106,7 @@ class ManageShippingScreenState extends State<ManageShippingScreen>
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: renderAddressCards(value.user),
+                        children: renderAddressCards(value.user, isFromConfirm),
                       ),
                     ),
                   ]),

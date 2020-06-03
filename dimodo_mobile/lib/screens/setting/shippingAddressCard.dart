@@ -9,9 +9,10 @@ import 'package:provider/provider.dart';
 import '../../generated/i18n.dart';
 
 class ShippingAddressCard extends StatelessWidget {
-  ShippingAddressCard({this.address, this.isFromOrderScreen = false});
   final Address address;
   var isFromOrderScreen;
+
+  ShippingAddressCard({this.address, this.isFromOrderScreen = false});
   @override
   Widget build(BuildContext context) {
     print("addressCard: ${address.toJson()}");
