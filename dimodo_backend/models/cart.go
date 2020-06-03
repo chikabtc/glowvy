@@ -197,23 +197,15 @@ func (cs *cartService) DeleteCartItem(item *Cart_item) error {
 func (cs *cartService) CreateOrder(order Order) (*Order, error) {
 	//move all the cart items to the order items and order
 	fmt.Println("save userid: ", order.User_id)
-	row, err := cs.dot.QueryRow(cs.DB, "CreateOrder", order.User_id, order.Address_id, order.Total_shipping, order.Total_fee, order.Total_discounts)
+	row, err := cs.dot.Exec(cs.DB, "CreateOrder", order.User_id, order.Address_id, order.Total_shipping, order.Total_fee, order.Total_discounts)
 	if err != nil {
 		bugsnag.Notify(err)
 		fmt.Println("CreateOrder: ", err)
 		return nil, err
 	}
-	if err = row.Scan(
-		&order.Id,
-		&order.User_id,
-		&order.Address_id,
-		&order.Total_shipping,
-		&order.Total_fee,
-		&order.Total_discounts,
-		&order.Date_created,
-		&order.Is_paid,
-	); err != nil {
-		fmt.Println("fail to scan: ", err)
+	if row != nil {
+		fmt.Println("nil row", row)
+
 	}
 
 	for _, coupon := range order.AppliedCoupons {

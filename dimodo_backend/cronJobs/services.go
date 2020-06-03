@@ -38,7 +38,8 @@ func NewCronServices(c *crawler.Crawler, db *sql.DB) *CronServices {
 }
 
 func (cs *CronServices) Run() {
-	cs.remindPaymentByEmail()
+	// cs.remindPaymentByEmail()
+	// cs.crawler.UpdateProducts()
 	cs.cron.Start()
 
 }

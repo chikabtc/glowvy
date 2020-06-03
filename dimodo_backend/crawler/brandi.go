@@ -380,45 +380,6 @@ func (c *Crawler) ProductDetailById(bProductId string) (*models.Product, error) 
 	return &product, err
 }
 
-func (c *Crawler) AddTags(bp brandi.Product) error {
-	var err error
-	for _, bTag := range bp.Data.Tags {
-		row, err := c.dot.Exec(c.DB, "AddTag", bTag.Name, bp.Data.ID)
-		if err != nil {
-			bugsnag.Notify(err)
-			return err
-		}
-		fmt.Println("tag name :" + bTag.Name + " sid :" + bp.Data.ID)
-
-		//if the tag already exists, then insert the tag to the product_tags
-		//if the tag that belongs to the product exists, then do nothing
-		if row != nil {
-			fmt.Println("nil row")
-
-			var isProductTagExists bool
-
-			row, err := c.dot.QueryRow(c.DB, "checkIfTagForProductExists", bTag.Name, bp.Data.ID)
-			row.Scan(&isProductTagExists)
-
-			if err != nil {
-
-				fmt.Println("checkIfTagForProductExists: ", err)
-				bugsnag.Notify(err)
-				return err
-			}
-			if !isProductTagExists {
-				_, err = c.dot.Exec(c.DB, "AddTagToProductTags", bTag.Name, bp.Data.ID)
-				if err != nil {
-					fmt.Println("AddTagToProductTags: ", err)
-					// bugsnag.Notify(err)
-					return err
-				}
-			}
-		}
-	}
-	return err
-}
-
 func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) error {
 	//check if the product already exists in db
 	var isProductAvailable bool
@@ -478,6 +439,8 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 		var newOption = option
 		//translate the title only once
 		for index, attribute := range option.Attributes {
+			//todo: check if translated title or value exist in the database
+
 			title, _ := translate.PpgTranslateText(translate.Ko, translate.Vi, attribute.Title)
 			value, _ := translate.PpgTranslateText(translate.Ko, translate.Vi, attribute.Value)
 			newOption.Attributes[index].Title = title
@@ -872,6 +835,171 @@ func (c *Crawler) UpdateProducts() error {
 
 	}
 	fmt.Println("sid counts: ", len(sids))
+	return err
+}
+
+func (c *Crawler) CollectProductOptions(bProductId string) error {
+	url := "https://cf-api-c.brandi.me/v1/web/products/" + bProductId
+	fmt.Println(url)
+	req, _ := http.NewRequest("GET", url, nil)
+	req.Header.Add("Authorization", brandiAuth)
+	client := http.Client{Timeout: time.Second * 30}
+	res, err := client.Do(req)
+	if err != nil {
+		bugsnag.Notify(err)
+		return err
+	}
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+	var bp brandi.Product
+	if err := json.Unmarshal(body, &bp); err != nil {
+		panic(err)
+	}
+	sid, _ := strconv.Atoi(bp.Data.ID)
+	//options in Korean
+	var sProductOptions = []models.Option{}
+	//options in vietnaemse
+	var productOptions = []models.Option{}
+
+	//just update the sold out property.. it's hard to update...
+	//get the title and value from db..? and just update issoldout property.
+	//can directly manipulate the jsonb..
+	for _, option := range bp.Data.Options {
+		var sOption = option
+		var newOption = option
+		//translate the title only once
+		for _, attribute := range option.Attributes {
+			//todo: check if translated title or value exist in the database
+			//todo: if exist, use those values
+			//todo: if not, translate them save them in the db
+			productOptionCount, err := c.CountProductOptions(attribute.Title)
+			if err != nil {
+				fmt.Println("fail to run CountProductOptions:", err)
+				bugsnag.Notify(err)
+				return nil
+			}
+			if productOptionCount == 0 {
+				title, _ := translate.TranslateText(translate.Ko, translate.En, attribute.Title)
+				_, err = c.dot.Exec(c.DB, "SaveProductOption", attribute.Title, title, sid)
+				if err != nil {
+					fmt.Println("fail to run SaveProductOption:", err)
+					bugsnag.Notify(err)
+					return nil
+				}
+			}
+			productOptionCount, err = c.CountProductOptions(attribute.Value)
+			if err != nil {
+				fmt.Println("fail to run CountProductOptions:", err)
+				bugsnag.Notify(err)
+				return nil
+			}
+			if productOptionCount == 0 {
+				value, _ := translate.TranslateText(translate.Ko, translate.En, attribute.Value)
+				_, err = c.dot.Exec(c.DB, "SaveProductOption", attribute.Value, value, sid)
+				if err != nil {
+					fmt.Println("fail to run SaveProductOption:", err)
+					bugsnag.Notify(err)
+					return nil
+				}
+			}
+
+			// newOption.Attributes[index].Title = title
+			// newOption.Attributes[index].Value = value
+		}
+
+		sProductOptions = append(sProductOptions, sOption)
+		productOptions = append(productOptions, newOption)
+	}
+
+	return err
+}
+func (c *Crawler) CollectAllOptions() error {
+	// sids := make([]string, 0)
+
+	rows, err := c.dot.Query(c.DB, "GetSidsOfAllProducts")
+	if err != nil {
+		// bugsnag.Notify(err)
+		fmt.Println("GetSidsOfAllProducts: ", err)
+		return err
+	}
+
+	var sid string
+	var id string
+	defer rows.Close()
+
+	for rows.Next() {
+		if err := rows.Scan(
+			&sid,
+			&id,
+		); err != nil {
+			fmt.Println("fail to GetSidsOfAllProducts ", err)
+			return err
+		}
+		fmt.Println("ProductId: ", id)
+		time.Sleep(4 * time.Second)
+		err := c.CollectProductOptions(sid)
+		if err != nil {
+			bugsnag.Notify(err)
+			fmt.Println("ProductDetailById: ", err)
+			return err
+		}
+	}
+	return err
+}
+
+func (c *Crawler) CountProductOptions(sname string) (int, error) {
+	var ReviewsCount int
+	row, err := c.dot.QueryRow(c.DB, "CountProductOptions", sname)
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("CountReviews: ", err)
+		return 0, err
+	}
+	if err := row.Scan(&ReviewsCount); err != nil {
+		fmt.Println("fail to scan review", err)
+		return 0, err
+	}
+	fmt.Printf("count of reivews: %v  \n", ReviewsCount)
+	return ReviewsCount, nil
+}
+
+func (c *Crawler) AddTags(bp brandi.Product) error {
+	var err error
+	for _, bTag := range bp.Data.Tags {
+		row, err := c.dot.Exec(c.DB, "AddTag", bTag.Name, bp.Data.ID)
+		if err != nil {
+			bugsnag.Notify(err)
+			return err
+		}
+		fmt.Println("tag name :" + bTag.Name + " sid :" + bp.Data.ID)
+
+		//if the tag already exists, then insert the tag to the product_tags
+		//if the tag that belongs to the product exists, then do nothing
+		if row != nil {
+			fmt.Println("nil row")
+
+			var isProductTagExists bool
+
+			row, err := c.dot.QueryRow(c.DB, "checkIfTagForProductExists", bTag.Name, bp.Data.ID)
+			row.Scan(&isProductTagExists)
+
+			if err != nil {
+
+				fmt.Println("checkIfTagForProductExists: ", err)
+				bugsnag.Notify(err)
+				return err
+			}
+			if !isProductTagExists {
+				_, err = c.dot.Exec(c.DB, "AddTagToProductTags", bTag.Name, bp.Data.ID)
+				if err != nil {
+					fmt.Println("AddTagToProductTags: ", err)
+					// bugsnag.Notify(err)
+					return err
+				}
+			}
+		}
+	}
 	return err
 }
 

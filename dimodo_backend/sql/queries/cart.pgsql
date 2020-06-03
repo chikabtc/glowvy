@@ -90,11 +90,25 @@ WHERE
 
 --name:	CreateOrder
 WITH newOrder AS (
-INSERT INTO orders (user_id, address_id, total_shipping, total_fee, total_discounts, creater)
-        VALUES ($1, $2, $3, $4, $5, $1)
+INSERT INTO orders (user_id, address_id, total_shipping, total_fee, total_discounts, creater, ward_id, phone_number, street)
+    SELECT
+        $1,
+        $2,
+        $3,
+        $4,
+        $5,
+        $1,
+        address.ward_id,
+        address.phone_number,
+        address.street
+    FROM
+        address
+    WHERE
+        address.id = $2
     RETURNING
-        id, user_id, address_id, total_shipping, total_fee, total_discounts, created_at, is_paid
-), moved_rows AS (
+        id
+),
+moved_rows AS (
     DELETE FROM cart_item
     WHERE cart_item.user_id = $1
     RETURNING
@@ -120,14 +134,7 @@ INSERT INTO order_item (user_id, option_id, product_id, quantity, option, create
         newOrder
 )
 SELECT
-    newOrder.id,
-    newOrder.user_id,
-    newOrder.address_id,
-    newOrder.total_shipping,
-    newOrder.total_fee,
-    newOrder.total_discounts,
-    newOrder.created_at,
-    newOrder.is_paid
+    id
 FROM
     newOrder;
 

@@ -247,3 +247,29 @@ SET
 WHERE
    id = $2;
 
+--name: SaveProductOption
+INSERT INTO product_option (sname, en_name, product_id)
+SELECT
+   $1,
+   $2,
+   $3
+WHERE
+   NOT EXISTS (
+      SELECT
+         1
+      FROM
+         product_option
+      WHERE
+         sname = $1);
+
+--name: CountProductOptions
+SELECT
+   COUNT(*)
+FROM (
+   SELECT
+      sname
+   FROM
+      product_option
+   WHERE
+      sname = $1) subque;
+

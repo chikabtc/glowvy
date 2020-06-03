@@ -21,7 +21,8 @@ func main() {
 
 	crawler := crawler.NewCrawler()
 	api := api.NewAPI(crawler)
-	// cronServices := cronJobs.NewCronServices(crawler, crawler.DB)
+	// err := crawler.CollectAllOptions()
+	// fmt.Println(err)
 
 	// cronServices.Run()
 	api.Run()
