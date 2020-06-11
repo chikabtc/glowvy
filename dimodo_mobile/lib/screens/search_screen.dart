@@ -5,6 +5,7 @@ import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/services/index.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../generated/i18n.dart';
 import 'package:algolia/algolia.dart';
 
@@ -22,20 +23,19 @@ class _SearchScreenState extends State<SearchScreen> {
   bool isAscending = false;
   String highToLow = "-sale_price";
   String lowToHigh = "sale_price";
-  static Algolia algolia = Algolia.init(
-    applicationId: '50G6MO803G',
-    apiKey: 'ab5eb7ec7552bb7865f3819a2b08f462',
-  );
+
   final TextEditingController searchController = TextEditingController();
   String searchText;
   bool showResults = false;
   bool isTextFieldSelected = false;
+  ProductModel productModel;
 
   @override
   void initState() {
     super.initState();
     getProductBySearch =
         service.getProductsBySearch(searchText: "드레스", sortBy: "id");
+    productModel = Provider.of<ProductModel>(context, listen: false);
   }
 
   @override
@@ -270,7 +270,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       //           ],
                       //         ))),
                       Visibility(
-                        child: ProductModel.showProductList(
+                        child: productModel.showProductList(
                             isNameAvailable: false, future: getProductBySearch),
                         visible: showResults,
                       ),

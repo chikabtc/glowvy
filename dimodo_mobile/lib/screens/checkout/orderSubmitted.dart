@@ -305,7 +305,7 @@ class _OrderSubmittedState extends State<OrderSubmitted>
                                 shape: RoundedRectangleBorder(
                                   borderRadius: new BorderRadius.circular(25.0),
                                 ),
-                                child: DynamicText(S.of(context).support,
+                                child: DynamicText(S.of(context).reset,
                                     style: kBaseTextStyle.copyWith(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 14,

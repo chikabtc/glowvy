@@ -72,17 +72,7 @@ class ProductCard extends StatelessWidget {
                         width: 100,
                         height: 100,
                         size: kSize.large,
-                      )
-
-                      // CachedNetworkImage(
-                      //   imageUrl: product.thumbnail,
-                      //   width: 100,
-                      //   height: 100,
-                      //   // placeholder: (context, url) =>
-                      //   //     CircularProgressIndicator(),
-                      //   // errorWidget: (context, url, error) => Icon(Icons.error),
-                      // ),
-                      ),
+                      )),
                 )),
           ),
           // // item name

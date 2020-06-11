@@ -1,11 +1,16 @@
+import 'package:Dimodo/models/product/generating_product_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../common/constants.dart';
 import '../../services/index.dart';
 import '../../widgets/product/product_list.dart';
 import '../../models/category.dart';
+import 'dart:convert' as convert;
+import 'package:http/http.dart' as http;
+import 'package:flutter/services.dart';
 
 import 'package:Dimodo/screens/categories/sub_category.dart';
 import 'product.dart';
@@ -14,6 +19,7 @@ class ProductModel with ChangeNotifier {
   static Services service = Services();
   List<Product> products;
   String message;
+  Map<String, dynamic> cosmeticsFilter;
 
   /// current select product id/name
   int categoryId;
@@ -24,7 +30,12 @@ class ProductModel with ChangeNotifier {
   //list products for products screen
   bool isFetching = false;
   bool isEnd = false;
-
+  bool isLoading = false;
+  int offset = 0;
+  int limit = 80;
+  String highToLow = "-sale_price";
+  String lowToHigh = "sale_price";
+  bool isAscending = false;
   String errMsg;
 
 //ProductVariation can be used for layout variation
@@ -45,6 +56,28 @@ class ProductModel with ChangeNotifier {
     } catch (err) {
       print(err);
     }
+  }
+
+  List<Product> sortByPrice(List<Product> products, bool isAscending) {
+    products.sort((a, b) => isAscending
+        ? b.salePrice.compareTo(a.salePrice)
+        : a.salePrice.compareTo(b.salePrice));
+
+    return products;
+  }
+
+  List<Product> filteredProducts(
+      {List<String> filterOptions, List<Product> products}) {
+    var filterProducts = products.where((p) {
+      var isMatching = false;
+      filterOptions.forEach((option) {
+        if (p.tags.contains(option)) {
+          isMatching = true;
+        }
+      });
+      return isMatching;
+    }).toList();
+    return filterProducts;
   }
 
   void getProductsList({categoryId, sortBy}) async {
@@ -134,7 +167,7 @@ class ProductModel with ChangeNotifier {
     notifyListeners();
   }
 
-  static showSubCategoryPage(Category category, String sortBy, context,
+  showSubCategoryPage(Category category, String sortBy, context,
       {bool isNameAvailable}) {
     final product = Provider.of<ProductModel>(context, listen: false);
     print("show subcate");
@@ -151,7 +184,7 @@ class ProductModel with ChangeNotifier {
             builder: (context) => SubCategoryScreen(category: category)));
   }
 
-  static showProductListByCategory(
+  showProductListByCategory(
       {cateId, sortBy, context, limit, isNameAvailable = false, onLoadMore}) {
     return FutureBuilder<List<Product>>(
       future: service.getProductsByCategory(
@@ -161,6 +194,7 @@ class ProductModel with ChangeNotifier {
         sortBy: sortBy,
       ),
       builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
+        products = snapshot.data;
         return ProductList(
           products: snapshot.data,
           onLoadMore: onLoadMore,
@@ -170,7 +204,7 @@ class ProductModel with ChangeNotifier {
     );
   }
 
-  static Widget showProductList(
+  Widget showProductList(
       {isNameAvailable,
       future,
       showFiler = false,
@@ -180,6 +214,8 @@ class ProductModel with ChangeNotifier {
     return FutureBuilder<List<Product>>(
       future: future,
       builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
+        products = snapshot.data;
+
         return ProductList(
           products: snapshot.data,
           onLoadMore: onLoadMore,
@@ -189,6 +225,10 @@ class ProductModel with ChangeNotifier {
         );
       },
     );
+  }
+
+  Widget showGeneartingProductList() {
+    return GeneratingProductList();
   }
 
   void getProductsByTag({tag, start, limit, sortBy}) async {
@@ -203,17 +243,4 @@ class ProductModel with ChangeNotifier {
     );
     print("new products2323 length: ${products.length}");
   }
-
-  // void getProductsBy({tag, start, limit, sortBy}) async {
-  //   _tagId = tag;
-  //   _sortBy = sortBy;
-
-  //   this.products = await service.getProductsByTag(
-  //     tag: _tagId,
-  //     sortBy: _sortBy,
-  //     start: start,
-  //     count: limit,
-  //   );
-  //   print("new products2323 length: ${products.length}");
-  // }
 }

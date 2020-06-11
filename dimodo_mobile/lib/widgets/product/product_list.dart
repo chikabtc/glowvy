@@ -5,12 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../../common/constants.dart';
 import '../../models/product/product.dart';
 import '../../widgets/product/product_card_view.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:Dimodo/generated/i18n.dart';
 
 class ProductList extends StatefulWidget {
   final List<Product> products;
@@ -41,14 +39,13 @@ class _ProductListState extends State<ProductList>
   int offset = 0;
   int limit = 80;
   bool get wantKeepAlive => true;
-  String highToLow = "-sale_price";
-  String lowToHigh = "sale_price";
-  bool isAscending = false;
+  ProductModel productModel;
 
   @override
   initState() {
     super.initState();
     _products = widget.products;
+    productModel = Provider.of<ProductModel>(context, listen: false);
   }
 
   void dispose() {
@@ -68,7 +65,6 @@ class _ProductListState extends State<ProductList>
   _loadData() async {
     offset += limit;
     await widget.onLoadMore(offset, limit);
-    var productModel = Provider.of<ProductModel>(context, listen: false);
     isEnd = productModel.isEnd;
     setState(() {
       if (!isEnd) {
@@ -104,7 +100,7 @@ class _ProductListState extends State<ProductList>
                 ),
               )
             : Padding(
-                padding: const EdgeInsets.only(left: 3.0, right: 3),
+                padding: const EdgeInsets.only(left: 3.0, right: 3, bottom: 22),
                 child: NotificationListener<ScrollNotification>(
                     onNotification: (ScrollNotification scrollInfo) {
                       if (!isLoading &&
@@ -122,66 +118,7 @@ class _ProductListState extends State<ProductList>
                         shrinkWrap: true,
                         physics: ScrollPhysics(),
                         children: <Widget>[
-                          widget.showFilter
-                              ? Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: <Widget>[
-                                    GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          isAscending = !isAscending;
-                                          _products.sort((a, b) => isAscending
-                                              ? b.salePrice
-                                                  .compareTo(a.salePrice)
-                                              : a.salePrice
-                                                  .compareTo(b.salePrice));
-                                        });
-                                      },
-                                      child: Container(
-                                          decoration: new BoxDecoration(
-                                            color: isAscending
-                                                ? Colors.white
-                                                : kLightPink,
-                                            borderRadius:
-                                                BorderRadius.circular(6),
-                                          ),
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 6),
-                                          height: 24,
-                                          // width: 98,
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.min,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              isAscending
-                                                  ? Image.asset(
-                                                      "assets/icons/filter-sort.png")
-                                                  : Image.asset(
-                                                      "assets/icons/filter-sort-active.png"),
-                                              DynamicText(
-                                                isAscending
-                                                    ? S
-                                                        .of(context)
-                                                        .highestToLowest
-                                                    : S
-                                                        .of(context)
-                                                        .lowestToHighest,
-                                                textAlign: TextAlign.center,
-                                                style: kBaseTextStyle.copyWith(
-                                                    fontSize: 12,
-                                                    color: isAscending
-                                                        ? kDarkSecondary
-                                                        : kDarkAccent),
-                                              ),
-                                            ],
-                                          )),
-                                    ),
-                                    SizedBox(width: 16)
-                                  ],
-                                )
-                              : Container(),
-                          SizedBox(height: 12),
+                          widget.showFilter ? SizedBox(height: 12) : SizedBox(),
                           Scrollbar(
                             controller: _scrollController,
                             child: GridView.builder(
@@ -189,7 +126,7 @@ class _ProductListState extends State<ProductList>
                               padding: const EdgeInsets.all(0.0),
                               physics: widget.disableScrolling
                                   ? NeverScrollableScrollPhysics()
-                                  : ScrollPhysics(),
+                                  : ClampingScrollPhysics(),
                               shrinkWrap: true,
                               itemCount: _products.length,
                               gridDelegate:
@@ -215,8 +152,6 @@ class _ProductListState extends State<ProductList>
                                       height: 42,
                                     )
                                   : Container(),
-                          Container(height: 10),
-                          SizedBox(height: 12),
                         ],
                       ),
                     )));

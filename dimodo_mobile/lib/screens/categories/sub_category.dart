@@ -1,5 +1,7 @@
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/services/index.dart';
+import 'package:Dimodo/widgets/product/product_list.dart';
+import 'package:Dimodo/widgets/product_filter_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:Dimodo/common/styles.dart';
@@ -33,6 +35,11 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
   Future<List<Product>> getProductsByCategoryId;
   Services service = Services();
   Category currentCate;
+  bool isNewCategoryPage = false;
+  bool showFilteredResults = false;
+  ProductModel productModel;
+  List<Product> products;
+  List<Product> filteredResults;
 
   @override
   void initState() {
@@ -46,6 +53,7 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
 
     getProductsByCategoryId = service.getProductsByCategory(
         categoryId: currentCate.id, sortBy: lowToHigh, start: 0, limit: 12);
+    productModel = Provider.of<ProductModel>(context, listen: false);
   }
 
   void onLoadMore(start, limit) {
@@ -60,77 +68,104 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    var isNameAvailable = widget.category.id == 8 ? true : false;
 
-    return Scaffold(
-        appBar: AppBar(
-          brightness: Brightness.light,
-          leading: IconButton(
-            icon: CommonIcons.arrowBackward,
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
-          elevation: 0,
-          backgroundColor: Colors.white,
-          // pinned: true,
-          title: DynamicText(currentCate.name,
-              style: kBaseTextStyle.copyWith(
-                  fontSize: 18,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600)),
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(66.0),
-            child: Container(
-              height: 66,
-              color: Colors.white,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  DefaultTabController(
-                    length: widget.category.subCategories.length + 1,
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 16.0),
-                      child: TabBar(
-                        indicatorSize: TabBarIndicatorSize.label,
-                        labelPadding: EdgeInsets.symmetric(horizontal: 5.0),
-                        isScrollable: true,
-                        indicatorColor: kDarkAccent,
-                        unselectedLabelColor: Colors.black,
-                        unselectedLabelStyle:
-                            kBaseTextStyle.copyWith(color: kDarkSecondary),
-                        labelStyle: kBaseTextStyle,
-                        labelColor: kPinkAccent,
-                        onTap: (i) {
+    return FutureBuilder<List<Product>>(
+      future: currentCate.id == 0
+          ? getProductByTagTrending
+          : getProductsByCategoryId,
+      builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
+        if (snapshot.hasData) {
+          products = snapshot.data;
+        }
+        return Scaffold(
+            appBar: AppBar(
+              brightness: Brightness.light,
+              leading: IconButton(
+                icon: CommonIcons.arrowBackward,
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+              elevation: 0,
+              backgroundColor: Colors.white,
+              // pinned: true,
+              title: DynamicText(currentCate.name,
+                  style: kBaseTextStyle.copyWith(
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w600)),
+              bottom: PreferredSize(
+                preferredSize: const Size.fromHeight(106),
+                child: Container(
+                  height: 106,
+                  color: Colors.white,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      DefaultTabController(
+                        length: widget.category.subCategories.length + 1,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 16.0),
+                          child: TabBar(
+                            indicatorSize: TabBarIndicatorSize.label,
+                            labelPadding: EdgeInsets.symmetric(horizontal: 5.0),
+                            isScrollable: true,
+                            indicatorColor: kDarkAccent,
+                            unselectedLabelColor: Colors.black,
+                            unselectedLabelStyle:
+                                kBaseTextStyle.copyWith(color: kDarkSecondary),
+                            labelStyle: kBaseTextStyle,
+                            labelColor: kPinkAccent,
+                            onTap: (i) {
+                              setState(() {
+                                currentIndex = i;
+                                isNewCategoryPage = true;
+                                currentCate = i == 0
+                                    ? widget.category
+                                    : widget.category.subCategories[i - 1];
+                                getProductsByCategoryId =
+                                    service.getProductsByCategory(
+                                        categoryId: currentCate.id,
+                                        sortBy: lowToHigh,
+                                        start: 0,
+                                        limit: 6);
+                              });
+                            },
+                            tabs: renderTabbar(),
+                          ),
+                        ),
+                      ),
+                      FilterBar(
+                        products: products,
+                        onFilterConfirm: (filteredProducts) {
                           setState(() {
-                            currentIndex = i;
-                            currentCate = i == 0
-                                ? widget.category
-                                : widget.category.subCategories[i - 1];
-                            getProductsByCategoryId =
-                                service.getProductsByCategory(
-                                    categoryId: currentCate.id,
-                                    sortBy: lowToHigh,
-                                    start: 0,
-                                    limit: 6);
+                            showFilteredResults = true;
+                            this.filteredResults = filteredProducts;
                           });
                         },
-                        tabs: renderTabbar(),
-                      ),
-                    ),
+                        onReset: (filteredProducts) {
+                          setState(() {
+                            showFilteredResults = false;
+                          });
+                        },
+                        onSortingChanged: (sortedResults) {
+                          setState(() {
+                            this.filteredResults = sortedResults;
+                          });
+                        },
+                      )
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
-          ),
-        ),
-        body: ProductModel.showProductList(
-            onLoadMore: onLoadMore,
-            showFiler: true,
-            future: currentCate.id == 0
-                ? getProductByTagTrending
-                : getProductsByCategoryId,
-            isNameAvailable: true));
+            body: ProductList(
+              products: showFilteredResults ? filteredResults : products,
+              onLoadMore: onLoadMore,
+              isNameAvailable: true,
+            ));
+      },
+    );
   }
 
   List<Widget> renderTabbar() {

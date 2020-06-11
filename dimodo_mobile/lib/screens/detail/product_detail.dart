@@ -52,6 +52,7 @@ class _ProductDetailState extends State<ProductDetail> {
   bool loaded = false;
   int offset = 0;
   int limit = 3;
+  ProductModel productModel;
   @override
   void initState() {
     super.initState();
@@ -63,6 +64,7 @@ class _ProductDetailState extends State<ProductDetail> {
         offset += 3;
       }
     });
+    productModel = Provider.of<ProductModel>(context, listen: false);
   }
 
 //14403197
@@ -123,7 +125,7 @@ class _ProductDetailState extends State<ProductDetail> {
                     (BuildContext context, int i) {
                       if (index == 0) return ProductDescription(product);
                       if (index == 1)
-                        return ProductModel.showProductListByCategory(
+                        return productModel.showProductListByCategory(
                             cateId: 7,
                             sortBy: "sale_price",
                             limit: 200,

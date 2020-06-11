@@ -166,11 +166,35 @@
       "icon": "assets/icons/tabs/account-inactive.svg"
     }
   ],
+  "Cosmetics-Filters":
+
+  {
+    "Cosmetics-Types": [{
+      "value": "Specialzed Acne"
+    }, {
+      "value": "Whitening"
+    }],
+    "Age-Groups:": [{
+        "value": "15-22"
+      },
+      {
+        "value": "22-29"
+      }
+    ]
+  },
   "Tabs": [{
       "name": "Description"
     },
     {
       "name": "Other Products"
+    }
+  ],
+  "Home_tabs": [{
+      "name": "Editor's Picks"
+    },
+
+    {
+      "name": "Cosmetics"
     }
   ],
   "Categories": [

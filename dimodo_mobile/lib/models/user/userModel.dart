@@ -18,6 +18,8 @@ class UserModel with ChangeNotifier {
   User user;
   bool isLoggedIn = false;
   bool loading = false;
+  String cosmeticPref;
+  String ageGroup;
 
   Future<void> initData() async {
     await getUser();
@@ -361,6 +363,33 @@ class UserModel with ChangeNotifier {
           "There is an issue with the app during request the data, please contact admin for fixing the issues " +
               err.toString());
       notifyListeners();
+    }
+  }
+
+  Future<bool> setUserCosmeticsTypesPref(
+      {String cosmeticsType, BuildContext context}) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      cosmeticPref = cosmeticsType;
+
+      await prefs.setString("cosmetics_type", cosmeticsType);
+      notifyListeners();
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  Future<bool> setUserAgeGroup({String ageGroup, BuildContext context}) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      ageGroup = ageGroup;
+
+      await prefs.setString("age_group", ageGroup);
+      notifyListeners();
+      return true;
+    } catch (err) {
+      return false;
     }
   }
 }

@@ -5,6 +5,7 @@ import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/generated/i18n.dart';
+import 'package:provider/provider.dart';
 
 class CategoryButton extends StatelessWidget {
   final Category category;
@@ -12,9 +13,10 @@ class CategoryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var productModel = Provider.of<ProductModel>(context, listen: false);
     return GestureDetector(
       onTap: () =>
-          ProductModel.showSubCategoryPage(category, "+sale_price", context),
+          productModel.showSubCategoryPage(category, "+sale_price", context),
       child: Column(children: <Widget>[
         Image.asset(category.image),
         DynamicText(category.name,

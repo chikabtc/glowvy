@@ -1,10 +1,10 @@
 import 'package:Dimodo/common/tools.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import '../../models/product/product.dart';
 import '../../widgets/image_galery.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:Dimodo/common/constants.dart';
 
 class ImageFeature extends StatelessWidget {
   final Product product;
@@ -46,12 +46,13 @@ class ImageFeature extends StatelessWidget {
               );
             },
             itemCount: product.sliderImages.length,
-            pagination: new SwiperPagination(
-                margin: new EdgeInsets.all(5.0),
-                builder: new DotSwiperPaginationBuilder(
+            pagination: SwiperPagination(
+                builder: DotSwiperPaginationBuilder(
+                    size: 5 * kSizeConfig.containerMultiplier,
+                    activeSize: 5 * kSizeConfig.containerMultiplier,
                     color: Colors.grey.withOpacity(0.8),
                     activeColor: Colors.white)),
-            control: new SwiperControl(
+            control: SwiperControl(
                 iconNext: null, iconPrevious: null, color: Colors.red),
           ),
         );

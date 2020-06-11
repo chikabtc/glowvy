@@ -1,5 +1,6 @@
-import 'package:Dimodo/widgets/product/product_list.dart';
-import 'package:Dimodo/widgets/webview.dart';
+import 'package:Dimodo/models/app.dart';
+import 'package:Dimodo/models/user/userModel.dart';
+import 'package:Dimodo/widgets/personalized_survey.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
@@ -7,10 +8,7 @@ import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:Dimodo/widgets/categories/CategoryButton.dart';
 import 'package:Dimodo/models/product/productModel.dart';
-import 'package:Dimodo/models/categoryModel.dart';
-import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -31,17 +29,31 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeScreenState extends State<HomeScreen>
-    with AutomaticKeepAliveClientMixin<HomeScreen> {
+    with
+        AutomaticKeepAliveClientMixin<HomeScreen>,
+        SingleTickerProviderStateMixin {
   Services service = Services();
   Future<List<Product>> getProductByTagStar;
   Future<List<Product>> getProductByTagTrending;
   var bottomPopupHeightFactor;
+  List<String> tabList = [];
+  var currentIndex = 0;
+  TabController _tabController;
+
+  bool isGenerating = false;
+  bool isSurveyFinished = false;
+  UserModel userModel;
+  ProductModel productModel;
+
   @override
   void initState() {
     super.initState();
     getProductByTagStar = service.getProductsByTag(tag: 6, sortBy: "id");
     getProductByTagTrending =
         service.getProductsByTag(tag: 5, sortBy: "id", start: 0, count: 200);
+    _tabController = TabController(initialIndex: 0, length: 2, vsync: this);
+    userModel = Provider.of<UserModel>(context, listen: false);
+    productModel = Provider.of<ProductModel>(context, listen: false);
   }
 
   @override
@@ -67,134 +79,81 @@ class HomeScreenState extends State<HomeScreen>
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
             statusBarBrightness: Brightness.light) // Or Brightness.dark
         );
-    bottomPopupHeightFactor = 1 -
-        (AppBar().preferredSize.height +
-                160 +
-                MediaQuery.of(context).padding.bottom) /
-            kScreenSizeHeight;
 
-    _showSurvey() {
-      showModalBottomSheet(
-          isScrollControlled: true,
-          backgroundColor: Colors.transparent,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20.0),
+    try {
+      tabList = [];
+      final tabs = Provider.of<AppModel>(context, listen: false)
+          .appConfig['Home_tabs'] as List;
+      for (var tab in tabs) {
+        tabList.add(tab["name"]);
+      }
+    } catch (err) {
+      var message =
+          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
+              err.toString();
+
+      print("error: $message");
+    }
+
+    List<Widget> renderTabbar() {
+      List<Widget> list = [];
+
+      tabList.asMap().forEach((index, item) {
+        list.add(Container(
+          alignment: Alignment.center,
+          height: 40,
+          child: Tab(
+            child: DynamicText(item,
+                style: kBaseTextStyle.copyWith(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w600,
+                  color: currentIndex == index ? kDarkAccent : kDarkSecondary,
+                )),
           ),
-          context: context,
-          builder: (context) {
-            return StatefulBuilder(
-              builder: (BuildContext context, StateSetter setState) {
-                return FractionallySizedBox(
-                  heightFactor: bottomPopupHeightFactor,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20)),
-                    ),
-                    width: screenSize.width,
-                    height: screenSize.height * bottomPopupHeightFactor -
-                        AppBar().preferredSize.height,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Stack(children: <Widget>[
-                          Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(20),
-                                    topRight: Radius.circular(20)),
-                              ),
-                              height: AppBar().preferredSize.height,
-                              width: kScreenSizeWidth,
-                              child: Center(
-                                child: DynamicText(
-                                    S.of(context).thankYouForUsingDimodo,
-                                    style: kBaseTextStyle.copyWith(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600)),
-                              )),
-                          Positioned(
-                            top: 6,
-                            right: 0,
-                            child: IconButton(
-                                icon: SvgPicture.asset(
-                                    'assets/icons/address/close-popup.svg'),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                }),
-                          )
-                        ]),
-                        Container(
-                            width: 200,
-                            height: 236,
-                            child: FittedBox(
-                              fit: BoxFit.cover,
-                              child: Image.asset(
-                                  'assets/images/notification-illustration.png'),
-                            )),
-                        // SizedBox(height: 20),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              right: 32.0, left: 32, bottom: 20),
-                          child: DynamicText(S.of(context).surveyDescription,
-                              style: kBaseTextStyle.copyWith(
-                                fontSize: 13,
-                                color: kDarkSecondary,
-                                fontWeight: FontWeight.w500,
-                              ),
-                              textAlign: TextAlign.justify),
-                        ),
+        ));
+      });
+      return list;
+    }
 
-                        Expanded(
-                          child: Align(
-                            alignment: FractionalOffset.bottomCenter,
-                            child: Padding(
-                              padding: const EdgeInsets.only(
-                                  left: 16, right: 16, bottom: 40.0),
-                              child: MaterialButton(
-                                  elevation: 0,
-                                  color: kDarkAccent,
-                                  minWidth: kScreenSizeWidth,
-                                  height: 36,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                        new BorderRadius.circular(25.0),
-                                  ),
-                                  child: Text(S.of(context).takeSurvey,
-                                      style: kBaseTextStyle.copyWith(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white)),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => WebView(
-                                                url:
-                                                    "https://bit.ly/measurepmf",
-                                                title:
-                                                    "DIMODO Users Survey ⭐️")));
-                                    // await FlutterMailer.send(MailOptions(
-                                    //   body: '',
-                                    //   subject: 'Feedback',
-                                    //   recipients: ['hbpfreeman@gmail.com'],
-                                    //   isHTML: true,
-                                    // ))
-                                  }),
-                            ),
-                          ),
-                        ),
-                      ],
+    _generatePersonalizedPackages() {
+      return Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 4, left: 16),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      child: isGenerating
+                          ? DynamicText(
+                              "Generatign your personal cosmetic packages...",
+                              style: kBaseTextStyle.copyWith(
+                                  fontSize: 13, fontWeight: FontWeight.w500))
+                          : DynamicText("Specialized ${userModel.cosmeticPref}",
+                              style: kBaseTextStyle.copyWith(
+                                  fontSize: 13, fontWeight: FontWeight.w500)),
                     ),
-                  ),
-                );
-              },
-            );
-          });
+                    IconButton(
+                      onPressed: () => print("show all!"),
+                      icon: CommonIcons.arrowForward,
+                    )
+                  ],
+                ),
+              ),
+            ),
+            isGenerating
+                ? productModel.showGeneartingProductList()
+                : productModel.showProductList(
+                    isNameAvailable: true,
+                    future: getProductByTagTrending,
+                    onLoadMore: onLoadMore),
+          ],
+        ),
+      );
     }
 
     return Scaffold(
@@ -202,7 +161,6 @@ class HomeScreenState extends State<HomeScreen>
           brightness: Brightness.light,
           leading: Container(),
           elevation: 0,
-          // pinned: true,
           backgroundColor: Colors.white,
           title: Center(
             child: SafeArea(
@@ -214,7 +172,6 @@ class HomeScreenState extends State<HomeScreen>
               ),
             ),
           ),
-          // expandedHeight: 221,
           actions: <Widget>[
             IconButton(
               icon: Image.asset(
@@ -229,7 +186,6 @@ class HomeScreenState extends State<HomeScreen>
         body: Container(
           color: kLightBG,
           width: screenSize.width,
-          height: screenSize.height,
           child: NotificationListener<ScrollNotification>(
             onNotification: (ScrollNotification scrollInfo) {
               var productModel =
@@ -237,11 +193,7 @@ class HomeScreenState extends State<HomeScreen>
 
               if (!productModel.isFetching &&
                   scrollInfo.metrics.pixels ==
-                      scrollInfo.metrics.maxScrollExtent) {
-                // _loadData();
-                // isLoading = true;
-                // setState(() {});
-              }
+                      scrollInfo.metrics.maxScrollExtent) {}
               return false;
             },
             child: Scrollbar(
@@ -249,8 +201,7 @@ class HomeScreenState extends State<HomeScreen>
                 shrinkWrap: true,
                 children: <Widget>[
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
+                    children: [
                       Container(
                         width: screenSize.width,
                         child: Image.asset(
@@ -304,26 +255,87 @@ class HomeScreenState extends State<HomeScreen>
                           ],
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 21, bottom: 10, left: 16),
-                        child: DynamicText(
-                          S.of(context).trendingKorea,
-                          style: kBaseTextStyle.copyWith(
-                              fontSize: 15, fontWeight: FontWeight.w600),
-                        ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              color: kDefaultBackground,
+                              padding: EdgeInsets.only(
+                                  left: 16, bottom: 10, top: 10),
+                              child: TabBar(
+                                controller: _tabController,
+                                indicatorSize: TabBarIndicatorSize.label,
+                                labelPadding:
+                                    EdgeInsets.symmetric(horizontal: 5.0),
+                                isScrollable: true,
+                                indicatorColor: kDarkAccent,
+                                unselectedLabelColor: Colors.black,
+                                unselectedLabelStyle: kBaseTextStyle.copyWith(
+                                    color: kDarkSecondary),
+                                labelStyle: kBaseTextStyle,
+                                labelColor: kPinkAccent,
+                                onTap: (i) {
+                                  setState(() {
+                                    currentIndex = i;
+                                  });
+                                },
+                                tabs: renderTabbar(),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      ProductModel.showProductList(
-                          isNameAvailable: true,
-                          disableScroll: true,
-                          future: getProductByTagTrending,
-                          onLoadMore: onLoadMore),
+                      // =======================================================
+                      // TabBarViews
+                      // =======================================================
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (_tabController.index == 0)
+                            Container(
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    top: 21, bottom: 10, left: 16),
+                                child: DynamicText(
+                                  S.of(context).trendingKorea,
+                                  style: kBaseTextStyle.copyWith(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                              ),
+                            ),
+                          if (_tabController.index == 0)
+                            Container(
+                              color: kDefaultBackground,
+                              child: productModel.showProductList(
+                                  isNameAvailable: true,
+                                  future: getProductByTagTrending,
+                                  onLoadMore: onLoadMore),
+                            ),
+                          if (_tabController.index == 1)
+                            !isSurveyFinished
+                                ? PersonalSurvey(onSurveyFinish: () {
+                                    setState(() {
+                                      isSurveyFinished = true;
+                                      isGenerating = true;
+                                      Future.delayed(
+                                          const Duration(milliseconds: 2000),
+                                          () {
+                                        setState(() {
+                                          isGenerating = false;
+                                          // Here you can write your code for open new view
+                                        });
+                                      });
+                                    });
+                                  })
+                                : _generatePersonalizedPackages(),
+                        ],
+                      ),
                     ],
-                  ),
+                  )
                 ],
               ),
             ),
-//
           ),
         ));
   }

@@ -98,6 +98,7 @@ class S implements WidgetsLocalizations {
 // Product Detail Page
 // =============================================================================
 
+  // String get rseet => "reset";
   String get support => "Support";
   String get choose => "Choose";
   String get quantity => "Quantity";
@@ -258,6 +259,7 @@ class S implements WidgetsLocalizations {
   String get enterPIN => "Enter PIN";
   String get newPassword => "New Password";
   String get confirmPassword => "Confirm Password";
+  String get confirm => "confirm";
 
   String get events => "Events";
   String get featureProducts => "Feature Products";
@@ -431,6 +433,7 @@ class $vi extends S {
 
   String get district => "district";
   String get ward => "ward";
+  String get confirm => "confirm";
 
   @override
   String get viewAll => "Xem Tất Cả";
@@ -595,7 +598,7 @@ class $vi extends S {
       "Oh! It seems to hit the bottom. \n Btw, do you like our app";
 
   @override
-  String get support => "Hỗ trợ";
+  String get rseet => "Hỗ trợ";
   @override
   String get categories => "Phân loại";
   @override
