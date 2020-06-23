@@ -41,6 +41,7 @@ func NewAPI(crawler *crawler.Crawler) *API {
 		models.WithDB(dbCfg.Dialect(), dbCfg.ConnectionInfo()),
 		models.WithAddress(),
 		models.WithProduct(),
+		models.WithCosmetics(),
 		models.WithCart(),
 		models.WithMail(cfg.Domain),
 		models.WithUser(cfg.HMACKey),
@@ -57,7 +58,7 @@ func NewAPI(crawler *crawler.Crawler) *API {
 		UserC:    controllers.NewUser(ms.User, ms.Mail, cfg.Name, cfg.Domain),
 		AddressC: controllers.NewAddress(ms.Address),
 		CartC:    controllers.NewCart(ms.Cart, slack),
-		ProductC: controllers.NewProduct(ms.Product, crawler),
+		ProductC: controllers.NewProduct(ms.Product, ms.Cosmetics, crawler),
 	}
 
 	a := API{

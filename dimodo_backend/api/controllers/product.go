@@ -17,12 +17,14 @@ import (
 
 type Product struct {
 	Ps models.ProductService
+	Cs models.CosmeticsService
 	Cw *crawler.Crawler
 }
 
-func NewProduct(ps models.ProductService, cw *crawler.Crawler) *Product {
+func NewProduct(ps models.ProductService, cs models.CosmeticsService, cw *crawler.Crawler) *Product {
 	return &Product{
 		Ps: ps,
+		Cs: cs,
 		Cw: cw,
 	}
 }
@@ -242,6 +244,26 @@ func (p *Product) ProductReviewsById(w http.ResponseWriter, r *http.Request) {
 	}
 
 	resp.Json(w, r, http.StatusOK, resp.WithSuccess(reviews))
+}
+
+// =============================================================================
+// COSMETICS
+// =============================================================================
+
+func (p *Product) CosmeticsProductsByCategoryId(w http.ResponseWriter, r *http.Request) {
+	skinType := r.FormValue("skin_type")
+	fmt.Println("skintype: ", skinType)
+
+	params := mux.Vars(r)
+	id, err := strconv.Atoi(params["id"])
+
+	products, err := p.Cs.ProductsByCategoryID(id, skinType)
+	if err != nil {
+		bugsnag.Notify(err)
+		resp.Json(w, r, http.StatusInternalServerError, resp.WithError(err.Error()))
+		return
+	}
+	resp.Json(w, r, http.StatusOK, resp.WithSuccess(products))
 }
 
 // =============================================================================

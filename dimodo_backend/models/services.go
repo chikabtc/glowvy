@@ -8,12 +8,13 @@ import (
 )
 
 type Services struct {
-	User    UserService
-	Address AddressService
-	Cart    CartService
-	Mail    MailService
-	Product ProductService
-	db      *sql.DB
+	User      UserService
+	Address   AddressService
+	Cart      CartService
+	Mail      MailService
+	Product   ProductService
+	Cosmetics CosmeticsService
+	db        *sql.DB
 }
 
 //ServiceConfig is really just a function, but I find using
@@ -57,6 +58,12 @@ func WithUser(hmacKey string) ServiceConfig {
 func WithProduct() ServiceConfig {
 	return func(s *Services) error {
 		s.Product = NewProductService(s.db)
+		return nil
+	}
+}
+func WithCosmetics() ServiceConfig {
+	return func(s *Services) error {
+		s.Cosmetics = NewCosmeticsService(s.db)
 		return nil
 	}
 }

@@ -53,6 +53,11 @@ func (a *API) InitializeRoutes() {
 	a.R.HandleFunc("/api/product/update_prices", productC.UpdateProductPrices).Methods("GET")
 	a.R.HandleFunc("/api/product/update_price/id={id:[0-9]+}", productC.UpdateProductPrice).Methods("POST")
 
+	// =========================================================================
+	// COSMETICS
+	// =========================================================================
+	a.R.HandleFunc("/api/cosmetics/categories={id:[0-9]+}", productC.CosmeticsProductsByCategoryId).Methods("GET")
+
 	//			Category
 	a.R.HandleFunc("/api/categories/all", productC.AllCategories).Methods("GET")
 	a.R.HandleFunc("/api/categories/parentId={parentId:[0-9]+}", productC.GetSubCategories).Methods("GET")

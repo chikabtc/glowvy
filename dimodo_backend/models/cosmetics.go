@@ -48,7 +48,7 @@ func (gs *cosmeticsService) ProductsByCategoryID(categoryID int, skinType string
 	// categoryId, err := strconv.Atoi(categoryID)
 	var rows *sql.Rows
 	var err error
-	rows, err = gs.dot.Query(gs.DB, "ProductsByCategoryID", categoryID, "sensitive")
+	rows, err = gs.dot.Query(gs.DB, "ProductsByCategoryID", categoryID, skinType)
 
 	if err != nil {
 		bugsnag.Notify(err)
