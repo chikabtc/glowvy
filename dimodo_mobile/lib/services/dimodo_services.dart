@@ -156,6 +156,31 @@ class DimodoServices implements BaseServices {
   }
 
   @override
+  Future<List<Product>> getCosmeticsProductsByCategory(
+      {categoryId, skinType}) async {
+    try {
+      List<Product> list = [];
+      var body = await getAsync(
+          endPoint: "api/cosmetics/categories=$categoryId?skinType=$skinType");
+
+      final products = body["Data"];
+
+      if ((body["Success"] == false)) {
+        throw Exception(body["Success"]);
+      } else {
+        for (var item in products) {
+          list.add(Product.fromJson(item));
+        }
+        return list;
+      }
+    } catch (e) {
+      print("Error: $e");
+
+      throw e;
+    }
+  }
+
+  @override
   Future<List<Product>> getProductsBySearch({searchText}) async {
     try {
       AlgoliaQuery query =

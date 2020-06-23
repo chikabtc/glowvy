@@ -1,6 +1,7 @@
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/models/app.dart';
+import 'package:Dimodo/models/survey.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
@@ -17,6 +18,8 @@ class PersonalSurvey extends StatefulWidget {
 
 class _PersonalSurveyState extends State<PersonalSurvey> {
   @override
+  List<Survey> survey = [];
+
   Widget build(BuildContext parentContext) {
     var screenSize = MediaQuery.of(parentContext).size;
     SwiperController _controller = new SwiperController();
@@ -28,6 +31,19 @@ class _PersonalSurveyState extends State<PersonalSurvey> {
       ],
       ["What is your age?", "15-22", "22-29"]
     ];
+
+    try {
+      survey = [];
+      final surveys = Provider.of<AppModel>(context, listen: false)
+          .appConfig['Cosmetics_Survey']
+          .toJson();
+    } catch (err) {
+      var message =
+          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
+              err.toString();
+
+      print("error: $message");
+    }
 
     var userModel = Provider.of<UserModel>(context, listen: false);
 
@@ -79,6 +95,10 @@ class _PersonalSurveyState extends State<PersonalSurvey> {
                                   color: kPrimaryBlue,
                                   fontSize: 15),
                             ),
+                            // new ListView.builder(
+                            //     itemCount: surveyQuestions[i].length,
+                            //     itemBuilder: (BuildContext ctxt, int index) =>
+                            //         buildBody(ctxt, index)),
                             SizedBox(height: 10),
                             MaterialButton(
                                 elevation: 0,

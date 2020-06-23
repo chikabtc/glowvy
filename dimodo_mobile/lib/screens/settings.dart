@@ -224,7 +224,8 @@ class SettingScreenState extends State<SettingScreen>
                           context,
                           MaterialPageRoute(
                               builder: (context) => WebView(
-                                  url: "https://bit.ly/measurepmf",
+                                  // url: "https://bit.ly/measurepmf",
+                                  url: "https://www.glowpick.com/product/21813",
                                   title: "DIMODO user survey⭐️")))),
                   SettingCard(
                       title: S.of(context).language,

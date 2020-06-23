@@ -8,7 +8,7 @@ import '../../screens/detail/product_detail.dart';
 import '../../common/styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-class ProductCard extends StatelessWidget {
+class CosmeticsRankCard extends StatelessWidget {
   final Product product;
   final width;
   final kSize size;
@@ -20,7 +20,7 @@ class ProductCard extends StatelessWidget {
   final offset;
   bool isNameAvailable;
 
-  ProductCard({
+  CosmeticsRankCard({
     this.product,
     this.width,
     this.size = kSize.medium,

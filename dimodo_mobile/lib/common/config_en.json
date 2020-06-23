@@ -190,13 +190,77 @@
     }
   ],
   "Home_tabs": [{
-      "name": "Editor's Picks"
+      "name": "Cosmetics"
     },
 
     {
-      "name": "Cosmetics"
+      "name": "Editor's Picks"
     }
   ],
+  "Cosmetics_Survey": {
+    "question": [{
+        "value": " Choose the cosmetics you are interested in?",
+        "type": "product_type"
+
+      },
+      {
+        "value": "Choose your age?",
+        "type": "age"
+
+      },
+      {
+        "value": "Choose your skin type?",
+        "type": "skin_type"
+
+      }
+    ],
+    "answers": {
+      "first": [{
+          "value": "cream"
+
+        },
+        {
+          "value": "serum"
+
+        },
+        {
+          "value": "cleanser"
+
+        }
+      ],
+      "second": [{
+          "value": "Teenager"
+
+        },
+        {
+          "value": "Early 20s"
+
+        },
+        {
+          "value": "Late 20s"
+
+        }
+      ],
+      "third": [{
+          "value": "Sensitive"
+
+        },
+        {
+          "value": "Oily"
+
+        },
+        {
+          "value": "Dry"
+
+        },
+        {
+          "value": "Others"
+
+        }
+      ]
+    }
+  },
+
   "Categories": [
 
     {

@@ -35,6 +35,7 @@ class HomeScreenState extends State<HomeScreen>
   Services service = Services();
   Future<List<Product>> getProductByTagStar;
   Future<List<Product>> getProductByTagTrending;
+  Future<List<Product>> getCosmeticsProductsByCategory;
   var bottomPopupHeightFactor;
   List<String> tabList = [];
   var currentIndex = 0;
@@ -49,6 +50,8 @@ class HomeScreenState extends State<HomeScreen>
   void initState() {
     super.initState();
     getProductByTagStar = service.getProductsByTag(tag: 6, sortBy: "id");
+    getCosmeticsProductsByCategory = service.getCosmeticsProductsByCategory(
+        categoryId: 32, skinType: "sensitive");
     getProductByTagTrending =
         service.getProductsByTag(tag: 5, sortBy: "id", start: 0, count: 200);
     _tabController = TabController(initialIndex: 0, length: 2, vsync: this);
@@ -123,14 +126,15 @@ class HomeScreenState extends State<HomeScreen>
             Container(
               color: Colors.white,
               child: Padding(
-                padding: const EdgeInsets.only(bottom: 4, left: 16),
+                padding: const EdgeInsets.only(bottom: 4, left: 14),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
                       child: isGenerating
                           ? DynamicText(
-                              "Generatign your personal cosmetic packages...",
+                              "Generating your personal cosmetic packages...",
+                              overflow: TextOverflow.ellipsis,
                               style: kBaseTextStyle.copyWith(
                                   fontSize: 13, fontWeight: FontWeight.w500))
                           : DynamicText("Specialized ${userModel.cosmeticPref}",
@@ -149,7 +153,7 @@ class HomeScreenState extends State<HomeScreen>
                 ? productModel.showGeneartingProductList()
                 : productModel.showProductList(
                     isNameAvailable: true,
-                    future: getProductByTagTrending,
+                    future: getCosmeticsProductsByCategory,
                     onLoadMore: onLoadMore),
           ],
         ),
@@ -205,7 +209,7 @@ class HomeScreenState extends State<HomeScreen>
                       Container(
                         width: screenSize.width,
                         child: Image.asset(
-                          "assets/icons/home/top-banner.png",
+                          "assets/images/home_top_banner.png",
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -291,7 +295,7 @@ class HomeScreenState extends State<HomeScreen>
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          if (_tabController.index == 0)
+                          if (_tabController.index == 1)
                             Container(
                               child: Padding(
                                 padding: const EdgeInsets.only(
@@ -304,15 +308,15 @@ class HomeScreenState extends State<HomeScreen>
                                 ),
                               ),
                             ),
-                          if (_tabController.index == 0)
+                          if (_tabController.index == 1)
                             Container(
                               color: kDefaultBackground,
                               child: productModel.showProductList(
                                   isNameAvailable: true,
-                                  future: getProductByTagTrending,
+                                  future: getCosmeticsProductsByCategory,
                                   onLoadMore: onLoadMore),
                             ),
-                          if (_tabController.index == 1)
+                          if (_tabController.index == 0)
                             !isSurveyFinished
                                 ? PersonalSurvey(onSurveyFinish: () {
                                     setState(() {

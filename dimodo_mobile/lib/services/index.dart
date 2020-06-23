@@ -31,6 +31,10 @@ abstract class BaseServices {
   Future<User> loginGoogle({String token});
 
   Future<Reviews> getReviews(productId, int offset, int limit);
+  // ===========================================================================
+  // COSMETICS
+  // ===========================================================================
+  Future<List<Product>> getCosmeticsProductsByCategory({categoryId, skinType});
 
 // CART
 // =============================================================================
@@ -107,6 +111,20 @@ class Services implements BaseServices {
         connectivityResult == ConnectivityResult.wifi) {
       return serviceApi.getProductsByCategory(
           categoryId: categoryId, sortBy: sortBy, start: start, limit: limit);
+    } else {
+      //TODO: add no connection popup
+      throw Exception("No internet connection");
+    }
+  }
+
+  @override
+  Future<List<Product>> getCosmeticsProductsByCategory(
+      {categoryId, skinType}) async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      return serviceApi.getCosmeticsProductsByCategory(
+          categoryId: categoryId, skinType: skinType);
     } else {
       //TODO: add no connection popup
       throw Exception("No internet connection");

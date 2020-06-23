@@ -26,17 +26,18 @@ class DynamicText extends StatelessWidget {
   final TextStyle style;
   final String text;
   final TextAlign textAlign;
+  final TextOverflow overflow;
   final int maxLines;
-  DynamicText(this.text, {this.style, this.textAlign, this.maxLines});
+  DynamicText(this.text,
+      {this.style, this.textAlign, this.maxLines, this.overflow});
 
   @override
   Widget build(BuildContext context) {
     return Text(text,
+        overflow: overflow == null ? TextOverflow.ellipsis : overflow,
         maxLines: maxLines == null ? null : maxLines,
         textAlign: textAlign ?? TextAlign.start,
         style: style.copyWith(
-
-            // fontWeight: FontWeight.w600,
             fontSize: style.fontSize * kSizeConfig.textMultiplier));
   }
 }
