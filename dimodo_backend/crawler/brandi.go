@@ -334,7 +334,7 @@ func (c *Crawler) ProductDetailById(bProductId string) (*models.Product, error) 
 
 	//add tags from brandi
 	for _, bTag := range bp.Data.Tags {
-		row, err := c.dot.Exec(c.DB, "AddTag", bTag.Name, bp.Data.ID)
+		row, err := c.BrandiDot.Exec(c.DB, "AddTag", bTag.Name, bp.Data.ID)
 		if err != nil {
 			fmt.Println(err)
 			bugsnag.Notify(err)
@@ -348,7 +348,7 @@ func (c *Crawler) ProductDetailById(bProductId string) (*models.Product, error) 
 
 			var isProductTagExists bool
 
-			row, err := c.dot.QueryRow(c.DB, "checkIfTagForProductExists", bTag.Name, bp.Data.ID)
+			row, err := c.BrandiDot.QueryRow(c.DB, "checkIfTagForProductExists", bTag.Name, bp.Data.ID)
 			row.Scan(&isProductTagExists)
 
 			if err != nil {
@@ -356,7 +356,7 @@ func (c *Crawler) ProductDetailById(bProductId string) (*models.Product, error) 
 				bugsnag.Notify(err)
 			}
 			if !isProductTagExists {
-				_, err = c.dot.Exec(c.DB, "AddTagToProductTags", bTag.Name, bp.Data.ID)
+				_, err = c.BrandiDot.Exec(c.DB, "AddTagToProductTags", bTag.Name, bp.Data.ID)
 				if err != nil {
 					fmt.Println(err)
 					// bugsnag.Notify(err)
@@ -383,7 +383,7 @@ func (c *Crawler) ProductDetailById(bProductId string) (*models.Product, error) 
 func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) error {
 	//check if the product already exists in db
 	var isProductAvailable bool
-	row, err := c.dot.QueryRow(c.DB, "CheckProduct", bProductId)
+	row, err := c.BrandiDot.QueryRow(c.DB, "CheckProduct", bProductId)
 
 	if err != nil {
 		fmt.Println("fail to run sql:", err)
@@ -459,7 +459,7 @@ func (c *Crawler) CreateProductById(bProductId string, tag string, cateId int) e
 	adjustedPrice := int(float64(bp.Data.Price) * 1.1)
 	adjustedSalePrice := int(float64(bp.Data.SalePrice) * 1.1)
 
-	_, err = c.dot.Exec(c.DB, "CreateProduct",
+	_, err = c.BrandiDot.Exec(c.DB, "CreateProduct",
 		bp.Data.ID,
 		bp.Data.Name,
 		adjustedPrice,
@@ -558,7 +558,7 @@ func (c *Crawler) GetPhotoReviewsFromBrandi(bProductId string, offset, limit str
 			fmt.Println(err)
 		}
 
-		_, err = c.dot.Exec(c.DB, "CreateReviews",
+		_, err = c.BrandiDot.Exec(c.DB, "CreateReviews",
 			bProductId,
 			r.ID,
 			r.User.Name,
@@ -600,7 +600,7 @@ func (c *Crawler) GetTextReviewsFromBrandi(bProductId string, offset, limit stri
 			fmt.Println(err)
 		}
 
-		_, err = c.dot.Exec(c.DB, "CreateReviews",
+		_, err = c.BrandiDot.Exec(c.DB, "CreateReviews",
 			bProductId,
 			r.ID,
 			r.User.Name,
@@ -766,7 +766,7 @@ func (c *Crawler) ImageThumbnailByProductId(bProductId string) (string, error) {
 func (c *Crawler) UpdateProducts() error {
 	sids := make([]string, 0)
 
-	rows, err := c.dot.Query(c.DB, "GetSidsOfAllProducts")
+	rows, err := c.BrandiDot.Query(c.DB, "GetSidsOfAllProducts")
 	if err != nil {
 		// bugsnag.Notify(err)
 		fmt.Println("GetSidsOfAllProducts: ", err)
@@ -797,7 +797,7 @@ func (c *Crawler) UpdateProducts() error {
 		var productOptionsBytes []uint8
 		var originalProductOptions = []models.Option{}
 
-		row, err := c.dot.QueryRow(c.DB, "GetProductOption", product.Sid)
+		row, err := c.BrandiDot.QueryRow(c.DB, "GetProductOption", product.Sid)
 
 		if err != nil {
 			fmt.Println("fail to run sql:", err)
@@ -825,7 +825,7 @@ func (c *Crawler) UpdateProducts() error {
 		optionBytes, _ := json.Marshal(originalProductOptions)
 		fmt.Println("sprie: ", product.Price)
 
-		_, err = c.dot.Exec(c.DB, "UpdateProduct", product.Sid, product.Price, product.Sale_price, product.Sale_percent, product.CategoryId, optionBytes)
+		_, err = c.BrandiDot.Exec(c.DB, "UpdateProduct", product.Sid, product.Price, product.Sale_price, product.Sale_percent, product.CategoryId, optionBytes)
 		if err != nil {
 			bugsnag.Notify(err)
 			fmt.Println("UpdateProduct: ", err)
@@ -881,7 +881,7 @@ func (c *Crawler) CollectProductOptions(bProductId string) error {
 			}
 			if productOptionCount == 0 {
 				title, _ := translate.TranslateText(translate.Ko, translate.En, attribute.Title)
-				_, err = c.dot.Exec(c.DB, "SaveProductOption", attribute.Title, title, sid)
+				_, err = c.BrandiDot.Exec(c.DB, "SaveProductOption", attribute.Title, title, sid)
 				if err != nil {
 					fmt.Println("fail to run SaveProductOption:", err)
 					bugsnag.Notify(err)
@@ -896,7 +896,7 @@ func (c *Crawler) CollectProductOptions(bProductId string) error {
 			}
 			if productOptionCount == 0 {
 				value, _ := translate.TranslateText(translate.Ko, translate.En, attribute.Value)
-				_, err = c.dot.Exec(c.DB, "SaveProductOption", attribute.Value, value, sid)
+				_, err = c.BrandiDot.Exec(c.DB, "SaveProductOption", attribute.Value, value, sid)
 				if err != nil {
 					fmt.Println("fail to run SaveProductOption:", err)
 					bugsnag.Notify(err)
@@ -917,7 +917,7 @@ func (c *Crawler) CollectProductOptions(bProductId string) error {
 func (c *Crawler) CollectAllOptions() error {
 	// sids := make([]string, 0)
 
-	rows, err := c.dot.Query(c.DB, "GetSidsOfAllProducts")
+	rows, err := c.BrandiDot.Query(c.DB, "GetSidsOfAllProducts")
 	if err != nil {
 		// bugsnag.Notify(err)
 		fmt.Println("GetSidsOfAllProducts: ", err)
@@ -950,7 +950,7 @@ func (c *Crawler) CollectAllOptions() error {
 
 func (c *Crawler) CountProductOptions(sname string) (int, error) {
 	var ReviewsCount int
-	row, err := c.dot.QueryRow(c.DB, "CountProductOptions", sname)
+	row, err := c.BrandiDot.QueryRow(c.DB, "CountProductOptions", sname)
 	if err != nil {
 		bugsnag.Notify(err)
 		fmt.Println("CountReviews: ", err)
@@ -967,7 +967,7 @@ func (c *Crawler) CountProductOptions(sname string) (int, error) {
 func (c *Crawler) AddTags(bp brandi.Product) error {
 	var err error
 	for _, bTag := range bp.Data.Tags {
-		row, err := c.dot.Exec(c.DB, "AddTag", bTag.Name, bp.Data.ID)
+		row, err := c.BrandiDot.Exec(c.DB, "AddTag", bTag.Name, bp.Data.ID)
 		if err != nil {
 			bugsnag.Notify(err)
 			return err
@@ -981,7 +981,7 @@ func (c *Crawler) AddTags(bp brandi.Product) error {
 
 			var isProductTagExists bool
 
-			row, err := c.dot.QueryRow(c.DB, "checkIfTagForProductExists", bTag.Name, bp.Data.ID)
+			row, err := c.BrandiDot.QueryRow(c.DB, "checkIfTagForProductExists", bTag.Name, bp.Data.ID)
 			row.Scan(&isProductTagExists)
 
 			if err != nil {
@@ -991,7 +991,7 @@ func (c *Crawler) AddTags(bp brandi.Product) error {
 				return err
 			}
 			if !isProductTagExists {
-				_, err = c.dot.Exec(c.DB, "AddTagToProductTags", bTag.Name, bp.Data.ID)
+				_, err = c.BrandiDot.Exec(c.DB, "AddTagToProductTags", bTag.Name, bp.Data.ID)
 				if err != nil {
 					fmt.Println("AddTagToProductTags: ", err)
 					// bugsnag.Notify(err)
@@ -1004,7 +1004,7 @@ func (c *Crawler) AddTags(bp brandi.Product) error {
 }
 
 func (c *Crawler) TranslateTags() error {
-	rows, err := c.dot.Query(c.DB, "GetAllTagsWithoutName")
+	rows, err := c.BrandiDot.Query(c.DB, "GetAllTagsWithoutName")
 	if err != nil {
 		// bugsnag.Notify(err)
 		fmt.Println("GetAllTagsWithoutName: ", err)
@@ -1030,7 +1030,7 @@ func (c *Crawler) TranslateTags() error {
 			fmt.Println(err)
 		}
 
-		_, err = c.dot.Exec(c.DB, "UpdateTagName", name, tagId)
+		_, err = c.BrandiDot.Exec(c.DB, "UpdateTagName", name, tagId)
 		if err != nil {
 			bugsnag.Notify(err)
 			fmt.Println("UpdateProduct: ", err)

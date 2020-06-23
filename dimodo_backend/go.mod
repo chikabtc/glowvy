@@ -6,6 +6,7 @@ require (
 	cloud.google.com/go v0.53.0
 	cloud.google.com/go/firestore v1.1.1 // indirect
 	cloud.google.com/go/storage v1.5.0
+	github.com/EDDYCJY/fake-useragent v0.2.0
 	github.com/PuerkitoBio/goquery v1.5.1
 	github.com/abadojack/whatlanggo v1.0.1
 	github.com/algolia/algoliasearch-client-go/v3 v3.4.0
@@ -22,7 +23,7 @@ require (
 	github.com/getsentry/sentry-go v0.5.1
 	github.com/go-delve/delve v1.4.0 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
-	github.com/gocolly/colly v1.2.0 // indirect
+	github.com/gocolly/colly v1.2.0
 	github.com/gofrs/uuid v3.2.0+incompatible // indirect
 	github.com/golang-migrate/migrate v3.5.4+incompatible // indirect
 	github.com/golang-migrate/migrate/v4 v4.11.0

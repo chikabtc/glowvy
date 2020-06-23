@@ -11,9 +11,10 @@ import (
 )
 
 type Crawler struct {
-	DB  *sql.DB
-	dot *dotsql.DotSql
-	tr  *translate.Translator
+	DB          *sql.DB
+	BrandiDot   *dotsql.DotSql
+	GlowpickDot *dotsql.DotSql
+	tr          *translate.Translator
 }
 
 //NewAPI loads configuration files and initializes the router, DB, models, and controller objects.
@@ -30,13 +31,15 @@ func NewCrawler() *Crawler {
 		panic(err)
 	}
 
-	dot, _ := dotsql.LoadFromFile("sql/queries/brandi.pgsql")
+	BrandiDot, _ := dotsql.LoadFromFile("sql/queries/brandi.pgsql")
+	GlowpickDot, _ := dotsql.LoadFromFile("sql/queries/glowpick_crawl.pgsql")
 	tr, _ := translate.NewTranslator()
 
 	c := Crawler{
-		DB:  db,
-		dot: dot,
-		tr:  tr,
+		DB:          db,
+		BrandiDot:   BrandiDot,
+		GlowpickDot: GlowpickDot,
+		tr:          tr,
 	}
 
 	fmt.Println("Project -", cfg.Name)
