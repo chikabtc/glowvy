@@ -88,6 +88,7 @@ class S implements WidgetsLocalizations {
 // Write Review Page
 // =============================================================================
   String get askServiceQuality => "Does the product meet your expectations?";
+  String get customizeDimodo => "Customize your DIMODO";
   String get surveyDescription =>
       "We appreciate you are trying our current feature we’ve been building in Dimodo. It will take 10 mins to collect your feedback about our product?";
   String get askForFeedback =>
@@ -100,6 +101,7 @@ class S implements WidgetsLocalizations {
 
   // String get rseet => "reset";
   String get support => "Support";
+  String get supportedByGoogleTranslate => "Support By Google Translate";
   String get choose => "Choose";
   String get quantity => "Quantity";
   String get size => "Size";
@@ -434,6 +436,7 @@ class $vi extends S {
   String get district => "district";
   String get ward => "ward";
   String get confirm => "confirm";
+  String get customizeDimodo => "Customize your DIMODO";
 
   @override
   String get viewAll => "Xem Tất Cả";
@@ -466,6 +469,8 @@ class $vi extends S {
   String get darkTheme => "Giao diện tối";
   @override
   String get discount => "Discount";
+  String get supportedByGoogleTranslate => "Support By Google Translate";
+
   @override
   String get byPrice => "Theo giá";
   @override

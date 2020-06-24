@@ -1,10 +1,11 @@
+import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../common/tools.dart';
 import '../../models/product/product.dart';
 import '../../models/app.dart';
-import '../../screens/detail/product_detail.dart';
+import '../../screens/detail/cosmetics_product_detail.dart';
 import '../../common/styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
@@ -39,7 +40,8 @@ class CosmeticsRankCard extends StatelessWidget {
     Navigator.push(
         context,
         MaterialPageRoute<void>(
-          builder: (BuildContext context) => ProductDetail(product: product),
+          builder: (BuildContext context) =>
+              CosmeticsProductDetail(product: product),
           fullscreenDialog: true,
         ));
   }
@@ -49,26 +51,27 @@ class CosmeticsRankCard extends StatelessWidget {
     var tag = product.tags.length == 1
         ? product.tags[0].sname
         : product.tags[1].sname;
+    final screenSize = MediaQuery.of(context).size;
 
     return Card(
       color: Colors.white,
       elevation: 0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.0)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(6), topRight: Radius.circular(6)),
             child: Container(
-                width: width,
+                width: 100,
                 child: FittedBox(
                   fit: BoxFit.cover,
                   child: GestureDetector(
                       onTap: () => onTapProduct(context),
                       child: Tools.image(
                         url: product.thumbnail,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.scaleDown,
                         width: 100,
                         height: 100,
                         size: kSize.large,
@@ -76,73 +79,75 @@ class CosmeticsRankCard extends StatelessWidget {
                 )),
           ),
           // // item name
-          SizedBox(height: 3),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 7.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    !isNameAvailable
-                        ? "${product.tags[0].name} ${product.categoryName} " ??
-                            "not found"
-                        : "${product.name}",
-                    maxLines: 1,
-                    style: kBaseTextStyle.copyWith(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
+          SizedBox(width: 7),
+          Flexible(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              // mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                SizedBox(height: 10),
+                Text(
+                  product.name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: kBaseTextStyle.copyWith(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                Text(
+                  "${product.categoryName}",
+                  maxLines: 1,
+                  style: kBaseTextStyle.copyWith(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                Spacer(),
+                Row(
+                  children: <Widget>[
+                    Text(
+                      product.salePercent != null
+                          ? Tools.getPriceProduct(product, "VND", onSale: true)
+                          : Tools.getPriceProduct(product, "VND",
+                              onSale: false),
+                      style: kBaseTextStyle.copyWith(
+                          color: kPinkAccent,
+                          fontSize: 15,
+                          fontWeight: FontWeight.w600),
                     ),
-                  ),
-                  // SizedBox(height: 3),
-                  // if (product.salePercent != 0 && product.salePercent != null)
-                  //   Row(
-                  //     children: <Widget>[
-                  //       Padding(
-                  //         padding: EdgeInsets.only(left: 4),
-                  //         child: Text(
-                  //           "${product.salePercent}%",
-                  //           textAlign: TextAlign.center,
-                  //           style: kBaseTextStyle.copyWith(
-                  //               color: kAccentRed,
-                  //               fontSize: 10,
-                  //               fontWeight: FontWeight.bold),
-                  //         ),
-                  //       ),
-                  //       Image.asset("assets/icons/home/coupon.png")
-                  //     ],
-                  //   ),
-                  // SizedBox(height: 7),
-                  Row(
-                    children: <Widget>[
-                      Text(
-                        product.salePercent != null
-                            ? Tools.getPriceProduct(product, "VND",
-                                onSale: true)
-                            : Tools.getPriceProduct(product, "VND",
-                                onSale: false),
-                        style: kBaseTextStyle.copyWith(
-                            color: kPinkAccent,
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(width: 8),
-                      if (product.purchaseCount != null)
-                        Container(
-                          child: Text(
-                            "${product.purchaseCount} ${S.of(context).beenSold}",
-                            textAlign: TextAlign.end,
-                            maxLines: 1,
-                            style: kBaseTextStyle.copyWith(
-                                color: kDarkSecondary.withOpacity(0.5),
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold),
-                          ),
+                    SizedBox(width: 8),
+                    if (product.purchaseCount != null)
+                      Container(
+                        child: Text(
+                          "${product.purchaseCount} ${S.of(context).beenSold}",
+                          textAlign: TextAlign.end,
+                          maxLines: 1,
+                          style: kBaseTextStyle.copyWith(
+                              color: kDarkSecondary.withOpacity(0.5),
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold),
                         ),
-                    ],
-                  ),
-                ],
-              ),
+                      ),
+                  ],
+                ),
+                SizedBox(height: 5),
+                Row(
+                  children: <Widget>[
+                    for (var tag in product.tags)
+                      Text(
+                        product.tags.last == tag ? tag.sname : tag.sname + ", ",
+                        maxLines: 1,
+                        style: kBaseTextStyle.copyWith(
+                            color: kDarkSecondary,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500),
+                      ),
+                  ],
+                ),
+                SizedBox(height: 4)
+              ],
             ),
           ),
         ],

@@ -23,6 +23,8 @@ const kAccentRed = Color(0xffDB3022);
 const kPrimaryBlue = Color(0xff5A81E8);
 const kQuaternaryBlue = Color(0xffEBEFFA);
 const kSecondaryBlue = Color(0xffBDCDF6);
+const kSecondaryGrey = Color(0xffBFBFBF);
+const kTertiaryGray = Color(0xffD9D9D9);
 
 /// color for theme
 const kLightPrimary = Color(0xfffcfcff);

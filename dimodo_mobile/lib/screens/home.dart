@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/user/user.dart';
+import 'package:Dimodo/models/survey.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/models/product/product.dart';
@@ -45,6 +46,7 @@ class HomeScreenState extends State<HomeScreen>
   bool isSurveyFinished = false;
   UserModel userModel;
   ProductModel productModel;
+  List<Survey> surveys = [];
 
   @override
   void initState() {
@@ -56,6 +58,7 @@ class HomeScreenState extends State<HomeScreen>
         service.getProductsByTag(tag: 5, sortBy: "id", start: 0, count: 200);
     _tabController = TabController(initialIndex: 0, length: 2, vsync: this);
     userModel = Provider.of<UserModel>(context, listen: false);
+
     productModel = Provider.of<ProductModel>(context, listen: false);
   }
 
@@ -73,6 +76,10 @@ class HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
+    Future.delayed(const Duration(milliseconds: 500), () {
+      print("cosmetics pref: ${userModel.cosmeticPref}");
+    });
+
     super.build(context);
     print("building home");
     kRateMyApp.init().then((_) {});
@@ -83,6 +90,20 @@ class HomeScreenState extends State<HomeScreen>
             statusBarBrightness: Brightness.light) // Or Brightness.dark
         );
 
+    try {
+      final surveys = Provider.of<AppModel>(context, listen: false)
+          .appConfig['Cosmetics_Survey'];
+      print("surveys: $surveys");
+      for (var item in surveys) {
+        this.surveys.add(Survey.fromJson(item));
+      }
+    } catch (err) {
+      var message =
+          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
+              err.toString();
+
+      print("error: $message");
+    }
     try {
       tabList = [];
       final tabs = Provider.of<AppModel>(context, listen: false)
@@ -137,14 +158,50 @@ class HomeScreenState extends State<HomeScreen>
                               overflow: TextOverflow.ellipsis,
                               style: kBaseTextStyle.copyWith(
                                   fontSize: 13, fontWeight: FontWeight.w500))
-                          : DynamicText("Specialized ${userModel.cosmeticPref}",
-                              style: kBaseTextStyle.copyWith(
-                                  fontSize: 13, fontWeight: FontWeight.w500)),
+                          : Row(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: <Widget>[
+                                DynamicText("${userModel.cosmeticPref}",
+                                    style: kBaseTextStyle.copyWith(
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w600)),
+                                DynamicText("(Last Update 22/06 10:00)",
+                                    style: kBaseTextStyle.copyWith(
+                                        fontSize: 10,
+                                        color: kDarkSecondary.withOpacity(0.5),
+                                        fontWeight: FontWeight.w600)),
+                              ],
+                            ),
                     ),
-                    IconButton(
-                      onPressed: () => print("show all!"),
-                      icon: CommonIcons.arrowForward,
-                    )
+                    if (!isGenerating)
+                      Row(
+                        // mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            height: 26,
+                            padding: EdgeInsets.only(
+                                top: 2, bottom: 2, left: 10, right: 10),
+                            decoration: BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(6)),
+                                color: kPinkAccent),
+
+                            alignment: Alignment.center,
+                            // nip: BubbleNip.rightTop,
+                            child: Text(S.of(context).seeAll,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 13.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white)),
+                          ),
+                          IconButton(
+                            onPressed: () => print("show all!"),
+                            icon: CommonIcons.arrowForward,
+                          ),
+                        ],
+                      )
                   ],
                 ),
               ),
@@ -153,6 +210,7 @@ class HomeScreenState extends State<HomeScreen>
                 ? productModel.showGeneartingProductList()
                 : productModel.showProductList(
                     isNameAvailable: true,
+                    isListView: true,
                     future: getCosmeticsProductsByCategory,
                     onLoadMore: onLoadMore),
           ],
@@ -313,25 +371,28 @@ class HomeScreenState extends State<HomeScreen>
                               color: kDefaultBackground,
                               child: productModel.showProductList(
                                   isNameAvailable: true,
-                                  future: getCosmeticsProductsByCategory,
+                                  isListView: false,
+                                  future: getProductByTagTrending,
                                   onLoadMore: onLoadMore),
                             ),
                           if (_tabController.index == 0)
                             !isSurveyFinished
-                                ? PersonalSurvey(onSurveyFinish: () {
-                                    setState(() {
-                                      isSurveyFinished = true;
-                                      isGenerating = true;
-                                      Future.delayed(
-                                          const Duration(milliseconds: 2000),
-                                          () {
-                                        setState(() {
-                                          isGenerating = false;
-                                          // Here you can write your code for open new view
+                                ? PersonalSurvey(
+                                    surveys: surveys,
+                                    onSurveyFinish: () {
+                                      setState(() {
+                                        isSurveyFinished = true;
+                                        isGenerating = true;
+                                        Future.delayed(
+                                            const Duration(milliseconds: 2000),
+                                            () {
+                                          setState(() {
+                                            isGenerating = false;
+                                            // Here you can write your code for open new view
+                                          });
                                         });
                                       });
-                                    });
-                                  })
+                                    })
                                 : _generatePersonalizedPackages(),
                         ],
                       ),

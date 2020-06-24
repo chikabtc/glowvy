@@ -32,24 +32,17 @@ class ProductDetail extends StatefulWidget {
 }
 
 class _ProductDetailState extends State<ProductDetail> {
-  int quantity = 1;
   bool isLoading = false;
   Size screenSize;
   var bottomPopupHeightFactor;
   final services = Services();
 
   List<String> tabList = [];
-
-  List<String> colors = ["Red", "Orange", "Blue"];
-  List<String> sizes = ["S", "M", "L"];
-  String color;
-  String chosenSize;
   Reviews metaReviews =
       Reviews(totalCount: 0, averageSatisfaction: 100, reviews: <Review>[]);
 
   Future<Product> product;
   bool isLoggedIn = false;
-  bool loaded = false;
   int offset = 0;
   int limit = 3;
   ProductModel productModel;
@@ -67,7 +60,6 @@ class _ProductDetailState extends State<ProductDetail> {
     productModel = Provider.of<ProductModel>(context, listen: false);
   }
 
-//14403197
   void didChangeDependencies() {
     product =
         Provider.of<ProductModel>(context).getProduct(id: widget.product.sid);
@@ -77,7 +69,9 @@ class _ProductDetailState extends State<ProductDetail> {
   Future<bool> getReviews() async {
     var loadedReviews =
         await services.getReviews(widget.product.sid, offset, limit);
-    if (loadedReviews.reviews.length == 0) {
+    if (loadedReviews.reviews == null) {
+      return true;
+    } else if (loadedReviews.reviews.length == 0) {
       return true;
     }
     setState(() {
@@ -476,7 +470,6 @@ class _ProductDetailState extends State<ProductDetail> {
 
     tabList.asMap().forEach((index, item) {
       list.add(Container(
-        // padding: EdgeInsets.symmetric(horizontal: 5),
         alignment: Alignment.center,
         height: 40,
         child: Tab(

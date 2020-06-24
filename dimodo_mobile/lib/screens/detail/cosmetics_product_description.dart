@@ -1,23 +1,27 @@
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../../common/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/generated/i18n.dart';
+import 'package:custom_switch/custom_switch.dart';
 
-class ProductDescription extends StatefulWidget {
+class CosmeticsProductDescription extends StatefulWidget {
   Product product;
 
-  ProductDescription(this.product);
+  CosmeticsProductDescription(this.product);
 
   @override
-  _ProductDescriptionState createState() => _ProductDescriptionState();
+  _CosmeticsProductDescriptionState createState() =>
+      _CosmeticsProductDescriptionState();
 }
 
-class _ProductDescriptionState extends State<ProductDescription>
-    with AutomaticKeepAliveClientMixin<ProductDescription> {
+class _CosmeticsProductDescriptionState
+    extends State<CosmeticsProductDescription>
+    with AutomaticKeepAliveClientMixin<CosmeticsProductDescription> {
   @override
   bool get wantKeepAlive => true;
   bool isKorean = false;
@@ -28,28 +32,6 @@ class _ProductDescriptionState extends State<ProductDescription>
     isSelected = [true, false];
 
     super.initState();
-  }
-
-  Widget renderSizeDetail() {
-    var sizeDetailWidget = <Widget>[];
-    //create a concanteanated string
-    var sizeDetails = widget.product.sizeDetails;
-    if (sizeDetails != null) {
-      sizeDetails.forEach((sizeDetail) {
-        sizeDetail.attributes.forEach((attribute) {
-          sizeDetailWidget.add(DynamicText(
-            "${attribute.title} ${attribute.value}",
-            textAlign: TextAlign.start,
-            style: kBaseTextStyle.copyWith(fontSize: 12),
-          ));
-        });
-      });
-    }
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: sizeDetailWidget,
-    );
   }
 
   Widget renderDescriptionImgs() {
@@ -81,7 +63,6 @@ class _ProductDescriptionState extends State<ProductDescription>
     }
 
     return Container(
-        // height: max(MediaQuery.of(context).size.height, webViewHeight),
         width: kScreenSizeWidth,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -105,7 +86,7 @@ class _ProductDescriptionState extends State<ProductDescription>
                           ),
                           DynamicText(S.of(context).supportedByGoogleTranslate,
                               style: kBaseTextStyle.copyWith(
-                                fontSize: 12,
+                                fontSize: 11,
                                 fontWeight: FontWeight.w500,
                                 color: kSecondaryGrey,
                               )),
@@ -136,7 +117,7 @@ class _ProductDescriptionState extends State<ProductDescription>
                             ),
                             Padding(
                               padding: const EdgeInsets.only(
-                                  left: 10, right: 10, top: 8, bottom: 8),
+                                  left: 6, right: 10, top: 8, bottom: 8),
                               child: Text(
                                 'Original',
                                 style: TextStyle(fontSize: 10),
@@ -147,7 +128,7 @@ class _ProductDescriptionState extends State<ProductDescription>
                             setState(() {
                               for (int i = 0; i < isSelected.length; i++) {
                                 isSelected[i] = i == index;
-                                isKorean = i == 0 ? false : true;
+                                isKorean = index == 0 ? false : true;
                               }
                             });
                           },
@@ -155,30 +136,50 @@ class _ProductDescriptionState extends State<ProductDescription>
                         ),
                       ),
                     ]),
+                SizedBox(height: 20),
 
+                Container(
+                  height: 28,
+                  child: ListView.separated(
+                      separatorBuilder: (BuildContext context, int index) =>
+                          SizedBox(width: 10),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: widget.product.tags.length,
+                      itemBuilder: (context, index) {
+                        return Container(
+                          decoration: BoxDecoration(
+                            color: kTertiaryGray,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.only(
+                              left: 10, right: 10, top: 6, bottom: 6),
+                          child: Text(
+                            widget.product.tags[index].sname,
+                            maxLines: 1,
+                            style: kBaseTextStyle.copyWith(
+                                color: kDarkSecondary,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        );
+                      }),
+                ),
                 SizedBox(height: 50),
-                // DynamicText(
-                //   "in CM",
-                //   style: kBaseTextStyle.copyWith(
-                //       fontSize: 14,
-                //       fontWeight: FontWeight.w500,
-                //       color: kDarkAccent),
-                //   textAlign: TextAlign.start,
+                //   children: <Widget>[
+                //     for (var tag in widget.product.tags)
+
+                //   ],
                 // ),
-                renderSizeDetail(),
-                SizedBox(height: 35),
                 widget.product.description != null
                     ? DynamicText(
                         formattedDescription,
+                        maxLines: 100,
                         style: kBaseTextStyle.copyWith(
                             fontSize: 12, color: kDarkAccent),
                         textAlign: TextAlign.start,
                       )
                     : Container(width: 0, height: 0),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0, top: 30.0),
-                  child: renderDescriptionImgs(),
-                )
               ]),
         ));
   }

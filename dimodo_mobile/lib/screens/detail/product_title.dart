@@ -28,7 +28,7 @@ class ProductTitle extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 DynamicText(
-                  Tools.getPriceProduct(product, "VND", onSale: true),
+                  Tools.getPriceProduct(product, "VND", onSale: false),
                   style: kBaseTextStyle.copyWith(
                       color: kPinkAccent,
                       fontSize: 16,
@@ -75,7 +75,6 @@ class ProductTitle extends StatelessWidget {
             ),
           SizedBox(height: 5),
           Container(
-            // width: 245,
             decoration: BoxDecoration(
               color: kDefaultBackground,
               borderRadius: BorderRadius.all(Radius.circular(20)),

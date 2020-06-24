@@ -8,18 +8,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:provider/provider.dart';
+import 'package:Dimodo/generated/i18n.dart';
 
 class PersonalSurvey extends StatefulWidget {
   Function onSurveyFinish;
-  PersonalSurvey({this.onSurveyFinish});
+  List<Survey> surveys;
+  PersonalSurvey({this.onSurveyFinish, this.surveys});
   @override
   _PersonalSurveyState createState() => _PersonalSurveyState();
 }
 
 class _PersonalSurveyState extends State<PersonalSurvey> {
   @override
-  List<Survey> survey = [];
-
   Widget build(BuildContext parentContext) {
     var screenSize = MediaQuery.of(parentContext).size;
     SwiperController _controller = new SwiperController();
@@ -32,18 +32,7 @@ class _PersonalSurveyState extends State<PersonalSurvey> {
       ["What is your age?", "15-22", "22-29"]
     ];
 
-    try {
-      survey = [];
-      final surveys = Provider.of<AppModel>(context, listen: false)
-          .appConfig['Cosmetics_Survey']
-          .toJson();
-    } catch (err) {
-      var message =
-          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
-              err.toString();
-
-      print("error: $message");
-    }
+    print("survey received: ${widget.surveys[0].toJson()}");
 
     var userModel = Provider.of<UserModel>(context, listen: false);
 
@@ -60,7 +49,7 @@ class _PersonalSurveyState extends State<PersonalSurvey> {
                     "assets/icons/survey.png",
                   ),
                   DynamicText(
-                    "Survey",
+                    S.of(context).customizeDimodo,
                     style: kBaseTextStyle.copyWith(
                         fontSize: 15, fontWeight: FontWeight.w600),
                   ),
@@ -69,12 +58,12 @@ class _PersonalSurveyState extends State<PersonalSurvey> {
               SizedBox(height: 4),
               Container(
                 width: screenSize.width,
-                height: screenSize.height * 0.2,
+                height: screenSize.height * 0.27,
                 child: Swiper(
                   index: 0,
                   controller: _controller,
                   itemHeight: screenSize.height * 0.1,
-                  physics: NeverScrollableScrollPhysics(),
+                  // physics: NeverScrollableScrollPhysics(),
                   itemBuilder: (BuildContext context, int i) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 7.0),
@@ -89,7 +78,7 @@ class _PersonalSurveyState extends State<PersonalSurvey> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             DynamicText(
-                              surveyQuestions[i][0],
+                              widget.surveys[i].question,
                               style: kBaseTextStyle.copyWith(
                                   fontWeight: FontWeight.w600,
                                   color: kPrimaryBlue,
@@ -109,7 +98,7 @@ class _PersonalSurveyState extends State<PersonalSurvey> {
                                   borderRadius: new BorderRadius.circular(36.0),
                                 ),
                                 child: DynamicText(
-                                  surveyQuestions[i][1],
+                                  widget.surveys[i].options[0],
                                   style: kBaseTextStyle.copyWith(
                                       fontWeight: FontWeight.w600,
                                       color: kPrimaryBlue,
@@ -118,13 +107,19 @@ class _PersonalSurveyState extends State<PersonalSurvey> {
                                 onPressed: () {
                                   if (i == 0) {
                                     userModel.setUserCosmeticsTypesPref(
-                                        cosmeticsType: surveyQuestions[i][1],
+                                        cosmeticsType:
+                                            widget.surveys[i].options[0],
                                         context: context);
                                     _controller.next(animation: true);
                                     print("indeX: $i");
                                   } else if (i == 1) {
                                     userModel.setUserAgeGroup(
-                                        ageGroup: surveyQuestions[i][1],
+                                        ageGroup: widget.surveys[i].options[1],
+                                        context: context);
+                                    _controller.next(animation: true);
+                                  } else if (i == 2) {
+                                    userModel.setUserSkinType(
+                                        skinType: widget.surveys[i].options[2],
                                         context: context);
                                     setState(() {
                                       widget.onSurveyFinish();
@@ -134,29 +129,73 @@ class _PersonalSurveyState extends State<PersonalSurvey> {
                             SizedBox(height: 10),
                             MaterialButton(
                                 elevation: 0,
-                                color: kPrimaryBlue,
+                                color: kSecondaryBlue,
                                 minWidth: (screenSize.width - 48) * 0.5,
                                 height: 40,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: new BorderRadius.circular(36.0),
                                 ),
                                 child: DynamicText(
-                                  surveyQuestions[i][2],
+                                  widget.surveys[i].options[1],
                                   style: kBaseTextStyle.copyWith(
                                       fontWeight: FontWeight.w600,
-                                      color: Colors.white,
+                                      color: kPrimaryBlue,
                                       fontSize: 15),
                                 ),
                                 onPressed: () {
                                   if (i == 0) {
                                     userModel.setUserCosmeticsTypesPref(
-                                        cosmeticsType: surveyQuestions[i][2],
+                                        cosmeticsType:
+                                            widget.surveys[i].options[0],
                                         context: context);
                                     _controller.next(animation: true);
                                     print("indeX: $i");
                                   } else if (i == 1) {
                                     userModel.setUserAgeGroup(
-                                        ageGroup: surveyQuestions[i][2],
+                                        ageGroup: widget.surveys[i].options[1],
+                                        context: context);
+                                    _controller.next(animation: true);
+                                  } else if (i == 2) {
+                                    userModel.setUserSkinType(
+                                        skinType: widget.surveys[i].options[2],
+                                        context: context);
+                                    setState(() {
+                                      widget.onSurveyFinish();
+                                    });
+                                  }
+                                }),
+                            SizedBox(height: 10),
+                            MaterialButton(
+                                elevation: 0,
+                                color: kSecondaryBlue,
+                                minWidth: (screenSize.width - 48) * 0.5,
+                                height: 40,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: new BorderRadius.circular(36.0),
+                                ),
+                                child: DynamicText(
+                                  widget.surveys[i].options[2],
+                                  style: kBaseTextStyle.copyWith(
+                                      fontWeight: FontWeight.w600,
+                                      color: kPrimaryBlue,
+                                      fontSize: 15),
+                                ),
+                                onPressed: () {
+                                  if (i == 0) {
+                                    userModel.setUserCosmeticsTypesPref(
+                                        cosmeticsType:
+                                            widget.surveys[i].options[0],
+                                        context: context);
+                                    _controller.next(animation: true);
+                                    print("indeX: $i");
+                                  } else if (i == 1) {
+                                    userModel.setUserAgeGroup(
+                                        ageGroup: widget.surveys[i].options[1],
+                                        context: context);
+                                    _controller.next(animation: true);
+                                  } else if (i == 2) {
+                                    userModel.setUserSkinType(
+                                        skinType: widget.surveys[i].options[2],
                                         context: context);
                                     setState(() {
                                       widget.onSurveyFinish();
@@ -168,7 +207,7 @@ class _PersonalSurveyState extends State<PersonalSurvey> {
                       ),
                     );
                   },
-                  itemCount: 2,
+                  itemCount: 3,
                   pagination: new SwiperPagination(
                       builder: new DotSwiperPaginationBuilder(
                           size: 5 * kSizeConfig.containerMultiplier,

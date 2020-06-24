@@ -11,7 +11,9 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
     id: json['id'] as int,
     thumbnail: json['thumbnail'] as String,
     name: json['name'] as String,
+    sname: json['sname'] as String,
     description: json['description'] as String,
+    sdescription: json['sdescription'] as String,
     descImages:
         (json['desc_images'] as List)?.map((e) => e as String)?.toList(),
     sliderImages:
@@ -53,6 +55,8 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'sid': instance.sid,
       'thumbnail': instance.thumbnail,
       'name': instance.name,
+      'sname': instance.sname,
+      'sdescription': instance.sdescription,
       'description': instance.description,
       'desc_images': instance.descImages,
       'slider_images': instance.sliderImages,

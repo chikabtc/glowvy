@@ -19,11 +19,13 @@ class UserModel with ChangeNotifier {
   bool isLoggedIn = false;
   bool loading = false;
   String cosmeticPref;
+  String skinType;
   String ageGroup;
 
   Future<void> initData() async {
     await getUser();
     await getShippingAddress();
+    await getUserCosmeticsTypesPref();
   }
 
   void login({email, password, Function success, Function fail}) async {
@@ -371,12 +373,63 @@ class UserModel with ChangeNotifier {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       cosmeticPref = cosmeticsType;
+      // prefs.getString(cosmetics_type)
 
       await prefs.setString("cosmetics_type", cosmeticsType);
       notifyListeners();
       return true;
     } catch (err) {
       return false;
+    }
+  }
+
+  Future<bool> setUserSkinType({String skinType, BuildContext context}) async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      cosmeticPref = skinType;
+      // prefs.getString(cosmetics_type)
+
+      await prefs.setString("skin_type", skinType);
+      notifyListeners();
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  Future<String> getUserCosmeticsTypesPref() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      cosmeticPref = prefs.getString("cosmetics_type");
+
+      return cosmeticPref;
+    } catch (err) {
+      return err.toString();
+    }
+  }
+
+  Future<String> getSkinTypePref() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+      skinType = prefs.getString("skin_type");
+
+      return cosmeticPref;
+    } catch (err) {
+      return err.toString();
+    }
+  }
+
+  Future<String> getUserAgePref() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      ageGroup = prefs.getString("age_group");
+      // prefs.getString(cosmetics_type)
+
+      return ageGroup;
+    } catch (err) {
+      return err.toString();
     }
   }
 

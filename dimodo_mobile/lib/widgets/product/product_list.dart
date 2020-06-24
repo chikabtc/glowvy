@@ -1,6 +1,7 @@
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
+import 'package:Dimodo/widgets/product/cosmetics_rank_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,11 +17,13 @@ class ProductList extends StatefulWidget {
   final String layout;
   final dynamic onLoadMore;
   final bool showFilter;
+  final bool isListView;
   final bool disableScrolling;
   ProductList({
     this.products,
     this.isNameAvailable = false,
     this.onLoadMore,
+    this.isListView = false,
     this.showFilter = false,
     this.disableScrolling = false,
     this.layout = "list",
@@ -77,7 +80,8 @@ class _ProductListState extends State<ProductList>
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    final widthContent = (screenSize.width / 2);
+    final widthContent =
+        widget.isListView ? (screenSize.width) : (screenSize.width / 2);
 
     return _products == null
         ? Container(
@@ -131,14 +135,21 @@ class _ProductListState extends State<ProductList>
                               itemCount: _products.length,
                               gridDelegate:
                                   SliverGridDelegateWithFixedCrossAxisCount(
-                                childAspectRatio: 0.8,
-                                crossAxisCount: 2,
+                                childAspectRatio: widget.isListView ? 3 : 0.8,
+                                crossAxisCount: widget.isListView ? 1 : 2,
                               ),
                               itemBuilder: (BuildContext context, int index) =>
-                                  ProductCard(
-                                      isNameAvailable: widget.isNameAvailable,
-                                      product: _products[index],
-                                      width: widthContent),
+                                  widget.isListView
+                                      ? CosmeticsRankCard(
+                                          isNameAvailable:
+                                              widget.isNameAvailable,
+                                          product: _products[index],
+                                          width: widthContent)
+                                      : ProductCard(
+                                          isNameAvailable:
+                                              widget.isNameAvailable,
+                                          product: _products[index],
+                                          width: widthContent),
                             ),
                           ),
                           isLoading

@@ -13,6 +13,8 @@ class Product {
   int sid;
   String thumbnail;
   String name;
+  String sname;
+  String sdescription;
   String description;
   List<String> descImages;
   List<String> sliderImages;
@@ -34,7 +36,9 @@ class Product {
     this.id,
     this.thumbnail,
     this.name,
+    this.sname,
     this.description,
+    this.sdescription,
     this.descImages,
     this.sliderImages,
     this.tags,

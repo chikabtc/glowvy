@@ -207,6 +207,7 @@ class ProductModel with ChangeNotifier {
   Widget showProductList(
       {isNameAvailable,
       future,
+      isListView,
       showFiler = false,
       disableScroll = false,
       Function onLoadMore,
@@ -220,6 +221,7 @@ class ProductModel with ChangeNotifier {
           products: snapshot.data,
           onLoadMore: onLoadMore,
           showFilter: showFiler,
+          isListView: isListView,
           disableScrolling: disableScroll,
           isNameAvailable: isNameAvailable,
         );
