@@ -25,6 +25,7 @@ class Product {
   String categoryName;
   int salePercent;
   int purchaseCount;
+  String volume;
 
   List<SizeDetail> sizeDetails;
   List<Option> options;
@@ -36,6 +37,7 @@ class Product {
     this.id,
     this.thumbnail,
     this.name,
+    this.volume,
     this.sname,
     this.description,
     this.sdescription,

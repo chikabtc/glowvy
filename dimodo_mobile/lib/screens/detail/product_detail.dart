@@ -264,8 +264,8 @@ class _ProductDetailState extends State<ProductDetail> {
                                                             .start,
                                                     children: <Widget>[
                                                       ProductTitle(
-                                                          snapshot.data,
-                                                          widget.product.name),
+                                                        snapshot.data,
+                                                      ),
                                                       Container(
                                                         height: 5,
                                                         width: screenSize.width,

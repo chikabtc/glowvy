@@ -48,7 +48,7 @@ type userService struct {
 }
 
 func NewUserService(db *sql.DB, hmacKey string) UserService {
-	userDot, _ := dotsql.LoadFromFile("sql/queries/user.pgsql")
+	userDot, _ := dotsql.LoadFromFile("sql/user.pgsql")
 
 	return &userService{
 		DB:         db,

@@ -27,7 +27,7 @@ type CronServices struct {
 }
 
 func NewCronServices(c *crawler.Crawler, db *sql.DB) *CronServices {
-	cronDot, _ := dotsql.LoadFromFile("sql/queries/cronJobs.pgsql")
+	cronDot, _ := dotsql.LoadFromFile("sql/cronJobs.pgsql")
 	return &CronServices{
 		crawler: c,
 		// api:     api,

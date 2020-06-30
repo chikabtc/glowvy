@@ -137,6 +137,7 @@ class S implements WidgetsLocalizations {
   String get serviceFeeDescription =>
       "The service helps us run our platform and offer better experiences";
   String get submitOrder => "Submit order";
+  String get officialQA => "Dimodo Official Q&A";
   String get needHelp => "Need Help?";
   String get askUs => "Ask Us";
   String get whereToDeliver => "Where do you need us to deliver?";
@@ -203,6 +204,7 @@ class S implements WidgetsLocalizations {
   String get trendDesign => "Trend Design";
   String get koreanShippingFee => "Korean Shipping fee per item: ";
   String get shipFromKorea => "Ship from Korea";
+  String get fee => "Fee";
   String get serviceIncludes => "Service includes";
   String get quanlityGuarantee => "Quality Guarantee";
   String get importTaxIncluded => "Import Tax Included";
@@ -223,6 +225,7 @@ class S implements WidgetsLocalizations {
   String get buyNow => "Buy Now";
   String get byCategory => "By Category";
   String get byPrice => "By Price";
+  String get officialPrice => "Official Price";
   String get cancel => "Cancel";
   String get cart => "Cart";
   String get category => "Category";
@@ -348,6 +351,7 @@ class S implements WidgetsLocalizations {
   String get searchInput => "Please write input in search field";
   String get searchingAddress => "Searching Address";
   String get seeAll => "See All";
+  String get seeMore => "See More";
   String get selectAddress => "Select Address";
   String get selectTheColor => "Select the color";
   String get selectTheQuantity => "Select the quantity";
@@ -482,6 +486,8 @@ class $vi extends S {
 // =============================================================================
 // tra
 // =============================================================================
+  String get officialPrice => "Official Price";
+
   String get categoryScreenDescription =>
       "Alo ~ Bạn đang tìm loại quần áo nào?";
   String get confirmToOrder => "Xác nhận đặt hàng";
@@ -495,6 +501,8 @@ class $vi extends S {
   String get serviceFeeDescription =>
       "Dịch vụ giúp chúng tôi chạy nền tảng của chúng tôi và cung cấp trải nghiệm tốt hơn";
   String get submitOrder => "ĐẶT MUA";
+  String get fee => "fee";
+
   String get needHelp => "Cần trợ giúp?";
   String get askUs => "Hỏi chúng tôi";
   String get whereToDeliver => "Bạn cần chúng tôi giao hàng ở đâu?";
@@ -621,6 +629,7 @@ class $vi extends S {
   String get forgotpassword => "Quên mật khẩu?";
   @override
   String get welcomeToDimodo => "Chào Mừng đến với DIMODO";
+  String get seeMore => "See More";
 
   @override
   String get emptyWishlistSubtitle =>

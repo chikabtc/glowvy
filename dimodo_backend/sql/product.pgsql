@@ -9,6 +9,15 @@ FROM
 WHERE
     product.id = $1;
 
+--name: GetCosmeticsProductById
+SELECT
+    cosmetics_products.sdescription,
+    cosmetics_products.sname,
+FROM
+    cosmetics_products
+WHERE
+    cosmetics_products.sid = $1;
+
 --name: QueryAllCategory
 SELECT
     id,
@@ -248,6 +257,7 @@ SELECT
     product.sale_percent,
     product.sale_price,
     product.description,
+    product.description,
     product.thumbnail,
     product.purchase_count,
     product.slider_images,
@@ -314,6 +324,23 @@ SELECT
     sid
 FROM
     product;
+
+--name: GetAllCosmeticsProducts
+SELECT
+    sid,
+    sname,
+    sdescription
+FROM
+    cosmetics_products;
+
+--name: TranslateCosmetics
+UPDATE
+    cosmetics_products
+SET
+    name = $1,
+    description = $2
+WHERE
+    sid = $3;
 
 --name: AlgolioProductDetailById
 WITH item_tags AS (

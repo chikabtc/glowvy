@@ -1,6 +1,8 @@
 import 'package:Dimodo/models/app.dart';
+import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/user/userModel.dart';
-import 'package:Dimodo/widgets/personalized_survey.dart';
+import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
+import 'package:Dimodo/widgets/product_filter_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
@@ -38,7 +40,7 @@ class HomeScreenState extends State<HomeScreen>
   Future<List<Product>> getProductByTagTrending;
   Future<List<Product>> getCosmeticsProductsByCategory;
   var bottomPopupHeightFactor;
-  List<String> tabList = [];
+  List<Category> tabList = [];
   var currentIndex = 0;
   TabController _tabController;
 
@@ -47,6 +49,9 @@ class HomeScreenState extends State<HomeScreen>
   UserModel userModel;
   ProductModel productModel;
   List<Survey> surveys = [];
+  int currentPage = 0;
+  List<Product> filteredResults;
+  bool showFilteredResults = false;
 
   @override
   void initState() {
@@ -56,7 +61,7 @@ class HomeScreenState extends State<HomeScreen>
         categoryId: 32, skinType: "sensitive");
     getProductByTagTrending =
         service.getProductsByTag(tag: 5, sortBy: "id", start: 0, count: 200);
-    _tabController = TabController(initialIndex: 0, length: 2, vsync: this);
+    _tabController = TabController(initialIndex: 0, length: 3, vsync: this);
     userModel = Provider.of<UserModel>(context, listen: false);
 
     productModel = Provider.of<ProductModel>(context, listen: false);
@@ -107,9 +112,9 @@ class HomeScreenState extends State<HomeScreen>
     try {
       tabList = [];
       final tabs = Provider.of<AppModel>(context, listen: false)
-          .appConfig['Home_tabs'] as List;
+          .appConfig['Cosmetics_categories'] as List;
       for (var tab in tabs) {
-        tabList.add(tab["name"]);
+        tabList.add(Category.fromJson(tab));
       }
     } catch (err) {
       var message =
@@ -124,14 +129,18 @@ class HomeScreenState extends State<HomeScreen>
 
       tabList.asMap().forEach((index, item) {
         list.add(Container(
+          padding: EdgeInsets.only(top: 8, left: 10, right: 10, bottom: 8),
+          decoration: BoxDecoration(
+              color: currentIndex == index ? kDarkAccent : Colors.transparent,
+              borderRadius: BorderRadius.circular(20)),
           alignment: Alignment.center,
           height: 40,
           child: Tab(
-            child: DynamicText(item,
+            child: DynamicText(item.name,
                 style: kBaseTextStyle.copyWith(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
-                  color: currentIndex == index ? kDarkAccent : kDarkSecondary,
+                  color: currentIndex == index ? Colors.white : kDarkSecondary,
                 )),
           ),
         ));
@@ -208,9 +217,8 @@ class HomeScreenState extends State<HomeScreen>
             ),
             isGenerating
                 ? productModel.showGeneartingProductList()
-                : productModel.showProductList(
+                : productModel.showCosmeticsProductList(
                     isNameAvailable: true,
-                    isListView: true,
                     future: getCosmeticsProductsByCategory,
                     onLoadMore: onLoadMore),
           ],
@@ -246,7 +254,7 @@ class HomeScreenState extends State<HomeScreen>
           ],
         ),
         body: Container(
-          color: kLightBG,
+          color: kDefaultBackground,
           width: screenSize.width,
           child: NotificationListener<ScrollNotification>(
             onNotification: (ScrollNotification scrollInfo) {
@@ -273,7 +281,7 @@ class HomeScreenState extends State<HomeScreen>
                       ),
                       Container(
                         padding: EdgeInsets.only(left: 16, top: 15, bottom: 15),
-                        color: Colors.white,
+                        color: kDefaultBackground,
                         width: screenSize.width,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -321,81 +329,116 @@ class HomeScreenState extends State<HomeScreen>
                         children: [
                           Expanded(
                             child: Container(
-                              color: kDefaultBackground,
-                              padding: EdgeInsets.only(
-                                  left: 16, bottom: 10, top: 10),
-                              child: TabBar(
-                                controller: _tabController,
-                                indicatorSize: TabBarIndicatorSize.label,
-                                labelPadding:
-                                    EdgeInsets.symmetric(horizontal: 5.0),
-                                isScrollable: true,
-                                indicatorColor: kDarkAccent,
-                                unselectedLabelColor: Colors.black,
-                                unselectedLabelStyle: kBaseTextStyle.copyWith(
-                                    color: kDarkSecondary),
-                                labelStyle: kBaseTextStyle,
-                                labelColor: kPinkAccent,
-                                onTap: (i) {
-                                  setState(() {
-                                    currentIndex = i;
-                                  });
-                                },
-                                tabs: renderTabbar(),
-                              ),
-                            ),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(20),
+                                        topRight: Radius.circular(20))),
+                                padding: EdgeInsets.only(
+                                    left: 16, bottom: 10, top: 10),
+                                child: Container(
+                                  height: 50,
+                                  // color: Colors.white,
+                                  width: screenSize.width /
+                                      (2 /
+                                          (screenSize.height /
+                                              screenSize.width)),
+                                  child: TabBar(
+                                    controller: _tabController,
+                                    indicatorSize: TabBarIndicatorSize.label,
+                                    labelPadding:
+                                        EdgeInsets.symmetric(horizontal: 5.0),
+                                    isScrollable: true,
+                                    indicatorColor: Colors.transparent,
+                                    unselectedLabelColor: Colors.black,
+                                    unselectedLabelStyle: kBaseTextStyle
+                                        .copyWith(color: kDarkSecondary),
+                                    labelStyle: kBaseTextStyle,
+                                    labelColor: kPinkAccent,
+                                    onTap: (i) {
+                                      setState(() {
+                                        currentIndex = i;
+                                        getCosmeticsProductsByCategory = service
+                                            .getCosmeticsProductsByCategory(
+                                                categoryId: tabList[i].id,
+                                                skinType: "sensitive");
+                                      });
+                                    },
+                                    tabs: renderTabbar(),
+                                  ),
+                                )),
                           ),
                         ],
                       ),
                       // =======================================================
                       // TabBarViews
                       // =======================================================
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          if (_tabController.index == 1)
-                            Container(
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 21, bottom: 10, left: 16),
-                                child: DynamicText(
-                                  S.of(context).trendingKorea,
-                                  style: kBaseTextStyle.copyWith(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w600),
+
+                      FutureBuilder<List<Product>>(
+                        future: getCosmeticsProductsByCategory,
+                        builder: (BuildContext context,
+                            AsyncSnapshot<List<Product>> snapshot) {
+                          filteredResults = snapshot.data;
+                          return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                FilterBar(
+                                  products: snapshot.data,
+                                  onFilterConfirm: (filteredProducts) {
+                                    setState(() {
+                                      showFilteredResults = true;
+                                      this.filteredResults = filteredProducts;
+                                    });
+                                  },
+                                  onReset: (filteredProducts) {
+                                    setState(() {
+                                      showFilteredResults = false;
+                                    });
+                                  },
+                                  onSortingChanged: (sortedResults) {
+                                    setState(() {
+                                      this.filteredResults = sortedResults;
+                                    });
+                                  },
                                 ),
-                              ),
-                            ),
-                          if (_tabController.index == 1)
-                            Container(
-                              color: kDefaultBackground,
-                              child: productModel.showProductList(
-                                  isNameAvailable: true,
-                                  isListView: false,
-                                  future: getProductByTagTrending,
-                                  onLoadMore: onLoadMore),
-                            ),
-                          if (_tabController.index == 0)
-                            !isSurveyFinished
-                                ? PersonalSurvey(
-                                    surveys: surveys,
-                                    onSurveyFinish: () {
-                                      setState(() {
-                                        isSurveyFinished = true;
-                                        isGenerating = true;
-                                        Future.delayed(
-                                            const Duration(milliseconds: 2000),
-                                            () {
-                                          setState(() {
-                                            isGenerating = false;
-                                            // Here you can write your code for open new view
-                                          });
-                                        });
-                                      });
-                                    })
-                                : _generatePersonalizedPackages(),
-                        ],
+                                CosmeticsProductList(
+                                  products: filteredResults,
+                                  onLoadMore: onLoadMore,
+                                  showFilter: false,
+                                ),
+                              ]);
+                        },
                       ),
+                      Container(
+                        height: 10,
+                      ),
+                      Container(
+                        color: Colors.white,
+                        child: Column(
+                          children: <Widget>[
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                Image.asset("assets/images/peripera_logo.png"),
+                                Image.asset("assets/images/merzy_logo.png"),
+                                Image.asset(
+                                    "assets/images/etudehouse_logo.png"),
+                                Image.asset("assets/images/lilybyred_logo.png"),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                Image.asset("assets/images/Manmonde_logo.png"),
+                                Image.asset("assets/images/IOPE_logo.png"),
+                                Image.asset("assets/images/LANEIGE_logo.png"),
+                                Image.asset(
+                                    "assets/images/kirshblending_logo.png"),
+                              ],
+                            )
+                          ],
+                        ),
+                      )
                     ],
                   )
                 ],

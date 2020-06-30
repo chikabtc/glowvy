@@ -21,7 +21,7 @@ type mailService struct {
 }
 
 func NewMailService(db *sql.DB, appDomain string) MailService {
-	mailDot, _ := dotsql.LoadFromFile("sql/queries/mail.pgsql")
+	mailDot, _ := dotsql.LoadFromFile("sql/mail.pgsql")
 
 	return &mailService{
 		DB:  db,

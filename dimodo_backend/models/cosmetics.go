@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/bugsnag/bugsnag-go"
 	"github.com/gchaincl/dotsql"
@@ -11,6 +12,7 @@ import (
 
 type CosmeticsService interface {
 	ProductsByCategoryID(categoryID int, skinType string) ([]Product, error)
+	UpdateBrandsName()
 	// AllCategories() ([]Category, error)
 	// GetSubCategories(parentId int) ([]Category, error)
 
@@ -61,17 +63,28 @@ func (gs *cosmeticsService) ProductsByCategoryID(categoryID int, skinType string
 	defer rows.Close()
 	products := []Product{}
 	for rows.Next() {
+		var brand Seller
+
 		var product Product
 		if err := rows.Scan(
 			&product.Id,
 			&product.Sid,
-			&product.Name,
+			&product.Sname,
+			// &product.Name,
 			&product.Thumbnail,
 			&product.Price,
-			// &product.Purchase_count,
+			&product.Sale_price,
+			&product.Description,
+			&product.Sdescription,
+			&product.Volume,
+			&product.Purchase_count,
 			&product.CategoryName,
 			&product.CategoryId,
-			&tags); err != nil {
+			&tags,
+			&brand.Name,
+			&brand.ID,
+			&brand.ImageURL,
+		); err != nil {
 			bugsnag.Notify(err)
 			fmt.Println("fail to Next", err)
 			return nil, err
@@ -80,6 +93,7 @@ func (gs *cosmeticsService) ProductsByCategoryID(categoryID int, skinType string
 		if err != nil {
 			fmt.Println("fail to unmarshall tags: ", err)
 		}
+		product.Seller = brand
 		products = append(products, product)
 	}
 	return products, nil
@@ -95,23 +109,48 @@ func isParentCate(id int) bool {
 	return false
 }
 
-//get the ranks of the category and skin types
-//
-// func rankBySKinType(products []Product, skinType string) ([]Product, error) {
-// 	switch skinType {
-// 	case "all":
+// =============================================================================
+// PRIVATE FUNCTION
+// =============================================================================
+func (gs *cosmeticsService) UpdateBrandsName() {
+	var rows *sql.Rows
+	var err error
+	rows, err = gs.dot.Query(gs.DB, "AllBrandsSname")
 
-// 	}
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("AllBrandsSname", err)
+		return
+	}
 
-// }
+	defer rows.Close()
+	for rows.Next() {
+		var brandName string
+		// var englishBrandName string
+		var koBrandName string
 
-//filter
-// func filter(ss []Product, tag string, test func(string) bool) (ret []string) {
-// 	for _, s := range ss {
-// 		if test(tag) {
-// 			// fmt.Println()
-// 			ret = append(ret, tag)
-// 		}
-// 	}
-// 	return ret
-// }
+		if err := rows.Scan(
+			&brandName,
+		); err != nil {
+			bugsnag.Notify(err)
+			fmt.Println("fail to Next", err)
+			return
+		}
+		i1 := strings.Index(brandName, "(")
+		i2 := strings.Index(brandName, ")")
+
+		if i1 == -1 || i2 == -1 {
+			koBrandName = brandName
+			fmt.Println("no change english brand name: ", koBrandName)
+		} else {
+			koBrandName = brandName[0 : i1-1]
+			fmt.Println("english brand name: ", koBrandName)
+		}
+		_, err := gs.dot.Exec(gs.DB, "AddEnglishBrandName", koBrandName, brandName)
+		if err != nil {
+			// bugsnag.Notify(err)
+			fmt.Println("AddEnglishBrandName: ", err)
+			return
+		}
+	}
+}

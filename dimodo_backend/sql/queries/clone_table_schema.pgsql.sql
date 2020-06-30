@@ -1,1 +1,0 @@
-CREATE TABLE new_tags (LIKE old_tags INCLUDING ALL);

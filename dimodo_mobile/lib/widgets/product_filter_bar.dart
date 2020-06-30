@@ -56,71 +56,82 @@ class _FilterBarState extends State<FilterBar> {
     return Column(
       children: [
         Container(
+          color: Colors.white,
           height: 40,
           padding: EdgeInsets.symmetric(horizontal: 0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                children: <Widget>[
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        isAscending = !isAscending;
-                      });
-                      var sortedProducts = productModel.sortByPrice(
-                          widget.products, isAscending);
-                      widget.onSortingChanged(sortedProducts);
-                    },
-                    child: Container(
-                        decoration: new BoxDecoration(
-                          color: isAscending ? Colors.white : kLightPink,
-                          borderRadius: BorderRadius.circular(6),
-                        ),
-                        padding: EdgeInsets.symmetric(horizontal: 6),
-                        height: 24,
-                        // width: 98,
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            isAscending
-                                ? Image.asset("assets/icons/filter-sort.png")
-                                : Image.asset(
-                                    "assets/icons/filter-sort-active.png"),
-                            DynamicText(
-                              isAscending
-                                  ? S.of(context).highestToLowest
-                                  : S.of(context).lowestToHighest,
-                              textAlign: TextAlign.center,
-                              style: kBaseTextStyle.copyWith(
-                                  fontSize: 13,
-                                  color: isAscending
-                                      ? kDarkSecondary
-                                      : kDarkAccent),
-                            ),
-                          ],
-                        )),
-                  ),
-                  SizedBox(width: 16)
-                ],
-              ),
-              GestureDetector(
-                onTap: () => showCosmeticsFilter(),
+              Container(
+                // color: Colors.orange,
+                width: screenSize.width / 2,
                 child: Row(
-                  children: [
-                    SvgPicture.asset(
-                      "assets/icons/filter.svg",
-                      width: 16,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isAscending = !isAscending;
+                        });
+                        var sortedProducts = productModel.sortByPrice(
+                            widget.products, isAscending);
+                        widget.onSortingChanged(sortedProducts);
+                      },
+                      child: Container(
+                          decoration: new BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          padding: EdgeInsets.symmetric(horizontal: 6),
+                          height: 24,
+                          // width: 98,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              isAscending
+                                  ? Image.asset("assets/icons/filter-sort.png")
+                                  : Image.asset(
+                                      "assets/icons/filter-sort-active.png"),
+                              Text(
+                                isAscending
+                                    ? S.of(context).highestToLowest
+                                    : S.of(context).lowestToHighest,
+                                textAlign: TextAlign.center,
+                                style: kBaseTextStyle.copyWith(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    color: isAscending
+                                        ? kDarkSecondary
+                                        : kDarkAccent),
+                              ),
+                            ],
+                          )),
                     ),
-                    DynamicText(
-                      "Filter",
-                      style: kBaseTextStyle.copyWith(
-                          fontSize: 13,
-                          fontWeight: FontWeight.w500,
-                          color: showFilter ? kDarkSecondary : kDarkAccent),
-                    )
+                    SizedBox(width: 16)
                   ],
+                ),
+              ),
+              Container(
+                width: screenSize.width / 2,
+                child: GestureDetector(
+                  onTap: () => showCosmeticsFilter(),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(
+                        "assets/icons/filter.svg",
+                        width: 16,
+                      ),
+                      DynamicText(
+                        "Filter",
+                        style: kBaseTextStyle.copyWith(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                            color: showFilter ? kDarkSecondary : kDarkAccent),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ],

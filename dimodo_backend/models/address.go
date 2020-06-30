@@ -56,7 +56,7 @@ type Ward struct {
 }
 
 func NewAddressService(db *sql.DB) AddressService {
-	addressDot, _ := dotsql.LoadFromFile("sql/queries/address.pgsql")
+	addressDot, _ := dotsql.LoadFromFile("sql/address.pgsql")
 	return &addressService{
 		DB:  db,
 		dot: addressDot,

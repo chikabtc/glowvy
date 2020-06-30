@@ -1,7 +1,7 @@
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:Dimodo/widgets/product/cosmetics_rank_card.dart';
+import 'package:Dimodo/widgets/product/cosmetics_product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
@@ -140,16 +140,36 @@ class _ProductListState extends State<ProductList>
                               ),
                               itemBuilder: (BuildContext context, int index) =>
                                   widget.isListView
-                                      ? CosmeticsRankCard(
+                                      ? CosmeticsProductCard(
                                           isNameAvailable:
                                               widget.isNameAvailable,
                                           product: _products[index],
                                           width: widthContent)
-                                      : ProductCard(
-                                          isNameAvailable:
-                                              widget.isNameAvailable,
-                                          product: _products[index],
-                                          width: widthContent),
+                                      : (index == 2)
+                                          ? Container(
+                                              child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: <Widget>[
+                                                Image.asset(
+                                                    "assets/images/promote-glowpick-illustration.png"),
+                                                Column(
+                                                  children: <Widget>[
+                                                    Text(
+                                                        "All Review Results based on"),
+                                                    Image.asset(
+                                                        "assets/images/glowpick_logo.png"),
+                                                    Text(
+                                                        "The most famous popular Korean beauty ranking service in Korea"),
+                                                  ],
+                                                )
+                                              ],
+                                            ))
+                                          : ProductCard(
+                                              isNameAvailable:
+                                                  widget.isNameAvailable,
+                                              product: _products[index],
+                                              width: widthContent),
                             ),
                           ),
                           isLoading

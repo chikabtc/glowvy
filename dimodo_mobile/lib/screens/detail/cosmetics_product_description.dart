@@ -63,12 +63,20 @@ class _CosmeticsProductDescriptionState
     }
 
     return Container(
+        color: Colors.white,
         width: kScreenSizeWidth,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                DynamicText(
+                  S.of(context).description,
+                  style:
+                      kBaseTextStyle.copyWith(fontSize: 15, color: kDarkAccent),
+                  textAlign: TextAlign.start,
+                ),
+                SizedBox(height: 33),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -137,7 +145,6 @@ class _CosmeticsProductDescriptionState
                       ),
                     ]),
                 SizedBox(height: 20),
-
                 Container(
                   height: 28,
                   child: ListView.separated(
@@ -165,13 +172,8 @@ class _CosmeticsProductDescriptionState
                         );
                       }),
                 ),
-                SizedBox(height: 50),
-                //   children: <Widget>[
-                //     for (var tag in widget.product.tags)
-
-                //   ],
-                // ),
-                widget.product.description != null
+                SizedBox(height: 26),
+                widget.product.sdescription != null
                     ? DynamicText(
                         formattedDescription,
                         maxLines: 100,

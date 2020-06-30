@@ -1,4 +1,5 @@
 import 'package:Dimodo/models/product/generating_product_list.dart';
+import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
@@ -222,6 +223,29 @@ class ProductModel with ChangeNotifier {
           onLoadMore: onLoadMore,
           showFilter: showFiler,
           isListView: isListView,
+          disableScrolling: disableScroll,
+          isNameAvailable: isNameAvailable,
+        );
+      },
+    );
+  }
+
+  Widget showCosmeticsProductList(
+      {isNameAvailable,
+      future,
+      showFiler = false,
+      disableScroll = false,
+      Function onLoadMore,
+      sortBy}) {
+    return FutureBuilder<List<Product>>(
+      future: future,
+      builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
+        products = snapshot.data;
+
+        return CosmeticsProductList(
+          products: snapshot.data,
+          onLoadMore: onLoadMore,
+          showFilter: showFiler,
           disableScrolling: disableScroll,
           isNameAvailable: isNameAvailable,
         );

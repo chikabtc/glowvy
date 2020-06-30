@@ -7,9 +7,10 @@ import 'package:Dimodo/generated/i18n.dart';
 
 class ProductTitle extends StatelessWidget {
   final Product product;
-  final String productName;
 
-  ProductTitle(this.product, this.productName);
+  ProductTitle(
+    this.product,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +98,7 @@ class ProductTitle extends StatelessWidget {
           Container(
             width: MediaQuery.of(context).size.width,
             child: DynamicText(
-              "${product.name}",
+              "${product.sname}",
               style: kBaseTextStyle.copyWith(
                   fontSize: 13, fontWeight: FontWeight.w600),
             ),

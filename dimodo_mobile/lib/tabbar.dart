@@ -6,8 +6,6 @@ import 'common/config.dart' as config;
 import 'common/constants.dart';
 import 'models/order/cart.dart';
 import 'models/categoryModel.dart';
-import 'models/category.dart';
-import 'models/product/productModel.dart';
 import 'screens/cart.dart';
 import 'screens/home.dart';
 import 'screens/user.dart';

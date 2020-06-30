@@ -4,7 +4,7 @@ import (
 	"dimodo_backend/api/controllers"
 	"dimodo_backend/crawler"
 	"dimodo_backend/models"
-	"dimodo_backend/sql/queries/utils"
+	"dimodo_backend/utils"
 	"fmt"
 
 	"flag"

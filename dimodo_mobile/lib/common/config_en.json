@@ -274,5 +274,30 @@
       "id": 8,
       "parent_id": 8
     }
+  ],
+  "Cosmetics_categories": [
+
+    {
+      "name": "Serum",
+      "image": "assets/icons/categories/all.png",
+      "id": 3,
+      "parent_id": 0
+    },
+
+    {
+      "name": "Cream",
+      "image": "assets/icons/categories/top.png",
+      "id": 4,
+      "parent_id": 1
+    },
+
+    {
+      "name": "Cleanser",
+      "image": "assets/icons/categories/coat.png",
+      "id": 32,
+      "parent_id": 5
+
+    }
+
   ]
 }

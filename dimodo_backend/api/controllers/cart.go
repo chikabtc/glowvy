@@ -2,7 +2,7 @@ package controllers
 
 import (
 	"dimodo_backend/models"
-	"dimodo_backend/sql/queries/utils"
+	"dimodo_backend/utils"
 	"dimodo_backend/utils/jwt"
 	resp "dimodo_backend/utils/respond"
 	"encoding/json"

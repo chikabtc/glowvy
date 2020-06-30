@@ -31,8 +31,8 @@ func NewCrawler() *Crawler {
 		panic(err)
 	}
 
-	BrandiDot, _ := dotsql.LoadFromFile("sql/queries/brandi.pgsql")
-	GlowpickDot, _ := dotsql.LoadFromFile("sql/queries/glowpick_crawl.pgsql")
+	BrandiDot, _ := dotsql.LoadFromFile("sql/brandi.pgsql")
+	GlowpickDot, _ := dotsql.LoadFromFile("sql/glowpick_crawl.pgsql")
 	tr, _ := translate.NewTranslator()
 
 	c := Crawler{

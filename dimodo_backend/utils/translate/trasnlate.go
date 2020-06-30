@@ -111,6 +111,7 @@ func TranslateText(sourceLang, targetLang, text string) (string, error) {
 		// 	fmt.Println("err: ", err)
 		// }
 	}
+	fmt.Println("google translate reuslt: ", result)
 	return result, err
 
 }

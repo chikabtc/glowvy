@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"database/sql/driver"
 	"dimodo_backend/utils/null"
+	"dimodo_backend/utils/translate"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -31,6 +32,7 @@ type ProductService interface {
 	GetSidsOfAllProducts() ([]string, error)
 	UpdateProduct(product *Product) (bool, error)
 	GetAllProducts() ([]Product, error)
+	TranslateAllCosmetics()
 }
 
 type productService struct {
@@ -39,7 +41,7 @@ type productService struct {
 }
 
 func NewProductService(db *sql.DB) ProductService {
-	productDot, _ := dotsql.LoadFromFile("sql/queries/product.pgsql")
+	productDot, _ := dotsql.LoadFromFile("sql/product.pgsql")
 	return &productService{
 		DB:  db,
 		dot: productDot,
@@ -112,7 +114,10 @@ type Product struct {
 	Id             int          `json:"id,omitempty"`
 	Thumbnail      string       `json:"thumbnail,omitempty"`
 	Name           string       `json:"name,omitempty"`
+	Sname          string       `json:"sname,omitempty"`
+	EgName         string       `json:"egname,omitempty"`
 	Description    string       `json:"description,omitempty"`
+	Sdescription   string       `json:"sdescription,omitempty"`
 	DescImages     []string     `json:"desc_images,omitempty"`
 	SliderImages   []string     `json:"slider_images,omitempty"`
 	Sale_price     int          `json:"sale_price,omitempty"`
@@ -124,6 +129,7 @@ type Product struct {
 	Barcode        string       `json:"barcode,omitempty"`
 	SizeDetails    []SizeDetail `json:"size_details,omitempty"`
 	Options        []Option     `json:"options,omitempty"`
+	Volume         string       `json:"volume,omitempty"`
 
 	ProductEtcInfo ProductEtcInfo `json:"productEtcInfo,omitempty"`
 	Seller         Seller         `json:"seller,omitempty"`
@@ -134,7 +140,6 @@ type Product struct {
 	Tags   []Tag  `json:"tags,omitempty"`
 	Sid    int    `json:"sid,omitempty"`
 	Sprice int    `json:"sprice,omitempty"`
-	Sname  string `json:"sname,omitempty"`
 	Surl   string `json:"surl,omitempty"`
 }
 
@@ -424,6 +429,7 @@ func (ps *productService) ProductDetailById(id int) (*Product, error) {
 		&product.Sale_percent,
 		&product.Sale_price,
 		&product.Description,
+		&product.Sdescription,
 		&product.Thumbnail,
 		&product.Purchase_count,
 		pq.Array(&product.SliderImages),
@@ -617,6 +623,49 @@ func (ps *productService) GetSidsOfAllProducts() ([]string, error) {
 	}
 	fmt.Println("sid counts: ", len(sids))
 	return sids, nil
+}
+
+func (ps *productService) TranslateAllCosmetics() {
+	var rows *sql.Rows
+
+	rows, err := ps.dot.Query(ps.DB, "GetAllCosmeticsProducts")
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("GetAllCosmeticsProducts", err)
+		return
+	}
+
+	defer rows.Close()
+	products := []Product{}
+	for rows.Next() {
+		var product Product
+		if err := rows.Scan(
+			&product.Sid,
+			&product.Sname,
+			&product.Sdescription,
+		); err != nil {
+			bugsnag.Notify(err)
+			fmt.Println("fail to Next", err)
+			return
+		}
+
+		if err != nil {
+			fmt.Println("fail to unmarshall tags: ", err)
+		}
+
+		// enName, _ := translate.TranslateText("ko", "en", product.Sname)
+		// fmt.Println("egname: ", enName)
+		enDescription, _ := translate.TranslateText("ko", "vi", product.Sdescription)
+		fmt.Println("enDescription: ", enDescription)
+
+		_, err := ps.dot.Exec(ps.DB, "TranslateCosmetics", product.Sname, enDescription, product.Sid)
+
+		if err != nil {
+			fmt.Println("fail to unmarshall tags: ", err)
+		}
+		products = append(products, product)
+	}
+	return
 }
 
 func (ps *productService) UpdateProduct(product *Product) (bool, error) {

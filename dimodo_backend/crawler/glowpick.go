@@ -20,7 +20,7 @@ import (
 	"github.com/gocolly/colly/extensions"
 )
 
-const glowPickAuth = "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJnbG93cGljay53ZWIiLCJpYXQiOjE1OTI3NTIwNTQsInN1YiI6Imdsb3dwaWNrLWF1dGgiLCJpc3MiOiJnbG93ZGF5eiIsImV4cCI6MTU5MjgzODQ1NCwiYXVkIjoiSTRXWmlNbTg1YmppUDlaTzI4VUJndWJPcEQ5eXMzcEFNVUd6ZkgxTjJNcXlROGlaTDYwakViVXBUM1A2OVlYTFpTNTM4c0lDRmZ6Unc0ODJRRDduV2c9PSJ9.9SUIgrx9czklrI5oJW_wJ7DoY6zND9Ekvl-iDgd4Mso"
+const glowPickAuth = "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJnbG93cGljay53ZWIiLCJpYXQiOjE1OTMyNDQzOTksInN1YiI6Imdsb3dwaWNrLWF1dGgiLCJpc3MiOiJnbG93ZGF5eiIsImV4cCI6MTU5MzMzMDc5OSwiYXVkIjoiSTRXWmlNbTg1YmppUDlaTzI4VUJncWJWYVQ5ZitSUUU4LzVRNVoyMkU5RTYzUUtMSGpGYW84MFgrazQzcm9mQk1SUlNEZlhYMjcrTTRETFJDQVY4RVE9PSJ9.aLKrTfGJDZsuUex-vaYIYJCSruC0XBxHQMQgcOg68nM"
 
 //parentid always 2
 //category: idx
@@ -146,10 +146,44 @@ func (c *Crawler) createGlowPickProductById(id, skinType string, category, level
 		)
 		if err != nil {
 			bugsnag.Notify(err)
-			fmt.Println("CreateProductById: ", err.Error())
+			fmt.Println("CreateProduct: ", err.Error())
 			return err
 		}
+		// if glwProduct.Data.ReviewGraph.PositiveReview.Contents != "" {
+		// 	_, err = c.GlowpickDot.Exec(c.DB, "CreateReview",
+		// 		glwProduct.Data.IDProduct,
+		// 		glwProduct.Data.ReviewGraph.PositiveReview.Register.Nickname,
+		// 		glwProduct.Data.ReviewGraph.PositiveReview.Register.SkinType,
+		// 		glwProduct.Data.ReviewGraph.PositiveReview.Register.Age,
+		// 		glwProduct.Data.ReviewGraph.PositiveReview.ReviewID,
+		// 		glwProduct.Data.ReviewGraph.PositiveReview.Contents,
+		// 		glwProduct.Data.ReviewGraph.PositiveReview.Rating,
+		// 	)
+		// 	if err != nil {
+		// 		bugsnag.Notify(err)
+		// 		fmt.Println("CreateReview: ", err.Error())
+		// 		return err
+		// 	}
+		// }
+		// if glwProduct.Data.ReviewGraph.NegativeReview.Contents != "" {
+		// 	_, err = c.GlowpickDot.Exec(c.DB, "CreateReview",
+		// 		glwProduct.Data.IDProduct,
+		// 		glwProduct.Data.ReviewGraph.NegativeReview.Register.Nickname,
+		// 		glwProduct.Data.ReviewGraph.NegativeReview.Register.SkinType,
+		// 		glwProduct.Data.ReviewGraph.NegativeReview.Register.Age,
+		// 		glwProduct.Data.ReviewGraph.NegativeReview.ReviewID,
+		// 		glwProduct.Data.ReviewGraph.NegativeReview.Contents,
+		// 		glwProduct.Data.ReviewGraph.NegativeReview.Rating,
+		// 	)
+		// 	if err != nil {
+		// 		bugsnag.Notify(err)
+		// 		fmt.Println("CreateReview: ", err.Error())
+		// 		return err
+		// 	}
+		// }
+
 	}
+
 	idx, err := strconv.Atoi(id)
 	//if general, then set the general
 	if level == 2 {
@@ -212,55 +246,35 @@ func (c *Crawler) addTags(product glowpick.GlowpickDetailedProduct) error {
 func (c *Crawler) setProductRankBySkinType(skinType string, categoryId, level, productId, rank int) error {
 	var err error
 	//specific category rank
-	if level == 2 {
-		switch skinType {
-		case "all":
-			_, err = c.GlowpickDot.Exec(c.DB, "SetGeneral_AllRank", rank, categoryId, productId)
-			if err != nil {
-				fmt.Println(err)
-			}
-
-		case "sensitive":
-			_, err = c.GlowpickDot.Exec(c.DB, "SetGeneral_SensitiveRank", rank, categoryId, productId)
-			if err != nil {
-				fmt.Println(err)
-			}
-		}
-	} else if level == 3 {
-		switch skinType {
-		case "all":
-			_, err = c.GlowpickDot.Exec(c.DB, "SetCategory_AllRank", rank, categoryId, productId)
-			if err != nil {
-				fmt.Println(err)
-			}
-
-		case "sensitive":
-			_, err = c.GlowpickDot.Exec(c.DB, "SetCategory_SensitiveRank", rank, categoryId, productId)
-			if err != nil {
-				fmt.Println(err)
-			}
+	switch skinType {
+	case "all":
+		_, err = c.GlowpickDot.Exec(c.DB, "SetAllSkinRank", rank, categoryId, productId)
+		if err != nil {
+			fmt.Println(err)
+			return err
 		}
 
+	case "sensitive":
+		_, err = c.GlowpickDot.Exec(c.DB, "SetSensitiveSkinRank", rank, categoryId, productId)
+		if err != nil {
+			fmt.Println(err)
+			return err
+		}
+	case "oily":
+		_, err = c.GlowpickDot.Exec(c.DB, "SetOilySkinRank", rank, categoryId, productId)
+		if err != nil {
+			fmt.Println(err)
+			return err
+		}
+	case "dry":
+		_, err = c.GlowpickDot.Exec(c.DB, "SetDrySkinRank", rank, categoryId, productId)
+		if err != nil {
+			fmt.Println(err)
+			return err
+		}
+		// bugsnag.Notify(errors.New("attempted to create a new product when a product already exists"))
 	}
-
-	// bugsnag.Notify(errors.New("attempted to create a new product when a product already exists"))
 	return err
-}
-
-//just use with account in psql
-func convertCategoryID(id int) int {
-	switch id {
-	case 2:
-		return 702
-	case 32:
-		return 704
-	case 4:
-		return 703
-	case 3:
-		return 705
-	default:
-		return 0
-	}
 }
 
 func getFacialCleanserRanking() {

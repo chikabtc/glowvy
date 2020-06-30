@@ -27,7 +27,7 @@ type cartService struct {
 }
 
 func NewCartService(db *sql.DB) CartService {
-	cartDot, _ := dotsql.LoadFromFile("sql/queries/cart.pgsql")
+	cartDot, _ := dotsql.LoadFromFile("sql/cart.pgsql")
 	return &cartService{
 		DB:  db,
 		dot: cartDot,
