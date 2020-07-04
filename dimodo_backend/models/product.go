@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"database/sql/driver"
 	"dimodo_backend/utils/null"
-	"dimodo_backend/utils/translate"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -32,7 +31,7 @@ type ProductService interface {
 	GetSidsOfAllProducts() ([]string, error)
 	UpdateProduct(product *Product) (bool, error)
 	GetAllProducts() ([]Product, error)
-	TranslateAllCosmetics()
+	// TranslateAllCosmetics()
 }
 
 type productService struct {
@@ -115,12 +114,13 @@ type Product struct {
 	Thumbnail      string       `json:"thumbnail,omitempty"`
 	Name           string       `json:"name,omitempty"`
 	Sname          string       `json:"sname,omitempty"`
-	EgName         string       `json:"egname,omitempty"`
+	EnName         string       `json:"enname,omitempty"`
 	Description    string       `json:"description,omitempty"`
 	Sdescription   string       `json:"sdescription,omitempty"`
 	DescImages     []string     `json:"desc_images,omitempty"`
 	SliderImages   []string     `json:"slider_images,omitempty"`
 	Sale_price     int          `json:"sale_price,omitempty"`
+	Rating         string       `json:"rating,omitempty"`
 	Sale_percent   int          `json:"sale_percent,omitempty"`
 	Purchase_count int          `json:"purchase_count,omitempty"`
 	Price          int          `json:"price,omitempty"`
@@ -137,10 +137,11 @@ type Product struct {
 		Key  string `json:"key"`
 		Text string `json:"text"`
 	} `json:"add_info"`
-	Tags   []Tag  `json:"tags,omitempty"`
-	Sid    int    `json:"sid,omitempty"`
-	Sprice int    `json:"sprice,omitempty"`
-	Surl   string `json:"surl,omitempty"`
+	Tags          []Tag         `json:"tags,omitempty"`
+	Sid           int           `json:"sid,omitempty"`
+	Sprice        int           `json:"sprice,omitempty"`
+	Surl          string        `json:"surl,omitempty"`
+	CosmeticsRank CosmeticsRank `json:"cosmetics_rank,omitempty"`
 }
 
 type Tag struct {
@@ -179,6 +180,13 @@ type Seller struct {
 		ID   string `json:"id"`
 		Name string `json:"name"`
 	} `json:"type"`
+}
+
+type CosmeticsRank struct {
+	SensitiveSkinRank sql.NullInt32 `json:"sensitive_skin_rank"`
+	OilySkinRank      sql.NullInt32 `json:"oily_skin_rank"`
+	DrySkinRank       sql.NullInt32 `json:"dry_skin_rank"`
+	AllSkinRank       sql.NullInt32 `json:"all_skin_rank"`
 }
 
 func (t Tag) Value() (driver.Value, error) {
@@ -390,7 +398,6 @@ func (ps *productService) ProductsByTags(tagId string, sortBy string, start, cou
 		if err != nil {
 			fmt.Println("fail to unmarshall tags: ", err)
 		}
-
 		products = append(products, product)
 	}
 
@@ -542,7 +549,7 @@ func (ps *productService) ReviewsByProductID(productId, start, count int) (*Revi
 			&review.Product.Sid,
 			&review.ID,
 			&review.User.Name,
-			&review.Text,
+			&review.Content,
 			pq.Array(&review.Images),
 		); err != nil {
 			fmt.Println("fail to Next", err)
@@ -623,49 +630,6 @@ func (ps *productService) GetSidsOfAllProducts() ([]string, error) {
 	}
 	fmt.Println("sid counts: ", len(sids))
 	return sids, nil
-}
-
-func (ps *productService) TranslateAllCosmetics() {
-	var rows *sql.Rows
-
-	rows, err := ps.dot.Query(ps.DB, "GetAllCosmeticsProducts")
-	if err != nil {
-		bugsnag.Notify(err)
-		fmt.Println("GetAllCosmeticsProducts", err)
-		return
-	}
-
-	defer rows.Close()
-	products := []Product{}
-	for rows.Next() {
-		var product Product
-		if err := rows.Scan(
-			&product.Sid,
-			&product.Sname,
-			&product.Sdescription,
-		); err != nil {
-			bugsnag.Notify(err)
-			fmt.Println("fail to Next", err)
-			return
-		}
-
-		if err != nil {
-			fmt.Println("fail to unmarshall tags: ", err)
-		}
-
-		// enName, _ := translate.TranslateText("ko", "en", product.Sname)
-		// fmt.Println("egname: ", enName)
-		enDescription, _ := translate.TranslateText("ko", "vi", product.Sdescription)
-		fmt.Println("enDescription: ", enDescription)
-
-		_, err := ps.dot.Exec(ps.DB, "TranslateCosmetics", product.Sname, enDescription, product.Sid)
-
-		if err != nil {
-			fmt.Println("fail to unmarshall tags: ", err)
-		}
-		products = append(products, product)
-	}
-	return
 }
 
 func (ps *productService) UpdateProduct(product *Product) (bool, error) {

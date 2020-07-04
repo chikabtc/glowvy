@@ -57,6 +57,7 @@ func (a *API) InitializeRoutes() {
 	// COSMETICS
 	// =========================================================================
 	a.R.HandleFunc("/api/cosmetics/categories={id:[0-9]+}", productC.CosmeticsProductsByCategoryId).Methods("GET")
+	a.R.HandleFunc("/api/cosmetics/review/id={id:[0-9]+}", productC.CosmeticsReviewsById).Methods("GET")
 
 	//			Category
 	a.R.HandleFunc("/api/categories/all", productC.AllCategories).Methods("GET")

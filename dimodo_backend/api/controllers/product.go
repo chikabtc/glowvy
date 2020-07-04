@@ -236,7 +236,7 @@ func (p *Product) ProductReviewsById(w http.ResponseWriter, r *http.Request) {
 
 	averageScore, totalCount := p.Cw.GetReviewMetaData(params["id"])
 	reviews.AverageSatisfaction = averageScore
-	reviews.TotalCount = totalCount
+	reviews.TotalCount = int(totalCount)
 
 	if err != nil {
 		bugsnag.Notify(err)
@@ -365,4 +365,41 @@ func (p *Product) UpdateThumbnailImages(w http.ResponseWriter, r *http.Request) 
 		return
 	}
 	resp.Json(w, r, http.StatusOK, resp.WithSuccess(err))
+}
+
+func (p *Product) CosmeticsReviewsById(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	id, err := strconv.Atoi(params["id"])
+	fmt.Println(id)
+	offset, _ := strconv.Atoi(r.FormValue("offset"))
+
+	limit, _ := strconv.Atoi(r.FormValue("limit"))
+	if limit > 6 || limit < 1 {
+		limit = 6
+	}
+	if offset < 0 {
+		offset = 0
+	}
+
+	if err != nil {
+		bugsnag.Notify(err)
+		msgError := fmt.Sprintf("Invalid actions Id. Error: %s", err)
+		resp.Json(w, r, http.StatusBadRequest, resp.WithError(msgError))
+		return
+	}
+	var reviews *models.Reviews
+	reviews, err = p.Cs.CosmeticsReviewsByProductID(id)
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println(err)
+	}
+	// averageScore, totalCount := p.Cw.GetReviewMetaData(params["id"])
+	// reviews.AverageSatisfaction = averageScore
+
+	if err != nil {
+		bugsnag.Notify(err)
+		resp.Json(w, r, http.StatusBadRequest, resp.WithError(err))
+	}
+
+	resp.Json(w, r, http.StatusOK, resp.WithSuccess(reviews))
 }

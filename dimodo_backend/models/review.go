@@ -1,7 +1,7 @@
 package models
 
 type Reviews struct {
-	TotalCount          int64    `json:"total_count"`
+	TotalCount          int      `json:"total_count"`
 	AverageSatisfaction int64    `json:"average_satisfaction"`
 	Reviews             []Review `json:"reviews"`
 }
@@ -17,8 +17,10 @@ type Review struct {
 	ID          string `json:"id"`
 	CreatedTime string `json:"created_time"`
 	Type        string `json:"type"`
-	Text        string `json:"text"`
-	Score       int    `json:"score"`
+	Content     string `json:"content"`
+	Scontent    string `json:"scontent"`
+
+	Score int `json:"score"`
 	// LikeCount    int64  `json:"like_count"`
 	// CommentCount int64  `json:"comment_count"`
 	// IsLiked      bool   `json:"is_liked"`
@@ -27,6 +29,8 @@ type Review struct {
 		ID           string `json:"id"`
 		Name         string `json:"name"`
 		ImageURL     string `json:"image_url"`
+		SkinType     string `json:"skin_type"`
+		Age          int64  `json:"age"`
 		Height       int64  `json:"height"`
 		ShirtSize    string `json:"shirt_size"`
 		PantsSize    string `json:"pants_size"`

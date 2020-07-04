@@ -25,7 +25,9 @@ func main() {
 	// api.Cs.ProductC.Cs.UpdateBrandsName()
 	// time.Sleep(2 * time.Second)
 
-	api.Cs.ProductC.Ps.TranslateAllCosmetics()
+	// api.Cs.ProductC.Cs.TranslateAllCosmeticsReviews()
+	// api.Cs.ProductC.Cs.TranslateAllCosmetics()
+	// api.Cs.ProductC.Cs.TranslateAllReviewUserName()
 	// err := crawler.CollectAllOptions()
 	// fmt.Println(err)
 	// cronServices.Run()
@@ -55,7 +57,7 @@ func main() {
 	// if err := crawler.GetGlowPickProductsByRank(2, 32, 25, "oil", "rank"); err != nil {
 	// 	fmt.Println(err)
 	// }
-	//serum
+
 	// if err := crawler.GetGlowPickProductsByRank(2, 3, 25, "all", "rank"); err != nil {
 	// 	fmt.Println(err)
 	// }
@@ -96,6 +98,7 @@ func main() {
 	// if err := crawler.GetGlowPickProductsByRank(3, 25, 25, "dry", "rank"); err != nil {
 	// 	fmt.Println(err)
 	// }
+
 	api.Run()
 
 }

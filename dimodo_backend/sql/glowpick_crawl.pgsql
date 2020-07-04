@@ -1,5 +1,5 @@
 --name: CreateProduct
-INSERT INTO cosmetics_products (sid, sname, volume, price, review_count, average_rating, thumbnail, is_discontinued, brand_id, brand, brand_img, description, category_id)
+INSERT INTO cosmetics_products (sid, sname, volume, price, review_count, average_rating, thumbnail, is_discontinued, brand_id, brand, brand_img, sdescription, category_id)
 SELECT
     $1,
     $2,
