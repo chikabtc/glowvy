@@ -126,51 +126,24 @@ class _ProductListState extends State<ProductList>
                           Scrollbar(
                             controller: _scrollController,
                             child: GridView.builder(
-                              addAutomaticKeepAlives: true,
-                              padding: const EdgeInsets.all(0.0),
-                              physics: widget.disableScrolling
-                                  ? NeverScrollableScrollPhysics()
-                                  : ClampingScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount: _products.length,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                childAspectRatio: widget.isListView ? 3 : 0.8,
-                                crossAxisCount: widget.isListView ? 1 : 2,
-                              ),
-                              itemBuilder: (BuildContext context, int index) =>
-                                  widget.isListView
-                                      ? CosmeticsProductCard(
-                                          isNameAvailable:
-                                              widget.isNameAvailable,
-                                          product: _products[index],
-                                          width: widthContent)
-                                      : (index == 2)
-                                          ? Container(
-                                              child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: <Widget>[
-                                                Image.asset(
-                                                    "assets/images/promote-glowpick-illustration.png"),
-                                                Column(
-                                                  children: <Widget>[
-                                                    Text(
-                                                        "All Review Results based on"),
-                                                    Image.asset(
-                                                        "assets/images/glowpick_logo.png"),
-                                                    Text(
-                                                        "The most famous popular Korean beauty ranking service in Korea"),
-                                                  ],
-                                                )
-                                              ],
-                                            ))
-                                          : ProductCard(
-                                              isNameAvailable:
-                                                  widget.isNameAvailable,
-                                              product: _products[index],
-                                              width: widthContent),
-                            ),
+                                addAutomaticKeepAlives: true,
+                                padding: const EdgeInsets.all(0.0),
+                                physics: widget.disableScrolling
+                                    ? NeverScrollableScrollPhysics()
+                                    : ClampingScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: _products.length,
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                  childAspectRatio: widget.isListView ? 3 : 0.8,
+                                  crossAxisCount: widget.isListView ? 1 : 2,
+                                ),
+                                itemBuilder: (BuildContext context,
+                                        int index) =>
+                                    ProductCard(
+                                        isNameAvailable: widget.isNameAvailable,
+                                        product: _products[index],
+                                        width: widthContent)),
                           ),
                           isLoading
                               ? SpinKitCircle(

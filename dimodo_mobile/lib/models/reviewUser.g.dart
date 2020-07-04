@@ -15,7 +15,9 @@ ReviewUser _$ReviewUserFromJson(Map<String, dynamic> json) {
     shirtSize: json['shirt_size'] as String,
     pantsSize: json['pants_size'] as String,
     footwearSize: json['footwear_size'] as String,
-  );
+  )
+    ..age = json['age'] as int
+    ..skinType = json['skin_type'] as String;
 }
 
 Map<String, dynamic> _$ReviewUserToJson(ReviewUser instance) =>
@@ -26,5 +28,7 @@ Map<String, dynamic> _$ReviewUserToJson(ReviewUser instance) =>
       'height': instance.height,
       'shirt_size': instance.shirtSize,
       'pants_size': instance.pantsSize,
+      'age': instance.age,
+      'skin_type': instance.skinType,
       'footwear_size': instance.footwearSize,
     };

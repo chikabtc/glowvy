@@ -1,8 +1,10 @@
 import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/user/userModel.dart';
+import 'package:Dimodo/widgets/bottom_popup_services.dart';
+import 'package:Dimodo/widgets/cosmetics_filter_bar.dart';
 import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
-import 'package:Dimodo/widgets/product_filter_bar.dart';
+// import 'package:Dimodo/widgets/product_filter_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +20,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:flutter/services.dart';
 import 'package:Dimodo/services/index.dart';
+import 'dart:math' as math;
 
 class HomeScreen extends StatefulWidget {
   final User user;
@@ -44,27 +47,33 @@ class HomeScreenState extends State<HomeScreen>
   var currentIndex = 0;
   TabController _tabController;
 
-  bool isGenerating = false;
+  bool isGenerating = true;
   bool isSurveyFinished = false;
+  bool showFiltered = false;
   UserModel userModel;
   ProductModel productModel;
   List<Survey> surveys = [];
   int currentPage = 0;
-  List<Product> filteredResults;
-  bool showFilteredResults = false;
+  List<Product> filteredResults = [];
+  int skinTypeId = 0;
 
   @override
   void initState() {
     super.initState();
     getProductByTagStar = service.getProductsByTag(tag: 6, sortBy: "id");
-    getCosmeticsProductsByCategory = service.getCosmeticsProductsByCategory(
-        categoryId: 32, skinType: "sensitive");
+    getCosmeticsProductsByCategory =
+        service.getCosmeticsProductsByCategory(categoryId: 3, skinType: "all");
     getProductByTagTrending =
         service.getProductsByTag(tag: 5, sortBy: "id", start: 0, count: 200);
     _tabController = TabController(initialIndex: 0, length: 3, vsync: this);
     userModel = Provider.of<UserModel>(context, listen: false);
 
     productModel = Provider.of<ProductModel>(context, listen: false);
+    Future.delayed(const Duration(milliseconds: 2000), () {
+      setState(() {
+        isGenerating = false;
+      });
+    });
   }
 
   @override
@@ -81,10 +90,6 @@ class HomeScreenState extends State<HomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(milliseconds: 500), () {
-      print("cosmetics pref: ${userModel.cosmeticPref}");
-    });
-
     super.build(context);
     print("building home");
     kRateMyApp.init().then((_) {});
@@ -98,7 +103,7 @@ class HomeScreenState extends State<HomeScreen>
     try {
       final surveys = Provider.of<AppModel>(context, listen: false)
           .appConfig['Cosmetics_Survey'];
-      print("surveys: $surveys");
+      // print("surveys: $surveys");
       for (var item in surveys) {
         this.surveys.add(Survey.fromJson(item));
       }
@@ -129,7 +134,10 @@ class HomeScreenState extends State<HomeScreen>
 
       tabList.asMap().forEach((index, item) {
         list.add(Container(
-          padding: EdgeInsets.only(top: 8, left: 10, right: 10, bottom: 8),
+          padding: EdgeInsets.only(
+            left: 10,
+            right: 10,
+          ),
           decoration: BoxDecoration(
               color: currentIndex == index ? kDarkAccent : Colors.transparent,
               borderRadius: BorderRadius.circular(20)),
@@ -148,109 +156,25 @@ class HomeScreenState extends State<HomeScreen>
       return list;
     }
 
-    _generatePersonalizedPackages() {
-      return Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.only(bottom: 4, left: 14),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      child: isGenerating
-                          ? DynamicText(
-                              "Generating your personal cosmetic packages...",
-                              overflow: TextOverflow.ellipsis,
-                              style: kBaseTextStyle.copyWith(
-                                  fontSize: 13, fontWeight: FontWeight.w500))
-                          : Row(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: <Widget>[
-                                DynamicText("${userModel.cosmeticPref}",
-                                    style: kBaseTextStyle.copyWith(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w600)),
-                                DynamicText("(Last Update 22/06 10:00)",
-                                    style: kBaseTextStyle.copyWith(
-                                        fontSize: 10,
-                                        color: kDarkSecondary.withOpacity(0.5),
-                                        fontWeight: FontWeight.w600)),
-                              ],
-                            ),
-                    ),
-                    if (!isGenerating)
-                      Row(
-                        // mainAxisAlignment: MainAxisAlignment.end,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            height: 26,
-                            padding: EdgeInsets.only(
-                                top: 2, bottom: 2, left: 10, right: 10),
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(6)),
-                                color: kPinkAccent),
-
-                            alignment: Alignment.center,
-                            // nip: BubbleNip.rightTop,
-                            child: Text(S.of(context).seeAll,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize: 13.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white)),
-                          ),
-                          IconButton(
-                            onPressed: () => print("show all!"),
-                            icon: CommonIcons.arrowForward,
-                          ),
-                        ],
-                      )
-                  ],
-                ),
-              ),
-            ),
-            isGenerating
-                ? productModel.showGeneartingProductList()
-                : productModel.showCosmeticsProductList(
-                    isNameAvailable: true,
-                    future: getCosmeticsProductsByCategory,
-                    onLoadMore: onLoadMore),
-          ],
-        ),
-      );
-    }
-
     return Scaffold(
         appBar: AppBar(
           brightness: Brightness.light,
           leading: Container(),
           elevation: 0,
           backgroundColor: Colors.white,
-          title: Center(
-            child: SafeArea(
-              top: true,
-              child: Image.asset(
-                "assets/images/applogo.png",
-                fit: BoxFit.cover,
-                height: 12,
-              ),
-            ),
+          title: Image.asset(
+            "assets/images/applogo.png",
           ),
           actions: <Widget>[
-            IconButton(
-              icon: Image.asset(
-                "assets/icons/search/search.png",
-                fit: BoxFit.cover,
-                height: 24,
-              ),
-              onPressed: () => Navigator.pushNamed(context, "/search_screen"),
-            ),
+            Container()
+            // IconButton(
+            //   icon: Image.asset(
+            //     "assets/icons/search/search.png",
+            //     fit: BoxFit.cover,
+            //     height: 24,
+            //   ),
+            //   onPressed: () => Navigator.pushNamed(context, "/search_screen"),
+            // ),
           ],
         ),
         body: Container(
@@ -267,101 +191,129 @@ class HomeScreenState extends State<HomeScreen>
               return false;
             },
             child: Scrollbar(
-              child: ListView(
-                shrinkWrap: true,
-                children: <Widget>[
-                  Column(
-                    children: [
-                      Container(
-                        width: screenSize.width,
-                        child: Image.asset(
-                          "assets/images/home_top_banner.png",
-                          fit: BoxFit.cover,
+              child: CustomScrollView(
+                // shrinkWrap: true,
+                slivers: <Widget>[
+                  SliverFixedExtentList(
+                    itemExtent: 86.0,
+                    delegate: SliverChildListDelegate(
+                      [
+                        Container(
+                          color: Colors.white,
+                          width: screenSize.width,
+                          child: Image.asset(
+                            "assets/images/home_top_banner.png",
+                            fit: BoxFit.fitWidth,
+                          ),
                         ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(left: 16, top: 15, bottom: 15),
-                        color: kDefaultBackground,
-                        width: screenSize.width,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            DynamicText(
-                              S.of(context).dimodoSupport,
-                              style: kBaseTextStyle.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 13,
-                                  color: kDarkAccent),
-                            ),
-                            Row(
+                        GestureDetector(
+                          onTap: () => PopupServices.showDimodoStory(context),
+                          child: Container(
+                            padding: EdgeInsets.only(
+                                left: 16, right: 16, top: 15, bottom: 15),
+                            color: kDefaultBackground,
+                            width: screenSize.width,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                SvgPicture.asset(
-                                    "assets/icons/home/banner-support-1.svg"),
-                                SizedBox(width: 4.3),
-                                DynamicText(
-                                  S.of(context).genuineSecurity,
-                                  style: kBaseTextStyle.copyWith(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 12,
-                                      color: kDarkSecondary),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    DynamicText(
+                                      S.of(context).dimodoSupport,
+                                      style: kBaseTextStyle.copyWith(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 13,
+                                          color: kDarkAccent),
+                                    ),
+                                    Row(
+                                      children: <Widget>[
+                                        SvgPicture.asset(
+                                            "assets/icons/home/banner-support-1.svg"),
+                                        SizedBox(width: 4.3),
+                                        DynamicText(
+                                          S.of(context).genuineSecurity,
+                                          style: kBaseTextStyle.copyWith(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 12,
+                                              color: kDarkSecondary),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: <Widget>[
+                                        SvgPicture.asset(
+                                            "assets/icons/home/banner-support-2.svg"),
+                                        SizedBox(width: 4.3),
+                                        DynamicText(
+                                          S.of(context).sevenDayWorryFree,
+                                          style: kBaseTextStyle.copyWith(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 12,
+                                              color: kDarkSecondary),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
+                                CommonIcons.arrowForward,
                               ],
                             ),
-                            Row(
-                              children: <Widget>[
-                                SvgPicture.asset(
-                                    "assets/icons/home/banner-support-2.svg"),
-                                SizedBox(width: 4.3),
-                                DynamicText(
-                                  S.of(context).sevenDayWorryFree,
-                                  style: kBaseTextStyle.copyWith(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 12,
-                                      color: kDarkSecondary),
-                                ),
-                              ],
-                            ),
-                          ],
+                          ),
                         ),
-                      ),
-                      Row(
+                      ],
+                    ),
+                  ),
+                  SliverPersistentHeader(
+                    pinned: true,
+                    delegate: _SliverAppBarDelegate(
+                      minHeight: 50.0,
+                      maxHeight: 50.0,
+                      child: Row(
                         children: [
                           Expanded(
                             child: Container(
+                                height: 50,
                                 decoration: BoxDecoration(
                                     color: Colors.white,
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(20),
                                         topRight: Radius.circular(20))),
-                                padding: EdgeInsets.only(
-                                    left: 16, bottom: 10, top: 10),
+                                padding: EdgeInsets.only(left: 16, top: 10),
                                 child: Container(
-                                  height: 50,
-                                  // color: Colors.white,
+                                  // color: Colors.brown,
                                   width: screenSize.width /
                                       (2 /
                                           (screenSize.height /
                                               screenSize.width)),
                                   child: TabBar(
                                     controller: _tabController,
-                                    indicatorSize: TabBarIndicatorSize.label,
-                                    labelPadding:
-                                        EdgeInsets.symmetric(horizontal: 5.0),
+                                    indicatorSize: TabBarIndicatorSize.tab,
+                                    // indicator: SolidIndicator(),
+                                    labelPadding: EdgeInsets.only(
+                                        left: 5.0,
+                                        right: 5.0,
+                                        top: 0,
+                                        bottom: 0),
                                     isScrollable: true,
                                     indicatorColor: Colors.transparent,
-                                    unselectedLabelColor: Colors.black,
+                                    unselectedLabelColor: Colors.transparent,
                                     unselectedLabelStyle: kBaseTextStyle
                                         .copyWith(color: kDarkSecondary),
-                                    labelStyle: kBaseTextStyle,
-                                    labelColor: kPinkAccent,
+                                    labelStyle: kBaseTextStyle.copyWith(
+                                        color: Colors.white),
+                                    labelColor: kDarkAccent,
                                     onTap: (i) {
                                       setState(() {
+                                        var skinType = productModel
+                                            .getSkinTypeById(skinTypeId);
                                         currentIndex = i;
                                         getCosmeticsProductsByCategory = service
                                             .getCosmeticsProductsByCategory(
                                                 categoryId: tabList[i].id,
-                                                skinType: "sensitive");
+                                                skinType: skinType);
+                                        showFiltered = false;
                                       });
                                     },
                                     tabs: renderTabbar(),
@@ -370,41 +322,60 @@ class HomeScreenState extends State<HomeScreen>
                           ),
                         ],
                       ),
-                      // =======================================================
-                      // TabBarViews
-                      // =======================================================
-
+                    ),
+                  ),
+                  SliverList(
+                    delegate: SliverChildListDelegate([
                       FutureBuilder<List<Product>>(
                         future: getCosmeticsProductsByCategory,
                         builder: (BuildContext context,
                             AsyncSnapshot<List<Product>> snapshot) {
-                          filteredResults = snapshot.data;
+                          if (filteredResults == null || !showFiltered) {
+                            print("loaded new category of products");
+                            filteredResults = snapshot.data;
+                          }
                           return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                FilterBar(
-                                  products: snapshot.data,
-                                  onFilterConfirm: (filteredProducts) {
-                                    setState(() {
-                                      showFilteredResults = true;
-                                      this.filteredResults = filteredProducts;
-                                    });
-                                  },
-                                  onReset: (filteredProducts) {
-                                    setState(() {
-                                      showFilteredResults = false;
-                                    });
-                                  },
-                                  onSortingChanged: (sortedResults) {
-                                    setState(() {
-                                      this.filteredResults = sortedResults;
-                                    });
-                                  },
-                                ),
-                                CosmeticsProductList(
-                                  products: filteredResults,
-                                  onLoadMore: onLoadMore,
-                                  showFilter: false,
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    // Container(height: 10, color: Colors.white),
+                                    Container(
+                                      color: Colors.white,
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(
+                                            bottom: 4, left: 14),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Container(
+                                                child: isGenerating
+                                                    ? DynamicText(
+                                                        "Updating the product ranks in Korea...",
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        style: kBaseTextStyle
+                                                            .copyWith(
+                                                                fontSize: 13,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500))
+                                                    : Container()),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                    isGenerating
+                                        ? productModel
+                                            .showGeneartingOneRowProductList()
+                                        : CosmeticsProductList(
+                                            products: filteredResults,
+                                            onLoadMore: onLoadMore,
+                                            showFilter: false,
+                                          ),
+                                  ],
                                 ),
                               ]);
                         },
@@ -439,12 +410,72 @@ class HomeScreenState extends State<HomeScreen>
                           ],
                         ),
                       )
-                    ],
+                    ]),
                   )
                 ],
               ),
             ),
           ),
         ));
+  }
+}
+
+/// Solid tab bar indicator.
+class SolidIndicator extends Decoration {
+  @override
+  BoxPainter createBoxPainter([VoidCallback onChanged]) {
+    return _SolidIndicatorPainter(this, onChanged);
+  }
+}
+
+class _SolidIndicatorPainter extends BoxPainter {
+  final SolidIndicator decoration;
+
+  _SolidIndicatorPainter(this.decoration, VoidCallback onChanged)
+      : assert(decoration != null),
+        super(onChanged);
+
+  @override
+  void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
+    assert(configuration != null);
+    assert(configuration.size != null);
+
+    final Rect rect = offset & configuration.size;
+    final Paint paint = Paint();
+    paint.color = kDarkAccent;
+    paint.style = PaintingStyle.fill;
+
+    canvas.drawRect(rect, paint);
+  }
+}
+
+class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+  _SliverAppBarDelegate({
+    @required this.minHeight,
+    @required this.maxHeight,
+    @required this.child,
+  });
+
+  final double minHeight;
+  final double maxHeight;
+  final Widget child;
+
+  @override
+  double get minExtent => minHeight;
+
+  @override
+  double get maxExtent => math.max(maxHeight, minHeight);
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return new SizedBox.expand(child: child);
+  }
+
+  @override
+  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
+    return maxHeight != oldDelegate.maxHeight ||
+        minHeight != oldDelegate.minHeight ||
+        child != oldDelegate.child;
   }
 }

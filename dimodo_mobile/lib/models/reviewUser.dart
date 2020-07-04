@@ -9,6 +9,8 @@ class ReviewUser {
   int height;
   String shirtSize;
   String pantsSize;
+  int age;
+  String skinType;
   String footwearSize;
 
   ReviewUser({

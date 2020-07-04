@@ -2,6 +2,7 @@ import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,26 +10,35 @@ import 'package:provider/provider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:Dimodo/generated/i18n.dart';
 
-class FilterBar extends StatefulWidget {
+class CosmeticsReviewFilterBar extends StatefulWidget {
   Function onFilterConfirm;
-  Function onSortingChanged;
+  Function onSkinTypeChanged;
   Function onReset;
-  List<Product> products;
+  List<Review> reviews;
 
-  FilterBar(
+  CosmeticsReviewFilterBar(
       {this.onFilterConfirm,
-      this.onSortingChanged,
+      this.onSkinTypeChanged,
       this.onReset,
-      this.products});
+      this.reviews});
   @override
-  _FilterBarState createState() => _FilterBarState();
+  _CosmeticsReviewFilterBarState createState() =>
+      _CosmeticsReviewFilterBarState();
 }
 
-class _FilterBarState extends State<FilterBar> {
+class Sorting {
+  static String low = "low";
+  static String high = "high";
+  static String rank = "rank";
+}
+
+class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
   ProductModel productModel;
   bool showFilter = false;
   var screenSize;
   var heightFactor;
+  var sorting = Sorting.low;
+  int skinTypeId = 0;
 
   List<String> chosenOptions = [];
   AppModel appModel;
@@ -42,7 +52,7 @@ class _FilterBarState extends State<FilterBar> {
     appModel = Provider.of<AppModel>(context, listen: false);
     var appConfig = appModel.appConfig;
     cosmeticsFilters = appConfig["Cosmetics-Filters"] as Map<String, dynamic>;
-    print("products list ${widget.products}");
+    print("products list ${widget.reviews}");
   }
 
   void dispose() {
@@ -51,6 +61,7 @@ class _FilterBarState extends State<FilterBar> {
 
   @override
   Widget build(BuildContext context) {
+    // print("Received products: ${widget.products}");
     screenSize = MediaQuery.of(context).size;
     heightFactor = 0.5;
     return Column(
@@ -60,22 +71,40 @@ class _FilterBarState extends State<FilterBar> {
           height: 40,
           padding: EdgeInsets.symmetric(horizontal: 0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Container(
                 // color: Colors.orange,
-                width: screenSize.width / 2,
+                width: screenSize.width / 2 - 10,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     GestureDetector(
                       onTap: () {
-                        setState(() {
-                          isAscending = !isAscending;
-                        });
-                        var sortedProducts = productModel.sortByPrice(
-                            widget.products, isAscending);
-                        widget.onSortingChanged(sortedProducts);
+                        // switch (sorting) {
+                        //   case "high":
+                        //     sorting = Sorting.rank;
+                        //     var sortedProducts =
+                        //         productModel.sortByDefaultRank(widget.reviews);
+
+                        //     widget.onFilterConfirm(sortedProducts);
+                        //     break;
+
+                        //   case "rank":
+                        //     sorting = Sorting.low;
+                        //     var sortedProducts =
+                        //         productModel.sortByPrice(widget.reviews, true);
+                        //     widget.onFilterConfirm(sortedProducts);
+                        //     break;
+                        //   case "low":
+                        //     sorting = Sorting.high;
+                        //     var sortedProducts =
+                        //         productModel.sortByPrice(widget.reviews, false);
+                        //     widget.onFilterConfirm(sortedProducts);
+                        //     break;
+                        //   default:
+                        // }
+                        // filterProduct();
                       },
                       child: Container(
                           decoration: new BoxDecoration(
@@ -84,24 +113,28 @@ class _FilterBarState extends State<FilterBar> {
                           ),
                           padding: EdgeInsets.symmetric(horizontal: 6),
                           height: 24,
-                          // width: 98,
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              isAscending
+                              sorting == "rank"
                                   ? Image.asset("assets/icons/filter-sort.png")
-                                  : Image.asset(
-                                      "assets/icons/filter-sort-active.png"),
-                              Text(
-                                isAscending
-                                    ? S.of(context).highestToLowest
-                                    : S.of(context).lowestToHighest,
+                                  : sorting == "low"
+                                      ? Image.asset(
+                                          "assets/icons/filter-sort.png")
+                                      : Image.asset(
+                                          "assets/icons/filter-sort-active.png"),
+                              DynamicText(
+                                sorting == "rank"
+                                    ? S.of(context).byPrice
+                                    : sorting == "low"
+                                        ? S.of(context).highestToLowest
+                                        : S.of(context).lowestToHighest,
                                 textAlign: TextAlign.center,
                                 style: kBaseTextStyle.copyWith(
-                                    fontSize: 14,
+                                    fontSize: 13,
                                     fontWeight: FontWeight.w500,
-                                    color: isAscending
+                                    color: sorting == "low"
                                         ? kDarkSecondary
                                         : kDarkAccent),
                               ),
@@ -113,7 +146,7 @@ class _FilterBarState extends State<FilterBar> {
                 ),
               ),
               Container(
-                width: screenSize.width / 2,
+                width: screenSize.width / 2 - 10,
                 child: GestureDetector(
                   onTap: () => showCosmeticsFilter(),
                   child: Row(
@@ -124,7 +157,7 @@ class _FilterBarState extends State<FilterBar> {
                         width: 16,
                       ),
                       DynamicText(
-                        "Filter",
+                        productModel.getSkinTypeById(skinTypeId),
                         style: kBaseTextStyle.copyWith(
                             fontSize: 13,
                             fontWeight: FontWeight.w500,
@@ -139,6 +172,32 @@ class _FilterBarState extends State<FilterBar> {
         ),
       ],
     );
+  }
+
+  filterProduct() {
+    // var filteredProducts = productModel.filteredProductsBySkinType(
+    //     skinTypeId: skinTypeId, products: widget.reviews);
+    // widget.onFilterConfirm(filteredProducts);
+
+    // widget.onFilterConfirm(filteredProducts);
+    // switch (sorting) {
+    //   case "high":
+    //     var sortedProducts = productModel.sortByPrice(filteredProducts, false);
+
+    //     widget.onFilterConfirm(sortedProducts);
+    //     break;
+
+    //   case "rank":
+    //     var sortedProducts = productModel.sortByDefaultRank(filteredProducts);
+
+    //     widget.onFilterConfirm(sortedProducts);
+    //     break;
+    //   case "low":
+    //     var sortedProducts = productModel.sortByPrice(filteredProducts, true);
+    //     widget.onFilterConfirm(sortedProducts);
+    //     break;
+    //   default:
+    // }
   }
 
   showCosmeticsFilter() {
@@ -230,11 +289,9 @@ class _FilterBarState extends State<FilterBar> {
                                                 fontWeight: FontWeight.w600,
                                                 color: kPinkAccent)),
                                         onPressed: () {
-                                          var filteredProducts =
-                                              productModel.filteredProducts(
-                                                  filterOptions: chosenOptions,
-                                                  products: widget.products);
-                                          widget.onReset(filteredProducts);
+                                          skinTypeId = 0;
+                                          widget
+                                              .onFilterConfirm(widget.reviews);
                                           setState(() {
                                             chosenOptions.clear();
                                           });
@@ -258,13 +315,13 @@ class _FilterBarState extends State<FilterBar> {
                                                 fontWeight: FontWeight.w600,
                                                 color: Colors.white)),
                                         onPressed: () {
-                                          //filter the products
-                                          var filteredProducts =
-                                              productModel.filteredProducts(
-                                                  filterOptions: chosenOptions,
-                                                  products: widget.products);
-                                          widget.onFilterConfirm(
-                                              filteredProducts);
+                                          var filteredReviews = productModel
+                                              .filteredReviewsBySkinType(
+                                                  skinTypeId: skinTypeId,
+                                                  reviews: widget.reviews);
+                                          widget
+                                              .onFilterConfirm(filteredReviews);
+
                                           Navigator.pop(context);
                                         }),
                                   ],
@@ -286,42 +343,36 @@ class _FilterBarState extends State<FilterBar> {
     // enumerate the two compound options
 
     cosmeticsFilters.forEach((key, values) {
-      // print("Key: ${key}, Values : ${values}");
+      // print("Key: ${key}, value["name"]s : ${value["name"]s}");
       var header = DynamicText(
         key,
         style: kBaseTextStyle.copyWith(
             fontSize: 13, fontWeight: FontWeight.w600, color: kDarkSecondary),
       );
+      // print("values :${values[0]}");
 
       var options = Wrap(children: <Widget>[
-        for (var value in values.toList())
+        for (var value in values)
           Container(
             child: ActionChip(
               shape: RoundedRectangleBorder(
                 side: BorderSide(
-                  color: chosenOptions.contains(value["value"])
-                      ? kPinkAccent
-                      : kLightBG,
+                  color: skinTypeId == value["id"] ? kPinkAccent : kLightBG,
                 ),
                 borderRadius: BorderRadius.circular(6.0),
               ),
               elevation: 0,
               onPressed: () {
                 setState(() {
-                  if (chosenOptions.contains(value["value"])) {
-                    print("choosenO: ${chosenOptions[0]}");
-                    chosenOptions.remove(value["value"]);
-                  } else {
-                    chosenOptions.add(value["value"]);
-                  }
+                  skinTypeId = value["id"];
                 });
               },
               backgroundColor: kLightBG,
               label: DynamicText(
-                value["value"],
+                value["name"],
                 style: kBaseTextStyle.copyWith(
                     fontSize: 15,
-                    color: chosenOptions.contains(value["value"])
+                    color: skinTypeId == value["id"]
                         ? kPinkAccent
                         : kDarkSecondary,
                     fontWeight: FontWeight.w600),

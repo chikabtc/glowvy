@@ -1,4 +1,6 @@
 import 'package:Dimodo/models/product/generating_product_list.dart';
+import 'package:Dimodo/models/product/one_item_generating_list.dart';
+import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +21,7 @@ import 'product.dart';
 class ProductModel with ChangeNotifier {
   static Services service = Services();
   List<Product> products;
+  List<Review> reviews;
   String message;
   Map<String, dynamic> cosmeticsFilter;
 
@@ -63,6 +66,16 @@ class ProductModel with ChangeNotifier {
     products.sort((a, b) => isAscending
         ? b.salePrice.compareTo(a.salePrice)
         : a.salePrice.compareTo(b.salePrice));
+    // print("rating: ${products[0].rating}");
+    return products;
+  }
+
+  List<Product> sortByDefaultRank(
+    List<Product> products,
+  ) {
+    products.sort((a, b) => isAscending
+        ? b.rating.compareTo(a.rating)
+        : a.rating.compareTo(b.rating));
 
     return products;
   }
@@ -79,6 +92,91 @@ class ProductModel with ChangeNotifier {
       return isMatching;
     }).toList();
     return filterProducts;
+  }
+
+  getSkinTypeById(skinTypeId) {
+    switch (skinTypeId) {
+      //all
+      case 0:
+        return "all";
+        break;
+      //sensitive
+      case 1:
+        return "sensitive";
+
+        break;
+      //dry
+      case 2:
+        return "dry";
+
+        break;
+      //oily
+      case 3:
+        return "oily";
+
+        break;
+    }
+  }
+
+  List<Product> filteredProductsBySkinType(
+      {int skinTypeId, List<Product> products}) {
+    products = products.where((p) {
+      var isMatching = false;
+      switch (skinTypeId) {
+        //all
+        case 0:
+          isMatching = p.cosmeticsRank.allSkinRank["Int32"] == 0 ? false : true;
+          break;
+        //sensitive
+        case 1:
+          isMatching =
+              p.cosmeticsRank.sensitiveSkinRank["Int32"] == 0 ? false : true;
+          break;
+        //dry
+        case 2:
+          isMatching = p.cosmeticsRank.drySkinRank["Int32"] == 0 ? false : true;
+          if (isMatching = p.cosmeticsRank.drySkinRank["Int32"] != 0) {}
+          break;
+        //oily
+        case 3:
+          isMatching =
+              p.cosmeticsRank.oilySkinRank["Int32"] == 0 ? false : true;
+          break;
+      }
+      return isMatching;
+    }).toList();
+    return products;
+  }
+
+  List<Review> filteredReviewsBySkinType(
+      {int skinTypeId, List<Review> reviews}) {
+    reviews = reviews.where((r) {
+      var isMatching = false;
+      switch (skinTypeId) {
+        //all
+        case 0:
+          isMatching = r.user.skinType == "all" ? true : false;
+          break;
+        //sensitive
+        case 1:
+          isMatching = r.user.skinType == "sensitive" ? true : false;
+          break;
+        //dry
+        case 2:
+          isMatching = r.user.skinType == "dry" ? true : false;
+          break;
+        //oily
+        case 3:
+          isMatching = r.user.skinType == "oily" ? true : false;
+          print(isMatching);
+          break;
+        default:
+          print("default");
+      }
+      return isMatching;
+    }).toList();
+    print("reviews length:${reviews.length}");
+    return reviews;
   }
 
   void getProductsList({categoryId, sortBy}) async {
@@ -255,6 +353,10 @@ class ProductModel with ChangeNotifier {
 
   Widget showGeneartingProductList() {
     return GeneratingProductList();
+  }
+
+  Widget showGeneartingOneRowProductList() {
+    return GeneratingOneRowList();
   }
 
   void getProductsByTag({tag, start, limit, sortBy}) async {

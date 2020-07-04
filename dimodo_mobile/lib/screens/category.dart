@@ -39,9 +39,9 @@ class CategoryScreenState extends State<CategoryScreen>
 
     final categories =
         Provider.of<CategoryModel>(context, listen: false).categories;
-    print("categories length: ${categories.length}");
+    // print("categories length: ${categories.length}");
 
-    print("categories?: ${categories[0].image}");
+    // print("categories?: ${categories[0].image}");
 
     categories.forEach((cate) => categoryButtons.add(CategoryButton(cate)));
 
@@ -101,7 +101,7 @@ class CategoryScreenState extends State<CategoryScreen>
                 sliver: SliverGrid(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     childAspectRatio: 1,
-                    crossAxisCount: 3,
+                    crossAxisCount: 4,
                   ),
                   delegate: new SliverChildBuilderDelegate(
                     (context, index) => CategoryButton(categories[index]),

@@ -173,19 +173,21 @@
       "name": "SẢN PHẨM TƯƠNG TỰ"
     }
   ],
-  "Cosmetics-Filters":
-
-  {
-    "Cosmetics-Types": [{
-      "value": "Specialzed Acne"
-    }, {
-      "value": "Whitening"
-    }],
-    "Age-Groups:": [{
-        "value": "15-22"
+  "Cosmetics-Filters": {
+    "skin-type": [{
+        "name": "Bộ lọc",
+        "id": 0
       },
       {
-        "value": "22-29"
+        "name": "sensitive",
+        "id": 1
+      }, {
+        "name": "dry",
+        "id": 2
+      },
+      {
+        "name": "oily",
+        "id": 3
       }
     ]
   },
@@ -199,14 +201,6 @@
     }
   ],
   "Categories": [
-
-    {
-      "name": "TẤT CẢ",
-      "image": "assets/icons/categories/all.png",
-      "id": 0,
-      "parent_id": 0
-    },
-
 
     {
       "name": "ÁO",
@@ -256,6 +250,11 @@
       "image": "assets/icons/categories/cosmetics.png",
       "id": 8,
       "parent_id": 8
+    }, {
+      "name": "SKIN CARE",
+      "image": "assets/icons/categories/Package.png",
+      "id": 9,
+      "parent_id": 8
     }
   ],
   "Cosmetics_categories": [
@@ -263,24 +262,49 @@
     {
       "name": "Serum",
       "image": "assets/icons/categories/all.png",
-      "id": 0,
+      "id": 3,
       "parent_id": 0
     },
 
     {
-      "name": "Cream",
+      "name": "Kem bôi",
       "image": "assets/icons/categories/top.png",
-      "id": 1,
+      "id": 4,
       "parent_id": 1
     },
 
     {
-      "name": "Cleanser",
+      "name": "Sản phẩm làm sạch",
       "image": "assets/icons/categories/coat.png",
-      "id": 5,
+      "id": 32,
       "parent_id": 5
 
     }
-
+  ],
+  "Onboarding": [{
+      "title": "Proven Korean Cosmetics",
+      "image": "assets/images/onboarding/onborading-illustration-3.png",
+      "indicator": "assets/images/onboarding/logo1.png",
+      "widthImage": "400",
+      "heightImage": "395",
+      "desc": "Hundreds of trustable reviews for your skin types"
+    },
+    {
+      "title": "Best Deal Everyday",
+      "image": "assets/images/onboarding/onborading-illustration-1.png",
+      "indicator": "assets/images/onboarding/logo2.png",
+      "widthImage": "400",
+      "heightImage": "395",
+      "desc": "Update official lowest price in Korea everyday"
+    },
+    {
+      "title": "Money Back Guarantee",
+      "image": "assets/images/onboarding/onborading-illustration-2.png",
+      "indicator": "assets/images/onboarding/logo3.png",
+      "widthImage": "400",
+      "heightImage": "395",
+      "desc": "Get in touch with Dimodo anytime after order"
+    }
   ]
+
 }

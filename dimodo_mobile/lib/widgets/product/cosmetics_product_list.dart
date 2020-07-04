@@ -10,6 +10,7 @@ import '../../common/constants.dart';
 import '../../models/product/product.dart';
 import '../../widgets/product/product_card_view.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:Dimodo/generated/i18n.dart';
 
 class CosmeticsProductList extends StatefulWidget {
   final List<Product> products;
@@ -78,6 +79,7 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
 
   @override
   Widget build(BuildContext context) {
+    // print("widgetproducts: ${widget.products[0].sname}");
     final screenSize = MediaQuery.of(context).size;
     final widthContent = (screenSize.width);
 
@@ -170,7 +172,9 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
                                                             .start,
                                                     children: <Widget>[
                                                       Text(
-                                                        "All Ranking Results based on",
+                                                        S
+                                                            .of(context)
+                                                            .allRankingResults,
                                                         style: kBaseTextStyle
                                                             .copyWith(
                                                                 fontWeight:
@@ -178,14 +182,18 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
                                                                         .w600,
                                                                 fontSize: 12),
                                                       ),
+                                                      SizedBox(height: 8),
                                                       Image.asset(
                                                           "assets/images/glowpick_logo.png"),
+                                                      SizedBox(height: 5),
                                                       Container(
                                                         width:
                                                             screenSize.width -
                                                                 168,
                                                         child: Text(
-                                                          "The most famous popular Korean beauty ranking service in Korea",
+                                                          S
+                                                              .of(context)
+                                                              .theMostFamousRanking,
                                                           maxLines: 2,
                                                           style: kBaseTextStyle
                                                               .copyWith(

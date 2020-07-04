@@ -24,7 +24,6 @@ class DimodoServices implements BaseServices {
   static final DimodoServices _instance = DimodoServices._internal();
   factory DimodoServices() => _instance;
 
-  // String accessToken;
   bool isProd = false;
 
   DimodoServices._internal();
@@ -35,14 +34,15 @@ class DimodoServices implements BaseServices {
   );
 
   String isSecure;
-  String baseUrl = "http://dimodo.app";
+  // String baseUrl = "http://172.16.0.184:80";
+  String baseUrl = "http://freemanMac.local:80";
 
   void appConfig(appConfig) {
-    // accessToken =
-    if (!isProd) {
-      baseUrl =
-          Platform.isAndroid ? 'http://172.16.0.184:80' : 'http://localhost:80';
-    }
+    // // accessToken =
+    // if (!isProd) {
+    //   baseUrl =
+    //       Platform.isAndroid ? 'http://172.16.0.184:80' : 'http://localhost:80';
+    // }
   }
 
   getAsync({String endPoint, Map<String, String> headers}) async {
@@ -130,6 +130,24 @@ class DimodoServices implements BaseServices {
   }
 
   @override
+  Future<Reviews> getCosmeticsReviews(id) async {
+    try {
+      final body = await getAsync(endPoint: "api/cosmetics/review/id=$id");
+
+      if (body["Success"] == true) {
+        var reviews = Reviews.fromJson(body["Data"]);
+        print("reviews :${reviews}");
+        return reviews;
+      } else {
+        var message = body["Error"];
+        throw Exception("failed to retreieve product data: ${message}");
+      }
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  @override
   Future<List<Product>> getProductsByCategory(
       {categoryId, sortBy, start, limit = 200}) async {
     try {
@@ -171,6 +189,7 @@ class DimodoServices implements BaseServices {
         for (var item in products) {
           list.add(Product.fromJson(item));
         }
+        print("list: $list");
         return list;
       }
     } catch (e) {

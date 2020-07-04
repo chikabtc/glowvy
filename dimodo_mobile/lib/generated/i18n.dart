@@ -114,6 +114,7 @@ class S implements WidgetsLocalizations {
   // ===========================================================================
   // Confirm Order Page
   // ===========================================================================
+  String get dimodoPrice => "DIMODO price";
 
   String get confirmToOrder => "Confirm to order";
   String get includingTaxAndFee => "including tax & fee";
@@ -138,6 +139,7 @@ class S implements WidgetsLocalizations {
       "The service helps us run our platform and offer better experiences";
   String get submitOrder => "Submit order";
   String get officialQA => "Dimodo Official Q&A";
+  String get dimodoServices => "Dimodo Services";
   String get needHelp => "Need Help?";
   String get askUs => "Ask Us";
   String get whereToDeliver => "Where do you need us to deliver?";
@@ -156,11 +158,32 @@ class S implements WidgetsLocalizations {
   String get bankTransfer => "Bank transfer";
 
   String get accountHolder => "Account holder";
+  String get whyLowerThanMarketPriceQuestion =>
+      "1. Why Dimodo price is lower than the market price? ";
+  String get whereReviewsFromQuestion => "Where do those reviews come from?";
+  String get sameQualityAsInKoreaQuestion =>
+      "Is the quality of the goods the same as in the official stores ?";
+  String get whyLowerThanMarketpriceAnswer =>
+      "1. Why Dimodo price is lower than the market price?  \n\nDimodo's founder is Korean who believe Vietnamese deserve a better price to buy Korean cosmetics by providing Real-Time Korean price to Vietnamese.\n";
+
+  String get whereReivewsFromAnswer =>
+      "2. Where do those reviews come from?  \n\nTo choose more suitable Korean cosmetics, Dimodo provides all reviews from Glowpick, the most famous popular Korean beauty ranking service in Korea.\n";
+  String get sameQualityAsInKoreaAnswer =>
+      "Is the quality of the goods in the direct stores the same? \n\nThe products in Dimodo are strictly controlled by our Korean founder. From the selection of the goods to the after-sales service, Dimodo cosmetics purchase from Korean official channels and ship to your home. Make sure you buy it with ease, use it with peace of mind, you can buy it with confidence, the quality of the same product is completely consistent.\n";
+  String get provenKoreanCosmeticsStory =>
+      "1. Proven Korean Cosmetics  \n\nDimodo has been supplying more than 300 cosmetics since its service in early 2020. We only bring trustable reviews from Korean to help our users find the best cosmetics that suit our customers best. There are no identical consumers in the beauty market. Individual age, skin type, taste, and value. We aim to build a place that shows your true ideas and feelings.\n";
+  String get getTheCheapesPriceStory =>
+      "2. Get the cheapest Price \n\nDimodo's founder is Korean who lives in Danang and believes Vietnamese deserve a better price to buy Korean cosmetics by providing Real-Time Korean prices to users. Upcoming days we will offer the users a price match. \n";
+  String get moneyBackGuaranteeStory =>
+      "3. Money Back Guarantee Policy? \n\nWe do have a 7 day money back guarantee for all of purchased cosmetics and clothes in our App. Our money back guarantee gives you peace of mind that our services will meet the expectations set out in the Terms of Service. To the maximum extent applicable under national law and without affecting your rights as a consumer, the money back guarantee is your sole and exclusive remedy should our services fail to meet the expectations set out in this Terms of Service. The following conditions apply to our money back guarantee: \n\n- Purchased items guaranteed for 7 days from the date of original purchase are in the warranty period. \n\n- The user provides corresponding certification materials sufficient to prove that the goods are fake, such as brand certification, third-party quality inspection certification, etc. \n\n- Defined as damaged or defective items are covered. \n\n- Unpacked or used products are not covered. \n\n- Man-made damaged, washed, or the signs disassembled products are not covered\n";
   String get totalAmount => "Total amount";
   String get shippingFrom => "Shipping From";
   String get shippingTo => "Shipping To";
   String get localKoreanShips => "Local Korean Shops";
   String get seoulKorea => "Seoul, Korea";
+  String get filter => "filter";
+  String get theMostFamousRanking =>
+      "The most famous popular Korean beauty ranking service in Korea";
 
   // ===========================================================================
   // Order Details Page
@@ -225,6 +248,7 @@ class S implements WidgetsLocalizations {
   String get buyNow => "Buy Now";
   String get byCategory => "By Category";
   String get byPrice => "By Price";
+  String get byRanking => "By Ranking";
   String get officialPrice => "Official Price";
   String get cancel => "Cancel";
   String get cart => "Cart";
@@ -337,8 +361,8 @@ class S implements WidgetsLocalizations {
   String get editorPicks => "Editor's Picks";
   // String get theBeautyHallOfFame => "The Beauty Hall Of Fame";
   String get lowPrice => "Low Price";
-  String get lowestToHighest => "Lowest To Highest";
-  String get highestToLowest => "Highest To Lowest";
+  String get lowestToHighest => "Low to High";
+  String get highestToLowest => "High to Low";
 
   String get reset => "Reset";
   String get review => "review";
@@ -401,6 +425,8 @@ class S implements WidgetsLocalizations {
   String get zipCodeIsRequired => "The zip code field is required";
   String get beenSold => "been sold";
   String get takeSurvey => "Take a survey";
+  String get allRankingResults => "All Ranking Results Based on";
+
   // String get otherProducts => "Other zip code field is required";
   String sale(String percent) => "Sale $percent %";
   String weFoundProducts(String length) => "We found $length products";
@@ -425,8 +451,11 @@ class $vi extends S {
       "Hãy cho chúng tôi biết về những gì bạn thích và những gì bạn không thích về mua hàng của bạn";
   String get surveyDescription =>
       "We appreciate you are trying our current feature we’ve been building in Dimodo. It will take 10 mins to collect your feedback about our product?";
+  String get officialQA => "Mục hỏi và đáp chính thức của Dimodo";
+
   @override
   String get privacyPolicy => "Chính Sách Bảo Mật";
+  String get dimodoPrice => "Giá của DIMODO";
   @override
   String get changePassword => "Đổi Mật Khẩu";
   @override
@@ -439,7 +468,7 @@ class $vi extends S {
 
   String get district => "district";
   String get ward => "ward";
-  String get confirm => "confirm";
+  String get confirm => "Xác nhận";
   String get customizeDimodo => "Customize your DIMODO";
 
   @override
@@ -474,6 +503,7 @@ class $vi extends S {
   @override
   String get discount => "Discount";
   String get supportedByGoogleTranslate => "Support By Google Translate";
+  String get choose => "Lựa chọn";
 
   @override
   String get byPrice => "Theo giá";
@@ -482,11 +512,12 @@ class $vi extends S {
       "Chúng tôi nhận được gói của bạn từ các cửa hàng Hàn Quốc trong vòng 3-5 ngày. Phải mất một tuần nữa để gửi nó đến cửa của bạn tại Việt Nam";
 
   String get name => "Name";
+  String get dimodoServices => "Dimodo Services";
 
 // =============================================================================
 // tra
 // =============================================================================
-  String get officialPrice => "Official Price";
+  String get officialPrice => "Giá chính thức";
 
   String get categoryScreenDescription =>
       "Alo ~ Bạn đang tìm loại quần áo nào?";
@@ -501,7 +532,7 @@ class $vi extends S {
   String get serviceFeeDescription =>
       "Dịch vụ giúp chúng tôi chạy nền tảng của chúng tôi và cung cấp trải nghiệm tốt hơn";
   String get submitOrder => "ĐẶT MUA";
-  String get fee => "fee";
+  String get fee => "Phí";
 
   String get needHelp => "Cần trợ giúp?";
   String get askUs => "Hỏi chúng tôi";
@@ -529,6 +560,29 @@ class $vi extends S {
   String get writeReview => "Viết nhận xét của bạn";
   String get send => "Gửi";
   String get selectOrEnterCoupon => "Chọn Hoặc Nhập Mã";
+  String get byRanking => "By Ranking";
+  String get whyLowerThanMarketPriceQuestion =>
+      "1. Tại sao giá của Dimodo thấp hơn giá thị trường?";
+  String get whereReviewsFromQuestion => "2. Những đánh giá này đến từ đâu?";
+  String get sameQualityAsInKoreaQuestion =>
+      "3. Chất lượng hàng hóa trong các cửa hàng trực tiếp có giống nhau không?";
+  String get whyLowerThanMarketpriceAnswer =>
+      "1.Tại sao giá của Dimodo thấp hơn giá thị trường?  \n\nNhà sáng lập Dimodo, là một người Hàn Quốc, tin rằng người Việt Nam xứng đáng được hưởng mức giá tốt hơn khi mua mỹ phẩm Hàn Quốc bằng cách đưa ra mức giá tại Hàn Quốc theo thời gian thực cho người Việt Nam.\n";
+  String get whereReivewsFromAnswer =>
+      "2.	Những đánh giá này đến từ đâu?\n\n Để giúp bạn chọn ra được những món mỹ phẩm Hàn Quốc phù hợp, Dimodo cung cấp những đánh giá từ Glowpick, dịch vụ đánh giá làm sản phẩm đẹp nổi tiếng và phổ biến nhất Hàn Quốc\n";
+  String get sameQualityAsInKoreaAnswer =>
+      "3.	Chất lượng hàng hóa trong các cửa hàng trực tiếp có giống nhau không? \n\n Các sản phẩm từ Dimodo được kiểm soát chặt chẽ bởi nhà sáng lập người Hàn Quốc của chúng tôi. Từ việc lựa chọn hàng hóa cho đến dịch vụ hậu mãi, mỹ phẩm Dimodo mua từ các kênh chính thức của Hàn Quốc và vận chuyển đến nhà bạn. Hãy chắc chắn rằng bạn mua nó một cách dễ dàng, yên tâm sử dụng, bạn có thể tự tin mua nó, chất lượng của cùng một sản phẩm là hoàn toàn đồng nhất.\n";
+  String get provenKoreanCosmeticsStory =>
+      "1. Mỹ phẩm Hàn Quốc được chứng nhận:\n\nDimodo đã cung cấp hơn 300 loại mỹ phẩm từ khi đi vào hoạt động vào đầu năm 2020. Chúng tôi chỉ đem lại những đánh giá đáng tin cậy từ người Hàn Quốc để giúp người dùng ứng dụng tìm ra được những sản phẩm tốt nhất và phù hợp với họ nhất. Không có những người tiêu dùng nào giống nhau trên thị trường làm đẹp. Độ tuổi, loại da, gu thẩm mỹ và cách nhìn nhận giá trị của mỗi người là khác nhau. Chúng tôi hướng đến tạo ra một môi trường giúp thể hiện được ý tưởng và cảm giác thật sự của bạn.\n";
+  String get getTheCheapesPriceStory =>
+      "2. Mua hàng với giá rẻ nhất \n\nNhà sáng lập Dimodo, một người Hàn Quốc hiện đang sinh sống tại Đà Nẵng, tin rằng người Việt Nam xứng đáng mua được mỹ phẩm Hàn với giá tốt hơn bằng cách cung cấp mức giá tại Hàn Quốc theo thời gian thực cho người dùng. Trong thời gian tới chúng tôi sẽ đưa ra mức giá phù hợp với khách hàng\n";
+  String get moneyBackGuaranteeStory =>
+      "3. Chính sách đảm bảo hoàn tiền \n\nChúng tôi có bảo đảm hoàn lại tiền trong 7 ngày cho tất cả các loại mỹ phẩm và quần áo đã mua trong Ứng dụng của chúng tôi. Chính sách đảm bảo hoàn tiền của chúng tôi mang đến cho bạn sự an tâm rằng các dịch vụ của chúng tôi sẽ đáp ứng các kỳ vọng được quy định trong Điều khoản dịch vụ. Trong phạm vi tối đa áp dụng theo luật quốc gia và không ảnh hưởng đến quyền lợi của bạn với tư cách là người tiêu dùng, bảo đảm hoàn tiền là biện pháp giải quyết duy nhất của bạn nếu dịch vụ của chúng tôi không đáp ứng được các kỳ vọng được quy định trong Điều khoản dịch vụ này. Các điều kiện sau đây áp dụng cho chính sách hoàn tiền của chúng tôi: \n\n -	Các mặt hàng đã mua được bảo đảm trong 7 ngày kể từ ngày mua ban đầu và đang trong thời hạn bảo hành.\n\n-	Người dùng cung cấp được các tài liệu chứng nhận tương ứng đủ để chứng minh rằng hàng hóa là giả, chẳng hạn như chứng nhận thương hiệu, chứng nhận kiểm tra chất lượng của bên thứ ba, v.v.\n\n-	Các mặt hàng bị hư hỏng hoặc bị lỗi được bảo đảm hoàn tiền.\n\n-	Các sản đã đập hộp hoặc đã qua sử dụng không được hưởng chính sách hoàn tiền. \n\n-	Các sản phẩm bị hư hỏng do tác động con người, rửa trôi, hoặc có tem nhãn/bao bì bị tháo rời không được áp dụng hoàn tiền.";
+  String get filter => "Bộ lọc";
+  String get allRankingResults => "Mọi kết quả xếp hạng dựa trên";
+  String get theMostFamousRanking =>
+      "Dịch vụ xếp hạng sản phẩm làm đẹp nổi tiếng và phổ biến nhất Hàn Quốc";
+
   // ===========================================================================
   // To Trnaslate
   // ===========================================================================
@@ -584,8 +638,8 @@ class $vi extends S {
   String get trustReviews => "Đánh giá";
   @override
   String get bannerDescription => "Hình ảnh của người nổi tiếng";
-  String get genuineSecurity => "Genuine Security";
-  String get sevenDayWorryFree => "Return within 7 days after sales";
+  String get genuineSecurity => "Bảo mật xác thực";
+  String get sevenDayWorryFree => "Trả hàng trong vòng 7 ngày sau khi mua";
 
   @override
   String get bannerTitle => "Mua sắm tiện lợi cùng nhau";
@@ -629,7 +683,7 @@ class $vi extends S {
   String get forgotpassword => "Quên mật khẩu?";
   @override
   String get welcomeToDimodo => "Chào Mừng đến với DIMODO";
-  String get seeMore => "See More";
+  String get seeMore => "Xem thêm";
 
   @override
   String get emptyWishlistSubtitle =>

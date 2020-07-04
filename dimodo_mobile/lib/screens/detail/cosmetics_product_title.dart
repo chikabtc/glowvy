@@ -100,7 +100,7 @@ class CosmeticsProductTitle extends StatelessWidget {
                 ),
                 Container(
                   decoration: BoxDecoration(
-                    color: kDefaultBackground,
+                    // color: kDefaultBackground,
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
                   child: Padding(
@@ -121,13 +121,13 @@ class CosmeticsProductTitle extends StatelessWidget {
                 ),
                 Container(
                   height: 10,
-                  color: kDefaultBackground,
+                  // color: kDefaultBackground,
                 ),
                 Container(
                   width: MediaQuery.of(context).size.width,
                   child: DynamicText(
                     "${product.seller.name} " +
-                        "${product.sname}" +
+                        "${product.name}" +
                         " ${product.volume}",
                     style: kBaseTextStyle.copyWith(
                         fontSize: 13, fontWeight: FontWeight.w600),

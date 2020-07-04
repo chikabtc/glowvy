@@ -11,7 +11,8 @@ Review _$ReviewFromJson(Map<String, dynamic> json) {
     id: json['id'] as String,
     createdTime: json['created_time'] as String,
     type: json['type'] as String,
-    text: json['text'] as String,
+    content: json['content'] as String,
+    scontent: json['scontent'] as String,
     product: json['product'] == null
         ? null
         : ReviewProduct.fromJson(json['product'] as Map<String, dynamic>),
@@ -26,7 +27,8 @@ Map<String, dynamic> _$ReviewToJson(Review instance) => <String, dynamic>{
       'id': instance.id,
       'created_time': instance.createdTime,
       'type': instance.type,
-      'text': instance.text,
+      'content': instance.content,
+      'scontent': instance.scontent,
       'product': instance.product,
       'user': instance.user,
       'images': instance.images,

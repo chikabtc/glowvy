@@ -10,6 +10,11 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
   return Product(
     id: json['id'] as int,
     thumbnail: json['thumbnail'] as String,
+    rating: json['rating'] as String,
+    cosmeticsRank: json['cosmetics_rank'] == null
+        ? null
+        : CosmeticsRank.fromJson(
+            json['cosmetics_rank'] as Map<String, dynamic>),
     name: json['name'] as String,
     volume: json['volume'] as String,
     sname: json['sname'] as String,
@@ -65,10 +70,12 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'sale_price': instance.salePrice,
       'price': instance.price,
       'category_id': instance.categoryId,
+      'rating': instance.rating,
       'category_name': instance.categoryName,
       'sale_percent': instance.salePercent,
       'purchase_count': instance.purchaseCount,
       'volume': instance.volume,
+      'cosmetics_rank': instance.cosmeticsRank,
       'size_details': instance.sizeDetails,
       'options': instance.options,
       'product_etc_info': instance.productEtcInfo,

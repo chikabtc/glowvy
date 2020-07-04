@@ -1,7 +1,8 @@
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/services/index.dart';
+import 'package:Dimodo/widgets/fashion_filter_bar.dart';
 import 'package:Dimodo/widgets/product/product_list.dart';
-import 'package:Dimodo/widgets/product_filter_bar.dart';
+// import 'package:Dimodo/widgets/product_filter_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:Dimodo/common/styles.dart';
@@ -129,13 +130,14 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
                                         sortBy: lowToHigh,
                                         start: 0,
                                         limit: 6);
+                                showFilteredResults = false;
                               });
                             },
                             tabs: renderTabbar(),
                           ),
                         ),
                       ),
-                      FilterBar(
+                      FashionFilterBar(
                         products: products,
                         onFilterConfirm: (filteredProducts) {
                           setState(() {
@@ -143,14 +145,15 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
                             this.filteredResults = filteredProducts;
                           });
                         },
+                        onSortingChanged: (sorted) {
+                          setState(() {
+                            showFilteredResults = true;
+                            this.filteredResults = sorted;
+                          });
+                        },
                         onReset: (filteredProducts) {
                           setState(() {
                             showFilteredResults = false;
-                          });
-                        },
-                        onSortingChanged: (sortedResults) {
-                          setState(() {
-                            this.filteredResults = sortedResults;
                           });
                         },
                       )

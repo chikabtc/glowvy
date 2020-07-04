@@ -8,7 +8,8 @@ class Review {
   String id;
   String createdTime;
   String type;
-  String text;
+  String content;
+  String scontent;
   ReviewProduct product;
   ReviewUser user;
   List<String> images;
@@ -17,11 +18,15 @@ class Review {
     this.id,
     this.createdTime,
     this.type,
-    this.text,
+    this.content,
+    this.scontent,
     this.product,
     this.user,
     this.images,
   });
+
+  @override
+  String toString() => 'Review { id: ${user.name} name: ${user.skinType} }';
 
 //testing codemagic
   factory Review.fromJson(Map<String, dynamic> json) => _$ReviewFromJson(json);

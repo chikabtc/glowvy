@@ -31,8 +31,6 @@ class CosmeticsProductCard extends StatelessWidget {
   });
 
   onTapProduct(context) {
-    print("tapping this prd: ${product.sid}");
-
     Navigator.push(
         context,
         MaterialPageRoute<void>(
@@ -102,19 +100,19 @@ class CosmeticsProductCard extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "${product.sname}",
+                    "${product.name}",
                     maxLines: 1,
                     style: kBaseTextStyle.copyWith(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  Row(
+                  Wrap(
                     children: <Widget>[
                       if (tags.length > 0)
                         for (var tag in tags)
                           Text(
-                            tag.sname + " | ",
+                            tag.name + " | ",
                             maxLines: 1,
                             style: kBaseTextStyle.copyWith(
                                 color: kDarkSecondary,
@@ -127,11 +125,7 @@ class CosmeticsProductCard extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       Text(
-                        product.salePercent != null
-                            ? Tools.getPriceProduct(product, "VND",
-                                onSale: true)
-                            : Tools.getPriceProduct(product, "VND",
-                                onSale: false),
+                        Tools.getPriceProduct(product, "VND", onSale: true),
                         style: kBaseTextStyle.copyWith(
                             color: kPinkAccent,
                             fontSize: 15,

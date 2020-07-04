@@ -1,5 +1,7 @@
+import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../common/constants.dart';
 import '../common/config.dart' as config;
@@ -18,6 +20,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
   PageController _pageController = PageController(
     initialPage: 0,
   );
+  var onboardingData;
 
   @override
   void dispose() {
@@ -75,8 +78,22 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     kSizeConfig = SizeConfig(screenSize);
+    try {
+      onboardingData =
+          Provider.of<AppModel>(context, listen: false).appConfig['Onboarding'];
+      // print("surveys: $surveys");
+      // for (var item in surveys) {
+      //   this.surveys.add(Survey.fromJson(item));
+      // }
+    } catch (err) {
+      var message =
+          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
+              err.toString();
 
-    for (int i = 0; i < config.onBoardingData.length; i++) {
+      print("error: $message");
+    }
+
+    for (int i = 0; i < onboardingData.length; i++) {
       var page = Container(
         color: kDefaultBackground,
         child: Column(
@@ -88,7 +105,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
             Container(
               width: screenSize.width,
               child: Image.asset(
-                config.onBoardingData[i]['image'],
+                onboardingData[i]['image'],
                 fit: BoxFit.contain,
               ),
             ),
@@ -100,23 +117,29 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
-                  Expanded(
-                    child: FittedBox(
-                      fit: BoxFit.fitWidth,
-                      child: Text(config.onBoardingData[i]['title'],
-                          textAlign: TextAlign.center,
-                          style: kBaseTextStyle.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: kDefaultFontColor,
-                            decoration: TextDecoration.none,
-                          )),
-                    ),
+                  // Text(onboardingData[i]['title'],
+                  //     textAlign: TextAlign.center,
+                  //     style: kBaseTextStyle.copyWith(
+                  //       fontWeight: FontWeight.bold,
+                  //       color: kDefaultFontColor,
+                  //       decoration: TextDecoration.none,
+                  FittedBox(
+                    fit: BoxFit.cover,
+                    child: DynamicText(onboardingData[i]['title'],
+                        maxLines: 2,
+                        textAlign: TextAlign.center,
+                        style: kBaseTextStyle.copyWith(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: kDefaultFontColor,
+                          decoration: TextDecoration.none,
+                        )),
                   ),
                 ],
               ),
             ),
             SizedBox(height: 10),
-            DynamicText(config.onBoardingData[i]['desc'],
+            DynamicText(onboardingData[i]['desc'],
                 style: kBaseTextStyle.copyWith(
                     fontWeight: FontWeight.bold,
                     color: kDarkSecondary,

@@ -1,3 +1,7 @@
+import 'dart:ffi';
+
+import 'package:Dimodo/models/product/cosmetics_rank.dart';
+
 import '../brandi/option.dart';
 import '../sizeDetail.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -22,10 +26,12 @@ class Product {
   int salePrice;
   int price;
   int categoryId;
+  String rating;
   String categoryName;
   int salePercent;
   int purchaseCount;
   String volume;
+  CosmeticsRank cosmeticsRank;
 
   List<SizeDetail> sizeDetails;
   List<Option> options;
@@ -36,6 +42,8 @@ class Product {
   Product({
     this.id,
     this.thumbnail,
+    this.rating,
+    this.cosmeticsRank,
     this.name,
     this.volume,
     this.sname,
@@ -68,12 +76,13 @@ class Product {
     return name == 'Loading...' && price == '0.0';
   }
 
-  factory Product.fromJson(Map<String, dynamic> json) =>
-      _$ProductFromJson(json);
+  factory Product.fromJson(Map<String, dynamic> json) {
+    return _$ProductFromJson(json);
+  }
   Map<String, dynamic> toJson() => _$ProductToJson(this);
 
   @override
-  String toString() => 'Product { id: $id name: $name }';
+  String toString() => 'Product { id: $id name: $sname }';
 }
 
 class ProductVariation {

@@ -108,31 +108,30 @@ const String adminEmail = "admininspireui@gmail.com";
 /// the welcome screen data
 List onBoardingData = [
   {
-    "title": "Shop Genuine Korean Brands",
+    "title": "Proven Korean Cosmetics",
     "image": "assets/images/onboarding/onborading-illustration-1.png",
     "indicator": "assets/images/onboarding/logo1.png",
     "widthImage": "400",
     "heightImage": "395",
-    "desc": "Guaranteed the quality of Korean standard products. "
+    "desc": "Hundreds of trustable reviews for your skin types"
   },
   {
-    "title": "With Guaranteed Support",
+    "title": "Best Deal Everyday",
     "image": "assets/images/onboarding/onborading-illustration-2.png",
     "indicator": "assets/images/onboarding/logo2.png",
     "widthImage": "400",
     "heightImage": "395",
-    "desc": "Genuine security and 7 days after sales worry free."
+    "desc": "Update official lowest price in Korea everyday"
   },
   {
-    "title": "Into Ulzzang Fashion Trend",
+    "title": "Money Back Guarante",
     "image": "assets/images/onboarding/onborading-illustration-3.png",
     "indicator": "assets/images/onboarding/logo3.png",
     "widthImage": "400",
     "heightImage": "395",
-    "desc": "Directly ship from Korea with a reasonable price!"
+    "desc": "Get in touch with Dimodo anytime after order"
   },
 ];
-
 const PaypalConfig = {
   "clientId":
       "ASlpjFreiGp3gggRKo6YzXMyGM6-NwndBAQ707k6z3-WkSSMTPDfEFmNmky6dBX00lik8wKdToWiJj5w",

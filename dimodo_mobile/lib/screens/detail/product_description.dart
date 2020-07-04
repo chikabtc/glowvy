@@ -56,7 +56,7 @@ class _ProductDescriptionState extends State<ProductDescription>
     var imagesWidget = <Widget>[];
     //create a concanteanated string
     var images = widget.product.descImages;
-    images.forEach((img) {
+    images?.forEach((img) {
       // print("image to render: $img");
       if (img != null && img != "") {
         imagesWidget.add(Tools.image(

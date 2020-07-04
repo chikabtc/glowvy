@@ -98,7 +98,7 @@ class ProductTitle extends StatelessWidget {
           Container(
             width: MediaQuery.of(context).size.width,
             child: DynamicText(
-              "${product.sname}",
+              "${product.name}",
               style: kBaseTextStyle.copyWith(
                   fontSize: 13, fontWeight: FontWeight.w600),
             ),
