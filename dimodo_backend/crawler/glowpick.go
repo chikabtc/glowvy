@@ -20,7 +20,7 @@ import (
 	"github.com/gocolly/colly/extensions"
 )
 
-const glowPickAuth = "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJnbG93cGljay53ZWIiLCJpYXQiOjE1OTM3NDE1MzUsInN1YiI6Imdsb3dwaWNrLWF1dGgiLCJpc3MiOiJnbG93ZGF5eiIsImV4cCI6MTU5MzgyNzkzNSwiYXVkIjoiSTRXWmlNbTg1YmppUDlaTzI4VUJncC8zSkYvZVpuSlpueURsOWp0cGx2N3AyaVRrL0VVWmhINDgwN0p0dzhwRGFxZjhlZmJCc2FTeTh1RCtpMXZaWVE9PSJ9.He1EiN05Cknz9qAiD2PV8GfwMnRkL8tkDYHo-IIsbWM"
+const glowPickAuth = "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJnbG93cGljay53ZWIiLCJpYXQiOjE1OTQwMDk5NjgsInN1YiI6Imdsb3dwaWNrLWF1dGgiLCJpc3MiOiJnbG93ZGF5eiIsImV4cCI6MTU5NDA5NjM2OCwiYXVkIjoiSTRXWmlNbTg1YmppUDlaTzI4VUJnblVjcnZPKy9BQmRMYUVyeFJKODRiWVNaYkpmWHBvYWdOT3lqeWlaN3BLbnRYWDZKOU5PVVRWNndtRS9wVlM0d2c9PSJ9.ycfCWa1VnPdnuUShtWhF09y-ugUCSyTNWPWH0tWgCmk"
 
 //parentid always 2
 //category: idx
@@ -35,6 +35,72 @@ const glowPickAuth = "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJnbG93cGljay53ZWIiLCJpYXQiO
 //mix
 //normal
 //dry
+// if err := crawler.GetGlowPickProductsByRank(2, 4, 25, "all", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
+// if err := crawler.GetGlowPickProductsByRank(2, 4, 25, "sensitive", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
+// if err := crawler.GetGlowPickProductsByRank(2, 4, 25, "dry", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
+// if err := crawler.GetGlowPickProductsByRank(2, 4, 25, "oily", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
+// // cleansers
+// if err := crawler.GetGlowPickProductsByRank(2, 32, 25, "all", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
+// if err := crawler.GetGlowPickProductsByRank(2, 32, 25, "sensitive", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
+// if err := crawler.GetGlowPickProductsByRank(2, 32, 25, "dry", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
+// if err := crawler.GetGlowPickProductsByRank(2, 32, 25, "oil", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
+
+// if err := crawler.GetGlowPickProductsByRank(2, 3, 25, "all", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
+
+// if err := crawler.GetGlowPickProductsByRank(2, 3, 25, "sensitive", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
+// if err := crawler.GetGlowPickProductsByRank(2, 3, 25, "dry", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
+// if err := crawler.GetGlowPickProductsByRank(2, 3, 25, "oily", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
+// //Whitening serum
+// if err := crawler.GetGlowPickProductsByRank(3, 16, 25, "all", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
+// if err := crawler.GetGlowPickProductsByRank(3, 16, 25, "sensitive", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
+// if err := crawler.GetGlowPickProductsByRank(3, 16, 25, "dry", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
+// if err := crawler.GetGlowPickProductsByRank(3, 16, 25, "oily", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
+// //Whitening cream
+// if err := crawler.GetGlowPickProductsByRank(3, 25, 25, "all", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
+
+// if err := crawler.GetGlowPickProductsByRank(3, 25, 25, "sensitive", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
+// if err := crawler.GetGlowPickProductsByRank(3, 25, 25, "oily", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
+// if err := crawler.GetGlowPickProductsByRank(3, 25, 25, "dry", "rank"); err != nil {
+// 	fmt.Println(err)
+// }
 
 //need to be careful when the order is price or others not rank
 //should not change the rank of the products if the order is not rank
@@ -139,7 +205,6 @@ func (c *Crawler) createGlowPickProductById(id, skinType string, category, level
 			glwProduct.Data.ProductImg,
 			glwProduct.Data.IsDiscontinue,
 			glwProduct.Data.Brand.IDBrand,
-			glwProduct.Data.Brand.BrandTitle,
 			glwProduct.Data.Brand.BrandImg,
 			glwProduct.Data.Description,
 			categoryId,

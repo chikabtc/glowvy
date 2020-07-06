@@ -123,6 +123,7 @@ type Product struct {
 	Rating         string       `json:"rating,omitempty"`
 	Sale_percent   int          `json:"sale_percent,omitempty"`
 	Purchase_count int          `json:"purchase_count,omitempty"`
+	Review_count   int          `json:"review_count,omitempty"`
 	Price          int          `json:"price,omitempty"`
 	CategoryId     int          `json:"category_id"`
 	CategoryName   string       `json:"category_name,omitempty"`

@@ -94,6 +94,7 @@ type Order_item struct {
 func (cs *cartService) AllCartItems(userId int) ([]Cart_item, error) {
 	rows, err := cs.dot.Query(cs.DB, "AllCartItems", userId)
 	if err != nil {
+		fmt.Println("AllCartItems: ", err)
 		bugsnag.Notify(err)
 		return nil, err
 	}
@@ -106,7 +107,7 @@ func (cs *cartService) AllCartItems(userId int) ([]Cart_item, error) {
 			&item.Quantity,
 			&item.Option,
 			&item.Option_id,
-			&item.Product.Id,
+			&item.Product.Sid,
 			&item.Product.Name,
 			&item.Product.CategoryId,
 			&item.Product.Thumbnail,
@@ -117,6 +118,8 @@ func (cs *cartService) AllCartItems(userId int) ([]Cart_item, error) {
 		}
 		itemInCart = append(itemInCart, item)
 	}
+	fmt.Println("AllCartItems ", err)
+
 	return itemInCart, nil
 }
 

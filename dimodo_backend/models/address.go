@@ -70,7 +70,6 @@ func (as *addressService) GetAddess(userID int) ([]Address, error) {
 
 	for rows.Next() {
 		var address Address
-
 		rows.Scan(
 			&address.Id,
 			&address.Recipient_name,
@@ -80,7 +79,6 @@ func (as *addressService) GetAddess(userID int) ([]Address, error) {
 			&address.Ward.District.Name,
 			&address.Ward.Name,
 			&address.Is_default)
-
 		if err != nil {
 			bugsnag.Notify(err)
 			switch err {

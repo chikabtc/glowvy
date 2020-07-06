@@ -1,7 +1,7 @@
 --name: FindProductById
 SELECT
     product.id,
-    product.sprice,
+    product.price,
     product.name,
     product.thumbnail
 FROM
@@ -33,7 +33,7 @@ SELECT
     product.sid,
     product.name,
     product.thumbnail,
-    product.sprice,
+    product.price,
     product.sale_price,
     product.sale_percent,
     COALESCE(product.purchase_count, 0) AS purchase_count,
@@ -80,7 +80,7 @@ SELECT
     product.sid,
     product.name,
     product.thumbnail,
-    product.sprice,
+    product.price,
     product.sale_price,
     product.sale_percent,
     COALESCE(product.purchase_count, 0) AS purchase_count,
@@ -125,7 +125,7 @@ WITH matching_product_sids AS (
 SELECT
     product.id,
     product.sid,
-    product.sprice,
+    product.price,
     product.sale_price,
     product.sale_percent,
     COALESCE(product.purchase_count, 0) AS purchase_count,
@@ -164,7 +164,7 @@ LIMIT $4;
 SELECT DISTINCT
     product.id,
     product.sid,
-    product.sprice,
+    product.price,
     product.sale_price,
     product.sale_percent,
     COALESCE(product.purchase_count, 0) AS purchase_count,
@@ -181,7 +181,7 @@ LIMIT $3;
 --name:	CategoryProductsQuery
 SELECT
     id,
-    sprice,
+    price,
     name,
     image
 FROM
@@ -244,7 +244,7 @@ SELECT
     product.Id,
     product.Sid,
     product.name,
-    product.sprice,
+    product.price,
     product.sale_percent,
     product.sale_price,
     product.description,
@@ -330,7 +330,7 @@ WITH item_tags AS (
 SELECT
     product.Sid,
     product.name,
-    product.sprice,
+    product.price,
     product.sale_percent,
     product.sale_price,
     product.thumbnail,

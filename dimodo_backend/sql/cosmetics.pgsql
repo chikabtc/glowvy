@@ -1,17 +1,17 @@
 -- name: ProductsByCategoryID
 SELECT
-    cosmetics_products.id,
-    cosmetics_products.sid,
-    cosmetics_products.name,
-    -- cosmetics_products.eg_name,
-    cosmetics_products.thumbnail,
-    cosmetics_products.price,
-    cosmetics_products.sale_price,
-    cosmetics_products.average_rating,
-    cosmetics_products.description,
-    cosmetics_products.sdescription,
-    cosmetics_products.volume,
-    cosmetics_products.review_count,
+    product.id,
+    product.sid,
+    product.name,
+    -- product.eg_name,
+    product.thumbnail,
+    product.price,
+    product.sale_price,
+    product.average_rating,
+    product.description,
+    product.sdescription,
+    product.volume,
+    product.review_count,
     cosmetics_category.sname,
     cosmetics_rank.category_id,
     json_agg(json_build_object('name', cosmetics_tags.name, 'sname', cosmetics_tags.sname, 'id', cosmetics_tags.id, 'type', cosmetics_tags.type)),
@@ -23,7 +23,7 @@ SELECT
     cosmetics_rank.dry_rank,
     cosmetics_rank.sensitive_rank
 FROM
-    cosmetics_products,
+    product,
     cosmetics_rank,
     cosmetics_product_tags,
     cosmetics_tags,
@@ -31,14 +31,15 @@ FROM
     cosmetics_brands
 WHERE
     cosmetics_rank.category_id = $1
-    AND cosmetics_rank.product_id = cosmetics_products.sid
-    AND cosmetics_category.sid = cosmetics_products.category_id
-    AND cosmetics_products.sid = cosmetics_rank.product_id
+    AND product.source = 'glowpick'
+    AND cosmetics_rank.product_id = product.sid
+    AND cosmetics_category.sid = product.category_id
+    AND product.sid = cosmetics_rank.product_id
     AND cosmetics_product_tags.product_id = cosmetics_rank.product_id
     AND cosmetics_tags.id = cosmetics_product_tags.tag_id
-    AND cosmetics_brands.sid = cosmetics_products.brand_id
+    AND cosmetics_brands.sid = product.brand_id
 GROUP BY
-    cosmetics_products.id,
+    product.id,
     cosmetics_rank.category_id,
     cosmetics_rank.sensitive_rank,
     cosmetics_rank.all_rank,
@@ -154,19 +155,62 @@ WHERE
 
 --name: GetAllCosmeticsProducts
 SELECT
-    sid,
-    sdescription
+    product.id,
+    product.sid,
+    product.name,
+    -- product.eg_name,
+    product.thumbnail,
+    product.price,
+    product.sale_price,
+    product.average_rating,
+    product.description,
+    product.sdescription,
+    product.volume,
+    product.review_count,
+    cosmetics_category.sname,
+    cosmetics_rank.category_id,
+    json_agg(json_build_object('name', cosmetics_tags.name, 'sname', cosmetics_tags.sname, 'id', cosmetics_tags.id, 'type', cosmetics_tags.type)),
+    cosmetics_brands.name,
+    cosmetics_brands.id,
+    cosmetics_brands.img,
+    cosmetics_rank.all_rank,
+    cosmetics_rank.oily_rank,
+    cosmetics_rank.dry_rank,
+    cosmetics_rank.sensitive_rank
 FROM
-    cosmetics_products
+    product,
+    cosmetics_rank,
+    cosmetics_product_tags,
+    cosmetics_tags,
+    cosmetics_category,
+    cosmetics_brands
 WHERE
-    description IS NULL;
-
---name: TranslateCosmetics
-UPDATE
-    cosmetics_products
-SET
-    -- name = $1
-    description = $1
-WHERE
-    sid = $2;
+    product.source = 'glowpick'
+    AND cosmetics_rank.product_id = product.sid
+    AND cosmetics_category.sid = product.category_id
+    AND product.sid = cosmetics_rank.product_id
+    AND cosmetics_product_tags.product_id = cosmetics_rank.product_id
+    AND cosmetics_tags.id = cosmetics_product_tags.tag_id
+    AND cosmetics_brands.sid = product.brand_id
+GROUP BY
+    product.id,
+    cosmetics_rank.category_id,
+    cosmetics_rank.sensitive_rank,
+    cosmetics_rank.all_rank,
+    cosmetics_rank.dry_rank,
+    cosmetics_rank.oily_rank,
+    cosmetics_rank.neutral_rank,
+    cosmetics_brands.sname,
+    cosmetics_brands.id,
+    cosmetics_brands.img,
+    cosmetics_category.sname
+    --name: TranslateCosmetics
+    UPDATE
+        product
+    SET
+        -- name = $1
+        description = $1
+    WHERE
+        sid = $2
+        AND source = 'glowpick';
 

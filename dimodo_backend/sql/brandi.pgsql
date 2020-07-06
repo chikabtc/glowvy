@@ -1,5 +1,5 @@
 --name: sqlCreateProducts
-INSERT INTO product (sid, sprice, sale_price, sale_percent, purchase_count, name, category_id, thumbnail, creater)
+INSERT INTO product (sid, price, sale_price, sale_percent, purchase_count, name, category_id, thumbnail, creater)
 SELECT
    CAST($1 AS varchar),
    $2,
@@ -44,7 +44,7 @@ WHERE
       WHERE
          seller = $4);
 
-sprice,
+price,
 sale_price,
 sale_percent,
 thumbnail
@@ -53,10 +53,10 @@ UPDATE
    product
 SET
    sid = CAST($1 AS varchar),
-   sprice = $2,
+   price = $2,
    sale_price = $3,
    sale_percent = $4,
-   purchase_count = $5,
+   reivew_count = $5,
    description = $6,
    slider_images = $7,
    desc_images = $8,
@@ -75,7 +75,7 @@ INSERT INTO product (sid, name, price, sale_percent, sale_price, thumbnail, crea
    VALUES ($1, $2, $3, $4, $5, $6, 1);
 
 --name: CreateProduct
-INSERT INTO product (sid, sname, sprice, sale_price, sale_percent, purchase_count, thumbnail, description, slider_images, desc_images, options, soptions, seller, size_details, category_id, creater)
+INSERT INTO product (sid, sname, price, sale_price, sale_percent, purchase_count, thumbnail, description, slider_images, desc_images, options, soptions, seller, size_details, category_id, creater)
 SELECT
    CAST($1 AS varchar),
    $2,
@@ -146,7 +146,7 @@ WHERE
 UPDATE
    product
 SET
-   sprice = $2,
+   price = $2,
    sale_price = $3,
    sale_percent = $4,
    category_id = $5,

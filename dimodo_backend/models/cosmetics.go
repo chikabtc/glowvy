@@ -35,6 +35,8 @@ type CosmeticsService interface {
 	TranslateAllCosmeticsTags()
 	TranslateAllReviewUserName()
 	TranslateAllCosmetics()
+
+	AllCosmeticsProducts() ([]Product, error)
 }
 
 type cosmeticsService struct {
@@ -48,6 +50,83 @@ func NewCosmeticsService(db *sql.DB) CosmeticsService {
 		DB:  db,
 		dot: cosmeticsDot,
 	}
+}
+func (gs *cosmeticsService) AllCosmeticsProducts() ([]Product, error) {
+	//if cateId is smaller than 10, it's a parent cateid
+	// categoryId, err := strconv.Atoi(categoryID)
+	var rows *sql.Rows
+	var err error
+	rows, err = gs.dot.Query(gs.DB, "GetAllCosmeticsProducts")
+
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("GetAllCosmeticsProducts", err)
+		return nil, err
+	}
+
+	var tags []uint8
+
+	defer rows.Close()
+	products := []Product{}
+	for rows.Next() {
+		var brand Seller
+		var rating float64
+		var cosmeticsRank CosmeticsRank
+		var productOption Option
+
+		var product Product
+		if err := rows.Scan(
+			&product.Id,
+			&product.Sid,
+			&product.Name,
+			&product.Thumbnail,
+			&product.Price,
+			&product.Sale_price,
+			&rating,
+			&product.Description,
+			&product.Sdescription,
+			&product.Volume,
+			&product.Purchase_count,
+			&product.CategoryName,
+			&product.CategoryId,
+			&tags,
+			&brand.Name,
+			&brand.ID,
+			&brand.ImageURL,
+			&cosmeticsRank.AllSkinRank,
+			&cosmeticsRank.OilySkinRank,
+			&cosmeticsRank.DrySkinRank,
+			&cosmeticsRank.SensitiveSkinRank,
+		); err != nil {
+			bugsnag.Notify(err)
+			fmt.Println("fail to Next", err)
+			return nil, err
+		}
+		// productOptions
+		err = json.Unmarshal([]byte(tags), &product.Tags)
+		if err != nil {
+			fmt.Println("fail to unmarshall tags: ", err)
+		}
+		var attribute struct {
+			Order int    `json:"order"`
+			Title string `json:"title"`
+			Value string `json:"value"`
+		}
+		attribute.Title = "Option"
+		attribute.Value = product.Volume
+
+		productOption.Attributes = append(productOption.Attributes, attribute)
+		productOption.ProductID = fmt.Sprintf("%d", product.Sid)
+
+		averageRating := fmt.Sprintf("%f", rating) // s == "123
+		product.Rating = averageRating
+		product.CosmeticsRank = cosmeticsRank
+		product.Options = append(product.Options, productOption)
+
+		product.Seller = brand
+		products = append(products, product)
+	}
+	return products, nil
 }
 
 func (gs *cosmeticsService) ProductsByCategoryID(categoryID int, skinType string) ([]Product, error) {
@@ -64,7 +143,6 @@ func (gs *cosmeticsService) ProductsByCategoryID(categoryID int, skinType string
 		return nil, err
 	}
 
-	var productOption Option
 	var tags []uint8
 
 	defer rows.Close()
@@ -73,6 +151,7 @@ func (gs *cosmeticsService) ProductsByCategoryID(categoryID int, skinType string
 		var brand Seller
 		var rating float64
 		var cosmeticsRank CosmeticsRank
+		var productOption Option
 
 		var product Product
 		if err := rows.Scan(

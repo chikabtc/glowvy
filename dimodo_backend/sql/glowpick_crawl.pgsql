@@ -1,5 +1,5 @@
 --name: CreateProduct
-INSERT INTO cosmetics_products (sid, sname, volume, price, review_count, average_rating, thumbnail, is_discontinued, brand_id, brand, brand_img, sdescription, category_id)
+INSERT INTO product (sid, sname, volume, price, review_count, average_rating, thumbnail, is_discontinued, brand_id, brand_img, sdescription, category_id, source)
 SELECT
     $1,
     $2,
@@ -12,14 +12,13 @@ SELECT
     $9,
     $10,
     $11,
-    $12,
-    $13
+    $12 'glowpick'
 WHERE
     NOT EXISTS (
         SELECT
             1
         FROM
-            cosmetics_products
+            product
         WHERE
             sid = $1);
 
@@ -41,7 +40,7 @@ SELECT
         SELECT
             1
         FROM
-            cosmetics_products
+            product
         WHERE
             sid = $1);
 

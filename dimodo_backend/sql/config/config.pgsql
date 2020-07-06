@@ -1,5 +1,6 @@
 roDROP TABLE files;
 
+
 /* systems */
 CREATE TABLE files (
     id bigserial PRIMARY KEY,
@@ -127,7 +128,9 @@ CREATE TABLE systems (
     updated_at bigint DEFAULT extract(epoch FROM now()),
     deleted_at bigint
 );
+
 DROP TABLE subject;
+
 CREATE TABLE subject (
     /* Email */
     id bigserial PRIMARY KEY,
@@ -136,6 +139,7 @@ CREATE TABLE subject (
 );
 
 DROP TABLE pin_reset_password;
+
 CREATE TABLE pin_reset_password (
     id bigserial PRIMARY KEY,
     id_account bigint,
@@ -144,7 +148,9 @@ CREATE TABLE pin_reset_password (
     creater bigint NOT NULL,
     created_at bigint DEFAULT extract(epoch FROM now())
 );
+
 DROP TABLE category_default;
+
 CREATE TABLE category_default (
     id bigserial PRIMARY KEY,
     name varchar,
@@ -156,7 +162,9 @@ CREATE TABLE category_default (
     updated_at bigint DEFAULT extract(epoch FROM now()),
     deleted_at bigint
 );
+
 DROP TABLE dategory_handle;
+
 CREATE TABLE dategory_handle (
     id bigserial PRIMARY KEY,
     name varchar,
@@ -168,7 +176,9 @@ CREATE TABLE dategory_handle (
     updated_at bigint DEFAULT extract(epoch FROM now()),
     deleted_at bigint
 );
+
 DROP TABLE category;
+
 CREATE TABLE category (
     id bigserial PRIMARY KEY,
     name varchar,
@@ -182,12 +192,14 @@ CREATE TABLE category (
     updated_at bigint DEFAULT extract(epoch FROM now()),
     deleted_at bigint
 );
+
 DROP TABLE product;
+
 CREATE TABLE product (
     id bigserial PRIMARY KEY,
     name varchar,
     describe varchar,
-	price bigint,
+    price bigint,
     sale_price bigint,
     purchase_count bigint,
     sale_percent bigint,
@@ -195,7 +207,7 @@ CREATE TABLE product (
     barcode varchar,
     thumbnail varchar,
     sid varchar,
-    sprice bigint,
+    price bigint,
     sname varchar,
     surl varchar,
     creater bigint NOT NULL,
@@ -205,22 +217,13 @@ CREATE TABLE product (
     updated_at bigint DEFAULT extract(epoch FROM now()),
     deleted_at bigint
 );
-DROP TABLE seller
-CREATE TABLE seller (
-    id bigserial PRIMARY KEY,
-    name varchar,
-    describe varchar,
-    phone varchar,
-    address varchar,
-    creater bigint NOT NULL,
-    updater bigint,
-    deleter bigint,
-    created_at bigint DEFAULT extract(epoch FROM now()),
-    updated_at bigint DEFAULT extract(epoch FROM now()),
-    deleted_at bigint
+
+DROP TABLE seller CREATE TABLE seller (
+    id bigserial PRIMARY KEY, name varchar, describe varchar, phone varchar, address varchar, creater bigint NOT NULL, updater bigint, deleter bigint, created_at bigint DEFAULT extract(epoch FROM now()), updated_at bigint DEFAULT extract(epoch FROM now()), deleted_at bigint
 );
 
 DROP TABLE brandi_seller;
+
 CREATE TABLE brandi_seller (
     id bigserial PRIMARY KEY,
     kakao_talk_id varchar,
@@ -237,7 +240,9 @@ CREATE TABLE brandi_seller (
     representative_name varchar,
     mail_order_business_code varchar
 );
+
 DROP TABLE province;
+
 CREATE TABLE province (
     id bigserial PRIMARY KEY,
     name varchar,
@@ -251,6 +256,7 @@ CREATE TABLE province (
 );
 
 DROP TABLE district;
+
 CREATE TABLE district (
     id bigserial PRIMARY KEY,
     name varchar,
@@ -278,6 +284,7 @@ CREATE TABLE ward (
     updated_at bigint DEFAULT extract(epoch FROM now()),
     deleted_at bigint
 );
+
 DROP TABLE address;
 
 CREATE TABLE address (
@@ -384,6 +391,7 @@ CREATE TABLE payment_method (
 );
 
 DROP TABLE payment_method;
+
 CREATE TABLE shipping_method (
     id bigserial PRIMARY KEY,
     name varchar,

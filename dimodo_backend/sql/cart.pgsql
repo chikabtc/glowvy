@@ -30,14 +30,14 @@ SELECT
     product.name,
     product.category_id,
     product.thumbnail,
-    product.sprice,
+    product.price,
     product.sale_price,
     product.sale_percent
 FROM
     cart_item,
     product
 WHERE
-    CAST(cart_item.product_id AS varchar) = product.sid
+    cart_item.product_id = product.sid
     AND cart_item.user_id = $1;
 
 --name:	AvailableCoupons
@@ -157,7 +157,7 @@ SELECT
     product.category_id,
     product.name,
     product.thumbnail,
-    product.sprice,
+    product.price,
     product.sale_price,
     product.sale_percent
 FROM
