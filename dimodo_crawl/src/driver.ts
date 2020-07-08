@@ -30,13 +30,34 @@ async function getCosmeticsProductsWithoutReviews() {
     const results = await pool.query(sql.getCosmeticsWithoutReviews());
     results.rows.forEach((element) => {
       products.push(element);
-      // console.log(
-      //   element["ko_name"].replace("(", "").replace(")", "") +
-      //     " " +
-      //     element["sname"] +
-      //     " " +
-      //     element["volume"]
-      // );
+    });
+  } catch (e) {
+    console.log("something went wrong", e);
+  } finally {
+    return products;
+  }
+}
+async function getCosmeticsProductsWithoutSalesPrice() {
+  var products = [] as any;
+  try {
+    console.log("connected successfully");
+    const results = await pool.query(sql.getCosmeticsWithoutSalesPrice());
+    results.rows.forEach((element) => {
+      products.push(element);
+    });
+  } catch (e) {
+    console.log("something went wrong", e);
+  } finally {
+    return products;
+  }
+}
+async function getCosmeticsWithoutImages() {
+  var products = [] as any;
+  try {
+    console.log("connected successfully");
+    const results = await pool.query(sql.getCosmeticsWithoutImages());
+    results.rows.forEach((element) => {
+      products.push(element);
     });
   } catch (e) {
     console.log("something went wrong", e);
@@ -48,7 +69,7 @@ async function getCosmeticsProductsWithoutReviews() {
 async function updateCosmeticsMetaInfo(
   salePrice: any,
   productId: Number,
-  reviewCount: String,
+  // reviewCount: String,
   isNaverShopping: boolean
 ) {
   var products = [] as any;
@@ -61,9 +82,31 @@ async function updateCosmeticsMetaInfo(
     const results = await pool.query(
       sql.updateCosmeticsMetaInfo({
         sale_price: parseInt(salePrice.slice(0, -1).replace(",", "")),
-        review_count: reviewCount.replace(",", ""),
+        // review_count: reviewCount.replace(",", ""),
         sid: productId,
-        is_naver_shopping: isNaverShopping,
+      })
+    );
+  } catch (e) {
+    console.log("something went wrong", e);
+  } finally {
+    return products;
+  }
+}
+async function updateCosmeticsPhotos(
+  images: any,
+  productId: Number,
+  // reviewCount: String,
+  isNaverShopping: boolean
+) {
+  var products = [] as any;
+  try {
+    // console.log(object)
+    console.log("connected successfully");
+    const results = await pool.query(
+      sql.updateCosmeticsPhotos({
+        images: images,
+        // review_count: reviewCount.replace(",", ""),
+        sid: productId,
       })
     );
   } catch (e) {
@@ -77,8 +120,10 @@ async function createReviews(
   productId: Number,
   rating: Number,
   reviewImages: any,
+  userName: String,
   date: any,
-  userName: String
+  age: String,
+  skin: String
 ) {
   var products = [] as any;
   try {
@@ -91,6 +136,8 @@ async function createReviews(
         user_name: userName,
         rating: rating,
         date: date,
+        user_age: age,
+        skin_type: skin,
       })
     );
   } catch (e) {
@@ -136,7 +183,10 @@ var db = {
   getCosmeticsProductsWithoutReviews: getCosmeticsProductsWithoutReviews,
   createReviews: createReviews,
   updateCosmeticsMetaInfo: updateCosmeticsMetaInfo,
+  updateCosmeticsPhotos: updateCosmeticsPhotos,
   deleteCosmeticsProduct: deleteCosmeticsProduct,
+  getCosmeticsProductsWithoutSalesPrice: getCosmeticsProductsWithoutSalesPrice,
+  getCosmeticsWithoutImages: getCosmeticsWithoutImages,
 };
 
 module.exports = db;

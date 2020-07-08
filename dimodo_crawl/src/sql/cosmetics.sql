@@ -1,52 +1,82 @@
 -- getCosmeticsWithoutReviews
 SELECT
-    cosmetics_products.sname,
-    cosmetics_products.sid,
-    cosmetics_products.volume
+    product.sname,
+    product.sid,
+    product.volume
 FROM
-    cosmetics_products
+    product
 WHERE
-    NOT EXISTS (
+    product.source = 'glowpick'
+    AND NOT EXISTS (
         SELECT
             1
         FROM
             cosmetics_review
         WHERE
-            cosmetics_products.sid = cosmetics_review.product_id);
+            product.sid = cosmetics_review.product_id);
+
+-- getCosmeticsWithoutSalesPrice
+SELECT
+    product.sname,
+    product.sid,
+    product.volume
+FROM
+    product
+WHERE
+    sale_price IS NULL;
 
 -- getCosmeticsWithoutPrices
 SELECT
-    cosmetics_products.sname,
-    cosmetics_products.sid,
-    cosmetics_products.volume
+    product.sname,
+    product.sid,
+    product.volume
 FROM
-    cosmetics_products
+    product
 WHERE
     sale_price IS NULL;
 
 -- getAllCosmetics
 SELECT
-    cosmetics_products.sname,
-    cosmetics_products.sid,
-    cosmetics_products.volume
+    product.sname,
+    product.sid,
+    product.volume
 FROM
-    cosmetics_products;
+    product;
 
 -- updateCosmeticsMetaInfo
 UPDATE
-    cosmetics_products
+    product
 SET
-    sale_price = :sale_price,
-    review_count = :review_count,
-    is_naver_shopping = :is_naver_shopping
+    sale_price = :sale_price
 WHERE
-    sid = :sid;
+    sid = :sid
+    AND source = 'glowpick';
 
 -- createReviews
-INSERT INTO cosmetics_review (scontent, product_id, user_name, images, rating, date)
-    VALUES (:scontent, :product_id, :user_name, :images, :rating, :date);
+INSERT INTO cosmetics_review (scontent, product_id, user_name, images, rating, date, user_age, skin_type)
+    VALUES (:scontent, :product_id, :user_name, :images, :rating, :date, :user_age, :skin_type);
 
 -- deleteCosmeticsProduct
-DELETE FROM cosmetics_products
-WHERE sid = :sid;
+DELETE FROM product
+WHERE sid = :sid
+    AND source = 'glowpick';
 
+-- getCosmeticsWithoutImages
+SELECT
+    product.sname,
+    product.sid,
+    product.volume
+FROM
+    product
+WHERE
+    product.source = 'glowpick'
+    AND desc_images IS NULL;
+
+--updateCosmeticsPhotos
+UPDATE
+    product
+SET
+    desc_images = desc_images || :images
+WHERE
+    sid = :sid
+    AND source = 'glowpick'

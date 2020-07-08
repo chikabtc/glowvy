@@ -1,8 +1,10 @@
 const puppeteer = require("puppeteer");
+const util = require("../utils/utils.ts");
 
 //1. sale_price
 //2. review count
 async function getProductMetaInfo(page: any, productTitle: string) {
+  console.log("productTitle: ", productTitle);
   const searchURL =
     "https://search.shopping.naver.com/search/all?frm=NVSHATC&pagingIndex=1&pagingSize=40&productSet=total&query=" +
     productTitle +
@@ -40,13 +42,12 @@ async function getProductMetaInfo(page: any, productTitle: string) {
     });
     console.log(results[0]);
 
-    if (typeof results[0] === "undefined") {
-      console.log("no result");
-      return null;
-    } else if (results[0]["is_naver_shopping"] === true) {
+    if (typeof results[0] != "undefined") {
       return results[0];
-    } else if (results[1]["is_naver_shopping"] === true) {
+    } else if (results[1] != "undefined") {
       return results[1];
+    } else {
+      return null;
     }
   } catch (error) {
     console.log(error);
@@ -63,14 +64,28 @@ async function extractReviews(page: any, productDetailPageURL) {
 
   //loop based on the number of buttons and break when it reaches 5
   const pageButtons = await page.$$(`#_review_paging a`);
+  var togglBtn = await page.$(
+    `#_review_sort > div.filter_box > div.check > span > a`
+  );
+  await togglBtn.click();
 
   for (let i = 0; i < pageButtons.length; i++) {
     if (i > 5) {
       break;
     }
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await page.evaluate("window.scrollTo(0,document.body.scrollHeight)");
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+
+    await page.evaluate("window.scrollTo(0,0)");
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
     try {
       const results = await page.$$eval(".thumb_nail", (rows) => {
         return rows.map((row) => {
+          // await row.click();
+          // await new Promise((resolve) => setTimeout(resolve, 1500));
+
           const properties = {};
           const reviewElement = row.querySelector(".atc");
           const userElement = row.querySelector(
@@ -80,26 +95,38 @@ async function extractReviews(page: any, productDetailPageURL) {
             ".avg_area > span > span:nth-child(3)"
           );
           const ratingElement = row.querySelector(".curr_avg");
-          const imageElements = row.querySelectorAll(".img_box img");
           //   const etcInfoElement = row.querySelector(".avg_area");
           //
           var images: string[] = [];
+          const date = Date.now();
+          let currentDate = null;
+
+          const imageElements = row.querySelectorAll(".img_box img");
+          console.log("imageElements", imageElements);
 
           imageElements.forEach((element) => {
-            images.push(element.getAttribute("src"));
+            var image = element.getAttribute("src");
+            if (!image.includes("placeholder")) {
+              images.push(image);
+              console.log(image);
+            }
+            console.log(image);
           });
 
           properties["review"] = reviewElement ? reviewElement.innerText : "";
           properties["userName"] = userElement ? userElement.innerText : "";
           properties["date"] = dateElement ? dateElement.innerText : "";
           properties["rating"] = ratingElement ? ratingElement.innerText : "";
-          properties["image"] = imageElements ? images : "";
+          properties["images"] = imageElements ? images : "";
 
           return properties;
         });
       });
       results.forEach((element) => {
-        reviews.push(element);
+        if (element.images.length != 0) {
+          reviews.push(element);
+          console.log(element);
+        }
       });
 
       const pageButtons = await page.$$(`#_review_paging a`);
