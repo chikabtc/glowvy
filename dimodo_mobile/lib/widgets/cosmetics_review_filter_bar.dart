@@ -14,12 +14,14 @@ class CosmeticsReviewFilterBar extends StatefulWidget {
   Function onFilterConfirm;
   Function onSkinTypeChanged;
   Function onReset;
+  bool showSorting;
   List<Review> reviews;
 
   CosmeticsReviewFilterBar(
       {this.onFilterConfirm,
       this.onSkinTypeChanged,
       this.onReset,
+      this.showSorting = true,
       this.reviews});
   @override
   _CosmeticsReviewFilterBarState createState() =>
@@ -73,78 +75,80 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Container(
-                // color: Colors.orange,
-                width: screenSize.width / 2 - 10,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    GestureDetector(
-                      onTap: () {
-                        // switch (sorting) {
-                        //   case "high":
-                        //     sorting = Sorting.rank;
-                        //     var sortedProducts =
-                        //         productModel.sortByDefaultRank(widget.reviews);
+              if (widget.showSorting)
+                Container(
+                  // color: Colors.orange,
+                  width: screenSize.width / 2 - 10,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      GestureDetector(
+                        onTap: () {
+                          // switch (sorting) {
+                          //   case "high":
+                          //     sorting = Sorting.rank;
+                          //     var sortedProducts =
+                          //         productModel.sortByDefaultRank(widget.reviews);
 
-                        //     widget.onFilterConfirm(sortedProducts);
-                        //     break;
+                          //     widget.onFilterConfirm(sortedProducts);
+                          //     break;
 
-                        //   case "rank":
-                        //     sorting = Sorting.low;
-                        //     var sortedProducts =
-                        //         productModel.sortByPrice(widget.reviews, true);
-                        //     widget.onFilterConfirm(sortedProducts);
-                        //     break;
-                        //   case "low":
-                        //     sorting = Sorting.high;
-                        //     var sortedProducts =
-                        //         productModel.sortByPrice(widget.reviews, false);
-                        //     widget.onFilterConfirm(sortedProducts);
-                        //     break;
-                        //   default:
-                        // }
-                        // filterProduct();
-                      },
-                      child: Container(
-                          decoration: new BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                          padding: EdgeInsets.symmetric(horizontal: 6),
-                          height: 24,
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              sorting == "rank"
-                                  ? Image.asset("assets/icons/filter-sort.png")
-                                  : sorting == "low"
-                                      ? Image.asset(
-                                          "assets/icons/filter-sort.png")
-                                      : Image.asset(
-                                          "assets/icons/filter-sort-active.png"),
-                              DynamicText(
+                          //   case "rank":
+                          //     sorting = Sorting.low;
+                          //     var sortedProducts =
+                          //         productModel.sortByPrice(widget.reviews, true);
+                          //     widget.onFilterConfirm(sortedProducts);
+                          //     break;
+                          //   case "low":
+                          //     sorting = Sorting.high;
+                          //     var sortedProducts =
+                          //         productModel.sortByPrice(widget.reviews, false);
+                          //     widget.onFilterConfirm(sortedProducts);
+                          //     break;
+                          //   default:
+                          // }
+                          // filterProduct();
+                        },
+                        child: Container(
+                            decoration: new BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(6),
+                            ),
+                            padding: EdgeInsets.symmetric(horizontal: 6),
+                            height: 24,
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
                                 sorting == "rank"
-                                    ? S.of(context).byRanking
+                                    ? Image.asset(
+                                        "assets/icons/filter-sort.png")
                                     : sorting == "low"
-                                        ? S.of(context).highestToLowest
-                                        : S.of(context).lowestToHighest,
-                                textAlign: TextAlign.center,
-                                style: kBaseTextStyle.copyWith(
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w500,
-                                    color: sorting == "low"
-                                        ? kDarkSecondary
-                                        : kDarkAccent),
-                              ),
-                            ],
-                          )),
-                    ),
-                    SizedBox(width: 16)
-                  ],
+                                        ? Image.asset(
+                                            "assets/icons/filter-sort.png")
+                                        : Image.asset(
+                                            "assets/icons/filter-sort-active.png"),
+                                DynamicText(
+                                  sorting == "rank"
+                                      ? S.of(context).byRanking
+                                      : sorting == "low"
+                                          ? S.of(context).highestToLowest
+                                          : S.of(context).lowestToHighest,
+                                  textAlign: TextAlign.center,
+                                  style: kBaseTextStyle.copyWith(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.w500,
+                                      color: sorting == "low"
+                                          ? kDarkSecondary
+                                          : kDarkAccent),
+                                ),
+                              ],
+                            )),
+                      ),
+                      SizedBox(width: 16)
+                    ],
+                  ),
                 ),
-              ),
               Container(
                 width: screenSize.width / 2 - 10,
                 child: GestureDetector(

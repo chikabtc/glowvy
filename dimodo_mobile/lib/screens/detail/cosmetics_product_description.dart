@@ -70,7 +70,7 @@ class _CosmeticsProductDescriptionState
           itemCount: imagesWidgets.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             childAspectRatio: 1,
-            crossAxisCount: 3,
+            crossAxisCount: 1,
           ),
           physics: ClampingScrollPhysics(),
           itemBuilder: (BuildContext context, int index) {
@@ -223,7 +223,7 @@ class _CosmeticsProductDescriptionState
                           itemBuilder: (context, index) {
                             return Container(
                               decoration: BoxDecoration(
-                                color: kTertiaryGray,
+                                color: kDefaultBackground,
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               alignment: Alignment.center,
@@ -233,7 +233,7 @@ class _CosmeticsProductDescriptionState
                                 widget.product.tags[index].name,
                                 maxLines: 1,
                                 style: kBaseTextStyle.copyWith(
-                                    color: kDarkSecondary,
+                                    color: Colors.grey.shade600,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w500),
                               ),

@@ -59,6 +59,7 @@ class HomeScreenState extends State<HomeScreen>
   List<Product> allProducts = [];
   bool isFiltering = false;
   List<Future<List<Product>>> futureLists = [];
+  final ScrollController _homeController = ScrollController();
 
   @override
   void initState() {
@@ -127,19 +128,19 @@ class HomeScreenState extends State<HomeScreen>
             statusBarBrightness: Brightness.light) // Or Brightness.dark
         );
 
-    // try {
-    //   final surveys = Provider.of<AppModel>(context, listen: false)
-    //       .appConfig['Cosmetics_Survey'];
-    //   // print("surveys: $surveys");
-    //   for (var item in surveys) {
-    //     this.surveys.add(Survey.fromJson(item));
-    //   }
-    // } catch (err) {
-    //   var message =
-    //       "There is an issue with the app during request the data, please contact admin for fixing the issues " +
-    //           err.toString();
-    //   print("error: $message");
-    // }
+    try {
+      final surveys = Provider.of<AppModel>(context, listen: false)
+          .appConfig['Cosmetics_Survey'];
+      // print("surveys: $surveys");
+      for (var item in surveys) {
+        this.surveys.add(Survey.fromJson(item));
+      }
+    } catch (err) {
+      var message =
+          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
+              err.toString();
+      print("error: $message");
+    }
 
     List<Widget> renderTabbar() {
       List<Widget> list = [];
@@ -231,39 +232,21 @@ class HomeScreenState extends State<HomeScreen>
                                     unselectedLabelStyle:
                                         kBaseTextStyle.copyWith(
                                             color: kDarkSecondary,
-                                            fontSize: 14,
+                                            fontSize:
+                                                13 * kSizeConfig.textMultiplier,
                                             fontWeight: FontWeight.w600),
                                     labelStyle: kBaseTextStyle.copyWith(
                                         color: Colors.white,
-                                        fontSize: 14,
+                                        fontSize:
+                                            13 * kSizeConfig.textMultiplier,
                                         fontWeight: FontWeight.w600),
                                     labelColor: kDarkAccent,
-                                    // onTap: (i) {
-                                    //   // setState(() {
-                                    //   //   currentIndex = i;
-                                    //   // });
-
-                                    //   // var skinType = productModel
-                                    //   //     .getSkinTypeById(skinTypeId, context);
-                                    //   // print("CATEID!: ${tabList[i].id}");
-
-                                    //   // Future.delayed(
-                                    //   //     const Duration(milliseconds: 2000),
-                                    //   //     () {
-                                    //   // });
-
-                                    //   // showFiltered = false;
-                                    //   // setState(() {
-                                    //   //   //
-                                    //   // });
-                                    // },
                                     tabs: renderTabbar(),
                                   ),
                                 )),
                           ),
                         ],
                       ),
-                      //should give the snapshot.data....
                       CosmeticsFilterBar(
                         products: allProducts,
                         onFilterConfirm:

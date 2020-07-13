@@ -182,6 +182,7 @@ class _StateReviews extends State<CosmeticsReviewScreen>
                                     ]),
                               ),
                               CosmeticsReviewFilterBar(
+                                showSorting: false,
                                 reviews: metaReviews.reviews,
                                 onFilterConfirm: (filResults) {
                                   setState(() {
