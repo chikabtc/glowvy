@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DIMODO</title>
+    <link href="./assets/css/mrsong.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel='manifest' href='manifest.json'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link href="https://fonts.googleapis.com/css?family=Be+Vietnam:500,700&display=swap" rel="stylesheet">
+    <style>
+        .text_brand {
+            color: #E85A81 !important;
+        }
+
+        .border_brand {
+            border-color: #E85A81 !important;
+        }
+
+        .background_brand {
+            background: #E85A81 !important;
+        }
+
+        a {
+            text-decoration: none !important;
+        }
+
+        a:active,
+        a:focus {
+            outline: 0;
+            border: none;
+            -moz-outline-style: none;
+        }
+
+        body {
+            font-family: 'Be Vietnam', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="view_width_100 view_height_100 display_flex flex_column overflow_auto">
+
+    <div class="container padding_top_5 sm_padding_top_1">
+        <div class="display_flex content_between padding_y_4">
+            <div class="text_6  text_bold display_flex items_center">
+                <img src="./assets/images/logo.png" alt="" style="width:100px">
+            </div>
+            <div class="display_flex items_center sm_text_3">
+                <a href="/">
+                    <span class="text_black padding_x_3 sm_padding_1 text_bold" style="opacity: 0.62;">Trang Chủ</span>
+                </a>
+                <a href="">
+                    <span class="text_black text_bold padding_x_3 sm_padding_1">Ứng Dụng</span></a>
+                <a target="_blank" href="https://www.facebook.com/dimodo.vn/">
+                    <span class="text_black text_bold padding_x_3 sm_padding_1" style="opacity: 0.62;">Liên Lạc</span>
+                </a>
+
+            </div>
+        </div>
+    </div>
+    <div class="container flex_center padding_top_5">
+        <div class="text_center padding_y_8">
+            <div class="text_4x sm_text_3x text_bold" style="max-width: 680px;">
+                Ứng Dụng Sẽ Sớm Ra Mắt
+            </div>
+            <div class="width_x100 object_cover display_flex content_center padding_top_3">
+                <div class="text_black text_bold" style="max-width:620px">
+                    Hãy Để Lại Email Của Bạn Để Nhận Thông Báo Khi Ứng Dụng Ra Mắt </div>
+            </div>
+            <input id="email" type="text" style="min-width: 268px;"
+                class="background_transparent text_center border_2 border_brand padding_y_2 padding_x_3 margin_y_3"
+                placeholder="EMAIL CỦA BẠN">
+            <div>
+                <button onclick="subjectEmail('email')" style="min-width: 268px;"
+                    class="background_brand border_0 text_white padding_y_2 text_uppercase">Gửi Yêu Cầu</button>
+            </div>
+            <div>
+                <button class="margin_top_3 text_white background_white border_0" onclick="install()">tải xuống</button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="background_white padding_y_7 display_block">
+
+        <div class="container display_flex content_between text_bold text_brand text_4 padding_top_5">
+            <div class="">©2019 DIMODO</div>
+            <div class="">
+                <a class="text_brand" target="_blank"
+                    href="https://www.notion.so/Jobs-at-DIMODO-a0ffc1fde35e497fbc44a74ad12fe2f9">Tuyển Dụng</a>
+            </div c>
+        </div>
+    </div>
+
+    <script>
+        function subjectEmail(email) {
+            value = document.getElementById(email).value
+
+            emailValidate = new RegExp("^[0-9]*[A-Za-z][A-Za-z0-9._%-]+@[A-Za-z0-9.-]+[.][A-Za-z]+$")
+            checkEmail = emailValidate.test(value)
+            console.log(checkEmail)
+            if (!checkEmail) {
+                alert(`Email Không Hợp Lệ`)
+            } else if (value && checkEmail) {
+                const user = {
+                    email: value
+                };
+                const options = {
+                    method: 'POST',
+                    body: JSON.stringify(user),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+                fetch("/email/subject", options)
+                    .then(res => res.json())
+                    .then(res => {
+                        alert(`Cảm ơn bạn đã đăng kí.\nChúng tôi sẽ gửi mail cho bạn khi sản phẩm ra mắt.`)
+                        if (res["Success"]) { fbq('track', 'CompleteRegistration'); }
+                    })
+                    .catch(err => {
+                        console.error('Error: ', err);
+                    });
+            }
+        }   
+    </script>
+
+    <script>
+        // This is the "Offline page" service worker
+
+        // Add this below content to your HTML page, or add the js file to your page at the very top to register service worker
+
+        // Check compatibility for the browser we're running this in
+        if ("serviceWorker" in navigator) {
+            if (navigator.serviceWorker.controller) {
+                console.log("[PWA Builder] active service worker found, no need to register");
+            } else {
+                // Register the service worker
+                navigator.serviceWorker
+                    .register("pwabuilder-sw.js", {
+                        scope: "./"
+                    })
+                    .then(function (reg) {
+                        console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
+                    });
+            }
+        }
+    </script>
+   
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v5.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <!-- Your customer chat code -->
+    <div class="fb-customerchat" attribution=setup_tool page_id="105086787660550" theme_color="#E85A81"
+        logged_in_greeting="Xin chào, Chúng tôi có thể giúp gì cho bạn."
+        logged_out_greeting="Xin chào, Chúng tôi có thể giúp gì cho bạn.">
+    </div>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '2489808007971168');
+        fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" src="https://www.facebook.com/tr?id=2489808007971168&ev=PageView
+&noscript=1" />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+</body>
+
+</html>

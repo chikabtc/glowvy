@@ -9,10 +9,11 @@ import (
 
 	"github.com/bugsnag/bugsnag-go"
 	"github.com/gchaincl/dotsql"
+	"github.com/lib/pq"
 )
 
 type CosmeticsService interface {
-	ProductsByCategoryID(categoryID int, skinType string) ([]Product, error)
+	ProductsByCategoryID(categoryID int, skinType int) ([]Product, error)
 	UpdateBrandsName()
 	CosmeticsReviewsByProductID(productId int) (*Reviews, error)
 	// AllCategories() ([]Category, error)
@@ -82,6 +83,7 @@ func (gs *cosmeticsService) AllCosmeticsProducts() ([]Product, error) {
 			&product.Thumbnail,
 			&product.Price,
 			&product.Sale_price,
+			// pq.Array(&product.DescImages),
 			&rating,
 			&product.Description,
 			&product.Sdescription,
@@ -129,7 +131,7 @@ func (gs *cosmeticsService) AllCosmeticsProducts() ([]Product, error) {
 	return products, nil
 }
 
-func (gs *cosmeticsService) ProductsByCategoryID(categoryID int, skinType string) ([]Product, error) {
+func (gs *cosmeticsService) ProductsByCategoryID(categoryID int, skinType int) ([]Product, error) {
 	//if cateId is smaller than 10, it's a parent cateid
 	fmt.Println("categoryId: ", categoryID)
 	// categoryId, err := strconv.Atoi(categoryID)
@@ -144,6 +146,7 @@ func (gs *cosmeticsService) ProductsByCategoryID(categoryID int, skinType string
 	}
 
 	var tags []uint8
+	var ingredients []uint8
 
 	defer rows.Close()
 	products := []Product{}
@@ -162,6 +165,8 @@ func (gs *cosmeticsService) ProductsByCategoryID(categoryID int, skinType string
 			&product.Thumbnail,
 			&product.Price,
 			&product.Sale_price,
+			&product.HazardScore,
+			pq.Array(&product.DescImages),
 			&rating,
 			&product.Description,
 			&product.Sdescription,
@@ -170,6 +175,8 @@ func (gs *cosmeticsService) ProductsByCategoryID(categoryID int, skinType string
 			&product.CategoryName,
 			&product.CategoryId,
 			&tags,
+			&ingredients,
+
 			&brand.Name,
 			&brand.ID,
 			&brand.ImageURL,
@@ -184,6 +191,10 @@ func (gs *cosmeticsService) ProductsByCategoryID(categoryID int, skinType string
 		}
 		// productOptions
 		err = json.Unmarshal([]byte(tags), &product.Tags)
+		if err != nil {
+			fmt.Println("fail to unmarshall tags: ", err)
+		}
+		err = json.Unmarshal([]byte(ingredients), &product.Ingredients)
 		if err != nil {
 			fmt.Println("fail to unmarshall tags: ", err)
 		}
@@ -291,6 +302,7 @@ func (gs *cosmeticsService) UpdateBrandsName() {
 			koBrandName = brandName[0 : i1-1]
 			fmt.Println("english brand name: ", koBrandName)
 		}
+		//update the brands
 	}
 }
 
@@ -404,10 +416,10 @@ func (cs *cosmeticsService) TranslateReview(review Review) {
 func (cs *cosmeticsService) TranslateAllCosmetics() {
 	var rows *sql.Rows
 
-	rows, err := cs.dot.Query(cs.DB, "GetAllCosmeticsProducts")
+	rows, err := cs.dot.Query(cs.DB, "GetAllCosmeticsProductsWithoutName")
 	if err != nil {
 		bugsnag.Notify(err)
-		fmt.Println("GetAllCosmeticsProducts", err)
+		fmt.Println("GetAllCosmeticsProductsWithoutName", err)
 		return
 	}
 
@@ -417,6 +429,7 @@ func (cs *cosmeticsService) TranslateAllCosmetics() {
 		var product Product
 		if err := rows.Scan(
 			&product.Sid,
+			&product.Sname,
 			&product.Sdescription,
 		); err != nil {
 			bugsnag.Notify(err)
@@ -428,10 +441,10 @@ func (cs *cosmeticsService) TranslateAllCosmetics() {
 			fmt.Println("GetAllCosmeticsProducts: ", err)
 		}
 
-		// enName, _ := translate.TranslateText("ko", "vi", product.EnName)
+		// enName, _ := translate.TranslateText("ko", "en", product.Sname)
 		// fmt.Println("vi: ", enName)
 		enDescription, _ := translate.TranslateText("ko", "vi", product.Sdescription)
-		// fmt.Println("enDescription: ", enDescription)
+		fmt.Println("enDescription: ", enDescription)
 
 		_, err := cs.dot.Exec(cs.DB, "TranslateCosmetics", enDescription, product.Sid)
 

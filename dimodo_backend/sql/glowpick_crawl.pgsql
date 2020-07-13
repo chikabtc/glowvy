@@ -1,5 +1,5 @@
 --name: CreateProduct
-INSERT INTO product (sid, sname, volume, price, review_count, average_rating, thumbnail, is_discontinued, brand_id, brand_img, sdescription, category_id, source)
+INSERT INTO product (sid, sname, volume, price, review_count, average_rating, thumbnail, is_discontinued, brand, brand_id, brand_img, sdescription, category_id, source)
 SELECT
     $1,
     $2,
@@ -12,7 +12,9 @@ SELECT
     $9,
     $10,
     $11,
-    $12 'glowpick'
+    $12,
+    $13,
+    'glowpick'
 WHERE
     NOT EXISTS (
         SELECT
@@ -78,7 +80,7 @@ SELECT
             selected_tag
         WHERE
             cosmetics_product_tags.tag_id = selected_tag.id
-            AND cosmetics_product_tags.id = $2
+            AND cosmetics_product_tags.product_id = $2
         LIMIT 1);
 
 --name:	AddTagToProductTags
@@ -139,3 +141,26 @@ ON CONFLICT (product_id, category_id)
     DO UPDATE SET
         neutral_rank = $1;
 
+--name: addBrandName
+INSERT INTO cosmetics_brands (name, img, sname, sid)
+    VALUES ($1, $2, $3, $4);
+
+--name: GetAllCosmeticsProductsWithoutIngredient
+SELECT
+    product.sid,
+    product.sname,
+    product.sdescription
+FROM
+    product
+WHERE
+    product.source = 'glowpick';
+
+--name: UpdateIngredientScore
+UPDATE
+    product
+SET
+    -- name = $1
+    ingredient_score = $1
+WHERE
+    sid = $2
+    AND source = 'glowpick'

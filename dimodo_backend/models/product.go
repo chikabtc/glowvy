@@ -143,6 +143,15 @@ type Product struct {
 	Sprice        int           `json:"sprice,omitempty"`
 	Surl          string        `json:"surl,omitempty"`
 	CosmeticsRank CosmeticsRank `json:"cosmetics_rank,omitempty"`
+	HazardScore   int           `json:"hazard_score,omitempty"`
+	Ingredients   []Ingredient  `json:"ingredients,omitempty"`
+}
+
+type Ingredient struct {
+	Id              int      `json:"id"`
+	NameEn          string   `json:"name_en"`
+	Purpose         []string `json:"purpose"`
+	IngredientScroe int      `json:"ingredient_score"`
 }
 
 type Tag struct {

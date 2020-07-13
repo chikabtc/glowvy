@@ -28,6 +28,7 @@ require (
 	github.com/golang-migrate/migrate v3.5.4+incompatible // indirect
 	github.com/golang-migrate/migrate/v4 v4.11.0
 	github.com/golang/protobuf v1.3.4 // indirect
+	github.com/gorilla/csrf v1.7.0
 	github.com/gorilla/handlers v1.4.2
 	github.com/gorilla/mux v1.7.4
 	github.com/jawher/mow.cli v1.1.0 // indirect

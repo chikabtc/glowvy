@@ -1,6 +1,8 @@
 package crawler
 
 import (
+	"database/sql"
+	"dimodo_backend/models"
 	"dimodo_backend/models/glowpick"
 	"encoding/csv"
 	"encoding/json"
@@ -10,6 +12,7 @@ import (
 	"math/rand"
 	"net/http"
 	"strconv"
+	"strings"
 
 	"os"
 	"time"
@@ -20,7 +23,7 @@ import (
 	"github.com/gocolly/colly/extensions"
 )
 
-const glowPickAuth = "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJnbG93cGljay53ZWIiLCJpYXQiOjE1OTQwMDk5NjgsInN1YiI6Imdsb3dwaWNrLWF1dGgiLCJpc3MiOiJnbG93ZGF5eiIsImV4cCI6MTU5NDA5NjM2OCwiYXVkIjoiSTRXWmlNbTg1YmppUDlaTzI4VUJnblVjcnZPKy9BQmRMYUVyeFJKODRiWVNaYkpmWHBvYWdOT3lqeWlaN3BLbnRYWDZKOU5PVVRWNndtRS9wVlM0d2c9PSJ9.ycfCWa1VnPdnuUShtWhF09y-ugUCSyTNWPWH0tWgCmk"
+const glowPickAuth = "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJnbG93cGljay53ZWIiLCJpYXQiOjE1OTQyNjcwNzMsInN1YiI6Imdsb3dwaWNrLWF1dGgiLCJpc3MiOiJnbG93ZGF5eiIsImV4cCI6MTU5NDM1MzQ3MywiYXVkIjoiSTRXWmlNbTg1YmppUDlaTzI4VUJnaTR2ZS14SU5fYURrUGFNdlI1TGRDSG5NQ3A2M2lRdTVueW5JZzVfV01KVjlJUXpua2h6aXB5Qzl2RC1TdkJsNkEifQ.OLir8SqUH-ytMQIsKBjQLTaINDb5ckMM8LdUhfOwvjI"
 
 //parentid always 2
 //category: idx
@@ -135,7 +138,7 @@ func (c *Crawler) GetGlowPickProductsByRank(level, categoryId, limit int, skinTy
 	for i, p := range GlowPickProducts.Products {
 		fmt.Println("title: " + p.ProductTitle + "rank: i")
 
-		err = c.createGlowPickProductById(fmt.Sprint(p.IDProduct), skinType, categoryId, level, i+1)
+		_, err = c.createGlowPickProductById(fmt.Sprint(p.IDProduct), skinType, categoryId, level, i+1)
 		if err != nil {
 			bugsnag.Notify(err)
 			fmt.Println("Error")
@@ -145,19 +148,19 @@ func (c *Crawler) GetGlowPickProductsByRank(level, categoryId, limit int, skinTy
 	return err
 }
 
-func (c *Crawler) createGlowPickProductById(id, skinType string, category, level, rank int) error {
+func (c *Crawler) createGlowPickProductById(id, skinType string, category, level, rank int) (*models.Product, error) {
 	var isProductAvailable bool
 	row, err := c.GlowpickDot.QueryRow(c.DB, "CheckProduct", id)
 
 	if err != nil {
 		fmt.Println("fail to run sql:", err)
 		bugsnag.Notify(err)
-		return nil
+		return nil, err
 	}
 
 	if err := row.Scan(&isProductAvailable); err != nil {
 		fmt.Println("fail to scan review", err)
-		return nil
+		return nil, err
 	}
 
 	url := "https://api-j.glowpick.com/api/product/" + id
@@ -176,7 +179,7 @@ func (c *Crawler) createGlowPickProductById(id, skinType string, category, level
 	res, err := client.Do(req)
 	if err != nil {
 		bugsnag.Notify(err)
-		return err
+		return nil, err
 	}
 
 	defer res.Body.Close()
@@ -185,7 +188,24 @@ func (c *Crawler) createGlowPickProductById(id, skinType string, category, level
 
 	if err := json.Unmarshal(body, &glwProduct); err != nil {
 		bugsnag.Notify((err))
-		return err
+		return nil, err
+	}
+	fmt.Println("glow pick product title:", glwProduct.Data.ProductTitle)
+	var brandName = glwProduct.Data.Brand.BrandTitle
+
+	i1 := strings.Index(brandName, "(")
+	i2 := strings.Index(brandName, ")")
+
+	if i1 == -1 || i2 == -1 {
+		fmt.Println("no change english brand name: ", brandName)
+	} else {
+		brandName = brandName[i1+1 : i2]
+		fmt.Println("english brand name: ", brandName)
+	}
+	_, err = c.GlowpickDot.Exec(c.DB, "addBrandName", brandName, glwProduct.Data.Brand.BrandImg, glwProduct.Data.Brand.BrandTitle, glwProduct.Data.Brand.IDBrand)
+	if err != nil {
+		fmt.Println("addBrandName: ", err)
+		bugsnag.Notify(err)
 	}
 	//parentCategory
 	//save the most specific category
@@ -193,7 +213,6 @@ func (c *Crawler) createGlowPickProductById(id, skinType string, category, level
 	var categoryId = int(glwProduct.Data.CategoryInfo[0].IDThirdCategory)
 
 	if !isProductAvailable {
-		fmt.Println("glow pick product title:", glwProduct.Data.ProductTitle)
 
 		_, err = c.GlowpickDot.Exec(c.DB, "CreateProduct",
 			glwProduct.Data.IDProduct,
@@ -204,6 +223,7 @@ func (c *Crawler) createGlowPickProductById(id, skinType string, category, level
 			glwProduct.Data.RatingAvg,
 			glwProduct.Data.ProductImg,
 			glwProduct.Data.IsDiscontinue,
+			brandName,
 			glwProduct.Data.Brand.IDBrand,
 			glwProduct.Data.Brand.BrandImg,
 			glwProduct.Data.Description,
@@ -212,7 +232,7 @@ func (c *Crawler) createGlowPickProductById(id, skinType string, category, level
 		if err != nil {
 			bugsnag.Notify(err)
 			fmt.Println("CreateProduct: ", err.Error())
-			return err
+			return nil, err
 		}
 		// if glwProduct.Data.ReviewGraph.PositiveReview.Contents != "" {
 		// 	_, err = c.GlowpickDot.Exec(c.DB, "CreateReview",
@@ -258,15 +278,30 @@ func (c *Crawler) createGlowPickProductById(id, skinType string, category, level
 	if err != nil {
 		bugsnag.Notify(err)
 		fmt.Println("setProductRank: ", err.Error())
-		return err
+		return nil, err
 	}
 	err = c.addTags(glwProduct)
 	if err != nil {
 		bugsnag.Notify(err)
 		fmt.Println("addTags: ", err.Error())
-		return err
+		return nil, err
 	}
-	return err
+	var product models.Product
+	switch glwProduct.Data.IngredientInfo.Hazard {
+	case "low":
+		product.HazardScore = 0
+		break
+	case "medium":
+		product.HazardScore = 0
+		break
+
+	case "high":
+		product.HazardScore = 0
+		break
+
+	}
+
+	return &product, err
 }
 
 func (c *Crawler) addTags(product glowpick.GlowpickDetailedProduct) error {
@@ -284,16 +319,16 @@ func (c *Crawler) addTags(product glowpick.GlowpickDetailedProduct) error {
 		if row != nil {
 			fmt.Println("nil row")
 
-			var isProductTagExists bool
+			var productTagExists bool
 
 			row, err := c.GlowpickDot.QueryRow(c.DB, "checkIfTagForProductExists", tag, product.Data.IDProduct)
-			row.Scan(&isProductTagExists)
+			row.Scan(&productTagExists)
 
 			if err != nil {
 				fmt.Println("checkIfTagForProductExists :", err)
 				bugsnag.Notify(err)
 			}
-			if !isProductTagExists {
+			if !productTagExists {
 				_, err = c.GlowpickDot.Exec(c.DB, "AddTagToProductTags", tag, product.Data.IDProduct)
 				if err != nil {
 					fmt.Println("AddTagToProductTags :", err)
@@ -423,4 +458,84 @@ func getFacialCleanserRanking() {
 	c.Visit(fullURL)
 
 	c.Wait()
+}
+
+func (c *Crawler) UpdateCosmeticsIngredient() error {
+	var rows *sql.Rows
+
+	rows, err := c.GlowpickDot.Query(c.DB, "GetAllCosmeticsProductsWithoutIngredient")
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("GetAllCosmeticsProductsWithoutIngredient", err)
+		return err
+	}
+
+	defer rows.Close()
+	for rows.Next() {
+		var product models.Product
+
+		if err := rows.Scan(
+			&product.Sid,
+			&product.Sname,
+			&product.Sdescription,
+		); err != nil {
+			bugsnag.Notify(err)
+			fmt.Println("fail to Next", err)
+			return err
+		}
+
+		url := "https://api-j.glowpick.com/api/product/" + fmt.Sprint(product.Sid)
+		fmt.Println("createProductByID: ", url)
+		req, _ := http.NewRequest("GET", url, nil)
+		req.Header.Add("Authorization", glowPickAuth)
+		random := userAgent.Random()
+		log.Printf("Random: %s", random)
+		req.Header.Set("User-Agent", random)
+		r := rand.Intn(5)
+		time.Sleep(time.Duration(r) * time.Microsecond)
+		// randomProxyIndex := rand.Intn(len(proxies))
+		// proxyUrl, err := netUrl.Parse(proxies[randomProxyIndex])
+		// , Transport: &http.Transport{Proxy: http.ProxyURL(proxyUrl)}
+		client := http.Client{Timeout: time.Second * 50}
+		res, err := client.Do(req)
+		if err != nil {
+			bugsnag.Notify(err)
+			return err
+		}
+
+		defer res.Body.Close()
+		body, _ := ioutil.ReadAll(res.Body)
+		var glwProduct glowpick.GlowpickDetailedProduct
+
+		if err := json.Unmarshal(body, &glwProduct); err != nil {
+			bugsnag.Notify((err))
+			return err
+		}
+		fmt.Println("level: ", glwProduct.Data.IngredientInfo.Hazard)
+		switch glwProduct.Data.IngredientInfo.Hazard {
+		case "low":
+			product.HazardScore = 1
+			break
+		case "moderate":
+			product.HazardScore = 2
+			break
+		case "high":
+			product.HazardScore = 3
+			break
+		default:
+			product.HazardScore = 0
+			break
+		}
+		fmt.Println("product ingredient score: ", product.HazardScore)
+
+		if err != nil {
+			fmt.Println("GetAllCosmeticsProducts: ", err)
+		}
+		_, err = c.GlowpickDot.Exec(c.DB, "UpdateIngredientScore", product.HazardScore, product.Sid)
+
+		if err != nil {
+			fmt.Println("fail to unmarshall tags: ", err)
+		}
+	}
+	return err
 }

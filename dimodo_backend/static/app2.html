@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DIMODO</title>
+    <link href="./assets/css/mrsong.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <style>
+        .text_brand {
+            color: #C13D66 !important;
+        }
+
+        .border_brand {
+            border-color: #C13D66 !important;
+        }
+
+        .background_brand {
+            background: #C13D66 !important;
+        }
+
+        
+        a {
+            text-decoration: none !important;
+        }
+
+        a:active,
+        a:focus {
+            outline: 0;
+            border: none;
+            -moz-outline-style: none;
+        }
+        body{
+            font-family: 'Be Vietnam', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="view_width_100 view_height_100 display_flex flex_column overflow_auto" style="background: #F2EAED">
+
+    <div class="container">
+        <div class="display_flex content_between padding_y_4">
+            <div class="text_7 text_brand text_bolder display_flex items_center">
+                DIMODO
+            </div>
+            <div class="display_flex items_center sm_text_3">
+                <a href="./index.html">
+                    <span class="text_brand padding_x_2" style="opacity: 0.62;">Trang Chủ</span>
+                </a>
+                <a href=""></a>
+                <span class="text_brand padding_x_2 text_bolder" >Ứng Dụng</span>
+                <a target="_blank" href="https://www.facebook.com/dimodo.vn/">
+                    <span class="text_brand padding_x_2" style="opacity: 0.62;">Liên Lạc</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container flex_center" style="min-height: 96vh;">
+        <div class="text_center">
+            <div class="text_4x sm_text_3x text_brand" style="max-width: 600px;">
+                Ứng Dụng Sẽ Sớm Ra Mắt
+
+            </div>
+            <div class="width_x100 object_cover display_flex content_center padding_top_3">
+                <div class="text_brand text_bold" style="max-width:520px">
+                    Hãy Để Lại Email Của Bạn Để Nhận Thông Báo Khi Ứng Dụng Ra Mắt </div>
+            </div>
+
+            <input type="text" style="min-width: 268px;"
+                class="background_transparent border_2 border_brand padding_y_2 padding_x_3 margin_y_3"
+                placeholder="NHẬP ĐỊA CHỈ EMAIL CỦA BẠN">
+            <div>
+                <button style="min-width: 268px;"
+                    class="background_brand border_0 text_white padding_y_2 text_uppercase">Nhận Email</button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="background_white padding_y_5 display_block">
+        <div class="container display_flex content_between text_brand text_bolder text_6">
+            <div>©2019 DIMODO</div>
+            <div>
+                <a class="text_brand"  target="_blank" href="https://www.notion.so/Jobs-at-DIMODO-a0ffc1fde35e497fbc44a74ad12fe2f9">Tuyển Dụng</a>        
+            </div>
+        </div>
+    </div>
+
+
+
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml            : true,
+      version          : 'v5.0'
+    });
+  };
+
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+  attribution=setup_tool
+  page_id="105086787660550"
+theme_color="#C13D66"
+logged_in_greeting="Xin chào, Chúng tôi có thể giúp gì cho bạn."
+logged_out_greeting="Xin chào, Chúng tôi có thể giúp gì cho bạn.">
+</div>
+</body>
+
+</html>

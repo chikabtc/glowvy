@@ -13,6 +13,8 @@ func (a *API) InitializeRoutes() {
 	cartC := a.Cs.CartC
 	productC := a.Cs.ProductC
 
+	// staticC := controllers.NewStatic()
+
 	//auth
 	a.R.HandleFunc("/api/account/signup", userC.SignUp).Methods("POST")
 	a.R.HandleFunc("/api/account/signin", userC.SignIn).Methods("POST")
@@ -73,6 +75,8 @@ func (a *API) InitializeRoutes() {
 	a.R.HandleFunc("/api/order/new", cartC.CreateOrder).Methods("POST")
 	a.R.HandleFunc("/api/order/detail/id={id:[0-9]+}", cartC.OrderDetailByOrderID).Methods("GET")
 	a.R.HandleFunc("/api/order/all", cartC.OrderHistoryByUserID).Methods("GET")
+	pages := http.StripPrefix("/", http.FileServer(http.Dir("."+"/statics/")))
+	a.R.PathPrefix("/").Handler(pages).Methods("GET")
 
 	// a.r.HandleFunc("/api/cart/no", cartC.CreateCartItem).Methods("POST")
 	// var err = errors.New("this is an test error")

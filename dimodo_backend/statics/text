@@ -1,0 +1,161 @@
+
+  <!-- 메인 배너 -->
+  <div id="main-banner" class="main-banner has-3 main-content slick-initialized slick-slider slick-dotted">
+    <!-- has-3 (배너 3개일때) has-4 (배너 4개일때) -->
+    <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 2316px;"><div class="banner banner-1 slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 772px; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1;" tabindex="0" role="tabpanel" id="slick-slide00" aria-describedby="slick-slide-control00">
+      <div class="banner__content">
+        <h2>No.1 Cosmetics Reviwe Platform DIMODO</h2>
+        <p>
+          제품, 리뷰, 랭킹, 성분 등 화장품의 모든 정보는 물론<br>
+          뷰티 콘텐츠와 쇼핑까지 한 번에!
+        </p>
+        <!-- <button class="btn btn-download" onclick="appDownload()">
+          화해, 지금 다운로드 하기 <img src="/statics/images/index/ic-download-green.png" alt="다운로드 아이콘"/>
+        </button> -->
+      </div>
+    </div><div class="banner banner-3 slick-slide" data-slick-index="1" aria-hidden="true" style="width: 772px; position: relative; left: -772px; top: 0px; z-index: 998; opacity: 0; transition: opacity 500ms ease;" tabindex="-1" role="tabpanel" id="slick-slide01" aria-describedby="slick-slide-control01">
+      <div class="banner__content">
+        <h2>
+          화장품, 헤매지 말고 화해하자!
+        </h2>
+        <p>
+          화장품 정보를 찾고, 제품을 구입하기 위해<br>
+          아직도 헤매고 있지 않나요?
+        </p>
+        <!-- <button class="btn btn-download" onclick="appDownload()">
+          화해, 지금 다운로드 하기 <img src="/statics/images/index/ic-download-green.png" alt="다운로드 아이콘"/>
+        </button> -->
+      </div>
+    </div><div class="banner banner-2 slick-slide" data-slick-index="2" aria-hidden="true" style="width: 772px; position: relative; left: -1544px; top: 0px; z-index: 998; opacity: 0; transition: opacity 500ms ease;" tabindex="-1" role="tabpanel" id="slick-slide02" aria-describedby="slick-slide-control02">
+      <div class="banner__content">
+        <h2>
+          6년 연속 1위<br>
+          화장품 정보 플랫폼
+        </h2>
+        <p>
+          700만 이상의 사용자들이 선택한<br>
+          화장품 정보 플랫폼 화해를 만나보세요!
+        </p>
+        <!-- <button class="btn btn-download" onclick="appDownload()">
+          화해, 지금 다운로드 하기 <img src="/statics/images/index/ic-download-green.png" alt="다운로드 아이콘"/>
+        </button> -->
+      </div>
+    </div></div></div>
+    
+    
+  <ul class="slick-dots" style="" role="tablist"><li class="slick-active" role="presentation"><button type="button" role="tab" id="slick-slide-control00" aria-controls="slick-slide00" aria-label="1 of 3" tabindex="0" aria-selected="true">1</button></li><li role="presentation" class=""><button type="button" role="tab" id="slick-slide-control01" aria-controls="slick-slide01" aria-label="2 of 3" tabindex="-1">2</button></li><li role="presentation" class=""><button type="button" role="tab" id="slick-slide-control02" aria-controls="slick-slide02" aria-label="3 of 3" tabindex="-1">3</button></li></ul></div>
+
+  <!-- 화해는 지금? -->
+  <div id="main-now" class="main-now main-content">
+    <div class="container">
+      <h4>화해는 지금?</h4>
+      <div class="binder"></div>
+
+      <div class="main-now__banner--wrapper">
+        <div class="main-now__banner slick-initialized slick-slider slick-dotted">
+          <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 2160px;"><div class="banner banner-1 slick-slide" data-slick-index="0" aria-hidden="true" style="width: 720px; position: relative; left: 0px; top: 0px; z-index: 998; opacity: 0; transition: opacity 500ms ease;" tabindex="-1" role="tabpanel" id="slick-slide10" aria-describedby="slick-slide-control10">5,283,656</div><div class="banner banner-2 slick-slide slick-current slick-active" data-slick-index="1" aria-hidden="false" style="width: 720px; position: relative; left: -720px; top: 0px; z-index: 999; opacity: 1;" tabindex="0" role="tabpanel" id="slick-slide11" aria-describedby="slick-slide-control11">172,434</div><div class="banner banner-3 slick-slide" data-slick-index="2" aria-hidden="true" style="width: 720px; position: relative; left: -1440px; top: 0px; z-index: 998; opacity: 0; transition: opacity 500ms ease;" tabindex="-1" role="tabpanel" id="slick-slide12" aria-describedby="slick-slide-control12">11,015</div></div></div>
+          
+          
+        <ul class="slick-dots" style="" role="tablist"><li class="" role="presentation"><button type="button" role="tab" id="slick-slide-control10" aria-controls="slick-slide10" aria-label="1 of 3" tabindex="-1">1</button></li><li role="presentation" class="slick-active"><button type="button" role="tab" id="slick-slide-control11" aria-controls="slick-slide11" aria-label="2 of 3" tabindex="0" aria-selected="true">2</button></li><li role="presentation" class=""><button type="button" role="tab" id="slick-slide-control12" aria-controls="slick-slide12" aria-label="3 of 3" tabindex="-1">3</button></li></ul></div>
+
+        <div class="main-now__banner__deco"></div>
+      </div>
+    </div>
+
+    <div class="container event">
+      <!--
+      화해 500만 리뷰 돌파 기념<br/>
+      #화해리뷰페스타 이벤트가 시작됩니다!<br/>
+      2020.04.21 – 2020.05.12<br/>
+      <br/>
+      매주 공개되는 다양한 이벤트에 참여하세요!<br/>
+      총 1천 명 이상에게 갤럭시 Z플립, 에어팟 프로 등<br/>
+      푸짐한 경품을 드립니다!<br/>
+      <br/>
+      NO.1 화장품 정보 플랫폼<br/>
+      화해 앱에서 확인하세요!
+      -->
+    </div>
+
+    <div class="main-now__asset" style="background-position-y: 100%;"></div>
+  </div>
+  <!-- 메인 배너 -->
+  <div id="main-banner" class="main-banner has-3 main-content slick-initialized slick-slider slick-dotted">
+    <!-- has-3 (배너 3개일때) has-4 (배너 4개일때) -->
+    <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 2316px;"><div class="banner banner-1 slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" style="width: 772px; position: relative; left: 0px; top: 0px; z-index: 999; opacity: 1;" tabindex="0" role="tabpanel" id="slick-slide00" aria-describedby="slick-slide-control00">
+      <div class="banner__content">
+        <h2>No.1 Cosmetics Reviwe Platform DIMODO</h2>
+        <p>
+          제품, 리뷰, 랭킹, 성분 등 화장품의 모든 정보는 물론<br>
+          뷰티 콘텐츠와 쇼핑까지 한 번에!
+        </p>
+        <!-- <button class="btn btn-download" onclick="appDownload()">
+          화해, 지금 다운로드 하기 <img src="/statics/images/index/ic-download-green.png" alt="다운로드 아이콘"/>
+        </button> -->
+      </div>
+    </div><div class="banner banner-3 slick-slide" data-slick-index="1" aria-hidden="true" style="width: 772px; position: relative; left: -772px; top: 0px; z-index: 998; opacity: 0; transition: opacity 500ms ease;" tabindex="-1" role="tabpanel" id="slick-slide01" aria-describedby="slick-slide-control01">
+      <div class="banner__content">
+        <h2>
+          화장품, 헤매지 말고 화해하자!
+        </h2>
+        <p>
+          화장품 정보를 찾고, 제품을 구입하기 위해<br>
+          아직도 헤매고 있지 않나요?
+        </p>
+        <!-- <button class="btn btn-download" onclick="appDownload()">
+          화해, 지금 다운로드 하기 <img src="/statics/images/index/ic-download-green.png" alt="다운로드 아이콘"/>
+        </button> -->
+      </div>
+    </div><div class="banner banner-2 slick-slide" data-slick-index="2" aria-hidden="true" style="width: 772px; position: relative; left: -1544px; top: 0px; z-index: 998; opacity: 0; transition: opacity 500ms ease;" tabindex="-1" role="tabpanel" id="slick-slide02" aria-describedby="slick-slide-control02">
+      <div class="banner__content">
+        <h2>
+          6년 연속 1위<br>
+          화장품 정보 플랫폼
+        </h2>
+        <p>
+          700만 이상의 사용자들이 선택한<br>
+          화장품 정보 플랫폼 화해를 만나보세요!
+        </p>
+        <!-- <button class="btn btn-download" onclick="appDownload()">
+          화해, 지금 다운로드 하기 <img src="/statics/images/index/ic-download-green.png" alt="다운로드 아이콘"/>
+        </button> -->
+      </div>
+    </div></div></div>
+    
+    
+  <ul class="slick-dots" style="" role="tablist"><li class="slick-active" role="presentation"><button type="button" role="tab" id="slick-slide-control00" aria-controls="slick-slide00" aria-label="1 of 3" tabindex="0" aria-selected="true">1</button></li><li role="presentation" class=""><button type="button" role="tab" id="slick-slide-control01" aria-controls="slick-slide01" aria-label="2 of 3" tabindex="-1">2</button></li><li role="presentation" class=""><button type="button" role="tab" id="slick-slide-control02" aria-controls="slick-slide02" aria-label="3 of 3" tabindex="-1">3</button></li></ul></div>
+
+  <!-- 화해는 지금? -->
+  <div id="main-now" class="main-now main-content">
+    <div class="container">
+      <h4>화해는 지금?</h4>
+      <div class="binder"></div>
+
+      <div class="main-now__banner--wrapper">
+        <div class="main-now__banner slick-initialized slick-slider slick-dotted">
+          <div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 2160px;"><div class="banner banner-1 slick-slide" data-slick-index="0" aria-hidden="true" style="width: 720px; position: relative; left: 0px; top: 0px; z-index: 998; opacity: 0; transition: opacity 500ms ease;" tabindex="-1" role="tabpanel" id="slick-slide10" aria-describedby="slick-slide-control10">5,283,656</div><div class="banner banner-2 slick-slide slick-current slick-active" data-slick-index="1" aria-hidden="false" style="width: 720px; position: relative; left: -720px; top: 0px; z-index: 999; opacity: 1;" tabindex="0" role="tabpanel" id="slick-slide11" aria-describedby="slick-slide-control11">172,434</div><div class="banner banner-3 slick-slide" data-slick-index="2" aria-hidden="true" style="width: 720px; position: relative; left: -1440px; top: 0px; z-index: 998; opacity: 0; transition: opacity 500ms ease;" tabindex="-1" role="tabpanel" id="slick-slide12" aria-describedby="slick-slide-control12">11,015</div></div></div>
+          
+          
+        <ul class="slick-dots" style="" role="tablist"><li class="" role="presentation"><button type="button" role="tab" id="slick-slide-control10" aria-controls="slick-slide10" aria-label="1 of 3" tabindex="-1">1</button></li><li role="presentation" class="slick-active"><button type="button" role="tab" id="slick-slide-control11" aria-controls="slick-slide11" aria-label="2 of 3" tabindex="0" aria-selected="true">2</button></li><li role="presentation" class=""><button type="button" role="tab" id="slick-slide-control12" aria-controls="slick-slide12" aria-label="3 of 3" tabindex="-1">3</button></li></ul></div>
+
+        <div class="main-now__banner__deco"></div>
+      </div>
+    </div>
+
+    <div class="container event">
+      <!--
+      화해 500만 리뷰 돌파 기념<br/>
+      #화해리뷰페스타 이벤트가 시작됩니다!<br/>
+      2020.04.21 – 2020.05.12<br/>
+      <br/>
+      매주 공개되는 다양한 이벤트에 참여하세요!<br/>
+      총 1천 명 이상에게 갤럭시 Z플립, 에어팟 프로 등<br/>
+      푸짐한 경품을 드립니다!<br/>
+      <br/>
+      NO.1 화장품 정보 플랫폼<br/>
+      화해 앱에서 확인하세요!
+      -->
+    </div>
+
+    <div class="main-now__asset" style="background-position-y: 100%;"></div>
+  </div>

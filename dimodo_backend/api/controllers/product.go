@@ -256,8 +256,9 @@ func (p *Product) CosmeticsProductsByCategoryId(w http.ResponseWriter, r *http.R
 
 	params := mux.Vars(r)
 	id, err := strconv.Atoi(params["id"])
+	skinTypeId, err := strconv.Atoi(skinType)
 
-	products, err := p.Cs.ProductsByCategoryID(id, skinType)
+	products, err := p.Cs.ProductsByCategoryID(id, skinTypeId)
 	if err != nil {
 		bugsnag.Notify(err)
 		resp.Json(w, r, http.StatusInternalServerError, resp.WithError(err.Error()))

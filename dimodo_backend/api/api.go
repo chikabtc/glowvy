@@ -25,6 +25,7 @@ type Controllers struct {
 	AddressC *controllers.Address
 	ProductC *controllers.Product
 	CartC    *controllers.Cart
+	StaticC  *controllers.Static
 }
 
 //NewAPI loads configuration files and initializes the router, DB, models, and controller objects.
@@ -59,6 +60,7 @@ func NewAPI(crawler *crawler.Crawler) *API {
 		AddressC: controllers.NewAddress(ms.Address),
 		CartC:    controllers.NewCart(ms.Cart, slack),
 		ProductC: controllers.NewProduct(ms.Product, ms.Cosmetics, crawler),
+		StaticC:  controllers.NewStatic(),
 	}
 
 	a := API{
