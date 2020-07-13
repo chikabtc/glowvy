@@ -2,7 +2,6 @@ import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/models/reviews.dart';
 import 'package:Dimodo/screens/detail/Cosmetics_review_card.dart';
 import 'package:Dimodo/screens/detail/cosmetics_image_feature.dart';
-import 'package:Dimodo/screens/detail/cosmetics_product_option.dart';
 import 'package:Dimodo/screens/detail/cosmetics_product_title.dart';
 import 'package:Dimodo/screens/detail/cosmetics_review_screen.dart';
 import 'package:Dimodo/widgets/bottom_popup_services.dart';
@@ -396,6 +395,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                                             .officialQA,
                                                         style: kBaseTextStyle
                                                             .copyWith(
+                                                                fontSize: 15,
                                                                 color:
                                                                     kDarkSecondary,
                                                                 fontWeight:

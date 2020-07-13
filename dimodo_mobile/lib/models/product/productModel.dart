@@ -14,9 +14,16 @@ import '../../models/category.dart';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 import 'package:flutter/services.dart';
+import 'package:Dimodo/generated/i18n.dart';
 
 import 'package:Dimodo/screens/categories/sub_category.dart';
 import 'product.dart';
+
+class Sorting {
+  static String low = "low";
+  static String high = "high";
+  static String rank = "rank";
+}
 
 class ProductModel with ChangeNotifier {
   static Services service = Services();
@@ -62,6 +69,24 @@ class ProductModel with ChangeNotifier {
     }
   }
 
+  sortAndFilter(sorting, skinTypeId, products) {
+    var filtered;
+    switch (sorting) {
+      case "high":
+        filtered = sortByPrice(products, false);
+        break;
+      case "rank":
+        filtered = sortByDefaultRank(products);
+        break;
+      case "low":
+        filtered = sortByPrice(products, true);
+        break;
+      default:
+    }
+
+    return filteredProductsBySkinType(skinTypeId, products);
+  }
+
   List<Product> sortByPrice(List<Product> products, bool isAscending) {
     products.sort((a, b) => isAscending
         ? b.salePrice.compareTo(a.salePrice)
@@ -70,15 +95,46 @@ class ProductModel with ChangeNotifier {
     return products;
   }
 
+  List<Product> sortByProductsBySkinType(skinTypeId, List<Product> products) {
+    switch (skinTypeId) {
+      //all
+      case 0:
+        products.sort((a, b) => a.cosmeticsRank.allSkinRank["Int32"]
+            .compareTo(b..cosmeticsRank.allSkinRank["Int32"]));
+        break;
+      //sensitive
+      case 1:
+        products.sort((a, b) => a.cosmeticsRank.sensitiveSkinRank["Int32"]
+            .compareTo(b..cosmeticsRank.sensitiveSkinRank["Int32"]));
+        break;
+      //dry
+      case 2:
+        products.sort((a, b) => a.cosmeticsRank.drySkinRank["Int32"]
+            .compareTo(b..cosmeticsRank.drySkinRank["Int32"]));
+
+        break;
+      //oily
+      case 3:
+        products.sort((a, b) => a.cosmeticsRank.oilySkinRank["Int32"]
+            .compareTo(b.cosmeticsRank.oilySkinRank["Int32"]));
+
+        break;
+    }
+    return products;
+  }
+
   List<Product> sortByDefaultRank(
     List<Product> products,
   ) {
-    products.sort((a, b) => isAscending
-        ? b.rating.compareTo(a.rating)
-        : a.rating.compareTo(b.rating));
+    products.sort((a, b) => b.rating.compareTo(a.rating));
 
     return products;
   }
+
+  // List<Product> setProducts(products) {
+  //   this.products = sortAndFilter(products);
+  //   return products;
+  // }
 
   List<Product> filteredProducts(
       {List<String> filterOptions, List<Product> products}) {
@@ -94,32 +150,31 @@ class ProductModel with ChangeNotifier {
     return filterProducts;
   }
 
-  getSkinTypeById(skinTypeId) {
+  getSkinTypeById(skinTypeId, context) {
     switch (skinTypeId) {
       //all
       case 0:
-        return "all";
+        return S.of(context).filter;
         break;
       //sensitive
       case 1:
-        return "sensitive";
+        return S.of(context).sensitive;
 
         break;
       //dry
       case 2:
-        return "dry";
+        return S.of(context).dry;
 
         break;
       //oily
       case 3:
-        return "oily";
+        return S.of(context).oily;
 
         break;
     }
   }
 
-  List<Product> filteredProductsBySkinType(
-      {int skinTypeId, List<Product> products}) {
+  List<Product> filteredProductsBySkinType(skinTypeId, List<Product> products) {
     products = products.where((p) {
       var isMatching = false;
       switch (skinTypeId) {

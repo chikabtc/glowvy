@@ -1,4 +1,5 @@
 import 'package:Dimodo/generated/i18n.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../common/tools.dart';
 import '../../models/product/product.dart';
@@ -15,11 +16,13 @@ class CosmeticsProductCard extends StatelessWidget {
   final height;
   final bool hideDetail;
   final offset;
+  var ranking;
   bool isNameAvailable;
 
   CosmeticsProductCard({
     this.product,
     this.width,
+    this.ranking,
     this.size = kSize.medium,
     this.isHero = false,
     this.showHeart = false,
@@ -33,11 +36,16 @@ class CosmeticsProductCard extends StatelessWidget {
   onTapProduct(context) {
     Navigator.push(
         context,
-        MaterialPageRoute<void>(
-          builder: (BuildContext context) =>
-              CosmeticsProductDetail(product: product),
-          fullscreenDialog: true,
+        MaterialPageRoute(
+          builder: (context) => CosmeticsProductDetail(product: product),
         ));
+    // Navigator.push(
+    //     context,
+    //     CupertinoPageRoute<void>(
+    //       builder: (BuildContext context) =>
+    //           CosmeticsProductDetail(product: product),
+    //       fullscreenDialog: true,
+    //     ));
   }
 
   @override
@@ -65,22 +73,47 @@ class CosmeticsProductCard extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            ClipRRect(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(6), topRight: Radius.circular(6)),
-              child: Container(
-                  width: 100,
-                  child: FittedBox(
+            Stack(overflow: Overflow.clip, children: <Widget>[
+              ClipRRect(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(6), topRight: Radius.circular(6)),
+                child: Stack(children: <Widget>[
+                  FittedBox(
                     fit: BoxFit.cover,
                     child: Tools.image(
                       url: product.thumbnail,
-                      fit: BoxFit.scaleDown,
-                      width: 100,
-                      height: 100,
+                      fit: BoxFit.cover,
+                      width: 120,
+                      height: 120,
                       size: kSize.large,
                     ),
-                  )),
-            ),
+                  ),
+                  if (ranking != null)
+                    Positioned(
+                        top: 0,
+                        left: 7,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              color: kRankingColor,
+                              borderRadius: BorderRadius.only(
+                                  bottomRight: Radius.circular(28),
+                                  bottomLeft: Radius.circular(28))),
+                          width: 32,
+                          height: 28,
+                          padding: EdgeInsets.all(3),
+                          child: Text(
+                            "TOP\n" + (ranking + 1).toString(),
+                            textAlign: TextAlign.center,
+                            style: kBaseTextStyle.copyWith(
+                              height: 1,
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        )),
+                ]),
+              ),
+            ]),
             // // item name
             SizedBox(width: 7),
             Flexible(

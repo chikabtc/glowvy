@@ -126,7 +126,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                                           "assets/icons/filter-sort-active.png"),
                               DynamicText(
                                 sorting == "rank"
-                                    ? S.of(context).byPrice
+                                    ? S.of(context).byRanking
                                     : sorting == "low"
                                         ? S.of(context).highestToLowest
                                         : S.of(context).lowestToHighest,
@@ -157,7 +157,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                         width: 16,
                       ),
                       DynamicText(
-                        productModel.getSkinTypeById(skinTypeId),
+                        productModel.getSkinTypeById(skinTypeId, context),
                         style: kBaseTextStyle.copyWith(
                             fontSize: 13,
                             fontWeight: FontWeight.w500,

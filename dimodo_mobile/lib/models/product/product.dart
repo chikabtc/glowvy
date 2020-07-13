@@ -15,6 +15,7 @@ part 'product.g.dart';
 class Product {
   int id;
   int sid;
+  int ingredientScore;
   String thumbnail;
   String name;
   String sname;
@@ -41,6 +42,7 @@ class Product {
 
   Product({
     this.id,
+    this.ingredientScore,
     this.thumbnail,
     this.rating,
     this.cosmeticsRank,

@@ -26,7 +26,6 @@ class ProductOption extends StatefulWidget {
 
 class _ProductOptionState extends State<ProductOption>
     with TickerProviderStateMixin {
-  Function onAddToCart;
   Function onSupport;
   bool isLoading = false;
   Size screenSize;
@@ -84,13 +83,9 @@ class _ProductOptionState extends State<ProductOption>
       context: context,
       barrierDismissible: true, // user can tap anywhere to dismiss the popup!
       builder: (BuildContext buildContext) {
-        // Future.delayed(const Duration(milliseconds: 1500), () {
-        //   Navigator.of(buildContext).pop();
-        // });
-
         return AlertDialog(
           title: DynamicText(
-            S.of(context).addedToYourCart,
+            "Thanks for liking it!",
             style: kBaseTextStyle,
           ),
           actions: <Widget>[
@@ -447,6 +442,7 @@ class _ProductOptionState extends State<ProductOption>
                                       : kDarkSecondary,
                                   buttonController:
                                       addToCartButtonController.view,
+                                  // onTap: () => showAddedToCartAlert(),
                                   onTap: isProductChosen()
                                       ? () {
                                           (model.isLoggedIn)
@@ -507,12 +503,13 @@ class _ProductOptionState extends State<ProductOption>
                 shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(25.0),
                     side: BorderSide(color: kPinkAccent, width: 1.5)),
-                child: DynamicText(S.of(context).addToCart,
+                child: DynamicText("Love it",
                     style: kBaseTextStyle.copyWith(
                         fontWeight: FontWeight.w600, color: Colors.white)),
                 onPressed: () {
-                  show(context, bottomPopupHeightFactor, widget.isLoggedIn,
-                      isLoading);
+                  showAddedToCartAlert();
+                  // show(context, bottomPopupHeightFactor, widget.isLoggedIn,
+                  //     isLoading);
                 }),
           ],
         ),

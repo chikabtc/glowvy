@@ -11,15 +11,10 @@ import 'package:Dimodo/generated/i18n.dart';
 
 class CosmeticsFilterBar extends StatefulWidget {
   Function onFilterConfirm;
-  Function onSkinTypeChanged;
   Function onReset;
   List<Product> products;
 
-  CosmeticsFilterBar(
-      {this.onFilterConfirm,
-      this.onSkinTypeChanged,
-      this.onReset,
-      this.products});
+  CosmeticsFilterBar({this.onFilterConfirm, this.onReset, this.products});
   @override
   _CosmeticsFilterBarState createState() => _CosmeticsFilterBarState();
 }
@@ -80,7 +75,6 @@ class _CosmeticsFilterBarState extends State<CosmeticsFilterBar> {
                     GestureDetector(
                       onTap: () {
                         var filtered = filterProduct();
-
                         switch (sorting) {
                           case "high":
                             sorting = Sorting.rank;
@@ -101,7 +95,8 @@ class _CosmeticsFilterBarState extends State<CosmeticsFilterBar> {
                             break;
                           default:
                         }
-                        widget.onFilterConfirm(filtered);
+
+                        widget.onFilterConfirm(filtered, sorting, skinTypeId);
                       },
                       child: Container(
                           decoration: new BoxDecoration(
@@ -156,7 +151,7 @@ class _CosmeticsFilterBarState extends State<CosmeticsFilterBar> {
                         width: 16,
                       ),
                       DynamicText(
-                        productModel.getSkinTypeById(skinTypeId),
+                        productModel.getSkinTypeById(skinTypeId, context),
                         style: kBaseTextStyle.copyWith(
                             fontSize: 13,
                             fontWeight: FontWeight.w500,
@@ -174,8 +169,8 @@ class _CosmeticsFilterBarState extends State<CosmeticsFilterBar> {
   }
 
   filterProduct() {
-    var filteredProducts = productModel.filteredProductsBySkinType(
-        skinTypeId: skinTypeId, products: widget.products);
+    var filteredProducts =
+        productModel.filteredProductsBySkinType(skinTypeId, widget.products);
     return filteredProducts;
   }
 
@@ -196,30 +191,6 @@ class _CosmeticsFilterBarState extends State<CosmeticsFilterBar> {
     }
     return products;
   }
-
-  // var filtered = filterProduct();
-
-  // switch (sorting) {
-  //   case "high":
-  //     sorting = Sorting.rank;
-  //     filtered =
-  //         productModel.sortByDefaultRank(widget.products);
-
-  //     break;
-
-  //   case "rank":
-  //     sorting = Sorting.low;
-  //     filtered =
-  //         productModel.sortByPrice(widget.products, true);
-  //     break;
-  //   case "low":
-  //     sorting = Sorting.high;
-  //     filtered = productModel.sortByPrice(
-  //         widget.products, false);
-  //     break;
-  //   default:
-  // }
-  // widget.onFilterConfirm(filtered);
 
   showCosmeticsSortingOptions() {
     showModalBottomSheet(
@@ -335,7 +306,6 @@ class _CosmeticsFilterBarState extends State<CosmeticsFilterBar> {
                                                 fontWeight: FontWeight.w600,
                                                 color: Colors.white)),
                                         onPressed: () {
-                                          widget.onSkinTypeChanged(skinTypeId);
                                           widget.onFilterConfirm(
                                               sortProducts(filterProduct()));
 
@@ -469,9 +439,10 @@ class _CosmeticsFilterBarState extends State<CosmeticsFilterBar> {
                                                 fontWeight: FontWeight.w600,
                                                 color: Colors.white)),
                                         onPressed: () {
-                                          widget.onSkinTypeChanged(skinTypeId);
                                           widget.onFilterConfirm(
-                                              sortProducts(filterProduct()));
+                                              sortProducts(filterProduct()),
+                                              sorting,
+                                              skinTypeId);
 
                                           Navigator.pop(context);
                                         }),

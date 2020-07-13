@@ -19,6 +19,7 @@ const kErrorRed = Color(0xFFe74c3c);
 const kSurfaceWhite = Color(0xFFFFFBFA);
 const kDefaultBackground = Color(0xfff9f9f9);
 const kSecondaryPink = Color(0xfffF19CB3);
+const kRankingColor = Color(0xfffF0D060);
 const kSecondaryPurple = Color(0xffC3B4F4);
 // const kDefaultBackground = Color(0xffE5E5E5);
 const kAccentRed = Color(0xffDB3022);

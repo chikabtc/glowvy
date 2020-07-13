@@ -14,9 +14,25 @@ class CosmeticsProductTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("ingredient score: ${product.ingredientScore}");
     var tag = product.tags.length == 1
         ? product.tags[0].sname
         : product.tags[1].sname;
+    var ingredient;
+    switch (product.ingredientScore) {
+      case 0:
+        ingredient = "low risk";
+        break;
+      case 1:
+        ingredient = "moderate risk";
+        break;
+
+      case 2:
+        ingredient = "high risk";
+        break;
+        break;
+      default:
+    }
     return Container(
       color: Colors.purple,
       child: Column(
@@ -29,7 +45,7 @@ class CosmeticsProductTitle extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 DynamicText(
-                  "DIMODO Price",
+                  S.of(context).bestDealInKorea,
                   style: kBaseTextStyle.copyWith(
                       color: Colors.white,
                       fontSize: 12,
@@ -70,7 +86,9 @@ class CosmeticsProductTitle extends StatelessWidget {
                         ),
                       Spacer(),
                       if (product.purchaseCount != null)
-                        DynamicText("${product.purchaseCount} sold",
+                        DynamicText(
+                            "${product.purchaseCount} " +
+                                S.of(context).beenSold,
                             style: kBaseTextStyle.copyWith(
                                 fontSize: 10, color: kSecondaryPurple)),
                     ]),
@@ -133,6 +151,23 @@ class CosmeticsProductTitle extends StatelessWidget {
                         fontSize: 13, fontWeight: FontWeight.w600),
                   ),
                 ),
+                // if (product.ingredientScore == 0)
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: DynamicText(
+                    product.ingredientScore.toString(),
+                    style: kBaseTextStyle.copyWith(
+                        fontSize: 13, fontWeight: FontWeight.w600),
+                  ),
+                ),
+                // Container(
+                //   width: MediaQuery.of(context).size.width,
+                //   child: DynamicText(
+                //     ingredient,
+                //     style: kBaseTextStyle.copyWith(
+                //         fontSize: 13, fontWeight: FontWeight.w600),
+                //   ),
+                // ),
               ],
             ),
           )

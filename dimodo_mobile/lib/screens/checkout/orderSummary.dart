@@ -181,7 +181,7 @@ class OrderSummaryCard extends StatelessWidget {
                     color: isBankTransferSummary ? kDarkBG : kDarkSecondary),
               ),
             ),
-            if (fee != null) Spacer(),
+            // if (fee != null) Spacer(),
             if (!isBankTransferSummary && fee != null)
               DynamicText(
                 isDiscount ? "-" + fee : fee,

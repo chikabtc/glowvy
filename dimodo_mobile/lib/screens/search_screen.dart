@@ -10,8 +10,6 @@ import '../generated/i18n.dart';
 import 'package:algolia/algolia.dart';
 
 class SearchScreen extends StatefulWidget {
-  SearchScreen({Key key}) : super(key: key);
-
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }

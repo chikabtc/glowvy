@@ -115,6 +115,7 @@ class S implements WidgetsLocalizations {
   // Confirm Order Page
   // ===========================================================================
   String get dimodoPrice => "DIMODO price";
+  String get bestDealInKorea => "Best Deal in Korea";
 
   String get confirmToOrder => "Confirm to order";
   String get includingTaxAndFee => "including tax & fee";
@@ -182,6 +183,9 @@ class S implements WidgetsLocalizations {
   String get localKoreanShips => "Local Korean Shops";
   String get seoulKorea => "Seoul, Korea";
   String get filter => "filter";
+  String get sensitive => "sensitive";
+  String get oily => "oily";
+  String get dry => "dry";
   String get theMostFamousRanking =>
       "The most famous popular Korean beauty ranking service in Korea";
 
@@ -255,6 +259,7 @@ class S implements WidgetsLocalizations {
   String get category => "Category";
   String get categories => "Categories";
   String get addToCart => "Add To Cart";
+  // String get addToCart => "Add To Cart";
 
   String get chooseYourPaymentMethod => "Choose your payment method";
   String get city => "City";
@@ -423,7 +428,7 @@ class S implements WidgetsLocalizations {
   String get sevenDayWorryFree => "Return within 7 days after sales";
   String get zipCode => "Zip-code";
   String get zipCodeIsRequired => "The zip code field is required";
-  String get beenSold => "been sold";
+  String get beenSold => "sold";
   String get takeSurvey => "Take a survey";
   String get allRankingResults => "All Ranking Results Based on";
 
@@ -452,6 +457,7 @@ class $vi extends S {
   String get surveyDescription =>
       "We appreciate you are trying our current feature we’ve been building in Dimodo. It will take 10 mins to collect your feedback about our product?";
   String get officialQA => "Mục hỏi và đáp chính thức của Dimodo";
+  String get bestDealInKorea => "Giá tốt nhất ở";
 
   @override
   String get privacyPolicy => "Chính Sách Bảo Mật";
@@ -502,17 +508,18 @@ class $vi extends S {
   String get darkTheme => "Giao diện tối";
   @override
   String get discount => "Discount";
-  String get supportedByGoogleTranslate => "Support By Google Translate";
+  String get supportedByGoogleTranslate => "Dịch bằng Google";
   String get choose => "Lựa chọn";
 
   @override
   String get byPrice => "Theo giá";
   @override
   String get shippingDescription =>
-      "Chúng tôi nhận được gói của bạn từ các cửa hàng Hàn Quốc trong vòng 3-5 ngày. Phải mất một tuần nữa để gửi nó đến cửa của bạn tại Việt Nam";
+      "Chúng tôi nhận được gói của bạn từ các cửa hàng Hàn Quốc trong vòdng 3-5 ngày. Phải mất một tuần nữa để gửi nó đến cửa của bạn tại Việt Nam";
 
   String get name => "Name";
   String get dimodoServices => "Dimodo Services";
+  // String get dimodoPrice => "Dimodo Price";
 
 // =============================================================================
 // tra
@@ -560,7 +567,7 @@ class $vi extends S {
   String get writeReview => "Viết nhận xét của bạn";
   String get send => "Gửi";
   String get selectOrEnterCoupon => "Chọn Hoặc Nhập Mã";
-  String get byRanking => "By Ranking";
+  String get byRanking => "Theo xếp hạng";
   String get whyLowerThanMarketPriceQuestion =>
       "1. Tại sao giá của Dimodo thấp hơn giá thị trường?";
   String get whereReviewsFromQuestion => "2. Những đánh giá này đến từ đâu?";

@@ -19,12 +19,14 @@ class CosmeticsProductList extends StatefulWidget {
   final dynamic onLoadMore;
   final bool showFilter;
   final bool disableScrolling;
+  final bool showRank;
   CosmeticsProductList({
     this.products,
     this.isNameAvailable = false,
     this.onLoadMore,
     this.showFilter = false,
     this.disableScrolling = false,
+    this.showRank = false,
     this.layout = "list",
   });
 
@@ -142,7 +144,7 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
                                   currentIndex = index;
                                   return Column(
                                     children: <Widget>[
-                                      if (index == 2)
+                                      if (index == 3)
                                         Container(
                                             decoration: BoxDecoration(
                                                 color: kLightPink,
@@ -214,6 +216,8 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
                                         height: 120,
                                         color: Colors.white,
                                         child: CosmeticsProductCard(
+                                            ranking:
+                                                widget.showRank ? index : null,
                                             isNameAvailable:
                                                 widget.isNameAvailable,
                                             product: _products[index],

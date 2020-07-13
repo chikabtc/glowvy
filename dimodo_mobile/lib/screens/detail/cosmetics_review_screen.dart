@@ -1,7 +1,6 @@
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/screens/detail/Cosmetics_review_card.dart';
-import 'package:Dimodo/widgets/cosmetics_filter_bar.dart';
 import 'package:Dimodo/widgets/cosmetics_review_filter_bar.dart';
 import 'package:flutter/material.dart';
 import '../../common/constants.dart';
@@ -13,7 +12,6 @@ import '../../models/reviews.dart';
 import '../../services/index.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'review_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'cartAction.dart';
 
@@ -86,9 +84,7 @@ class _StateReviews extends State<CosmeticsReviewScreen>
               metaReviews == null
                   ? Container(
                       height: kScreenSizeHeight * 0.7,
-                      child: SpinKitThreeBounce(
-                          color: kPinkAccent,
-                          size: 23.0 * kSizeConfig.containerMultiplier),
+                      child: SpinKitThreeBounce(color: kPinkAccent, size: 23.0),
                     )
                   : (metaReviews.reviews.length == 0
                       ? Container(

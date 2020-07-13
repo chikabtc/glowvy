@@ -274,37 +274,49 @@
     },
 
     {
-      "name": "Sản phẩm làm sạch",
+      "name": "cleanser",
       "image": "assets/icons/categories/coat.png",
       "id": 32,
-      "parent_id": 5
-
+      "parent_id": 0
+    },
+    {
+      "name": "sunscreen",
+      "image": "assets/icons/categories/coat.png",
+      "id": 41,
+      "parent_id": 0
+    },
+    {
+      "name": "lipstick",
+      "image": "assets/icons/categories/coat.png",
+      "id": 14,
+      "parent_id": 0
     }
   ],
   "Onboarding": [{
-      "title": "Proven Korean Cosmetics",
+      "title": "Mỹ Phẩm Hàn Quốc thật ",
       "image": "assets/images/onboarding/onborading-illustration-3.png",
       "indicator": "assets/images/onboarding/logo1.png",
       "widthImage": "400",
       "heightImage": "395",
-      "desc": "Hundreds of trustable reviews for your skin types"
+      "desc": "Hàng trăm feedback từ người tiêu dùng"
     },
     {
-      "title": "Best Deal Everyday",
+      "title": "Best deal mỗi ngày",
       "image": "assets/images/onboarding/onborading-illustration-1.png",
       "indicator": "assets/images/onboarding/logo2.png",
       "widthImage": "400",
       "heightImage": "395",
-      "desc": "Update official lowest price in Korea everyday"
+      "desc": "Cập nhật trend từ Hàn Quốc mỗi ngày"
     },
     {
-      "title": "Money Back Guarantee",
+      "title": "chính sách hoàn tiền",
       "image": "assets/images/onboarding/onborading-illustration-2.png",
       "indicator": "assets/images/onboarding/logo3.png",
       "widthImage": "400",
       "heightImage": "395",
-      "desc": "Get in touch with Dimodo anytime after order"
+      "desc": "Liên lạc với Dimono khi cần thiết"
     }
   ]
+
 
 }

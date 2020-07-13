@@ -238,6 +238,7 @@
       "type": "product_type",
       "options": ["sensitive", "oily", "dry"]
     }
+
   ],
 
   "Categories": [
@@ -320,6 +321,20 @@
       "id": 32,
       "parent_id": 5
 
+    },
+
+    {
+      "name": "Sunscreen",
+      "image": "assets/icons/categories/coat.png",
+      "id": 41,
+      "parent_id": 0
+    },
+
+    {
+      "name": "Lipstick",
+      "image": "assets/icons/categories/coat.png",
+      "id": 14,
+      "parent_id": 0
     }
   ],
   "Onboarding": [{

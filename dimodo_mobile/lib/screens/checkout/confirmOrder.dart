@@ -27,7 +27,7 @@ class _ConfirmOrderState extends State<ConfirmOrder>
   bool isLoading = false;
   AnimationController submitButtonController;
   User user;
-  var cartModel;
+  CartModel cartModel;
   @override
   void initState() {
     super.initState();
@@ -97,7 +97,9 @@ class _ConfirmOrderState extends State<ConfirmOrder>
       order.totalFee = cartModel.getTotal();
       order.totalDiscounts = cartModel.getTotalDiscounts();
       order.userId = userModel.user.id;
-      order.addressId = cartModel.address.id;
+      order.addressId = cartModel.address.id != null
+          ? cartModel.address.id
+          : userModel.user.defaultAddress.id;
       order.appliedCoupons = cartModel.selectedCoupons;
 
       await orderModel.submitOrder(order: order);
@@ -108,7 +110,7 @@ class _ConfirmOrderState extends State<ConfirmOrder>
       isLoading = false;
       _stopAnimation();
 
-      print(err.toString());
+      print("fail to submit order: ${err.toString()}");
       // Scaffold.of(context).showSnackBar(snackBar);
     }
   }
