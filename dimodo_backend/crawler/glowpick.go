@@ -23,7 +23,7 @@ import (
 	"github.com/gocolly/colly/extensions"
 )
 
-const glowPickAuth = "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJnbG93cGljay53ZWIiLCJpYXQiOjE1OTQyNjcwNzMsInN1YiI6Imdsb3dwaWNrLWF1dGgiLCJpc3MiOiJnbG93ZGF5eiIsImV4cCI6MTU5NDM1MzQ3MywiYXVkIjoiSTRXWmlNbTg1YmppUDlaTzI4VUJnaTR2ZS14SU5fYURrUGFNdlI1TGRDSG5NQ3A2M2lRdTVueW5JZzVfV01KVjlJUXpua2h6aXB5Qzl2RC1TdkJsNkEifQ.OLir8SqUH-ytMQIsKBjQLTaINDb5ckMM8LdUhfOwvjI"
+const glowPickAuth = "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJnbG93cGljay53ZWIiLCJpYXQiOjE1OTQ3OTI4ODQsInN1YiI6Imdsb3dwaWNrLWF1dGgiLCJpc3MiOiJnbG93ZGF5eiIsImV4cCI6MTU5NDg3OTI4NCwiYXVkIjoiSTRXWmlNbTg1YmppUDlaTzI4VUJnaGZta0RpazcyTzl1RkdRNFVhM05NejFZZmxSV09UZ09naEk1bDFHZk1KNHZGQVpXT1p1eUQwaGtkaGU4LXBhSEEifQ.bb34jLPjgdjW7IAe-mTYp16xSnWJzSsxEWh7TLuC8Kc"
 
 //parentid always 2
 //category: idx
@@ -136,6 +136,7 @@ func (c *Crawler) GetGlowPickProductsByRank(level, categoryId, limit int, skinTy
 	}
 
 	for i, p := range GlowPickProducts.Products {
+
 		fmt.Println("title: " + p.ProductTitle + "rank: i")
 
 		_, err = c.createGlowPickProductById(fmt.Sprint(p.IDProduct), skinType, categoryId, level, i+1)
@@ -289,16 +290,162 @@ func (c *Crawler) createGlowPickProductById(id, skinType string, category, level
 	var product models.Product
 	switch glwProduct.Data.IngredientInfo.Hazard {
 	case "low":
-		product.HazardScore = 0
+		product.HazardScore = 1
 		break
-	case "medium":
-		product.HazardScore = 0
+	case "moderate":
+		product.HazardScore = 2
 		break
-
 	case "high":
+		product.HazardScore = 3
+		break
+	default:
 		product.HazardScore = 0
 		break
+	}
 
+	return &product, err
+}
+func (c *Crawler) createGlowPickProductByIdWithoutRank(id string) (*models.Product, error) {
+	var isProductAvailable bool
+	row, err := c.GlowpickDot.QueryRow(c.DB, "CheckProduct", id)
+
+	if err != nil {
+		fmt.Println("fail to run sql:", err)
+		bugsnag.Notify(err)
+		return nil, err
+	}
+
+	if err := row.Scan(&isProductAvailable); err != nil {
+		fmt.Println("fail to scan review", err)
+		return nil, err
+	}
+
+	url := "https://api-j.glowpick.com/api/product/" + id
+	fmt.Println("createProductByID: ", url)
+	req, _ := http.NewRequest("GET", url, nil)
+	req.Header.Add("Authorization", glowPickAuth)
+	random := userAgent.Random()
+	log.Printf("Random: %s", random)
+	req.Header.Set("User-Agent", random)
+	r := rand.Intn(5)
+	time.Sleep(time.Duration(r) * time.Microsecond)
+	// randomProxyIndex := rand.Intn(len(proxies))
+	// proxyUrl, err := netUrl.Parse(proxies[randomProxyIndex])
+	// , Transport: &http.Transport{Proxy: http.ProxyURL(proxyUrl)}
+	client := http.Client{Timeout: time.Second * 50}
+	res, err := client.Do(req)
+	if err != nil {
+		bugsnag.Notify(err)
+		return nil, err
+	}
+
+	defer res.Body.Close()
+	body, _ := ioutil.ReadAll(res.Body)
+	var glwProduct glowpick.GlowpickDetailedProduct
+
+	if err := json.Unmarshal(body, &glwProduct); err != nil {
+		bugsnag.Notify((err))
+		return nil, err
+	}
+	fmt.Println("glow pick product title:", glwProduct.Data.ProductTitle)
+	var brandName = glwProduct.Data.Brand.BrandTitle
+
+	i1 := strings.Index(brandName, "(")
+	i2 := strings.Index(brandName, ")")
+
+	if i1 == -1 || i2 == -1 {
+		fmt.Println("no change english brand name: ", brandName)
+	} else {
+		brandName = brandName[i1+1 : i2]
+		fmt.Println("english brand name: ", brandName)
+	}
+	_, err = c.GlowpickDot.Exec(c.DB, "addBrandName", brandName, glwProduct.Data.Brand.BrandImg, glwProduct.Data.Brand.BrandTitle, glwProduct.Data.Brand.IDBrand)
+	if err != nil {
+		fmt.Println("addBrandName: ", err)
+		bugsnag.Notify(err)
+	}
+	//parentCategory
+	//save the most specific category
+	// var categoryId = convertCategoryID(category)
+	var categoryId = int(glwProduct.Data.CategoryInfo[0].IDThirdCategory)
+
+	if !isProductAvailable {
+
+		_, err = c.GlowpickDot.Exec(c.DB, "CreateProduct",
+			glwProduct.Data.IDProduct,
+			glwProduct.Data.ProductTitle,
+			glwProduct.Data.Volume,
+			glwProduct.Data.Price,
+			glwProduct.Data.ReviewCount,
+			glwProduct.Data.RatingAvg,
+			glwProduct.Data.ProductImg,
+			glwProduct.Data.IsDiscontinue,
+			brandName,
+			glwProduct.Data.Brand.IDBrand,
+			glwProduct.Data.Brand.BrandImg,
+			glwProduct.Data.Description,
+			categoryId,
+		)
+		if err != nil {
+			bugsnag.Notify(err)
+			fmt.Println("CreateProduct: ", err.Error())
+			return nil, err
+		}
+		// if glwProduct.Data.ReviewGraph.PositiveReview.Contents != "" {
+		// 	_, err = c.GlowpickDot.Exec(c.DB, "CreateReview",
+		// 		glwProduct.Data.IDProduct,
+		// 		glwProduct.Data.ReviewGraph.PositiveReview.Register.Nickname,
+		// 		glwProduct.Data.ReviewGraph.PositiveReview.Register.SkinType,
+		// 		glwProduct.Data.ReviewGraph.PositiveReview.Register.Age,
+		// 		glwProduct.Data.ReviewGraph.PositiveReview.ReviewID,
+		// 		glwProduct.Data.ReviewGraph.PositiveReview.Contents,
+		// 		glwProduct.Data.ReviewGraph.PositiveReview.Rating,
+		// 	)
+		// 	if err != nil {
+		// 		bugsnag.Notify(err)
+		// 		fmt.Println("CreateReview: ", err.Error())
+		// 		return err
+		// 	}
+		// }
+		// if glwProduct.Data.ReviewGraph.NegativeReview.Contents != "" {
+		// 	_, err = c.GlowpickDot.Exec(c.DB, "CreateReview",
+		// 		glwProduct.Data.IDProduct,
+		// 		glwProduct.Data.ReviewGraph.NegativeReview.Register.Nickname,
+		// 		glwProduct.Data.ReviewGraph.NegativeReview.Register.SkinType,
+		// 		glwProduct.Data.ReviewGraph.NegativeReview.Register.Age,
+		// 		glwProduct.Data.ReviewGraph.NegativeReview.ReviewID,
+		// 		glwProduct.Data.ReviewGraph.NegativeReview.Contents,
+		// 		glwProduct.Data.ReviewGraph.NegativeReview.Rating,
+		// 	)
+		// 	if err != nil {
+		// 		bugsnag.Notify(err)
+		// 		fmt.Println("CreateReview: ", err.Error())
+		// 		return err
+		// 	}
+		// }
+
+	}
+
+	err = c.addTags(glwProduct)
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("addTags: ", err.Error())
+		return nil, err
+	}
+	var product models.Product
+	switch glwProduct.Data.IngredientInfo.Hazard {
+	case "low":
+		product.HazardScore = 1
+		break
+	case "moderate":
+		product.HazardScore = 2
+		break
+	case "high":
+		product.HazardScore = 3
+		break
+	default:
+		product.HazardScore = 0
+		break
 	}
 
 	return &product, err
@@ -375,6 +522,34 @@ func (c *Crawler) setProductRankBySkinType(skinType string, categoryId, level, p
 		// bugsnag.Notify(errors.New("attempted to create a new product when a product already exists"))
 	}
 	return err
+}
+
+func (c *Crawler) GetLocallyPopularProducts() {
+	rows, err := c.GlowpickDot.Query(c.DB, "getLocallyPopularProduct")
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("getLocallyPopularProduct", err)
+		return
+	}
+
+	defer rows.Close()
+	for rows.Next() {
+		var sid int
+		if err := rows.Scan(
+			&sid,
+		); err != nil {
+			bugsnag.Notify(err)
+			fmt.Println("fail to Next", err)
+			return
+		}
+
+		_, err = c.createGlowPickProductByIdWithoutRank(fmt.Sprint(sid))
+		if err != nil {
+			bugsnag.Notify(err)
+			fmt.Println("createGlowPickProductByIdWithoutRank :", err)
+		}
+	}
+	return
 }
 
 func getFacialCleanserRanking() {

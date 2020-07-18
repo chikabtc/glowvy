@@ -117,7 +117,7 @@ type Product struct {
 	EnName         string       `json:"enname,omitempty"`
 	Description    string       `json:"description,omitempty"`
 	Sdescription   string       `json:"sdescription,omitempty"`
-	DescImages     []string     `json:"desc_images,omitempty"`
+	DescImages     []string     `json:"desc_images"`
 	SliderImages   []string     `json:"slider_images,omitempty"`
 	Sale_price     int          `json:"sale_price,omitempty"`
 	Rating         string       `json:"rating,omitempty"`
@@ -148,10 +148,10 @@ type Product struct {
 }
 
 type Ingredient struct {
-	Id              int      `json:"id"`
-	NameEn          string   `json:"name_en"`
-	Purpose         []string `json:"purpose"`
-	IngredientScroe int      `json:"ingredient_score"`
+	Id          int      `json:"id"`
+	NameEn      string   `json:"name_en"`
+	Purpose     []string `json:"purposes"`
+	HazardScore int      `json:"hazard_score"`
 }
 
 type Tag struct {

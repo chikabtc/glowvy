@@ -442,7 +442,7 @@
 
 .section-main .main-ranking .container>* {
     text-align: left;
-    max-width: 998px;
+    max-width: 1200px;
     padding-left: 89px;
 }
 
@@ -494,7 +494,7 @@
 }
 
 .section-main .main-info .info_text {
-    max-width: 473px;
+    max-width: 525;
     height: 463px;
     margin: 0 auto;
     background: url('/statics/images/index/con-7-object-1-graph.png') no-repeat center transparent;
@@ -760,7 +760,7 @@
     }
 
     .section-main .main-shopping p {
-        max-width: 210px;
+        max-width: 300px;
         margin: 0 auto;
     }
 
@@ -831,7 +831,7 @@
     }
 
     .section-main .main-info .info_text p {
-        max-width: 300px;
+        max-width: 2000px;
         margin: 0 auto;
     }
 

@@ -160,7 +160,16 @@ UPDATE
     product
 SET
     -- name = $1
-    ingredient_score = $1
+    hazard_score = $1
 WHERE
     sid = $2
-    AND source = 'glowpick'
+    AND source = 'glowpick' x3;
+
+--name: getLocallyPopularProduct
+SELECT
+    sid
+FROM
+    product
+WHERE
+    source = 'glowpick'
+    AND tag = 'local_popular'

@@ -1,0 +1,266 @@
+[{
+    "id": 402,
+    "name_en": "Water;Aqua",
+    "purpose_ko": ["피부컨디셔닝제, 용제"],
+    "hazard_score": 1
+}, {
+    "id": 408,
+    "name_en": "1,2-Hexanediol",
+    "purpose_ko": ["용제"],
+    "hazard_score": 1
+}, {
+    "id": 418,
+    "name_en": "Stearic Acid",
+    "purpose_ko": ["향료, 계면활성제-세정제, 계면활성제-유화제"],
+    "hazard_score": 1
+}, {
+    "id": 425,
+    "name_en": "Ethylhexylglycerin",
+    "purpose_ko": ["피부컨디셔닝제"],
+    "hazard_score": 1
+}, {
+    "id": 429,
+    "name_en": "Dipropylene Glycol",
+    "purpose_ko": ["착향제, 용제, 점도감소제"],
+    "hazard_score": 1
+}, {
+    "id": 436,
+    "name_en": "Butylene Glycol",
+    "purpose_ko": ["향료, 피부컨디셔닝제, 용제, 점도감소제"],
+    "hazard_score": 1
+}, {
+    "id": 440,
+    "name_en": "Sodium Hyaluronate",
+    "purpose_ko": ["피부컨디셔닝제"],
+    "hazard_score": 1
+}, {
+    "id": 442,
+    "name_en": "Dimethicone",
+    "purpose_ko": ["기포방지제, 피부보호제, 피부컨디셔닝제(수분차단제)"],
+    "hazard_score": 2
+}, {
+    "id": 448,
+    "name_en": "Hydrogenated Polyisobutene",
+    "purpose_ko": ["피부유연화제, 점증제-비수용성"],
+    "hazard_score": 1
+}, {
+    "id": 469,
+    "name_en": "Glycerin",
+    "purpose_ko": ["변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제"],
+    "hazard_score": 1
+}, {
+    "id": 470,
+    "name_en": "Ceramide NP",
+    "purpose_ko": ["모발조정제, 피부교질화제"],
+    "hazard_score": 1
+}, {
+    "id": 473,
+    "name_en": "Hydrogenated Lecithin",
+    "purpose_ko": ["계면활성제-유화제, 현탁화제-비계면활성제, 피부컨디셔닝제"],
+    "hazard_score": 1
+}, {
+    "id": 610,
+    "name_en": "Glyceryl Stearate;Glyceryl Stearates",
+    "purpose_ko": ["향료, 피부유연화제, 계면활성제-유화제"],
+    "hazard_score": 1
+}, {
+    "id": 614,
+    "name_en": "Squalane",
+    "purpose_ko": ["모발컨디셔닝제, 수분증발차단제"],
+    "hazard_score": 1
+}, {
+    "id": 619,
+    "name_en": "Cetearyl Alcohol",
+    "purpose_ko": ["유화안정제, 불투명화제, 계면활성제-거품형성제, 점증제-수용성, 점증제-비수용성"],
+    "hazard_score": 1
+}, {
+    "id": 622,
+    "name_en": "Polysorbate 60",
+    "purpose_ko": ["향료, 계면활성제-유화제, 계면활성제-용해보조제"],
+    "hazard_score": 2
+}, {
+    "id": 630,
+    "name_en": "Tocopheryl Acetate",
+    "purpose_ko": ["산화방지제, 피부컨디셔닝제"],
+    "hazard_score": 2
+}, {
+    "id": 633,
+    "name_en": "Disodium EDTA",
+    "purpose_ko": ["금속이온봉쇄제"],
+    "hazard_score": 1
+}, {
+    "id": 911,
+    "name_en": "Caprylic/Capric Triglyceride",
+    "purpose_ko": ["향료, 수분증발차단제"],
+    "hazard_score": 1
+}, {
+    "id": 995,
+    "name_en": "Butyrospermum Parkii (Shea) Butter",
+    "purpose_ko": ["피부컨디셔닝제(기타), 피부컨디셔닝제(수분차단제), 점도증가제(비수성)"],
+    "hazard_score": 1
+}, {
+    "id": 1006,
+    "name_en": "Allantoin",
+    "purpose_ko": ["피부컨디셔닝제, 피부보호제"],
+    "hazard_score": 1
+}, {
+    "id": 1013,
+    "name_en": "Dimethicone/Vinyl Dimethicone Crosspolymer",
+    "purpose_ko": ["점도증가제(비수성)"],
+    "hazard_score": 1
+}, {
+    "id": 1034,
+    "name_en": "Carbomer",
+    "purpose_ko": ["유화안정제, 점증제-수용성"],
+    "hazard_score": 1
+}, {
+    "id": 1071,
+    "name_en": "Lavandula Angustifolia (Lavender) Oil",
+    "purpose_ko": ["향료, 피부컨디셔닝제"],
+    "hazard_score": 1
+}, {
+    "id": 1119,
+    "name_en": "Butylene Glycol Dicaprylate/Dicaprate",
+    "purpose_ko": ["피부컨디셔닝제(수분차단제)"],
+    "hazard_score": 1
+}, {
+    "id": 1127,
+    "name_en": "Hydroxypropyl Bispalmitamide MEA",
+    "purpose_ko": ["피부유연화제"],
+    "hazard_score": 1
+}, {
+    "id": 1153,
+    "name_en": "Cholesterol",
+    "purpose_ko": ["유화안정제, 피부컨디셔닝제, 점증제-비수용성"],
+    "hazard_score": 1
+}, {
+    "id": 1176,
+    "name_en": "Betaine",
+    "purpose_ko": ["모발컨디셔닝제, 보습제, 피부보습제"],
+    "hazard_score": 1
+}, {
+    "id": 1178,
+    "name_en": "Hydroxyethyl Acrylate/Sodium Acryloyldimethyl Taurate Copolymer",
+    "purpose_ko": ["유화안정제, 불투명화제, 현탁화제-비계면활성제, 점증제-수용성"],
+    "hazard_score": 1
+}, {
+    "id": 1183,
+    "name_en": "Tromethamine",
+    "purpose_ko": ["향료, pH 조절제"],
+    "hazard_score": 1
+}, {
+    "id": 1230,
+    "name_en": "Cocos Nucifera (Coconut) Oil",
+    "purpose_ko": ["향료, 모발컨디셔닝제, 피부컨디셔닝제, 수분증발차단제"],
+    "hazard_score": 1
+}, {
+    "id": 1266,
+    "name_en": "Pentaerythrityl Tetraethylhexanoate",
+    "purpose_ko": ["결합제, 피부컨디셔닝제(수분차단제), 점도증가제(비수성)"],
+    "hazard_score": 1
+}, {
+    "id": 1275,
+    "name_en": "Hydrogenated Polydecene",
+    "purpose_ko": ["향료, 모발컨디셔닝제, 피부유연화제, 피부컨디셔닝제, 용제"],
+    "hazard_score": 1
+}, {
+    "id": 1291,
+    "name_en": "Aloe Barbadensis Leaf Extract",
+    "purpose_ko": ["보습제, 피부유연화제, 피부컨디셔닝제"],
+    "hazard_score": 1
+}, {
+    "id": 1371,
+    "name_en": "Polyglyceryl-3 Methylglucose Distearate",
+    "purpose_ko": ["피부컨디셔닝제(유연제), 계면활성제(유화제)"],
+    "hazard_score": 1
+}, {
+    "id": 1418,
+    "name_en": "Polyquaternium-51",
+    "purpose_ko": ["피막형성제, 피부보습제"],
+    "hazard_score": 1
+}, {
+    "id": 1647,
+    "name_en": "Anthemis Nobilis Flower Oil; Chamomilla Recutita (Matricaria) Flower Oil",
+    "purpose_ko": ["착향제, 피부컨디셔닝제(기타)"],
+    "hazard_score": 1
+}, {
+    "id": 1953,
+    "name_en": "Glyceryl Polymethacrylate",
+    "purpose_ko": ["피막형성제"],
+    "hazard_score": 1
+}, {
+    "id": 1967,
+    "name_en": "Glycosphingolipids",
+    "purpose_ko": ["피부컨디셔닝제"],
+    "hazard_score": 1
+}, {
+    "id": 2273,
+    "name_en": "Santalum Album (Sandalwood) Oil",
+    "purpose_ko": ["착향제"],
+    "hazard_score": 1
+}, {
+    "id": 2335,
+    "name_en": "Aleuritic Acid",
+    "purpose_ko": ["피부컨디셔닝제"],
+    "hazard_score": 1
+}, {
+    "id": 2336,
+    "name_en": "Yeast Extract",
+    "purpose_ko": [""],
+    "hazard_score": 1
+}, {
+    "id": 2337,
+    "name_en": "Glycoproteins",
+    "purpose_ko": ["헤어컨디셔닝제, 피부컨디셔닝제(기타)"],
+    "hazard_score": 1
+}, {
+    "id": 3125,
+    "name_en": "Cetearyl Glucoside",
+    "purpose_ko": ["계면활성제-유화제"],
+    "hazard_score": 1
+}, {
+    "id": 7792,
+    "name_en": "Ethylhexyl Isononanoate",
+    "purpose_ko": ["피부유연화제"],
+    "hazard_score": 1
+}, {
+    "id": 7802,
+    "name_en": "Stearyl Behenate",
+    "purpose_ko": ["피부컨디셔닝제(수분차단제)"],
+    "hazard_score": 1
+}, {
+    "id": 7808,
+    "name_en": "Meadowfoam Estolide",
+    "purpose_ko": [""],
+    "hazard_score": 1
+}, {
+    "id": 7809,
+    "name_en": "Glycine Soja (Soybean) Sterols",
+    "purpose_ko": ["피부컨디셔닝제(유연제)"],
+    "hazard_score": 1
+}, {
+    "id": 7811,
+    "name_en": "Ceramide 1;Ceramide EOP",
+    "purpose_ko": ["헤어컨디셔닝제, 피부컨디셔닝제(기타)"],
+    "hazard_score": 1
+}, {
+    "id": 7831,
+    "name_en": "Citrus Paradisi (Grapefruit) Peel Oil",
+    "purpose_ko": ["향료"],
+    "hazard_score": 1
+}, {
+    "id": 7832,
+    "name_en": "Cymbopogon Citratus Leaf Oil",
+    "purpose_ko": [""],
+    "hazard_score": 1
+}, {
+    "id": 7833,
+    "name_en": "Pelargonium Graveolens Oil",
+    "purpose_ko": [""],
+    "hazard_score": 1
+}, {
+    "id": 7834,
+    "name_en": "Pogostemon Cablin Oil",
+    "purpose_ko": ["착향제"],
+    "hazard_score": 1
+}]

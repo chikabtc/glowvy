@@ -22,6 +22,7 @@ func main() {
 
 	crawler := crawler.NewCrawler()
 	api := api.NewAPI(crawler)
+	// crawler.GetLocallyPopularProducts()
 	// api.Cs.ProductC.Cs.UpdateBrandsName()
 	// time.Sleep(2 * time.Second)
 
@@ -30,6 +31,7 @@ func main() {
 	// api.Cs.ProductC.Cs.TranslateAllCosmeticsTags()
 	// api.Cs.ProductC.Cs.TranslateAllReviewUserName()
 	// crawler.UpdateCosmeticsIngredient()
+
 	// err := crawler.CollectAllOptions()
 	// cosmetics, err := api.Cs.ProductC.Cs.AllCosmeticsProducts()
 

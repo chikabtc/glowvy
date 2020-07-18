@@ -30,6 +30,7 @@ type Review struct {
 		Name         string `json:"name"`
 		ImageURL     string `json:"image_url"`
 		SkinType     string `json:"skin_type"`
+		SkinTypeId   int64  `json:"skin_type_id"`
 		Age          int64  `json:"age"`
 		Height       int64  `json:"height"`
 		ShirtSize    string `json:"shirt_size"`

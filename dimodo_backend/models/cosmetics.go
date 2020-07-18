@@ -161,7 +161,6 @@ func (gs *cosmeticsService) ProductsByCategoryID(categoryID int, skinType int) (
 			&product.Id,
 			&product.Sid,
 			&product.Name,
-			// &product.Name,
 			&product.Thumbnail,
 			&product.Price,
 			&product.Sale_price,
@@ -176,7 +175,6 @@ func (gs *cosmeticsService) ProductsByCategoryID(categoryID int, skinType int) (
 			&product.CategoryId,
 			&tags,
 			&ingredients,
-
 			&brand.Name,
 			&brand.ID,
 			&brand.ImageURL,
@@ -195,6 +193,7 @@ func (gs *cosmeticsService) ProductsByCategoryID(categoryID int, skinType int) (
 			fmt.Println("fail to unmarshall tags: ", err)
 		}
 		err = json.Unmarshal([]byte(ingredients), &product.Ingredients)
+		fmt.Println("len", len(product.Ingredients[0].Purpose))
 		if err != nil {
 			fmt.Println("fail to unmarshall tags: ", err)
 		}
@@ -239,6 +238,7 @@ func (ps *cosmeticsService) CosmeticsReviewsByProductID(productId int) (*Reviews
 			&review.Scontent,
 			&review.User.Age,
 			&review.User.SkinType,
+			&review.User.SkinTypeId,
 			&review.Score,
 			// &review.CreatedTime,
 		); err != nil {
