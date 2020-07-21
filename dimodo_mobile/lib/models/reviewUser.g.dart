@@ -9,6 +9,7 @@ part of 'reviewUser.dart';
 ReviewUser _$ReviewUserFromJson(Map<String, dynamic> json) {
   return ReviewUser(
     id: json['id'] as String,
+    skinTypeId: json['skin_type_id'] as int,
     name: json['name'] as String,
     imageUrl: json['image_url'] as String,
     height: json['height'] as int,
@@ -29,6 +30,7 @@ Map<String, dynamic> _$ReviewUserToJson(ReviewUser instance) =>
       'shirt_size': instance.shirtSize,
       'pants_size': instance.pantsSize,
       'age': instance.age,
+      'skin_type_id': instance.skinTypeId,
       'skin_type': instance.skinType,
       'footwear_size': instance.footwearSize,
     };

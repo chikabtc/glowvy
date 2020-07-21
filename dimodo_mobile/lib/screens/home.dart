@@ -1,8 +1,9 @@
 import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/user/userModel.dart';
-import 'package:Dimodo/widgets/bottom_popup_services.dart';
+import 'package:Dimodo/widgets/popup_services.dart';
 import 'package:Dimodo/widgets/cosmetics_filter_bar.dart';
+import 'package:Dimodo/widgets/popup_services.dart';
 import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -42,7 +43,6 @@ class HomeScreenState extends State<HomeScreen>
   Future<List<Product>> getCosmeticsProductsByCategory;
   var bottomPopupHeightFactor;
   List<Category> tabList = [];
-  var currentIndex = 0;
   TabController _tabController;
 
   bool isGenerating = true;
@@ -52,33 +52,34 @@ class HomeScreenState extends State<HomeScreen>
   UserModel userModel;
   ProductModel productModel;
   List<Survey> surveys = [];
-  int currentPage = 0;
   List<Product> filteredResults = [];
+  int currentPage = 0;
+
   int skinTypeId = 0;
-  var sorting;
-  List<Product> allProducts = [];
+  var sorting = "rank";
+  List<List<Product>> allProducts = [];
   bool isFiltering = false;
   List<Future<List<Product>>> futureLists = [];
-  final ScrollController _homeController = ScrollController();
 
   @override
   void initState() {
     super.initState();
     // getProductByTagStar = service.getProductsByTag(tag: 6, sortBy: "id");
-
-    futureLists.add(
-        service.getCosmeticsProductsByCategory(categoryId: 3, skinType: 0));
-    futureLists.add(
-        service.getCosmeticsProductsByCategory(categoryId: 4, skinType: 0));
-    futureLists.add(
-        service.getCosmeticsProductsByCategory(categoryId: 32, skinType: 0));
-    futureLists.add(
-        service.getCosmeticsProductsByCategory(categoryId: 41, skinType: 0));
-    futureLists.add(
-        service.getCosmeticsProductsByCategory(categoryId: 14, skinType: 0));
-
-    // getProductByTagTrending =
-    // service.getProductsByTag(tag: 5, sortBy: "id", start: 0, count: 200);
+    service
+        .getCosmeticsProductsByCategory(categoryId: 3, skinType: 0)
+        .then((value) => allProducts.add(value));
+    service
+        .getCosmeticsProductsByCategory(categoryId: 4, skinType: 0)
+        .then((value) => allProducts.add(value));
+    service
+        .getCosmeticsProductsByCategory(categoryId: 32, skinType: 0)
+        .then((value) => allProducts.add(value));
+    service
+        .getCosmeticsProductsByCategory(categoryId: 41, skinType: 0)
+        .then((value) => allProducts.add(value));
+    service
+        .getCosmeticsProductsByCategory(categoryId: 14, skinType: 0)
+        .then((value) => allProducts.add(value));
     try {
       tabList = [];
       final tabs = Provider.of<AppModel>(context, listen: false)
@@ -93,6 +94,8 @@ class HomeScreenState extends State<HomeScreen>
 
       print("error: $message");
     }
+
+    print("TabList Length: ${tabList.length}");
     _tabController = TabController(length: tabList.length, vsync: this);
     userModel = Provider.of<UserModel>(context, listen: false);
 
@@ -119,7 +122,8 @@ class HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    print("building home");
+    // print("building home currentPage: $currentPage");
+    // print("building home allProducts leng: ${allProducts[3].length}");
     kRateMyApp.init().then((_) {});
 
     final screenSize = MediaQuery.of(context).size;
@@ -152,7 +156,7 @@ class HomeScreenState extends State<HomeScreen>
             right: 10,
           ),
           decoration: BoxDecoration(
-              // color: currentIndex == index ? kDarkAccent : Colors.transparent,
+              // color: currentPage == index ? kDarkAccent : Colors.transparent,
               borderRadius: BorderRadius.circular(20)),
           alignment: Alignment.center,
           height: 40,
@@ -178,20 +182,19 @@ class HomeScreenState extends State<HomeScreen>
                 elevation: 0,
                 pinned: false,
                 backgroundColor: Colors.white,
-                title: Image.asset(
-                  "assets/images/applogo.png",
+                title: Text(
+                  "SKIN101",
+                  style: kBaseTextStyle.copyWith(
+                      fontSize: 17, fontWeight: FontWeight.bold),
                 ),
-                // expandedHeight: 253,/
                 actions: <Widget>[
                   IconButton(
-                    icon: Image.asset(
-                      "assets/icons/search/search.png",
-                      fit: BoxFit.cover,
-                      height: 24,
-                    ),
-                    onPressed: () =>
-                        Navigator.pushNamed(context, "/search_screen"),
-                  ),
+                      icon: Image.asset(
+                        "assets/icons/search/search.png",
+                        fit: BoxFit.cover,
+                        height: 24,
+                      ),
+                      onPressed: () => PopupServices.showBaummanQuiz(context)),
                 ],
               ),
               SliverPersistentHeader(
@@ -219,36 +222,44 @@ class HomeScreenState extends State<HomeScreen>
                                           (screenSize.height /
                                               screenSize.width)),
                                   child: TabBar(
-                                    controller: _tabController,
-                                    indicatorSize: TabBarIndicatorSize.tab,
-                                    labelPadding: EdgeInsets.only(
-                                        left: 5.0,
-                                        right: 5.0,
-                                        top: 0,
-                                        bottom: 0),
-                                    isScrollable: true,
-                                    indicatorColor: kDarkAccent,
-                                    unselectedLabelColor: kDarkSecondary,
-                                    unselectedLabelStyle:
-                                        kBaseTextStyle.copyWith(
-                                            color: kDarkSecondary,
-                                            fontSize:
-                                                13 * kSizeConfig.textMultiplier,
-                                            fontWeight: FontWeight.w600),
-                                    labelStyle: kBaseTextStyle.copyWith(
-                                        color: Colors.white,
-                                        fontSize:
-                                            13 * kSizeConfig.textMultiplier,
-                                        fontWeight: FontWeight.w600),
-                                    labelColor: kDarkAccent,
-                                    tabs: renderTabbar(),
-                                  ),
+                                      controller: _tabController,
+                                      indicatorSize: TabBarIndicatorSize.tab,
+                                      labelPadding: EdgeInsets.only(
+                                          left: 5.0,
+                                          right: 5.0,
+                                          top: 0,
+                                          bottom: 0),
+                                      isScrollable: true,
+                                      indicatorColor: kDarkAccent,
+                                      unselectedLabelColor: kDarkSecondary,
+                                      unselectedLabelStyle:
+                                          kBaseTextStyle.copyWith(
+                                              color: kDarkSecondary,
+                                              fontSize: 13 *
+                                                  kSizeConfig.textMultiplier,
+                                              fontWeight: FontWeight.w600),
+                                      labelStyle: kBaseTextStyle.copyWith(
+                                          color: Colors.white,
+                                          fontSize:
+                                              13 * kSizeConfig.textMultiplier,
+                                          fontWeight: FontWeight.w600),
+                                      labelColor: kDarkAccent,
+                                      tabs: renderTabbar(),
+                                      onTap: (index) {
+                                        print("indeX!? " + index.toString());
+                                        setState(() {
+                                          currentPage = index;
+                                          showFiltered = false;
+                                        });
+                                      }),
                                 )),
                           ),
                         ],
                       ),
                       CosmeticsFilterBar(
-                        products: allProducts,
+                        products: allProducts.length != 0
+                            ? allProducts[currentPage]
+                            : [],
                         onFilterConfirm:
                             (filteredProducts, sorting, skinTypeId) {
                           setState(() {
@@ -299,21 +310,23 @@ class HomeScreenState extends State<HomeScreen>
                               future: futureLists[tabList.indexOf(category)],
                               builder: (BuildContext context,
                                   AsyncSnapshot<List<Product>> snapshot) {
+                                print("CATEGORYNAME : ${category.name}");
                                 //if new category is chosen, pass the new category products to the filter bar
                                 if (filteredResults == null || !showFiltered) {
-                                  print("loaded new category of products");
-                                  // print("products: ${snapshot.data}");
-                                  allProducts = snapshot.data;
-                                  //if the new category products are not null, filter and sort them
+                                  if (allProducts.length != 5 &&
+                                      snapshot.data != null) {
+                                    allProducts.add(snapshot.data);
+                                    // print(
+                                    //     "index ${currentPage} product length ${allProducts[currentPage].length}");
+                                  }
                                   if (snapshot.data != null) {
                                     filteredResults =
                                         productModel.sortAndFilter(
-                                            sorting, skinTypeId, allProducts);
-                                    print("filtered: ${filteredResults}");
-                                    filteredResults = snapshot.data;
-                                    // setState(() {
-                                    //   allProducts = snapshot.data;
-                                    // });
+                                            sorting, skinTypeId, snapshot.data);
+                                    if (currentPage == 3) {
+                                      filteredResults = snapshot.data;
+                                    }
+                                    // print("filtered: ${filteredResults}");
                                   }
                                 }
                                 return Column(

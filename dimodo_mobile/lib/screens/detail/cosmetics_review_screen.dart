@@ -1,6 +1,7 @@
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/screens/detail/Cosmetics_review_card.dart';
+import 'package:Dimodo/screens/detail/review_images.dart';
 import 'package:Dimodo/widgets/cosmetics_review_filter_bar.dart';
 import 'package:flutter/material.dart';
 import '../../common/constants.dart';
@@ -95,14 +96,14 @@ class _StateReviews extends State<CosmeticsReviewScreen>
                             ),
                           ),
                         )
-                      : Padding(
-                          padding: const EdgeInsets.all(10.0),
+                      : Container(
+                          color: Colors.white,
                           child: Column(
                             children: <Widget>[
-                              SizedBox(height: 18),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 6.0),
+                              Container(
+                                padding: EdgeInsets.only(
+                                    top: 19, bottom: 19, left: 16, right: 16),
+                                color: Colors.white,
                                 child: Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
@@ -115,8 +116,6 @@ class _StateReviews extends State<CosmeticsReviewScreen>
                                               fontWeight: FontWeight.w600)),
                                       Spacer(),
                                       Container(
-                                        padding:
-                                            EdgeInsets.symmetric(horizontal: 5),
                                         decoration: BoxDecoration(
                                           color: Colors.white,
                                           borderRadius: BorderRadius.all(
@@ -204,22 +203,30 @@ class _StateReviews extends State<CosmeticsReviewScreen>
                                   });
                                 },
                               ),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 16.0),
+                                child: ReviewImages(widget.product),
+                              ),
                               Scrollbar(
-                                child: ListView.builder(
-                                    physics:
-                                        const NeverScrollableScrollPhysics(),
-                                    scrollDirection: Axis.vertical,
-                                    shrinkWrap: true,
-                                    itemCount: showFiltered
-                                        ? filteredReviews.length
-                                        : metaReviews.reviews.length,
-                                    itemBuilder: (context, i) =>
-                                        CosmeticsReviewCard(
-                                            context: context,
-                                            isKorean: isKorean,
-                                            review: showFiltered
-                                                ? filteredReviews[i]
-                                                : metaReviews.reviews[i])),
+                                child: Container(
+                                  padding: EdgeInsets.only(left: 17, right: 17),
+                                  child: ListView.builder(
+                                      physics:
+                                          const NeverScrollableScrollPhysics(),
+                                      scrollDirection: Axis.vertical,
+                                      shrinkWrap: true,
+                                      itemCount: showFiltered
+                                          ? filteredReviews.length
+                                          : metaReviews.reviews.length,
+                                      itemBuilder: (context, i) =>
+                                          CosmeticsReviewCard(
+                                              context: context,
+                                              isKorean: isKorean,
+                                              review: showFiltered
+                                                  ? filteredReviews[i]
+                                                  : metaReviews.reviews[i])),
+                                ),
                               ),
                               SvgPicture.asset(
                                 'assets/icons/heart-ballon.svg',

@@ -189,7 +189,7 @@ class DimodoServices implements BaseServices {
         for (var item in products) {
           list.add(Product.fromJson(item));
         }
-        print("list: $list");
+        print("categoryId: $categoryId");
         return list;
       }
     } catch (e) {

@@ -1,5 +1,6 @@
 import 'dart:ffi';
 
+import 'package:Dimodo/models/ingredient.dart';
 import 'package:Dimodo/models/product/cosmetics_rank.dart';
 
 import '../brandi/option.dart';
@@ -15,7 +16,7 @@ part 'product.g.dart';
 class Product {
   int id;
   int sid;
-  int ingredientScore;
+  int hazardScore;
   String thumbnail;
   String name;
   String sname;
@@ -33,16 +34,16 @@ class Product {
   int purchaseCount;
   String volume;
   CosmeticsRank cosmeticsRank;
-
   List<SizeDetail> sizeDetails;
   List<Option> options;
   ProductEtcInfo productEtcInfo;
   Seller seller;
   List<AddInfo> addInfo;
+  List<Ingredient> ingredients;
 
   Product({
     this.id,
-    this.ingredientScore,
+    this.hazardScore,
     this.thumbnail,
     this.rating,
     this.cosmeticsRank,
@@ -52,6 +53,7 @@ class Product {
     this.description,
     this.sdescription,
     this.descImages,
+    this.ingredients,
     this.sliderImages,
     this.tags,
     this.salePrice,
@@ -84,7 +86,7 @@ class Product {
   Map<String, dynamic> toJson() => _$ProductToJson(this);
 
   @override
-  String toString() => 'Product { id: $id name: $sname }';
+  String toString() => 'Product { id: $id name: $name }';
 }
 
 class ProductVariation {

@@ -82,9 +82,11 @@ class ProductModel with ChangeNotifier {
         filtered = sortByPrice(products, true);
         break;
       default:
+        filtered = sortByDefaultRank(products);
+        break;
     }
 
-    return filteredProductsBySkinType(skinTypeId, products);
+    return filteredProductsBySkinType(skinTypeId, filtered);
   }
 
   List<Product> sortByPrice(List<Product> products, bool isAscending) {
@@ -210,19 +212,19 @@ class ProductModel with ChangeNotifier {
       switch (skinTypeId) {
         //all
         case 0:
-          isMatching = r.user.skinType == "all" ? true : false;
+          isMatching = true;
           break;
         //sensitive
         case 1:
-          isMatching = r.user.skinType == "sensitive" ? true : false;
+          isMatching = r.user.skinTypeId == 1 ? true : false;
           break;
         //dry
         case 2:
-          isMatching = r.user.skinType == "dry" ? true : false;
+          isMatching = r.user.skinTypeId == 2 ? true : false;
           break;
         //oily
         case 3:
-          isMatching = r.user.skinType == "oily" ? true : false;
+          isMatching = r.user.skinTypeId == 3 ? true : false;
           print(isMatching);
           break;
         default:

@@ -45,8 +45,8 @@ class AppModel with ChangeNotifier {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       locale = country;
-      await Provider.of<CategoryModel>(context, listen: false)
-          .getLocalCategories(context, lang: country);
+      // await Provider.of<CategoryModel>(context, listen: false)
+      //     .getLocalCategories(context, lang: country);
       await prefs.setString("language", country);
       await loadAppConfig();
       notifyListeners();

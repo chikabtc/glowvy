@@ -41,12 +41,14 @@ dependencies:
   share: 0.6.3+5
   validate: 1.7.0
   shared_preferences: ^0.5.7+2
+  percent_indicator: "^2.1.5"
   pull_to_refresh: 1.5.7
   localstorage: 3.0.1+4
   notification_permissions: 0.4.3
   flare_splash_screen: 3.0.0
   rate_my_app: ^0.6.1+2
   page_indicator: 0.3.0
+  smooth_star_rating: 1.1.1
   bubble: ^1.1.9+1
   extended_image: ^0.7.4
   fluttertoast: 3.1.3

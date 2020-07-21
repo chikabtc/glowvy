@@ -277,178 +277,177 @@
       "type": "skin_type",
       "options": ["Rarely gets oily; feels and looks dry", "Not too oily or too dry; overall feels balanced", "Some oilness on my forehead and cheeks; tends to be more noticeable at the end of the day", "Very oily; has a shiny apperance throughout the day"]
     },
-  },
-  {
-    "question": "When I wake up in the morning, my skin feels ________",
-    "type": "skin_condition",
-    "options": ["Slick and shiny", "Rough and bumpy", "Just fine! Nothing out of the ordinary", "Tight and uncomfortable"]
-  },
-  {
-    "question": " How frequently do you get acne or breakouts?",
-    "type": "acne",
-    "options": ["Not very often", "Often or hormonally", "Very frequently, and it's difficult to manage"]
-  },
-  {
-    "question": " What is your main skin care goal?",
-    "type": "skin_care_goal",
-    "options": ["Getting rid of acne", "Minimizing fine lines and wrinkles", "Fading dark spots", "Soothing redness and irritation", "Achieving dewy skin"]
-  },
-  {
-    "question": " What do you value most in skin care products?",
-    "description": " Please select one.",
-    "type": "preference",
-    "options": ["Affordable price point", "Vegan beauty", "Clean beauty", "Quick Results", "Ones that are nourishing and hydrating"]
-  },
-  {
-    "question": " How often do you workout?",
-    "description": "Breaking a sweat is great, but can also cause breakouts",
-    "type": "workout_frequency",
-    "options": ["Never", "1-2 times a week", "3-4 times a week", "Every Day!"]
-  },
-  {
-    "question": " On Average how do you rate your stress level?",
-    "description": " Stress can impact your physical and mental health (and also, your skin!)",
-    "type": "stress_level",
-    "options": ["Minimal Daily Stress", "Average stress level", "stress is constant presence"]
-  },
-  {
-    "question": " On Average how do you rate your stress level?",
-    "description": " Stress can impact your physical and mental health (and also, your skin!)",
-    "type": "stress_level",
-    "options": ["Minimal Daily Stress", "Average stress level", "stress is constant presence"]
-  },
-  {
-    "question": " On Average how do you rate your stress level?",
-    "description": " Stress can impact your physical and mental health (and also, your skin!)",
-    "type": "stress_level",
-    "options": ["Minimal Daily Stress", "Average stress level", "stress is constant presence"]
-  },
-  {
-    "question": " What are your go-to skin care products?",
-    "description": " We want to know what’s worked best for your skin in the past.",
-    "type": "go_to_products"
-  }
-],
+    {
+      "question": "When I wake up in the morning, my skin feels ________",
+      "type": "skin_condition",
+      "options": ["Slick and shiny", "Rough and bumpy", "Just fine! Nothing out of the ordinary", "Tight and uncomfortable"]
+    },
+    {
+      "question": " How frequently do you get acne or breakouts?",
+      "type": "acne",
+      "options": ["Not very often", "Often or hormonally", "Very frequently, and it's difficult to manage"]
+    },
+    {
+      "question": " What is your main skin care goal?",
+      "type": "skin_care_goal",
+      "options": ["Getting rid of acne", "Minimizing fine lines and wrinkles", "Fading dark spots", "Soothing redness and irritation", "Achieving dewy skin"]
+    },
+    {
+      "question": " What do you value most in skin care products?",
+      "description": " Please select one.",
+      "type": "preference",
+      "options": ["Affordable price point", "Vegan beauty", "Clean beauty", "Quick Results", "Ones that are nourishing and hydrating"]
+    },
+    {
+      "question": " How often do you workout?",
+      "description": "Breaking a sweat is great, but can also cause breakouts",
+      "type": "workout_frequency",
+      "options": ["Never", "1-2 times a week", "3-4 times a week", "Every Day!"]
+    },
+    {
+      "question": " On Average how do you rate your stress level?",
+      "description": " Stress can impact your physical and mental health (and also, your skin!)",
+      "type": "stress_level",
+      "options": ["Minimal Daily Stress", "Average stress level", "stress is constant presence"]
+    },
+    {
+      "question": " On Average how do you rate your stress level?",
+      "description": " Stress can impact your physical and mental health (and also, your skin!)",
+      "type": "stress_level",
+      "options": ["Minimal Daily Stress", "Average stress level", "stress is constant presence"]
+    },
+    {
+      "question": " On Average how do you rate your stress level?",
+      "description": " Stress can impact your physical and mental health (and also, your skin!)",
+      "type": "stress_level",
+      "options": ["Minimal Daily Stress", "Average stress level", "stress is constant presence"]
+    },
+    {
+      "question": " What are your go-to skin care products?",
+      "description": " We want to know what’s worked best for your skin in the past.",
+      "type": "go_to_products"
+    }
+  ],
 
-"Categories": [
+  "Categories": [
 
-  {
-    "name": "TOP",
-    "image": "assets/icons/categories/top.png",
-    "id": 1,
-    "parent_id": 1
-  },
+    {
+      "name": "TOP",
+      "image": "assets/icons/categories/top.png",
+      "id": 1,
+      "parent_id": 1
+    },
 
-  {
-    "name": "COAT",
-    "image": "assets/icons/categories/coat.png",
-    "id": 5,
-    "parent_id": 5
+    {
+      "name": "COAT",
+      "image": "assets/icons/categories/coat.png",
+      "id": 5,
+      "parent_id": 5
 
-  }, {
-    "name": "PANT",
-    "image": "assets/icons/categories/pants.png",
-    "id": 2,
-    "parent_id": 2
-  },
-  {
-    "name": "SKIRT",
-    "image": "assets/icons/categories/skirt.png",
-    "id": 4,
-    "parent_id": 4
+    }, {
+      "name": "PANT",
+      "image": "assets/icons/categories/pants.png",
+      "id": 2,
+      "parent_id": 2
+    },
+    {
+      "name": "SKIRT",
+      "image": "assets/icons/categories/skirt.png",
+      "id": 4,
+      "parent_id": 4
 
-  }, {
-    "name": "DRESS",
-    "image": "assets/icons/categories/dress.png",
-    "id": 3,
-    "parent_id": 3
-  },
-  {
-    "name": "SHOE",
-    "image": "assets/icons/categories/shoes.png",
-    "id": 6,
-    "parent_id": 6
-  },
-  {
-    "name": "UNDIE",
-    "image": "assets/icons/categories/lifeware.png",
-    "id": 7,
-    "parent_id": 7
-  },
-  {
-    "name": "COSME",
-    "image": "assets/icons/categories/cosmetics.png",
-    "id": 8,
-    "parent_id": 8
-  },
-  {
-    "name": "SKIN CARE",
-    "image": "assets/icons/categories/Package.png",
-    "id": 9,
-    "parent_id": 8
-  }
-],
-"Cosmetics_categories": [
+    }, {
+      "name": "DRESS",
+      "image": "assets/icons/categories/dress.png",
+      "id": 3,
+      "parent_id": 3
+    },
+    {
+      "name": "SHOE",
+      "image": "assets/icons/categories/shoes.png",
+      "id": 6,
+      "parent_id": 6
+    },
+    {
+      "name": "UNDIE",
+      "image": "assets/icons/categories/lifeware.png",
+      "id": 7,
+      "parent_id": 7
+    },
+    {
+      "name": "COSME",
+      "image": "assets/icons/categories/cosmetics.png",
+      "id": 8,
+      "parent_id": 8
+    },
+    {
+      "name": "SKIN CARE",
+      "image": "assets/icons/categories/Package.png",
+      "id": 9,
+      "parent_id": 8
+    }
+  ],
+  "Cosmetics_categories": [
 
-  {
-    "name": "Serum",
-    "image": "assets/icons/categories/all.png",
-    "id": 3,
-    "parent_id": 0
-  },
+    {
+      "name": "Serum",
+      "image": "assets/icons/categories/all.png",
+      "id": 3,
+      "parent_id": 0
+    },
 
-  {
-    "name": "Cream",
-    "image": "assets/icons/categories/top.png",
-    "id": 4,
-    "parent_id": 1
-  },
+    {
+      "name": "Cream",
+      "image": "assets/icons/categories/top.png",
+      "id": 4,
+      "parent_id": 1
+    },
 
-  {
-    "name": "Cleanser",
-    "image": "assets/icons/categories/coat.png",
-    "id": 32,
-    "parent_id": 5
+    {
+      "name": "Cleanser",
+      "image": "assets/icons/categories/coat.png",
+      "id": 32,
+      "parent_id": 5
 
-  },
+    },
 
-  {
-    "name": "Sunscreen",
-    "image": "assets/icons/categories/coat.png",
-    "id": 41,
-    "parent_id": 0
-  },
+    {
+      "name": "Sunscreen",
+      "image": "assets/icons/categories/coat.png",
+      "id": 41,
+      "parent_id": 0
+    },
 
-  {
-    "name": "Lipstick",
-    "image": "assets/icons/categories/coat.png",
-    "id": 14,
-    "parent_id": 0
-  }
-],
-"Onboarding": [{
-    "title": "Proven Korean Cosmetics",
-    "image": "assets/images/onboarding/onborading-illustration-3.png",
-    "indicator": "assets/images/onboarding/logo1.png",
-    "widthImage": "400",
-    "heightImage": "395",
-    "desc": "Hundreds of trustable reviews for your skin types"
-  },
-  {
-    "title": "Best Deal Everyday",
-    "image": "assets/images/onboarding/onborading-illustration-1.png",
-    "indicator": "assets/images/onboarding/logo2.png",
-    "widthImage": "400",
-    "heightImage": "395",
-    "desc": "Update official lowest price in Korea everyday"
-  },
-  {
-    "title": "Money Back Guarantee",
-    "image": "assets/images/onboarding/onborading-illustration-2.png",
-    "indicator": "assets/images/onboarding/logo3.png",
-    "widthImage": "400",
-    "heightImage": "395",
-    "desc": "Get in touch with Dimodo anytime after order"
-  }
-]
+    {
+      "name": "Lipstick",
+      "image": "assets/icons/categories/coat.png",
+      "id": 14,
+      "parent_id": 0
+    }
+  ],
+  "Onboarding": [{
+      "title": "Proven Korean Cosmetics",
+      "image": "assets/images/onboarding/onborading-illustration-3.png",
+      "indicator": "assets/images/onboarding/logo1.png",
+      "widthImage": "400",
+      "heightImage": "395",
+      "desc": "Hundreds of trustable reviews for your skin types"
+    },
+    {
+      "title": "Best Deal Everyday",
+      "image": "assets/images/onboarding/onborading-illustration-1.png",
+      "indicator": "assets/images/onboarding/logo2.png",
+      "widthImage": "400",
+      "heightImage": "395",
+      "desc": "Update official lowest price in Korea everyday"
+    },
+    {
+      "title": "Money Back Guarantee",
+      "image": "assets/images/onboarding/onborading-illustration-2.png",
+      "indicator": "assets/images/onboarding/logo3.png",
+      "widthImage": "400",
+      "heightImage": "395",
+      "desc": "Get in touch with Dimodo anytime after order"
+    }
+  ]
 }

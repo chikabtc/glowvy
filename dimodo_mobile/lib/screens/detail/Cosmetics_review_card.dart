@@ -80,36 +80,30 @@ class CosmeticsReviewCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    DynamicText(review.user.name,
+                    Text(review.user.name,
                         style: TextStyle(
-                            fontSize: 13, fontWeight: FontWeight.w600)),
+                            fontSize: 14, fontWeight: FontWeight.w600)),
                     Row(
                       children: <Widget>[
-                        DynamicText(review.user.name,
+                        Text(review.user.age.toString(),
                             style: TextStyle(
-                                fontSize: isPreview ? 11 : 13,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w500,
                                 color: kSecondaryGrey)),
                         SizedBox(width: 10),
-                        DynamicText(review.user.age.toString(),
+                        Text(review.user.skinType,
                             style: TextStyle(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w500,
-                                color: kSecondaryGrey)),
-                        SizedBox(width: 10),
-                        DynamicText(review.user.skinType,
-                            style: TextStyle(
-                                fontSize: 13,
+                                fontSize: 14,
                                 fontWeight: FontWeight.w500,
                                 color: kSecondaryGrey)),
                       ],
                     ),
 
                     SizedBox(height: 7),
-                    DynamicText(isKorean ? kSanitizedText : sanitizedText,
+                    Text(isKorean ? kSanitizedText : sanitizedText,
                         maxLines: isPreview ? 2 : 20,
                         style: kBaseTextStyle.copyWith(
-                            fontSize: 13, fontWeight: FontWeight.w600)),
+                            fontSize: 14, fontWeight: FontWeight.w600)),
                     Container(
                       height: 20,
                       width: kScreenSizeWidth,

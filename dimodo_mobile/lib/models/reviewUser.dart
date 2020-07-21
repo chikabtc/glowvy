@@ -10,11 +10,13 @@ class ReviewUser {
   String shirtSize;
   String pantsSize;
   int age;
+  int skinTypeId;
   String skinType;
   String footwearSize;
 
   ReviewUser({
     this.id,
+    this.skinTypeId,
     this.name,
     this.imageUrl,
     this.height,

@@ -11,6 +11,7 @@ Survey _$SurveyFromJson(Map<String, dynamic> json) {
     json['question'] as String,
     (json['options'] as List)?.map((e) => e as String)?.toList(),
     json['type'] as String,
+    json['answer'] as String,
   );
 }
 
@@ -18,4 +19,5 @@ Map<String, dynamic> _$SurveyToJson(Survey instance) => <String, dynamic>{
       'question': instance.question,
       'type': instance.type,
       'options': instance.options,
+      'answer': instance.answer,
     };

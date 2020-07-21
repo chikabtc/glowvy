@@ -9,7 +9,7 @@ part of 'product.dart';
 Product _$ProductFromJson(Map<String, dynamic> json) {
   return Product(
     id: json['id'] as int,
-    ingredientScore: json['ingredient_score'] as int,
+    hazardScore: json['hazard_score'] as int,
     thumbnail: json['thumbnail'] as String,
     rating: json['rating'] as String,
     cosmeticsRank: json['cosmetics_rank'] == null
@@ -23,6 +23,10 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
     sdescription: json['sdescription'] as String,
     descImages:
         (json['desc_images'] as List)?.map((e) => e as String)?.toList(),
+    ingredients: (json['ingredients'] as List)
+        ?.map((e) =>
+            e == null ? null : Ingredient.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     sliderImages:
         (json['slider_images'] as List)?.map((e) => e as String)?.toList(),
     tags: (json['tags'] as List)
@@ -60,7 +64,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'id': instance.id,
       'sid': instance.sid,
-      'ingredient_score': instance.ingredientScore,
+      'hazard_score': instance.hazardScore,
       'thumbnail': instance.thumbnail,
       'name': instance.name,
       'sname': instance.sname,
@@ -83,4 +87,5 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'product_etc_info': instance.productEtcInfo,
       'seller': instance.seller,
       'add_info': instance.addInfo,
+      'ingredients': instance.ingredients,
     };

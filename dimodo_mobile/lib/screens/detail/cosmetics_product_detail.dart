@@ -4,7 +4,13 @@ import 'package:Dimodo/screens/detail/Cosmetics_review_card.dart';
 import 'package:Dimodo/screens/detail/cosmetics_image_feature.dart';
 import 'package:Dimodo/screens/detail/cosmetics_product_title.dart';
 import 'package:Dimodo/screens/detail/cosmetics_review_screen.dart';
-import 'package:Dimodo/widgets/bottom_popup_services.dart';
+import 'package:Dimodo/screens/detail/ingredient_card.dart';
+import 'package:Dimodo/screens/detail/ingredient_screen.dart';
+import 'package:Dimodo/screens/detail/review_images.dart';
+import 'package:Dimodo/widgets/popup_services.dart';
+import 'package:Dimodo/widgets/image_galery.dart';
+import 'package:Dimodo/widgets/popup_services.dart';
+import 'package:Dimodo/widgets/start_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../common/styles.dart';
@@ -41,6 +47,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
   Size screenSize;
   var bottomPopupHeightFactor;
   final services = Services();
+  var hazardLevel;
 
   List<String> tabList = [];
   Reviews metaReviews =
@@ -62,6 +69,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
       }
     });
     productModel = Provider.of<ProductModel>(context, listen: false);
+    print("hazardScore: ${widget.product.hazardScore}");
   }
 
   void didChangeDependencies() {
@@ -112,6 +120,51 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
     );
   }
 
+  // _onShowGallery(context, images, [index = 0]) {
+  //   showDialog<void>(
+  //       context: context,
+  //       builder: (BuildContext context) {
+  //         return ImageGalery(images: images, index: index);
+  //       });
+  // }
+
+  // Widget renderDescriptionImgs() {
+  //   var imagesWidgets = <Widget>[];
+  //   //create a concanteanated string
+  //   var images = widget.product.descImages;
+  //   if (images != null && images != "") {
+  //     images.forEach((img) {
+  //       // print("image to render: $img");
+  //       imagesWidgets.add(GestureDetector(
+  //           onTap: () => _onShowGallery(context, images, images.indexOf(img)),
+  //           child: ClipRRect(
+  //             borderRadius: BorderRadius.circular(8.0),
+  //             child: Tools.image(
+  //               url: img,
+  //               fit: BoxFit.cover,
+  //               size: kSize.large,
+  //             ),
+  //           )));
+  //     });
+  //   }
+
+  //   return Container(
+  //     width: kScreenSizeWidth,
+  //     height: 120,
+  //     child: ListView.separated(
+  //         separatorBuilder: (BuildContext context, int index) =>
+  //             SizedBox(width: 15),
+  //         scrollDirection: Axis.horizontal,
+  //         addAutomaticKeepAlives: true,
+  //         // shrinkWrap: true,
+  //         itemCount: imagesWidgets.length,
+  //         physics: ClampingScrollPhysics(),
+  //         itemBuilder: (BuildContext context, int index) {
+  //           return imagesWidgets[index];
+  //         }),
+  //   );
+  // }
+
   @override
   Widget build(BuildContext context) {
     var cartModel = Provider.of<CartModel>(context);
@@ -131,6 +184,34 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
               err.toString();
 
       print("error: $message");
+    }
+    switch (widget.product.hazardScore) {
+      case 0:
+        hazardLevel = S.of(context).undecided;
+        break;
+      case 1:
+        hazardLevel = S.of(context).low;
+        break;
+      case 2:
+        hazardLevel = S.of(context).moderate;
+        break;
+      case 3:
+        hazardLevel = S.of(context).high;
+        break;
+      default:
+    }
+
+    renderIngredients() {
+      var index = 0;
+      List<Widget> widgets = [];
+      while (index < 3 && widget.product.ingredients.length > index) {
+        var card = IngredientInfoCard(
+          ingredient: widget.product.ingredients[index],
+        );
+        widgets.add(card);
+        index++;
+      }
+      return widgets;
     }
 
     return Container(
@@ -186,61 +267,122 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                             widget.product,
                                           ),
                                           Container(
-                                            height: 10,
+                                            height: 5,
                                             color: kDefaultBackground,
-                                          ),
-                                          Container(
-                                            height: 84,
-                                            width: screenSize.width,
-                                            color: Colors.white,
-                                            padding: EdgeInsets.only(
-                                                left: 16,
-                                                right: 16,
-                                                top: 20,
-                                                bottom: 20),
-                                            child: GestureDetector(
-                                              onTap: () => showShippingInfo(),
-                                              child: Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                children: <Widget>[
-                                                  Text(
-                                                      S
-                                                          .of(context)
-                                                          .importTaxIncluded,
-                                                      style: kBaseTextStyle
-                                                          .copyWith(
-                                                              fontSize: 14,
-                                                              color:
-                                                                  kDarkAccent,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500)),
-                                                  SizedBox(height: 6),
-                                                  Text(
-                                                      S
-                                                              .of(context)
-                                                              .shipFromKorea +
-                                                          " | " +
-                                                          S.of(context).fee +
-                                                          ": ${Tools.getCurrecyFormatted(cartModel.calculateShippingFee(widget.product))}",
-                                                      style: kBaseTextStyle
-                                                          .copyWith(
-                                                              fontSize: 14,
-                                                              color:
-                                                                  kDarkAccent,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500)),
-                                                ],
-                                              ),
-                                            ),
                                           ),
                                           Container(
                                             height: 5,
                                             width: screenSize.width,
+                                            color: kDefaultBackground,
+                                          ),
+                                          CosmeticsProductDescription(
+                                              widget.product),
+                                          Container(
+                                            height: 5,
+                                            color: kDefaultBackground,
+                                          ),
+                                          GestureDetector(
+                                              onTap: () => Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          IngredientScreen(
+                                                            widget.product
+                                                                .ingredients,
+                                                            hazardLevel,
+                                                          ))),
+                                              child: Container(
+                                                width: screenSize.width,
+                                                color: Colors.white,
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal: 16),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: <Widget>[
+                                                    Container(
+                                                      height: 56,
+                                                      child: Row(
+                                                        children: <Widget>[
+                                                          Text(
+                                                              S
+                                                                  .of(context)
+                                                                  .ingredientInfo,
+                                                              style: kBaseTextStyle.copyWith(
+                                                                  fontSize: 15,
+                                                                  color:
+                                                                      kDarkSecondary,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600)),
+                                                          Spacer(),
+                                                          if (metaReviews
+                                                                  .totalCount !=
+                                                              0)
+                                                            Row(
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .center,
+                                                              children: <
+                                                                  Widget>[
+                                                                Text(
+                                                                    S
+                                                                        .of(
+                                                                            context)
+                                                                        .seeMore,
+                                                                    style: kBaseTextStyle.copyWith(
+                                                                        fontSize:
+                                                                            15,
+                                                                        color:
+                                                                            kPinkAccent,
+                                                                        fontWeight:
+                                                                            FontWeight.w500)),
+                                                                CommonIcons
+                                                                    .arrowForwardPink
+                                                              ],
+                                                            ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: <Widget>[
+                                                        Text(hazardLevel,
+                                                            style: kBaseTextStyle
+                                                                .copyWith(
+                                                                    fontSize:
+                                                                        14,
+                                                                    color: Colors
+                                                                        .black,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600)),
+                                                        Text(
+                                                            S
+                                                                .of(context)
+                                                                .ewgSafeLevel,
+                                                            style: kBaseTextStyle.copyWith(
+                                                                fontSize: 12,
+                                                                color:
+                                                                    kDarkSecondary,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500)),
+                                                        SizedBox(width: 16)
+                                                      ],
+                                                    ),
+                                                    SizedBox(height: 16),
+                                                    Column(
+                                                      children:
+                                                          renderIngredients(),
+                                                    ),
+                                                  ],
+                                                ),
+                                              )),
+                                          Container(
+                                            height: 5,
                                             color: kDefaultBackground,
                                           ),
                                           GestureDetector(
@@ -304,7 +446,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                                           Row(
                                                             mainAxisAlignment:
                                                                 MainAxisAlignment
-                                                                    .end,
+                                                                    .spaceBetween,
                                                             children: <Widget>[
                                                               DynamicText(
                                                                   widget.product
@@ -319,11 +461,39 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold)),
-                                                              SizedBox(
-                                                                  width: 16)
+                                                              SmoothStarRating(
+                                                                  allowHalfRating:
+                                                                      false,
+                                                                  // onRated:
+                                                                  //     (v) {},
+                                                                  // starCount: 5,
+                                                                  rating: double
+                                                                      .parse(widget
+                                                                          .product
+                                                                          .rating
+                                                                          .substring(
+                                                                              0,
+                                                                              4)),
+                                                                  size: 25.0,
+                                                                  // isReadOnly:
+                                                                  //     true,
+                                                                  // fullRatedIconData:
+                                                                  //     Icons
+                                                                  //         .blur_off,
+                                                                  // halfRatedIconData:
+                                                                  //     Icons
+                                                                  //         .blur_on,
+                                                                  color:
+                                                                      kPinkAccent,
+                                                                  borderColor:
+                                                                      Colors
+                                                                          .green,
+                                                                  spacing: 0.0),
                                                             ],
                                                           ),
-                                                          SizedBox(height: 5),
+                                                          ReviewImages(
+                                                              widget.product),
+                                                          SizedBox(height: 20),
                                                           if (metaReviews
                                                                   .totalCount !=
                                                               0)
@@ -353,13 +523,6 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                                                         .reviews[2]),
                                                               ],
                                                             ),
-                                                          Container(
-                                                            height: 5,
-                                                            width:
-                                                                kScreenSizeWidth,
-                                                            color:
-                                                                kDefaultBackground,
-                                                          ),
                                                         ],
                                                       ),
                                                     )
@@ -370,92 +533,74 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                                           CupertinoActivityIndicator(
                                                               animating: true),
                                                     )),
-                                          Container(
-                                            height: 10,
-                                            color: kDefaultBackground,
-                                          ),
-                                          Container(
-                                            padding: EdgeInsets.all(16),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: <Widget>[
-                                                GestureDetector(
-                                                  onTap: () =>
-                                                      PopupServices.showQandA(
-                                                          context),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: <Widget>[
-                                                      Text(
-                                                        S
-                                                            .of(context)
-                                                            .officialQA,
-                                                        style: kBaseTextStyle
-                                                            .copyWith(
-                                                                fontSize: 15,
-                                                                color:
-                                                                    kDarkSecondary,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600),
-                                                      ),
-                                                      Row(
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .center,
-                                                        children: <Widget>[
-                                                          // DynamicText(
-                                                          //     S
-                                                          //         .of(context)
-                                                          //         .seeMore,
-                                                          //     style: kBaseTextStyle.copyWith(
-                                                          //         fontSize: 12,
-                                                          //         color:
-                                                          //             kPinkAccent,
-                                                          //         fontWeight:
-                                                          //             FontWeight
-                                                          //                 .w500)),
-                                                          CommonIcons
-                                                              .arrowForwardPink
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                                SizedBox(height: 17),
-                                                Text(
-                                                  S
-                                                      .of(context)
-                                                      .whyLowerThanMarketPriceQuestion,
-                                                ),
-                                                SizedBox(height: 5),
-                                                Text(
-                                                  S
-                                                      .of(context)
-                                                      .whereReviewsFromQuestion,
-                                                ),
-                                                SizedBox(height: 5),
-                                                Text(
-                                                  S
-                                                      .of(context)
-                                                      .sameQualityAsInKoreaQuestion,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            height: 10,
-                                            color: kDefaultBackground,
-                                          )
                                         ],
                                       )),
                                 ],
                               ),
-                              CosmeticsProductDescription(widget.product),
-                              SizedBox(height: 100)
+                              Container(
+                                height: 5,
+                                color: kDefaultBackground,
+                              ),
+                              Container(
+                                padding: EdgeInsets.all(16),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    GestureDetector(
+                                      onTap: () =>
+                                          PopupServices.showQandA(context),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: <Widget>[
+                                          Text(
+                                            S.of(context).officialQA,
+                                            style: kBaseTextStyle.copyWith(
+                                                fontSize: 15,
+                                                color: kDarkSecondary,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: <Widget>[
+                                              // DynamicText(
+                                              //     S
+                                              //         .of(context)
+                                              //         .seeMore,
+                                              //     style: kBaseTextStyle.copyWith(
+                                              //         fontSize: 12,
+                                              //         color:
+                                              //             kPinkAccent,
+                                              //         fontWeight:
+                                              //             FontWeight
+                                              //                 .w500)),
+                                              CommonIcons.arrowForwardPink
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(height: 17),
+                                    Text(
+                                      S
+                                          .of(context)
+                                          .whyLowerThanMarketPriceQuestion,
+                                    ),
+                                    SizedBox(height: 5),
+                                    Text(
+                                      S.of(context).whereReviewsFromQuestion,
+                                    ),
+                                    SizedBox(height: 5),
+                                    Text(
+                                      S
+                                          .of(context)
+                                          .sameQualityAsInKoreaQuestion,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 30)
                             ],
                           ),
                         ),

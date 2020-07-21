@@ -35,85 +35,45 @@ class _CosmeticsProductDescriptionState
     super.initState();
   }
 
-  _onShowGallery(context, images, [index = 0]) {
-    showDialog<void>(
-        context: context,
-        builder: (BuildContext context) {
-          return ImageGalery(images: images, index: index);
-        });
-  }
+  // Widget renderIngredient() {
+  //   var imagesWidgets = <Widget>[];
+  //   //create a concanteanated string
+  //   var images = widget.product.descImages;
+  //   if (images != null && images != "") {
+  //     images.forEach((img) {
+  //       // print("image to render: $img");
+  //       imagesWidgets.add(GestureDetector(
+  //           onTap: () => _onShowGallery(context, images),
+  //           child: ClipOval(
+  //             // borderRadius: BorderRadius.circular(20.0),
+  //             child: Container(
+  //               child: Tools.image(
+  //                 url: img,
+  //                 fit: BoxFit.cover,
+  //                 size: kSize.large,
+  //               ),
+  //             ),
+  //           )));
+  //     });
+  //   }
 
-  Widget renderDescriptionImgs() {
-    var imagesWidgets = <Widget>[];
-    //create a concanteanated string
-    var images = widget.product.descImages;
-    if (images != null && images != "") {
-      images.forEach((img) {
-        // print("image to render: $img");
-        imagesWidgets.add(GestureDetector(
-          onTap: () => _onShowGallery(context, images),
-          child: Tools.image(
-            url: img,
-            fit: BoxFit.cover,
-            size: kSize.large,
-          ),
-        ));
-      });
-    }
-
-    return Container(
-      width: kScreenSizeWidth,
-      child: GridView.builder(
-          addAutomaticKeepAlives: true,
-          padding: const EdgeInsets.all(0.0),
-          shrinkWrap: true,
-          itemCount: imagesWidgets.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            childAspectRatio: 1,
-            crossAxisCount: 1,
-          ),
-          physics: ClampingScrollPhysics(),
-          itemBuilder: (BuildContext context, int index) {
-            return imagesWidgets[index];
-          }),
-    );
-  }
-
-  Widget renderIngredient() {
-    var imagesWidgets = <Widget>[];
-    //create a concanteanated string
-    var images = widget.product.descImages;
-    if (images != null && images != "") {
-      images.forEach((img) {
-        // print("image to render: $img");
-        imagesWidgets.add(GestureDetector(
-          onTap: () => _onShowGallery(context, images),
-          child: Tools.image(
-            url: img,
-            fit: BoxFit.cover,
-            size: kSize.large,
-          ),
-        ));
-      });
-    }
-
-    return Container(
-      width: kScreenSizeWidth,
-      child: GridView.builder(
-          addAutomaticKeepAlives: true,
-          padding: const EdgeInsets.all(0.0),
-          shrinkWrap: true,
-          itemCount: imagesWidgets.length,
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            childAspectRatio: 1,
-            crossAxisCount: 3,
-          ),
-          physics: ClampingScrollPhysics(),
-          itemBuilder: (BuildContext context, int index) {
-            return imagesWidgets[index];
-          }),
-    );
-  }
+  //   return Container(
+  //     width: kScreenSizeWidth,
+  //     child: GridView.builder(
+  //         addAutomaticKeepAlives: true,
+  //         padding: const EdgeInsets.all(0.0),
+  //         shrinkWrap: true,
+  //         itemCount: imagesWidgets.length,
+  //         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+  //           childAspectRatio: 1,
+  //           crossAxisCount: 3,
+  //         ),
+  //         physics: ClampingScrollPhysics(),
+  //         itemBuilder: (BuildContext context, int index) {
+  //           return imagesWidgets[index];
+  //         }),
+  //   );
+  // }
 
   Widget build(BuildContext context) {
     // if \n has more than 4, replace them with null string
@@ -123,6 +83,7 @@ class _CosmeticsProductDescriptionState
           ? widget.product.sdescription.replaceAll('\n\n\n\n\n\n', "")
           : widget.product.description.replaceAll('\n\n\n\n\n\n', "");
     }
+    final screenSize = MediaQuery.of(context).size;
 
     return Container(
         color: Colors.white,
@@ -250,11 +211,9 @@ class _CosmeticsProductDescriptionState
                             textAlign: TextAlign.start,
                           )
                         : Container(width: 0, height: 0),
-                    SizedBox(height: 50),
                   ],
                 ),
               ),
-              renderDescriptionImgs()
             ]));
   }
 }

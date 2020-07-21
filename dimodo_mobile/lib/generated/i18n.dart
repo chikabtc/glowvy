@@ -83,6 +83,7 @@ class S implements WidgetsLocalizations {
   String get noOrdersDescription => "You’ve just been eye shopping";
   String get continueShopping => "Continue Shopping";
   String get askQuestion => "Ask question";
+  String get question => "Question";
 
 // =============================================================================
 // Write Review Page
@@ -94,6 +95,8 @@ class S implements WidgetsLocalizations {
   String get askForFeedback =>
       "Talk about what you like and what you don’t like about your purchase";
   String get writeReview => "Write your review";
+  String get discoverYourType =>
+      "Discover your match! Complimentary expert advice tailored to your skin care needs.";
 
 // =============================================================================
 // Product Detail Page
@@ -159,6 +162,7 @@ class S implements WidgetsLocalizations {
   String get bankTransfer => "Bank transfer";
 
   String get accountHolder => "Account holder";
+  String get ewgSafeLevel => "EWG safety level";
   String get whyLowerThanMarketPriceQuestion =>
       "1. Why Dimodo price is lower than the market price? ";
   String get whereReviewsFromQuestion => "Where do those reviews come from?";
@@ -178,6 +182,7 @@ class S implements WidgetsLocalizations {
   String get moneyBackGuaranteeStory =>
       "3. Money Back Guarantee Policy? \n\nWe do have a 7 day money back guarantee for all of purchased cosmetics and clothes in our App. Our money back guarantee gives you peace of mind that our services will meet the expectations set out in the Terms of Service. To the maximum extent applicable under national law and without affecting your rights as a consumer, the money back guarantee is your sole and exclusive remedy should our services fail to meet the expectations set out in this Terms of Service. The following conditions apply to our money back guarantee: \n\n- Purchased items guaranteed for 7 days from the date of original purchase are in the warranty period. \n\n- The user provides corresponding certification materials sufficient to prove that the goods are fake, such as brand certification, third-party quality inspection certification, etc. \n\n- Defined as damaged or defective items are covered. \n\n- Unpacked or used products are not covered. \n\n- Man-made damaged, washed, or the signs disassembled products are not covered\n";
   String get totalAmount => "Total amount";
+  String get baumannSkinTypeTest => "Baumann Skin Type Test";
   String get shippingFrom => "Shipping From";
   String get shippingTo => "Shipping To";
   String get localKoreanShips => "Local Korean Shops";
@@ -196,6 +201,8 @@ class S implements WidgetsLocalizations {
       "We receive your packages from Korean shops within 3-5 days. It takes another week to ship it to your doorway in Vietnam";
   String get yourOrderDetail => "Your Order details";
   String get thankYouForUsingDimodo => "Thank you for using Dimodo";
+  String get getToKnowYourSkin => "Get Know Your Skin Type";
+  // String get  => "Thank you for using Dimodo";
 
   String get confirmReceivePackage => "Confirm received the package";
 
@@ -206,6 +213,7 @@ class S implements WidgetsLocalizations {
   String get onboardingTitle2 => "Discover Fashion Inspiration";
   String get onboardingTitle3 => "Made & Design in Korea";
   String get getStarted => "Get Started";
+  String get yourSkinTypeIs => "Get Started";
 
   // ===========================================================================
   // Categories
@@ -277,6 +285,7 @@ class S implements WidgetsLocalizations {
   String get couponMsgSuccess =>
       "Congratulations! Coupon code applied successfully";
   String get createAnAccount => "Create an account";
+  String get ingredientInfo => "Ingredient Information";
   String get currencies => "Currencies";
   String get darkTheme => "Dark Theme";
   String get date => "Date";
@@ -368,6 +377,8 @@ class S implements WidgetsLocalizations {
   String get lowPrice => "Low Price";
   String get lowestToHighest => "Low to High";
   String get highestToLowest => "High to Low";
+  String get finishedSurvey =>
+      "Congratulation on completing your skin type test!";
 
   String get reset => "Reset";
   String get review => "review";
@@ -403,17 +414,22 @@ class S implements WidgetsLocalizations {
   String get noSendUsSuggestions => "No, share some suggestions ";
 
   String get startShopping => "Start Shopping";
+  String get startTheTest => "Start the test";
   String get stateIsRequired => "The state field is required";
   String get province => "Province";
   String get status => "Status";
   String get streetIsRequired => "The street name field is required";
   String get streetName => "Street Name";
   String get subtotal => "Subtotal";
+  String get username => "Username";
 
   String get trackingNumberIs => "Tracking number is";
   String get trackingPage => "Tracking page";
   String get unavailable => "Unavailable";
-  String get username => "Username";
+  String get undecided => "Undecided";
+  String get low => "Low";
+  String get moderate => "Moderate";
+  String get high => "High";
   String get verifySMSCode => "Verify";
   String get video => "Video";
   String get vietnamese => "Vietnamese";
@@ -446,6 +462,7 @@ class $vi extends S {
 
   @override
   String get accounts => "Tài Khoản";
+  String get baumannSkinTypeTest => "Baumann Test về da";
 
   @override
   String get clickToSignIn => "Kích  Để Đăng Nhập";
@@ -496,7 +513,12 @@ class $vi extends S {
   @override
   String get language => "Ngôn Ngữ";
   @override
+  String get question => "Câu hỏi";
+
   String get appVersion => "Phiên Bản";
+  String get discoverYourType =>
+      "Nhận biết được sản phẩm phù hợp! Tư vấn miễn cho nhu cầu chăm sóc da của bạn";
+
   @override
   String get cancel => "Hủy";
   @override
@@ -510,12 +532,14 @@ class $vi extends S {
   String get discount => "Discount";
   String get supportedByGoogleTranslate => "Dịch bằng Google";
   String get choose => "Lựa chọn";
-
+  String get finishedSurvey =>
+      "Chúc mừng bạn đã hoàn thành bài kiểm tra về loại da của bạn !";
   @override
   String get byPrice => "Theo giá";
   @override
   String get shippingDescription =>
       "Chúng tôi nhận được gói của bạn từ các cửa hàng Hàn Quốc trong vòdng 3-5 ngày. Phải mất một tuần nữa để gửi nó đến cửa của bạn tại Việt Nam";
+  String get yourSkinTypeIs => "Loại da của bạn là";
 
   String get name => "Name";
   String get dimodoServices => "Dimodo Services";
@@ -566,6 +590,8 @@ class $vi extends S {
   String get manageShippingAddress => "Địa Chỉ Của Tôi";
   String get writeReview => "Viết nhận xét của bạn";
   String get send => "Gửi";
+  String get ewgSafeLevel => "EWG safety level";
+
   String get selectOrEnterCoupon => "Chọn Hoặc Nhập Mã";
   String get byRanking => "Theo xếp hạng";
   String get whyLowerThanMarketPriceQuestion =>
@@ -621,6 +647,8 @@ class $vi extends S {
   @override
   String get all => "TẤT CẢ";
   @override
+  String get ingredientInfo => "Ingredient Information";
+
   String get top => "ÁO";
   @override
   String get coat => "ÁO KHOÁC";
@@ -704,6 +732,7 @@ class $vi extends S {
   String get cart => "Giỏ hàng";
   @override
   String get logout => "Đăng xuất";
+  String get startTheTest => "Bắt đầu test";
 
   @override
   String get recentSearches => "Tìm kiếm gần đây";
@@ -724,6 +753,10 @@ class $vi extends S {
   @override
   String get selectTheColor => "Chọn màu";
   @override
+  String get undecided => "Undecided";
+  String get low => "Low";
+  String get moderate => "Moderate";
+  String get high => "High";
   String get events => "Sự kiện";
   @override
   String get myCart => "Giỏ hàng";

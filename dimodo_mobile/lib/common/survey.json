@@ -1,0 +1,109 @@
+{
+
+    "Cosmetics_Survey": [{
+            "question": "Which age range do you fall into?",
+            "description": "Depending on your age, you may have specific concerns that might be relevant.",
+            "type": "age",
+            "options": ["17 or younger", "18-24", "25-34", "over 35"]
+        },
+
+        {
+            "question": " Where do you call home?",
+            "description": " Different climates and environments call for different approaches to skincare.",
+            "type": "climate",
+            "options": ["Sunny & humid tropical", "City dweller", "Cold & Dry year around"]
+        },
+        {
+            "question": " How much time do you usually spend in the sun?",
+            "type": "sun_exposure",
+            "options": ["Very little: Less than 3 hours per week", "Moderate: 24 hours per week", "A lot: 48 hours or more per week"]
+        },
+        {
+            "question": " What type of routine would you like?",
+            "description": " We want to take into account your lifestyle and preferences.",
+            "type": "routine",
+            "options": ["The Basics - 3 steps", "The Foundation - 5 steps", "The Signature - 10 steps", "Just looking for a few product recommendation not a routine!"]
+        },
+        {
+            "question": " How much time do you set aside to take care of your skin before bed?",
+            "description": " Different climates and environments call for different approaches to skincare.",
+            "type": "skin_care_time",
+            "options": ["Less than a minute - to wash and dry my face", "A few minutes - to throughly wash my face, dab on a spot treatment or eye cream and moisturize", "Five minutes or so - I typically wash my face, exfoliate or wash-off mask occasionally, apply a serum and moisturize."]
+        }, {
+            "question": "How do you wash your face?",
+            "description": " There’s no wrong answer!",
+            "type": "how_wash_face",
+            "options": ["Just water", "Warm water + a foaming cleanser", "Warm water + an oil based cleanser"]
+        }, {
+            "question": " How much time do you set aside to take care of your skin before bed?",
+            "description": " Different climates and environments call for different approaches to skincare.",
+            "type": "skin_care_time",
+            "options": ["Less than a minute - to wash and dry my face", "A few minutes - to throughly wash my face, dab on a spot treatment or eye cream and moisturize", "Five minutes or so - I typically wash my face, exfoliate or wash-off mask occasionally, apply a serum and moisturize."]
+        }, {
+            "question": " Which skin care products are you most interested in adding to your routine?",
+            "description": " Certain ingredients help to address specific skin needs. Pick your favorite!",
+            "type": "favorite_skin_care",
+            "options": ["Ones that have acid in them", "Ones that stimulate collagen production and reduce wrinkles", "Ones that contain Vitamin C", "Ones that protect and repair skin", "Ones that are nourishing and hydrating"]
+        }, {
+            "question": " How reactive would you consider your skin?",
+            "type": "skin_sensitivity",
+            "options": ["Hardly reactive at all, I can use all products", "Somewhere in the middle, it depends on the ingredients", "Very reactive/ sensitive, I frequently experience redness"]
+        }, {
+            "question": " Which of the following best describes your skin?",
+            "description": " Though everyone's skin produces oil, sometimes it's more apparent or obvious in some skin types than others.",
+            "type": "skin_type",
+            "options": ["Rarely gets oily; feels and looks dry", "Not too oily or too dry; overall feels balanced", "Some oilness on my forehead and cheeks; tends to be more noticeable at the end of the day", "Very oily; has a shiny apperance throughout the day"]
+        },
+        {
+            "question": "When I wake up in the morning, my skin feels ________",
+            "type": "skin_condition",
+            "options": ["Slick and shiny", "Rough and bumpy", "Just fine! Nothing out of the ordinary", "Tight and uncomfortable"]
+        },
+        {
+            "question": " How frequently do you get acne or breakouts?",
+            "type": "acne",
+            "options": ["Not very often", "Often or hormonally", "Very frequently, and it's difficult to manage"]
+        },
+        {
+            "question": " What is your main skin care goal?",
+            "type": "skin_care_goal",
+            "options": ["Getting rid of acne", "Minimizing fine lines and wrinkles", "Fading dark spots", "Soothing redness and irritation", "Achieving dewy skin"]
+        },
+        {
+            "question": " What do you value most in skin care products?",
+            "description": " Please select one.",
+            "type": "preference",
+            "options": ["Affordable price point", "Vegan beauty", "Clean beauty", "Quick Results", "Ones that are nourishing and hydrating"]
+        },
+        {
+            "question": " How often do you workout?",
+            "description": "Breaking a sweat is great, but can also cause breakouts",
+            "type": "workout_frequency",
+            "options": ["Never", "1-2 times a week", "3-4 times a week", "Every Day!"]
+        },
+        {
+            "question": " On Average how do you rate your stress level?",
+            "description": " Stress can impact your physical and mental health (and also, your skin!)",
+            "type": "stress_level",
+            "options": ["Minimal Daily Stress", "Average stress level", "stress is constant presence"]
+        },
+        {
+            "question": " On Average how do you rate your stress level?",
+            "description": " Stress can impact your physical and mental health (and also, your skin!)",
+            "type": "stress_level",
+            "options": ["Minimal Daily Stress", "Average stress level", "stress is constant presence"]
+        },
+        {
+            "question": " On Average how do you rate your stress level?",
+            "description": " Stress can impact your physical and mental health (and also, your skin!)",
+            "type": "stress_level",
+            "options": ["Minimal Daily Stress", "Average stress level", "stress is constant presence"]
+        },
+        {
+            "question": " What are your go-to skin care products?",
+            "description": " We want to know what’s worked best for your skin in the past.",
+            "type": "go_to_products"
+        }
+    ]
+
+}

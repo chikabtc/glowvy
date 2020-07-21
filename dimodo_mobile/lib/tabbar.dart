@@ -34,9 +34,9 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
     print("after first layout!!");
     loadTabBar();
     print("locale: ${Provider.of<AppModel>(context, listen: false).locale}");
-    Provider.of<CategoryModel>(context, listen: false).getLocalCategories(
-        context,
-        lang: Provider.of<AppModel>(context, listen: false).locale);
+    // Provider.of<CategoryModel>(context, listen: false).getLocalCategories(
+    //     context,
+    //     lang: Provider.of<AppModel>(context, listen: false).locale);
     //wait for the user to login..
     Future.delayed(const Duration(milliseconds: 1000), () {
       Provider.of<CartModel>(context, listen: false)
@@ -92,31 +92,31 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
               physics: NeverScrollableScrollPhysics(),
               children: _tabView,
             ),
-            bottomNavigationBar: Container(
-              color: Colors.white,
-              width: screenSize.width,
-              child: SafeArea(
-                bottom: true,
-                child: FittedBox(
-                  child: Container(
-                      height: 50,
-                      color: Colors.white,
-                      width: screenSize.width /
-                          (2 / (screenSize.height / screenSize.width)),
-                      child: TabBar(
-                        onTap: (index) {
-                          setState(() {
-                            currentPage = index;
-                          });
-                        },
-                        tabs: renderTabbar(),
-                        labelColor: Colors.red,
-                        unselectedLabelColor: Colors.white,
-                        indicatorColor: Colors.transparent,
-                      )),
-                ),
-              ),
-            ),
+            // bottomNavigationBar: Container(
+            //   color: Colors.white,
+            //   width: screenSize.width,
+            //   child: SafeArea(
+            //     bottom: true,
+            //     child: FittedBox(
+            //       child: Container(
+            //           height: 50,
+            //           color: Colors.white,
+            //           width: screenSize.width /
+            //               (2 / (screenSize.height / screenSize.width)),
+            //           child: TabBar(
+            //             onTap: (index) {
+            //               setState(() {
+            //                 currentPage = index;
+            //               });
+            //             },
+            //             tabs: renderTabbar(),
+            //             labelColor: Colors.red,
+            //             unselectedLabelColor: Colors.white,
+            //             indicatorColor: Colors.transparent,
+            //           )),
+            //     ),
+            //   ),
+            // ),
           ),
         ));
   }
