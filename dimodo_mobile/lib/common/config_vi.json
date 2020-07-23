@@ -282,7 +282,7 @@
     {
       "name": "chống nắng",
       "image": "assets/icons/categories/coat.png",
-      "id": 41,
+      "id": 142,
       "parent_id": 0
     },
     {
@@ -322,7 +322,11 @@
     "description2": "Phần này đo lường xu hướng phát triển mụn, đỏ, ngứa của da bạn, đây là  tất cả các dấu hiệu của da nhạy cảm.",
     "description3": "Phần này đo lường xu hướng hình thành melanin của da bạn, một sắc tố da tạo ra các tông màu da tối hơn cũng như các mảng tối, tàn nhang và các vùng da sau khi bị tàn phá (như thường thấy sau khi bị mụn).",
     "description4": "Tuổi tác, dân tộc và thói quen sinh hoạt ảnh hưởng đến việc da dễ bị nhăn hay căng. Vẫn còn một thành phần di truyền cho thông số này, nhưng các yếu tố bên ngoài góp phần làm vẻ ngoài của bạn bị già nua có thể kiểm soát được. Lão hóa da, phá hủy các protein da như collagen và elastin.",
-    "skin-types": {
+    // "skin-type-tips": [{
+    //   "title": "Do not put too much makeup",
+    //   "explanation": "it is hard to erase the makeup with the cleanser so you need to wash twice and double cleasing will damange your skins"
+    // }],
+    "skin-types-explanations": {
       "OSPW": "Loại da này có thể được xác định là da dầu, nám, nhạy cảm và nhăn. Bạn có thể thấy rằng da được đặc trưng bởi có mụn, đỏ mặt hoặc đỏ bừng, hoặc thậm chí dễ bị nổi mẩn và kích ứng da. Da sẫm màu ở các khu vực là kết quả của các vấn đề viêm. Trong một số trường hợp, các mảng tối như nám và tàn nhang xảy ra. Loại này có xu hướng làm da bị nhăn do lối sống có thể bao gồm phơi nắng và / hoặc hút thuốc lá.",
 
       "OSPT": "Da nhờn, nhạy cảm, nám và căng (không nhăn) được đặc trưng bởi đỏ da mặt và / hoặc đỏ bừng, nổi mụn, hoặc nổi mẩn và kích ứng da thường xuyên. Các vấn đề viêm liên quan đến loại này thường bị phát hiện bởi một vùng da tối màu bị ảnh hưởng bởi mụn nhọt hoặc kích ứng da. Giống như OSPW, các mảng tối như nám và tàn nhang xảy ra thường xuyên. Tuy nhiên, loại da này có xu hướng nhăn thấp hơn các loại khác vì tăng sắc tố da bảo vệ da khỏi lão hóa và nếu bạn thấy bạn thuộc loại da này, nó sẽ có lợi cho bạn để có thói quen sống tốt như tránh phơi nắng và hút thuốc lá.",
@@ -350,183 +354,188 @@
       "DRNT": "Da khô, kháng, không nám và căng (không nhăn) hiếm khi gặp phải các vấn đề nhạy cảm như mụn trứng cá, đỏ da mặt hoặc phát ban da. Da của bạn có một hàng rào bảo vệ mạnh mẽ, vì vậy hãy tìm những sản phẩm có nồng độ hoạt chất cao hơn."
     },
 
+
+
+
+
+
     "dry vs oily": [{
-        "question": " Sau khi rửa mặt, không bôi bất kỳ sản phẩm dưỡng ẩm, chống nắng, toner, phấn phủ hay bất cứ sản phẩm nào khác, khoảng 2 đến 3 giờ sau, soi gương dưới ánh đèn sáng, bạn thấy trán và gò má của mình:",
-        "options": [" Rất thô ráp, tróc vảy hoặc sạm lại ", "Căng", "Đủ ẩm nhưng không phản chiếu ánh sáng", "Bóng và phản chiếu lại ánh sáng"]
-      },
-
-      {
-        "question": " Trong các bức ảnh chụp, mặt bạn trông bóng?",
-        "options": ["Không bao giờ, hoặc chưa bao giờ để ý thấy điều đó",
-          "Thỉnh thoảng",
-          "Tương đối nhiều lần ", "Luôn luôn"
-        ]
-      },
-      {
-        "question": "Khi ở trong môi trường khô, nếu không bôi kem dưỡng ẩm hoặc chống nắng, da bạn sẽ?",
-        "options": ["Cảm thấy rất khô và nứt nẻ", "Cảm thấy căng", "Cảm thấy bình thường", "Thấy bóng nhờn, hoặc tôi chưa bao giờ cảm thấy cần phải dùng dưỡng ẩm", "Không biết"]
-      },
-      {
-        "question": "Khi nhìn vào gương phóng đại, có bao nhiêu lỗ chân lông to kích thước bằng đầu cái ghim hoặc lớn hơn?",
-        "options": ["Không có", "Chỉ có vài cái vùng chữ T", "Tương đối nhiều.", "Rất nhiều, vô số"]
-      },
-      {
-        "question": "Bạn tự đánh giá da bạn:",
-        "options": [" Khô", "Bình thường", " Hỗn hợp (có cả vùng dầu và khô trên mặt)", "dầu"]
-      },
-      {
-        "question": "Khi bạn dùng xà bông hoặc sữa rửa mặt tạo nhiều bọt, da mặt bạn: ",
-        "options": ["Cảm thấy khô hoặc nứt nẻ", "Cảm thấy hơi khô nhưng không nứt nẻ",
-
-          "Cảm thấy bình thường",
-          "Cảm thấy Dầu ", "Tôi không dùng xà bông hoặc sản phẩm rửa tạo nhiều bọt (nếu vì khiến khô da, chọn câu a)"
-        ]
-      }, {
-        "question": " Nếu không dùng dưỡng ẩm, da bạn cảm thấy căng:",
-        "options": ["luôn luôn", "Thi thoảng", "hiếm khi", "không bao giờ"]
-      },
-      {
         "question": " Bạn bị bít lỗ chân lông (mụn đầu đen và mụn đầu trắng)?",
-        "options": ["Hiếm khi",
+        "options": [
+          "Hiếm khi",
           "Không bao giờ",
           "Thi thoảng",
           "Luôn luôn"
         ]
       },
       {
-        "question": " Da bạn dầu ở vùng chữ T?",
-        "options": ["Hiếm khi", "không bao giờ ", "Thi thoảng", "Luôn luôn"]
+        "question": " Da bạn dầu ở vùng chữ T",
+        "options": [
+          "Hiếm khi",
+          "không bao giờ ",
+          "Thi thoảng",
+          "Luôn luôn"
+        ]
+      },
+      {
+        "question": "Khi ở môi trường khô, nếu không bôi kem dưỡng ẩm hoặc chống nắng, da mặt bạn sẽ ",
+        "options": [
+          "Cảm thấy khô ráp, nức nẽ",
+          " cảm thấy căng",
+          "bình thường",
+          "không biết",
+          "bóng nhờn không bao giờ sài kem dưỡng ẩm"
+        ]
+      },
+      {
+        "question": "Hai đến ba giờ sau khi bôi kem dưỡng ẩm, má của bạn?",
+        "options": [
+          "Thô ráp",
+          "Mịn ",
+          "Hơi bóng",
+          "Bóng và nhờn, hoặc tôi chưa bao giờ dùng dưỡng ẩm"
+        ]
+      },
+      {
+        "question": " Khi nhìn vào gương phóng đại, lỗ chân lông của bạn có to bằng đầu ghim hay lớn hơn không?",
+        "options": [
+          "Không ",
+          "Chỉ có vài cái ở vùng chữ T ",
+          "Tương đối nhiều",
+          "Rất nhiều",
+          "Không biết"
+        ]
       }
     ],
     "sensitive vs resistant": [{
-        "question": " Da mặt bạn bị những sần đỏ, mụn mủ",
-        "options": ["Không bao giờ", "Hiếm khi", "Ít nhất một tháng một lần", "Ít nhất một tuần một lần"]
-      },
-      {
-        "question": " Bạn đã từng được chẩn đoán bị trứng cá hoặc trứng cá đỏ:",
-        "options": ["Không bao giờ, ", "Bạn bè và người quen nói tôi bị thế",
-          "Có",
-          "Có, tôi là bệnh nhân nặng", "Không rõ "
-        ]
-      },
-      {
-        "question": "Nếu bạn đeo trang sức không phải là vàng 14 cara, bạn bị nổi ban không?:",
-        "options": ["Hiếm khi", "không bao giờ ", "Thường hay thế", "Luôn luôn", "Không rõ"]
-      },
-      {
-        "question": "Bạn đã bao giờ được chẩn đoán bị viêm da cơ địa, Chàm, hoặc viêm da tiếp xúc(dị ứng da) chưa ?",
-        "options": ["Hiếm khi", "không bao giờ ", "Thường hay thế ", "Luôn luôn"]
-      },
-      {
-
-        "question": "Sữa tắm tạo bọt có hương thơm,dầu mát xa,kem dưỡng thể làm da bạn nổi mụn,ngứa, hoặc gây cảm giác khô da: ",
-        "options": ["Không bao giờ", "Hiếm khi", "Thường hay thế", "Luôn luôn", "Tôi không dùng các sản phẩm đó(chú ý: chọn đáp án d nếu bạn không dùng chúng vì chúng gây nổi mụn, ngứa hoặc gây khô da)"]
-      },
-      {
-
-        "question": "Bạn có thể dùng xà bông của khách sạn thoa lên mặt hoặc lên người mà không vấn đề gì ? ",
-        "options": ["Đúng thế ", "Hầu như là không có vấn đề gì ", "Không, da tôi ngứa, mẩn đỏ và nổi mụn ", "Tôi không thể sử dụng chúng vì trước tôi bị ngứa đỏ, ..nhiều lần rồi ", "Tôi không rõ vì tôi mang theo xà bông riêng "]
-      },
-      {
-
-        "question": "Đã từng có ai trong gia đình bạn được chẩn đoán viêm da dị ứng, chàm, hen, và/hoặc dị ứng chưa?",
-        "options": ["Không", "Một thành viên trong gia đình", "Vài thành viên trong gia đình",
-          "Nhiều thành viên bị", "Không rõ"
-        ]
-      },
-      {
-
-        "question": "Mặt hoặc cổ bạn bị đỏ sau khi tập thể dục vừa phải,  hoặc khi stress, có cảm xúc mạnh như giận giữ, thường xuyên như thế nào:",
-        "options": ["Không bao giờ", "Thỉnh thoảng", "Thường hay thế", "Luôn luôn"]
-      },
-      {
-
-        "question": " Bạn có đỏ bừng mặt sau khi uống rượu?",
-        "options": ["Không bao giờ", "Thỉnh thoảng", "Thường hay thế", "Luôn luôn hoặc tôi không uống rượu vì bị đỏ mặt"]
-      },
-      {
-        "question": "Khuôn mặt bạn trông đỏ trong các bức ảnh",
-        "options": ["Không bao giờ, hoặc tôi chưa bao giờ để ý thấy ", " Thỉnh thoảng",
-          "Thường hay thế", " Luôn luôn"
-        ]
-      },
-      {
         "question": "Bạn bị đỏ, ngứa, sưng do đồ trang điểm, kem chống nắng hoặc đồ dưỡng da:",
-        "options": ["Không bao giờ", " Thỉnh thoảng", "Thường hay thế", "Luôn luônLúc nào cũng bị hỏi", "Tôi không dùng các sản phẩm này (không dùng nếu vì lý do ở câu hỏi thì chọn d)"]
+        "options": [
+          "Không bao giờ",
+          " Thỉnh thoảng",
+          "Thường hay thế",
+          "Luôn luônLúc nào cũng bị hỏi",
+          "Tôi không dùng các sản phẩm này (không dùng nếu vì lý do ở câu hỏi thì chọn d)"
+        ]
+      },
+      {
+        "question": "Da mặt bạn bị những sần đỏ, mụn mủ:",
+        "options": [
+          "Không bao giờ",
+          " Hiếm ",
+          "Thường xuyên",
+          "Luôn luôn",
+          "Không rõ"
+        ]
+      },
+      {
+        "question": "Kem chống nắng có làm da bạn di ứng không:",
+        "options": [
+          "Không ",
+          " Thỉnh thoảng",
+          "Hiếm khi",
+          "Luôn luôn",
+          "Thường xuyên",
+          "Không rõ"
+        ]
+      },
+      {
+        "question": " Mọi người có hay hỏi bạn có bị cháy nắng không ngay cả khi da bạn không phải bị cháy nắng",
+        "options": [
+          " Không",
+          " Thỉnh thoảng",
+          "Thường xuyên",
+          " Luôn luôn",
+          "Tôi luôn bị cháy nắng"
+        ]
       }
     ],
     "non-pigmented vs pigmented": [{
-
         "question": " Sau khi bị mụn hay viêm lỗ chân lông, da bạn có xuất hiện những vết màu nâu hoặc đen không?",
-        "options": [" Không bao giờ/ tôi không thấy bao giờ", " Thỉnh thoảng", "Thường xuyên", " Luôn luôn",
+        "options": [
+          " Không bao giờ/ tôi không thấy bao giờ",
+          " Thỉnh thoảng",
+          "Thường xuyên",
+          " Luôn luôn",
           "Tôi không bao giờ bị mụn, viêm lỗ chân lông"
         ]
       },
       {
         "question": " Nếu bị xây xát, những vết thâm tồn tại trên da bạn bao lâu?",
-        "options": ["Tôi không bị để lại vết thâm hoặc tôi chưa bao giờ thấy có", "Một tuần", "Một vài tuần", "Hàng tháng trời"]
+        "options": [
+          "Tôi không bị để lại vết thâm hoặc tôi chưa bao giờ thấy có",
+          "Một tuần",
+          "Một vài tuần",
+          "Hàng tháng trời"
+        ]
       },
-
       {
         "question": " Bạn có vết đen (có thể hiểu là nốt ruồi) nào trên môi hay vùng má không? Hoặc từng có mà bạn đã tẩy đi?",
-        "options": [" Không có vết nào", "Tôi không rõ", "Có, chúng cũng mờ thôi.",
-          " Có, chúng rất đậm.", "Không rõ"
+        "options": [
+          " Không có vết nào",
+          "Tôi không rõ",
+          "Có, chúng cũng mờ thôi.",
+          " Có, chúng rất đậm.",
+          "Không rõ"
         ]
       },
       {
         "question": " Bạn đã từng bị chứng sạm da toàn thân hay những mảng da nâu/xám trên mặt bao giờ chưa?",
-        "options": [" Chưa", "Có, nhưng sau đó chúng biến mất", "Có, hiện tại tôi cũng đang bị thế.", "Có, tôi đang bị rất trầm trọng đây", "Tôi không rõ"]
+        "options": [
+          " Chưa",
+          "Có, nhưng sau đó chúng biến mất",
+          "Có, hiện tại tôi cũng đang bị thế.",
+          "Có, tôi đang bị rất trầm trọng đây",
+          "Tôi không rõ"
+        ]
       }
     ],
-
     "tight vs wrinkled": [{
         "question": " Bạn có nếp nhăn trên mặt không?",
-        "options": ["Không, ngay cả khi tôi cười, nhăn mặt hay nhướn lông mày.", "Có, nhưng chỉ khi tôi cười, nhăn mặt hay nhướn lông mày.", " Có, khi tôi có cử động mặt và một vài nếp nhăn cả khi tôi không làm gì.", "Tôi có nếp nhăn ngay cả khi không cười, nhăn mặt hay nhướn lông mày."]
+        "options": [
+          "Không, ngay cả khi tôi cười, nhăn mặt hay nhướn lông mày.",
+          "Có, nhưng chỉ khi tôi cười, nhăn mặt hay nhướn lông mày.",
+          " Có, khi tôi có cử động mặt và một vài nếp nhăn cả khi tôi không làm gì.",
+          "Tôi có nếp nhăn ngay cả khi không cười, nhăn mặt hay nhướn lông mày."
+        ]
       },
       {
-        "question": "Da mặt của mẹ bạn nhìn thế nào so với tuổi tác?",
-        "options": [" Trẻ hơn khoảng 5-10 tuổi", "Như ở độ tuổi của bà.", "Già hơn khoảng 5 tuổi.", "Già hơn trên 5 tuổi.", "Không phù hợp. Tôi là con nuôi hoặc tôi không thể nhớ."]
+        "question": " Da mặt của mẹ bạn như thế nào so với tuổi tác",
+        "options": [
+          "Trẻ hơn 5-10 tuổi",
+          "Nhìn đúng tuổi.",
+          " Già hơn khoảng 5 tuổi.",
+          "Già hơn trên 5 tuổi",
+          "Không nhớ."
+        ]
       },
       {
-        "question": " Da mặt của bố bạn nhìn thế nào so với tuổi tác?",
-        "options": [" Trẻ hơn khoảng 5-10 tuổi", "Như ở độ tuổi của ông ấy.", "Già hơn khoảng 5 tuổi.", "Già hơn trên 5 tuổi.", "Không phù hợp. Tôi là con nuôi hoặc tôi không thể nhớ."]
+        "question": " Bạn nghĩ mình trông như thế nào so với độ tuổi?",
+        "options": [
+          "Trẻ hơn 1-5 tuổi.",
+          "Như ở tuổi bạn.",
+          " Già hơn tuổi khoảng 5 năm",
+          "Già hơn 5 tuổi"
+        ]
       },
       {
-        "question": "Bạn nghĩ trông mình thế nào so với tuổi của bạn?",
-        "options": ["Trẻ hơn khoảng 5-10 tuổi", "Như ở độ tuổi của bạn.", "Già hơn khoảng 5 tuổi.", "Già hơn trên 5 tuổi."]
+        "question": " Bạn có thường xuyên ăn rau quả không?",
+        "options": [
+          "Một bữa.",
+          "Một bữa mỗi ngày.",
+          "Thi thoảng",
+          "Không bao giờ"
+        ]
       },
       {
-        "question": "Đã bao nhiêu lần bạn nằm phơi nắng rồi?",
-        "options": ["Không bao giờ", "Khoảng 1 – 5 lần", "Khoảng 5 – 10 lần", "Rất nhiều lần"]
-      },
-      {
-        "question": "Từ khi sinh ra đến giờ, bạn đã hút thuốc (hoặc ngửi khói thuôc):",
-        "options": ["Chưa bao giờ.", " Một vài bao.", "Nhiều, rất nhiều bao", "Tôi hút thuốc hàng ngày", "Tôi không hút thuốc nhưng tôi sống cùng/được nuôi dưỡng/làm việc với người thường xuyên hút thuốc trong sự kiện.."]
-      },
-      {
-        "question": " Hãy mô tả mức độ ô nhiễm không khí nơi bạn sống:",
-        "options": [" Không khí rất trong lành và sạch.", "Một khoảng  thời gian trong năm, nhưng không phải suốt cả năm, tôi sống ở nơi có không khí sạch.", "Không khí nhiễm.", "Không khí bị ô nhiễm nặng."]
-      },
-      {
-        "question": "  Bạn đã từng dùng loại kem chứa retinoid dành cho mặt như retinol, Renova, Retin-A, Tazorac, Differin hoặc Avage trong bao lâu?",
-        "options": ["Nhiều năm", " Thỉnh thoảng", "Khi tôi bị mụn hồi trẻ", "Chưa bao giờ dùng."]
-      },
-      {
-        "question": " Bạn có thường xuyên ăn rau và hoa quả không?",
-        "options": ["Mỗi bữa", " Một bữa 1 ngày", "Thi thoảng", "Không bao giờ"]
-      },
-      {
-        "question": "Thông thường, chế độ ăn của bạn có bao nhiêu phần trăm hoa quả và rau? (không tính nước hoa quả trừ khi là tươi)",
-        "options": ["75 – 100%", "25 – 75%", "10 – 25%", " 0 – 10%"]
-      },
-      {
-        "question": "Màu da tự nhiên của bạn là gì (không tính rám nắng hay nhuộm da)?",
-        "options": ["Đen", " Trung bình", "Trắng", "Rất trắng"]
-      },
-      {
-        "question": " Bạn thuộc chủng người nào?",
-        "options": [" Mỹ Phi/Caribe/Da đen", " Châu Á/Ấn Độ/Địa Trung Hải/Khác", " Mỹ Latin/Tây Ban Nha", "Capca"]
+        "question": " Màu da tự nhiên của bạn là gì ?",
+        "options": [
+          "Đen",
+          "Trung bình",
+          "Trắng",
+          "Rất trắng"
+        ]
       }
     ]
   }
+
 }

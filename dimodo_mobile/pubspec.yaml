@@ -106,6 +106,9 @@ flutter:
     - assets/images/country/
     - assets/fonts/BeVietnam/
   fonts:
+    - family: Baloo
+      fonts:
+        - asset: assets/fonts/Baloo-Regular.ttf
     - family: BeVietnam
       fonts:
         - asset: assets/fonts/BeVietnam/BeVietnam-Regular.ttf

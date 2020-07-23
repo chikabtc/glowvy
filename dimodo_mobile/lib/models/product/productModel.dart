@@ -85,6 +85,7 @@ class ProductModel with ChangeNotifier {
         filtered = sortByDefaultRank(products);
         break;
     }
+    print("products: ${filtered}");
 
     return filteredProductsBySkinType(skinTypeId, filtered);
   }
@@ -119,7 +120,6 @@ class ProductModel with ChangeNotifier {
       case 3:
         products.sort((a, b) => a.cosmeticsRank.oilySkinRank["Int32"]
             .compareTo(b.cosmeticsRank.oilySkinRank["Int32"]));
-
         break;
     }
     return products;
@@ -178,7 +178,7 @@ class ProductModel with ChangeNotifier {
 
   List<Product> filteredProductsBySkinType(skinTypeId, List<Product> products) {
     products = products.where((p) {
-      var isMatching = false;
+      var isMatching = true;
       switch (skinTypeId) {
         //all
         case 0:

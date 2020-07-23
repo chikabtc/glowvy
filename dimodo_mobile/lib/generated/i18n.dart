@@ -188,7 +188,13 @@ class S implements WidgetsLocalizations {
   String get localKoreanShips => "Local Korean Shops";
   String get seoulKorea => "Seoul, Korea";
   String get filter => "filter";
+
   String get sensitive => "sensitive";
+  String get wrinkled => "wrinkled";
+  String get nonPigmented => "non_pigmented";
+  String get pigmented => "pigmented";
+  String get tight => "tight";
+  String get resistant => "resistant";
   String get oily => "oily";
   String get dry => "dry";
   String get theMostFamousRanking =>
@@ -383,6 +389,8 @@ class S implements WidgetsLocalizations {
   String get reset => "Reset";
   String get review => "review";
   String get saveAddress => "Save Address";
+  String get saveResult => "Save Result";
+  String get checkYourSkinTYpe => "Çheck your Skin Type";
   String get saveAddressSuccess => "Your address is exist in your local";
   String get saveToWishList => "Save to WishList";
   String get search => "Search";
@@ -500,6 +508,16 @@ class $vi extends S {
   String get customerSupport => "Hỗ Trợ Khách Hàng";
   @override
   String get feedback => "Phản Hồi";
+
+  String get dry => "khô";
+  String get oily => "da dầu";
+  String get sensitive => "sensitive";
+  String get resistant => "resistant";
+  String get nonPigmented => "không sắc tố";
+  String get pigmented => "sắc tố";
+  String get wrinkled => "nhăn";
+  String get tight => "căng";
+
   @override
   String get shippingFeePolicy =>
       "Phí vận chuyển được tính theo trọng lượng.\n\nNếu bạn có thắc mắc về phí vận chuyển, vui lòng liên hệ với chúng tôi bất cứ lúc nào \n\nVận chuyển miễn phí cho các đơn hàng trên 2.000.000 Mb\n";
@@ -591,6 +609,7 @@ class $vi extends S {
   String get writeReview => "Viết nhận xét của bạn";
   String get send => "Gửi";
   String get ewgSafeLevel => "EWG safety level";
+  String get checkYourSkinTYpe => "Çheck your Skin Type";
 
   String get selectOrEnterCoupon => "Chọn Hoặc Nhập Mã";
   String get byRanking => "Theo xếp hạng";
@@ -615,7 +634,6 @@ class $vi extends S {
   String get allRankingResults => "Mọi kết quả xếp hạng dựa trên";
   String get theMostFamousRanking =>
       "Dịch vụ xếp hạng sản phẩm làm đẹp nổi tiếng và phổ biến nhất Hàn Quốc";
-
   // ===========================================================================
   // To Trnaslate
   // ===========================================================================
@@ -675,6 +693,7 @@ class $vi extends S {
   String get bannerDescription => "Hình ảnh của người nổi tiếng";
   String get genuineSecurity => "Bảo mật xác thực";
   String get sevenDayWorryFree => "Trả hàng trong vòng 7 ngày sau khi mua";
+  // String get wrinkled => "wrinkled";
 
   @override
   String get bannerTitle => "Mua sắm tiện lợi cùng nhau";
@@ -744,6 +763,8 @@ class $vi extends S {
   String get english => "Tiếng Anh";
   @override
   String get inStock => "Trong kho";
+  String get saveResult => "Save Result";
+
   @override
   String get myWishList => "Danh sách ưa thích";
   @override

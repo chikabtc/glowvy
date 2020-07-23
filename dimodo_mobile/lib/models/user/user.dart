@@ -11,13 +11,14 @@ class User {
   String fullName;
   String email;
   String picture;
+  String skinType;
   String accessToken;
   Address defaultAddress;
   List<Address> addresses = [];
 
   Billing billing;
   User(this.id, this.loggedIn, this.fullName, this.email, this.picture,
-      this.accessToken, this.defaultAddress, this.billing);
+      this.skinType, this.accessToken, this.defaultAddress, this.billing);
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);
@@ -30,6 +31,7 @@ class User {
       loggedIn = user.loggedIn;
       fullName = user.fullName;
       email = user.email;
+      skinType = user.skinType;
       picture = user.picture;
       defaultAddress = user.defaultAddress;
       addresses = user.addresses;
@@ -48,6 +50,8 @@ class User {
       var user = json['Account'];
       loggedIn = true;
       id = user['id'];
+      skinType = user.skinType;
+
       fullName = user["full_name"];
       email = user["email"];
       // picture = user["picture"]['data']['url'] ?? '';
@@ -59,6 +63,7 @@ class User {
   User.fromJsonGoogle(Map<String, dynamic> json) {
     try {
       accessToken = json['AccessToken'];
+      skinType = skinType;
 
       var user = json['Account'];
       id = json['id'];
@@ -80,6 +85,7 @@ class User {
       email = user['email'];
       defaultAddress = user['address'];
       addresses = user['addresses'];
+      skinType = user.skinType;
 
       // picture = user['picture'];
     } catch (e) {
@@ -89,5 +95,5 @@ class User {
 
   @override
   String toString() =>
-      'User { id: $id full_name: $fullName email: $email, accessToken: $accessToken}';
+      'User { id: $id full_name: $fullName email: $email, accessToken: $accessToken}, skinType: $skinType';
 }

@@ -1,0 +1,99 @@
+{
+    "dry vs oily": [{
+            "question": " Bạn bị bít lỗ chân lông (mụn đầu đen và mụn đầu trắng)?",
+            "options": ["Hiếm khi",
+                "Không bao giờ",
+                "Thi thoảng",
+                "Luôn luôn"
+            ]
+        },
+        {
+            "question": " Da bạn dầu ở vùng chữ T?",
+            "options": ["Hiếm khi", "không bao giờ ", "Thi thoảng", "Luôn luôn"]
+        }
+    ],
+    "question": "Khi ở môi trường khô, nếu không bôi kem dưỡng ẩm hoặc chống nắng, da mặt bạn sẽ",
+    "options": ["Cảm thấy khô ráp, nức nẽ", "cảm thấy căng ", "bình thường", "bóng nhờn khoong bao giờ sài kem dưỡng ẩm", "không biết"]
+} {
+    "question": " Hai đến ba giờ sau khi bôi kem dưỡng ẩm, má của bạn:",
+    "options": ["Thô ráp ", "
+        Mịn ", "
+        Hơi bóng ", "
+        Bóng và nhờn, hoặc tôi chưa bao giờ dùng dưỡng ẩm "
+    ]
+}
+
+}
+],
+
+"sensitive vs resistant": [{
+
+    "question": "Bạn bị đỏ, ngứa, sưng do đồ trang điểm, kem chống nắng hoặc đồ dưỡng da:",
+    "options": ["Không bao giờ", " Thỉnh thoảng", "Thường hay thế", "Luôn luônLúc nào cũng bị hỏi", "Tôi không dùng các sản phẩm này (không dùng nếu vì lý do ở câu hỏi thì chọn d)"]
+}],
+"question": "Da mặt bạn bị những sần đỏ, mụn mủ",
+"options": ["Không bao giờ", " Hiếm", "Ít nhất một tháng một lần ", "Ít nhất một tuần một lần", ]
+}],
+"question": "Kem chống nắng có làm da bạn di ứng không:",
+"options": ["Không", "Hiếm khi ", "Thường xuyên", "Luôn luôn", "Không rõ "]
+}],
+"question": "Mọi người có hay hỏi bạn có bị cháy nắng không ngay cả khi da bạn không phải bị cháy nắng",
+"options": ["Không ", " Thỉnh thoảng", "Thường xuyên ", "Luôn luôn", "
+    Tôi bị cháy nắng thật "
+]
+}],
+
+"non-pigmented vs pigmented": [{
+
+        "question": " Sau khi bị mụn hay viêm lỗ chân lông, da bạn có xuất hiện những vết màu nâu hoặc đen không?",
+        "options": [" Không bao giờ/ tôi không thấy bao giờ", " Thỉnh thoảng", "Thường xuyên", " Luôn luôn",
+            "Tôi không bao giờ bị mụn, viêm lỗ chân lông"
+        ]
+    },
+    {
+        "question": " Nếu bị xây xát, những vết thâm tồn tại trên da bạn bao lâu?",
+        "options": ["Tôi không bị để lại vết thâm hoặc tôi chưa bao giờ thấy có", "Một tuần", "Một vài tuần", "Hàng tháng trời"]
+    },
+
+    {
+        "question": " Bạn có vết đen (có thể hiểu là nốt ruồi) nào trên môi hay vùng má không? Hoặc từng có mà bạn đã tẩy đi?",
+        "options": [" Không có vết nào", "Tôi không rõ", "Có, chúng cũng mờ thôi.",
+            " Có, chúng rất đậm.", "Không rõ"
+        ]
+    },
+    {
+        "question": " Bạn đã từng bị chứng sạm da toàn thân hay những mảng da nâu/xám trên mặt bao giờ chưa?",
+        "options": [" Chưa", "Có, nhưng sau đó chúng biến mất", "Có, hiện tại tôi cũng đang bị thế.", "Có, tôi đang bị rất trầm trọng đây", "Tôi không rõ"]
+    }
+],
+
+"tight vs wrinkled": [{
+        "question": " Bạn có nếp nhăn trên mặt không?",
+        "options": ["Không, ngay cả khi tôi cười, nhăn mặt hay nhướn lông mày.", "Có, nhưng chỉ khi tôi cười, nhăn mặt hay nhướn lông mày.", " Có, khi tôi có cử động mặt và một vài nếp nhăn cả khi tôi không làm gì.", "Tôi có nếp nhăn ngay cả khi không cười, nhăn mặt hay nhướn lông mày."]
+    },
+    {
+        "question": "Da mặt của mẹ bạn nhìn thế nào so với tuổi tác?",
+        "options": [" Trể hơn 5-10 tuổi", "Nhìn đúng tuổi", "Già hơn khoảng 5 tuổi ", "Già hơn trên 5 tuổi", "Không nhớ "]
+    },
+    {
+        "question": "Bạn nghĩ mình trong như thế nào so với độ tuổi",
+        "options": ["Trẻ hơn 1 - 5 tuổi", "Như ở tuổi bạn ", "Già hơn tuổi khoảng 5 năm", "Già hơn 5 tuổi "]
+    },
+
+    {
+
+
+        "question": "Bạn có thường xuyên ăn rau quả không?",
+        "options": [" Một bữa", "Một bữa mỗi ngày ", "Thi thoảng", "Thi thoảng ", "Không bao giờ"]
+    },
+    {
+        "question": "Màu da tự nhiên của bạn là màu gì ? ",
+        "options": ["Đen", "Trung bình ", "Trắng", "Rất trắng "]
+    },
+
+    {
+        "question": "Hãy mô tả mức độc ô nhiễm nơi bạn sống ",
+        "options": ["Trong lành và sạch ", "Vài mùa không khí sạch", "Không khí hơi ô nhiễm ", "Không khí rất ô nhiễm"]
+    }
+],
+}

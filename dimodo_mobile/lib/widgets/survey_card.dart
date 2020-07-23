@@ -6,11 +6,10 @@ import 'package:Dimodo/common/styles.dart';
 
 class SurveyCard extends StatefulWidget {
   // SurveyWidget
-  SurveyCard({this.survey, this.index, this.onTap, this.isLast = false});
+  SurveyCard({this.survey, this.index, this.onTap});
   final Survey survey;
   final int index;
   final Future<dynamic> Function() onTap;
-  final bool isLast;
 
   @override
   _SurveyCardState createState() => _SurveyCardState();
@@ -51,12 +50,8 @@ class _SurveyCardState extends State<SurveyCard> {
             for (var i = 0; i < widget.survey.options.length; i++)
               GestureDetector(
                 onTap: () => setState(() {
-                  if (!widget.isLast) {
-                    Future.delayed(const Duration(milliseconds: 250), () {
-// Here you can write your code
-                      widget.onTap();
-                    });
-                  }
+                  widget.onTap();
+
                   widget.survey.answer = widget.survey.options[i];
                 }),
                 child: Container(

@@ -7,6 +7,7 @@ import '../../common/constants.dart';
 import '../../services/index.dart';
 import 'user.dart';
 import '../address/address.dart';
+import '../../generated/i18n.dart';
 
 class UserModel with ChangeNotifier {
   UserModel() {
@@ -24,6 +25,7 @@ class UserModel with ChangeNotifier {
 
   Future<void> initData() async {
     await getUser();
+    await getSkinType();
     await getShippingAddress();
     await getUserCosmeticsTypesPref();
   }
@@ -137,6 +139,25 @@ class UserModel with ChangeNotifier {
     } catch (err) {
       print(err);
     }
+    notifyListeners();
+  }
+
+  void saveSkinType(String skinType) async {
+    final LocalStorage storage = new LocalStorage("Dimodo");
+    try {
+      // print("saving user ${user}");
+      // save to Preference
+      // SharedPreferences prefs = await SharedPreferences.getInstance();
+      // prefs.setBool('loggedIn', true);
+
+      // save the user Info as local storage
+      final ready = await storage.ready;
+      if (ready) {
+        await storage.setItem(kLocalKey["skinType"], skinType);
+      }
+    } catch (err) {
+      print(err);
+    }
   }
 
   Future getUser() async {
@@ -149,6 +170,25 @@ class UserModel with ChangeNotifier {
           user = User.fromJson(json);
           kAccessToken = user.accessToken;
           isLoggedIn = true;
+          notifyListeners();
+        } else {
+          print("fail to get users");
+        }
+      }
+    } catch (err) {
+      print(err);
+    }
+  }
+
+  Future getSkinType() async {
+    final LocalStorage storage = new LocalStorage("Dimodo");
+    try {
+      final ready = await storage.ready;
+      if (ready) {
+        final json = storage.getItem(kLocalKey["skinType"]);
+        if (json != null) {
+          print("sjon skinType: ${json}");
+          skinType = json;
           notifyListeners();
         } else {
           print("fail to get users");
@@ -443,6 +483,38 @@ class UserModel with ChangeNotifier {
       return true;
     } catch (err) {
       return false;
+    }
+  }
+
+  String getFullSkinType(context, type) {
+    print("type: $type");
+    switch (type) {
+      case "D":
+        return S.of(context).dry;
+        break;
+      case "O":
+        return S.of(context).oily;
+        break;
+      case "S":
+        return S.of(context).sensitive;
+        break;
+      case "R":
+        return S.of(context).resistant;
+        break;
+      case "N":
+        return S.of(context).nonPigmented;
+        break;
+      case "P":
+        return S.of(context).pigmented;
+        break;
+      case "T":
+        return S.of(context).tight;
+        break;
+      case "W":
+        return S.of(context).wrinkled;
+        break;
+      default:
+        "Skin";
     }
   }
 }

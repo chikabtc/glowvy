@@ -22,6 +22,7 @@ const kSecondaryPink = Color(0xfffF19CB3);
 const kRankingColor = Color(0xfffF0D060);
 const kSecondaryPurple = Color(0xffC3B4F4);
 const kAccentGreen = Color(0xff21CAB0);
+const kSecondaryGreen = Color(0xff63DAC8);
 // const kDefaultBackground = Color(0xffE5E5E5);
 const kAccentRed = Color(0xffDB3022);
 const kPrimaryBlue = Color(0xff5A81E8);
@@ -35,6 +36,7 @@ const kLightPrimary = Color(0xfffcfcff);
 const kPinkError = Color(0xfffED4D4D);
 const kLightAccent = Color(0xFF546E7A);
 const kDarkAccent = Color(0xFF393E46);
+// const kPinkAccent = Color(0xffe85a81);
 const kPinkAccent = Color(0xffe85a81);
 const kGreenPrimary = Color(0xff2AA952);
 
