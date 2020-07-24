@@ -210,7 +210,7 @@ class HomeScreenState extends State<HomeScreen>
                       "Glowvy",
                       style: kBaseTextStyle.copyWith(
                           fontFamily: "Baloo",
-                          fontSize: 22,
+                          fontSize: 24,
                           fontWeight: FontWeight.bold),
                     ),
                     actions: <Widget>[
@@ -227,7 +227,10 @@ class HomeScreenState extends State<HomeScreen>
                       preferredSize: Size.fromHeight(
                           userModel.skinType != null ? 148 : 80),
                       child: GestureDetector(
-                        onTap: () => PopupServices.showBaummanQuiz(context),
+                        onTap: () {
+                          //show
+                          PopupServices.showBaummanQuiz(context);
+                        },
                         child: Column(
                           children: <Widget>[
                             Container(

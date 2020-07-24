@@ -322,37 +322,131 @@
     "description2": "Phần này đo lường xu hướng phát triển mụn, đỏ, ngứa của da bạn, đây là  tất cả các dấu hiệu của da nhạy cảm.",
     "description3": "Phần này đo lường xu hướng hình thành melanin của da bạn, một sắc tố da tạo ra các tông màu da tối hơn cũng như các mảng tối, tàn nhang và các vùng da sau khi bị tàn phá (như thường thấy sau khi bị mụn).",
     "description4": "Tuổi tác, dân tộc và thói quen sinh hoạt ảnh hưởng đến việc da dễ bị nhăn hay căng. Vẫn còn một thành phần di truyền cho thông số này, nhưng các yếu tố bên ngoài góp phần làm vẻ ngoài của bạn bị già nua có thể kiểm soát được. Lão hóa da, phá hủy các protein da như collagen và elastin.",
-    // "skin-type-tips": [{
-    //   "title": "Do not put too much makeup",
-    //   "explanation": "it is hard to erase the makeup with the cleanser so you need to wash twice and double cleasing will damange your skins"
-    // }],
-    "skin-types-explanations": {
-      "OSPW": "Loại da này có thể được xác định là da dầu, nám, nhạy cảm và nhăn. Bạn có thể thấy rằng da được đặc trưng bởi có mụn, đỏ mặt hoặc đỏ bừng, hoặc thậm chí dễ bị nổi mẩn và kích ứng da. Da sẫm màu ở các khu vực là kết quả của các vấn đề viêm. Trong một số trường hợp, các mảng tối như nám và tàn nhang xảy ra. Loại này có xu hướng làm da bị nhăn do lối sống có thể bao gồm phơi nắng và / hoặc hút thuốc lá.",
+    "dry-type-tips": [{
+      "title": "yo",
+      "explanation": "why"
+    }],
+    "sensitive-type-tips": [{
+      "title": "yo",
+      "type": "",
+      "explanation": "why"
+    }],
+    "oily-type-tips": [{
+      "title": "yo",
+      "type": "",
+      "explanation": "why"
+    }],
+    "pigmented-type-tips": [{
+      "title": "yo",
+      "type": "",
+      "explanation": "why"
+    }],
+    "wrinkled-type-tips": [{
+      "title": "yo",
+      "type": "",
+      "explanation": "why"
+    }],
+    "skin-types-explanations": [{
+        "OSPW": "Loại da này có thể được xác định là da dầu, nám, nhạy cảm và nhăn. Bạn có thể thấy rằng da được đặc trưng bởi có mụn, đỏ mặt hoặc đỏ bừng, hoặc thậm chí dễ bị nổi mẩn và kích ứng da. Da sẫm màu ở các khu vực là kết quả của các vấn đề viêm. Trong một số trường hợp, các mảng tối như nám và tàn nhang xảy ra. Loại này có xu hướng làm da bị nhăn do lối sống có thể bao gồm phơi nắng và / hoặc hút thuốc lá."
+      },
+      {},
+      {
 
-      "OSPT": "Da nhờn, nhạy cảm, nám và căng (không nhăn) được đặc trưng bởi đỏ da mặt và / hoặc đỏ bừng, nổi mụn, hoặc nổi mẩn và kích ứng da thường xuyên. Các vấn đề viêm liên quan đến loại này thường bị phát hiện bởi một vùng da tối màu bị ảnh hưởng bởi mụn nhọt hoặc kích ứng da. Giống như OSPW, các mảng tối như nám và tàn nhang xảy ra thường xuyên. Tuy nhiên, loại da này có xu hướng nhăn thấp hơn các loại khác vì tăng sắc tố da bảo vệ da khỏi lão hóa và nếu bạn thấy bạn thuộc loại da này, nó sẽ có lợi cho bạn để có thói quen sống tốt như tránh phơi nắng và hút thuốc lá.",
+        "OSNW": "Da nhờn, nhạy cảm, không có sắc tố và da nhăn nheo thường có mụn trứng cá hoặc đỏ mặt và đỏ bừng, cũng như phát ban và kích ứng da thường xuyên. Thật không may, loại da này có ít sắc tố da bảo vệ hơn và do đó có xu hướng nhăn do thói quen lối sống hiện tại hoặc trong quá khứ có thể bao gồm phơi nắng hoặc hút thuốc lá.",
+        "tips": [{
+          "title": "yo",
+          "explanation": "why"
 
-      "OSNW": "Da nhờn, nhạy cảm, không có sắc tố và da nhăn nheo thường có mụn trứng cá hoặc đỏ mặt và đỏ bừng, cũng như phát ban và kích ứng da thường xuyên. Thật không may, loại da này có ít sắc tố da bảo vệ hơn và do đó có xu hướng nhăn do thói quen lối sống hiện tại hoặc trong quá khứ có thể bao gồm phơi nắng hoặc hút thuốc lá.",
+        }]
+      },
+      {
+        "OSNT": "Da nhờn, nhạy cảm, không nám và không nhăn được đặc trưng bởi các nốt mụn hoặc đỏ mặt và đỏ ửng, hoặc nổi mẩn da và kích ứng thường xuyên. Loại da này có thể sẽ dễ cải thiện hơn khi bạn già đi nếu bạn tiếp tục tập thói quen tốt. Đây là kết quả của loại da có xu hướng nhăn ít hơn, chỉ cần tránh tiếp xúc với ánh nắng mặt trời bạn sẽ ổn !",
+        "tips": [{
+          "title": "yo",
+          "explanation": "why"
 
-      "OSNT": "Da nhờn, nhạy cảm, không nám và không nhăn được đặc trưng bởi các nốt mụn hoặc đỏ mặt và đỏ ửng, hoặc nổi mẩn da và kích ứng thường xuyên. Loại da này có thể sẽ dễ cải thiện hơn khi bạn già đi nếu bạn tiếp tục tập thói quen tốt. Đây là kết quả của loại da có xu hướng nhăn ít hơn, chỉ cần tránh tiếp xúc với ánh nắng mặt trời bạn sẽ ổn !",
+        }]
+      },
+      {
+        "DSPW": "Da khô, nhạy cảm, nám và nhăn được đặc trưng bởi các nốt mụn và / hoặc đỏ mặt và đỏ ửng. Những vấn đề viêm này thường được theo sau bởi một làn da sẫm màu nơi nổi mụn hoặc kích ứng da. Hàng rào bảo vệ da của bạn rất yếu và điều này làm cho nó dễ bị mẩn ngứa và mất nước hơn, điều đó cũng có nghĩa là bạn sẽ dễ bị các đốm đen hơn. Điều quan trọng cần lưu ý là da bạn sẽ có khả năng bị nhăn và lão hoá khi lớn tuổi.",
+        "tips": [{
+          "title": "yo",
+          "explanation": "why"
 
-      "ORPW": "Da nhờn, kháng, nám và da nhăn nheo hiếm khi bị nhạy cảm như mụn trứng cá, hoặc đỏ da mặt, hoặc phát ban da. Tuy nhiên, các mảng tối như nám và tàn nhang thường xuyên xảy ra. Loại này có xu hướng nhăn nên bạn cần phải tránh phơi nắng",
+        }]
+      },
 
-      "DSPW": "Da khô, nhạy cảm, nám và nhăn được đặc trưng bởi các nốt mụn và / hoặc đỏ mặt và đỏ ửng. Những vấn đề viêm này thường được theo sau bởi một làn da sẫm màu nơi nổi mụn hoặc kích ứng da. Hàng rào bảo vệ da của bạn rất yếu và điều này làm cho nó dễ bị mẩn ngứa và mất nước hơn, điều đó cũng có nghĩa là bạn sẽ dễ bị các đốm đen hơn. Điều quan trọng cần lưu ý là da bạn sẽ có khả năng bị nhăn và lão hoá khi lớn tuổi.",
 
-      "DSPT": "Da khô, nhạy cảm, nám và căng (không nhăn) thường có mụn trứng cá, và thường xuyên nổi mẩn da và kích ứng. Rất tiếc, hàng rào bảo vệ da của bạn rất yếu và kết quả là nó dễ bị nổi mẩn và mất nước. Các mảng tối có thể phát triển trên mặt do phơi nắng. Loại da này có xu hướng nhăn thấp hơn các loại khác vì tăng sắc tố da và giúp bảo vệ da.",
+      {
+        "DSPT": "Da khô, nhạy cảm, nám và căng (không nhăn) thường có mụn trứng cá, và thường xuyên nổi mẩn da và kích ứng. Rất tiếc, hàng rào bảo vệ da của bạn rất yếu và kết quả là nó dễ bị nổi mẩn và mất nước. Các mảng tối có thể phát triển trên mặt do phơi nắng. Loại da này có xu hướng nhăn thấp hơn các loại khác vì tăng sắc tố da và giúp bảo vệ da.",
+        "tips": [{
+          "title": "yo",
+          "explanation": "why"
 
-      "DSNW": "Da khô, nhạy cảm, không có sắc tố và da nhăn nheo được đặc trưng bởi các nốt mụn hoặc đỏ mặt và đỏ bừng, hoặc nổi mẩn da và kích ứng da thường xuyên. Hàng rào bảo vệ da của bạn rất yếu và điều này khiến nó dễ bị phát ban và mất nước hơn. Loại da này có ít sắc tố bảo vệ da và dẫn đến nếp nhăn đặc biệt là nếu bạn tiếp xúc nhiều với ánh nắng mặt trời.",
+        }]
+      },
 
-      "DSNT": "Da khô, nhạy cảm, không nám và căng (không nhăn) được đặc trưng bởi các nốt mụn hoặc đỏ mặt ",
+      {
+        "DSNW": "Da khô, nhạy cảm, không có sắc tố và da nhăn nheo được đặc trưng bởi các nốt mụn hoặc đỏ mặt và đỏ bừng, hoặc nổi mẩn da và kích ứng da thường xuyên. Hàng rào bảo vệ da của bạn rất yếu và điều này khiến nó dễ bị phát ban và mất nước hơn. Loại da này có ít sắc tố bảo vệ da và dẫn đến nếp nhăn đặc biệt là nếu bạn tiếp xúc nhiều với ánh nắng mặt trời.",
+        "tips": [{
+          "title": "yo",
+          "explanation": "why"
 
-      "DRPW": "Da khô, kháng, nám và nhăn da hiếm khi bị nhạy cảm như mụn trứng cá, đỏ da mặt hoặc phát ban da. Tuy nhiên, các mảng tối như nám và tàn nhang thường xảy ra. Mặc dù loại da này có hàng rào bảo vệ mạnh mẽ nhưng nó có xu hướng nhăn, vì vậy hãy cẩn thận với ánh nắng mặt trời và những thói quen xấu.",
+        }]
+      },
 
-      "DRPT": "Da khô, kháng, nám và căng (không nhăn) hiếm khi gặp phải các vấn đề nhạy cảm như mụn trứng cá, đỏ da mặt hoặc phát ban da. May mắn thay, loại da này có xu hướng nhăn thấp hơn các loại khác vì tăng sắc tố da và hàng rào bảo vệ mạnh mẽ.",
+      {
+        "DSNT": "Da khô, nhạy cảm, không nám và căng (không nhăn) được đặc trưng bởi các nốt mụn hoặc đỏ mặt ",
+        "tips": [{
+          "title": "yo",
+          "explanation": "why"
 
-      "DRNW": "Da khô, kháng, không nám và da nhăn nheo hiếm khi bị nhạy cảm như mụn trứng cá, đỏ da mặt, hoặc phát ban da. Loại da này có ít sắc tố bảo vệ da hơn và do đó có xu hướng nhăn do thói quen xấu hiện tại, vì vậy hãy tránh tiếp xúc với ánh nắng mặt trời quá nhiều.",
+        }]
+      },
+      {
+        "ORPW": "Da nhờn, kháng, nám và da nhăn nheo hiếm khi bị nhạy cảm như mụn trứng cá, hoặc đỏ da mặt, hoặc phát ban da. Tuy nhiên, các mảng tối như nám và tàn nhang thường xuyên xảy ra. Loại này có xu hướng nhăn nên bạn cần phải tránh phơi nắng",
+        "tips": [{
+          "title": "yo",
+          "explanation": "why"
 
-      "DRNT": "Da khô, kháng, không nám và căng (không nhăn) hiếm khi gặp phải các vấn đề nhạy cảm như mụn trứng cá, đỏ da mặt hoặc phát ban da. Da của bạn có một hàng rào bảo vệ mạnh mẽ, vì vậy hãy tìm những sản phẩm có nồng độ hoạt chất cao hơn."
-    },
+        }]
+      },
+
+      {
+        "DRPW": "Da khô, kháng, nám và nhăn da hiếm khi bị nhạy cảm như mụn trứng cá, đỏ da mặt hoặc phát ban da. Tuy nhiên, các mảng tối như nám và tàn nhang thường xảy ra. Mặc dù loại da này có hàng rào bảo vệ mạnh mẽ nhưng nó có xu hướng nhăn, vì vậy hãy cẩn thận với ánh nắng mặt trời và những thói quen xấu.",
+        "tips": [{
+          "title": "yo",
+          "explanation": "why"
+        }]
+      },
+
+      {
+        "DRPT": "Da khô, kháng, nám và căng (không nhăn) hiếm khi gặp phải các vấn đề nhạy cảm như mụn trứng cá, đỏ da mặt hoặc phát ban da. May mắn thay, loại da này có xu hướng nhăn thấp hơn các loại khác vì tăng sắc tố da và hàng rào bảo vệ mạnh mẽ.",
+        "tips": [{
+          "title": "yo",
+          "explanation": "why"
+
+        }]
+      },
+
+      {
+        "DRNW": "Da khô, kháng, không nám và da nhăn nheo hiếm khi bị nhạy cảm như mụn trứng cá, đỏ da mặt, hoặc phát ban da. Loại da này có ít sắc tố bảo vệ da hơn và do đó có xu hướng nhăn do thói quen xấu hiện tại, vì vậy hãy tránh tiếp xúc với ánh nắng mặt trời quá nhiều.",
+        "tips": [{
+          "title": "yo",
+          "explanation": "why"
+
+        }]
+      },
+
+      {
+        "DRNT": "Da khô, kháng, không nám và căng (không nhăn) hiếm khi gặp phải các vấn đề nhạy cảm như mụn trứng cá, đỏ da mặt hoặc phát ban da. Da của bạn có một hàng rào bảo vệ mạnh mẽ, vì vậy hãy tìm những sản phẩm có nồng độ hoạt chất cao hơn.}",
+        "tips": [{
+          "title": "yo",
+          "explanation": "why"
+
+        }]
+      }
+    ],
 
 
 
