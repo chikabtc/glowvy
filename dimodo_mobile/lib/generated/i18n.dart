@@ -162,7 +162,10 @@ class S implements WidgetsLocalizations {
   String get bankTransfer => "Bank transfer";
 
   String get accountHolder => "Account holder";
+  String get whatIsMySkinType => "What is my skin type?";
   String get ewgSafeLevel => "EWG safety level";
+  String get discoverTheBestProducts =>
+      "Discover the best products \nand ingredients for you.";
   String get whyLowerThanMarketPriceQuestion =>
       "1. Why Dimodo price is lower than the market price? ";
   String get whereReviewsFromQuestion => "Where do those reviews come from?";
@@ -220,6 +223,7 @@ class S implements WidgetsLocalizations {
   String get onboardingTitle3 => "Made & Design in Korea";
   String get getStarted => "Get Started";
   String get yourSkinTypeIs => "Get Started";
+  String get yourSkin => "Your Skin";
 
   // ===========================================================================
   // Categories
@@ -430,6 +434,8 @@ class S implements WidgetsLocalizations {
   String get streetName => "Street Name";
   String get subtotal => "Subtotal";
   String get username => "Username";
+  String get toDos => "To dos";
+  String get notTodos => "Not To dos";
 
   String get trackingNumberIs => "Tracking number is";
   String get trackingPage => "Tracking page";
@@ -483,6 +489,7 @@ class $vi extends S {
       "We appreciate you are trying our current feature we’ve been building in Dimodo. It will take 10 mins to collect your feedback about our product?";
   String get officialQA => "Mục hỏi và đáp chính thức của Dimodo";
   String get bestDealInKorea => "Giá tốt nhất ở";
+  String get ingredientInfo => "Thông tin thành phần";
 
   @override
   String get privacyPolicy => "Chính Sách Bảo Mật";
@@ -496,7 +503,8 @@ class $vi extends S {
   String get deliveryArea => "Tỉnh /Thành phố";
   String get addAddress => "Thêm địa chỉ mới";
   String get editShippingAddress => "Edit Shipping Address";
-
+  String get discoverTheBestProducts =>
+      "Khám phá thêm sản phẩm \nvà các loại nguyên liệu phù hợp";
   String get district => "district";
   String get ward => "ward";
   String get confirm => "Xác nhận";
@@ -511,8 +519,8 @@ class $vi extends S {
 
   String get dry => "khô";
   String get oily => "da dầu";
-  String get sensitive => "sensitive";
-  String get resistant => "resistant";
+  String get sensitive => "đề kháng cao";
+  String get resistant => "nhạy cảm ";
   String get nonPigmented => "không sắc tố";
   String get pigmented => "sắc tố";
   String get wrinkled => "nhăn";
@@ -525,6 +533,7 @@ class $vi extends S {
   @override
   String get paymentMethod => "Phương Thức Thanh Toán";
   @override
+  String get yourSkin => "Da của bạn";
   String get share => "Chia Sẻ";
   @override
   String get rateTheApp => "Đánh Giá Ứng Dụng";
@@ -582,6 +591,7 @@ class $vi extends S {
       "Dịch vụ giúp chúng tôi chạy nền tảng của chúng tôi và cung cấp trải nghiệm tốt hơn";
   String get submitOrder => "ĐẶT MUA";
   String get fee => "Phí";
+  String get whatIsMySkinType => "Loại da của tôi?";
 
   String get needHelp => "Cần trợ giúp?";
   String get askUs => "Hỏi chúng tôi";
@@ -608,7 +618,6 @@ class $vi extends S {
   String get manageShippingAddress => "Địa Chỉ Của Tôi";
   String get writeReview => "Viết nhận xét của bạn";
   String get send => "Gửi";
-  String get ewgSafeLevel => "EWG safety level";
   String get checkYourSkinTYpe => "Çheck your Skin Type";
 
   String get selectOrEnterCoupon => "Chọn Hoặc Nhập Mã";
@@ -646,6 +655,8 @@ class $vi extends S {
 // =============================================================================
   String get importTaxIncluded => "Đã bao gồm thuế nhập khẩu";
   String get translatedByGoogle => "dịch bởi Google Dịch";
+  String get toDos => "Nên làm";
+  String get notToDos => "ông nên làm";
   String get soldByKoreanShopDirectShipping =>
       "Được cung cấp trực tiếp từ Hàn Quốc";
   String get includedInPrice => "Giá đã bao gồm";
@@ -665,8 +676,6 @@ class $vi extends S {
   @override
   String get all => "TẤT CẢ";
   @override
-  String get ingredientInfo => "Ingredient Information";
-
   String get top => "ÁO";
   @override
   String get coat => "ÁO KHOÁC";
@@ -726,6 +735,7 @@ class $vi extends S {
   String get transactionSuccess => "Đã thanh toán";
   @override
   String get youMayAlsoLike => "Các sản phẩm tương tự";
+  String get ewgSafeLevel => "Mức an toàn EWG";
 
   @override
   String get serviceIncludes => "Dịch vụ bao gồm";
@@ -763,7 +773,7 @@ class $vi extends S {
   String get english => "Tiếng Anh";
   @override
   String get inStock => "Trong kho";
-  String get saveResult => "Save Result";
+  String get saveResult => "Lưu kết quả";
 
   @override
   String get myWishList => "Danh sách ưa thích";
@@ -774,10 +784,10 @@ class $vi extends S {
   @override
   String get selectTheColor => "Chọn màu";
   @override
-  String get undecided => "Undecided";
-  String get low => "Low";
-  String get moderate => "Moderate";
-  String get high => "High";
+  String get undecided => "Không chắc chắn";
+  String get low => "thấp";
+  String get moderate => "vừa phải";
+  String get high => "cao";
   String get events => "Sự kiện";
   @override
   String get myCart => "Giỏ hàng";
@@ -967,11 +977,12 @@ class $vi extends S {
   @override
   String get orderDate => "Ngày đặt";
   @override
-  String get next => "Next";
+  String get next => "kế tiếp";
   @override
   String get writeComment => "Viết bình luận của bạn";
   @override
   String get shop => "Cửa hàng";
+
   @override
   String get createAnAccount => "Create an account";
   @override

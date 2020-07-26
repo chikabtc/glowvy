@@ -464,30 +464,16 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                                               SmoothStarRating(
                                                                   allowHalfRating:
                                                                       false,
-                                                                  // onRated:
-                                                                  //     (v) {},
-                                                                  // starCount: 5,
-                                                                  rating: double
-                                                                      .parse(widget
-                                                                          .product
-                                                                          .rating
-                                                                          .substring(
-                                                                              0,
-                                                                              4)),
+                                                                  rating: double.parse(widget
+                                                                      .product
+                                                                      .rating
+                                                                      .substring(
+                                                                          0, 4)),
                                                                   size: 25.0,
-                                                                  // isReadOnly:
-                                                                  //     true,
-                                                                  // fullRatedIconData:
-                                                                  //     Icons
-                                                                  //         .blur_off,
-                                                                  // halfRatedIconData:
-                                                                  //     Icons
-                                                                  //         .blur_on,
                                                                   color:
                                                                       kPinkAccent,
                                                                   borderColor:
-                                                                      Colors
-                                                                          .green,
+                                                                      kPinkAccent,
                                                                   spacing: 0.0),
                                                             ],
                                                           ),

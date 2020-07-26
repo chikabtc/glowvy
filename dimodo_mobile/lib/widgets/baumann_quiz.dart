@@ -14,6 +14,8 @@ import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:provider/provider.dart';
 
 class BaumannQuiz extends StatefulWidget {
+  final String skinType;
+  BaumannQuiz({this.skinType});
   @override
   _BaumannQuizState createState() => _BaumannQuizState();
 }
@@ -39,6 +41,8 @@ class _BaumannQuizState extends State<BaumannQuiz>
   var totalProgress = 0;
   SwiperController swipeController;
   TabController tabController;
+  dynamic sensitiveTips;
+  dynamic sensitiveAvoid;
   List<String> tabList = [
     "khô vs da dầu",
     "sắc tố và không sắc tố",
@@ -56,10 +60,14 @@ class _BaumannQuizState extends State<BaumannQuiz>
       final baumannQuiz = Provider.of<AppModel>(context, listen: false)
           .appConfig['Baumann_quiz'];
       print("baumanna JSON: ${baumannQuiz}");
-      final dVsO = baumannQuiz["dry vs oily"] as List;
-      final sVsR = baumannQuiz["sensitive vs resistant"] as List;
-      final nVsP = baumannQuiz["non-pigmented vs pigmented"] as List;
-      final tVsW = baumannQuiz["tight vs wrinkled"] as List;
+
+      final dVsO = baumannQuiz["khô vs da dầu"] as List;
+      final sVsR = baumannQuiz["Nhạy cảm vs đề kháng cao"] as List;
+      final nVsP = baumannQuiz["không sắc tố sắc tố và"] as List;
+      final tVsW = baumannQuiz["căng vs nhăn"] as List;
+      sensitiveTips = baumannQuiz["sensitive-type-tips"];
+      sensitiveAvoid = baumannQuiz["sensitive-type-avoid"];
+
       skinTypeDescription = baumannQuiz["skin-types-explanations"];
 
       descriptions.add(baumannQuiz["description1"]);
@@ -140,6 +148,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
 
   String getFullSkinType(type) {
     print("type: $type");
+
     switch (type) {
       case "D":
         return S.of(context).dry;
@@ -166,21 +175,33 @@ class _BaumannQuizState extends State<BaumannQuiz>
         return S.of(context).wrinkled;
         break;
       default:
-        "Skin";
+        return "Skin";
     }
   }
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
+    print("widget skin type: ${widget.skinType}");
+    if (widget.skinType != null) {
+      surveyFinished = true;
+      this.skinType = widget.skinType;
+      skinTypes.clear();
+
+      skinType.runes.forEach((int rune) {
+        var character = new String.fromCharCode(rune);
+        print(character);
+        skinTypes.add(character);
+      });
+      if (widget.skinType.contains("R")) {
+        showFullExplanation = true;
+      }
+    }
 
     return Scaffold(
       appBar: AppBar(
           elevation: 0,
-          title: Text(
-              !surveyFinished
-                  ? S.of(context).baumannSkinTypeTest
-                  : "Contragulations Lottery!",
+          title: Text(S.of(context).baumannSkinTypeTest,
               style: kBaseTextStyle.copyWith(
                   fontSize: 16, fontWeight: FontWeight.w600)),
           brightness: Brightness.light,
@@ -194,6 +215,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
             ),
           ),
           backgroundColor: Colors.white,
+          //if the survey is completed or the user provided the skinType
           bottom: !surveyFinished
               ? PreferredSize(
                   preferredSize: const Size.fromHeight(85),
@@ -307,7 +329,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                               child: Swiper(
                                 key: Key(tabList[currentPage]),
                                 controller: swipeController,
-                                physics: surveys[currentPage].length == 1
+                                physics: surveys[0].length == 1
                                     ? NeverScrollableScrollPhysics()
                                     : AlwaysScrollableScrollPhysics(),
                                 itemBuilder: (BuildContext context, int i) {
@@ -380,6 +402,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                   });
                                 } else if (currentPage == 3) {
                                   calculateSkinType();
+
                                   getSkinTypeExplanation();
                                   setState(() {
                                     fetchingExplanation = true;
@@ -494,132 +517,44 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                 ),
                               ),
                               Container(height: 20),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Text(
-                                    "To dos!",
-                                    style: kBaseTextStyle.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20,
-                                        color: kAccentGreen),
-                                  ),
-                                  SizedBox(height: 5),
-                                  GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        showFullTips = !showFullTips;
-                                      });
-                                    },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
-                                      height: showFullTips ? 400 : 200,
-                                      width: screenSize.width,
-                                      padding: EdgeInsets.only(
-                                          left: 12, top: 12, bottom: 15),
-                                      child: Wrap(
-                                        // crossAxisAliqgnment:
-                                        //     CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          // SizedBox(width: 10),
-                                          Row(
-                                            children: <Widget>[
-                                              Icon(
-                                                Icons.thumb_up,
-                                                color: kAccentGreen,
-                                                size: 20,
-                                              ),
-                                              SizedBox(
-                                                width: 10,
-                                              ),
-                                              Text(
-                                                "Lipid free liquid cleansers",
-                                                style: kBaseTextStyle.copyWith(
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 15),
-                                              ),
-                                            ],
-                                          ),
-                                          showFullTips
-                                              ? Text(
-                                                  "Soap destroys the skin barrier for sensitive type\n\n",
-                                                  style:
-                                                      kBaseTextStyle.copyWith(
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: kDarkAccent
-                                                              .withOpacity(0.7),
-                                                          fontSize: 13),
-                                                )
-                                              : Text(
-                                                  "\n\n",
-                                                  style:
-                                                      kBaseTextStyle.copyWith(
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          fontSize: 13),
-                                                ),
-                                        ],
-                                      ),
+                              if (!skinType.contains("R"))
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    // ===========================================
+                                    // TO DO TIPS
+                                    // ===========================================
+                                    Text(
+                                      S.of(context).toDos,
+                                      style: kBaseTextStyle.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20,
+                                          color: kAccentGreen),
                                     ),
-                                  ),
-                                  SizedBox(height: 15),
-                                  Text(
-                                    "Not To dos!",
-                                    style: kBaseTextStyle.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.redAccent,
-                                        fontSize: 20),
-                                  ),
-                                  SizedBox(height: 5),
-                                  GestureDetector(
-                                    onTap: () {
-                                      setState(() {
-                                        showFullHarmful = !showFullHarmful;
-                                      });
-                                    },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(15)),
-                                      height: showFullHarmful ? 400 : 230,
-                                      padding: EdgeInsets.only(
-                                          left: 12, top: 12, bottom: 15),
-                                      width: screenSize.width,
-                                      child: Wrap(
-                                        // crossAxisAlignment:
-                                        //     CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          // SizedBox(width: 10),
-                                          Row(
-                                            children: <Widget>[
-                                              Icon(Icons.close,
-                                                  color: Colors.redAccent),
-                                              Text(
-                                                "1. Do Not put too much make up",
-                                                style: kBaseTextStyle.copyWith(
-                                                    fontWeight: FontWeight.w600,
-                                                    fontSize: 15),
-                                              ),
-                                            ],
-                                          ),
-                                          Text(
-                                            "because it is hard to erase the makeup with the cleanser \n\n2. No Toner, No Soap, No Perfumes",
-                                            style: kBaseTextStyle.copyWith(
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 15),
-                                          ),
-                                        ],
-                                      ),
+                                    SizedBox(height: 5),
+                                    TipsCard(
+                                        isPositiveTip: true,
+                                        screenSize: screenSize,
+                                        tips: sensitiveTips),
+                                    SizedBox(height: 15),
+                                    // ===========================================
+                                    // NOT TO DO
+                                    // ===========================================
+                                    Text(
+                                      S.of(context).notTodos,
+                                      style: kBaseTextStyle.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.redAccent,
+                                          fontSize: 20),
                                     ),
-                                  ),
-                                ],
-                              ),
+                                    SizedBox(height: 5),
+                                    TipsCard(
+                                        isPositiveTip: false,
+                                        screenSize: screenSize,
+                                        tips: sensitiveAvoid),
+                                  ],
+                                ),
                             ],
                           ),
                         ),
@@ -637,7 +572,10 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                   borderRadius: new BorderRadius.circular(25.0),
                                 ),
                                 child: !isSaving
-                                    ? Text(S.of(context).saveResult,
+                                    ? Text(
+                                        widget.skinType != null
+                                            ? S.of(context).close
+                                            : S.of(context).saveResult,
                                         style: kBaseTextStyle.copyWith(
                                             fontSize: 15,
                                             fontWeight: FontWeight.w600,
@@ -657,11 +595,9 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                       isSaving = false;
                                     });
                                   });
-
                                   // ===========================================
                                   // SAVE skinType to the user local db
                                   // ===========================================
-
                                   Provider.of<UserModel>(context, listen: false)
                                       .saveSkinType(skinType);
 
@@ -711,11 +647,12 @@ class _BaumannQuizState extends State<BaumannQuiz>
       //Give yourself 1 point for every “a” answer, 2 points for every “b”, 3 points for every “c”, 4 points for every “d”, and 2.5 points for every “e” answer.
       var score = surveys[currentPage].fold(0.0, (previousValue, element) {
         var index = element.options.indexOf(element.answer).toDouble();
-        print("index value score : $index");
         if (index == 5) {
           index = 2.5;
         }
-        return previousValue + index;
+        print("index value score : ${index + 1}");
+
+        return previousValue + index + 1;
       });
 
 //If your score is between 34-44 you have very oily skin.
@@ -725,10 +662,10 @@ class _BaumannQuizState extends State<BaumannQuiz>
 
       switch (currentPage) {
         case 0:
-          skinTypes.add(score < 13 ? "D" : "O");
+          skinTypes.add(score < 11 ? "D" : "O");
           break;
         case 1:
-          skinTypes.add(score < 10 ? "S" : "R");
+          skinTypes.add(score < 10 ? "R" : "S");
           break;
         case 2:
           skinTypes.add(score < 10 ? "N" : "P");
@@ -764,8 +701,8 @@ class _BaumannQuizState extends State<BaumannQuiz>
   List<Widget> renderTabbar() {
     List<String> tabList = [
       "khô vs da dầu",
-      "Mẫn cảm với kháng chiến",
-      "sắc tố và không sắc tố",
+      "Nhạy cảm vs đề kháng cao",
+      "không sắc tố sắc tố và",
       "căng vs nhăn",
     ];
     List<Widget> list = [];
@@ -778,5 +715,124 @@ class _BaumannQuizState extends State<BaumannQuiz>
       ));
     });
     return list;
+  }
+}
+
+class TipsCard extends StatefulWidget {
+  const TipsCard({
+    Key key,
+    @required this.screenSize,
+    @required this.tips,
+    @required this.isPositiveTip,
+  }) : super(key: key);
+
+  final bool isPositiveTip;
+  final Size screenSize;
+  final tips;
+
+  @override
+  _TipsCardState createState() => _TipsCardState();
+}
+
+class _TipsCardState extends State<TipsCard> {
+  bool showAll = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          showAll = !showAll;
+        });
+      },
+      child: Container(
+        decoration: BoxDecoration(boxShadow: [
+          // BoxShadow(
+          //   color: Colors.grey,
+          //   offset: Offset(1.0, 1.0), //(x,y)
+          //   blurRadius: 15.0,
+          // ),
+        ], color: Colors.white, borderRadius: BorderRadius.circular(15)),
+        padding: EdgeInsets.only(left: 12, top: 12, right: 12, bottom: 10),
+        width: widget.screenSize.width,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            // SizedBox(width: 10),
+            for (var i = 0; i < widget.tips.length; i++)
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Wrap(
+                    children: <Widget>[
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            !widget.isPositiveTip
+                                ? WidgetSpan(
+                                    child: Icon(
+                                      Icons.close,
+                                      color: Colors.redAccent,
+                                      size: 20,
+                                    ),
+                                  )
+                                : WidgetSpan(child: Container()),
+                            TextSpan(
+                              text: widget.isPositiveTip
+                                  ? "${i + 1}." + widget.tips[i]["title"]
+                                  : widget.tips[i]["title"],
+                              style: kBaseTextStyle.copyWith(
+                                  fontWeight: FontWeight.w600, fontSize: 15),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 3),
+                  showAll
+                      ? Text(
+                          widget.tips[i]["explanation"] + "\n",
+                          style: kBaseTextStyle.copyWith(
+                              fontWeight: FontWeight.w500,
+                              color: kDarkAccent.withOpacity(0.7),
+                              fontSize: 13),
+                        )
+                      : Text(
+                          "\n",
+                          style: kBaseTextStyle.copyWith(
+                              fontWeight: FontWeight.w500, fontSize: 13),
+                        ),
+                ],
+              ),
+
+            !showAll
+                ? Container(
+                    width: widget.screenSize.width,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        Text(
+                          "Learn More",
+                          textAlign: TextAlign.end,
+                          style: kBaseTextStyle.copyWith(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: kDarkAccent.withOpacity(0.4),
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: kAccentGreen,
+                          size: 14,
+                        )
+                      ],
+                    ),
+                  )
+                : Container()
+          ],
+        ),
+      ),
+    );
   }
 }

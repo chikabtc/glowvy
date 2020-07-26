@@ -72,6 +72,8 @@ class _SurveyCardState extends State<SurveyCard> {
                                 widget.survey.options[i],
                             onChanged: (bool value) {
                               setState(() {
+                                widget.onTap();
+
                                 widget.survey.answer = widget.survey.options[i];
                               });
                             },

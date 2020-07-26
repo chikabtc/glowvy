@@ -1,6 +1,7 @@
 import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/user/userModel.dart';
+import 'package:Dimodo/widgets/baumann_quiz.dart';
 import 'package:Dimodo/widgets/popup_services.dart';
 import 'package:Dimodo/widgets/cosmetics_filter_bar.dart';
 import 'package:Dimodo/widgets/popup_services.dart';
@@ -61,7 +62,7 @@ class HomeScreenState extends State<HomeScreen>
   int currentCateId = 3;
 
   int skinTypeId = 0;
-  var sorting = "rank";
+  var sorting = "high";
   Map<int, List<Product>> allProducts = Map();
   // List<List<Product>> allProducts = [];
   bool isFiltering = false;
@@ -71,16 +72,18 @@ class HomeScreenState extends State<HomeScreen>
   void initState() {
     super.initState();
     Future.wait([
+      service.getCosmeticsProductsByCategory(categoryId: 32, skinType: 0),
+      service.getCosmeticsProductsByCategory(categoryId: 142, skinType: 0),
       service.getCosmeticsProductsByCategory(categoryId: 3, skinType: 0),
       service.getCosmeticsProductsByCategory(categoryId: 4, skinType: 0),
-      service.getCosmeticsProductsByCategory(categoryId: 32, skinType: 0),
-      service.getCosmeticsProductsByCategory(categoryId: 41, skinType: 0),
       service.getCosmeticsProductsByCategory(categoryId: 14, skinType: 0),
     ]).then((responses) {
-      allProducts[3] = responses.first;
-      allProducts[4] = responses[1];
-      allProducts[32] = responses[2];
-      allProducts[41] = responses[3];
+      allProducts[32] = responses.first;
+      allProducts[142] = responses[1];
+      print("allproduc lenght: ${responses[1].length}");
+
+      allProducts[3] = responses[2];
+      allProducts[4] = responses[3];
       allProducts[14] = responses[4];
       setState(() {
         isGenerating = false;
@@ -104,6 +107,15 @@ class HomeScreenState extends State<HomeScreen>
     _tabController = TabController(length: tabList.length, vsync: this);
     userModel = Provider.of<UserModel>(context, listen: false);
     productModel = Provider.of<ProductModel>(context, listen: false);
+    if (userModel.skinType.contains("S")) {
+      skinTypeId = 1;
+    } else if (userModel.skinType.contains("D")) {
+      skinTypeId = 2;
+    } else if (userModel.skinType.contains("O")) {
+      skinTypeId = 3;
+    } else if (userModel.skinType.contains("R")) {
+      skinTypeId = 0;
+    }
   }
 
   @override
@@ -175,7 +187,7 @@ class HomeScreenState extends State<HomeScreen>
         padding: const EdgeInsets.only(right: 0.0, bottom: 20),
         child: FloatingActionButton(
           elevation: 0.0,
-          backgroundColor: Colors.greenAccent,
+          backgroundColor: kPrimaryGreen,
           onPressed: () async => {
             // PopupServices.showFeedbackPopup(context)
             await FlutterMailer.send(MailOptions(
@@ -191,6 +203,10 @@ class HomeScreenState extends State<HomeScreen>
         ),
       ),
       body: Consumer<UserModel>(builder: (context, userModel, child) {
+        if (userModel.skinType != null) {
+          //set the filter for the matching skin type
+          print("USERMODEL SKIN ${userModel.skinType}");
+        }
         return Container(
           color: Colors.white,
           child: SafeArea(
@@ -236,19 +252,24 @@ class HomeScreenState extends State<HomeScreen>
                             Container(
                               height: 80,
                               width: screenSize.width,
-                              color: Colors.greenAccent,
-                              padding: EdgeInsets.only(top: 8, bottom: 8),
+                              color: kPrimaryGreen,
+                              padding: EdgeInsets.only(
+                                top: 8,
+                                bottom: 8,
+                                left: 25,
+                                right: 17,
+                              ),
                               child: Center(
                                 child: Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
+                                      MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
                                     Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Text(
-                                          "What is my skin type?",
+                                          S.of(context).whatIsMySkinType,
                                           textAlign: TextAlign.center,
                                           style: kBaseTextStyle.copyWith(
                                               fontSize: 22,
@@ -257,7 +278,7 @@ class HomeScreenState extends State<HomeScreen>
                                               fontWeight: FontWeight.normal),
                                         ),
                                         Text(
-                                          "Discover the best products \nand ingredients for you.",
+                                          S.of(context).discoverTheBestProducts,
                                           textAlign: TextAlign.start,
                                           style: kBaseTextStyle.copyWith(
                                               fontSize: 14,
@@ -273,63 +294,80 @@ class HomeScreenState extends State<HomeScreen>
                               ),
                             ),
                             userModel.skinType != null
-                                ? Container(
-                                    // color: kDefaultBackground,
-                                    height: 68,
-                                    padding:
-                                        EdgeInsets.symmetric(horizontal: 16),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: <Widget>[
-                                        Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Text(
-                                              "Your skin",
-                                              style: kBaseTextStyle.copyWith(
-                                                  fontSize: 14,
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.w600),
-                                            ),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.spaceAround,
-                                              children: <Widget>[
-                                                for (var i = 0;
-                                                    i <
-                                                        userModel
-                                                            .skinType.length;
-                                                    i++)
-                                                  Text(
-                                                    "#" +
-                                                        userModel.getFullSkinType(
-                                                            context,
-                                                            userModel
-                                                                .skinType[i]) +
-                                                        " ",
-                                                    style:
-                                                        kBaseTextStyle.copyWith(
-                                                            fontSize: 14,
-                                                            color:
-                                                                kDarkSecondary,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w600),
-                                                  ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        Spacer(),
-                                        CommonIcons.arrowForward,
-                                      ],
+                                ? GestureDetector(
+                                    onTap: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute<void>(
+                                          builder: (BuildContext context) =>
+                                              BaumannQuiz(
+                                                  skinType: userModel.skinType),
+                                          fullscreenDialog: true,
+                                        )),
+                                    child: Container(
+                                      // color: kDefaultBackground,
+                                      height: 68,
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 16),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: <Widget>[
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Text(
+                                                S.of(context).yourSkinTypeIs,
+                                                style: kBaseTextStyle.copyWith(
+                                                    fontSize: 14,
+                                                    color: Colors.black,
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                              ),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                children: <Widget>[
+                                                  for (var i = 0;
+                                                      i <
+                                                          userModel
+                                                              .skinType.length;
+                                                      i++)
+                                                    Text(
+                                                      "#" +
+                                                          userModel.getFullSkinType(
+                                                              context,
+                                                              userModel
+                                                                      .skinType[
+                                                                  i]) +
+                                                          " ",
+                                                      style: kBaseTextStyle
+                                                          .copyWith(
+                                                              fontSize: 14,
+                                                              color:
+                                                                  kDarkSecondary,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600),
+                                                    ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          Spacer(),
+                                          CommonIcons.arrowForward,
+                                        ],
+                                      ),
                                     ),
                                   )
-                                : Container()
+                                : Container(),
+                            Container(
+                              height: 5,
+                              color: kDefaultBackground,
+                            )
                           ],
                         ),
                       ),
@@ -399,6 +437,7 @@ class HomeScreenState extends State<HomeScreen>
                             ],
                           ),
                           CosmeticsFilterBar(
+                            skinTypeId: skinTypeId,
                             products: allProducts.length != 0
                                 ? allProducts[currentCateId]
                                 : [],
@@ -435,9 +474,6 @@ class HomeScreenState extends State<HomeScreen>
                   ),
                 ];
               },
-              //    filteredResults =
-              //                               productModel.sortAndFilter(
-              //                                   sorting, skinTypeId, snapshot.data);
               body: TabBarView(
                 controller: _tabController,
                 children: tabList.map((Category category) {
@@ -497,7 +533,7 @@ class HomeScreenState extends State<HomeScreen>
                                                         skinTypeId,
                                                         allProducts[
                                                             category.id]),
-                                                showRank: showRank,
+                                                showRank: true,
                                                 onLoadMore: onLoadMore,
                                                 disableScrolling: true,
                                                 showFilter: false,

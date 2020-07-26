@@ -23,6 +23,7 @@ const kRankingColor = Color(0xfffF0D060);
 const kSecondaryPurple = Color(0xffC3B4F4);
 const kAccentGreen = Color(0xff21CAB0);
 const kSecondaryGreen = Color(0xff63DAC8);
+const kPrimaryGreen = Color(0xff85EACC);
 // const kDefaultBackground = Color(0xffE5E5E5);
 const kAccentRed = Color(0xffDB3022);
 const kPrimaryBlue = Color(0xff5A81E8);

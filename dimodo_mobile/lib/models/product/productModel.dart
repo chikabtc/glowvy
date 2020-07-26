@@ -85,12 +85,13 @@ class ProductModel with ChangeNotifier {
         filtered = sortByDefaultRank(products);
         break;
     }
-    print("products: ${filtered}");
+    print("products filtered : ${filtered.length}");
 
     return filteredProductsBySkinType(skinTypeId, filtered);
   }
 
   List<Product> sortByPrice(List<Product> products, bool isAscending) {
+    print("sorb y price : ${products.length}");
     products.sort((a, b) => isAscending
         ? b.salePrice.compareTo(a.salePrice)
         : a.salePrice.compareTo(b.salePrice));
@@ -161,12 +162,10 @@ class ProductModel with ChangeNotifier {
       //sensitive
       case 1:
         return S.of(context).sensitive;
-
         break;
       //dry
       case 2:
         return S.of(context).dry;
-
         break;
       //oily
       case 3:
@@ -177,12 +176,13 @@ class ProductModel with ChangeNotifier {
   }
 
   List<Product> filteredProductsBySkinType(skinTypeId, List<Product> products) {
+    print("fitered products: ${products.length}");
+
     products = products.where((p) {
       var isMatching = true;
       switch (skinTypeId) {
         //all
         case 0:
-          isMatching = p.cosmeticsRank.allSkinRank["Int32"] == 0 ? false : true;
           break;
         //sensitive
         case 1:
@@ -199,9 +199,13 @@ class ProductModel with ChangeNotifier {
           isMatching =
               p.cosmeticsRank.oilySkinRank["Int32"] == 0 ? false : true;
           break;
+        default:
+          isMatching = true;
+          break;
       }
       return isMatching;
     }).toList();
+    print("fitered products: ${products.length}");
     return products;
   }
 

@@ -12,9 +12,11 @@ import 'package:Dimodo/generated/i18n.dart';
 class CosmeticsFilterBar extends StatefulWidget {
   Function onFilterConfirm;
   Function onReset;
+  int skinTypeId;
   List<Product> products;
 
-  CosmeticsFilterBar({this.onFilterConfirm, this.onReset, this.products});
+  CosmeticsFilterBar(
+      {this.onFilterConfirm, this.onReset, this.products, this.skinTypeId});
   @override
   _CosmeticsFilterBarState createState() => _CosmeticsFilterBarState();
 }
@@ -30,8 +32,7 @@ class _CosmeticsFilterBarState extends State<CosmeticsFilterBar> {
   bool showFilter = false;
   var screenSize;
   var heightFactor;
-  var sorting = Sorting.rank;
-  int skinTypeId = 0;
+  var sorting = Sorting.low;
 
   List<String> chosenOptions = [];
   AppModel appModel;
@@ -96,7 +97,8 @@ class _CosmeticsFilterBarState extends State<CosmeticsFilterBar> {
                           default:
                         }
 
-                        widget.onFilterConfirm(filtered, sorting, skinTypeId);
+                        widget.onFilterConfirm(
+                            filtered, sorting, widget.skinTypeId);
                       },
                       child: Container(
                           decoration: new BoxDecoration(
@@ -151,11 +153,14 @@ class _CosmeticsFilterBarState extends State<CosmeticsFilterBar> {
                         width: 16,
                       ),
                       DynamicText(
-                        productModel.getSkinTypeById(skinTypeId, context),
+                        productModel.getSkinTypeById(
+                            widget.skinTypeId, context),
                         style: kBaseTextStyle.copyWith(
                             fontSize: 13,
                             fontWeight: FontWeight.w500,
-                            color: skinTypeId != 0 ? kPinkAccent : kDarkAccent),
+                            color: widget.skinTypeId != 0
+                                ? kPinkAccent
+                                : kDarkAccent),
                       )
                     ],
                   ),
@@ -169,8 +174,8 @@ class _CosmeticsFilterBarState extends State<CosmeticsFilterBar> {
   }
 
   filterProduct() {
-    var filteredProducts =
-        productModel.filteredProductsBySkinType(skinTypeId, widget.products);
+    var filteredProducts = productModel.filteredProductsBySkinType(
+        widget.skinTypeId, widget.products);
     return filteredProducts;
   }
 
@@ -284,7 +289,7 @@ class _CosmeticsFilterBarState extends State<CosmeticsFilterBar> {
                                           setState(() {
                                             sortProducts(widget.products);
                                             widget.onReset(products);
-                                            skinTypeId = 0;
+                                            widget.skinTypeId = 0;
                                           });
                                           Navigator.pop(context);
                                         }),
@@ -417,7 +422,7 @@ class _CosmeticsFilterBarState extends State<CosmeticsFilterBar> {
                                           setState(() {
                                             sortProducts(widget.products);
                                             widget.onReset(products);
-                                            skinTypeId = 0;
+                                            widget.skinTypeId = 0;
                                           });
                                           Navigator.pop(context);
                                         }),
@@ -442,7 +447,7 @@ class _CosmeticsFilterBarState extends State<CosmeticsFilterBar> {
                                           widget.onFilterConfirm(
                                               sortProducts(filterProduct()),
                                               sorting,
-                                              skinTypeId);
+                                              widget.skinTypeId);
 
                                           Navigator.pop(context);
                                         }),
@@ -479,14 +484,15 @@ class _CosmeticsFilterBarState extends State<CosmeticsFilterBar> {
             child: ActionChip(
               shape: RoundedRectangleBorder(
                 side: BorderSide(
-                  color: skinTypeId == value["id"] ? kPinkAccent : kLightBG,
+                  color:
+                      widget.skinTypeId == value["id"] ? kPinkAccent : kLightBG,
                 ),
                 borderRadius: BorderRadius.circular(6.0),
               ),
               elevation: 0,
               onPressed: () {
                 setState(() {
-                  skinTypeId = value["id"];
+                  widget.skinTypeId = value["id"];
                 });
               },
               backgroundColor: kLightBG,
@@ -494,7 +500,7 @@ class _CosmeticsFilterBarState extends State<CosmeticsFilterBar> {
                 value["name"],
                 style: kBaseTextStyle.copyWith(
                     fontSize: 15,
-                    color: skinTypeId == value["id"]
+                    color: widget.skinTypeId == value["id"]
                         ? kPinkAccent
                         : kDarkSecondary,
                     fontWeight: FontWeight.w600),
@@ -541,14 +547,15 @@ class _CosmeticsFilterBarState extends State<CosmeticsFilterBar> {
             child: ActionChip(
               shape: RoundedRectangleBorder(
                 side: BorderSide(
-                  color: skinTypeId == value["id"] ? kPinkAccent : kLightBG,
+                  color:
+                      widget.skinTypeId == value["id"] ? kPinkAccent : kLightBG,
                 ),
                 borderRadius: BorderRadius.circular(6.0),
               ),
               elevation: 0,
               onPressed: () {
                 setState(() {
-                  skinTypeId = value["id"];
+                  widget.skinTypeId = value["id"];
                 });
               },
               backgroundColor: kLightBG,
@@ -556,7 +563,7 @@ class _CosmeticsFilterBarState extends State<CosmeticsFilterBar> {
                 value["name"],
                 style: kBaseTextStyle.copyWith(
                     fontSize: 15,
-                    color: skinTypeId == value["id"]
+                    color: widget.skinTypeId == value["id"]
                         ? kPinkAccent
                         : kDarkSecondary,
                     fontWeight: FontWeight.w600),
