@@ -23,7 +23,8 @@ SELECT
 FROM
     product
 WHERE
-    sale_price IS NULL;
+    sale_price IS NULL
+    AND source = 'glowpick';
 
 -- getCosmeticsWithoutPrices
 SELECT
@@ -41,7 +42,26 @@ SELECT
     product.sid,
     product.volume
 FROM
-    product;
+    product
+WHERE
+    source = 'glowpick';
+
+-- getAllCosmeticsWithoutIngredients
+SELECT
+    product.sname,
+    product.sid,
+    product.volume
+FROM
+    product
+WHERE
+    source = 'glowpick'
+    AND NOT EXISTS (
+        SELECT
+            1
+        FROM
+            cosmetics_product_ingredient
+        WHERE
+            product.sid = cosmetics_product_ingredient.product_id);
 
 -- updateCosmeticsMetaInfo
 UPDATE
@@ -52,9 +72,13 @@ WHERE
     sid = :sid
     AND source = 'glowpick';
 
--- createReviews
+-- createReview
 INSERT INTO cosmetics_review (scontent, product_id, user_name, images, rating, date, user_age, skin_type)
     VALUES (:scontent, :product_id, :user_name, :images, :rating, :date, :user_age, :skin_type);
+
+-- createIngredient
+INSERT INTO cosmetics_ingredient (name_en, purpose_ko, hazard_score)
+    VALUES (:name_en, :purpose_ko, :hazard_score);
 
 -- deleteCosmeticsProduct
 DELETE FROM product
@@ -79,4 +103,66 @@ SET
     desc_images = desc_images || :images
 WHERE
     sid = :sid
-    AND source = 'glowpick'
+    AND source = 'glowpick';
+
+--addIngredient
+WITH new_ingredient AS (
+INSERT INTO cosmetics_ingredient (name_en, purpose_ko, hazard_score)
+        VALUES (:name_en, :purpose_ko, :hazard_score)
+    ON CONFLICT (name_en)
+        DO NOTHING
+    RETURNING
+        *)
+    INSERT INTO cosmetics_product_ingredient (product_id, ingredient_id)
+    SELECT
+        :product_id,
+        new_ingredient.id
+    FROM
+        new_ingredient;
+
+--checkIfIngredientForProductExists
+WITH selected_ingredient AS (
+    SELECT
+        cosmetics_ingredient.name_en,
+        cosmetics_ingredient.id
+    FROM
+        cosmetics_ingredient
+    WHERE
+        cosmetics_ingredient.name_en = :name_en
+)
+SELECT
+    EXISTS (
+        SELECT
+            1
+        FROM
+            cosmetics_product_ingredient,
+            selected_ingredient
+        WHERE
+            cosmetics_product_ingredient.ingredient_id = selected_ingredient.id
+            AND cosmetics_product_ingredient.product_id = :product_id
+        LIMIT 1);
+
+--addIngredientToProductTags
+WITH selected_ingredient AS (
+    SELECT
+        cosmetics_ingredient.name_en,
+        cosmetics_ingredient.id
+    FROM
+        cosmetics_ingredient
+    WHERE
+        cosmetics_ingredient.name_en = :name_en)
+INSERT INTO cosmetics_product_ingredient (product_id, ingredient_id)
+SELECT
+    :product_id,
+    selected_ingredient.id
+FROM
+    selected_ingredient;
+
+--getLocallyPopularProduct
+SELECT
+    sid
+FROM
+    product
+WHERE
+    source = 'glowpick'
+    AND tag = 'local_popular'

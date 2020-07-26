@@ -36,6 +36,7 @@ type CosmeticsService interface {
 	TranslateAllCosmeticsTags()
 	TranslateAllReviewUserName()
 	TranslateAllCosmetics()
+	TranslateAllCosmeticsIngredient()
 
 	AllCosmeticsProducts() ([]Product, error)
 }
@@ -193,7 +194,7 @@ func (gs *cosmeticsService) ProductsByCategoryID(categoryID int, skinType int) (
 			fmt.Println("fail to unmarshall tags: ", err)
 		}
 		err = json.Unmarshal([]byte(ingredients), &product.Ingredients)
-		fmt.Println("len", len(product.Ingredients[0].Purpose))
+		fmt.Println("len", len(product.Ingredients[0].Purposes))
 		if err != nil {
 			fmt.Println("fail to unmarshall tags: ", err)
 		}
@@ -454,4 +455,49 @@ func (cs *cosmeticsService) TranslateAllCosmetics() {
 		products = append(products, product)
 	}
 	return
+}
+
+func (cs *cosmeticsService) TranslateAllCosmeticsIngredient() {
+	var uniquePurpoes = []string{}
+	var rows *sql.Rows
+
+	rows, err := cs.dot.Query(cs.DB, "getIngredients")
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("getIngredients", err)
+		return
+	}
+
+	defer rows.Close()
+	for rows.Next() {
+		var purpose string
+		var sid int
+		if err := rows.Scan(
+			&sid,
+			&purpose,
+		); err != nil {
+			bugsnag.Notify(err)
+			fmt.Println("fail to Next", err)
+			return
+		}
+		viPurpose, _ := translate.TranslateText("ko", "vi", purpose)
+		fmt.Println("vi: ", viPurpose)
+		_, err := cs.dot.Exec(cs.DB, "translateIngredientPurpose", viPurpose, sid)
+
+		if err != nil {
+			fmt.Println("fail to unmarshall tags: ", err)
+		}
+
+	}
+	print("length ", len(uniquePurpoes))
+	return
+}
+
+func contains(s []string, e string) bool {
+	for _, a := range s {
+		if a == e {
+			return true
+		}
+	}
+	return false
 }

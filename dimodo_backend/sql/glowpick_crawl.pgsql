@@ -163,7 +163,7 @@ SET
     hazard_score = $1
 WHERE
     sid = $2
-    AND source = 'glowpick' x3;
+    AND source = 'glowpick';
 
 --name: getLocallyPopularProduct
 SELECT

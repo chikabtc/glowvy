@@ -167,5 +167,73 @@ async function parseReviews(page) {
     console.log(e);
   }
 }
+async function parseIngredients(page) {
+  try {
+    await page.waitFor(
+      "section.ingredient.contents__product-info__text__section > div > span.contents__link-button > button"
+    );
+
+    var ingredientBtn = await page.$(
+      `section.ingredient.contents__product-info__text__section > div > span.contents__link-button > button`
+    );
+    if (ingredientBtn != null) {
+      await ingredientBtn.click();
+
+      await page.waitForSelector(".list-ingredient__item");
+
+      const results = await page.$$eval(".list-ingredient__item", (rows) => {
+        console.log("lengt: ", rows.length);
+        return rows.map((row) => {
+          const properties = {};
+          const ingredientKo = row.querySelector(
+            ".list-ingredient__item__text-korean"
+          );
+          const ingredientEn = row.querySelector(
+            ".list-ingredient__item__text-english"
+          );
+          const ingredientPurpose = row.querySelector(
+            ".list-ingredient__item__text-purpose"
+          );
+          const ingrdientScore = row.querySelector(
+            "div.list-ingredient__item__row.list-ingredient__item__icon-wrapper > span"
+          );
+          var hazardScore;
+          switch (ingrdientScore.getAttribute("class")) {
+            case "icon icon-sprite list-ingredient__item__icon label-safety-green-large":
+              hazardScore = 1;
+              break;
+            case "icon icon-sprite list-ingredient__item__icon label-safety-orange-large":
+              hazardScore = 2;
+              break;
+            case "icon icon-sprite list-ingredient__item__icon label-safety-red-large":
+              hazardScore = 3;
+              break;
+            default:
+              hazardScore = 0;
+              break;
+          }
+          // console.log(hazard);
+
+          properties["name_en"] = ingredientEn ? ingredientEn.innerText : "";
+          properties["purpose_ko"] = ingredientPurpose
+            ? ingredientPurpose.innerText
+            : "";
+          properties["hazard_score"] = hazardScore;
+          // properties["image"] = imageElements ? images : "";
+          console.log(properties);
+
+          return properties;
+        });
+      });
+      results.forEach((element) => {
+        console.log(element);
+      });
+      return results;
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
 
 module.exports.getReviews = getReviews;
+module.exports.parseIngredients = parseIngredients;

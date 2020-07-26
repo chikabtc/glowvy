@@ -15,7 +15,7 @@ echo "  Sending the dumped db file to server..."
 scp dimodo.pgsql.gz root@dimodo.app:~/
 echo "  dumped db file sent successfully!"
 
-echo "  Killing local db connections"
+echo "  Killing remote db connections"
 ssh root@dimodo.app "psql -c "SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'dimodo'"";
 echo "  killed all db connections successfully..."
 

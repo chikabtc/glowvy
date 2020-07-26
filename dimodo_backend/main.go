@@ -26,9 +26,9 @@ func main() {
 	// api.Cs.ProductC.Cs.UpdateBrandsName()
 	// time.Sleep(2 * time.Second)
 
-	// api.Cs.ProductC.Cs.TranslateAllCosmeticsReviews()
+	// api.Cs.ProductC.Cs.TranslateAllCosmeticsIngredient()
 	// api.Cs.ProductC.Cs.TranslateAllCosmetics()
-	// api.Cs.ProductC.Cs.TranslateAllCosmeticsTags()
+	// api.Cs.ProductC.Cs.UpdateCosmeticsIngredient()
 	// api.Cs.ProductC.Cs.TranslateAllReviewUserName()
 	// crawler.UpdateCosmeticsIngredient()
 
@@ -51,13 +51,16 @@ func main() {
 	// =============================================================================
 	// make up
 	// =============================================================================
+	// if err := crawler.GetGlowPickProductsByRank(2, 41, 41, "all", "rank"); err != nil {
+	// 	fmt.Println(err)
+	// }
 	// if err := crawler.GetGlowPickProductsByRank(2, 41, 41, "sensitive", "rank"); err != nil {
 	// 	fmt.Println(err)
 	// }
-	// if err := crawler.GetGlowPickProductsByRank(3, 41, 41, "oily", "rank"); err != nil {
+	// if err := crawler.GetGlowPickProductsByRank(2, 41, 41, "oily", "rank"); err != nil {
 	// 	fmt.Println(err)
 	// }
-	// if err := crawler.GetGlowPickProductsByRank(3, 41, 41, "dry", "rank"); err != nil {
+	// if err := crawler.GetGlowPickProductsByRank(2, 41, 41, "dry", "rank"); err != nil {
 	// 	fmt.Println(err)
 	// }
 

@@ -3,14 +3,8 @@ const util = require("../utils/utils.ts");
 
 //1. sale_price
 //2. review count
-async function getProductMetaInfo(page: any, productTitle: string) {
-  console.log("productTitle: ", productTitle);
-  const searchURL =
-    "https://search.shopping.naver.com/search/all?frm=NVSHATC&pagingIndex=1&pagingSize=40&productSet=total&query=" +
-    productTitle +
-    "&sort=rel&timestamp=&viewType=list";
-
-  await page.goto(searchURL, { waitUntil: "networkidle0" });
+async function getProductMetaInfo(page: any, url: string) {
+  await page.goto(url, { waitUntil: "networkidle0" });
 
   try {
     const results = await page.$$eval(".list_basis", (rows) => {
@@ -117,7 +111,7 @@ async function extractReviews(page: any, productDetailPageURL) {
           properties["userName"] = userElement ? userElement.innerText : "";
           properties["date"] = dateElement ? dateElement.innerText : "";
           properties["rating"] = ratingElement ? ratingElement.innerText : "";
-          properties["images"] = imageElements ? images : "";
+          properties["review_images"] = imageElements ? images : "";
 
           return properties;
         });
@@ -159,19 +153,84 @@ async function extractSmartStoreReviews(page: any, productDetailPageURL) {
     });
 
     await page.waitForSelector(
-      "#area_review_list > div.paginate._review_list_page a"
+      "#area_review_list > div.header_review._review_list_header > strong > span"
     );
-    const pageButtons = await page.$$(
-      "#area_review_list > div.paginate._review_list_page a"
+    const element = await page.$(
+      "#area_review_list > div.header_review._review_list_header > strong > span"
     );
+    const count = await page.evaluate(
+      (element) => element.textContent,
+      element
+    );
+    console.log("review count: ", count);
 
-    console.log("pageButtons: ", pageButtons.length);
+    if (count > 25) {
+      //if there is more than one review page
+      await page.waitForSelector(
+        "#area_review_list > div.paginate._review_list_page a"
+      );
+      const pageButtons = await page.$$(
+        "#area_review_list > div.paginate._review_list_page a"
+      );
 
-    for (let i = 0; i < pageButtons.length; i++) {
-      if (i > 5) {
-        break;
+      console.log("pageButtons: ", pageButtons.length);
+
+      for (let i = 0; i < pageButtons.length; i++) {
+        if (i > 5) {
+          break;
+        }
+
+        try {
+          const results = await page.$$eval(".area_user_review", (rows) => {
+            console.log("lengt: ", rows.length);
+            return rows.map((row) => {
+              const properties = {};
+              const reviewElement = row.querySelector(".area_text > p");
+              const userElement = row.querySelector(
+                ".area_status_user > span:nth-child(1)"
+              );
+              const dateElement = row.querySelector(
+                ".area_status_user > span:nth-child(2)"
+              );
+              const ratingElement = row.querySelector(
+                ".area_star_small .number_grade"
+              );
+              const imageElements = row.querySelectorAll(
+                ".area_full_image .review_image > img"
+              );
+              var images: string[] = [];
+
+              imageElements.forEach((element) => {
+                images.push(element.getAttribute("src"));
+              });
+
+              properties["review"] = reviewElement
+                ? reviewElement.innerText
+                : "";
+              properties["userName"] = userElement ? userElement.innerText : "";
+              properties["date"] = dateElement ? dateElement.innerText : "";
+              properties["rating"] = ratingElement
+                ? ratingElement.innerText
+                : "";
+              properties["review_images"] = imageElements ? images : "";
+              console.log(properties);
+
+              return properties;
+            });
+          });
+          results.forEach((element) => {
+            console.log(element);
+          });
+          const btns = await page.$$(
+            "#area_review_list > div.paginate._review_list_page a"
+          );
+          await btns[i].click();
+        } catch (e) {
+          console.log(e);
+        }
       }
-
+      return reviews;
+    } else {
       try {
         const results = await page.$$eval(".area_user_review", (rows) => {
           console.log("lengt: ", rows.length);
@@ -200,7 +259,7 @@ async function extractSmartStoreReviews(page: any, productDetailPageURL) {
             properties["userName"] = userElement ? userElement.innerText : "";
             properties["date"] = dateElement ? dateElement.innerText : "";
             properties["rating"] = ratingElement ? ratingElement.innerText : "";
-            properties["image"] = imageElements ? images : "";
+            properties["review_images"] = imageElements ? images : "";
             console.log(properties);
 
             return properties;
@@ -209,76 +268,11 @@ async function extractSmartStoreReviews(page: any, productDetailPageURL) {
         results.forEach((element) => {
           console.log(element);
         });
-        const btns = await page.$$(
-          "#area_review_list > div.paginate._review_list_page a"
-        );
-        await btns[i].click();
       } catch (e) {
         console.log(e);
       }
+      return reviews;
     }
-    return reviews;
-
-    // setTimeout(async function () {
-    //   console.log("pagebutton count: ", pageButtons.length);
-
-    //   for (let i = 0; i < pageButtons.length; i++) {
-    //     if (i > 5) {
-    //       break;
-    //     }
-
-    //     try {
-    //       const results = await page.$$eval(".area_user_review", (rows) => {
-    //         console.log("lengt: ", rows.length);
-    //         return rows.map((row) => {
-    //           const properties = {};
-    //           const reviewElement = row.querySelector(".area_text > p");
-    //           const userElement = row.querySelector(
-    //             ".area_status_user > span:nth-child(1)"
-    //           );
-    //           const dateElement = row.querySelector(
-    //             ".area_status_user > span:nth-child(2)"
-    //           );
-    //           const ratingElement = row.querySelector(
-    //             ".area_star_small .number_grade"
-    //           );
-    //           const imageElements = row.querySelectorAll(
-    //             ".area_full_image .review_image > img"
-    //           );
-    //           var images: string[] = [];
-
-    //           imageElements.forEach((element) => {
-    //             images.push(element.getAttribute("src"));
-    //           });
-
-    //           properties["review"] = reviewElement
-    //             ? reviewElement.innerText
-    //             : "";
-    //           properties["userName"] = userElement ? userElement.innerText : "";
-    //           properties["date"] = dateElement ? dateElement.innerText : "";
-    //           properties["rating"] = ratingElement
-    //             ? ratingElement.innerText
-    //             : "";
-    //           properties["image"] = imageElements ? images : "";
-    //           console.log(properties);
-
-    //           return properties;
-    //         });
-    //       });
-    //       results.forEach((element) => {
-    //         console.log(element);
-    //       });
-    //       const btns = await page.$$(
-    //         "#area_review_list > div.paginate._review_list_page a"
-    //       );
-    //       await btns[i].click();
-    //     } catch (e) {
-    //       console.log(e);
-    //     } finally {
-    //       return reviews;
-    //     }
-    //   }
-    // }, 1500);
   }
 }
 module.exports.extractReviews = extractReviews;

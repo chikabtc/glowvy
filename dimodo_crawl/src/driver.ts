@@ -37,11 +37,40 @@ async function getCosmeticsProductsWithoutReviews() {
     return products;
   }
 }
+
+async function getAllCosmetics() {
+  var products = [] as any;
+  try {
+    console.log("connected successfully");
+    const results = await pool.query(sql.getAllCosmeticsWithoutIngredients());
+    results.rows.forEach((element) => {
+      products.push(element);
+    });
+  } catch (e) {
+    console.log("something went wrong", e);
+  } finally {
+    return products;
+  }
+}
 async function getCosmeticsProductsWithoutSalesPrice() {
   var products = [] as any;
   try {
     console.log("connected successfully");
     const results = await pool.query(sql.getCosmeticsWithoutSalesPrice());
+    results.rows.forEach((element) => {
+      products.push(element);
+    });
+  } catch (e) {
+    console.log("something went wrong", e);
+  } finally {
+    return products;
+  }
+}
+async function getLocallyPopularCosmetics() {
+  var products = [] as any;
+  try {
+    console.log("connected successfully");
+    const results = await pool.query(sql.getLocallyPopularProduct());
     results.rows.forEach((element) => {
       products.push(element);
     });
@@ -115,7 +144,7 @@ async function updateCosmeticsPhotos(
     return products;
   }
 }
-async function createReviews(
+async function createReview(
   content: any,
   productId: Number,
   rating: Number,
@@ -129,7 +158,7 @@ async function createReviews(
   try {
     console.log("connected successfully");
     const results = await pool.query(
-      sql.createReviews({
+      sql.createReview({
         scontent: content,
         product_id: productId,
         images: reviewImages,
@@ -140,6 +169,52 @@ async function createReviews(
         skin_type: skin,
       })
     );
+  } catch (e) {
+    console.log("something went wrong", e);
+  } finally {
+    return products;
+  }
+}
+
+async function createIngredient(
+  nameEn: any,
+  purposenKo: any,
+  hazardScore: any,
+  productId: any
+) {
+  var products = [] as any;
+  try {
+    console.log("connected successfully");
+    var score = parseInt(hazardScore);
+    var pId = parseInt(productId);
+    // console.log(typeof hazardScore);
+    console.log(typeof hazardScore);
+    console.log(typeof productId);
+
+    const result = await pool.query(
+      sql.addIngredient({
+        name_en: nameEn,
+        purpose_ko: purposenKo,
+        hazard_score: score,
+        product_id: pId,
+      })
+    );
+    if (result != null) {
+      const productExists = await pool.query(
+        sql.checkIfIngredientForProductExists({
+          name_en: nameEn,
+          product_id: pId,
+        })
+      );
+      if (productExists) {
+        const results = await pool.query(
+          sql.addIngredientToProductTags({
+            name_en: nameEn,
+            product_id: pId,
+          })
+        );
+      }
+    }
   } catch (e) {
     console.log("something went wrong", e);
   } finally {
@@ -181,12 +256,15 @@ var db = {
       .finally(() => client.end());
   },
   getCosmeticsProductsWithoutReviews: getCosmeticsProductsWithoutReviews,
-  createReviews: createReviews,
+  createReview: createReview,
   updateCosmeticsMetaInfo: updateCosmeticsMetaInfo,
   updateCosmeticsPhotos: updateCosmeticsPhotos,
   deleteCosmeticsProduct: deleteCosmeticsProduct,
   getCosmeticsProductsWithoutSalesPrice: getCosmeticsProductsWithoutSalesPrice,
   getCosmeticsWithoutImages: getCosmeticsWithoutImages,
+  createIngredient: createIngredient,
+  getAllCosmetics: getAllCosmetics,
+  getLocallyPopularCosmetics: getLocallyPopularCosmetics,
 };
 
 module.exports = db;

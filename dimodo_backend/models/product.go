@@ -150,7 +150,7 @@ type Product struct {
 type Ingredient struct {
 	Id          int      `json:"id"`
 	NameEn      string   `json:"name_en"`
-	Purpose     []string `json:"purposes"`
+	Purposes    []string `json:"purposes"`
 	HazardScore int      `json:"hazard_score"`
 }
 

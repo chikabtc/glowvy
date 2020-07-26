@@ -17,7 +17,7 @@ SELECT
     cosmetics_category.sname,
     cosmetics_rank.category_id,
     json_agg(DISTINCT jsonb_build_object('name', cosmetics_tags.name, 'sname', cosmetics_tags.sname, 'id', cosmetics_tags.id, 'type', cosmetics_tags.type)),
-    json_agg(DISTINCT jsonb_build_object('name_en', cosmetics_ingredient.name_en, 'purposes', jsonb_build_array(cosmetics_ingredient.purpose_ko), 'id', cosmetics_ingredient.id, 'hazard_score', cosmetics_ingredient.hazard_score)),
+    json_agg(DISTINCT jsonb_build_object('name_en', cosmetics_ingredient.name_en, 'purposes', jsonb_build_array(cosmetics_ingredient.purpose_vi), 'id', cosmetics_ingredient.id, 'hazard_score', cosmetics_ingredient.hazard_score)),
     cosmetics_brands.name,
     cosmetics_brands.id,
     cosmetics_brands.img,
@@ -56,24 +56,7 @@ GROUP BY
     cosmetics_brands.sname,
     cosmetics_brands.id,
     cosmetics_brands.img,
-    cosmetics_category.sname
-ORDER BY
-    CASE WHEN $2 = 1 THEN
-        cosmetics_rank.sensitive_rank
-    END ASC,
-    CASE WHEN $2 = 2 THEN
-        cosmetics_rank.neutral_rank
-    END ASC,
-    CASE WHEN $2 = 3 THEN
-        cosmetics_rank.dry_rank
-    END ASC,
-    CASE WHEN $2 = 4 THEN
-        cosmetics_rank.oily_rank
-    END ASC,
-    CASE WHEN $2 = 0 THEN
-        cosmetics_rank.all_rank
-    END ASC
-LIMIT 30;
+    cosmetics_category.sname;
 
 --name: AllBrandsSname
 SELECT
@@ -274,7 +257,7 @@ SELECT
     cosmetics_category.sname,
     cosmetics_rank.category_id,
     json_agg(DISTINCT jsonb_build_object('name', cosmetics_tags.name, 'sname', cosmetics_tags.sname, 'id', cosmetics_tags.id, 'type', cosmetics_tags.type)),
-    json_agg(DISTINCT jsonb_build_object('name_en', cosmetics_ingredient.name_en, 'purposes', jsonb_build_array(cosmetics_ingredient.purpose_ko), 'id', cosmetics_ingredient.id, 'hazard_score', cosmetics_ingredient.hazard_score)),
+    json_agg(DISTINCT jsonb_build_object('name_en', cosmetics_ingredient.name_en, 'purposes', jsonb_build_array(cosmetics_ingredient.purpose_vi), 'id', cosmetics_ingredient.id, 'hazard_score', cosmetics_ingredient.hazard_score)),
     cosmetics_brands.name,
     cosmetics_brands.id,
     cosmetics_brands.img,
@@ -329,3 +312,19 @@ ORDER BY
     END ASC
 LIMIT 30;
 
+--name: getIngredients
+SELECT
+    id,
+    cosmetics_ingredient.purpose_ko
+FROM
+    cosmetics_ingredient
+WHERE
+    length(purpose_ko) > 0;
+
+--name: translateIngredientPurpose
+UPDATE
+    cosmetics_ingredient
+SET
+    purpose_vi = $1
+WHERE
+    id = $2

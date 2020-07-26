@@ -23,7 +23,7 @@ import (
 	"github.com/gocolly/colly/extensions"
 )
 
-const glowPickAuth = "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJnbG93cGljay53ZWIiLCJpYXQiOjE1OTQ3OTI4ODQsInN1YiI6Imdsb3dwaWNrLWF1dGgiLCJpc3MiOiJnbG93ZGF5eiIsImV4cCI6MTU5NDg3OTI4NCwiYXVkIjoiSTRXWmlNbTg1YmppUDlaTzI4VUJnaGZta0RpazcyTzl1RkdRNFVhM05NejFZZmxSV09UZ09naEk1bDFHZk1KNHZGQVpXT1p1eUQwaGtkaGU4LXBhSEEifQ.bb34jLPjgdjW7IAe-mTYp16xSnWJzSsxEWh7TLuC8Kc"
+const glowPickAuth = "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJnbG93cGljay53ZWIiLCJpYXQiOjE1OTU3MzIxMzIsInN1YiI6Imdsb3dwaWNrLWF1dGgiLCJpc3MiOiJnbG93ZGF5eiIsImV4cCI6MTU5NTgxODUzMiwiYXVkIjoiSTRXWmlNbTg1YmppUDlaTzI4VUJnbEhPM3hEOG1ZdEJOcjdKejNxLXhyLXlPN3ZIR181eG9MZ0RjaUFZS3E4end1c0xhZW9JRFNEd1J0d2ppV1JSZ1EifQ.9yiHm-ECcfarsV8Jb0OtJy727lZBzHm5Ac42PGMImlM"
 
 //parentid always 2
 //category: idx
@@ -214,7 +214,6 @@ func (c *Crawler) createGlowPickProductById(id, skinType string, category, level
 	var categoryId = int(glwProduct.Data.CategoryInfo[0].IDThirdCategory)
 
 	if !isProductAvailable {
-
 		_, err = c.GlowpickDot.Exec(c.DB, "CreateProduct",
 			glwProduct.Data.IDProduct,
 			glwProduct.Data.ProductTitle,
@@ -272,10 +271,7 @@ func (c *Crawler) createGlowPickProductById(id, skinType string, category, level
 
 	idx, err := strconv.Atoi(id)
 	//if general, then set the general
-	if level == 2 {
-		categoryId = int(glwProduct.Data.CategoryInfo[0].IDSecondCategory)
-	}
-	err = c.setProductRankBySkinType(skinType, categoryId, level, idx, rank)
+	err = c.setProductRankBySkinType(skinType, categoryId, idx, rank)
 	if err != nil {
 		bugsnag.Notify(err)
 		fmt.Println("setProductRank: ", err.Error())
@@ -490,7 +486,7 @@ func (c *Crawler) addTags(product glowpick.GlowpickDetailedProduct) error {
 //level 1 has no ranking
 //level 2 is the parent category like Skin Care
 //level 3 is the specific category
-func (c *Crawler) setProductRankBySkinType(skinType string, categoryId, level, productId, rank int) error {
+func (c *Crawler) setProductRankBySkinType(skinType string, categoryId, productId, rank int) error {
 	var err error
 	//specific category rank
 	switch skinType {
