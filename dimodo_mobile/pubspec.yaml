@@ -11,7 +11,7 @@ description: Mobile commerce app by Flutter
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.1.6+4
+version: 1.1.6+38
 
 environment:
   sdk: ">=2.2.2 <3.0.0"
@@ -32,6 +32,7 @@ dependencies:
   sentry: ">=3.0.0 <4.0.0"
   webview_flutter: ^0.3.19+9
   provider: ^4.1.2
+  auto_size_text: ^2.1.0
   algolia: ^0.1.7
   after_layout: 1.0.7+2
   json_annotation: ^3.0.1

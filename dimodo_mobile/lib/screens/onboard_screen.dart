@@ -117,12 +117,6 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
-                  // Text(onboardingData[i]['title'],
-                  //     textAlign: TextAlign.center,
-                  //     style: kBaseTextStyle.copyWith(
-                  //       fontWeight: FontWeight.bold,
-                  //       color: kDefaultFontColor,
-                  //       decoration: TextDecoration.none,
                   FittedBox(
                     fit: BoxFit.cover,
                     child: DynamicText(onboardingData[i]['title'],

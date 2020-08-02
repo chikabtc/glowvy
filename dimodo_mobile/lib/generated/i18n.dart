@@ -164,8 +164,7 @@ class S implements WidgetsLocalizations {
   String get accountHolder => "Account holder";
   String get whatIsMySkinType => "What is my skin type?";
   String get ewgSafeLevel => "EWG safety level";
-  String get discoverTheBestProducts =>
-      "Discover the best products \nand ingredients for you.";
+  String get discoverTheBestProducts => "về loại da của bạn cùng chúng tôi!";
   String get whyLowerThanMarketPriceQuestion =>
       "1. Why Dimodo price is lower than the market price? ";
   String get whereReviewsFromQuestion => "Where do those reviews come from?";
@@ -503,8 +502,7 @@ class $vi extends S {
   String get deliveryArea => "Tỉnh /Thành phố";
   String get addAddress => "Thêm địa chỉ mới";
   String get editShippingAddress => "Edit Shipping Address";
-  String get discoverTheBestProducts =>
-      "Khám phá thêm sản phẩm \nvà các loại nguyên liệu phù hợp";
+  String get discoverTheBestProducts => "về loại da của bạn cùng chúng tôi!";
   String get district => "district";
   String get ward => "ward";
   String get confirm => "Xác nhận";
@@ -591,7 +589,8 @@ class $vi extends S {
       "Dịch vụ giúp chúng tôi chạy nền tảng của chúng tôi và cung cấp trải nghiệm tốt hơn";
   String get submitOrder => "ĐẶT MUA";
   String get fee => "Phí";
-  String get whatIsMySkinType => "Loại da của tôi?";
+  String get whatIsMySkinType =>
+      "Hãy cùng khám phá chi tiết về loại da của bạn cùng chúng tôi!";
 
   String get needHelp => "Cần trợ giúp?";
   String get askUs => "Hỏi chúng tôi";

@@ -3,6 +3,7 @@ import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/survey.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/survey_card.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -47,7 +48,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
     "khô vs da dầu",
     "sắc tố và không sắc tố",
     "căng vs nhăn",
-    "Tight vs Wrinkled"
+    "Căng vs nhăn"
   ];
 
   @override
@@ -457,20 +458,22 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                     borderRadius: BorderRadius.circular(20)),
                                 child: Column(
                                   children: <Widget>[
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
+                                    Wrap(
+                                      spacing: 5,
+                                      alignment: WrapAlignment.spaceAround,
+                                      // mainAxisAlignment:
+                                      //     MainAxisAlignment.spaceAround,
                                       children: <Widget>[
                                         for (var i = 0;
                                             i < skinTypes.length;
                                             i++)
-                                          Text(
+                                          DynamicText(
                                             "#" +
                                                 getFullSkinType(skinTypes[i]) +
                                                 " ",
                                             textAlign: TextAlign.center,
                                             style: kBaseTextStyle.copyWith(
-                                              fontSize: 15,
+                                              fontSize: 13,
                                               fontWeight: FontWeight.w600,
                                               color: Colors.white,
                                             ),
@@ -562,7 +565,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                           bottom: true,
                           child: Padding(
                             padding: const EdgeInsets.only(
-                                top: 18, left: 16, right: 16),
+                                top: 18, left: 16, right: 16, bottom: 20),
                             child: MaterialButton(
                                 elevation: 0,
                                 color: kAccentGreen,
@@ -586,6 +589,9 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                 onPressed: () {
                                   setState(() {
                                     isSaving = true;
+                                    Provider.of<UserModel>(context,
+                                            listen: false)
+                                        .saveSkinType(skinType);
                                   });
 
                                   Future.delayed(
@@ -593,15 +599,12 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                     calculateProgress();
                                     setState(() {
                                       isSaving = false;
+                                      Navigator.pop(context);
                                     });
                                   });
                                   // ===========================================
                                   // SAVE skinType to the user local db
                                   // ===========================================
-                                  Provider.of<UserModel>(context, listen: false)
-                                      .saveSkinType(skinType);
-
-                                  // Navigator.pop(context);
                                 }),
                           ),
                         ),

@@ -107,14 +107,17 @@ class HomeScreenState extends State<HomeScreen>
     _tabController = TabController(length: tabList.length, vsync: this);
     userModel = Provider.of<UserModel>(context, listen: false);
     productModel = Provider.of<ProductModel>(context, listen: false);
-    if (userModel.skinType.contains("S")) {
-      skinTypeId = 1;
-    } else if (userModel.skinType.contains("D")) {
-      skinTypeId = 2;
-    } else if (userModel.skinType.contains("O")) {
-      skinTypeId = 3;
-    } else if (userModel.skinType.contains("R")) {
-      skinTypeId = 0;
+    //setting the ski ntype when launching
+    if (userModel.skinType != null) {
+      if (userModel.skinType.contains("S")) {
+        skinTypeId = 1;
+      } else if (userModel.skinType.contains("D")) {
+        skinTypeId = 2;
+      } else if (userModel.skinType.contains("O")) {
+        skinTypeId = 3;
+      } else if (userModel.skinType.contains("R")) {
+        skinTypeId = 0;
+      }
     }
   }
 
@@ -189,10 +192,10 @@ class HomeScreenState extends State<HomeScreen>
           elevation: 0.0,
           backgroundColor: kPrimaryGreen,
           onPressed: () async => {
-            // PopupServices.showFeedbackPopup(context)
             await FlutterMailer.send(MailOptions(
               body: '',
-              subject: 'Feedback',
+              subject:
+                  'Làm thế nào chúng tôi có thể cải thiện ứng dụng cho bạn?',
               recipients: ['parker@dimodo.app'],
             ))
           },
@@ -254,9 +257,9 @@ class HomeScreenState extends State<HomeScreen>
                               width: screenSize.width,
                               color: kPrimaryGreen,
                               padding: EdgeInsets.only(
-                                top: 8,
+                                top: 13,
                                 bottom: 8,
-                                left: 25,
+                                left: 20,
                                 right: 17,
                               ),
                               child: Center(
@@ -268,24 +271,37 @@ class HomeScreenState extends State<HomeScreen>
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: <Widget>[
-                                        Text(
-                                          S.of(context).whatIsMySkinType,
-                                          textAlign: TextAlign.center,
-                                          style: kBaseTextStyle.copyWith(
-                                              fontSize: 22,
-                                              fontFamily: "Baloo",
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.normal),
-                                        ),
-                                        Text(
-                                          S.of(context).discoverTheBestProducts,
-                                          textAlign: TextAlign.start,
-                                          style: kBaseTextStyle.copyWith(
-                                              fontSize: 14,
-                                              color: Colors.white,
-                                              fontWeight: FontWeight.w600),
-                                        ),
+                                        // Flexible(
+                                        //   child: Text(
+                                        //     S.of(context).whatIsMySkinType,
+                                        //     textAlign: TextAlign.center,
+                                        //     style: kBaseTextStyle.copyWith(
+                                        //         fontSize: 20,
+                                        //         fontFamily: "Baloo",
+                                        //         color: Colors.white,
+                                        //         fontWeight: FontWeight.normal),
+                                        //   ),
+                                        // ),
+                                        // Text(
+                                        //   S.of(context).discoverTheBestProducts,
+                                        //   textAlign: TextAlign.start,
+                                        //   style: kBaseTextStyle.copyWith(
+                                        //       fontSize: 14,
+                                        //       color: Colors.white,
+                                        //       fontWeight: FontWeight.w600),
+                                        // ),
                                       ],
+                                    ),
+                                    Flexible(
+                                      child: Text(
+                                        S.of(context).whatIsMySkinType,
+                                        textAlign: TextAlign.start,
+                                        style: kBaseTextStyle.copyWith(
+                                            fontSize: 20,
+                                            fontFamily: "Baloo",
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.normal),
+                                      ),
                                     ),
                                     SvgPicture.asset(
                                         "assets/icons/Package.svg"),
@@ -318,6 +334,7 @@ class HomeScreenState extends State<HomeScreen>
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: <Widget>[
+                                              //here update the title
                                               Text(
                                                 S.of(context).yourSkinTypeIs,
                                                 style: kBaseTextStyle.copyWith(

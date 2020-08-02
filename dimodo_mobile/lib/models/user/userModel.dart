@@ -143,6 +143,7 @@ class UserModel with ChangeNotifier {
   }
 
   void saveSkinType(String skinType) async {
+    this.skinType = skinType;
     final LocalStorage storage = new LocalStorage("Dimodo");
     try {
       // print("saving user ${user}");
@@ -158,6 +159,7 @@ class UserModel with ChangeNotifier {
     } catch (err) {
       print(err);
     }
+    notifyListeners();
   }
 
   Future getUser() async {

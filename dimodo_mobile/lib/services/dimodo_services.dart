@@ -35,15 +35,15 @@ class DimodoServices implements BaseServices {
 
   String isSecure;
   // String baseUrl = "http://172.16.0.184:80";
-  String baseUrl =
-      Platform.isAndroid ? 'http://192.168.1.3' : "http://freemanMac.local:80";
+  String baseUrl = "http://dimodo.app";
 
   void appConfig(appConfig) {
     // // accessToken =
-    // if (!isProd) {
-    //   baseUrl =
-    //       Platform.isAndroid ? '192.168.1.3' : 'http://freemanMac.local:80';
-    // }
+    if (!isProd) {
+      baseUrl = Platform.isAndroid
+          ? 'http://freemanMac.local:80'
+          : 'http://freemanMac.local:80';
+    }
   }
 
   getAsync({String endPoint, Map<String, String> headers}) async {
