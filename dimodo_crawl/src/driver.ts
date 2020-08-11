@@ -80,6 +80,19 @@ async function getLocallyPopularCosmetics() {
     return products;
   }
 }
+
+async function updateCrawlableState(sid: Number) {
+  try {
+    const results = await pool.query(
+      sql.updateCrawlableState({
+        sid: sid,
+      })
+    );
+    console.log("connected successfully");
+  } catch (e) {
+    console.log("something went wrong", e);
+  }
+}
 async function getCosmeticsWithoutImages() {
   var products = [] as any;
   try {
@@ -121,16 +134,10 @@ async function updateCosmeticsMetaInfo(
     return products;
   }
 }
-async function updateCosmeticsPhotos(
-  images: any,
-  productId: Number,
-  // reviewCount: String,
-  isNaverShopping: boolean
-) {
+async function updateCosmeticsPhotos(images: any, productId: Number) {
   var products = [] as any;
   try {
-    // console.log(object)
-    console.log("connected successfully");
+    console.log(images[0]);
     const results = await pool.query(
       sql.updateCosmeticsPhotos({
         images: images,
@@ -138,6 +145,7 @@ async function updateCosmeticsPhotos(
         sid: productId,
       })
     );
+    console.log("connected successfully");
   } catch (e) {
     console.log("something went wrong", e);
   } finally {
@@ -257,6 +265,7 @@ var db = {
   },
   getCosmeticsProductsWithoutReviews: getCosmeticsProductsWithoutReviews,
   createReview: createReview,
+  updateCrawlableState: updateCrawlableState,
   updateCosmeticsMetaInfo: updateCosmeticsMetaInfo,
   updateCosmeticsPhotos: updateCosmeticsPhotos,
   deleteCosmeticsProduct: deleteCosmeticsProduct,

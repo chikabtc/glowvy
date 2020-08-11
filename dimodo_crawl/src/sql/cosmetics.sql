@@ -94,13 +94,25 @@ FROM
     product
 WHERE
     product.source = 'glowpick'
-    AND desc_images IS NULL;
+    AND naver_crawlable IS NULL
+    AND desc_images IS NULL
+ORDER BY
+    product.sid ASC;
 
 --updateCosmeticsPhotos
 UPDATE
     product
 SET
-    desc_images = desc_images || :images
+    desc_images = :images
+WHERE
+    sid = :sid
+    AND source = 'glowpick';
+
+--updateCrawlableState
+UPDATE
+    product
+SET
+    naver_crawlable = FALSE
 WHERE
     sid = :sid
     AND source = 'glowpick';
