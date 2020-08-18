@@ -27,6 +27,7 @@ abstract class BaseServices {
   Future<List<Category>> getSubCategories({parentId});
 
   Future<User> loginFacebook({String token});
+  Future<User> loginApple(String code, fullName);
 
   Future<User> loginGoogle({String token});
 
@@ -195,6 +196,17 @@ class Services implements BaseServices {
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
       return serviceApi.loginFacebook(token: token);
+    } else {
+      throw Exception("No internet connection");
+    }
+  }
+
+  @override
+  Future<User> loginApple(String code, fullName) async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      return serviceApi.loginApple(code, fullName);
     } else {
       throw Exception("No internet connection");
     }

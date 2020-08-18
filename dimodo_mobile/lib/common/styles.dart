@@ -23,7 +23,8 @@ const kRankingColor = Color(0xfffF0D060);
 const kSecondaryPurple = Color(0xffC3B4F4);
 const kAccentGreen = Color(0xff21CAB0);
 const kSecondaryGreen = Color(0xff63DAC8);
-const kPrimaryGreen = Color(0xff85EACC);
+const kPrimaryGreen = Color(0xff7CE6C6);
+const kPrimaryOrange = Color(0xffEF4623);
 // const kDefaultBackground = Color(0xffE5E5E5);
 const kAccentRed = Color(0xffDB3022);
 const kPrimaryBlue = Color(0xff5A81E8);
@@ -31,6 +32,7 @@ const kQuaternaryBlue = Color(0xffEBEFFA);
 const kSecondaryBlue = Color(0xffBDCDF6);
 const kSecondaryGrey = Color(0xffBFBFBF);
 const kTertiaryGray = Color(0xffD9D9D9);
+const kDarkYellow = Color(0xffE3B002);
 
 /// color for theme
 const kLightPrimary = Color(0xfffcfcff);
@@ -51,6 +53,7 @@ const kPureWhite = Color(0xffffffff);
 const kDarkSecondary = Color(0xff808080);
 // const kLightPurple = Color(0xff7A5AE8).withOpacity(0.1);
 const kAccentPurple = Color(0xff7A5AE8);
+const kLightYellow = Color(0xFFFFEFD8);
 
 const kProductTitleStyleLarge = const TextStyle(
     fontFamily: "BeVietnam", fontSize: 18, fontWeight: FontWeight.bold);
@@ -213,7 +216,7 @@ const kMessageTextFieldDecoration = InputDecoration(
 
 var kBaseTextStyle = TextStyle(
   height: 1.25,
-  fontFamily: "BeVietnam",
+  fontFamily: "Nunito",
   color: kDarkBG,
   fontSize: 15.0,
   fontWeight: FontWeight.w400,

@@ -1,10 +1,11 @@
 import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/user/userModel.dart';
+import 'package:Dimodo/screens/baumannTestIntro.dart';
 import 'package:Dimodo/widgets/baumann_quiz.dart';
+import 'package:Dimodo/widgets/fancyButton.dart';
 import 'package:Dimodo/widgets/popup_services.dart';
 import 'package:Dimodo/widgets/cosmetics_filter_bar.dart';
-import 'package:Dimodo/widgets/popup_services.dart';
 import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -25,6 +26,9 @@ import 'package:Dimodo/services/index.dart';
 import 'dart:math' as math;
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter_mailer/flutter_mailer.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'dart:io';
+import 'package:http/http.dart' as http;
 
 class HomeScreen extends StatefulWidget {
   final User user;
@@ -186,32 +190,13 @@ class HomeScreenState extends State<HomeScreen>
     }
 
     return Scaffold(
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(right: 0.0, bottom: 20),
-        child: FloatingActionButton(
-          elevation: 0.0,
-          backgroundColor: kPrimaryGreen,
-          onPressed: () async => {
-            await FlutterMailer.send(MailOptions(
-              body: '',
-              subject:
-                  'Làm thế nào chúng tôi có thể cải thiện ứng dụng cho bạn?',
-              recipients: ['parker@dimodo.app'],
-            ))
-          },
-          child: Icon(
-            Icons.feedback,
-            color: Colors.white,
-          ),
-        ),
-      ),
       body: Consumer<UserModel>(builder: (context, userModel, child) {
         if (userModel.skinType != null) {
           //set the filter for the matching skin type
           print("USERMODEL SKIN ${userModel.skinType}");
         }
         return Container(
-          color: Colors.white,
+          color: kDefaultBackground,
           child: SafeArea(
             top: true,
             child: NestedScrollView(
@@ -225,30 +210,86 @@ class HomeScreenState extends State<HomeScreen>
                     elevation: 0,
                     pinned: false,
                     backgroundColor: Colors.white,
-                    title: Text(
-                      "Glowvy",
-                      style: kBaseTextStyle.copyWith(
-                          fontFamily: "Baloo",
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold),
-                    ),
+                    title: SvgPicture.asset("assets/icons/logo.svg"),
                     actions: <Widget>[
-                      // IconButton(
-                      //     icon: Image.asset(
-                      //       "assets/icons/search/search.png",
-                      //       fit: BoxFit.cover,
-                      //       height: 24,
-                      //     ),
-                      //     onPressed: () =>
-                      //         PopupServices.showBaummanQuiz(context)),
+                      IconButton(
+                        icon: Image.asset(
+                          "assets/icons/search/search.png",
+                          fit: BoxFit.cover,
+                          height: 24,
+                        ),
+                        onPressed: () async {
+                          try {
+                            final credential =
+                                await SignInWithApple.getAppleIDCredential(
+                              scopes: [
+                                AppleIDAuthorizationScopes.email,
+                                AppleIDAuthorizationScopes.fullName,
+                              ],
+                              webAuthenticationOptions:
+                                  WebAuthenticationOptions(
+                                // TODO: Set the `clientId` and `redirectUri` arguments to the values you entered in the Apple Developer portal during the setup
+                                clientId: 'app.dimodo.iOS',
+                                redirectUri: Uri.parse(
+                                  'https://glowvy.glitch.me/callbacks/sign_in_with_apple',
+                                ),
+                              ),
+                              // TODO: Remove these if you have no need for them
+                              // nonce: 'example-nonce',
+                              // state: 'example-state',
+                            );
+
+                            print("credential: ${credential}");
+
+                            // This is the endpoint that will convert an authorization code obtained
+                            // via Sign in with Apple into a session in your system
+                            // final signInWithAppleEndpoint = Uri(
+                            //   scheme: 'http',
+                            //   host: 'localhost:80',
+                            //   path: '/sign_in_with_apple',
+                            //   queryParameters: <String, String>{
+                            //     'code': credential.authorizationCode,
+                            //     'firstName': credential.givenName,
+                            //     'lastName': credential.familyName,
+                            //     'useBundleId':
+                            //         Platform.isIOS || Platform.isMacOS
+                            //             ? 'true'
+                            //             : 'false',
+                            //     if (credential.state != null)
+                            //       'state': credential.state,
+                            //   },
+                            // );
+                            var fullName = credential.givenName +
+                                " " +
+                                credential.familyName;
+                            final session = await service.loginApple(
+                                credential.authorizationCode, fullName);
+                            // // If we got this far, a session based on the Apple ID credential has been created in your system,
+                            // // and you can now set this as the app's session
+                            print("session: $session");
+
+                            // Now send the credential (especially `credential.authorizationCode`) to your server to create a session
+                            // after they have been validated with Apple (see `Integration` section for more information on how to do this)
+                          } catch (e) {
+                            print("caught error during apple login $e");
+                          }
+                        },
+                      ),
                     ],
                     bottom: PreferredSize(
                       preferredSize: Size.fromHeight(
-                          userModel.skinType != null ? 148 : 80),
+                          userModel.skinType != null ? 223 : 155),
                       child: GestureDetector(
                         onTap: () {
                           //show
-                          PopupServices.showBaummanQuiz(context);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute<void>(
+                                builder: (BuildContext context) =>
+                                    BaumannTestIntro(),
+                                fullscreenDialog: true,
+                              ));
+                          // PopupServices.showBaummanQuiz(context);
                         },
                         child: Column(
                           children: <Widget>[
@@ -267,40 +308,34 @@ class HomeScreenState extends State<HomeScreen>
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        // Flexible(
-                                        //   child: Text(
-                                        //     S.of(context).whatIsMySkinType,
-                                        //     textAlign: TextAlign.center,
-                                        //     style: kBaseTextStyle.copyWith(
-                                        //         fontSize: 20,
-                                        //         fontFamily: "Baloo",
-                                        //         color: Colors.white,
-                                        //         fontWeight: FontWeight.normal),
-                                        //   ),
-                                        // ),
-                                        // Text(
-                                        //   S.of(context).discoverTheBestProducts,
-                                        //   textAlign: TextAlign.start,
-                                        //   style: kBaseTextStyle.copyWith(
-                                        //       fontSize: 14,
-                                        //       color: Colors.white,
-                                        //       fontWeight: FontWeight.w600),
-                                        // ),
-                                      ],
-                                    ),
                                     Flexible(
-                                      child: Text(
-                                        S.of(context).whatIsMySkinType,
-                                        textAlign: TextAlign.start,
-                                        style: kBaseTextStyle.copyWith(
-                                            fontSize: 20,
-                                            fontFamily: "Baloo",
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.normal),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          Text(
+                                            S.of(context).whatIsMySkinType,
+                                            textAlign: TextAlign.start,
+                                            style: kBaseTextStyle.copyWith(
+                                                fontSize: 16,
+                                                height: 1.3,
+                                                fontFamily: "Nunito",
+                                                color: Colors.white,
+                                                fontStyle: FontStyle.italic,
+                                                fontWeight: FontWeight.w900),
+                                          ),
+                                          Text(
+                                            "About Glowvy ——",
+                                            textAlign: TextAlign.start,
+                                            style: kBaseTextStyle.copyWith(
+                                                fontSize: 12,
+                                                height: 1.3,
+                                                fontFamily: "Nunito",
+                                                color: Color(0xff6AC4A9),
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                     SvgPicture.asset(
@@ -308,6 +343,146 @@ class HomeScreenState extends State<HomeScreen>
                                   ],
                                 ),
                               ),
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Container(
+                                  height: 70,
+                                  width: screenSize.width / 2,
+                                  color: kLightYellow,
+                                  padding: EdgeInsets.only(
+                                    top: 13,
+                                    bottom: 8,
+                                    left: 20,
+                                    right: 17,
+                                  ),
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: <Widget>[
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          DynamicText(
+                                            S.of(context).yourSkin,
+                                            textAlign: TextAlign.start,
+                                            style: kBaseTextStyle.copyWith(
+                                                fontSize: 16,
+                                                fontFamily: "Nunito",
+                                                color: kDarkYellow,
+                                                fontStyle: FontStyle.italic,
+                                                fontWeight: FontWeight.w900),
+                                          ),
+                                          // SizedBox(height: 3.5),
+                                          Container(
+                                            padding: const EdgeInsets.all(3.0),
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(6)),
+                                              border: Border.all(
+                                                  color: kDarkYellow),
+                                            ),
+                                            child: Text(
+                                              "Click Here",
+                                              textAlign: TextAlign.start,
+                                              style: kBaseTextStyle.copyWith(
+                                                  fontSize: 12,
+                                                  fontFamily: "Nunito",
+                                                  color: kDarkYellow,
+                                                  fontStyle: FontStyle.normal,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                      SizedBox(width: 10),
+                                      SvgPicture.asset(
+                                          "assets/icons/girl-face.svg"),
+                                    ],
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: () async => {
+                                    await FlutterMailer.send(MailOptions(
+                                      body: '',
+                                      subject:
+                                          'Làm thế nào chúng tôi có thể cải thiện ứng dụng cho bạn?',
+                                      recipients: ['hbpfreeman@gmail.com'],
+                                    ))
+                                  },
+                                  child: Container(
+                                    height: 70,
+                                    width: screenSize.width / 2,
+                                    color: kPrimaryBlue.withOpacity(0.3),
+                                    padding: EdgeInsets.only(
+                                      top: 13,
+                                      bottom: 8,
+                                      left: 20,
+                                      right: 17,
+                                    ),
+                                    child: Center(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: <Widget>[
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              DynamicText(
+                                                S.of(context).feedback,
+                                                textAlign: TextAlign.start,
+                                                style: kBaseTextStyle.copyWith(
+                                                    fontSize: 16,
+                                                    height: 1.3,
+                                                    fontFamily: "Nunito",
+                                                    color: kPrimaryBlue,
+                                                    fontStyle: FontStyle.italic,
+                                                    fontWeight:
+                                                        FontWeight.w900),
+                                              ),
+                                              Container(
+                                                padding:
+                                                    const EdgeInsets.all(3.0),
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(6)),
+                                                  border: Border.all(
+                                                      color: kPrimaryBlue),
+                                                ),
+                                                child: Text(
+                                                  "Rate App",
+                                                  textAlign: TextAlign.start,
+                                                  style:
+                                                      kBaseTextStyle.copyWith(
+                                                          fontSize: 12,
+                                                          fontFamily: "Nunito",
+                                                          color: kPrimaryBlue,
+                                                          fontStyle:
+                                                              FontStyle.normal,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(width: 10),
+                                          SvgPicture.asset(
+                                              "assets/icons/feedback.svg"),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                             userModel.skinType != null
                                 ? GestureDetector(
@@ -382,7 +557,7 @@ class HomeScreenState extends State<HomeScreen>
                                   )
                                 : Container(),
                             Container(
-                              height: 5,
+                              height: 10,
                               color: kDefaultBackground,
                             )
                           ],
@@ -393,8 +568,8 @@ class HomeScreenState extends State<HomeScreen>
                   SliverPersistentHeader(
                     pinned: true,
                     delegate: _SliverAppBarDelegate(
-                      minHeight: 100.0,
-                      maxHeight: 100.0,
+                      minHeight: 116.0,
+                      maxHeight: 116.0,
                       child: Column(
                         children: <Widget>[
                           Row(
@@ -407,9 +582,12 @@ class HomeScreenState extends State<HomeScreen>
                                         borderRadius: BorderRadius.only(
                                             topLeft: Radius.circular(20),
                                             topRight: Radius.circular(20))),
-                                    padding: EdgeInsets.only(left: 16, top: 10),
+                                    padding: EdgeInsets.only(
+                                      left: 16,
+                                      top: 10,
+                                      right: 16,
+                                    ),
                                     child: Container(
-                                      // color: Colors.brown,
                                       width: screenSize.width /
                                           (2 /
                                               (screenSize.height /
@@ -453,38 +631,77 @@ class HomeScreenState extends State<HomeScreen>
                               ),
                             ],
                           ),
-                          CosmeticsFilterBar(
-                            skinTypeId: skinTypeId,
-                            products: allProducts.length != 0
-                                ? allProducts[currentCateId]
-                                : [],
-                            onFilterConfirm:
-                                (filteredProducts, sorting, skinTypeId) {
-                              setState(() {
-                                showFiltered = true;
-                                this.sorting = sorting;
-                                showRank = sorting == "rank" ? true : false;
-                                this.skinTypeId = skinTypeId;
-                                isFiltering = true;
-                                this.filteredResults = filteredProducts;
-                                Future.delayed(
-                                    const Duration(milliseconds: 500), () {
-                                  setState(() {
-                                    isFiltering = false;
-                                  });
-                                });
-                              });
-                            },
-                            onReset: (filteredProducts) {
-                              setState(() {
-                                showFiltered = true;
-                              });
-                            },
+                          SizedBox(height: 16.5),
+
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 16.0),
+                            child: MaterialButton(
+                              child: Container(
+                                width: screenSize.width - 32,
+                                child: Row(
+                                  children: <Widget>[
+                                    SvgPicture.asset("assets/icons/funnel.svg"),
+                                    Text(
+                                      "Only Check Products that Fit My Skin",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Color(0xFFEF4623),
+                                        fontSize: 16,
+                                        fontStyle: FontStyle.italic,
+                                        fontWeight: FontWeight.w900,
+                                        fontFamily: 'Nunito',
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              height: 48,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(24),
+                              ),
+                              // size: 25,
+                              color: Color(0xFFCFEEBEC),
+                              onPressed: () {
+                                print("yo");
+                                // Navigator.of(context).pop();
+                              },
+                            ),
                           ),
-                          Container(
-                            height: 10,
-                            color: Colors.white,
-                          )
+
+                          // MaterialButton()
+                          // CosmeticsFilterBar(
+                          //   skinTypeId: skinTypeId,
+                          //   products: allProducts.length != 0
+                          //       ? allProducts[currentCateId]
+                          //       : [],
+                          //   onFilterConfirm:
+                          //       (filteredProducts, sorting, skinTypeId) {
+                          //     setState(() {
+                          //       showFiltered = true;
+                          //       this.sorting = sorting;
+                          //       showRank = sorting == "rank" ? true : false;
+                          //       this.skinTypeId = skinTypeId;
+                          //       isFiltering = true;
+                          //       this.filteredResults = filteredProducts;
+                          //       Future.delayed(
+                          //           const Duration(milliseconds: 500), () {
+                          //         setState(() {
+                          //           isFiltering = false;
+                          //         });
+                          //       });
+                          //     });
+                          //   },
+                          //   onReset: (filteredProducts) {
+                          //     setState(() {
+                          //       showFiltered = true;
+                          //     });
+                          //   },
+                          // ),
+                          // Container(
+                          //   height: 10,
+                          //   color: Colors.white,
+                          // )
                         ],
                       ),
                     ),

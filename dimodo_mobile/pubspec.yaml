@@ -11,7 +11,7 @@ description: Mobile commerce app by Flutter
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.1.6+38
+version: 1.1.6+42
 
 environment:
   sdk: ">=2.2.2 <3.0.0"
@@ -27,6 +27,7 @@ dependencies:
   path: 1.6.4
   smooth_page_indicator: ^0.1.4
   amplitude_flutter: ^2.0.0
+  sign_in_with_apple: ^2.5.2
   flutter_spinkit: "^4.1.2"
   custom_switch: ^0.0.1
   sentry: ">=3.0.0 <4.0.0"
@@ -105,11 +106,17 @@ flutter:
     - assets/images/onboarding/
     - assets/images/
     - assets/images/country/
-    - assets/fonts/BeVietnam/
+    - assets/fonts/Nunito/
   fonts:
     - family: Baloo
       fonts:
         - asset: assets/fonts/Baloo-Regular.ttf
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/Nunito/Nunito-Regular.ttf
+        - asset: assets/fonts/Nunito/Nunito-Italic.ttf
+        - asset: assets/fonts/Nunito/Nunito-Bold.ttf
+        - asset: assets/fonts/Nunito/Nunito-SemiBold.ttf
     - family: BeVietnam
       fonts:
         - asset: assets/fonts/BeVietnam/BeVietnam-Regular.ttf

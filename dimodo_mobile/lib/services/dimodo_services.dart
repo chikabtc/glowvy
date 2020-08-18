@@ -24,7 +24,7 @@ class DimodoServices implements BaseServices {
   static final DimodoServices _instance = DimodoServices._internal();
   factory DimodoServices() => _instance;
 
-  bool isProd = true;
+  bool isProd = false;
 
   DimodoServices._internal();
 
@@ -371,6 +371,26 @@ class DimodoServices implements BaseServices {
       }
     } catch (e) {
       print("loginFacebook error: $e");
+      throw e;
+    }
+  }
+
+  @override
+  Future<User> loginApple(String code, fullName) async {
+    print("loginApple$code");
+    try {
+      final body = await postAsync(
+          endPoint: "sign_in_with_apple?code=$code&fullName=$fullName");
+      // print()
+
+      // print('apple login jsondecode: $body');
+      // if (body["Success"] == false) {
+      //   throw Exception("failed to login with FB${body["Error"]}");
+      // } else {
+      //   return User.fromJsonFB(body);
+      // }
+    } catch (e) {
+      print("loginApple error: $e");
       throw e;
     }
   }

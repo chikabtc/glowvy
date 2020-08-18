@@ -144,74 +144,74 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
                                   currentIndex = index;
                                   return Column(
                                     children: <Widget>[
-                                      if (index == 3)
-                                        Container(
-                                            decoration: BoxDecoration(
-                                                color: kLightPink,
-                                                borderRadius:
-                                                    BorderRadius.circular(6)),
-                                            width: screenSize.width,
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 10),
-                                            child: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.end,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: <Widget>[
-                                                Image.asset(
-                                                    "assets/images/promote-glowpick-illustration.png"),
-                                                SizedBox(
-                                                  width: 14,
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsets
-                                                          .symmetric(
-                                                      vertical: 17.0),
-                                                  child: Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: <Widget>[
-                                                      Text(
-                                                        S
-                                                            .of(context)
-                                                            .allRankingResults,
-                                                        style: kBaseTextStyle
-                                                            .copyWith(
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                fontSize: 12),
-                                                      ),
-                                                      SizedBox(height: 8),
-                                                      Image.asset(
-                                                          "assets/images/glowpick_logo.png"),
-                                                      SizedBox(height: 5),
-                                                      Container(
-                                                        width:
-                                                            screenSize.width -
-                                                                168,
-                                                        child: Text(
-                                                          S
-                                                              .of(context)
-                                                              .theMostFamousRanking,
-                                                          maxLines: 2,
-                                                          style: kBaseTextStyle
-                                                              .copyWith(
-                                                                  color:
-                                                                      kSecondaryPink,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w500,
-                                                                  fontSize: 12),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            )),
+                                      // if (index == 3)
+                                      // Container(
+                                      //     decoration: BoxDecoration(
+                                      //         color: kLightPink,
+                                      //         borderRadius:
+                                      //             BorderRadius.circular(6)),
+                                      //     width: screenSize.width,
+                                      //     padding: EdgeInsets.symmetric(
+                                      //         horizontal: 10),
+                                      //     child: Row(
+                                      //       crossAxisAlignment:
+                                      //           CrossAxisAlignment.end,
+                                      //       mainAxisAlignment:
+                                      //           MainAxisAlignment.start,
+                                      //       children: <Widget>[
+                                      //         Image.asset(
+                                      //             "assets/images/promote-glowpick-illustration.png"),
+                                      //         SizedBox(
+                                      //           width: 14,
+                                      //         ),
+                                      //         Padding(
+                                      //           padding: const EdgeInsets
+                                      //                   .symmetric(
+                                      //               vertical: 17.0),
+                                      //           child: Column(
+                                      //             crossAxisAlignment:
+                                      //                 CrossAxisAlignment
+                                      //                     .start,
+                                      //             children: <Widget>[
+                                      //               Text(
+                                      //                 S
+                                      //                     .of(context)
+                                      //                     .allRankingResults,
+                                      //                 style: kBaseTextStyle
+                                      //                     .copyWith(
+                                      //                         fontWeight:
+                                      //                             FontWeight
+                                      //                                 .w600,
+                                      //                         fontSize: 12),
+                                      //               ),
+                                      //               SizedBox(height: 8),
+                                      //               Image.asset(
+                                      //                   "assets/images/glowpick_logo.png"),
+                                      //               SizedBox(height: 5),
+                                      //               Container(
+                                      //                 width:
+                                      //                     screenSize.width -
+                                      //                         168,
+                                      //                 child: Text(
+                                      //                   S
+                                      //                       .of(context)
+                                      //                       .theMostFamousRanking,
+                                      //                   maxLines: 2,
+                                      //                   style: kBaseTextStyle
+                                      //                       .copyWith(
+                                      //                           color:
+                                      //                               kSecondaryPink,
+                                      //                           fontWeight:
+                                      //                               FontWeight
+                                      //                                   .w500,
+                                      //                           fontSize: 12),
+                                      //                 ),
+                                      //               ),
+                                      //             ],
+                                      //           ),
+                                      //         )
+                                      //       ],
+                                      //     )),
                                       Container(
                                         height: 120,
                                         color: Colors.white,

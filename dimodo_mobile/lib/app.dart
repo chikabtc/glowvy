@@ -124,7 +124,7 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
   }
 
   Widget renderFirstScreen() {
-    if (isFirstSeen) return OnBoardScreen();
+    // if (isFirstSeen) return OnBoardScreen();
     if (kAdvanceConfig['IsRequiredLogin'] && !isLoggedIn) return LoginScreen();
     return MainTabs();
   }

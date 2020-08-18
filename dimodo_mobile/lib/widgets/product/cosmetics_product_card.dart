@@ -1,6 +1,7 @@
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../common/tools.dart';
 import '../../models/product/product.dart';
 import '../../screens/detail/cosmetics_product_detail.dart';
@@ -83,8 +84,8 @@ class CosmeticsProductCard extends StatelessWidget {
                     child: Tools.image(
                       url: product.thumbnail,
                       fit: BoxFit.cover,
-                      width: 120,
-                      height: 120,
+                      width: 69,
+                      height: 90,
                       size: kSize.large,
                     ),
                   ),
@@ -98,11 +99,11 @@ class CosmeticsProductCard extends StatelessWidget {
                               borderRadius: BorderRadius.only(
                                   bottomRight: Radius.circular(28),
                                   bottomLeft: Radius.circular(28))),
-                          width: 32,
-                          height: 28,
+                          width: 22,
+                          height: 20,
                           padding: EdgeInsets.all(3),
                           child: Text(
-                            "TOP\n" + (ranking + 1).toString(),
+                            (ranking + 1).toString(),
                             textAlign: TextAlign.center,
                             style: kBaseTextStyle.copyWith(
                               height: 1,
@@ -128,18 +129,58 @@ class CosmeticsProductCard extends StatelessWidget {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: kBaseTextStyle.copyWith(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w600,
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
                     "${product.name}",
                     maxLines: 1,
                     style: kBaseTextStyle.copyWith(
-                      fontSize: 14,
+                      fontSize: 13,
+                      color: kDarkSecondary,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
+
+                  Spacer(),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      SvgPicture.asset("assets/icons/red-star.svg"),
+                      Text(
+                        double.parse(product.rating.substring(0, 3)).toString(),
+                        maxLines: 1,
+                        style: kBaseTextStyle.copyWith(
+                            color: kPrimaryOrange,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600),
+                      ),
+                      SizedBox(width: 10),
+                      if (product.purchaseCount != null)
+                        Container(
+                          child: Text(
+                            "(${product.purchaseCount})",
+                            textAlign: TextAlign.end,
+                            maxLines: 1,
+                            style: kBaseTextStyle.copyWith(
+                                color: kDarkSecondary.withOpacity(0.5),
+                                fontSize: 10,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      Spacer(),
+                      Text(
+                        Tools.getPriceProduct(product, "VND", onSale: true),
+                        style: kBaseTextStyle.copyWith(
+                            color: kDarkSecondary,
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 8),
+
                   Wrap(
                     children: <Widget>[
                       if (tags.length > 0)
@@ -154,40 +195,7 @@ class CosmeticsProductCard extends StatelessWidget {
                           ),
                     ],
                   ),
-                  Spacer(),
-                  Row(
-                    children: <Widget>[
-                      Text(
-                        Tools.getPriceProduct(product, "VND", onSale: true),
-                        style: kBaseTextStyle.copyWith(
-                            color: kPinkAccent,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      SizedBox(width: 8),
-                      if (product.purchaseCount != null)
-                        Container(
-                          child: Text(
-                            "${product.purchaseCount} ${S.of(context).reviews}",
-                            textAlign: TextAlign.end,
-                            maxLines: 1,
-                            style: kBaseTextStyle.copyWith(
-                                color: kDarkSecondary.withOpacity(0.5),
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                    ],
-                  ),
-                  // SizedBox(height: 5),
-                  Text(
-                    S.of(context).shipFromKorea,
-                    maxLines: 1,
-                    style: kBaseTextStyle.copyWith(
-                        color: kDarkSecondary,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500),
-                  ),
+                  // // SizedBox(height: 5),
                 ],
               ),
             ),
