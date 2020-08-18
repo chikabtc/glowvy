@@ -56,7 +56,23 @@ GROUP BY
     cosmetics_brands.sname,
     cosmetics_brands.id,
     cosmetics_brands.img,
-    cosmetics_category.sname;
+    cosmetics_category.sname
+ORDER BY
+    CASE WHEN $2 = 1 THEN
+        cosmetics_rank.sensitive_rank
+    END ASC,
+    CASE WHEN $2 = 2 THEN
+        cosmetics_rank.neutral_rank
+    END ASC,
+    CASE WHEN $2 = 3 THEN
+        cosmetics_rank.dry_rank
+    END ASC,
+    CASE WHEN $2 = 4 THEN
+        cosmetics_rank.oily_rank
+    END ASC,
+    CASE WHEN $2 = 0 THEN
+        cosmetics_rank.all_rank
+    END ASC;
 
 --name: AllBrandsSname
 SELECT
@@ -100,7 +116,7 @@ FROM
 WHERE
     content IS NULL
 ORDER BY
-    id DESC;
+    id ASC;
 
 --name: GetAllCosmeticsTags
 SELECT
@@ -206,8 +222,7 @@ SELECT
 FROM
     product
 WHERE
-    product.source = 'glowpick'
-    AND description IS NULL;
+    product.source = 'glowpick';
 
 --name: TranslateCosmetics
 UPDATE

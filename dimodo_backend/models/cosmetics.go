@@ -194,7 +194,7 @@ func (gs *cosmeticsService) ProductsByCategoryID(categoryID int, skinType int) (
 			fmt.Println("fail to unmarshall tags: ", err)
 		}
 		err = json.Unmarshal([]byte(ingredients), &product.Ingredients)
-		fmt.Println("len", len(product.Ingredients[0].Purposes))
+		// fmt.Println("len", len(product.Ingredients[0].Purposes))
 		if err != nil {
 			fmt.Println("fail to unmarshall tags: ", err)
 		}
@@ -437,7 +437,6 @@ func (cs *cosmeticsService) TranslateAllCosmetics() {
 			fmt.Println("fail to Next", err)
 			return
 		}
-
 		if err != nil {
 			fmt.Println("GetAllCosmeticsProducts: ", err)
 		}
@@ -458,7 +457,7 @@ func (cs *cosmeticsService) TranslateAllCosmetics() {
 }
 
 func (cs *cosmeticsService) TranslateAllCosmeticsIngredient() {
-	var uniquePurpoes = []string{}
+	// var uniquePurpoes = []string{}
 	var rows *sql.Rows
 
 	rows, err := cs.dot.Query(cs.DB, "getIngredients")
@@ -489,7 +488,7 @@ func (cs *cosmeticsService) TranslateAllCosmeticsIngredient() {
 		}
 
 	}
-	print("length ", len(uniquePurpoes))
+	// print("length ", len(uniquePurpoes))
 	return
 }
 

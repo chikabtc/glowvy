@@ -28,6 +28,7 @@ func (a *API) InitializeRoutes() {
 	a.R.HandleFunc("/oauth2/facebook/login/{access_token}", userC.HandleAccessTokenFacebook).Methods("POST")
 	a.R.HandleFunc("/oauth2/facebook/callback", userC.HandleFacebookCallback)
 	a.R.HandleFunc("/oauth2/google/login", userC.HandleGoogleLogin)
+	a.R.HandleFunc("/sign_in_with_apple", userC.HandleAppleLogin)
 	a.R.HandleFunc("/oauth2/google/callback", userC.HandleGoogleCallback)
 	a.R.HandleFunc("/oauth2/google/login/{access_token}", userC.HandleAccessTokenGoogle).Methods("POST")
 
@@ -81,7 +82,9 @@ func (a *API) InitializeRoutes() {
 	// a.r.HandleFunc("/api/cart/no", cartC.CreateCartItem).Methods("POST")
 	// var err = errors.New("this is an test error")
 	// sentry.CaptureException(err)
-
+	// log.Printf("About to listen on 8080. Go to https://dimodo.app")
+	// err := http.ListenAndServeTLS(":10443", "cert.pem", "key.pem", nil)
+	// log.Fatal(err)
 	http.ListenAndServe(fmt.Sprintf(":%d", a.Cfg.Port),
 		bugsnag.Handler(a.R))
 }

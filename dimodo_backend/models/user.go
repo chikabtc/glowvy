@@ -37,6 +37,8 @@ type UserDB interface {
 
 	SignUpAuthGoogle(user *User) error
 	HanleAfterLoginGoogle(content []byte) (*User, error)
+	HanleAfterLoginApple(email, code, fullName string) (*User, error)
+	SignUpAuthApple(user *User) error
 }
 
 type userService struct {
@@ -79,6 +81,8 @@ type User struct {
 	Signer          string      `json:"signer,omitempty"`
 	Facebook_id     string      `json:"facebook_id,omitempty"`
 	Facebook_logged bool        `json:"facebook_logged,omitempty"`
+	Apple_id        string      `json:"apple_id,omitempty"`
+	Apple_logged    bool        `json:"apple_logged,omitempty"`
 	Google_id       string      `json:"google_id,omitempty"`
 	Google_logged   bool        `json:"google_logged,omitempty"`
 	Creater         int         `json:"creater,omitempty"`
@@ -438,7 +442,6 @@ func (us *userService) HanleAfterLoginFacebook(content []byte) (*User, error) {
 func (us *userService) SignUpWithFacebook(user *User) error {
 	fmt.Printf("User Name: %v \n", user.User_name)
 	row, err := us.dot.QueryRow(us.DB, "QuerySignUpAuthFaceBook",
-
 		user.User_name,
 		user.Email,
 		user.Facebook_id,
@@ -458,6 +461,77 @@ func (us *userService) SignUpWithFacebook(user *User) error {
 	if err != nil {
 		bugsnag.Notify(err)
 		fmt.Println("QuerySignUpAuthFaceBook,", err)
+		msgError := fmt.Errorf("Error in server: %s", err.Error())
+		return msgError
+	}
+	return err
+}
+
+func (us *userService) HanleAfterLoginApple(email, code, fullName string) (*User, error) {
+	var user User
+
+	fmt.Println("apple email", email)
+	var check bool
+	row, err := us.dot.QueryRow(us.DB, "CheckEmailQuery", email)
+	row.Scan(&check)
+	if err != nil {
+		bugsnag.Notify(err)
+		msgError := fmt.Errorf("Error in server: %s", err.Error())
+		return nil, msgError
+	}
+
+	user.Email = null.StringFromPtr(&email)
+	if check {
+		err = us.SignInAuth(&user)
+	}
+	if !check {
+		user.Apple_logged = true
+		user.Apple_id = code
+		user.Full_name = fullName
+		user.User_name = us.HandleUserName(user.Full_name, user.User_name)
+		user.Full_name = utils.CombineSpace(user.Full_name)
+		user.Display_name = us.HandleDisplayName(user.Full_name, user.Display_name)
+		user.Session = utils.Session()
+		user.Token = utils.Token()
+		user.Xid = utils.Session64() + user.Token
+		user.Signer = user.Xid
+		user.Active = true
+		user.Rid = RoleDefault
+		if err := us.SignUpAuthApple(&user); err != nil {
+			msgError := fmt.Errorf("Error in server: %s", err.Error())
+			return nil, msgError
+		}
+	}
+	if err != nil {
+		bugsnag.Notify(err)
+		msgError := fmt.Errorf("Error in server: %s", err.Error())
+		return nil, msgError
+	}
+	return &user, nil
+}
+
+func (us *userService) SignUpAuthApple(user *User) error {
+	fmt.Printf("User Name: %v \n", user.User_name)
+	row, err := us.dot.QueryRow(us.DB, "signUpWithApple",
+		user.User_name,
+		user.Email,
+		user.Apple_id,
+		user.Full_name,
+		user.Display_name,
+		user.Birthday,
+		user.Phone,
+		user.Avatar,
+		user.Active,
+		user.Rid,
+		user.Token,
+		user.Xid,
+		user.Signer,
+		user.Session,
+		user.Apple_logged)
+	err = row.Scan(&user.Id, &user.Sid, &user.Xid)
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("signUpWithApple,", err)
 		msgError := fmt.Errorf("Error in server: %s", err.Error())
 		return msgError
 	}

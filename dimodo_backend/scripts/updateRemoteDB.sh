@@ -16,21 +16,20 @@ scp dimodo.pgsql.gz root@dimodo.app:~/
 echo "  dumped db file sent successfully!"
 
 echo "  Killing remote db connections"
-ssh root@dimodo.app "psql -c "SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'dimodo'"";
+ssh root@dimodo.app  "psql -U postgres -c 'SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = '\''dimodo'\'';'"
+
 echo "  killed all db connections successfully..."
 
 echo "  Deleting the production dimodo db..."
-dropdb 'dimodo';
+ssh root@dimodo.app "psql -U postgres -c 'DROP DATABASE dimodo'"
 echo "  deleted the production dimodo db successfully..."
 
 echo "  Creating the production dimodo db..."
-createdb 'dimodo';
+ssh root@dimodo.app "psql -U postgres -c 'CREATE DATABASE dimodo'"
 echo "  created the production dimodo db successfully..."
 
-
 echo "  Restoring the latest dimodo db on local..."
-gunzip -c dimodo.pgsql.gz | psql dimodo -U postgres
+ssh root@dimodo.app "gunzip -c dimodo.pgsql.gz | psql dimodo -U postgres"
 echo "  restored the lastest dimodo db on local..."
 
 echo "==== Done updating production dimodo db ===="
-

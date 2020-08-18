@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"context"
 	"dimodo_backend/models"
 	"dimodo_backend/utils"
 	"dimodo_backend/utils/jwt"
@@ -14,6 +15,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/Timothylock/go-signin-with-apple/apple"
 	"github.com/bugsnag/bugsnag-go"
 	"github.com/gorilla/mux"
 	"golang.org/x/oauth2"
@@ -342,6 +344,101 @@ func (u *User) HandleGoogleLogin(w http.ResponseWriter, r *http.Request) {
 	oauthStateString := generateStateOauthCookie(w)
 	url := oauthGoogle.AuthCodeURL(oauthStateString)
 	http.Redirect(w, r, url, http.StatusTemporaryRedirect)
+}
+func (u *User) HandleAppleLogin(w http.ResponseWriter, r *http.Request) {
+	var code = r.FormValue("code")
+	var fullName = r.FormValue("fullName")
+	fmt.Println("code", code)
+	fmt.Println("fullName", fullName)
+	// Your 10-character Team ID
+	teamID := "249799HZZ2"
+
+	// ClientID is the "Services ID" value that you get when navigating to your "sign in with Apple"-enabled service ID
+	clientID := "app.dimodo.iOS"
+
+	// Find the 10-char Key ID value from the portal
+	keyID := "TJ4M6AW7S3"
+
+	// The contents of the p8 file/key you downloaded when you made the key in the portal
+	secret := `-----BEGIN PRIVATE KEY-----
+	MIGTAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBHkwdwIBAQQgOTIDhVVqrUhBGHjW
+	NOogNHLBlUafYrG8cJFu584v3rqgCgYIKoZIzj0DAQehRANCAAQGJX8Lv5RDB1Vo
+	PPqEJKKFqoJcoziL3oSgjXAzAIO658Ek6JoGNnt73NnDFg2pelSr3Qktr4F0ykDI
+	+TlPyi1n
+-----END PRIVATE KEY-----`
+
+	// Generate the client secret used to authenticate with Apple's validation servers
+	secret, err := apple.GenerateClientSecret(secret, teamID, clientID, keyID)
+	if err != nil {
+		fmt.Println("error generating secret: " + err.Error())
+		return
+	}
+
+	// Generate a new validation client
+	client := apple.New()
+
+	vReq := apple.WebValidationTokenRequest{
+		ClientID:     clientID,
+		ClientSecret: secret,
+		Code:         code,
+		RedirectURI:  "https://glowvy.glitch.me/callbacks/sign_in_with_apple", // This URL must be validated with apple in your service
+	}
+
+	var response apple.ValidationResponse
+
+	// Do the verification
+	err = client.VerifyWebToken(context.Background(), vReq, &response)
+	if err != nil {
+		fmt.Println("error verifying: " + err.Error())
+		return
+	}
+
+	if response.Error != "" {
+		fmt.Println("apple returned an error: " + response.Error)
+		return
+	}
+
+	// Get the unique user ID
+	unique, err := apple.GetUniqueID(response.IDToken)
+	if err != nil {
+		fmt.Println("failed to get unique ID: " + err.Error())
+		return
+	}
+
+	// Get the email
+	claim, err := apple.GetClaims(response.IDToken)
+	if err != nil {
+		fmt.Println("failed to get claims: " + err.Error())
+		return
+	}
+
+	email := (*claim)["email"]
+	emailVerified := (*claim)["email_verified"]
+	isPrivateEmail := (*claim)["is_private_email"]
+
+	// Voila!
+	fmt.Println("unique: ", unique)
+	//if doesn't match, then save the unique code and email to the psql
+	//if match, then retrieve user info
+	_email := fmt.Sprintf("%v", email)
+	fmt.Println("emailVerified: ", emailVerified)
+	fmt.Println("isPrivateEmail: ", isPrivateEmail)
+
+	user, err := u.us.HanleAfterLoginApple(_email, code, fullName)
+
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("Error", err)
+		resp.Json(w, r, http.StatusInternalServerError, resp.WithError(err.Error()))
+		return
+	}
+	Token := make(map[string]interface{})
+	Token["AccessToken"], _ = jwt.Generate(user)
+	Token["RefreshToken"], _ = jwt.RefreshToken()
+	Token["Accoun	t"] = user
+	respond, _ := json.Marshal(Token)
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(respond)
 }
 
 func (u *User) HandleGoogleCallback(w http.ResponseWriter, r *http.Request) {

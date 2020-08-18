@@ -28,6 +28,7 @@ func main() {
 
 	// api.Cs.ProductC.Cs.TranslateAllCosmeticsIngredient()
 	// api.Cs.ProductC.Cs.TranslateAllCosmetics()
+	// api.Cs.ProductC.Cs.TranslateAllCosmeticsReviews()
 	// api.Cs.ProductC.Cs.UpdateCosmeticsIngredient()
 	// api.Cs.ProductC.Cs.TranslateAllReviewUserName()
 	// crawler.UpdateCosmeticsIngredient()

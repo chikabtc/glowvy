@@ -8,6 +8,7 @@ require (
 	cloud.google.com/go/storage v1.5.0
 	github.com/EDDYCJY/fake-useragent v0.2.0
 	github.com/PuerkitoBio/goquery v1.5.1
+	github.com/Timothylock/go-signin-with-apple v0.0.0-20200221193809-1a722422658e
 	github.com/abadojack/whatlanggo v1.0.1
 	github.com/algolia/algoliasearch-client-go/v3 v3.4.0
 	github.com/antchfx/htmlquery v1.2.2 // indirect
@@ -52,6 +53,8 @@ require (
 	github.com/spf13/cobra v0.0.6 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
 	github.com/temoto/robotstxt v1.1.1 // indirect
+	github.com/tideland/golib v4.24.2+incompatible // indirect
+	github.com/tideland/gorest v2.15.5+incompatible // indirect
 	go.starlark.net v0.0.0-20200306205701-8dd3e2ee1dd5 // indirect
 	golang.org/x/arch v0.0.0-20200312215426-ff8b605520f4 // indirect
 	golang.org/x/crypto v0.0.0-20200317142112-1b76d66859c6

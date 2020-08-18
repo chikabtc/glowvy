@@ -199,3 +199,34 @@ INSERT INTO systems (tables, uniques)
         sid,
         xid;
 
+--name:	signUpWithApple
+WITH systems_insert AS (
+INSERT INTO systems (tables, uniques)
+        VALUES ('users', $1)
+    RETURNING
+        id)
+    INSERT INTO users (User_name, Email, apple_id, Full_name, Display_name, Birthday, Phone, Avatar, Active, Rid, Token, Sid, Xid, signer, Session, apple_logged)
+    SELECT
+        $1,
+        $2,
+        $3,
+        $4,
+        $5,
+        $6,
+        $7,
+        $8,
+        $9,
+        $10,
+        $11,
+        systems_insert.id,
+        $12 || systems_insert.id,
+        $13,
+        $14,
+        $15
+    FROM
+        systems_insert
+    RETURNING
+        id,
+        sid,
+        xid;
+
