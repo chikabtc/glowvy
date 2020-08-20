@@ -3,6 +3,7 @@ import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import '../../common/constants.dart';
 import '../../services/index.dart';
 import 'user.dart';
@@ -28,6 +29,13 @@ class UserModel with ChangeNotifier {
     await getSkinType();
     await getShippingAddress();
     await getUserCosmeticsTypesPref();
+  }
+
+  void setName(String firstName, lastName) {
+    if (this.user != null) {
+      this.user.firstName = firstName;
+      this.user.lastName = lastName;
+    }
   }
 
   void login({email, password, Function success, Function fail}) async {
@@ -120,6 +128,46 @@ class UserModel with ChangeNotifier {
     } catch (err) {
       print("Canceled Google Sign in: $err");
       fail("Canceled Google Sign in: $err");
+    }
+  }
+
+  void loginApple({Function success, Function fail}) async {
+    try {
+      final credential = await SignInWithApple.getAppleIDCredential(
+        scopes: [
+          AppleIDAuthorizationScopes.email,
+          AppleIDAuthorizationScopes.fullName,
+        ],
+        webAuthenticationOptions: WebAuthenticationOptions(
+          clientId: 'app.dimodo.iOS',
+          redirectUri: Uri.parse(
+            'https://glowvy.glitch.me/callbacks/sign_in_with_apple',
+          ),
+        ),
+      );
+      print("credential: ${credential}");
+      var fullName = credential.givenName + " " + credential.familyName;
+      // print("session: $session");
+
+      // Now send the credential (especially `credential.authorizationCode`) to your server to create a session
+      // after they have been validated with Apple (see `Integration` section for more information on how to do thi
+      user = await _service.loginApple(credential.authorizationCode, fullName);
+
+      kAccessToken = user.accessToken;
+      isLoggedIn = true;
+
+      if (user.accessToken != null) {
+        user.addresses =
+            await _service.getAllAddresses(token: user.accessToken);
+      }
+
+      print("lgogogo: ${user.toJson()}");
+      saveUser(user);
+      success(user);
+      notifyListeners();
+    } catch (err) {
+      print("Canceled Apple Sign in: $err");
+      fail("Canceled Apple Sign in: $err");
     }
   }
 

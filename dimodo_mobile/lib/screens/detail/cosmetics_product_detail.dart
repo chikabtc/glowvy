@@ -240,7 +240,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                         ),
                       ),
                     ),
-                    actions: <Widget>[CartAction()],
+                    // actions: <Widget>[CartAction()],
                     backgroundColor: Colors.transparent,
                   ),
                   body: (widget.product == null)
@@ -334,7 +334,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                                                         fontSize:
                                                                             15,
                                                                         color:
-                                                                            kPinkAccent,
+                                                                            kPrimaryOrange,
                                                                         fontWeight:
                                                                             FontWeight.w500)),
                                                                 CommonIcons
@@ -434,7 +434,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                                                               .seeMore,
                                                                           style: kBaseTextStyle.copyWith(
                                                                               fontSize: 12,
-                                                                              color: kPinkAccent,
+                                                                              color: kPrimaryOrange,
                                                                               fontWeight: FontWeight.w500)),
                                                                       CommonIcons
                                                                           .arrowForwardPink
@@ -457,7 +457,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                                                       fontSize:
                                                                           24,
                                                                       color:
-                                                                          kPinkAccent,
+                                                                          kPrimaryOrange,
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold)),
@@ -471,9 +471,9 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                                                           0, 4)),
                                                                   size: 25.0,
                                                                   color:
-                                                                      kPinkAccent,
+                                                                      kPrimaryOrange,
                                                                   borderColor:
-                                                                      kPinkAccent,
+                                                                      kPrimaryOrange,
                                                                   spacing: 0.0),
                                                             ],
                                                           ),
@@ -557,7 +557,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                               //     style: kBaseTextStyle.copyWith(
                                               //         fontSize: 12,
                                               //         color:
-                                              //             kPinkAccent,
+                                              //             kPrimaryOrange,
                                               //         fontWeight:
                                               //             FontWeight
                                               //                 .w500)),

@@ -84,8 +84,8 @@ class CosmeticsProductCard extends StatelessWidget {
                     child: Tools.image(
                       url: product.thumbnail,
                       fit: BoxFit.cover,
-                      width: 69,
-                      height: 90,
+                      width: 92,
+                      height: 92,
                       size: kSize.large,
                     ),
                   ),
@@ -118,85 +118,93 @@ class CosmeticsProductCard extends StatelessWidget {
             // // item name
             SizedBox(width: 7),
             Flexible(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                // mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  SizedBox(height: 10),
-                  Text(
-                    product.seller.name,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: kBaseTextStyle.copyWith(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    "${product.name}",
-                    maxLines: 1,
-                    style: kBaseTextStyle.copyWith(
-                      fontSize: 13,
-                      color: kDarkSecondary,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-
-                  Spacer(),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      SvgPicture.asset("assets/icons/red-star.svg"),
-                      Text(
-                        double.parse(product.rating.substring(0, 3)).toString(),
-                        maxLines: 1,
-                        style: kBaseTextStyle.copyWith(
-                            color: kPrimaryOrange,
-                            fontSize: 13,
-                            fontWeight: FontWeight.w600),
+              child: Container(
+                height: 112,
+                color: Colors.white,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    SizedBox(height: 10),
+                    Text(
+                      product.seller.name,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: kBaseTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
                       ),
-                      SizedBox(width: 10),
-                      if (product.purchaseCount != null)
-                        Container(
-                          child: Text(
-                            "(${product.purchaseCount})",
-                            textAlign: TextAlign.end,
-                            maxLines: 1,
-                            style: kBaseTextStyle.copyWith(
-                                color: kDarkSecondary.withOpacity(0.5),
-                                fontSize: 10,
-                                fontWeight: FontWeight.bold),
-                          ),
+                    ),
+                    Text(
+                      "${product.name}",
+                      maxLines: 1,
+                      style: kBaseTextStyle.copyWith(
+                        fontSize: 13,
+                        color: kDarkSecondary,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                    SizedBox(height: 5),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        SvgPicture.asset("assets/icons/red-star.svg"),
+                        Text(
+                          double.parse(product.rating.substring(0, 3))
+                              .toString(),
+                          maxLines: 1,
+                          style: kBaseTextStyle.copyWith(
+                              color: kPrimaryOrange,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600),
                         ),
-                      Spacer(),
-                      Text(
-                        Tools.getPriceProduct(product, "VND", onSale: true),
-                        style: kBaseTextStyle.copyWith(
-                            color: kDarkSecondary,
-                            fontSize: 12,
-                            fontWeight: FontWeight.normal),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 8),
-
-                  Wrap(
-                    children: <Widget>[
-                      if (tags.length > 0)
-                        for (var tag in tags)
-                          Text(
-                            tag.name + " | ",
-                            maxLines: 1,
-                            style: kBaseTextStyle.copyWith(
-                                color: kDarkSecondary,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500),
+                        SizedBox(width: 5),
+                        if (product.purchaseCount != null)
+                          Container(
+                            child: Text(
+                              "(${product.purchaseCount})",
+                              textAlign: TextAlign.end,
+                              maxLines: 1,
+                              style: kBaseTextStyle.copyWith(
+                                  color: kDarkSecondary.withOpacity(0.5),
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.normal),
+                            ),
                           ),
-                    ],
-                  ),
-                  // // SizedBox(height: 5),
-                ],
+                        Spacer(),
+                        Text(
+                          Tools.getPriceProduct(product, "VND", onSale: true),
+                          style: kBaseTextStyle.copyWith(
+                              color: kDarkSecondary,
+                              fontSize: 12,
+                              fontWeight: FontWeight.normal),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 7,
+                    ),
+
+                    Wrap(
+                      children: <Widget>[
+                        if (tags.length > 0)
+                          for (var tag in tags)
+                            Text(
+                              tag.name + " | ",
+                              maxLines: 1,
+                              style: kBaseTextStyle.copyWith(
+                                  color: kDarkSecondary,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                      ],
+                    ),
+                    SizedBox(height: 15),
+                    Divider(height: 1),
+
+                    // // SizedBox(height: 5),
+                  ],
+                ),
               ),
             ),
           ],

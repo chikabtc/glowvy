@@ -46,6 +46,7 @@ class S implements WidgetsLocalizations {
 // =============================================================================
   String get manageShippingAddress => "Manage Shipping Address";
   String get name => "Name";
+  String get lastName => "Last name";
   String get noAddress => "No Shipping Address added yet";
   String get addAddress => "Add Shipping Address";
   String get editShippingAddress => "Edit Shipping Address";
@@ -458,7 +459,7 @@ class S implements WidgetsLocalizations {
   String get zipCode => "Zip-code";
   String get zipCodeIsRequired => "The zip code field is required";
   String get beenSold => "sold";
-  String get takeSurvey => "Take a survey";
+  String get starTheSkinTest => "Start the Skin Test";
   String get allRankingResults => "All Ranking Results Based on";
 
   // String get otherProducts => "Other zip code field is required";
@@ -679,7 +680,7 @@ class $vi extends S {
   @override
   String get coat => "ÁO KHOÁC";
   String get defaultString => "Default";
-  String get takeSurvey => "Take a survey";
+  String get starTheSkinTest => "Start the Skin Test";
 
   @override
   String get pant => "QUẦN";
@@ -841,7 +842,7 @@ class $vi extends S {
   @override
   String get status => "Trạng thái";
   @override
-  String get lastName => "Tên";
+  String get lastName => "Họ";
   @override
   String get city => "Thành phố";
   @override
@@ -962,7 +963,7 @@ class $vi extends S {
   @override
   String get fullName => "Họ và tên";
   @override
-  String get firstName => "Tên";
+  String get firstName => "Tên đầu tiên";
   @override
   String get phoneNumber => "Số điện thoại";
   @override

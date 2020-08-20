@@ -32,6 +32,7 @@ dependencies:
   custom_switch: ^0.0.1
   sentry: ">=3.0.0 <4.0.0"
   webview_flutter: ^0.3.19+9
+  button3d: ^0.1.1
   provider: ^4.1.2
   auto_size_text: ^2.1.0
   algolia: ^0.1.7
@@ -114,9 +115,19 @@ flutter:
     - family: Nunito
       fonts:
         - asset: assets/fonts/Nunito/Nunito-Regular.ttf
+        - asset: assets/fonts/Nunito/Nunito-Black.ttf
+        - asset: assets/fonts/Nunito/Nunito-BlackItalic.ttf
+        - asset: assets/fonts/Nunito/Nunito-BoldItalic.ttf
+        - asset: assets/fonts/Nunito/Nunito-ExtraBoldItalic.ttf
+        - asset: assets/fonts/Nunito/Nunito-BoldItalic.ttf
+        - asset: assets/fonts/Nunito/Nunito-ExtraLight.ttf
+        - asset: assets/fonts/Nunito/Nunito-ExtraLightItalic.ttf
+        - asset: assets/fonts/Nunito/Nunito-Light.ttf
+        - asset: assets/fonts/Nunito/Nunito-LightItalic.ttf
         - asset: assets/fonts/Nunito/Nunito-Italic.ttf
         - asset: assets/fonts/Nunito/Nunito-Bold.ttf
         - asset: assets/fonts/Nunito/Nunito-SemiBold.ttf
+        - asset: assets/fonts/Nunito/Nunito-SemiBoldItalic.ttf
     - family: BeVietnam
       fonts:
         - asset: assets/fonts/BeVietnam/BeVietnam-Regular.ttf

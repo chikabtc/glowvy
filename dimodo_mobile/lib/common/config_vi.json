@@ -258,13 +258,13 @@
     }
   ],
   "Cosmetics_categories": [{
-      "name": "Làm sạch da mặt",
+      "name": "Làm Sạch Da Mặt",
       "image": "assets/icons/categories/coat.png",
       "id": 32,
       "parent_id": 0
     },
     {
-      "name": "chống nắng",
+      "name": "Chống Nắng",
       "image": "assets/icons/categories/coat.png",
       "id": 142,
       "parent_id": 0
@@ -277,13 +277,13 @@
     },
 
     {
-      "name": "Kem bôi",
+      "name": "Kem Bôi",
       "image": "assets/icons/categories/top.png",
       "id": 4,
       "parent_id": 1
     },
     {
-      "name": "Son môi",
+      "name": "Son Môi",
       "image": "assets/icons/categories/coat.png",
       "id": 14,
       "parent_id": 0

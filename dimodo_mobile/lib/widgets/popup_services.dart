@@ -108,7 +108,7 @@ class PopupServices {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: new BorderRadius.circular(25.0),
                                 ),
-                                child: Text(S.of(context).takeSurvey,
+                                child: Text(S.of(context).starTheSkinTest,
                                     style: kBaseTextStyle.copyWith(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
@@ -231,7 +231,7 @@ class PopupServices {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: new BorderRadius.circular(25.0),
                                 ),
-                                child: Text(S.of(context).takeSurvey,
+                                child: Text(S.of(context).starTheSkinTest,
                                     style: kBaseTextStyle.copyWith(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,

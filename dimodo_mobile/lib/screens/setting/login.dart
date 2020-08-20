@@ -155,6 +155,18 @@ class _LoginPageState extends State<LoginScreen>
     );
   }
 
+  _loginApple(context) async {
+    _playAnimation();
+    Provider.of<UserModel>(context, listen: false).loginApple(
+      success: (user) {
+        _onLoginSuccess(user, context);
+      },
+      fail: (message) {
+        _onLoginFailure(message, context);
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     TextStyle buttonTextStyle =
@@ -200,13 +212,16 @@ class _LoginPageState extends State<LoginScreen>
                     children: <Widget>[
                       Column(
                         children: <Widget>[
+                          SvgPicture.asset("assets/icons/star-vy-red.svg"),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               DynamicText(
                                 S.of(parentContext).login,
                                 style: kBaseTextStyle.copyWith(
-                                    fontWeight: FontWeight.bold, fontSize: 24),
+                                    fontStyle: FontStyle.italic,
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 24),
                               )
                             ],
                           ),
@@ -219,12 +234,14 @@ class _LoginPageState extends State<LoginScreen>
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(6)),
-                              color: kPureWhite),
+                              color: kQuaternaryPink),
                           child: // Group 6
                               Center(
                             child: TextField(
                               controller: _emailController,
-                              cursorColor: kPinkAccent,
+                              cursorColor: kPrimaryOrange,
+                              style: kBaseTextStyle.copyWith(
+                                  color: kPrimaryOrange),
                               onChanged: (value) => email = value,
                               decoration: InputDecoration(
                                 border: InputBorder.none,
@@ -244,11 +261,13 @@ class _LoginPageState extends State<LoginScreen>
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(6)),
-                              color: kPureWhite),
+                              color: kQuaternaryPink),
                           child: // Group 6
                               Center(
                             child: TextField(
                                 cursorColor: kPinkAccent,
+                                style: kBaseTextStyle.copyWith(
+                                    color: kPrimaryOrange),
                                 onChanged: (value) => password = value,
                                 obscureText: true,
                                 controller: _passwordController,
@@ -266,6 +285,7 @@ class _LoginPageState extends State<LoginScreen>
                         height: 16.0,
                       ),
                       StaggerAnimation(
+                        btnColor: kPrimaryOrange,
                         buttonTitle: S.of(context).signInWithEmail,
                         buttonController: _loginButtonController.view,
                         onTap: () {
@@ -277,7 +297,7 @@ class _LoginPageState extends State<LoginScreen>
                       SizedBox(height: 10),
                       MaterialButton(
                           elevation: 0,
-                          minWidth: screenSize.width,
+                          minWidth: 48,
                           height: 48,
                           shape: RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(25.0),
@@ -306,28 +326,42 @@ class _LoginPageState extends State<LoginScreen>
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           MaterialButton(
-                            color: kLightPink,
-                            minWidth: screenSize.width / 2 - 24,
+                            color: kPrimaryOrange,
+                            minWidth: 48,
                             height: 48,
                             shape: RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(25.0)),
+                                borderRadius: new BorderRadius.circular(16.0)),
                             onPressed: () => _loginFacebook(context),
                             child: SvgPicture.asset(
-                              'assets/icons/auth/icon_button_facebook_social.svg',
+                              'assets/icons/facebook-social.svg',
                               width: 24,
                             ),
                             elevation: 0.0,
                           ),
-                          SizedBox(width: 16),
+                          SizedBox(width: 35),
                           MaterialButton(
-                            color: kLightPink,
-                            minWidth: screenSize.width / 2 - 24,
+                            color: kPrimaryOrange,
+                            minWidth: 48,
                             height: 48,
                             shape: RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(25.0)),
+                                borderRadius: new BorderRadius.circular(16.0)),
                             onPressed: () => _loginGoogle(context),
                             child: SvgPicture.asset(
-                              'assets/icons/auth/icon_button_google_social.svg',
+                              'assets/icons/google-social.svg',
+                              width: 24,
+                            ),
+                            elevation: 0.0,
+                          ),
+                          SizedBox(width: 35),
+                          MaterialButton(
+                            color: kPrimaryOrange,
+                            minWidth: 48,
+                            height: 48,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(16.0)),
+                            onPressed: () => _loginApple(context),
+                            child: SvgPicture.asset(
+                              'assets/icons/apple.svg',
                               width: 24,
                             ),
                             elevation: 0.0,

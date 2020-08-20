@@ -23,18 +23,16 @@ class _SurveyCardState extends State<SurveyCard> {
     return Container(
       decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(6))),
+          borderRadius: BorderRadius.all(Radius.circular(20))),
       padding: EdgeInsets.only(top: 12, left: 16, right: 16),
       child: Wrap(alignment: WrapAlignment.center,
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(
-              S.of(context).question + ' ${widget.index + 1}',
-              style: kBaseTextStyle.copyWith(
-                  fontSize: 17,
-                  fontWeight: FontWeight.w600,
-                  color: kAccentGreen),
-            ),
+            Text(S.of(context).question + ' ${widget.index + 1}',
+                style: kBaseTextStyle.copyWith(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600,
+                    color: kSecondaryYellow)),
             Container(
               height: 11,
             ),
@@ -56,18 +54,16 @@ class _SurveyCardState extends State<SurveyCard> {
                 }),
                 child: Container(
                   width: screenSize.width,
-                  color: widget.survey.answer == widget.survey.options[i]
-                      ? kAccentGreen.withOpacity(0.3)
-                      : Colors.white,
+                  color: Colors.white,
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 1.0),
                     child: Row(
                       children: <Widget>[
                         ClipRRect(
                           clipBehavior: Clip.hardEdge,
-                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                          borderRadius: BorderRadius.all(Radius.circular(20)),
                           child: Checkbox(
-                            activeColor: kAccentGreen,
+                            activeColor: kPrimaryOrange,
                             value: widget.survey.answer ==
                                 widget.survey.options[i],
                             onChanged: (bool value) {

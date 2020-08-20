@@ -8,6 +8,8 @@ part 'user.g.dart';
 class User {
   int id;
   bool loggedIn;
+  String firstName;
+  String lastName;
   String fullName;
   String email;
   String picture;

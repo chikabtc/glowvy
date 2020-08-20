@@ -26,7 +26,7 @@ const kSecondaryGreen = Color(0xff63DAC8);
 const kPrimaryGreen = Color(0xff7CE6C6);
 const kPrimaryOrange = Color(0xffEF4623);
 // const kDefaultBackground = Color(0xffE5E5E5);
-const kAccentRed = Color(0xffDB3022);
+const kAccentRed = Color(0xFFEF4623);
 const kPrimaryBlue = Color(0xff5A81E8);
 const kQuaternaryBlue = Color(0xffEBEFFA);
 const kSecondaryBlue = Color(0xffBDCDF6);
@@ -39,9 +39,11 @@ const kLightPrimary = Color(0xfffcfcff);
 const kPinkError = Color(0xfffED4D4D);
 const kLightAccent = Color(0xFF546E7A);
 const kDarkAccent = Color(0xFF393E46);
-// const kPinkAccent = Color(0xffe85a81);
+const kQuaternaryPink = Color(0xFFFEEBEC);
 const kPinkAccent = Color(0xffe85a81);
-const kGreenPrimary = Color(0xff2AA952);
+const kLightGreen = Color(0xFFE0F3E6);
+const kGreenPrimary = Color(0xFFE0F3E6);
+const kSafetyGreen = Color(0xFF03B836);
 
 const kLightPink = Color(0xfff2eaed);
 const kDefaultFontColor = Color(0xff393e46);
@@ -54,6 +56,7 @@ const kDarkSecondary = Color(0xff808080);
 // const kLightPurple = Color(0xff7A5AE8).withOpacity(0.1);
 const kAccentPurple = Color(0xff7A5AE8);
 const kLightYellow = Color(0xFFFFEFD8);
+const kSecondaryYellow = Color(0xFFFDD13C);
 
 const kProductTitleStyleLarge = const TextStyle(
     fontFamily: "BeVietnam", fontSize: 18, fontWeight: FontWeight.bold);
@@ -219,5 +222,5 @@ var kBaseTextStyle = TextStyle(
   fontFamily: "Nunito",
   color: kDarkBG,
   fontSize: 15.0,
-  fontWeight: FontWeight.w400,
+  fontWeight: FontWeight.w500,
 );

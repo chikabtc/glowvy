@@ -155,7 +155,7 @@ class _ProductOptionState extends State<ProductOption>
                       });
                   },
                   backgroundColor: chosenOptions[0] == attribute.value
-                      ? kPinkAccent
+                      ? kAccentRed
                       : attribute.isSoldOut
                           ? kDarkAccent.withOpacity(0.4)
                           : kLightBG,
@@ -254,7 +254,7 @@ class _ProductOptionState extends State<ProductOption>
                 });
               },
               backgroundColor: chosenOptions[index] == key
-                  ? kPinkAccent
+                  ? kAccentRed
                   : isSoldOut(compoundOption, key, associatedKey)
                       ? kDarkAccent.withOpacity(0.4)
                       : kLightBG,
@@ -435,7 +435,7 @@ class _ProductOptionState extends State<ProductOption>
                                 return StaggerAnimation(
                                   buttonTitle: S.of(context).addToCart,
                                   btnColor: isProductChosen()
-                                      ? kPinkAccent
+                                      ? kAccentRed
                                       : kDarkAccent.withOpacity(0.4),
                                   btnTitleColor: isProductChosen()
                                       ? Colors.white
@@ -488,21 +488,21 @@ class _ProductOptionState extends State<ProductOption>
                 height: 40,
                 shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(25.0),
-                    side: BorderSide(color: kPinkAccent, width: 1.5)),
+                    side: BorderSide(color: kAccentRed, width: 1.5)),
                 child: DynamicText(S.of(context).customerSupport,
                     style: kBaseTextStyle.copyWith(
-                        fontWeight: FontWeight.w600, color: kPinkAccent)),
+                        fontWeight: FontWeight.w600, color: kAccentRed)),
                 onPressed: () =>
                     CustomerSupport.openFacebookMessenger(context)),
             SizedBox(width: 16),
             MaterialButton(
                 elevation: 0,
-                color: kPinkAccent,
+                color: kAccentRed,
                 minWidth: (screenSize.width - 48) * 0.5,
                 height: 40,
                 shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(25.0),
-                    side: BorderSide(color: kPinkAccent, width: 1.5)),
+                    side: BorderSide(color: kAccentRed, width: 1.5)),
                 child: DynamicText("Love it",
                     style: kBaseTextStyle.copyWith(
                         fontWeight: FontWeight.w600, color: Colors.white)),

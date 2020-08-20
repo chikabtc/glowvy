@@ -16,7 +16,7 @@ class StaggerAnimation extends StatelessWidget {
       this.onTap,
       this.btnColor,
       this.btnTitleColor,
-      this.height = 40,
+      this.height = 48,
       this.buttonTitle = "Sign In"})
       : buttonSqueezeanimation = new Tween(
           begin: 320.0,
