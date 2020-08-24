@@ -52,7 +52,7 @@ class User {
       var user = json['Account'];
       loggedIn = true;
       id = user['id'];
-      skinType = user.skinType;
+      // skinType = user.skinType;
 
       fullName = user["full_name"];
       email = user["email"];

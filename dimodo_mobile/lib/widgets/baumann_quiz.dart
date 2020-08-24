@@ -1,9 +1,11 @@
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/survey.dart';
+import 'package:Dimodo/models/user/skinScores.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/skin-score.dart';
 import 'package:Dimodo/widgets/survey_card.dart';
+import 'package:Dimodo/widgets/tip-card.dart';
 import 'package:Dimodo/widgets/tips-card.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,16 +20,16 @@ import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:provider/provider.dart';
 
 class BaumannQuiz extends StatefulWidget {
-  final String skinType;
-  BaumannQuiz({this.skinType});
+  String skinType;
+  SkinScores skinScores;
+
+  BaumannQuiz({this.skinType, this.skinScores});
   @override
   _BaumannQuizState createState() => _BaumannQuizState();
 }
 
 class _BaumannQuizState extends State<BaumannQuiz>
     with TickerProviderStateMixin {
-  // AnimationController _loginBurttonController;
-
   int currentPage = 0;
   List<List<Survey>> surveys = [];
   List<String> skinTypes = [];
@@ -35,16 +37,20 @@ class _BaumannQuizState extends State<BaumannQuiz>
   List<String> descriptions = [];
   bool surveyFinished = false;
   bool isSaving = false;
-  bool showFullTips = false;
-  bool showFullHarmful = false;
-  bool fetchingExplanation = false;
+  // bool showFullTips = false;
+  // bool showFullHarmful = false;
+  bool calculatingResult = false;
   bool showFullExplanation = false;
   var skinTypeDescription;
-  var skinType = "";
-  double percent = 0;
+  // var skinType = "";
+  double dsScore;
+  double srScore;
+  double pnScore;
+  double wnScore;
+  UserModel userModel;
+
   var totalProgress = 0;
   SwiperController swipeController;
-  TabController tabController;
   dynamic sensitiveTips;
   dynamic sensitiveAvoid;
   List<String> tabList = [
@@ -57,8 +63,9 @@ class _BaumannQuizState extends State<BaumannQuiz>
   @override
   void initState() {
     super.initState();
+    userModel = Provider.of<UserModel>(context, listen: false);
+    print("widget skin type: ${widget.skinType}");
 
-    tabController = TabController(length: 4, vsync: this);
     swipeController = SwiperController();
     try {
       final baumannQuiz = Provider.of<AppModel>(context, listen: false)
@@ -99,11 +106,6 @@ class _BaumannQuizState extends State<BaumannQuiz>
       tVsW.forEach((e) {
         tVsWSurvey.add(Survey.fromJson(e));
       });
-      // print("sVsRSurvey content: ${sVsR[0]}");
-      // print("sVsRSurvey length: ${sVsRSurvey.length}");
-      // print("nVsPSurvey length: ${nVsPSurvey.length}");
-      // print("tVsWSurvey length: ${tVsWSurvey.length}");
-
       surveys.add(dVsOSurvey);
       surveys.add(sVsRSurvey);
       surveys.add(nVsPSurvey);
@@ -119,83 +121,24 @@ class _BaumannQuizState extends State<BaumannQuiz>
   @override
   void dispose() {
     super.dispose();
-    tabController.dispose();
     swipeController.dispose();
-  }
-
-  Future<void> alertUnfilledQuestion() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: true, // user can tap anywhere to dismiss the popup!
-      builder: (BuildContext buildContext) {
-        return AlertDialog(
-          title: Text(
-            "Please answer all questions",
-            style: kBaseTextStyle,
-          ),
-          actions: <Widget>[
-            FlatButton(
-              child: Text(
-                'Ok',
-                style: kBaseTextStyle,
-              ),
-              onPressed: () {
-                Navigator.of(buildContext).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  String getFullSkinType(type) {
-    print("type: $type");
-
-    switch (type) {
-      case "D":
-        return S.of(context).dry;
-        break;
-      case "O":
-        return S.of(context).oily;
-        break;
-      case "S":
-        return S.of(context).sensitive;
-        break;
-      case "R":
-        return S.of(context).resistant;
-        break;
-      case "N":
-        return S.of(context).nonPigmented;
-        break;
-      case "P":
-        return S.of(context).pigmented;
-        break;
-      case "T":
-        return S.of(context).tight;
-        break;
-      case "W":
-        return S.of(context).wrinkled;
-        break;
-      default:
-        return "Skin";
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    print("widget skin type: ${widget.skinType}");
-    if (widget.skinType != null) {
+    if (widget.skinType != null && widget.skinScores != null) {
       surveyFinished = true;
-      this.skinType = widget.skinType;
       skinTypes.clear();
-
-      skinType.runes.forEach((int rune) {
-        var character = new String.fromCharCode(rune);
+      widget.skinType.runes.forEach((int rune) {
+        var character = String.fromCharCode(rune);
         print(character);
         skinTypes.add(character);
       });
+      dsScore = widget.skinScores.dsScore;
+      srScore = widget.skinScores.srScore;
+      pnScore = widget.skinScores.pnScore;
+      wnScore = widget.skinScores.wnScore;
       if (widget.skinType.contains("R")) {
         showFullExplanation = true;
       }
@@ -232,14 +175,14 @@ class _BaumannQuizState extends State<BaumannQuiz>
                       children: <Widget>[
                         Padding(
                           padding: EdgeInsets.only(top: 5.0),
-                          child: new LinearPercentIndicator(
+                          child: LinearPercentIndicator(
                             alignment: MainAxisAlignment.center,
                             animateFromLastPercent: true,
                             width: screenSize.width,
                             animation: true,
                             animationDuration: 500,
                             lineHeight: 10.0,
-                            percent: totalProgress / 18,
+                            percent: totalProgress / 16,
                             backgroundColor: Colors.white,
                             linearStrokeCap: LinearStrokeCap.roundAll,
                             progressColor: Color(0xFFFDD13C),
@@ -270,7 +213,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
       backgroundColor: kDefaultBackground,
       body: GestureDetector(
         onTap: () {
-          FocusScope.of(context).requestFocus(new FocusNode());
+          FocusScope.of(context).requestFocus(FocusNode());
         },
         child: SafeArea(
           top: true,
@@ -281,7 +224,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20), topRight: Radius.circular(20)),
             ),
-            width: kScreenSizeWidth,
+            width: screenSize.width,
             // padding: EdgeInsets.symmetric(horizontal: 7),
             child: !surveyFinished
                 ? Container(
@@ -332,7 +275,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                           setState(() {
                                             swipeController =
                                                 SwiperController();
-                                            calculateSkinType();
+                                            // calculateSkinType();
                                             currentPage++;
                                             swipeController.index = 0;
                                             swipeController.move(0);
@@ -365,10 +308,9 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                     minWidth: kScreenSizeWidth,
                                     height: 48,
                                     shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          new BorderRadius.circular(25.0),
+                                      borderRadius: BorderRadius.circular(25.0),
                                     ),
-                                    child: fetchingExplanation
+                                    child: calculatingResult
                                         ? CupertinoActivityIndicator()
                                         : Text(S.of(context).checkYourSkinTYpe,
                                             style: kBaseTextStyle.copyWith(
@@ -384,14 +326,25 @@ class _BaumannQuizState extends State<BaumannQuiz>
 
                                         getSkinTypeExplanation();
                                         setState(() {
-                                          fetchingExplanation = true;
+                                          calculatingResult = true;
                                         });
                                         Future.delayed(
                                             const Duration(milliseconds: 2500),
                                             () {
+                                          SkinScores scores = SkinScores(
+                                              dsScore,
+                                              srScore,
+                                              pnScore,
+                                              wnScore);
+                                          print("scores@@ ${scores.toJson()}");
                                           setState(() {
-                                            fetchingExplanation = false;
+                                            calculatingResult = false;
                                             surveyFinished = true;
+
+                                            Provider.of<UserModel>(context,
+                                                    listen: false)
+                                                .saveSkinType(
+                                                    widget.skinType, scores);
                                           });
                                         });
                                       }
@@ -422,25 +375,27 @@ class _BaumannQuizState extends State<BaumannQuiz>
                               Container(
                                 alignment: Alignment.center,
                                 color: Colors.white,
-                                padding: EdgeInsets.symmetric(horizontal: 40),
+                                // padding: EdgeInsets.symmetric(horizontal: 40),
                                 child: Column(
                                     // mainAxisAlignment: MainAxisAlignment.center,
                                     children: <Widget>[
                                       SizedBox(height: 16.5),
-                                      SkinScore("Dầu", "Khô", 1),
-                                      SkinScore(
-                                          "Sắc tố", "Không có\nsắc tố", 1),
-                                      SkinScore("Nhạy cảm", "Kháng cự", 1),
-                                      SkinScore("Chặt chẽ", "Nhăn nheo", 1),
+                                      SkinScore("Dầu", "Khô", score: dsScore),
+                                      SkinScore("Sắc tố", "Không có\nsắc tố",
+                                          score: srScore),
+                                      SkinScore("Nhạy cảm", "Kháng cự",
+                                          score: pnScore),
+                                      SkinScore("Chặt chẽ", "Nhăn nheo",
+                                          score: wnScore),
                                     ]),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 25.0, left: 38, right: 38),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Text(
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Padding(
+                                    padding: const EdgeInsets.only(
+                                        top: 25.0, left: 38, right: 38),
+                                    child: Text(
                                       "Professional skin management\nspecialist, Min says:",
                                       textAlign: TextAlign.start,
                                       maxLines: showFullExplanation ? 30 : 3,
@@ -451,45 +406,61 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                         color: kDarkYellow,
                                       ),
                                     ),
-                                    SizedBox(height: 10),
-                                    GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          showFullExplanation =
-                                              !showFullExplanation;
-                                        });
-                                      },
-                                      //use the fitted box..approach
-                                      child: Wrap(
-                                        children: <Widget>[
-                                          Text(
-                                            "${getSkinTypeExplanation()}",
-                                            textAlign: TextAlign.start,
-                                            maxLines:
-                                                showFullExplanation ? 30 : 3,
-                                            style: kBaseTextStyle.copyWith(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w600,
-                                              color: kDarkYellow,
-                                            ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      SvgPicture.asset(
+                                          "assets/icons/big-double-quote.svg"),
+                                      GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            showFullExplanation =
+                                                !showFullExplanation;
+                                          });
+                                        },
+                                        //use the fitted box..approach
+                                        child: Container(
+                                          padding: EdgeInsets.only(top: 15),
+                                          width: screenSize.width - 60,
+                                          child: Wrap(
+                                            children: <Widget>[
+                                              SizedBox(height: 10),
+                                              Text(
+                                                "${getSkinTypeExplanation()}",
+                                                textAlign: TextAlign.start,
+                                                maxLines: showFullExplanation
+                                                    ? 30
+                                                    : 3,
+                                                style: kBaseTextStyle.copyWith(
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: kDarkYellow,
+                                                ),
+                                              ),
+                                              !showFullExplanation
+                                                  ? Text(
+                                                      "... More",
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      style: kBaseTextStyle
+                                                          .copyWith(
+                                                        fontSize: 15,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: kDarkYellow,
+                                                      ),
+                                                    )
+                                                  : Container()
+                                            ],
                                           ),
-                                          !showFullExplanation
-                                              ? Text(
-                                                  "... More",
-                                                  textAlign: TextAlign.start,
-                                                  style:
-                                                      kBaseTextStyle.copyWith(
-                                                    fontSize: 15,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: kDarkYellow,
-                                                  ),
-                                                )
-                                              : Container()
-                                        ],
+                                        ),
                                       ),
-                                    ),
-                                  ],
-                                ),
+                                    ],
+                                  ),
+                                ],
                               ),
                               Container(height: 40),
                               Text(
@@ -507,99 +478,160 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                   width: screenSize.width,
                                   height: 223,
                                   padding: EdgeInsets.only(left: 10),
-                                  child: Expanded(
-                                      child: ListView.separated(
-                                          separatorBuilder: (context, index) =>
-                                              Container(width: 10),
-                                          scrollDirection: Axis.horizontal,
-                                          itemCount: 5,
-                                          itemBuilder: (BuildContext context,
-                                              int index) {
-                                            return TipCard(
-                                                sensitiveTips: sensitiveTips);
-                                          }))),
-                              // if (!skinType.contains("R"))
-                              //   Column(
-                              //     mainAxisAlignment: MainAxisAlignment.center,
-                              //     crossAxisAlignment: CrossAxisAlignment.start,
-                              //     children: <Widget>[
-                              //       // ===========================================
-                              //       // TO DO TIPS
-                              //       // ===========================================
-                              //       Text(
-                              //         S.of(context).toDos,
-                              //         style: kBaseTextStyle.copyWith(
-                              //             fontWeight: FontWeight.bold,
-                              //             fontSize: 20,
-                              //             color: kAccentGreen),
-                              //       ),
-                              //       SizedBox(height: 5),
-                              //       TipsCard(
-                              //           isPositiveTip: true,
-                              //           screenSize: screenSize,
-                              //           tips: sensitiveTips),
-                              //       SizedBox(height: 15),
-                              //       // ===========================================
-                              //       // NOT TO DO
-                              //       // ===========================================
-                              //       Text(
-                              //         S.of(context).notTodos,
-                              //         style: kBaseTextStyle.copyWith(
-                              //             fontWeight: FontWeight.bold,
-                              //             color: Colors.redAccent,
-                              //             fontSize: 20),
-                              //       ),
-                              //       SizedBox(height: 5),
-                              //       TipsCard(
-                              //           isPositiveTip: false,
-                              //           screenSize: screenSize,
-                              //           tips: sensitiveAvoid),
-                              //     ],
-                              //   ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 18, left: 20, right: 20, bottom: 40),
-                                child: MaterialButton(
-                                    elevation: 0,
-                                    color: kPrimaryOrange,
-                                    minWidth: screenSize.width - 32,
-                                    height: 48,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          new BorderRadius.circular(25.0),
+                                  child: ListView.separated(
+                                      separatorBuilder: (context, index) =>
+                                          Container(width: 10),
+                                      scrollDirection: Axis.horizontal,
+                                      itemCount: sensitiveTips.length +
+                                          sensitiveAvoid.length,
+                                      itemBuilder:
+                                          (BuildContext context, int i) {
+                                        if (i > sensitiveTips.length) {
+                                          return TipCard(
+                                              sensitiveAvoid[
+                                                  i - sensitiveTips.length - 1],
+                                              i - sensitiveTips.length - 1,
+                                              false);
+                                        }
+                                        return TipCard(
+                                            sensitiveTips[0], i, true);
+                                      })),
+                              SizedBox(height: 50),
+                              GestureDetector(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute<void>(
+                                        builder: (BuildContext context) =>
+                                            BaumannQuiz(),
+                                        fullscreenDialog: true,
+                                      ));
+                                },
+                                child: RichText(
+                                  textAlign: TextAlign.center,
+                                  text: TextSpan(
+                                    style: kBaseTextStyle.copyWith(
+                                        fontWeight: FontWeight.w600,
+                                        color: kDarkSecondary,
+                                        fontSize: 14),
+                                    children: <TextSpan>[
+                                      TextSpan(
+                                          text:
+                                              'Unsatisfied with the result?  Retake '),
+                                      TextSpan(
+                                          text: 'click here',
+                                          style: kBaseTextStyle.copyWith(
+                                              fontWeight: FontWeight.bold,
+                                              color: kDarkSecondary,
+                                              fontSize: 14)),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 14),
+                              Container(
+                                color: kDefaultBackground,
+                                child: Column(
+                                  children: <Widget>[
+                                    SizedBox(height: 70),
+                                    SvgPicture.asset(
+                                        "assets/icons/glowvy-activity.svg"),
+                                    SizedBox(height: 14),
+                                    Text("Brand Story with Hongbeom Park",
+                                        style: kBaseTextStyle.copyWith(
+                                            fontSize: 16,
+                                            fontStyle: FontStyle.italic,
+                                            fontWeight: FontWeight.w900,
+                                            color: kDarkAccent)),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 33,
+                                          right: 33,
+                                          top: 14,
+                                          bottom: 14),
+                                      child: Text(
+                                          "Glowvy is newly born by Young Koreans to help Hongboem find the suitable cosmetics for their skin type and issues. With the goal of making Hongboem skin glow, Glowvy trys their best to provides personalized cosmetics recommendations, the skin type analysis, skin care tips based on skin type.\n\nDid you experience buying the cosmetics that ruin the skin before? Chat about it with Glowvy~ ",
+                                          style: kBaseTextStyle.copyWith(
+                                              fontSize: 15,
+                                              fontStyle: FontStyle.italic,
+                                              fontWeight: FontWeight.w600,
+                                              color: kDarkAccent)),
                                     ),
-                                    child: !isSaving
-                                        ? Text(
-                                            widget.skinType != null
-                                                ? S.of(context).close
-                                                : S.of(context).saveResult,
-                                            style: kBaseTextStyle.copyWith(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w600,
-                                                color: Colors.white))
-                                        : CupertinoActivityIndicator(),
-                                    //animation
-                                    // popup
-                                    onPressed: () {
-                                      setState(() {
-                                        isSaving = true;
-                                        Provider.of<UserModel>(context,
-                                                listen: false)
-                                            .saveSkinType(skinType);
-                                      });
-                                      Future.delayed(
-                                          const Duration(milliseconds: 1500),
-                                          () {
-                                        calculateProgress();
-                                        setState(() {
-                                          isSaving = false;
-                                          Navigator.pop(context);
-                                        });
-                                      });
-                                      // ===========================================
-                                      // SAVE skinType to the user local db
-                                      // ===========================================
-                                    }),
+                                    Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 14,
+                                            left: 20,
+                                            right: 20,
+                                            bottom: 67),
+                                        child: MaterialButton(
+                                            elevation: 0,
+                                            color: kPrimaryOrange,
+                                            minWidth: screenSize.width - 32,
+                                            height: 48,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(16.0),
+                                            ),
+                                            child: !isSaving
+                                                ? Text(
+                                                    widget.skinType != null
+                                                        ? S.of(context).close
+                                                        : S
+                                                            .of(context)
+                                                            .saveResult,
+                                                    style:
+                                                        kBaseTextStyle.copyWith(
+                                                            fontSize: 15,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            color:
+                                                                Colors.white))
+                                                : CupertinoActivityIndicator(),
+                                            //animation
+                                            // popup
+                                            onPressed: () {
+                                              if (!userModel.isLoggedIn) {
+                                                Navigator.pushNamed(
+                                                    context, "/login");
+                                              } else {
+                                                dynamic scores = {};
+                                                scores["ds"] = dsScore;
+                                                scores["sr"] = srScore;
+                                                scores["pn"] = pnScore;
+                                                scores["wn"] = wnScore;
+                                                print("scores@@ $scores");
+                                                setState(() {
+                                                  isSaving = true;
+                                                  Provider.of<UserModel>(
+                                                          context,
+                                                          listen: false)
+                                                      .saveSkinType(
+                                                          widget.skinType,
+                                                          scores);
+                                                });
+                                                Future.delayed(
+                                                    const Duration(
+                                                        milliseconds: 1500),
+                                                    () {
+                                                  setState(() {
+                                                    isSaving = false;
+                                                    Navigator.pop(context);
+                                                  });
+                                                });
+                                              }
+                                            })),
+                                    Text("Glowvy x Make My Skin Glow",
+                                        style: kBaseTextStyle.copyWith(
+                                            fontSize: 14,
+                                            fontStyle: FontStyle.italic,
+                                            fontWeight: FontWeight.w600,
+                                            color: kSecondaryGrey)),
+                                    SizedBox(
+                                      height: 30,
+                                    )
+                                  ],
+                                ),
                               ),
                             ],
                           ),
@@ -610,6 +642,32 @@ class _BaumannQuizState extends State<BaumannQuiz>
           ),
         ),
       ),
+    );
+  }
+
+  Future<void> alertUnfilledQuestion() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true, // user can tap anywhere to dismiss the popup!
+      builder: (BuildContext buildContext) {
+        return AlertDialog(
+          title: Text(
+            "Please answer all questions",
+            style: kBaseTextStyle,
+          ),
+          actions: <Widget>[
+            FlatButton(
+              child: Text(
+                'Ok',
+                style: kBaseTextStyle,
+              ),
+              onPressed: () {
+                Navigator.of(buildContext).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -629,35 +687,46 @@ class _BaumannQuizState extends State<BaumannQuiz>
     if (skinTypes.length == 4) {
       return;
     } else {
-      //Give yourself 1 point for every “a” answer, 2 points for every “b”, 3 points for every “c”, 4 points for every “d”, and 2.5 points for every “e” answer.
+      //Give yourself
+      //1 point for every “a” answer,
+      //2 points for every “b”,
+      //3 points for every “c”,
+      //4 points for every “d”
+      //2.5 points for every “e” answer.
       surveys.forEach((survey) {
-        var score = surveys[currentPage].fold(0.0, (previousValue, element) {
+        double score = survey.fold(0.0, (previousValue, element) {
           var index = element.options.indexOf(element.answer).toDouble();
           if (index == 5) {
             index = 2.5;
           }
           print("index value score : ${index + 1}");
-
           return previousValue + index + 1;
         });
 
-//If your score is between 34-44 you have very oily skin.
-// If your score is between 27-33 you have slightly oily skin.
-// If your score is between 17-26 you have slightly dry skin.
-// If you score is between 11-16 you have dry skin.
+        // If your score is between 34-44 you have very oily skin.
+        // If your score is between 27-33 you have slightly oily skin.
+        // If your score is between 17-26 you have slightly dry skin.
+        // If your score is between 11-16 you have dry skin.
+        print("score!! $score");
 
         switch (surveys.indexOf(survey)) {
           case 0:
-            skinTypes.add(score < 11 ? "D" : "O");
+            skinTypes.add(score < 8 ? "D" : "O");
+            dsScore = score;
             break;
           case 1:
-            skinTypes.add(score < 10 ? "R" : "S");
+            skinTypes.add(score < 8 ? "R" : "S");
+            srScore = score;
+
             break;
           case 2:
-            skinTypes.add(score < 10 ? "N" : "P");
+            skinTypes.add(score < 8 ? "N" : "P");
+            pnScore = score;
             break;
           case 3:
-            skinTypes.add(score < 13 ? "T" : "W");
+            skinTypes.add(score < 8 ? "T" : "W");
+            wnScore = score;
+
             break;
           default:
         }
@@ -667,10 +736,8 @@ class _BaumannQuizState extends State<BaumannQuiz>
   }
 
   getSkinTypeExplanation() {
-    skinType = skinTypes.join();
-    print("skinType: #### $skinType");
-    print("Desc!!!!: ${skinTypeDescription[skinType]}");
-    return skinTypeDescription[this.skinType];
+    widget.skinType = skinTypes.join();
+    return skinTypeDescription[widget.skinType];
   }
 
   answeredAll() {
@@ -696,82 +763,5 @@ class _BaumannQuizState extends State<BaumannQuiz>
       }
     });
     return isAllAnswered;
-  }
-
-  List<Widget> renderTabbar() {
-    List<String> tabList = [
-      "khô vs da dầu",
-      "Nhạy cảm vs đề kháng cao",
-      "không sắc tố sắc tố và",
-      "căng vs nhăn",
-    ];
-    List<Widget> list = [];
-
-    tabList.asMap().forEach((index, item) {
-      list.add(Container(
-        child: Tab(
-          text: item,
-        ),
-      ));
-    });
-    return list;
-  }
-}
-
-class TipCard extends StatelessWidget {
-  const TipCard({
-    Key key,
-    @required this.sensitiveTips,
-  }) : super(key: key);
-
-  final sensitiveTips;
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(children: <Widget>[
-      Container(
-        width: 162,
-        decoration: BoxDecoration(
-            color: kLightGreen,
-            border: Border.all(color: kSafetyGreen, width: 2),
-            borderRadius: new BorderRadius.circular(10.0)),
-        height: 223,
-        alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(horizontal: 12),
-        child: Text(
-          sensitiveTips[0]["title"],
-          style: kBaseTextStyle.copyWith(
-              fontSize: 15, color: kDarkAccent, fontWeight: FontWeight.bold),
-        ),
-      ),
-      Positioned(
-        left: 14,
-        top: 14,
-        child: Text(
-          "Tip 1",
-          style: kBaseTextStyle.copyWith(
-              fontSize: 15, color: kSafetyGreen, fontWeight: FontWeight.bold),
-        ),
-      ),
-      Positioned(
-        right: 14,
-        top: 14,
-        child: Container(
-          width: 8,
-          height: 8,
-          decoration: BoxDecoration(
-              color: kSafetyGreen,
-              borderRadius: new BorderRadius.circular(10.0)),
-        ),
-      ),
-      Positioned(
-          bottom: 15,
-          right: 12,
-          child: SvgPicture.asset(
-            "assets/icons/yes-tip.svg",
-            width: 75,
-            height: 36,
-          ))
-    ]);
   }
 }

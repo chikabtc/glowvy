@@ -12,7 +12,7 @@ class CosmeticsProductCard extends StatelessWidget {
   final width;
   final kSize size;
   final bool isHero;
-  final bool showCart;
+  final bool showDivider;
   final bool showHeart;
   final height;
   final bool hideDetail;
@@ -27,7 +27,7 @@ class CosmeticsProductCard extends StatelessWidget {
     this.size = kSize.medium,
     this.isHero = false,
     this.showHeart = false,
-    this.showCart = false,
+    this.showDivider = true,
     this.height,
     this.offset,
     this.hideDetail = false,
@@ -51,6 +51,7 @@ class CosmeticsProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var tagString = "";
     var tag = product.tags.length == 1
         ? product.tags[0].sname
         : product.tags[1].sname;
@@ -62,6 +63,7 @@ class CosmeticsProductCard extends StatelessWidget {
       if (tags.length == 2) {
         return;
       }
+      tagString += element.name + " | ";
       tags.add(element);
     });
 
@@ -95,7 +97,7 @@ class CosmeticsProductCard extends StatelessWidget {
                         left: 7,
                         child: Container(
                           decoration: BoxDecoration(
-                              color: kRankingColor,
+                              color: Color(0xFFCFEEBEC),
                               borderRadius: BorderRadius.only(
                                   bottomRight: Radius.circular(28),
                                   bottomLeft: Radius.circular(28))),
@@ -184,23 +186,33 @@ class CosmeticsProductCard extends StatelessWidget {
                     SizedBox(
                       height: 7,
                     ),
-
-                    Wrap(
-                      children: <Widget>[
-                        if (tags.length > 0)
-                          for (var tag in tags)
-                            Text(
-                              tag.name + " | ",
-                              maxLines: 1,
-                              style: kBaseTextStyle.copyWith(
-                                  color: kDarkSecondary,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                      ],
+                    Text(
+                      tagString,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: kBaseTextStyle.copyWith(
+                          color: kDarkSecondary,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500),
                     ),
+
+                    // Wrap(
+                    //   children: <Widget>[
+                    //     if (tags.length > 0)
+                    //       for (var tag in tags)
+                    //         Text(
+                    //           tag.name + " | ",
+                    //           maxLines: 1,
+                    //           overflow: TextOverflow.fade,
+                    //           style: kBaseTextStyle.copyWith(
+                    //               color: kDarkSecondary,
+                    //               fontSize: 12,
+                    //               fontWeight: FontWeight.w500),
+                    //         ),
+                    //   ],
+                    // ),
                     SizedBox(height: 15),
-                    Divider(height: 1),
+                    showDivider ? Divider(height: 1) : Container()
 
                     // // SizedBox(height: 5),
                   ],

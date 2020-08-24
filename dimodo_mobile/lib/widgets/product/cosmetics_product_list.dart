@@ -8,9 +8,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import '../../common/constants.dart';
 import '../../models/product/product.dart';
-import '../../widgets/product/product_card_view.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:Dimodo/generated/i18n.dart';
 
 class CosmeticsProductList extends StatefulWidget {
   final List<Product> products;
@@ -119,20 +117,15 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
                 },
                 child: Scrollbar(
                   child: ListView(
+                    padding: EdgeInsets.all(0),
                     shrinkWrap: true,
                     physics: ScrollPhysics(),
                     children: <Widget>[
-                      widget.showFilter
-                          ? Container(
-                              height: 10,
-                              color: Colors.white,
-                            )
-                          : SizedBox(),
                       Scrollbar(
                         controller: _scrollController,
                         child: ListView.builder(
                             addAutomaticKeepAlives: true,
-                            padding: const EdgeInsets.all(0.0),
+                            padding: EdgeInsets.all(0.0),
                             physics: widget.disableScrolling
                                 ? NeverScrollableScrollPhysics()
                                 : ClampingScrollPhysics(),
@@ -142,74 +135,6 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
                               currentIndex = index;
                               return Column(
                                 children: <Widget>[
-                                  // if (index == 3)
-                                  // Container(
-                                  //     decoration: BoxDecoration(
-                                  //         color: kLightPink,
-                                  //         borderRadius:
-                                  //             BorderRadius.circular(6)),
-                                  //     width: screenSize.width,
-                                  //     padding: EdgeInsets.symmetric(
-                                  //         horizontal: 10),
-                                  //     child: Row(
-                                  //       crossAxisAlignment:
-                                  //           CrossAxisAlignment.end,
-                                  //       mainAxisAlignment:
-                                  //           MainAxisAlignment.start,
-                                  //       children: <Widget>[
-                                  //         Image.asset(
-                                  //             "assets/images/promote-glowpick-illustration.png"),
-                                  //         SizedBox(
-                                  //           width: 14,
-                                  //         ),
-                                  //         Padding(
-                                  //           padding: const EdgeInsets
-                                  //                   .symmetric(
-                                  //               vertical: 17.0),
-                                  //           child: Column(
-                                  //             crossAxisAlignment:
-                                  //                 CrossAxisAlignment
-                                  //                     .start,
-                                  //             children: <Widget>[
-                                  //               Text(
-                                  //                 S
-                                  //                     .of(context)
-                                  //                     .allRankingResults,
-                                  //                 style: kBaseTextStyle
-                                  //                     .copyWith(
-                                  //                         fontWeight:
-                                  //                             FontWeight
-                                  //                                 .w600,
-                                  //                         fontSize: 12),
-                                  //               ),
-                                  //               SizedBox(height: 8),
-                                  //               Image.asset(
-                                  //                   "assets/images/glowpick_logo.png"),
-                                  //               SizedBox(height: 5),
-                                  //               Container(
-                                  //                 width:
-                                  //                     screenSize.width -
-                                  //                         168,
-                                  //                 child: Text(
-                                  //                   S
-                                  //                       .of(context)
-                                  //                       .theMostFamousRanking,
-                                  //                   maxLines: 2,
-                                  //                   style: kBaseTextStyle
-                                  //                       .copyWith(
-                                  //                           color:
-                                  //                               kSecondaryPink,
-                                  //                           fontWeight:
-                                  //                               FontWeight
-                                  //                                   .w500,
-                                  //                           fontSize: 12),
-                                  //                 ),
-                                  //               ),
-                                  //             ],
-                                  //           ),
-                                  //         )
-                                  //       ],
-                                  //     )),
                                   Container(
                                     height: 112,
                                     color: Colors.white,
@@ -218,6 +143,8 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
                                     child: CosmeticsProductCard(
                                         ranking: widget.showRank ? index : null,
                                         isNameAvailable: widget.isNameAvailable,
+                                        showDivider:
+                                            index != _products.length - 1,
                                         product: _products[index],
                                         width: widthContent),
                                   ),
@@ -227,7 +154,7 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
                       ),
                       isLoading
                           ? SpinKitCircle(
-                              color: kPinkAccent,
+                              color: kPrimaryOrange,
                               size: 23.0 * kSizeConfig.containerMultiplier)
                           : isEnd
                               ? SvgPicture.asset(

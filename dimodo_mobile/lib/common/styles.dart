@@ -14,6 +14,7 @@ const kTeal400 = Color(0xFF26A69A);
 const kGrey900 = Color(0xFF263238);
 const kGrey600 = Color(0xFF546E7A);
 const kGrey200 = Color(0xFFEEEEEE);
+const kLogoColor = Color(0xFF7CE5C6);
 const kGrey400 = Color(0xFF90a4ae);
 const kErrorRed = Color(0xFFe74c3c);
 const kSurfaceWhite = Color(0xFFFFFBFA);

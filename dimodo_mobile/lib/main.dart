@@ -64,7 +64,7 @@ void main() async {
     final Identify identify2 = Identify()..set('identify_count', 1);
     analytics.groupIdentify('orgId', '15', identify2);
 
-    runApp(Dimodo());
+    runApp(Glowvy());
   }, onError: (error, stackTrace) async {
     // Whenever an error occurs, call the `_reportError` function. This sends
     // Dart errors to the dev console or Sentry depending on the environment.

@@ -1,4 +1,5 @@
-import 'package:Dimodo/common/styles.dart';
+library custom_splash;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -17,18 +18,18 @@ Map<dynamic, Widget> _outputAndHome = {};
 
 class CustomSplash extends StatefulWidget {
   CustomSplash(
-      {String imagePath,
+      {@required String imagePath,
       @required Widget home,
       Function customFunction,
       int duration,
       CustomSplashType type,
-      Color backGroundColor = kLightAccent,
+      Color backGroundColor = Colors.white,
       String animationEffect = 'fade-in',
       double logoSize = 250.0,
       Map<dynamic, Widget> outputAndHome}) {
     assert(duration != null);
     assert(home != null);
-    // assert(imagePath != null);
+    assert(imagePath != null);
 
     _home = home;
     _duration = duration;
@@ -38,7 +39,7 @@ class CustomSplash extends StatefulWidget {
     _outputAndHome = outputAndHome;
     _backGroundColor = backGroundColor;
     _animationEffect = animationEffect;
-    // _logoSize = 250.0;
+    _logoSize = 250.0;
   }
 
   @override
@@ -49,7 +50,7 @@ class _CustomSplashState extends State<CustomSplash>
     with SingleTickerProviderStateMixin {
   AnimationController _animationController;
   Animation _animation;
-  Widget launchImage;
+  Size screenSize;
 
   @override
   void initState() {
@@ -57,15 +58,9 @@ class _CustomSplashState extends State<CustomSplash>
     if (_duration < 1000) _duration = 2000;
     _animationController = new AnimationController(
         vsync: this, duration: Duration(milliseconds: 1200));
-    _animation = Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+    _animation = Tween(begin: 1.0, end: 1.0).animate(CurvedAnimation(
         parent: _animationController, curve: Curves.easeInCirc));
     _animationController.forward();
-    launchImage = _imagePath != null
-        ? DecoratedBox(
-            decoration: new BoxDecoration(
-                image: new DecorationImage(
-                    image: AssetImage(_imagePath), fit: BoxFit.fill)))
-        : Container();
   }
 
   @override
@@ -75,7 +70,6 @@ class _CustomSplashState extends State<CustomSplash>
   }
 
   navigator(home) {
-    // Navigator.of(context).replace
     Navigator.of(context).pushReplacement(
         CupertinoPageRoute(builder: (BuildContext context) => home));
   }
@@ -86,14 +80,9 @@ class _CustomSplashState extends State<CustomSplash>
         {
           return FadeTransition(
               opacity: _animation,
-              child: Container(
-                  height: 800,
-                  width: 414,
-                  child: Container(
-                      height: 800,
-                      width: 414,
-                      color: Colors.white,
-                      child: launchImage)));
+              child: Center(
+                  child: SizedBox(
+                      height: _logoSize, child: Image.asset(_imagePath))));
         }
       case 'zoom-in':
         {
@@ -101,12 +90,16 @@ class _CustomSplashState extends State<CustomSplash>
               scale: _animation,
               child: Center(
                   child: SizedBox(
-                      height: _logoSize,
-                      child: Container(
-                          height: 800,
-                          width: 414,
-                          color: Colors.white,
-                          child: launchImage))));
+                      height: _logoSize, child: Image.asset(_imagePath))));
+        }
+      case 'zoom-out':
+        {
+          return ScaleTransition(
+              scale: Tween(begin: 1.5, end: 0.6).animate(CurvedAnimation(
+                  parent: _animationController, curve: Curves.easeInCirc)),
+              child: Center(
+                  child: SizedBox(
+                      height: _logoSize, child: Image.asset(_imagePath))));
         }
       case 'top-down':
         {
@@ -114,19 +107,23 @@ class _CustomSplashState extends State<CustomSplash>
               sizeFactor: _animation,
               child: Center(
                   child: SizedBox(
-                      height: _logoSize,
-                      child: Container(
-                          height: 800,
-                          width: 414,
-                          color: Colors.white,
-                          child: launchImage))));
+                      height: _logoSize, child: Image.asset(_imagePath))));
+        }
+      case 'fade-out':
+        {
+          return Center(
+              child: SizedBox(
+                  width: screenSize.width,
+                  height: screenSize.width,
+                  child: Image.asset(_imagePath)));
         }
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    // var widht = MediaQuery.of(context).
+    screenSize = MediaQuery.of(context).size;
+
     _runfor == CustomSplashType.BackgroundProcess
         ? Future.delayed(Duration.zero).then((value) {
             var res = _customFunction();
@@ -141,7 +138,6 @@ class _CustomSplashState extends State<CustomSplash>
                 CupertinoPageRoute(builder: (BuildContext context) => _home));
           });
 
-    return Container(
-        height: 800, width: 414, color: Colors.white, child: launchImage);
+    return Scaffold(backgroundColor: _backGroundColor, body: _buildAnimation());
   }
 }

@@ -336,7 +336,7 @@
     ],
     "sensitive-type-avoid": [{
         "title": "Không Toner",
-        "explanation": "Nhiều loại toners có chứa Ethanol. Nếu da bạn bị đỏ, nó sẽ làm hỏng làn da của bạn. Nếu vẫn muốn sử dụng toner, hãy đảm bảo bạn tìm  các sản phẩm không có Rượu và Ethanol. "
+        "explanation": "Nhiều loại toners có chứa Ethanol. Nếu da bạn bị đỏ, nó sẽ làm hỏng làn da của bạn. Nếu vẫn muốn sử dụng toner, hãy đảm bảo bạn tìm  các sản phẩm không có Rượu và Ethanol."
       },
       {
         "title": "Không Nước hoa",
@@ -415,16 +415,6 @@
         ]
       },
       {
-        "question": "Khi ở môi trường khô, nếu không bôi kem dưỡng ẩm hoặc chống nắng, da mặt bạn sẽ ",
-        "options": [
-          "Cảm thấy khô ráp, nức nẽ",
-          "cảm thấy căng",
-          "bình thường",
-          "không biết",
-          "bóng nhờn không bao giờ sài kem dưỡng ẩm"
-        ]
-      },
-      {
         "question": "Hai đến ba giờ sau khi bôi kem dưỡng ẩm, má của bạn?",
         "options": [
           "Thô ráp",
@@ -453,8 +443,7 @@
           "Luôn luônLúc nào cũng bị hỏi",
           "Tôi không dùng các sản phẩm này (không dùng nếu vì lý do ở câu hỏi thì chọn d)"
         ]
-      },
-      {
+      }, {
         "question": "Da mặt bạn bị những sần đỏ, mụn mủ:",
         "options": [
           "Không bao giờ",
@@ -560,15 +549,6 @@
           "Một bữa mỗi ngày.",
           "Thi thoảng",
           "Không bao giờ"
-        ]
-      },
-      {
-        "question": "Màu da tự nhiên của bạn là gì ?",
-        "options": [
-          "Đen",
-          "Trung bình",
-          "Trắng",
-          "Rất trắng"
         ]
       }
     ]

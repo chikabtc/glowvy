@@ -34,6 +34,7 @@ dependencies:
   webview_flutter: ^0.3.19+9
   button3d: ^0.1.1
   provider: ^4.1.2
+  bubble_tab_indicator: "^0.1.4"
   auto_size_text: ^2.1.0
   algolia: ^0.1.7
   after_layout: 1.0.7+2

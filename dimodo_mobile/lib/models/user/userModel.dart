@@ -1,3 +1,4 @@
+import 'package:Dimodo/models/user/skinScores.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:localstorage/localstorage.dart';
@@ -22,11 +23,13 @@ class UserModel with ChangeNotifier {
   bool loading = false;
   String cosmeticPref;
   String skinType;
+  SkinScores skinScores;
   String ageGroup;
 
   Future<void> initData() async {
     await getUser();
     await getSkinType();
+    await getSkinScores();
     await getShippingAddress();
     await getUserCosmeticsTypesPref();
   }
@@ -146,7 +149,10 @@ class UserModel with ChangeNotifier {
         ),
       );
       print("credential: ${credential}");
-      var fullName = credential.givenName + " " + credential.familyName;
+      var fullName = "";
+      if (credential.givenName != null && credential.familyName != null) {
+        fullName = credential.givenName + " " + credential.familyName;
+      }
       // print("session: $session");
 
       // Now send the credential (especially `credential.authorizationCode`) to your server to create a session
@@ -190,22 +196,20 @@ class UserModel with ChangeNotifier {
     notifyListeners();
   }
 
-  void saveSkinType(String skinType) async {
+  //skinScore is json object
+  void saveSkinType(String skinType, SkinScores skinScores) async {
     this.skinType = skinType;
+    this.skinScores = skinScores;
     final LocalStorage storage = new LocalStorage("Dimodo");
     try {
-      // print("saving user ${user}");
-      // save to Preference
-      // SharedPreferences prefs = await SharedPreferences.getInstance();
-      // prefs.setBool('loggedIn', true);
-
-      // save the user Info as local storage
       final ready = await storage.ready;
       if (ready) {
+        print("save skinscores: ${skinScores.toJson()}");
         await storage.setItem(kLocalKey["skinType"], skinType);
+        await storage.setItem(kLocalKey["skinScores"], skinScores.toJson());
       }
     } catch (err) {
-      print(err);
+      print("saveSkinType err: $err");
     }
     notifyListeners();
   }
@@ -239,6 +243,25 @@ class UserModel with ChangeNotifier {
         if (json != null) {
           print("sjon skinType: ${json}");
           skinType = json;
+          notifyListeners();
+        } else {
+          print("fail to get users");
+        }
+      }
+    } catch (err) {
+      print(err);
+    }
+  }
+
+  Future getSkinScores() async {
+    final LocalStorage storage = new LocalStorage("Dimodo");
+    try {
+      final ready = await storage.ready;
+      if (ready) {
+        final json = storage.getItem(kLocalKey["skinScores"]);
+        if (json != null) {
+          print("skinScoreJson: $json");
+          skinScores = SkinScores.fromJson(json);
           notifyListeners();
         } else {
           print("fail to get users");

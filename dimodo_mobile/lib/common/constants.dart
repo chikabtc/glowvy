@@ -72,6 +72,7 @@ const kOrderStatusColor = {
 
 const kLocalKey = {
   "userInfo": "userInfo",
+  "skinScores": "skinScores",
   "skinType": "skinType",
   "shippingAddress": "shippingAddress",
   "recentSearches": "recentSearches",

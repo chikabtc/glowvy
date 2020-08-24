@@ -35,7 +35,7 @@ class DimodoServices implements BaseServices {
 
   String isSecure;
   // String baseUrl = "http://172.16.0.184:80";
-  String baseUrl = "http://dimodo.app";
+  String baseUrl = "http://freemanMac.local:80";
 
   void appConfig(appConfig) {
     // // accessToken =
@@ -383,6 +383,12 @@ class DimodoServices implements BaseServices {
           endPoint: "sign_in_with_apple?code=$code&fullName=$fullName");
       // print()
 
+      print('apple jsondecode: $body');
+      if (body["Success"] == false) {
+        throw Exception("failed to login with FB${body["Error"]}");
+      } else {
+        return User.fromJsonFB(body);
+      }
       // print('apple login jsondecode: $body');
       // if (body["Success"] == false) {
       //   throw Exception("failed to login with FB${body["Error"]}");

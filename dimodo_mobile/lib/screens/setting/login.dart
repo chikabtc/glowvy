@@ -176,12 +176,12 @@ class _LoginPageState extends State<LoginScreen>
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         brightness: Brightness.light,
         leading: Navigator.of(context).canPop()
             ? IconButton(
-                icon: Icon(Icons.arrow_back_ios),
+                icon: CommonIcons.arrowBackward,
                 onPressed: () {
                   Navigator.of(context).pop();
                 })
@@ -196,7 +196,7 @@ class _LoginPageState extends State<LoginScreen>
             },
           )
         ],
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Colors.white,
         elevation: 0.0,
       ),
       body: SafeArea(

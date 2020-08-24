@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
@@ -128,6 +129,18 @@ class _SignupScreenState extends State<SignupScreen>
     );
   }
 
+  _loginApple(context) async {
+    _playAnimation();
+    Provider.of<UserModel>(context, listen: false).loginApple(
+      success: (user) {
+        _onLoginSuccess(user, context);
+      },
+      fail: (message) {
+        _onLoginFailure(message, context);
+      },
+    );
+  }
+
   void _welcomeMessage(user, context) {
     if (widget.fromCart) {
       // Navigator.of(context).pop(user);
@@ -241,12 +254,14 @@ class _SignupScreenState extends State<SignupScreen>
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(6)),
-                              color: kPureWhite),
+                              color: kQuaternaryPink),
                           child: // Group 6
                               Center(
                             child: TextField(
                               cursorColor: kPinkAccent,
                               onChanged: (value) => fullName = value,
+                              style: kBaseTextStyle.copyWith(
+                                  color: kPrimaryOrange),
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: S.of(parentContext).fullName,
@@ -265,10 +280,12 @@ class _SignupScreenState extends State<SignupScreen>
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(6)),
-                              color: kPureWhite),
+                              color: kQuaternaryPink),
                           child: // Group 6
                               Center(
                             child: TextField(
+                              style: kBaseTextStyle.copyWith(
+                                  color: kPrimaryOrange),
                               controller: _emailController,
                               cursorColor: kPinkAccent,
                               onChanged: (value) => email = value,
@@ -291,10 +308,12 @@ class _SignupScreenState extends State<SignupScreen>
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(6)),
-                              color: kPureWhite),
+                              color: kQuaternaryPink),
                           child: // Group 6
                               Center(
                             child: TextField(
+                              style: kBaseTextStyle.copyWith(
+                                  color: kPrimaryOrange),
                               cursorColor: kPinkAccent,
                               onChanged: (value) => password = value,
                               obscureText: true,
@@ -314,6 +333,7 @@ class _SignupScreenState extends State<SignupScreen>
                       ),
                       SizedBox(height: 10),
                       StaggerAnimation(
+                          btnColor: kPrimaryOrange,
                           buttonTitle: S.of(context).signup,
                           buttonController: _loginButtonController.view,
                           onTap: () {
@@ -332,31 +352,43 @@ class _SignupScreenState extends State<SignupScreen>
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           MaterialButton(
-                            color: kLightPink,
-                            minWidth: screenSize.width / 2 - 24,
+                            color: kPrimaryOrange,
+                            minWidth: 48,
                             height: 48,
                             shape: RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(25.0)),
+                                borderRadius: new BorderRadius.circular(16.0)),
                             onPressed: () => _loginFacebook(context),
-                            child: Icon(
-                              FontAwesomeIcons.facebookF,
-                              color: kPinkAccent,
-                              size: 24.0,
+                            child: SvgPicture.asset(
+                              'assets/icons/facebook-social.svg',
+                              width: 24,
                             ),
                             elevation: 0.0,
                           ),
-                          SizedBox(width: 16),
+                          SizedBox(width: 35),
                           MaterialButton(
-                            color: kLightPink,
-                            minWidth: screenSize.width / 2 - 24,
+                            color: kPrimaryOrange,
+                            minWidth: 48,
                             height: 48,
                             shape: RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(25.0)),
+                                borderRadius: new BorderRadius.circular(16.0)),
                             onPressed: () => _loginGoogle(context),
-                            child: Icon(
-                              FontAwesomeIcons.google,
-                              color: Colors.red,
-                              size: 24.0,
+                            child: SvgPicture.asset(
+                              'assets/icons/google-social.svg',
+                              width: 24,
+                            ),
+                            elevation: 0.0,
+                          ),
+                          SizedBox(width: 35),
+                          MaterialButton(
+                            color: kPrimaryOrange,
+                            minWidth: 48,
+                            height: 48,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(16.0)),
+                            onPressed: () => _loginApple(context),
+                            child: SvgPicture.asset(
+                              'assets/icons/apple.svg',
+                              width: 24,
                             ),
                             elevation: 0.0,
                           ),

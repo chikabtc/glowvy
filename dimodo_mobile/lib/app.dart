@@ -5,6 +5,7 @@ import 'package:Dimodo/screens/cart.dart';
 import 'package:Dimodo/screens/category.dart';
 import 'package:Dimodo/screens/categories/sub_category.dart';
 import 'package:Dimodo/screens/checkout/orderSubmitted.dart';
+import 'package:Dimodo/screens/glowvy-onboard.dart';
 import 'package:Dimodo/screens/orders.dart';
 import 'package:Dimodo/screens/search_screen.dart';
 import 'package:Dimodo/screens/setting/add_shipping_address.dart';
@@ -43,12 +44,12 @@ import 'screens/settings.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
-class Dimodo extends StatefulWidget {
+class Glowvy extends StatefulWidget {
   @override
   _AppState createState() => _AppState();
 }
 
-class _AppState extends State<Dimodo> with SingleTickerProviderStateMixin {
+class _AppState extends State<Glowvy> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -57,28 +58,32 @@ class _AppState extends State<Dimodo> with SingleTickerProviderStateMixin {
     FirebaseAnalytics analytics = FirebaseAnalytics();
 
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      navigatorObservers: [
-        FirebaseAnalyticsObserver(analytics: analytics),
-      ],
-      home: CustomSplash(
-        backGroundColor: Colors.white,
-        animationEffect: 'fade-in',
-        home: MyApp(),
-        duration: 2000,
-      ),
-    );
+        title: "Glowvy",
+        debugShowCheckedModeBanner: false,
+        navigatorObservers: [
+          FirebaseAnalyticsObserver(analytics: analytics),
+        ],
+        home: MyApp()
+        // CustomSplash(
+        //   imagePath: "assets/icons/launch-logo.png",
+        //   backGroundColor: kLogoColor,
+        //   animationEffect: 'fade-out',
+        //   home: MyApp(),
+        //   duration: 2000,
+        //   // type: AnimatedSpl.StaticDuration,
+        // ),
+        );
   }
 }
 
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return DimodoState();
+    return GlowvyState();
   }
 }
 
-class DimodoState extends State<MyApp> with AfterLayoutMixin {
+class GlowvyState extends State<MyApp> with AfterLayoutMixin {
   final _app = AppModel();
   final _userModel = UserModel();
   final _product = ProductModel();
@@ -124,7 +129,7 @@ class DimodoState extends State<MyApp> with AfterLayoutMixin {
   }
 
   Widget renderFirstScreen() {
-    // if (isFirstSeen) return OnBoardScreen();
+    if (isFirstSeen) return GlowvyOnBoardScreen();
     if (kAdvanceConfig['IsRequiredLogin'] && !isLoggedIn) return LoginScreen();
     return MainTabs();
   }

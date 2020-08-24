@@ -21,15 +21,20 @@ User _$UserFromJson(Map<String, dynamic> json) {
     json['billing'] == null
         ? null
         : Billing.fromJson(json['billing'] as Map<String, dynamic>),
-  )..addresses = (json['addresses'] as List)
-      ?.map(
-          (e) => e == null ? null : Address.fromJson(e as Map<String, dynamic>))
-      ?.toList();
+  )
+    ..firstName = json['first_name'] as String
+    ..lastName = json['last_name'] as String
+    ..addresses = (json['addresses'] as List)
+        ?.map((e) =>
+            e == null ? null : Address.fromJson(e as Map<String, dynamic>))
+        ?.toList();
 }
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'id': instance.id,
       'logged_in': instance.loggedIn,
+      'first_name': instance.firstName,
+      'last_name': instance.lastName,
       'full_name': instance.fullName,
       'email': instance.email,
       'picture': instance.picture,

@@ -7,7 +7,7 @@ class SizeConfig {
   double heightDifferences;
   double widthDifferences;
   static double baseWidth = 375;
-  static double baseHeight = 667;
+  static double baseHeight = 812;
 
   SizeConfig(screenSize) {
     screenWidth = screenSize.width;

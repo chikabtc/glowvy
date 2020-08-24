@@ -3,9 +3,8 @@ import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/baumannTestIntro.dart';
 import 'package:Dimodo/widgets/baumann_quiz.dart';
-import 'package:Dimodo/widgets/fancyButton.dart';
-import 'package:Dimodo/widgets/popup_services.dart';
 import 'package:Dimodo/widgets/cosmetics_filter_bar.dart';
+import 'package:Dimodo/widgets/filter-by-skin.dart';
 import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -26,9 +25,7 @@ import 'package:Dimodo/services/index.dart';
 import 'dart:math' as math;
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter_mailer/flutter_mailer.dart';
-import 'package:sign_in_with_apple/sign_in_with_apple.dart';
-import 'dart:io';
-import 'package:http/http.dart' as http;
+import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
   final User user;
@@ -165,24 +162,27 @@ class HomeScreenState extends State<HomeScreen>
 
     List<Widget> renderTabbar() {
       List<Widget> list = [];
+      // for (var l; )
 
       tabList.asMap().forEach((index, item) {
-        list.add(Container(
-          padding: EdgeInsets.only(
-            left: 10,
-            right: 10,
-          ),
-          decoration: BoxDecoration(
-              // color: currentPage == index ? kDarkAccent : Colors.transparent,
-              borderRadius: BorderRadius.circular(20)),
-          alignment: Alignment.center,
-          height: 40,
-          child: Tab(
-            text: item.name,
-          ),
+        list.add(Tab(
+          text: item.name,
         ));
       });
       return list;
+    }
+
+    showSkinTest() {
+      Navigator.push(
+          context,
+          MaterialPageRoute<void>(
+            builder: (BuildContext context) => userModel.skinType == null
+                ? BaumannTestIntro()
+                : BaumannQuiz(
+                    skinType: userModel.skinType,
+                    skinScores: userModel.skinScores),
+            fullscreenDialog: true,
+          ));
     }
 
     return Scaffold(
@@ -191,6 +191,7 @@ class HomeScreenState extends State<HomeScreen>
         if (userModel.skinType != null) {
           //set the filter for the matching skin type
           print("USERMODEL SKIN ${userModel.skinType}");
+          print("USERMODEL SKINSCORES ${userModel.skinScores?.dsScore}");
         }
         return SafeArea(
           top: true,
@@ -222,77 +223,64 @@ class HomeScreenState extends State<HomeScreen>
                       ),
                     ],
                     bottom: PreferredSize(
-                      preferredSize: Size.fromHeight(
-                          userModel.skinType != null ? 243 : 175),
-                      child: GestureDetector(
-                        onTap: () {
-                          //show
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute<void>(
-                                builder: (BuildContext context) =>
-                                    BaumannTestIntro(),
-                                fullscreenDialog: true,
-                              ));
-                          // PopupServices.showBaummanQuiz(context);
-                        },
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            Container(
-                              height: 80,
-                              width: screenSize.width,
-                              color: kPrimaryGreen,
-                              padding: EdgeInsets.only(
-                                top: 13,
-                                // bottom: 8,
-                                left: 25,
-                                right: 17,
-                              ),
-                              child: Center(
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Flexible(
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text(
-                                            "My skin care guide, inspired by Korean beauty",
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                height: 1.3,
-                                                fontFamily: 'Nunito',
-                                                color: Colors.white,
-                                                fontStyle: FontStyle.italic,
-                                                fontWeight: FontWeight.w900),
-                                          ),
-                                          Text(
-                                            "About Glowvy ——",
-                                            textAlign: TextAlign.start,
-                                            style: kBaseTextStyle.copyWith(
-                                                fontSize: 12,
-                                                height: 1.3,
-                                                fontFamily: "Nunito",
-                                                color: Color(0xFF6AC4A9),
-                                                fontStyle: FontStyle.normal,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
-                                      ),
+                      preferredSize: Size.fromHeight(170),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: <Widget>[
+                          Container(
+                            height: 80,
+                            width: screenSize.width,
+                            color: kPrimaryGreen,
+                            padding: EdgeInsets.only(
+                              top: 13,
+                              left: 25,
+                              right: 17,
+                            ),
+                            child: Center(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  Flexible(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Text(
+                                          "My skin care guide, inspired by Korean beauty",
+                                          textAlign: TextAlign.start,
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              height: 1.3,
+                                              fontFamily: 'Nunito',
+                                              color: Colors.white,
+                                              fontStyle: FontStyle.italic,
+                                              fontWeight: FontWeight.w900),
+                                        ),
+                                        Text(
+                                          "About Glowvy ——",
+                                          textAlign: TextAlign.start,
+                                          style: kBaseTextStyle.copyWith(
+                                              fontSize: 12,
+                                              height: 1.3,
+                                              fontFamily: "Nunito",
+                                              color: Color(0xFF6AC4A9),
+                                              fontStyle: FontStyle.normal,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
                                     ),
-                                    SvgPicture.asset(
-                                        "assets/icons/Package.svg"),
-                                  ],
-                                ),
+                                  ),
+                                  SvgPicture.asset("assets/icons/Package.svg"),
+                                ],
                               ),
                             ),
-                            Row(
-                              children: <Widget>[
-                                Container(
+                          ),
+                          Row(
+                            children: <Widget>[
+                              GestureDetector(
+                                onTap: () => showSkinTest(),
+                                child: Container(
                                   height: 70,
                                   width: screenSize.width / 2,
                                   color: kLightYellow,
@@ -333,12 +321,15 @@ class HomeScreenState extends State<HomeScreen>
                                                   color: kDarkYellow),
                                             ),
                                             child: Text(
-                                              "Click Here",
+                                              userModel.skinType != null
+                                                  ? userModel.skinType
+                                                  : "????",
                                               textAlign: TextAlign.start,
                                               style: kBaseTextStyle.copyWith(
                                                   fontSize: 12,
                                                   fontFamily: "Nunito",
                                                   color: kDarkYellow,
+                                                  letterSpacing: 2.0,
                                                   fontStyle: FontStyle.normal,
                                                   fontWeight: FontWeight.bold),
                                             ),
@@ -351,319 +342,219 @@ class HomeScreenState extends State<HomeScreen>
                                     ],
                                   ),
                                 ),
-                                GestureDetector(
-                                  onTap: () async => {
-                                    await FlutterMailer.send(MailOptions(
-                                      body: '',
-                                      subject:
-                                          'Làm thế nào chúng tôi có thể cải thiện ứng dụng cho bạn?',
-                                      recipients: ['hbpfreeman@gmail.com'],
-                                    ))
-                                  },
-                                  child: Container(
-                                    height: 70,
-                                    width: screenSize.width / 2,
-                                    color: kPrimaryBlue.withOpacity(0.3),
-                                    padding: EdgeInsets.only(
-                                      top: 13,
-                                      bottom: 12,
-                                      left: 16,
-                                      right: 17,
-                                    ),
-                                    child: Center(
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: <Widget>[
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              Text(
-                                                S.of(context).feedback,
+                              ),
+                              GestureDetector(
+                                onTap: () async => {
+                                  await FlutterMailer.send(MailOptions(
+                                    body: '',
+                                    subject:
+                                        'Làm thế nào chúng tôi có thể cải thiện ứng dụng cho bạn?',
+                                    recipients: ['hbpfreeman@gmail.com'],
+                                  ))
+                                },
+                                child: Container(
+                                  height: 70,
+                                  width: screenSize.width / 2,
+                                  color: kPrimaryBlue.withOpacity(0.3),
+                                  padding: EdgeInsets.only(
+                                    top: 13,
+                                    bottom: 12,
+                                    left: 16,
+                                    right: 17,
+                                  ),
+                                  child: Center(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: <Widget>[
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Text(
+                                              S.of(context).feedback,
+                                              textAlign: TextAlign.start,
+                                              style: kBaseTextStyle.copyWith(
+                                                  fontSize: 16,
+                                                  height: 1.3,
+                                                  fontFamily: "Nunito",
+                                                  color: kPrimaryBlue,
+                                                  fontStyle: FontStyle.italic,
+                                                  fontWeight: FontWeight.w900),
+                                            ),
+                                            Container(
+                                              padding:
+                                                  const EdgeInsets.all(3.0),
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(8)),
+                                                border: Border.all(
+                                                    color: kPrimaryBlue),
+                                              ),
+                                              child: Text(
+                                                "Improve App",
                                                 textAlign: TextAlign.start,
                                                 style: kBaseTextStyle.copyWith(
-                                                    fontSize: 16,
-                                                    height: 1.3,
+                                                    fontSize: 12,
                                                     fontFamily: "Nunito",
                                                     color: kPrimaryBlue,
-                                                    fontStyle: FontStyle.italic,
+                                                    fontStyle: FontStyle.normal,
                                                     fontWeight:
-                                                        FontWeight.w900),
+                                                        FontWeight.bold),
                                               ),
-                                              Container(
-                                                padding:
-                                                    const EdgeInsets.all(3.0),
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                          Radius.circular(8)),
-                                                  border: Border.all(
-                                                      color: kPrimaryBlue),
-                                                ),
-                                                child: Text(
-                                                  "Improve App",
-                                                  textAlign: TextAlign.start,
-                                                  style:
-                                                      kBaseTextStyle.copyWith(
-                                                          fontSize: 12,
-                                                          fontFamily: "Nunito",
-                                                          color: kPrimaryBlue,
-                                                          fontStyle:
-                                                              FontStyle.normal,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                ),
-                                              )
-                                            ],
-                                          ),
-                                          Spacer(),
-                                          SvgPicture.asset(
-                                              "assets/icons/feedback.svg"),
-                                        ],
-                                      ),
+                                            )
+                                          ],
+                                        ),
+                                        Spacer(),
+                                        SvgPicture.asset(
+                                            "assets/icons/feedback.svg"),
+                                      ],
                                     ),
                                   ),
                                 ),
-                              ],
-                            ),
-                            Container(height: 20, color: kDefaultBackground),
-                            // userModel.skinType != null
-                            //     ? GestureDetector(
-                            //         onTap: () => Navigator.push(
-                            //             context,
-                            //             MaterialPageRoute<void>(
-                            //               builder: (BuildContext context) =>
-                            //                   BaumannQuiz(
-                            //                       skinType: userModel.skinType),
-                            //               fullscreenDialog: true,
-                            //             )),
-                            //         child: Container(
-                            //           // color: kDefaultBackground,
-                            //           height: 68,
-                            //           padding:
-                            //               EdgeInsets.symmetric(horizontal: 16),
-                            //           child: Row(
-                            //             mainAxisAlignment:
-                            //                 MainAxisAlignment.spaceAround,
-                            //             children: <Widget>[
-                            //               Column(
-                            //                 mainAxisAlignment:
-                            //                     MainAxisAlignment.center,
-                            //                 crossAxisAlignment:
-                            //                     CrossAxisAlignment.start,
-                            //                 children: <Widget>[
-                            //                   //here update the title
-                            //                   Text(
-                            //                     S.of(context).yourSkinTypeIs,
-                            //                     style: kBaseTextStyle.copyWith(
-                            //                         fontSize: 14,
-                            //                         color: Colors.black,
-                            //                         fontWeight:
-                            //                             FontWeight.w600),
-                            //                   ),
-                            //                   Row(
-                            //                     mainAxisAlignment:
-                            //                         MainAxisAlignment
-                            //                             .spaceAround,
-                            //                     children: <Widget>[
-                            //                       for (var i = 0;
-                            //                           i <
-                            //                               userModel
-                            //                                   .skinType.length;
-                            //                           i++)
-                            //                         Text(
-                            //                           "#" +
-                            //                               userModel.getFullSkinType(
-                            //                                   context,
-                            //                                   userModel
-                            //                                           .skinType[
-                            //                                       i]) +
-                            //                               " ",
-                            //                           style: kBaseTextStyle
-                            //                               .copyWith(
-                            //                                   fontSize: 14,
-                            //                                   color:
-                            //                                       kDarkSecondary,
-                            //                                   fontWeight:
-                            //                                       FontWeight
-                            //                                           .w600),
-                            //                         ),
-                            //                     ],
-                            //                   ),
-                            //                 ],
-                            //               ),
-                            //               Spacer(),
-                            //               CommonIcons.arrowForward,
-                            //             ],
-                            //           ),
-                            //         ),
-                            //       )
-                            //     : Container(),
-                            // Container(
-                            //   height: 10,
-                            //   color: kDefaultBackground,
-                            // )
-                          ],
-                        ),
+                              ),
+                            ],
+                          ),
+                          Container(height: 20, color: kDefaultBackground),
+                        ],
                       ),
                     ),
                   ),
                   SliverPersistentHeader(
                     pinned: true,
                     delegate: _SliverAppBarDelegate(
-                      minHeight: 116.0,
-                      maxHeight: 116.0,
+                      minHeight: 138,
+                      maxHeight: 138,
                       child: Column(
                         children: <Widget>[
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Container(
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(20),
-                                            topRight: Radius.circular(20))),
-                                    padding: EdgeInsets.only(
-                                      left: 16,
-                                      top: 10,
-                                      right: 16,
-                                    ),
-                                    child: Container(
-                                      width: screenSize.width /
-                                          (2 /
-                                              (screenSize.height /
-                                                  screenSize.width)),
-                                      child: TabBar(
-                                          controller: _tabController,
-                                          indicatorSize:
-                                              TabBarIndicatorSize.tab,
-                                          labelPadding: EdgeInsets.only(
-                                              left: 0.0,
-                                              right: 0.0,
-                                              top: 0,
-                                              bottom: 0),
-                                          isScrollable: true,
-                                          indicatorColor: kDarkAccent,
-                                          unselectedLabelColor: kDarkSecondary,
-                                          unselectedLabelStyle:
-                                              kBaseTextStyle.copyWith(
-                                                  color: kDarkSecondary,
-                                                  fontSize: 15,
-                                                  fontFamily: "Nunito",
-                                                  fontWeight: FontWeight.bold),
-                                          labelStyle: kBaseTextStyle.copyWith(
-                                              color: Colors.white,
-                                              fontSize: 15,
-                                              fontFamily: "Nunito",
-                                              fontWeight: FontWeight.bold),
-                                          labelColor: kDarkAccent,
-                                          tabs: renderTabbar(),
-                                          onTap: (index) {
-                                            print(
-                                                "indeX!? " + index.toString());
-                                            currentCateId = tabList[index].id;
-//
-                                            setState(() {
-                                              showFiltered = false;
-                                            });
-                                          }),
-                                    )),
-                              ),
-                            ],
-                          ),
-                          Container(
-                            color: Colors.white,
-                            child: Column(
-                              children: <Widget>[
-                                SizedBox(height: 16.5),
-                                Container(
+                          Expanded(
+                            child: Container(
+                              decoration: BoxDecoration(
                                   color: Colors.white,
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 16.0),
-                                    child: MaterialButton(
-                                      splashColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      enableFeedback: false,
-                                      elevation: 0,
-                                      child: Container(
-                                        width: screenSize.width - 32,
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            SvgPicture.asset(
-                                                "assets/icons/funnel.svg"),
-                                            Text(
-                                              "Only Check Products that Fit My Skin",
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                color: kAccentRed,
-                                                fontSize: 16,
-                                                fontStyle: FontStyle.italic,
-                                                fontWeight: FontWeight.w800,
-                                                fontFamily: 'Nunito',
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      topRight: Radius.circular(20))),
+                              padding:
+                                  EdgeInsets.only(left: 16, right: 16, top: 5),
+                              child: TabBar(
+                                  controller: _tabController,
+                                  indicator: new BubbleTabIndicator(
+                                    indicatorHeight: 39.0,
+                                    indicatorColor: kDarkAccent,
+                                    tabBarIndicatorSize:
+                                        TabBarIndicatorSize.tab,
+                                  ),
+                                  indicatorSize: TabBarIndicatorSize.tab,
+                                  labelPadding: EdgeInsets.only(
+                                    left: 18.0,
+                                    right: 18.0,
+                                    top: 5,
+                                  ),
+                                  isScrollable: true,
+                                  indicatorColor: Colors.white,
+                                  unselectedLabelColor: kDarkSecondary,
+                                  unselectedLabelStyle: kBaseTextStyle.copyWith(
+                                      color: kDarkSecondary,
+                                      fontSize: 15,
+                                      fontFamily: "Nunito",
+                                      fontWeight: FontWeight.bold),
+                                  labelStyle: kBaseTextStyle.copyWith(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontFamily: "Nunito",
+                                      fontWeight: FontWeight.bold),
+                                  labelColor: Colors.white,
+                                  tabs: renderTabbar(),
+                                  onTap: (index) {
+                                    print("indeX!? " + index.toString());
+                                    currentCateId = tabList[index].id;
+                                    setState(() {
+                                      showFiltered = false;
+                                    });
+                                  }),
+                            ),
+                          ),
+                          userModel.skinType == null
+                              ? Container(
+                                  height: 78,
+                                  width: screenSize.width,
+                                  color: Colors.white,
+                                  child: Column(
+                                    children: <Widget>[
+                                      SizedBox(height: 10),
+                                      GestureDetector(
+                                        onTap: () => showSkinTest(),
+                                        child: Container(
+                                          height: 48,
+                                          width: screenSize.width - 32,
+                                          decoration: BoxDecoration(
+                                            color: Color(0xFFCFEEBEC),
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(24)),
+                                          ),
+                                          alignment: Alignment.center,
+                                          child: Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              SvgPicture.asset(
+                                                  "assets/icons/funnel.svg"),
+                                              Text(
+                                                "Only Check Products that Fit My Skin",
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                  color: kAccentRed,
+                                                  fontSize: 16,
+                                                  fontStyle: FontStyle.italic,
+                                                  fontWeight: FontWeight.w800,
+                                                  fontFamily: 'Nunito',
+                                                ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                      height: 48,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            new BorderRadius.circular(24),
-                                      ),
-                                      // size: 25,
-                                      color: Color(0xFFCFEEBEC),
-                                      onPressed: () {
-                                        print("yo");
-                                        // Navigator.of(context).pop();
-                                      },
-                                    ),
+                                      SizedBox(height: 15),
+                                    ],
+                                  ),
+                                )
+                              : Container(
+                                  height: 78,
+                                  child: FilterBySkin(
+                                    skinTypeId: skinTypeId,
+                                    products: allProducts.length != 0
+                                        ? allProducts[currentCateId]
+                                        : [],
+                                    onFilterConfirm: (filteredProducts, sorting,
+                                        skinTypeId) {
+                                      setState(() {
+                                        showFiltered = true;
+                                        this.sorting = sorting;
+                                        showRank =
+                                            sorting == "rank" ? true : false;
+                                        this.skinTypeId = skinTypeId;
+                                        isFiltering = true;
+                                        this.filteredResults = filteredProducts;
+                                        Future.delayed(
+                                            const Duration(milliseconds: 500),
+                                            () {
+                                          setState(() {
+                                            isFiltering = false;
+                                          });
+                                        });
+                                      });
+                                    },
+                                    onReset: (filteredProducts) {
+                                      setState(() {
+                                        showFiltered = true;
+                                      });
+                                    },
                                   ),
                                 ),
-                              ],
-                            ),
-                          )
-
-                          // MaterialButton()
-                          // CosmeticsFilterBar(
-                          //   skinTypeId: skinTypeId,
-                          //   products: allProducts.length != 0
-                          //       ? allProducts[currentCateId]
-                          //       : [],
-                          //   onFilterConfirm:
-                          //       (filteredProducts, sorting, skinTypeId) {
-                          //     setState(() {
-                          //       showFiltered = true;
-                          //       this.sorting = sorting;
-                          //       showRank = sorting == "rank" ? true : false;
-                          //       this.skinTypeId = skinTypeId;
-                          //       isFiltering = true;
-                          //       this.filteredResults = filteredProducts;
-                          //       Future.delayed(
-                          //           const Duration(milliseconds: 500), () {
-                          //         setState(() {
-                          //           isFiltering = false;
-                          //         });
-                          //       });
-                          //     });
-                          //   },
-                          //   onReset: (filteredProducts) {
-                          //     setState(() {
-                          //       showFiltered = true;
-                          //     });
-                          //   },
-                          // ),
-                          // Container(
-                          //   height: 10,
-                          //   color: Colors.white,
-                          // )
                         ],
                       ),
                     ),
@@ -686,15 +577,14 @@ class HomeScreenState extends State<HomeScreen>
                                   Container(
                                     color: Colors.white,
                                     child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          bottom: 4, left: 14),
+                                      padding: const EdgeInsets.only(left: 14),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
                                           Container(
                                               child: isGenerating
-                                                  ? DynamicText(
+                                                  ? Text(
                                                       "Updating the product ranks in Korea...",
                                                       overflow:
                                                           TextOverflow.ellipsis,
@@ -716,7 +606,7 @@ class HomeScreenState extends State<HomeScreen>
                                           ? Container(
                                               height: kScreenSizeHeight * 0.5,
                                               child: SpinKitThreeBounce(
-                                                  color: kAccentGreen,
+                                                  color: kPrimaryOrange,
                                                   size: 21.0),
                                             )
                                           : CosmeticsProductList(
