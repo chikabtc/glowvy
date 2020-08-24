@@ -487,6 +487,7 @@ func (us *userService) HanleAfterLoginApple(email, code, fullName string) (*User
 	if !check {
 		user.Apple_logged = true
 		user.Apple_id = code
+		// user.Email = email
 		user.Full_name = fullName
 		user.User_name = us.HandleUserName(user.Full_name, user.User_name)
 		user.Full_name = utils.CombineSpace(user.Full_name)

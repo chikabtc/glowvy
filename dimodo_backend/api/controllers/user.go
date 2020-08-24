@@ -435,7 +435,7 @@ func (u *User) HandleAppleLogin(w http.ResponseWriter, r *http.Request) {
 	Token := make(map[string]interface{})
 	Token["AccessToken"], _ = jwt.Generate(user)
 	Token["RefreshToken"], _ = jwt.RefreshToken()
-	Token["Accoun	t"] = user
+	Token["Account"] = user
 	respond, _ := json.Marshal(Token)
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(respond)
