@@ -124,7 +124,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
             child: Row(
               children: <Widget>[
                 Text(
-                  "Skin Type",
+                  "Loại Da",
                   style: kBaseTextStyle.copyWith(
                       fontSize: 14, fontWeight: FontWeight.bold),
                 ),

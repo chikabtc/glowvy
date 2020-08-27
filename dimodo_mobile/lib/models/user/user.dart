@@ -19,8 +19,16 @@ class User {
   List<Address> addresses = [];
 
   Billing billing;
-  User(this.id, this.loggedIn, this.fullName, this.email, this.picture,
-      this.skinType, this.accessToken, this.defaultAddress, this.billing);
+  User(
+      {this.id,
+      this.loggedIn,
+      this.fullName,
+      this.email,
+      this.picture,
+      this.skinType,
+      this.accessToken,
+      this.defaultAddress,
+      this.billing});
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
   Map<String, dynamic> toJson() => _$UserToJson(this);

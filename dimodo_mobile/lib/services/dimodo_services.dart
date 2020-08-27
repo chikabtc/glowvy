@@ -24,7 +24,7 @@ class DimodoServices implements BaseServices {
   static final DimodoServices _instance = DimodoServices._internal();
   factory DimodoServices() => _instance;
 
-  bool isProd = false;
+  bool isProd = true;
 
   DimodoServices._internal();
 
@@ -35,14 +35,14 @@ class DimodoServices implements BaseServices {
 
   String isSecure;
   // String baseUrl = "http://172.16.0.184:80";
-  String baseUrl = "http://freemanMac.local:80";
+  String baseUrl = "http://dimodo.app";
 
   void appConfig(appConfig) {
     // // accessToken =
     if (!isProd) {
       baseUrl = Platform.isAndroid
           ? 'http://freemanMac.local:80'
-          : 'http://freemanMac.local:80';
+          : 'http://10.0.2.2:80';
     }
   }
 

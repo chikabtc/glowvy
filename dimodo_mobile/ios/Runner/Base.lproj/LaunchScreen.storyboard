@@ -24,7 +24,7 @@
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.48627450979999998" green="0.8980392157" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.48627450980392156" green="0.8980392156862745" blue="0.7764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="HtU-Qf-SrZ" firstAttribute="centerX" secondItem="Sgp-QG-l41" secondAttribute="centerX" id="2Hl-8d-h8J"/>
                             <constraint firstItem="HtU-Qf-SrZ" firstAttribute="centerY" secondItem="Sgp-QG-l41" secondAttribute="centerY" id="Kfx-MS-hcp"/>
@@ -37,6 +37,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchImage" width="110.5" height="48"/>
+        <image name="LaunchImage" width="331" height="144"/>
     </resources>
 </document>

@@ -74,49 +74,46 @@ class CosmeticsProductCard extends StatelessWidget {
         elevation: 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.0)),
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Stack(overflow: Overflow.clip, children: <Widget>[
-              ClipRRect(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(6), topRight: Radius.circular(6)),
-                child: Stack(children: <Widget>[
-                  FittedBox(
-                    fit: BoxFit.cover,
-                    child: Tools.image(
-                      url: product.thumbnail,
-                      fit: BoxFit.cover,
-                      width: 92,
-                      height: 92,
-                      size: kSize.large,
+              ranking < 3
+                  ? SvgPicture.asset("assets/icons/red-flower.svg")
+                  : SvgPicture.asset("assets/icons/yellow-flower.svg"),
+              Positioned(
+                  top: 1,
+                  left: 0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                        // color: Color(0xFFCFEEBEC),
+                        borderRadius: BorderRadius.only(
+                            bottomRight: Radius.circular(28),
+                            bottomLeft: Radius.circular(28))),
+                    width: 22,
+                    height: 20,
+                    padding: EdgeInsets.all(3),
+                    child: Text(
+                      (ranking + 1).toString(),
+                      textAlign: TextAlign.center,
+                      style: kBaseTextStyle.copyWith(
+                        height: 1,
+                        fontSize: 9,
+                        color: ranking < 3 ? Colors.white : kDarkYellow,
+                        fontWeight: FontWeight.w800,
+                      ),
                     ),
-                  ),
-                  if (ranking != null)
-                    Positioned(
-                        top: 0,
-                        left: 7,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Color(0xFFCFEEBEC),
-                              borderRadius: BorderRadius.only(
-                                  bottomRight: Radius.circular(28),
-                                  bottomLeft: Radius.circular(28))),
-                          width: 22,
-                          height: 20,
-                          padding: EdgeInsets.all(3),
-                          child: Text(
-                            (ranking + 1).toString(),
-                            textAlign: TextAlign.center,
-                            style: kBaseTextStyle.copyWith(
-                              height: 1,
-                              fontSize: 11,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        )),
-                ]),
-              ),
+                  )),
             ]),
+            FittedBox(
+              fit: BoxFit.cover,
+              child: Tools.image(
+                url: product.thumbnail,
+                fit: BoxFit.cover,
+                width: 92,
+                height: 92,
+                size: kSize.large,
+              ),
+            ),
             // // item name
             SizedBox(width: 7),
             Flexible(

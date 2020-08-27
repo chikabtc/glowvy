@@ -73,7 +73,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
                               Text(
-                                "Get Know My Skin Type",
+                                "Know My Skin Type",
                                 style: kBaseTextStyle.copyWith(
                                     fontSize: 24,
                                     fontWeight: FontWeight.w900,
@@ -164,8 +164,8 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                             cursorColor: kPinkAccent,
                                             onChanged: (value) =>
                                                 firstName = value,
-                                            style: TextStyle(
-                                                color: kPrimaryOrange),
+                                            style:
+                                                TextStyle(color: kDarkAccent),
                                             decoration: InputDecoration(
                                               border: InputBorder.none,
                                               hintText: S.of(context).firstName,
@@ -173,7 +173,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                                   kBaseTextStyle.copyWith(
                                                       fontWeight:
                                                           FontWeight.w600,
-                                                      color: kDarkAccent),
+                                                      color: kPrimaryOrange),
                                               contentPadding:
                                                   EdgeInsets.only(left: 20),
                                             ),
@@ -191,8 +191,8 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                             Center(
                                           child: TextField(
                                             controller: _lastNameController,
-                                            style: TextStyle(
-                                                color: kPrimaryOrange),
+                                            style:
+                                                TextStyle(color: kDarkAccent),
                                             cursorColor: kPinkAccent,
                                             onChanged: (value) =>
                                                 lastName = value,
@@ -203,7 +203,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                                   kBaseTextStyle.copyWith(
                                                       fontWeight:
                                                           FontWeight.w600,
-                                                      color: kDarkAccent),
+                                                      color: kPrimaryOrange),
                                               contentPadding:
                                                   EdgeInsets.only(left: 20),
                                             ),

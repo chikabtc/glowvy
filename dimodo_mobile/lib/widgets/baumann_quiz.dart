@@ -6,8 +6,6 @@ import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/skin-score.dart';
 import 'package:Dimodo/widgets/survey_card.dart';
 import 'package:Dimodo/widgets/tip-card.dart';
-import 'package:Dimodo/widgets/tips-card.dart';
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,7 +14,6 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import '../generated/i18n.dart';
 
 import 'package:Dimodo/common/styles.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:provider/provider.dart';
 
 class BaumannQuiz extends StatefulWidget {
@@ -150,7 +147,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
           title: Text(
               !surveyFinished
                   ? S.of(context).baumannSkinTypeTest
-                  : "My Skin Type",
+                  : "Loại Da Của Tôi",
               style: kBaseTextStyle.copyWith(
                   color: kDarkYellow,
                   fontSize: 17,
@@ -396,7 +393,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                     padding: const EdgeInsets.only(
                                         top: 25.0, left: 38, right: 38),
                                     child: Text(
-                                      "Professional skin management\nspecialist, Min says:",
+                                      "Chuyên viên quản lý da chuyên nghiệp",
                                       textAlign: TextAlign.start,
                                       maxLines: showFullExplanation ? 30 : 3,
                                       style: kBaseTextStyle.copyWith(
@@ -442,7 +439,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                               ),
                                               !showFullExplanation
                                                   ? Text(
-                                                      "... More",
+                                                      "... Nhiều hơn",
                                                       textAlign:
                                                           TextAlign.start,
                                                       style: kBaseTextStyle
@@ -464,7 +461,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                               ),
                               Container(height: 40),
                               Text(
-                                "- Exclusive Skin Tips -",
+                                "- Tips chăm sóc da độc quyền -",
                                 textAlign: TextAlign.center,
                                 style: kBaseTextStyle.copyWith(
                                   fontSize: 15,
@@ -486,15 +483,15 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                           sensitiveAvoid.length,
                                       itemBuilder:
                                           (BuildContext context, int i) {
-                                        if (i > sensitiveTips.length) {
+                                        if (i > sensitiveTips.length - 1) {
                                           return TipCard(
                                               sensitiveAvoid[
-                                                  i - sensitiveTips.length - 1],
-                                              i - sensitiveTips.length - 1,
+                                                  i - sensitiveTips.length],
+                                              i - sensitiveTips.length + 1,
                                               false);
                                         }
                                         return TipCard(
-                                            sensitiveTips[0], i, true);
+                                            sensitiveTips[i], i + 1, true);
                                       })),
                               SizedBox(height: 50),
                               GestureDetector(
@@ -518,13 +515,14 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                     children: <TextSpan>[
                                       TextSpan(
                                           text:
-                                              'Unsatisfied with the result?  Retake '),
+                                              'Bạn không hài lòng với kết quả? \nHãy '),
                                       TextSpan(
-                                          text: 'click here',
+                                          text: 'bấm vào đây ',
                                           style: kBaseTextStyle.copyWith(
                                               fontWeight: FontWeight.bold,
                                               color: kDarkSecondary,
                                               fontSize: 14)),
+                                      TextSpan(text: ' để thử lại'),
                                     ],
                                   ),
                                 ),
@@ -538,7 +536,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                     SvgPicture.asset(
                                         "assets/icons/glowvy-activity.svg"),
                                     SizedBox(height: 14),
-                                    Text("Brand Story with Hongbeom Park",
+                                    Text("Câu chuyện của ",
                                         style: kBaseTextStyle.copyWith(
                                             fontSize: 16,
                                             fontStyle: FontStyle.italic,
@@ -551,7 +549,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                           top: 14,
                                           bottom: 14),
                                       child: Text(
-                                          "Glowvy is newly born by Young Koreans to help Hongboem find the suitable cosmetics for their skin type and issues. With the goal of making Hongboem skin glow, Glowvy trys their best to provides personalized cosmetics recommendations, the skin type analysis, skin care tips based on skin type.\n\nDid you experience buying the cosmetics that ruin the skin before? Chat about it with Glowvy~ ",
+                                          "Glowvy là đứa con tinh thần của một nhóm các bạn trẻ người Hàn Quốc nhằm giúp tìm ra loại mỹ phẩm phù hợp với loại da và các vấn đề về da của bạn. Với mục tiêu biến làn da trở nên căng bóng và tỏa sáng, Glowvy luôn nỗ lực để cung cấp những lời khuyên về mĩ phẩm, phân tích loại da và tips chăm sóc da phù hợp với riêng mỗi người. Bạn đã bao giờ trải qua việc mua phải và sử dụng những mĩ phẩm làm hỏng da của bạn chưa? Hãy kể cho Glowvy biết về điều đó~~",
                                           style: kBaseTextStyle.copyWith(
                                               fontSize: 15,
                                               fontStyle: FontStyle.italic,
@@ -621,7 +619,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                                 });
                                               }
                                             })),
-                                    Text("Glowvy x Make My Skin Glow",
+                                    Text("Glowvy x Căng bóng làn da",
                                         style: kBaseTextStyle.copyWith(
                                             fontSize: 14,
                                             fontStyle: FontStyle.italic,

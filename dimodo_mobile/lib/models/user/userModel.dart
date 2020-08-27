@@ -38,6 +38,11 @@ class UserModel with ChangeNotifier {
     if (this.user != null) {
       this.user.firstName = firstName;
       this.user.lastName = lastName;
+    } else {
+      this.user = User();
+      user.firstName = firstName;
+      user.lastName = lastName;
+      print("fail to set name");
     }
   }
 
@@ -188,7 +193,7 @@ class UserModel with ChangeNotifier {
       // save the user Info as local storage
       final ready = await storage.ready;
       if (ready) {
-        await storage.setItem(kLocalKey["userInfo"], user);
+        await storage.setItem(kLocalKey["userInfo"], user.toJson());
       }
     } catch (err) {
       print(err);

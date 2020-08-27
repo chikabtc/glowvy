@@ -33,7 +33,7 @@ class TipCard extends StatelessWidget {
         left: 14,
         top: 14,
         child: Text(
-          "Tip ${index + 1}",
+          "Tip ${index}",
           style: kBaseTextStyle.copyWith(
               fontSize: 15,
               color: isYes ? kSafetyGreen : kPrimaryOrange,

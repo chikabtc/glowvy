@@ -210,18 +210,18 @@ class HomeScreenState extends State<HomeScreen>
                     pinned: false,
                     backgroundColor: Colors.white,
                     title: SvgPicture.asset("assets/icons/logo.svg"),
-                    actions: <Widget>[
-                      IconButton(
-                        icon: Image.asset(
-                          "assets/icons/search/search.png",
-                          fit: BoxFit.cover,
-                          height: 24,
-                        ),
-                        onPressed: () async {
-                          Navigator.pushNamed(context, "/login");
-                        },
-                      ),
-                    ],
+                    // actions: <Widget>[
+                    //   IconButton(
+                    //     icon: Image.asset(
+                    //       "assets/icons/search/search.png",
+                    //       fit: BoxFit.cover,
+                    //       height: 24,
+                    //     ),
+                    //     onPressed: () async {
+                    //       Navigator.pushNamed(context, "/login");
+                    //     },
+                    //   ),
+                    // ],
                     bottom: PreferredSize(
                       preferredSize: Size.fromHeight(170),
                       child: Column(
@@ -247,7 +247,7 @@ class HomeScreenState extends State<HomeScreen>
                                           CrossAxisAlignment.start,
                                       children: <Widget>[
                                         Text(
-                                          "My skin care guide, inspired by Korean beauty",
+                                          "Ra đời nhằm đào sâu hơn vào chủ đề chăm sóc da",
                                           textAlign: TextAlign.start,
                                           style: TextStyle(
                                               fontSize: 16,
@@ -258,7 +258,7 @@ class HomeScreenState extends State<HomeScreen>
                                               fontWeight: FontWeight.w900),
                                         ),
                                         Text(
-                                          "About Glowvy ——",
+                                          "Về Glowvy",
                                           textAlign: TextAlign.start,
                                           style: kBaseTextStyle.copyWith(
                                               fontSize: 12,
@@ -394,7 +394,7 @@ class HomeScreenState extends State<HomeScreen>
                                                     color: kPrimaryBlue),
                                               ),
                                               child: Text(
-                                                "Improve App",
+                                                "Cải thiện ứng dụng",
                                                 textAlign: TextAlign.start,
                                                 style: kBaseTextStyle.copyWith(
                                                     fontSize: 12,

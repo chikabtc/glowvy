@@ -164,6 +164,7 @@ class S implements WidgetsLocalizations {
 
   String get accountHolder => "Account holder";
   String get whatIsMySkinType => "What is my skin type?";
+  String get mySkinCareGuide => "My skin care guide, inspired by Korean beauty";
   String get ewgSafeLevel => "EWG safety level";
   String get discoverTheBestProducts => "về loại da của bạn cùng chúng tôi!";
   String get whyLowerThanMarketPriceQuestion =>

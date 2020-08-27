@@ -67,7 +67,7 @@ class _AppState extends State<Glowvy> with SingleTickerProviderStateMixin {
         // CustomSplash(
         //   imagePath: "assets/icons/launch-logo.png",
         //   backGroundColor: kLogoColor,
-        //   animationEffect: 'fade-out',
+        //   animationEffect: 'fade-out ',
         //   home: MyApp(),
         //   duration: 2000,
         //   // type: AnimatedSpl.StaticDuration,
@@ -129,7 +129,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
   }
 
   Widget renderFirstScreen() {
-    if (isFirstSeen) return GlowvyOnBoardScreen();
+    if (!isFirstSeen) return GlowvyOnBoardScreen();
     if (kAdvanceConfig['IsRequiredLogin'] && !isLoggedIn) return LoginScreen();
     return MainTabs();
   }

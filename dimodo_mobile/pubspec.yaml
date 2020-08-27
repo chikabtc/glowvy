@@ -11,7 +11,7 @@ description: Mobile commerce app by Flutter
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.1.6+42
+version: 1.1.6+45
 
 environment:
   sdk: ">=2.2.2 <3.0.0"
@@ -72,6 +72,7 @@ dependencies:
   uni_links: 0.2.0
 dev_dependencies:
   flutter_launcher_icons: 0.7.4
+  flutter_native_splash: ^0.1.9
   json_serializable: ^3.2.5
   build_runner: ^1.0.0
   flutter_test:
@@ -82,6 +83,10 @@ flutter_icons:
   android: "launcher_icon"
   ios: true
   image_path: "assets/icons/appIcon.png"
+
+flutter_native_splash:
+  image: assets/icons/3.0x/launch-logo.png
+  color: "7CE5C6"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec

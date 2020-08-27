@@ -8,17 +8,17 @@ part of 'user.dart';
 
 User _$UserFromJson(Map<String, dynamic> json) {
   return User(
-    json['id'] as int,
-    json['logged_in'] as bool,
-    json['full_name'] as String,
-    json['email'] as String,
-    json['picture'] as String,
-    json['skin_type'] as String,
-    json['access_token'] as String,
-    json['default_address'] == null
+    id: json['id'] as int,
+    loggedIn: json['logged_in'] as bool,
+    fullName: json['full_name'] as String,
+    email: json['email'] as String,
+    picture: json['picture'] as String,
+    skinType: json['skin_type'] as String,
+    accessToken: json['access_token'] as String,
+    defaultAddress: json['default_address'] == null
         ? null
         : Address.fromJson(json['default_address'] as Map<String, dynamic>),
-    json['billing'] == null
+    billing: json['billing'] == null
         ? null
         : Billing.fromJson(json['billing'] as Map<String, dynamic>),
   )

@@ -43,31 +43,40 @@ class _GlowvyOnBoardScreenState extends State<GlowvyOnBoardScreen> {
               children: <Widget>[
                 SvgPicture.asset("assets/icons/onborading-illustration-1.svg"),
                 SizedBox(height: 50),
-                Text(
-                  "Being My Skin Care Guide",
-                  style: kBaseTextStyle.copyWith(
-                      fontSize: 24,
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.w900),
-                ),
-                Text("provides the suitable cosmetics for my skin type",
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 39.0),
+                  child: Text(
+                    "Làm Căng Bóng Làn Da",
                     style: kBaseTextStyle.copyWith(
-                        fontSize: 15,
+                        fontSize: 24,
                         fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.w600)),
+                        fontWeight: FontWeight.w900),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Text("cung cấp mỹ phẩm phù hợp",
+                      style: kBaseTextStyle.copyWith(
+                          fontSize: 15,
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.w600)),
+                ),
                 SizedBox(height: 50),
                 GestureDetector(
                   onTap: () => Navigator.pushNamed(context, "/home"),
                   child: Container(
                       height: 34,
-                      width: 140,
-                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      width: 150,
+                      padding: const EdgeInsets.only(
+                        left: 20,
+                        right: 20,
+                      ),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(17)),
                         border: Border.all(color: kPrimaryOrange),
                       ),
                       alignment: Alignment.center,
-                      child: Text("Explore Now",
+                      child: Text("Khám phá thêm",
                           style: kBaseTextStyle.copyWith(
                               fontSize: 15,
                               color: kPrimaryOrange,
