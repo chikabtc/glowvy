@@ -564,35 +564,34 @@ class UserModel with ChangeNotifier {
     }
   }
 
-  String getFullSkinType(context, type) {
+  String getFullSkinType(context, String type) {
+    String fullType = "";
     print("type: $type");
-    switch (type) {
-      case "D":
-        return S.of(context).dry;
-        break;
-      case "O":
-        return S.of(context).oily;
-        break;
-      case "S":
-        return S.of(context).sensitive;
-        break;
-      case "R":
-        return S.of(context).resistant;
-        break;
-      case "N":
-        return S.of(context).nonPigmented;
-        break;
-      case "P":
-        return S.of(context).pigmented;
-        break;
-      case "T":
-        return S.of(context).tight;
-        break;
-      case "W":
-        return S.of(context).wrinkled;
-        break;
-      default:
-        "Skin";
+    if (type.contains("S")) {
+      fullType += S.of(context).sensitive;
+    } else if (type.contains("O")) {
+      fullType += S.of(context).oily;
+    } else if (type.contains("D")) {
+      fullType += S.of(context).dry;
     }
+    // if (type.contains("P")) {
+    //   fullType += S.of(context).pigmented ;
+    // }
+    // if (type.contains("N")) {
+    //   fullType += S.of(context).nonPigmented ;
+    // }
+    // if (type.contains("W")) {
+    //   fullType += S.of(context).wrinkled ;
+    // }
+    // if (type[3] == "T") {
+    //   fullType += S.of(context).tight ;
+    // }
+    // if (type.contains("S")) {
+    //   fullType += S.of(context).sensitive ;
+    // }
+    // if (type.contains("R")) {
+    //   fullType += S.of(context).resistant ;
+    // }
+    return fullType;
   }
 }

@@ -32,7 +32,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
   bool showFilter = false;
   var screenSize;
   var heightFactor;
-  var sorting = Sorting.low;
+  var sorting = Sorting.rank;
 
   List<String> chosenOptions = [];
   AppModel appModel;
@@ -108,16 +108,16 @@ class _FilterBySkinState extends State<FilterBySkin> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          SizedBox(height: 10),
-          Container(
-            child: Text(
-              S.of(context).filter,
-              style: kBaseTextStyle.copyWith(
-                  fontSize: 13,
-                  fontWeight: FontWeight.normal,
-                  color: kDarkSecondary),
-            ),
-          ),
+          SizedBox(height: 25),
+          // Container(
+          //   child: Text(
+          //     S.of(context).filter,
+          //     style: kBaseTextStyle.copyWith(
+          //         fontSize: 13,
+          //         fontWeight: FontWeight.normal,
+          //         color: kDarkSecondary),
+          //   ),
+          // ),
           Container(
             height: 40,
             width: screenSize.width,

@@ -112,18 +112,17 @@ class _CosmeticsProductDescriptionState
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              DynamicText(
+                              Text(
                                 "ID: ${widget.product.sid.toString()}",
                                 style: kBaseTextStyle.copyWith(
-                                    fontSize: 13,
+                                    fontSize: 14,
                                     fontWeight: FontWeight.w600,
                                     color: kDarkAccent),
                                 textAlign: TextAlign.start,
                               ),
-                              DynamicText(
-                                  S.of(context).supportedByGoogleTranslate,
+                              Text(S.of(context).supportedByGoogleTranslate,
                                   style: kBaseTextStyle.copyWith(
-                                    fontSize: 11,
+                                    fontSize: 12,
                                     fontWeight: FontWeight.w500,
                                     color: kSecondaryGrey,
                                   )),
@@ -203,11 +202,11 @@ class _CosmeticsProductDescriptionState
                     ),
                     SizedBox(height: 26),
                     widget.product.sdescription != null
-                        ? DynamicText(
+                        ? Text(
                             formattedDescription,
                             maxLines: 100,
                             style: kBaseTextStyle.copyWith(
-                                fontSize: 12, color: kDarkAccent),
+                                fontSize: 14, color: kDarkAccent),
                             textAlign: TextAlign.start,
                           )
                         : Container(width: 0, height: 0),

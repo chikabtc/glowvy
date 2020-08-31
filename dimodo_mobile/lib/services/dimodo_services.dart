@@ -41,8 +41,8 @@ class DimodoServices implements BaseServices {
     // // accessToken =
     if (!isProd) {
       baseUrl = Platform.isAndroid
-          ? 'http://freemanMac.local:80'
-          : 'http://10.0.2.2:80';
+          ? 'http://10.0.2.2:80'
+          : 'http://freemanMac.local:80';
     }
   }
 

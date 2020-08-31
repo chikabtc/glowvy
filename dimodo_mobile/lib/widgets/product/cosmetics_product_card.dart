@@ -34,41 +34,28 @@ class CosmeticsProductCard extends StatelessWidget {
     this.isNameAvailable = false,
   });
 
-  onTapProduct(context) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => CosmeticsProductDetail(product: product),
-        ));
-    // Navigator.push(
-    //     context,
-    //     CupertinoPageRoute<void>(
-    //       builder: (BuildContext context) =>
-    //           CosmeticsProductDetail(product: product),
-    //       fullscreenDialog: true,
-    //     ));
-  }
-
   @override
   Widget build(BuildContext context) {
     var tagString = "";
-    var tag = product.tags.length == 1
-        ? product.tags[0].sname
-        : product.tags[1].sname;
-    final screenSize = MediaQuery.of(context).size;
-    //get max number of tags
+
     var tags = [];
 
-    product.tags.forEach((element) {
+    product.tags.forEach((tag) {
       if (tags.length == 2) {
         return;
       }
-      tagString += element.name + " | ";
-      tags.add(element);
+      if (tag.name != null) {
+        tagString += tag.name + " | ";
+        tags.add(tag);
+      }
     });
 
     return GestureDetector(
-      onTap: () => onTapProduct(context),
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CosmeticsProductDetail(product: product),
+          )),
       child: Card(
         color: Colors.white,
         elevation: 0,

@@ -19,15 +19,16 @@ class _WebViewState extends State<WebView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).backgroundColor,
+      // backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
+        brightness: Brightness.light,
         leading: IconButton(
           icon: CommonIcons.arrowBackward,
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Colors.white,
         elevation: 0.0,
         title: Text(widget.title ?? ''),
       ),

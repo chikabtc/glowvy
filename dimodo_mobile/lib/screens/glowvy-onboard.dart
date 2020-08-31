@@ -63,7 +63,7 @@ class _GlowvyOnBoardScreenState extends State<GlowvyOnBoardScreen> {
                 ),
                 SizedBox(height: 50),
                 GestureDetector(
-                  onTap: () => Navigator.pushNamed(context, "/home"),
+                  onTap: () => Navigator.pushReplacementNamed(context, "/home"),
                   child: Container(
                       height: 34,
                       width: 150,

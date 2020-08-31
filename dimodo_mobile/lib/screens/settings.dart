@@ -74,9 +74,9 @@ class SettingScreenState extends State<SettingScreen>
           leading: Container(),
           backgroundColor: Colors.white,
           flexibleSpace: FlexibleSpaceBar(
-            title: DynamicText(S.of(context).accounts,
+            title: Text(S.of(context).accounts,
                 style: textStyle.copyWith(
-                    fontSize: 18,
+                    fontSize: 19,
                     color: Colors.black,
                     fontWeight: FontWeight.w600)),
             background: Image.network(
@@ -118,21 +118,21 @@ class SettingScreenState extends State<SettingScreen>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            DynamicText(
+                            Text(
                                 (widget.user != null)
                                     ? S.of(context).welcomeToDimodo
                                     : S.of(context).clickToSignIn,
                                 style: textStyle.copyWith(
-                                    fontWeight: FontWeight.w600)),
+                                    fontSize: 16, fontWeight: FontWeight.w600)),
                             Container(height: 5),
-                            DynamicText(
+                            Text(
                                 (widget.user != null &&
                                         widget.user.fullName != null)
                                     ? widget.user.fullName
                                     : "Shop like Korean",
                                 style: textStyle.copyWith(
                                     fontWeight: FontWeight.w500,
-                                    fontSize: 12,
+                                    fontSize: 13,
                                     color: kDarkSecondary.withOpacity(0.5))),
                           ],
                         ),
@@ -150,9 +150,9 @@ class SettingScreenState extends State<SettingScreen>
                         : Navigator.pushNamed(context, "/orders"),
                     trailingWidget:
                         Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                      DynamicText(S.of(context).viewAll,
+                      Text(S.of(context).viewAll,
                           style: kBaseTextStyle.copyWith(
-                            fontSize: 12,
+                            fontSize: 13,
                             color: kDarkSecondary.withOpacity(0.5),
                             fontWeight: FontWeight.w500,
                           )),
@@ -207,30 +207,30 @@ class SettingScreenState extends State<SettingScreen>
                     ),
                   ),
                   kFullDivider,
-                  SettingCard(
-                      title: S.of(context).privacyPolicy,
-                      trailingWidget: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: <Widget>[
-                            DynamicText("1.0",
-                                style: textStyle.copyWith(
-                                  fontSize: 12,
-                                  color: kDarkSecondary.withOpacity(0.5),
-                                  fontWeight: FontWeight.w500,
-                                )),
-                            // CommonIcons.arrowForward
-                          ]),
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => WebView(
-                                  // url: "https://bit.ly/measurepmf",
-                                  url: "https://www.glowpick.com/product/21813",
-                                  title: "DIMODO user survey⭐️")))),
-                  SettingCard(
-                      title: S.of(context).language,
-                      onTap: () => Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Language()))),
+                  // SettingCard(
+                  //     title: "Phản hồi",
+                  //     trailingWidget: Row(
+                  //         mainAxisSize: MainAxisSize.min,
+                  //         children: <Widget>[
+                  //           Text("1.0",
+                  //               style: textStyle.copyWith(
+                  //                 fontSize: 13,
+                  //                 color: kDarkSecondary.withOpacity(0.5),
+                  //                 fontWeight: FontWeight.w500,
+                  //               )),
+                  //           // CommonIcons.arrowForward
+                  //         ]),
+                  //     onTap: () => Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //             builder: (context) => WebView(
+                  //                 // url: "https://bit.ly/measurepmf",
+                  //                 url: "https://glowvy.nolt.io/",
+                  //                 title: "Phản hồi⭐️")))),
+                  // SettingCard(
+                  //     title: S.of(context).language,
+                  //     onTap: () => Navigator.push(context,
+                  //         MaterialPageRoute(builder: (context) => Language()))),
                   kFullDivider,
                   if (widget.user == null)
                     SettingCard(
@@ -278,9 +278,9 @@ class SettingCard extends StatelessWidget {
         elevation: 0,
         child: ListTile(
           onTap: onTap,
-          title: DynamicText(title,
+          title: Text(title,
               style: kBaseTextStyle.copyWith(
-                  color: fontColor, fontWeight: FontWeight.w600)),
+                  fontSize: 16, color: fontColor, fontWeight: FontWeight.w600)),
           trailing: trailingWidget,
           contentPadding: EdgeInsets.only(left: 15, right: 15),
         ));

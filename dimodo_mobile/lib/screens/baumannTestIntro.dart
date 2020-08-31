@@ -5,7 +5,6 @@ import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:Dimodo/common/styles.dart';
-import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:provider/provider.dart';
 
@@ -30,7 +29,6 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
   @override
   Widget build(BuildContext context) {
     screenSize = MediaQuery.of(context).size;
-    print("size diff: ${kSizeConfig.heightDifferences}");
 
     return Scaffold(
         extendBodyBehindAppBar: true,
@@ -40,19 +38,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
 
             // expandedHeight: screenSize.height * 0.3,
             brightness: Brightness.light,
-            leading: GestureDetector(
-              onTap: () => Navigator.of(context).pop(),
-              child: Container(
-                width: 24,
-                child: IconButton(
-                    icon: Icon(
-                  Icons.arrow_back_ios,
-                  color: kDarkYellow,
-                  size: 20.0,
-                  semanticLabel: 'Text to announce in accessibility modes',
-                )),
-              ),
-            ),
+            leading: CommonIcons.backIcon(context, kDarkYellow),
             backgroundColor: Colors.transparent),
         body: Container(
           width: screenSize.width,
@@ -83,7 +69,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                 padding: const EdgeInsets.only(
                                     left: 43.0, right: 43, bottom: 20),
                                 child: Text(
-                                  "Meet your match! Complimentary expert advice tailored to my skin care needs.",
+                                  "Đây là lựa chọn phù hợp dành cho bạn! Lời khuyên đến từ chuyên gia phù hợp dành riêng cho nhu cầu chăm sóc da của bạn.",
                                   style: kBaseTextStyle.copyWith(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w600,
@@ -115,7 +101,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: <Widget>[
                                 Text(
-                                  "Ready to get the best skin\never?",
+                                  "Bạn đã sẵn sàng để sở hữu làn da hoàn hảo nhất từ trước đến giờ?",
                                   style: kBaseTextStyle.copyWith(
                                       color: kDarkYellow,
                                       fontSize: 16,
@@ -132,16 +118,18 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                           ),
                           SizedBox(height: 20),
                           Text(
-                            "After this test, you will get: ",
+                            "Sau bài test này, tôi sẽ biết được: ",
                             style: kBaseTextStyle.copyWith(
                                 color: kDarkSecondary,
                                 fontSize: 17,
                                 fontWeight: FontWeight.bold),
                           ),
-                          TodoElement("Customized skincare products"),
-                          TodoElement("Personal skincare tips"),
-                          TodoElement("Exclusive skincare daily plan"),
-                          TodoElement("And more..."),
+                          TodoElement(
+                              "Những sản phẩm skincare được thiết kế cho riêng bạn"),
+                          TodoElement(
+                              "Những tips skincare cho riêng cá nhân bạn"),
+                          TodoElement("Kế hoạch skincare độc quyền mỗi ngày"),
+                          TodoElement("Và nhiều hơn thế nữa..."),
                           Align(
                             alignment: FractionalOffset.bottomCenter,
                             child: Padding(

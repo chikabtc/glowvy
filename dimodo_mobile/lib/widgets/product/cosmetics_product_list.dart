@@ -94,10 +94,10 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
                 width: screenSize.width,
                 height: screenSize.height / 2,
                 child: Center(
-                  child: DynamicText(
-                    "no products found",
+                  child: Text(
+                    "không tìm thấy sản phẩm",
                     style: kBaseTextStyle.copyWith(
-                        fontSize: 15,
+                        fontSize: 17,
                         fontWeight: FontWeight.w600,
                         color: kPinkAccent),
                   ),

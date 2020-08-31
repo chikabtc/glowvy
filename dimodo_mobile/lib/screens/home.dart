@@ -3,9 +3,9 @@ import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/baumannTestIntro.dart';
 import 'package:Dimodo/widgets/baumann_quiz.dart';
-import 'package:Dimodo/widgets/cosmetics_filter_bar.dart';
 import 'package:Dimodo/widgets/filter-by-skin.dart';
 import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
+import 'package:Dimodo/widgets/webview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -14,7 +14,6 @@ import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/survey.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:flutter/cupertino.dart';
@@ -63,7 +62,6 @@ class HomeScreenState extends State<HomeScreen>
   int currentCateId = 3;
 
   int skinTypeId = 0;
-  var sorting = "high";
   Map<int, List<Product>> allProducts = Map();
   // List<List<Product>> allProducts = [];
   bool isFiltering = false;
@@ -140,8 +138,7 @@ class HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: Colors.red));
+
     kRateMyApp.init().then((_) {});
 
     final screenSize = MediaQuery.of(context).size;
@@ -149,7 +146,6 @@ class HomeScreenState extends State<HomeScreen>
     try {
       final surveys = Provider.of<AppModel>(context, listen: false)
           .appConfig['Cosmetics_Survey'];
-      // print("surveys: $surveys");
       for (var item in surveys) {
         this.surveys.add(Survey.fromJson(item));
       }
@@ -189,7 +185,6 @@ class HomeScreenState extends State<HomeScreen>
       backgroundColor: Colors.white,
       body: Consumer<UserModel>(builder: (context, userModel, child) {
         if (userModel.skinType != null) {
-          //set the filter for the matching skin type
           print("USERMODEL SKIN ${userModel.skinType}");
           print("USERMODEL SKINSCORES ${userModel.skinScores?.dsScore}");
         }
@@ -204,24 +199,23 @@ class HomeScreenState extends State<HomeScreen>
                 // These are the slivers that show up in the "outer" scroll view.
                 return <Widget>[
                   SliverAppBar(
-                    brightness: Brightness.light,
                     leading: Container(),
                     elevation: 0,
                     pinned: false,
                     backgroundColor: Colors.white,
                     title: SvgPicture.asset("assets/icons/logo.svg"),
-                    // actions: <Widget>[
-                    //   IconButton(
-                    //     icon: Image.asset(
-                    //       "assets/icons/search/search.png",
-                    //       fit: BoxFit.cover,
-                    //       height: 24,
-                    //     ),
-                    //     onPressed: () async {
-                    //       Navigator.pushNamed(context, "/login");
-                    //     },
-                    //   ),
-                    // ],
+                    actions: <Widget>[
+                      IconButton(
+                        icon: Image.asset(
+                          "assets/icons/search/search.png",
+                          fit: BoxFit.cover,
+                          height: 24,
+                        ),
+                        onPressed: () async {
+                          // Navigator.pushNamed(context, "/search_screen");
+                        },
+                      ),
+                    ],
                     bottom: PreferredSize(
                       preferredSize: Size.fromHeight(170),
                       child: Column(
@@ -322,7 +316,9 @@ class HomeScreenState extends State<HomeScreen>
                                             ),
                                             child: Text(
                                               userModel.skinType != null
-                                                  ? userModel.skinType
+                                                  ? userModel.getFullSkinType(
+                                                      context,
+                                                      userModel.skinType)
                                                   : "????",
                                               textAlign: TextAlign.start,
                                               style: kBaseTextStyle.copyWith(
@@ -345,12 +341,18 @@ class HomeScreenState extends State<HomeScreen>
                               ),
                               GestureDetector(
                                 onTap: () async => {
-                                  await FlutterMailer.send(MailOptions(
-                                    body: '',
-                                    subject:
-                                        'Làm thế nào chúng tôi có thể cải thiện ứng dụng cho bạn?',
-                                    recipients: ['hbpfreeman@gmail.com'],
-                                  ))
+                                  // await FlutterMailer.send(MailOptions(
+                                  //     body: '',
+                                  //     subject:
+                                  //         'Làm thế nào chúng tôi có thể cải thiện ứng dụng cho bạn?',
+                                  //     recipients: ['hbpfreeman@gmail.com']))
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => WebView(
+                                              url:
+                                                  "https://glowvy.nolt.io/newest",
+                                              title: "What do you want?")))
                                 },
                                 child: Container(
                                   height: 70,
@@ -504,7 +506,7 @@ class HomeScreenState extends State<HomeScreen>
                                               SvgPicture.asset(
                                                   "assets/icons/funnel.svg"),
                                               Text(
-                                                "Only Check Products that Fit My Skin",
+                                                "Mở khóa chức năng này bằng loại da của tôi",
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                   color: kAccentRed,
@@ -533,7 +535,7 @@ class HomeScreenState extends State<HomeScreen>
                                         skinTypeId) {
                                       setState(() {
                                         showFiltered = true;
-                                        this.sorting = sorting;
+                                        // this.sorting = sorting;
                                         showRank =
                                             sorting == "rank" ? true : false;
                                         this.skinTypeId = skinTypeId;
@@ -585,7 +587,7 @@ class HomeScreenState extends State<HomeScreen>
                                           Container(
                                               child: isGenerating
                                                   ? Text(
-                                                      "Updating the product ranks in Korea...",
+                                                      "Cập nhật thông tin mỹ phẩm ...",
                                                       overflow:
                                                           TextOverflow.ellipsis,
                                                       style: kBaseTextStyle
@@ -612,7 +614,7 @@ class HomeScreenState extends State<HomeScreen>
                                           : CosmeticsProductList(
                                               products:
                                                   productModel.sortAndFilter(
-                                                      sorting,
+                                                      "rank",
                                                       skinTypeId,
                                                       allProducts[category.id]),
                                               showRank: true,
@@ -734,20 +736,4 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
         minHeight != oldDelegate.minHeight ||
         child != oldDelegate.child;
   }
-}
-
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  final VoidCallback onTap;
-  final AppBar appBar;
-
-  const CustomAppBar({Key key, this.onTap, this.appBar}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(onTap: onTap, child: appBar);
-  }
-
-  // TODO: implement preferredSize
-  @override
-  Size get preferredSize => new Size.fromHeight(kToolbarHeight);
 }

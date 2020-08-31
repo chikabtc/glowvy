@@ -8,30 +8,20 @@ import 'package:Dimodo/screens/detail/ingredient_card.dart';
 import 'package:Dimodo/screens/detail/ingredient_screen.dart';
 import 'package:Dimodo/screens/detail/review_images.dart';
 import 'package:Dimodo/widgets/popup_services.dart';
-import 'package:Dimodo/widgets/image_galery.dart';
-import 'package:Dimodo/widgets/popup_services.dart';
 import 'package:Dimodo/widgets/start_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../common/styles.dart';
-import '../../common/constants.dart';
 import '../../models/product/product.dart';
 import '../../models/app.dart';
 import '../../models/product/productModel.dart';
-import 'product_title.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'productOption.dart';
-import 'image_feature.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'reviewScreen.dart';
-import 'review_card.dart';
-import 'cartAction.dart';
 import 'cosmetics_product_description.dart';
 import '../../services/index.dart';
 import '../../models/order/cart.dart';
-import 'package:Dimodo/common/tools.dart';
 
 class CosmeticsProductDetail extends StatefulWidget {
   final Product product;
@@ -100,13 +90,13 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
       barrierDismissible: true, // user can tap anywhere to dismiss the popup!
       builder: (BuildContext buildContext) {
         return AlertDialog(
-          title: DynamicText(
+          title: Text(
             S.of(context).shippingFeePolicy,
             style: kBaseTextStyle,
           ),
           actions: <Widget>[
             FlatButton(
-              child: DynamicText(
+              child: Text(
                 'Ok',
                 style: kBaseTextStyle,
               ),
@@ -167,7 +157,6 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
 
   @override
   Widget build(BuildContext context) {
-    var cartModel = Provider.of<CartModel>(context);
     screenSize = MediaQuery.of(context).size;
     print("product sid: ${widget.product.sid}");
     try {
@@ -408,11 +397,11 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                                             child: Row(
                                                               children: <
                                                                   Widget>[
-                                                                DynamicText(
+                                                                Text(
                                                                     "${S.of(context).reviews} (${widget.product.purchaseCount})",
                                                                     style: kBaseTextStyle.copyWith(
                                                                         fontSize:
-                                                                            12,
+                                                                            13,
                                                                         color:
                                                                             kDarkSecondary,
                                                                         fontWeight:
@@ -427,13 +416,9 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                                                             .center,
                                                                     children: <
                                                                         Widget>[
-                                                                      DynamicText(
-                                                                          S
-                                                                              .of(
-                                                                                  context)
-                                                                              .seeMore,
+                                                                      Text(S.of(context).seeMore,
                                                                           style: kBaseTextStyle.copyWith(
-                                                                              fontSize: 12,
+                                                                              fontSize: 13,
                                                                               color: kPrimaryOrange,
                                                                               fontWeight: FontWeight.w500)),
                                                                       CommonIcons
@@ -448,14 +433,14 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                                                 MainAxisAlignment
                                                                     .spaceBetween,
                                                             children: <Widget>[
-                                                              DynamicText(
+                                                              Text(
                                                                   widget.product
                                                                       .rating
                                                                       .substring(
                                                                           0, 4),
                                                                   style: kBaseTextStyle.copyWith(
                                                                       fontSize:
-                                                                          24,
+                                                                          26,
                                                                       color:
                                                                           kPrimaryOrange,
                                                                       fontWeight:

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'dart:async';
 import 'package:sentry/sentry.dart';
@@ -63,6 +64,18 @@ void main() async {
     // Group identify
     final Identify identify2 = Identify()..set('identify_count', 1);
     analytics.groupIdentify('orgId', '15', identify2);
+    await precachePicture(
+        ExactAssetPicture(SvgPicture.svgStringDecoder,
+            'assets/icons/onborading-illustration-1.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/red-flower.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/yellow-flower.svg'),
+        null);
 
     runApp(Glowvy());
   }, onError: (error, stackTrace) async {

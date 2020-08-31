@@ -20,6 +20,21 @@ class CommonIcons {
     width: 24,
     color: Colors.white,
   );
+
+  static backIcon(context, color) {
+    return GestureDetector(
+      onTap: () => Navigator.of(context).pop(),
+      child: Container(
+        width: 33,
+        child: IconButton(
+            icon: SvgPicture.asset(
+          'assets/icons/arrow_backward.svg',
+          width: 24,
+          color: color,
+        )),
+      ),
+    );
+  }
 }
 
 class DynamicText extends StatelessWidget {

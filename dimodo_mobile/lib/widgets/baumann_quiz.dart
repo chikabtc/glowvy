@@ -3,6 +3,7 @@ import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/survey.dart';
 import 'package:Dimodo/models/user/skinScores.dart';
 import 'package:Dimodo/models/user/userModel.dart';
+import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/widgets/skin-score.dart';
 import 'package:Dimodo/widgets/survey_card.dart';
 import 'package:Dimodo/widgets/tip-card.dart';
@@ -67,17 +68,13 @@ class _BaumannQuizState extends State<BaumannQuiz>
     try {
       final baumannQuiz = Provider.of<AppModel>(context, listen: false)
           .appConfig['Baumann_quiz'];
-      // print("baumanna JSON: ${baumannQuiz}");
-
       final dVsO = baumannQuiz["khô vs da dầu"] as List;
       final sVsR = baumannQuiz["Nhạy cảm vs đề kháng cao"] as List;
       final nVsP = baumannQuiz["không sắc tố sắc tố và"] as List;
       final tVsW = baumannQuiz["căng vs nhăn"] as List;
       sensitiveTips = baumannQuiz["sensitive-type-tips"];
       sensitiveAvoid = baumannQuiz["sensitive-type-avoid"];
-
       skinTypeDescription = baumannQuiz["skin-types-explanations"];
-
       descriptions.add(baumannQuiz["description1"]);
       descriptions.add(baumannQuiz["description2"]);
       descriptions.add(baumannQuiz["description3"]);
@@ -153,14 +150,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                   fontSize: 17,
                   fontWeight: FontWeight.bold)),
           brightness: Brightness.light,
-          leading: GestureDetector(
-              onTap: () => Navigator.of(context).pop(),
-              child: Icon(
-                Icons.arrow_back_ios,
-                color: kDarkYellow,
-                size: 20.0,
-                semanticLabel: 'Text to announce in accessibility modes',
-              )),
+          leading: CommonIcons.backIcon(context, kDarkYellow),
           backgroundColor: kLightYellow,
           //if the survey is completed or the user provided the skinType
           bottom: !surveyFinished
@@ -593,12 +583,8 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                                 Navigator.pushNamed(
                                                     context, "/login");
                                               } else {
-                                                dynamic scores = {};
-                                                scores["ds"] = dsScore;
-                                                scores["sr"] = srScore;
-                                                scores["pn"] = pnScore;
-                                                scores["wn"] = wnScore;
-                                                print("scores@@ $scores");
+                                                print(
+                                                    "scores@@ ${widget.skinScores}");
                                                 setState(() {
                                                   isSaving = true;
                                                   Provider.of<UserModel>(
@@ -606,7 +592,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                                           listen: false)
                                                       .saveSkinType(
                                                           widget.skinType,
-                                                          scores);
+                                                          widget.skinScores);
                                                 });
                                                 Future.delayed(
                                                     const Duration(
@@ -710,20 +696,20 @@ class _BaumannQuizState extends State<BaumannQuiz>
         switch (surveys.indexOf(survey)) {
           case 0:
             skinTypes.add(score < 8 ? "D" : "O");
-            dsScore = score;
+            widget.skinScores.dsScore = score;
             break;
           case 1:
             skinTypes.add(score < 8 ? "R" : "S");
-            srScore = score;
+            widget.skinScores.srScore = score;
 
             break;
           case 2:
             skinTypes.add(score < 8 ? "N" : "P");
-            pnScore = score;
+            widget.skinScores.pnScore = score;
             break;
           case 3:
             skinTypes.add(score < 8 ? "T" : "W");
-            wnScore = score;
+            widget.skinScores.wnScore = score;
 
             break;
           default:

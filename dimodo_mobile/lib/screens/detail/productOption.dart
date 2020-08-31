@@ -86,7 +86,7 @@ class _ProductOptionState extends State<ProductOption>
         return AlertDialog(
           title: DynamicText(
             "Thanks for liking it!",
-            style: kBaseTextStyle,
+            style: kBaseTextStyle.copyWith(fontSize: 16),
           ),
           actions: <Widget>[
             FlatButton(
@@ -489,9 +489,11 @@ class _ProductOptionState extends State<ProductOption>
                 shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(25.0),
                     side: BorderSide(color: kAccentRed, width: 1.5)),
-                child: DynamicText(S.of(context).customerSupport,
+                child: Text(S.of(context).customerSupport,
                     style: kBaseTextStyle.copyWith(
-                        fontWeight: FontWeight.w600, color: kAccentRed)),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: kAccentRed)),
                 onPressed: () =>
                     CustomerSupport.openFacebookMessenger(context)),
             SizedBox(width: 16),
@@ -503,9 +505,11 @@ class _ProductOptionState extends State<ProductOption>
                 shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(25.0),
                     side: BorderSide(color: kAccentRed, width: 1.5)),
-                child: DynamicText("Love it",
+                child: Text("Love it",
                     style: kBaseTextStyle.copyWith(
-                        fontWeight: FontWeight.w600, color: Colors.white)),
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white)),
                 onPressed: () {
                   showAddedToCartAlert();
                   // show(context, bottomPopupHeightFactor, widget.isLoggedIn,

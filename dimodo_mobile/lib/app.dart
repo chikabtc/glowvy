@@ -129,7 +129,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
   }
 
   Widget renderFirstScreen() {
-    if (!isFirstSeen) return GlowvyOnBoardScreen();
+    if (isFirstSeen) return GlowvyOnBoardScreen();
     if (kAdvanceConfig['IsRequiredLogin'] && !isLoggedIn) return LoginScreen();
     return MainTabs();
   }
