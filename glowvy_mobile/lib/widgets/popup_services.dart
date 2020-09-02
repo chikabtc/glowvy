@@ -17,7 +17,7 @@ class PopupServices {
 
     var heighFactor = 1 -
         (AppBar().preferredSize.height +
-                160 +
+                320 +
                 MediaQuery.of(context).padding.bottom) /
             kScreenSizeHeight;
     showModalBottomSheet(
@@ -30,104 +30,94 @@ class PopupServices {
         builder: (context) {
           return StatefulBuilder(
             builder: (BuildContext context, StateSetter setState) {
-              return FractionallySizedBox(
-                heightFactor: heighFactor,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20)),
-                  ),
-                  width: screenSize.width,
-                  height: screenSize.height * heighFactor -
-                      AppBar().preferredSize.height,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Stack(children: <Widget>[
-                        Container(
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20),
-                                  topRight: Radius.circular(20)),
-                            ),
-                            height: AppBar().preferredSize.height,
-                            width: kScreenSizeWidth,
-                            child: Center(
-                              child: DynamicText(
-                                  S.of(context).thankYouForUsingDimodo,
+              return Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20)),
+                ),
+                width: screenSize.width,
+                height: 313,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Stack(children: <Widget>[
+                      Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20)),
+                          ),
+                          height: AppBar().preferredSize.height,
+                          width: kScreenSizeWidth,
+                          child: Center(
+                            child: DynamicText(
+                                S.of(context).thankYouForUsingDimodo,
+                                style: kBaseTextStyle.copyWith(
+                                    fontSize: 15, fontWeight: FontWeight.w600)),
+                          )),
+                      Positioned(
+                        top: 6,
+                        right: 0,
+                        child: IconButton(
+                            icon: SvgPicture.asset(
+                                'assets/icons/address/close-popup.svg'),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            }),
+                      )
+                    ]),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    SvgPicture.asset('assets/icons/big-logo.svg'),
+                    // SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          right: 32.0, left: 32, bottom: 20),
+                      child: DynamicText(S.of(context).surveyDescription,
+                          style: kBaseTextStyle.copyWith(
+                            fontSize: 13,
+                            color: kDarkSecondary,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          textAlign: TextAlign.justify),
+                    ),
+                    Expanded(
+                      child: Align(
+                        alignment: FractionalOffset.bottomCenter,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 16, right: 16, bottom: 40.0),
+                          child: MaterialButton(
+                              elevation: 0,
+                              color: kDarkAccent,
+                              minWidth: kScreenSizeWidth,
+                              height: 36,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(25.0),
+                              ),
+                              child: Text("Give little feedback",
                                   style: kBaseTextStyle.copyWith(
                                       fontSize: 15,
-                                      fontWeight: FontWeight.w600)),
-                            )),
-                        Positioned(
-                          top: 6,
-                          right: 0,
-                          child: IconButton(
-                              icon: SvgPicture.asset(
-                                  'assets/icons/address/close-popup.svg'),
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white)),
                               onPressed: () {
                                 Navigator.pop(context);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => WebView(
+                                            url:
+                                                "https://parker893633.typeform.com/to/gdYnn9EO",
+                                            title: "DIMODO Users Survey ⭐️")));
                               }),
-                        )
-                      ]),
-                      Container(
-                          width: 200,
-                          height: 236,
-                          child: FittedBox(
-                            fit: BoxFit.cover,
-                            child: Image.asset(
-                                'assets/images/notification-illustration.png'),
-                          )),
-                      // SizedBox(height: 20),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            right: 32.0, left: 32, bottom: 20),
-                        child: DynamicText(S.of(context).surveyDescription,
-                            style: kBaseTextStyle.copyWith(
-                              fontSize: 13,
-                              color: kDarkSecondary,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            textAlign: TextAlign.justify),
-                      ),
-
-                      Expanded(
-                        child: Align(
-                          alignment: FractionalOffset.bottomCenter,
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 16, right: 16, bottom: 40.0),
-                            child: MaterialButton(
-                                elevation: 0,
-                                color: kDarkAccent,
-                                minWidth: kScreenSizeWidth,
-                                height: 36,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: new BorderRadius.circular(25.0),
-                                ),
-                                child: Text(S.of(context).starTheSkinTest,
-                                    style: kBaseTextStyle.copyWith(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600,
-                                        color: Colors.white)),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => WebView(
-                                              url: "https://bit.ly/measurepmf",
-                                              title:
-                                                  "DIMODO Users Survey ⭐️")));
-                                }),
-                          ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               );
             },
@@ -201,14 +191,14 @@ class PopupServices {
                           height: 236,
                           child: FittedBox(
                             fit: BoxFit.cover,
-                            child: Image.asset(
-                                'assets/images/notification-illustration.png'),
+                            child: Image.asset('assets/icons/big-logo.svg'),
                           )),
                       // SizedBox(height: 20),
                       Padding(
                         padding: const EdgeInsets.only(
                             right: 32.0, left: 32, bottom: 20),
-                        child: DynamicText(S.of(context).surveyDescription,
+                        child: DynamicText(
+                            "Glowvy team appreciates you are using current features. It will take 10 mins to collect the feedback by filling up satisfaction survey.",
                             style: kBaseTextStyle.copyWith(
                               fontSize: 13,
                               color: kDarkSecondary,

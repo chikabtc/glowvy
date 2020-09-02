@@ -8,10 +8,10 @@ part of 'skinScores.dart';
 
 SkinScores _$SkinScoresFromJson(Map<String, dynamic> json) {
   return SkinScores(
-    (json['ds_score'] as num)?.toDouble(),
-    (json['pn_score'] as num)?.toDouble(),
-    (json['sr_score'] as num)?.toDouble(),
-    (json['wn_score'] as num)?.toDouble(),
+    dsScore: (json['ds_score'] as num)?.toDouble(),
+    pnScore: (json['pn_score'] as num)?.toDouble(),
+    srScore: (json['sr_score'] as num)?.toDouble(),
+    wnScore: (json['wn_score'] as num)?.toDouble(),
   );
 }
 

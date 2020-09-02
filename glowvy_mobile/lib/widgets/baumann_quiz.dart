@@ -18,10 +18,11 @@ import 'package:Dimodo/common/styles.dart';
 import 'package:provider/provider.dart';
 
 class BaumannQuiz extends StatefulWidget {
-  String skinType;
-  SkinScores skinScores;
-
   BaumannQuiz({this.skinType, this.skinScores});
+
+  String skinType;
+  SkinScores skinScores = SkinScores();
+
   @override
   _BaumannQuizState createState() => _BaumannQuizState();
 }
@@ -262,7 +263,6 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                           setState(() {
                                             swipeController =
                                                 SwiperController();
-                                            // calculateSkinType();
                                             currentPage++;
                                             swipeController.index = 0;
                                             swipeController.move(0);
@@ -319,10 +319,10 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                             const Duration(milliseconds: 2500),
                                             () {
                                           SkinScores scores = SkinScores(
-                                              dsScore,
-                                              srScore,
-                                              pnScore,
-                                              wnScore);
+                                              dsScore: dsScore,
+                                              srScore: srScore,
+                                              pnScore: pnScore,
+                                              wnScore: wnScore);
                                           print("scores@@ ${scores.toJson()}");
                                           setState(() {
                                             calculatingResult = false;
@@ -344,7 +344,6 @@ class _BaumannQuizState extends State<BaumannQuiz>
                 : Container(
                     width: screenSize.width,
                     color: kLightYellow,
-                    // padding: EdgeInsets.symmetric(horizontal: 32),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
@@ -362,19 +361,16 @@ class _BaumannQuizState extends State<BaumannQuiz>
                               Container(
                                 alignment: Alignment.center,
                                 color: Colors.white,
-                                // padding: EdgeInsets.symmetric(horizontal: 40),
-                                child: Column(
-                                    // mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      SizedBox(height: 16.5),
-                                      SkinScore("Dầu", "Khô", score: dsScore),
-                                      SkinScore("Sắc tố", "Không có\nsắc tố",
-                                          score: srScore),
-                                      SkinScore("Nhạy cảm", "Kháng cự",
-                                          score: pnScore),
-                                      SkinScore("Chặt chẽ", "Nhăn nheo",
-                                          score: wnScore),
-                                    ]),
+                                child: Column(children: <Widget>[
+                                  SizedBox(height: 16.5),
+                                  SkinScore("Dầu", "Khô", score: dsScore),
+                                  SkinScore("Sắc tố", "Không có\nsắc tố",
+                                      score: srScore),
+                                  SkinScore("Nhạy cảm", "Kháng cự",
+                                      score: pnScore),
+                                  SkinScore("Chặt chẽ", "Nhăn nheo",
+                                      score: wnScore),
+                                ]),
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -408,7 +404,6 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                                 !showFullExplanation;
                                           });
                                         },
-                                        //use the fitted box..approach
                                         child: Container(
                                           padding: EdgeInsets.only(top: 15),
                                           width: screenSize.width - 60,
@@ -696,20 +691,19 @@ class _BaumannQuizState extends State<BaumannQuiz>
         switch (surveys.indexOf(survey)) {
           case 0:
             skinTypes.add(score < 8 ? "D" : "O");
-            widget.skinScores.dsScore = score;
+            dsScore = score;
             break;
           case 1:
             skinTypes.add(score < 8 ? "R" : "S");
-            widget.skinScores.srScore = score;
-
+            srScore = score;
             break;
           case 2:
             skinTypes.add(score < 8 ? "N" : "P");
-            widget.skinScores.pnScore = score;
+            pnScore = score;
             break;
           case 3:
             skinTypes.add(score < 8 ? "T" : "W");
-            widget.skinScores.wnScore = score;
+            wnScore = score;
 
             break;
           default:

@@ -54,7 +54,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                     Container(
                         color: kLightYellow,
                         width: screenSize.width,
-                        height: screenSize.height / 2.9,
+                        // height: screenSize.height / 2.9,
                         child: Column(
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: <Widget>[
@@ -100,13 +100,15 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: <Widget>[
-                                Text(
-                                  "Bạn đã sẵn sàng để sở hữu làn da hoàn hảo nhất từ trước đến giờ?",
-                                  style: kBaseTextStyle.copyWith(
-                                      color: kDarkYellow,
-                                      fontSize: 16,
-                                      fontStyle: FontStyle.italic,
-                                      fontWeight: FontWeight.w900),
+                                Flexible(
+                                  child: Text(
+                                    "Bạn đã sẵn sàng để sở hữu làn da hoàn hảo nhất từ trước đến giờ?",
+                                    style: kBaseTextStyle.copyWith(
+                                        color: kDarkYellow,
+                                        fontSize: 16,
+                                        fontStyle: FontStyle.italic,
+                                        fontWeight: FontWeight.w900),
+                                  ),
                                 ),
                                 Image.asset(
                                   "assets/icons/star-vy.png",
@@ -258,12 +260,14 @@ class TodoElement extends StatelessWidget {
       child: Row(
         children: <Widget>[
           SvgPicture.asset("assets/icons/yellow-smiley-face.svg"),
-          Text(
-            text,
-            style: kBaseTextStyle.copyWith(
-                color: kDarkSecondary,
-                fontSize: 15,
-                fontWeight: FontWeight.w600),
+          Flexible(
+            child: Text(
+              text,
+              style: kBaseTextStyle.copyWith(
+                  color: kDarkSecondary,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w600),
+            ),
           ),
         ],
       ),

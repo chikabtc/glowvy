@@ -2,8 +2,10 @@ import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/baumannTestIntro.dart';
+import 'package:Dimodo/screens/feedback_center.dart';
 import 'package:Dimodo/widgets/baumann_quiz.dart';
 import 'package:Dimodo/widgets/filter-by-skin.dart';
+import 'package:Dimodo/widgets/popup_services.dart';
 import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
 import 'package:Dimodo/widgets/webview.dart';
 import 'package:flutter/material.dart';
@@ -211,8 +213,11 @@ class HomeScreenState extends State<HomeScreen>
                           fit: BoxFit.cover,
                           height: 24,
                         ),
-                        onPressed: () async {
-                          // Navigator.pushNamed(context, "/search_screen");
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => FeedbackCenter()));
                         },
                       ),
                     ],
@@ -478,7 +483,7 @@ class HomeScreenState extends State<HomeScreen>
                                   }),
                             ),
                           ),
-                          userModel.skinType == null
+                          userModel.skinType != null
                               ? Container(
                                   height: 78,
                                   width: screenSize.width,
@@ -497,6 +502,8 @@ class HomeScreenState extends State<HomeScreen>
                                                 Radius.circular(24)),
                                           ),
                                           alignment: Alignment.center,
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 15),
                                           child: Row(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
@@ -506,7 +513,8 @@ class HomeScreenState extends State<HomeScreen>
                                               SvgPicture.asset(
                                                   "assets/icons/funnel.svg"),
                                               Text(
-                                                "Mở khóa chức năng này bằng loại da của tôi",
+                                                "Mở khóa bộ lọc bằng loại da của tôi",
+                                                overflow: TextOverflow.fade,
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
                                                   color: kAccentRed,
