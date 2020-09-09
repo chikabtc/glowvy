@@ -24,7 +24,7 @@ class DimodoServices implements BaseServices {
   static final DimodoServices _instance = DimodoServices._internal();
   factory DimodoServices() => _instance;
 
-  bool isProd = true;
+  bool isProd = false;
 
   DimodoServices._internal();
 
@@ -149,6 +149,23 @@ class DimodoServices implements BaseServices {
   }
 
   @override
+  Future<Product> getCosmetics(productId) async {
+    try {
+      var body = await getAsync(endPoint: "api/cosmetics/id=$productId");
+      final productJson = body["Data"];
+      if ((body["Success"] == false)) {
+        throw Exception(body["Success"]);
+      } else {
+        return Product.fromJson(productJson);
+      }
+    } catch (e) {
+      print("Error: $e");
+
+      throw e;
+    }
+  }
+
+  @override
   Future<List<Product>> getProductsByCategory(
       {categoryId, sortBy, start, limit = 200}) async {
     try {
@@ -204,7 +221,7 @@ class DimodoServices implements BaseServices {
   Future<List<Product>> getProductsBySearch({searchText}) async {
     try {
       AlgoliaQuery query =
-          algolia.instance.index('products').search(searchText);
+          algolia.instance.index('cosmetics').search(searchText);
 
       List<Product> list = [];
       // Get Result/Objects
@@ -212,7 +229,7 @@ class DimodoServices implements BaseServices {
       List<AlgoliaObjectSnapshot> results = querySnap.hits;
       print("querySnap: ${querySnap}");
 
-      // print('Hits count: ${objectData}');
+      print('Hits count: ${querySnap.hits.length}');
 
       if ((querySnap.hits.length == 0)) {
         return list;

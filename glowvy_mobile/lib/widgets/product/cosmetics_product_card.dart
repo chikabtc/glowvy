@@ -17,8 +17,8 @@ class CosmeticsProductCard extends StatelessWidget {
   final height;
   final bool hideDetail;
   final offset;
-  var ranking;
-  bool isNameAvailable;
+  final ranking;
+  final bool isNameAvailable;
 
   CosmeticsProductCard({
     this.product,
@@ -63,34 +63,36 @@ class CosmeticsProductCard extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Stack(overflow: Overflow.clip, children: <Widget>[
-              ranking < 3
-                  ? SvgPicture.asset("assets/icons/red-flower.svg")
-                  : SvgPicture.asset("assets/icons/yellow-flower.svg"),
-              Positioned(
-                  top: 1,
-                  left: 0,
-                  child: Container(
-                    decoration: BoxDecoration(
-                        // color: Color(0xFFCFEEBEC),
-                        borderRadius: BorderRadius.only(
-                            bottomRight: Radius.circular(28),
-                            bottomLeft: Radius.circular(28))),
-                    width: 22,
-                    height: 20,
-                    padding: EdgeInsets.all(3),
-                    child: Text(
-                      (ranking + 1).toString(),
-                      textAlign: TextAlign.center,
-                      style: kBaseTextStyle.copyWith(
-                        height: 1,
-                        fontSize: 9,
-                        color: ranking < 3 ? Colors.white : kDarkYellow,
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                  )),
-            ]),
+            ranking == null
+                ? Container()
+                : Stack(overflow: Overflow.clip, children: <Widget>[
+                    ranking < 3
+                        ? SvgPicture.asset("assets/icons/red-flower.svg")
+                        : SvgPicture.asset("assets/icons/yellow-flower.svg"),
+                    Positioned(
+                        top: 1,
+                        left: 0,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              // color: Color(0xFFCFEEBEC),
+                              borderRadius: BorderRadius.only(
+                                  bottomRight: Radius.circular(28),
+                                  bottomLeft: Radius.circular(28))),
+                          width: 22,
+                          height: 20,
+                          padding: EdgeInsets.all(3),
+                          child: Text(
+                            (ranking + 1).toString(),
+                            textAlign: TextAlign.center,
+                            style: kBaseTextStyle.copyWith(
+                              height: 1,
+                              fontSize: 9,
+                              color: ranking < 3 ? Colors.white : kDarkYellow,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
+                        )),
+                  ]),
             FittedBox(
               fit: BoxFit.cover,
               child: Tools.image(

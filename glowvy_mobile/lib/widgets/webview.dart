@@ -1,4 +1,6 @@
+import 'package:Dimodo/common/styles.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../common/constants.dart';
 import 'package:webview_flutter/webview_flutter.dart' as _widget;
 import 'package:Dimodo/widgets/customWidgets.dart';
@@ -19,16 +21,13 @@ class _WebViewState extends State<WebView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+
       // backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         brightness: Brightness.light,
-        leading: IconButton(
-          icon: CommonIcons.arrowBackward,
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        backgroundColor: Colors.white,
+        leading: CommonIcons.backIcon(context, Colors.white),
+        backgroundColor: kPrimaryBlue,
         elevation: 0.0,
         title: Text(widget.title ?? ''),
       ),
@@ -45,7 +44,7 @@ class _WebViewState extends State<WebView> {
               },
               javascriptMode: _widget.JavascriptMode.unrestricted,
             ),
-            if (isLoading) kLoadingWidget(context),
+            if (isLoading) SpinKitThreeBounce(color: kPrimaryBlue, size: 21.0)
           ],
         ),
       ),

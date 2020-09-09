@@ -3,6 +3,7 @@ import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/baumannTestIntro.dart';
 import 'package:Dimodo/screens/feedback_center.dart';
+import 'package:Dimodo/screens/search_screen.dart';
 import 'package:Dimodo/widgets/baumann_quiz.dart';
 import 'package:Dimodo/widgets/filter-by-skin.dart';
 import 'package:Dimodo/widgets/popup_services.dart';
@@ -217,7 +218,7 @@ class HomeScreenState extends State<HomeScreen>
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => FeedbackCenter()));
+                                  builder: (context) => SearchScreen()));
                         },
                       ),
                     ],
@@ -354,10 +355,8 @@ class HomeScreenState extends State<HomeScreen>
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => WebView(
-                                              url:
-                                                  "https://glowvy.nolt.io/newest",
-                                              title: "What do you want?")))
+                                          builder: (context) =>
+                                              FeedbackCenter()))
                                 },
                                 child: Container(
                                   height: 70,

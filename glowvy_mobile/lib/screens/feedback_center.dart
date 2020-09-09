@@ -2,11 +2,15 @@ import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/baumann_quiz.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
+import 'package:Dimodo/widgets/popup_services.dart';
+import 'package:Dimodo/widgets/webview.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mailer/flutter_mailer.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:provider/provider.dart';
+import 'dart:math';
 
 class FeedbackCenter extends StatefulWidget {
   @override
@@ -28,7 +32,6 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
 
     return Scaffold(
         extendBodyBehindAppBar: true,
-        backgroundColor: Colors.white,
         appBar: AppBar(
             elevation: 0,
             title: Text(
@@ -43,9 +46,12 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
             leading: CommonIcons.backIcon(context, kPrimaryBlue),
             backgroundColor: kQuaternaryBlue),
         body: SafeArea(
+          bottom: false,
           child: Container(
             width: screenSize.width,
+            color: kQuaternaryBlue,
             child: ListView(
+              padding: EdgeInsets.only(bottom: 30),
               children: <Widget>[
                 Stack(
                   alignment: Alignment.bottomCenter,
@@ -54,40 +60,44 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                       height: 160,
                       color: kQuaternaryBlue,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          top: 20, left: 20.0, right: 20, bottom: 30),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            color: kSecondaryBlue),
-                        padding: EdgeInsets.only(
-                            left: 16, right: 30, top: 14, bottom: 14),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Column(
-                              children: <Widget>[
-                                Text(
-                                  "User research, glowvy app survey",
-                                  style: kBaseTextStyle.copyWith(
-                                      color: kPrimaryBlue,
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Text(
-                                  "User research, glowvy app survey",
-                                  style: kBaseTextStyle.copyWith(
-                                      color: kPrimaryBlue,
-                                      fontStyle: FontStyle.italic,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                              ],
-                            ),
-                            Spacer(),
-                            SvgPicture.asset("assets/icons/arrow-more.svg")
-                          ],
+                    GestureDetector(
+                      onTap: () => PopupServices.showSurvey(context),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            top: 20, left: 20.0, right: 20, bottom: 30),
+                        child: Container(
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              color: kSecondaryBlue),
+                          padding: EdgeInsets.only(
+                              left: 16, right: 30, top: 14, bottom: 14),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Column(
+                                children: <Widget>[
+                                  Text(
+                                    "User research, glowvy app survey",
+                                    style: kBaseTextStyle.copyWith(
+                                        color: kPrimaryBlue,
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(
+                                    "User research, glowvy app survey",
+                                    style: kBaseTextStyle.copyWith(
+                                        color: kPrimaryBlue,
+                                        fontStyle: FontStyle.italic,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ],
+                              ),
+                              Spacer(),
+                              SvgPicture.asset("assets/icons/arrow-more.svg")
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -102,84 +112,132 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                             "assets/icons/light-blue-star.svg"))
                   ],
                 ),
-                Container(
-                  width: screenSize.width,
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      SizedBox(height: 16),
-                      Padding(
-                        padding: EdgeInsets.only(right: screenSize.width / 3),
-                        child: SvgPicture.asset(
-                            "assets/icons/primary-blue-star.svg"),
-                      ),
-                      SizedBox(height: 15),
-                      Text(
-                        "To make Glowvy Better",
-                        style: kBaseTextStyle.copyWith(
-                            color: kDarkSecondary,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      TextWithIcon("yodwq msadwqrqwe",
-                          "assets/icons/blue-smiley-face.svg"),
-                      TextWithIcon("yodwq msadwqrqwe",
-                          "assets/icons/blue-smiley-face.svg"),
-                      TextWithIcon("yodwq msadwqrqwe",
-                          "assets/icons/blue-smiley-face.svg"),
-                      TextWithIcon("yodwq msadwqrqwe",
-                          "assets/icons/blue-smiley-face.svg"),
-                      SizedBox(height: 36),
-                      Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(16)),
-                            color: kPrimaryBlue),
-                        width: screenSize.width,
-                        height: 48,
-                        alignment: Alignment.center,
-                        child: Text(
-                          "Make Glowvy Better",
-                          style: kBaseTextStyle.copyWith(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      SizedBox(height: 54),
-                      SvgPicture.asset("assets/icons/light-blue-feedback.svg"),
-                      SizedBox(height: 10),
-                      Padding(
-                        padding: EdgeInsets.only(left: 48, right: 48),
-                        child: Text(
-                          "Having troubles with the app? Email developers! Glowvy Team will response it as soon as possible",
-                          textAlign: TextAlign.center,
-                          style: kBaseTextStyle.copyWith(
-                              color: kDarkSecondary,
-                              fontSize: 16,
-                              fontStyle: FontStyle.italic,
-                              fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                      SizedBox(height: 22),
-                      Container(
-                          height: 48,
-                          padding: EdgeInsets.only(left: 48, right: 48),
-                          alignment: Alignment.center,
-                          child: Text("Contact Glowvy Developer",
-                              textAlign: TextAlign.center,
+                Column(
+                  children: <Widget>[
+                    SvgPicture.asset(
+                      "assets/icons/nolt-illustration.svg",
+                      width: screenSize.width,
+                    ),
+                    Container(
+                      color: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: Column(
+                          children: <Widget>[
+                            SizedBox(height: 15),
+                            Text(
+                              "To make Glowvy Better",
                               style: kBaseTextStyle.copyWith(
-                                  color: kPrimaryBlue,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.bold)),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border:
-                                Border.all(color: kQuaternaryBlue, width: 2),
-                            borderRadius: BorderRadius.circular(15.0),
-                          ))
-                    ],
-                  ),
+                                  color: kDarkSecondary,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            TextWithIcon("yodwq msadwqrqwe",
+                                "assets/icons/blue-smiley-face.svg"),
+                            TextWithIcon("yodwq msadwqrqwe",
+                                "assets/icons/blue-smiley-face.svg"),
+                            TextWithIcon("yodwq msadwqrqwe",
+                                "assets/icons/blue-smiley-face.svg"),
+                            TextWithIcon("yodwq msadwqrqwe",
+                                "assets/icons/blue-smiley-face.svg"),
+                            SizedBox(height: 36),
+                            GestureDetector(
+                              onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => WebView(
+                                            url:
+                                                "https://glowvy.nolt.io/newest",
+                                          ))),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(16)),
+                                    color: kPrimaryBlue),
+                                width: screenSize.width,
+                                height: 48,
+                                alignment: Alignment.center,
+                                child: Text(
+                                  "Make Glowvy Better",
+                                  style: kBaseTextStyle.copyWith(
+                                      color: Colors.white,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ),
+                            SizedBox(height: 54),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      color: Colors.white,
+                      child: Column(
+                        children: <Widget>[
+                          SizedBox(height: 24),
+                          SvgPicture.asset(
+                            "assets/icons/email-illustration.svg",
+                            width: screenSize.width,
+                          ),
+                          // CustomPaint(
+                          //     size: Size(screenSize.width, 231), //2
+                          //     painter:
+                          //         ProfileCardPainter(color: kQuaternaryBlue)),
+                          Container(
+                            color: kQuaternaryBlue,
+                            child: Column(
+                              children: <Widget>[
+                                SizedBox(height: 10),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 48, right: 48),
+                                  child: Text(
+                                    "Having troubles with the app? Email developers! Glowvy Team will response it as soon as possible",
+                                    textAlign: TextAlign.center,
+                                    style: kBaseTextStyle.copyWith(
+                                        color: kDarkSecondary,
+                                        fontSize: 16,
+                                        fontStyle: FontStyle.italic,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ),
+                                SizedBox(height: 22),
+                                GestureDetector(
+                                  onTap: () async => await FlutterMailer.send(
+                                      MailOptions(
+                                          body: '',
+                                          subject:
+                                              'Làm thế nào chúng tôi có thể cải thiện ứng dụng cho bạn?',
+                                          recipients: [
+                                        'hbpfreeman@gmail.com'
+                                      ])),
+                                  child: Padding(
+                                    padding:
+                                        EdgeInsets.only(left: 48, right: 48),
+                                    child: Container(
+                                        height: 48,
+                                        alignment: Alignment.center,
+                                        child: Text("Contact Glowvy Developer",
+                                            textAlign: TextAlign.center,
+                                            style: kBaseTextStyle.copyWith(
+                                                color: kPrimaryBlue,
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold)),
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: kSecondaryBlue, width: 1),
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                        )),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
                 )
               ],
             ),
@@ -213,5 +271,56 @@ class TextWithIcon extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class ProfileCardPainter extends CustomPainter {
+  //2
+  ProfileCardPainter({@required this.color});
+
+  //3
+  final Color color;
+
+  //4
+  @override
+  void paint(Canvas canvas, Size size) {
+    //1
+    final shapeBounds = Rect.fromLTRB(0, 0, size.width, size.height);
+
+    final curvedShapeBounds = Rect.fromLTRB(
+      shapeBounds.left,
+      shapeBounds.top,
+      shapeBounds.right,
+      shapeBounds.bottom,
+    );
+
+//2
+    _drawCurvedShape(canvas, curvedShapeBounds, shapeBounds);
+  }
+
+  void _drawCurvedShape(Canvas canvas, Rect bounds, Rect avatarBounds) {
+    //1
+    final paint = Paint()..color = color;
+    //2
+    final handlePoint = Offset(bounds.left + (bounds.width * 0.75), bounds.top);
+
+    //3
+    final curvePath = Path()
+      ..moveTo(bounds.topLeft.dx, bounds.topLeft.dy) //4
+      ..lineTo(bounds.bottomLeft.dx, bounds.bottomLeft.dy) //6
+      ..lineTo(bounds.bottomRight.dx, bounds.bottomRight.dy) //7
+      ..lineTo(bounds.topRight.dx, 51) //7
+      ..quadraticBezierTo(handlePoint.dx, handlePoint.dy, bounds.topLeft.dx,
+          bounds.topLeft.dy) //8
+      ..close(); //9
+
+    //10
+    canvas.drawPath(curvePath, paint);
+  }
+
+  //5qq
+  @override
+  bool shouldRepaint(ProfileCardPainter oldDelegate) {
+    return color != oldDelegate.color;
   }
 }

@@ -11,7 +11,7 @@ import '../models/address/district.dart';
 import '../models/address/province.dart';
 import '../models/coupon.dart';
 
-import './dimodo_services.dart';
+import './glowvy-service.dart';
 import 'package:connectivity/connectivity.dart';
 
 abstract class BaseServices {
@@ -32,6 +32,7 @@ abstract class BaseServices {
   Future<User> loginGoogle({String token});
 
   Future<Reviews> getReviews(productId, int offset, int limit);
+  Future<Product> getCosmetics(productId);
   Future<Reviews> getCosmeticsReviews(productId);
   // ===========================================================================
   // COSMETICS
@@ -240,6 +241,17 @@ class Services implements BaseServices {
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
       return serviceApi.getCosmeticsReviews(productId);
+    } else {
+      throw Exception("No internet connection");
+    }
+  }
+
+  @override
+  Future<Product> getCosmetics(productId) async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      return serviceApi.getCosmetics(productId);
     } else {
       throw Exception("No internet connection");
     }

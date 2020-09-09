@@ -400,13 +400,12 @@ class ProductModel with ChangeNotifier {
       future: future,
       builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
         products = snapshot.data;
-
         return CosmeticsProductList(
           products: snapshot.data,
           onLoadMore: onLoadMore,
           showFilter: showFiler,
-          disableScrolling: disableScroll,
-          isNameAvailable: isNameAvailable,
+          disableScrolling: true,
+          showRank: false,
         );
       },
     );

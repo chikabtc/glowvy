@@ -31,8 +31,6 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   void initState() {
     super.initState();
-    getProductBySearch =
-        service.getProductsBySearch(searchText: "드레스", sortBy: "id");
     productModel = Provider.of<ProductModel>(context, listen: false);
   }
 
@@ -81,12 +79,13 @@ class _SearchScreenState extends State<SearchScreen> {
                                 },
                                 onSubmitted: (value) {
                                   setState(() {
-                                    showResults = true;
                                     isTextFieldSelected = false;
                                     getProductBySearch =
                                         service.getProductsBySearch(
                                             searchText: searchText,
                                             sortBy: "id");
+                                    showResults = true;
+
                                     FocusScope.of(context).unfocus();
                                   });
                                 },
@@ -156,13 +155,13 @@ class _SearchScreenState extends State<SearchScreen> {
                                     children: <Widget>[
                                       Image.asset(
                                           "assets/icons/filter-sort-active.png"),
-                                      DynamicText(
+                                      Text(
                                         isAscending
                                             ? S.of(context).highestToLowest
                                             : S.of(context).lowestToHighest,
                                         textAlign: TextAlign.center,
                                         style: kBaseTextStyle.copyWith(
-                                            fontSize: 12,
+                                            fontSize: 13,
                                             color: isAscending
                                                 ? kDarkSecondary
                                                 : kDarkAccent),
@@ -174,101 +173,101 @@ class _SearchScreenState extends State<SearchScreen> {
                           ],
                         ),
                       ),
-                      // Visibility(
-                      //     visible: !showResults,
-                      //     child: Container(
-                      //         padding:
-                      //             EdgeInsets.only(left: 16, right: 16, top: 20),
-                      //         child: Column(
-                      //           crossAxisAlignment: CrossAxisAlignment.start,
-                      //           children: <Widget>[
-                      //             DynamicText(
-                      //               S.of(context).peopleAreSearching,
-                      //               textAlign: TextAlign.center,
-                      //               style: kBaseTextStyle.copyWith(
-                      //                   fontSize: 12, color: kDarkSecondary),
-                      //             ),
-                      //             SizedBox(height: 10),
-                      //             Row(
-                      //               // mainAxisAlignment:
-                      //               //     MainAxisAlignment.spaceAround,
-                      //               children: <Widget>[
-                      //                 Container(
-                      //                   height: 30,
-                      //                   decoration: BoxDecoration(
-                      //                     color: kDefaultBackground,
-                      //                     borderRadius:
-                      //                         BorderRadius.circular(30),
-                      //                   ),
-                      //                   child: Padding(
-                      //                     padding: const EdgeInsets.symmetric(
-                      //                         horizontal: 20.0),
-                      //                     child: Center(
-                      //                       child: DynamicText(
-                      //                         S.of(context).cancel,
-                      //                         textAlign: TextAlign.center,
-                      //                         style: kBaseTextStyle.copyWith(
-                      //                             fontSize: 13,
-                      //                             fontWeight: FontWeight.w600,
-                      //                             color: kDarkSecondary),
-                      //                       ),
-                      //                     ),
-                      //                   ),
-                      //                 ),
-                      //                 SizedBox(width: 10),
-                      //                 Container(
-                      //                   height: 30,
-                      //                   decoration: BoxDecoration(
-                      //                     color: kDefaultBackground,
-                      //                     borderRadius:
-                      //                         BorderRadius.circular(30),
-                      //                   ),
-                      //                   child: Padding(
-                      //                     padding: const EdgeInsets.symmetric(
-                      //                         horizontal: 20.0),
-                      //                     child: Center(
-                      //                       child: DynamicText(
-                      //                         S.of(context).cancel,
-                      //                         textAlign: TextAlign.center,
-                      //                         style: kBaseTextStyle.copyWith(
-                      //                             fontSize: 13,
-                      //                             fontWeight: FontWeight.w600,
-                      //                             color: kDarkSecondary),
-                      //                       ),
-                      //                     ),
-                      //                   ),
-                      //                 ),
-                      //                 SizedBox(width: 10),
-                      //                 Container(
-                      //                   height: 30 *
-                      //                       kSizeConfig.containerMultiplier,
-                      //                   decoration: BoxDecoration(
-                      //                     color: kDefaultBackground,
-                      //                     borderRadius:
-                      //                         BorderRadius.circular(30),
-                      //                   ),
-                      //                   child: Padding(
-                      //                     padding: const EdgeInsets.symmetric(
-                      //                         horizontal: 20.0),
-                      //                     child: Center(
-                      //                       child: DynamicText(
-                      //                         S.of(context).cancel,
-                      //                         textAlign: TextAlign.center,
-                      //                         style: kBaseTextStyle.copyWith(
-                      //                             fontSize: 13,
-                      //                             fontWeight: FontWeight.w600,
-                      //                             color: kDarkSecondary),
-                      //                       ),
-                      //                     ),
-                      //                   ),
-                      //                 ),
-                      //                 SizedBox(width: 10),
-                      //               ],
-                      //             ),
-                      //           ],
-                      //         ))),
                       Visibility(
-                        child: productModel.showProductList(
+                          visible: !showResults,
+                          child: Container(
+                              padding:
+                                  EdgeInsets.only(left: 16, right: 16, top: 20),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    S.of(context).peopleAreSearching,
+                                    textAlign: TextAlign.center,
+                                    style: kBaseTextStyle.copyWith(
+                                        fontSize: 13, color: kDarkSecondary),
+                                  ),
+                                  SizedBox(height: 10),
+                                  Row(
+                                    // mainAxisAlignment:
+                                    //     MainAxisAlignment.spaceAround,
+                                    children: <Widget>[
+                                      Container(
+                                        height: 30,
+                                        decoration: BoxDecoration(
+                                          color: kDefaultBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 20.0),
+                                          child: Center(
+                                            child: Text(
+                                              S.of(context).cancel,
+                                              textAlign: TextAlign.center,
+                                              style: kBaseTextStyle.copyWith(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: kDarkSecondary),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(width: 10),
+                                      Container(
+                                        height: 30,
+                                        decoration: BoxDecoration(
+                                          color: kDefaultBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 20.0),
+                                          child: Center(
+                                            child: Text(
+                                              S.of(context).cancel,
+                                              textAlign: TextAlign.center,
+                                              style: kBaseTextStyle.copyWith(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: kDarkSecondary),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(width: 10),
+                                      Container(
+                                        height: 30 *
+                                            kSizeConfig.containerMultiplier,
+                                        decoration: BoxDecoration(
+                                          color: kDefaultBackground,
+                                          borderRadius:
+                                              BorderRadius.circular(30),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 20.0),
+                                          child: Center(
+                                            child: Text(
+                                              S.of(context).cancel,
+                                              textAlign: TextAlign.center,
+                                              style: kBaseTextStyle.copyWith(
+                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: kDarkSecondary),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(width: 10),
+                                    ],
+                                  ),
+                                ],
+                              ))),
+                      Visibility(
+                        child: productModel.showCosmeticsProductList(
                             isNameAvailable: false, future: getProductBySearch),
                         visible: showResults,
                       ),

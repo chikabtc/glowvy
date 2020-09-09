@@ -76,6 +76,38 @@ void main() async {
         ExactAssetPicture(
             SvgPicture.svgStringDecoder, 'assets/icons/yellow-flower.svg'),
         null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/nolt-illustration.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/blue-big-logo.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/yellow-flower.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/yellow-flower.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/closed-eye-girl.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/yellow-smiley-face.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/arrow-more.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/blue-big-logo.svg'),
+        null);
 
     runApp(Glowvy());
   }, onError: (error, stackTrace) async {
