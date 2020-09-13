@@ -4,6 +4,7 @@ import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/baumannTestIntro.dart';
 import 'package:Dimodo/screens/feedback_center.dart';
 import 'package:Dimodo/screens/search_screen.dart';
+import 'package:Dimodo/screens/setting/signup.dart';
 import 'package:Dimodo/widgets/baumann_quiz.dart';
 import 'package:Dimodo/widgets/filter-by-skin.dart';
 import 'package:Dimodo/widgets/popup_services.dart';
@@ -482,7 +483,7 @@ class HomeScreenState extends State<HomeScreen>
                                   }),
                             ),
                           ),
-                          userModel.skinType != null
+                          userModel.skinType == null
                               ? Container(
                                   height: 78,
                                   width: screenSize.width,

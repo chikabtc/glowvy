@@ -35,7 +35,7 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
         appBar: AppBar(
             elevation: 0,
             title: Text(
-              "Give feedback",
+              "Phản hồi",
               style: kBaseTextStyle.copyWith(
                   color: kPrimaryBlue,
                   fontSize: 17,
@@ -78,14 +78,14 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                               Column(
                                 children: <Widget>[
                                   Text(
-                                    "User research, glowvy app survey",
+                                    "Thích/không thích ứng dụng?",
                                     style: kBaseTextStyle.copyWith(
                                         color: kPrimaryBlue,
                                         fontSize: 17,
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Text(
-                                    "User research, glowvy app survey",
+                                    "Làm khảo sát bây giờ",
                                     style: kBaseTextStyle.copyWith(
                                         color: kPrimaryBlue,
                                         fontStyle: FontStyle.italic,
@@ -126,19 +126,23 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                           children: <Widget>[
                             SizedBox(height: 15),
                             Text(
-                              "To make Glowvy Better",
+                              "Để giúp Glowvy phát triển hơn, bạn có thể:",
                               style: kBaseTextStyle.copyWith(
                                   color: kDarkSecondary,
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold),
                             ),
-                            TextWithIcon("yodwq msadwqrqwe",
+                            TextWithIcon(
+                                "Đề xuất tính năng bạn muốn thêm vào trong ứng dụng",
                                 "assets/icons/blue-smiley-face.svg"),
-                            TextWithIcon("yodwq msadwqrqwe",
+                            TextWithIcon(
+                                "Chia sẻ câu chuyện của bạn về trải nghiệm tốt/không tốt khi mua mỹ phẩm",
                                 "assets/icons/blue-smiley-face.svg"),
-                            TextWithIcon("yodwq msadwqrqwe",
+                            TextWithIcon(
+                                "Bình chọn cho bất cứ tính năng nào bạn yêu thích",
                                 "assets/icons/blue-smiley-face.svg"),
-                            TextWithIcon("yodwq msadwqrqwe",
+                            TextWithIcon(
+                                "Theo dõi quá trình phát triển của Glowvy",
                                 "assets/icons/blue-smiley-face.svg"),
                             SizedBox(height: 36),
                             GestureDetector(
@@ -158,7 +162,7 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                                 height: 48,
                                 alignment: Alignment.center,
                                 child: Text(
-                                  "Make Glowvy Better",
+                                  "Phát triển Glowvy",
                                   style: kBaseTextStyle.copyWith(
                                       color: Colors.white,
                                       fontSize: 15,
@@ -192,7 +196,7 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                                 Padding(
                                   padding: EdgeInsets.only(left: 48, right: 48),
                                   child: Text(
-                                    "Having troubles with the app? Email developers! Glowvy Team will response it as soon as possible",
+                                    "Có vấn đề với ứng dụng? Hãy gửi mail cho nhà phát triển! Glowvy team sẽ phản hồi nhanh nhất có thể.",
                                     textAlign: TextAlign.center,
                                     style: kBaseTextStyle.copyWith(
                                         color: kDarkSecondary,
@@ -217,7 +221,8 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                                     child: Container(
                                         height: 48,
                                         alignment: Alignment.center,
-                                        child: Text("Contact Glowvy Developer",
+                                        child: Text(
+                                            "Liên hệ nhà phát triển Glowvy",
                                             textAlign: TextAlign.center,
                                             style: kBaseTextStyle.copyWith(
                                                 color: kPrimaryBlue,

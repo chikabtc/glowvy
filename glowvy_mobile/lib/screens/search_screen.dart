@@ -28,10 +28,25 @@ class _SearchScreenState extends State<SearchScreen> {
   bool isTextFieldSelected = false;
   ProductModel productModel;
 
+  var roundLab = "Round Labs";
+  var cleanser = "Làm Sạch Da Mặt";
+  var cream = "Kem Bôi";
+  var sunscreen = "Chống Nắng";
+  var serum = "Serum";
+
   @override
   void initState() {
     super.initState();
     productModel = Provider.of<ProductModel>(context, listen: false);
+  }
+
+  search(text) {
+    isTextFieldSelected = false;
+    searchController.text = text;
+    getProductBySearch =
+        service.getProductsBySearch(searchText: text, sortBy: "id");
+    showResults = true;
+    FocusScope.of(context).unfocus();
   }
 
   @override
@@ -40,239 +55,163 @@ class _SearchScreenState extends State<SearchScreen> {
 
     return Scaffold(
         backgroundColor: Colors.white,
-        body: SafeArea(
-            top: true,
-            child: Container(
-              height: screenSize.height,
-              decoration: BoxDecoration(color: Colors.white),
-              child: CustomScrollView(
-                  // physics: NeverScrollableScrollPhysics(),
-                  slivers: [
-                    SliverList(
-                        delegate: SliverChildListDelegate([
-                      Row(
-                        // mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          IconButton(
-                            icon: CommonIcons.arrowBackward,
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                          ),
-                          Expanded(
-                            child: Container(
-                              height: 36,
-                              decoration: BoxDecoration(
-                                color: kDefaultBackground,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: TextField(
-                                onTap: () => isTextFieldSelected = true,
-                                cursorColor: kPinkAccent,
-                                controller: searchController,
-                                onChanged: (value) {
-                                  setState(() {
-                                    searchText = value;
-                                    showResults = false;
-                                  });
-                                },
-                                onSubmitted: (value) {
-                                  setState(() {
-                                    isTextFieldSelected = false;
-                                    getProductBySearch =
-                                        service.getProductsBySearch(
-                                            searchText: searchText,
-                                            sortBy: "id");
-                                    showResults = true;
+        appBar: AppBar(
+          brightness: Brightness.light,
+          backgroundColor: Colors.transparent,
+          leading: CommonIcons.backIcon(context, Colors.black),
+          title: Row(
+            children: <Widget>[
+              Expanded(
+                child: Container(
+                  height: 36,
+                  decoration: BoxDecoration(
+                    color: kDefaultBackground,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: TextField(
+                    onTap: () => isTextFieldSelected = true,
+                    cursorColor: kPinkAccent,
+                    controller: searchController,
+                    onChanged: (value) {
+                      setState(() {
+                        searchText = value;
+                        if (value == "") {
+                          showResults = false;
+                        }
+                      });
+                    },
+                    onSubmitted: (value) {
+                      setState(() {
+                        isTextFieldSelected = false;
+                        getProductBySearch = service.getProductsBySearch(
+                            searchText: searchText, sortBy: "id");
+                        showResults = true;
 
-                                    FocusScope.of(context).unfocus();
-                                  });
-                                },
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: S.of(context).search,
-                                  hintStyle: kBaseTextStyle.copyWith(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
-                                    color: kDarkSecondary.withOpacity(0.5),
-                                  ),
-                                  contentPadding:
-                                      EdgeInsets.only(left: 20, bottom: 12),
-                                ),
-                              ),
-                            ),
-                          ),
-                          !isTextFieldSelected
-                              ? Container(width: 46)
-                              : Container(
-                                  // width: 56,
-                                  padding: EdgeInsets.only(right: 16, left: 10),
-                                  child: GestureDetector(
-                                    onTap: () => setState(() {
-                                      searchText = "";
-                                      searchController.text = searchText;
-                                      showResults = true;
-                                      FocusScope.of(context).unfocus();
-                                    }),
-                                    child: Container(
-                                      child: Text(
-                                        S.of(context).cancel,
-                                        style: kBaseTextStyle.copyWith(
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w600),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                        ],
+                        FocusScope.of(context).unfocus();
+                      });
+                    },
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: S.of(context).search,
+                      hintStyle: kBaseTextStyle.copyWith(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: kDarkSecondary.withOpacity(0.5),
                       ),
-                      Container(
-                        height: 40,
-                        color: Colors.white,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            GestureDetector(
-                              onTap: () {
-                                //reload the list with different sorting
-                                setState(() {
-                                  isAscending = !isAscending;
-                                });
-                              },
-                              child: Container(
-                                  decoration: new BoxDecoration(
-                                    color:
-                                        isAscending ? Colors.white : kLightPink,
-                                    borderRadius: BorderRadius.circular(6),
-                                  ),
-                                  padding: EdgeInsets.symmetric(horizontal: 6),
-                                  height: 24,
-                                  // width: 98,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      Image.asset(
-                                          "assets/icons/filter-sort-active.png"),
-                                      Text(
-                                        isAscending
-                                            ? S.of(context).highestToLowest
-                                            : S.of(context).lowestToHighest,
-                                        textAlign: TextAlign.center,
-                                        style: kBaseTextStyle.copyWith(
-                                            fontSize: 13,
-                                            color: isAscending
-                                                ? kDarkSecondary
-                                                : kDarkAccent),
-                                      ),
-                                    ],
-                                  )),
-                            ),
-                            SizedBox(width: 12)
-                          ],
+                      contentPadding: EdgeInsets.only(left: 20, bottom: 12),
+                    ),
+                  ),
+                ),
+              ),
+              !isTextFieldSelected
+                  ? Container(width: 46)
+                  : Container(
+                      // width: 56,
+                      padding: EdgeInsets.only(right: 16, left: 10),
+                      child: GestureDetector(
+                        onTap: () => setState(() {
+                          searchText = "";
+                          searchController.text = searchText;
+                          showResults = false;
+                          FocusScope.of(context).unfocus();
+                        }),
+                        child: Container(
+                          child: Text(
+                            S.of(context).cancel,
+                            style: kBaseTextStyle.copyWith(
+                                fontSize: 14, fontWeight: FontWeight.w600),
+                          ),
                         ),
                       ),
-                      Visibility(
-                          visible: !showResults,
-                          child: Container(
-                              padding:
-                                  EdgeInsets.only(left: 16, right: 16, top: 20),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: <Widget>[
-                                  Text(
-                                    S.of(context).peopleAreSearching,
-                                    textAlign: TextAlign.center,
-                                    style: kBaseTextStyle.copyWith(
-                                        fontSize: 13, color: kDarkSecondary),
-                                  ),
-                                  SizedBox(height: 10),
-                                  Row(
-                                    // mainAxisAlignment:
-                                    //     MainAxisAlignment.spaceAround,
-                                    children: <Widget>[
-                                      Container(
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          color: kDefaultBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(30),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 20.0),
-                                          child: Center(
-                                            child: Text(
-                                              S.of(context).cancel,
-                                              textAlign: TextAlign.center,
-                                              style: kBaseTextStyle.copyWith(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: kDarkSecondary),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(width: 10),
-                                      Container(
-                                        height: 30,
-                                        decoration: BoxDecoration(
-                                          color: kDefaultBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(30),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 20.0),
-                                          child: Center(
-                                            child: Text(
-                                              S.of(context).cancel,
-                                              textAlign: TextAlign.center,
-                                              style: kBaseTextStyle.copyWith(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: kDarkSecondary),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(width: 10),
-                                      Container(
-                                        height: 30 *
-                                            kSizeConfig.containerMultiplier,
-                                        decoration: BoxDecoration(
-                                          color: kDefaultBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(30),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 20.0),
-                                          child: Center(
-                                            child: Text(
-                                              S.of(context).cancel,
-                                              textAlign: TextAlign.center,
-                                              style: kBaseTextStyle.copyWith(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w600,
-                                                  color: kDarkSecondary),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(width: 10),
-                                    ],
-                                  ),
-                                ],
-                              ))),
-                      Visibility(
-                        child: productModel.showCosmeticsProductList(
-                            isNameAvailable: false, future: getProductBySearch),
-                        visible: showResults,
-                      ),
-                    ]))
-                  ]),
-            )));
+                    ),
+            ],
+          ),
+        ),
+        body: SafeArea(
+          top: true,
+          child: Container(
+              height: screenSize.height,
+              decoration: BoxDecoration(color: Colors.white),
+              child: ListView(
+                children: <Widget>[
+                  Row(
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[],
+                  ),
+                  showResults
+                      ? productModel.showCosmeticsProductList(
+                          isNameAvailable: false, future: getProductBySearch)
+                      : Container(
+                          padding:
+                              EdgeInsets.only(left: 16, right: 16, top: 20),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                "Mọi người cũng tìm kiếm",
+                                textAlign: TextAlign.center,
+                                style: kBaseTextStyle.copyWith(
+                                    fontSize: 14, color: kDarkSecondary),
+                              ),
+                              SizedBox(height: 10),
+                              Keyword(
+                                  keyword: roundLab,
+                                  onTap: () => search(roundLab)),
+                              SizedBox(height: 10),
+                              Keyword(
+                                  keyword: cleanser,
+                                  onTap: () => search(cleanser)),
+                              SizedBox(height: 10),
+                              Keyword(
+                                  keyword: cream, onTap: () => search(cream)),
+                              SizedBox(height: 10),
+                              Keyword(
+                                  keyword: sunscreen,
+                                  onTap: () => search(sunscreen)),
+                              SizedBox(height: 10),
+                              Keyword(
+                                  keyword: serum, onTap: () => search(serum)),
+                              SizedBox(height: 10),
+                            ],
+                          ))
+                ],
+              )),
+        ));
+  }
+}
+
+class Keyword extends StatelessWidget {
+  const Keyword({
+    Key key,
+    @required this.keyword,
+    @required this.onTap,
+  }) : super(key: key);
+
+  final String keyword;
+  final Function onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => onTap(),
+      child: Container(
+        height: 30,
+        decoration: BoxDecoration(
+          color: kLightYellow,
+          borderRadius: BorderRadius.circular(10),
+        ),
+        // alignment: Alignment.center,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20, top: 6),
+          child: Text(
+            keyword,
+            textAlign: TextAlign.center,
+            style: kBaseTextStyle.copyWith(
+                fontSize: 14, fontWeight: FontWeight.bold, color: kDarkYellow),
+          ),
+        ),
+      ),
+    );
   }
 }

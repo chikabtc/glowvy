@@ -24,7 +24,7 @@ class DimodoServices implements BaseServices {
   static final DimodoServices _instance = DimodoServices._internal();
   factory DimodoServices() => _instance;
 
-  bool isProd = false;
+  bool isProd = true;
 
   DimodoServices._internal();
 

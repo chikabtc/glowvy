@@ -53,10 +53,9 @@ class PopupServices {
                           height: AppBar().preferredSize.height,
                           width: kScreenSizeWidth,
                           child: Center(
-                            child: DynamicText(
-                                S.of(context).thankYouForUsingDimodo,
+                            child: Text(S.of(context).thankYouForUsingDimodo,
                                 style: kBaseTextStyle.copyWith(
-                                    fontSize: 15, fontWeight: FontWeight.w600)),
+                                    fontSize: 16, fontWeight: FontWeight.w600)),
                           )),
                       Positioned(
                         top: 6,
@@ -77,9 +76,10 @@ class PopupServices {
                     Padding(
                       padding: const EdgeInsets.only(
                           right: 32.0, left: 32, bottom: 20),
-                      child: DynamicText(S.of(context).surveyDescription,
+                      child: Text(
+                          "Hey~ Chúng tôi là Glowvy team và luôn mong muốn có thể cải thiện dịch vụ. Chúng tôi rất trân trọng các ý tưởng của bạn! Bạn có thể dành ra vài phút trả lời câu hỏi không?",
                           style: kBaseTextStyle.copyWith(
-                            fontSize: 13,
+                            fontSize: 14,
                             color: kDarkSecondary,
                             fontWeight: FontWeight.w500,
                           ),
@@ -99,7 +99,7 @@ class PopupServices {
                               shape: RoundedRectangleBorder(
                                 borderRadius: new BorderRadius.circular(25.0),
                               ),
-                              child: Text("Give little feedback",
+                              child: Text("Làm khảo sát",
                                   style: kBaseTextStyle.copyWith(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w600,
@@ -169,10 +169,9 @@ class PopupServices {
                             height: AppBar().preferredSize.height,
                             width: kScreenSizeWidth,
                             child: Center(
-                              child: DynamicText(
-                                  S.of(context).thankYouForUsingDimodo,
+                              child: Text(S.of(context).thankYouForUsingDimodo,
                                   style: kBaseTextStyle.copyWith(
-                                      fontSize: 15,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.w600)),
                             )),
                         Positioned(
@@ -197,10 +196,10 @@ class PopupServices {
                       Padding(
                         padding: const EdgeInsets.only(
                             right: 32.0, left: 32, bottom: 20),
-                        child: DynamicText(
+                        child: Text(
                             "Glowvy team appreciates you are using current features. It will take 10 mins to collect the feedback by filling up satisfaction survey.",
                             style: kBaseTextStyle.copyWith(
-                              fontSize: 13,
+                              fontSize: 14,
                               color: kDarkSecondary,
                               fontWeight: FontWeight.w500,
                             ),
@@ -408,7 +407,7 @@ class PopupServices {
                             height: AppBar().preferredSize.height,
                             width: kScreenSizeWidth,
                             child: Center(
-                              child: DynamicText(S.of(context).officialQA,
+                              child: Text(S.of(context).officialQA,
                                   style: kBaseTextStyle.copyWith(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w600)),
@@ -428,19 +427,19 @@ class PopupServices {
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
                           children: <Widget>[
-                            DynamicText(
+                            Text(
                               S.of(context).whyLowerThanMarketpriceAnswer,
-                              style: kBaseTextStyle.copyWith(fontSize: 14),
+                              style: kBaseTextStyle.copyWith(fontSize: 15),
                               maxLines: 10,
                             ),
-                            DynamicText(
+                            Text(
                               S.of(context).whereReivewsFromAnswer,
-                              style: kBaseTextStyle.copyWith(fontSize: 14),
+                              style: kBaseTextStyle.copyWith(fontSize: 15),
                               maxLines: 10,
                             ),
-                            DynamicText(
+                            Text(
                               S.of(context).sameQualityAsInKoreaAnswer,
-                              style: kBaseTextStyle.copyWith(fontSize: 14),
+                              style: kBaseTextStyle.copyWith(fontSize: 15),
                               maxLines: 100,
                             )
                           ],
@@ -532,9 +531,9 @@ class PopupServices {
                             height: AppBar().preferredSize.height,
                             width: kScreenSizeWidth,
                             child: Center(
-                              child: DynamicText(S.of(context).dimodoServices,
+                              child: Text(S.of(context).dimodoServices,
                                   style: kBaseTextStyle.copyWith(
-                                      fontSize: 15,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.w600)),
                             )),
                         Positioned(
@@ -552,19 +551,19 @@ class PopupServices {
                         padding: const EdgeInsets.all(16.0),
                         child: Column(
                           children: <Widget>[
-                            DynamicText(
+                            Text(
                               S.of(context).provenKoreanCosmeticsStory,
-                              style: kBaseTextStyle.copyWith(fontSize: 14),
+                              style: kBaseTextStyle.copyWith(fontSize: 15),
                               maxLines: 10,
                             ),
-                            DynamicText(
+                            Text(
                               S.of(context).getTheCheapesPriceStory,
-                              style: kBaseTextStyle.copyWith(fontSize: 14),
+                              style: kBaseTextStyle.copyWith(fontSize: 15),
                               maxLines: 10,
                             ),
-                            DynamicText(
+                            Text(
                               S.of(context).moneyBackGuaranteeStory,
-                              style: kBaseTextStyle.copyWith(fontSize: 14),
+                              style: kBaseTextStyle.copyWith(fontSize: 15),
                               maxLines: 100,
                             )
                           ],
