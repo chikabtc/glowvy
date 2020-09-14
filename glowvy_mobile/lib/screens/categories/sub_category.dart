@@ -90,7 +90,7 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
               elevation: 0,
               backgroundColor: Colors.white,
               // pinned: true,
-              title: DynamicText(currentCate.name,
+              title: Text(currentCate.name,
                   style: kBaseTextStyle.copyWith(
                       fontSize: 18,
                       color: Colors.black,
@@ -176,7 +176,7 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
 
     var allBtn = Container(
       child: Tab(
-        child: DynamicText("all",
+        child: Text("all",
             style: kBaseTextStyle.copyWith(
               fontSize: 13,
               fontWeight: FontWeight.w600,
@@ -189,7 +189,7 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
     widget.category.subCategories.asMap().forEach((index, element) {
       var btn = Container(
         child: Tab(
-          child: DynamicText(widget.category.subCategories[index].name,
+          child: Text(widget.category.subCategories[index].name,
               style: kBaseTextStyle.copyWith(
                 fontSize: 13,
                 fontWeight: FontWeight.w600,

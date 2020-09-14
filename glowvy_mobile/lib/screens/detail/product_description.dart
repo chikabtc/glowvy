@@ -37,7 +37,7 @@ class _ProductDescriptionState extends State<ProductDescription>
     if (sizeDetails != null) {
       sizeDetails.forEach((sizeDetail) {
         sizeDetail.attributes.forEach((attribute) {
-          sizeDetailWidget.add(DynamicText(
+          sizeDetailWidget.add(Text(
             "${attribute.title} ${attribute.value}",
             textAlign: TextAlign.start,
             style: kBaseTextStyle.copyWith(fontSize: 12),
@@ -95,7 +95,7 @@ class _ProductDescriptionState extends State<ProductDescription>
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          DynamicText(
+                          Text(
                             "ID: ${widget.product.sid.toString()}",
                             style: kBaseTextStyle.copyWith(
                                 fontSize: 13,
@@ -103,7 +103,7 @@ class _ProductDescriptionState extends State<ProductDescription>
                                 color: kDarkAccent),
                             textAlign: TextAlign.start,
                           ),
-                          DynamicText(S.of(context).supportedByGoogleTranslate,
+                          Text(S.of(context).supportedByGoogleTranslate,
                               style: kBaseTextStyle.copyWith(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
@@ -168,7 +168,7 @@ class _ProductDescriptionState extends State<ProductDescription>
                 renderSizeDetail(),
                 SizedBox(height: 35),
                 widget.product.description != null
-                    ? DynamicText(
+                    ? Text(
                         formattedDescription,
                         style: kBaseTextStyle.copyWith(
                             fontSize: 12, color: kDarkAccent),

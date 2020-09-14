@@ -89,7 +89,7 @@ class _OrderSubmittedState extends State<OrderSubmitted>
                             height: AppBar().preferredSize.height,
                             width: kScreenSizeWidth,
                             child: Center(
-                              child: DynamicText(S.of(context).writeReview,
+                              child: Text(S.of(context).writeReview,
                                   style: kBaseTextStyle.copyWith(
                                       fontSize: 15,
                                       fontWeight: FontWeight.w600)),
@@ -114,7 +114,7 @@ class _OrderSubmittedState extends State<OrderSubmitted>
                                 'assets/icons/cart/received-package-illustration.png'),
                           )),
                       // SizedBox(height: 20),
-                      DynamicText(S.of(context).askServiceQuality,
+                      Text(S.of(context).askServiceQuality,
                           style: kBaseTextStyle.copyWith(
                             fontSize: 15,
                             fontWeight: FontWeight.w600,
@@ -169,7 +169,7 @@ class _OrderSubmittedState extends State<OrderSubmitted>
                                         new BorderRadius.circular(25.0),
                                     side: BorderSide(
                                         color: kPinkAccent, width: 1.5)),
-                                child: DynamicText(S.of(context).send,
+                                child: Text(S.of(context).send,
                                     style: kBaseTextStyle.copyWith(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w600,
@@ -243,7 +243,7 @@ class _OrderSubmittedState extends State<OrderSubmitted>
                   backgroundColor: kPinkAccent,
                   pinned: true,
                   flexibleSpace: FlexibleSpaceBar(
-                    title: DynamicText(S.of(context).orderSubmitted,
+                    title: Text(S.of(context).orderSubmitted,
                         style: kBaseTextStyle.copyWith(
                             fontSize: 17,
                             color: Colors.white,
@@ -257,7 +257,7 @@ class _OrderSubmittedState extends State<OrderSubmitted>
                       padding: EdgeInsets.only(top: 30, bottom: 16),
                       child: Column(
                         children: <Widget>[
-                          DynamicText(
+                          Text(
                               isOrderConfirmed
                                   ? S.of(context).thankYouForUsingDimodo
                                   : S.of(context).oneStepLeft,
@@ -269,7 +269,7 @@ class _OrderSubmittedState extends State<OrderSubmitted>
                           SizedBox(height: 27),
                           Padding(
                             padding: EdgeInsets.only(left: 16, right: 16),
-                            child: DynamicText(
+                            child: Text(
                                 isOrderConfirmed
                                     ? S.of(context).shippingDescription
                                     : S.of(context).transferDescription,
@@ -305,7 +305,7 @@ class _OrderSubmittedState extends State<OrderSubmitted>
                                 shape: RoundedRectangleBorder(
                                   borderRadius: new BorderRadius.circular(25.0),
                                 ),
-                                child: DynamicText(S.of(context).reset,
+                                child: Text(S.of(context).reset,
                                     style: kBaseTextStyle.copyWith(
                                         fontWeight: FontWeight.w600,
                                         fontSize: 14,
@@ -333,7 +333,7 @@ class _OrderSubmittedState extends State<OrderSubmitted>
                                           new BorderRadius.circular(25.0),
                                       side: BorderSide(
                                           color: kPinkAccent, width: 1.5)),
-                                  child: DynamicText(
+                                  child: Text(
                                       S.of(context).confirmReceivePackage,
                                       style: kBaseTextStyle.copyWith(
                                           fontWeight: FontWeight.w600,
@@ -348,18 +348,18 @@ class _OrderSubmittedState extends State<OrderSubmitted>
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              DynamicText(
+                              Text(
                                 S.of(context).shippingFrom,
                                 style: kBaseTextStyle.copyWith(
                                     fontSize: 17, fontWeight: FontWeight.w600),
                               ),
                               SizedBox(height: 19),
-                              DynamicText(
+                              Text(
                                 S.of(context).localKoreanShips,
                                 style: kBaseTextStyle.copyWith(
                                     fontSize: 13, fontWeight: FontWeight.w600),
                               ),
-                              DynamicText(
+                              Text(
                                 S.of(context).seoulKorea,
                                 style: kBaseTextStyle.copyWith(
                                     fontSize: 12,
@@ -375,13 +375,13 @@ class _OrderSubmittedState extends State<OrderSubmitted>
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              DynamicText(
+                              Text(
                                 S.of(context).shippingTo,
                                 style: kBaseTextStyle.copyWith(
                                     fontSize: 17, fontWeight: FontWeight.w600),
                               ),
                               SizedBox(height: 19),
-                              DynamicText(
+                              Text(
                                 fullAddress,
                                 // S.of(context).localKoreanShips,
                                 style: kBaseTextStyle.copyWith(

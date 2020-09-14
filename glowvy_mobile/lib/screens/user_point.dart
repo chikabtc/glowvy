@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 import '../common/config.dart';
 import 'package:http/http.dart' as http;

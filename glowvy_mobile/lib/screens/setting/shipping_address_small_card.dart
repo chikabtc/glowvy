@@ -29,19 +29,19 @@ class ShippingAddressSmallCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Row(children: <Widget>[
-                      DynamicText(address.recipientName ?? "not found",
+                      Text(address.recipientName ?? "not found",
                           style: kBaseTextStyle.copyWith(
                             fontSize: 17,
                             fontWeight: FontWeight.w600,
                           )),
                       SizedBox(width: 5),
-                      DynamicText(address.phoneNumber,
+                      Text(address.phoneNumber,
                           style: kBaseTextStyle.copyWith(
                               fontSize: 13,
                               fontWeight: FontWeight.w500,
                               color: kDarkSecondary)),
                     ]),
-                    DynamicText(
+                    Text(
                       address.ward.province.name +
                           "  " +
                           address.ward.district.name +
@@ -53,7 +53,7 @@ class ShippingAddressSmallCard extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                           color: kDarkSecondary),
                     ),
-                    DynamicText(
+                    Text(
                       address.street,
                       style: kBaseTextStyle.copyWith(
                           fontSize: 12,
@@ -66,13 +66,13 @@ class ShippingAddressSmallCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    DynamicText(S.of(context).shippingAddress,
+                    Text(S.of(context).shippingAddress,
                         style: kBaseTextStyle.copyWith(
                           fontSize: 17,
                           fontWeight: FontWeight.w600,
                         )),
                     SizedBox(width: 5),
-                    DynamicText(S.of(context).pleaseInput,
+                    Text(S.of(context).pleaseInput,
                         style: kBaseTextStyle.copyWith(
                             fontSize: 13,
                             fontWeight: FontWeight.w500,

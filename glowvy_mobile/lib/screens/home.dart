@@ -6,6 +6,7 @@ import 'package:Dimodo/screens/feedback_center.dart';
 import 'package:Dimodo/screens/search_screen.dart';
 import 'package:Dimodo/screens/setting/signup.dart';
 import 'package:Dimodo/widgets/baumann_quiz.dart';
+import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/widgets/filter-by-skin.dart';
 import 'package:Dimodo/widgets/popup_services.dart';
 import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';

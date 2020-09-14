@@ -90,7 +90,7 @@ class _StateReviews extends State<CosmeticsReviewScreen>
                   : (metaReviews.reviews.length == 0
                       ? Container(
                           child: Center(
-                            child: DynamicText(
+                            child: Text(
                               S.of(context).noReviews,
                               style: kBaseTextStyle,
                             ),
@@ -108,7 +108,7 @@ class _StateReviews extends State<CosmeticsReviewScreen>
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceAround,
                                     children: <Widget>[
-                                      DynamicText(
+                                      Text(
                                           "${S.of(context).reviews} (${widget.product.purchaseCount})",
                                           style: kBaseTextStyle.copyWith(
                                               fontSize: 13,

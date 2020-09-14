@@ -1,3 +1,4 @@
+import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 
 import './../services/index.dart';

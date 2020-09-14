@@ -91,13 +91,13 @@ class _ProductDetailState extends State<ProductDetail> {
       barrierDismissible: true, // user can tap anywhere to dismiss the popup!
       builder: (BuildContext buildContext) {
         return AlertDialog(
-          title: DynamicText(
+          title: Text(
             S.of(context).shippingFeePolicy,
             style: kBaseTextStyle,
           ),
           actions: <Widget>[
             FlatButton(
-              child: DynamicText(
+              child: Text(
                 'Ok',
                 style: kBaseTextStyle,
               ),
@@ -199,14 +199,13 @@ class _ProductDetailState extends State<ProductDetail> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: <Widget>[
-                                            DynamicText(
-                                                S.of(context).shipFromKorea,
+                                            Text(S.of(context).shipFromKorea,
                                                 style: kBaseTextStyle.copyWith(
                                                     fontSize: 13,
                                                     color: kDarkSecondary,
                                                     fontWeight:
                                                         FontWeight.w600)),
-                                            DynamicText(
+                                            Text(
                                                 S
                                                         .of(context)
                                                         .koreanShippingFee +
@@ -217,14 +216,14 @@ class _ProductDetailState extends State<ProductDetail> {
                                                     fontWeight:
                                                         FontWeight.w500)),
                                             SizedBox(height: 20),
-                                            DynamicText(
+                                            Text(
                                                 S.of(context).importTaxIncluded,
                                                 style: kBaseTextStyle.copyWith(
                                                     fontSize: 13,
                                                     color: kDarkSecondary,
                                                     fontWeight:
                                                         FontWeight.w600)),
-                                            DynamicText(
+                                            Text(
                                                 S
                                                     .of(context)
                                                     .importTaxFeeDescription,
@@ -262,7 +261,7 @@ class _ProductDetailState extends State<ProductDetail> {
                                                               horizontal: 16),
                                                       child: Row(
                                                         children: <Widget>[
-                                                          DynamicText(
+                                                          Text(
                                                               "${S.of(context).reviews} (${metaReviews.totalCount})",
                                                               style: kBaseTextStyle.copyWith(
                                                                   fontSize: 12,
@@ -281,7 +280,7 @@ class _ProductDetailState extends State<ProductDetail> {
                                                                       .center,
                                                               children: <
                                                                   Widget>[
-                                                                DynamicText(
+                                                                Text(
                                                                     S.of(context).satisfaction +
                                                                         " ${metaReviews.averageSatisfaction}%",
                                                                     style: kBaseTextStyle.copyWith(

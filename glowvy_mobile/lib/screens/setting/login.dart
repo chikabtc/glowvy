@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginScreen>
       // Navigator.of(context).pop(user);
     } else {
       final snackBar = SnackBar(
-          content: DynamicText(S.of(context).welcome + ' ${user.fullName} !',
+          content: Text(S.of(context).welcome + ' ${user.fullName} !',
               style: kBaseTextStyle.copyWith(color: Colors.white)));
       Scaffold.of(context).showSnackBar(snackBar);
 
@@ -80,7 +80,7 @@ class _LoginPageState extends State<LoginScreen>
     FocusScope.of(context).requestFocus(FocusNode());
 
     final snackBar = SnackBar(
-      content: DynamicText(
+      content: Text(
         '$message',
         style: kBaseTextStyle.copyWith(color: Colors.white),
       ),
@@ -101,7 +101,7 @@ class _LoginPageState extends State<LoginScreen>
   _loginEmail(context) async {
     if (email == null || password == null) {
       var snackBar = SnackBar(
-          content: DynamicText(S.of(context).pleaseInput,
+          content: Text(S.of(context).pleaseInput,
               style: kBaseTextStyle.copyWith(color: Colors.white)));
       Scaffold.of(context).showSnackBar(snackBar);
     } else {
@@ -188,7 +188,7 @@ class _LoginPageState extends State<LoginScreen>
             : Container(),
         actions: <Widget>[
           FlatButton(
-            child: DynamicText(S.of(context).signup,
+            child: Text(S.of(context).signup,
                 style: buttonTextStyle.copyWith(fontWeight: FontWeight.bold)),
             onPressed: () {
               Navigator.pushReplacementNamed(context, "/register");
@@ -216,7 +216,7 @@ class _LoginPageState extends State<LoginScreen>
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              DynamicText(
+                              Text(
                                 S.of(parentContext).login,
                                 style: kBaseTextStyle.copyWith(
                                     fontStyle: FontStyle.italic,
@@ -302,7 +302,7 @@ class _LoginPageState extends State<LoginScreen>
                           shape: RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(25.0),
                               side: BorderSide(color: kPinkAccent, width: 1.5)),
-                          child: DynamicText(S.of(context).forgotpassword,
+                          child: Text(S.of(context).forgotpassword,
                               style: kBaseTextStyle.copyWith(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 14,
@@ -316,7 +316,7 @@ class _LoginPageState extends State<LoginScreen>
                       SizedBox(
                         height: 24.0,
                       ),
-                      DynamicText(S.of(context).loginWithSNS,
+                      Text(S.of(context).loginWithSNS,
                           style: TextStyle(
                               fontSize: 12, color: Colors.grey.shade400)),
                       SizedBox(

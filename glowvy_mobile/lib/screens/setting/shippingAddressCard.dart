@@ -35,13 +35,13 @@ class ShippingAddressCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Row(children: <Widget>[
-                DynamicText(address.recipientName ?? "not found",
+                Text(address.recipientName ?? "not found",
                     style: kBaseTextStyle.copyWith(
                       fontSize: 17,
                       fontWeight: FontWeight.w600,
                     )),
                 SizedBox(width: 5),
-                DynamicText(address.phoneNumber,
+                Text(address.phoneNumber,
                     style: kBaseTextStyle.copyWith(
                         fontSize: 13,
                         fontWeight: FontWeight.w500,
@@ -53,7 +53,7 @@ class ShippingAddressCard extends StatelessWidget {
                   address.isDefault
                       ? Row(
                           children: <Widget>[
-                            DynamicText(S.of(context).defaultString,
+                            Text(S.of(context).defaultString,
                                 style: kBaseTextStyle.copyWith(
                                     fontSize: 13,
                                     fontWeight: FontWeight.w500,
@@ -62,7 +62,7 @@ class ShippingAddressCard extends StatelessWidget {
                           ],
                         )
                       : Container(),
-                  DynamicText(
+                  Text(
                     address.ward.province.name ??
                         "province not found" +
                             "  " +
@@ -75,7 +75,7 @@ class ShippingAddressCard extends StatelessWidget {
                   ),
                 ],
               ),
-              DynamicText(
+              Text(
                 address.street,
                 style: kBaseTextStyle.copyWith(
                     fontSize: 12,

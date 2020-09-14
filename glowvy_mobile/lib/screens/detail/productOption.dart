@@ -84,13 +84,13 @@ class _ProductOptionState extends State<ProductOption>
       barrierDismissible: true, // user can tap anywhere to dismiss the popup!
       builder: (BuildContext buildContext) {
         return AlertDialog(
-          title: DynamicText(
+          title: Text(
             "Thanks for liking it!",
             style: kBaseTextStyle.copyWith(fontSize: 16),
           ),
           actions: <Widget>[
             FlatButton(
-              child: DynamicText(
+              child: Text(
                 'Ok',
                 style: kBaseTextStyle,
               ),
@@ -131,7 +131,7 @@ class _ProductOptionState extends State<ProductOption>
       children: <Widget>[
         Padding(
           padding: EdgeInsets.only(top: 20, bottom: 10),
-          child: DynamicText(
+          child: Text(
             singleOptions.title,
             style: kBaseTextStyle.copyWith(
                 fontSize: 13,
@@ -159,7 +159,7 @@ class _ProductOptionState extends State<ProductOption>
                       : attribute.isSoldOut
                           ? kDarkAccent.withOpacity(0.4)
                           : kLightBG,
-                  label: DynamicText(
+                  label: Text(
                     attribute.value,
                     style: kBaseTextStyle.copyWith(
                         fontSize: 15,
@@ -233,7 +233,7 @@ class _ProductOptionState extends State<ProductOption>
     // enumerate the two compound options
     compoundOptions.asMap().forEach((index, compoundOption) {
       var associatedKey = index == 0 ? chosenOptions[1] : chosenOptions[0];
-      var header = DynamicText(
+      var header = Text(
         compoundOption.title,
         style: kBaseTextStyle.copyWith(
             fontSize: 13, fontWeight: FontWeight.w600, color: kDarkSecondary),
@@ -258,7 +258,7 @@ class _ProductOptionState extends State<ProductOption>
                   : isSoldOut(compoundOption, key, associatedKey)
                       ? kDarkAccent.withOpacity(0.4)
                       : kLightBG,
-              label: DynamicText(
+              label: Text(
                 key,
                 style: kBaseTextStyle.copyWith(
                     fontSize: 15,
@@ -311,7 +311,7 @@ class _ProductOptionState extends State<ProductOption>
                               height: AppBar().preferredSize.height,
                               width: kScreenSizeWidth,
                               child: Center(
-                                child: DynamicText(S.of(context).choose,
+                                child: Text(S.of(context).choose,
                                     style: kBaseTextStyle.copyWith(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600)),
@@ -354,7 +354,7 @@ class _ProductOptionState extends State<ProductOption>
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: <Widget>[
-                                        DynamicText(
+                                        Text(
                                           S.of(context).quantity,
                                           style: kBaseTextStyle.copyWith(
                                               fontSize: 13,
@@ -389,7 +389,7 @@ class _ProductOptionState extends State<ProductOption>
                                                       style: BorderStyle.solid,
                                                       color: kLightBG,
                                                       width: 1.5)),
-                                              child: DynamicText(
+                                              child: Text(
                                                 quantity.toString(),
                                                 textAlign: TextAlign.center,
                                                 style: kBaseTextStyle.copyWith(

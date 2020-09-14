@@ -37,22 +37,40 @@ class CommonIcons {
   }
 }
 
-class DynamicText extends StatelessWidget {
-  final TextStyle style;
-  final String text;
-  final TextAlign textAlign;
-  final TextOverflow overflow;
-  final int maxLines;
-  DynamicText(this.text,
-      {this.style, this.textAlign, this.maxLines, this.overflow});
+// class Text extends StatelessWidget {
+//   final TextStyle style;
+//   final String text;
+//   final TextAlign textAlign;
+//   final TextOverflow overflow;
+//   final int maxLines;
+//   Text(this.text, {this.style, this.textAlign, this.maxLines, this.overflow});
 
-  @override
-  Widget build(BuildContext context) {
-    return Text(text,
-        overflow: overflow == null ? TextOverflow.ellipsis : overflow,
-        maxLines: maxLines == null ? null : maxLines,
-        textAlign: textAlign ?? TextAlign.start,
-        style: style.copyWith(
-            fontSize: style.fontSize * kSizeConfig.textMultiplier));
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Text(text,
+//         overflow: overflow == null ? TextOverflow.ellipsis : overflow,
+//         maxLines: maxLines == null ? null : maxLines,
+//         textAlign: textAlign ?? TextAlign.start,
+//         textScaleFactor: 1.0,
+//         style: style?.copyWith(fontSize: style != null ? style.fontSize : 15));
+//   }
+// }
+// class TextField extends StatelessWidget {
+//   final TextStyle style;
+//   final String text;
+//   final TextAlign textAlign;
+//   final TextOverflow overflow;
+//   final int maxLines;
+//   Text(this.text,
+//       {this.style, this.textAlign, this.maxLines, this.overflow});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Text(text,
+//         overflow: overflow == null ? TextOverflow.ellipsis : overflow,
+//         maxLines: maxLines == null ? null : maxLines,
+//         textAlign: textAlign ?? TextAlign.start,
+//         textScaleFactor: 1.0,
+//         style: style?.copyWith(fontSize: style != null ? style.fontSize : 15));
+//   }
+// }

@@ -63,16 +63,7 @@ class _AppState extends State<Glowvy> with SingleTickerProviderStateMixin {
         navigatorObservers: [
           FirebaseAnalyticsObserver(analytics: analytics),
         ],
-        home: MyApp()
-        // CustomSplash(
-        //   imagePath: "assets/icons/launch-logo.png",
-        //   backGroundColor: kLogoColor,
-        //   animationEffect: 'fade-out ',
-        //   home: MyApp(),
-        //   duration: 2000,
-        //   // type: AnimatedSpl.StaticDuration,
-        // ),
-        );
+        home: MyApp());
   }
 }
 
@@ -131,11 +122,15 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
   Widget renderFirstScreen() {
     if (isFirstSeen) return GlowvyOnBoardScreen();
     if (kAdvanceConfig['IsRequiredLogin'] && !isLoggedIn) return LoginScreen();
-    return MainTabs();
+    final data = MediaQuery.of(context).copyWith(textScaleFactor: 1);
+
+    return MediaQuery(data: data, child: MainTabs());
   }
 
   @override
   Widget build(BuildContext context) {
+    final MediaQueryData data = MediaQuery.of(context);
+
     print("building app.dart");
     if (isChecking) {
       return MaterialApp(

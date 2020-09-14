@@ -44,7 +44,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
   void _welcomeMessage(context) {
     _stopAnimation();
     final snackBar =
-        SnackBar(content: DynamicText('Pin is sent !', style: kBaseTextStyle));
+        SnackBar(content: Text('Pin is sent !', style: kBaseTextStyle));
     Scaffold.of(context).showSnackBar(snackBar);
   }
 
@@ -71,8 +71,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
 
   void _snackBar(String text) {
     final snackBar = SnackBar(
-      content: DynamicText('$text',
-          style: kBaseTextStyle.copyWith(color: Colors.white)),
+      content:
+          Text('$text', style: kBaseTextStyle.copyWith(color: Colors.white)),
       duration: Duration(seconds: 10),
       action: SnackBarAction(
         label: 'Close',
@@ -107,7 +107,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
     /// Showing Error messageSnackBarDemo
     /// Ability so close message
     final snackBar = SnackBar(
-      content: DynamicText('Warning: $message', style: kBaseTextStyle),
+      content: Text('Warning: $message', style: kBaseTextStyle),
       duration: Duration(seconds: 30),
       action: SnackBarAction(
         label: S.of(context).close,
@@ -173,7 +173,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
             : Container(),
         actions: <Widget>[
           FlatButton(
-            child: DynamicText(S.of(context).login,
+            child: Text(S.of(context).login,
                 style: buttonTextStyle.copyWith(fontWeight: FontWeight.bold)),
             onPressed: () {
               Navigator.pushNamed(context, "/login");
@@ -199,7 +199,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              DynamicText(
+                              Text(
                                 isEmailSent
                                     ? S.of(parentContext).enterPINCode
                                     : S.of(parentContext).forgotpassword,
@@ -211,7 +211,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                         ],
                       ),
                       SizedBox(height: 23.0),
-                      DynamicText(
+                      Text(
                           isEmailSent
                               ? S.of(context).enterSixDigitCode
                               : S.of(context).enterEmailToGetPIN,

@@ -94,7 +94,7 @@ class _AddShippingAddressState extends State<AddShippingAddress>
                 backgroundColor: Colors.white,
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
-                  title: DynamicText(
+                  title: Text(
                       widget.address != null
                           ? S.of(context).editShippingAddress
                           : S.of(context).addAddress,
@@ -223,7 +223,7 @@ class _AddShippingAddressState extends State<AddShippingAddress>
                                           ),
                                         ),
                                         SizedBox(width: 12),
-                                        DynamicText(
+                                        Text(
                                           "Set as default",
                                           style: kBaseTextStyle.copyWith(
                                               fontSize: 13,
@@ -276,7 +276,7 @@ class _AddShippingAddressState extends State<AddShippingAddress>
                                                     children: <Widget>[
                                                       SvgPicture.asset(
                                                           "assets/icons/address/trash.svg"),
-                                                      DynamicText(
+                                                      Text(
                                                         S.of(context).cancel,
                                                         style: kBaseTextStyle
                                                             .copyWith(
@@ -329,7 +329,7 @@ class _AddShippingAddressState extends State<AddShippingAddress>
     FocusScope.of(context).requestFocus(FocusNode());
 
     final snackBar = SnackBar(
-      content: DynamicText(
+      content: Text(
         'Warning: $message',
         style: kBaseTextStyle.copyWith(color: Colors.white),
       ),
@@ -416,7 +416,7 @@ class _AddShippingAddressState extends State<AddShippingAddress>
     tabList.asMap().forEach((index, item) {
       list.add(Container(
         child: Tab(
-            child: DynamicText(item,
+            child: Text(item,
                 style: kBaseTextStyle.copyWith(
                     fontSize: 13,
                     color: currentPage == index ? kPinkAccent : kDarkSecondary,
@@ -443,7 +443,7 @@ class _AddShippingAddressState extends State<AddShippingAddress>
                   DefaultTabController.of(context).animateTo(1);
                   onTap(() => currentPage = 1);
                 },
-                title: DynamicText(
+                title: Text(
                   '${addressModel.provinces[index].name}',
                   style: kBaseTextStyle.copyWith(
                       fontSize: 15, fontWeight: FontWeight.w600),
@@ -469,7 +469,7 @@ class _AddShippingAddressState extends State<AddShippingAddress>
                   DefaultTabController.of(context).animateTo(2);
                   onTap(() => currentPage = 2);
                 },
-                title: DynamicText(
+                title: Text(
                   '${addressModel.districts[index].name}',
                   style: kBaseTextStyle.copyWith(
                       fontSize: 15, fontWeight: FontWeight.w600),
@@ -495,7 +495,7 @@ class _AddShippingAddressState extends State<AddShippingAddress>
 
                   onTap(() => Navigator.of(context).pop());
                 },
-                title: DynamicText(
+                title: Text(
                   '${addressModel.wards[index].name}',
                   style: kBaseTextStyle.copyWith(
                       fontSize: 15, fontWeight: FontWeight.w600),
@@ -544,7 +544,7 @@ class _AddShippingAddressState extends State<AddShippingAddress>
                                 height: AppBar().preferredSize.height,
                                 width: kScreenSizeWidth,
                                 child: Center(
-                                  child: DynamicText(S.of(context).deliveryArea,
+                                  child: Text(S.of(context).deliveryArea,
                                       style: kBaseTextStyle.copyWith(
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600)),

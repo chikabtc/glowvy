@@ -144,7 +144,7 @@ class _ConfirmOrderState extends State<ConfirmOrder>
                       backgroundColor: kPinkAccent,
                       pinned: true,
                       flexibleSpace: FlexibleSpaceBar(
-                        title: DynamicText(S.of(context).confirmToOrder,
+                        title: Text(S.of(context).confirmToOrder,
                             style: kBaseTextStyle.copyWith(
                                 fontSize: 17,
                                 color: Colors.white,
@@ -171,13 +171,13 @@ class _ConfirmOrderState extends State<ConfirmOrder>
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: <Widget>[
-                              DynamicText(S.of(context).shippingAddress,
+                              Text(S.of(context).shippingAddress,
                                   style: kBaseTextStyle.copyWith(
                                     fontSize: 17,
                                     fontWeight: FontWeight.w600,
                                   )),
                               SizedBox(width: 5),
-                              DynamicText(S.of(context).pleaseInput,
+                              Text(S.of(context).pleaseInput,
                                   style: kBaseTextStyle.copyWith(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w500,
@@ -193,7 +193,7 @@ class _ConfirmOrderState extends State<ConfirmOrder>
                       Container(
                           color: Colors.white,
                           padding: EdgeInsets.only(left: 16, top: 30),
-                          child: DynamicText(S.of(context).yourOrderDetail,
+                          child: Text(S.of(context).yourOrderDetail,
                               style: kBaseTextStyle.copyWith(
                                   fontSize: 17, fontWeight: FontWeight.w600))),
                       Container(
@@ -245,7 +245,7 @@ class _ConfirmOrderState extends State<ConfirmOrder>
                                   'assets/images/support-illustration.png',
                                 ),
                                 SizedBox(height: 5),
-                                DynamicText(
+                                Text(
                                   S.of(context).needHelp,
                                   style: kBaseTextStyle.copyWith(
                                       color: kDarkSecondary,
@@ -263,7 +263,7 @@ class _ConfirmOrderState extends State<ConfirmOrder>
                                         borderRadius:
                                             new BorderRadius.circular(36.0),
                                         side: BorderSide(width: 1.5)),
-                                    child: DynamicText(S.of(context).askUs,
+                                    child: Text(S.of(context).askUs,
                                         style: kBaseTextStyle.copyWith(
                                             fontWeight: FontWeight.w600,
                                             color: Colors.white)),

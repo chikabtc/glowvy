@@ -1,5 +1,6 @@
 library cuberto_bottom_bar;
 
+import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 
 import '../common/tools.dart';

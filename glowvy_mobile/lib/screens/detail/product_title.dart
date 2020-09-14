@@ -28,7 +28,7 @@ class ProductTitle extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
-                DynamicText(
+                Text(
                   Tools.getPriceProduct(product, "VND", onSale: false),
                   style: kBaseTextStyle.copyWith(
                       color: kPinkAccent,
@@ -58,7 +58,7 @@ class ProductTitle extends StatelessWidget {
                   ),
                 Spacer(),
                 if (product.purchaseCount != null)
-                  DynamicText("${product.purchaseCount} sold",
+                  Text("${product.purchaseCount} sold",
                       style: kBaseTextStyle.copyWith(
                           fontSize: 10,
                           color: kDarkSecondary.withOpacity(0.5))),
@@ -67,7 +67,7 @@ class ProductTitle extends StatelessWidget {
           if (product.salePrice != null)
             Container(
               width: MediaQuery.of(context).size.width,
-              child: DynamicText(
+              child: Text(
                   "Price: ${Tools.getPriceProduct(product, "VND", onSale: false)}",
                   style: kBaseTextStyle.copyWith(
                       decoration: TextDecoration.lineThrough,
@@ -85,7 +85,7 @@ class ProductTitle extends StatelessWidget {
               child: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
                 Image.asset("assets/icons/product_detail/korean-flag.png"),
                 SizedBox(width: 5),
-                DynamicText(
+                Text(
                   S.of(context).soldByKoreanShopDirectShipping,
                   style: kBaseTextStyle.copyWith(
                       fontSize: 12, color: kDarkSecondary.withOpacity(0.7)),
@@ -97,7 +97,7 @@ class ProductTitle extends StatelessWidget {
           SizedBox(height: 5),
           Container(
             width: MediaQuery.of(context).size.width,
-            child: DynamicText(
+            child: Text(
               "${product.name}",
               style: kBaseTextStyle.copyWith(
                   fontSize: 13, fontWeight: FontWeight.w600),

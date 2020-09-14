@@ -88,7 +88,7 @@ class _FashionFilterBarState extends State<FashionFilterBar> {
                                 ? Image.asset("assets/icons/filter-sort.png")
                                 : Image.asset(
                                     "assets/icons/filter-sort-active.png"),
-                            DynamicText(
+                            Text(
                               isAscending
                                   ? S.of(context).highestToLowest
                                   : S.of(context).lowestToHighest,
@@ -160,7 +160,7 @@ class _FashionFilterBarState extends State<FashionFilterBar> {
                               height: AppBar().preferredSize.height,
                               width: screenSize.width,
                               child: Center(
-                                child: DynamicText(S.of(context).choose,
+                                child: Text(S.of(context).choose,
                                     style: kBaseTextStyle.copyWith(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600)),
@@ -214,7 +214,7 @@ class _FashionFilterBarState extends State<FashionFilterBar> {
                                             side: BorderSide(
                                                 color: kPinkAccent,
                                                 width: 1.5)),
-                                        child: DynamicText(S.of(context).reset,
+                                        child: Text(S.of(context).reset,
                                             style: kBaseTextStyle.copyWith(
                                                 fontWeight: FontWeight.w600,
                                                 color: kPinkAccent)),
@@ -241,8 +241,7 @@ class _FashionFilterBarState extends State<FashionFilterBar> {
                                             side: BorderSide(
                                                 color: kPinkAccent,
                                                 width: 1.5)),
-                                        child: DynamicText(
-                                            S.of(context).confirm,
+                                        child: Text(S.of(context).confirm,
                                             style: kBaseTextStyle.copyWith(
                                                 fontWeight: FontWeight.w600,
                                                 color: Colors.white)),
@@ -276,7 +275,7 @@ class _FashionFilterBarState extends State<FashionFilterBar> {
 
     cosmeticsFilters.forEach((key, values) {
       // print("Key: ${key}, Values : ${values}");
-      var header = DynamicText(
+      var header = Text(
         key,
         style: kBaseTextStyle.copyWith(
             fontSize: 13, fontWeight: FontWeight.w600, color: kDarkSecondary),
@@ -306,7 +305,7 @@ class _FashionFilterBarState extends State<FashionFilterBar> {
                 });
               },
               backgroundColor: kLightBG,
-              label: DynamicText(
+              label: Text(
                 value["value"],
                 style: kBaseTextStyle.copyWith(
                     fontSize: 15,

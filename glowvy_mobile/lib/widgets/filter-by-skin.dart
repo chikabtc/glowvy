@@ -198,7 +198,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                               height: AppBar().preferredSize.height,
                               width: screenSize.width,
                               child: Center(
-                                child: DynamicText(S.of(context).choose,
+                                child: Text(S.of(context).choose,
                                     style: kBaseTextStyle.copyWith(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600)),
@@ -252,7 +252,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                                             side: BorderSide(
                                                 color: kPrimaryOrange,
                                                 width: 1.5)),
-                                        child: DynamicText(S.of(context).reset,
+                                        child: Text(S.of(context).reset,
                                             style: kBaseTextStyle.copyWith(
                                                 fontWeight: FontWeight.w600,
                                                 color: kPrimaryOrange)),
@@ -276,8 +276,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                                             side: BorderSide(
                                                 color: kPrimaryOrange,
                                                 width: 1.5)),
-                                        child: DynamicText(
-                                            S.of(context).confirm,
+                                        child: Text(S.of(context).confirm,
                                             style: kBaseTextStyle.copyWith(
                                                 fontWeight: FontWeight.w600,
                                                 color: Colors.white)),
@@ -331,7 +330,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                               height: AppBar().preferredSize.height,
                               width: screenSize.width,
                               child: Center(
-                                child: DynamicText(S.of(context).choose,
+                                child: Text(S.of(context).choose,
                                     style: kBaseTextStyle.copyWith(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600)),
@@ -385,7 +384,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                                             side: BorderSide(
                                                 color: kPrimaryOrange,
                                                 width: 1.5)),
-                                        child: DynamicText(S.of(context).reset,
+                                        child: Text(S.of(context).reset,
                                             style: kBaseTextStyle.copyWith(
                                                 fontWeight: FontWeight.w600,
                                                 color: kPrimaryOrange)),
@@ -409,8 +408,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                                             side: BorderSide(
                                                 color: kPrimaryOrange,
                                                 width: 1.5)),
-                                        child: DynamicText(
-                                            S.of(context).confirm,
+                                        child: Text(S.of(context).confirm,
                                             style: kBaseTextStyle.copyWith(
                                                 fontWeight: FontWeight.w600,
                                                 color: Colors.white)),
@@ -442,7 +440,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
 
     cosmeticsFilters.forEach((key, values) {
       // print("Key: ${key}, value["name"]s : ${value["name"]s}");
-      var header = DynamicText(
+      var header = Text(
         key,
         style: kBaseTextStyle.copyWith(
             fontSize: 13, fontWeight: FontWeight.w600, color: kDarkSecondary),
@@ -468,7 +466,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                 });
               },
               backgroundColor: kLightBG,
-              label: DynamicText(
+              label: Text(
                 value["name"],
                 style: kBaseTextStyle.copyWith(
                     fontSize: 15,
@@ -506,7 +504,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
 
     cosmeticsFilters.forEach((key, values) {
       // print("Key: ${key}, value["name"]s : ${value["name"]s}");
-      var header = DynamicText(
+      var header = Text(
         key,
         style: kBaseTextStyle.copyWith(
             fontSize: 13, fontWeight: FontWeight.w600, color: kDarkSecondary),
@@ -532,7 +530,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                 });
               },
               backgroundColor: kLightBG,
-              label: DynamicText(
+              label: Text(
                 value["name"],
                 style: kBaseTextStyle.copyWith(
                     fontSize: 15,

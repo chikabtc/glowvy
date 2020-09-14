@@ -63,7 +63,7 @@ class StaggerAnimation extends StatelessWidget {
             borderRadius: BorderRadius.all(const Radius.circular(25.0)),
           ),
           child: buttonSqueezeanimation.value > 75.0
-              ? new DynamicText(
+              ? new Text(
                   buttonTitle,
                   style: kBaseTextStyle.copyWith(
                       fontWeight: FontWeight.w600,

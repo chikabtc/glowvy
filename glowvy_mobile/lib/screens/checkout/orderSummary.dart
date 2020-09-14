@@ -43,13 +43,13 @@ class _OrderSummaryState extends State<OrderSummary> {
       barrierDismissible: true, // user can tap anywhere to dismiss the popup!
       builder: (BuildContext buildContext) {
         return AlertDialog(
-          title: DynamicText(
+          title: Text(
             S.of(context).shippingFeePolicy,
             style: kBaseTextStyle,
           ),
           actions: <Widget>[
             FlatButton(
-              child: DynamicText(
+              child: Text(
                 'Ok',
                 style: kBaseTextStyle,
               ),
@@ -153,7 +153,7 @@ class OrderSummaryCard extends StatelessWidget {
           Widget>[
         Row(
           children: <Widget>[
-            DynamicText(
+            Text(
               title,
               style: kBaseTextStyle.copyWith(
                   fontSize: isBankTransferSummary ? 12 : 13,
@@ -170,7 +170,7 @@ class OrderSummaryCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Expanded(
-              child: DynamicText(
+              child: Text(
                 subTitle,
                 textAlign: TextAlign.start,
                 style: kBaseTextStyle.copyWith(
@@ -183,7 +183,7 @@ class OrderSummaryCard extends StatelessWidget {
             ),
             // if (fee != null) Spacer(),
             if (!isBankTransferSummary && fee != null)
-              DynamicText(
+              Text(
                 isDiscount ? "-" + fee : fee,
                 style: kBaseTextStyle.copyWith(
                     fontSize: 12,

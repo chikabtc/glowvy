@@ -1,4 +1,5 @@
 import 'package:Dimodo/screens/category.dart';
+import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:Dimodo/common/sizeConfig.dart';
 import 'package:provider/provider.dart';

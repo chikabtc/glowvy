@@ -44,7 +44,7 @@ class _LanguageState extends State<Language> {
                 height: 20,
                 fit: BoxFit.cover,
               ),
-              title: DynamicText(
+              title: Text(
                 S.of(context).english,
                 style: kBaseTextStyle.copyWith(fontSize: 15),
               ),
@@ -66,7 +66,7 @@ class _LanguageState extends State<Language> {
             child: ListTile(
               leading: Image.asset('assets/images/country/vn.png',
                   width: 30, height: 20, fit: BoxFit.cover),
-              title: DynamicText(
+              title: Text(
                 S.of(context).vietnamese,
                 style: kBaseTextStyle.copyWith(fontSize: 15),
               ),

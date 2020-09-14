@@ -1,12 +1,13 @@
+import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math.dart' as vector;
 
 class TabItem extends StatefulWidget {
   TabItem(
       {@required this.selected,
-        @required this.iconData,
-        @required this.title,
-        @required this.callbackFunction});
+      @required this.iconData,
+      @required this.title,
+      @required this.callbackFunction});
 
   final String title;
   final IconData iconData;
@@ -26,9 +27,7 @@ const double ALPHA_ON = 1;
 const int ANIM_DURATION = 200;
 const Color PURPLE = Color(0xFF8c77ec);
 
-
 class _TabItemState extends State<TabItem> {
-
   double iconYAlign = ICON_ON;
   double textYAlign = TEXT_OFF;
   double iconAlpha = ALPHA_ON;
@@ -244,8 +243,11 @@ class _FancyTabBarState extends State<FancyTabBar>
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       shape: BoxShape.circle,
-                                      boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 8)])
-                              ),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color: Colors.black12,
+                                            blurRadius: 8)
+                                      ])),
                             ),
                           )),
                     ),
@@ -317,17 +319,18 @@ class HalfPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final path = Path();
 
-    path.arcTo(Rect.fromLTWH(-17, (size.height / 2) - 25, 30, 25), vector.radians(0), vector.radians(90), false);
-    path.lineTo(size.width/2 , size.height / 2 );
+    path.arcTo(Rect.fromLTWH(-17, (size.height / 2) - 25, 30, 25),
+        vector.radians(0), vector.radians(90), false);
+    path.lineTo(size.width / 2, size.height / 2);
 
-    path.moveTo(size.width/2, size.height / 2);
-    path.lineTo(size.width/2, size.height /2 );
-    path.arcTo(Rect.fromLTWH(size.width - 13, (size.height / 2) - 25, 30, 25), vector.radians(180), vector.radians(-90), false);
+    path.moveTo(size.width / 2, size.height / 2);
+    path.lineTo(size.width / 2, size.height / 2);
+    path.arcTo(Rect.fromLTWH(size.width - 13, (size.height / 2) - 25, 30, 25),
+        vector.radians(180), vector.radians(-90), false);
 
     path.close();
     canvas.drawPath(path, Paint()..color = Colors.white);
   }
-
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) {

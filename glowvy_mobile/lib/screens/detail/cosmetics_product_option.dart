@@ -89,13 +89,13 @@ class _CosmeticsProductOptionState extends State<CosmeticsProductOption>
         // });
 
         return AlertDialog(
-          title: DynamicText(
+          title: Text(
             S.of(context).addedToYourCart,
             style: kBaseTextStyle,
           ),
           actions: <Widget>[
             FlatButton(
-              child: DynamicText(
+              child: Text(
                 'Ok',
                 style: kBaseTextStyle,
               ),
@@ -155,7 +155,7 @@ class _CosmeticsProductOptionState extends State<CosmeticsProductOption>
                 shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(25.0),
                     side: BorderSide(color: kPinkAccent, width: 1.5)),
-                child: DynamicText(S.of(context).customerSupport,
+                child: Text(S.of(context).customerSupport,
                     style: kBaseTextStyle.copyWith(
                         fontWeight: FontWeight.w600, color: kPinkAccent)),
                 onPressed: () =>
@@ -169,7 +169,7 @@ class _CosmeticsProductOptionState extends State<CosmeticsProductOption>
                 shape: RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(25.0),
                     side: BorderSide(color: kPinkAccent, width: 1.5)),
-                child: DynamicText(S.of(context).addToCart,
+                child: Text(S.of(context).addToCart,
                     style: kBaseTextStyle.copyWith(
                         fontWeight: FontWeight.w600, color: Colors.white)),
                 onPressed: () {

@@ -67,14 +67,14 @@ class OrdersScreenState extends State<OrdersScreen> {
                           bottom: 15.0, left: 16, right: 16),
                       child: Row(
                         children: <Widget>[
-                          DynamicText(
+                          Text(
                               order.isPaid
                                   ? S.of(context).yourOrderDetail
                                   : S.of(context).orderSubmitted,
                               style: kBaseTextStyle.copyWith(
                                   fontSize: 17, fontWeight: FontWeight.w600)),
                           Spacer(),
-                          DynamicText(
+                          Text(
                               order.isPaid
                                   ? S.of(context).transactionSuccess
                                   : S.of(context).oneStepLeft,
@@ -145,7 +145,7 @@ class OrdersScreenState extends State<OrdersScreen> {
                   backgroundColor: kPinkAccent,
                   pinned: true,
                   flexibleSpace: FlexibleSpaceBar(
-                    title: DynamicText(S.of(context).orders,
+                    title: Text(S.of(context).orders,
                         style: kBaseTextStyle.copyWith(
                             fontSize: 17,
                             color: Colors.white,
@@ -221,7 +221,7 @@ class EmptyOrders extends StatelessWidget {
                           'assets/images/empty-order-illustration.png'),
                     )),
                 // SizedBox(height: 20),
-                DynamicText(S.of(context).noOrdersDescription,
+                Text(S.of(context).noOrdersDescription,
                     style: kBaseTextStyle.copyWith(
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
@@ -241,7 +241,7 @@ class EmptyOrders extends StatelessWidget {
                           shape: RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(25.0),
                               side: BorderSide(color: kPinkAccent, width: 1.5)),
-                          child: DynamicText(S.of(context).continueShopping,
+                          child: Text(S.of(context).continueShopping,
                               style: kBaseTextStyle.copyWith(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,

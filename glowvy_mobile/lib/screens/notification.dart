@@ -1,5 +1,6 @@
 import 'dart:convert' as convert;
 
+import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 
@@ -100,7 +101,9 @@ class _NotificationScreenState extends State<NotificationScreen> {
                       ? Container()
                       : Padding(
                           child: Dismissible(
-                            key: Key(convert.jsonDecode(_data[index])['date'].toString()),
+                            key: Key(convert
+                                .jsonDecode(_data[index])['date']
+                                .toString()),
                             onDismissed: (direction) {
                               removeItem(index);
                             },
@@ -108,10 +111,13 @@ class _NotificationScreenState extends State<NotificationScreen> {
                             child: Card(
                               child: ListTile(
                                 onTap: () {
-                                  _showAlert(context, convert.jsonDecode(_data[index]), index);
+                                  _showAlert(context,
+                                      convert.jsonDecode(_data[index]), index);
                                 },
                                 title: Text(
-                                  convert.jsonDecode(_data[index])['title'].toString(),
+                                  convert
+                                      .jsonDecode(_data[index])['title']
+                                      .toString(),
                                   style: TextStyle(
                                       color: Theme.of(context).accentColor,
                                       fontSize: 18,
@@ -121,22 +127,31 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                   children: <Widget>[
                                     Padding(
                                       child: Text(
-                                        convert.jsonDecode(_data[index])['body'].toString(),
+                                        convert
+                                            .jsonDecode(_data[index])['body']
+                                            .toString(),
                                         maxLines: 2,
                                         style: TextStyle(
-                                          color: Theme.of(context).accentColor.withOpacity(0.8),
+                                          color: Theme.of(context)
+                                              .accentColor
+                                              .withOpacity(0.8),
                                           fontSize: 16,
                                         ),
                                       ),
-                                      padding: EdgeInsets.only(top: 8, bottom: 8),
+                                      padding:
+                                          EdgeInsets.only(top: 8, bottom: 8),
                                     ),
                                     Text(
                                       getTime(
-                                        convert.jsonDecode(_data[index])['date'].toString(),
+                                        convert
+                                            .jsonDecode(_data[index])['date']
+                                            .toString(),
                                       ),
                                       style: TextStyle(
                                         fontSize: 12,
-                                        color: Theme.of(context).accentColor.withOpacity(0.5),
+                                        color: Theme.of(context)
+                                            .accentColor
+                                            .withOpacity(0.5),
                                       ),
                                     )
                                   ],
@@ -145,15 +160,17 @@ class _NotificationScreenState extends State<NotificationScreen> {
                                 leading: Icon(
                                   Icons.notifications_none,
                                   size: 30,
-                                  color: convert.jsonDecode(_data[index])['seen']
-                                      ? Colors.grey
-                                      : Colors.greenAccent,
+                                  color:
+                                      convert.jsonDecode(_data[index])['seen']
+                                          ? Colors.grey
+                                          : Colors.greenAccent,
                                 ),
                                 isThreeLine: true,
                               ),
                             ),
                           ),
-                          padding: EdgeInsets.only(bottom: 10, left: 10, right: 10),
+                          padding:
+                              EdgeInsets.only(bottom: 10, left: 10, right: 10),
                         );
                 },
               ),
@@ -195,7 +212,8 @@ class _NotificationScreenState extends State<NotificationScreen> {
     }
   }
 
-  void _showAlert(BuildContext context, Map<String, dynamic> data, int index) async {
+  void _showAlert(
+      BuildContext context, Map<String, dynamic> data, int index) async {
     DimodoNotification a = DimodoNotification.fromLocalStorage(data);
     a.updateSeen(index);
     try {
@@ -215,32 +233,32 @@ class _NotificationScreenState extends State<NotificationScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-            title: Container(
-              child: Icon(
-                Icons.notifications_none,
-                color: Colors.greenAccent,
-                size: 40,
-              ),
-              alignment: Alignment.topLeft,
-            ),
-            content: Container(
-                height: MediaQuery.of(context).size.width * 0.5,
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      data['title'],
-                      textAlign: TextAlign.left,
-                      style: TextStyle(fontSize: 18),
-                    ),
-                    SizedBox(height: 20.0),
-                    Text(
-                      data['body'],
-                      textAlign: TextAlign.left,
-                      style: TextStyle(fontSize: 16),
-                    )
-                  ],
-                )),
+        title: Container(
+          child: Icon(
+            Icons.notifications_none,
+            color: Colors.greenAccent,
+            size: 40,
           ),
+          alignment: Alignment.topLeft,
+        ),
+        content: Container(
+            height: MediaQuery.of(context).size.width * 0.5,
+            child: Column(
+              children: <Widget>[
+                Text(
+                  data['title'],
+                  textAlign: TextAlign.left,
+                  style: TextStyle(fontSize: 18),
+                ),
+                SizedBox(height: 20.0),
+                Text(
+                  data['body'],
+                  textAlign: TextAlign.left,
+                  style: TextStyle(fontSize: 16),
+                )
+              ],
+            )),
+      ),
     );
   }
 }

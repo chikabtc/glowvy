@@ -105,7 +105,7 @@ class _CartState extends State<Cart>
           elevation: 0,
           backgroundColor: kPinkAccent,
           flexibleSpace: FlexibleSpaceBar(
-            title: DynamicText(S.of(context).cart,
+            title: Text(S.of(context).cart,
                 style: kBaseTextStyle.copyWith(
                     fontSize: 17,
                     color: Colors.white,
@@ -138,7 +138,7 @@ class _CartState extends State<Cart>
                                   borderRadius: new BorderRadius.circular(25.0),
                                   side: BorderSide(
                                       color: kPinkAccent, width: 1.5)),
-                              child: DynamicText(S.of(context).checkout,
+                              child: Text(S.of(context).checkout,
                                   style: kBaseTextStyle.copyWith(
                                       fontWeight: FontWeight.w600,
                                       color: Colors.white)),
@@ -259,7 +259,7 @@ class EmptyCart extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
-              child: DynamicText(S.of(context).emptyCartSubtitle,
+              child: Text(S.of(context).emptyCartSubtitle,
                   style: kBaseTextStyle.copyWith(
                       fontSize: 12,
                       fontWeight: FontWeight.w500,
@@ -282,7 +282,7 @@ class EmptyCart extends StatelessWidget {
                           color: kLightPink,
                           width: kScreenSizeWidth,
                           child: Center(
-                            child: DynamicText(
+                            child: Text(
                               "Login to synchronize your shopping cart ",
                               style: kBaseTextStyle.copyWith(
                                   fontWeight: FontWeight.w500,

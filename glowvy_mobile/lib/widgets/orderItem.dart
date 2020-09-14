@@ -81,7 +81,7 @@ class _OrderItemRowState extends State<OrderItemRow> {
                             Padding(
                               padding:
                                   const EdgeInsets.only(right: 26.0, bottom: 5),
-                              child: DynamicText(widget.cartItem.product.name,
+                              child: Text(widget.cartItem.product.name,
                                   style: kBaseTextStyle.copyWith(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w600)),
@@ -98,7 +98,7 @@ class _OrderItemRowState extends State<OrderItemRow> {
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(6),
                                         )),
-                                    child: DynamicText(
+                                    child: Text(
                                       "${widget.cartItem.option}",
                                       // maxLines: 0,
                                       style: kBaseTextStyle.copyWith(
@@ -120,7 +120,7 @@ class _OrderItemRowState extends State<OrderItemRow> {
                                   Column(
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: <Widget>[
-                                      DynamicText(
+                                      Text(
                                         "x$quantity",
                                         textAlign: TextAlign.end,
                                         style: kBaseTextStyle.copyWith(
@@ -128,7 +128,7 @@ class _OrderItemRowState extends State<OrderItemRow> {
                                             fontWeight: FontWeight.w500,
                                             color: kDarkSecondary),
                                       ),
-                                      DynamicText(
+                                      Text(
                                           Tools.getPriceProduct(
                                               widget.cartItem.product, "VND",
                                               onSale: true),

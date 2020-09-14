@@ -71,16 +71,16 @@ class ReviewCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    DynamicText(review.user.name,
+                    Text(review.user.name,
                         style: TextStyle(
                             fontSize: 13, fontWeight: FontWeight.w600)),
-                    DynamicText(review.product.optionName,
+                    Text(review.product.optionName,
                         style: TextStyle(
                             color: kDarkSecondary.withOpacity(0.5),
                             fontSize: 11,
                             fontWeight: FontWeight.w500)),
                     SizedBox(height: 10),
-                    DynamicText(sanitizedText,
+                    Text(sanitizedText,
                         maxLines: isPreview ? 2 : 20,
                         style: kBaseTextStyle.copyWith(
                             fontSize: 13, fontWeight: FontWeight.w600)),

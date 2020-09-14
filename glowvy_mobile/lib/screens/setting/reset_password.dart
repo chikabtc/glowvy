@@ -50,7 +50,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen>
   void _welcomeMessage(context) {
     _stopAnimation();
     final snackBar =
-        SnackBar(content: DynamicText('Pin is sent !', style: kBaseTextStyle));
+        SnackBar(content: Text('Pin is sent !', style: kBaseTextStyle));
     Scaffold.of(context).showSnackBar(snackBar);
   }
 
@@ -61,8 +61,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen>
 
   void _snackBar(String text) {
     final snackBar = SnackBar(
-      content: DynamicText('$text',
-          style: kBaseTextStyle.copyWith(color: Colors.white)),
+      content:
+          Text('$text', style: kBaseTextStyle.copyWith(color: Colors.white)),
       duration: Duration(seconds: 10),
       action: SnackBarAction(
         label: 'Close',
@@ -97,7 +97,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen>
     /// Showing Error messageSnackBarDemo
     /// Ability so close message
     final snackBar = SnackBar(
-      content: DynamicText('Warning: $message', style: kBaseTextStyle),
+      content: Text('Warning: $message', style: kBaseTextStyle),
       duration: Duration(seconds: 30),
       action: SnackBarAction(
         label: S.of(context).close,
@@ -165,7 +165,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen>
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              DynamicText(
+                              Text(
                                 S.of(parentContext).resetpassword,
                                 style: kBaseTextStyle.copyWith(
                                     fontWeight: FontWeight.bold, fontSize: 24),

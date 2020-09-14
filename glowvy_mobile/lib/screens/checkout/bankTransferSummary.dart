@@ -1,3 +1,4 @@
+import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 import '../../common/tools.dart';
 import 'package:provider/provider.dart';
@@ -87,4 +88,3 @@ class _BankTransferSummaryState extends State<BankTransferSummary> {
         ));
   }
 }
-

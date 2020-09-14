@@ -48,7 +48,7 @@ class _PersonalSurveyState extends State<PersonalSurvey> {
                   Image.asset(
                     "assets/icons/survey.png",
                   ),
-                  DynamicText(
+                  Text(
                     S.of(context).customizeDimodo,
                     style: kBaseTextStyle.copyWith(
                         fontSize: 15, fontWeight: FontWeight.w600),
@@ -77,7 +77,7 @@ class _PersonalSurveyState extends State<PersonalSurvey> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            DynamicText(
+                            Text(
                               widget.surveys[i].question,
                               style: kBaseTextStyle.copyWith(
                                   fontWeight: FontWeight.w600,
@@ -97,7 +97,7 @@ class _PersonalSurveyState extends State<PersonalSurvey> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: new BorderRadius.circular(36.0),
                                 ),
-                                child: DynamicText(
+                                child: Text(
                                   widget.surveys[i].options[0],
                                   style: kBaseTextStyle.copyWith(
                                       fontWeight: FontWeight.w600,
@@ -135,7 +135,7 @@ class _PersonalSurveyState extends State<PersonalSurvey> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: new BorderRadius.circular(36.0),
                                 ),
-                                child: DynamicText(
+                                child: Text(
                                   widget.surveys[i].options[1],
                                   style: kBaseTextStyle.copyWith(
                                       fontWeight: FontWeight.w600,
@@ -173,7 +173,7 @@ class _PersonalSurveyState extends State<PersonalSurvey> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: new BorderRadius.circular(36.0),
                                 ),
-                                child: DynamicText(
+                                child: Text(
                                   widget.surveys[i].options[2],
                                   style: kBaseTextStyle.copyWith(
                                       fontWeight: FontWeight.w600,

@@ -54,11 +54,11 @@ class _ShoppingCartSummaryState extends State<ShoppingCartSummary> {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              DynamicText(S.of(context).total,
+              Text(S.of(context).total,
                   style: kBaseTextStyle.copyWith(
                       fontSize: 13, fontWeight: FontWeight.w600)),
               SizedBox(width: 5),
-              DynamicText(
+              Text(
                 S.of(context).includingTaxAndFee,
                 style: kBaseTextStyle.copyWith(
                     fontSize: 12, color: kDarkSecondary),
@@ -69,7 +69,7 @@ class _ShoppingCartSummaryState extends State<ShoppingCartSummary> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  DynamicText(
+                  Text(
                     Tools.getCurrecyFormatted(widget.model.getTotal(),
                         currency: currency),
                     style: kBaseTextStyle.copyWith(
@@ -80,7 +80,7 @@ class _ShoppingCartSummaryState extends State<ShoppingCartSummary> {
                   Row(
                     children: <Widget>[
                       Image.asset('assets/icons/cart/coupon.png'),
-                      DynamicText(
+                      Text(
                         "-" +
                             Tools.getCurrecyFormatted(
                                 widget.model.getTotalDiscounts(),

@@ -65,7 +65,7 @@ class CategoryScreenState extends State<CategoryScreen>
                 backgroundColor: Colors.white,
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
-                  title: DynamicText(S.of(context).categories,
+                  title: Text(S.of(context).categories,
                       style: textStyle.copyWith(
                           fontSize: 18,
                           color: Colors.black,
@@ -83,8 +83,7 @@ class CategoryScreenState extends State<CategoryScreen>
                         Padding(
                           padding: const EdgeInsets.only(
                               left: 23.0, right: 23.0, bottom: 35),
-                          child: DynamicText(
-                              S.of(context).categoryScreenDescription,
+                          child: Text(S.of(context).categoryScreenDescription,
                               style: kBaseTextStyle.copyWith(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 16,

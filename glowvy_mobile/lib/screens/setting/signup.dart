@@ -55,7 +55,7 @@ class _SignupScreenState extends State<SignupScreen>
 
   void _snackBar(String text) {
     final snackBar = SnackBar(
-      content: DynamicText(
+      content: Text(
         '$text',
         style: kBaseTextStyle.copyWith(color: Colors.white),
       ),
@@ -146,7 +146,7 @@ class _SignupScreenState extends State<SignupScreen>
       // Navigator.of(context).pop(user);
     } else {
       final snackBar = SnackBar(
-          content: DynamicText(S.of(context).welcome + ' ${user.fullName} !',
+          content: Text(S.of(context).welcome + ' ${user.fullName} !',
               style: kBaseTextStyle.copyWith(color: Colors.white)));
       Scaffold.of(context).showSnackBar(snackBar);
 
@@ -159,7 +159,7 @@ class _SignupScreenState extends State<SignupScreen>
     /// Ability so close message
     print("Warning: $message");
     final snackBar = SnackBar(
-      content: DynamicText('Warning: $message', style: kBaseTextStyle),
+      content: Text('Warning: $message', style: kBaseTextStyle),
       duration: Duration(seconds: 30),
       action: SnackBarAction(
         label: S.of(context).close,
@@ -211,7 +211,7 @@ class _SignupScreenState extends State<SignupScreen>
             : Container(),
         actions: <Widget>[
           FlatButton(
-            child: DynamicText(S.of(context).login,
+            child: Text(S.of(context).login,
                 style: buttonTextStyle.copyWith(fontWeight: FontWeight.bold)),
             onPressed: () {
               Navigator.pushReplacementNamed(context, "/login");
@@ -238,7 +238,7 @@ class _SignupScreenState extends State<SignupScreen>
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              DynamicText(
+                              Text(
                                 S.of(parentContext).signup,
                                 style: kBaseTextStyle.copyWith(
                                     fontWeight: FontWeight.bold, fontSize: 24),
@@ -342,7 +342,7 @@ class _SignupScreenState extends State<SignupScreen>
                       SizedBox(
                         height: 24.0,
                       ),
-                      DynamicText(S.of(context).loginWithSNS,
+                      Text(S.of(context).loginWithSNS,
                           style: TextStyle(
                               fontSize: 12, color: Colors.grey.shade400)),
                       SizedBox(

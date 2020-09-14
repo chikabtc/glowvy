@@ -83,7 +83,7 @@ class _CartItemRowState extends State<CartItemRow> {
                             Padding(
                               padding:
                                   const EdgeInsets.only(right: 26.0, bottom: 5),
-                              child: DynamicText(widget.cartItem.product.name,
+                              child: Text(widget.cartItem.product.name,
                                   style: kBaseTextStyle.copyWith(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w600)),
@@ -100,7 +100,7 @@ class _CartItemRowState extends State<CartItemRow> {
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(6),
                                         )),
-                                    child: DynamicText(
+                                    child: Text(
                                       "${widget.cartItem.option}",
                                       // maxLines: 0,
                                       style: kBaseTextStyle.copyWith(
@@ -123,7 +123,7 @@ class _CartItemRowState extends State<CartItemRow> {
                                       borderRadius: BorderRadius.all(
                                         Radius.circular(6),
                                       )),
-                                  child: DynamicText(
+                                  child: Text(
                                     "-${widget.cartItem.product.salePercent}%",
                                     style: kBaseTextStyle.copyWith(
                                         fontSize: 12,
@@ -141,7 +141,7 @@ class _CartItemRowState extends State<CartItemRow> {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
                                     children: <Widget>[
-                                      DynamicText(
+                                      Text(
                                           Tools.getPriceProduct(
                                               widget.cartItem.product, "VND",
                                               onSale: true),
@@ -188,7 +188,7 @@ class _CartItemRowState extends State<CartItemRow> {
                                                     style: BorderStyle.solid,
                                                     color: kGrey200,
                                                     width: 1.5)),
-                                            child: DynamicText(
+                                            child: Text(
                                               quantity.toString(),
                                               textAlign: TextAlign.center,
                                               style: kBaseTextStyle.copyWith(

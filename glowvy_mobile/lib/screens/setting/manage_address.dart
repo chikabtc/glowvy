@@ -75,7 +75,7 @@ class ManageShippingScreenState extends State<ManageShippingScreen>
                 backgroundColor: Colors.white,
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
-                  title: DynamicText(S.of(context).manageShippingAddress,
+                  title: Text(S.of(context).manageShippingAddress,
                       style: kBaseTextStyle.copyWith(
                           fontSize: 15,
                           color: kDarkAccent,
@@ -145,7 +145,7 @@ class EmptyShipping extends StatelessWidget {
                             'assets/icons/address/empty-shipping-address-illustration.png'),
                       )),
                 ),
-                DynamicText(S.of(context).noAddress,
+                Text(S.of(context).noAddress,
                     style: kBaseTextStyle.copyWith(
                         fontSize: 12,
                         fontWeight: FontWeight.w500,

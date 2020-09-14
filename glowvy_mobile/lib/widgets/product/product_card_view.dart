@@ -1,4 +1,5 @@
 import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../common/tools.dart';

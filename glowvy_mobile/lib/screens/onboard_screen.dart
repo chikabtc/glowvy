@@ -119,7 +119,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                 children: <Widget>[
                   FittedBox(
                     fit: BoxFit.cover,
-                    child: DynamicText(onboardingData[i]['title'],
+                    child: Text(onboardingData[i]['title'],
                         maxLines: 2,
                         textAlign: TextAlign.center,
                         style: kBaseTextStyle.copyWith(
@@ -133,7 +133,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
               ),
             ),
             SizedBox(height: 10),
-            DynamicText(onboardingData[i]['desc'],
+            Text(onboardingData[i]['desc'],
                 style: kBaseTextStyle.copyWith(
                     fontWeight: FontWeight.bold,
                     color: kDarkSecondary,

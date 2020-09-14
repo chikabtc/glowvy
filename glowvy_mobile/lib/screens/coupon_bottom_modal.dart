@@ -83,7 +83,7 @@ class _CouponBottomModalState extends State<CouponBottomModal>
                   height: AppBar().preferredSize.height,
                   width: kScreenSizeWidth,
                   child: Center(
-                    child: DynamicText(S.of(context).discount,
+                    child: Text(S.of(context).discount,
                         style: kBaseTextStyle.copyWith(
                             fontSize: 15, fontWeight: FontWeight.w600)),
                   )),
@@ -103,7 +103,7 @@ class _CouponBottomModalState extends State<CouponBottomModal>
             (widget.coupons.length == 0)
                 ? Padding(
                     padding: const EdgeInsets.only(top: 200.0),
-                    child: DynamicText(
+                    child: Text(
                       S.of(context).noCouponsAvailable,
                       style: kBaseTextStyle.copyWith(
                           fontSize: 13, fontWeight: FontWeight.w600),
@@ -115,7 +115,7 @@ class _CouponBottomModalState extends State<CouponBottomModal>
                       children: <Widget>[
                         Padding(
                           padding: const EdgeInsets.only(left: 16.0),
-                          child: DynamicText(
+                          child: Text(
                             S.of(context).couponCode,
                             style: kBaseTextStyle.copyWith(
                                 fontSize: 13, fontWeight: FontWeight.w600),
@@ -165,7 +165,7 @@ class _CouponBottomModalState extends State<CouponBottomModal>
                         SvgPicture.asset('assets/icons/cart/checkMark.svg'),
                         SizedBox(height: 6),
                         Center(
-                          child: DynamicText(
+                          child: Text(
                             S.of(context).username,
                             textAlign: TextAlign.center,
                             style: kBaseTextStyle.copyWith(

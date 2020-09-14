@@ -19,7 +19,7 @@ class CategoryButton extends StatelessWidget {
           productModel.showSubCategoryPage(category, "+sale_price", context),
       child: Column(children: <Widget>[
         Image.asset(category.image),
-        DynamicText(category.name,
+        Text(category.name,
             style: kBaseTextStyle.copyWith(
                 fontSize: 13, fontWeight: FontWeight.w600))
       ]),

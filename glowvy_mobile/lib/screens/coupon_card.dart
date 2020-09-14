@@ -50,13 +50,13 @@ class _CouponCardState extends State<CouponCard> {
         // });
 
         return AlertDialog(
-          title: DynamicText(
+          title: Text(
             S.of(context).addedToYourCart,
             style: kBaseTextStyle,
           ),
           actions: <Widget>[
             FlatButton(
-              child: DynamicText(
+              child: Text(
                 'Ok',
                 style: kBaseTextStyle,
               ),
@@ -105,7 +105,7 @@ class _CouponCardState extends State<CouponCard> {
                   Expanded(
                     child: Column(
                       children: <Widget>[
-                        DynamicText(
+                        Text(
                             widget.coupon != null
                                 ? widget.coupon.description
                                 : "",
@@ -116,7 +116,7 @@ class _CouponCardState extends State<CouponCard> {
                                 color: isSelected
                                     ? kAccentPurple.withOpacity(0.1)
                                     : kAccentPurple)),
-                        DynamicText(
+                        Text(
                             widget.coupon != null
                                 ? widget.coupon.discountAmount != 0
                                     ? Tools.getCurrecyFormatted(
@@ -170,7 +170,7 @@ class _CouponCardState extends State<CouponCard> {
                                   borderRadius: BorderRadius.circular(25),
                                 ),
                                 child: Center(
-                                  child: DynamicText(
+                                  child: Text(
                                     "nhận phiếu giảm giá",
                                     textAlign: TextAlign.center,
                                     style: kBaseTextStyle.copyWith(
@@ -182,7 +182,7 @@ class _CouponCardState extends State<CouponCard> {
                                   ),
                                 ),
                               )
-                            : DynamicText(
+                            : Text(
                                 "Có Nhận",
                                 textAlign: TextAlign.center,
                                 style: kBaseTextStyle.copyWith(
