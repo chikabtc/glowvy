@@ -267,6 +267,26 @@ func (p *Product) CosmeticsProductsByCategoryId(w http.ResponseWriter, r *http.R
 	resp.Json(w, r, http.StatusOK, resp.WithSuccess(products))
 }
 
+func (p *Product) GetCosmeticsProduct(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	id, err := strconv.Atoi(params["id"])
+
+	if err != nil {
+		bugsnag.Notify(err)
+		msgError := fmt.Sprintf("Invalid actions Id. Error: %s", err)
+		resp.Json(w, r, http.StatusBadRequest, resp.WithError(msgError))
+		return
+	}
+	var product *models.Product
+	product, err = p.Cs.ProductDetailById(id)
+
+	if err != nil {
+		bugsnag.Notify(err)
+		resp.Json(w, r, http.StatusBadRequest, resp.WithError(err))
+	}
+	resp.Json(w, r, http.StatusOK, resp.WithSuccess(product))
+}
+
 // =============================================================================
 // PRIVATE FUNCTIONS
 // =============================================================================

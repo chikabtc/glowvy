@@ -37,6 +37,7 @@ func NewAPI(crawler *crawler.Crawler) *API {
 	//LoadingConfig function
 	cfg := LoadConfig(*boolPtr)
 	dbCfg := cfg.Database
+	slack := utils.NewSlackService()
 
 	ms, err := models.NewServices(
 		models.WithDB(dbCfg.Dialect(), dbCfg.ConnectionInfo()),
@@ -45,7 +46,7 @@ func NewAPI(crawler *crawler.Crawler) *API {
 		models.WithCosmetics(),
 		models.WithCart(),
 		models.WithMail(cfg.Domain),
-		models.WithUser(cfg.HMACKey),
+		models.WithUser(cfg.HMACKey, slack),
 	)
 	if err != nil {
 		bugsnag.Notify(err)
@@ -53,10 +54,8 @@ func NewAPI(crawler *crawler.Crawler) *API {
 		panic(err)
 	}
 
-	slack := utils.NewSlackService()
-
 	cs := Controllers{
-		UserC:    controllers.NewUser(ms.User, ms.Mail, cfg.Name, cfg.Domain),
+		UserC:    controllers.NewUser(ms.User, ms.Mail, cfg.Name, cfg.Domain, slack),
 		AddressC: controllers.NewAddress(ms.Address),
 		CartC:    controllers.NewCart(ms.Cart, slack),
 		ProductC: controllers.NewProduct(ms.Product, ms.Cosmetics, crawler),

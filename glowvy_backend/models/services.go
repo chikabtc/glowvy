@@ -2,6 +2,7 @@ package models
 
 import (
 	"database/sql"
+	"dimodo_backend/utils"
 	"strings"
 
 	"github.com/bugsnag/bugsnag-go"
@@ -48,9 +49,9 @@ func WithDB(dialect, connectionInfo string) ServiceConfig {
 	}
 }
 
-func WithUser(hmacKey string) ServiceConfig {
+func WithUser(hmacKey string, slack *utils.Slack) ServiceConfig {
 	return func(s *Services) error {
-		s.User = NewUserService(s.db, hmacKey)
+		s.User = NewUserService(s.db, hmacKey, slack)
 		return nil
 	}
 }

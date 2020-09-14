@@ -4,7 +4,7 @@
 # and checkout back to the develop branch
 
 # Change to the directory with our code that we plan to work from
-cd "/Users/present/Development/Projects/Dimodo/dimodo_app"
+cd "/Users/present/Development/Projects/Glowvy/glowvy_app"
 
 echo "==== Merging Develop to Master ===="
 echo "  Checkout master"
@@ -21,7 +21,7 @@ echo "  pushed develop to remote successfully!"
 
 echo "  Pushing Master to remote"
 git push origin master
-echo "  pushed develop to remote successfully!"
+echo "  pushed master to remote successfully!"
 
 
 echo "  Checking out Develop..."

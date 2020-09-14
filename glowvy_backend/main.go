@@ -15,7 +15,7 @@ func main() {
 		APIKey: "e01a6cf99f5bdf480b010b80e45f8c66",
 		// The import paths for the Go packages containing your source files
 		ProjectPackages: []string{"main", "gitlab.com/parkerfreeman/dimodo"},
-		ReleaseStage:    "development",
+		ReleaseStage:    "release",
 
 		NotifyReleaseStages: []string{"production"},
 	})
@@ -80,6 +80,27 @@ func main() {
 	// if err := crawler.GetGlowPickProductsByRank(2, 41, 25, "all", "rank"); err != nil {
 	// 	fmt.Println(err)
 	// }
+
+	// client := search.NewClient("50G6MO803G", "ab5eb7ec7552bb7865f3819a2b08f462")
+	// index := client.InitIndex("cosmetics")
+	// var products []models.Product
+	// products, err := api.Cs.ProductC.Cs.AllCosmeticsProducts()
+	// if err != nil {
+	// 	return
+
+	// }
+	// fmt.Println("err: ", err)
+
+	// fmt.Println("product lenght", len(products))
+
+	// res, err := index.SaveObjects(products, opt.AutoGenerateObjectIDIfNotExist(true))
+	// fmt.Println("err: ", res, err)
+
+	// if err != nil {
+	// 	fmt.Println("fail to push the data to algolia: ", err)
+	// }
+
+	// fmt.Println("err: ", err)
 
 	api.Run()
 

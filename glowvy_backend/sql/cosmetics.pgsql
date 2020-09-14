@@ -171,6 +171,8 @@ SELECT
     product.thumbnail,
     product.price,
     product.sale_price,
+    product.hazard_score,
+    product.desc_images,
     product.average_rating,
     product.description,
     product.sdescription,
@@ -342,4 +344,86 @@ UPDATE
 SET
     purpose_vi = $1
 WHERE
-    id = $2
+    id = $2;
+
+--name: IngredientsByProductId
+SELECT
+    json_agg(DISTINCT jsonb_build_object('name_en', cosmetics_ingredient.name_en, 'purposes', jsonb_build_array(cosmetics_ingredient.purpose_vi), 'id', cosmetics_ingredient.id, 'hazard_score', cosmetics_ingredient.hazard_score))
+FROM
+    cosmetics_product_ingredient,
+    product
+WHERE
+    cosmetics_ingredient.id = cosmetics_product_ingredient.ingredient_id
+    AND cosmetics_product_ingredient.product_id = $1;
+
+--name: ProductDetailById
+WITH chosen_category AS (
+    SELECT
+        cosmetics_category.parent_id
+    FROM
+        cosmetics_category,
+        product
+    WHERE
+        product.source = 'glowpick'
+        AND product.sid = $1
+        AND cosmetics_category.sid = product.category_id
+)
+SELECT
+    product.id,
+    product.sid,
+    product.name,
+    -- product.eg_name,
+    product.thumbnail,
+    product.price,
+    product.sale_price,
+    product.hazard_score,
+    product.desc_images,
+    product.average_rating,
+    product.description,
+    product.sdescription,
+    product.volume,
+    product.review_count,
+    cosmetics_category.sname,
+    cosmetics_rank.category_id,
+    json_agg(DISTINCT jsonb_build_object('name', cosmetics_tags.name, 'sname', cosmetics_tags.sname, 'id', cosmetics_tags.id, 'type', cosmetics_tags.type)),
+    json_agg(DISTINCT jsonb_build_object('name_en', cosmetics_ingredient.name_en, 'purposes', jsonb_build_array(cosmetics_ingredient.purpose_vi), 'id', cosmetics_ingredient.id, 'hazard_score', cosmetics_ingredient.hazard_score)),
+    cosmetics_brands.name,
+    cosmetics_brands.id,
+    cosmetics_brands.img,
+    cosmetics_rank.all_rank,
+    cosmetics_rank.oily_rank,
+    cosmetics_rank.dry_rank,
+    cosmetics_rank.sensitive_rank
+FROM
+    product,
+    cosmetics_rank,
+    chosen_category,
+    cosmetics_product_tags,
+    cosmetics_tags,
+    cosmetics_category,
+    cosmetics_brands,
+    cosmetics_ingredient,
+    cosmetics_product_ingredient
+WHERE
+    cosmetics_rank.category_id = chosen_category.parent_id
+    AND product.source = 'glowpick'
+    AND cosmetics_rank.product_id = $1
+    AND cosmetics_category.sid = chosen_category.parent_id
+    AND product.sid = $1
+    AND cosmetics_product_tags.product_id = $1
+    AND cosmetics_tags.id = cosmetics_product_tags.tag_id
+    AND cosmetics_product_ingredient.product_id = $1
+    AND cosmetics_ingredient.id = cosmetics_product_ingredient.ingredient_id
+    AND cosmetics_brands.sid = product.brand_id
+GROUP BY
+    product.id,
+    cosmetics_rank.category_id,
+    cosmetics_rank.sensitive_rank,
+    cosmetics_rank.all_rank,
+    cosmetics_rank.dry_rank,
+    cosmetics_rank.oily_rank,
+    cosmetics_rank.neutral_rank,
+    cosmetics_brands.sname,
+    cosmetics_brands.id,
+    cosmetics_brands.img,
+    cosmetics_category.sname

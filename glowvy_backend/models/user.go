@@ -42,20 +42,22 @@ type UserDB interface {
 }
 
 type userService struct {
-	DB  *sql.DB
-	dot *dotsql.DotSql
+	DB    *sql.DB
+	dot   *dotsql.DotSql
+	slack *utils.Slack
 
 	hmac       hash.HMAC
 	emailRegex *regexp.Regexp
 }
 
-func NewUserService(db *sql.DB, hmacKey string) UserService {
+func NewUserService(db *sql.DB, hmacKey string, slack *utils.Slack) UserService {
 	userDot, _ := dotsql.LoadFromFile("sql/user.pgsql")
 
 	return &userService{
 		DB:         db,
 		dot:        userDot,
 		hmac:       hash.NewHMAC(hmacKey),
+		slack:      slack,
 		emailRegex: regexp.MustCompile(`^[0-9]*[A-Za-z][A-Za-z0-9._%-]+@[A-Za-z0-9.-]+[.][A-Za-z]+$`),
 	}
 }
@@ -152,6 +154,10 @@ func (us *userService) SignUp(user *User) error {
 		user.Session)
 
 	row.Scan(&user.Id, &user.Sid, &user.Xid)
+	err = us.NewUserSignUpAlert(user)
+	if err != nil {
+		fmt.Println("fail to send slack alert for user sign up", err)
+	}
 	return err
 }
 
@@ -345,6 +351,10 @@ func (us *userService) SignUpAuthGoogle(user *User) error {
 		user.Session,
 		user.Google_logged)
 	row.Scan(&user.Id, &user.Sid, &user.Xid)
+	err = us.NewUserSignUpAlert(user)
+	if err != nil {
+		fmt.Println("fail to send slack alert for user sign up", err)
+	}
 	return err
 }
 
@@ -463,6 +473,11 @@ func (us *userService) SignUpWithFacebook(user *User) error {
 		fmt.Println("QuerySignUpAuthFaceBook,", err)
 		msgError := fmt.Errorf("Error in server: %s", err.Error())
 		return msgError
+
+	}
+	err = us.NewUserSignUpAlert(user)
+	if err != nil {
+		fmt.Println("fail to send slack alert for user sign up", err)
 	}
 	return err
 }
@@ -535,6 +550,22 @@ func (us *userService) SignUpAuthApple(user *User) error {
 		fmt.Println("signUpWithApple,", err)
 		msgError := fmt.Errorf("Error in server: %s", err.Error())
 		return msgError
+	}
+	err = us.NewUserSignUpAlert(user)
+	if err != nil {
+		fmt.Println("fail to send slack alert for user sign up", err)
+	}
+	return err
+}
+
+func (us *userService) NewUserSignUpAlert(user *User) error {
+	values := map[string]string{"text": user.Full_name + " signed up!✨\nuser email: + " + user.Email.String}
+
+	orderBytes, _ := json.Marshal(values)
+	err := us.slack.AlertNewSignUp(orderBytes)
+	if err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("fail to update live sale to slack", err)
 	}
 	return err
 }

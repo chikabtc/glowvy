@@ -30,7 +30,8 @@ type ProductService interface {
 	GetAllSidsWithBigThumbnail() ([]string, error)
 	GetSidsOfAllProducts() ([]string, error)
 	UpdateProduct(product *Product) (bool, error)
-	GetAllProducts() ([]Product, error)
+	GetAllProductsForSearch() ([]Product, error)
+	// Ingredient(productId int) ([]Ingredient, error)
 	// TranslateAllCosmetics()
 }
 
@@ -652,7 +653,7 @@ func (ps *productService) UpdateProduct(product *Product) (bool, error) {
 	return true, nil
 }
 
-func (ps *productService) GetAllProducts() ([]Product, error) {
+func (ps *productService) GetAllProductsForSearch() ([]Product, error) {
 	sids, _ := ps.GetSidsOfAllProducts()
 	products := make([]Product, 0)
 
@@ -661,49 +662,57 @@ func (ps *productService) GetAllProducts() ([]Product, error) {
 		product, err := ps.AlgolioProductDetailById(id)
 		if err == nil {
 			products = append(products, *product)
-
 		}
-
 	}
-
 	return products, nil
 }
 
 func (ps *productService) AlgolioProductDetailById(id int) (*Product, error) {
 	product := Product{Sid: id}
-	// var productOptions []uint8
+	var productOptions []uint8
 	var tags []uint8
+	var sizeDetails []uint8
 
 	fmt.Println("product detail by id: ", id)
-	row, err := ps.dot.QueryRow(ps.DB, "AlgolioProductDetailById", id)
+	row, err := ps.dot.QueryRow(ps.DB, "ProductDetailById", id)
 	if err != nil {
 		bugsnag.Notify(err)
 		return nil, err
 	}
 
 	err = row.Scan(
+		&product.Id,
 		&product.Sid,
 		&product.Name,
 		&product.Price,
 		&product.Sale_percent,
 		&product.Sale_price,
+		&product.Description,
+		&product.Sdescription,
 		&product.Thumbnail,
 		&product.Purchase_count,
+		pq.Array(&product.SliderImages),
+		pq.Array(&product.DescImages),
 		&tags,
 		&product.Seller,
+		&sizeDetails,
+		&product.CategoryId,
 		&product.CategoryName,
-		// &productOptions,
+		&productOptions,
 	)
 	if err != nil {
 		bugsnag.Notify(err)
-		fmt.Println("fail to scan AlgolioProductDetailById", err)
+		fmt.Println("fail to scan productDetailById", err)
 	}
 
-	// err = json.Unmarshal([]byte(productOptions), &product.Options)
-	// if err != nil {
-	// 	fmt.Println("fail to unmarshall productOptions: ", err)
-	// }
-
+	err = json.Unmarshal([]byte(productOptions), &product.Options)
+	if err != nil {
+		fmt.Println("fail to unmarshall productOptions: ", err)
+	}
+	err = json.Unmarshal([]byte(sizeDetails), &product.SizeDetails)
+	if err != nil {
+		fmt.Println("fail to unmarshall sizeDetails: ", err)
+	}
 	err = json.Unmarshal([]byte(tags), &product.Tags)
 	if err != nil {
 		fmt.Println("fail to unmarshall tags: ", err)

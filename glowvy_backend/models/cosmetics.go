@@ -13,25 +13,10 @@ import (
 )
 
 type CosmeticsService interface {
+	ProductDetailById(id int) (*Product, error)
 	ProductsByCategoryID(categoryID int, skinType int) ([]Product, error)
 	UpdateBrandsName()
 	CosmeticsReviewsByProductID(productId int) (*Reviews, error)
-	// AllCategories() ([]Category, error)
-	// GetSubCategories(parentId int) ([]Category, error)
-
-	// ProductsByShopId(shopId, start, count int) ([]Product, error)
-	// ProductsByTags(tagId string, sortBy string, start, count int) ([]Product, error)
-	// ReviewsByProductID(productId, start, count int) (*Reviews, error)
-	// CountReviews(productId, start, count int) (int, error)
-	// CheckOptions(productId int) (bool, error)
-	// CheckIfShopExists(shopId int) (bool, error)
-	// FindProductByID(id int) (*Product, error)
-	// ProductDetailById(id int) (*Product, error)
-	// UpdateThumbnailImage(productSid string, thumbnail string) (bool, error)
-	// GetAllSidsWithBigThumbnail() ([]string, error)
-	// GetSidsOfAllProducts() ([]string, error)
-	// UpdateProduct(product *Product) (bool, error)
-	// GetAllProducts() ([]Product, error)
 	TranslateAllCosmeticsReviews()
 	TranslateAllCosmeticsTags()
 	TranslateAllReviewUserName()
@@ -53,12 +38,87 @@ func NewCosmeticsService(db *sql.DB) CosmeticsService {
 		dot: cosmeticsDot,
 	}
 }
-func (gs *cosmeticsService) AllCosmeticsProducts() ([]Product, error) {
+
+func (cs *cosmeticsService) ProductDetailById(id int) (*Product, error) {
+	var brand Seller
+	var rating float64
+	var cosmeticsRank CosmeticsRank
+	var productOption Option
+	var tags []uint8
+	var ingredients []uint8
+
+	row, err := cs.dot.QueryRow(cs.DB, "ProductDetailById", id)
+	if err != nil {
+		bugsnag.Notify(err)
+		return nil, err
+	}
+
+	var product Product
+	if err := row.Scan(
+		&product.Id,
+		&product.Sid,
+		&product.Name,
+		&product.Thumbnail,
+		&product.Price,
+		&product.Sale_price,
+		&product.HazardScore,
+		pq.Array(&product.DescImages),
+		&rating,
+		&product.Description,
+		&product.Sdescription,
+		&product.Volume,
+		&product.Purchase_count,
+		&product.CategoryName,
+		&product.CategoryId,
+		&tags,
+		&ingredients,
+		&brand.Name,
+		&brand.ID,
+		&brand.ImageURL,
+		&cosmeticsRank.AllSkinRank,
+		&cosmeticsRank.OilySkinRank,
+		&cosmeticsRank.DrySkinRank,
+		&cosmeticsRank.SensitiveSkinRank,
+	); err != nil {
+		bugsnag.Notify(err)
+		fmt.Println("fail to Next", err)
+		return nil, err
+	}
+	// productOptions
+	err = json.Unmarshal([]byte(tags), &product.Tags)
+	if err != nil {
+		fmt.Println("fail to unmarshall tags: ", err)
+	}
+	err = json.Unmarshal([]byte(ingredients), &product.Ingredients)
+	// fmt.Println("len", len(product.Ingredients[0].Purposes))
+	if err != nil {
+		fmt.Println("fail to unmarshall tags: ", err)
+	}
+	var attribute struct {
+		Order int    `json:"order"`
+		Title string `json:"title"`
+		Value string `json:"value"`
+	}
+	attribute.Title = "Option"
+	attribute.Value = product.Volume
+
+	productOption.Attributes = append(productOption.Attributes, attribute)
+	productOption.ProductID = fmt.Sprintf("%d", product.Sid)
+
+	averageRating := fmt.Sprintf("%f", rating) // s == "123
+	product.Rating = averageRating
+	product.CosmeticsRank = cosmeticsRank
+	product.Options = append(product.Options, productOption)
+
+	product.Seller = brand
+	return &product, nil
+}
+func (cs *cosmeticsService) AllCosmeticsProducts() ([]Product, error) {
 	//if cateId is smaller than 10, it's a parent cateid
 	// categoryId, err := strconv.Atoi(categoryID)
 	var rows *sql.Rows
 	var err error
-	rows, err = gs.dot.Query(gs.DB, "GetAllCosmeticsProducts")
+	rows, err = cs.dot.Query(cs.DB, "GetAllCosmeticsProducts")
 
 	if err != nil {
 		bugsnag.Notify(err)
@@ -84,7 +144,8 @@ func (gs *cosmeticsService) AllCosmeticsProducts() ([]Product, error) {
 			&product.Thumbnail,
 			&product.Price,
 			&product.Sale_price,
-			// pq.Array(&product.DescImages),
+			&product.HazardScore,
+			pq.Array(&product.DescImages),
 			&rating,
 			&product.Description,
 			&product.Sdescription,
@@ -105,6 +166,11 @@ func (gs *cosmeticsService) AllCosmeticsProducts() ([]Product, error) {
 			fmt.Println("fail to Next", err)
 			return nil, err
 		}
+		if len(product.DescImages) > 10 {
+			product.DescImages = product.DescImages[0:10]
+
+		}
+
 		// productOptions
 		err = json.Unmarshal([]byte(tags), &product.Tags)
 		if err != nil {
@@ -132,13 +198,13 @@ func (gs *cosmeticsService) AllCosmeticsProducts() ([]Product, error) {
 	return products, nil
 }
 
-func (gs *cosmeticsService) ProductsByCategoryID(categoryID int, skinType int) ([]Product, error) {
+func (cs *cosmeticsService) ProductsByCategoryID(categoryID int, skinType int) ([]Product, error) {
 	//if cateId is smaller than 10, it's a parent cateid
 	fmt.Println("categoryId: ", categoryID)
-	// categoryId, err := strconv.Atoi(categoryID)
+	// categoryId, nil := strconv.Atoi(categoryID)
 	var rows *sql.Rows
 	var err error
-	rows, err = gs.dot.Query(gs.DB, "ProductsByCategoryID", categoryID, skinType)
+	rows, err = cs.dot.Query(cs.DB, "ProductsByCategoryID", categoryID, skinType)
 
 	if err != nil {
 		bugsnag.Notify(err)
@@ -269,10 +335,10 @@ func isParentCate(id int) bool {
 // =============================================================================
 // PRIVATE FUNCTION
 // =============================================================================
-func (gs *cosmeticsService) UpdateBrandsName() {
+func (cs *cosmeticsService) UpdateBrandsName() {
 	var rows *sql.Rows
 	var err error
-	rows, err = gs.dot.Query(gs.DB, "AllBrandsSname")
+	rows, err = cs.dot.Query(cs.DB, "AllBrandsSname")
 
 	if err != nil {
 		bugsnag.Notify(err)
@@ -488,15 +554,5 @@ func (cs *cosmeticsService) TranslateAllCosmeticsIngredient() {
 		}
 
 	}
-	// print("length ", len(uniquePurpoes))
 	return
-}
-
-func contains(s []string, e string) bool {
-	for _, a := range s {
-		if a == e {
-			return true
-		}
-	}
-	return false
 }

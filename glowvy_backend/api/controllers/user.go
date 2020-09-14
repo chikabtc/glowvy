@@ -28,14 +28,16 @@ type User struct {
 	ms         models.MailService
 	app_domain string
 	app_name   string
+	slack      *utils.Slack
 }
 
-func NewUser(us models.UserService, ms models.MailService, appName, appDomain string) *User {
+func NewUser(us models.UserService, ms models.MailService, appName, appDomain string, slack *utils.Slack) *User {
 	return &User{
 		us:         us,
 		ms:         ms,
 		app_domain: appDomain,
 		app_name:   appName,
+		slack:      slack,
 	}
 }
 
@@ -99,7 +101,9 @@ func (u *User) SignUp(w http.ResponseWriter, r *http.Request) {
 	Token["AccessToken"], _ = jwt.Generate(&user)
 	Token["RefreshToken"], _ = jwt.RefreshToken()
 	Token["Account"] = user
+
 	resp.Json(w, r, http.StatusCreated, resp.WithSuccess(Token))
+
 }
 
 //			______ SignIn ______			//

@@ -330,15 +330,14 @@ WITH item_tags AS (
 SELECT
     product.Sid,
     product.name,
+    product.description,
     product.price,
-    product.sale_percent,
     product.sale_price,
     product.thumbnail,
     product.purchase_count,
     item_tags.json_agg,
     product.seller,
     category.sname
-    -- product.options
 FROM
     product,
     item_tags,
