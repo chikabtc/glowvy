@@ -288,7 +288,7 @@ class HomeScreenState extends State<HomeScreen>
                                   color: kLightYellow,
                                   padding: EdgeInsets.only(
                                     top: 13,
-                                    bottom: 12,
+                                    bottom: 11,
                                     left: 16,
                                     right: 17,
                                   ),
@@ -333,7 +333,6 @@ class HomeScreenState extends State<HomeScreen>
                                                   fontSize: 12,
                                                   fontFamily: "Nunito",
                                                   color: kDarkYellow,
-                                                  letterSpacing: 2.0,
                                                   fontStyle: FontStyle.normal,
                                                   fontWeight: FontWeight.bold),
                                             ),
@@ -433,8 +432,8 @@ class HomeScreenState extends State<HomeScreen>
                   SliverPersistentHeader(
                     pinned: true,
                     delegate: _SliverAppBarDelegate(
-                      minHeight: 138,
-                      maxHeight: 138,
+                      minHeight: 118,
+                      maxHeight: 118,
                       child: Column(
                         children: <Widget>[
                           Expanded(
@@ -444,8 +443,7 @@ class HomeScreenState extends State<HomeScreen>
                                   borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(20),
                                       topRight: Radius.circular(20))),
-                              padding:
-                                  EdgeInsets.only(left: 16, right: 16, top: 5),
+                              padding: EdgeInsets.only(top: 5),
                               child: TabBar(
                                   controller: _tabController,
                                   indicator: new BubbleTabIndicator(
@@ -486,7 +484,7 @@ class HomeScreenState extends State<HomeScreen>
                           ),
                           userModel.skinType == null
                               ? Container(
-                                  height: 78,
+                                  // height: 70,
                                   width: screenSize.width,
                                   color: Colors.white,
                                   child: Column(
@@ -495,7 +493,7 @@ class HomeScreenState extends State<HomeScreen>
                                       GestureDetector(
                                         onTap: () => showSkinTest(),
                                         child: Container(
-                                          height: 48,
+                                          height: 40,
                                           width: screenSize.width - 32,
                                           decoration: BoxDecoration(
                                             color: Color(0xFFCFEEBEC),
@@ -533,38 +531,35 @@ class HomeScreenState extends State<HomeScreen>
                                     ],
                                   ),
                                 )
-                              : Container(
-                                  height: 78,
-                                  child: FilterBySkin(
-                                    skinTypeId: skinTypeId,
-                                    products: allProducts.length != 0
-                                        ? allProducts[currentCateId]
-                                        : [],
-                                    onFilterConfirm: (filteredProducts, sorting,
-                                        skinTypeId) {
-                                      setState(() {
-                                        showFiltered = true;
-                                        // this.sorting = sorting;
-                                        showRank =
-                                            sorting == "rank" ? true : false;
-                                        this.skinTypeId = skinTypeId;
-                                        isFiltering = true;
-                                        this.filteredResults = filteredProducts;
-                                        Future.delayed(
-                                            const Duration(milliseconds: 500),
-                                            () {
-                                          setState(() {
-                                            isFiltering = false;
-                                          });
+                              : FilterBySkin(
+                                  skinTypeId: skinTypeId,
+                                  products: allProducts.length != 0
+                                      ? allProducts[currentCateId]
+                                      : [],
+                                  onFilterConfirm:
+                                      (filteredProducts, sorting, skinTypeId) {
+                                    setState(() {
+                                      showFiltered = true;
+                                      // this.sorting = sorting;
+                                      showRank =
+                                          sorting == "rank" ? true : false;
+                                      this.skinTypeId = skinTypeId;
+                                      isFiltering = true;
+                                      this.filteredResults = filteredProducts;
+                                      Future.delayed(
+                                          const Duration(milliseconds: 500),
+                                          () {
+                                        setState(() {
+                                          isFiltering = false;
                                         });
                                       });
-                                    },
-                                    onReset: (filteredProducts) {
-                                      setState(() {
-                                        showFiltered = true;
-                                      });
-                                    },
-                                  ),
+                                    });
+                                  },
+                                  onReset: (filteredProducts) {
+                                    setState(() {
+                                      showFiltered = true;
+                                    });
+                                  },
                                 ),
                         ],
                       ),
@@ -636,41 +631,41 @@ class HomeScreenState extends State<HomeScreen>
                               Container(
                                 height: 10,
                               ),
-                              Container(
-                                color: Colors.white,
-                                child: Column(
-                                  children: <Widget>[
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: <Widget>[
-                                        Image.asset(
-                                            "assets/images/peripera_logo.png"),
-                                        Image.asset(
-                                            "assets/images/merzy_logo.png"),
-                                        Image.asset(
-                                            "assets/images/etudehouse_logo.png"),
-                                        Image.asset(
-                                            "assets/images/lilybyred_logo.png"),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: <Widget>[
-                                        Image.asset(
-                                            "assets/images/Manmonde_logo.png"),
-                                        Image.asset(
-                                            "assets/images/IOPE_logo.png"),
-                                        Image.asset(
-                                            "assets/images/LANEIGE_logo.png"),
-                                        Image.asset(
-                                            "assets/images/kirshblending_logo.png"),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              )
+                              // Container(
+                              //   color: Colors.white,
+                              //   child: Column(
+                              //     children: <Widget>[
+                              //       Row(
+                              //         mainAxisAlignment:
+                              //             MainAxisAlignment.spaceAround,
+                              //         children: <Widget>[
+                              //           Image.asset(
+                              //               "assets/images/peripera_logo.png"),
+                              //           Image.asset(
+                              //               "assets/images/merzy_logo.png"),
+                              //           Image.asset(
+                              //               "assets/images/etudehouse_logo.png"),
+                              //           Image.asset(
+                              //               "assets/images/lilybyred_logo.png"),
+                              //         ],
+                              //       ),
+                              //       Row(
+                              //         mainAxisAlignment:
+                              //             MainAxisAlignment.spaceAround,
+                              //         children: <Widget>[
+                              //           Image.asset(
+                              //               "assets/images/Manmonde_logo.png"),
+                              //           Image.asset(
+                              //               "assets/images/IOPE_logo.png"),
+                              //           Image.asset(
+                              //               "assets/images/LANEIGE_logo.png"),
+                              //           Image.asset(
+                              //               "assets/images/kirshblending_logo.png"),
+                              //         ],
+                              //       )
+                              //     ],
+                              //   ),
+                              // )
                             ]),
                           )
                         ],

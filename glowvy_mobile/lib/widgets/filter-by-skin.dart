@@ -70,24 +70,24 @@ class _FilterBySkinState extends State<FilterBySkin> {
                   sortProducts(filterProduct()), sorting, widget.skinTypeId);
             }),
             child: Container(
-              height: 30,
-              padding: EdgeInsets.only(left: 10, right: 10, top: 5, bottom: 5),
+              height: 24,
+              padding: EdgeInsets.only(left: 10, right: 10, top: 2, bottom: 4),
               decoration: BoxDecoration(
                 color: widget.skinTypeId == value["id"]
-                    ? kQuaternaryPink
+                    ? kLightYellow
                     : Color(0xFFEEEEEE),
                 border: Border.all(
                     color: widget.skinTypeId == value["id"]
-                        ? kPrimaryOrange
+                        ? kDarkYellow
                         : Colors.transparent),
-                borderRadius: BorderRadius.circular(15.0),
+                borderRadius: BorderRadius.circular(10.0),
               ),
               child: Text(
                 value["name"],
                 style: kBaseTextStyle.copyWith(
                     fontSize: 14,
                     color: widget.skinTypeId == value["id"]
-                        ? kPrimaryOrange
+                        ? kDarkYellow
                         : kDarkSecondary,
                     fontWeight: FontWeight.w600),
               ),
@@ -108,26 +108,12 @@ class _FilterBySkinState extends State<FilterBySkin> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          SizedBox(height: 25),
-          // Container(
-          //   child: Text(
-          //     S.of(context).filter,
-          //     style: kBaseTextStyle.copyWith(
-          //         fontSize: 13,
-          //         fontWeight: FontWeight.normal,
-          //         color: kDarkSecondary),
-          //   ),
-          // ),
+          // SizedBox(height: 25),
           Container(
             height: 40,
             width: screenSize.width,
             child: Row(
               children: <Widget>[
-                Text(
-                  "Loại Da",
-                  style: kBaseTextStyle.copyWith(
-                      fontSize: 14, fontWeight: FontWeight.bold),
-                ),
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsets.only(left: 10, top: 5, bottom: 5),
@@ -250,12 +236,12 @@ class _FilterBySkinState extends State<FilterBySkin> {
                                             borderRadius:
                                                 new BorderRadius.circular(25.0),
                                             side: BorderSide(
-                                                color: kPrimaryOrange,
+                                                color: kDarkYellow,
                                                 width: 1.5)),
                                         child: Text(S.of(context).reset,
                                             style: kBaseTextStyle.copyWith(
                                                 fontWeight: FontWeight.w600,
-                                                color: kPrimaryOrange)),
+                                                color: kDarkYellow)),
                                         onPressed: () {
                                           setState(() {
                                             sortProducts(widget.products);
@@ -267,14 +253,14 @@ class _FilterBySkinState extends State<FilterBySkin> {
                                     SizedBox(width: 16),
                                     MaterialButton(
                                         elevation: 0,
-                                        color: kPrimaryOrange,
+                                        color: kDarkYellow,
                                         minWidth: (screenSize.width - 48) * 0.5,
                                         height: 40,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 new BorderRadius.circular(25.0),
                                             side: BorderSide(
-                                                color: kPrimaryOrange,
+                                                color: kDarkYellow,
                                                 width: 1.5)),
                                         child: Text(S.of(context).confirm,
                                             style: kBaseTextStyle.copyWith(
@@ -382,12 +368,12 @@ class _FilterBySkinState extends State<FilterBySkin> {
                                             borderRadius:
                                                 new BorderRadius.circular(25.0),
                                             side: BorderSide(
-                                                color: kPrimaryOrange,
+                                                color: kDarkYellow,
                                                 width: 1.5)),
                                         child: Text(S.of(context).reset,
                                             style: kBaseTextStyle.copyWith(
                                                 fontWeight: FontWeight.w600,
-                                                color: kPrimaryOrange)),
+                                                color: kDarkYellow)),
                                         onPressed: () {
                                           setState(() {
                                             sortProducts(widget.products);
@@ -399,14 +385,14 @@ class _FilterBySkinState extends State<FilterBySkin> {
                                     SizedBox(width: 16),
                                     MaterialButton(
                                         elevation: 0,
-                                        color: kPrimaryOrange,
+                                        color: kDarkYellow,
                                         minWidth: (screenSize.width - 48) * 0.5,
                                         height: 40,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 new BorderRadius.circular(25.0),
                                             side: BorderSide(
-                                                color: kPrimaryOrange,
+                                                color: kDarkYellow,
                                                 width: 1.5)),
                                         child: Text(S.of(context).confirm,
                                             style: kBaseTextStyle.copyWith(
@@ -453,9 +439,8 @@ class _FilterBySkinState extends State<FilterBySkin> {
             child: ActionChip(
               shape: RoundedRectangleBorder(
                 side: BorderSide(
-                  color: widget.skinTypeId == value["id"]
-                      ? kPrimaryOrange
-                      : kLightBG,
+                  color:
+                      widget.skinTypeId == value["id"] ? kDarkYellow : kLightBG,
                 ),
                 borderRadius: BorderRadius.circular(6.0),
               ),
@@ -471,7 +456,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                 style: kBaseTextStyle.copyWith(
                     fontSize: 15,
                     color: widget.skinTypeId == value["id"]
-                        ? kPrimaryOrange
+                        ? kDarkYellow
                         : kDarkSecondary,
                     fontWeight: FontWeight.w600),
               ),
@@ -517,9 +502,8 @@ class _FilterBySkinState extends State<FilterBySkin> {
             child: ActionChip(
               shape: RoundedRectangleBorder(
                 side: BorderSide(
-                  color: widget.skinTypeId == value["id"]
-                      ? kPrimaryOrange
-                      : kLightBG,
+                  color:
+                      widget.skinTypeId == value["id"] ? kDarkYellow : kLightBG,
                 ),
                 borderRadius: BorderRadius.circular(6.0),
               ),
@@ -535,7 +519,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                 style: kBaseTextStyle.copyWith(
                     fontSize: 15,
                     color: widget.skinTypeId == value["id"]
-                        ? kPrimaryOrange
+                        ? kDarkYellow
                         : kDarkSecondary,
                     fontWeight: FontWeight.w600),
               ),

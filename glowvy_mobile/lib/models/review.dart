@@ -12,6 +12,7 @@ class Review {
   String scontent;
   ReviewProduct product;
   ReviewUser user;
+  int score;
   List<String> images;
 
   Review({

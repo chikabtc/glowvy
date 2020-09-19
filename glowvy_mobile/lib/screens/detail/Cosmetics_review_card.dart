@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'dart:math';
 import '../../common/constants.dart';
 import '../../widgets/image_galery.dart';
@@ -11,11 +12,14 @@ class CosmeticsReviewCard extends StatelessWidget {
       {this.review,
       this.isKorean = false,
       this.context,
+      this.showDivider = true,
       this.isPreview = false});
 
   final Review review;
   final bool isPreview;
   final bool isKorean;
+  final showDivider;
+
   final BuildContext context;
   Random rng = new Random();
   String sanitizedText;
@@ -33,7 +37,7 @@ class CosmeticsReviewCard extends StatelessWidget {
                 element,
                 fit: BoxFit.fill,
               ),
-              onPressed: () => _onShowGallery(context, review.images)));
+              onPressed: () => Navigator.of(context).push(_createRoute())));
 
       imgButtons.add(imgBtn);
     });
@@ -41,12 +45,23 @@ class CosmeticsReviewCard extends StatelessWidget {
     //on the external display, the lag is unusable..
   }
 
-  _onShowGallery(context, images, [index = 0]) {
-    showDialog<void>(
-        context: context,
-        builder: (BuildContext context) {
-          return ImageGalery(images: images, index: index);
-        });
+  Route _createRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => Page2(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(0.0, 1.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
   }
 
   @override
@@ -62,7 +77,7 @@ class CosmeticsReviewCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(2.0)),
-      margin: EdgeInsets.only(bottom: 10.0),
+      margin: EdgeInsets.only(bottom: 14.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -71,8 +86,8 @@ class CosmeticsReviewCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               //todo: assign the same profile pic
-              Image.asset(
-                'assets/icons/account/profile${1}.png',
+              SvgPicture.asset(
+                'assets/icons/review-avartar.svg',
                 width: isPreview ? 18 : 38,
               ),
               SizedBox(width: 10),
@@ -81,55 +96,49 @@ class CosmeticsReviewCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(review.user.name,
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w600)),
+                        style: kBaseTextStyle.copyWith(
+                            fontSize: 14, fontWeight: FontWeight.normal)),
                     Row(
                       children: <Widget>[
                         Text(review.user.age.toString(),
-                            style: TextStyle(
+                            style: kBaseTextStyle.copyWith(
                                 fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                                color: kSecondaryGrey)),
+                                fontWeight: FontWeight.normal,
+                                color: kDarkSecondary)),
                         SizedBox(width: 10),
                         Text(review.user.skinType,
-                            style: TextStyle(
+                            style: kBaseTextStyle.copyWith(
                                 fontSize: 14,
-                                fontWeight: FontWeight.w500,
-                                color: kSecondaryGrey)),
+                                fontWeight: FontWeight.normal,
+                                color: kDarkSecondary)),
                       ],
                     ),
-
                     SizedBox(height: 7),
                     Text(isKorean ? kSanitizedText : sanitizedText,
                         maxLines: isPreview ? 2 : 20,
                         style: kBaseTextStyle.copyWith(
-                            fontSize: 14, fontWeight: FontWeight.w600)),
-                    Container(
-                      height: 20,
-                      width: kScreenSizeWidth,
-                      // color: kDefaultBackground,
-                    ),
-                    // if (review.images?.length != 0 && !isPreview)
-                    //   Container(
-                    //     height: 150,
-                    //     child: ListView(
-                    //         scrollDirection: Axis.horizontal,
-                    //         children: renderImgs(context, review)),
-                    //   ),
-                    // Row(children: renderImgs(context, review)),
+                            fontSize: 14, fontWeight: FontWeight.normal)),
+                    SizedBox(height: 14),
+                    if (showDivider)
+                      Divider(color: Colors.black.withOpacity(0.1)),
                   ],
                 ),
               ),
             ],
           ),
-          if (!isPreview)
-            Container(
-              height: 5,
-              width: kScreenSizeWidth,
-              color: kDefaultBackground,
-            ),
         ],
       ),
+    );
+  }
+}
+
+class Page2 extends StatelessWidget {
+  Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+    return Container(
+      height: screenSize.height,
+      width: screenSize.width,
+      color: Colors.purple,
     );
   }
 }

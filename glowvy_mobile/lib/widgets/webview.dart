@@ -8,8 +8,16 @@ import 'package:Dimodo/widgets/customWidgets.dart';
 class WebView extends StatefulWidget {
   final String url;
   final String title;
+  final Color appBarColor;
+  final Color backArrowColor;
 
-  WebView({Key key, this.title, @required this.url}) : super(key: key);
+  WebView(
+      {Key key,
+      this.title,
+      @required this.url,
+      this.appBarColor = kPrimaryBlue,
+      this.backArrowColor = Colors.white})
+      : super(key: key);
 
   @override
   _WebViewState createState() => _WebViewState();
@@ -26,10 +34,14 @@ class _WebViewState extends State<WebView> {
       // backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         brightness: Brightness.light,
-        leading: CommonIcons.backIcon(context, Colors.white),
+        leading: CommonIcons.backIcon(context, color: Colors.white),
         backgroundColor: kPrimaryBlue,
         elevation: 0.0,
-        title: Text(widget.title ?? ''),
+        title: Text(
+          widget.title ?? '',
+          style: kBaseTextStyle.copyWith(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 17),
+        ),
       ),
       body: SafeArea(
         bottom: true,

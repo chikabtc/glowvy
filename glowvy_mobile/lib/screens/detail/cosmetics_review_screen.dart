@@ -69,13 +69,7 @@ class _StateReviews extends State<CosmeticsReviewScreen>
           child: CustomScrollView(slivers: <Widget>[
             SliverAppBar(
               brightness: Brightness.light,
-              leading: IconButton(
-                icon: CommonIcons.arrowBackward,
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-              actions: <Widget>[CartAction()],
+              leading: CommonIcons.backIcon(context),
               elevation: 0,
               backgroundColor: Colors.white,
               pinned: true,
@@ -180,29 +174,29 @@ class _StateReviews extends State<CosmeticsReviewScreen>
                                       ),
                                     ]),
                               ),
-                              CosmeticsReviewFilterBar(
-                                showSorting: false,
-                                reviews: metaReviews.reviews,
-                                onFilterConfirm: (filResults) {
-                                  setState(() {
-                                    filteredReviews = filResults;
-                                    showFiltered = true;
-                                    print("filter :${filResults}\n");
-                                  });
-                                },
-                                onReset: () {
-                                  setState(() {
-                                    // this.filteredResults = snapshot.data;
-                                  });
-                                },
-                                onSkinTypeChanged: (skinTypeId) {
-                                  setState(() {
-                                    // this.skinTypeId = skinTypeId;
-                                    // filteredReviews = filResults;
-                                    // print("filter :${filResults}\n");
-                                  });
-                                },
-                              ),
+                              // CosmeticsReviewFilterBar(
+                              //   showSorting: false,
+                              //   reviews: metaReviews.reviews,
+                              //   onFilterConfirm: (filResults) {
+                              //     setState(() {
+                              //       filteredReviews = filResults;
+                              //       showFiltered = true;
+                              //       print("filter :${filResults}\n");
+                              //     });
+                              //   },
+                              //   onReset: () {
+                              //     setState(() {
+                              //       // this.filteredResults = snapshot.data;
+                              //     });
+                              //   },
+                              //   onSkinTypeChanged: (skinTypeId) {
+                              //     setState(() {
+                              //       // this.skinTypeId = skinTypeId;
+                              //       // filteredReviews = filResults;
+                              //       // print("filter :${filResults}\n");
+                              //     });
+                              //   },
+                              // ),
                               Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 16.0),

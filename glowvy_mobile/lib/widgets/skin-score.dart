@@ -88,8 +88,8 @@ class SkinScore extends StatelessWidget {
               textAlign: TextAlign.start,
               style: kBaseTextStyle.copyWith(
                 fontSize: 15,
-                // fontStyle: FontStyle.normal,
-                fontWeight: FontWeight.w900,
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.w800,
                 color: kDarkAccent,
               ),
             ),

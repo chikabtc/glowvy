@@ -58,7 +58,7 @@ class _SearchScreenState extends State<SearchScreen> {
         appBar: AppBar(
           brightness: Brightness.light,
           backgroundColor: Colors.transparent,
-          leading: CommonIcons.backIcon(context, Colors.black),
+          leading: CommonIcons.backIcon(context, color: Colors.black),
           title: Row(
             children: <Widget>[
               Expanded(

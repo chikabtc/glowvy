@@ -39,7 +39,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
               elevation: 0,
               // expandedHeight: screenSize.height * 0.3,
               brightness: Brightness.light,
-              leading: CommonIcons.backIcon(context, kDarkYellow),
+              leading: CommonIcons.backIcon(context, color: kDarkYellow),
               backgroundColor: Colors.transparent),
           body: Container(
             width: screenSize.width,
@@ -146,7 +146,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                           height: 48,
                                           decoration: BoxDecoration(
                                               borderRadius: BorderRadius.all(
-                                                  Radius.circular(6)),
+                                                  Radius.circular(16)),
                                               color: kQuaternaryPink),
                                           child: // Group 6
                                               Center(
@@ -183,7 +183,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                           height: 48,
                                           decoration: BoxDecoration(
                                               borderRadius: BorderRadius.all(
-                                                  Radius.circular(6)),
+                                                  Radius.circular(16)),
                                               color: kQuaternaryPink),
                                           child: // Group 6
                                               Center(
@@ -222,8 +222,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                           borderRadius:
                                               new BorderRadius.circular(16.0),
                                         ),
-                                        child: Text(
-                                            S.of(context).starTheSkinTest,
+                                        child: Text("Bắt đầu kiểm tra loại da",
                                             style: kBaseTextStyle.copyWith(
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.w600,

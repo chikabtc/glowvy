@@ -487,7 +487,7 @@ class _ProductOptionState extends State<ProductOption>
                 minWidth: (screenSize.width - 48) * 0.5,
                 height: 40,
                 shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(25.0),
+                    borderRadius: new BorderRadius.circular(16.0),
                     side: BorderSide(color: kAccentRed, width: 1.5)),
                 child: Text(S.of(context).customerSupport,
                     style: kBaseTextStyle.copyWith(
@@ -503,7 +503,7 @@ class _ProductOptionState extends State<ProductOption>
                 minWidth: (screenSize.width - 48) * 0.5,
                 height: 40,
                 shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(25.0),
+                    borderRadius: new BorderRadius.circular(16.0),
                     side: BorderSide(color: kAccentRed, width: 1.5)),
                 child: Text("Love it",
                     style: kBaseTextStyle.copyWith(

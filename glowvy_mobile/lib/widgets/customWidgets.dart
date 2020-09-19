@@ -13,15 +13,22 @@ class CommonIcons {
     width: 24,
   );
 
-  static final SvgPicture arrowBackward =
-      SvgPicture.asset('assets/icons/arrow_backward.svg', width: 24);
+  static final Container arrowBackward = Container(
+    width: 33,
+    child: IconButton(
+        icon: SvgPicture.asset(
+      'assets/icons/arrow_backward.svg',
+      width: 24,
+    )),
+  );
+
   static final SvgPicture arrowBackwardWhite = SvgPicture.asset(
     'assets/icons/arrow_backward.svg',
     width: 24,
     color: Colors.white,
   );
 
-  static backIcon(context, color) {
+  static backIcon(context, {color = Colors.black87}) {
     return GestureDetector(
       onTap: () => Navigator.of(context).pop(),
       child: Container(
@@ -33,6 +40,29 @@ class CommonIcons {
           color: color,
         )),
       ),
+    );
+  }
+
+  static closeIcon(context, {color = Colors.black87}) {
+    return GestureDetector(
+      onTap: () => Navigator.of(context).pop(),
+      child: Container(
+        width: 33,
+        child: IconButton(
+            icon: SvgPicture.asset(
+          'assets/icons/address/close-popup.svg',
+          width: 24,
+          color: color,
+        )),
+      ),
+    );
+  }
+
+  static forwardIcon(context, color) {
+    return SvgPicture.asset(
+      'assets/icons/arrow_forward.svg',
+      width: 24,
+      color: color,
     );
   }
 }

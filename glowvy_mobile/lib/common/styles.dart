@@ -31,7 +31,6 @@ const kAccentRed = Color(0xFFEF4623);
 const kPrimaryBlue = Color(0xff5A81E8);
 const kQuaternaryBlue = Color(0xFFEBEFFA);
 const kSecondaryBlue = Color(0xffBDCDF6);
-const kSecondaryGrey = Color(0xffBFBFBF);
 const kTertiaryGray = Color(0xffD9D9D9);
 const kDarkYellow = Color(0xffE3B002);
 
@@ -219,7 +218,7 @@ const kMessageTextFieldDecoration = InputDecoration(
 );
 
 var kBaseTextStyle = TextStyle(
-  height: 1.25,
+  // height: 1.25,
   fontFamily: "Nunito",
   color: kDarkBG,
   fontSize: 15.0,

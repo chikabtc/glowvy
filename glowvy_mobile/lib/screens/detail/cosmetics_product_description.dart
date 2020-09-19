@@ -35,46 +35,6 @@ class _CosmeticsProductDescriptionState
     super.initState();
   }
 
-  // Widget renderIngredient() {
-  //   var imagesWidgets = <Widget>[];
-  //   //create a concanteanated string
-  //   var images = widget.product.descImages;
-  //   if (images != null && images != "") {
-  //     images.forEach((img) {
-  //       // print("image to render: $img");
-  //       imagesWidgets.add(GestureDetector(
-  //           onTap: () => _onShowGallery(context, images),
-  //           child: ClipOval(
-  //             // borderRadius: BorderRadius.circular(20.0),
-  //             child: Container(
-  //               child: Tools.image(
-  //                 url: img,
-  //                 fit: BoxFit.cover,
-  //                 size: kSize.large,
-  //               ),
-  //             ),
-  //           )));
-  //     });
-  //   }
-
-  //   return Container(
-  //     width: kScreenSizeWidth,
-  //     child: GridView.builder(
-  //         addAutomaticKeepAlives: true,
-  //         padding: const EdgeInsets.all(0.0),
-  //         shrinkWrap: true,
-  //         itemCount: imagesWidgets.length,
-  //         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-  //           childAspectRatio: 1,
-  //           crossAxisCount: 3,
-  //         ),
-  //         physics: ClampingScrollPhysics(),
-  //         itemBuilder: (BuildContext context, int index) {
-  //           return imagesWidgets[index];
-  //         }),
-  //   );
-  // }
-
   Widget build(BuildContext context) {
     // if \n has more than 4, replace them with null string
     String formattedDescription;
@@ -83,7 +43,6 @@ class _CosmeticsProductDescriptionState
           ? widget.product.sdescription.replaceAll('\n\n\n\n\n\n', "")
           : widget.product.description.replaceAll('\n\n\n\n\n\n', "");
     }
-    final screenSize = MediaQuery.of(context).size;
 
     return Container(
         color: Colors.white,
@@ -91,17 +50,15 @@ class _CosmeticsProductDescriptionState
         child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(16.0),
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      S.of(context).description,
+                      "Mô tả sản phẩm",
                       style: kBaseTextStyle.copyWith(
-                          fontSize: 15,
-                          color: kDarkSecondary,
-                          fontWeight: FontWeight.w600),
+                          fontSize: 15, fontWeight: FontWeight.w600),
                       textAlign: TextAlign.start,
                     ),
                     SizedBox(height: 33),
@@ -117,14 +74,14 @@ class _CosmeticsProductDescriptionState
                                 style: kBaseTextStyle.copyWith(
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600,
-                                    color: kDarkAccent),
+                                    color: kDarkSecondary),
                                 textAlign: TextAlign.start,
                               ),
                               Text(S.of(context).supportedByGoogleTranslate,
                                   style: kBaseTextStyle.copyWith(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w500,
-                                    color: kSecondaryGrey,
+                                    color: kDarkSecondary,
                                   )),
                             ],
                           ),
@@ -173,45 +130,49 @@ class _CosmeticsProductDescriptionState
                           ),
                         ]),
                     SizedBox(height: 20),
-                    Container(
-                      height: 28,
-                      child: ListView.separated(
-                          separatorBuilder: (BuildContext context, int index) =>
-                              SizedBox(width: 10),
-                          scrollDirection: Axis.horizontal,
-                          itemCount: widget.product.tags.length,
-                          itemBuilder: (context, index) {
-                            return Container(
-                              decoration: BoxDecoration(
-                                color: kDefaultBackground,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              alignment: Alignment.center,
-                              padding: EdgeInsets.only(
-                                  left: 10, right: 10, top: 6, bottom: 6),
-                              child: Text(
-                                widget.product.tags[index].name,
-                                maxLines: 1,
-                                style: kBaseTextStyle.copyWith(
-                                    color: Colors.grey.shade600,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w500),
-                              ),
-                            );
-                          }),
-                    ),
-                    SizedBox(height: 26),
-                    widget.product.sdescription != null
-                        ? Text(
-                            formattedDescription,
-                            maxLines: 100,
-                            style: kBaseTextStyle.copyWith(
-                                fontSize: 14, color: kDarkAccent),
-                            textAlign: TextAlign.start,
-                          )
-                        : Container(width: 0, height: 0),
                   ],
                 ),
+              ),
+              Container(
+                height: 28,
+                child: ListView.separated(
+                    padding: EdgeInsets.only(left: 10),
+                    separatorBuilder: (BuildContext context, int index) =>
+                        SizedBox(width: 10),
+                    scrollDirection: Axis.horizontal,
+                    itemCount: widget.product.tags.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          color: kDefaultBackground,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.only(
+                            left: 10, right: 10, top: 6, bottom: 6),
+                        child: Text(
+                          widget.product.tags[index].name,
+                          maxLines: 1,
+                          style: kBaseTextStyle.copyWith(
+                              color: Colors.grey.shade600,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      );
+                    }),
+              ),
+              SizedBox(height: 14),
+              Container(
+                padding: EdgeInsets.all(16),
+                child: widget.product.sdescription != null
+                    ? Text(
+                        formattedDescription,
+                        maxLines: 100,
+                        style: kBaseTextStyle.copyWith(
+                            fontSize: 14, color: kDarkAccent),
+                        textAlign: TextAlign.start,
+                      )
+                    : Container(width: 0, height: 0),
               ),
             ]));
   }

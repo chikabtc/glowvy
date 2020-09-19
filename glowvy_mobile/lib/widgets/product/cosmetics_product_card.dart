@@ -55,7 +55,10 @@ class CosmeticsProductCard extends StatelessWidget {
       onTap: () => Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => CosmeticsProductDetail(product: product),
+            builder: (context) => CosmeticsProductDetail(
+              product: product,
+              rank: ranking,
+            ),
           )),
       child: Card(
         color: Colors.white,
@@ -198,7 +201,7 @@ class CosmeticsProductCard extends StatelessWidget {
                     //         ),
                     //   ],
                     // ),
-                    SizedBox(height: 15),
+                    SizedBox(height: 9),
                     showDivider ? Divider(height: 1) : Container()
 
                     // // SizedBox(height: 5),

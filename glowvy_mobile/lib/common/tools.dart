@@ -156,8 +156,10 @@ class Tools {
     return convertedP.toString();
   }
 
-  static String getPriceProduct(product, String currency, {bool onSale}) {
-    String price = getPriceProductValue(product, currency, onSale: onSale);
+  static String getPriceProduct(Product product, String currency,
+      {bool onSale}) {
+    String price = getPriceProductValue(product, currency,
+        onSale: product.salePrice == product.price ? false : true);
 
     return getCurrecyFormatted(price, currency: currency);
   }

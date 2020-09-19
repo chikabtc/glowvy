@@ -20,7 +20,7 @@ Review _$ReviewFromJson(Map<String, dynamic> json) {
         ? null
         : ReviewUser.fromJson(json['user'] as Map<String, dynamic>),
     images: (json['images'] as List)?.map((e) => e as String)?.toList(),
-  );
+  )..score = json['score'] as int;
 }
 
 Map<String, dynamic> _$ReviewToJson(Review instance) => <String, dynamic>{
@@ -31,5 +31,6 @@ Map<String, dynamic> _$ReviewToJson(Review instance) => <String, dynamic>{
       'scontent': instance.scontent,
       'product': instance.product,
       'user': instance.user,
+      'score': instance.score,
       'images': instance.images,
     };

@@ -1,10 +1,7 @@
-/// This class is customize from - https://github.com/fluttercandies/extended_image
-
 import 'dart:async';
 import 'dart:math';
 import 'dart:ui';
 
-import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' hide Image;
@@ -76,8 +73,8 @@ class _PicSwiperState extends State<PicSwiper>
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     Widget result = Material(
-        color: Colors.transparent,
-        shadowColor: Colors.transparent,
+        color: Colors.black,
+        shadowColor: Colors.black,
         child: Stack(
           fit: StackFit.expand,
           children: <Widget>[
@@ -171,8 +168,8 @@ class _PicSwiperState extends State<PicSwiper>
                 if (d.data == null || !d.data) return Container();
 
                 return Positioned(
-                  bottom: 0.0,
-                  left: 0.0,
+                  bottom: MediaQuery.of(context).padding.bottom,
+                  left: 20.0,
                   right: 0.0,
                   child:
                       MySwiperPlugin(widget.pics, currentIndex, rebuildIndex),
@@ -183,11 +180,14 @@ class _PicSwiperState extends State<PicSwiper>
             ),
             Positioned(
               child: IconButton(
-                  icon: Icon(Icons.close),
+                  icon: Icon(
+                    Icons.close,
+                    color: Colors.grey.withOpacity(0.4),
+                  ),
                   onPressed: () {
                     Navigator.pop(context);
                   }),
-              top: 10,
+              top: 10 + MediaQuery.of(context).padding.top,
               right: 10,
             )
           ],

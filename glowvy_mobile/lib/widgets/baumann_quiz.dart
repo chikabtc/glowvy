@@ -143,15 +143,22 @@ class _BaumannQuizState extends State<BaumannQuiz>
       appBar: AppBar(
           elevation: 0,
           title: Text(
-              !surveyFinished
-                  ? S.of(context).baumannSkinTypeTest
-                  : "Loại Da Của Tôi",
+              !surveyFinished ? "Test Baumann về da" : "Loại Da Của Tôi",
               style: kBaseTextStyle.copyWith(
                   color: kDarkYellow,
                   fontSize: 17,
                   fontWeight: FontWeight.bold)),
           brightness: Brightness.light,
-          leading: CommonIcons.backIcon(context, kDarkYellow),
+          leading: !surveyFinished
+              ? IconButton(
+                  icon: Icon(
+                    Icons.close,
+                    color: kDarkYellow,
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  })
+              : CommonIcons.backIcon(context, color: kDarkYellow),
           backgroundColor: kLightYellow,
           //if the survey is completed or the user provided the skinType
           bottom: !surveyFinished
@@ -295,11 +302,11 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                     minWidth: kScreenSizeWidth,
                                     height: 48,
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(25.0),
+                                      borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     child: calculatingResult
                                         ? CupertinoActivityIndicator()
-                                        : Text(S.of(context).checkYourSkinTYpe,
+                                        : Text("Kiểm tra loại da",
                                             style: kBaseTextStyle.copyWith(
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.bold,
@@ -459,8 +466,9 @@ class _BaumannQuizState extends State<BaumannQuiz>
                               Container(
                                   width: screenSize.width,
                                   height: 223,
-                                  padding: EdgeInsets.only(left: 10),
+                                  // padding: EdgeInsets.only(left: 10),
                                   child: ListView.separated(
+                                      padding: EdgeInsets.only(left: 10),
                                       separatorBuilder: (context, index) =>
                                           Container(width: 10),
                                       scrollDirection: Axis.horizontal,
@@ -605,7 +613,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                             fontSize: 14,
                                             fontStyle: FontStyle.italic,
                                             fontWeight: FontWeight.w600,
-                                            color: kSecondaryGrey)),
+                                            color: kDarkSecondary)),
                                     SizedBox(
                                       height: 30,
                                     )

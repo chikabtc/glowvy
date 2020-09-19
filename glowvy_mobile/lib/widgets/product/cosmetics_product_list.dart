@@ -99,7 +99,7 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
                     style: kBaseTextStyle.copyWith(
                         fontSize: 17,
                         fontWeight: FontWeight.w600,
-                        color: kPinkAccent),
+                        color: kDarkYellow),
                   ),
                 ),
               )

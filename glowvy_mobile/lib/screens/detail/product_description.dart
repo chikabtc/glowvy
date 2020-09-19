@@ -107,7 +107,7 @@ class _ProductDescriptionState extends State<ProductDescription>
                               style: kBaseTextStyle.copyWith(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
-                                color: kSecondaryGrey,
+                                color: kDarkSecondary,
                               )),
                         ],
                       ),

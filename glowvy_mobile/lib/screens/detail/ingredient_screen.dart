@@ -51,85 +51,88 @@ class IngredientScreenStates extends State<IngredientScreen>
 
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: kLightYellow,
+          title: Text("Thông tin thành phần",
+              style: kBaseTextStyle.copyWith(
+                  fontSize: 17,
+                  color: kDarkYellow,
+                  fontWeight: FontWeight.bold)),
           brightness: Brightness.light,
-          leading: IconButton(
-            icon: CommonIcons.arrowBackward,
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          ),
+          leading: CommonIcons.backIcon(context, color: kDarkYellow),
           bottom: PreferredSize(
             child: Container(
-              width: screenSize.width - 88,
-              height: 104,
+              width: screenSize.width,
+              height: 178,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
+                      SizedBox(height: 34),
                       Text(widget.hazardLevel,
                           style: kBaseTextStyle.copyWith(
-                              fontSize: 14,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w600)),
+                              fontSize: 17, fontWeight: FontWeight.bold)),
                       Text(S.of(context).ewgSafeLevel,
                           style: kBaseTextStyle.copyWith(
                               fontSize: 12,
                               color: kDarkSecondary,
                               fontWeight: FontWeight.w500)),
-                      SizedBox(width: 16)
                     ],
                   ),
-                  SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Column(children: <Widget>[
-                        SvgPicture.asset("assets/icons/grey_shield.svg"),
-                        Text(
-                          S.of(context).undecided,
-                          style: kBaseTextStyle.copyWith(
-                              fontSize: 12, fontWeight: FontWeight.w500),
-                        )
-                      ]),
-                      Column(children: <Widget>[
-                        SvgPicture.asset("assets/icons/green_shield.svg"),
-                        Text(
-                          S.of(context).low,
-                          style: kBaseTextStyle.copyWith(
-                              fontSize: 12, fontWeight: FontWeight.w500),
-                        )
-                      ]),
-                      Column(children: <Widget>[
-                        SvgPicture.asset("assets/icons/orange_shield.svg"),
-                        Text(
-                          S.of(context).moderate,
-                          style: kBaseTextStyle.copyWith(
-                              fontSize: 12, fontWeight: FontWeight.w500),
-                        )
-                      ]),
-                      Column(children: <Widget>[
-                        SvgPicture.asset("assets/icons/red_shield.svg"),
-                        Text(
-                          S.of(context).high,
-                          style: kBaseTextStyle.copyWith(
-                              fontSize: 12, fontWeight: FontWeight.w500),
-                        )
-                      ]),
-                    ],
+                  SizedBox(height: 35),
+                  Spacer(),
+                  Container(
+                    padding: EdgeInsets.only(
+                        left: 44, right: 44, top: 16, bottom: 14),
+                    color: Colors.white,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Column(children: <Widget>[
+                          SvgPicture.asset("assets/icons/grey_shield.svg"),
+                          Text(
+                            S.of(context).undecided,
+                            style: kBaseTextStyle.copyWith(
+                                fontSize: 12, fontWeight: FontWeight.w500),
+                          )
+                        ]),
+                        Column(children: <Widget>[
+                          SvgPicture.asset("assets/icons/green-shield.svg"),
+                          Text(
+                            S.of(context).low,
+                            style: kBaseTextStyle.copyWith(
+                                fontSize: 12, fontWeight: FontWeight.w500),
+                          )
+                        ]),
+                        Column(children: <Widget>[
+                          SvgPicture.asset("assets/icons/orange_shield.svg"),
+                          Text(
+                            S.of(context).moderate,
+                            style: kBaseTextStyle.copyWith(
+                                fontSize: 12, fontWeight: FontWeight.w500),
+                          )
+                        ]),
+                        Column(children: <Widget>[
+                          SvgPicture.asset("assets/icons/red_shield.svg"),
+                          Text(
+                            S.of(context).high,
+                            style: kBaseTextStyle.copyWith(
+                                fontSize: 12, fontWeight: FontWeight.w500),
+                          )
+                        ]),
+                      ],
+                    ),
                   ),
                 ],
               ),
             ),
-            preferredSize: Size(screenSize.width, 104),
+            preferredSize: Size(screenSize.width, 178),
           ),
-          actions: <Widget>[CartAction()],
           elevation: 0,
-          backgroundColor: Colors.white,
         ),
         body: Container(
-          color: Colors.white,
+          color: kDefaultBackground,
           width: screenSize.width,
           height: screenSize.height,
           padding: EdgeInsets.only(top: 24, left: 24, right: 24, bottom: 24),
@@ -137,7 +140,7 @@ class IngredientScreenStates extends State<IngredientScreen>
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
               itemCount: widget.ingredients.length,
-              itemBuilder: (context, i) => IngredientInfoCard(
+              itemBuilder: (context, i) => IngredientCard(
                     ingredient: widget.ingredients[i],
                     showDivider:
                         widget.ingredients.length == i + 1 ? false : true,

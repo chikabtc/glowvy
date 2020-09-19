@@ -7,6 +7,11 @@ class Reviews {
   int totalCount;
   int averageSatisfaction;
   List<Review> reviews = [];
+  int point1;
+  int point2;
+  int point3;
+  int point4;
+  int point5;
 
   Reviews({this.totalCount, this.averageSatisfaction, this.reviews});
 

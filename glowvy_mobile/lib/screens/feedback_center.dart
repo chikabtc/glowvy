@@ -43,7 +43,7 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
             ),
             // expandedHeight: screenSize.height * 0.3,
             brightness: Brightness.light,
-            leading: CommonIcons.backIcon(context, kPrimaryBlue),
+            leading: CommonIcons.backIcon(context, color: kPrimaryBlue),
             backgroundColor: kQuaternaryBlue),
         body: SafeArea(
           bottom: false,
@@ -62,7 +62,13 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                         color: kQuaternaryBlue,
                       ),
                       GestureDetector(
-                        onTap: () => PopupServices.showSurvey(context),
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => WebView(
+                                    url:
+                                        "https://parker893633.typeform.com/to/RgVtWWyZ",
+                                    title: "Glowvy Survey ⭐️"))),
                         child: Padding(
                           padding: const EdgeInsets.only(
                               top: 20, left: 20.0, right: 20, bottom: 30),
@@ -74,9 +80,9 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                             padding: EdgeInsets.only(
                                 left: 16, right: 30, top: 14, bottom: 14),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
                               children: <Widget>[
                                 Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     Text(
                                       "Thích/không thích ứng dụng?",
@@ -87,6 +93,7 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                                     ),
                                     Text(
                                       "Làm khảo sát bây giờ",
+                                      // textAlign: TextAlign.center,
                                       style: kBaseTextStyle.copyWith(
                                           color: kPrimaryBlue,
                                           fontStyle: FontStyle.italic,

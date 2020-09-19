@@ -1,6 +1,8 @@
+import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/common/tools.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../models/product/product.dart';
 import '../../widgets/image_galery.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -25,22 +27,14 @@ class CosmeticsImageFeature extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (BuildContext buildcontext, BoxConstraints constraints) {
-        return SafeArea(
-          top: true,
-          child: Column(
-            children: <Widget>[
-              // SizedBox(height: 100),
-              Hero(
-                  tag: 'product-${product.id}',
-                  child: Tools.image(
-                    url: product.thumbnail,
-                    fit: BoxFit.cover,
-                    width: constraints.maxWidth * 0.7,
-                    size: kSize.large,
-                  )),
-            ],
-          ),
-        );
+        return Hero(
+            tag: 'product-${product.id}',
+            child: Tools.image(
+              url: product.thumbnail,
+              fit: BoxFit.cover,
+              height: 227,
+              size: kSize.large,
+            ));
       },
     );
   }

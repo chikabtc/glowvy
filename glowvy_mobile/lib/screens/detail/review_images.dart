@@ -13,12 +13,24 @@ class ReviewImages extends StatefulWidget {
 }
 
 class _ReviewImagesState extends State<ReviewImages> {
-  _onShowGallery(context, images, [index = 0]) {
-    showDialog<void>(
-        context: context,
-        builder: (BuildContext context) {
-          return ImageGalery(images: images, index: index);
-        });
+  Route _createRoute(context, images, index) {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) =>
+          ImageGalery(images: widget.product.descImages, index: index),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(0.0, 1.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
   }
 
   @override
@@ -30,7 +42,8 @@ class _ReviewImagesState extends State<ReviewImages> {
       images.forEach((img) {
         // print("image to render: $img");
         imagesWidgets.add(GestureDetector(
-            onTap: () => _onShowGallery(context, images, images.indexOf(img)),
+            onTap: () => Navigator.of(context)
+                .push(_createRoute(context, images, images.indexOf(img))),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: Tools.image(
@@ -47,6 +60,7 @@ class _ReviewImagesState extends State<ReviewImages> {
             height: 120,
             padding: EdgeInsets.only(bottom: 20, top: 20),
             child: ListView.separated(
+                padding: EdgeInsets.only(left: 16),
                 separatorBuilder: (BuildContext context, int index) =>
                     SizedBox(width: 15),
                 scrollDirection: Axis.horizontal,
