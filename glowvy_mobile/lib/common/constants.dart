@@ -1,13 +1,13 @@
 // The config app layout variable
 // or this value can load online https://json-inspire-ui.inspire.now.sh/config.json - see document
 import 'package:Dimodo/common/sizeConfig.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'styles.dart';
 import 'package:rate_my_app/rate_my_app.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:localstorage/localstorage.dart';
 
 const kAppConfig = 'lib/common/config_en.json';
@@ -28,13 +28,6 @@ const welcomeGift =
 const kSplashScreen = "assets/images/onboarding/splash_page.png";
 
 ///Google fonts: https://fonts.google.com/
-TextTheme kTextTheme(theme) {
-  return GoogleFonts.latoTextTheme(theme);
-}
-
-TextTheme kHeadlineTheme(theme) {
-  return GoogleFonts.latoTextTheme(theme);
-}
 
 const debugNetworkProxy = false;
 
@@ -150,3 +143,11 @@ String kFBMessenger = "https://www.m.me/glowvy.vn";
 String kAccessToken;
 
 List<Product> kProducts;
+
+TextTheme kTextTheme(theme) {
+  return GoogleFonts.latoTextTheme(theme);
+}
+
+TextTheme kHeadlineTheme(theme) {
+  return GoogleFonts.latoTextTheme(theme);
+}

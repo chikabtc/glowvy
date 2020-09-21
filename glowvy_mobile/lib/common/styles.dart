@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'constants.dart';
 
 /// basic colors
@@ -216,9 +217,8 @@ const kMessageTextFieldDecoration = InputDecoration(
   hintText: 'Type your message here...',
   border: InputBorder.none,
 );
-
 var kBaseTextStyle = TextStyle(
-  // height: 1.25,
+  height: 1.25,
   fontFamily: "Nunito",
   color: kDarkBG,
   fontSize: 15.0,

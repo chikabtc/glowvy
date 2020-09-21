@@ -1,14 +1,9 @@
-import 'package:Dimodo/models/app.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:provider/provider.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../common/constants.dart';
 import '../common/config.dart' as config;
 import '../common/styles.dart';
 import '../common/sizeConfig.dart';
-import 'package:Dimodo/generated/i18n.dart';
 
 class GlowvyOnBoardScreen extends StatefulWidget {
   @override
