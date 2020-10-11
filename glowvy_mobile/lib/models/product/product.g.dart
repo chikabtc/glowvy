@@ -12,10 +12,9 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
     hazardScore: json['hazard_score'] as int,
     thumbnail: json['thumbnail'] as String,
     rating: json['rating'] as String,
-    cosmeticsRank: json['cosmetics_rank'] == null
+    reviewMetas: json['review_metas'] == null
         ? null
-        : CosmeticsRank.fromJson(
-            json['cosmetics_rank'] as Map<String, dynamic>),
+        : ReviewMetas.fromJson(json['review_metas'] as Map<String, dynamic>),
     name: json['name'] as String,
     volume: json['volume'] as String,
     sname: json['sname'] as String,
@@ -35,8 +34,6 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
     salePrice: json['sale_price'] as int,
     salePercent: json['sale_percent'] as int,
     price: json['price'] as int,
-    categoryId: json['category_id'] as int,
-    categoryName: json['category_name'] as String,
     purchaseCount: json['purchase_count'] as int,
     sizeDetails: (json['size_details'] as List)
         ?.map((e) =>
@@ -46,19 +43,13 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Option.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    productEtcInfo: json['product_etc_info'] == null
+    brand: json['brand'] == null
         ? null
-        : ProductEtcInfo.fromJson(
-            json['product_etc_info'] as Map<String, dynamic>),
-    seller: json['seller'] == null
-        ? null
-        : Seller.fromJson(json['seller'] as Map<String, dynamic>),
-    addInfo: (json['add_info'] as List)
-        ?.map((e) =>
-            e == null ? null : AddInfo.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+        : Brand.fromJson(json['brand'] as Map<String, dynamic>),
     sid: json['sid'] as int,
-  );
+  )..category = json['category'] == null
+      ? null
+      : Category.fromJson(json['category'] as Map<String, dynamic>);
 }
 
 Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
@@ -75,17 +66,14 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'tags': instance.tags,
       'sale_price': instance.salePrice,
       'price': instance.price,
-      'category_id': instance.categoryId,
       'rating': instance.rating,
-      'category_name': instance.categoryName,
       'sale_percent': instance.salePercent,
       'purchase_count': instance.purchaseCount,
       'volume': instance.volume,
-      'cosmetics_rank': instance.cosmeticsRank,
+      'category': instance.category,
+      'review_metas': instance.reviewMetas,
       'size_details': instance.sizeDetails,
       'options': instance.options,
-      'product_etc_info': instance.productEtcInfo,
-      'seller': instance.seller,
-      'add_info': instance.addInfo,
+      'brand': instance.brand,
       'ingredients': instance.ingredients,
     };

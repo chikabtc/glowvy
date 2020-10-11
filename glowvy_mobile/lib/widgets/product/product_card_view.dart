@@ -86,7 +86,7 @@ class ProductCard extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     !isNameAvailable
-                        ? "${product.tags[0].name} ${product.categoryName} " ??
+                        ? "${product.tags[0].name} ${product.category.name} " ??
                             "not found"
                         : "${product.name}",
                     maxLines: 1,

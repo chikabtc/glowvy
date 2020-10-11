@@ -19,7 +19,8 @@ import 'package:Dimodo/common/tools.dart';
 class ProductOption extends StatefulWidget {
   final Product product;
   final bool isLoggedIn;
-  ProductOption(this.product, this.isLoggedIn);
+  final isLiked;
+  ProductOption(this.product, this.isLoggedIn, {this.isLiked = true});
   @override
   _ProductOptionState createState() => _ProductOptionState();
 }
@@ -476,7 +477,8 @@ class _ProductOptionState extends State<ProductOption>
       height: 60.0 + MediaQuery.of(context).padding.bottom,
       color: Colors.white,
       child: Padding(
-        padding: const EdgeInsets.only(top: 9.0, bottom: 10),
+        padding:
+            const EdgeInsets.only(top: 9.0, left: 16, right: 18, bottom: 10),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
@@ -484,37 +486,39 @@ class _ProductOptionState extends State<ProductOption>
           children: <Widget>[
             MaterialButton(
                 elevation: 0,
+                color: widget.isLiked ? kQuaternaryPink : kAccentRed,
                 minWidth: (screenSize.width - 48) * 0.5,
                 height: 40,
                 shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(16.0),
-                    side: BorderSide(color: kAccentRed, width: 1.5)),
-                child: Text(S.of(context).customerSupport,
-                    style: kBaseTextStyle.copyWith(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        color: kAccentRed)),
-                onPressed: () =>
-                    CustomerSupport.openFacebookMessenger(context)),
-            SizedBox(width: 16),
-            MaterialButton(
-                elevation: 0,
-                color: kAccentRed,
-                minWidth: (screenSize.width - 48) * 0.5,
-                height: 40,
-                shape: RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(16.0),
-                    side: BorderSide(color: kAccentRed, width: 1.5)),
-                child: Text("Love it",
-                    style: kBaseTextStyle.copyWith(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white)),
+                  borderRadius: new BorderRadius.circular(16.0),
+                ),
+                child: Row(
+                  children: [
+                    SvgPicture.asset("assets/icons/love-it-red.svg",
+                        color: widget.isLiked ? kAccentRed : Colors.white),
+                    SizedBox(width: 5),
+                    Text("Growing on me  1",
+                        style: kBaseTextStyle.copyWith(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: widget.isLiked ? kAccentRed : Colors.white)),
+                  ],
+                ),
                 onPressed: () {
                   showAddedToCartAlert();
-                  // show(context, bottomPopupHeightFactor, widget.isLoggedIn,
-                  //     isLoading);
                 }),
+            Spacer(),
+            Column(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset("assets/icons/share.svg"),
+                Text("share",
+                    style: kBaseTextStyle.copyWith(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600,
+                        color: kDarkSecondary)),
+              ],
+            )
           ],
         ),
       ),

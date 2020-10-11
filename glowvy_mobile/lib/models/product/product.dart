@@ -1,7 +1,9 @@
 import 'dart:ffi';
 
+import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/ingredient.dart';
-import 'package:Dimodo/models/product/cosmetics_rank.dart';
+import 'package:Dimodo/models/product/review_meta.dart';
+import 'package:Dimodo/models/product/review_metas.dart';
 
 import '../brandi/option.dart';
 import '../sizeDetail.dart';
@@ -27,18 +29,15 @@ class Product {
   List<Tag> tags;
   int salePrice;
   int price;
-  int categoryId;
   String rating;
-  String categoryName;
   int salePercent;
   int purchaseCount;
   String volume;
-  CosmeticsRank cosmeticsRank;
+  Category category;
+  ReviewMetas reviewMetas;
   List<SizeDetail> sizeDetails;
   List<Option> options;
-  ProductEtcInfo productEtcInfo;
-  Seller seller;
-  List<AddInfo> addInfo;
+  Brand brand;
   List<Ingredient> ingredients;
 
   Product({
@@ -46,7 +45,7 @@ class Product {
     this.hazardScore,
     this.thumbnail,
     this.rating,
-    this.cosmeticsRank,
+    this.reviewMetas,
     this.name,
     this.volume,
     this.sname,
@@ -59,14 +58,11 @@ class Product {
     this.salePrice,
     this.salePercent,
     this.price,
-    this.categoryId,
-    this.categoryName,
     this.purchaseCount,
     this.sizeDetails,
     this.options,
-    this.productEtcInfo,
-    this.seller,
-    this.addInfo,
+    // this.productEtcInfo,
+    this.brand,
     this.sid,
   });
 

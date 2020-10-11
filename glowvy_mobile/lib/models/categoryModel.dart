@@ -26,7 +26,7 @@ class CategoryModel with ChangeNotifier {
             await _service.getSubCategories(parentId: cate["parent_id"]);
         // cate.subCategories = cates;
         var category = Category.fromJson(cate);
-        category.subCategories = cates;
+        // category.subCategories = cates;
         localCates.add(category);
       }
       categories = localCates;

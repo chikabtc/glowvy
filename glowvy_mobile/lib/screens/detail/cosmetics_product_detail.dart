@@ -1,8 +1,8 @@
+import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/models/reviews.dart';
 import 'package:Dimodo/screens/detail/Cosmetics_review_card.dart';
 import 'package:Dimodo/screens/detail/cosmetics_image_feature.dart';
-import 'package:Dimodo/screens/detail/cosmetics_product_title.dart';
 import 'package:Dimodo/screens/detail/cosmetics_review_screen.dart';
 import 'package:Dimodo/screens/detail/ingredient_card.dart';
 import 'package:Dimodo/screens/detail/ingredient_screen.dart';
@@ -289,8 +289,59 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                           ],
                         ),
                       ),
-                      CosmeticsProductTitle(
-                        product,
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Container(
+                            padding: EdgeInsets.all(16),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Text(
+                                    "${product.brand.name}",
+                                    maxLines: 2,
+                                    style: kBaseTextStyle.copyWith(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.normal),
+                                  ),
+                                ),
+                                // SizedBox(height: 5),
+                                Text(product.name,
+                                    maxLines: 2,
+                                    style: kBaseTextStyle.copyWith(
+                                        fontSize: 17,
+                                        fontWeight: FontWeight.w600)),
+                                // SizedBox(height: 5),
+
+                                Text(
+                                    "No.${widget.rank + 1} trong danh sách ${product.category.name}",
+                                    maxLines: 1,
+                                    style: kBaseTextStyle.copyWith(
+                                        color: kDarkSecondary,
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.normal)),
+                                // if (product.ingredientScore == 0)
+
+                                Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Text(
+                                    "Giá tham khảo " +
+                                        Tools.getPriceProduct(product, "VND") +
+                                        " . " +
+                                        product.volume,
+                                    style: kBaseTextStyle.copyWith(
+                                        color: kDarkSecondary,
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.normal),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
                       ),
                       !isLoading
                           ? Padding(
@@ -386,29 +437,6 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                               Container(
                                 height: 24.5,
                               ),
-                              widget.rank != null && widget.rank < 9
-                                  ? Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 24.5),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          widget.rank > 3
-                                              ? SvgPicture.asset(
-                                                  "assets/icons/ranking-list.svg")
-                                              : SvgPicture.asset(
-                                                  "assets/icons/ranking-list.svg",
-                                                  color: kPrimaryOrange),
-                                          Text(
-                                              "No.${widget.rank + 1} trong danh sách ${product.categoryName}",
-                                              style: kBaseTextStyle.copyWith(
-                                                  fontSize: 14,
-                                                  fontWeight: FontWeight.w600)),
-                                        ],
-                                      ),
-                                    )
-                                  : Container(height: 0),
                               Container(
                                 decoration: BoxDecoration(
                                   color: kLightYellow,
@@ -428,9 +456,9 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                                     ))),
                                         child: Container(
                                           width: screenSize.width,
-                                          // color: Colors.white,
+                                          // cor: Colors.white,
                                           padding: EdgeInsets.symmetric(
-                                              horizontal: 20),
+                                              horizontal: 16),
                                           child: Column(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
@@ -454,12 +482,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w600)),
-                                                    Spacer(),
-                                                    if (metaReviews
-                                                            .totalCount !=
-                                                        0)
-                                                      CommonIcons.forwardIcon(
-                                                          context, kDarkYellow)
+                                                    Spacer()
                                                   ],
                                                 ),
                                               ),
@@ -493,7 +516,22 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                               Column(
                                                 children: renderIngredients(),
                                               ),
-                                              SizedBox(height: 28)
+                                              SizedBox(height: 18),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                children: [
+                                                  Text(
+                                                    S.of(context).viewAll,
+                                                    style:
+                                                        kBaseTextStyle.copyWith(
+                                                            color: kDarkYellow),
+                                                  ),
+                                                  CommonIcons.forwardIcon(
+                                                      context, kDarkYellow),
+                                                ],
+                                              ),
+                                              SizedBox(height: 18)
                                             ],
                                           ),
                                         ))

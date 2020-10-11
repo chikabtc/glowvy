@@ -11,6 +11,7 @@ import 'package:Dimodo/widgets/filter-by-skin.dart';
 import 'package:Dimodo/widgets/popup_services.dart';
 import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
 import 'package:Dimodo/widgets/webview.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -75,12 +76,13 @@ class HomeScreenState extends State<HomeScreen>
   @override
   void initState() {
     super.initState();
+
     Future.wait([
-      service.getCosmeticsProductsByCategory(categoryId: 32, skinType: 0),
-      service.getCosmeticsProductsByCategory(categoryId: 142, skinType: 0),
-      service.getCosmeticsProductsByCategory(categoryId: 3, skinType: 0),
-      service.getCosmeticsProductsByCategory(categoryId: 4, skinType: 0),
-      service.getCosmeticsProductsByCategory(categoryId: 14, skinType: 0),
+      service.getCosmeticsProductsByCategoryF(categoryId: 32, skinType: 0),
+      service.getCosmeticsProductsByCategoryF(categoryId: 142, skinType: 0),
+      service.getCosmeticsProductsByCategoryF(categoryId: 3, skinType: 0),
+      service.getCosmeticsProductsByCategoryF(categoryId: 4, skinType: 0),
+      service.getCosmeticsProductsByCategoryF(categoryId: 14, skinType: 0),
     ]).then((responses) {
       allProducts[32] = responses.first;
       allProducts[142] = responses[1];

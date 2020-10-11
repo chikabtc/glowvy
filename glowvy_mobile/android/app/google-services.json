@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "526553449350",
+    "firebase_url": "https://glowvy-b6cf4.firebaseio.com",
+    "project_id": "glowvy-b6cf4",
+    "storage_bucket": "glowvy-b6cf4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526553449350:android:58033cd0d5633976f02207",
+        "android_client_info": {
+          "package_name": "app.dimodo.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526553449350-psev0qiji8b3hmc4p1b0igpgh671538g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDt4dWbQ21za3ME5OKThvxZnA9NjjvQQdU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526553449350-psev0qiji8b3hmc4p1b0igpgh671538g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "526553449350-91u1j0e2qiebrd2tlkchod6ir1upn4qp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "app.dimodo.ios"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

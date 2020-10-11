@@ -23,9 +23,12 @@ dependencies:
     sdk: flutter
   http: 0.12.0+2
   firebase_analytics: ^5.0.14
+  firebase_performance: ^0.4.0
+  firebase_core: "0.5.0"
+  cloud_firestore: "^0.14.0+2"
   path: any
   smooth_page_indicator: ^0.1.4
-  amplitude_flutter: ^2.0.0
+  # amplitude_flutter: ^2.0.0
   sign_in_with_apple: ^2.5.2
   flutter_spinkit: "^4.1.2"
   custom_switch: ^0.0.1

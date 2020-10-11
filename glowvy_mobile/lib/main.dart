@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -6,8 +7,8 @@ import 'dart:async';
 import 'package:sentry/sentry.dart';
 import 'app.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:amplitude_flutter/amplitude.dart';
-import 'package:amplitude_flutter/identify.dart';
+// import 'package:amplitude_flutter/amplitude.dart';
+// import 'package:amplitude_flutter/identify.dart';
 
 final SentryClient _sentry = new SentryClient(
     dsn:
@@ -31,39 +32,39 @@ void main() async {
 
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-    final Amplitude analytics = Amplitude.getInstance(instanceName: "Dimodo");
+    // final Amplitude analytics = Amplitude.getInstance(instanceName: "Dimodo");
 
     var apiKey = "78f34e041572ba05a597df3c0a9d3f23";
 
-    // Initialize SDK
-    analytics.init(apiKey);
+    // // Initialize SDK
+    // analytics.init(apiKey);
 
-    // Enable COPPA privacy guard. This is useful when you choose not to report sensitive user information.
-    analytics.enableCoppaControl();
+    // // Enable COPPA privacy guard. This is useful when you choose not to report sensitive user information.
+    // analytics.enableCoppaControl();
 
-    // Set user Id
-    analytics.setUserId("test_user");
+    // // Set user Id
+    // analytics.setUserId("test_user");
 
-    // Turn on automatic session events
-    analytics.trackingSessionEvents(true);
+    // // Turn on automatic session events
+    // analytics.trackingSessionEvents(true);
 
-    // Log an event
-    analytics.logEvent('Dimodo startup',
-        eventProperties: {'friend_num': 10, 'is_heavy_user': true});
+    // // Log an event
+    // analytics.logEvent('Dimodo startup',
+    //     eventProperties: {'friend_num': 10, 'is_heavy_user': true});
 
-    // Identify
-    final Identify identify1 = Identify()
-      ..set('identify_test',
-          'identify sent at ${DateTime.now().millisecondsSinceEpoch}')
-      ..add('identify_count', 1);
-    analytics.identify(identify1);
+    // // Identify
+    // final Identify identify1 = Identify()
+    //   ..set('identify_test',
+    //       'identify sent at ${DateTime.now().millisecondsSinceEpoch}')
+    //   ..add('identify_count', 1);
+    // analytics.identify(identify1);
 
-    // Set group
-    analytics.setGroup('orgId', 15);
+    // // Set group
+    // analytics.setGroup('orgId', 15);
 
     // Group identify
-    final Identify identify2 = Identify()..set('identify_count', 1);
-    analytics.groupIdentify('orgId', '15', identify2);
+    // final Identify identify2 = Identify()..set('identify_count', 1);
+    // analytics.groupIdentify('orgId', '15', identify2);
     await precachePicture(
         ExactAssetPicture(SvgPicture.svgStringDecoder,
             'assets/icons/onborading-illustration-1.svg'),
@@ -140,6 +141,7 @@ void main() async {
         ExactAssetPicture(
             SvgPicture.svgStringDecoder, 'assets/icons/arrow_forward.svg'),
         null);
+    final Future<FirebaseApp> _initialization = Firebase.initializeApp();
 
     runApp(Glowvy());
   }, onError: (error, stackTrace) async {

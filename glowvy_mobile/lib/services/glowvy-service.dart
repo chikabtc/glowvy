@@ -19,14 +19,15 @@ import 'index.dart';
 import 'dart:io';
 import '../common/constants.dart';
 import 'package:algolia/algolia.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class DimodoServices implements BaseServices {
-  static final DimodoServices _instance = DimodoServices._internal();
-  factory DimodoServices() => _instance;
+class GlowvyServices implements BaseServices {
+  static final GlowvyServices _instance = GlowvyServices._internal();
+  factory GlowvyServices() => _instance;
 
   bool isProd = true;
 
-  DimodoServices._internal();
+  GlowvyServices._internal();
 
   static Algolia algolia = Algolia.init(
     applicationId: '50G6MO803G',
@@ -198,7 +199,6 @@ class DimodoServices implements BaseServices {
       List<Product> list = [];
       var body = await getAsync(
           endPoint: "api/cosmetics/categories=$categoryId?skinType=$skinType");
-
       final products = body["Data"];
 
       if ((body["Success"] == false)) {
@@ -212,7 +212,34 @@ class DimodoServices implements BaseServices {
       }
     } catch (e) {
       print("Error: $e");
+      throw e;
+    }
+  }
 
+  @override
+  Future<List<Product>> getCosmeticsProductsByCategoryF(
+      {categoryId, skinType}) async {
+    try {
+      List<Product> list = [];
+      var productSnapshot = await FirebaseFirestore.instance
+          .collection('products')
+          .where('category.parent_id', isEqualTo: categoryId)
+          .limit(5)
+          .get();
+      print(productSnapshot.docs.length);
+
+      if (productSnapshot.docs.isNotEmpty) {
+        for (var doc in productSnapshot.docs) {
+          print(doc.data());
+          list.add(Product.fromJson(doc.data()));
+        }
+        print("categoryId: $categoryId");
+        return list;
+      } else {
+        throw Exception("no products were found");
+      }
+    } catch (e) {
+      print("Error: $e");
       throw e;
     }
   }

@@ -6,14 +6,14 @@ import 'type.dart';
 part 'seller.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class Seller {
+class Brand {
   String address1;
   String address2;
   int bookmarkCount;
   BusinessInfo businessInfo;
   String email;
   String enName;
-  String id;
+  int id;
   String imageUrl;
   String name;
   String operationTime;
@@ -22,7 +22,7 @@ class Seller {
   String text;
   Type type;
 
-  Seller({
+  Brand({
     this.address1,
     this.address2,
     this.bookmarkCount,
@@ -38,6 +38,6 @@ class Seller {
     this.text,
     this.type,
   });
-  factory Seller.fromJson(Map<String, dynamic> json) => _$SellerFromJson(json);
-  Map<String, dynamic> toJson() => _$SellerToJson(this);
+  factory Brand.fromJson(Map<String, dynamic> json) => _$BrandFromJson(json);
+  Map<String, dynamic> toJson() => _$BrandToJson(this);
 }

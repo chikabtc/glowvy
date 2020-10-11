@@ -5,17 +5,18 @@ part 'category.g.dart';
 class Category {
   int id;
   int parentId;
+  String parentName;
   String name;
   String image;
   List<Category> subCategories;
 
-  Category({
-    this.id,
-    this.name,
-    this.image,
-    this.subCategories,
-    this.parentId,
-  });
+  Category(
+      {this.id,
+      this.name,
+      this.image,
+      this.parentName,
+      this.parentId,
+      this.subCategories});
   factory Category.fromJson(Map<String, dynamic> json) =>
       _$CategoryFromJson(json);
   Map<String, dynamic> toJson() => _$CategoryToJson(this);

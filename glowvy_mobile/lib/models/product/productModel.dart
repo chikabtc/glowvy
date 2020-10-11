@@ -99,37 +99,38 @@ class ProductModel with ChangeNotifier {
     return products;
   }
 
-  List<Product> sortByProductsBySkinType(skinTypeId, List<Product> products) {
-    switch (skinTypeId) {
-      //all
-      case 0:
-        products.sort((a, b) => a.cosmeticsRank.allSkinRank["Int32"]
-            .compareTo(b..cosmeticsRank.allSkinRank["Int32"]));
-        break;
-      //sensitive
-      case 1:
-        products.sort((a, b) => a.cosmeticsRank.sensitiveSkinRank["Int32"]
-            .compareTo(b..cosmeticsRank.sensitiveSkinRank["Int32"]));
-        break;
-      //dry
-      case 2:
-        products.sort((a, b) => a.cosmeticsRank.drySkinRank["Int32"]
-            .compareTo(b..cosmeticsRank.drySkinRank["Int32"]));
+  // List<Product> sortBySkinType(skinTypeId, List<Product> products) {
+  //   switch (skinTypeId) {
+  //     //all
+  //     case 0:
+  //       products.sort((a, b) => a.reviewMetas.neutral["Int32"]
+  //           .compareTo(b..reviewMetas.neutral["Int32"]));
+  //       break;
+  //     //sensitive
+  //     case 1:
+  //       products.sort((a, b) =>
+  //           a.reviewMetas.all["Int32"].compareTo(b..reviewMetas.all["Int32"]));
+  //       break;
+  //     //dry
+  //     case 2:
+  //       products.sort((a, b) =>
+  //           a.reviewMetas.dry["Int32"].compareTo(b..reviewMetas.dry["Int32"]));
 
-        break;
-      //oily
-      case 3:
-        products.sort((a, b) => a.cosmeticsRank.oilySkinRank["Int32"]
-            .compareTo(b.cosmeticsRank.oilySkinRank["Int32"]));
-        break;
-    }
-    return products;
-  }
+  //       break;
+  //     //oily
+  //     case 3:
+  //       products.sort((a, b) => a.reviewMetas.complex["Int32"]
+  //           .compareTo(b.reviewMetas.complex["Int32"]));
+  //       break;
+  //   }
+  //   return products;
+  // }
 
   List<Product> sortByDefaultRank(
     List<Product> products,
   ) {
-    products.sort((a, b) => b.rating.compareTo(a.rating));
+    products.sort((a, b) => b.reviewMetas.all.rankingScore
+        .compareTo(a.reviewMetas.all.rankingScore));
 
     return products;
   }
@@ -186,18 +187,16 @@ class ProductModel with ChangeNotifier {
           break;
         //sensitive
         case 1:
-          isMatching =
-              p.cosmeticsRank.sensitiveSkinRank["Int32"] == 0 ? false : true;
+          isMatching = p.reviewMetas.all.reviewCount == 0 ? false : true;
           break;
         //dry
         case 2:
-          isMatching = p.cosmeticsRank.drySkinRank["Int32"] == 0 ? false : true;
-          if (isMatching = p.cosmeticsRank.drySkinRank["Int32"] != 0) {}
+          isMatching = p.reviewMetas.dry.reviewCount == 0 ? false : true;
+          if (isMatching = p.reviewMetas.dry.reviewCount != 0) {}
           break;
         //oily
         case 3:
-          isMatching =
-              p.cosmeticsRank.oilySkinRank["Int32"] == 0 ? false : true;
+          isMatching = p.reviewMetas.complex.reviewCount == 0 ? false : true;
           break;
         default:
           isMatching = true;

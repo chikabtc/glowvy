@@ -38,6 +38,7 @@ abstract class BaseServices {
   // COSMETICS
   // ===========================================================================
   Future<List<Product>> getCosmeticsProductsByCategory({categoryId, skinType});
+  Future<List<Product>> getCosmeticsProductsByCategoryF({categoryId, skinType});
 
 // CART
 // =============================================================================
@@ -101,8 +102,8 @@ class Services implements BaseServices {
   void setAppConfig(appConfig) {
     switch (appConfig["type"]) {
       default:
-        DimodoServices().appConfig(appConfig);
-        serviceApi = DimodoServices();
+        GlowvyServices().appConfig(appConfig);
+        serviceApi = GlowvyServices();
     }
   }
 
@@ -127,6 +128,20 @@ class Services implements BaseServices {
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
       return serviceApi.getCosmeticsProductsByCategory(
+          categoryId: categoryId, skinType: skinType);
+    } else {
+      //TODO: add no connection popup
+      throw Exception("No internet connection");
+    }
+  }
+
+  @override
+  Future<List<Product>> getCosmeticsProductsByCategoryF(
+      {categoryId, skinType}) async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      return serviceApi.getCosmeticsProductsByCategoryF(
           categoryId: categoryId, skinType: skinType);
     } else {
       //TODO: add no connection popup

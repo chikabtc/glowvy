@@ -6,8 +6,8 @@ part of 'seller.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Seller _$SellerFromJson(Map<String, dynamic> json) {
-  return Seller(
+Brand _$BrandFromJson(Map<String, dynamic> json) {
+  return Brand(
     address1: json['address1'] as String,
     address2: json['address2'] as String,
     bookmarkCount: json['bookmark_count'] as int,
@@ -16,7 +16,7 @@ Seller _$SellerFromJson(Map<String, dynamic> json) {
         : BusinessInfo.fromJson(json['business_info'] as Map<String, dynamic>),
     email: json['email'] as String,
     enName: json['en_name'] as String,
-    id: json['id'] as String,
+    id: json['id'] as int,
     imageUrl: json['image_url'] as String,
     name: json['name'] as String,
     operationTime: json['operation_time'] as String,
@@ -31,7 +31,7 @@ Seller _$SellerFromJson(Map<String, dynamic> json) {
   );
 }
 
-Map<String, dynamic> _$SellerToJson(Seller instance) => <String, dynamic>{
+Map<String, dynamic> _$BrandToJson(Brand instance) => <String, dynamic>{
       'address1': instance.address1,
       'address2': instance.address2,
       'bookmark_count': instance.bookmarkCount,

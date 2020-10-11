@@ -119,7 +119,7 @@ class CosmeticsProductCard extends StatelessWidget {
                   children: <Widget>[
                     SizedBox(height: 10),
                     Text(
-                      product.seller.name,
+                      product.brand.name,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: kBaseTextStyle.copyWith(
