@@ -1,4 +1,6 @@
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:Dimodo/generated/i18n.dart';

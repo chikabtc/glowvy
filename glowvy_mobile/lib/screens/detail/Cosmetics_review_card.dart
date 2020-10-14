@@ -4,6 +4,9 @@ import 'dart:math';
 import '../../common/constants.dart';
 import '../../widgets/image_galery.dart';
 import '../../common/styles.dart';
+
+import '../../common/colors.dart';
+
 import '../../models/review.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 
@@ -95,29 +98,26 @@ class CosmeticsReviewCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(review.user.name,
-                        style: kBaseTextStyle.copyWith(
-                            fontSize: 14, fontWeight: FontWeight.normal)),
+                    Text(review.user.displayName, style: textTheme.button2),
                     Row(
                       children: <Widget>[
                         Text(review.user.age.toString(),
-                            style: kBaseTextStyle.copyWith(
+                            style: textTheme.button2.copyWith(
                                 fontSize: 14,
                                 fontWeight: FontWeight.normal,
-                                color: kDarkSecondary)),
+                                color: kSecondaryGrey)),
                         SizedBox(width: 10),
                         Text(review.user.skinType,
-                            style: kBaseTextStyle.copyWith(
-                                fontSize: 14,
-                                fontWeight: FontWeight.normal,
-                                color: kDarkSecondary)),
+                            style: textTheme.button2
+                                .copyWith(color: kSecondaryGrey)),
                       ],
                     ),
                     SizedBox(height: 7),
                     Text(isKorean ? kSanitizedText : sanitizedText,
                         maxLines: isPreview ? 2 : 20,
-                        style: kBaseTextStyle.copyWith(
-                            fontSize: 14, fontWeight: FontWeight.normal)),
+                        style: textTheme.bodyText1.copyWith(
+                            fontWeight: FontWeight.normal,
+                            fontStyle: FontStyle.normal)),
                     SizedBox(height: 14),
                     if (showDivider)
                       Divider(color: Colors.black.withOpacity(0.1)),

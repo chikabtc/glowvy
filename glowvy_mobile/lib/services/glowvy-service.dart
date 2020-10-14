@@ -4,7 +4,9 @@ import 'dart:convert' show utf8;
 import 'dart:convert';
 import "dart:core";
 import 'package:Dimodo/models/category.dart';
+import 'package:Dimodo/models/ingredient.dart';
 import 'package:Dimodo/models/order/cartItem.dart';
+import 'package:Dimodo/models/review.dart';
 import 'package:http/http.dart' as http;
 import '../models/address/address.dart';
 import '../models/address/ward.dart';
@@ -37,6 +39,7 @@ class GlowvyServices implements BaseServices {
   String isSecure;
   // String baseUrl = "http://172.16.0.184:80";
   String baseUrl = "http://dimodo.app";
+  DocumentSnapshot lastReviewSnap;
 
   void appConfig(appConfig) {
     // // accessToken =
@@ -132,17 +135,76 @@ class GlowvyServices implements BaseServices {
   }
 
   @override
-  Future<Reviews> getCosmeticsReviews(id) async {
+  Future<List<Review>> getCosmeticsReviews(productId) async {
     try {
-      final body = await getAsync(endPoint: "api/cosmetics/review/id=$id");
+      List<Review> list = [];
 
-      if (body["Success"] == true) {
-        var reviews = Reviews.fromJson(body["Data"]);
-        print("reviews :${reviews}");
-        return reviews;
+      var query = FirebaseFirestore.instance
+          .collection('reviews')
+          .where('product_id', isEqualTo: productId)
+          .orderBy('created_at');
+      if (lastReviewSnap != null) {
+        query.startAfterDocument(lastReviewSnap).limit(15);
       } else {
-        var message = body["Error"];
-        throw Exception("failed to retreieve product data: ${message}");
+        query.limit(15);
+      }
+
+      var snapshot = await query.get(GetOptions(source: Source.cache));
+      print('fetching reviews from cache');
+
+      if (snapshot.docs.isEmpty) {
+        print('No Cached Reviews: fetching from server');
+        snapshot = await query.get(GetOptions(source: Source.server));
+      }
+
+      print(snapshot.docs.length);
+      lastReviewSnap = snapshot.docs.last;
+
+      if (snapshot.docs.isNotEmpty) {
+        for (var doc in snapshot.docs) {
+          list.add(Review.fromJson(doc.data()));
+        }
+        return list;
+      } else {
+        throw Exception("no products were found");
+      }
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  @override
+  Future<List<Ingredient>> getIngredients(productId) async {
+    try {
+      List<Ingredient> list = [];
+      //get the product ref from cache
+      //since all products are fetched from server on app launch,
+      //the cache of the product doc will always be available
+      var query = FirebaseFirestore.instance
+          .collection('products')
+          .where('sid', isEqualTo: productId);
+      var productSnap = await query.get(GetOptions(source: Source.cache));
+      var ingredientRef =
+          productSnap.docs.first.reference.collection('ingredients');
+
+      print('fetching ingredients from cache');
+      var ingredientSnaps =
+          await ingredientRef.get(GetOptions(source: Source.cache));
+
+      if (ingredientSnaps.docs.isEmpty) {
+        print('No cached ingredients: fetching from server');
+        ingredientSnaps =
+            await ingredientRef.get(GetOptions(source: Source.server));
+      }
+      print(ingredientSnaps.docs.length);
+
+      if (ingredientSnaps.docs.isNotEmpty) {
+        for (var doc in ingredientSnaps.docs) {
+          list.add(Ingredient.fromJson(doc.data()));
+        }
+        return list;
+      } else {
+        throw Exception("no products were found");
       }
     } catch (err) {
       throw err;
@@ -224,13 +286,13 @@ class GlowvyServices implements BaseServices {
       var productSnapshot = await FirebaseFirestore.instance
           .collection('products')
           .where('category.parent_id', isEqualTo: categoryId)
-          .limit(5)
+          .limit(15)
           .get();
       print(productSnapshot.docs.length);
 
       if (productSnapshot.docs.isNotEmpty) {
         for (var doc in productSnapshot.docs) {
-          print(doc.data());
+          // print(doc.data());
           list.add(Product.fromJson(doc.data()));
         }
         print("categoryId: $categoryId");

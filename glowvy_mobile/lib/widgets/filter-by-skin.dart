@@ -1,4 +1,6 @@
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/productModel.dart';
@@ -67,7 +69,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
             onTap: () => setState(() {
               widget.skinTypeId = value["id"];
               widget.onFilterConfirm(
-                  sortProducts(filterProduct()), sorting, widget.skinTypeId);
+                  sortProducts(widget.products), sorting, widget.skinTypeId);
             }),
             child: Container(
               height: 24,
@@ -88,7 +90,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                     fontSize: 14,
                     color: widget.skinTypeId == value["id"]
                         ? kDarkYellow
-                        : kDarkSecondary,
+                        : kSecondaryGrey,
                     fontWeight: FontWeight.w600),
               ),
               margin: EdgeInsets.only(right: 10),
@@ -130,11 +132,10 @@ class _FilterBySkinState extends State<FilterBySkin> {
     );
   }
 
-  filterProduct() {
-    var filteredProducts = productModel.filteredProductsBySkinType(
-        widget.skinTypeId, widget.products);
-    return filteredProducts;
-  }
+  // filterProduct() {
+  //   var filteredProducts = productModel.filterBySkinType(widget.products);
+  //   return filteredProducts;
+  // }
 
   sortProducts(filteredProducts) {
     var products;
@@ -144,7 +145,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
         break;
 
       case "rank":
-        products = productModel.sortByDefaultRank(filteredProducts);
+        products = productModel.sortBySkinType(filteredProducts);
         break;
       case "low":
         products = productModel.sortByPrice(filteredProducts, true);
@@ -268,7 +269,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                                                 color: Colors.white)),
                                         onPressed: () {
                                           widget.onFilterConfirm(
-                                              sortProducts(filterProduct()));
+                                              sortProducts(widget.products));
 
                                           Navigator.pop(context);
                                         }),
@@ -400,7 +401,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                                                 color: Colors.white)),
                                         onPressed: () {
                                           widget.onFilterConfirm(
-                                              sortProducts(filterProduct()),
+                                              sortProducts(widget.products),
                                               sorting,
                                               widget.skinTypeId);
 
@@ -429,7 +430,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
       var header = Text(
         key,
         style: kBaseTextStyle.copyWith(
-            fontSize: 13, fontWeight: FontWeight.w600, color: kDarkSecondary),
+            fontSize: 13, fontWeight: FontWeight.w600, color: kSecondaryGrey),
       );
       // print("values :${values[0]}");
 
@@ -457,7 +458,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                     fontSize: 15,
                     color: widget.skinTypeId == value["id"]
                         ? kDarkYellow
-                        : kDarkSecondary,
+                        : kSecondaryGrey,
                     fontWeight: FontWeight.w600),
               ),
             ),
@@ -469,7 +470,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
           padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
           child: Divider(
             height: 1,
-            color: kDarkSecondary.withOpacity(0.3),
+            color: kSecondaryGrey.withOpacity(0.3),
           ),
         ),
         header,
@@ -492,7 +493,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
       var header = Text(
         key,
         style: kBaseTextStyle.copyWith(
-            fontSize: 13, fontWeight: FontWeight.w600, color: kDarkSecondary),
+            fontSize: 13, fontWeight: FontWeight.w600, color: kSecondaryGrey),
       );
       // print("values :${values[0]}");
 
@@ -520,7 +521,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                     fontSize: 15,
                     color: widget.skinTypeId == value["id"]
                         ? kDarkYellow
-                        : kDarkSecondary,
+                        : kSecondaryGrey,
                     fontWeight: FontWeight.w600),
               ),
             ),
@@ -532,7 +533,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
           padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
           child: Divider(
             height: 1,
-            color: kDarkSecondary.withOpacity(0.3),
+            color: kSecondaryGrey.withOpacity(0.3),
           ),
         ),
         header,

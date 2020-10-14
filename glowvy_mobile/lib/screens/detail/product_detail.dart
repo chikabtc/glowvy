@@ -3,6 +3,9 @@ import 'package:Dimodo/models/reviews.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../common/styles.dart';
+
+import '../../common/colors.dart';
+
 import '../../common/constants.dart';
 import '../../models/product/product.dart';
 import '../../models/app.dart';
@@ -202,7 +205,7 @@ class _ProductDetailState extends State<ProductDetail> {
                                             Text(S.of(context).shipFromKorea,
                                                 style: kBaseTextStyle.copyWith(
                                                     fontSize: 13,
-                                                    color: kDarkSecondary,
+                                                    color: kSecondaryGrey,
                                                     fontWeight:
                                                         FontWeight.w600)),
                                             Text(
@@ -220,7 +223,7 @@ class _ProductDetailState extends State<ProductDetail> {
                                                 S.of(context).importTaxIncluded,
                                                 style: kBaseTextStyle.copyWith(
                                                     fontSize: 13,
-                                                    color: kDarkSecondary,
+                                                    color: kSecondaryGrey,
                                                     fontWeight:
                                                         FontWeight.w600)),
                                             Text(
@@ -266,7 +269,7 @@ class _ProductDetailState extends State<ProductDetail> {
                                                               style: kBaseTextStyle.copyWith(
                                                                   fontSize: 12,
                                                                   color:
-                                                                      kDarkSecondary,
+                                                                      kSecondaryGrey,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w600)),

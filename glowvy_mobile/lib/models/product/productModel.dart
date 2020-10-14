@@ -1,5 +1,6 @@
 import 'package:Dimodo/models/product/generating_product_list.dart';
 import 'package:Dimodo/models/product/one_item_generating_list.dart';
+import 'package:Dimodo/models/product/review_meta.dart';
 import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
 import 'package:flutter/cupertino.dart';
@@ -48,6 +49,8 @@ class ProductModel with ChangeNotifier {
   String lowToHigh = "sale_price";
   bool isAscending = false;
   String errMsg;
+  int skinTypeId;
+  // ReviewMeta selectedreviewMeta;
 
 //ProductVariation can be used for layout variation
   ProductVariation productVariation;
@@ -69,25 +72,25 @@ class ProductModel with ChangeNotifier {
     }
   }
 
-  sortAndFilter(sorting, skinTypeId, products) {
-    var filtered;
+  sortProducts(sorting, skinTypeId, products) {
+    var sortedProducts;
     switch (sorting) {
       case "high":
-        filtered = sortByPrice(products, false);
+        sortedProducts = sortByPrice(products, false);
         break;
       case "rank":
-        filtered = sortByDefaultRank(products);
+        sortedProducts = sortBySkinType(products);
         break;
       case "low":
-        filtered = sortByPrice(products, true);
+        sortedProducts = sortByPrice(products, true);
         break;
       default:
-        filtered = sortByDefaultRank(products);
+        sortedProducts = sortByAllRanking(products);
         break;
     }
-    print("products filtered : ${filtered.length}");
+    print("products filtered : ${sortedProducts.length}");
 
-    return filteredProductsBySkinType(skinTypeId, filtered);
+    return sortedProducts;
   }
 
   List<Product> sortByPrice(List<Product> products, bool isAscending) {
@@ -99,46 +102,54 @@ class ProductModel with ChangeNotifier {
     return products;
   }
 
-  // List<Product> sortBySkinType(skinTypeId, List<Product> products) {
-  //   switch (skinTypeId) {
-  //     //all
-  //     case 0:
-  //       products.sort((a, b) => a.reviewMetas.neutral["Int32"]
-  //           .compareTo(b..reviewMetas.neutral["Int32"]));
-  //       break;
-  //     //sensitive
-  //     case 1:
-  //       products.sort((a, b) =>
-  //           a.reviewMetas.all["Int32"].compareTo(b..reviewMetas.all["Int32"]));
-  //       break;
-  //     //dry
-  //     case 2:
-  //       products.sort((a, b) =>
-  //           a.reviewMetas.dry["Int32"].compareTo(b..reviewMetas.dry["Int32"]));
+  updateSkinType(skinTypeId) {
+    this.skinTypeId = skinTypeId;
+  }
 
-  //       break;
-  //     //oily
-  //     case 3:
-  //       products.sort((a, b) => a.reviewMetas.complex["Int32"]
-  //           .compareTo(b.reviewMetas.complex["Int32"]));
-  //       break;
-  //   }
-  //   return products;
-  // }
+  List<Product> sortBySkinType(List<Product> products) {
+    switch (skinTypeId) {
+      //all
+      case 0:
+        products.sort((a, b) => a.reviewMetas.all.rankingScore
+            .compareTo(b.reviewMetas.all.rankingScore));
+        break;
+      //sensitive
+      case 1:
+        products.sort((a, b) => a.reviewMetas.sensitive.rankingScore
+            .compareTo(b.reviewMetas.sensitive.rankingScore));
+        break;
+      //dry
+      case 2:
+        products.sort((a, b) => a.reviewMetas.dry.rankingScore
+            .compareTo(b.reviewMetas.dry.rankingScore));
 
-  List<Product> sortByDefaultRank(
-    List<Product> products,
-  ) {
+        break;
+      //oily
+      case 3:
+        products.sort((a, b) => a.reviewMetas.oily.rankingScore
+            .compareTo(b.reviewMetas.oily.rankingScore));
+        break;
+      //oily
+      case 3:
+        products.sort((a, b) => a.reviewMetas.complex.rankingScore
+            .compareTo(b.reviewMetas.complex.rankingScore));
+        break;
+      //oily
+      case 3:
+        products.sort((a, b) => a.reviewMetas.neutral.rankingScore
+            .compareTo(b.reviewMetas.neutral.rankingScore));
+        break;
+    }
+    return products;
+  }
+
+  List<Product> sortByAllRanking(List<Product> products) {
+    // var skinType = getSkinTypeById(skinTypeId);
     products.sort((a, b) => b.reviewMetas.all.rankingScore
         .compareTo(a.reviewMetas.all.rankingScore));
 
     return products;
   }
-
-  // List<Product> setProducts(products) {
-  //   this.products = sortAndFilter(products);
-  //   return products;
-  // }
 
   List<Product> filteredProducts(
       {List<String> filterOptions, List<Product> products}) {
@@ -158,7 +169,7 @@ class ProductModel with ChangeNotifier {
     switch (skinTypeId) {
       //all
       case 0:
-        return S.of(context).filter;
+        return S.of(context).all;
         break;
       //sensitive
       case 1:
@@ -171,42 +182,56 @@ class ProductModel with ChangeNotifier {
       //oily
       case 3:
         return S.of(context).oily;
+      //complex
+      case 4:
+        return 'complex';
+      //neutral
+      case 5:
+        return 'neutral';
 
         break;
     }
   }
 
-  List<Product> filteredProductsBySkinType(skinTypeId, List<Product> products) {
-    print("fitered products: ${products.length}");
+  // List<Product> filterBySkinType(List<Product> products) {
+  //   print("fitered products: ${products.length}");
 
-    products = products.where((p) {
-      var isMatching = true;
-      switch (skinTypeId) {
-        //all
-        case 0:
-          break;
-        //sensitive
-        case 1:
-          isMatching = p.reviewMetas.all.reviewCount == 0 ? false : true;
-          break;
-        //dry
-        case 2:
-          isMatching = p.reviewMetas.dry.reviewCount == 0 ? false : true;
-          if (isMatching = p.reviewMetas.dry.reviewCount != 0) {}
-          break;
-        //oily
-        case 3:
-          isMatching = p.reviewMetas.complex.reviewCount == 0 ? false : true;
-          break;
-        default:
-          isMatching = true;
-          break;
-      }
-      return isMatching;
-    }).toList();
-    print("fitered products: ${products.length}");
-    return products;
-  }
+  //   products = products.where((p) {
+  //     var isMatching = true;
+  //     switch (skinTypeId) {
+  //       //all
+  //       case 0:
+  //         break;
+  //       //sensitive
+  //       case 1:
+  //         isMatching = p.reviewMetas.sensitive.reviewCount == 0 ? false : true;
+  //         break;
+  //       //dry
+  //       case 2:
+  //         isMatching = p.reviewMetas.dry.reviewCount == 0 ? false : true;
+  //         if (isMatching = p.reviewMetas.dry.reviewCount != 0) {}
+  //         break;
+  //       //oily
+  //       case 3:
+  //         isMatching = p.reviewMetas.oily.reviewCount == 0 ? false : true;
+  //         break;
+  //       //complex
+  //       case 4:
+  //         isMatching = p.reviewMetas.oily.reviewCount == 0 ? false : true;
+  //         break;
+  //       //neutral
+  //       case 5:
+  //         isMatching = p.reviewMetas.neutral.reviewCount == 0 ? false : true;
+  //         break;
+  //       default:
+  //         isMatching = true;
+  //         break;
+  //     }
+  //     return isMatching;
+  //   }).toList();
+  //   print("fitered products: ${products.length}");
+  //   return products;
+  // }
 
   List<Review> filteredReviewsBySkinType(
       {int skinTypeId, List<Review> reviews}) {

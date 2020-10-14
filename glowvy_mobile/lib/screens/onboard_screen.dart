@@ -5,6 +5,8 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../common/constants.dart';
 import '../common/config.dart' as config;
 import '../common/styles.dart';
+import '../common/colors.dart';
+
 import '../common/sizeConfig.dart';
 import 'package:Dimodo/generated/i18n.dart';
 
@@ -45,7 +47,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
               GestureDetector(
                 child: Text(
                   'Sign In',
-                  style: TextStyle(color: kTeal400, fontSize: 20.0),
+                  // style: TextStyle(color: kTeal400, fontSize: 20.0),
                 ),
                 onTap: () {
                   Navigator.pushReplacementNamed(context, '/login');
@@ -53,12 +55,12 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
               ),
               Text(
                 "    |    ",
-                style: TextStyle(color: kTeal400, fontSize: 20.0),
+                // style: TextStyle(color: kTeal400, fontSize: 20.0),
               ),
               GestureDetector(
                 child: Text(
                   'Sign Up',
-                  style: TextStyle(color: kTeal400, fontSize: 20.0),
+                  // style: TextStyle(color: kTeal400, fontSize: 20.0),
                 ),
                 onTap: () {
                   Navigator.pushReplacementNamed(context, '/register');
@@ -135,7 +137,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
             Text(onboardingData[i]['desc'],
                 style: kBaseTextStyle.copyWith(
                     fontWeight: FontWeight.bold,
-                    color: kDarkSecondary,
+                    color: kSecondaryGrey,
                     decoration: TextDecoration.none,
                     fontSize: 12)),
             Expanded(

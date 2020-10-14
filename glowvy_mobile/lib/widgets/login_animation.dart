@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 
 class StaggerAnimation extends StatelessWidget {
@@ -58,10 +60,7 @@ class StaggerAnimation extends StatelessWidget {
           width: kScreenSizeWidth,
           height: height,
           alignment: FractionalOffset.center,
-          decoration: new BoxDecoration(
-            color: btnColor == null ? Theme.of(context).buttonColor : btnColor,
-            borderRadius: BorderRadius.all(const Radius.circular(25.0)),
-          ),
+          decoration: kButton,
           child: buttonSqueezeanimation.value > 75.0
               ? new Text(
                   buttonTitle,

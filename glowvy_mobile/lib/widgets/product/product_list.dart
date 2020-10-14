@@ -1,4 +1,6 @@
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/widgets/product/cosmetics_product_card.dart';

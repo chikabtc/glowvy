@@ -11,6 +11,8 @@ import '../../models/user/user.dart';
 import '../../models/user/userModel.dart';
 
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -197,7 +199,7 @@ class _AddShippingAddressState extends State<AddShippingAddress>
                                             child: Container(
                                               decoration: new BoxDecoration(
                                                 border: Border.all(
-                                                  color: kDarkSecondary,
+                                                  color: kSecondaryGrey,
                                                   width: 2,
                                                 ),
                                                 borderRadius:
@@ -281,7 +283,7 @@ class _AddShippingAddressState extends State<AddShippingAddress>
                                                         style: kBaseTextStyle
                                                             .copyWith(
                                                                 color:
-                                                                    kDarkSecondary,
+                                                                    kSecondaryGrey,
                                                                 fontSize: 13),
                                                       )
                                                     ],
@@ -419,7 +421,7 @@ class _AddShippingAddressState extends State<AddShippingAddress>
             child: Text(item,
                 style: kBaseTextStyle.copyWith(
                     fontSize: 13,
-                    color: currentPage == index ? kPinkAccent : kDarkSecondary,
+                    color: currentPage == index ? kPinkAccent : kSecondaryGrey,
                     fontWeight: FontWeight.w600))),
       ));
     });

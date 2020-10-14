@@ -8,6 +8,10 @@ import '../../common/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../common/styles.dart';
+import '../../common/icons.dart';
+
+import '../../common/colors.dart';
+
 import '../../generated/i18n.dart';
 import '../../models/reviews.dart';
 import '../../services/index.dart';
@@ -18,7 +22,7 @@ import 'cartAction.dart';
 
 class CosmeticsReviewScreen extends StatefulWidget {
   final Product product;
-  final Reviews metaReviews;
+  final List<Review> metaReviews;
   final Function onLoadMore;
 
   CosmeticsReviewScreen(this.metaReviews, this.onLoadMore, this.product);
@@ -30,7 +34,7 @@ class CosmeticsReviewScreen extends StatefulWidget {
 class _StateReviews extends State<CosmeticsReviewScreen>
     with AutomaticKeepAliveClientMixin<CosmeticsReviewScreen> {
   final services = Services();
-  Reviews metaReviews;
+  List<Review> reviews;
   bool showFiltered = false;
   List<Review> filteredReviews;
   bool isEnd = false;
@@ -38,7 +42,7 @@ class _StateReviews extends State<CosmeticsReviewScreen>
   List<bool> isSelected;
   var skinTypeId = 0;
 
-  _StateReviews(this.metaReviews);
+  _StateReviews(this.reviews);
 
   bool isLoading = false;
 
@@ -69,24 +73,24 @@ class _StateReviews extends State<CosmeticsReviewScreen>
           child: CustomScrollView(slivers: <Widget>[
             SliverAppBar(
               brightness: Brightness.light,
-              leading: CommonIcons.backIcon(context),
+              leading: backIcon(context),
               elevation: 0,
               backgroundColor: Colors.white,
               pinned: true,
             ),
             SliverList(
                 delegate: SliverChildListDelegate([
-              metaReviews == null
+              reviews == null
                   ? Container(
                       height: kScreenSizeHeight * 0.7,
                       child: SpinKitThreeBounce(color: kPinkAccent, size: 23.0),
                     )
-                  : (metaReviews.reviews.length == 0
+                  : (reviews.length == 0
                       ? Container(
                           child: Center(
                             child: Text(
                               S.of(context).noReviews,
-                              style: kBaseTextStyle,
+                              style: textTheme.headline5,
                             ),
                           ),
                         )
@@ -103,11 +107,9 @@ class _StateReviews extends State<CosmeticsReviewScreen>
                                         MainAxisAlignment.spaceAround,
                                     children: <Widget>[
                                       Text(
-                                          "${S.of(context).reviews} (${widget.product.purchaseCount})",
-                                          style: kBaseTextStyle.copyWith(
-                                              fontSize: 13,
-                                              color: kDarkSecondary,
-                                              fontWeight: FontWeight.w600)),
+                                          "${S.of(context).reviews} (${widget.product.reviewMetas.all.reviewCount})",
+                                          style: textTheme.caption1
+                                              .copyWith(color: kSecondaryGrey)),
                                       Spacer(),
                                       Container(
                                         decoration: BoxDecoration(
@@ -212,14 +214,18 @@ class _StateReviews extends State<CosmeticsReviewScreen>
                                       shrinkWrap: true,
                                       itemCount: showFiltered
                                           ? filteredReviews.length
-                                          : metaReviews.reviews.length,
+                                          : reviews.length,
                                       itemBuilder: (context, i) =>
                                           CosmeticsReviewCard(
                                               context: context,
                                               isKorean: isKorean,
+                                              showDivider:
+                                                  reviews.length - 1 == i
+                                                      ? false
+                                                      : true,
                                               review: showFiltered
                                                   ? filteredReviews[i]
-                                                  : metaReviews.reviews[i])),
+                                                  : reviews[i])),
                                 ),
                               ),
                               SvgPicture.asset(

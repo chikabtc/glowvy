@@ -1,4 +1,6 @@
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:flutter/material.dart';
 import '../../models/product/product.dart';
 import '../../widgets/customWidgets.dart';
@@ -61,7 +63,7 @@ class ProductTitle extends StatelessWidget {
                   Text("${product.purchaseCount} sold",
                       style: kBaseTextStyle.copyWith(
                           fontSize: 10,
-                          color: kDarkSecondary.withOpacity(0.5))),
+                          color: kSecondaryGrey.withOpacity(0.5))),
               ]),
           SizedBox(height: 3),
           if (product.salePrice != null)
@@ -72,7 +74,7 @@ class ProductTitle extends StatelessWidget {
                   style: kBaseTextStyle.copyWith(
                       decoration: TextDecoration.lineThrough,
                       fontSize: 12,
-                      color: kDarkSecondary.withOpacity(0.5))),
+                      color: kSecondaryGrey.withOpacity(0.5))),
             ),
           SizedBox(height: 5),
           Container(
@@ -88,7 +90,7 @@ class ProductTitle extends StatelessWidget {
                 Text(
                   S.of(context).soldByKoreanShopDirectShipping,
                   style: kBaseTextStyle.copyWith(
-                      fontSize: 12, color: kDarkSecondary.withOpacity(0.7)),
+                      fontSize: 12, color: kSecondaryGrey.withOpacity(0.7)),
                   textAlign: TextAlign.start,
                 ),
               ]),

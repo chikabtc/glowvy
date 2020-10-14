@@ -1,4 +1,6 @@
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:flutter/material.dart';
 import '../../common/tools.dart';
 import 'package:provider/provider.dart';
@@ -107,7 +109,7 @@ class _OrderSummaryState extends State<OrderSummary> {
             fee: null),
         SizedBox(height: 20),
         Divider(
-          color: kDarkSecondary.withOpacity(0.1),
+          color: kSecondaryGrey.withOpacity(0.1),
         ),
         SizedBox(height: 20),
         OrderSummaryCard(
@@ -159,7 +161,7 @@ class OrderSummaryCard extends StatelessWidget {
                   fontSize: isBankTransferSummary ? 12 : 13,
                   fontWeight:
                       isBankTransferSummary ? FontWeight.w500 : FontWeight.w600,
-                  color: isBankTransferSummary ? kDarkSecondary : kDarkBG),
+                  color: isBankTransferSummary ? kSecondaryGrey : kDarkBG),
             ),
             showExtraInfo != null
                 ? Center(child: SvgPicture.asset('assets/icons/cart/info.svg'))
@@ -178,7 +180,7 @@ class OrderSummaryCard extends StatelessWidget {
                         ? FontWeight.w600
                         : FontWeight.w500,
                     fontSize: isBankTransferSummary ? 15 : 12,
-                    color: isBankTransferSummary ? kDarkBG : kDarkSecondary),
+                    color: isBankTransferSummary ? kDarkBG : kSecondaryGrey),
               ),
             ),
             // if (fee != null) Spacer(),

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:Dimodo/widgets/webview.dart';
 import 'package:flutter/rendering.dart';
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/cupertino.dart';
@@ -80,7 +82,7 @@ class PopupServices {
                           "Hey~ Chúng tôi là Glowvy team và luôn mong muốn có thể cải thiện dịch vụ. Chúng tôi rất trân trọng các ý tưởng của bạn! Bạn có thể dành ra vài phút trả lời câu hỏi không?",
                           style: kBaseTextStyle.copyWith(
                             fontSize: 14,
-                            color: kDarkSecondary,
+                            color: kSecondaryGrey,
                             fontWeight: FontWeight.w500,
                           ),
                           textAlign: TextAlign.justify),
@@ -193,7 +195,7 @@ class PopupServices {
                         child: Text(S.of(context).discoverYourType,
                             style: kBaseTextStyle.copyWith(
                               fontSize: 14,
-                              color: kDarkSecondary,
+                              color: kSecondaryGrey,
                               fontWeight: FontWeight.w500,
                             ),
                             textAlign: TextAlign.justify),

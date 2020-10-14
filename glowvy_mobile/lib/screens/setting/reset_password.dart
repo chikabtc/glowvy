@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:provider/provider.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/generated/i18n.dart';
@@ -194,7 +196,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen>
                                 hintText: S.of(parentContext).newPassword,
                                 hintStyle: kBaseTextStyle.copyWith(
                                   fontWeight: FontWeight.w600,
-                                  color: kDarkSecondary.withOpacity(0.5),
+                                  color: kSecondaryGrey.withOpacity(0.5),
                                 ),
                                 contentPadding: EdgeInsets.only(left: 20),
                               ),
@@ -220,7 +222,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen>
                                 hintText: S.of(parentContext).confirmPassword,
                                 hintStyle: kBaseTextStyle.copyWith(
                                   fontWeight: FontWeight.w600,
-                                  color: kDarkSecondary.withOpacity(0.5),
+                                  color: kSecondaryGrey.withOpacity(0.5),
                                 ),
                                 contentPadding: EdgeInsets.only(left: 20),
                               ),

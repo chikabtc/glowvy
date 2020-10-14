@@ -3,6 +3,8 @@ import 'package:flutter/rendering.dart';
 import 'package:notification_permissions/notification_permissions.dart';
 import 'package:provider/provider.dart';
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
@@ -87,7 +89,7 @@ class CategoryScreenState extends State<CategoryScreen>
                               style: kBaseTextStyle.copyWith(
                                   fontWeight: FontWeight.w600,
                                   fontSize: 16,
-                                  color: kDarkSecondary)),
+                                  color: kSecondaryGrey)),
                         ),
                       ],
                     ),

@@ -5,6 +5,8 @@ import '../generated/i18n.dart';
 
 import 'package:Dimodo/common/styles.dart';
 
+import 'package:Dimodo/common/colors.dart';
+
 class SurveyCard extends StatefulWidget {
   // SurveyWidget
   SurveyCard({this.survey, this.index, this.onTap});

@@ -7,6 +7,9 @@ import '../../models/product/product.dart';
 import '../../models/app.dart';
 import '../../screens/detail/product_detail.dart';
 import '../../common/styles.dart';
+
+import '../../common/colors.dart';
+
 import 'package:cached_network_image/cached_network_image.dart';
 
 class ProductCard extends StatelessWidget {
@@ -135,7 +138,7 @@ class ProductCard extends StatelessWidget {
                             textAlign: TextAlign.end,
                             maxLines: 1,
                             style: kBaseTextStyle.copyWith(
-                                color: kDarkSecondary.withOpacity(0.5),
+                                color: kSecondaryGrey.withOpacity(0.5),
                                 fontSize: 10,
                                 fontWeight: FontWeight.bold),
                           ),

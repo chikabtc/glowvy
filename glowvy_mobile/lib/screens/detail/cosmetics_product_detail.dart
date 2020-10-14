@@ -1,3 +1,4 @@
+import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/models/reviews.dart';
@@ -8,12 +9,17 @@ import 'package:Dimodo/screens/detail/ingredient_card.dart';
 import 'package:Dimodo/screens/detail/ingredient_screen.dart';
 import 'package:Dimodo/screens/detail/review_images.dart';
 import 'package:Dimodo/widgets/image_galery.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:provider/provider.dart';
 import '../../common/styles.dart';
+import '../../common/icons.dart';
+
+import '../../common/colors.dart';
+
 import '../../models/product/product.dart';
 import '../../models/app.dart';
 import '../../models/product/productModel.dart';
@@ -44,8 +50,8 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
   var hazardLevel;
 
   List<String> tabList = [];
-  Reviews metaReviews =
-      Reviews(totalCount: 0, averageSatisfaction: 100, reviews: <Review>[]);
+  List<Review> reviews;
+  // DocumentSnapshot lastReviewSnap;
 
   bool isLoggedIn = false;
   int offset = 0;
@@ -57,25 +63,24 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
     super.initState();
     product = widget.product;
     isLoading = true;
-    isProductLoaded = false;
 
     services.getCosmeticsReviews(product.sid).then((onValue) {
       if (this.mounted) {
         setState(() {
-          metaReviews = onValue;
+          reviews = onValue;
         });
+        totalCount = product.reviewMetas.all.reviewCount;
         offset += 3;
-        totalCount = metaReviews.reviews.length;
         isLoading = false;
       }
     });
-    services.getCosmetics(product.sid).then((onValue) {
+    services.getIngredients(product.sid).then((onValue) {
       if (this.mounted) {
         setState(() {
-          product = onValue;
-          print("ingredient count, ${product.ingredients.length}");
-          isProductLoaded = true;
+          product.ingredients = onValue;
         });
+        offset += 3;
+        isLoading = false;
       }
     });
     productModel = Provider.of<ProductModel>(context, listen: false);
@@ -88,15 +93,15 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
 
   Future<bool> getReviews() async {
     var loadedReviews = await services.getCosmeticsReviews(product.sid);
-    if (loadedReviews.reviews == null) {
+    if (loadedReviews == null) {
       return true;
-    } else if (loadedReviews.reviews.length == 0) {
+    } else if (loadedReviews.length == 0) {
       return true;
     }
     setState(() {
       isLoading = false;
-      loadedReviews.reviews.forEach((element) {
-        metaReviews.reviews.add(element);
+      loadedReviews.forEach((element) {
+        reviews.add(element);
       });
     });
     offset += 3;
@@ -111,13 +116,13 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
         return AlertDialog(
           title: Text(
             S.of(context).shippingFeePolicy,
-            style: kBaseTextStyle,
+            style: textTheme.headline5,
           ),
           actions: <Widget>[
             FlatButton(
               child: Text(
                 'Ok',
-                style: kBaseTextStyle,
+                style: textTheme.headline5,
               ),
               onPressed: () {
                 Navigator.of(buildContext).pop();
@@ -222,7 +227,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
         elevation: 0,
         // expandedHeight: screenSize.height * 0.3,
         brightness: Brightness.light,
-        leading: CommonIcons.backIcon(context),
+        leading: backIcon(context),
         backgroundColor: Colors.transparent,
       ),
       body: (product == null)
@@ -259,7 +264,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                               child: Container(
                                   // width: 67,
                                   decoration: BoxDecoration(
-                                      color: kDarkSecondary,
+                                      color: kSecondaryGrey,
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(20))),
                                   padding: EdgeInsets.only(
@@ -279,7 +284,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                               ? product.descImages.length
                                                   .toString()
                                               : "0",
-                                          style: kBaseTextStyle.copyWith(
+                                          style: textTheme.caption1.copyWith(
                                               fontSize: 13,
                                               fontWeight: FontWeight.w600,
                                               color: Colors.white)),
@@ -299,30 +304,17 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
                                 Container(
-                                  width: MediaQuery.of(context).size.width,
-                                  child: Text(
-                                    "${product.brand.name}",
-                                    maxLines: 2,
-                                    style: kBaseTextStyle.copyWith(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.normal),
-                                  ),
-                                ),
-                                // SizedBox(height: 5),
+                                    width: MediaQuery.of(context).size.width,
+                                    child: Text("${product.brand.name}",
+                                        maxLines: 2,
+                                        style: textTheme.bodyText2)),
                                 Text(product.name,
-                                    maxLines: 2,
-                                    style: kBaseTextStyle.copyWith(
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.w600)),
-                                // SizedBox(height: 5),
-
+                                    maxLines: 2, style: textTheme.headline3),
                                 Text(
                                     "No.${widget.rank + 1} trong danh sách ${product.category.name}",
                                     maxLines: 1,
-                                    style: kBaseTextStyle.copyWith(
-                                        color: kDarkSecondary,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.normal)),
+                                    style: textTheme.caption2
+                                        .copyWith(color: kSecondaryGrey)),
                                 // if (product.ingredientScore == 0)
 
                                 Container(
@@ -332,10 +324,9 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                         Tools.getPriceProduct(product, "VND") +
                                         " . " +
                                         product.volume,
-                                    style: kBaseTextStyle.copyWith(
-                                        color: kDarkSecondary,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.normal),
+                                    style: textTheme.caption1.copyWith(
+                                      color: kSecondaryGrey,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -355,20 +346,18 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      Text(product.rating.substring(0, 3),
+                                      Text(
+                                          product.reviewMetas.all.averageRating
+                                              .toString()
+                                              .substring(0, 3),
                                           style: kBaseTextStyle.copyWith(
                                               fontSize: 30,
                                               fontWeight: FontWeight.bold)),
-                                      Text("trên 5",
-                                          style: kBaseTextStyle.copyWith(
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.normal)),
+                                      Text("trên 5", style: textTheme.caption1),
                                       Text(
-                                          "(${product.purchaseCount.toString()})",
-                                          style: kBaseTextStyle.copyWith(
-                                              color: kDarkSecondary,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.normal)),
+                                          "(${product.reviewMetas.all.reviewCount})",
+                                          style: textTheme.caption2
+                                              .copyWith(color: kSecondaryGrey)),
                                     ],
                                   ),
                                   Spacer(),
@@ -376,46 +365,46 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                     children: <Widget>[
                                       ReviewRatingBar(
                                           title: "5.0",
-                                          percentage: metaReviews.reviews.fold(
+                                          percentage: reviews.fold(
                                                   0,
                                                   (previousValue, element) =>
-                                                      element.score == 5
+                                                      element.rating == 5
                                                           ? previousValue + 1
                                                           : previousValue) /
                                               totalCount),
                                       ReviewRatingBar(
                                           title: "4.0",
-                                          percentage: metaReviews.reviews.fold(
+                                          percentage: reviews.fold(
                                                   0,
                                                   (previousValue, element) =>
-                                                      element.score == 4
+                                                      element.rating == 4
                                                           ? previousValue + 1
                                                           : previousValue) /
                                               totalCount),
                                       ReviewRatingBar(
                                           title: "3.0",
-                                          percentage: metaReviews.reviews.fold(
+                                          percentage: reviews.fold(
                                                   0,
                                                   (previousValue, element) =>
-                                                      element.score == 3
+                                                      element.rating == 3
                                                           ? previousValue + 1
                                                           : previousValue) /
                                               totalCount),
                                       ReviewRatingBar(
                                           title: "2.0",
-                                          percentage: metaReviews.reviews.fold(
+                                          percentage: reviews.fold(
                                                   0,
                                                   (previousValue, element) =>
-                                                      element.score == 2
+                                                      element.rating == 2
                                                           ? previousValue + 1
                                                           : previousValue) /
                                               totalCount),
                                       ReviewRatingBar(
                                           title: "1.0",
-                                          percentage: metaReviews.reviews.fold(
+                                          percentage: reviews.fold(
                                                   0,
                                                   (previousValue, element) =>
-                                                      element.score == 1
+                                                      element.rating == 1
                                                           ? previousValue + 1
                                                           : previousValue) /
                                               totalCount),
@@ -438,105 +427,82 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                 height: 24.5,
                               ),
                               Container(
-                                decoration: BoxDecoration(
-                                  color: kLightYellow,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(20)),
-                                ),
-                                child: isProductLoaded
-                                    ? GestureDetector(
-                                        onTap: () => Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    IngredientScreen(
-                                                      widget
-                                                          .product.ingredients,
-                                                      hazardLevel,
-                                                    ))),
-                                        child: Container(
-                                          width: screenSize.width,
-                                          // cor: Colors.white,
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: 16),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: <Widget>[
-                                              Container(
-                                                height: 56,
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: <Widget>[
-                                                    Spacer(),
-                                                    Text(
-                                                        S
-                                                            .of(context)
-                                                            .ingredientInfo,
-                                                        style: kBaseTextStyle
-                                                            .copyWith(
-                                                                fontSize: 15,
-                                                                color:
-                                                                    kDarkYellow,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600)),
-                                                    Spacer()
-                                                  ],
-                                                ),
-                                              ),
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
+                                  decoration: BoxDecoration(
+                                    color: kLightYellow,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                  ),
+                                  child: GestureDetector(
+                                      onTap: () => Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  IngredientScreen(
+                                                    widget.product.ingredients,
+                                                    hazardLevel,
+                                                  ))),
+                                      child: Container(
+                                        width: screenSize.width,
+                                        // cor: Colors.white,
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 16),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: <Widget>[
+                                            Container(
+                                              height: 56,
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
                                                 children: <Widget>[
-                                                  Text(hazardLevel,
-                                                      style: kBaseTextStyle
-                                                          .copyWith(
-                                                              fontSize: 17,
-                                                              color:
-                                                                  Colors.black,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold)),
+                                                  Spacer(),
                                                   Text(
                                                       S
                                                           .of(context)
-                                                          .ewgSafeLevel,
-                                                      style: kBaseTextStyle
+                                                          .ingredientInfo,
+                                                      style: textTheme.headline5
                                                           .copyWith(
-                                                              fontSize: 12,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .normal)),
-                                                  SizedBox(width: 16)
+                                                        color: kDarkYellow,
+                                                      )),
+                                                  Spacer()
                                                 ],
                                               ),
-                                              SizedBox(height: 16),
-                                              Column(
-                                                children: renderIngredients(),
-                                              ),
-                                              SizedBox(height: 18),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                children: [
-                                                  Text(
-                                                    S.of(context).viewAll,
-                                                    style:
-                                                        kBaseTextStyle.copyWith(
-                                                            color: kDarkYellow),
-                                                  ),
-                                                  CommonIcons.forwardIcon(
-                                                      context, kDarkYellow),
-                                                ],
-                                              ),
-                                              SizedBox(height: 18)
-                                            ],
-                                          ),
-                                        ))
-                                    : Container(),
-                              ),
+                                            ),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: <Widget>[
+                                                Text(hazardLevel,
+                                                    style: textTheme.headline3),
+                                                Text(S.of(context).ewgSafeLevel,
+                                                    style: textTheme.caption2),
+                                                SizedBox(width: 16)
+                                              ],
+                                            ),
+                                            SizedBox(height: 16),
+                                            Column(
+                                              children: renderIngredients(),
+                                            ),
+                                            SizedBox(height: 18),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.end,
+                                              children: [
+                                                Text(
+                                                  S.of(context).viewAll,
+                                                  style: textTheme.headline5
+                                                      .copyWith(
+                                                          color: kDarkYellow),
+                                                ),
+                                                forwardIcon(
+                                                    context, kDarkYellow),
+                                              ],
+                                            ),
+                                            SizedBox(height: 18)
+                                          ],
+                                        ),
+                                      ))),
                               Container(
                                 height: 28,
                               ),
@@ -555,7 +521,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                           context,
                           MaterialPageRoute(
                               builder: (context) => CosmeticsReviewScreen(
-                                  metaReviews, getReviews, product))),
+                                  reviews, getReviews, product))),
                       child: !isLoading
                           ? Container(
                               width: screenSize.width,
@@ -568,18 +534,14 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                     child: Row(
                                       children: <Widget>[
                                         Text(
-                                            "Đánh giá r(${product.purchaseCount})",
-                                            style: kBaseTextStyle.copyWith(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w600)),
+                                            "Đánh giá (${product.reviewMetas.all.reviewCount})",
+                                            style: textTheme.headline5),
                                         Spacer(),
-                                        if (metaReviews.totalCount != 0)
+                                        if (totalCount != 0)
                                           Row(
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
-                                            children: <Widget>[
-                                              CommonIcons.arrowForward
-                                            ],
+                                            children: <Widget>[arrowForward],
                                           ),
                                       ],
                                     ),
@@ -588,7 +550,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                       ? ReviewImages(product)
                                       : Container(height: 20),
                                   // Container(height: 20, color: Colors.red),
-                                  if (metaReviews.totalCount != 0)
+                                  if (totalCount != 0)
                                     Container(
                                       padding:
                                           EdgeInsets.symmetric(horizontal: 16),
@@ -597,16 +559,16 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                           CosmeticsReviewCard(
                                               isPreview: true,
                                               context: context,
-                                              review: metaReviews.reviews[0]),
+                                              review: reviews[0]),
                                           CosmeticsReviewCard(
                                               isPreview: true,
                                               context: context,
-                                              review: metaReviews.reviews[1]),
+                                              review: reviews[1]),
                                           CosmeticsReviewCard(
                                               isPreview: true,
                                               context: context,
                                               showDivider: false,
-                                              review: metaReviews.reviews[2]),
+                                              review: reviews[2]),
                                         ],
                                       ),
                                     ),

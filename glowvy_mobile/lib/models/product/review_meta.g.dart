@@ -9,7 +9,7 @@ part of 'review_meta.dart';
 ReviewMeta _$ReviewMetaFromJson(Map<String, dynamic> json) {
   return ReviewMeta(
     (json['average_rating'] as num)?.toDouble(),
-    (json['review_count'] as num)?.toDouble(),
+    json['review_count'] as int,
     (json['ranking_score'] as num)?.toDouble(),
   );
 }

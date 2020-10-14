@@ -2,6 +2,9 @@ import 'dart:async';
 
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/common/icons.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/coupon.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/user/userModel.dart';
@@ -94,22 +97,13 @@ class _CartState extends State<Cart>
       return Scaffold(
         appBar: AppBar(
           brightness: Brightness.light,
-          leading: showBackSpace
-              ? IconButton(
-                  icon: CommonIcons.arrowBackward,
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                )
-              : Container(),
+          leading: showBackSpace ? backIcon(context) : Container(),
           elevation: 0,
           backgroundColor: kPinkAccent,
           flexibleSpace: FlexibleSpaceBar(
             title: Text(S.of(context).cart,
-                style: kBaseTextStyle.copyWith(
-                    fontSize: 17,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w600)),
+                style: textTheme.headline3.copyWith(
+                    color: Colors.white, fontWeight: FontWeight.w600)),
           ),
         ),
         bottomNavigationBar: cartModel.totalCartQuantity > 0
@@ -139,9 +133,8 @@ class _CartState extends State<Cart>
                                   side: BorderSide(
                                       color: kPinkAccent, width: 1.5)),
                               child: Text(S.of(context).checkout,
-                                  style: kBaseTextStyle.copyWith(
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white)),
+                                  style: textTheme.headline5
+                                      .copyWith(color: Colors.white)),
                               onPressed: () {
                                 Navigator.push(
                                     context,
@@ -260,11 +253,7 @@ class EmptyCart extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.0),
               child: Text(S.of(context).emptyCartSubtitle,
-                  style: kBaseTextStyle.copyWith(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                      color: kDarkSecondary),
-                  textAlign: TextAlign.center),
+                  style: textTheme.caption2, textAlign: TextAlign.center),
             ),
             userModel.isLoggedIn
                 ? Container()
@@ -284,10 +273,9 @@ class EmptyCart extends StatelessWidget {
                           child: Center(
                             child: Text(
                               "Login to synchronize your shopping cart ",
-                              style: kBaseTextStyle.copyWith(
-                                  fontWeight: FontWeight.w500,
-                                  color: kPinkAccent,
-                                  fontSize: 12),
+                              style: textTheme.caption2.copyWith(
+                                color: kPinkAccent,
+                              ),
                             ),
                           ),
                         ),

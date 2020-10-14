@@ -1,4 +1,6 @@
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/widgets/image_galery.dart';
@@ -57,8 +59,7 @@ class _CosmeticsProductDescriptionState
                   children: <Widget>[
                     Text(
                       "Mô tả sản phẩm",
-                      style: kBaseTextStyle.copyWith(
-                          fontSize: 15, fontWeight: FontWeight.w600),
+                      style: textTheme.headline5,
                       textAlign: TextAlign.start,
                     ),
                     SizedBox(height: 33),
@@ -71,17 +72,13 @@ class _CosmeticsProductDescriptionState
                             children: <Widget>[
                               Text(
                                 "ID: ${widget.product.sid.toString()}",
-                                style: kBaseTextStyle.copyWith(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600,
-                                    color: kDarkSecondary),
+                                style: textTheme.bodyText2
+                                    .copyWith(color: kSecondaryGrey),
                                 textAlign: TextAlign.start,
                               ),
                               Text(S.of(context).supportedByGoogleTranslate,
-                                  style: kBaseTextStyle.copyWith(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.w500,
-                                    color: kDarkSecondary,
+                                  style: textTheme.caption2.copyWith(
+                                    color: kSecondaryGrey,
                                   )),
                             ],
                           ),
@@ -153,10 +150,9 @@ class _CosmeticsProductDescriptionState
                         child: Text(
                           widget.product.tags[index].name,
                           maxLines: 1,
-                          style: kBaseTextStyle.copyWith(
-                              color: Colors.grey.shade600,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500),
+                          style: textTheme.bodyText2.copyWith(
+                            color: kSecondaryGrey,
+                          ),
                         ),
                       );
                     }),
@@ -168,8 +164,10 @@ class _CosmeticsProductDescriptionState
                     ? Text(
                         formattedDescription,
                         maxLines: 100,
-                        style: kBaseTextStyle.copyWith(
-                            fontSize: 14, color: kDarkAccent),
+                        style: textTheme.headline4.copyWith(
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.normal,
+                            color: kDarkAccent),
                         textAlign: TextAlign.start,
                       )
                     : Container(width: 0, height: 0),

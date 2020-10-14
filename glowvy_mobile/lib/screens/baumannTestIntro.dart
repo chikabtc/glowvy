@@ -5,6 +5,9 @@ import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/common/icons.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:provider/provider.dart';
 
@@ -39,7 +42,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
               elevation: 0,
               // expandedHeight: screenSize.height * 0.3,
               brightness: Brightness.light,
-              leading: CommonIcons.backIcon(context, color: kDarkYellow),
+              leading: backIcon(context, color: kDarkYellow),
               backgroundColor: Colors.transparent),
           body: Container(
             width: screenSize.width,
@@ -58,22 +61,15 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: <Widget>[
-                                Text(
-                                  "Know My Skin Type",
-                                  style: kBaseTextStyle.copyWith(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w900,
-                                      fontStyle: FontStyle.italic),
-                                ),
+                                Text("Know My Skin Type",
+                                    style: textTheme.headline2),
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       left: 43.0, right: 43, bottom: 20),
                                   child: Text(
                                     "Đây là lựa chọn phù hợp dành cho bạn! Lời khuyên đến từ chuyên gia phù hợp dành riêng cho nhu cầu chăm sóc da của bạn.",
-                                    style: kBaseTextStyle.copyWith(
-                                        fontSize: 15,
-                                        fontWeight: FontWeight.w600,
-                                        fontStyle: FontStyle.italic),
+                                    style: textTheme.headline5
+                                        .copyWith(fontStyle: FontStyle.italic),
                                   ),
                                 ),
                                 Container(
@@ -104,11 +100,9 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                   Flexible(
                                     child: Text(
                                       "Bạn đã sẵn sàng để sở hữu làn da hoàn hảo nhất từ trước đến giờ?",
-                                      style: kBaseTextStyle.copyWith(
-                                          color: kDarkYellow,
-                                          fontSize: 16,
-                                          fontStyle: FontStyle.italic,
-                                          fontWeight: FontWeight.w900),
+                                      style: textTheme.headline4.copyWith(
+                                        color: kDarkYellow,
+                                      ),
                                     ),
                                   ),
                                   Image.asset(
@@ -122,10 +116,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                             SizedBox(height: 20),
                             Text(
                               "Sau bài test này, tôi sẽ biết được: ",
-                              style: kBaseTextStyle.copyWith(
-                                  color: kDarkSecondary,
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.bold),
+                              style: textTheme.headline3,
                             ),
                             TodoElement(
                                 "Những sản phẩm skincare được thiết kế cho riêng bạn"),
@@ -154,27 +145,34 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                               data: MediaQuery.of(context)
                                                   .copyWith(textScaleFactor: 1),
                                               child: TextField(
-                                                controller:
-                                                    _firstNameController,
-                                                cursorColor: kPinkAccent,
-                                                onChanged: (value) =>
-                                                    firstName = value,
-                                                style: kBaseTextStyle.copyWith(
-                                                    color: kDarkAccent),
-                                                decoration: InputDecoration(
-                                                  border: InputBorder.none,
-                                                  hintText:
-                                                      S.of(context).firstName,
-                                                  hintStyle:
-                                                      kBaseTextStyle.copyWith(
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          color:
-                                                              kPrimaryOrange),
-                                                  contentPadding:
-                                                      EdgeInsets.only(left: 20),
-                                                ),
-                                              ),
+                                                  controller:
+                                                      _firstNameController,
+                                                  cursorColor:
+                                                      theme.cursorColor,
+                                                  onChanged: (value) =>
+                                                      firstName = value,
+                                                  style: textTheme.headline5
+                                                      .copyWith(
+                                                          color: kDarkAccent),
+                                                  decoration:
+                                                      kTextField.copyWith(
+                                                    hintText:
+                                                        S.of(context).firstName,
+                                                  )
+                                                  // decoration: InputDecoration(
+                                                  //   border: InputBorder.none,
+                                                  //   hintText:
+                                                  //       S.of(context).firstName,
+                                                  //   hintStyle: textTheme.headline5
+                                                  //       .copyWith(
+                                                  //           fontWeight:
+                                                  //               FontWeight.w600,
+                                                  //           color:
+                                                  //               kPrimaryOrange),
+                                                  //   contentPadding:
+                                                  //       EdgeInsets.only(left: 20),
+                                                  // ),
+                                                  ),
                                             ),
                                           )),
                                       const SizedBox(width: 10.0),
@@ -188,25 +186,17 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                           child: // Group 6
                                               Center(
                                             child: TextField(
-                                              controller: _lastNameController,
-                                              style: kBaseTextStyle.copyWith(
-                                                  color: kDarkAccent),
-                                              cursorColor: kPinkAccent,
-                                              onChanged: (value) =>
-                                                  lastName = value,
-                                              decoration: InputDecoration(
-                                                border: InputBorder.none,
-                                                hintText:
-                                                    S.of(context).lastName,
-                                                hintStyle:
-                                                    kBaseTextStyle.copyWith(
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        color: kPrimaryOrange),
-                                                contentPadding:
-                                                    EdgeInsets.only(left: 20),
-                                              ),
-                                            ),
+                                                controller: _lastNameController,
+                                                style: textTheme.headline5
+                                                    .copyWith(
+                                                        color: kDarkAccent),
+                                                cursorColor: theme.cursorColor,
+                                                onChanged: (value) =>
+                                                    lastName = value,
+                                                decoration: kTextField.copyWith(
+                                                  hintText:
+                                                      S.of(context).lastName,
+                                                )),
                                           )),
                                     ]),
                                     const SizedBox(height: 16.0),
@@ -223,10 +213,8 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                               new BorderRadius.circular(16.0),
                                         ),
                                         child: Text("Bắt đầu kiểm tra loại da",
-                                            style: kBaseTextStyle.copyWith(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.w600,
-                                                color: Colors.white)),
+                                            style: textTheme.headline5
+                                                .copyWith(color: Colors.white)),
                                         onPressed: () {
                                           if (firstName != null &&
                                               lastName != null) {
@@ -273,10 +261,8 @@ class TodoElement extends StatelessWidget {
           Flexible(
             child: Text(
               text,
-              style: kBaseTextStyle.copyWith(
-                  color: kDarkSecondary,
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600),
+              style: textTheme.headline5
+                  .copyWith(color: kSecondaryGrey, fontSize: 15),
             ),
           ),
         ],

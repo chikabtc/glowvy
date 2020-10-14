@@ -1,4 +1,6 @@
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/productModel.dart';
@@ -139,7 +141,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                                       fontSize: 13,
                                       fontWeight: FontWeight.w500,
                                       color: sorting == "low"
-                                          ? kDarkSecondary
+                                          ? kSecondaryGrey
                                           : kDarkAccent),
                                 ),
                               ],
@@ -165,7 +167,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                         style: kBaseTextStyle.copyWith(
                             fontSize: 13,
                             fontWeight: FontWeight.w500,
-                            color: showFilter ? kDarkSecondary : kDarkAccent),
+                            color: showFilter ? kSecondaryGrey : kDarkAccent),
                       )
                     ],
                   ),
@@ -350,7 +352,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
       var header = Text(
         key,
         style: kBaseTextStyle.copyWith(
-            fontSize: 13, fontWeight: FontWeight.w600, color: kDarkSecondary),
+            fontSize: 13, fontWeight: FontWeight.w600, color: kSecondaryGrey),
       );
       // print("values :${values[0]}");
 
@@ -377,7 +379,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                     fontSize: 15,
                     color: skinTypeId == value["id"]
                         ? kPinkAccent
-                        : kDarkSecondary,
+                        : kSecondaryGrey,
                     fontWeight: FontWeight.w600),
               ),
             ),
@@ -389,7 +391,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
           padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
           child: Divider(
             height: 1,
-            color: kDarkSecondary.withOpacity(0.3),
+            color: kSecondaryGrey.withOpacity(0.3),
           ),
         ),
         header,

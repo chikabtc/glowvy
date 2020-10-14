@@ -4,9 +4,12 @@ import 'package:provider/provider.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import '../../models/order/cart.dart';
+import 'package:Dimodo/common/constants.dart';
 
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
@@ -46,7 +49,9 @@ class _SignupScreenState extends State<SignupScreen>
   void _welcomeDiaLog(User user) {
     var email = user.email;
     _snackBar('Welcome $email!');
-    Navigator.of(context).pop();
+    Navigator.pop(context);
+    // Navigator.of(context).pushReplacementNamed('/verify_email',
+    //     arguments: {'fullName': fullName});
   }
 
   void _failMess(message) {
@@ -57,7 +62,7 @@ class _SignupScreenState extends State<SignupScreen>
     final snackBar = SnackBar(
       content: Text(
         '$text',
-        style: kBaseTextStyle.copyWith(color: Colors.white),
+        style: textTheme.headline5.copyWith(color: Colors.white),
       ),
       duration: Duration(seconds: 10),
       action: SnackBarAction(
@@ -89,6 +94,7 @@ class _SignupScreenState extends State<SignupScreen>
   }
 
   _submitRegister(fullName, email, password) {
+    _playAnimation();
     print("registering: ${fullName + " " + email + " " + password}");
     if (!email.contains("@")) {
       _snackBar('Please input valid email format');
@@ -147,7 +153,7 @@ class _SignupScreenState extends State<SignupScreen>
     } else {
       final snackBar = SnackBar(
           content: Text(S.of(context).welcome + ' ${user.fullName} !',
-              style: kBaseTextStyle.copyWith(color: Colors.white)));
+              style: textTheme.headline5.copyWith(color: Colors.white)));
       Scaffold.of(context).showSnackBar(snackBar);
 
       Navigator.of(context).pop();
@@ -159,7 +165,7 @@ class _SignupScreenState extends State<SignupScreen>
     /// Ability so close message
     print("Warning: $message");
     final snackBar = SnackBar(
-      content: Text('Warning: $message', style: kBaseTextStyle),
+      content: Text('Warning: $message', style: textTheme.headline5),
       duration: Duration(seconds: 30),
       action: SnackBarAction(
         label: S.of(context).close,
@@ -238,11 +244,8 @@ class _SignupScreenState extends State<SignupScreen>
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
-                              Text(
-                                S.of(parentContext).signup,
-                                style: kBaseTextStyle.copyWith(
-                                    fontWeight: FontWeight.bold, fontSize: 24),
-                              )
+                              Text(S.of(parentContext).signup,
+                                  style: textTheme.headline2)
                             ],
                           ),
                         ],
@@ -260,14 +263,13 @@ class _SignupScreenState extends State<SignupScreen>
                             child: TextField(
                               cursorColor: kPinkAccent,
                               onChanged: (value) => fullName = value,
-                              style: kBaseTextStyle.copyWith(
-                                  color: kPrimaryOrange),
+                              style: textTheme.headline5
+                                  .copyWith(color: kPrimaryOrange),
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: S.of(parentContext).fullName,
-                                hintStyle: kBaseTextStyle.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  color: kDarkSecondary.withOpacity(0.5),
+                                hintStyle: textTheme.headline5.copyWith(
+                                  color: kSecondaryGrey.withOpacity(0.5),
                                 ),
                                 contentPadding: EdgeInsets.only(left: 20),
                               ),
@@ -284,22 +286,15 @@ class _SignupScreenState extends State<SignupScreen>
                           child: // Group 6
                               Center(
                             child: TextField(
-                              style: kBaseTextStyle.copyWith(
-                                  color: kPrimaryOrange),
-                              controller: _emailController,
-                              cursorColor: kPinkAccent,
-                              onChanged: (value) => email = value,
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: S.of(parentContext).enterYourEmail,
-                                hintStyle: kBaseTextStyle.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  color: kDarkSecondary.withOpacity(0.5),
-                                ),
-                                contentPadding: EdgeInsets.only(left: 20),
-                              ),
-                            ),
+                                style: textTheme.headline5
+                                    .copyWith(color: kPrimaryOrange),
+                                controller: _emailController,
+                                cursorColor: kPinkAccent,
+                                onChanged: (value) => email = value,
+                                keyboardType: TextInputType.emailAddress,
+                                decoration: kTextField.copyWith(
+                                  hintText: S.of(parentContext).enterYourEmail,
+                                )),
                           )),
                       SizedBox(height: 12.0),
                       Container(
@@ -312,21 +307,14 @@ class _SignupScreenState extends State<SignupScreen>
                           child: // Group 6
                               Center(
                             child: TextField(
-                              style: kBaseTextStyle.copyWith(
-                                  color: kPrimaryOrange),
-                              cursorColor: kPinkAccent,
-                              onChanged: (value) => password = value,
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: S.of(parentContext).password,
-                                hintStyle: kBaseTextStyle.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  color: kDarkSecondary.withOpacity(0.5),
-                                ),
-                                contentPadding: EdgeInsets.only(left: 20),
-                              ),
-                            ),
+                                style: textTheme.headline5
+                                    .copyWith(color: kPrimaryOrange),
+                                cursorColor: kPinkAccent,
+                                onChanged: (value) => password = value,
+                                obscureText: true,
+                                decoration: kTextField.copyWith(
+                                  hintText: S.of(parentContext).password,
+                                )),
                           )),
                       SizedBox(
                         height: 16.0,
@@ -342,58 +330,60 @@ class _SignupScreenState extends State<SignupScreen>
                       SizedBox(
                         height: 24.0,
                       ),
-                      Text(S.of(context).loginWithSNS,
-                          style: TextStyle(
-                              fontSize: 12, color: Colors.grey.shade400)),
-                      SizedBox(
-                        height: 24.0,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          MaterialButton(
-                            color: kPrimaryOrange,
-                            minWidth: 48,
-                            height: 48,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(16.0)),
-                            onPressed: () => _loginFacebook(context),
-                            child: SvgPicture.asset(
-                              'assets/icons/facebook-social.svg',
-                              width: 24,
-                            ),
-                            elevation: 0.0,
-                          ),
-                          SizedBox(width: 35),
-                          MaterialButton(
-                            color: kPrimaryOrange,
-                            minWidth: 48,
-                            height: 48,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(16.0)),
-                            onPressed: () => _loginGoogle(context),
-                            child: SvgPicture.asset(
-                              'assets/icons/google-social.svg',
-                              width: 24,
-                            ),
-                            elevation: 0.0,
-                          ),
-                          SizedBox(width: 35),
-                          MaterialButton(
-                            color: kPrimaryOrange,
-                            minWidth: 48,
-                            height: 48,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(16.0)),
-                            onPressed: () => _loginApple(context),
-                            child: SvgPicture.asset(
-                              'assets/icons/apple.svg',
-                              width: 24,
-                            ),
-                            elevation: 0.0,
-                          ),
-                        ],
-                      ),
+                      Text(
+                        S.of(context).loginWithSNS,
+                        //     style: TextStyle(
+                        //         fontSize: 12, color: Colors.grey.shade400)),
+                        // SizedBox(
+                        //   height: 24.0,
+                        // ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   children: <Widget>[
+                        //     MaterialButton(
+                        //       color: kPrimaryOrange,
+                        //       minWidth: 48,
+                        //       height: 48,
+                        //       shape: RoundedRectangleBorder(
+                        //           borderRadius: new BorderRadius.circular(16.0)),
+                        //       onPressed: () => _loginFacebook(context),
+                        //       child: SvgPicture.asset(
+                        //         'assets/icons/facebook-social.svg',
+                        //         width: 24,
+                        //       ),
+                        //       elevation: 0.0,
+                        //     ),
+                        //     SizedBox(width: 35),
+                        //     MaterialButton(
+                        //       color: kPrimaryOrange,
+                        //       minWidth: 48,
+                        //       height: 48,
+                        //       shape: RoundedRectangleBorder(
+                        //           borderRadius: new BorderRadius.circular(16.0)),
+                        //       onPressed: () => _loginGoogle(context),
+                        //       child: SvgPicture.asset(
+                        //         'assets/icons/google-social.svg',
+                        //         width: 24,
+                        //       ),
+                        //       elevation: 0.0,
+                        //     ),
+                        //     SizedBox(width: 35),
+                        //     MaterialButton(
+                        //       color: kPrimaryOrange,
+                        //       minWidth: 48,
+                        //       height: 48,
+                        //       shape: RoundedRectangleBorder(
+                        //           borderRadius: new BorderRadius.circular(16.0)),
+                        //       onPressed: () => _loginApple(context),
+                        //       child: SvgPicture.asset(
+                        //         'assets/icons/apple.svg',
+                        //         width: 24,
+                        //       ),
+                        //       elevation: 0.0,
+                        //     ),
+                        //   ],
+                        // ),
+                      )
                     ],
                   ),
                 );

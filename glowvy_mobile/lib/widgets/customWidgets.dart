@@ -1,4 +1,6 @@
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';

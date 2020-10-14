@@ -1,4 +1,7 @@
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../common/constants.dart';
@@ -34,7 +37,7 @@ class _WebViewState extends State<WebView> {
       // backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         brightness: Brightness.light,
-        leading: CommonIcons.backIcon(context, color: Colors.white),
+        leading: backIcon(context, color: Colors.white),
         backgroundColor: kPrimaryBlue,
         elevation: 0.0,
         title: Text(

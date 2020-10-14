@@ -15,6 +15,9 @@ import 'package:percent_indicator/linear_percent_indicator.dart';
 import '../generated/i18n.dart';
 
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/icons.dart';
 import 'package:provider/provider.dart';
 
 class BaumannQuiz extends StatefulWidget {
@@ -144,10 +147,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
           elevation: 0,
           title: Text(
               !surveyFinished ? "Test Baumann về da" : "Loại Da Của Tôi",
-              style: kBaseTextStyle.copyWith(
-                  color: kDarkYellow,
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold)),
+              style: textTheme.headline3.copyWith(color: kDarkYellow)),
           brightness: Brightness.light,
           leading: !surveyFinished
               ? IconButton(
@@ -158,7 +158,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                   onPressed: () {
                     Navigator.pop(context);
                   })
-              : CommonIcons.backIcon(context, color: kDarkYellow),
+              : backIcon(context, color: kDarkYellow),
           backgroundColor: kLightYellow,
           //if the survey is completed or the user provided the skinType
           bottom: !surveyFinished
@@ -192,11 +192,8 @@ class _BaumannQuizState extends State<BaumannQuiz>
                           child: Text(
                             tabList[currentPage],
                             textAlign: TextAlign.start,
-                            style: kBaseTextStyle.copyWith(
-                                fontSize: 16,
-                                fontStyle: FontStyle.italic,
-                                fontWeight: FontWeight.w900,
-                                color: kDarkYellow),
+                            style: textTheme.headline4
+                                .copyWith(color: kDarkYellow),
                           ),
                         ),
                       ],
@@ -236,10 +233,8 @@ class _BaumannQuizState extends State<BaumannQuiz>
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 18.0),
                               child: Text(descriptions[currentPage],
-                                  style: kBaseTextStyle.copyWith(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                      color: kDarkYellow)),
+                                  style: textTheme.button2
+                                      .copyWith(color: kDarkYellow)),
                             ),
                             SizedBox(height: 14),
                             Container(
@@ -373,9 +368,9 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                   SkinScore("Dầu", "Khô", score: dsScore),
                                   SkinScore("Sắc tố", "Không có\nsắc tố",
                                       score: srScore),
-                                  SkinScore("Nhạy cảm", "Kháng cự",
+                                  SkinScore("Nhạy cảm", "Khỏe mạnh",
                                       score: pnScore),
-                                  SkinScore("Chặt chẽ", "Nhăn nheo",
+                                  SkinScore("Căng bóng", "Nhăn nheo",
                                       score: wnScore),
                                 ]),
                               ),
@@ -389,10 +384,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                       "Chuyên viên quản lý da chuyên nghiệp",
                                       textAlign: TextAlign.start,
                                       maxLines: showFullExplanation ? 30 : 3,
-                                      style: kBaseTextStyle.copyWith(
-                                        fontSize: 16,
-                                        fontStyle: FontStyle.italic,
-                                        fontWeight: FontWeight.w900,
+                                      style: textTheme.headline4.copyWith(
                                         color: kDarkYellow,
                                       ),
                                     ),
@@ -423,9 +415,8 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                                 maxLines: showFullExplanation
                                                     ? 30
                                                     : 3,
-                                                style: kBaseTextStyle.copyWith(
-                                                  fontSize: 15,
-                                                  fontWeight: FontWeight.w600,
+                                                style: textTheme.headline5
+                                                    .copyWith(
                                                   color: kDarkYellow,
                                                 ),
                                               ),
@@ -434,11 +425,8 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                                       "... Nhiều hơn",
                                                       textAlign:
                                                           TextAlign.start,
-                                                      style: kBaseTextStyle
+                                                      style: textTheme.headline5
                                                           .copyWith(
-                                                        fontSize: 15,
-                                                        fontWeight:
-                                                            FontWeight.bold,
                                                         color: kDarkYellow,
                                                       ),
                                                     )
@@ -455,10 +443,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                               Text(
                                 "- Tips chăm sóc da độc quyền -",
                                 textAlign: TextAlign.center,
-                                style: kBaseTextStyle.copyWith(
-                                  fontSize: 15,
-                                  fontStyle: FontStyle.italic,
-                                  fontWeight: FontWeight.w800,
+                                style: textTheme.headline4.copyWith(
                                   color: kDarkAccent,
                                 ),
                               ),
@@ -501,20 +486,18 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                 child: RichText(
                                   textAlign: TextAlign.center,
                                   text: TextSpan(
-                                    style: kBaseTextStyle.copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        color: kDarkSecondary,
-                                        fontSize: 14),
+                                    style: textTheme.bodyText2.copyWith(
+                                      color: kSecondaryGrey,
+                                    ),
                                     children: <TextSpan>[
                                       TextSpan(
                                           text:
                                               'Bạn không hài lòng với kết quả? \nHãy '),
                                       TextSpan(
                                           text: 'bấm vào đây ',
-                                          style: kBaseTextStyle.copyWith(
-                                              fontWeight: FontWeight.bold,
-                                              color: kDarkSecondary,
-                                              fontSize: 14)),
+                                          style: textTheme.bodyText2.copyWith(
+                                            color: kSecondaryGrey,
+                                          )),
                                       TextSpan(text: ' để thử lại'),
                                     ],
                                   ),
@@ -529,12 +512,9 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                     SvgPicture.asset(
                                         "assets/icons/glowvy-activity.svg"),
                                     SizedBox(height: 14),
-                                    Text("Câu chuyện của ",
-                                        style: kBaseTextStyle.copyWith(
-                                            fontSize: 16,
-                                            fontStyle: FontStyle.italic,
-                                            fontWeight: FontWeight.w900,
-                                            color: kDarkAccent)),
+                                    Text("Câu chuyện của Glowvy ",
+                                        style: textTheme.headline4
+                                            .copyWith(color: kDarkAccent)),
                                     Padding(
                                       padding: const EdgeInsets.only(
                                           left: 33,
@@ -543,11 +523,8 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                           bottom: 14),
                                       child: Text(
                                           "Glowvy là đứa con tinh thần của một nhóm các bạn trẻ người Hàn Quốc nhằm giúp tìm ra loại mỹ phẩm phù hợp với loại da và các vấn đề về da của bạn. Với mục tiêu biến làn da trở nên căng bóng và tỏa sáng, Glowvy luôn nỗ lực để cung cấp những lời khuyên về mĩ phẩm, phân tích loại da và tips chăm sóc da phù hợp với riêng mỗi người. Bạn đã bao giờ trải qua việc mua phải và sử dụng những mĩ phẩm làm hỏng da của bạn chưa? Hãy kể cho Glowvy biết về điều đó~~",
-                                          style: kBaseTextStyle.copyWith(
-                                              fontSize: 15,
-                                              fontStyle: FontStyle.italic,
-                                              fontWeight: FontWeight.w600,
-                                              color: kDarkAccent)),
+                                          style: textTheme.bodyText1
+                                              .copyWith(color: kDarkAccent)),
                                     ),
                                     Padding(
                                         padding: const EdgeInsets.only(
@@ -571,11 +548,8 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                                         : S
                                                             .of(context)
                                                             .saveResult,
-                                                    style:
-                                                        kBaseTextStyle.copyWith(
-                                                            fontSize: 15,
-                                                            fontWeight:
-                                                                FontWeight.w600,
+                                                    style: textTheme.headline5
+                                                        .copyWith(
                                                             color:
                                                                 Colors.white))
                                                 : CupertinoActivityIndicator(),
@@ -609,11 +583,9 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                               }
                                             })),
                                     Text("Glowvy x Căng bóng làn da",
-                                        style: kBaseTextStyle.copyWith(
-                                            fontSize: 14,
+                                        style: textTheme.bodyText2.copyWith(
                                             fontStyle: FontStyle.italic,
-                                            fontWeight: FontWeight.w600,
-                                            color: kDarkSecondary)),
+                                            color: kSecondaryGrey)),
                                     SizedBox(
                                       height: 30,
                                     )
@@ -640,13 +612,13 @@ class _BaumannQuizState extends State<BaumannQuiz>
         return AlertDialog(
           title: Text(
             "Please answer all questions",
-            style: kBaseTextStyle,
+            style: textTheme.headline5,
           ),
           actions: <Widget>[
             FlatButton(
               child: Text(
                 'Ok',
-                style: kBaseTextStyle,
+                style: textTheme.headline5,
               ),
               onPressed: () {
                 Navigator.of(buildContext).pop();

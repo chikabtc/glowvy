@@ -17,6 +17,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/survey.dart';
@@ -86,8 +88,6 @@ class HomeScreenState extends State<HomeScreen>
     ]).then((responses) {
       allProducts[32] = responses.first;
       allProducts[142] = responses[1];
-      print("allproduc lenght: ${responses[1].length}");
-
       allProducts[3] = responses[2];
       allProducts[4] = responses[3];
       allProducts[14] = responses[4];
@@ -145,7 +145,6 @@ class HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-
     kRateMyApp.init().then((_) {});
 
     final screenSize = MediaQuery.of(context).size;
@@ -248,30 +247,19 @@ class HomeScreenState extends State<HomeScreen>
                                   Flexible(
                                     child: Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                          CrossAxisAlignment.center,
                                       children: <Widget>[
                                         Text(
-                                          "Ra đời nhằm đào sâu hơn vào chủ đề chăm sóc da",
-                                          textAlign: TextAlign.start,
-                                          style: TextStyle(
-                                              fontSize: 16,
-                                              height: 1.3,
-                                              fontFamily: 'Nunito',
-                                              color: Colors.white,
-                                              fontStyle: FontStyle.italic,
-                                              fontWeight: FontWeight.w900),
-                                        ),
-                                        Text(
-                                          "Về Glowvy",
-                                          textAlign: TextAlign.start,
-                                          style: kBaseTextStyle.copyWith(
-                                              fontSize: 12,
-                                              height: 1.3,
-                                              fontFamily: "Nunito",
-                                              color: Color(0xFF6AC4A9),
-                                              fontStyle: FontStyle.normal,
-                                              fontWeight: FontWeight.bold),
-                                        ),
+                                            "Glowvy được ra đời xoay quanh những chủ đề về chăm sóc da",
+                                            textAlign: TextAlign.start,
+                                            style: textTheme.headline4
+                                                .copyWith(color: Colors.white)),
+                                        // Text("Về Glowvy",
+                                        //     textAlign: TextAlign.start,
+                                        //     style: textTheme.caption2.copyWith(
+                                        //         height: 1.3,
+                                        //         color: Color(0xFF6AC4A9),
+                                        //         fontWeight: FontWeight.bold)),
                                       ],
                                     ),
                                   ),
@@ -308,12 +296,9 @@ class HomeScreenState extends State<HomeScreen>
                                           Text(
                                             S.of(context).yourSkin,
                                             textAlign: TextAlign.start,
-                                            style: kBaseTextStyle.copyWith(
-                                                fontSize: 16,
-                                                fontFamily: "Nunito",
-                                                color: kDarkYellow,
-                                                fontStyle: FontStyle.italic,
-                                                fontWeight: FontWeight.w900),
+                                            style: textTheme.headline4.copyWith(
+                                              color: kDarkYellow,
+                                            ),
                                           ),
                                           // SizedBox(height: 3.5),
                                           Container(
@@ -325,19 +310,18 @@ class HomeScreenState extends State<HomeScreen>
                                                   color: kDarkYellow),
                                             ),
                                             child: Text(
-                                              userModel.skinType != null
-                                                  ? userModel.getFullSkinType(
-                                                      context,
-                                                      userModel.skinType)
-                                                  : "????",
-                                              textAlign: TextAlign.start,
-                                              style: kBaseTextStyle.copyWith(
-                                                  fontSize: 12,
-                                                  fontFamily: "Nunito",
-                                                  color: kDarkYellow,
-                                                  fontStyle: FontStyle.normal,
-                                                  fontWeight: FontWeight.bold),
-                                            ),
+                                                userModel.skinType != null
+                                                    ? userModel.getFullSkinType(
+                                                        context,
+                                                        userModel.skinType)
+                                                    : "????",
+                                                textAlign: TextAlign.start,
+                                                style: textTheme.caption2
+                                                    .copyWith(
+                                                        height: 1.3,
+                                                        color: kDarkYellow,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
                                           )
                                         ],
                                       ),
@@ -385,13 +369,10 @@ class HomeScreenState extends State<HomeScreen>
                                             Text(
                                               S.of(context).feedback,
                                               textAlign: TextAlign.start,
-                                              style: kBaseTextStyle.copyWith(
-                                                  fontSize: 16,
-                                                  height: 1.3,
-                                                  fontFamily: "Nunito",
-                                                  color: kPrimaryBlue,
-                                                  fontStyle: FontStyle.italic,
-                                                  fontWeight: FontWeight.w900),
+                                              style:
+                                                  textTheme.headline4.copyWith(
+                                                color: kPrimaryBlue,
+                                              ),
                                             ),
                                             Container(
                                               padding:
@@ -402,17 +383,13 @@ class HomeScreenState extends State<HomeScreen>
                                                 border: Border.all(
                                                     color: kPrimaryBlue),
                                               ),
-                                              child: Text(
-                                                "Cải thiện ứng dụng",
-                                                textAlign: TextAlign.start,
-                                                style: kBaseTextStyle.copyWith(
-                                                    fontSize: 12,
-                                                    fontFamily: "Nunito",
+                                              child: Text("Cải thiện ứng dụng",
+                                                  textAlign: TextAlign.start,
+                                                  style: textTheme.caption2
+                                                      .copyWith(
+                                                    fontWeight: FontWeight.w700,
                                                     color: kPrimaryBlue,
-                                                    fontStyle: FontStyle.normal,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
+                                                  )),
                                             )
                                           ],
                                         ),
@@ -462,13 +439,12 @@ class HomeScreenState extends State<HomeScreen>
                                   ),
                                   isScrollable: true,
                                   indicatorColor: Colors.white,
-                                  unselectedLabelColor: kDarkSecondary,
-                                  unselectedLabelStyle: kBaseTextStyle.copyWith(
-                                      color: kDarkSecondary,
-                                      fontSize: 15,
-                                      fontFamily: "Nunito",
-                                      fontWeight: FontWeight.bold),
-                                  labelStyle: kBaseTextStyle.copyWith(
+                                  unselectedLabelColor: kSecondaryGrey,
+                                  unselectedLabelStyle: textTheme.headline4
+                                      .copyWith(
+                                          color: kSecondaryGrey,
+                                          fontWeight: FontWeight.bold),
+                                  labelStyle: textTheme.headline4.copyWith(
                                       color: Colors.white,
                                       fontSize: 15,
                                       fontFamily: "Nunito",
@@ -517,12 +493,10 @@ class HomeScreenState extends State<HomeScreen>
                                                 "Mở khóa bộ lọc bằng loại da của tôi",
                                                 overflow: TextOverflow.fade,
                                                 textAlign: TextAlign.center,
-                                                style: TextStyle(
+                                                style: textTheme.headline4
+                                                    .copyWith(
                                                   color: kAccentRed,
-                                                  fontSize: 16,
-                                                  fontStyle: FontStyle.italic,
                                                   fontWeight: FontWeight.w800,
-                                                  fontFamily: 'Nunito',
                                                 ),
                                               ),
                                             ],
@@ -596,12 +570,12 @@ class HomeScreenState extends State<HomeScreen>
                                                       "Cập nhật thông tin mỹ phẩm ...",
                                                       overflow:
                                                           TextOverflow.ellipsis,
-                                                      style: kBaseTextStyle
+                                                      style: textTheme.caption1
                                                           .copyWith(
                                                               fontSize: 13,
                                                               fontWeight:
                                                                   FontWeight
-                                                                      .w500))
+                                                                      .w400))
                                                   : Container()),
                                         ],
                                       ),
@@ -619,7 +593,7 @@ class HomeScreenState extends State<HomeScreen>
                                             )
                                           : CosmeticsProductList(
                                               products:
-                                                  productModel.sortAndFilter(
+                                                  productModel.sortProducts(
                                                       "rank",
                                                       skinTypeId,
                                                       allProducts[category.id]),

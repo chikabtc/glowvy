@@ -1,6 +1,9 @@
 import 'package:Dimodo/models/order/cartItem.dart';
 import 'package:flutter/material.dart';
 import '../../common/styles.dart';
+
+import '../../common/colors.dart';
+
 import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:Dimodo/widgets/login_animation.dart';

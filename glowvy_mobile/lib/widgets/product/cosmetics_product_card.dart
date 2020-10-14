@@ -8,6 +8,8 @@ import '../../models/product/product.dart';
 import '../../screens/detail/cosmetics_product_detail.dart';
 import '../../common/styles.dart';
 
+import '../../common/colors.dart';
+
 class CosmeticsProductCard extends StatelessWidget {
   final Product product;
   final width;
@@ -132,7 +134,7 @@ class CosmeticsProductCard extends StatelessWidget {
                       maxLines: 1,
                       style: kBaseTextStyle.copyWith(
                         fontSize: 13,
-                        color: kDarkSecondary,
+                        color: kSecondaryGrey,
                         fontWeight: FontWeight.normal,
                       ),
                     ),
@@ -142,7 +144,9 @@ class CosmeticsProductCard extends StatelessWidget {
                       children: <Widget>[
                         SvgPicture.asset("assets/icons/red-star.svg"),
                         Text(
-                          double.parse(product.rating.substring(0, 3))
+                          double.parse(product.reviewMetas.all.averageRating
+                                  .toString()
+                                  .substring(0, 3))
                               .toString(),
                           maxLines: 1,
                           style: kBaseTextStyle.copyWith(
@@ -158,7 +162,7 @@ class CosmeticsProductCard extends StatelessWidget {
                               textAlign: TextAlign.end,
                               maxLines: 1,
                               style: kBaseTextStyle.copyWith(
-                                  color: kDarkSecondary.withOpacity(0.5),
+                                  color: kSecondaryGrey.withOpacity(0.5),
                                   fontSize: 13,
                                   fontWeight: FontWeight.normal),
                             ),
@@ -167,7 +171,7 @@ class CosmeticsProductCard extends StatelessWidget {
                         Text(
                           Tools.getPriceProduct(product, "VND", onSale: true),
                           style: kBaseTextStyle.copyWith(
-                              color: kDarkSecondary,
+                              color: kSecondaryGrey,
                               fontSize: 12,
                               fontWeight: FontWeight.normal),
                         ),
@@ -181,7 +185,7 @@ class CosmeticsProductCard extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: kBaseTextStyle.copyWith(
-                          color: kDarkSecondary,
+                          color: kSecondaryGrey,
                           fontSize: 12,
                           fontWeight: FontWeight.w500),
                     ),

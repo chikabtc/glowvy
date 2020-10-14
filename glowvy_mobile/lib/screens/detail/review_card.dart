@@ -3,6 +3,9 @@ import 'dart:math';
 import '../../common/constants.dart';
 import '../../widgets/image_galery.dart';
 import '../../common/styles.dart';
+
+import '../../common/colors.dart';
+
 import '../../models/review.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 
@@ -71,14 +74,14 @@ class ReviewCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(review.user.name,
+                    Text(review.user.displayName,
                         style: TextStyle(
                             fontSize: 13, fontWeight: FontWeight.w600)),
-                    Text(review.product.optionName,
-                        style: TextStyle(
-                            color: kDarkSecondary.withOpacity(0.5),
-                            fontSize: 11,
-                            fontWeight: FontWeight.w500)),
+                    // Text(review.optionName,
+                    //     style: TextStyle(
+                    //         color: kDarkSecondary.withOpacity(0.5),
+                    //         fontSize: 11,
+                    //         fontWeight: FontWeight.w500)),
                     SizedBox(height: 10),
                     Text(sanitizedText,
                         maxLines: isPreview ? 2 : 20,

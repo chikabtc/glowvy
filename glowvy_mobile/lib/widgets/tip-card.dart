@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:Dimodo/common/styles.dart';
 
+import 'package:Dimodo/common/colors.dart';
+
 class TipCard extends StatelessWidget {
   TipCard(this.tip, this.index, this.isYes);
 

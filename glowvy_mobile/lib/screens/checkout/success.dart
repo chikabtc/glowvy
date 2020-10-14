@@ -2,6 +2,9 @@ import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/styles.dart';
+
+import '../../common/colors.dart';
+
 import '../../generated/i18n.dart';
 import '../../models/order/order.dart';
 import '../../models/user/userModel.dart';
@@ -21,7 +24,7 @@ class OrderedSuccess extends StatelessWidget {
       children: <Widget>[
         Container(
           margin: EdgeInsets.only(top: 20),
-          decoration: BoxDecoration(color: kGrey200),
+          // decoration: BoxDecoration(color: kGrey200),
           child: Padding(
               padding: EdgeInsets.all(15.0),
               child: Column(
@@ -38,7 +41,7 @@ class OrderedSuccess extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           S.of(context).orderNo,
-                          style: TextStyle(fontSize: 14, color: kGrey900),
+                          // style: TextStyle(fontSize: 14, color: kGrey900),
                         ),
                         SizedBox(width: 5),
                       ],
@@ -51,7 +54,7 @@ class OrderedSuccess extends StatelessWidget {
         SizedBox(height: 15),
         Text(
           S.of(context).orderSuccessMsg1,
-          style: TextStyle(color: kGrey900, height: 1.4, fontSize: 14),
+          // style: TextStyle(color: kGrey900, height: 1.4, fontSize: 14),
         ),
         if (userModel.user != null)
           Padding(
@@ -80,7 +83,7 @@ class OrderedSuccess extends StatelessWidget {
         SizedBox(height: 10),
         Text(
           S.of(context).orderSuccessMsg2,
-          style: TextStyle(color: kGrey900, height: 1.4, fontSize: 14),
+          // style: TextStyle(color: kGrey900, height: 1.4, fontSize: 14),
         ),
         Padding(
           padding: EdgeInsets.symmetric(vertical: 30),

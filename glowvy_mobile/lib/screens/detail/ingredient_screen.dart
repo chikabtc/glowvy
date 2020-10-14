@@ -9,6 +9,10 @@ import '../../common/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../common/styles.dart';
+
+import '../../common/colors.dart';
+import '../../common/icons.dart';
+
 import '../../generated/i18n.dart';
 import '../../models/reviews.dart';
 import '../../services/index.dart';
@@ -53,12 +57,9 @@ class IngredientScreenStates extends State<IngredientScreen>
         appBar: AppBar(
           backgroundColor: kLightYellow,
           title: Text("Thông tin thành phần",
-              style: kBaseTextStyle.copyWith(
-                  fontSize: 17,
-                  color: kDarkYellow,
-                  fontWeight: FontWeight.bold)),
+              style: textTheme.headline3.copyWith(color: kDarkYellow)),
           brightness: Brightness.light,
-          leading: CommonIcons.backIcon(context, color: kDarkYellow),
+          leading: backIcon(context, color: kDarkYellow),
           bottom: PreferredSize(
             child: Container(
               width: screenSize.width,
@@ -70,14 +71,11 @@ class IngredientScreenStates extends State<IngredientScreen>
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       SizedBox(height: 34),
-                      Text(widget.hazardLevel,
-                          style: kBaseTextStyle.copyWith(
-                              fontSize: 17, fontWeight: FontWeight.bold)),
+                      Text(widget.hazardLevel, style: textTheme.headline3),
                       Text(S.of(context).ewgSafeLevel,
-                          style: kBaseTextStyle.copyWith(
-                              fontSize: 12,
-                              color: kDarkSecondary,
-                              fontWeight: FontWeight.w500)),
+                          style: textTheme.caption2.copyWith(
+                            color: kSecondaryGrey,
+                          )),
                     ],
                   ),
                   SizedBox(height: 35),
@@ -91,35 +89,21 @@ class IngredientScreenStates extends State<IngredientScreen>
                       children: <Widget>[
                         Column(children: <Widget>[
                           SvgPicture.asset("assets/icons/grey_shield.svg"),
-                          Text(
-                            S.of(context).undecided,
-                            style: kBaseTextStyle.copyWith(
-                                fontSize: 12, fontWeight: FontWeight.w500),
-                          )
+                          Text(S.of(context).undecided,
+                              style: textTheme.caption2)
                         ]),
                         Column(children: <Widget>[
                           SvgPicture.asset("assets/icons/green-shield.svg"),
-                          Text(
-                            S.of(context).low,
-                            style: kBaseTextStyle.copyWith(
-                                fontSize: 12, fontWeight: FontWeight.w500),
-                          )
+                          Text(S.of(context).low, style: textTheme.caption2)
                         ]),
                         Column(children: <Widget>[
                           SvgPicture.asset("assets/icons/orange_shield.svg"),
-                          Text(
-                            S.of(context).moderate,
-                            style: kBaseTextStyle.copyWith(
-                                fontSize: 12, fontWeight: FontWeight.w500),
-                          )
+                          Text(S.of(context).moderate,
+                              style: textTheme.caption2)
                         ]),
                         Column(children: <Widget>[
                           SvgPicture.asset("assets/icons/red_shield.svg"),
-                          Text(
-                            S.of(context).high,
-                            style: kBaseTextStyle.copyWith(
-                                fontSize: 12, fontWeight: FontWeight.w500),
-                          )
+                          Text(S.of(context).high, style: textTheme.caption2)
                         ]),
                       ],
                     ),

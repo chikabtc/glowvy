@@ -1,5 +1,7 @@
 import 'package:Dimodo/models/category.dart';
+import 'package:Dimodo/models/ingredient.dart';
 import 'package:Dimodo/models/order/cartItem.dart';
+import 'package:Dimodo/models/review.dart';
 import '../models/order/order.dart';
 import '../models/product/product.dart';
 import '../models/reviews.dart';
@@ -33,7 +35,8 @@ abstract class BaseServices {
 
   Future<Reviews> getReviews(productId, int offset, int limit);
   Future<Product> getCosmetics(productId);
-  Future<Reviews> getCosmeticsReviews(productId);
+  Future<List<Review>> getCosmeticsReviews(productId);
+  Future<List<Ingredient>> getIngredients(productId);
   // ===========================================================================
   // COSMETICS
   // ===========================================================================
@@ -251,7 +254,7 @@ class Services implements BaseServices {
   }
 
   @override
-  Future<Reviews> getCosmeticsReviews(productId) async {
+  Future<List<Review>> getCosmeticsReviews(productId) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
@@ -260,6 +263,27 @@ class Services implements BaseServices {
       throw Exception("No internet connection");
     }
   }
+
+  @override
+  Future<List<Ingredient>> getIngredients(productId) async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      return serviceApi.getIngredients(productId);
+    } else {
+      throw Exception("No internet connection");
+    }
+  }
+  // @override
+  // Future<Reviews> getCosmeticsReviews(productId) async {
+  //   var connectivityResult = await (Connectivity().checkConnectivity());
+  //   if (connectivityResult == ConnectivityResult.mobile ||
+  //       connectivityResult == ConnectivityResult.wifi) {
+  //     return serviceApi.getCosmeticsReviews(productId);
+  //   } else {
+  //     throw Exception("No internet connection");
+  //   }
+  // }
 
   @override
   Future<Product> getCosmetics(productId) async {

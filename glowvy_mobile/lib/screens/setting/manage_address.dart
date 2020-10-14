@@ -4,6 +4,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/cupertino.dart';
@@ -149,7 +151,7 @@ class EmptyShipping extends StatelessWidget {
                     style: kBaseTextStyle.copyWith(
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
-                        color: kDarkSecondary),
+                        color: kSecondaryGrey),
                     textAlign: TextAlign.center),
                 SizedBox(height: 50),
               ],

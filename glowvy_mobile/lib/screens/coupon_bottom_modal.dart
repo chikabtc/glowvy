@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/coupon.dart';
 import 'package:flutter/material.dart';
 import '../generated/i18n.dart';
@@ -157,7 +159,7 @@ class _CouponBottomModalState extends State<CouponBottomModal>
                     height: 72,
                     width: 100,
                     decoration: BoxDecoration(
-                        color: kGrey200,
+                        // color: kGrey200,
                         borderRadius: BorderRadius.all(Radius.circular(8))),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -169,7 +171,7 @@ class _CouponBottomModalState extends State<CouponBottomModal>
                             S.of(context).username,
                             textAlign: TextAlign.center,
                             style: kBaseTextStyle.copyWith(
-                                fontSize: 12, color: kDarkSecondary),
+                                fontSize: 12, color: kSecondaryGrey),
                           ),
                         ),
                       ],

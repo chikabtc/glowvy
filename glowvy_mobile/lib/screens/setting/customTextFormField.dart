@@ -5,6 +5,8 @@ import '../../models/address/address.dart';
 
 import 'package:Dimodo/common/styles.dart';
 
+import 'package:Dimodo/common/colors.dart';
+
 class CustomTextFormField extends StatelessWidget {
   final Address address;
   final labelText;
@@ -52,14 +54,14 @@ class CustomTextFormField extends StatelessWidget {
               enabledBorder: UnderlineInputBorder(
                 borderSide: BorderSide(
                     color: isBorderNeeded
-                        ? kDarkSecondary.withOpacity(0.1)
-                        : kDarkSecondary.withOpacity(0.0)),
+                        ? kSecondaryGrey.withOpacity(0.1)
+                        : kSecondaryGrey.withOpacity(0.0)),
               ),
               focusedBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: kDarkSecondary.withOpacity(0.1)),
+                borderSide: BorderSide(color: kSecondaryGrey.withOpacity(0.1)),
               ),
               disabledBorder: UnderlineInputBorder(
-                borderSide: BorderSide(color: kDarkSecondary.withOpacity(0.1)),
+                borderSide: BorderSide(color: kSecondaryGrey.withOpacity(0.1)),
               ),
               labelText: labelText,
               labelStyle: kBaseTextStyle.copyWith(

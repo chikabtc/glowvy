@@ -1,4 +1,6 @@
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
@@ -107,7 +109,7 @@ class _ProductDescriptionState extends State<ProductDescription>
                               style: kBaseTextStyle.copyWith(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
-                                color: kDarkSecondary,
+                                color: kSecondaryGrey,
                               )),
                         ],
                       ),

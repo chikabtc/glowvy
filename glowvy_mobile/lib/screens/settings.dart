@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:notification_permissions/notification_permissions.dart';
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/widgets/webview.dart';
@@ -133,7 +135,7 @@ class SettingScreenState extends State<SettingScreen>
                                 style: textStyle.copyWith(
                                     fontWeight: FontWeight.w500,
                                     fontSize: 13,
-                                    color: kDarkSecondary.withOpacity(0.5))),
+                                    color: kSecondaryGrey.withOpacity(0.5))),
                           ],
                         ),
                       ]),
@@ -153,7 +155,7 @@ class SettingScreenState extends State<SettingScreen>
                       Text(S.of(context).viewAll,
                           style: kBaseTextStyle.copyWith(
                             fontSize: 13,
-                            color: kDarkSecondary.withOpacity(0.5),
+                            color: kSecondaryGrey.withOpacity(0.5),
                             fontWeight: FontWeight.w500,
                           )),
                       // Icon(Icons.arrow_forward_ios, size: 12, color: Colors.black26)
@@ -234,7 +236,7 @@ class SettingScreenState extends State<SettingScreen>
                   kFullDivider,
                   if (widget.user == null)
                     SettingCard(
-                      fontColor: kDarkSecondary,
+                      fontColor: kSecondaryGrey,
                       title: S.of(context).login,
                       trailingWidget: null,
                       onTap: () => Navigator.pushNamed(context, "/login"),
@@ -242,7 +244,7 @@ class SettingScreenState extends State<SettingScreen>
                   if (widget.user != null)
                     SettingCard(
                       trailingWidget: null,
-                      fontColor: kDarkSecondary,
+                      fontColor: kSecondaryGrey,
                       title: S.of(context).logout,
                       onTap: widget.onLogout,
                     ),

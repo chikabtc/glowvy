@@ -1,6 +1,9 @@
 import 'package:Dimodo/models/order/cartItem.dart';
 import 'package:flutter/material.dart';
 import '../../common/styles.dart';
+
+import '../../common/colors.dart';
+
 import 'package:provider/provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
@@ -137,7 +140,7 @@ class _ProductOptionState extends State<ProductOption>
             style: kBaseTextStyle.copyWith(
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
-                color: kDarkSecondary),
+                color: kSecondaryGrey),
           ),
         ),
         Wrap(
@@ -168,7 +171,7 @@ class _ProductOptionState extends State<ProductOption>
                             ? Colors.white
                             : attribute.isSoldOut
                                 ? Colors.black.withOpacity(0.4)
-                                : kDarkSecondary,
+                                : kSecondaryGrey,
                         fontWeight: FontWeight.w600),
                   ),
                 ),
@@ -237,7 +240,7 @@ class _ProductOptionState extends State<ProductOption>
       var header = Text(
         compoundOption.title,
         style: kBaseTextStyle.copyWith(
-            fontSize: 13, fontWeight: FontWeight.w600, color: kDarkSecondary),
+            fontSize: 13, fontWeight: FontWeight.w600, color: kSecondaryGrey),
       );
       var options = Wrap(children: <Widget>[
         for (var key in compoundOption.options.keys)
@@ -265,7 +268,7 @@ class _ProductOptionState extends State<ProductOption>
                     fontSize: 15,
                     color: chosenOptions[index] == key
                         ? Colors.white
-                        : kDarkSecondary,
+                        : kSecondaryGrey,
                     fontWeight: FontWeight.w600),
               ),
             ),
@@ -346,7 +349,7 @@ class _ProductOptionState extends State<ProductOption>
                                       EdgeInsets.only(top: 10.0, bottom: 10.0),
                                   child: Divider(
                                     height: 1,
-                                    color: kDarkSecondary.withOpacity(0.3),
+                                    color: kSecondaryGrey.withOpacity(0.3),
                                   ),
                                 ),
                                 Padding(
@@ -360,7 +363,7 @@ class _ProductOptionState extends State<ProductOption>
                                           style: kBaseTextStyle.copyWith(
                                               fontSize: 13,
                                               fontWeight: FontWeight.w600,
-                                              color: kDarkSecondary),
+                                              color: kSecondaryGrey),
                                         ),
                                         Row(
                                           children: <Widget>[
@@ -396,7 +399,7 @@ class _ProductOptionState extends State<ProductOption>
                                                 style: kBaseTextStyle.copyWith(
                                                     fontSize: 13,
                                                     fontWeight: FontWeight.w600,
-                                                    color: kDarkSecondary),
+                                                    color: kSecondaryGrey),
                                               ),
                                             ),
                                             Container(
@@ -440,7 +443,7 @@ class _ProductOptionState extends State<ProductOption>
                                       : kDarkAccent.withOpacity(0.4),
                                   btnTitleColor: isProductChosen()
                                       ? Colors.white
-                                      : kDarkSecondary,
+                                      : kSecondaryGrey,
                                   buttonController:
                                       addToCartButtonController.view,
                                   // onTap: () => showAddedToCartAlert(),
@@ -516,7 +519,7 @@ class _ProductOptionState extends State<ProductOption>
                     style: kBaseTextStyle.copyWith(
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
-                        color: kDarkSecondary)),
+                        color: kSecondaryGrey)),
               ],
             )
           ],

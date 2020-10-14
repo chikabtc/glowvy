@@ -1,5 +1,8 @@
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/common/icons.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/services/index.dart';
@@ -58,7 +61,7 @@ class _SearchScreenState extends State<SearchScreen> {
         appBar: AppBar(
           brightness: Brightness.light,
           backgroundColor: Colors.transparent,
-          leading: CommonIcons.backIcon(context, color: Colors.black),
+          leading: backIcon(context),
           title: Row(
             children: <Widget>[
               Expanded(
@@ -69,38 +72,32 @@ class _SearchScreenState extends State<SearchScreen> {
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: TextField(
-                    onTap: () => isTextFieldSelected = true,
-                    cursorColor: kPinkAccent,
-                    controller: searchController,
-                    onChanged: (value) {
-                      setState(() {
-                        searchText = value;
-                        if (value == "") {
-                          showResults = false;
-                        }
-                      });
-                    },
-                    onSubmitted: (value) {
-                      setState(() {
-                        isTextFieldSelected = false;
-                        getProductBySearch = service.getProductsBySearch(
-                            searchText: searchText, sortBy: "id");
-                        showResults = true;
+                      textAlignVertical: TextAlignVertical.center,
+                      onTap: () => isTextFieldSelected = true,
+                      cursorColor: theme.cursorColor,
+                      controller: searchController,
+                      onChanged: (value) {
+                        setState(() {
+                          searchText = value;
+                          if (value == "") {
+                            showResults = false;
+                          }
+                        });
+                      },
+                      onSubmitted: (value) {
+                        setState(() {
+                          isTextFieldSelected = false;
+                          getProductBySearch = service.getProductsBySearch(
+                              searchText: searchText, sortBy: "id");
+                          showResults = true;
 
-                        FocusScope.of(context).unfocus();
-                      });
-                    },
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: S.of(context).search,
-                      hintStyle: kBaseTextStyle.copyWith(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
-                        color: kDarkSecondary.withOpacity(0.5),
-                      ),
-                      contentPadding: EdgeInsets.only(left: 20, bottom: 12),
-                    ),
-                  ),
+                          FocusScope.of(context).unfocus();
+                        });
+                      },
+                      decoration: kTextField.copyWith(
+                        hintText: S.of(context).search,
+                        contentPadding: EdgeInsets.only(bottom: 12, left: 12),
+                      )),
                 ),
               ),
               !isTextFieldSelected
@@ -116,11 +113,8 @@ class _SearchScreenState extends State<SearchScreen> {
                           FocusScope.of(context).unfocus();
                         }),
                         child: Container(
-                          child: Text(
-                            S.of(context).cancel,
-                            style: kBaseTextStyle.copyWith(
-                                fontSize: 14, fontWeight: FontWeight.w600),
-                          ),
+                          child: Text(S.of(context).cancel,
+                              style: textTheme.bodyText2),
                         ),
                       ),
                     ),
@@ -151,8 +145,8 @@ class _SearchScreenState extends State<SearchScreen> {
                               Text(
                                 "Mọi người cũng tìm kiếm",
                                 textAlign: TextAlign.center,
-                                style: kBaseTextStyle.copyWith(
-                                    fontSize: 14, color: kDarkSecondary),
+                                style: textTheme.bodyText2
+                                    .copyWith(color: kSecondaryGrey),
                               ),
                               SizedBox(height: 10),
                               Keyword(
@@ -207,8 +201,7 @@ class Keyword extends StatelessWidget {
           child: Text(
             keyword,
             textAlign: TextAlign.center,
-            style: kBaseTextStyle.copyWith(
-                fontSize: 14, fontWeight: FontWeight.bold, color: kDarkYellow),
+            style: textTheme.bodyText2.copyWith(color: kDarkYellow),
           ),
         ),
       ),

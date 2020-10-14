@@ -1,5 +1,7 @@
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/survey.dart';
 import 'package:Dimodo/models/user/userModel.dart';

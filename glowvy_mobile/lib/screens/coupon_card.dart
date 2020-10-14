@@ -1,4 +1,6 @@
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/coupon.dart';
 import 'package:Dimodo/models/order/cart.dart';
 import 'package:flutter/material.dart';
@@ -94,7 +96,7 @@ class _CouponCardState extends State<CouponCard> {
             },
             height: 70,
             elevation: 0,
-            color: kAccentPurple.withOpacity(0.1),
+            color: kAccentRed.withOpacity(0.1),
             padding: EdgeInsets.symmetric(horizontal: 10),
             shape: RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(6.0),
@@ -114,8 +116,8 @@ class _CouponCardState extends State<CouponCard> {
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12,
                                 color: isSelected
-                                    ? kAccentPurple.withOpacity(0.1)
-                                    : kAccentPurple)),
+                                    ? kAccentRed.withOpacity(0.1)
+                                    : kAccentRed)),
                         Text(
                             widget.coupon != null
                                 ? widget.coupon.discountAmount != 0
@@ -128,8 +130,8 @@ class _CouponCardState extends State<CouponCard> {
                                 fontWeight: FontWeight.bold,
                                 fontSize: 24,
                                 color: isSelected
-                                    ? kAccentPurple.withOpacity(0.1)
-                                    : kAccentPurple)),
+                                    ? kAccentRed.withOpacity(0.1)
+                                    : kAccentRed)),
                       ],
                     ),
                   ),
@@ -143,7 +145,7 @@ class _CouponCardState extends State<CouponCard> {
                       ),
                       DotWidget(
                         totalWidth: 200,
-                        dashColor: kAccentPurple.withOpacity(1),
+                        dashColor: kAccentRed.withOpacity(1),
                         dashHeight: 1.5,
                         dashWidth: 0.7,
                       ),
@@ -166,7 +168,7 @@ class _CouponCardState extends State<CouponCard> {
                             ? Container(
                                 height: 36,
                                 decoration: new BoxDecoration(
-                                  color: kAccentPurple,
+                                  color: kAccentRed,
                                   borderRadius: BorderRadius.circular(25),
                                 ),
                                 child: Center(
@@ -176,7 +178,7 @@ class _CouponCardState extends State<CouponCard> {
                                     style: kBaseTextStyle.copyWith(
                                         fontSize: 14,
                                         color: isSelected
-                                            ? kAccentPurple.withOpacity(0.1)
+                                            ? kAccentRed.withOpacity(0.1)
                                             : Colors.white,
                                         fontWeight: FontWeight.w600),
                                   ),
@@ -188,7 +190,7 @@ class _CouponCardState extends State<CouponCard> {
                                 style: kBaseTextStyle.copyWith(
                                     fontSize: 14,
                                     color: isSelected
-                                        ? kAccentPurple.withOpacity(0.1)
+                                        ? kAccentRed.withOpacity(0.1)
                                         : Colors.white,
                                     fontWeight: FontWeight.w600),
                               )),
@@ -225,8 +227,7 @@ class DotWidget extends StatelessWidget {
         (i) => Container(
           width: dashWidth,
           height: dashHeight,
-          color:
-              i % 2 == 0 ? Colors.transparent : kAccentPurple.withOpacity(0.2),
+          color: i % 2 == 0 ? Colors.transparent : kAccentRed.withOpacity(0.2),
           // margin: EdgeInsets.only(left: emptyWidth / 2, right: emptyWidth / 2),
         ),
       ),

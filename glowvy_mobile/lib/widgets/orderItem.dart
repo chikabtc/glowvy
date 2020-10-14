@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../common/constants.dart';
 import '../common/styles.dart';
+import '../common/colors.dart';
+
 import '../common/tools.dart';
 import '../models/product/product.dart';
 import '../models/app.dart';
@@ -104,7 +106,7 @@ class _OrderItemRowState extends State<OrderItemRow> {
                                       style: kBaseTextStyle.copyWith(
                                           fontSize: 12,
                                           fontWeight: FontWeight.w500,
-                                          color: kDarkSecondary),
+                                          color: kSecondaryGrey),
                                     ),
                                   ),
                                 ),
@@ -126,7 +128,7 @@ class _OrderItemRowState extends State<OrderItemRow> {
                                         style: kBaseTextStyle.copyWith(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w500,
-                                            color: kDarkSecondary),
+                                            color: kSecondaryGrey),
                                       ),
                                       Text(
                                           Tools.getPriceProduct(
@@ -136,7 +138,7 @@ class _OrderItemRowState extends State<OrderItemRow> {
                                               fontSize: 12,
                                               fontWeight: FontWeight.w500,
                                               color: widget.isOrder
-                                                  ? kDarkSecondary
+                                                  ? kSecondaryGrey
                                                   : kDarkBG)),
                                     ],
                                   ),

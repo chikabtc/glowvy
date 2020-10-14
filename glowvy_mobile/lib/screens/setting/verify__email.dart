@@ -10,18 +10,18 @@ import 'package:after_layout/after_layout.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/common/constants.dart';
 
-class ForgotPasswordScreen extends StatefulWidget {
-  ForgotPasswordScreen();
+class VerifyEmailScreen extends StatefulWidget {
+  VerifyEmailScreen();
 
   @override
-  _ForgotPasswordScreenState createState() => _ForgotPasswordScreenState();
+  _VerifyEmailScreenState createState() => _VerifyEmailScreenState();
 }
 
-class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
+class _VerifyEmailScreenState extends State<VerifyEmailScreen>
     with TickerProviderStateMixin, AfterLayoutMixin {
   AnimationController _loginButtonController;
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-  String email, code, password;
+  String code;
   final TextEditingController _emailController = TextEditingController();
   bool isLoading = false;
   bool isChecked = false;
@@ -46,28 +46,23 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
   void _welcomeMessage(context) {
     _stopAnimation();
     final snackBar =
-        SnackBar(content: Text('Pin is sent !', style: kBaseTextStyle));
+        SnackBar(content: Text('Pin is correct !', style: kBaseTextStyle));
     Scaffold.of(context).showSnackBar(snackBar);
+
+    Navigator.of(context).pop();
   }
 
-  void _inputPIN(accessToken) {
-    print("_input pin called");
+  void onCorrectPin(context) {
+    print("pin is correct!");
     _stopAnimation();
-    this.accessToken = accessToken;
-    kAccessToken = accessToken;
-    print("accessToken Received here: $accessToken");
-    isEmailSent = true;
-    _emailController.clear();
-  }
-
-  void _reset_password() {
-    print("_reset_password called");
-    Navigator.pushNamed(context, "/reset_password");
+    _welcomeMessage(context);
+    // this.accessToken = accessToken;
+    // kAccessToken = accessToken;
+    // print("accessToken Received here: $accessToken");
   }
 
   void _failMess(message) {
     _stopAnimation();
-
     _snackBar(message);
   }
 
@@ -131,34 +126,20 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
         Theme.of(context).textTheme.button.copyWith(fontSize: 16);
     final screenSize = MediaQuery.of(context).size;
     parentContext = context;
+    final Map arguments = ModalRoute.of(context).settings.arguments as Map;
+    if (arguments != null) print(arguments['fullName']);
+    var fullName = arguments['fullName'];
 
-    _requestPIN(email) {
+    _verifyEmail(email) {
       print("request pin: $email");
-      if (!email.contains("@")) {
-        print(
-            "Please input valid email'Please input valid email'Please input valid email'");
-        _snackBar('Please input valid email');
-      } else if (email == null) {
-        _snackBar('Please input fill in all fields');
-      } else {
-        _playAnimation();
-        Provider.of<UserModel>(context, listen: false)
-            .verifyEmail(code: email, success: _inputPIN, fail: _failMess);
-      }
-    }
-
-    _checkPIN() {
-      if (email == null) {
-        _snackBar('Please input fill in all fields');
-      } else {
-        _playAnimation();
-        print("check this pin $code,  accessToken: $accessToken");
-        Provider.of<UserModel>(context, listen: false).checkPIN(
-            pin: code,
-            token: accessToken,
-            success: _reset_password,
-            fail: _failMess);
-      }
+      _playAnimation();
+      Provider.of<UserModel>(context, listen: false).verifyEmail(
+          fullName: fullName,
+          code: email,
+          success: () {
+            onCorrectPin(context);
+          },
+          fail: _failMess);
     }
 
     return Scaffold(
@@ -230,22 +211,14 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                           child: // Group 6
                               Center(
                             child: TextField(
-                              controller: _emailController,
-                              onChanged: (value) =>
-                                  isEmailSent ? code = value : email = value,
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: isEmailSent
-                                    ? S.of(parentContext).enterPIN
-                                    : S.of(parentContext).enterYourEmail,
-                                hintStyle: kBaseTextStyle.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  color: kSecondaryGrey.withOpacity(0.5),
-                                ),
-                                contentPadding: EdgeInsets.only(left: 20),
-                              ),
-                            ),
+                                controller: _emailController,
+                                onChanged: (value) => code = value,
+                                keyboardType: TextInputType.emailAddress,
+                                decoration: kTextField.copyWith(
+                                  hintText: isEmailSent
+                                      ? S.of(parentContext).enterPIN
+                                      : S.of(parentContext).enterYourEmail,
+                                )),
                           )),
                       SizedBox(height: 16.0),
                       StaggerAnimation(
@@ -254,7 +227,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                               : S.of(context).send,
                           buttonController: _loginButtonController.view,
                           onTap: () {
-                            isEmailSent ? _checkPIN() : _requestPIN(email);
+                            _verifyEmail(code);
                           }),
                     ],
                   ),

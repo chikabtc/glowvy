@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:Dimodo/models/address/address.dart';
@@ -39,7 +41,7 @@ class ShippingAddressSmallCard extends StatelessWidget {
                           style: kBaseTextStyle.copyWith(
                               fontSize: 13,
                               fontWeight: FontWeight.w500,
-                              color: kDarkSecondary)),
+                              color: kSecondaryGrey)),
                     ]),
                     Text(
                       address.ward.province.name +
@@ -51,14 +53,14 @@ class ShippingAddressSmallCard extends StatelessWidget {
                       style: kBaseTextStyle.copyWith(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
-                          color: kDarkSecondary),
+                          color: kSecondaryGrey),
                     ),
                     Text(
                       address.street,
                       style: kBaseTextStyle.copyWith(
                           fontSize: 12,
                           fontWeight: FontWeight.w600,
-                          color: kDarkSecondary),
+                          color: kSecondaryGrey),
                     )
                   ],
                 )

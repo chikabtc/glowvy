@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/generated/i18n.dart';

@@ -1,104 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'constants.dart';
+import 'constants.dart';
+import 'colors.dart';
 
-/// basic colors
-const kTeal50 = Color(0xFFE0F2F1);
-const kTeal100 = Color(0xFF3FC1BE);
+class AppThemeData {
+  final BorderRadius borderRadius = BorderRadius.circular(8);
 
-const kDefaultBackgroundAvatar = '3FC1BE';
-const kDefaultTextColorAvatar = 'EEEEEE';
-const kDefaultAdminBackgroundAvatar = 'EEEEEE';
-const kDefaultAdminTextColorAvatar = '3FC1BE';
+  final Color colorYellow = Color(0xffffff00);
+  final Color colorPrimary = Color(0xffabcdef);
 
-const kTeal400 = Color(0xFF26A69A);
-const kGrey900 = Color(0xFF263238);
-const kGrey600 = Color(0xFF546E7A);
-const kGrey200 = Color(0xFFEEEEEE);
-const kLogoColor = Color(0xFF7CE5C6);
-const kGrey400 = Color(0xFF90a4ae);
-const kErrorRed = Color(0xFFe74c3c);
-const kSurfaceWhite = Color(0xFFFFFBFA);
-const kDefaultBackground = Color(0xfff9f9f9);
-const kSecondaryPink = Color(0xfffF19CB3);
-const kRankingColor = Color(0xfffF0D060);
-const kSecondaryPurple = Color(0xffC3B4F4);
-const kAccentGreen = Color(0xff21CAB0);
-const kSecondaryGreen = Color(0xff63DAC8);
-const kPrimaryGreen = Color(0xff7CE6C6);
-const kPrimaryOrange = Color(0xFFEF4623);
-// const kDefaultBackground = Color(0xffE5E5E5);
-const kAccentRed = Color(0xFFEF4623);
-const kPrimaryBlue = Color(0xff5A81E8);
-const kQuaternaryBlue = Color(0xFFEBEFFA);
-const kSecondaryBlue = Color(0xffBDCDF6);
-const kTertiaryGray = Color(0xffD9D9D9);
-const kDarkYellow = Color(0xffE3B002);
-
-/// color for theme
-const kLightPrimary = Color(0xfffcfcff);
-const kPinkError = Color(0xfffED4D4D);
-const kLightAccent = Color(0xFF546E7A);
-const kDarkAccent = Color(0xFF393E46);
-const kQuaternaryPink = Color(0xFFFEEBEC);
-const kPinkAccent = Color(0xffe85a81);
-const kLightGreen = Color(0xFFE0F3E6);
-const kGreenPrimary = Color(0xFFE0F3E6);
-const kSafetyGreen = Color(0xFF03B836);
-
-const kLightPink = Color(0xfff2eaed);
-const kDefaultFontColor = Color(0xff393e46);
-const kLightBG = Color(0xfff9f9f9);
-const kDarkBG = Color(0xff121212);
-const kDarkBgLight = Color(0xfff9f9f9);
-const kBadgeColor = Colors.red;
-const kPureWhite = Color(0xffffffff);
-const kDarkSecondary = Color(0xff808080);
-// const kLightPurple = Color(0xff7A5AE8).withOpacity(0.1);
-const kAccentPurple = Color(0xff7A5AE8);
-const kLightYellow = Color(0xFFFFEFD8);
-const kSecondaryYellow = Color(0xFFFDD13C);
-
-const kProductTitleStyleLarge = const TextStyle(
-    fontFamily: "BeVietnam", fontSize: 18, fontWeight: FontWeight.bold);
-
-const kTextField = InputDecoration(
-  hintText: 'Enter your value',
-  contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-  border: OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(3.0)),
-  ),
-  enabledBorder: OutlineInputBorder(
-    borderSide: BorderSide(color: Colors.blueGrey, width: 1.0),
-    borderRadius: BorderRadius.all(Radius.circular(3.0)),
-  ),
-);
-
-IconThemeData _customIconTheme(IconThemeData original) {
-  return original.copyWith(color: kGrey900);
+  ThemeData get materialTheme {
+    return ThemeData(primaryColor: colorPrimary);
+  }
 }
 
+var kTextField = InputDecoration(
+  border: InputBorder.none,
+  hintStyle: textTheme.headline5.copyWith(
+    color: theme.hintColor,
+  ),
+  contentPadding: EdgeInsets.only(left: 12),
+);
+var kButton = BoxDecoration(
+  color: kPrimaryOrange,
+  borderRadius: BorderRadius.all(const Radius.circular(16.0)),
+);
+
+// var kButton =
+
 ThemeData buildLightTheme() {
-  final ThemeData base = ThemeData(fontFamily: 'BeVietnam');
+  final ThemeData base = ThemeData(fontFamily: 'Nunito');
+
   return base.copyWith(
-    colorScheme: kColorScheme,
-    buttonColor: kPinkAccent,
-    cardColor: Colors.white,
-    textSelectionColor: kTeal100,
-    errorColor: kErrorRed,
-    buttonTheme: const ButtonThemeData(
-      colorScheme: kColorScheme,
-      textTheme: ButtonTextTheme.normal,
-    ),
+    // dividerColor: ,
+    // colorScheme: kColorScheme,
+    buttonColor: kPrimaryOrange,
+    // cardColor: Colors.white,
+    // textSelectionColor: kTeal100,
+    // errorColor: kErrorRed,
+    // buttonTheme: const ButtonThemeData(
+    //   // colorScheme: kColorScheme,
+
+    //   textTheme: ButtonTextTheme.normal,
+    // ),
     primaryColorLight: kLightBG,
-    primaryIconTheme: _customIconTheme(base.iconTheme),
+    // primaryIconTheme: _customIconTheme(base.iconTheme),
     textTheme: _buildTextTheme(base.textTheme),
     primaryTextTheme: _buildTextTheme(base.primaryTextTheme),
     accentTextTheme: _buildTextTheme(base.accentTextTheme),
-    iconTheme: _customIconTheme(base.iconTheme),
-    hintColor: Colors.black26,
+    // iconTheme: _customIconTheme(base.iconTheme),
+    hintColor: kSecondaryGrey.withOpacity(0.5),
     backgroundColor: kDefaultBackground,
-    primaryColor: kLightPrimary,
+    primaryColor: kPrimaryOrange,
     accentColor: kLightAccent,
     cursorColor: kPinkAccent,
     scaffoldBackgroundColor: kDefaultBackground,
@@ -106,7 +59,7 @@ ThemeData buildLightTheme() {
       elevation: 0,
       textTheme: TextTheme(
         title: TextStyle(
-          fontFamily: "BeVietnam",
+          fontFamily: "Nunito",
           color: kDarkBG,
           fontSize: 18.0,
           fontWeight: FontWeight.w800,
@@ -120,103 +73,104 @@ ThemeData buildLightTheme() {
 }
 
 TextTheme _buildTextTheme(TextTheme base) {
-  return kTextTheme(base)
-      .copyWith(
-        headline: base.headline
-            .copyWith(fontWeight: FontWeight.w500, color: Colors.red),
-        title: base.title.copyWith(
-            fontSize: 18.0, fontFamily: "BeVietnam", color: kDefaultFontColor),
-        caption: base.caption.copyWith(
-            fontFamily: "BeVietnam",
-            fontWeight: FontWeight.w400,
-            fontSize: 14.0,
-            color: kDefaultFontColor),
-        // body1: :base.bod,
-        body2: base.body2.copyWith(
-          fontFamily: "BeVietnam",
-          fontWeight: FontWeight.w400,
+  return kTextTheme(base).copyWith(
+      headline1: base.headline1.copyWith(
+          height: 1.25,
+          fontStyle: FontStyle.italic,
+          fontSize: 24.0,
+          fontWeight: FontWeight.w900,
+          color: kDefaultFontColor),
+      headline2: base.headline2.copyWith(
+          height: 1.25,
+          fontSize: 24.0,
+          fontWeight: FontWeight.bold,
+          color: kDefaultFontColor),
+      headline3: base.headline3.copyWith(
+          height: 1.25,
+          fontSize: 17.0,
+          fontWeight: FontWeight.bold,
+          color: kDefaultFontColor),
+      headline4: base.headline4.copyWith(
+          height: 1.25,
           fontSize: 16.0,
-          color: kDefaultFontColor,
-        ),
-        button: base.button.copyWith(
-          fontFamily: "BeVietnam",
-          fontWeight: FontWeight.w400,
+          fontWeight: FontWeight.w900,
+          fontStyle: FontStyle.italic,
+          color: kDefaultFontColor),
+      headline5: base.headline5.copyWith(
+          height: 1.25,
+          fontSize: 15.0,
+          fontWeight: FontWeight.w600,
+          color: kDefaultFontColor),
+      bodyText1: base.bodyText1.copyWith(
+          height: 1.25,
+          fontStyle: FontStyle.italic,
+          fontSize: 15.0,
+          fontWeight: FontWeight.w600,
+          color: kDefaultFontColor),
+      bodyText2: base.bodyText2.copyWith(
+          height: 1.25,
           fontSize: 14.0,
-          color: kDefaultFontColor,
-        ),
-      )
-      .apply(
-        displayColor: kGrey900,
-        bodyColor: kGrey900,
-      )
-      .copyWith(headline: kHeadlineTheme(base).headline.copyWith());
+          fontWeight: FontWeight.w600,
+          color: kDefaultFontColor));
 }
 
-const ColorScheme kColorScheme = ColorScheme(
-  primary: kTeal100,
-  primaryVariant: kGrey900,
-  secondary: kTeal50,
-  secondaryVariant: kGrey900,
-  surface: kSurfaceWhite,
-  background: kDefaultBackground,
-  error: kErrorRed,
-  onPrimary: kGrey900,
-  onSecondary: kGrey900,
-  onSurface: kGrey900,
-  onBackground: kGrey900,
-  onError: kSurfaceWhite,
-  brightness: Brightness.light,
-);
-
-ThemeData buildDarkTheme() {
-  final ThemeData base = ThemeData.dark();
-  return base.copyWith(
-    cardColor: kDarkBgLight,
-    brightness: Brightness.dark,
-    backgroundColor: kDarkBG,
-    primaryColor: kDarkBG,
-    primaryColorLight: kDarkBgLight,
-    accentColor: kDarkAccent,
-    scaffoldBackgroundColor: kDefaultBackground,
-    cursorColor: kPinkAccent,
-    textTheme: _buildTextTheme(base.textTheme),
-    primaryTextTheme: _buildTextTheme(base.primaryTextTheme),
-    accentTextTheme: _buildTextTheme(base.accentTextTheme),
-    appBarTheme: AppBarTheme(
-      elevation: 0,
-      textTheme: TextTheme(
-        title: TextStyle(
-          fontFamily: "BeVietnam",
-          color: kDarkBG,
-          fontSize: 18.0,
-          fontWeight: FontWeight.w800,
-        ),
-      ),
-      iconTheme: IconThemeData(
-        color: kDarkAccent,
-      ),
-    ),
-  );
+extension CustomTextTheme on TextTheme {
+  TextStyle get button1 => const TextStyle(
+        fontFamily: "Nunito",
+        height: 1.25,
+        color: kDefaultFontColor,
+        fontSize: 15.0,
+        fontWeight: FontWeight.bold,
+      );
+  TextStyle get button2 => const TextStyle(
+        fontFamily: "Nunito",
+        height: 1.25,
+        color: kDefaultFontColor,
+        fontSize: 14.0,
+        fontWeight: FontWeight.w600,
+      );
+  TextStyle get caption1 => const TextStyle(
+        fontFamily: "Nunito",
+        height: 1.25,
+        color: kDefaultFontColor,
+        fontSize: 13.0,
+        fontWeight: FontWeight.w400,
+      );
+  TextStyle get caption2 => const TextStyle(
+        fontFamily: "Nunito",
+        color: kDefaultFontColor,
+        height: 1.25,
+        fontSize: 12.0,
+        fontWeight: FontWeight.w400,
+      );
+  Color get info => const Color(0xFF17a2b8);
+  Color get warning => const Color(0xFFffc107);
+  Color get danger => const Color(0xFFdc3545);
 }
 
-const kMessageContainerDecoration = BoxDecoration(
-  border: Border(
-    top: BorderSide(color: kTeal400, width: 2.0),
-  ),
-);
+extension CustomColorScheme on ColorScheme {
+  Color get success => const Color(0xFF28a745);
+  Color get info => const Color(0xFF17a2b8);
+  Color get warning => const Color(0xFFffc107);
+  Color get danger => const Color(0xFFdc3545);
+}
 
-const kSendButtonTextStyle = TextStyle(
-  color: kTeal400,
-  fontFamily: "BeVietnam",
-  fontWeight: FontWeight.bold,
-  fontSize: 18.0,
-);
+// const ColorScheme kColorScheme = ColorScheme(
+//   primary: kTeal100,
+//   primaryVariant: kGrey900,
+//   secondary: kTeal50,
+//   secondaryVariant: kGrey900,
+//   surface: kSurfaceWhite,
+//   background: kDefaultBackground,
+//   error: kErrorRed,
+//   onPrimary: kGrey900,
+//   onSecondary: kGrey900,
+//   onSurface: kGrey900,
+//   onBackground: kGrey900,
+//   onError: kSurfaceWhite,
+//   brightness: Brightness.light,
+// );
 
-const kMessageTextFieldDecoration = InputDecoration(
-  contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-  hintText: 'Type your message here...',
-  border: InputBorder.none,
-);
 var kBaseTextStyle = TextStyle(
   height: 1.25,
   fontFamily: "Nunito",

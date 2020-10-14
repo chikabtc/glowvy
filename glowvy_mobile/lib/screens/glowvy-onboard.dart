@@ -3,6 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import '../common/constants.dart';
 import '../common/config.dart' as config;
 import '../common/styles.dart';
+import '../common/colors.dart';
+
 import '../common/sizeConfig.dart';
 
 class GlowvyOnBoardScreen extends StatefulWidget {
@@ -39,19 +41,12 @@ class _GlowvyOnBoardScreenState extends State<GlowvyOnBoardScreen> {
                 SvgPicture.asset("assets/icons/onborading-illustration-1.svg"),
                 SizedBox(height: 50),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 39.0),
-                  child: Text(
-                    "Làm Căng Bóng Làn Da",
-                    style: kBaseTextStyle.copyWith(
-                        fontSize: 24,
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.w900),
-                  ),
-                ),
+                    padding: const EdgeInsets.symmetric(horizontal: 39.0),
+                    child: Text("Tỏa sáng làn da", style: textTheme.headline1)),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Text("cung cấp mỹ phẩm phù hợp",
-                      style: kBaseTextStyle.copyWith(
+                  child: Text("Đề xuất cho bạn những mỹ phẩm phù hợp",
+                      style: textTheme.headline5.copyWith(
                           fontSize: 15,
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.w600)),
@@ -72,10 +67,9 @@ class _GlowvyOnBoardScreenState extends State<GlowvyOnBoardScreen> {
                       ),
                       alignment: Alignment.center,
                       child: Text("Khám phá thêm",
-                          style: kBaseTextStyle.copyWith(
-                              fontSize: 15,
-                              color: kPrimaryOrange,
-                              fontWeight: FontWeight.w600))),
+                          style: textTheme.headline5.copyWith(
+                            color: kPrimaryOrange,
+                          ))),
                 ),
                 // MaterialButton(
                 //   color: Colors.white,

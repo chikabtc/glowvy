@@ -2,6 +2,7 @@
 // or this value can load online https://json-inspire-ui.inspire.now.sh/config.json - see document
 import 'package:Dimodo/common/sizeConfig.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'colors.dart';
 
 import 'styles.dart';
 import 'package:rate_my_app/rate_my_app.dart';
@@ -114,12 +115,12 @@ const kProductListLayout = [
 ];
 
 var kFullDivider = Divider(
-  color: kDarkSecondary.withOpacity(0.1),
+  color: kSecondaryGrey.withOpacity(0.1),
   height: 1.0,
   //endIndent: 20,
 );
 var kDivider = Divider(
-  color: kDarkSecondary.withOpacity(0.1),
+  color: kSecondaryGrey.withOpacity(0.1),
   height: 1.0,
   indent: 16,
   //endIndent: 20,
@@ -145,9 +146,13 @@ String kAccessToken;
 List<Product> kProducts;
 
 TextTheme kTextTheme(theme) {
-  return GoogleFonts.latoTextTheme(theme);
+  return GoogleFonts.nunitoTextTheme(theme);
 }
 
 TextTheme kHeadlineTheme(theme) {
   return GoogleFonts.latoTextTheme(theme);
 }
+
+var theme = buildLightTheme();
+var textTheme = buildLightTheme().textTheme;
+var colorTheme = buildLightTheme().colorScheme;

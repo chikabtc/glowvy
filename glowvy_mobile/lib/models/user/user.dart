@@ -7,13 +7,16 @@ part 'user.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class User {
   int id;
-  bool loggedIn;
+  // bool loggedIn;
+  String displayName;
   String firstName;
   String lastName;
   String fullName;
   String email;
   String picture;
   String skinType;
+  int skinTypeId;
+  int age;
   String accessToken;
   Address defaultAddress;
   List<Address> addresses = [];
@@ -21,7 +24,7 @@ class User {
   Billing billing;
   User(
       {this.id,
-      this.loggedIn,
+      // this.loggedIn,
       this.fullName,
       this.email,
       this.picture,
@@ -38,7 +41,7 @@ class User {
       var user = User.fromJson(json["Account"]);
       accessToken = json["AccessToken"];
       id = user.id;
-      loggedIn = user.loggedIn;
+      // loggedIn = user.loggedIn;
       fullName = user.fullName;
       email = user.email;
       skinType = user.skinType;
@@ -58,7 +61,7 @@ class User {
       accessToken = json['AccessToken'];
 
       var user = json['Account'];
-      loggedIn = true;
+      // loggedIn = true;
       id = user['id'];
       // skinType = user.skinType;
 

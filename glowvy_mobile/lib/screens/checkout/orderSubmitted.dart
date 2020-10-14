@@ -1,4 +1,6 @@
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/order/order.dart';
 import 'package:Dimodo/widgets/orderItem.dart';
 import 'package:flutter_mailer/flutter_mailer.dart';
@@ -136,7 +138,7 @@ class _OrderSubmittedState extends State<OrderSubmitted>
                                 hintText: S.of(context).askForFeedback,
                                 hintStyle: kBaseTextStyle.copyWith(
                                     fontSize: 14,
-                                    color: kDarkSecondary.withOpacity(0.5)),
+                                    color: kSecondaryGrey.withOpacity(0.5)),
                                 border: InputBorder.none,
                                 hintMaxLines: 3,
                                 labelStyle: kBaseTextStyle.copyWith(
@@ -364,7 +366,7 @@ class _OrderSubmittedState extends State<OrderSubmitted>
                                 style: kBaseTextStyle.copyWith(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w500,
-                                    color: kDarkSecondary),
+                                    color: kSecondaryGrey),
                               )
                             ],
                           ),

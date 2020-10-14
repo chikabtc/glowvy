@@ -6,6 +6,8 @@ import 'package:Dimodo/widgets/product/product_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/models/product/productModel.dart';
@@ -114,7 +116,7 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
                             indicatorColor: kDarkAccent,
                             unselectedLabelColor: Colors.black,
                             unselectedLabelStyle:
-                                kBaseTextStyle.copyWith(color: kDarkSecondary),
+                                kBaseTextStyle.copyWith(color: kSecondaryGrey),
                             labelStyle: kBaseTextStyle,
                             labelColor: kPinkAccent,
                             onTap: (i) {
@@ -180,7 +182,7 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
             style: kBaseTextStyle.copyWith(
               fontSize: 13,
               fontWeight: FontWeight.w600,
-              color: currentIndex == 0 ? kDarkAccent : kDarkSecondary,
+              color: currentIndex == 0 ? kDarkAccent : kSecondaryGrey,
             )),
       ),
     );
@@ -193,7 +195,7 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
               style: kBaseTextStyle.copyWith(
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
-                color: currentIndex == index + 1 ? kDarkAccent : kDarkSecondary,
+                color: currentIndex == index + 1 ? kDarkAccent : kSecondaryGrey,
               )),
         ),
       );

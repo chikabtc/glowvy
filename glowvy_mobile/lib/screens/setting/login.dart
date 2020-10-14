@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/icons.dart';
 import 'package:provider/provider.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/generated/i18n.dart';
@@ -69,7 +72,7 @@ class _LoginPageState extends State<LoginScreen>
     } else {
       final snackBar = SnackBar(
           content: Text(S.of(context).welcome + ' ${user.fullName} !',
-              style: kBaseTextStyle.copyWith(color: Colors.white)));
+              style: textTheme.headline5.copyWith(color: Colors.white)));
       Scaffold.of(context).showSnackBar(snackBar);
 
       Navigator.of(context).pop();
@@ -82,7 +85,7 @@ class _LoginPageState extends State<LoginScreen>
     final snackBar = SnackBar(
       content: Text(
         '$message',
-        style: kBaseTextStyle.copyWith(color: Colors.white),
+        style: textTheme.headline5.copyWith(color: Colors.white),
       ),
       duration: Duration(seconds: 30),
       action: SnackBarAction(
@@ -102,7 +105,7 @@ class _LoginPageState extends State<LoginScreen>
     if (email == null || password == null) {
       var snackBar = SnackBar(
           content: Text(S.of(context).pleaseInput,
-              style: kBaseTextStyle.copyWith(color: Colors.white)));
+              style: textTheme.headline5.copyWith(color: Colors.white)));
       Scaffold.of(context).showSnackBar(snackBar);
     } else {
       _playAnimation();
@@ -132,10 +135,11 @@ class _LoginPageState extends State<LoginScreen>
   }
 
   _onLoginSuccess(user, context) {
-    Provider.of<CartModel>(context, listen: false)
-        .getAllCartItems(Provider.of<UserModel>(context, listen: false));
+    // Provider.of<CartModel>(context, listen: false)
+    //     .getAllCartItems(Provider.of<UserModel>(context, listen: false));
     _stopAnimation();
     _welcomeMessage(user, context);
+    Navigator.pop(context);
   }
 
   _onLoginFailure(message, context) {
@@ -179,13 +183,8 @@ class _LoginPageState extends State<LoginScreen>
       backgroundColor: Colors.white,
       appBar: AppBar(
         brightness: Brightness.light,
-        leading: Navigator.of(context).canPop()
-            ? IconButton(
-                icon: CommonIcons.arrowBackward,
-                onPressed: () {
-                  Navigator.of(context).pop();
-                })
-            : Container(),
+        leading:
+            Navigator.of(context).canPop() ? backIcon(context) : Container(),
         actions: <Widget>[
           FlatButton(
             child: Text(S.of(context).signup,
@@ -218,10 +217,7 @@ class _LoginPageState extends State<LoginScreen>
                             children: <Widget>[
                               Text(
                                 S.of(parentContext).login,
-                                style: kBaseTextStyle.copyWith(
-                                    fontStyle: FontStyle.italic,
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: 24),
+                                style: textTheme.headline1,
                               )
                             ],
                           ),
@@ -238,21 +234,14 @@ class _LoginPageState extends State<LoginScreen>
                           child: // Group 6
                               Center(
                             child: TextField(
-                              controller: _emailController,
-                              cursorColor: kPrimaryOrange,
-                              style: kBaseTextStyle.copyWith(
-                                  color: kPrimaryOrange),
-                              onChanged: (value) => email = value,
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                hintText: S.of(parentContext).email,
-                                hintStyle: kBaseTextStyle.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  color: kDarkSecondary.withOpacity(0.5),
-                                ),
-                                contentPadding: EdgeInsets.only(left: 20),
-                              ),
-                            ),
+                                controller: _emailController,
+                                cursorColor: theme.cursorColor,
+                                style: textTheme.headline5
+                                    .copyWith(color: kPrimaryOrange),
+                                onChanged: (value) => email = value,
+                                decoration: kTextField.copyWith(
+                                  hintText: S.of(parentContext).email,
+                                )),
                           )),
                       const SizedBox(height: 12.0),
                       Container(
@@ -265,20 +254,14 @@ class _LoginPageState extends State<LoginScreen>
                           child: // Group 6
                               Center(
                             child: TextField(
-                                cursorColor: kPinkAccent,
-                                style: kBaseTextStyle.copyWith(
-                                    color: kPrimaryOrange),
+                                cursorColor: theme.cursorColor,
+                                style: textTheme.headline5
+                                    .copyWith(color: kPrimaryOrange),
                                 onChanged: (value) => password = value,
                                 obscureText: true,
                                 controller: _passwordController,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
+                                decoration: kTextField.copyWith(
                                   hintText: S.of(parentContext).password,
-                                  hintStyle: kBaseTextStyle.copyWith(
-                                    fontWeight: FontWeight.w600,
-                                    color: kDarkSecondary.withOpacity(0.5),
-                                  ),
-                                  contentPadding: EdgeInsets.only(left: 20),
                                 )),
                           )),
                       SizedBox(
@@ -303,71 +286,69 @@ class _LoginPageState extends State<LoginScreen>
                               borderRadius: new BorderRadius.circular(25.0),
                               side: BorderSide(color: kPinkAccent, width: 1.5)),
                           child: Text(S.of(context).forgotpassword,
-                              style: kBaseTextStyle.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 14,
-                                  color: kPinkAccent)),
+                              style: textTheme.button2
+                                  .copyWith(color: kPinkAccent)),
                           onPressed: () {
                             if (!isLoading) {
                               Navigator.of(context)
-                                  .pushReplacementNamed('/forgot_password');
+                                  .pushReplacementNamed('/verify_email');
                             }
                           }),
                       SizedBox(
                         height: 24.0,
                       ),
-                      Text(S.of(context).loginWithSNS,
-                          style: TextStyle(
-                              fontSize: 12, color: Colors.grey.shade400)),
-                      SizedBox(
-                        height: 24.0,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          MaterialButton(
-                            color: kPrimaryOrange,
-                            minWidth: 48,
-                            height: 48,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(16.0)),
-                            onPressed: () => _loginFacebook(context),
-                            child: SvgPicture.asset(
-                              'assets/icons/facebook-social.svg',
-                              width: 24,
-                            ),
-                            elevation: 0.0,
-                          ),
-                          SizedBox(width: 35),
-                          MaterialButton(
-                            color: kPrimaryOrange,
-                            minWidth: 48,
-                            height: 48,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(16.0)),
-                            onPressed: () => _loginGoogle(context),
-                            child: SvgPicture.asset(
-                              'assets/icons/google-social.svg',
-                              width: 24,
-                            ),
-                            elevation: 0.0,
-                          ),
-                          SizedBox(width: 35),
-                          MaterialButton(
-                            color: kPrimaryOrange,
-                            minWidth: 48,
-                            height: 48,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: new BorderRadius.circular(16.0)),
-                            onPressed: () => _loginApple(context),
-                            child: SvgPicture.asset(
-                              'assets/icons/apple.svg',
-                              width: 24,
-                            ),
-                            elevation: 0.0,
-                          ),
-                        ],
-                      ),
+                      // Text(S.of(context).loginWithSNS,
+                      //     style: TextStyle(
+                      //         fontSize: 12, color: Colors.grey.shade400)),
+                      // SizedBox(
+                      //   height: 24.0,
+                      // ),
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.center,
+                      //   children: <Widget>[
+                      //     MaterialButton(
+                      //       color: kPrimaryOrange,
+                      //       minWidth: 48,
+                      //       height: 48,
+                      //       shape: RoundedRectangleBorder(
+                      //           borderRadius: new BorderRadius.circular(16.0)),
+                      //       onPressed: () => _loginFacebook(context),
+                      //       child: SvgPicture.asset(
+                      //         'assets/icons/facebook-social.svg',
+                      //         width: 24,
+                      //       ),
+                      //       elevation: 0.0,
+                      //     ),
+                      //     SizedBox(width: 35),
+                      //     MaterialButton(
+                      //       color: kPrimaryOrange,
+                      //       minWidth: 48,
+                      //       height: 48,
+                      //       shape: RoundedRectangleBorder(
+                      //           borderRadius: new BorderRadius.circular(16.0)),
+                      //       onPressed: () => _loginGoogle(context),
+                      //       child: SvgPicture.asset(
+                      //         'assets/icons/google-social.svg',
+                      //         width: 24,
+                      //       ),
+                      //       elevation: 0.0,
+                      //     ),
+                      //     SizedBox(width: 35),
+                      //     MaterialButton(
+                      //       color: kPrimaryOrange,
+                      //       minWidth: 48,
+                      //       height: 48,
+                      //       shape: RoundedRectangleBorder(
+                      //           borderRadius: new BorderRadius.circular(16.0)),
+                      //       onPressed: () => _loginApple(context),
+                      //       child: SvgPicture.asset(
+                      //         'assets/icons/apple.svg',
+                      //         width: 24,
+                      //       ),
+                      //       elevation: 0.0,
+                      //     ),
+                      //   ],
+                      // ),
                     ],
                   ),
                 );

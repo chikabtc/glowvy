@@ -1,4 +1,6 @@
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:flutter/material.dart';
 import '../common/tools.dart';
 import 'package:intl/intl.dart';
@@ -61,7 +63,7 @@ class _ShoppingCartSummaryState extends State<ShoppingCartSummary> {
               Text(
                 S.of(context).includingTaxAndFee,
                 style: kBaseTextStyle.copyWith(
-                    fontSize: 12, color: kDarkSecondary),
+                    fontSize: 12, color: kSecondaryGrey),
               ),
               Center(child: SvgPicture.asset('assets/icons/cart/info.svg')),
               Spacer(),

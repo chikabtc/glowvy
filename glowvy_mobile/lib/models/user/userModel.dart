@@ -1,4 +1,5 @@
 import 'package:Dimodo/models/user/skinScores.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:localstorage/localstorage.dart';
@@ -10,6 +11,7 @@ import '../../services/index.dart';
 import 'user.dart';
 import '../address/address.dart';
 import '../../generated/i18n.dart';
+import 'package:firebase_auth/firebase_auth.dart' as b;
 
 class UserModel with ChangeNotifier {
   UserModel() {
@@ -30,7 +32,7 @@ class UserModel with ChangeNotifier {
     await getUser();
     await getSkinType();
     await getSkinScores();
-    await getShippingAddress();
+    // await getShippingAddress();
     await getUserCosmeticsTypesPref();
   }
 
@@ -43,30 +45,6 @@ class UserModel with ChangeNotifier {
       user.firstName = firstName;
       user.lastName = lastName;
       print("fail to set name");
-    }
-  }
-
-  void login({email, password, Function success, Function fail}) async {
-    try {
-      loading = true;
-      notifyListeners();
-      user = await _service.login(
-        email: email,
-        password: password,
-      );
-      kAccessToken = user.accessToken;
-      isLoggedIn = true;
-
-      user.addresses = await _service.getAllAddresses(token: user.accessToken);
-
-      saveUser(user);
-      success(user);
-      loading = false;
-      notifyListeners();
-    } catch (err) {
-      loading = false;
-      fail(err.toString());
-      notifyListeners();
     }
   }
 
@@ -89,7 +67,7 @@ class UserModel with ChangeNotifier {
 
           print('accessToken$accessToken');
 
-          saveUser(user);
+          // saveUser(user);
           success(user);
           break;
         case FacebookLoginStatus.cancelledByUser:
@@ -303,20 +281,56 @@ class UserModel with ChangeNotifier {
     }
   }
 
-  void requestPIN({email, Function success, Function fail}) async {
+  // void requestPIN({email, Function success, Function fail}) async {
+  //   try {
+  //     loading = true;
+  //     notifyListeners();
+  //     var accessToken = await _service.requestPIN(
+  //       email: email,
+  //     );
+  //     print("user request accessToken: $accessToken");
+  //     isLoggedIn = true;
+  //     success(accessToken);
+  //     loading = false;
+  //     notifyListeners();
+  //   } catch (err) {
+  //     fail(err.toString());
+  //     loading = false;
+  //     notifyListeners();
+  //   }
+  // }
+
+  void verifyEmail({fullName, code, Function success, Function fail}) async {
+    b.FirebaseAuth auth = b.FirebaseAuth.instance;
+
+    String code = 'xxxxxxx';
+
     try {
-      loading = true;
-      notifyListeners();
-      var accessToken = await _service.requestPIN(
-        email: email,
-      );
-      print("user request accessToken: $accessToken");
-      isLoggedIn = true;
-      success(accessToken);
-      loading = false;
-      notifyListeners();
-    } catch (err) {
-      fail(err.toString());
+      // await auth.checkActionCode(code);
+      // await auth.applyActionCode(code);
+      // isLoggedIn = true;
+      if (b.FirebaseAuth.instance.currentUser.emailVerified) {
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(auth.currentUser.uid)
+            .set({
+          'full_name': fullName,
+        });
+      } else {
+        loading = false;
+        notifyListeners();
+        fail("email is not verified");
+      }
+      // add the user doc to the firestore db
+
+      auth.currentUser.reload();
+    } on b.FirebaseAuthException catch (e) {
+      if (e.code == 'invalid-action-code') {
+        print('The code is invalid.');
+        //delete the user
+        await b.FirebaseAuth.instance.currentUser.delete();
+      }
+      fail(e.toString());
       loading = false;
       notifyListeners();
     }
@@ -359,24 +373,57 @@ class UserModel with ChangeNotifier {
   void createUser(
       {fullName, email, password, Function success, Function fail}) async {
     try {
+      b.UserCredential userCredential = await b.FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: email, password: password);
+      var firebaseUser = b.FirebaseAuth.instance.currentUser;
+
+// firebase.auth().currentUser.sendEmailVerification()
+
+      if (!firebaseUser.emailVerified) {
+        await firebaseUser.sendEmailVerification();
+      }
+
       loading = true;
-      notifyListeners();
-      user = await _service.createUser(
-        fullName: fullName,
-        email: email,
-        password: password,
-      );
-      print("Creating user: ${user}");
       isLoggedIn = true;
+      var user = User();
       saveUser(user);
       success(user);
-
       loading = false;
       notifyListeners();
-    } catch (err) {
-      var stringErr = err.toString();
-      fail(stringErr);
+    } on b.FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        fail(e.toString());
+        throw Exception('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        fail('The account already exists for that email.');
+      }
+    } catch (e) {
       loading = false;
+      fail(e.toString());
+      notifyListeners();
+      // throw Exception(e);
+    }
+  }
+
+  void login({email, password, Function success, Function fail}) async {
+    try {
+      b.UserCredential userCredential = await b.FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
+      var firebaseUser = userCredential.user;
+      loading = true;
+      isLoggedIn = true;
+      var user = User();
+      user.fullName = firebaseUser.displayName;
+      saveUser(user);
+      success(user);
+      loading = false;
+      notifyListeners();
+    } on b.FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        fail('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        fail('Wrong password provided for that user.');
+      }
       notifyListeners();
     }
   }

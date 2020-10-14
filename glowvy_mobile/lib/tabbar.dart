@@ -39,10 +39,10 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
     //     context,
     //     lang: Provider.of<AppModel>(context, listen: false).locale);
     //wait for the user to login..
-    Future.delayed(const Duration(milliseconds: 1000), () {
-      Provider.of<CartModel>(context, listen: false)
-          .getAllCartItems(Provider.of<UserModel>(context, listen: false));
-    });
+    // Future.delayed(const Duration(milliseconds: 1000), () {
+    //   Provider.of<CartModel>(context, listen: false)
+    //       .getAllCartItems(Provider.of<UserModel>(context, listen: false));
+    // });
   }
 
   Widget tabView(Map<String, dynamic> data) {

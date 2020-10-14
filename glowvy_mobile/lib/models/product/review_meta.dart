@@ -5,7 +5,7 @@ part 'review_meta.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class ReviewMeta {
   double averageRating;
-  double reviewCount;
+  int reviewCount;
   double rankingScore;
 //come
   ReviewMeta(

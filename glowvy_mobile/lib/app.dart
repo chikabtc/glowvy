@@ -11,6 +11,7 @@ import 'package:Dimodo/screens/search_screen.dart';
 import 'package:Dimodo/screens/setting/add_shipping_address.dart';
 import 'package:Dimodo/screens/setting/reset_password.dart';
 import 'package:Dimodo/screens/setting/manage_address.dart';
+import 'package:Dimodo/screens/setting/verify__email.dart';
 import 'package:after_layout/after_layout.dart';
 import 'package:firebase_analytics/observer.dart';
 import 'package:localstorage/localstorage.dart';
@@ -223,16 +224,10 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
                 '/setting': (context) => SettingScreen(),
                 '/category': (context) => CategoryScreen(),
                 '/sub_category': (context) => SubCategoryScreen(),
-                '/forgot_password': (context) => ForgotPasswordScreen(),
+                '/verify_email': (context) => VerifyEmailScreen(),
                 '/reset_password': (context) => ResetPasswordScreen(),
               },
-              theme: Provider.of<AppModel>(context, listen: false).darkTheme
-                  ? buildDarkTheme().copyWith(
-                      primaryColor:
-                          HexColor(_app.appConfig["Setting"]["MainColor"]))
-                  : buildLightTheme().copyWith(
-                      primaryColor:
-                          HexColor(_app.appConfig["Setting"]["MainColor"])),
+              theme: buildLightTheme(),
             ),
           );
         },

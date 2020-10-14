@@ -1,5 +1,8 @@
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/screens/request_cosmetics.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/widgets/product/cosmetics_product_card.dart';
 import 'package:flutter/material.dart';
@@ -92,15 +95,65 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
         : _products.length == 0
             ? Container(
                 width: screenSize.width,
-                height: screenSize.height / 2,
-                child: Center(
-                  child: Text(
-                    "không tìm thấy sản phẩm",
-                    style: kBaseTextStyle.copyWith(
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
-                        color: kDarkYellow),
-                  ),
+                // height: screenSize.height / 3,
+                child: Column(
+                  children: [
+                    Container(height: 41),
+                    Center(
+                      child: Text(
+                        "không tìm thấy sản phẩm",
+                        style:
+                            textTheme.bodyText2.copyWith(color: kTertiaryGray),
+                      ),
+                    ),
+                    Container(height: 14),
+                    SvgPicture.asset('assets/images/banner_request.svg'),
+                    GestureDetector(
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => CosmeticsRequestScreen())),
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 20.0, right: 20, bottom: 30),
+                        child: Container(
+                          height: 72,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                              color: kSecondaryOrange),
+                          padding: EdgeInsets.only(
+                              left: 16, right: 30, top: 14, bottom: 14),
+                          child: Row(
+                            children: <Widget>[
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    "Thích/không thích ứng dụng?",
+                                    style: textTheme.headline3.copyWith(
+                                      color: kPrimaryOrange,
+                                    ),
+                                  ),
+                                  Text(
+                                    "Làm khảo sát bây giờ",
+                                    // textAlign: TextAlign.center,
+                                    style: textTheme.headline5.copyWith(
+                                      color: kPrimaryOrange,
+                                      fontStyle: FontStyle.italic,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              Spacer(),
+                              SvgPicture.asset(
+                                  "assets/icons/arrow-more-red.svg")
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               )
             : NotificationListener<ScrollNotification>(

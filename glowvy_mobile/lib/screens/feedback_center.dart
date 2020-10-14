@@ -1,4 +1,5 @@
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/icons.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/baumann_quiz.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
@@ -8,6 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mailer/flutter_mailer.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:provider/provider.dart';
 import 'dart:math';
@@ -36,14 +39,13 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
             elevation: 0,
             title: Text(
               "Phản hồi",
-              style: kBaseTextStyle.copyWith(
-                  color: kPrimaryBlue,
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold),
+              style: textTheme.headline3.copyWith(
+                color: kPrimaryBlue,
+              ),
             ),
             // expandedHeight: screenSize.height * 0.3,
             brightness: Brightness.light,
-            leading: CommonIcons.backIcon(context, color: kPrimaryBlue),
+            leading: backIcon(context, color: kPrimaryBlue),
             backgroundColor: kQuaternaryBlue),
         body: SafeArea(
           bottom: false,
@@ -86,19 +88,17 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                                   children: <Widget>[
                                     Text(
                                       "Thích/không thích ứng dụng?",
-                                      style: kBaseTextStyle.copyWith(
-                                          color: kPrimaryBlue,
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.bold),
+                                      style: textTheme.headline3.copyWith(
+                                        color: kPrimaryBlue,
+                                      ),
                                     ),
                                     Text(
                                       "Làm khảo sát bây giờ",
                                       // textAlign: TextAlign.center,
-                                      style: kBaseTextStyle.copyWith(
-                                          color: kPrimaryBlue,
-                                          fontStyle: FontStyle.italic,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w600),
+                                      style: textTheme.headline5.copyWith(
+                                        color: kPrimaryBlue,
+                                        fontStyle: FontStyle.italic,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -133,13 +133,9 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                           child: Column(
                             children: <Widget>[
                               SizedBox(height: 15),
-                              Text(
-                                "Để giúp Glowvy phát triển hơn, bạn có thể:",
-                                style: kBaseTextStyle.copyWith(
-                                    color: kDarkSecondary,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold),
-                              ),
+                              Text("Để giúp Glowvy phát triển hơn, bạn có thể:",
+                                  style: textTheme.headline3
+                                      .copyWith(color: kSecondaryGrey)),
                               TextWithIcon(
                                   "Đề xuất tính năng bạn muốn thêm vào trong ứng dụng",
                                   "assets/icons/blue-smiley-face.svg"),
@@ -171,7 +167,7 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                                   alignment: Alignment.center,
                                   child: Text(
                                     "Phát triển Glowvy",
-                                    style: kBaseTextStyle.copyWith(
+                                    style: textTheme.headline5.copyWith(
                                         color: Colors.white,
                                         fontSize: 15,
                                         fontWeight: FontWeight.bold),
@@ -207,8 +203,8 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                                     child: Text(
                                       "Có vấn đề với ứng dụng? Hãy gửi mail cho nhà phát triển! Glowvy team sẽ phản hồi nhanh nhất có thể.",
                                       textAlign: TextAlign.center,
-                                      style: kBaseTextStyle.copyWith(
-                                          color: kDarkSecondary,
+                                      style: textTheme.headline4.copyWith(
+                                          color: kSecondaryGrey,
                                           fontSize: 16,
                                           fontStyle: FontStyle.italic,
                                           fontWeight: FontWeight.w600),
@@ -233,7 +229,7 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                                           child: Text(
                                               "Liên hệ nhà phát triển Glowvy",
                                               textAlign: TextAlign.center,
-                                              style: kBaseTextStyle.copyWith(
+                                              style: textTheme.button1.copyWith(
                                                   color: kPrimaryBlue,
                                                   fontSize: 15,
                                                   fontWeight: FontWeight.bold)),
@@ -278,10 +274,9 @@ class TextWithIcon extends StatelessWidget {
           Flexible(
             child: Text(
               text,
-              style: kBaseTextStyle.copyWith(
-                  color: kDarkSecondary,
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600),
+              style: textTheme.headline5.copyWith(
+                color: kSecondaryGrey,
+              ),
             ),
           ),
         ],

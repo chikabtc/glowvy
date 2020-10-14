@@ -5,6 +5,9 @@ import 'dart:math';
 import '../../common/constants.dart';
 import '../../widgets/image_galery.dart';
 import '../../common/styles.dart';
+
+import '../../common/colors.dart';
+
 import '../../models/review.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 
@@ -92,11 +95,12 @@ class IngredientCard extends StatelessWidget {
                     style:
                         TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
                 SizedBox(height: 3),
-                Text(ingredient.purposes.join(','),
-                    style: TextStyle(
-                        color: kDarkSecondary,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500)),
+                if (ingredient.purposes[0] != null)
+                  Text(ingredient.purposes.join(','),
+                      style: TextStyle(
+                          color: kSecondaryGrey,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500)),
                 SizedBox(height: 14),
                 if (showDivider) Divider(color: Colors.black.withOpacity(0.1)),
               ],

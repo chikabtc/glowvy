@@ -1,4 +1,6 @@
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/widgets/orderItem.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -248,7 +250,7 @@ class _ConfirmOrderState extends State<ConfirmOrder>
                                 Text(
                                   S.of(context).needHelp,
                                   style: kBaseTextStyle.copyWith(
-                                      color: kDarkSecondary,
+                                      color: kSecondaryGrey,
                                       fontSize: 13,
                                       fontWeight: FontWeight.w500),
                                   textAlign: TextAlign.center,

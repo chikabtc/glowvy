@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 
 import '../common/constants.dart';
 import '../common/styles.dart';
+import '../common/colors.dart';
+
 import '../common/tools.dart';
 import '../models/product/product.dart';
 import '../models/app.dart';
@@ -106,7 +108,7 @@ class _CartItemRowState extends State<CartItemRow> {
                                       style: kBaseTextStyle.copyWith(
                                           fontSize: 12,
                                           fontWeight: FontWeight.w500,
-                                          color: kDarkSecondary),
+                                          color: kSecondaryGrey),
                                     ),
                                   ),
                                 ),
@@ -149,7 +151,7 @@ class _CartItemRowState extends State<CartItemRow> {
                                               fontSize: 14,
                                               fontWeight: FontWeight.bold,
                                               color: widget.isOrder
-                                                  ? kDarkSecondary
+                                                  ? kSecondaryGrey
                                                   : kPinkAccent)),
                                       Spacer(),
                                       Row(
@@ -186,7 +188,7 @@ class _CartItemRowState extends State<CartItemRow> {
                                                     Radius.circular(6.0)),
                                                 border: Border.all(
                                                     style: BorderStyle.solid,
-                                                    color: kGrey200,
+                                                    // color: kGrey200,
                                                     width: 1.5)),
                                             child: Text(
                                               quantity.toString(),
@@ -194,7 +196,7 @@ class _CartItemRowState extends State<CartItemRow> {
                                               style: kBaseTextStyle.copyWith(
                                                   fontSize: 13,
                                                   fontWeight: FontWeight.w600,
-                                                  color: kDarkSecondary),
+                                                  color: kSecondaryGrey),
                                             ),
                                           ),
                                           SizedBox(width: 3),

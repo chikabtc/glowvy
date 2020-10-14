@@ -2,6 +2,8 @@ import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:Dimodo/common/styles.dart';
+
+import 'package:Dimodo/common/colors.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SkinScore extends StatelessWidget {

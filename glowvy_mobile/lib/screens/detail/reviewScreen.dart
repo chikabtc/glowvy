@@ -3,6 +3,9 @@ import '../../common/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../common/styles.dart';
+
+import '../../common/colors.dart';
+
 import '../../generated/i18n.dart';
 import '../../models/reviews.dart';
 import '../../services/index.dart';
@@ -103,7 +106,7 @@ class _StateReviews extends State<ReviewScreen>
                                           "${S.of(context).reviews} (${metaReviews.totalCount})",
                                           style: kBaseTextStyle.copyWith(
                                               fontSize: 13,
-                                              color: kDarkSecondary,
+                                              color: kSecondaryGrey,
                                               fontWeight: FontWeight.w600)),
                                       Spacer(),
                                       Container(
@@ -172,7 +175,7 @@ class _StateReviews extends State<ReviewScreen>
                                             "Load More",
                                             style: kBaseTextStyle.copyWith(
                                                 fontSize: 15,
-                                                color: kDarkSecondary,
+                                                color: kSecondaryGrey,
                                                 fontWeight: FontWeight.w600),
                                           )),
                                         ),

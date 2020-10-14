@@ -186,7 +186,7 @@
         "id": 2
       },
       {
-        "name": "da dầu",
+        "name": "dầu",
         "id": 3
       }
     ]
@@ -320,7 +320,7 @@
     "description3": "Phần này đo lường xu hướng hình thành melanin của da bạn, một sắc tố da tạo ra các tông màu da tối hơn cũng như các mảng tối, tàn nhang và các vùng da sau khi bị tàn phá (như thường thấy sau khi bị mụn).",
     "description4": "Tuổi tác, dân tộc và thói quen sinh hoạt ảnh hưởng đến việc da dễ bị nhăn hay căng. Vẫn còn một thành phần di truyền cho thông số này, nhưng các yếu tố bên ngoài góp phần làm vẻ ngoài của bạn bị già nua có thể kiểm soát được. Lão hóa da, phá hủy các protein da như collagen và elastin.",
     "sensitive-type-tips": [{
-        "title": "Ngủ sớm. Từ 10h tối đến 2h sáng là thời gian chữa lành da của bạn.",
+        "title": "Ngủ sớm. 10h tối đến 2h sáng là thời gian hợp lý nhất để làn da của bạn được phục hồi.",
         "explanation": ""
       },
 
@@ -341,7 +341,7 @@
         "explanation": "Hầu hết các loại nước hoa có chứa hóa chất có thể làm cho làn da nhạy cảm ngứa và đỏ."
       },
       {
-        "title": "Không bao giờ tắm lâu hơn 5 phút và luôn luôn sử dụng nước ấm",
+        "title": "Không tắm lâu hơn 5 phút và luôn luôn sử dụng nước ấm.",
         "explanation": "Thật là vô lý khi nói rằng lỗ chân lông được mở bằng nước nóng để rửa trôi bã nhờn và chất thải, và sau đó nước lạnh được đổ lên lỗ chân lông để thu nhỏ lỗ chân lông. Da của chúng ta bao gồm 60% protein, 20% lipid và 20% độ ẩm nên da dễ bị tổn thương khi chịu sự chênh lệch nhiệt độ cao."
       },
       {
@@ -373,11 +373,11 @@
       "type": "",
       "explanation": "why"
     }],
-    "skin-types-explanations": {
-      "OSPT": "Da nhờn, nhạy cảm, nám và căng được đặc trưng bởi đỏ da mặt hoặc đỏ bừng, nổi mụn, hoặc nổi mẩn và kích ứng da thường xuyên. Các vấn đề viêm liên quan đến loại này thường được theo sau bởi một vùng da tối màu bị ảnh hưởng bởi mụn nhọt hoặc kích ứng da. Các mảng tối như nám và tàn nhang xảy ra thường xuyên.\n\nGlowvy Giải thích : \n\nTuy nhiên, khi già đi, loại hệ điều hành trở nên ít nhạy cảm hơn và da nhờn của nó hoạt động như kem chống nắng tự nhiên. Vì vậy, họ sẽ trông trẻ hơn ở độ tuổi 40 cho tuổi của họ. Loại da này thường có hay bị đỏ  và hay trang điểm đậm  để che giấu điều đó . Nhưng vì trang điểm đậm đòi hỏi phải làm sạch nhiều lần, nó khiến da nhạy cảm hơn và làm hỏng hàng rào bảo vệ của da.",
-      "OSPW": "Loại da của anh ta có thể được xác định là da dầu, nám, nhạy cảm và nhăn. Bạn có thể thấy rằng da được đặc trưng bởi các nốt mụn, đỏ mặt hoặc đỏ bừng, hoặc thậm chí dễ bị nổi mẩn và kích ứng da. Da sẫm màu ở các khu vực là kết quả của vấn đề viêm. Trong một số trường hợp, các mảng tối như nám và tàn nhang xảy ra.\n\nGlowvy giải thích\n\nTuy nhiên, khi già đi, loại hệ điều hành trở nên ít nhạy cảm hơn và da nhờn của nó hoạt động như kem chống nắng tự nhiên. Vì vậy, họ sẽ trông trẻ hơn ở độ tuổi 40 cho tuổi của họ. Loại da này  thường có hay bị đỏ  và hay trang điểm đậm  để che giấu điều đó . Nhưng vì trang điểm đậm đòi hỏi phải làm sạch nhiều lần, nó khiến da nhạy cảm hơn và làm hỏng hàng rào bảo vệ của da.",
-      "OSNW": "Da nhờn, kháng, không nám và da nhăn nheo hiếm khi bị nhạy cảm như mụn trứng cá, đỏ mặt hoặc nổi mẩn da. Loại da này có ít sắc tố da bảo vệ hơn và do đó có xu hướng nhăn do thói quen lối sống hiện tại hoặc trong quá khứ như phơi nắng hoặc hút thuốc lá. \n\nGlowvy giải thích:\n\nTuy nhiên, khi già đi, loại hệ điều hành trở nên ít nhạy cảm hơn và da nhờn của nó hoạt động như kem chống nắng tự nhiên. Vì vậy, họ sẽ trông trẻ hơn ở độ tuổi 40 cho tuổi của họ. thường có hay bị đỏ  và hay trang điểm đậm  để che giấu điều đó . Nhưng vì trang điểm đậm đòi hỏi phải làm sạch nhiều lần, nó khiến da nhạy cảm hơn và làm hỏng hàng rào bảo vệ của da.",
 
+    "skin-types-explanations": {
+      "OSPT": "Làn da dầu nhạy cảm của bạn sẽ thường có các đặc điểm như: lỗ chân lông to, da bóng nhờn dễ nổi mụn, dễ ửng đỏ hoặc (và) mẩn đỏ, và thường xảy ra kích ứng. Bạn cũng rất có khả năng gặp phải tình trạng thâm do mụn hoặc sạm, nám và tàn nhang. Tuyệt đối đừng lạm dụng lớp trang điểm để che đi những vết mụn đỏ hay thâm nám, chúng chỉ khiến da bạn ngày càng nhạy cảm so với lúc ban đầu đấy!\n\nTuy nhiên khi bắt đầu qua tuổi 40, khi da bạn trở nên ít nhạy cảm, nó sẽ bắt đầu có xu hướng trẻ đẹp hơn nhờ vào lớp dầu tự nhiên trên da. Sản phẩm hồi phục da tốt nhất dành cho làn da bạn không gì khác ngoài kem chống nắng! Đừng bao giờ quên sử dụng chúng hằng ngày nhé. Bạn có thể tham khảo thêm các sản phẩm đặc trị thâm nám giúp da trở nên đều màu hơn.",
+      "OSPW": "Làn da dầu nhạy cảm của bạn sẽ thường có các đặc điểm như: dễ nổi mụn, da dễ ửng đỏ hoặc (và) mẩn đỏ, và thường xảy ra kích ứng. Bạn cũng rất có khả năng gặp phải tình trạng thâm do mụn hoặc sạm đen do nám và tàn nhang. Việc có một lối sống không tốt cho làn da  cũng là một trong những nguyên nhân chính khiến da bạn trở nên nhăn nheo hơn. \n\nNgoài ra, tuyệt đối đừng lạm dụng lớp trang điểm để che đi những vết mụn đỏ hay thâm nám, chúng chỉ khiến da bạn ngày càng nhạy cảm so với lúc ban đầu đấy!Quy trình chăm sóc da của bạn nên có những sản phẩm phù hợp.Đặc biệt, đừng bao giờ quên sử dụng kem chống nắng nhé!",
+      "OSNW": "Làn da dầu nhạy cảm của bạn sẽ thường có các đặc điểm như: lỗ chân lông to, da bóng nhờn dễ nổi mụn, dễ ửng đỏ hoặc (và) mẩn đỏ, và thường xảy ra kích ứng. Những người sở hữu làn da giống bạn sẽ gặp nguy cơ mắc chứng rosacea (chứng đỏ mặt) cao hơn các kiểu da khác. Bạn có thể đến gặp bác sĩ chuyên khoa để có phác đồ điều trị chứng rosacea một cách hiệu quả và phù hợp.\n\n Da bạn cũng có xu hướng trở nên dễ nhăn nheo hơn do có ít sắc tố bảo vệ da hay thói quen sống không khoa học. Tuyệt đối đừng lạm dụng lớp trang điểm để che đi những vết mụn đỏ, chúng chỉ khiến lớp da bạn ngày càng nhạy cảm đấy. Một thành phần chống lão hóa phù hợp cho da bạn chính là retinoid. Và đừng bao giờ quên sử dụng kem chống nắng hàng ngày nhé!",
       "OSNT": "Da nhờn, nhạy cảm, không nám và căng  được đặc trưng bởi các nốt mụn hoặc đỏ mặt và đỏ ửng, hoặc nổi mẩn da và kích ứng da thường xuyên. Những người có loại da này có xu hướng bị mụn nhiều hơn ở độ tuổi 30.\n\nTuy nhiên, khi già đi, loại hệ điều hành trở nên ít nhạy cảm hơn và da nhờn của nó hoạt động như kem chống nắng tự nhiên. Vì vậy, họ sẽ trông trẻ hơn ở độ tuổi 40 cho tuổi của họ. Loại OSNT thường có hay bị đỏ  và hay trang điểm đậm  để che giấu điều đó . Nhưng vì trang điểm đậm đòi hỏi phải làm sạch nhiều lần, nó khiến da nhạy cảm hơn và làm hỏng hàng rào bảo vệ của da.",
       "DSPW": "Da khô, nhạy cảm, nám và nhăn được đặc trưng bởi các nốt mụn và / hoặc đỏ mặt và đỏ ửng. Những vấn đề viêm này thường được theo sau bởi một làn da sẫm màu nơi nổi mụn hoặc kích ứng da. Hàng rào bảo vệ da của bạn rất yếu và điều này làm cho nó dễ bị mẩn ngứa và mất nước hơn, điều đó cũng có nghĩa là bạn sẽ dễ bị các đốm đen hơn. Điều quan trọng cần lưu ý là da bạn sẽ có khả năng bị nhăn và lão hoá khi lớn tuổi.",
 
@@ -404,7 +404,7 @@
         ]
       },
       {
-        "question": "Da bạn dầu ở vùng chữ T",
+        "question": "Da của bạn có đổ dầu ở vùng chữ T?",
         "options": [
           "Hiếm khi",
           "không bao giờ ",
@@ -433,13 +433,13 @@
       }
     ],
     "Nhạy cảm vs đề kháng cao": [{
-        "question": "Bạn bị đỏ, ngứa, sưng do đồ trang điểm, kem chống nắng hoặc đồ dưỡng da:",
+        "question": "Bạn có bao giờ bị đỏ, ngứa, sưng do đồ trang điểm, kem chống nắng hoặc dưỡng da?",
         "options": [
           "Không bao giờ",
           "Thỉnh thoảng",
           "Thường hay thế",
-          "Luôn luônLúc nào cũng bị hỏi",
-          "Tôi không dùng các sản phẩm này (không dùng nếu vì lý do ở câu hỏi thì chọn d)"
+          "Luôn luôn",
+          "Tôi không dùng các sản phẩm này (Nếu lí do như trên câu hỏi thì chọn phương án 4)"
         ]
       }, {
         "question": "Da mặt bạn bị những sần đỏ, mụn mủ:",
@@ -475,7 +475,7 @@
     "không sắc tố sắc tố và": [{
         "question": "Sau khi bị mụn hay viêm lỗ chân lông, da bạn có xuất hiện những vết màu nâu hoặc đen không?",
         "options": [
-          "Không bao giờ/ tôi không thấy bao giờ",
+          "Chưa bao giờ",
           "Thỉnh thoảng",
           "Thường xuyên",
           "Luôn luôn",
@@ -492,13 +492,12 @@
         ]
       },
       {
-        "question": "Bạn có vết đen (có thể hiểu là nốt ruồi) nào trên môi hay vùng má không? Hoặc từng có mà bạn đã tẩy đi?",
+        "question": "Bạn có vết đen (tàn nhang, thâm, nám, nốt ruồi) nào ở trên môi hay vùng má không? Hoặc có mà đã tẩy đi?",
         "options": [
           "Không có vết nào",
           "Tôi không rõ",
           "Có, chúng cũng mờ thôi.",
-          "Có, chúng rất đậm.",
-          "Không rõ"
+          "Có, chúng rất đậm."
         ]
       },
       {
