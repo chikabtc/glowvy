@@ -147,9 +147,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
       }
     } catch (err) {
       isLoading = false;
-      var message =
-          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
-              err.toString();
+      var message = "Fail to load tabs from app config: " + err.toString();
 
       print("error: $message");
     }

@@ -1,4 +1,6 @@
 import 'package:Dimodo/common/tools.dart';
+import 'package:firebase_auth/firebase_auth.dart' as b;
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:notification_permissions/notification_permissions.dart';
@@ -121,16 +123,16 @@ class SettingScreenState extends State<SettingScreen>
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Text(
-                                (widget.user != null)
+                                (b.FirebaseAuth.instance.currentUser != null)
                                     ? S.of(context).welcomeToDimodo
                                     : S.of(context).clickToSignIn,
                                 style: textStyle.copyWith(
                                     fontSize: 16, fontWeight: FontWeight.w600)),
                             Container(height: 5),
                             Text(
-                                (widget.user != null &&
-                                        widget.user.fullName != null)
-                                    ? widget.user.fullName
+                                (b.FirebaseAuth.instance.currentUser != null &&
+                                        widget.user != null)
+                                    ? "s"
                                     : "Shop like Korean",
                                 style: textStyle.copyWith(
                                     fontWeight: FontWeight.w500,
@@ -147,16 +149,14 @@ class SettingScreenState extends State<SettingScreen>
                   ),
                   SettingCard(
                     title: S.of(context).orderHistory,
-                    onTap: () => widget.user == null
+                    onTap: () => b.FirebaseAuth.instance.currentUser == null
                         ? Navigator.pushNamed(context, "/login")
                         : Navigator.pushNamed(context, "/orders"),
                     trailingWidget:
                         Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
                       Text(S.of(context).viewAll,
-                          style: kBaseTextStyle.copyWith(
-                            fontSize: 13,
+                          style: textTheme.caption1.copyWith(
                             color: kSecondaryGrey.withOpacity(0.5),
-                            fontWeight: FontWeight.w500,
                           )),
                       // Icon(Icons.arrow_forward_ios, size: 12, color: Colors.black26)
                     ]),
@@ -181,7 +181,7 @@ class SettingScreenState extends State<SettingScreen>
                   kDivider,
                   SettingCard(
                     title: S.of(context).shippingAddress,
-                    onTap: () => widget.user == null
+                    onTap: () => b.FirebaseAuth.instance.currentUser == null
                         ? Navigator.pushNamed(context, "/login")
                         : Navigator.pushNamed(context, "/manage_address"),
                   ),
@@ -234,14 +234,14 @@ class SettingScreenState extends State<SettingScreen>
                   //     onTap: () => Navigator.push(context,
                   //         MaterialPageRoute(builder: (context) => Language()))),
                   kFullDivider,
-                  if (widget.user == null)
+                  if (b.FirebaseAuth.instance.currentUser == null)
                     SettingCard(
                       fontColor: kSecondaryGrey,
                       title: S.of(context).login,
                       trailingWidget: null,
                       onTap: () => Navigator.pushNamed(context, "/login"),
                     ),
-                  if (widget.user != null)
+                  if (b.FirebaseAuth.instance.currentUser != null)
                     SettingCard(
                       trailingWidget: null,
                       fontColor: kSecondaryGrey,

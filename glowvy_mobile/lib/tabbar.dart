@@ -93,31 +93,31 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
               physics: NeverScrollableScrollPhysics(),
               children: _tabView,
             ),
-            // bottomNavigationBar: Container(
-            //   color: Colors.white,
-            //   width: screenSize.width,
-            //   child: SafeArea(
-            //     bottom: true,
-            //     child: FittedBox(
-            //       child: Container(
-            //           height: 50,
-            //           color: Colors.white,
-            //           width: screenSize.width /
-            //               (2 / (screenSize.height / screenSize.width)),
-            //           child: TabBar(
-            //             onTap: (index) {
-            //               setState(() {
-            //                 currentPage = index;
-            //               });
-            //             },
-            //             tabs: renderTabbar(),
-            //             labelColor: Colors.red,
-            //             unselectedLabelColor: Colors.white,
-            //             indicatorColor: Colors.transparent,
-            //           )),
-            //     ),
-            //   ),
-            // ),
+            bottomNavigationBar: Container(
+              color: Colors.white,
+              width: screenSize.width,
+              child: SafeArea(
+                bottom: true,
+                child: FittedBox(
+                  child: Container(
+                      height: 50,
+                      color: Colors.white,
+                      width: screenSize.width /
+                          (2 / (screenSize.height / screenSize.width)),
+                      child: TabBar(
+                        onTap: (index) {
+                          setState(() {
+                            currentPage = index;
+                          });
+                        },
+                        tabs: renderTabbar(),
+                        labelColor: Colors.red,
+                        unselectedLabelColor: Colors.white,
+                        indicatorColor: Colors.transparent,
+                      )),
+                ),
+              ),
+            ),
           ),
         ));
   }

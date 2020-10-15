@@ -80,9 +80,7 @@ class UserModel with ChangeNotifier {
 
       notifyListeners();
     } catch (err) {
-      fail(
-          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
-              err.toString());
+      fail("Fail to login with FB: " + err.toString());
     }
   }
 
@@ -372,12 +370,18 @@ class UserModel with ChangeNotifier {
 
   void createUser(
       {fullName, email, password, Function success, Function fail}) async {
+    b.FirebaseAuth auth = b.FirebaseAuth.instance;
+
     try {
-      b.UserCredential userCredential = await b.FirebaseAuth.instance
+      b.UserCredential userCredential = await auth
           .createUserWithEmailAndPassword(email: email, password: password);
       var firebaseUser = b.FirebaseAuth.instance.currentUser;
-
-// firebase.auth().currentUser.sendEmailVerification()
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(auth.currentUser.uid)
+          .set({
+        'full_name': fullName,
+      });
 
       if (!firebaseUser.emailVerified) {
         await firebaseUser.sendEmailVerification();
@@ -432,22 +436,32 @@ class UserModel with ChangeNotifier {
     user = null;
     isLoggedIn = false;
     try {
-      final ready = await kLocalStorage.ready;
-      if (ready) {
-        await kLocalStorage.deleteItem(kLocalKey["userInfo"]);
-        await kLocalStorage.deleteItem(kLocalKey["shippingAddress"]);
-        await kLocalStorage.deleteItem(kLocalKey["recentSearches"]);
-        await kLocalStorage.deleteItem(kLocalKey["wishlist"]);
-        await kLocalStorage.deleteItem(kLocalKey["opencart_accessToken"]);
-
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setBool('loggedIn', false);
-      }
+      await b.FirebaseAuth.instance.signOut();
     } catch (err) {
       print(err);
     }
     notifyListeners();
   }
+  // void logout() async {
+  //   user = null;
+  //   isLoggedIn = false;
+  //   try {
+  //     final ready = await kLocalStorage.ready;
+  //     if (ready) {
+  //       await kLocalStorage.deleteItem(kLocalKey["userInfo"]);
+  //       await kLocalStorage.deleteItem(kLocalKey["shippingAddress"]);
+  //       await kLocalStorage.deleteItem(kLocalKey["recentSearches"]);
+  //       await kLocalStorage.deleteItem(kLocalKey["wishlist"]);
+  //       await kLocalStorage.deleteItem(kLocalKey["opencart_accessToken"]);
+
+  //       SharedPreferences prefs = await SharedPreferences.getInstance();
+  //       prefs.setBool('loggedIn', false);
+  //     }
+  //   } catch (err) {
+  //     print(err);
+  //   }
+  //   notifyListeners();
+  // }
 
   Future<bool> isLogin() async {
     final LocalStorage storage = new LocalStorage("Dimodo");
@@ -482,9 +496,7 @@ class UserModel with ChangeNotifier {
       saveUser(user);
       notifyListeners();
     } catch (err) {
-      fail(
-          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
-              err.toString());
+      fail("Fail to update address: " + err.toString());
       notifyListeners();
     }
   }
@@ -510,9 +522,7 @@ class UserModel with ChangeNotifier {
       saveUser(user);
       notifyListeners();
     } catch (err) {
-      fail(
-          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
-              err.toString());
+      fail("Fail to create address:  " + err.toString());
       notifyListeners();
     }
   }
@@ -526,9 +536,7 @@ class UserModel with ChangeNotifier {
       saveUser(user);
       notifyListeners();
     } catch (err) {
-      fail(
-          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
-              err.toString());
+      fail("Fail to delete address: " + err.toString());
       notifyListeners();
     }
   }

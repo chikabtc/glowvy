@@ -79,20 +79,20 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     kSizeConfig = SizeConfig(screenSize);
-    try {
-      onboardingData =
-          Provider.of<AppModel>(context, listen: false).appConfig['Onboarding'];
-      // print("surveys: $surveys");
-      // for (var item in surveys) {
-      //   this.surveys.add(Survey.fromJson(item));
-      // }
-    } catch (err) {
-      var message =
-          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
-              err.toString();
+    // try {
+    //   onboardingData =
+    //       Provider.of<AppModel>(context, listen: false).appConfig['Onboarding'];
+    //   // print("surveys: $surveys");
+    //   // for (var item in surveys) {
+    //   //   this.surveys.add(Survey.fromJson(item));
+    //   // }
+    // } catch (err) {
+    //   var message =
+    //       "There is an issue with the app during request the data, please contact admin for fixing the issues " +
+    //           err.toString();
 
-      print("error: $message");
-    }
+    //   print("error: $message");
+    // }
 
     for (int i = 0; i < onboardingData.length; i++) {
       var page = Container(

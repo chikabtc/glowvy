@@ -6,6 +6,8 @@ import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
 import 'package:Dimodo/widgets/popup_services.dart';
 import 'package:Dimodo/widgets/webview.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mailer/flutter_mailer.dart';
 import 'package:flutter_svg/svg.dart';
@@ -27,7 +29,7 @@ class _CosmeticsRequestScreenState extends State<CosmeticsRequestScreen>
   UserModel userModel;
   var category;
   AnimationController _requestController;
-
+  bool isLoading;
   var brand;
   var productName;
   final TextEditingController _categoryController = TextEditingController();
@@ -42,9 +44,28 @@ class _CosmeticsRequestScreenState extends State<CosmeticsRequestScreen>
     userModel = Provider.of<UserModel>(context, listen: false);
   }
 
+  Future<Null> _playAnimation() async {
+    try {
+      setState(() {
+        isLoading = true;
+      });
+      await _requestController.forward();
+    } on TickerCanceled {}
+  }
+
+  Future<Null> _stopAnimation() async {
+    try {
+      await _requestController.reverse();
+      setState(() {
+        isLoading = false;
+      });
+    } on TickerCanceled {}
+  }
+
   @override
   Widget build(BuildContext context) {
     screenSize = MediaQuery.of(context).size;
+    var user = FirebaseAuth.instance.currentUser;
 
     return Scaffold(
         backgroundColor: kSecondaryOrange,
@@ -152,9 +173,33 @@ class _CosmeticsRequestScreenState extends State<CosmeticsRequestScreen>
                   //then the trigger function will send the slack notification
 
                   StaggerAnimation(
-                      buttonTitle: S.of(context).signup,
+                      buttonTitle: S.of(context).send,
                       buttonController: _requestController.view,
                       onTap: () {
+                        _playAnimation();
+
+                        try {
+                          Future.delayed(const Duration(milliseconds: 1000),
+                              () async {
+                            var cosmeticsRequest = {
+                              'name': productName,
+                              'brand': brand,
+                              'category': category
+                            };
+                            await FirebaseFirestore.instance
+                                .collection('users')
+                                .doc(user.uid)
+                                .collection('cosmetics_requests')
+                                .add(cosmeticsRequest);
+
+                            _stopAnimation();
+                          });
+                        } catch (err) {
+                          print("error sending cosmetics request: $err");
+                          throw err;
+                        }
+                        //save the requested cosmetics info on the firestore
+                        //se
                         // _submitRegister(fullName, email, password);
                       }),
                 ],

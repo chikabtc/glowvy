@@ -103,9 +103,7 @@ class HomeScreenState extends State<HomeScreen>
         tabList.add(Category.fromJson(tab));
       }
     } catch (err) {
-      var message =
-          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
-              err.toString();
+      var message = "Fail to fetch products from firestore: " + err.toString();
 
       print("error: $message");
     }
@@ -149,18 +147,18 @@ class HomeScreenState extends State<HomeScreen>
 
     final screenSize = MediaQuery.of(context).size;
 
-    try {
-      final surveys = Provider.of<AppModel>(context, listen: false)
-          .appConfig['Cosmetics_Survey'];
-      for (var item in surveys) {
-        this.surveys.add(Survey.fromJson(item));
-      }
-    } catch (err) {
-      var message =
-          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
-              err.toString();
-      print("error: $message");
-    }
+    // try {
+    //   final surveys = Provider.of<AppModel>(context, listen: false)
+    //       .appConfig['Cosmetics_Survey'];
+    //   for (var item in surveys) {
+    //     this.surveys.add(Survey.fromJson(item));
+    //   }
+    // } catch (err) {
+    //   var message =
+    //       "There is an issue with the app during request the data, please contact admin for fixing the issues " +
+    //           err.toString();
+    //   print("error: $message");
+    // }
 
     List<Widget> renderTabbar() {
       List<Widget> list = [];

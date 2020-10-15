@@ -1,7 +1,8 @@
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/services/index.dart';
 import 'package:Dimodo/widgets/fashion_filter_bar.dart';
-import 'package:Dimodo/widgets/product/product_list.dart';
+import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
+// import 'package:Dimodo/widgets/product/product_list.dart';
 // import 'package:Dimodo/widgets/product_filter_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -164,7 +165,7 @@ class SubCategoryScreenState extends State<SubCategoryScreen>
                 ),
               ),
             ),
-            body: ProductList(
+            body: CosmeticsProductList(
               products: showFilteredResults ? filteredResults : products,
               onLoadMore: onLoadMore,
               isNameAvailable: true,

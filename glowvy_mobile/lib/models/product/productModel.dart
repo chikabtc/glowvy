@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../common/constants.dart';
 import '../../services/index.dart';
-import '../../widgets/product/product_list.dart';
+// import '../../widgets/product/product_list.dart';
 import '../../models/category.dart';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
@@ -88,7 +88,7 @@ class ProductModel with ChangeNotifier {
         sortedProducts = sortByAllRanking(products);
         break;
     }
-    print("products filtered : ${sortedProducts.length}");
+    // print("products filtered : ${sortedProducts.length}");
 
     return sortedProducts;
   }
@@ -368,50 +368,50 @@ class ProductModel with ChangeNotifier {
             builder: (context) => SubCategoryScreen(category: category)));
   }
 
-  showProductListByCategory(
-      {cateId, sortBy, context, limit, isNameAvailable = false, onLoadMore}) {
-    return FutureBuilder<List<Product>>(
-      future: service.getProductsByCategory(
-        categoryId: cateId,
-        // start: start,
-        limit: limit,
-        sortBy: sortBy,
-      ),
-      builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
-        products = snapshot.data;
-        return ProductList(
-          products: snapshot.data,
-          onLoadMore: onLoadMore,
-          isNameAvailable: isNameAvailable,
-        );
-      },
-    );
-  }
+  // showProductListByCategory(
+  //     {cateId, sortBy, context, limit, isNameAvailable = false, onLoadMore}) {
+  //   return FutureBuilder<List<Product>>(
+  //     future: service.getProductsByCategory(
+  //       categoryId: cateId,
+  //       // start: start,
+  //       limit: limit,
+  //       sortBy: sortBy,
+  //     ),
+  //     builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
+  //       products = snapshot.data;
+  //       return ProductList(
+  //         products: snapshot.data,
+  //         onLoadMore: onLoadMore,
+  //         isNameAvailable: isNameAvailable,
+  //       );
+  //     },
+  //   );
+  // }
 
-  Widget showProductList(
-      {isNameAvailable,
-      future,
-      isListView,
-      showFiler = false,
-      disableScroll = false,
-      Function onLoadMore,
-      sortBy}) {
-    return FutureBuilder<List<Product>>(
-      future: future,
-      builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
-        products = snapshot.data;
+  // Widget showProductList(
+  //     {isNameAvailable,
+  //     future,
+  //     isListView,
+  //     showFiler = false,
+  //     disableScroll = false,
+  //     Function onLoadMore,
+  //     sortBy}) {
+  //   return FutureBuilder<List<Product>>(
+  //     future: future,
+  //     builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
+  //       products = snapshot.data;
 
-        return ProductList(
-          products: snapshot.data,
-          onLoadMore: onLoadMore,
-          showFilter: showFiler,
-          isListView: isListView,
-          disableScrolling: disableScroll,
-          isNameAvailable: isNameAvailable,
-        );
-      },
-    );
-  }
+  //       return ProductList(
+  //         products: snapshot.data,
+  //         onLoadMore: onLoadMore,
+  //         showFilter: showFiler,
+  //         isListView: isListView,
+  //         disableScrolling: disableScroll,
+  //         isNameAvailable: isNameAvailable,
+  //       );
+  //     },
+  //   );
+  // }
 
   Widget showCosmeticsProductList(
       {isNameAvailable,

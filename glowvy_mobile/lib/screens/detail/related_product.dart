@@ -8,8 +8,9 @@ import '../../generated/i18n.dart';
 import '../../models/app.dart';
 import '../../models/product/product.dart';
 import '../../services/index.dart';
-import '../../widgets/product/product_card_view.dart';
 
+// import '../../widgets/product/product_card_view.dart';
+//
 class RelatedProduct extends StatelessWidget {
   final Product product;
 
@@ -64,20 +65,20 @@ class RelatedProduct extends StatelessWidget {
                               fontSize: 20, fontWeight: FontWeight.w600),
                         ),
                       ),
-                      Container(
-                          height: constraint.maxWidth * 0.7,
-                          child: ListView(
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            children: [
-                              for (var item in snapshot.data)
-                                if (item.id != product.id)
-                                  ProductCard(
-                                    product: item,
-                                    width: constraint.maxWidth * 0.35,
-                                  )
-                            ],
-                          ))
+                      // Container(
+                      //     height: constraint.maxWidth * 0.7,
+                      //     child: ListView(
+                      //       shrinkWrap: true,
+                      //       scrollDirection: Axis.horizontal,
+                      //       children: [
+                      //         for (var item in snapshot.data)
+                      //           if (item.id != product.id)
+                      //             ProductCard(
+                      //               product: item,
+                      //               width: constraint.maxWidth * 0.35,
+                      //             )
+                      //       ],
+                      //     ))
                     ],
                   );
                 }

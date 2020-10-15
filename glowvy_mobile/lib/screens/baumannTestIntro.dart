@@ -218,8 +218,6 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                         onPressed: () {
                                           if (firstName != null &&
                                               lastName != null) {
-                                            print(
-                                                "fN: $firstName and ln: $lastName");
                                             Navigator.pop(context);
                                             userModel.setName(
                                                 firstName, lastName);

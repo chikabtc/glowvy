@@ -3,7 +3,6 @@ import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/survey.dart';
 import 'package:Dimodo/models/user/skinScores.dart';
 import 'package:Dimodo/models/user/userModel.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/widgets/skin-score.dart';
 import 'package:Dimodo/widgets/survey_card.dart';
 import 'package:Dimodo/widgets/tip-card.dart';
@@ -36,37 +35,32 @@ class _BaumannQuizState extends State<BaumannQuiz>
   List<List<Survey>> surveys = [];
   List<String> skinTypes = [];
   List<bool> chosenAnswers = [];
-  List<String> descriptions = [];
+  dynamic descriptions;
   bool surveyFinished = false;
   bool isSaving = false;
-  // bool showFullTips = false;
-  // bool showFullHarmful = false;
   bool calculatingResult = false;
   bool showFullExplanation = false;
-  var skinTypeDescription;
-  // var skinType = "";
+  var skinTypeResults;
+  List<dynamic> dos;
+  List<dynamic> donts;
   double dsScore;
   double srScore;
   double pnScore;
   double wnScore;
   UserModel userModel;
-
   var totalProgress = 0;
   SwiperController swipeController;
-  dynamic sensitiveTips;
-  dynamic sensitiveAvoid;
   List<String> tabList = [
-    "khô vs da dầu",
+    "khô vs dầu",
     "sắc tố và không sắc tố",
-    "căng vs nhăn",
-    "Căng vs nhăn"
+    "căng vs Khỏe nhăn",
+    "Căng bóng vs Nhăn nhăn"
   ];
 
   @override
   void initState() {
     super.initState();
     userModel = Provider.of<UserModel>(context, listen: false);
-    print("widget skin type: ${widget.skinType}");
 
     swipeController = SwiperController();
     try {
@@ -76,22 +70,13 @@ class _BaumannQuizState extends State<BaumannQuiz>
       final sVsR = baumannQuiz["Nhạy cảm vs đề kháng cao"] as List;
       final nVsP = baumannQuiz["không sắc tố sắc tố và"] as List;
       final tVsW = baumannQuiz["căng vs nhăn"] as List;
-      sensitiveTips = baumannQuiz["sensitive-type-tips"];
-      sensitiveAvoid = baumannQuiz["sensitive-type-avoid"];
-      skinTypeDescription = baumannQuiz["skin-types-explanations"];
-      descriptions.add(baumannQuiz["description1"]);
-      descriptions.add(baumannQuiz["description2"]);
-      descriptions.add(baumannQuiz["description3"]);
-      descriptions.add(baumannQuiz["description4"]);
-      // print("surveys length: ${descriptions.length}");
+      skinTypeResults = baumannQuiz["skin-type-results"];
+      descriptions = baumannQuiz["section-descriptions"];
 
       List<Survey> dVsOSurvey = [];
-
       dVsO.forEach((e) {
         dVsOSurvey.add(Survey.fromJson(e));
       });
-      print("dVsOSurvey length: ${dVsOSurvey.length}");
-//
       List<Survey> sVsRSurvey = [];
       sVsR.forEach((e) {
         sVsRSurvey.add(Survey.fromJson(e));
@@ -104,14 +89,13 @@ class _BaumannQuizState extends State<BaumannQuiz>
       tVsW.forEach((e) {
         tVsWSurvey.add(Survey.fromJson(e));
       });
-      surveys.add(dVsOSurvey);
-      surveys.add(sVsRSurvey);
-      surveys.add(nVsPSurvey);
-      surveys.add(tVsWSurvey);
+      surveys
+        ..add(dVsOSurvey)
+        ..add(sVsRSurvey)
+        ..add(nVsPSurvey)
+        ..add(tVsWSurvey);
     } catch (err) {
-      var message =
-          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
-              err.toString();
+      var message = "Fail to load the bauman_quiz_data:" + err.toString();
       print("error: $message");
     }
   }
@@ -126,17 +110,18 @@ class _BaumannQuizState extends State<BaumannQuiz>
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     if (widget.skinType != null && widget.skinScores != null) {
+      print("widget skin type: ${widget.skinType}");
       surveyFinished = true;
       skinTypes.clear();
       widget.skinType.runes.forEach((int rune) {
         var character = String.fromCharCode(rune);
-        print(character);
         skinTypes.add(character);
       });
       dsScore = widget.skinScores.dsScore;
       srScore = widget.skinScores.srScore;
       pnScore = widget.skinScores.pnScore;
       wnScore = widget.skinScores.wnScore;
+      getSkinTypeResults();
       if (widget.skinType.contains("R")) {
         showFullExplanation = true;
       }
@@ -232,7 +217,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 18.0),
-                              child: Text(descriptions[currentPage],
+                              child: Text(descriptions["description2"],
                                   style: textTheme.button2
                                       .copyWith(color: kDarkYellow)),
                             ),
@@ -249,7 +234,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                 itemBuilder: (BuildContext context, int i) {
                                   return SurveyCard(
                                     survey: surveys[currentPage][i],
-                                    index: totalProgress - 1,
+                                    index: totalProgress,
                                     onTap: () {
                                       return Future.delayed(
                                           const Duration(milliseconds: 200),
@@ -312,8 +297,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                         //answered all for that page and not the last page
                                       } else {
                                         calculateSkinType();
-
-                                        getSkinTypeExplanation();
+                                        getSkinTypeResults();
                                         setState(() {
                                           calculatingResult = true;
                                         });
@@ -325,11 +309,9 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                               srScore: srScore,
                                               pnScore: pnScore,
                                               wnScore: wnScore);
-                                          print("scores@@ ${scores.toJson()}");
                                           setState(() {
                                             calculatingResult = false;
                                             surveyFinished = true;
-
                                             Provider.of<UserModel>(context,
                                                     listen: false)
                                                 .saveSkinType(
@@ -410,7 +392,8 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                             children: <Widget>[
                                               SizedBox(height: 10),
                                               Text(
-                                                "${getSkinTypeExplanation()}",
+                                                skinTypeResults[widget.skinType]
+                                                    ['explanation'],
                                                 textAlign: TextAlign.start,
                                                 maxLines: showFullExplanation
                                                     ? 30
@@ -457,19 +440,14 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                       separatorBuilder: (context, index) =>
                                           Container(width: 10),
                                       scrollDirection: Axis.horizontal,
-                                      itemCount: sensitiveTips.length +
-                                          sensitiveAvoid.length,
+                                      itemCount: dos.length + donts.length,
                                       itemBuilder:
                                           (BuildContext context, int i) {
-                                        if (i > sensitiveTips.length - 1) {
-                                          return TipCard(
-                                              sensitiveAvoid[
-                                                  i - sensitiveTips.length],
-                                              i - sensitiveTips.length + 1,
-                                              false);
+                                        if (i > dos.length - 1) {
+                                          return TipCard(donts[i - dos.length],
+                                              i - dos.length + 1, false);
                                         }
-                                        return TipCard(
-                                            sensitiveTips[i], i + 1, true);
+                                        return TipCard(dos[i], i + 1, true);
                                       })),
                               SizedBox(height: 50),
                               GestureDetector(
@@ -693,9 +671,12 @@ class _BaumannQuizState extends State<BaumannQuiz>
     }
   }
 
-  getSkinTypeExplanation() {
+  getSkinTypeResults() {
     widget.skinType = skinTypes.join();
-    return skinTypeDescription[widget.skinType];
+    print("widget.skinType: ${widget.skinType}");
+    dos = skinTypeResults[widget.skinType]["do"].map((item) => item).toList();
+    donts =
+        skinTypeResults[widget.skinType]["dont"].map((item) => item).toList();
   }
 
   answeredAll() {

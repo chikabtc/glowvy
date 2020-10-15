@@ -315,85 +315,461 @@
     }
   ],
   "Baumann_quiz": {
-    "description1": "Phần này đo lường quá trình sản xuất  da nhờn và hydrat hóa da. Các nghiên cứu cho thấy mọi người nhận xét ​​về  da của họ là da dầu hay khô thường không chính xác",
-    "description2": "Phần này đo lường xu hướng phát triển mụn, đỏ, ngứa của da bạn, đây là  tất cả các dấu hiệu của da nhạy cảm.",
-    "description3": "Phần này đo lường xu hướng hình thành melanin của da bạn, một sắc tố da tạo ra các tông màu da tối hơn cũng như các mảng tối, tàn nhang và các vùng da sau khi bị tàn phá (như thường thấy sau khi bị mụn).",
-    "description4": "Tuổi tác, dân tộc và thói quen sinh hoạt ảnh hưởng đến việc da dễ bị nhăn hay căng. Vẫn còn một thành phần di truyền cho thông số này, nhưng các yếu tố bên ngoài góp phần làm vẻ ngoài của bạn bị già nua có thể kiểm soát được. Lão hóa da, phá hủy các protein da như collagen và elastin.",
-    "sensitive-type-tips": [{
-        "title": "Ngủ sớm. 10h tối đến 2h sáng là thời gian hợp lý nhất để làn da của bạn được phục hồi.",
-        "explanation": ""
-      },
-
-      {
-        "title": "Sử dụng dầu gội trẻ em ",
-        "explanation": "Sử dụng dầu gội trẻ em (Hầu hết dầu gội thông thường có chứa các thành phần như sắc tố, hương liệu và chiết xuất có thể gây viêm trên da đầu. Dầu gội trẻ em có xu hướng an toàn hơn cho những người có  da đầu  nhạy cảm."
-      }, {
-        "title": "Công thức dưỡng ẩm tốt dựa trên ceramide",
-        "explanation": "Ceramide ngăn ngừa các chất kích thích xâm nhập vào da của bạn. Chúng giúp da giữ được độ ẩm, rất cần thiết cho da, đặc biệt là quanh mắt. Khi ceramide giảm xuống, da trở nên khô, ngứa, viêm và kích ứng"
-      }
-    ],
-    "sensitive-type-avoid": [{
-        "title": "Không Toner",
-        "explanation": "Nhiều loại toners có chứa Ethanol. Nếu da bạn bị đỏ, nó sẽ làm hỏng làn da của bạn. Nếu vẫn muốn sử dụng toner, hãy đảm bảo bạn tìm  các sản phẩm không có Rượu và Ethanol."
-      },
-      {
-        "title": "Không Nước hoa",
-        "explanation": "Hầu hết các loại nước hoa có chứa hóa chất có thể làm cho làn da nhạy cảm ngứa và đỏ."
-      },
-      {
-        "title": "Không tắm lâu hơn 5 phút và luôn luôn sử dụng nước ấm.",
-        "explanation": "Thật là vô lý khi nói rằng lỗ chân lông được mở bằng nước nóng để rửa trôi bã nhờn và chất thải, và sau đó nước lạnh được đổ lên lỗ chân lông để thu nhỏ lỗ chân lông. Da của chúng ta bao gồm 60% protein, 20% lipid và 20% độ ẩm nên da dễ bị tổn thương khi chịu sự chênh lệch nhiệt độ cao."
-      },
-      {
-        "title": "Trang điểm bột khoáng ",
-        "explanation": "Dễ dùng trên da mặt nhạy cảm và dễ dàng tẩy trang vì bột khoáng ít bám trên da"
-      },
-
-      {
-        "title": "Không nên trang điểm quá nhiều ",
-        "explanation": "Chất tẩy rửa không chứa lipid không làm sạch lớp trang điểm tốt. Vì vậy, bạn cần phải làm sạch nhiều lần cho mặt của bạn, điều này sẽ làm tổn thương hàng rào da yếu hơn của bạn."
-      },
-      {
-        "title": "Không dùng xà phòng ",
-        "explanation": "Độ pH của hàng rào bảo vệ da khỏe mạnh có tính axit nhẹ từ 4,5 đến 5,5. Tuy nhiên, ngay sau khi rửa bằng xà phòng hoặc sữa rửa mặt tạo bọt, da trở nên nóng và bề mặt da tăng lên độ pH 8 hoặc cao hơn. Phải mất hơn 3 giờ để khôi phục lại trạng thái bình thường để duy trì cân bằng nội môi. Phải mất loại da nhạy cảm lâu hơn để bình thường hóa. Trong thời gian dài đó, làn da hoàn toàn có nguy cơ không thể phòng vệ."
-      }
-    ],
-    "oily-type-tips": [{
-      "title": "yo",
-      "type": "",
-      "explanation": "why"
-    }],
-    "pigmented-type-tips": [{
-      "title": "yo",
-      "type": "",
-      "explanation": "why"
-    }],
-    "wrinkled-type-tips": [{
-      "title": "yo",
-      "type": "",
-      "explanation": "why"
-    }],
-
-    "skin-types-explanations": {
-      "OSPT": "Làn da dầu nhạy cảm của bạn sẽ thường có các đặc điểm như: lỗ chân lông to, da bóng nhờn dễ nổi mụn, dễ ửng đỏ hoặc (và) mẩn đỏ, và thường xảy ra kích ứng. Bạn cũng rất có khả năng gặp phải tình trạng thâm do mụn hoặc sạm, nám và tàn nhang. Tuyệt đối đừng lạm dụng lớp trang điểm để che đi những vết mụn đỏ hay thâm nám, chúng chỉ khiến da bạn ngày càng nhạy cảm so với lúc ban đầu đấy!\n\nTuy nhiên khi bắt đầu qua tuổi 40, khi da bạn trở nên ít nhạy cảm, nó sẽ bắt đầu có xu hướng trẻ đẹp hơn nhờ vào lớp dầu tự nhiên trên da. Sản phẩm hồi phục da tốt nhất dành cho làn da bạn không gì khác ngoài kem chống nắng! Đừng bao giờ quên sử dụng chúng hằng ngày nhé. Bạn có thể tham khảo thêm các sản phẩm đặc trị thâm nám giúp da trở nên đều màu hơn.",
-      "OSPW": "Làn da dầu nhạy cảm của bạn sẽ thường có các đặc điểm như: dễ nổi mụn, da dễ ửng đỏ hoặc (và) mẩn đỏ, và thường xảy ra kích ứng. Bạn cũng rất có khả năng gặp phải tình trạng thâm do mụn hoặc sạm đen do nám và tàn nhang. Việc có một lối sống không tốt cho làn da  cũng là một trong những nguyên nhân chính khiến da bạn trở nên nhăn nheo hơn. \n\nNgoài ra, tuyệt đối đừng lạm dụng lớp trang điểm để che đi những vết mụn đỏ hay thâm nám, chúng chỉ khiến da bạn ngày càng nhạy cảm so với lúc ban đầu đấy!Quy trình chăm sóc da của bạn nên có những sản phẩm phù hợp.Đặc biệt, đừng bao giờ quên sử dụng kem chống nắng nhé!",
-      "OSNW": "Làn da dầu nhạy cảm của bạn sẽ thường có các đặc điểm như: lỗ chân lông to, da bóng nhờn dễ nổi mụn, dễ ửng đỏ hoặc (và) mẩn đỏ, và thường xảy ra kích ứng. Những người sở hữu làn da giống bạn sẽ gặp nguy cơ mắc chứng rosacea (chứng đỏ mặt) cao hơn các kiểu da khác. Bạn có thể đến gặp bác sĩ chuyên khoa để có phác đồ điều trị chứng rosacea một cách hiệu quả và phù hợp.\n\n Da bạn cũng có xu hướng trở nên dễ nhăn nheo hơn do có ít sắc tố bảo vệ da hay thói quen sống không khoa học. Tuyệt đối đừng lạm dụng lớp trang điểm để che đi những vết mụn đỏ, chúng chỉ khiến lớp da bạn ngày càng nhạy cảm đấy. Một thành phần chống lão hóa phù hợp cho da bạn chính là retinoid. Và đừng bao giờ quên sử dụng kem chống nắng hàng ngày nhé!",
-      "OSNT": "Da nhờn, nhạy cảm, không nám và căng  được đặc trưng bởi các nốt mụn hoặc đỏ mặt và đỏ ửng, hoặc nổi mẩn da và kích ứng da thường xuyên. Những người có loại da này có xu hướng bị mụn nhiều hơn ở độ tuổi 30.\n\nTuy nhiên, khi già đi, loại hệ điều hành trở nên ít nhạy cảm hơn và da nhờn của nó hoạt động như kem chống nắng tự nhiên. Vì vậy, họ sẽ trông trẻ hơn ở độ tuổi 40 cho tuổi của họ. Loại OSNT thường có hay bị đỏ  và hay trang điểm đậm  để che giấu điều đó . Nhưng vì trang điểm đậm đòi hỏi phải làm sạch nhiều lần, nó khiến da nhạy cảm hơn và làm hỏng hàng rào bảo vệ của da.",
-      "DSPW": "Da khô, nhạy cảm, nám và nhăn được đặc trưng bởi các nốt mụn và / hoặc đỏ mặt và đỏ ửng. Những vấn đề viêm này thường được theo sau bởi một làn da sẫm màu nơi nổi mụn hoặc kích ứng da. Hàng rào bảo vệ da của bạn rất yếu và điều này làm cho nó dễ bị mẩn ngứa và mất nước hơn, điều đó cũng có nghĩa là bạn sẽ dễ bị các đốm đen hơn. Điều quan trọng cần lưu ý là da bạn sẽ có khả năng bị nhăn và lão hoá khi lớn tuổi.",
-
-      "DSPT": "Da khô, nhạy cảm, nám và căng thường có mụn trứng cá, và thường xuyên nổi mẩn da và kích ứng. Rất tiếc, hàng rào bảo vệ da của bạn rất yếu và kết quả là nó dễ bị nổi mẩn và mất nước. Các mảng tối có thể phát triển trên mặt do phơi nắng. \n\nDa thường bị ngứa và rất khô. Một số phần của da bị nám và có quầng thâm. Các loại DS có những thách thức suốt đời về chăm sóc da! Dưỡng ẩm!Loại da này có xu hướng nhăn thấp hơn các loại khác vì tăng sắc tố da và giúp bảo vệ da.",
-      "DSNW": "Da khô, nhạy cảm, không có sắc tố và da nhăn nheo được đặc trưng bởi các nốt mụn hoặc đỏ mặt và đỏ bừng, hoặc nổi mẩn da và kích ứng da thường xuyên. Hàng rào bảo vệ da của bạn rất yếu và điều này khiến nó dễ bị phát ban và mất nước hơn. Loại da này có ít sắc tố bảo vệ da và dẫn đến nếp nhăn đặc biệt là nếu bạn tiếp xúc nhiều với ánh nắng mặt trời.",
-
-      "DRPW": "Xin chúc mừng! Bạn may mắn mang trong mình một trọng những loại da đẹp nhất !\nDa khô, kháng, nám và nhăn da hiếm khi bị nhạy cảm như mụn trứng cá, đỏ da mặt hoặc phát ban da. Tuy nhiên, các mảng tối như nám và tàn nhang thường xảy ra. Mặc dù loại da này có hàng rào bảo vệ mạnh mẽ nhưng nó có xu hướng nhăn, vì vậy hãy cẩn thận với ánh nắng mặt trời và những thói quen xấu.",
-      "DRPT": "Da khô, kháng, nám và căng (không nhăn) hiếm khi gặp phải các vấn đề nhạy cảm như mụn trứng cá, đỏ da mặt hoặc phát ban da. May mắn thay, loại da này có xu hướng nhăn thấp hơn các loại khác vì tăng sắc tố da và hàng rào bảo vệ mạnh mẽ.",
-      "DRNW": "Xin chúc mừng! Bạn may mắn mang trong mình một trọng những loại da đẹp nhất !\nXin chúc mừng! Bạn may mắn mang trong mình một trọng những loại da đẹp nhất !\nDa khô, kháng, không nám và da nhăn nheo hiếm khi bị nhạy cảm như mụn trứng cá, đỏ da mặt, hoặc phát ban da. Loại da này có ít sắc tố bảo vệ da hơn và do đó có xu hướng nhăn do thói quen xấu hiện tại, vì vậy hãy tránh tiếp xúc với ánh nắng mặt trời quá nhiều.",
-      "ORNT": "Xin chúc mừng! Bạn may mắn mang trong mình một trọng những loại da đẹp nhất !\nCuộc sống của bạn rất ngắn ngủi vì vậy đừng lãng phí thời gian quý báu của bạn vào việc chăm sóc da. Da của bạn đôi khi có thể bị khô. Trong trường hợp đó, chỉ cần dùng một số loại kem. Và đừng quên bôi kem chống nắng. Bạn không cần phải lo lắng về làn da của mình cho đến cuối đời.",
-      "ORPT": "Xin chúc mừng! Bạn may mắn mang trong mình một trọng những loại da đẹp nhất !\nCuộc sống của bạn rất ngắn ngủi vì vậy đừng lãng phí thời gian quý báu của bạn vào việc chăm sóc da. Da của bạn đôi khi có thể bị khô. Trong trường hợp đó, chỉ cần dùng một số loại kem. Và đừng quên bôi kem chống nắng. Bạn không cần phải lo lắng về làn da của mình cho đến cuối đời.",
-      "ORNW": "Xin chúc mừng! Bạn may mắn mang trong mình một trọng những loại da đẹp nhất !\nCuộc sống của bạn rất ngắn ngủi vì vậy đừng lãng phí thời gian quý báu của bạn vào việc chăm sóc da. Da của bạn đôi khi có thể bị khô. Trong trường hợp đó, chỉ cần dùng một số loại kem. Và đừng quên bôi kem chống nắng. Bạn không cần phải lo lắng về làn da của mình cho đến cuối đời.",
-      "DSNT": "Da khô, nhạy cảm, không có sắc tố và da căng được đặc trưng bởi mụn hoặc đỏ mặt và đỏ ửng, hoặc nổi mẩn da và kích ứng da thường xuyên. Hàng rào bảo vệ da của bạn rất yếu và điều này làm cho da dễ bị phát ban và mất nước hơn. Tuy nhiên, da bạn  có xu hướng nhăn thấp hơn.\nGlowvy giải thích: \n\nDa thường bị ngứa và rất khô. Một số phần của da bị nám và có quầng thâm. Các loại DS có những thách thức suốt đời về chăm sóc da! Dưỡng ẩm!",
-      "ORPW": "Xin chúc mừng! Bạn may mắn mang trong mình một trọng những loại da đẹp nhất !\nDa nhờn, kháng, nám và da nhăn nheo hiếm khi bị nhạy cảm như mụn trứng cá, hoặc đỏ da mặt, hoặc phát ban da. Tuy nhiên, các mảng tối như nám và tàn nhang thường xuyên xảy ra. Loại này có xu hướng nhăn  nên  bạn cần phải tránh phơi nắng",
-      "DRNT": "Xin chúc mừng! Bạn may mắn mang trong mình một trọng những loại da đẹp nhất !\nDa khô, kháng, không nám và căng (không nhăn) hiếm khi gặp phải các vấn đề nhạy cảm như mụn trứng cá, đỏ da mặt hoặc phát ban da. Da của bạn có một hàng rào bảo vệ mạnh mẽ, vì vậy hãy tìm những sản phẩm có nồng độ hoạt chất cao hơn."
+    "section-descriptions": {
+      "description1": "Phần này đo lường quá trình sản xuất  da nhờn và hydrat hóa da. Các nghiên cứu cho thấy mọi người nhận xét ​​về  da của họ là da dầu hay khô thường không chính xác",
+      "description2": "Phần này đo lường xu hướng phát triển mụn, đỏ, ngứa của da bạn, đây là  tất cả các dấu hiệu của da nhạy cảm.",
+      "description3": "Phần này đo lường xu hướng hình thành melanin của da bạn, một sắc tố da tạo ra các tông màu da tối hơn cũng như các mảng tối, tàn nhang và các vùng da sau khi bị tàn phá (như thường thấy sau khi bị mụn).",
+      "description4": "Tuổi tác, dân tộc và thói quen sinh hoạt ảnh hưởng đến việc da dễ bị nhăn hay căng. Vẫn còn một thành phần di truyền cho thông số này, nhưng các yếu tố bên ngoài góp phần làm vẻ ngoài của bạn bị già nua có thể kiểm soát được. Lão hóa da, phá hủy các protein da như collagen và elastin."
     },
+    "skin-type-results": {
+      "OSPW": {
+        "explanation": "Làn da dầu nhạy cảm của bạn sẽ thường có các đặc điểm như: dễ nổi mụn, da dễ ửng đỏ hoặc (và) mẩn đỏ, và thường xảy ra kích ứng. Bạn cũng rất có khả năng gặp phải tình trạng thâm do mụn hoặc sạm đen do nám và tàn nhang. Việc có một lối sống không tốt cho làn da  cũng là một trong những nguyên nhân chính khiến da bạn trở nên nhăn nheo hơn. \n\nNgoài ra, tuyệt đối đừng lạm dụng lớp trang điểm để che đi những vết mụn đỏ hay thâm nám, chúng chỉ khiến da bạn ngày càng nhạy cảm so với lúc ban đầu đấy!Quy trình chăm sóc da của bạn nên có những sản phẩm phù hợp.Đặc biệt, đừng bao giờ quên sử dụng kem chống nắng nhé!",
+        "do": [
+          "Sử dụng sữa rửa mặt chứa salicylic acid",
+          " Thay thế dầu gội công nghiệp bằng dầu gội trẻ em",
+          "Hạn chế trang điểm đậm",
+          "Bổ sung chất chống viêm, chống oxi hóa và vitamin A",
+          "Làm quen với retinoid, bắt đầu từ nồng độ thấp",
+          "Cân nhắc các biện pháp xâm lấn sâu theo đề xuất từ chuyên da",
+          "Sử dụng kem chống nắng ít nhất 2 lần mỗi ngày, bôi lại mỗi 2 tiếng nếu liên tục tiếp xúc với ánh nắng",
+          "Ngủ sớm và đủ giấc. Từ 10h tối đến 2h sáng là thời gian da bạn bắt đầu phục hồi",
+          "Rửa mặt bằng nước ấm",
+          "Tập thể dục ít nhất 3 tiếng một tuần",
+          "Thư giãn bằng yoga để giảm căng thẳng",
+          "Rửa mặt sau khi gội đầu",
+          "Sử dụng son dưỡng chống nắng",
+          "Vệ sinh chăn gối, cọ trang điểm, điện thoại thường xuyên"
+        ],
+        "dont": [
+          "Sử dụng sản phẩm chứa isopropyl myristate, cồn và hương liệu",
+          "Sử dụng sản phẩm 'cho da nhạy cảm'",
+          "Phơi nắng quá lâu",
+          "Rửa mặt quá 5 phút",
+          "Đi ngủ mà không tẩy trang",
+          "Dùng tẩy da chết dạng hạt",
+          "Dùng retinoid quá thường xuyên",
+          "Ăn đồ ngọt, sữa và chế phẩm từ sữa",
+          "Ăn đồ cay nóng"
+        ]
+      },
+      "OSPT": {
+        "explanation": "Làn da dầu nhạy cảm của bạn sẽ thường có các đặc điểm như: lỗ chân lông to, da bóng nhờn dễ nổi mụn, dễ ửng đỏ hoặc (và) mẩn đỏ, và thường xảy ra kích ứng. Bạn cũng rất có khả năng gặp phải tình trạng thâm do mụn hoặc sạm, nám và tàn nhang. Tuyệt đối đừng lạm dụng lớp trang điểm để che đi những vết mụn đỏ hay thâm nám, chúng chỉ khiến da bạn ngày càng nhạy cảm so với lúc ban đầu đấy!\n\nTuy nhiên khi bắt đầu qua tuổi 40, khi da bạn trở nên ít nhạy cảm, nó sẽ bắt đầu có xu hướng trẻ đẹp hơn nhờ vào lớp dầu tự nhiên trên da. Sản phẩm hồi phục da tốt nhất dành cho làn da bạn không gì khác ngoài kem chống nắng! Đừng bao giờ quên sử dụng chúng hằng ngày nhé. Bạn có thể tham khảo thêm các sản phẩm đặc trị thâm nám giúp da trở nên đều màu hơn.",
+        "do": [
+          "Sử dụng sữa rửa mặt chứa salicylic acid",
+          " Thay thế dầu gội công nghiệp bằng dầu gội trẻ em",
+          "Hạn chế trang điểm đậm",
+          "Bổ sung chất chống viêm, chống oxi hóa và vitamin A",
+          "Dùng kem chống nắng thay kem dưỡng ban ngày",
+          "Sử dụng kem chống nắng ít nhất 2 lần mỗi ngày, bôi lại mỗi 2 tiếng nếu liên tục tiếp xúc với ánh nắng",
+          "Ngủ sớm và đủ giấc. Từ 10h tối đến 2h sáng là thời gian da bạn bắt đầu phục hồi",
+          "Rửa mặt bằng nước ấm",
+          "Tập thể dục ít nhất 3 tiếng một tuần",
+          "Thư giãn bằng yoga để giảm căng thẳng",
+          "Rửa mặt sau khi gội đầu",
+          "Sử dụng son dưỡng chống nắng",
+          "Vệ sinh chăn gối, cọ trang điểm, điện thoại thường xuyên"
+        ],
+        "dont": [
+          "Sử dụng sản phẩm chứa isopropyl myristate, cồn và hương liệu",
+          "Sử dụng sản phẩm 'cho da nhạy cảm'",
+          "Phơi nắng quá lâu",
+          "Rửa mặt quá 5 phút",
+          "Đi ngủ mà không tẩy trang",
+          "Dùng tẩy da chết dạng hạt",
+          "Ăn đồ ngọt, sữa và chế phẩm từ sữa",
+          "Ăn đồ cay nóng"
+        ]
+      },
+      "OSNW": {
+        "explanation": "Làn da dầu nhạy cảm của bạn sẽ thường có các đặc điểm như: lỗ chân lông to, da bóng nhờn dễ nổi mụn, dễ ửng đỏ hoặc (và) mẩn đỏ, và thường xảy ra kích ứng. Những người sở hữu làn da giống bạn sẽ gặp nguy cơ mắc chứng rosacea (chứng đỏ mặt) cao hơn các kiểu da khác. Bạn có thể đến gặp bác sĩ chuyên khoa để có phác đồ điều trị chứng rosacea một cách hiệu quả và phù hợp.\n\n Da bạn cũng có xu hướng trở nên dễ nhăn nheo hơn do có ít sắc tố bảo vệ da hay thói quen sống không khoa học. Tuyệt đối đừng lạm dụng lớp trang điểm để che đi những vết mụn đỏ, chúng chỉ khiến lớp da bạn ngày càng nhạy cảm đấy. Một thành phần chống lão hóa phù hợp cho da bạn chính là retinoid. Và đừng bao giờ quên sử dụng kem chống nắng hàng ngày nhé!",
+        "do": [
+          "Sử dụng sữa rửa mặt chứa salicylic acid",
+          " Thay thế dầu gội công nghiệp bằng dầu gội trẻ em",
+          "Hạn chế trang điểm đậm",
+          "Bổ sung chất chống viêm, chống oxi hóa và vitamin A",
+          "Làm quen với retinoid, bắt đầu từ nồng độ thấp",
+          "Sử dụng kem chống nắng ít nhất 2 lần mỗi ngày, bôi lại mỗi 2 tiếng nếu liên tục tiếp xúc với ánh nắng",
+          "Ngủ sớm và đủ giấc. Từ 10h tối đến 2h sáng là thời gian da bạn bắt đầu phục hồi",
+          "Rửa mặt bằng nước ấm",
+          "Tập thể dục ít nhất 3 tiếng một tuần",
+          "Thư giãn bằng yoga để giảm căng thẳng",
+          "Rửa mặt sau khi gội đầu",
+          "Sử dụng son dưỡng chống nắng",
+          "Vệ sinh chăn gối, cọ trang điểm, điện thoại thường xuyên"
+        ],
+        "dont": [
+          "Sử dụng sản phẩm chứa isopropyl myristate, cồn và hương liệu",
+          "Sử dụng sản phẩm 'cho da nhạy cảm'",
+          "Dùng retinoid quá thường xuyên",
+          "Phơi nắng quá lâu",
+          "Rửa mặt quá 5 phút",
+          "Đi ngủ mà không tẩy trang",
+          "Dùng tẩy da chết dạng hạt",
+          "Ăn đồ ngọt, sữa và chế phẩm từ sữa",
+          "Ăn đồ cay nóng"
+        ]
+      },
+      "OSNT": {
+        "explanation": "Làn da dầu nhạy cảm của bạn sẽ thường có các đặc điểm như: lỗ chân lông to, da bóng nhờn dễ nổi mụn, dễ ửng đỏ hoặc (và) mẩn đỏ, và thường xảy ra kích ứng. Những người sở hữu làn da giống bạn sẽ gặp nguy cơ mắc chứng rosacea (chứng đỏ mặt) cao hơn các kiểu da khác. Bạn có thể đến gặp bác sĩ chuyên khoa để có phác đồ điều trị chứng rosacea một cách hiệu quả và phù hợp. Tuyệt đối đừng lạm dụng lớp trang điểm để che đi những vết mụn đỏ, chúng chỉ khiến da bạn ngày càng nhạy cảm hơn!\n\nMay mắn thay, khi bắt đầu qua tuổi 40, da bạn trở nên ít nhạy cảm và bắt đầu có xu hướng trẻ đẹp hơn nhờ vào lớp dầu tự nhiên. Sản phẩm chống lão hóa tốt nhất dành cho làn da bạn không gì khác ngoài kem chống nắng! Đừng bao giờ quên sử dụng chúng hằng ngày nhé. Ngoài ra, bạn có thể đến gặp bác sĩ chuyên khoa để có phác đồ điều trị chứng rosacea một cách hiệu quả và phù hợp.",
+        "do": [
+          "Hạn chế trang điểm đậm",
+          "Bổ sung chất chống viêm, chống oxi hóa và vitamin A",
+          "Sử dụng kem chống nắng ít nhất 2 lần mỗi ngày, bôi lại mỗi 2 tiếng nếu liên tục tiếp xúc với ánh nắng",
+          "Ngủ sớm và đủ giấc. Từ 10h tối đến 2h sáng là thời gian da bạn bắt đầu phục hồi",
+          "Rửa mặt bằng nước ấm",
+          "Tập thể dục ít nhất 3 tiếng một tuần",
+          "Thư giãn bằng yoga để giảm căng thẳng",
+          "Rửa mặt sau khi gội đầu",
+          "Sử dụng son dưỡng chống nắng",
+          "Vệ sinh chăn gối, cọ trang điểm, điện thoại thường xuyên"
+        ],
+        "dont": [
+          "Sử dụng sản phẩm chứa isopropyl myristate, cồn và hương liệu",
+          "Phơi nắng quá lâu",
+          "Rửa mặt quá 5 phút",
+          "Đi ngủ mà không tẩy trang",
+          "Dùng tẩy da chết dạng hạt",
+          "Ăn đồ ngọt, sữa và chế phẩm từ sữa",
+          "Ăn đồ cay nóng"
+        ]
+      },
+      "DSPW": {
+        "explanation": "Có một sự thật không thể tránh khỏi, da bạn chính là một trong những làn da phức tạp nhất. Làn da khô nhạy cảm của bạn có thể có các đặc điểm như: dễ nổi mụn, da dễ ửng đỏ hoặc (và) mẩn đỏ, và thường xảy ra kích ứng. Ngoài ra, da bạn thường sẽ rất khô, thậm chí thỉnh thoảng có thể gây ngứa do lớp màng bảo vệ da khá yếu. Nếu kết quả bài kiểm tra của bạn có chỉ số nhạy cảm và khô cao, bạn có khả năng mắc bệnh chàm (eczema) cao hơn người bình thường đấy! Nguy cơ lão hóa và các vết thâm, nám, tàn nhang sẽ càng tồi tệ khi bạn tiếp xúc với ánh nắng mặt trời, vậy nên đừng bao giờ quên sử dụng kem chống nắng nhé!\n\nViệc chăm sóc và điều trị da của bạn phải được tiến hành theo từng bước một: (1) cấp ẩm và trị mụn, và (2) sử dụng từ từ các sản phẩm sáng da và chống lão hóa.  Tuyệt đối đừng lạm dụng lớp trang điểm để che đi những vết mụn đỏ, chúng chỉ khiến da bạn ngày càng nhạy cảm hơn! 16 tuần chính là khoảng thời gian phục hồi lý tưởng, vậy nên đừng nản lòng nhé!",
+
+        "do": [
+          "Hạn chế trang điểm đậm",
+          "Sử dụng kem dưỡng phục hồi da ít nhất 2 lần mỗi ngày",
+          "Dùng dầu gội trẻ em thay vì dầu gội công nghiệp",
+          "Bổ sung chất chống viêm, chống oxi hóa",
+          "Làm quen với sản phẩm chứa retinoid, bắt đầu với nồng độ thấp",
+          "Sử dụng kem chống nắng ít nhất 2 lần mỗi ngày, bôi lại mỗi 2 tiếng nếu liên tục tiếp xúc với ánh nắng",
+          "Ngủ sớm và đủ giấc. Từ 10h tối đến 2h sáng là thời gian da bạn bắt đầu phục hồi",
+          "Rửa mặt bằng nước ấm",
+          "Tập thể dục ít nhất 3 tiếng một tuần",
+          "Thư giãn bằng yoga để giảm căng thẳng",
+          "Rửa mặt sau khi gội đầu",
+          "Sử dụng son dưỡng chống nắng",
+          "Vệ sinh chăn gối, cọ trang điểm, điện thoại thường xuyên"
+        ],
+        "dont": [
+          "Sử dụng sản phẩm chứa chất tạo bọt như SLS, ethanol hay hương liệu",
+          "Nhuộm tóc",
+          "Dùng tẩy da chết dạng hạt hoặc pad rửa mặt",
+          "Tùy tiện dùng sản phẩm chống lão hóa hoặc sáng da",
+          "Sử dụng thực phẩm chức năng chức melatonin",
+          "Ăn đồ ngọt, sữa và chế phẩm từ sữa",
+          "Ăn đồ cay nóng",
+          "Phơi nắng quá lâu",
+          "Rửa mặt quá 5 phút",
+          "Đi ngủ mà không tẩy trang"
+        ]
+      },
+      "DSPT": {
+        "explanation": "Làn da khô nhạy cảm của bạn có thể có các đặc điểm như: dễ nổi mụn, da dễ ửng đỏ hoặc (và) mẩn đỏ, và thường xảy ra kích ứng. Ngoài ra, da bạn thường sẽ rất khô, thậm chí thỉnh thoảng có thể gây ngứa do lớp màng bảo vệ da của bạn khá yếu. Nếu kết quả bài kiểm tra của bạn có chỉ số nhạy cảm và khô cao, bạn có khả năng mắc bệnh chàm (eczema) cao hơn người bình thường đấy! Ngoài ra, thâm mụn hoặc nám, tàn nhang sẽ càng đậm nếu tiếp xúc với ánh nắng mặt trời, vậy nên đừng bao giờ quên sử dụng kem chống nắng nhé!\n\nMay mắn là, việc sản sinh nhiều sắc tố da cũng là yếu tố giúp da bạn tránh tình trạng nhăn nheo. Đối với làn da của bạn, chuyên viên chăm sóc da Glowvy đề nghị liệu trình chăm sóc và phục hồi da theo thứ tự như sau: (1) phục hồi lớp màng bảo vệ da bằng việc cấp ẩm, (2) điều trị các vấn đề về mụn, các nốt đỏ (nếu có), và (3) điều trị các sắc tố trên da như thâm, nám, tàn nhang. Tuyệt đối đừng lạm dụng lớp trang điểm để che đi những vết mụn đỏ, chúng chỉ khiến da bạn ngày càng nhạy cảm hơn.",
+        "do": [
+          "Sử dụng kem dưỡng phục hồi da ít nhất 2 lần mỗi ngày",
+          "Hạn chế trang điểm đậm",
+          "Dùng dầu gội trẻ em thay vì dầu gội công nghiệp",
+          "Bổ sung chất chống viêm, chống oxi hóa",
+          "Thực hiện chế độ ăn giàu axit linoleic và vitamin A",
+          "Làm quen với sản phẩm chứa retinoid, bắt đầu với nồng độ thấp",
+          "Sử dụng kem chống nắng ít nhất 2 lần mỗi ngày, bôi lại mỗi 2 tiếng nếu liên tục tiếp xúc với ánh nắng",
+          "Ngủ sớm và đủ giấc. Từ 10h tối đến 2h sáng là thời gian da bạn bắt đầu phục hồi",
+          "Rửa mặt bằng nước ấm",
+          "Tập thể dục ít nhất 3 tiếng một tuần",
+          "Thư giãn bằng yoga để giảm căng thẳng",
+          "Rửa mặt sau khi gội đầu",
+          "Sử dụng son dưỡng chống nắng",
+          "Vệ sinh chăn gối, cọ trang điểm, điện thoại thường xuyên"
+        ],
+        "dont": [
+          "Sử dụng sản phẩm chứa chất tạo bọt như SLS, ethanol hay hương liệu",
+          "Nhuộm tóc",
+          "Dùng tẩy da chết dạng hạt hoặc pad rửa mặt",
+          "Tùy tiện dùng sản phẩm chống lão hóa hoặc sáng da",
+          "Sử dụng thực phẩm chức năng chức melatonin",
+          "Ăn đồ ngọt, sữa và chế phẩm từ sữa",
+          "Phơi nắng quá lâu",
+          "Rửa mặt quá 5 phút",
+          "Đi ngủ mà không tẩy trang"
+        ]
+      },
+      "DSNW": {
+        "explanation": "Làn da khô nhạy cảm của bạn có thể có các đặc điểm như: dễ nổi mụn, da dễ ửng đỏ hoặc (và) mẩn đỏ, và thường xảy ra kích ứng. Ngoài ra, da bạn thường sẽ rất khô, thậm chí thỉnh thoảng có thể gây ngứa do lớp màng bảo vệ da của bạn khá yếu. Nếu kết quả bài kiểm tra của bạn có chỉ số nhạy cảm và khô cao, bạn có khả năng mắc bệnh chàm (eczema) cao hơn người bình thường đấy! Điểm cộng của da bạn chính là sự đều màu, nhưng sắc tố da ít cũng là nguyên nhân khiến da bạn ít được bảo vệ, dẫn đến việc hình thành nếp nhăn.\n\nVì vậy đừng bao giờ quên sử dụng kem chống nắng nhé!Đối với làn da của bạn, chìa khóa để mở ra một làn da đẹp hơn chính là việc cân bằng giữa trị mụn, viêm da và cấp ẩm để củng cố màng bảo vệ da. Tuyệt đối đừng lạm dụng lớp trang điểm để che đi những vết mụn đỏ, chúng chỉ khiến da bạn ngày càng nhạy cảm hơn.",
+        "do": [
+          "Sử dụng kem dưỡng phục hồi da ít nhất 2 lần mỗi ngày",
+          "Hạn chế trang điểm đậm",
+          "Dùng dầu gội trẻ em thay vì dầu gội công nghiệp",
+          "Bổ sung chất chống viêm, chống oxi hóa",
+          "Thực hiện chế độ ăn giàu axit linoleic và vitamin A",
+          "Làm quen với sản phẩm chứa retinoid, bắt đầu với nồng độ thấp",
+          "Sử dụng kem chống nắng ít nhất 2 lần mỗi ngày, bôi lại mỗi 2 tiếng nếu liên tục tiếp xúc với ánh nắng",
+          "Ngủ sớm và đủ giấc. Từ 10h tối đến 2h sáng là thời gian da bạn bắt đầu phục hồi",
+          "Rửa mặt bằng nước ấm",
+          "Tập thể dục ít nhất 3 tiếng một tuần",
+          "Thư giãn bằng yoga để giảm căng thẳng",
+          "Rửa mặt sau khi gội đầu",
+          "Sử dụng son dưỡng chống nắng",
+          "Vệ sinh chăn gối, cọ trang điểm, điện thoại thường xuyên"
+        ],
+        "dont": [
+          "Sử dụng sản phẩm chứa chất tạo bọt như SLS, ethanol hay hương liệu",
+          "Nhuộm tóc",
+          "Dùng tẩy da chết dạng hạt hoặc pad rửa mặt",
+          "Tùy tiện dùng sản phẩm chống lão hóa hoặc sáng da",
+          "Sử dụng thực phẩm chức năng chức melatonin",
+          "Ăn đồ ngọt, sữa và chế phẩm từ sữa",
+          "Phơi nắng quá lâu",
+          "Rửa mặt quá 5 phút",
+          "Đi ngủ mà không tẩy trang"
+        ]
+      },
+      "DSNT": {
+        "explanation": "Làn da khô nhạy cảm của bạn có thể có các đặc điểm như: dễ nổi mụn, da dễ ửng đỏ hoặc (và) mẩn đỏ và thường xảy ra kích ứng. Ngoài ra, da bạn thường sẽ rất khô, thậm chí thỉnh thoảng có thể gây ngứa do lớp màng bảo vệ da của bạn khá yếu. Nếu kết quả bài kiểm tra của bạn có chỉ số nhạy cảm và khô cao, bạn có khả năng mắc bệnh chàm (eczema) cao hơn người bình thường đấy!\n\nTuy nhiên bạn cũng đừng lo lắng quá mà hãy tận hưởng một làn da đều màu và không có nếp nhăn đi nào! Tuyệt đối đừng lạm dụng lớp trang điểm để che đi những vết mụn đỏ, chúng chỉ khiến da bạn ngày càng nhạy cảm hơn so với lúc ban đầu. Và cuối cùng, điều quan trọng phải nhắc 3 lần: Dưỡng ẩm! Dưỡng ẩm! Dưỡng ẩm! Nó sẽ giúp lớp màng bảo vệ da trở nên khỏe hơn, nhờ đó ngăn chặn được các chất gây dị ứng hoặc vi khuẩn.",
+        "do": [
+          "Sử dụng kem dưỡng phục hồi da ít nhất 2 lần mỗi ngày",
+          "Hạn chế trang điểm đậm",
+          "Dùng dầu gội trẻ em thay vì dầu gội công nghiệp",
+          "Bổ sung chất chống viêm, chống oxi hóa",
+          "Thực hiện chế độ ăn giàu axit linoleic và vitamin A",
+          "Làm quen với sản phẩm chứa retinoid, bắt đầu với nồng độ thấp",
+          "Sử dụng kem chống nắng ít nhất 2 lần mỗi ngày, bôi lại mỗi 2 tiếng nếu liên tục tiếp xúc với ánh nắng",
+          "Ngủ sớm và đủ giấc. Từ 10h tối đến 2h sáng là thời gian da bạn bắt đầu phục hồi",
+          "Rửa mặt bằng nước ấm",
+          "Tập thể dục ít nhất 3 tiếng một tuần",
+          "Thư giãn bằng yoga để giảm căng thẳng",
+          "Rửa mặt sau khi gội đầu",
+          "Sử dụng son dưỡng chống nắng",
+          "Vệ sinh chăn gối, cọ trang điểm, điện thoại thường xuyên"
+        ],
+        "dont": [
+          "Sử dụng sản phẩm chứa chất tạo bọt như SLS, ethanol hay hương liệu",
+          "Nhuộm tóc",
+          "Dùng tẩy da chết dạng hạt hoặc pad rửa mặt",
+          "Tùy tiện dùng sản phẩm chống lão hóa hoặc sáng da",
+          "Sử dụng thực phẩm chức năng chức melatonin",
+          "Ăn đồ ngọt, sữa và chế phẩm từ sữa",
+          "Phơi nắng quá lâu",
+          "Rửa mặt quá 5 phút",
+          "Đi ngủ mà không tẩy trang"
+        ]
+      },
+      "ORPW": {
+        "explanation": "Xin chúc mừng! Bạn may mắn mang trong mình một trong những loại da đẹp nhất !\n\nVới làn da dầu khỏe mạnh, bạn dường như ít gặp các vấn đề về mụn hoặc những vết mẩn đỏ. Lớp dầu tự nhiên và sự bảo vệ của các sắc tố da đáng lẽ sẽ giúp bạn có một làn da căng bóng. Tuy nhiên, dường như lối sống không khoa học đã khiến da bạn dễ lão hóa hơn. Thỉnh thoảng bạn sẽ cảm thấy lượng dầu thừa trên da quá nhiều, xảy ra tình trạng lỗ chân nở rộng và bí tắc tạo nên mụn đầu đen và mụn đầu trắng. \n\nĐể cải thiện làn da này, điều quan trọng nhất chính là thay đổi thói quen sinh hoạt của bạn. Ngoài ra, các sản phẩm có nồng độ hoạt chất cao là điều cần thiết để hạn chế nếp nhăn và làm mờ thâm nám. Để tránh tình trạng dầu thừa xuất hiện, bạn hãy loại bỏ nó bằng các sản phẩm kiềm dầu. Và điều tối quan trọng, đừng bao giờ quên sử dụng kem chống nắng nhé!",
+        "do": [
+          "Sử dụng sữa rửa mặt tạo bọt",
+          "Bổ sung chất chống oxi hóa",
+          "Sử dụng sản phẩm chống nắng vật lý ",
+          "Cân nhắc các sản phẩm chứa hydroxy acid, retinoid, axit ascorbic",
+          "Tẩy da chết 1-3 lần/tuần ",
+          "Thực hiện chế độ ăn rau củ quả nhiều màu 2 phần mỗi ngày",
+          "Sử dụng bột khoáng hoặc kem lót kiềm dầu vào buổi sáng",
+          "Xem xét thực hiện các biện pháp xâm lấn sâu theo lời khuyên từ chuyên da",
+          "Sử dụng kem chống nắng ít nhất 2 lần mỗi ngày, bôi lại mỗi 2 tiếng nếu liên tục tiếp xúc với ánh nắng",
+          "Ngủ sớm và đủ giấc. Từ 10h tối đến 2h sáng là thời gian da bạn bắt đầu phục hồi",
+          "Rửa mặt bằng nước ấm",
+          "Tập thể dục ít nhất 3 tiếng một tuần",
+          "Thư giãn bằng yoga để giảm căng thẳng",
+          "Rửa mặt sau khi gội đầu",
+          "Sử dụng son dưỡng chống nắng",
+          "Vệ sinh chăn gối, cọ trang điểm, điện thoại thường xuyên"
+        ],
+        "dont": [
+          "Tự ý loại bỏ lông trên mặt",
+          "Dùng kem dưỡng nặng đô",
+          "Thử kem chống nắng có nồng độ dimethicone cao",
+          "Sử dụng sản phẩm gây bí tắc lỗ chân lông như dầu dừa",
+          "Phơi nắng quá lâu",
+          "Rửa mặt quá 5 phút",
+          "Đi ngủ mà không tẩy trang"
+        ]
+      },
+      "ORPT": {
+        "explanation": "Xin chúc mừng! Bạn may mắn mang trong mình một trong những loại da đẹp nhất !\n\nVới làn da dầu khỏe mạnh, bạn dường như ít gặp các vấn đề về mụn hoặc những vết mẩn đỏ. Lớp dầu tự nhiên và sự bảo vệ của các sắc tố da giúp da bạn ngăn chặn quá trình hình thành nếp nhăn. Thỉnh thoảng bạn sẽ cảm thấy lượng dầu thừa trên da quá nhiều, xảy ra tình trạng lỗ chân nở rộng và bí tắc tạo nên mụn đầu đen và mụn đầu trắng.  Những người thuộc tuýp da bạn thông thường cũng xuất hiện nhiều lông ở vùng mặt.\n\nĐể cải thiện làn da này, điều quan trọng nhất chính là thay đổi thói quen sinh hoạt của bạn. Bạn cũng không cần phải lập một chu trình dưỡng da cầu kỳ như các loại da khác. Và điều tối quan trọng, đừng bao giờ quên sử dụng kem chống nắng nhé!",
+        "do": [
+          "Sử dụng sữa rửa mặt tạo bọt",
+          "Bổ sung chất chống oxi hóa",
+          "Sử dụng sản phẩm chống nắng vật lý ",
+          "Cân nhắc các sản phẩm chứa hydroxy acid, retinoid, axit ascorbic",
+          "Tẩy da chết 1-3 lần/tuần ",
+          "Thực hiện chế độ ăn rau củ quả nhiều màu 2 phần mỗi ngày",
+          "Sử dụng bột khoáng hoặc kem lót kiềm dầu vào buổi sáng",
+          "Sử dụng kem chống nắng ít nhất 2 lần mỗi ngày, bôi lại mỗi 2 tiếng nếu liên tục tiếp xúc với ánh nắng",
+          "Ngủ sớm và đủ giấc. Từ 10h tối đến 2h sáng là thời gian da bạn bắt đầu phục hồi",
+          "Rửa mặt bằng nước ấm",
+          "Tập thể dục ít nhất 3 tiếng một tuần",
+          "Thư giãn bằng yoga để giảm căng thẳng",
+          "Rửa mặt sau khi gội đầu",
+          "Sử dụng son dưỡng chống nắng",
+          "Vệ sinh chăn gối, cọ trang điểm, điện thoại thường xuyên"
+        ],
+        "dont": [
+          "Tự ý loại bỏ lông trên mặt",
+          "Dùng sữa rửa mặt quá dịu nhẹ",
+          "Dùng kem dưỡng nặng đô",
+          "Thử kem chống nắng có nồng độ dimethicone cao",
+          "Sử dụng sản phẩm gây bí tắc lỗ chân lông như dầu dừa",
+          "Phơi nắng quá lâu",
+          "Rửa mặt quá 5 phút",
+          "Đi ngủ mà không tẩy trang"
+        ]
+      },
+      "ORNW": {
+        "explanation": "Xin chúc mừng! Bạn may mắn mang trong mình một trong những loại da đẹp nhất !\n\nVới làn da dầu khỏe mạnh, bạn dường như ít gặp các vấn đề về mụn hoặc những vết mẩn đỏ. Thỉnh thoảng bạn sẽ cảm thấy lượng dầu thừa trên da quá nhiều và xảy ra tình trạng lỗ chân nở rộng, bí tắc tạo nên mụn đầu đen và mụn đầu trắng. Với lớp dầu tự nhiên trên da đóng vai trò như một serum chống lão hóa, đáng lẽ bạn sẽ có một làn da căng bóng. Tuy nhiên, dường như lối sống không khoa học cũng như việc sắc tố da ít đã khiến da bạn dễ lão hóa hơn.\n\nĐể cải thiện làn da này, điều quan trọng nhất không phải là một chu trình dưỡng da cầu kỳ mà chính là thay đổi thói quen sinh hoạt của bạn. Một số liệu pháp xâm lấn như lăn kim, laser cũng có thể áp dụng tùy theo đề nghị của bác sĩ chuyên khoa. Và đừng bao giờ quên kem chống nắng nhé! Không bao giờ là muộn để bắt đầu quá trình trẻ hóa làn da của bạn!",
+        "do": [
+          "Bổ sung chất chống oxi hóa",
+          "Sử dụng sản phẩm chống nắng vật lý ",
+          "Cân nhắc các sản phẩm chứa hydroxy acid, retinoid, axit ascorbic",
+          "Tẩy da chết 1-3 lần/tuần ",
+          "Sử dụng bột khoáng hoặc kem lót kiềm dầu vào buổi sáng",
+          "Xem xét thực hiện các biện pháp xâm lấn sâu theo lời khuyên từ chuyên da",
+          "Sử dụng kem chống nắng ít nhất 2 lần mỗi ngày, bôi lại mỗi 2 tiếng nếu liên tục tiếp xúc với ánh nắng",
+          "Ngủ sớm và đủ giấc. Từ 10h tối đến 2h sáng là thời gian da bạn bắt đầu phục hồi",
+          "Rửa mặt bằng nước ấm",
+          "Tập thể dục ít nhất 3 tiếng một tuần",
+          "Thư giãn bằng yoga để giảm căng thẳng",
+          "Rửa mặt sau khi gội đầu",
+          "Sử dụng son dưỡng chống nắng",
+          "Vệ sinh chăn gối, cọ trang điểm, điện thoại thường xuyên"
+        ],
+        "dont": [
+          "Dùng sữa rửa mặt quá dịu nhẹ",
+          "Dùng kem dưỡng nặng đô",
+          "Thử kem chống nắng có nồng độ dimethicone cao",
+          "Sử dụng sản phẩm gây bí tắc lỗ chân lông như dầu dừa",
+          "Phơi nắng quá lâu",
+          "Rửa mặt quá 5 phút",
+          "Đi ngủ mà không tẩy trang"
+        ]
+      },
+      "ORNT": {
+        "explanation": "Xin chúc mừng! Bạn may mắn mang trong mình loại da lý tưởng nhất mà bất kỳ ai đều mong muốn được sở hữu!\n\nVới làn da dầu khỏe mạnh, bạn dường như ít gặp các vấn đề về mụn hoặc những vết mẩn đỏ. Thỉnh thoảng bạn sẽ cảm thấy lượng dầu thừa trên da quá nhiều và xảy ra tình trạng lỗ chân nở rộng, bí tắc tạo nên mụn đầu đen và mụn đầu trắng. Lớp dầu tự nhiên trên da còn đóng vai trò ngăn chặn quá trình hình thành nếp nhăn. Tuy nhiên, việc sở hữu làn da này là hữu hạn nên hãy yêu thương nó nhiều hơn nhé!\n\nĐể cải thiện làn da này, điều quan trọng nhất điều quan trọng nhất không phải là một chu trình dưỡng da cầu kỳ mà chính là thay đổi thói quen sinh hoạt của bạn. Và đừng bao giờ quên kem chống nắng nhé!",
+        "do": [
+          "Sử dụng sữa rửa mặt tạo bọt",
+          "Bổ sung chất chống oxi hóa",
+          "Sử dụng sản phẩm chống nắng vật lý ",
+          "Cân nhắc các sản phẩm chứa hydroxy acid, retinoid, axit ascorbic",
+          "Tẩy da chết 1-3 lần/tuần ",
+          "Sử dụng bột khoáng hoặc kem lót kiềm dầu vào buổi sáng",
+          "Thực hiện chế độ ăn rau củ quả nhiều màu 2 phần mỗi ngày",
+          "Sử dụng kem chống nắng ít nhất 2 lần mỗi ngày, bôi lại mỗi 2 tiếng nếu liên tục tiếp xúc với ánh nắng",
+          "Ngủ sớm và đủ giấc. Từ 10h tối đến 2h sáng là thời gian da bạn bắt đầu phục hồi",
+          "Rửa mặt bằng nước ấm",
+          "Tập thể dục ít nhất 3 tiếng một tuần",
+          "Thư giãn bằng yoga để giảm căng thẳng",
+          "Rửa mặt sau khi gội đầu",
+          "Sử dụng son dưỡng chống nắng",
+          "Vệ sinh chăn gối, cọ trang điểm, điện thoại thường xuyên"
+        ],
+        "dont": [
+          "Dùng sữa rửa mặt quá dịu nhẹ",
+          "Dùng kem dưỡng nặng đô",
+          "Thử kem chống nắng có nồng độ dimethicone cao",
+          "Sử dụng sản phẩm gây bí tắc lỗ chân lông như dầu dừa",
+          "Phơi nắng quá lâu",
+          "Rửa mặt quá 5 phút",
+          "Đi ngủ mà không tẩy trang"
+        ]
+      },
+      "DRPW": {
+        "explanation": "Xin chúc mừng! Bạn may mắn mang trong mình một trong những loại da đẹp nhất !\n\nVới làn da khô khỏe mạnh, bạn dường như ít gặp các vấn đề về mụn hoặc những vết mẩn đỏ. Nhưng đừng vì thế mà bỏ bê làn da của mình nhé! Sự chủ quan chính là kẻ thù lớn nhất đối với làn da của bạn. Nếp nhăn và các đốm đen hình thành trên da bạn rất có thể là kết quả của việc không chú trọng việc dưỡng da, chống nắng và một lối sống không thật sự lành mạnh.\n\nNhững cũng đừng quá lo lắng, chưa bao giờ là muộn để bắt đầu cải thiện làn da. Bạn có thể cân nhắc một chế độ chăm sóc da bao gồm dưỡng ẩm, sử dụng các sản phẩm chứa chất chống oxi hóa (vitamin C, retinoid, glutathion, v.v.), tẩy tế bào chết hóa học AHA, và đừng bao giờ quên sử dụng kem chống nắng nhé!",
+        "do": [
+          "Sử dụng kem dưỡng phục hồi da ít nhất 2 lần mỗi ngày",
+          "Dùng sữa rửa mặt chứa axit glycolic",
+          "Bổ sung chất chống oxi hóa",
+          "Lập chế độ ăn giàu axit linoleic",
+          "Sử dụng sản phẩm chứa retinoid, bắt đầu với nồng độ thấp",
+          "Sử dụng kem mắt",
+          "Tẩy da chết 1-2 lần/tuần",
+          "Sử dụng kem chống nắng ít nhất 2 lần mỗi ngày, bôi lại mỗi 2 tiếng nếu liên tục tiếp xúc với ánh nắng",
+          "Ngủ sớm và đủ giấc. Từ 10h tối đến 2h sáng là thời gian da bạn bắt đầu phục hồi",
+          "Rửa mặt bằng nước ấm",
+          "Tập thể dục ít nhất 3 tiếng một tuần",
+          "Thư giãn bằng yoga để giảm căng thẳng",
+          "Rửa mặt sau khi gội đầu",
+          "Sử dụng son dưỡng chống nắng",
+          "Vệ sinh chăn gối, cọ trang điểm, điện thoại thường xuyên"
+        ],
+        "dont": [
+          "Dùng sữa rửa mặt tạo bọt",
+          "Dùng tẩy da chết dạng hạt hoặc pad rửa mặt",
+          "Phơi nắng quá lâu",
+          "Rửa mặt quá 5 phút",
+          "Đi ngủ mà không tẩy trang"
+        ]
+      },
+      "DRPT": {
+        "explanation": "Xin chúc mừng! Bạn may mắn mang trong mình một trong những loại da đẹp nhất !\n\nVới làn da khô khỏe mạnh, bạn dường như ít gặp các vấn đề về mụn hoặc những vết mẩn đỏ. Da bạn còn may mắn hơn nữa khi sở hữu loại da ít nhăn hơn bình thường nhờ có màng bảo vệ da vững chắc, sự hoạt động hiệu quả của sắc tố da và một lối sống lành mạnh.\n\nĐặc điểm nổi bật của loại da bạn đang sở hữu chính là khô và sắc tố da không đồng đều. Ngoài ra, lớp màng bảo vệ da có dấu hiệu suy yếu cũng có thể là lý do khiến da bạn gặp tình trạng mất nước. Bạn có thể cân nhắc một chế độ chăm sóc da bao gồm dưỡng ẩm, các sản phẩm chứa thành phần làm sáng da (hydroquinone, arbutin, v.v.), và đừng bao giờ quên kem chống nắng nhé!.",
+        "do": [
+          "Sử dụng kem dưỡng phục hồi da ít nhất 2 lần mỗi ngày",
+          "Dùng sản phẩm làm sáng da như hydroquinone, kojic acid, arbutin",
+          "Lập chế độ ăn giàu axit linoleic",
+          "Tẩy da chết 1-2 lần/tuần",
+          "Sử dụng kem chống nắng ít nhất 2 lần mỗi ngày, bôi lại mỗi 2 tiếng nếu liên tục tiếp xúc với ánh nắng",
+          "Ngủ sớm và đủ giấc. Từ 10h tối đến 2h sáng là thời gian da bạn bắt đầu phục hồi",
+          "Rửa mặt bằng nước ấm",
+          "Tập thể dục ít nhất 3 tiếng một tuần",
+          "Thư giãn bằng yoga để giảm căng thẳng",
+          "Rửa mặt sau khi gội đầu",
+          "Sử dụng son dưỡng chống nắng",
+          "Vệ sinh chăn gối, cọ trang điểm, điện thoại thường xuyên"
+        ],
+        "dont": [
+          "Dùng sữa rửa mặt tạo bọt",
+          "Dùng tẩy da chết dạng hạt hoặc pad rửa mặt",
+          "Tiếp xúc quá lâu với dung dịch chứa clo (như bể bơi)",
+          "Phơi nắng quá lâu",
+          "Rửa mặt quá 5 phút",
+          "Đi ngủ mà không tẩy trang"
+        ]
+      },
+      "DRNW": {
+        "explanation": "Xin chúc mừng! Bạn may mắn mang trong mình một trong những loại da đẹp nhất !\n\nVới làn da khô khỏe mạnh, bạn dường như ít gặp các vấn đề về mụn hoặc những vết mẩn đỏ. Tuy nhiên, việc ít sắc tố da cũng là nguyên nhân khiến da bạn không được bảo vệ dưới ánh nắng mặt trời và hình thành nếp nhăn đấy. Ngoài ra, lớp màng bảo vệ da có dấu hiệu suy yếu cũng có thể là lý do khiến da bạn gặp tình trạng mất nước. \n\nNếu như bạn sở hữu làn da này khi chưa đến 30 tuổi, bạn nên loại bỏ ngay những thói quen không tốt cho da nhé! Hãy bắt đầu hình thành thói quen dưỡng da phù hợp và chế độ ăn uống giàu chất chống oxi hóa (vitamin A,C,E, v.v.) ngay từ hôm nay và bạn sẽ thấy sự cải thiện da từng ngày. Điều tối quan trọng: đừng bao giờ quên sử dụng kem chống nắng!",
+        "do": [
+          "Sử dụng kem dưỡng phục hồi da ít nhất 2 lần mỗi ngày",
+          "Bổ sung chất chống oxi hóa",
+          "Sử dụng sản phẩm chứa retinoid, bắt đầu với nồng độ thấp",
+          "Tẩy da chết 1-2 lần/tuần",
+          "Sử dụng kem chống nắng ít nhất 2 lần mỗi ngày, bôi lại mỗi 2 tiếng nếu liên tục tiếp xúc với ánh nắng",
+          "Ngủ sớm và đủ giấc. Từ 10h tối đến 2h sáng là thời gian da bạn bắt đầu phục hồi",
+          "Rửa mặt bằng nước ấm",
+          "Tập thể dục ít nhất 3 tiếng một tuần",
+          "Thư giãn bằng yoga để giảm căng thẳng",
+          "Rửa mặt sau khi gội đầu",
+          "Sử dụng son dưỡng chống nắng",
+          "Vệ sinh chăn gối, cọ trang điểm, điện thoại thường xuyên"
+        ],
+        "dont": [
+          "Dùng sữa rửa mặt tạo bọt",
+          "Dùng tẩy da chết dạng hạt hoặc pad rửa mặt",
+          "Phơi nắng quá lâu",
+          "Rửa mặt quá 5 phút",
+          "Đi ngủ mà không tẩy trang"
+        ]
+      },
+      "DRNT": {
+        "do": [
+          "Sử dụng kem dưỡng phục hồi da ít nhất 2 lần mỗi ngày",
+          "Bổ sung chất chống oxi hóa",
+          "Tẩy da chết 1-2 lần/tuần",
+          "Sử dụng kem chống nắng ít nhất 2 lần mỗi ngày, bôi lại mỗi 2 tiếng nếu liên tục tiếp xúc với ánh nắng",
+          "Ngủ sớm và đủ giấc. Từ 10h tối đến 2h sáng là thời gian da bạn bắt đầu phục hồi",
+          "Rửa mặt bằng nước ấm",
+          "Tập thể dục ít nhất 3 tiếng một tuần",
+          "Thư giãn bằng yoga để giảm căng thẳng",
+          "Rửa mặt sau khi gội đầu",
+          "Sử dụng son dưỡng chống nắng",
+          "Vệ sinh chăn gối, cọ trang điểm, điện thoại thường xuyên"
+        ],
+        "dont": [
+          "Dùng sữa rửa mặt tạo bọt",
+          "Phơi nắng quá lâu",
+          "Rửa mặt quá 5 phút",
+          "Đi ngủ mà không tẩy trang"
+        ]
+      }
+    },
+
     "khô vs da dầu": [{
         "question": "Bạn bị bít lỗ chân lông (mụn đầu đen và mụn đầu trắng)?",
         "options": [

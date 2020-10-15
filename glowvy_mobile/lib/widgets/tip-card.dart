@@ -27,7 +27,7 @@ class TipCard extends StatelessWidget {
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(horizontal: 12),
         child: Text(
-          tip["title"],
+          tip,
           style: kBaseTextStyle.copyWith(
               fontSize: 15, color: kDarkAccent, fontWeight: FontWeight.bold),
         ),
@@ -36,7 +36,7 @@ class TipCard extends StatelessWidget {
         left: 14,
         top: 14,
         child: Text(
-          "Tip ${index}",
+          "Tip ${index.toString()}",
           style: kBaseTextStyle.copyWith(
               fontSize: 15,
               color: isYes ? kSafetyGreen : kPrimaryOrange,

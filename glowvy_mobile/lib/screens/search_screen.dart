@@ -6,6 +6,7 @@ import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/services/index.dart';
+import 'package:Dimodo/widgets/cosmetics_request_button.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -168,7 +169,8 @@ class _SearchScreenState extends State<SearchScreen> {
                                   keyword: serum, onTap: () => search(serum)),
                               SizedBox(height: 10),
                             ],
-                          ))
+                          )),
+                  // CosmeticsRequestBtn()
                 ],
               )),
         ));

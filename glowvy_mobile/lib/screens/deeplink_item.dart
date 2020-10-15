@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import './../services/index.dart';
 import '../models/product/product.dart';
-import 'detail/product_detail.dart';
+// import 'detail/product_detail.dart';
 
 class ItemDeepLink extends StatefulWidget {
   final int itemId;
@@ -63,7 +63,7 @@ class _ItemDeepLinkState extends State<ItemDeepLink> {
                 ),
               );
             }
-            return ProductDetail(product: snapshot.data);
+          // return ProductDetail(product: snapshot.data);
         }
       },
     );
