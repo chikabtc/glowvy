@@ -35,6 +35,7 @@ abstract class BaseServices {
 
   Future<Reviews> getReviews(productId, int offset, int limit);
   Future<Product> getCosmetics(productId);
+  Future<void> writeReview(review);
   Future<List<Review>> getCosmeticsReviews(productId);
   Future<List<Ingredient>> getIngredients(productId);
   // ===========================================================================
@@ -132,6 +133,18 @@ class Services implements BaseServices {
         connectivityResult == ConnectivityResult.wifi) {
       return serviceApi.getCosmeticsProductsByCategory(
           categoryId: categoryId, skinType: skinType);
+    } else {
+      //TODO: add no connection popup
+      throw Exception("No internet connection");
+    }
+  }
+
+  @override
+  Future<void> writeReview(review) async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      return serviceApi.writeReview(review);
     } else {
       //TODO: add no connection popup
       throw Exception("No internet connection");

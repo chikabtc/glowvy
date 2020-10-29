@@ -8,23 +8,20 @@ part of 'category.dart';
 
 Category _$CategoryFromJson(Map<String, dynamic> json) {
   return Category(
-    id: json['id'] as int,
-    name: json['name'] as String,
-    image: json['image'] as String,
-    parentName: json['parent_name'] as String,
-    parentId: json['parent_id'] as int,
-    subCategories: (json['sub_categories'] as List)
-        ?.map((e) =>
-            e == null ? null : Category.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    firstCategoryId: json['first_category_id'] as int,
+    firstCategoryName: json['first_category_name'] as String,
+    secondCategoryId: json['second_category_id'] as int,
+    secondCategoryName: json['second_category_name'] as String,
+    thirdCategoryId: json['third_category_id'] as int,
+    thirdCategoryName: json['third_category_name'] as String,
   );
 }
 
 Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
-      'id': instance.id,
-      'parent_id': instance.parentId,
-      'parent_name': instance.parentName,
-      'name': instance.name,
-      'image': instance.image,
-      'sub_categories': instance.subCategories,
+      'first_category_id': instance.firstCategoryId,
+      'first_category_name': instance.firstCategoryName,
+      'second_category_id': instance.secondCategoryId,
+      'second_category_name': instance.secondCategoryName,
+      'third_category_id': instance.thirdCategoryId,
+      'third_category_name': instance.thirdCategoryName,
     };

@@ -309,7 +309,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                 Text(product.name,
                                     maxLines: 2, style: textTheme.headline3),
                                 Text(
-                                    "No.${widget.rank + 1} trong danh sách ${product.category.name}",
+                                    "No.${widget.rank + 1} trong danh sách ${product.category.firstCategoryName}",
                                     maxLines: 1,
                                     style: textTheme.caption2
                                         .copyWith(color: kSecondaryGrey)),

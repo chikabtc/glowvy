@@ -292,13 +292,35 @@ class GlowvyServices implements BaseServices {
 
       if (productSnapshot.docs.isNotEmpty) {
         for (var doc in productSnapshot.docs) {
-          // print(doc.data());
+          // print(doc.data());q
           list.add(Product.fromJson(doc.data()));
         }
         print("categoryId: $categoryId");
         return list;
       } else {
         throw Exception("no products were found");
+      }
+    } catch (e) {
+      print("Error: $e");
+      throw e;
+    }
+  }
+
+  @override
+  Future<void> writeReview(review) async {
+    // var json = review;
+
+    // FieldValue.serverTimestamp()
+    try {
+      var writeRes = await FirebaseFirestore.instance
+          .collection('reviews')
+          .add(review.toJson());
+
+      if (writeRes.id != null) {
+        print('review id: ${writeRes.id}');
+        return;
+      } else {
+        throw Exception("failed to upload review");
       }
     } catch (e) {
       print("Error: $e");

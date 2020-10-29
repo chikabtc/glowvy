@@ -315,7 +315,7 @@ class CartModel with ChangeNotifier {
   }
 
   double calculateShippingFee(Product item) {
-    switch (item.category.id) {
+    switch (item.category.firstCategoryId) {
       case 1:
         return 30000;
       case 2:

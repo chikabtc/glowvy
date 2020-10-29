@@ -489,7 +489,7 @@ class _ProductOptionState extends State<ProductOption>
           children: <Widget>[
             MaterialButton(
                 elevation: 0,
-                color: widget.isLiked ? kQuaternaryPink : kAccentRed,
+                color: widget.isLiked ? kQuaternaryOrange : kAccentRed,
                 minWidth: (screenSize.width - 48) * 0.5,
                 height: 40,
                 shape: RoundedRectangleBorder(

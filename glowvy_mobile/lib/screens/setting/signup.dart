@@ -49,9 +49,9 @@ class _SignupScreenState extends State<SignupScreen>
   void _welcomeDiaLog(User user) {
     var email = user.email;
     _snackBar('Welcome $email!');
-    Navigator.pop(context);
-    // Navigator.of(context).pushReplacementNamed('/verify_email',
-    //     arguments: {'fullName': fullName});
+    // Navigator.pop(context);
+    Navigator.of(context).pushReplacementNamed('/verify_email',
+        arguments: {'fullName': fullName});
   }
 
   void _failMess(message) {
@@ -257,7 +257,7 @@ class _SignupScreenState extends State<SignupScreen>
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(6)),
-                              color: kQuaternaryPink),
+                              color: kQuaternaryOrange),
                           child: // Group 6
                               Center(
                             child: TextField(
@@ -282,7 +282,7 @@ class _SignupScreenState extends State<SignupScreen>
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(6)),
-                              color: kQuaternaryPink),
+                              color: kQuaternaryOrange),
                           child: // Group 6
                               Center(
                             child: TextField(
@@ -303,7 +303,7 @@ class _SignupScreenState extends State<SignupScreen>
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(6)),
-                              color: kQuaternaryPink),
+                              color: kQuaternaryOrange),
                           child: // Group 6
                               Center(
                             child: TextField(

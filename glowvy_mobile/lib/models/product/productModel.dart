@@ -355,17 +355,17 @@ class ProductModel with ChangeNotifier {
       {bool isNameAvailable}) {
     final product = Provider.of<ProductModel>(context, listen: false);
     print("show subcate");
-    print("cate id: ${category.name}");
+    print("cate id: ${category.firstCategoryName}");
 
     // for fetching beforehand
-    product.setCategoryId(categoryId: category.id);
+    product.setCategoryId(categoryId: category.firstCategoryId);
     product.setProductsList(List<Product>()); //clear old products
     // _service.fetchProductsByCategory(categoryId: category.id);
 
-    Navigator.push(
-        context,
-        CupertinoPageRoute(
-            builder: (context) => SubCategoryScreen(category: category)));
+    // Navigator.push(
+    //     context,
+    //     CupertinoPageRoute(
+    //         builder: (context) => SubCategoryScreen(category: category)));
   }
 
   // showProductListByCategory(
@@ -427,6 +427,29 @@ class ProductModel with ChangeNotifier {
         return CosmeticsProductList(
           products: snapshot.data,
           onLoadMore: onLoadMore,
+          showFilter: showFiler,
+          disableScrolling: true,
+          showRank: false,
+        );
+      },
+    );
+  }
+
+  Widget showCosmeticsReviewProductList(
+      {isNameAvailable,
+      future,
+      showFiler = false,
+      disableScroll = false,
+      Function onLoadMore,
+      sortBy}) {
+    return FutureBuilder<List<Product>>(
+      future: future,
+      builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
+        products = snapshot.data;
+        return CosmeticsProductList(
+          products: snapshot.data,
+          onLoadMore: onLoadMore,
+          isProductReviewList: true,
           showFilter: showFiler,
           disableScrolling: true,
           showRank: false,

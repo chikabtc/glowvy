@@ -143,7 +143,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
       } else {
         _playAnimation();
         Provider.of<UserModel>(context, listen: false)
-            .verifyEmail(code: email, success: _inputPIN, fail: _failMess);
+            .verifyEmail(success: _inputPIN, fail: _failMess);
       }
     }
 

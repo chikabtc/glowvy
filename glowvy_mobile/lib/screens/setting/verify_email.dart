@@ -43,23 +43,21 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen>
   }
 
   //update the UI of the screen to show input PIN
-  void _welcomeMessage(context) {
-    _stopAnimation();
+  void _welcomeMessage() {
     final snackBar =
-        SnackBar(content: Text('Pin is correct !', style: kBaseTextStyle));
-    Scaffold.of(context).showSnackBar(snackBar);
-
-    Navigator.of(context).pop();
+        //     SnackBar(content: Text('Pin is correct !', style: kBaseTextStyle));
+        // Scaffold.of(context).showSnackBar(snackBar);
+        Future.delayed(const Duration(milliseconds: 1000), () {
+      _stopAnimation();
+      Navigator.of(context).pop();
+      setState(() {});
+    });
   }
+  // void onCorrectPin(context) {
+  //   print("email is verified!");
+  //   _welcomeMessage(context);
 
-  void onCorrectPin(context) {
-    print("pin is correct!");
-    _stopAnimation();
-    _welcomeMessage(context);
-    // this.accessToken = accessToken;
-    // kAccessToken = accessToken;
-    // print("accessToken Received here: $accessToken");
-  }
+  // }
 
   void _failMess(message) {
     _stopAnimation();
@@ -131,15 +129,9 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen>
     var fullName = arguments['fullName'];
 
     _verifyEmail(email) {
-      print("request pin: $email");
       _playAnimation();
       Provider.of<UserModel>(context, listen: false).verifyEmail(
-          fullName: fullName,
-          code: email,
-          success: () {
-            onCorrectPin(context);
-          },
-          fail: _failMess);
+          fullName: fullName, success: _welcomeMessage, fail: _failMess);
     }
 
     return Scaffold(
@@ -154,15 +146,6 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen>
                   Navigator.of(context).pop();
                 })
             : Container(),
-        actions: <Widget>[
-          FlatButton(
-            child: Text(S.of(context).login,
-                style: buttonTextStyle.copyWith(fontWeight: FontWeight.bold)),
-            onPressed: () {
-              Navigator.pushNamed(context, "/login");
-            },
-          )
-        ],
         backgroundColor: Theme.of(context).backgroundColor,
         elevation: 0.0,
       ),
@@ -195,36 +178,32 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen>
                       ),
                       SizedBox(height: 23.0),
                       Text(
-                          isEmailSent
-                              ? S.of(context).enterSixDigitCode
-                              : S.of(context).enterEmailToGetPIN,
+                          "We sent email to your address to verify your account. Please check the link and click verify button 🙏",
                           style: kBaseTextStyle.copyWith(
                               fontSize: 14, fontWeight: FontWeight.w600)),
                       SizedBox(height: 16.0),
-                      Container(
-                          width: screenSize.width,
-                          height: 48,
-                          decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(6)),
-                              color: kPureWhite),
-                          child: // Group 6
-                              Center(
-                            child: TextField(
-                                controller: _emailController,
-                                onChanged: (value) => code = value,
-                                keyboardType: TextInputType.emailAddress,
-                                decoration: kTextField.copyWith(
-                                  hintText: isEmailSent
-                                      ? S.of(parentContext).enterPIN
-                                      : S.of(parentContext).enterYourEmail,
-                                )),
-                          )),
+                      // Container(
+                      //     width: screenSize.width,
+                      //     height: 48,
+                      //     decoration: BoxDecoration(
+                      //         borderRadius:
+                      //             BorderRadius.all(Radius.circular(6)),
+                      //         color: kPureWhite),
+                      //     child: // Group 6
+                      //         Center(
+                      //       child: TextField(
+                      //           controller: _emailController,
+                      //           onChanged: (value) => code = value,
+                      //           keyboardType: TextInputType.emailAddress,
+                      //           decoration: kTextField.copyWith(
+                      //             hintText: isEmailSent
+                      //                 ? S.of(parentContext).enterPIN
+                      //                 : S.of(parentContext).enterYourEmail,
+                      //           )),
+                      //     )),
                       SizedBox(height: 16.0),
                       StaggerAnimation(
-                          buttonTitle: isEmailSent
-                              ? S.of(context).enter
-                              : S.of(context).send,
+                          buttonTitle: "verify email",
                           buttonController: _loginButtonController.view,
                           onTap: () {
                             _verifyEmail(code);

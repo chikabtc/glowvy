@@ -230,7 +230,7 @@ class _LoginPageState extends State<LoginScreen>
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(6)),
-                              color: kQuaternaryPink),
+                              color: kQuaternaryOrange),
                           child: // Group 6
                               Center(
                             child: TextField(
@@ -250,7 +250,7 @@ class _LoginPageState extends State<LoginScreen>
                           decoration: BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(6)),
-                              color: kQuaternaryPink),
+                              color: kQuaternaryOrange),
                           child: // Group 6
                               Center(
                             child: TextField(

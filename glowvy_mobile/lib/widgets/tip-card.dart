@@ -19,7 +19,7 @@ class TipCard extends StatelessWidget {
       Container(
         width: 162,
         decoration: BoxDecoration(
-            color: isYes ? kLightGreen : kQuaternaryPink,
+            color: isYes ? kLightGreen : kQuaternaryOrange,
             border: Border.all(
                 color: isYes ? kSafetyGreen : kPrimaryOrange, width: 2),
             borderRadius: new BorderRadius.circular(10.0)),

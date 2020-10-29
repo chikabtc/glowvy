@@ -138,7 +138,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                           decoration: BoxDecoration(
                                               borderRadius: BorderRadius.all(
                                                   Radius.circular(16)),
-                                              color: kQuaternaryPink),
+                                              color: kQuaternaryOrange),
                                           child: // Group 6
                                               Center(
                                             child: MediaQuery(
@@ -182,7 +182,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                           decoration: BoxDecoration(
                                               borderRadius: BorderRadius.all(
                                                   Radius.circular(16)),
-                                              color: kQuaternaryPink),
+                                              color: kQuaternaryOrange),
                                           child: // Group 6
                                               Center(
                                             child: TextField(

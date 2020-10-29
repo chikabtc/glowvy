@@ -144,25 +144,16 @@
   },
   "TabBar": [{
       "layout": "home",
-      "active-icon": "assets/icons/tabs/home-active.svg",
-      "icon": "assets/icons/tabs/home-inactive.svg"
-    },
-    {
-      "layout": "category",
-      "categoryLayout": "card",
-      "active-icon": "assets/icons/tabs/category-active.svg",
-      "icon": "assets/icons/tabs/category-inactive.svg"
+      "name": "home",
+      "active-icon": "assets/icons/home-active.svg",
+      "icon": "assets/icons/home-inactive.svg"
     },
 
     {
-      "layout": "cart",
-      "active-icon": "assets/icons/tabs/cart-active.svg",
-      "icon": "assets/icons/tabs/cart-inactive.svg"
-    },
-    {
       "layout": "profile",
-      "active-icon": "assets/icons/tabs/account-active.svg",
-      "icon": "assets/icons/tabs/account-inactive.svg"
+      "name": "me",
+      "active-icon": "assets/icons/profile-active.svg",
+      "icon": "assets/icons/profile-inactive.svg"
     }
   ],
   "Tabs": [{
@@ -200,91 +191,42 @@
       "name": "Fashion"
     }
   ],
-  "Categories": [
 
-    {
-      "name": "ÁO",
-      "image": "assets/icons/categories/top.png",
-      "id": 1,
-      "parent_id": 1
-    },
-
-    {
-      "name": "ÁO KHOÁC",
-      "image": "assets/icons/categories/coat.png",
-      "id": 5,
-      "parent_id": 5
-
-    }, {
-      "name": "QUẦN",
-      "image": "assets/icons/categories/pants.png",
-      "id": 2,
-      "parent_id": 2
-    },
-    {
-      "name": "VÁY",
-      "image": "assets/icons/categories/skirt.png",
-      "id": 4,
-      "parent_id": 4
-
-    }, {
-      "name": "ĐẦM",
-      "image": "assets/icons/categories/dress.png",
-      "id": 3,
-      "parent_id": 3
-    },
-    {
-      "name": "GIÀY DÉP",
-      "image": "assets/icons/categories/shoes.png",
-      "id": 6,
-      "parent_id": 6
-    },
-    {
-      "name": "NỘI Y",
-      "image": "assets/icons/categories/lifeware.png",
-      "id": 7,
-      "parent_id": 7
-    },
-    {
-      "name": "MỸ PHẨM",
-      "image": "assets/icons/categories/cosmetics.png",
-      "id": 8,
-      "parent_id": 8
-    }, {
-      "name": "SKIN CARE",
-      "image": "assets/icons/categories/Package.png",
-      "id": 9,
-      "parent_id": 8
-    }
-  ],
   "Cosmetics_categories": [{
-      "name": "Làm Sạch Da Mặt",
-      "image": "assets/icons/categories/coat.png",
-      "id": 32,
-      "parent_id": 0
+      "first_category_name": "làm sạch",
+      "first_category_id": "7",
+      "second_category_name": "Làm Sạch Da Mặt",
+      "second_category_id": "1",
+      "third_category_name": "",
+      "third_category_id": ""
     },
     {
-      "name": "Chống Nắng",
-      "image": "assets/icons/categories/coat.png",
-      "id": 142,
-      "parent_id": 0
+      "first_category_name": "chống nắng",
+      "first_category_id": "9",
+      "second_category_name": "",
+      "second_category_id": "",
+      "third_category_name": "",
+      "third_category_id": ""
     },
     {
-      "name": "Serum",
-      "image": "assets/icons/categories/all.png",
-      "id": 3,
-      "parent_id": 0
+      "first_category_name": "chống nắng",
+      "first_category_id": "9",
+      "second_category_name": "tinh chất",
+      "second_category_id": "",
+      "third_category_name": "",
+      "third_category_id": ""
+
     },
 
     {
       "name": "Kem Bôi",
-      "image": "assets/icons/categories/top.png",
+
       "id": 4,
       "parent_id": 1
     },
     {
       "name": "Son Môi",
-      "image": "assets/icons/categories/coat.png",
+
       "id": 14,
       "parent_id": 0
     }

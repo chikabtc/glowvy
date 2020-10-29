@@ -115,7 +115,7 @@ class _CosmeticsRequestScreenState extends State<CosmeticsRequestScreen>
                       height: 48,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(16)),
-                          color: kQuaternaryPink),
+                          color: kQuaternaryOrange),
                       child: // Group 6
                           Center(
                         child: TextField(
@@ -135,7 +135,7 @@ class _CosmeticsRequestScreenState extends State<CosmeticsRequestScreen>
                       height: 48,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(16)),
-                          color: kQuaternaryPink),
+                          color: kQuaternaryOrange),
                       child: // Group 6
                           Center(
                         child: TextField(
@@ -155,7 +155,7 @@ class _CosmeticsRequestScreenState extends State<CosmeticsRequestScreen>
                       height: 48,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.all(Radius.circular(16)),
-                          color: kQuaternaryPink),
+                          color: kQuaternaryOrange),
                       child: // Group 6
                           Center(
                         child: TextField(

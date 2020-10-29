@@ -2,6 +2,7 @@ import 'package:Dimodo/screens/category.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:Dimodo/common/sizeConfig.dart';
+import 'package:Dimodo/common/colors.dart';
 import 'package:provider/provider.dart';
 import 'common/config.dart' as config;
 import 'common/constants.dart';
@@ -82,44 +83,49 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
     if (_tabView.length < 1) return Container();
 
     return Container(
-        color: Colors.white,
         child: DefaultTabController(
-          length: _tabView.length,
-          child: Scaffold(
-            backgroundColor: Theme.of(context).backgroundColor,
-            resizeToAvoidBottomPadding: false,
-            key: _scaffoldKey,
-            body: TabBarView(
-              physics: NeverScrollableScrollPhysics(),
-              children: _tabView,
-            ),
-            bottomNavigationBar: Container(
-              color: Colors.white,
-              width: screenSize.width,
-              child: SafeArea(
-                bottom: true,
-                child: FittedBox(
-                  child: Container(
-                      height: 50,
-                      color: Colors.white,
-                      width: screenSize.width /
-                          (2 / (screenSize.height / screenSize.width)),
-                      child: TabBar(
-                        onTap: (index) {
-                          setState(() {
-                            currentPage = index;
-                          });
-                        },
-                        tabs: renderTabbar(),
-                        labelColor: Colors.red,
-                        unselectedLabelColor: Colors.white,
-                        indicatorColor: Colors.transparent,
-                      )),
-                ),
+      length: _tabView.length,
+      child: Scaffold(
+        backgroundColor: Theme.of(context).backgroundColor,
+        resizeToAvoidBottomPadding: false,
+        key: _scaffoldKey,
+        body: TabBarView(
+          physics: NeverScrollableScrollPhysics(),
+          children: _tabView,
+        ),
+        bottomNavigationBar: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border(
+              top: BorderSide(
+                color: kDarkSecondary.withOpacity(0.1),
+                width: 1.0,
               ),
             ),
           ),
-        ));
+          width: screenSize.width,
+          child: SafeArea(
+            bottom: true,
+            child: Container(
+                height: 60,
+                color: Colors.white,
+                width: screenSize.width /
+                    (2 / (screenSize.height / screenSize.width)),
+                child: TabBar(
+                  onTap: (index) {
+                    setState(() {
+                      currentPage = index;
+                    });
+                  },
+                  tabs: renderTabbar(),
+                  labelColor: Colors.red,
+                  unselectedLabelColor: Colors.white,
+                  indicatorColor: Colors.transparent,
+                )),
+          ),
+        ),
+      ),
+    ));
   }
 
   List<Widget> renderTabbar() {
@@ -128,18 +134,33 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
     List<Widget> list = [];
 
     tabData.asMap().forEach((index, item) {
-      list.add(Tab(
-          // iconMargin: EdgeInsets.only(bottom: 0),
-          child: Stack(children: <Widget>[
-        Container(
-          width: 35,
-          padding: const EdgeInsets.all(6.0),
-          child: SvgPicture.asset(
-            currentPage == index ? item["active-icon"] : item["icon"],
-            // color:  ? Colors.black : kDarkSecondary,
-            width: 24 * kSizeConfig.containerMultiplier,
-            height: 24 * kSizeConfig.containerMultiplier,
-          ),
+      list.add(Stack(children: <Widget>[
+        Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Container(
+              width: 35,
+              padding: const EdgeInsets.only(top: 11, bottom: 4),
+              child: SvgPicture.asset(
+                currentPage == index ? item["active-icon"] : item["icon"],
+                // color:  ? Colors.black : kDarkSecondary,
+                width: 24 * kSizeConfig.containerMultiplier,
+                height: 24 * kSizeConfig.containerMultiplier,
+              ),
+            ),
+            Text(
+              item['name'],
+              style: textTheme.bodyText2.copyWith(
+                fontFamily: "Nunito",
+                height: 1.25,
+                fontStyle: FontStyle.normal,
+                fontSize: 10.0 * kSizeConfig.textMultiplier,
+                color:
+                    currentPage == index ? kDefaultFontColor : kSecondaryGrey,
+                fontWeight: FontWeight.w600,
+              ),
+            )
+          ],
         ),
         if (item["layout"] == "cart")
           Consumer<CartModel>(builder: (context, cartModel, child) {
@@ -168,7 +189,7 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
                       )
                     : Container());
           }),
-      ])));
+      ]));
     });
 
     return list;

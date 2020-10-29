@@ -42,6 +42,18 @@ backIcon(context, {color = kDarkAccent}) {
   );
 }
 
+arrowForwardIcon(context, {color = kDarkAccent, width = 26}) {
+  return GestureDetector(
+    onTap: () => Navigator.of(context).pop(),
+    child: IconButton(
+        icon: SvgPicture.asset(
+      'assets/icons/arrow_forward.svg',
+      width: width,
+      color: color,
+    )),
+  );
+}
+
 closeIcon(context, {color = Colors.black87}) {
   return GestureDetector(
     onTap: () => Navigator.of(context).pop(),

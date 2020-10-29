@@ -141,6 +141,27 @@ void main() async {
         ExactAssetPicture(
             SvgPicture.svgStringDecoder, 'assets/icons/arrow_forward.svg'),
         null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/profile-inactive.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/profile-active.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/home-active.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/home-inactive.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/message-banner.svg'),
+        null);
+
     final Future<FirebaseApp> _initialization = Firebase.initializeApp();
 
     runApp(Glowvy());

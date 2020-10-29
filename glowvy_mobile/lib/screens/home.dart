@@ -166,23 +166,10 @@ class HomeScreenState extends State<HomeScreen>
 
       tabList.asMap().forEach((index, item) {
         list.add(Tab(
-          text: item.name,
+          text: "ds",
         ));
       });
       return list;
-    }
-
-    showSkinTest() {
-      Navigator.push(
-          context,
-          MaterialPageRoute<void>(
-            builder: (BuildContext context) => userModel.skinType == null
-                ? BaumannTestIntro()
-                : BaumannQuiz(
-                    skinType: userModel.skinType,
-                    skinScores: userModel.skinScores),
-            fullscreenDialog: true,
-          ));
     }
 
     return Scaffold(
@@ -266,141 +253,6 @@ class HomeScreenState extends State<HomeScreen>
                               ),
                             ),
                           ),
-                          Row(
-                            children: <Widget>[
-                              GestureDetector(
-                                onTap: () => showSkinTest(),
-                                child: Container(
-                                  height: 70,
-                                  width: screenSize.width / 2,
-                                  color: kLightYellow,
-                                  padding: EdgeInsets.only(
-                                    top: 13,
-                                    bottom: 11,
-                                    left: 16,
-                                    right: 17,
-                                  ),
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: <Widget>[
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          Text(
-                                            S.of(context).yourSkin,
-                                            textAlign: TextAlign.start,
-                                            style: textTheme.headline4.copyWith(
-                                              color: kDarkYellow,
-                                            ),
-                                          ),
-                                          // SizedBox(height: 3.5),
-                                          Container(
-                                            padding: const EdgeInsets.all(3.0),
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(8)),
-                                              border: Border.all(
-                                                  color: kDarkYellow),
-                                            ),
-                                            child: Text(
-                                                userModel.skinType != null
-                                                    ? userModel.getFullSkinType(
-                                                        context,
-                                                        userModel.skinType)
-                                                    : "????",
-                                                textAlign: TextAlign.start,
-                                                style: textTheme.caption2
-                                                    .copyWith(
-                                                        height: 1.3,
-                                                        color: kDarkYellow,
-                                                        fontWeight:
-                                                            FontWeight.bold)),
-                                          )
-                                        ],
-                                      ),
-                                      Spacer(),
-                                      SvgPicture.asset(
-                                          "assets/icons/girl-face.svg"),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () async => {
-                                  // await FlutterMailer.send(MailOptions(
-                                  //     body: '',
-                                  //     subject:
-                                  //         'Làm thế nào chúng tôi có thể cải thiện ứng dụng cho bạn?',
-                                  //     recipients: ['hbpfreeman@gmail.com']))
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              FeedbackCenter()))
-                                },
-                                child: Container(
-                                  height: 70,
-                                  width: screenSize.width / 2,
-                                  color: kPrimaryBlue.withOpacity(0.3),
-                                  padding: EdgeInsets.only(
-                                    top: 13,
-                                    bottom: 12,
-                                    left: 16,
-                                    right: 17,
-                                  ),
-                                  child: Center(
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: <Widget>[
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: <Widget>[
-                                            Text(
-                                              S.of(context).feedback,
-                                              textAlign: TextAlign.start,
-                                              style:
-                                                  textTheme.headline4.copyWith(
-                                                color: kPrimaryBlue,
-                                              ),
-                                            ),
-                                            Container(
-                                              padding:
-                                                  const EdgeInsets.all(3.0),
-                                              decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(8)),
-                                                border: Border.all(
-                                                    color: kPrimaryBlue),
-                                              ),
-                                              child: Text("Cải thiện ứng dụng",
-                                                  textAlign: TextAlign.start,
-                                                  style: textTheme.caption2
-                                                      .copyWith(
-                                                    fontWeight: FontWeight.w700,
-                                                    color: kPrimaryBlue,
-                                                  )),
-                                            )
-                                          ],
-                                        ),
-                                        Spacer(),
-                                        SvgPicture.asset(
-                                            "assets/icons/feedback.svg"),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
                           Container(height: 20, color: kDefaultBackground),
                         ],
                       ),
@@ -441,17 +293,18 @@ class HomeScreenState extends State<HomeScreen>
                                   unselectedLabelStyle: textTheme.headline4
                                       .copyWith(
                                           color: kSecondaryGrey,
+                                          fontStyle: FontStyle.normal,
                                           fontWeight: FontWeight.bold),
                                   labelStyle: textTheme.headline4.copyWith(
                                       color: Colors.white,
-                                      fontSize: 15,
-                                      fontFamily: "Nunito",
+                                      fontStyle: FontStyle.normal,
                                       fontWeight: FontWeight.bold),
                                   labelColor: Colors.white,
                                   tabs: renderTabbar(),
                                   onTap: (index) {
                                     print("indeX!? " + index.toString());
-                                    currentCateId = tabList[index].id;
+                                    currentCateId =
+                                        tabList[index].firstCategoryId;
                                     setState(() {
                                       showFiltered = false;
                                     });
@@ -467,7 +320,7 @@ class HomeScreenState extends State<HomeScreen>
                                     children: <Widget>[
                                       SizedBox(height: 10),
                                       GestureDetector(
-                                        onTap: () => showSkinTest(),
+                                        // onTap: () => showSkinTest(),
                                         child: Container(
                                           height: 40,
                                           width: screenSize.width - 32,
@@ -547,7 +400,7 @@ class HomeScreenState extends State<HomeScreen>
                   return Builder(
                     builder: (BuildContext context) {
                       return CustomScrollView(
-                        key: PageStorageKey<String>(category.name),
+                        key: PageStorageKey<String>(category.firstCategoryName),
                         slivers: <Widget>[
                           SliverList(
                             delegate: SliverChildListDelegate([
@@ -594,7 +447,8 @@ class HomeScreenState extends State<HomeScreen>
                                                   productModel.sortProducts(
                                                       "rank",
                                                       skinTypeId,
-                                                      allProducts[category.id]),
+                                                      allProducts[category
+                                                          .firstCategoryId]),
                                               showRank: true,
                                               onLoadMore: onLoadMore,
                                               disableScrolling: true,

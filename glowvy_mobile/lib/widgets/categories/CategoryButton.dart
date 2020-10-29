@@ -20,10 +20,10 @@ class CategoryButton extends StatelessWidget {
       onTap: () =>
           productModel.showSubCategoryPage(category, "+sale_price", context),
       child: Column(children: <Widget>[
-        Image.asset(category.image),
-        Text(category.name,
-            style: kBaseTextStyle.copyWith(
-                fontSize: 13, fontWeight: FontWeight.w600))
+        // Image.asset(category.image),
+        // Text(category.name,
+        //     style: kBaseTextStyle.copyWith(
+        //         fontSize: 13, fontWeight: FontWeight.w600))
       ]),
     );
   }

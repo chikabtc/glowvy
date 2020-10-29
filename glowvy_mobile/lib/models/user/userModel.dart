@@ -298,27 +298,33 @@ class UserModel with ChangeNotifier {
   //   }
   // }
 
-  void verifyEmail({fullName, code, Function success, Function fail}) async {
+  void verifyEmail({fullName, Function success, Function fail}) async {
+    var user = b.FirebaseAuth.instance.currentUser;
+    await user.reload();
     b.FirebaseAuth auth = b.FirebaseAuth.instance;
+    user = auth.currentUser;
 
-    String code = 'xxxxxxx';
+    // String code = 'xxxxxxx';
 
     try {
       // await auth.checkActionCode(code);
       // await auth.applyActionCode(code);
       // isLoggedIn = true;
-      if (b.FirebaseAuth.instance.currentUser.emailVerified) {
+      if (user.emailVerified) {
         await FirebaseFirestore.instance
             .collection('users')
             .doc(auth.currentUser.uid)
             .set({
           'full_name': fullName,
         });
+        loading = true;
+        success();
       } else {
         loading = false;
-        notifyListeners();
+
         fail("email is not verified");
       }
+      notifyListeners();
       // add the user doc to the firestore db
 
       auth.currentUser.reload();
