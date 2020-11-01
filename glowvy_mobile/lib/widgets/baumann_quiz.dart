@@ -6,6 +6,7 @@ import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/skin-score.dart';
 import 'package:Dimodo/widgets/survey_card.dart';
 import 'package:Dimodo/widgets/tip-card.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -534,7 +535,9 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                             //animation
                                             // popup
                                             onPressed: () {
-                                              if (!userModel.isLoggedIn) {
+                                              if (FirebaseAuth
+                                                      .instance.currentUser !=
+                                                  null) {
                                                 Navigator.pushNamed(
                                                     context, "/login");
                                               } else {

@@ -8,6 +8,7 @@ import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/coupon.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/user/userModel.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
@@ -255,7 +256,7 @@ class EmptyCart extends StatelessWidget {
               child: Text(S.of(context).emptyCartSubtitle,
                   style: textTheme.caption2, textAlign: TextAlign.center),
             ),
-            userModel.isLoggedIn
+            FirebaseAuth.instance.currentUser != null
                 ? Container()
                 : Expanded(
                     child: Align(

@@ -162,7 +162,7 @@ void main() async {
             SvgPicture.svgStringDecoder, 'assets/icons/message-banner.svg'),
         null);
 
-    final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+    await Firebase.initializeApp();
 
     runApp(Glowvy());
   }, onError: (error, stackTrace) async {

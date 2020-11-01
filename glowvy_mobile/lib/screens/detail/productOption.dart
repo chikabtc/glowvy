@@ -1,4 +1,5 @@
 import 'package:Dimodo/models/order/cartItem.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../common/styles.dart';
 
@@ -162,7 +163,7 @@ class _ProductOptionState extends State<ProductOption>
                       ? kAccentRed
                       : attribute.isSoldOut
                           ? kDarkAccent.withOpacity(0.4)
-                          : kLightBG,
+                          : kSecondaryWhite,
                   label: Text(
                     attribute.value,
                     style: kBaseTextStyle.copyWith(
@@ -261,7 +262,7 @@ class _ProductOptionState extends State<ProductOption>
                   ? kAccentRed
                   : isSoldOut(compoundOption, key, associatedKey)
                       ? kDarkAccent.withOpacity(0.4)
-                      : kLightBG,
+                      : kSecondaryWhite,
               label: Text(
                 key,
                 style: kBaseTextStyle.copyWith(
@@ -391,7 +392,7 @@ class _ProductOptionState extends State<ProductOption>
                                                           Radius.circular(6.0)),
                                                   border: Border.all(
                                                       style: BorderStyle.solid,
-                                                      color: kLightBG,
+                                                      color: kSecondaryWhite,
                                                       width: 1.5)),
                                               child: Text(
                                                 quantity.toString(),
@@ -449,7 +450,8 @@ class _ProductOptionState extends State<ProductOption>
                                   // onTap: () => showAddedToCartAlert(),
                                   onTap: isProductChosen()
                                       ? () {
-                                          (model.isLoggedIn)
+                                          (FirebaseAuth.instance.currentUser !=
+                                                  null)
                                               ? addToCart(widget.product)
                                               : Navigator.pushNamed(
                                                   context, "/login");

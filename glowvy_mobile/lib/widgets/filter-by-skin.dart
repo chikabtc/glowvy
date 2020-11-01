@@ -440,8 +440,9 @@ class _FilterBySkinState extends State<FilterBySkin> {
             child: ActionChip(
               shape: RoundedRectangleBorder(
                 side: BorderSide(
-                  color:
-                      widget.skinTypeId == value["id"] ? kDarkYellow : kLightBG,
+                  color: widget.skinTypeId == value["id"]
+                      ? kDarkYellow
+                      : kSecondaryWhite,
                 ),
                 borderRadius: BorderRadius.circular(6.0),
               ),
@@ -451,7 +452,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                   widget.skinTypeId = value["id"];
                 });
               },
-              backgroundColor: kLightBG,
+              backgroundColor: kSecondaryWhite,
               label: Text(
                 value["name"],
                 style: kBaseTextStyle.copyWith(
@@ -503,8 +504,9 @@ class _FilterBySkinState extends State<FilterBySkin> {
             child: ActionChip(
               shape: RoundedRectangleBorder(
                 side: BorderSide(
-                  color:
-                      widget.skinTypeId == value["id"] ? kDarkYellow : kLightBG,
+                  color: widget.skinTypeId == value["id"]
+                      ? kDarkYellow
+                      : kSecondaryWhite,
                 ),
                 borderRadius: BorderRadius.circular(6.0),
               ),
@@ -514,7 +516,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                   widget.skinTypeId = value["id"];
                 });
               },
-              backgroundColor: kLightBG,
+              backgroundColor: kSecondaryWhite,
               label: Text(
                 value["name"],
                 style: kBaseTextStyle.copyWith(

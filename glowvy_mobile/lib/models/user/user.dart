@@ -7,6 +7,7 @@ part 'user.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class User {
   int id;
+  String uid;
   // bool loggedIn;
   String displayName;
   String firstName;

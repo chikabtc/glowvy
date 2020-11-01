@@ -1,6 +1,8 @@
 import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/search_review_cosmetisc.dart';
+import 'package:Dimodo/screens/setting/login.dart';
+import 'package:Dimodo/screens/write_review_screen.dart';
 import 'package:Dimodo/widgets/baumann_quiz.dart';
 import 'package:firebase_auth/firebase_auth.dart' as b;
 import 'package:firebase_core/firebase_core.dart';
@@ -121,8 +123,9 @@ class SettingScreenState extends State<SettingScreen>
                 children: <Widget>[
                   GestureDetector(
                     onTap: () => {
-                      (widget.user != null)
-                          ? print("logged in")
+                      //log out the firebase user and delete local user obj
+                      (b.FirebaseAuth.instance.currentUser != null)
+                          ? userModel.logout()
                           : Navigator.pushNamed(context, "/register")
                     },
                     child: Container(
@@ -142,14 +145,12 @@ class SettingScreenState extends State<SettingScreen>
                           children: <Widget>[
                             Text(
                                 (b.FirebaseAuth.instance.currentUser != null)
-                                    ? b.FirebaseAuth.instance.currentUser
-                                        .displayName
+                                    ? b.FirebaseAuth.instance.currentUser.email
                                     : S.of(context).clickToSignIn,
                                 style: textTheme.headline3),
                             Text(
-                                (b.FirebaseAuth.instance.currentUser != null &&
-                                        widget.user != null)
-                                    ? "s"
+                                (b.FirebaseAuth.instance.currentUser != null)
+                                    ? userModel.user.fullName
                                     : "Shop like Korean",
                                 style: textStyle.copyWith(
                                     fontWeight: FontWeight.w500,
@@ -350,8 +351,11 @@ class SettingScreenState extends State<SettingScreen>
                                   onTap: () => Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) =>
-                                              ReviewCosmeticsSearchScreen())),
+                                          builder: (context) => b.FirebaseAuth
+                                                      .instance.currentUser !=
+                                                  null
+                                              ? WriteReviewScreen()
+                                              : LoginScreen())),
                                   child: Container(
                                     decoration: BoxDecoration(
                                         color: kSecondaryOrange,

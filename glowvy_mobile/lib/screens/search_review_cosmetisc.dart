@@ -118,36 +118,20 @@ class _ReviewCosmeticsSearchScreenState
                                 )),
                           ),
                         ),
-                        // !isTextFieldSelected
-                        //     ? Container(width: 46)
-                        //     : Container(
-                        //         // width: 56,
-                        //         padding: EdgeInsets.only(right: 16, left: 10),
-                        //         child: GestureDetector(
-                        //           onTap: () => setState(() {
-                        //             searchText = "";
-                        //             searchController.text = searchText;
-                        //             showResults = false;
-                        //             FocusScope.of(context).unfocus();
-                        //           }),
-                        //           child: Container(
-                        //             child: Text(S.of(context).cancel,
-                        //                 style: textTheme.bodyText2),
-                        //           ),
-                        //         ),
-                        //       ),
                       ],
                     ),
                   ),
                   SizedBox(height: 21),
                   Text(
-                    'may realted',
+                    '  may realted',
                     style: textTheme.caption1.copyWith(color: kDarkAccent),
                   ),
                   SizedBox(height: 24),
                   showResults
-                      ? productModel.showCosmeticsReviewProductList(
-                          isNameAvailable: false, future: getProductBySearch)
+                      ? productModel.showCosmeticsProductList(
+                          isNameAvailable: false,
+                          future: getProductBySearch,
+                          isFromReviewPage: true)
                       : Container(
                           padding:
                               EdgeInsets.only(left: 16, right: 16, top: 20),

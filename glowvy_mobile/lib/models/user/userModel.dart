@@ -1,3 +1,4 @@
+import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/user/skinScores.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -21,19 +22,21 @@ class UserModel with ChangeNotifier {
 
   Services _service = Services();
   User user;
-  bool isLoggedIn = false;
+  // bool isLoggedIn = false;
   bool loading = false;
   String cosmeticPref;
   String skinType;
   SkinScores skinScores;
   String ageGroup;
+  Product productInReview;
 
   Future<void> initData() async {
     await getUser();
-    await getSkinType();
+    // await getSkinType();
     await getSkinScores();
     // await getShippingAddress();
-    await getUserCosmeticsTypesPref();
+    // await getUserCosmeticsTypesPref();
+    // await login();
   }
 
   void setName(String firstName, lastName) {
@@ -48,6 +51,11 @@ class UserModel with ChangeNotifier {
     }
   }
 
+  void setProductInReview(Product product) {
+    this.productInReview = product;
+    notifyListeners();
+  }
+
   void loginFB({Function success, Function fail}) async {
     try {
       final FacebookLoginResult result =
@@ -60,7 +68,7 @@ class UserModel with ChangeNotifier {
           user = await _service.loginFacebook(token: accessToken.token);
           // user.address = await _service.getAddress(token: user.accessToken);
           kAccessToken = user.accessToken;
-          isLoggedIn = true;
+          //
 
           user.addresses =
               await _service.getAllAddresses(token: user.accessToken);
@@ -98,7 +106,7 @@ class UserModel with ChangeNotifier {
 
       user = await _service.loginGoogle(token: auth.accessToken);
       kAccessToken = user.accessToken;
-      isLoggedIn = true;
+      //
 
       if (user.accessToken != null) {
         user.addresses =
@@ -141,7 +149,7 @@ class UserModel with ChangeNotifier {
       user = await _service.loginApple(credential.authorizationCode, fullName);
 
       kAccessToken = user.accessToken;
-      isLoggedIn = true;
+      //
 
       if (user.accessToken != null) {
         user.addresses =
@@ -196,24 +204,39 @@ class UserModel with ChangeNotifier {
   }
 
   Future getUser() async {
-    final LocalStorage storage = new LocalStorage("Dimodo");
+    var firebaseUser = b.FirebaseAuth.instance.currentUser;
     try {
-      final ready = await storage.ready;
-      if (ready) {
-        final json = storage.getItem(kLocalKey["userInfo"]);
-        if (json != null) {
-          user = User.fromJson(json);
-          kAccessToken = user.accessToken;
-          isLoggedIn = true;
-          notifyListeners();
-        } else {
-          print("fail to get users");
-        }
+      var snap = await FirebaseFirestore.instance
+          .collection('users')
+          .where('uid', isEqualTo: firebaseUser.uid)
+          .get(GetOptions(source: Source.cache));
+      if (snap.docs.isNotEmpty) {
+        var userJson = snap.docs[0].data();
+        this.user = User.fromJson(userJson);
       }
     } catch (err) {
       print(err);
     }
   }
+  // Future getUser() async {
+  //   final LocalStorage storage = new LocalStorage("Dimodo");
+  //   try {
+  //     final ready = await storage.ready;
+  //     if (ready) {
+  //       final json = storage.getItem(kLocalKey["userInfo"]);
+  //       if (json != null) {
+  //         user = User.fromJson(json);
+  //         kAccessToken = user.accessToken;
+
+  //         notifyListeners();
+  //       } else {
+  //         print("fail to get users");
+  //       }
+  //     }
+  //   } catch (err) {
+  //     print(err);
+  //   }
+  // }
 
   Future getSkinType() async {
     final LocalStorage storage = new LocalStorage("Dimodo");
@@ -287,7 +310,7 @@ class UserModel with ChangeNotifier {
   //       email: email,
   //     );
   //     print("user request accessToken: $accessToken");
-  //     isLoggedIn = true;
+  //
   //     success(accessToken);
   //     loading = false;
   //     notifyListeners();
@@ -309,15 +332,21 @@ class UserModel with ChangeNotifier {
     try {
       // await auth.checkActionCode(code);
       // await auth.applyActionCode(code);
-      // isLoggedIn = true;
+      //
       if (user.emailVerified) {
         await FirebaseFirestore.instance
             .collection('users')
             .doc(auth.currentUser.uid)
             .set({
           'full_name': fullName,
+          'email': user.email,
+          'uid': user.uid,
+          'created_at': FieldValue.serverTimestamp()
         });
-        loading = true;
+        this.user = User();
+        this.user.uid = user.uid;
+        this.user.email = user.email;
+        this.user.fullName = fullName;
         success();
       } else {
         loading = false;
@@ -347,7 +376,7 @@ class UserModel with ChangeNotifier {
       notifyListeners();
       var resetPasswordResult = await _service.resetPassword(
           password: password, accessToken: accessToken);
-      isLoggedIn = true;
+
       success(resetPasswordResult);
       loading = false;
       notifyListeners();
@@ -363,7 +392,7 @@ class UserModel with ChangeNotifier {
       loading = true;
       notifyListeners();
       var result = await _service.checkPIN(pin: pin, token: token);
-      isLoggedIn = true;
+
       success(result);
       loading = false;
       notifyListeners();
@@ -382,19 +411,13 @@ class UserModel with ChangeNotifier {
       b.UserCredential userCredential = await auth
           .createUserWithEmailAndPassword(email: email, password: password);
       var firebaseUser = b.FirebaseAuth.instance.currentUser;
-      await FirebaseFirestore.instance
-          .collection('users')
-          .doc(auth.currentUser.uid)
-          .set({
-        'full_name': fullName,
-      });
 
       if (!firebaseUser.emailVerified) {
         await firebaseUser.sendEmailVerification();
       }
 
       loading = true;
-      isLoggedIn = true;
+
       var user = User();
       saveUser(user);
       success(user);
@@ -420,13 +443,21 @@ class UserModel with ChangeNotifier {
       b.UserCredential userCredential = await b.FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       var firebaseUser = userCredential.user;
-      loading = true;
-      isLoggedIn = true;
-      var user = User();
-      user.fullName = firebaseUser.displayName;
-      saveUser(user);
-      success(user);
-      loading = false;
+      var snap = await FirebaseFirestore.instance
+          .collection('users')
+          .where('uid', isEqualTo: firebaseUser.uid)
+          .get();
+      if (snap.docs.isNotEmpty) {
+        var userJson = snap.docs[0].data();
+        //get usermodel from firestore
+        loading = true;
+        this.user = User.fromJson(userJson);
+        saveUser(user);
+        success(user);
+        loading = false;
+      } else {
+        fail("user data doesn't exist: ${firebaseUser.uid}");
+      }
       notifyListeners();
     } on b.FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -440,7 +471,7 @@ class UserModel with ChangeNotifier {
 
   void logout() async {
     user = null;
-    isLoggedIn = false;
+
     try {
       await b.FirebaseAuth.instance.signOut();
     } catch (err) {
@@ -481,6 +512,11 @@ class UserModel with ChangeNotifier {
     } catch (err) {
       return false;
     }
+  }
+
+  bool isLoggedIn() {
+    b.FirebaseAuth.instance.currentUser.reload();
+    return b.FirebaseAuth.instance.currentUser == null ? false : true;
   }
 
   void updateAddress(

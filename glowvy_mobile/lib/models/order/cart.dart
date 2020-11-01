@@ -1,5 +1,6 @@
 import 'package:Dimodo/models/coupon.dart';
 import 'package:Dimodo/models/order/cartItem.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 import '../product/product.dart';
@@ -135,7 +136,7 @@ class CartModel with ChangeNotifier {
 
   Future<CartModel> getAllCartItems(UserModel userModel) async {
     print("get all carts");
-    if (userModel.isLoggedIn) {
+    if (FirebaseAuth.instance.currentUser != null) {
       print("loading");
       var items = await _services.allCartItems();
       if (items != null) {
@@ -163,7 +164,7 @@ class CartModel with ChangeNotifier {
 
   Future<List<Coupon>> getAllCoupons(UserModel userModel) async {
     List<Coupon> coupons = [];
-    if (userModel.isLoggedIn) {
+    if (FirebaseAuth.instance.currentUser != null) {
       print("loading");
       var items = await _services.getCoupons();
       return items;

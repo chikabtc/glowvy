@@ -74,8 +74,6 @@ class _LoginPageState extends State<LoginScreen>
           content: Text(S.of(context).welcome + ' ${user.fullName} !',
               style: textTheme.headline5.copyWith(color: Colors.white)));
       Scaffold.of(context).showSnackBar(snackBar);
-
-      Navigator.of(context).pop();
     }
   }
 

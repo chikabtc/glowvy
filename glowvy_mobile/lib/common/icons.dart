@@ -30,16 +30,13 @@ final SvgPicture arrowBackwardWhite = SvgPicture.asset(
 );
 
 backIcon(context, {color = kDarkAccent}) {
-  return GestureDetector(
-    onTap: () => Navigator.of(context).pop(),
-    child: IconButton(
-        // iconSize: 35,
-        icon: SvgPicture.asset(
-      'assets/icons/arrow_backward.svg',
-      width: 26,
-      color: color,
-    )),
-  );
+  return IconButton(
+      onPressed: () => Navigator.of(context).pop(),
+      icon: SvgPicture.asset(
+        'assets/icons/arrow_backward.svg',
+        width: 26,
+        color: color,
+      ));
 }
 
 arrowForwardIcon(context, {color = kDarkAccent, width = 26}) {

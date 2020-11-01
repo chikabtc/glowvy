@@ -79,7 +79,7 @@ class _AddShippingAddressState extends State<AddShippingAddress>
           FocusScope.of(context).requestFocus(new FocusNode());
         },
         child: Container(
-          color: kLightBG,
+          color: kSecondaryWhite,
           width: screenSize.width,
           height: screenSize.height,
           child: CustomScrollView(

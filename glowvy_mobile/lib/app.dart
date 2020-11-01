@@ -162,72 +162,81 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
               ChangeNotifierProvider(create: (_) => CartModel()),
               ChangeNotifierProvider(create: (_) => CategoryModel()),
             ],
-            child: MaterialApp(
-              debugShowCheckedModeBanner: false,
-              locale: new Locale(
-                  Provider.of<AppModel>(context, listen: false).locale, ""),
-              navigatorObservers: [
-                FirebaseAnalyticsObserver(analytics: analytics),
-              ],
-              localizationsDelegates: [
-                S.delegate,
-                GlobalMaterialLocalizations.delegate,
-                GlobalWidgetsLocalizations.delegate,
-              ],
-              supportedLocales: S.delegate.supportedLocales,
-              localeListResolutionCallback:
-                  S.delegate.listResolution(fallback: const Locale('en', '')),
-              home: renderFirstScreen(),
-              onGenerateRoute: (settings) {
-                final arguments = settings.arguments;
-                switch (settings.name) {
-                  case '/add_address':
-                    if (arguments is Address) {
-                      print("bullshit2");
-
-                      // the details page for one specific user
-                      return MaterialPageRoute<bool>(
-                          builder: (BuildContext context) => AddShippingAddress(
-                                address: arguments,
-                              ));
-                    } else {
-                      // a route showing the list of all users
-                      return MaterialPageRoute<bool>(
-                          builder: (BuildContext context) =>
-                              AddShippingAddress());
-                    }
-                    break;
-                  case '/manage_address':
-                    if (arguments is bool) {
-                      print("bullshit");
-                      return MaterialPageRoute<bool>(
-                          builder: (BuildContext context) =>
-                              ManageShippingScreen(
-                                isFromOrderScreen: arguments,
-                              ));
-                    }
-                    break;
-
-                  default:
-                    return null;
+            child: GestureDetector(
+              onTap: () {
+                FocusScopeNode currentFocus = FocusScope.of(context);
+                if (!currentFocus.hasPrimaryFocus) {
+                  currentFocus.unfocus();
                 }
               },
-              routes: <String, WidgetBuilder>{
-                "/home": (context) => MainTabs(),
-                "/search_screen": (context) => SearchScreen(),
-                "/login": (context) => LoginScreen(),
-                "/register": (context) => SignupScreen(),
-                "/cart": (context) => CartScreen(),
-                '/orders': (context) => OrdersScreen(),
-                '/order_submitted': (context) => OrderSubmitted(),
-                '/manage_address': (context) => ManageShippingScreen(),
-                '/setting': (context) => SettingScreen(),
-                '/category': (context) => CategoryScreen(),
-                // '/sub_category': (context) => SubCategoryScreen(),
-                '/verify_email': (context) => VerifyEmailScreen(),
-                '/reset_password': (context) => ResetPasswordScreen(),
-              },
-              theme: buildLightTheme(),
+              child: MaterialApp(
+                debugShowCheckedModeBanner: false,
+                locale: new Locale(
+                    Provider.of<AppModel>(context, listen: false).locale, ""),
+                navigatorObservers: [
+                  FirebaseAnalyticsObserver(analytics: analytics),
+                ],
+                localizationsDelegates: [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                ],
+                supportedLocales: S.delegate.supportedLocales,
+                localeListResolutionCallback:
+                    S.delegate.listResolution(fallback: const Locale('en', '')),
+                home: renderFirstScreen(),
+                onGenerateRoute: (settings) {
+                  final arguments = settings.arguments;
+                  switch (settings.name) {
+                    case '/add_address':
+                      if (arguments is Address) {
+                        print("bullshit2");
+
+                        // the details page for one specific user
+                        return MaterialPageRoute<bool>(
+                            builder: (BuildContext context) =>
+                                AddShippingAddress(
+                                  address: arguments,
+                                ));
+                      } else {
+                        // a route showing the list of all users
+                        return MaterialPageRoute<bool>(
+                            builder: (BuildContext context) =>
+                                AddShippingAddress());
+                      }
+                      break;
+                    case '/manage_address':
+                      if (arguments is bool) {
+                        print("bullshit");
+                        return MaterialPageRoute<bool>(
+                            builder: (BuildContext context) =>
+                                ManageShippingScreen(
+                                  isFromOrderScreen: arguments,
+                                ));
+                      }
+                      break;
+
+                    default:
+                      return null;
+                  }
+                },
+                routes: <String, WidgetBuilder>{
+                  "/home": (context) => MainTabs(),
+                  "/search_screen": (context) => SearchScreen(),
+                  "/login": (context) => LoginScreen(),
+                  "/register": (context) => SignupScreen(),
+                  "/cart": (context) => CartScreen(),
+                  '/orders': (context) => OrdersScreen(),
+                  '/order_submitted': (context) => OrderSubmitted(),
+                  '/manage_address': (context) => ManageShippingScreen(),
+                  '/setting': (context) => SettingScreen(),
+                  '/category': (context) => CategoryScreen(),
+                  // '/sub_category': (context) => SubCategoryScreen(),
+                  '/verify_email': (context) => VerifyEmailScreen(),
+                  '/reset_password': (context) => ResetPasswordScreen(),
+                },
+                theme: buildLightTheme(),
+              ),
             ),
           );
         },

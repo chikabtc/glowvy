@@ -96,7 +96,7 @@ class _OrderItemRowState extends State<OrderItemRow> {
                                     padding: EdgeInsets.only(
                                         bottom: 2, top: 2, left: 8, right: 8),
                                     decoration: BoxDecoration(
-                                        color: kLightBG,
+                                        color: kSecondaryWhite,
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(6),
                                         )),

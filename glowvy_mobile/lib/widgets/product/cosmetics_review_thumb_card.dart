@@ -1,10 +1,15 @@
+import 'dart:html';
+
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/write_review_screen.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 import '../../common/tools.dart';
 import '../../models/product/product.dart';
 import '../../screens/detail/cosmetics_product_detail.dart';
@@ -12,31 +17,18 @@ import '../../common/styles.dart';
 
 import '../../common/colors.dart';
 
-class CosmeticsThumbCard extends StatelessWidget {
+class CosmeticsReviewThumbCard extends StatelessWidget {
   final Product product;
-  final width;
-  final kSize size;
-  final bool isHero;
   final bool showDivider;
   final bool showHeart;
-  final height;
-  final bool hideDetail;
-  final offset;
-  final ranking;
-  final bool isNameAvailable;
 
-  CosmeticsThumbCard({
+  final ranking;
+
+  CosmeticsReviewThumbCard({
     this.product,
-    this.width,
     this.ranking,
-    this.size = kSize.medium,
-    this.isHero = false,
     this.showHeart = false,
     this.showDivider = true,
-    this.height,
-    this.offset,
-    this.hideDetail = false,
-    this.isNameAvailable = false,
   });
 
   @override
@@ -58,13 +50,25 @@ class CosmeticsThumbCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(10),
       child: GestureDetector(
-        onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => WriteReviewScreen(
-                product: product,
-              ),
-            )),
+        onTap: () {
+          print(product.sid);
+          // if (onProductTap != null) {
+          //   onProductTap(this.product);
+          //   return;
+          // }
+          // UserModel userModel = Provider.of<UserModel>(context, listen: false);
+
+          // userModel.setProductInReview(this.product);
+          // Navigator.pop(context);
+
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => WriteReviewScreen(
+                  product: product,
+                ),
+              ));
+        },
         child: Column(
           children: [
             Card(

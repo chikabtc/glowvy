@@ -61,7 +61,7 @@ class ManageShippingScreenState extends State<ManageShippingScreen>
     return Consumer<UserModel>(builder: (context, value, child) {
       return Scaffold(
         body: Container(
-            color: kLightBG,
+            color: kSecondaryWhite,
             width: screenSize.width,
             height: screenSize.height,
             child: CustomScrollView(slivers: <Widget>[
@@ -104,7 +104,7 @@ class ManageShippingScreenState extends State<ManageShippingScreen>
                           AppBar().preferredSize.height -
                           MediaQuery.of(context).padding.bottom -
                           MediaQuery.of(context).padding.top,
-                      color: kLightBG,
+                      color: kSecondaryWhite,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,

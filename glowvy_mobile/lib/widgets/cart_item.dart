@@ -98,7 +98,7 @@ class _CartItemRowState extends State<CartItemRow> {
                                     padding: EdgeInsets.only(
                                         bottom: 2, top: 2, left: 5, right: 5),
                                     decoration: BoxDecoration(
-                                        color: kLightBG,
+                                        color: kSecondaryWhite,
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(6),
                                         )),

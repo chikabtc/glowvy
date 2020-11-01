@@ -362,7 +362,8 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
             child: ActionChip(
               shape: RoundedRectangleBorder(
                 side: BorderSide(
-                  color: skinTypeId == value["id"] ? kPinkAccent : kLightBG,
+                  color:
+                      skinTypeId == value["id"] ? kPinkAccent : kSecondaryWhite,
                 ),
                 borderRadius: BorderRadius.circular(6.0),
               ),
@@ -372,7 +373,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                   skinTypeId = value["id"];
                 });
               },
-              backgroundColor: kLightBG,
+              backgroundColor: kSecondaryWhite,
               label: Text(
                 value["name"],
                 style: kBaseTextStyle.copyWith(

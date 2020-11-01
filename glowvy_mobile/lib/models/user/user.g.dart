@@ -21,6 +21,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
         ? null
         : Billing.fromJson(json['billing'] as Map<String, dynamic>),
   )
+    ..uid = json['uid'] as String
     ..displayName = json['display_name'] as String
     ..firstName = json['first_name'] as String
     ..lastName = json['last_name'] as String
@@ -34,6 +35,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'id': instance.id,
+      'uid': instance.uid,
       'display_name': instance.displayName,
       'first_name': instance.firstName,
       'last_name': instance.lastName,

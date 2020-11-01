@@ -131,7 +131,7 @@ class OrdersScreenState extends State<OrdersScreen> {
         userModel = userModel;
         return Scaffold(
           body: Container(
-              color: kLightBG,
+              color: kSecondaryWhite,
               width: screenSize.width,
               height: screenSize.height,
               child: CustomScrollView(slivers: <Widget>[

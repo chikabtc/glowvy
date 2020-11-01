@@ -7,7 +7,7 @@ import 'package:Dimodo/screens/setting/login.dart';
 import 'package:Dimodo/widgets/cosmetics_request_button.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/widgets/product/cosmetics_product_card.dart';
-import 'package:Dimodo/widgets/product/cosmetics_thumb_card.dart';
+import 'package:Dimodo/widgets/product/cosmetics_review_thumb_card.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -25,7 +25,8 @@ class CosmeticsProductList extends StatefulWidget {
   final bool showFilter;
   final bool disableScrolling;
   final bool showRank;
-  final bool isProductReviewList;
+  final bool isFromReviewSearch;
+  final Function onProductSelect;
   CosmeticsProductList({
     this.products,
     this.isNameAvailable = false,
@@ -33,8 +34,9 @@ class CosmeticsProductList extends StatefulWidget {
     this.showFilter = false,
     this.disableScrolling = false,
     this.showRank = false,
-    this.isProductReviewList = false,
+    this.isFromReviewSearch = false,
     this.layout = "list",
+    this.onProductSelect,
   });
 
   @override
@@ -143,7 +145,7 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
                               currentIndex = index;
                               return Column(
                                 children: <Widget>[
-                                  !widget.isProductReviewList
+                                  !widget.isFromReviewSearch
                                       ? CosmeticsProductCard(
                                           ranking:
                                               widget.showRank ? index : null,
@@ -153,15 +155,12 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
                                               index != _products.length - 1,
                                           product: _products[index],
                                           width: widthContent)
-                                      : CosmeticsThumbCard(
+                                      : CosmeticsReviewThumbCard(
                                           ranking:
                                               widget.showRank ? index : null,
-                                          isNameAvailable:
-                                              widget.isNameAvailable,
                                           showDivider:
                                               index != _products.length - 1,
-                                          product: _products[index],
-                                          width: widthContent),
+                                          product: _products[index])
                                 ],
                               );
                             }),

@@ -169,7 +169,7 @@ class _StateReviews extends State<ReviewScreen>
                                           },
                                           height: 40,
                                           minWidth: 62,
-                                          color: kLightBG,
+                                          color: kSecondaryWhite,
                                           child: Center(
                                               child: Text(
                                             "Load More",

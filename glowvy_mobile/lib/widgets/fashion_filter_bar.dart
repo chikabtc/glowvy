@@ -291,7 +291,7 @@ class _FashionFilterBarState extends State<FashionFilterBar> {
                 side: BorderSide(
                   color: chosenOptions.contains(value["value"])
                       ? kPinkAccent
-                      : kLightBG,
+                      : kSecondaryWhite,
                 ),
                 borderRadius: BorderRadius.circular(6.0),
               ),
@@ -306,7 +306,7 @@ class _FashionFilterBarState extends State<FashionFilterBar> {
                   }
                 });
               },
-              backgroundColor: kLightBG,
+              backgroundColor: kSecondaryWhite,
               label: Text(
                 value["value"],
                 style: kBaseTextStyle.copyWith(

@@ -312,9 +312,8 @@ class GlowvyServices implements BaseServices {
 
     // FieldValue.serverTimestamp()
     try {
-      var writeRes = await FirebaseFirestore.instance
-          .collection('reviews')
-          .add(review.toJson());
+      var writeRes =
+          await FirebaseFirestore.instance.collection('reviews').add(review);
 
       if (writeRes.id != null) {
         print('review id: ${writeRes.id}');

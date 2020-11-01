@@ -43,7 +43,7 @@ ThemeData buildLightTheme() {
 
     //   textTheme: ButtonTextTheme.normal,
     // ),
-    primaryColorLight: kLightBG,
+    primaryColorLight: kSecondaryWhite,
     // primaryIconTheme: _customIconTheme(base.iconTheme),
     textTheme: _buildTextTheme(base.textTheme),
     primaryTextTheme: _buildTextTheme(base.primaryTextTheme),

@@ -418,6 +418,7 @@ class ProductModel with ChangeNotifier {
       future,
       showFiler = false,
       disableScroll = false,
+      isFromReviewPage = false,
       Function onLoadMore,
       sortBy}) {
     return FutureBuilder<List<Product>>(
@@ -428,29 +429,7 @@ class ProductModel with ChangeNotifier {
           products: snapshot.data,
           onLoadMore: onLoadMore,
           showFilter: showFiler,
-          disableScrolling: true,
-          showRank: false,
-        );
-      },
-    );
-  }
-
-  Widget showCosmeticsReviewProductList(
-      {isNameAvailable,
-      future,
-      showFiler = false,
-      disableScroll = false,
-      Function onLoadMore,
-      sortBy}) {
-    return FutureBuilder<List<Product>>(
-      future: future,
-      builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
-        products = snapshot.data;
-        return CosmeticsProductList(
-          products: snapshot.data,
-          onLoadMore: onLoadMore,
-          isProductReviewList: true,
-          showFilter: showFiler,
+          isFromReviewSearch: isFromReviewPage,
           disableScrolling: true,
           showRank: false,
         );
