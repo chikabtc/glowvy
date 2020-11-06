@@ -174,6 +174,39 @@ class GlowvyServices implements BaseServices {
   }
 
   @override
+  Future<List<Review>> getReviewsByUserId(uid) async {
+    List<Review> list = [];
+
+    try {
+      var query = FirebaseFirestore.instance
+          .collection('reviews')
+          .where('user.uid', isEqualTo: uid)
+          .orderBy('created_at', descending: true);
+      if (lastReviewSnap != null) {
+        query.startAfterDocument(lastReviewSnap).limit(15);
+      } else {
+        query.limit(15);
+      }
+
+      var snapshot = await query.get(GetOptions(source: Source.server));
+
+      if (snapshot.docs.isNotEmpty) {
+        print(snapshot.docs.length);
+        for (var doc in snapshot.docs) {
+          list.add(Review.fromJson(doc.data()));
+        }
+      } else {
+        print('no products were found');
+
+        // throw Exception("no products were found");
+      }
+    } catch (err) {
+      throw err;
+    }
+    return list;
+  }
+
+  @override
   Future<List<Ingredient>> getIngredients(productId) async {
     try {
       List<Ingredient> list = [];
@@ -307,13 +340,38 @@ class GlowvyServices implements BaseServices {
   }
 
   @override
-  Future<void> writeReview(review) async {
-    // var json = review;
-
-    // FieldValue.serverTimestamp()
+  Future<Product> getProductById(id) async {
     try {
-      var writeRes =
-          await FirebaseFirestore.instance.collection('reviews').add(review);
+      var query = FirebaseFirestore.instance
+          .collection('products')
+          .where('sid', isEqualTo: id);
+
+      var snapshot = await query.get(GetOptions(source: Source.cache));
+      print('fetching reviews from cache');
+
+      if (snapshot.docs.isEmpty) {
+        print('No Cached Reviews: fetching from server');
+        snapshot = await query.get(GetOptions(source: Source.server));
+      }
+      print(snapshot.docs.length);
+
+      if (snapshot.docs.isNotEmpty) {
+        return Product.fromJson(snapshot.docs.first.data());
+      } else {
+        throw Exception("no products were found");
+      }
+    } catch (e) {
+      print("Error: $e");
+      throw e;
+    }
+  }
+
+  @override
+  Future<void> uploadReview(reviewJson) async {
+    try {
+      var writeRes = await FirebaseFirestore.instance
+          .collection('reviews')
+          .add(reviewJson);
 
       if (writeRes.id != null) {
         print('review id: ${writeRes.id}');
@@ -337,7 +395,6 @@ class GlowvyServices implements BaseServices {
       // Get Result/Objects
       AlgoliaQuerySnapshot querySnap = await query.getObjects();
       List<AlgoliaObjectSnapshot> results = querySnap.hits;
-      print("querySnap: ${querySnap}");
 
       print('Hits count: ${querySnap.hits.length}');
 
@@ -345,6 +402,7 @@ class GlowvyServices implements BaseServices {
         return list;
       } else {
         results.forEach((item) {
+          // print("item :${item.data}");
           list.add(Product.fromJson(item.data));
         });
         return list;
@@ -445,7 +503,7 @@ class GlowvyServices implements BaseServices {
 
       if (body["Success"] == true) {
         print("createUser called");
-        return User.fromJsonEmail(userProfile);
+        return User.fromJson(userProfile);
       } else {
         var message = body["Error"];
         throw Exception(message != null ? message : "Can not create the user.");
@@ -473,7 +531,7 @@ class GlowvyServices implements BaseServices {
       // print("logged in user: $userProfile");
 
       if (body["Success"] == true) {
-        return User.fromJsonEmail(userProfile);
+        return User.fromJson(userProfile);
       } else {
         var message = body["Error"];
         throw Exception("wrong password.");
@@ -494,7 +552,7 @@ class GlowvyServices implements BaseServices {
       if (body["Success"] == false) {
         throw Exception("failed to login with FB${body["Error"]}");
       } else {
-        return User.fromJsonFB(body);
+        return User.fromJson(body);
       }
     } catch (e) {
       print("loginFacebook error: $e");
@@ -514,13 +572,13 @@ class GlowvyServices implements BaseServices {
       if (body["Success"] == false) {
         throw Exception("failed to login with FB${body["Error"]}");
       } else {
-        return User.fromJsonFB(body);
+        return User.fromJson(body);
       }
       // print('apple login jsondecode: $body');
       // if (body["Success"] == false) {
       //   throw Exception("failed to login with FB${body["Error"]}");
       // } else {
-      //   return User.fromJsonFB(body);
+      //   return User.fromJson(body);
       // }
     } catch (e) {
       print("loginApple error: $e");
@@ -538,7 +596,7 @@ class GlowvyServices implements BaseServices {
       print('googlee jsondecode: $body');
 
       if (body["Account"] != null) {
-        return User.fromJsonGoogle(body);
+        return User.fromJson(body);
       } else {
         throw ("fail to create user");
       }

@@ -15,7 +15,7 @@ class Order {
   double totalShipping;
   double totalFee;
   double totalDiscounts;
-  int userId;
+  String userId;
   int addressId;
   int dateCreated;
   List<CartItem> orderItems = [];

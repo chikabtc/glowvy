@@ -11,6 +11,7 @@ class StaggerAnimation extends StatelessWidget {
   final Color btnTitleColor;
   final String buttonTitle;
   final double height;
+  final double width;
 
   StaggerAnimation(
       {Key key,
@@ -19,6 +20,7 @@ class StaggerAnimation extends StatelessWidget {
       this.btnColor,
       this.btnTitleColor,
       this.height = 48,
+      this.width,
       this.buttonTitle = "Sign In"})
       : buttonSqueezeanimation = new Tween(
           begin: 320.0,
@@ -54,10 +56,12 @@ class StaggerAnimation extends StatelessWidget {
   Widget _buildAnimation(BuildContext context, Widget child) {
     return new GestureDetector(
       onTap: () {
-        onTap();
+        if (!buttonController.isAnimating) {
+          onTap();
+        }
       },
       child: Container(
-          width: kScreenSizeWidth,
+          width: width != null ? width : kScreenSizeWidth,
           height: height,
           alignment: FractionalOffset.center,
           decoration: kButton,
@@ -70,10 +74,14 @@ class StaggerAnimation extends StatelessWidget {
                       color:
                           btnTitleColor == null ? Colors.white : btnTitleColor),
                 )
-              : CircularProgressIndicator(
-                  value: null,
-                  strokeWidth: 1.0,
-                  valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),
+              : SizedBox(
+                  width: 24,
+                  height: 24,
+                  child: CircularProgressIndicator(
+                    value: null,
+                    strokeWidth: 1.0,
+                    valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),
+                  ),
                 )),
     );
   }

@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/product/productModel.dart';
@@ -33,41 +31,14 @@ class CosmeticsReviewThumbCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tagString = "";
-
-    var tags = [];
-
-    product.tags.forEach((tag) {
-      if (tags.length == 2) {
-        return;
-      }
-      if (tag.name != null) {
-        tagString += tag.name + " | ";
-        tags.add(tag);
-      }
-    });
-
     return Container(
       padding: EdgeInsets.all(10),
       child: GestureDetector(
         onTap: () {
           print(product.sid);
-          // if (onProductTap != null) {
-          //   onProductTap(this.product);
-          //   return;
-          // }
-          // UserModel userModel = Provider.of<UserModel>(context, listen: false);
-
-          // userModel.setProductInReview(this.product);
-          // Navigator.pop(context);
-
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => WriteReviewScreen(
-                  product: product,
-                ),
-              ));
+          UserModel userModel = Provider.of<UserModel>(context, listen: false);
+          userModel.setProductInReview(this.product);
+          Navigator.pop(context);
         },
         child: Column(
           children: [

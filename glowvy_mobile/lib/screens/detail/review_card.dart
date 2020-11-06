@@ -48,10 +48,10 @@ class ReviewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    sanitizedText = review.content.replaceAll("\n", "");
+    sanitizedText = review.text.replaceAll("\n", "");
     if (isPreview && sanitizedText.length > 70) {
       sanitizedText =
-          review.content.replaceAll("\n", "").substring(1, 70) + " ...";
+          review.text.replaceAll("\n", "").substring(1, 70) + " ...";
     }
 
     return Container(
@@ -74,7 +74,7 @@ class ReviewCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(review.user.displayName,
+                    Text(review.user.fullName,
                         style: TextStyle(
                             fontSize: 13, fontWeight: FontWeight.w600)),
                     // Text(review.optionName,

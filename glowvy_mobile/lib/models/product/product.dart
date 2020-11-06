@@ -26,7 +26,7 @@ class Product {
   String description;
   List<String> descImages;
   List<String> sliderImages;
-  List<Tag> tags;
+  List<String> tags;
   int salePrice;
   int price;
   String rating;

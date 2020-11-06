@@ -1,4 +1,5 @@
 import 'package:Dimodo/models/product/product.dart';
+import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/models/user/skinScores.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -20,23 +21,24 @@ class UserModel with ChangeNotifier {
     initData();
   }
 
+  FirebaseFirestore db;
   Services _service = Services();
-  User user;
-  // bool isLoggedIn = false;
+  User user = User();
+  bool isLoggedIn = false;
   bool loading = false;
   String cosmeticPref;
-  String skinType;
   SkinScores skinScores;
   String ageGroup;
-  Product productInReview;
+  List<Review> reviews = [];
 
   Future<void> initData() async {
+    db = FirebaseFirestore.instance;
+
     await getUser();
-    // await getSkinType();
+    await listenToAuthStateUpdate();
     await getSkinScores();
-    // await getShippingAddress();
-    // await getUserCosmeticsTypesPref();
-    // await login();
+    // print('userid: ${user.uid}');
+    await getUserReviews();
   }
 
   void setName(String firstName, lastName) {
@@ -51,9 +53,86 @@ class UserModel with ChangeNotifier {
     }
   }
 
+  void saveSkinType(String skinType, SkinScores skinScores) async {
+    try {
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .update({'skin_type': skinType, 'skin_scores': skinScores.toJson()});
+      this.user.skinType = skinType;
+      this.user.skinScores = skinScores;
+    } catch (err) {
+      print("saveSkinType err: $err");
+    }
+    // notifyListeners();
+  }
+
+  Future discardReviewDraft() async {
+    try {
+      user.reviewDraft = null;
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .update({'review_draft': FieldValue.delete()});
+    } catch (err) {
+      print("discardReviewDraft err: $err");
+    }
+  }
+
+  Future saveDraft(Review review) async {
+    try {
+      user.reviewDraft = review;
+      await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .update({'review_draft': review.toJson()});
+      await reload();
+      return;
+    } catch (err) {
+      print("discardReviewDraft err: $err");
+    }
+  }
+
   void setProductInReview(Product product) {
-    this.productInReview = product;
+    if (user.reviewDraft == null) {
+      user.reviewDraft = Review();
+    }
+    this.user.reviewDraft.product = product;
     notifyListeners();
+  }
+
+  Future uploadReview(review) async {
+    await _service.uploadReview(review);
+    await discardReviewDraft();
+    reviews.add(Review.fromJson(review));
+    notifyListeners();
+  }
+
+  Future reload() async {
+    var newUserSnap = await db
+        .collection('users')
+        .doc(user.uid)
+        .get(GetOptions(source: Source.cache));
+    user = User.fromJson(newUserSnap.data());
+    print(newUserSnap.data());
+    notifyListeners();
+    return;
+  }
+
+  Future updateUser({@required field, @required value}) async {
+    await db.collection('users').doc(user.uid).update({
+      field: value,
+    });
+    print("whwew");
+    // success("successfully updated user name");
+    await reload();
+    return;
+  }
+
+  Future<void> getUserReviews() async {
+    if (user != null) {
+      // await FirebaseFirestore.instance
+    }
   }
 
   void loginFB({Function success, Function fail}) async {
@@ -66,13 +145,7 @@ class UserModel with ChangeNotifier {
           final FacebookAccessToken accessToken = result.accessToken;
           //TODO: return error if the user logging with FB fails
           user = await _service.loginFacebook(token: accessToken.token);
-          // user.address = await _service.getAddress(token: user.accessToken);
-          kAccessToken = user.accessToken;
-          //
-
-          user.addresses =
-              await _service.getAllAddresses(token: user.accessToken);
-
+          // user.address = await _service.getAddress(token: user.accessToken)``
           print('accessToken$accessToken');
 
           // saveUser(user);
@@ -105,13 +178,6 @@ class UserModel with ChangeNotifier {
       print('google accessToken: $token');
 
       user = await _service.loginGoogle(token: auth.accessToken);
-      kAccessToken = user.accessToken;
-      //
-
-      if (user.accessToken != null) {
-        user.addresses =
-            await _service.getAllAddresses(token: user.accessToken);
-      }
 
       print("lgogogo: ${user.toJson()}");
       saveUser(user);
@@ -148,14 +214,6 @@ class UserModel with ChangeNotifier {
       // after they have been validated with Apple (see `Integration` section for more information on how to do thi
       user = await _service.loginApple(credential.authorizationCode, fullName);
 
-      kAccessToken = user.accessToken;
-      //
-
-      if (user.accessToken != null) {
-        user.addresses =
-            await _service.getAllAddresses(token: user.accessToken);
-      }
-
       print("lgogogo: ${user.toJson()}");
       saveUser(user);
       success(user);
@@ -186,21 +244,18 @@ class UserModel with ChangeNotifier {
   }
 
   //skinScore is json object
-  void saveSkinType(String skinType, SkinScores skinScores) async {
-    this.skinType = skinType;
-    this.skinScores = skinScores;
-    final LocalStorage storage = new LocalStorage("Dimodo");
-    try {
-      final ready = await storage.ready;
-      if (ready) {
-        print("save skinscores: ${skinScores.toJson()}");
-        await storage.setItem(kLocalKey["skinType"], skinType);
-        await storage.setItem(kLocalKey["skinScores"], skinScores.toJson());
+
+  void listenToAuthStateUpdate() async {
+    b.FirebaseAuth.instance.authStateChanges().listen((b.User user) {
+      if (user == null) {
+        isLoggedIn = false;
+
+        print('User is currently signed out!');
+      } else {
+        isLoggedIn = true;
+        print('User is signed in!');
       }
-    } catch (err) {
-      print("saveSkinType err: $err");
-    }
-    notifyListeners();
+    });
   }
 
   Future getUser() async {
@@ -238,25 +293,6 @@ class UserModel with ChangeNotifier {
   //   }
   // }
 
-  Future getSkinType() async {
-    final LocalStorage storage = new LocalStorage("Dimodo");
-    try {
-      final ready = await storage.ready;
-      if (ready) {
-        final json = storage.getItem(kLocalKey["skinType"]);
-        if (json != null) {
-          print("sjon skinType: ${json}");
-          skinType = json;
-          notifyListeners();
-        } else {
-          print("fail to get users");
-        }
-      }
-    } catch (err) {
-      print(err);
-    }
-  }
-
   Future getSkinScores() async {
     final LocalStorage storage = new LocalStorage("Dimodo");
     try {
@@ -276,31 +312,31 @@ class UserModel with ChangeNotifier {
     }
   }
 
-  Future getShippingAddress() async {
-    final LocalStorage storage = new LocalStorage("Dimodo");
-    if (user != null) {
-      user.addresses = await _service.getAllAddresses(token: user.accessToken);
-    }
+  // Future getShippingAddress() async {
+  //   final LocalStorage storage = new LocalStorage("Dimodo");
+  //   if (user != null) {
+  //     user.addresses = await _service.getAllAddresses(token: user.accessToken);
+  //   }
 
-    try {
-      final ready = await storage.ready;
-      if (ready) {
-        final json = storage.getItem(kLocalKey["addresses"]);
-        if (json != null) {
-          for (var item in json) {
-            user.addresses.add(Address.fromJson(item));
-          }
+  //   try {
+  //     final ready = await storage.ready;
+  //     if (ready) {
+  //       final json = storage.getItem(kLocalKey["addresses"]);
+  //       if (json != null) {
+  //         for (var item in json) {
+  //           user.addresses.add(Address.fromJson(item));
+  //         }
 
-          print("got address: $user");
-          notifyListeners();
-        } else {
-          print("fail to get address");
-        }
-      }
-    } catch (err) {
-      print(err);
-    }
-  }
+  //         print("got address: $user");
+  //         notifyListeners();
+  //       } else {
+  //         print("fail to get address");
+  //       }
+  //     }
+  //   } catch (err) {
+  //     print(err);
+  //   }
+  // }
 
   // void requestPIN({email, Function success, Function fail}) async {
   //   try {
@@ -321,18 +357,12 @@ class UserModel with ChangeNotifier {
   //   }
   // }
 
-  void verifyEmail({fullName, Function success, Function fail}) async {
+  Future verifyEmail({fullName}) async {
     var user = b.FirebaseAuth.instance.currentUser;
     await user.reload();
     b.FirebaseAuth auth = b.FirebaseAuth.instance;
     user = auth.currentUser;
-
-    // String code = 'xxxxxxx';
-
     try {
-      // await auth.checkActionCode(code);
-      // await auth.applyActionCode(code);
-      //
       if (user.emailVerified) {
         await FirebaseFirestore.instance
             .collection('users')
@@ -341,21 +371,13 @@ class UserModel with ChangeNotifier {
           'full_name': fullName,
           'email': user.email,
           'uid': user.uid,
-          'created_at': FieldValue.serverTimestamp()
+          'created_at': FieldValue.serverTimestamp(),
+          'address': Address(),
         });
-        this.user = User();
-        this.user.uid = user.uid;
-        this.user.email = user.email;
-        this.user.fullName = fullName;
-        success();
+        await reload();
       } else {
-        loading = false;
-
-        fail("email is not verified");
+        throw ("email is not verified");
       }
-      notifyListeners();
-      // add the user doc to the firestore db
-
       auth.currentUser.reload();
     } on b.FirebaseAuthException catch (e) {
       if (e.code == 'invalid-action-code') {
@@ -363,9 +385,7 @@ class UserModel with ChangeNotifier {
         //delete the user
         await b.FirebaseAuth.instance.currentUser.delete();
       }
-      fail(e.toString());
-      loading = false;
-      notifyListeners();
+      throw (e.toString());
     }
   }
 
@@ -403,42 +423,34 @@ class UserModel with ChangeNotifier {
     }
   }
 
-  void createUser(
-      {fullName, email, password, Function success, Function fail}) async {
+  Future<User> createUser({fullName, email, password}) async {
     b.FirebaseAuth auth = b.FirebaseAuth.instance;
 
     try {
-      b.UserCredential userCredential = await auth
-          .createUserWithEmailAndPassword(email: email, password: password);
+      await auth.createUserWithEmailAndPassword(
+          email: email, password: password);
       var firebaseUser = b.FirebaseAuth.instance.currentUser;
-
       if (!firebaseUser.emailVerified) {
         await firebaseUser.sendEmailVerification();
       }
-
-      loading = true;
-
       var user = User();
-      saveUser(user);
-      success(user);
-      loading = false;
       notifyListeners();
+      return user;
     } on b.FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        fail(e.toString());
         throw Exception('The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
-        fail('The account already exists for that email.');
+        throw ('The account already exists for that email.');
       }
     } catch (e) {
       loading = false;
-      fail(e.toString());
-      notifyListeners();
+      throw (e.toString());
       // throw Exception(e);
     }
+    return null;
   }
 
-  void login({email, password, Function success, Function fail}) async {
+  Future<User> loginWithEmail({email, password}) async {
     try {
       b.UserCredential userCredential = await b.FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
@@ -449,24 +461,20 @@ class UserModel with ChangeNotifier {
           .get();
       if (snap.docs.isNotEmpty) {
         var userJson = snap.docs[0].data();
-        //get usermodel from firestore
-        loading = true;
         this.user = User.fromJson(userJson);
-        saveUser(user);
-        success(user);
-        loading = false;
+        notifyListeners();
+        return user;
       } else {
-        fail("user data doesn't exist: ${firebaseUser.uid}");
+        throw ("user data doesn't exist: ${firebaseUser.uid}");
       }
-      notifyListeners();
     } on b.FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        fail('No user found for that email.');
+        throw ('No user found for that email.');
       } else if (e.code == 'wrong-password') {
-        fail('Wrong password provided for that user.');
+        throw ('Wrong password provided for that user.');
       }
-      notifyListeners();
     }
+    return null;
   }
 
   void logout() async {
@@ -514,10 +522,10 @@ class UserModel with ChangeNotifier {
     }
   }
 
-  bool isLoggedIn() {
-    b.FirebaseAuth.instance.currentUser.reload();
-    return b.FirebaseAuth.instance.currentUser == null ? false : true;
-  }
+  // bool isLoggedIn() {
+  //   b.FirebaseAuth.instance.currentUser.reload();
+  //   return b.FirebaseAuth.instance.currentUser == null ? false : true;
+  // }
 
   void updateAddress(
       {Address address, String token, Function success, Function fail}) async {
@@ -528,7 +536,7 @@ class UserModel with ChangeNotifier {
           if (element != address) {
             element.isDefault = false;
           }
-          user.defaultAddress = address;
+          user.address = address;
         });
       }
       var originalIndex = this.user.addresses.indexOf(address, 0);
@@ -555,7 +563,7 @@ class UserModel with ChangeNotifier {
           if (element != address) {
             element.isDefault = false;
           }
-          user.defaultAddress = address;
+          user.address = address;
         });
       }
       address.id = returnedAddress.id;
@@ -624,17 +632,17 @@ class UserModel with ChangeNotifier {
     }
   }
 
-  Future<String> getSkinTypePref() async {
-    try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
+  // Future<String> getSkinTypePref() async {
+  //   try {
+  //     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-      skinType = prefs.getString("skin_type");
+  //     skinType = prefs.getString("skin_type");
 
-      return cosmeticPref;
-    } catch (err) {
-      return err.toString();
-    }
-  }
+  //     return cosmeticPref;
+  //   } catch (err) {
+  //     return err.toString();
+  //   }
+  // }
 
   Future<String> getUserAgePref() async {
     try {

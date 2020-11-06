@@ -8,7 +8,7 @@ import 'package:Dimodo/screens/setting/signup.dart';
 import 'package:Dimodo/widgets/baumann_quiz.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/widgets/filter-by-skin.dart';
-import 'package:Dimodo/widgets/popup_services.dart';
+import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
 import 'package:Dimodo/widgets/webview.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -110,19 +110,20 @@ class HomeScreenState extends State<HomeScreen>
 
     _tabController = TabController(length: tabList.length, vsync: this);
     userModel = Provider.of<UserModel>(context, listen: false);
+    var user = userModel.user;
     productModel = Provider.of<ProductModel>(context, listen: false);
-    //setting the ski ntype when launching
-    if (userModel.skinType != null) {
-      if (userModel.skinType.contains("S")) {
-        skinTypeId = 1;
-      } else if (userModel.skinType.contains("D")) {
-        skinTypeId = 2;
-      } else if (userModel.skinType.contains("O")) {
-        skinTypeId = 3;
-      } else if (userModel.skinType.contains("R")) {
-        skinTypeId = 0;
-      }
-    }
+    // //setting the ski ntype when launching
+    // if (user.skinType != null) {
+    //   if (user.skinType.contains("S")) {
+    //     skinTypeId = 1;
+    //   } else if (user.skinType.contains("D")) {
+    //     skinTypeId = 2;
+    //   } else if (user.skinType.contains("O")) {
+    //     skinTypeId = 3;
+    //   } else if (user.skinType.contains("R")) {
+    //     skinTypeId = 0;
+    //   }
+    // }
   }
 
   @override
@@ -175,9 +176,9 @@ class HomeScreenState extends State<HomeScreen>
     return Scaffold(
       backgroundColor: Colors.white,
       body: Consumer<UserModel>(builder: (context, userModel, child) {
-        if (userModel.skinType != null) {
-          print("USERMODEL SKIN ${userModel.skinType}");
-          print("USERMODEL SKINSCORES ${userModel.skinScores?.dsScore}");
+        if (userModel.user.skinType != null) {
+          // print("USERMODEL SKIN ${userModel.user.skinType}");
+          // print("USERMODEL SKINSCORES ${userModel.skinScores?.dsScore}");
         }
         return SafeArea(
           top: true,
@@ -311,7 +312,7 @@ class HomeScreenState extends State<HomeScreen>
                                   }),
                             ),
                           ),
-                          userModel.skinType == null
+                          userModel.user.skinType == null
                               ? Container(
                                   // height: 70,
                                   width: screenSize.width,

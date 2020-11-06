@@ -43,15 +43,15 @@ class CosmeticsProductCard extends StatelessWidget {
 
     var tags = [];
 
-    product.tags.forEach((tag) {
-      if (tags.length == 2) {
-        return;
-      }
-      if (tag.name != null) {
-        tagString += tag.name + " | ";
-        tags.add(tag);
-      }
-    });
+    // product.tags.forEach((tag) {
+    //   if (tags.length == 2) {
+    //     return;
+    //   }
+    //   if (tag.name != null) {
+    //     tagString += tag.name + " | ";
+    //     tags.add(tag);
+    //   }
+    // });
 
     return Container(
       height: 112,

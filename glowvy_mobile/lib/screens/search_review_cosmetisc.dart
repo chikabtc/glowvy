@@ -1,6 +1,6 @@
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
-import 'package:Dimodo/common/icons.dart';
+import 'package:Dimodo/common/widgets.dart';
 
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/product/product.dart';
@@ -14,6 +14,8 @@ import '../generated/i18n.dart';
 import 'package:algolia/algolia.dart';
 
 class ReviewCosmeticsSearchScreen extends StatefulWidget {
+  bool isEditing;
+  ReviewCosmeticsSearchScreen({this.isEditing = false});
   @override
   _ReviewCosmeticsSearchScreenState createState() =>
       _ReviewCosmeticsSearchScreenState();
@@ -64,7 +66,17 @@ class _ReviewCosmeticsSearchScreenState
         appBar: AppBar(
           brightness: Brightness.light,
           backgroundColor: Colors.transparent,
-          leading: backIcon(context),
+          leading: widget.isEditing
+              ? GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 16, top: 16),
+                    child: Text("Stop",
+                        style: textTheme.headline5
+                            .copyWith(color: kSecondaryGrey)),
+                  ),
+                )
+              : backIcon(context),
           title: Text("select cosmetics", style: textTheme.headline3),
         ),
         body: SafeArea(
@@ -87,6 +99,7 @@ class _ReviewCosmeticsSearchScreenState
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: TextField(
+                                autofocus: true,
                                 textAlignVertical: TextAlignVertical.center,
                                 onTap: () => isTextFieldSelected = true,
                                 cursorColor: theme.cursorColor,

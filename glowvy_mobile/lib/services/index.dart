@@ -26,6 +26,7 @@ abstract class BaseServices {
   Future<List<Product>> getProductsBySearch({String searchText});
 
   Future<List<Product>> getProductsByShop({shopId});
+  Future<List<Review>> getReviewsByUserId(uid);
   Future<List<Category>> getSubCategories({parentId});
 
   Future<User> loginFacebook({String token});
@@ -35,7 +36,7 @@ abstract class BaseServices {
 
   Future<Reviews> getReviews(productId, int offset, int limit);
   Future<Product> getCosmetics(productId);
-  Future<void> writeReview(review);
+  Future<void> uploadReview(review);
   Future<List<Review>> getCosmeticsReviews(productId);
   Future<List<Ingredient>> getIngredients(productId);
   // ===========================================================================
@@ -126,6 +127,18 @@ class Services implements BaseServices {
   }
 
   @override
+  Future<List<Review>> getReviewsByUserId(uid) async {
+    var connectivityResult = await (Connectivity().checkConnectivity());
+    if (connectivityResult == ConnectivityResult.mobile ||
+        connectivityResult == ConnectivityResult.wifi) {
+      return serviceApi.getReviewsByUserId(uid);
+    } else {
+      //TODO: add no connection popup
+      throw Exception("No internet connection");
+    }
+  }
+
+  @override
   Future<List<Product>> getCosmeticsProductsByCategory(
       {categoryId, skinType}) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
@@ -140,11 +153,11 @@ class Services implements BaseServices {
   }
 
   @override
-  Future<void> writeReview(review) async {
+  Future<void> uploadReview(review) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.mobile ||
         connectivityResult == ConnectivityResult.wifi) {
-      return serviceApi.writeReview(review);
+      return serviceApi.uploadReview(review);
     } else {
       //TODO: add no connection popup
       throw Exception("No internet connection");

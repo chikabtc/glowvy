@@ -13,7 +13,85 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:provider/provider.dart';
 
-class PopupServices {
+class Popups {
+  static failMessage(message, context) {
+    FocusScope.of(context).requestFocus(FocusNode());
+
+    final snackBar = SnackBar(
+      content: Text(
+        '$message',
+        style: textTheme.headline5.copyWith(color: Colors.white),
+      ),
+      duration: Duration(seconds: 30),
+      action: SnackBarAction(
+        label: S.of(context).close,
+        onPressed: () {
+          // Some code to undo the change.
+        },
+      ),
+    );
+
+    Scaffold.of(context)
+      ..removeCurrentSnackBar()
+      ..showSnackBar(snackBar);
+  }
+
+  static simpleAlert(context, bodyText, {buttonText = 'Ok'}) {
+    showDialog(
+        context: context,
+        // barrierColor: kAlertBackground,
+        // barrierColor: Colors.grey.withOpacity(0.7),
+        builder: (BuildContext context) {
+          return Center(
+              // Aligns the container to center
+              child: Container(
+                  decoration: BoxDecoration(
+                      color: kWhite, borderRadius: BorderRadius.circular(16)),
+                  // A simplified version of dialog.
+                  width: 315.0,
+                  height: 125.0,
+                  padding: EdgeInsets.only(top: 28, bottom: 0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        bodyText,
+                        style: textTheme.headline5
+                            .copyWith(decoration: TextDecoration.none),
+                      ),
+                      SizedBox(height: 28),
+                      Divider(
+                        color: kQuaternaryGrey,
+                        height: 1,
+                      ),
+                      // SizedBox(height: 14),
+                      GestureDetector(
+                        onTap: () => Navigator.pop(context),
+                        child: Container(
+                          height: 48,
+                          color: Colors.transparent,
+                          width: 315,
+                          // padding: EdgeInsets.only(left: 14, right: 14),
+                          child: Center(
+                            child: Text(
+                              buttonText,
+                              style: textTheme.button1.copyWith(
+                                  decoration: TextDecoration.none,
+                                  color: kPrimaryOrange),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  )));
+        }).then((value) {
+      // Future.delayed(const Duration(milliseconds: 700), () {
+      //   Navigator.of(context).pop();
+      //   // Navigator.of(dialogContext).pop();
+      // });
+    });
+  }
+
   static showPMF(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 

@@ -41,7 +41,7 @@ import 'screens/setting/signup.dart';
 import 'services/index.dart';
 import 'tabbar.dart';
 import 'package:Dimodo/screens/setting/forgot_password.dart';
-import 'screens/settings.dart';
+import 'screens/profile.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 
@@ -77,6 +77,7 @@ class MyApp extends StatefulWidget {
 
 class GlowvyState extends State<MyApp> with AfterLayoutMixin {
   final _app = AppModel();
+  final _addressModel = AddressModel();
   final _userModel = UserModel();
   final _product = ProductModel();
   final _wishlist = WishListModel();
@@ -91,7 +92,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
   void afterFirstLayout(BuildContext context) async {
     Services().setAppConfig(serverConfig);
     _app.loadAppConfig();
-
+    await _addressModel.getProvincess();
     isFirstSeen = await checkFirstSeen();
     isLoggedIn = await checkLogin();
     setState(() {
@@ -157,7 +158,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
               Provider<WishListModel>.value(value: _wishlist),
               Provider<OrderModel>.value(value: _order),
               Provider<RecentModel>.value(value: _recent),
-              ChangeNotifierProvider(create: (_) => AddressModel()),
+              ChangeNotifierProvider(create: (_) => _addressModel),
               ChangeNotifierProvider(create: (_) => _userModel),
               ChangeNotifierProvider(create: (_) => CartModel()),
               ChangeNotifierProvider(create: (_) => CategoryModel()),
@@ -229,7 +230,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
                   '/orders': (context) => OrdersScreen(),
                   '/order_submitted': (context) => OrderSubmitted(),
                   '/manage_address': (context) => ManageShippingScreen(),
-                  '/setting': (context) => SettingScreen(),
+                  '/setting': (context) => ProfileScreen(),
                   '/category': (context) => CategoryScreen(),
                   // '/sub_category': (context) => SubCategoryScreen(),
                   '/verify_email': (context) => VerifyEmailScreen(),

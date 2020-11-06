@@ -9,26 +9,31 @@ part of 'review.dart';
 Review _$ReviewFromJson(Map<String, dynamic> json) {
   return Review(
     id: json['id'] as int,
-    createdTime: json['created_time'] as String,
-    content: json['content'] as String,
-    scontent: json['scontent'] as String,
+    createdAt: json['created_at'] as int,
+    text: json['text'] as String,
+    stext: json['stext'] as String,
     rating: json['rating'] as int,
     productId: json['product_id'] as int,
     user: json['user'] == null
         ? null
         : User.fromJson(json['user'] as Map<String, dynamic>),
     images: (json['images'] as List)?.map((e) => e as String)?.toList(),
-  )..userId = json['user_id'] as int;
+  )
+    ..product = json['product'] == null
+        ? null
+        : Product.fromJson(json['product'] as Map<String, dynamic>)
+    ..likeCount = json['like_count'] as int;
 }
 
 Map<String, dynamic> _$ReviewToJson(Review instance) => <String, dynamic>{
       'id': instance.id,
-      'content': instance.content,
-      'scontent': instance.scontent,
-      'user_id': instance.userId,
+      'text': instance.text,
+      'stext': instance.stext,
       'product_id': instance.productId,
       'rating': instance.rating,
       'images': instance.images,
       'user': instance.user,
-      'created_time': instance.createdTime,
+      'created_at': instance.createdAt,
+      'product': instance.product,
+      'like_count': instance.likeCount,
     };

@@ -98,10 +98,10 @@ class _ConfirmOrderState extends State<ConfirmOrder>
       order.totalShipping = cartModel.getShippingFee();
       order.totalFee = cartModel.getTotal();
       order.totalDiscounts = cartModel.getTotalDiscounts();
-      order.userId = userModel.user.id;
+      order.userId = userModel.user.uid;
       order.addressId = cartModel.address.id != null
           ? cartModel.address.id
-          : userModel.user.defaultAddress.id;
+          : userModel.user.address.id;
       order.appliedCoupons = cartModel.selectedCoupons;
 
       await orderModel.submitOrder(order: order);
@@ -156,7 +156,7 @@ class _ConfirmOrderState extends State<ConfirmOrder>
                     SliverList(
                         delegate: SliverChildListDelegate([
                       if (model.address == null)
-                        ShippingAddressSmallCard(user.defaultAddress),
+                        ShippingAddressSmallCard(user.address),
                       if (model.address != null)
                         ShippingAddressSmallCard(model.address),
                       if (user.addresses.length == 0)
@@ -225,7 +225,7 @@ class _ConfirmOrderState extends State<ConfirmOrder>
                                   buttonTitle: S.of(context).submitOrder,
                                   buttonController: submitButtonController.view,
                                   onTap: () {
-                                    if (user.defaultAddress == null) {
+                                    if (user.address == null) {
                                       var isFromOrderPage = true;
                                       Navigator.pushNamed(
                                           context, "/manage_address",

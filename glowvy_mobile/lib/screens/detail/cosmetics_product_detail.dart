@@ -16,7 +16,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:provider/provider.dart';
 import '../../common/styles.dart';
-import '../../common/icons.dart';
+import '../../common/widgets.dart';
 
 import '../../common/colors.dart';
 

@@ -17,15 +17,21 @@ Address _$AddressFromJson(Map<String, dynamic> json) {
     isDefault: json['is_default'] as bool,
   )
     ..id = json['id'] as int
-    ..wardId = json['ward_id'] as int;
+    ..district = json['district'] == null
+        ? null
+        : District.fromJson(json['district'] as Map<String, dynamic>)
+    ..province = json['province'] == null
+        ? null
+        : Province.fromJson(json['province'] as Map<String, dynamic>);
 }
 
 Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
       'id': instance.id,
       'recipient_name': instance.recipientName,
       'street': instance.street,
-      'ward': instance.ward,
-      'ward_id': instance.wardId,
       'phone_number': instance.phoneNumber,
+      'ward': instance.ward,
+      'district': instance.district,
+      'province': instance.province,
       'is_default': instance.isDefault,
     };

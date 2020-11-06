@@ -23,7 +23,7 @@ class _StateUserPoint extends State<UserPoint> {
   Future<UserPoints> getUserPoint() async {
     final userModel = Provider.of<UserModel>(context, listen: false);
     final points = await http.get(
-        '${serverConfig['url']}/api/mstore_user/get_points/?insecure=cool&user_id=${userModel.user.id}');
+        '${serverConfig['url']}/api/mstore_user/get_points/?insecure=cool&user_id=${userModel.user.uid}');
     return UserPoints.fromJson(json.decode(points.body));
   }
 

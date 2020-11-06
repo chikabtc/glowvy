@@ -1,3 +1,4 @@
+import 'package:Dimodo/common/popups.dart';
 import 'package:flutter/material.dart';
 import 'package:Dimodo/common/styles.dart';
 
@@ -18,39 +19,29 @@ class VerifyEmailScreen extends StatefulWidget {
 }
 
 class _VerifyEmailScreenState extends State<VerifyEmailScreen>
-    with TickerProviderStateMixin, AfterLayoutMixin {
-  AnimationController _loginButtonController;
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+    with TickerProviderStateMixin {
+  AnimationController _verifyAnimationController;
   String code;
-  final TextEditingController _emailController = TextEditingController();
-  bool isLoading = false;
-  bool isChecked = false;
   bool isEmailSent = false;
-  var parentContext;
   String accessToken;
 
   @override
   void initState() {
     super.initState();
-    _loginButtonController = new AnimationController(
+    _verifyAnimationController = new AnimationController(
         duration: new Duration(milliseconds: 3000), vsync: this);
   }
 
   @override
   void dispose() {
-    _loginButtonController.dispose();
+    _verifyAnimationController.dispose();
     super.dispose();
   }
 
   //update the UI of the screen to show input PIN
-  void _welcomeMessage() {
-    final snackBar =
-        //     SnackBar(content: Text('Pin is correct !', style: kBaseTextStyle));
-        // Scaffold.of(context).showSnackBar(snackBar);
-        Future.delayed(const Duration(milliseconds: 1000), () {
-      _stopAnimation();
+  void _onVerifySuccess() {
+    Future.delayed(const Duration(milliseconds: 1000), () {
       Navigator.of(context).pop();
-      setState(() {});
     });
   }
   // void onCorrectPin(context) {
@@ -59,84 +50,30 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen>
 
   // }
 
-  void _failMess(message) {
-    _stopAnimation();
-    _snackBar(message);
-  }
-
-  void _snackBar(String text) {
-    final snackBar = SnackBar(
-      content:
-          Text('$text', style: kBaseTextStyle.copyWith(color: Colors.white)),
-      duration: Duration(seconds: 10),
-      action: SnackBarAction(
-        label: 'Close',
-        onPressed: () {
-          // Some code to undo the change.
-        },
-      ),
-    );
-    _scaffoldKey.currentState.showSnackBar(snackBar);
-  }
-
-  Future<Null> _playAnimation() async {
-    try {
-      setState(() {
-        isLoading = true;
-      });
-      await _loginButtonController.forward();
-    } on TickerCanceled {}
-  }
-
-  Future<Null> _stopAnimation() async {
-    try {
-      await _loginButtonController.reverse();
-      setState(() {
-        isLoading = false;
-      });
-    } on TickerCanceled {}
-  }
-
 // show fail message in two cases: 1. the email is not registed. 2. PIN is wrong.
-  void _failMessage(message, context) {
-    /// Showing Error messageSnackBarDemo
-    /// Ability so close message
-    final snackBar = SnackBar(
-      content: Text('Warning: $message', style: kBaseTextStyle),
-      duration: Duration(seconds: 30),
-      action: SnackBarAction(
-        label: S.of(context).close,
-        onPressed: () {
-          // Some code to undo the change.
-        },
-      ),
-    );
-
-    _stopAnimation();
-    Scaffold.of(context)
-      ..removeCurrentSnackBar()
-      ..showSnackBar(snackBar);
+  _onVerifyFailure(message, context) async {
+    await _verifyAnimationController.reverse();
+    Popups.failMessage(message, context);
   }
 
   @override
   Widget build(BuildContext context) {
-    TextStyle buttonTextStyle =
-        Theme.of(context).textTheme.button.copyWith(fontSize: 16);
     final screenSize = MediaQuery.of(context).size;
-    parentContext = context;
+
     final Map arguments = ModalRoute.of(context).settings.arguments as Map;
     if (arguments != null) print(arguments['fullName']);
     var fullName = arguments['fullName'];
 
-    _verifyEmail(email) {
-      _playAnimation();
-      Provider.of<UserModel>(context, listen: false).verifyEmail(
-          fullName: fullName, success: _welcomeMessage, fail: _failMess);
+    _verifyEmail(email) async {
+      try {
+        await Provider.of<UserModel>(context, listen: false)
+            .verifyEmail(fullName: fullName);
+        _onVerifySuccess();
+      } catch (e) {}
     }
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      key: _scaffoldKey,
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         leading: Navigator.of(context).canPop()
@@ -167,8 +104,8 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen>
                             children: <Widget>[
                               Text(
                                 isEmailSent
-                                    ? S.of(parentContext).enterPINCode
-                                    : S.of(parentContext).forgotpassword,
+                                    ? S.of(context).enterPINCode
+                                    : S.of(context).forgotpassword,
                                 style: kBaseTextStyle.copyWith(
                                     fontWeight: FontWeight.bold, fontSize: 24),
                               )
@@ -182,29 +119,10 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen>
                           style: kBaseTextStyle.copyWith(
                               fontSize: 14, fontWeight: FontWeight.w600)),
                       SizedBox(height: 16.0),
-                      // Container(
-                      //     width: screenSize.width,
-                      //     height: 48,
-                      //     decoration: BoxDecoration(
-                      //         borderRadius:
-                      //             BorderRadius.all(Radius.circular(6)),
-                      //         color: kPureWhite),
-                      //     child: // Group 6
-                      //         Center(
-                      //       child: TextField(
-                      //           controller: _emailController,
-                      //           onChanged: (value) => code = value,
-                      //           keyboardType: TextInputType.emailAddress,
-                      //           decoration: kTextField.copyWith(
-                      //             hintText: isEmailSent
-                      //                 ? S.of(parentContext).enterPIN
-                      //                 : S.of(parentContext).enterYourEmail,
-                      //           )),
-                      //     )),
                       SizedBox(height: 16.0),
                       StaggerAnimation(
                           buttonTitle: "verify email",
-                          buttonController: _loginButtonController.view,
+                          buttonController: _verifyAnimationController.view,
                           onTap: () {
                             _verifyEmail(code);
                           }),
@@ -217,10 +135,5 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen>
         ),
       ),
     );
-  }
-
-  @override
-  void afterFirstLayout(BuildContext context) {
-    // TODO: implement afterFirstLayout
   }
 }

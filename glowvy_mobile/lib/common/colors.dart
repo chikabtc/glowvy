@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 /// basic colors
 const kDefaultBackground = Color(0xffFAFAFA);
-const kDefaultBackground2 = Color(0xffFEFEFE);
+const kWhite = Color(0xffFEFEFE);
+const kAlertBackground = Color(0xffE5E5E5);
 const kSecondaryPink = Color(0xfffF19CB3);
 const kAccentGreen = Color(0xff21CAB0);
 const kSecondaryGreen = Color(0xff63DAC8);
@@ -32,7 +33,7 @@ const kLightPink = Color(0xfff2eaed);
 const kDefaultFontColor = Color(0xff121212);
 const kSecondaryWhite = Color(0xffF9F9F9);
 const kDarkBG = Color(0xff121212);
-const kDarkBgLight = Color(0xfff9f9f9);
+// const kDarkBgLight = Color(0xfff9f9f9);
 const kBadgeColor = Colors.red;
 const kPureWhite = Color(0xffffffff);
 const kSecondaryGrey = Color(0xffBFBFBF);

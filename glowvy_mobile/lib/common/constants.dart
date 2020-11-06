@@ -114,16 +114,16 @@ const kProductListLayout = [
   {"layout": "horizontal", "image": "assets/icons/tabs/icon-horizon.png"}
 ];
 
-var kFullDivider = Divider(
-  color: kSecondaryGrey.withOpacity(0.1),
-  height: 1.0,
-  //endIndent: 20,
-);
-var kDivider = Divider(
-  color: kSecondaryGrey.withOpacity(0.1),
-  height: 1.0,
-  indent: 16,
-  //endIndent: 20,
+// var kFullDivider = Divider(
+//   color: kSecondaryGrey.withOpacity(0.1),
+//   height: 1.0,
+//   //endIndent: 20,
+// );
+const kDivider = Divider(
+  color: kQuaternaryGrey,
+  height: 0.7,
+  thickness: 0.7,
+  indent: 15,
 );
 
 SizeConfig kSizeConfig;

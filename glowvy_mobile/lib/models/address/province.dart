@@ -5,7 +5,7 @@ part 'province.g.dart';
 class Province {
   int id;
   String name;
-  int index;
+  String index;
 
   Province({
     this.id,

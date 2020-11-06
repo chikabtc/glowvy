@@ -11,7 +11,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../common/styles.dart';
 
 import '../../common/colors.dart';
-import '../../common/icons.dart';
+import '../../common/widgets.dart';
 
 import '../../generated/i18n.dart';
 import '../../models/reviews.dart';

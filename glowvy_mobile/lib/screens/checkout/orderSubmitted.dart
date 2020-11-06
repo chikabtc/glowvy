@@ -199,7 +199,7 @@ class _OrderSubmittedState extends State<OrderSubmitted>
   @override
   Widget build(BuildContext context) {
     final address =
-        Provider.of<UserModel>(context, listen: false).user.defaultAddress; //
+        Provider.of<UserModel>(context, listen: false).user.address; //
     var fullAddress = address.recipientName +
         ", " +
         address.street +

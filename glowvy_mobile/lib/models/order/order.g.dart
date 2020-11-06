@@ -15,7 +15,7 @@ Order _$OrderFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : CartItem.fromJson(e as Map<String, dynamic>))
         ?.toList(),
-    userId: json['user_id'] as int,
+    userId: json['user_id'] as String,
     totalShipping: (json['total_shipping'] as num)?.toDouble(),
     totalFee: (json['total_fee'] as num)?.toDouble(),
     appliedCoupons: (json['applied_coupons'] as List)

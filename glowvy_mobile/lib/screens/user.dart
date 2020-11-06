@@ -2,7 +2,7 @@ import 'package:Dimodo/models/order/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/user/userModel.dart';
-import 'settings.dart';
+import 'profile.dart';
 
 class UserScreen extends StatefulWidget {
   @override
@@ -20,7 +20,7 @@ class _UserScreenState extends State<UserScreen> {
         value: userModel,
         child: Consumer<UserModel>(builder: (context, value, child) {
           // print("user screen: ${value.user.toJson()}");
-          return SettingScreen(
+          return ProfileScreen(
             user: value.user,
             onLogout: () async {
               print("logged out tap!");

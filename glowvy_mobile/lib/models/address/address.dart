@@ -1,3 +1,5 @@
+import 'package:Dimodo/models/address/district.dart';
+import 'package:Dimodo/models/address/province.dart';
 import 'package:localstorage/localstorage.dart';
 import 'ward.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -9,9 +11,12 @@ class Address {
   int id;
   String recipientName;
   String street;
-  Ward ward;
-  int wardId;
   String phoneNumber;
+
+  Ward ward;
+  District district;
+  Province province;
+
   bool isDefault;
 
   Address({

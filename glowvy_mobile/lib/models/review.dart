@@ -1,4 +1,6 @@
+import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/user/user.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'reviewProduct.dart';
 import 'reviewUser.dart';
@@ -7,29 +9,35 @@ part 'review.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Review {
   int id;
-  String content;
-  String scontent;
-  int userId;
+  String text;
+  String stext;
+  // int userId;
   int productId;
   int rating;
   List<String> images;
   User user;
-  String createdTime;
+  int createdAt;
+  Product product;
+  int likeCount;
 
   Review({
     this.id,
-    this.createdTime,
-    this.content,
-    this.scontent,
+    this.createdAt,
+    this.text,
+    this.stext,
     this.rating,
     this.productId,
     this.user,
     // this.product,
     this.images,
   });
+  // @JsonKey(fromJson: _fromJson, toJson: _toJson)
+  // static DateTime _fromJson(int int) =>
+  //     DateTime.fromMillisecondsSinceEpoch(int);
+  // static int _toJson(DateTime time) => time.millisecondsSinceEpoch;
 
   @override
-  String toString() => 'Review { id: ${user.displayName} name: ${user.age} }';
+  String toString() => 'Review { id: ${user.fullName} name: ${user.age} }';
 
 //testing codemagic
   factory Review.fromJson(Map<String, dynamic> json) => _$ReviewFromJson(json);

@@ -19,7 +19,7 @@ var kTextField = InputDecoration(
   hintStyle: textTheme.headline5.copyWith(
     color: theme.hintColor,
   ),
-  contentPadding: EdgeInsets.only(left: 12),
+  contentPadding: EdgeInsets.only(left: 16),
 );
 var kButton = BoxDecoration(
   color: kPrimaryOrange,
@@ -103,14 +103,15 @@ TextTheme _buildTextTheme(TextTheme base) {
           color: kDefaultFontColor),
       bodyText1: base.bodyText1.copyWith(
           height: 1.25,
-          fontStyle: FontStyle.italic,
           fontSize: 15.0,
+          fontStyle: FontStyle.normal,
           fontWeight: FontWeight.w600,
           color: kDefaultFontColor),
       bodyText2: base.bodyText2.copyWith(
           height: 1.25,
           fontSize: 14.0,
-          fontWeight: FontWeight.w600,
+          fontStyle: FontStyle.normal,
+          fontWeight: FontWeight.w400,
           color: kDefaultFontColor));
 }
 

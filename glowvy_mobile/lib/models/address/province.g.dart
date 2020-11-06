@@ -10,7 +10,7 @@ Province _$ProvinceFromJson(Map<String, dynamic> json) {
   return Province(
     id: json['id'] as int,
     name: json['name'] as String,
-    index: json['index'] as int,
+    index: json['index'] as String,
   );
 }
 

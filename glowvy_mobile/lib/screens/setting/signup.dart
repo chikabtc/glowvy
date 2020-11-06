@@ -1,18 +1,19 @@
+import 'package:Dimodo/common/popups.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+
 import 'package:provider/provider.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
-import '../../models/order/cart.dart';
+
 import 'package:Dimodo/common/constants.dart';
 
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/common/styles.dart';
 
 import 'package:Dimodo/common/colors.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:Dimodo/widgets/login_animation.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
+
 import 'package:flutter/services.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -46,157 +47,41 @@ class _SignupScreenState extends State<SignupScreen>
     super.dispose();
   }
 
-  void _welcomeDiaLog(User user) {
-    var email = user.email;
-    _snackBar('Welcome $email!');
-    // Navigator.pop(context);
+  void onSignupSuccess(User user) async {
+    await _loginButtonController.reverse();
     Navigator.of(context).pushReplacementNamed('/verify_email',
         arguments: {'fullName': fullName});
   }
 
-  void _failMess(message) {
-    _snackBar(message);
-  }
-
-  void _snackBar(String text) {
-    final snackBar = SnackBar(
-      content: Text(
-        '$text',
-        style: textTheme.headline5.copyWith(color: Colors.white),
-      ),
-      duration: Duration(seconds: 10),
-      action: SnackBarAction(
-        label: 'Close',
-        onPressed: () {
-          // Some code to undo the change.
-        },
-      ),
-    );
-    _scaffoldKey.currentState.showSnackBar(snackBar);
-  }
-
-  Future<Null> _playAnimation() async {
+  _registerWithEmail(fullName, email, password, context) async {
     try {
-      setState(() {
-        isLoading = true;
-      });
-      await _loginButtonController.forward();
-    } on TickerCanceled {}
-  }
-
-  Future<Null> _stopAnimation() async {
-    try {
-      await _loginButtonController.reverse();
-      setState(() {
-        isLoading = false;
-      });
-    } on TickerCanceled {}
-  }
-
-  _submitRegister(fullName, email, password) {
-    _playAnimation();
-    print("registering: ${fullName + " " + email + " " + password}");
-    if (!email.contains("@")) {
-      _snackBar('Please input valid email format');
-    } else if (fullName == null || email == null || password == null) {
-      _snackBar('Please input fill in all fields');
-    } else {
-      Provider.of<UserModel>(context, listen: false).createUser(
+      _loginButtonController.forward();
+      if (!email.contains("@")) {
+        throw ('Please input valid email format');
+      } else if (fullName == null || email == null || password == null) {
+        throw ('Please input fill in all fields');
+      } else {
+        var user =
+            await Provider.of<UserModel>(context, listen: false).createUser(
           fullName: fullName,
           password: password,
           email: email,
-          success: _welcomeDiaLog,
-          fail: _failMess);
+        );
+        onSignupSuccess(user);
+      }
+    } catch (e) {
+      _onSignupFailure(e, context);
     }
   }
+  //
 
-  _loginFacebook(context) async {
-    //showLoading();
-    _playAnimation();
-    Provider.of<UserModel>(context, listen: false).loginFB(
-      success: (user) {
-        _onLoginSuccess(user, context);
-      },
-      fail: (message) {
-        _onLoginFailure(message, context);
-      },
-    );
-  }
-
-  _loginGoogle(context) async {
-    _playAnimation();
-    Provider.of<UserModel>(context, listen: false).loginGoogle(
-      success: (user) {
-        _onLoginSuccess(user, context);
-      },
-      fail: (message) {
-        _onLoginFailure(message, context);
-      },
-    );
-  }
-
-  _loginApple(context) async {
-    _playAnimation();
-    Provider.of<UserModel>(context, listen: false).loginApple(
-      success: (user) {
-        _onLoginSuccess(user, context);
-      },
-      fail: (message) {
-        _onLoginFailure(message, context);
-      },
-    );
-  }
-
-  void _welcomeMessage(user, context) {
-    if (widget.fromCart) {
-      // Navigator.of(context).pop(user);
-    } else {
-      final snackBar = SnackBar(
-          content: Text(S.of(context).welcome + ' ${user.fullName} !',
-              style: textTheme.headline5.copyWith(color: Colors.white)));
-      Scaffold.of(context).showSnackBar(snackBar);
-
-      Navigator.of(context).pop();
-    }
-  }
-
-  void _failMessage(message, context) {
-    /// Showing Error messageSnackBarDemo
-    /// Ability so close message
-    print("Warning: $message");
-    final snackBar = SnackBar(
-      content: Text('Warning: $message', style: textTheme.headline5),
-      duration: Duration(seconds: 30),
-      action: SnackBarAction(
-        label: S.of(context).close,
-        onPressed: () {
-          // Some code to undo the change.
-        },
-      ),
-    );
-
-    Scaffold.of(context)
-      ..removeCurrentSnackBar()
-      ..showSnackBar(snackBar);
-  }
-
-  _onLoginSuccess(user, context) {
-    Provider.of<CartModel>(context, listen: false)
-        .getAllCartItems(Provider.of<UserModel>(context, listen: false));
-    _stopAnimation();
-    _welcomeMessage(user, context);
-  }
-
-  _onLoginFailure(message, context) {
-    _stopAnimation();
-    _failMessage(message, context);
+  _onSignupFailure(message, context) async {
+    await _loginButtonController.reverse();
+    Popups.failMessage(message, context);
   }
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-            statusBarBrightness: Brightness.light) // Or Brightness.dark
-        );
     TextStyle buttonTextStyle =
         Theme.of(context).textTheme.button.copyWith(fontSize: 16);
     final screenSize = MediaQuery.of(context).size;
@@ -320,70 +205,19 @@ class _SignupScreenState extends State<SignupScreen>
                         height: 16.0,
                       ),
                       SizedBox(height: 10),
-                      StaggerAnimation(
-                          btnColor: kPrimaryOrange,
-                          buttonTitle: S.of(context).signup,
-                          buttonController: _loginButtonController.view,
-                          onTap: () {
-                            _submitRegister(fullName, email, password);
-                          }),
+                      Builder(
+                        builder: (context) => StaggerAnimation(
+                            btnColor: kPrimaryOrange,
+                            buttonTitle: S.of(context).signup,
+                            buttonController: _loginButtonController.view,
+                            onTap: () {
+                              _registerWithEmail(
+                                  fullName, email, password, context);
+                            }),
+                      ),
                       SizedBox(
                         height: 24.0,
                       ),
-                      Text(
-                        S.of(context).loginWithSNS,
-                        //     style: TextStyle(
-                        //         fontSize: 12, color: Colors.grey.shade400)),
-                        // SizedBox(
-                        //   height: 24.0,
-                        // ),
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.center,
-                        //   children: <Widget>[
-                        //     MaterialButton(
-                        //       color: kPrimaryOrange,
-                        //       minWidth: 48,
-                        //       height: 48,
-                        //       shape: RoundedRectangleBorder(
-                        //           borderRadius: new BorderRadius.circular(16.0)),
-                        //       onPressed: () => _loginFacebook(context),
-                        //       child: SvgPicture.asset(
-                        //         'assets/icons/facebook-social.svg',
-                        //         width: 24,
-                        //       ),
-                        //       elevation: 0.0,
-                        //     ),
-                        //     SizedBox(width: 35),
-                        //     MaterialButton(
-                        //       color: kPrimaryOrange,
-                        //       minWidth: 48,
-                        //       height: 48,
-                        //       shape: RoundedRectangleBorder(
-                        //           borderRadius: new BorderRadius.circular(16.0)),
-                        //       onPressed: () => _loginGoogle(context),
-                        //       child: SvgPicture.asset(
-                        //         'assets/icons/google-social.svg',
-                        //         width: 24,
-                        //       ),
-                        //       elevation: 0.0,
-                        //     ),
-                        //     SizedBox(width: 35),
-                        //     MaterialButton(
-                        //       color: kPrimaryOrange,
-                        //       minWidth: 48,
-                        //       height: 48,
-                        //       shape: RoundedRectangleBorder(
-                        //           borderRadius: new BorderRadius.circular(16.0)),
-                        //       onPressed: () => _loginApple(context),
-                        //       child: SvgPicture.asset(
-                        //         'assets/icons/apple.svg',
-                        //         width: 24,
-                        //       ),
-                        //       elevation: 0.0,
-                        //     ),
-                        //   ],
-                        // ),
-                      )
                     ],
                   ),
                 );

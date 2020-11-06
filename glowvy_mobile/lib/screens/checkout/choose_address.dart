@@ -186,12 +186,12 @@ class _StateChooseShipping extends State<ChooseShipping> {
     return GestureDetector(
       onTap: () {
         final add = Address(
-          recipientName: user.defaultAddress.recipientName.isNotEmpty
-              ? user.defaultAddress.recipientName
+          recipientName: user.address.recipientName.isNotEmpty
+              ? user.address.recipientName
               : user.fullName,
           // email: user.email,
-          street: user.defaultAddress.street,
-          ward: user.defaultAddress.ward,
+          street: user.address.street,
+          ward: user.address.ward,
         );
         // Provider.of<CartModel>(context, listen: false).setShipping(add);
         Navigator.of(context).pop();
@@ -214,9 +214,9 @@ class _StateChooseShipping extends State<ChooseShipping> {
             SizedBox(
               height: 10,
             ),
-            Text(user.defaultAddress.recipientName + ' '),
-            Text(user.defaultAddress.street),
-            Text(user.defaultAddress.ward.district.name),
+            Text(user.address.recipientName + ' '),
+            Text(user.address.street),
+            Text(user.address.ward.district.name),
           ],
         ),
       ),

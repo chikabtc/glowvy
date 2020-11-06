@@ -1,6 +1,6 @@
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
-import 'package:Dimodo/common/icons.dart';
+import 'package:Dimodo/common/widgets.dart';
 
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/product/product.dart';

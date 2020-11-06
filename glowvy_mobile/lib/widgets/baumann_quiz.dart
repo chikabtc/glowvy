@@ -17,7 +17,7 @@ import '../generated/i18n.dart';
 import 'package:Dimodo/common/styles.dart';
 
 import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/common/icons.dart';
+import 'package:Dimodo/common/widgets.dart';
 import 'package:provider/provider.dart';
 
 class BaumannQuiz extends StatefulWidget {

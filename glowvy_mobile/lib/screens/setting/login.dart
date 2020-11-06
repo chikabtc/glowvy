@@ -1,8 +1,9 @@
+import 'package:Dimodo/common/popups.dart';
 import 'package:flutter/material.dart';
 import 'package:Dimodo/common/styles.dart';
 
 import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/common/icons.dart';
+import 'package:Dimodo/common/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/generated/i18n.dart';
@@ -10,8 +11,6 @@ import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:Dimodo/models/order/cart.dart';
 
 class LoginScreen extends StatefulWidget {
   final bool fromCart;
@@ -22,8 +21,7 @@ class LoginScreen extends StatefulWidget {
   _LoginPageState createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginScreen>
-    with TickerProviderStateMixin, AfterLayoutMixin {
+class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
   AnimationController _loginButtonController;
   String email, password;
   final TextEditingController _emailController = TextEditingController();
@@ -40,30 +38,9 @@ class _LoginPageState extends State<LoginScreen>
   }
 
   @override
-  void afterFirstLayout(BuildContext context) async {}
-
-  @override
   void dispose() {
     _loginButtonController.dispose();
     super.dispose();
-  }
-
-  Future<Null> _playAnimation() async {
-    try {
-      setState(() {
-        isLoading = true;
-      });
-      await _loginButtonController.forward();
-    } on TickerCanceled {}
-  }
-
-  Future<Null> _stopAnimation() async {
-    try {
-      await _loginButtonController.reverse();
-      setState(() {
-        isLoading = false;
-      });
-    } on TickerCanceled {}
   }
 
   void _welcomeMessage(user, context) {
@@ -77,96 +54,34 @@ class _LoginPageState extends State<LoginScreen>
     }
   }
 
-  void _failMessage(message, context) {
-    FocusScope.of(context).requestFocus(FocusNode());
-
-    final snackBar = SnackBar(
-      content: Text(
-        '$message',
-        style: textTheme.headline5.copyWith(color: Colors.white),
-      ),
-      duration: Duration(seconds: 30),
-      action: SnackBarAction(
-        label: S.of(context).close,
-        onPressed: () {
-          // Some code to undo the change.
-        },
-      ),
-    );
-
-    Scaffold.of(context)
-      ..removeCurrentSnackBar()
-      ..showSnackBar(snackBar);
-  }
-
   _loginEmail(context) async {
-    if (email == null || password == null) {
-      var snackBar = SnackBar(
-          content: Text(S.of(context).pleaseInput,
-              style: textTheme.headline5.copyWith(color: Colors.white)));
-      Scaffold.of(context).showSnackBar(snackBar);
-    } else {
-      _playAnimation();
-      Provider.of<UserModel>(context, listen: false).login(
-        email: email.trim(),
-        password: password.trim(),
-        success: (user) {
-          _onLoginSuccess(user, context);
-        },
-        fail: (message) {
-          _onLoginFailure(message, context);
-        },
-      );
+    try {
+      _loginButtonController.forward();
+
+      if (email == null || password == null) {
+        throw (S.of(context).pleaseInput);
+      } else {
+        var user =
+            await Provider.of<UserModel>(context, listen: false).loginWithEmail(
+          email: email.trim(),
+          password: password.trim(),
+        );
+        _onLoginSuccess(user, context);
+      }
+    } catch (e) {
+      _onLoginFailure(e, context);
     }
   }
 
-  _loginFacebook(context) async {
-    _playAnimation();
-    Provider.of<UserModel>(context, listen: false).loginFB(
-      success: (user) {
-        _onLoginSuccess(user, context);
-      },
-      fail: (message) {
-        _onLoginFailure(message, context);
-      },
-    );
-  }
-
-  _onLoginSuccess(user, context) {
-    // Provider.of<CartModel>(context, listen: false)
-    //     .getAllCartItems(Provider.of<UserModel>(context, listen: false));
-    _stopAnimation();
+  _onLoginSuccess(user, context) async {
+    await _loginButtonController.reverse();
     _welcomeMessage(user, context);
     Navigator.pop(context);
   }
 
-  _onLoginFailure(message, context) {
-    _stopAnimation();
-    _failMessage(message, context);
-  }
-
-  _loginGoogle(context) async {
-    _playAnimation();
-    Provider.of<UserModel>(context, listen: false).loginGoogle(
-      success: (user) {
-        _onLoginSuccess(user, context);
-      },
-      fail: (message) {
-        _onLoginFailure(message, context);
-      },
-    );
-  }
-
-  _loginApple(context) async {
-    _playAnimation();
-    Provider.of<UserModel>(context, listen: false).loginApple(
-      success: (user) {
-        _onLoginSuccess(user, context);
-      },
-      fail: (message) {
-        _onLoginFailure(message, context);
-      },
-    );
+  _onLoginFailure(message, context) async {
+    await _loginButtonController.reverse();
+    Popups.failMessage(message, context);
   }
 
   @override
@@ -265,15 +180,15 @@ class _LoginPageState extends State<LoginScreen>
                       SizedBox(
                         height: 16.0,
                       ),
-                      StaggerAnimation(
-                        btnColor: kPrimaryOrange,
-                        buttonTitle: S.of(context).signInWithEmail,
-                        buttonController: _loginButtonController.view,
-                        onTap: () {
-                          if (!isLoading) {
+                      Builder(
+                        builder: (context) => StaggerAnimation(
+                          btnColor: kPrimaryOrange,
+                          buttonTitle: S.of(context).signInWithEmail,
+                          buttonController: _loginButtonController.view,
+                          onTap: () {
                             _loginEmail(context);
-                          }
-                        },
+                          },
+                        ),
                       ),
                       SizedBox(height: 10),
                       MaterialButton(
@@ -295,58 +210,6 @@ class _LoginPageState extends State<LoginScreen>
                       SizedBox(
                         height: 24.0,
                       ),
-                      // Text(S.of(context).loginWithSNS,
-                      //     style: TextStyle(
-                      //         fontSize: 12, color: Colors.grey.shade400)),
-                      // SizedBox(
-                      //   height: 24.0,
-                      // ),
-                      // Row(
-                      //   mainAxisAlignment: MainAxisAlignment.center,
-                      //   children: <Widget>[
-                      //     MaterialButton(
-                      //       color: kPrimaryOrange,
-                      //       minWidth: 48,
-                      //       height: 48,
-                      //       shape: RoundedRectangleBorder(
-                      //           borderRadius: new BorderRadius.circular(16.0)),
-                      //       onPressed: () => _loginFacebook(context),
-                      //       child: SvgPicture.asset(
-                      //         'assets/icons/facebook-social.svg',
-                      //         width: 24,
-                      //       ),
-                      //       elevation: 0.0,
-                      //     ),
-                      //     SizedBox(width: 35),
-                      //     MaterialButton(
-                      //       color: kPrimaryOrange,
-                      //       minWidth: 48,
-                      //       height: 48,
-                      //       shape: RoundedRectangleBorder(
-                      //           borderRadius: new BorderRadius.circular(16.0)),
-                      //       onPressed: () => _loginGoogle(context),
-                      //       child: SvgPicture.asset(
-                      //         'assets/icons/google-social.svg',
-                      //         width: 24,
-                      //       ),
-                      //       elevation: 0.0,
-                      //     ),
-                      //     SizedBox(width: 35),
-                      //     MaterialButton(
-                      //       color: kPrimaryOrange,
-                      //       minWidth: 48,
-                      //       height: 48,
-                      //       shape: RoundedRectangleBorder(
-                      //           borderRadius: new BorderRadius.circular(16.0)),
-                      //       onPressed: () => _loginApple(context),
-                      //       child: SvgPicture.asset(
-                      //         'assets/icons/apple.svg',
-                      //         width: 24,
-                      //       ),
-                      //       elevation: 0.0,
-                      //     ),
-                      //   ],
-                      // ),
                     ],
                   ),
                 );
@@ -355,39 +218,6 @@ class _LoginPageState extends State<LoginScreen>
           ]),
         ),
       ),
-    );
-  }
-
-  void showLoading() {
-    showDialog(
-        context: context,
-        barrierDismissible: false,
-        builder: (BuildContext context) {
-          return Center(
-              child: new Container(
-            padding: new EdgeInsets.all(50.0),
-            child: kLoadingWidget(context),
-          ));
-        });
-  }
-
-  void hideLoading() {
-    Navigator.of(context).pop();
-  }
-}
-
-class PrimaryColorOverride extends StatelessWidget {
-  const PrimaryColorOverride({Key key, this.color, this.child})
-      : super(key: key);
-
-  final Color color;
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return Theme(
-      child: child,
-      data: Theme.of(context).copyWith(primaryColor: color),
     );
   }
 }

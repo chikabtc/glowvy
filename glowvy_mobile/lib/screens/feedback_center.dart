@@ -1,9 +1,9 @@
 import 'package:Dimodo/common/constants.dart';
-import 'package:Dimodo/common/icons.dart';
+import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/baumann_quiz.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:Dimodo/widgets/popup_services.dart';
+import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/widgets/webview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mailer/flutter_mailer.dart';

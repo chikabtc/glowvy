@@ -148,7 +148,7 @@ class _CosmeticsProductDescriptionState
                         padding: EdgeInsets.only(
                             left: 10, right: 10, top: 6, bottom: 6),
                         child: Text(
-                          widget.product.tags[index].name,
+                          widget.product.tags[index],
                           maxLines: 1,
                           style: textTheme.bodyText2.copyWith(
                             color: kSecondaryGrey,

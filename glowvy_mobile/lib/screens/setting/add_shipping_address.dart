@@ -352,7 +352,7 @@ class _AddShippingAddressState extends State<AddShippingAddress>
     _playAnimation();
     Provider.of<UserModel>(context, listen: false).updateAddress(
       address: address,
-      token: user.accessToken,
+      // token: user.accessToken,
       success: (isSuccess) {
         _stopAnimation();
         // address.saveAddress();
@@ -490,7 +490,7 @@ class _AddShippingAddressState extends State<AddShippingAddress>
                 onTap: () async {
                   address.ward.name = addressModel.wards[index].name;
                   address.ward.id = addressModel.wards[index].id;
-                  address.wardId = addressModel.wards[index].id;
+                  // address.wardId = addressModel.wards[index].id;
                   print("chosen ward: ${address.ward.name}");
 
                   updateState();

@@ -28,9 +28,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
         ?.toList(),
     sliderImages:
         (json['slider_images'] as List)?.map((e) => e as String)?.toList(),
-    tags: (json['tags'] as List)
-        ?.map((e) => e == null ? null : Tag.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
+    tags: (json['tags'] as List)?.map((e) => e as String)?.toList(),
     salePrice: json['sale_price'] as int,
     salePercent: json['sale_percent'] as int,
     price: json['price'] as int,

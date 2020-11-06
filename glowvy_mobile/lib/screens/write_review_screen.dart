@@ -1,19 +1,23 @@
+import 'package:Dimodo/common/alerts.dart';
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/common/styles.dart';
-import 'package:Dimodo/common/icons.dart';
-
+import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/models/review.dart';
+import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/search_review_cosmetisc.dart';
 import 'package:Dimodo/services/index.dart';
 import 'package:Dimodo/widgets/cosmetics_request_button.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
+import 'package:Dimodo/widgets/product_thumbnail.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
@@ -29,184 +33,247 @@ class WriteReviewScreen extends StatefulWidget {
 class _WriteReviewScreenState extends State<WriteReviewScreen>
     with TickerProviderStateMixin {
   Size screenSize;
-  AnimationController _shareBtnController;
+  AnimationController _postButtonController;
   final TextEditingController _reviewTextController = TextEditingController();
-
   Services service = Services();
-
-  String reviewText;
-  Product product;
-
-  int rating = 0;
-  var isLoading = false;
+  Review review = Review();
+  UserModel userModel;
+  bool isLoading = false;
+  bool isRatingEmpty = false;
 
   @override
   void initState() {
     super.initState();
-    _shareBtnController = new AnimationController(
+    userModel = Provider.of<UserModel>(context, listen: false);
+    // print("user:${userModel.user.toJson()}");
+
+    _postButtonController = new AnimationController(
         duration: new Duration(milliseconds: 3000), vsync: this);
   }
 
-  uploadReview(reviewText, rating, {Function success, fail}) async {
-    final userModel = Provider.of<UserModel>(context, listen: false);
+  @override
+  void dispose() {
+    _postButtonController.dispose();
+    super.dispose();
+  }
 
-    var review = {
-      'content': reviewText,
-      'user': userModel.user.toJson(),
-      'product_id': product.sid,
-      'rating': rating,
-      'created_at': FieldValue.serverTimestamp()
-    };
-    print("review: ${review}");
-    try {
-      await service.writeReview(review);
-      success();
-    } catch (e) {
-      fail(e);
+  validateInput() {
+    if (review.product == null) {
+      throw ("select product");
+    } else if (review.rating == 0) {
+      throw ("select rating");
+    } else if (review.text == null) {
+      throw ("content too show at least over 20 characters");
+    } else if (review.text.length < 20) {
+      throw ("content too show at least over 20 characters");
+    } else if (review.text.length > 5000) {
+      throw ("content too long (up to 5000 chars");
     }
   }
 
-  Future<Null> _playAnimation() async {
+  uploadReview(context) async {
     try {
-      setState(() {
-        isLoading = true;
-      });
-      await _shareBtnController.forward();
-    } on TickerCanceled {}
-  }
+      final user = userModel.user;
+      validateInput();
 
-  Future<Null> _stopAnimation() async {
-    try {
-      await _shareBtnController.reverse();
-      setState(() {
-        isLoading = false;
-      });
-    } on TickerCanceled {}
+      var reviewJson = {
+        'text': review.text,
+        'user': {
+          "uid": user.uid,
+          "full_name": user.fullName,
+          "skin_type": 'dry',
+          "email": user.email,
+          "birth_year": user.birthYear,
+        },
+        'product': {
+          'name': review.product.sname,
+          'brand_name': review.product.brand.name,
+          'category': review.product.category.toJson(),
+          'thumbnail': review.product.thumbnail,
+          'sid': review.product.sid,
+        },
+        'rating': review.rating,
+        // "like_count": 0,
+        'created_at': DateTime.now().millisecondsSinceEpoch
+      };
+
+      await userModel.uploadReview(reviewJson);
+      await _postButtonController.reverse();
+      showSuccesPopup();
+      Navigator.of(context).popUntil((route) => route.isFirst);
+    } catch (e) {
+      await _postButtonController.reverse();
+      Popups.simpleAlert(context, e);
+    }
   }
 
   getRatingExpression() {
-    switch (rating) {
-      case 0:
-        return 'Tap to rate';
-        break;
-      case 1:
-        return 'Tap to rate2';
-        break;
-      case 2:
-        return 'Tap to rate1';
-        break;
-      case 3:
-        return 'Tap to rat4e';
-        break;
-      case 4:
-        return 'Tap to rate4';
-        break;
-      case 5:
-        return 'Tap to rate5';
-        break;
-      default:
+    if (review != null) {
+      switch (review.rating) {
+        case 0:
+          return 'Tap to rate';
+          break;
+        case 1:
+          return 'Tap to rate2';
+          break;
+        case 2:
+          return 'Tap to rate1';
+          break;
+        case 3:
+          return 'Tap to rat4e';
+          break;
+        case 4:
+          return 'Tap to rate4';
+          break;
+        case 5:
+          return 'Tap to rate5';
+          break;
+        default:
+          return 'Tap to rate';
+      }
+    } else {
+      return "Tap to rate";
     }
   }
 
-  showPop() {
+  showSuccesPopup() {
+    BuildContext dialogContext;
+
     showDialog(
         context: context,
         barrierColor: Color(0x01000000),
-        builder: (_) => Center(
-            // Aligns the container to center
-            child: Container(
-                decoration: BoxDecoration(
-                    color: kDarkAccent,
-                    borderRadius: BorderRadius.circular(44)),
-                // A simplified version of dialog.
-                width: 152.0,
-                height: 44.0,
-                child: Center(
-                  child: Text(
-                    'posted successfully',
-                    style: textTheme.caption2.copyWith(
-                        color: Colors.white, decoration: TextDecoration.none),
-                  ),
-                ))));
+        builder: (BuildContext context) {
+          dialogContext = context;
+
+          return Center(
+              // Aligns the container to center
+              child: Container(
+                  decoration: BoxDecoration(
+                      color: kDarkAccent,
+                      borderRadius: BorderRadius.circular(44)),
+                  // A simplified version of dialog.
+                  width: 152.0,
+                  height: 44.0,
+                  child: Center(
+                    child: Text(
+                      'posted successfully',
+                      style: textTheme.caption2.copyWith(
+                          color: Colors.white, decoration: TextDecoration.none),
+                    ),
+                  )));
+        }).then((value) {});
   }
 
-  onProductSelect(Product product) {
-    this.product = product;
+  askSaveDraft() {
+    final act = CupertinoActionSheet(
+        title: Container(
+          child: Text('If you go back now, your review edits will discarded.',
+              style: textTheme.caption1),
+        ),
+        actions: <Widget>[
+          Container(
+            // color: kDefaultBackground2,
+            child: CupertinoActionSheetAction(
+              child: Text('Discard',
+                  style: textTheme.bodyText1.copyWith(color: kPrimaryOrange)),
+              onPressed: () async {
+                // userModel
+                await userModel.discardReviewDraft();
+                Navigator.of(context, rootNavigator: true).pop("Discard");
+
+                Navigator.pop(context);
+              },
+            ),
+          ),
+          Container(
+            // color: kDefaultBackground2,
+            child: CupertinoActionSheetAction(
+              child: Text('Save Draft', style: textTheme.bodyText1),
+              onPressed: () async {
+                await userModel.saveDraft(review);
+                Navigator.of(context, rootNavigator: true).pop("Discard");
+                Navigator.pop(context);
+                print('pressed');
+              },
+            ),
+          )
+        ],
+        cancelButton: Container(
+          decoration: BoxDecoration(
+              color: Color(0xffEFEFEF),
+              borderRadius: BorderRadius.circular(16)),
+          child: CupertinoActionSheetAction(
+            child: Text('Cancel', style: textTheme.bodyText1),
+            onPressed: () {
+              Navigator.of(context, rootNavigator: true).pop("Discard");
+            },
+          ),
+        ));
+    showCupertinoModalPopup(
+        context: context, builder: (BuildContext context) => act);
   }
 
   @override
   Widget build(BuildContext context) {
     screenSize = MediaQuery.of(context).size;
+    // if (user)
 
     return Scaffold(
         backgroundColor: kSecondaryWhite,
-        bottomNavigationBar: Container(
-          color: kSecondaryWhite,
-          // height: 79,
-          padding: EdgeInsets.only(left: 16, right: 16, top: 14, bottom: 29),
-          child: Text(
-            "To ensure effectiveness and fairness, learn more about review guidelines here",
-            style: textTheme.caption1
-                .copyWith(fontWeight: FontWeight.w600, color: kSecondaryGrey),
+        bottomNavigationBar: SafeArea(
+          child: Container(
+            color: kSecondaryWhite,
+            // height: 79,
+            padding: EdgeInsets.only(left: 16, right: 16, top: 14, bottom: 14),
+            child: GestureDetector(
+              onTap: () => print("gp"),
+              child: RichText(
+                textAlign: TextAlign.start,
+                text: TextSpan(
+                  style: textTheme.caption1.copyWith(
+                      fontWeight: FontWeight.w600, color: kSecondaryGrey),
+                  children: <TextSpan>[
+                    TextSpan(
+                        text:
+                            'To ensure effectiveness and fairness, learn more about '),
+                    TextSpan(
+                        text: 'review guidelines ',
+                        style: textTheme.bodyText2.copyWith(
+                          color: kPrimaryBlue,
+                        )),
+                    TextSpan(text: 'here'),
+                  ],
+                ),
+              ),
+            ),
           ),
         ),
-        // bottomNavigationBar: Container(
-        //   color: kSecondaryWhite,
-        //   child: Padding(
-        //     padding: const EdgeInsets.only(
-        //         top: 27, left: 16, right: 16, bottom: 35.0),
-        //     child: StaggerAnimation(
-        //         btnColor: kPrimaryOrange,
-        //         buttonTitle: S.of(context).share,
-        //         buttonController: _shareBtnController.view,
-        //         onTap: () async {
-        //           _playAnimation();
-        //           await uploadReview(reviewText, rating, success: () {
-        //             Future.delayed(const Duration(milliseconds: 500), () {
-        //               setState(() {
-        //                 _stopAnimation();
-        //                 Navigator.popUntil(
-        //                     context, ModalRoute.withName('/setting'));
-        //               });
-        //             });
-        //           }, fail: (user) {
-        //             print("fail to upload");
-        //             _stopAnimation();
-        //           });
-        //           // Future.delayed(const Duration(milliseconds: 500), () {
-        //           //   setState(() {
-        //           //     _stopAnimation();
-        //           //     Navigator.popUntil(
-        //           //         context, ModalRoute.withName('/login'));
-        //           //   });
-        //           // });
-        //         }),
-        //   ),
-        // ),
         appBar: AppBar(
           brightness: Brightness.light,
-          backgroundColor: kDefaultBackground2,
+          backgroundColor: kWhite,
           leading: IconButton(
-              onPressed: () => reviewText == null
-                  ? Navigator.of(context).pop()
-                  : Navigator.of(context).pop(),
+              onPressed: () =>
+                  review == null ? Navigator.of(context).pop() : askSaveDraft(),
               icon: SvgPicture.asset(
                 'assets/icons/arrow_backward.svg',
                 width: 26,
                 color: kDarkAccent,
               )),
           actions: [
-            GestureDetector(
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ReviewCosmeticsSearchScreen())),
+            Center(
               child: Padding(
-                padding: const EdgeInsets.only(right: 16),
-                child: Center(
-                  child: Text(
-                    "Post",
-                    style: textTheme.button1.copyWith(color: kPrimaryOrange),
+                padding: const EdgeInsets.only(right: 16.0),
+                child: Builder(
+                  builder: (context) => StaggerAnimation(
+                    btnColor: kPrimaryOrange,
+                    width: 57,
+                    height: 34,
+                    buttonTitle: "Post",
+                    buttonController: _postButtonController.view,
+                    onTap: () async {
+                      _postButtonController.forward();
+                      await uploadReview(context);
+                    },
                   ),
                 ),
               ),
@@ -215,15 +282,27 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
         ),
         body: SafeArea(
           top: true,
-          bottom: false,
           child: Container(
-              color: kDefaultBackground2,
+              color: kWhite,
               height: screenSize.height,
               child: Consumer<UserModel>(builder: (context, userModel, child) {
-                print("product added!");
+                var user = userModel.user;
+                //1. if review draft is available, load the draft
+                if (user.reviewDraft != null) {
+                  review = user.reviewDraft;
+                  print("user.reviewDraft ${user.reviewDraft.toJson()}");
+                  _reviewTextController.text = review.text;
+
+                  //2. if product is chosen
+                } else if (review != Review() && user.reviewDraft != null) {
+                  if (user.reviewDraft.product != null) {
+                    review.product = user.reviewDraft.product;
+                  }
+                }
+
                 return ListView(
                   children: <Widget>[
-                    if (userModel.productInReview == null)
+                    if (review.product == null)
                       GestureDetector(
                         onTap: () => Navigator.push(
                             context,
@@ -231,7 +310,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                                 builder: (context) =>
                                     ReviewCosmeticsSearchScreen())),
                         child: Container(
-                          color: kDefaultBackground2,
+                          color: kWhite,
                           padding: EdgeInsets.only(
                               left: 10, right: 10, top: 20, bottom: 20),
                           child: Row(
@@ -256,13 +335,15 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                           ),
                         ),
                       ),
-                    if (userModel.productInReview != null)
+                    if (review.product != null)
                       GestureDetector(
                         onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    ReviewCosmeticsSearchScreen())),
+                                    ReviewCosmeticsSearchScreen(
+                                      isEditing: true,
+                                    ))),
                         child: Container(
                           color: Colors.white,
                           padding: EdgeInsets.only(
@@ -274,7 +355,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                               FittedBox(
                                 fit: BoxFit.cover,
                                 child: Tools.image(
-                                  url: product.thumbnail,
+                                  url: review.product.thumbnail,
                                   fit: BoxFit.cover,
                                   width: 34,
                                   height: 36,
@@ -290,11 +371,11 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                                         CrossAxisAlignment.start,
                                     children: <Widget>[
                                       SizedBox(height: 2),
-                                      Text("${product.name}",
+                                      Text("${review.product.name}",
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                           style: textTheme.button2),
-                                      Text("${product.name}",
+                                      Text("${review.product.name}",
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                           style: textTheme.caption2),
@@ -325,12 +406,20 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                     Column(
                       children: [
                         SizedBox(height: 7),
-                        Text(getRatingExpression(),
-                            style: textTheme.caption1
-                                .copyWith(fontWeight: FontWeight.w600)),
+                        Text(
+                            !isRatingEmpty
+                                ? getRatingExpression()
+                                : "Please Rate",
+                            style: textTheme.caption1.copyWith(
+                                fontWeight: FontWeight.w600,
+                                color: !isRatingEmpty
+                                    ? kDefaultFontColor
+                                    : kPrimaryOrange)),
                         SizedBox(height: 20),
                         RatingBar(
-                            initialRating: 0,
+                            initialRating: review.rating != null
+                                ? review.rating.toDouble()
+                                : 0,
                             direction: Axis.horizontal,
                             itemCount: 5,
                             ratingWidget: RatingWidget(
@@ -344,8 +433,9 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                             ),
                             itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
                             onRatingUpdate: (rating) => setState(() {
+                                  isRatingEmpty = false;
                                   print(rating);
-                                  this.rating = rating.toInt();
+                                  review.rating = rating.toInt();
                                 })),
                         SizedBox(height: 27),
                         Container(
@@ -358,7 +448,12 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                             keyboardType: TextInputType.multiline,
                             maxLines: null,
                             cursorColor: kPinkAccent,
-                            onChanged: (value) => reviewText = value,
+                            onChanged: (value) {
+                              if (review == null) {
+                                review = Review();
+                              }
+                              review.text = value;
+                            },
                             style: textTheme.headline5
                                 .copyWith(color: kDefaultFontColor),
                             decoration: InputDecoration(
