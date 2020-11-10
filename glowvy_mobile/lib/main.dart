@@ -161,6 +161,18 @@ void main() async {
         ExactAssetPicture(
             SvgPicture.svgStringDecoder, 'assets/icons/message-banner.svg'),
         null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/pink_logo.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/white_star.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/before_login_bg.svg'),
+        null);
 
     await Firebase.initializeApp();
 

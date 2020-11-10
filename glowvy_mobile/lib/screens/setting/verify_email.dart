@@ -66,8 +66,11 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen>
 
     _verifyEmail(email) async {
       try {
-        await Provider.of<UserModel>(context, listen: false)
-            .verifyEmail(fullName: fullName);
+        if (await Provider.of<UserModel>(context, listen: false)
+            .isEmailVerified()) {
+          await Provider.of<UserModel>(context, listen: false).createUser();
+        }
+
         _onVerifySuccess();
       } catch (e) {}
     }

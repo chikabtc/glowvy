@@ -61,8 +61,7 @@ class _SignupScreenState extends State<SignupScreen>
       } else if (fullName == null || email == null || password == null) {
         throw ('Please input fill in all fields');
       } else {
-        var user =
-            await Provider.of<UserModel>(context, listen: false).createUser(
+        var user = await Provider.of<UserModel>(context, listen: false).signup(
           fullName: fullName,
           password: password,
           email: email,

@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/models/user/skinScores.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,6 +18,8 @@ import 'user.dart';
 import '../address/address.dart';
 import '../../generated/i18n.dart';
 import 'package:firebase_auth/firebase_auth.dart' as b;
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:path_provider/path_provider.dart';
 
 class UserModel with ChangeNotifier {
   UserModel() {
@@ -30,9 +36,12 @@ class UserModel with ChangeNotifier {
   SkinScores skinScores;
   String ageGroup;
   List<Review> reviews = [];
+  firebase_storage.FirebaseStorage _storage;
+  String profileImageBucketPath = 'users/pictures/';
 
   Future<void> initData() async {
     db = FirebaseFirestore.instance;
+    _storage = firebase_storage.FirebaseStorage.instance;
 
     await getUser();
     await listenToAuthStateUpdate();
@@ -119,12 +128,54 @@ class UserModel with ChangeNotifier {
     return;
   }
 
+  Future uploadProfilePicture(File file) async {
+    String filePath = '${user.uid}.jpg';
+
+    try {
+      firebase_storage.Reference reference =
+          _storage.ref().child(profileImageBucketPath + '$filePath');
+
+      await reference.putFile(file);
+
+      await db.collection('users').doc(user.uid).update({
+        'picture':
+            'http://storage.googleapis.com/glowvy-b6cf4.appspot.com/users/pictures/$filePath',
+      });
+      await reload();
+    } catch (e) {
+      print("uploadProfilePicture: $e");
+    }
+
+    // success("successfully updated user name");
+    return;
+  }
+
   Future updateUser({@required field, @required value}) async {
     await db.collection('users').doc(user.uid).update({
       field: value,
     });
     print("whwew");
     // success("successfully updated user name");
+    await reload();
+    return;
+  }
+
+  Future updateEmail(email) async {
+    try {
+      var firebaseUser = b.FirebaseAuth.instance.currentUser;
+      await db.collection('users').doc(user.uid).update({
+        'email': email,
+      });
+      await firebaseUser.updateEmail(email);
+    } on b.FirebaseAuthException catch (e) {
+      print('Failed with error code: ${e.code}');
+      throw (e);
+    } on PlatformException catch (e) {
+      throw (e);
+      // Handle err
+    } catch (e) {
+      throw (e);
+    }
     await reload();
     return;
   }
@@ -244,6 +295,15 @@ class UserModel with ChangeNotifier {
   }
 
   //skinScore is json object
+  Future updatePassword(password) async {
+    //Create an instance of the current user.
+    b.User user = b.FirebaseAuth.instance.currentUser;
+    // print(user.uid);
+
+    await user.updatePassword(password);
+    print("Succesfull changed password");
+    user.reload();
+  }
 
   void listenToAuthStateUpdate() async {
     b.FirebaseAuth.instance.authStateChanges().listen((b.User user) {
@@ -253,7 +313,7 @@ class UserModel with ChangeNotifier {
         print('User is currently signed out!');
       } else {
         isLoggedIn = true;
-        print('User is signed in!');
+        print('User is signed in and auth changed!');
       }
     });
   }
@@ -357,28 +417,30 @@ class UserModel with ChangeNotifier {
   //   }
   // }
 
-  Future verifyEmail({fullName}) async {
+  Future createUser() async {
+    try {
+      await FirebaseFirestore.instance.collection('users').doc(user.uid).set({
+        'full_name': user.fullName,
+        'email': user.email,
+        'uid': user.uid,
+        'created_at': FieldValue.serverTimestamp(),
+        'address': Address(),
+      });
+    } catch (e) {}
+  }
+
+  Future<bool> isEmailVerified() async {
     var user = b.FirebaseAuth.instance.currentUser;
-    await user.reload();
+
     b.FirebaseAuth auth = b.FirebaseAuth.instance;
     user = auth.currentUser;
     try {
       if (user.emailVerified) {
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(auth.currentUser.uid)
-            .set({
-          'full_name': fullName,
-          'email': user.email,
-          'uid': user.uid,
-          'created_at': FieldValue.serverTimestamp(),
-          'address': Address(),
-        });
-        await reload();
+        // await reload();
+        return true;
       } else {
-        throw ("email is not verified");
+        return false;
       }
-      auth.currentUser.reload();
     } on b.FirebaseAuthException catch (e) {
       if (e.code == 'invalid-action-code') {
         print('The code is invalid.');
@@ -423,16 +485,19 @@ class UserModel with ChangeNotifier {
     }
   }
 
-  Future<User> createUser({fullName, email, password}) async {
+  Future sendEmailVerification(email) async {
+    var firebaseUser = b.FirebaseAuth.instance.currentUser;
+    await firebaseUser.verifyBeforeUpdateEmail(email);
+  }
+
+  Future<User> signup({fullName, email, password}) async {
     b.FirebaseAuth auth = b.FirebaseAuth.instance;
 
     try {
       await auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      var firebaseUser = b.FirebaseAuth.instance.currentUser;
-      if (!firebaseUser.emailVerified) {
-        await firebaseUser.sendEmailVerification();
-      }
+      await sendEmailVerification(email);
+
       var user = User();
       notifyListeners();
       return user;
@@ -477,9 +542,8 @@ class UserModel with ChangeNotifier {
     return null;
   }
 
-  void logout() async {
-    user = null;
-
+  Future logout() async {
+    user = User();
     try {
       await b.FirebaseAuth.instance.signOut();
     } catch (err) {

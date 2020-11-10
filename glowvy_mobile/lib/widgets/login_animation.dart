@@ -64,7 +64,7 @@ class StaggerAnimation extends StatelessWidget {
           width: width != null ? width : kScreenSizeWidth,
           height: height,
           alignment: FractionalOffset.center,
-          decoration: kButton,
+          decoration: kButton.copyWith(borderRadius: BorderRadius.circular(12)),
           child: buttonSqueezeanimation.value > 75.0
               ? new Text(
                   buttonTitle,

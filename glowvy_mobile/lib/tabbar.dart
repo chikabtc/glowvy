@@ -1,4 +1,6 @@
+import 'package:Dimodo/screens/before_login_page.dart';
 import 'package:Dimodo/screens/category.dart';
+import 'package:Dimodo/screens/profile.dart';
 import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:Dimodo/common/sizeConfig.dart';
@@ -30,42 +32,34 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
   Color currentColor = Colors.deepPurple;
   bool isAdmin = false;
   List<Widget> _tabView = [];
+  UserModel userModel;
 
   @override
   void afterFirstLayout(BuildContext context) {
     print("after first layout!!");
-    loadTabBar();
-    print("locale: ${Provider.of<AppModel>(context, listen: false).locale}");
-    // Provider.of<CategoryModel>(context, listen: false).getLocalCategories(
-    //     context,
-    //     lang: Provider.of<AppModel>(context, listen: false).locale);
-    //wait for the user to login..
-    // Future.delayed(const Duration(milliseconds: 1000), () {
-    //   Provider.of<CartModel>(context, listen: false)
-    //       .getAllCartItems(Provider.of<UserModel>(context, listen: false));
-    // });
+    loadTabBar(userModel);
   }
 
-  Widget tabView(Map<String, dynamic> data) {
+  Widget tabView(userModel, Map<String, dynamic> data) {
     switch (data['layout']) {
       case 'category':
         return CategoryScreen();
       case 'cart':
         return CartScreen();
       case 'profile':
-        return UserScreen();
+        return ProfilePage();
       case 'dynamic':
       default:
         return HomeScreen();
     }
   }
 
-  void loadTabBar() {
+  void loadTabBar(userModel) {
     final tabData = Provider.of<AppModel>(context, listen: false)
         .appConfig['TabBar'] as List;
     for (var i = 0; i < tabData.length; i++) {
       setState(() {
-        _tabView.add(tabView(Map.from(tabData[i])));
+        _tabView.add(tabView(userModel, Map.from(tabData[i])));
       });
     }
   }
@@ -73,6 +67,7 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
   @override
   void initState() {
     super.initState();
+    userModel = Provider.of<UserModel>(context, listen: false);
   }
 
   @override
@@ -82,50 +77,53 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
 
     if (_tabView.length < 1) return Container();
 
-    return Container(
-        child: DefaultTabController(
-      length: _tabView.length,
-      child: Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
-        resizeToAvoidBottomPadding: false,
-        key: _scaffoldKey,
-        body: TabBarView(
-          physics: NeverScrollableScrollPhysics(),
-          children: _tabView,
-        ),
-        bottomNavigationBar: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border(
-              top: BorderSide(
-                color: kDarkSecondary.withOpacity(0.1),
-                width: 1.0,
+    return Consumer<UserModel>(builder: (context, userModel, child) {
+      return Container(
+          child: DefaultTabController(
+        length: _tabView.length,
+        child: Scaffold(
+          backgroundColor: Theme.of(context).backgroundColor,
+          resizeToAvoidBottomPadding: false,
+          key: _scaffoldKey,
+          body: TabBarView(
+            physics: NeverScrollableScrollPhysics(),
+            children: _tabView,
+          ),
+          bottomNavigationBar: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border(
+                top: BorderSide(
+                  color: kDarkSecondary.withOpacity(0.1),
+                  width: 1.0,
+                ),
               ),
             ),
-          ),
-          width: screenSize.width,
-          child: SafeArea(
-            bottom: true,
-            child: Container(
-                height: 60,
-                color: Colors.white,
-                width: screenSize.width /
-                    (2 / (screenSize.height / screenSize.width)),
-                child: TabBar(
-                  onTap: (index) {
-                    setState(() {
-                      currentPage = index;
-                    });
-                  },
-                  tabs: renderTabbar(),
-                  labelColor: Colors.red,
-                  unselectedLabelColor: Colors.white,
-                  indicatorColor: Colors.transparent,
-                )),
+            width: screenSize.width,
+            child: SafeArea(
+              top: false,
+              bottom: true,
+              child: Container(
+                  height: 60,
+                  color: Colors.white,
+                  width: screenSize.width /
+                      (2 / (screenSize.height / screenSize.width)),
+                  child: TabBar(
+                    onTap: (index) {
+                      setState(() {
+                        currentPage = index;
+                      });
+                    },
+                    tabs: renderTabbar(),
+                    labelColor: Colors.red,
+                    unselectedLabelColor: Colors.white,
+                    indicatorColor: Colors.transparent,
+                  )),
+            ),
           ),
         ),
-      ),
-    ));
+      ));
+    });
   }
 
   List<Widget> renderTabbar() {

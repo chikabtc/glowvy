@@ -268,7 +268,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                     btnColor: kPrimaryOrange,
                     width: 57,
                     height: 34,
-                    buttonTitle: "Post",
+                    buttonTitle: "Done",
                     buttonController: _postButtonController.view,
                     onTap: () async {
                       _postButtonController.forward();

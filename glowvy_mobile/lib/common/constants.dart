@@ -125,6 +125,11 @@ const kDivider = Divider(
   thickness: 0.7,
   indent: 15,
 );
+const kFullDivider = Divider(
+  color: kQuaternaryGrey,
+  height: 0.7,
+  thickness: 0.7,
+);
 
 SizeConfig kSizeConfig;
 RateMyApp kRateMyApp = RateMyApp(

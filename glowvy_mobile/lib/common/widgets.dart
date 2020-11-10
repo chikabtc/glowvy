@@ -75,15 +75,41 @@ forwardIcon(context, color) {
   );
 }
 
+customButton(
+    {@required function,
+    @required text,
+    buttonColor = kPrimaryOrange,
+    textColor = kWhite}) {
+  return GestureDetector(
+    onTap: function,
+    child: Container(
+        height: 48,
+        alignment: Alignment.center,
+        child: Text(text,
+            textAlign: TextAlign.center,
+            style: textTheme.button1.copyWith(
+                color: textColor, fontSize: 15, fontWeight: FontWeight.bold)),
+        decoration: BoxDecoration(
+          color: buttonColor,
+          border: Border.all(color: buttonColor, width: 1),
+          borderRadius: BorderRadius.circular(16),
+        )),
+  );
+}
+
 class CustomTextField extends StatefulWidget {
   CustomTextField(
       {@required this.onTextChange,
       @required this.hintText,
       this.keyboardType,
       this.validator,
+      this.isReadOnly = false,
+      this.obscureText = false,
       this.autoFocus});
   Function onTextChange;
+  bool obscureText;
   Function validator;
+  bool isReadOnly;
 
   String hintText;
   bool autoFocus;
@@ -122,6 +148,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               : TextInputType.text,
           controller: _textFieldController,
           cursorColor: theme.cursorColor,
+          obscureText: widget.obscureText,
           style: textTheme.headline5,
           onChanged: (value) {
             widget.onTextChange(value);
@@ -129,9 +156,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
               text = value;
             });
           },
+          readOnly: widget.isReadOnly,
           decoration: kTextField.copyWith(
+            contentPadding: EdgeInsets.only(left: 16, top: 16),
             hintText: widget.hintText,
-            suffixIcon: text == null
+            suffixIcon: (text == null || widget.isReadOnly)
                 ? IconButton(
                     icon: Icon(
                       Icons.cancel,

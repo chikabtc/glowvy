@@ -230,7 +230,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
                   '/orders': (context) => OrdersScreen(),
                   '/order_submitted': (context) => OrderSubmitted(),
                   '/manage_address': (context) => ManageShippingScreen(),
-                  '/setting': (context) => ProfileScreen(),
+                  '/setting': (context) => ProfilePage(),
                   '/category': (context) => CategoryScreen(),
                   // '/sub_category': (context) => SubCategoryScreen(),
                   '/verify_email': (context) => VerifyEmailScreen(),

@@ -1,3 +1,4 @@
+import 'package:Dimodo/common/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:notification_permissions/notification_permissions.dart';
@@ -47,11 +48,6 @@ class CategoryScreenState extends State<CategoryScreen>
 
     categories.forEach((cate) => categoryButtons.add(CategoryButton(cate)));
 
-    TextStyle textStyle = Theme.of(context)
-        .textTheme
-        .body2
-        .copyWith(fontSize: 15, color: kDefaultFontColor);
-
     return Scaffold(
       body: Container(
         color: Colors.white,
@@ -68,7 +64,7 @@ class CategoryScreenState extends State<CategoryScreen>
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
                   title: Text(S.of(context).categories,
-                      style: textStyle.copyWith(
+                      style: textTheme.headline3.copyWith(
                           fontSize: 18,
                           color: Colors.black,
                           fontWeight: FontWeight.w600)),

@@ -444,7 +444,7 @@ class Popups {
         });
   }
 
-  static showDimodoStory(BuildContext context) {
+  static showGlowvyStory(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
     var heighFactor = 1 -

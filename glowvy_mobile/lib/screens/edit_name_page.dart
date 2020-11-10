@@ -88,7 +88,7 @@ class EditNamePageState extends State<EditNamePage>
                     btnColor: kPrimaryOrange,
                     width: 57,
                     height: 34,
-                    buttonTitle: "Post",
+                    buttonTitle: "Done",
                     buttonController: _doneButtonController.view,
                     onTap: () async {
                       _doneButtonController.forward();

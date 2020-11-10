@@ -20,7 +20,7 @@ class _UserScreenState extends State<UserScreen> {
         value: userModel,
         child: Consumer<UserModel>(builder: (context, value, child) {
           // print("user screen: ${value.user.toJson()}");
-          return ProfileScreen(
+          return ProfilePage(
             user: value.user,
             onLogout: () async {
               print("logged out tap!");

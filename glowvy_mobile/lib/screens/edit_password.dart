@@ -1,8 +1,6 @@
 import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/common/styles.dart';
-import 'package:Dimodo/models/address/addressModel.dart';
-import 'package:Dimodo/models/address/province.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
 
@@ -18,33 +16,28 @@ import 'package:Dimodo/models/user/user.dart';
 
 import 'package:provider/provider.dart';
 
-class EditRegionPage extends StatefulWidget {
-  final User user;
-  final VoidCallback onLogout;
-
-  EditRegionPage({this.user, this.onLogout});
-
+class EditPasswordPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return EditRegionPageState();
+    return EditPasswordPageState();
   }
 }
 
-class EditRegionPageState extends State<EditRegionPage>
+class EditPasswordPageState extends State<EditPasswordPage>
     with TickerProviderStateMixin, WidgetsBindingObserver {
   UserModel userModel;
+
+  String newPassword;
+  String doubleCheckPw;
+  String currentPassword;
   AnimationController _doneButtonController;
-  AddressModel addressModel;
-  Province province;
 
   @override
   void initState() {
     super.initState();
     userModel = Provider.of<UserModel>(context, listen: false);
-    addressModel = Provider.of<AddressModel>(context, listen: false);
     _doneButtonController = new AnimationController(
         duration: new Duration(milliseconds: 3000), vsync: this);
-    province = userModel.user.address.province;
   }
 
   @override
@@ -53,20 +46,22 @@ class EditRegionPageState extends State<EditRegionPage>
     super.dispose();
   }
 
-  validateInput(String value) {
-    print(value);
-    if (value == null) {
-      throw ('Please provide year.');
-    } else if (value.length < 3) {
-      throw ('Please input valid name.');
+  validateInput() {
+    if (currentPassword == null ||
+        newPassword == null ||
+        doubleCheckPw == null) {
+      throw ('Please provide passwords');
+    } else if (currentPassword == newPassword) {
+      throw ('Please provide new password.');
+    } else if (newPassword != doubleCheckPw) {
+      throw ('The new password does not equal');
     }
   }
 
-  _updateRegion(context) async {
+  _updateUserName(context) async {
     try {
-      // validateInput(name);
-      await userModel.updateUser(
-          field: 'address.province', value: province.toJson());
+      validateInput();
+      await userModel.updatePassword(newPassword);
       await _doneButtonController.reverse();
       Navigator.pop(context);
     } catch (e) {
@@ -89,13 +84,13 @@ class EditRegionPageState extends State<EditRegionPage>
                 child: Builder(
                   builder: (context) => StaggerAnimation(
                     btnColor: kPrimaryOrange,
-                    width: 57,
+                    width: 65,
                     height: 34,
                     buttonTitle: "Done",
                     buttonController: _doneButtonController.view,
                     onTap: () async {
                       _doneButtonController.forward();
-                      await _updateRegion(context);
+                      await _updateUserName(context);
                     },
                   ),
                 ),
@@ -107,38 +102,39 @@ class EditRegionPageState extends State<EditRegionPage>
           title: Text(S.of(context).name, style: textTheme.headline3)),
       backgroundColor: kDefaultBackground,
       body: Container(
-        color: kWhite,
-        child: ListView.builder(
-          itemCount: addressModel.provinces.length,
-          itemBuilder: (context, index) {
-            return Column(
-              children: [
-                ListTile(
-                  onTap: () async {
-                    setState(() {
-                      province = addressModel.provinces[index];
-                    });
-                  },
-                  trailing: province.id == addressModel.provinces[index].id
-                      ? Icon(
-                          Icons.check,
-                          color: kPrimaryOrange,
-                        )
-                      : Icon(
-                          Icons.check,
-                          color: kPrimaryOrange,
-                          size: 0,
-                        ),
-                  title: Text(
-                    '${addressModel.provinces[index].name}',
-                    style: kBaseTextStyle.copyWith(
-                        fontSize: 15, fontWeight: FontWeight.w600),
-                  ),
-                ),
-                kDivider
-              ],
-            );
-          },
+        color: kSecondaryWhite,
+        child: Column(
+          children: [
+            CustomTextField(
+              onTextChange: (value) {
+                setState(() {
+                  currentPassword = value;
+                });
+              },
+              obscureText: true,
+              hintText: 'Current Password',
+            ),
+            kDivider,
+            CustomTextField(
+              onTextChange: (value) {
+                setState(() {
+                  newPassword = value;
+                });
+              },
+              obscureText: true,
+              hintText: 'New Password',
+            ),
+            kDivider,
+            CustomTextField(
+              onTextChange: (value) {
+                setState(() {
+                  doubleCheckPw = value;
+                });
+              },
+              obscureText: true,
+              hintText: 'New Password Again',
+            ),
+          ],
         ),
       ),
     );

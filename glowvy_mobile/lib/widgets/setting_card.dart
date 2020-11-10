@@ -46,7 +46,7 @@ class SettingCard extends StatelessWidget {
               arrowForward,
             ]),
             SizedBox(height: 16),
-            kDivider
+            kFullDivider
           ])),
     );
   }

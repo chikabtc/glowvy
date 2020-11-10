@@ -147,6 +147,8 @@ class HomeScreenState extends State<HomeScreen>
     kRateMyApp.init().then((_) {});
 
     final screenSize = MediaQuery.of(context).size;
+    kScreenSizeWidth = screenSize.width;
+    kScreenSizeHeight = screenSize.height;
 
     // try {
     //   final surveys = Provider.of<AppModel>(context, listen: false)

@@ -142,7 +142,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
         _snackBar('Please input fill in all fields');
       } else {
         _playAnimation();
-        Provider.of<UserModel>(context, listen: false).verifyEmail();
+        Provider.of<UserModel>(context, listen: false).isEmailVerified();
       }
     }
 
