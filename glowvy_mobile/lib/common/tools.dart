@@ -150,7 +150,7 @@ class Tools {
   static String getPriceProductValue(Product product, String currency,
       {bool onSale}) {
     String price =
-        onSale ? product.salePrice.toString() : product.price.toString();
+        onSale ? product.salePrice.toString() : product.sprice.toString();
     var basePrice = double.parse(price);
     var convertedP = basePrice * 21.5;
     return convertedP.toString();
@@ -159,7 +159,7 @@ class Tools {
   static String getPriceProduct(Product product, String currency,
       {bool onSale}) {
     String price = getPriceProductValue(product, currency,
-        onSale: product.salePrice == product.price ? false : true);
+        onSale: product.salePrice == product.sprice ? false : true);
 
     return getCurrecyFormatted(price, currency: currency);
   }

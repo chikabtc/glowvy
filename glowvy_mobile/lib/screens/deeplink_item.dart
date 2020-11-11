@@ -54,7 +54,7 @@ class _ItemDeepLinkState extends State<ItemDeepLink> {
                           Navigator.pushReplacementNamed(context, '/home');
                         },
                         child: new Text(
-                          "Go back to home page",
+                          'Go back to home page',
                           style: TextStyle(color: Colors.white),
                         ),
                       ),

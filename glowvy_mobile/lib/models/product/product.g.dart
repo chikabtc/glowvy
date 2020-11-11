@@ -45,9 +45,12 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
         ? null
         : Brand.fromJson(json['brand'] as Map<String, dynamic>),
     sid: json['sid'] as int,
-  )..category = json['category'] == null
-      ? null
-      : Category.fromJson(json['category'] as Map<String, dynamic>);
+  )
+    ..sprice = (json['sprice'] as num)?.toDouble()
+    ..officialPrice = (json['official_price'] as num)?.toDouble()
+    ..category = json['category'] == null
+        ? null
+        : Category.fromJson(json['category'] as Map<String, dynamic>);
 }
 
 Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
@@ -64,6 +67,8 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'tags': instance.tags,
       'sale_price': instance.salePrice,
       'price': instance.price,
+      'sprice': instance.sprice,
+      'official_price': instance.officialPrice,
       'rating': instance.rating,
       'sale_percent': instance.salePercent,
       'purchase_count': instance.purchaseCount,

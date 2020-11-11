@@ -59,7 +59,7 @@ class _AppState extends State<Glowvy> with SingleTickerProviderStateMixin {
     FirebaseAnalytics analytics = FirebaseAnalytics();
 
     return MaterialApp(
-        title: "Glowvy",
+        title: 'Glowvy',
         debugShowCheckedModeBanner: false,
         navigatorObservers: [
           FirebaseAnalyticsObserver(analytics: analytics),
@@ -101,11 +101,11 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
   }
 
   Future checkFirstSeen() async {
-    final LocalStorage storage = new LocalStorage("Dimodo");
+    final LocalStorage storage = new LocalStorage('Dimodo');
     final ready = await storage.ready;
 
-    bool _seen = storage.getItem("seen") ?? false;
-    print("isSeen?: ${storage.getItem('seen')}?");
+    bool _seen = storage.getItem('seen') ?? false;
+    print('isSeen?: ${storage.getItem('seen')}?');
 
     if (_seen)
       return false;
@@ -133,7 +133,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
   Widget build(BuildContext context) {
     final MediaQueryData data = MediaQuery.of(context);
 
-    print("building app.dart");
+    print('building app.dart');
     if (isChecking) {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -173,7 +173,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
               child: MaterialApp(
                 debugShowCheckedModeBanner: false,
                 locale: new Locale(
-                    Provider.of<AppModel>(context, listen: false).locale, ""),
+                    Provider.of<AppModel>(context, listen: false).locale, ''),
                 navigatorObservers: [
                   FirebaseAnalyticsObserver(analytics: analytics),
                 ],
@@ -191,7 +191,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
                   switch (settings.name) {
                     case '/add_address':
                       if (arguments is Address) {
-                        print("bullshit2");
+                        print('bullshit2');
 
                         // the details page for one specific user
                         return MaterialPageRoute<bool>(
@@ -208,7 +208,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
                       break;
                     case '/manage_address':
                       if (arguments is bool) {
-                        print("bullshit");
+                        print('bullshit');
                         return MaterialPageRoute<bool>(
                             builder: (BuildContext context) =>
                                 ManageShippingScreen(
@@ -222,11 +222,11 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
                   }
                 },
                 routes: <String, WidgetBuilder>{
-                  "/home": (context) => MainTabs(),
-                  "/search_screen": (context) => SearchScreen(),
-                  "/login": (context) => LoginScreen(),
-                  "/register": (context) => SignupScreen(),
-                  "/cart": (context) => CartScreen(),
+                  '/home': (context) => MainTabs(),
+                  '/search_screen': (context) => SearchScreen(),
+                  '/login': (context) => LoginScreen(),
+                  '/register': (context) => SignupScreen(),
+                  '/cart': (context) => CartScreen(),
                   '/orders': (context) => OrdersScreen(),
                   '/order_submitted': (context) => OrderSubmitted(),
                   '/manage_address': (context) => ManageShippingScreen(),

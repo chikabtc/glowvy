@@ -21,9 +21,9 @@ import 'package:Dimodo/screens/categories/sub_category.dart';
 import 'product.dart';
 
 class Sorting {
-  static String low = "low";
-  static String high = "high";
-  static String rank = "rank";
+  static String low = 'low';
+  static String high = 'high';
+  static String rank = 'rank';
 }
 
 class ProductModel with ChangeNotifier {
@@ -45,8 +45,8 @@ class ProductModel with ChangeNotifier {
   bool isLoading = false;
   int offset = 0;
   int limit = 80;
-  String highToLow = "-sale_price";
-  String lowToHigh = "sale_price";
+  String highToLow = '-sale_price';
+  String lowToHigh = 'sale_price';
   bool isAscending = false;
   String errMsg;
   int skinTypeId;
@@ -61,11 +61,11 @@ class ProductModel with ChangeNotifier {
   }
 
   void saveProducts(Map<String, dynamic> data) async {
-    final LocalStorage storage = new LocalStorage("Dimodo");
+    final LocalStorage storage = new LocalStorage('Dimodo');
     try {
       final ready = await storage.ready;
       if (ready) {
-        await storage.setItem(kLocalKey["home"], data);
+        await storage.setItem(kLocalKey['home'], data);
       }
     } catch (err) {
       print(err);
@@ -75,30 +75,30 @@ class ProductModel with ChangeNotifier {
   sortProducts(sorting, skinTypeId, products) {
     var sortedProducts;
     switch (sorting) {
-      case "high":
+      case 'high':
         sortedProducts = sortByPrice(products, false);
         break;
-      case "rank":
+      case 'rank':
         sortedProducts = sortBySkinType(products);
         break;
-      case "low":
+      case 'low':
         sortedProducts = sortByPrice(products, true);
         break;
       default:
         sortedProducts = sortByAllRanking(products);
         break;
     }
-    // print("products filtered : ${sortedProducts.length}");
+    // print('products filtered : ${sortedProducts.length}');
 
     return sortedProducts;
   }
 
   List<Product> sortByPrice(List<Product> products, bool isAscending) {
-    print("sorb y price : ${products.length}");
+    print('sorb y price : ${products.length}');
     products.sort((a, b) => isAscending
         ? b.salePrice.compareTo(a.salePrice)
         : a.salePrice.compareTo(b.salePrice));
-    // print("rating: ${products[0].rating}");
+    // print('rating: ${products[0].rating}');
     return products;
   }
 
@@ -194,7 +194,7 @@ class ProductModel with ChangeNotifier {
   }
 
   // List<Product> filterBySkinType(List<Product> products) {
-  //   print("fitered products: ${products.length}");
+  //   print('fitered products: ${products.length}');
 
   //   products = products.where((p) {
   //     var isMatching = true;
@@ -229,7 +229,7 @@ class ProductModel with ChangeNotifier {
   //     }
   //     return isMatching;
   //   }).toList();
-  //   print("fitered products: ${products.length}");
+  //   print('fitered products: ${products.length}');
   //   return products;
   // }
 
@@ -256,11 +256,11 @@ class ProductModel with ChangeNotifier {
           print(isMatching);
           break;
         default:
-          print("default");
+          print('default');
       }
       return isMatching;
     }).toList();
-    print("reviews length:${reviews.length}");
+    print('reviews length:${reviews.length}');
     return reviews;
   }
 
@@ -283,7 +283,7 @@ class ProductModel with ChangeNotifier {
       notifyListeners();
     } catch (err) {
       errMsg =
-          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
+          'There is an issue with the app during request the data, please contact admin for fixing the issues ' +
               err.toString();
       isFetching = false;
       notifyListeners();
@@ -307,10 +307,10 @@ class ProductModel with ChangeNotifier {
       return product;
     } catch (err) {
       errMsg =
-          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
+          'There is an issue with the app during request the data, please contact admin for fixing the issues ' +
               err.toString();
 
-      print("errMsg $errMsg");
+      print('errMsg $errMsg');
       isFetching = false;
       notifyListeners();
     }
@@ -337,7 +337,7 @@ class ProductModel with ChangeNotifier {
       notifyListeners();
     } catch (err) {
       errMsg =
-          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
+          'There is an issue with the app during request the data, please contact admin for fixing the issues ' +
               err.toString();
       isFetching = false;
       notifyListeners();
@@ -354,8 +354,8 @@ class ProductModel with ChangeNotifier {
   showSubCategoryPage(Category category, String sortBy, context,
       {bool isNameAvailable}) {
     final product = Provider.of<ProductModel>(context, listen: false);
-    print("show subcate");
-    print("cate id: ${category.firstCategoryName}");
+    print('show subcate');
+    print('cate id: ${category.firstCategoryName}');
 
     // for fetching beforehand
     product.setCategoryId(categoryId: category.firstCategoryId);
@@ -455,6 +455,6 @@ class ProductModel with ChangeNotifier {
       start: start,
       count: limit,
     );
-    print("new products2323 length: ${products.length}");
+    print('new products2323 length: ${products.length}');
   }
 }

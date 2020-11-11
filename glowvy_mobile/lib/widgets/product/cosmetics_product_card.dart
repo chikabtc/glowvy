@@ -39,20 +39,6 @@ class CosmeticsProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var tagString = "";
-
-    var tags = [];
-
-    // product.tags.forEach((tag) {
-    //   if (tags.length == 2) {
-    //     return;
-    //   }
-    //   if (tag.name != null) {
-    //     tagString += tag.name + " | ";
-    //     tags.add(tag);
-    //   }
-    // });
-
     return Container(
       height: 112,
       color: Colors.white,
@@ -174,7 +160,8 @@ class CosmeticsProductCard extends StatelessWidget {
                             ),
                           Spacer(),
                           Text(
-                            Tools.getPriceProduct(product, "VND", onSale: true),
+                            product.officialPrice.toString(),
+                            // Tools.getPriceProduct(product, "VND", onSale: true),
                             style: kBaseTextStyle.copyWith(
                                 color: kSecondaryGrey,
                                 fontSize: 12,
@@ -185,31 +172,16 @@ class CosmeticsProductCard extends StatelessWidget {
                       SizedBox(
                         height: 7,
                       ),
-                      Text(
-                        tagString,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: kBaseTextStyle.copyWith(
-                            color: kSecondaryGrey,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w500),
-                      ),
-
-                      // Wrap(
-                      //   children: <Widget>[
-                      //     if (tags.length > 0)
-                      //       for (var tag in tags)
-                      //         Text(
-                      //           tag.name + " | ",
-                      //           maxLines: 1,
-                      //           overflow: TextOverflow.fade,
-                      //           style: kBaseTextStyle.copyWith(
-                      //               color: kDarkSecondary,
-                      //               fontSize: 12,
-                      //               fontWeight: FontWeight.w500),
-                      //         ),
-                      //   ],
+                      // Text(
+                      //   tagString,
+                      //   maxLines: 1,
+                      //   overflow: TextOverflow.ellipsis,
+                      //   style: kBaseTextStyle.copyWith(
+                      //       color: kSecondaryGrey,
+                      //       fontSize: 12,
+                      //       fontWeight: FontWeight.w500),
                       // ),
+
                       SizedBox(height: 9),
                       showDivider ? Divider(height: 1) : Container()
 

@@ -142,7 +142,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
         _snackBar('Please input fill in all fields');
       } else {
         _playAnimation();
-        Provider.of<UserModel>(context, listen: false).isEmailVerified();
+        // Provider.of<UserModel>(context, listen: false).verifyEmail();
       }
     }
 
@@ -152,11 +152,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
       } else {
         _playAnimation();
         print("check this pin $code,  accessToken: $accessToken");
-        Provider.of<UserModel>(context, listen: false).checkPIN(
-            pin: code,
-            token: accessToken,
-            success: _reset_password,
-            fail: _failMess);
+        // Provider.of<UserModel>(context, listen: false).checkPIN(
+        //     pin: code,
+        //     token: accessToken,
+        //     success: _reset_password,
+        //     fail: _failMess);
       }
     }
 

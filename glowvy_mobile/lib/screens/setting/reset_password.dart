@@ -128,11 +128,11 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen>
       } else {
         _playAnimation();
         print("check this pin $password and accessToken: $kAccessToken");
-        Provider.of<UserModel>(context, listen: false).resetPassword(
-            password: password.trim(),
-            accessToken: kAccessToken,
-            success: _onPasswordChanged,
-            fail: _failMess);
+        // Provider.of<UserModel>(context, listen: false).resetPassword(
+        //     password: password.trim(),
+        //     accessToken: kAccessToken,
+        //     success: _onPasswordChanged,
+        //     fail: _failMess);
       }
     }
 

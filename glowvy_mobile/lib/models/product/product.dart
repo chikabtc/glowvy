@@ -29,6 +29,8 @@ class Product {
   List<String> tags;
   int salePrice;
   int price;
+  double sprice;
+  double officialPrice;
   String rating;
   int salePercent;
   int purchaseCount;
@@ -82,7 +84,7 @@ class Product {
   Map<String, dynamic> toJson() => _$ProductToJson(this);
 
   @override
-  String toString() => 'Product { id: $id name: $name }';
+  String toString() => 'Product { id: $sid name: $name }';
 }
 
 class ProductVariation {
@@ -93,21 +95,21 @@ class ProductVariation {
   ProductVariation({this.option2, this.option1});
 
   ProductVariation.fromJson(Map<String, dynamic> parsedJson) {
-    option2 = parsedJson["option2"];
-    option1 = parsedJson["option1"];
+    option2 = parsedJson['option2'];
+    option1 = parsedJson['option1'];
   }
 
   Map<String, dynamic> toJson() {
     return {
-      "option1": option1,
-      "option2": option2,
+      'option1': option1,
+      'option2': option2,
     };
   }
 
   ProductVariation.fromLocalJson(Map<String, dynamic> json) {
     try {
-      option2 = json["option2"];
-      option1 = json["option1"];
+      option2 = json['option2'];
+      option1 = json['option1'];
     } catch (e) {
       print(e.toString());
     }

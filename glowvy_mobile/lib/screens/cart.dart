@@ -55,7 +55,7 @@ class _CartState extends State<Cart>
     userModel = Provider.of<UserModel>(context, listen: false);
     _getAllCoupons = cartModel.getAllCoupons(userModel);
     _getProductsByCategory = service.getProductsByCategory(
-        categoryId: "7", sortBy: "sale_price", limit: 200);
+        categoryId: '7', sortBy: 'sale_price', limit: 200);
   }
 
   List<Widget> _createShoppingCartRows(CartModel model) {
@@ -87,7 +87,7 @@ class _CartState extends State<Cart>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    print("building cart screen!");
+    print('building cart screen!');
 
     bool showBackSpace = false;
     final Map arguments = ModalRoute.of(context).settings.arguments as Map;
@@ -189,7 +189,7 @@ class _CartState extends State<Cart>
         ),
         context: context,
         builder: (context) {
-          print("AsyncSnapshot");
+          print('AsyncSnapshot');
 
           return FutureBuilder<List<Coupon>>(
               future: _getAllCoupons,
@@ -262,7 +262,7 @@ class EmptyCart extends StatelessWidget {
                     child: Align(
                       alignment: FractionalOffset.bottomCenter,
                       child: GestureDetector(
-                        onTap: () => Navigator.pushNamed(context, "/login"),
+                        onTap: () => Navigator.pushNamed(context, '/login'),
                         child: Container(
                           height: 48,
                           padding: EdgeInsets.only(
@@ -273,7 +273,7 @@ class EmptyCart extends StatelessWidget {
                           width: kScreenSizeWidth,
                           child: Center(
                             child: Text(
-                              "Login to synchronize your shopping cart ",
+                              'Login to synchronize your shopping cart ',
                               style: textTheme.caption2.copyWith(
                                 color: kPinkAccent,
                               ),

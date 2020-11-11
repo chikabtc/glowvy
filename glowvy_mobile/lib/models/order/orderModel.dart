@@ -24,7 +24,7 @@ class OrderModel extends ChangeNotifier {
       return myOrders;
     } catch (err) {
       errMsg =
-          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
+          'There is an issue with the app during request the data, please contact admin for fixing the issues ' +
               err.toString();
       isLoading = false;
       notifyListeners();
@@ -44,7 +44,7 @@ class OrderModel extends ChangeNotifier {
       return createdOrder;
     } catch (err) {
       errMsg =
-          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
+          'There is an issue with the app during request the data, please contact admin for fixing the issues ' +
               err.toString();
       isLoading = false;
       notifyListeners();
@@ -65,7 +65,7 @@ class OrderModel extends ChangeNotifier {
       notifyListeners();
     } catch (err) {
       errMsg =
-          "There is an issue with the app during request the data, please contact admin for fixing the issues " +
+          'There is an issue with the app during request the data, please contact admin for fixing the issues ' +
               err.toString();
       isLoading = false;
       notifyListeners();

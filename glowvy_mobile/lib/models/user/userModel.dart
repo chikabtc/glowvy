@@ -1,10 +1,8 @@
 import 'dart:io';
-
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/models/user/skinScores.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
@@ -19,7 +17,6 @@ import '../address/address.dart';
 import '../../generated/i18n.dart';
 import 'package:firebase_auth/firebase_auth.dart' as b;
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
-import 'package:path_provider/path_provider.dart';
 
 class UserModel with ChangeNotifier {
   UserModel() {
@@ -46,19 +43,13 @@ class UserModel with ChangeNotifier {
     await getUser();
     await listenToAuthStateUpdate();
     await getSkinScores();
-    // print('userid: ${user.uid}');
-    await getUserReviews();
   }
 
   void setName(String firstName, lastName) {
     if (this.user != null) {
       this.user.firstName = firstName;
       this.user.lastName = lastName;
-    } else {
-      this.user = User();
-      user.firstName = firstName;
-      user.lastName = lastName;
-      print("fail to set name");
+      this.user.fullName = firstName + " " + lastName;
     }
   }
 
@@ -73,7 +64,6 @@ class UserModel with ChangeNotifier {
     } catch (err) {
       print("saveSkinType err: $err");
     }
-    // notifyListeners();
   }
 
   Future discardReviewDraft() async {
@@ -83,6 +73,7 @@ class UserModel with ChangeNotifier {
           .collection('users')
           .doc(user.uid)
           .update({'review_draft': FieldValue.delete()});
+      await reloadUser();
     } catch (err) {
       print("discardReviewDraft err: $err");
     }
@@ -95,7 +86,7 @@ class UserModel with ChangeNotifier {
           .collection('users')
           .doc(user.uid)
           .update({'review_draft': review.toJson()});
-      await reload();
+      await reloadUser();
       return;
     } catch (err) {
       print("discardReviewDraft err: $err");
@@ -111,13 +102,25 @@ class UserModel with ChangeNotifier {
   }
 
   Future uploadReview(review) async {
-    await _service.uploadReview(review);
-    await discardReviewDraft();
-    reviews.add(Review.fromJson(review));
-    notifyListeners();
+    try {
+      var writeRes =
+          await FirebaseFirestore.instance.collection('reviews').add(review);
+      if (writeRes.id != null) {
+        print('review id: ${writeRes.id}');
+        reviews.add(Review.fromJson(review));
+        await discardReviewDraft();
+        reloadUser();
+        return;
+      } else {
+        throw Exception("failed to upload review");
+      }
+    } catch (e) {
+      print("Error: $e");
+      throw e;
+    }
   }
 
-  Future reload() async {
+  Future reloadUser() async {
     var newUserSnap = await db
         .collection('users')
         .doc(user.uid)
@@ -141,7 +144,7 @@ class UserModel with ChangeNotifier {
         'picture':
             'http://storage.googleapis.com/glowvy-b6cf4.appspot.com/users/pictures/$filePath',
       });
-      await reload();
+      await reloadUser();
     } catch (e) {
       print("uploadProfilePicture: $e");
     }
@@ -154,9 +157,7 @@ class UserModel with ChangeNotifier {
     await db.collection('users').doc(user.uid).update({
       field: value,
     });
-    print("whwew");
-    // success("successfully updated user name");
-    await reload();
+    await reloadUser();
     return;
   }
 
@@ -176,14 +177,8 @@ class UserModel with ChangeNotifier {
     } catch (e) {
       throw (e);
     }
-    await reload();
+    await reloadUser();
     return;
-  }
-
-  Future<void> getUserReviews() async {
-    if (user != null) {
-      // await FirebaseFirestore.instance
-    }
   }
 
   void loginFB({Function success, Function fail}) async {
@@ -231,7 +226,7 @@ class UserModel with ChangeNotifier {
       user = await _service.loginGoogle(token: auth.accessToken);
 
       print("lgogogo: ${user.toJson()}");
-      saveUser(user);
+      // saveUser(user);
       success(user);
       notifyListeners();
     } catch (err) {
@@ -266,7 +261,7 @@ class UserModel with ChangeNotifier {
       user = await _service.loginApple(credential.authorizationCode, fullName);
 
       print("lgogogo: ${user.toJson()}");
-      saveUser(user);
+      // saveUser(user);
       success(user);
       notifyListeners();
     } catch (err) {
@@ -275,41 +270,18 @@ class UserModel with ChangeNotifier {
     }
   }
 
-  void saveUser(User user) async {
-    final LocalStorage storage = new LocalStorage("Dimodo");
-    try {
-      // print("saving user ${user}");
-      // save to Preference
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      prefs.setBool('loggedIn', true);
-
-      // save the user Info as local storage
-      final ready = await storage.ready;
-      if (ready) {
-        await storage.setItem(kLocalKey["userInfo"], user.toJson());
-      }
-    } catch (err) {
-      print(err);
-    }
-    notifyListeners();
-  }
-
   //skinScore is json object
   Future updatePassword(password) async {
-    //Create an instance of the current user.
     b.User user = b.FirebaseAuth.instance.currentUser;
-    // print(user.uid);
-
     await user.updatePassword(password);
     print("Succesfull changed password");
     user.reload();
   }
 
-  void listenToAuthStateUpdate() async {
+  listenToAuthStateUpdate() {
     b.FirebaseAuth.instance.authStateChanges().listen((b.User user) {
       if (user == null) {
         isLoggedIn = false;
-
         print('User is currently signed out!');
       } else {
         isLoggedIn = true;
@@ -333,25 +305,6 @@ class UserModel with ChangeNotifier {
       print(err);
     }
   }
-  // Future getUser() async {
-  //   final LocalStorage storage = new LocalStorage("Dimodo");
-  //   try {
-  //     final ready = await storage.ready;
-  //     if (ready) {
-  //       final json = storage.getItem(kLocalKey["userInfo"]);
-  //       if (json != null) {
-  //         user = User.fromJson(json);
-  //         kAccessToken = user.accessToken;
-
-  //         notifyListeners();
-  //       } else {
-  //         print("fail to get users");
-  //       }
-  //     }
-  //   } catch (err) {
-  //     print(err);
-  //   }
-  // }
 
   Future getSkinScores() async {
     final LocalStorage storage = new LocalStorage("Dimodo");
@@ -371,51 +324,6 @@ class UserModel with ChangeNotifier {
       print(err);
     }
   }
-
-  // Future getShippingAddress() async {
-  //   final LocalStorage storage = new LocalStorage("Dimodo");
-  //   if (user != null) {
-  //     user.addresses = await _service.getAllAddresses(token: user.accessToken);
-  //   }
-
-  //   try {
-  //     final ready = await storage.ready;
-  //     if (ready) {
-  //       final json = storage.getItem(kLocalKey["addresses"]);
-  //       if (json != null) {
-  //         for (var item in json) {
-  //           user.addresses.add(Address.fromJson(item));
-  //         }
-
-  //         print("got address: $user");
-  //         notifyListeners();
-  //       } else {
-  //         print("fail to get address");
-  //       }
-  //     }
-  //   } catch (err) {
-  //     print(err);
-  //   }
-  // }
-
-  // void requestPIN({email, Function success, Function fail}) async {
-  //   try {
-  //     loading = true;
-  //     notifyListeners();
-  //     var accessToken = await _service.requestPIN(
-  //       email: email,
-  //     );
-  //     print("user request accessToken: $accessToken");
-  //
-  //     success(accessToken);
-  //     loading = false;
-  //     notifyListeners();
-  //   } catch (err) {
-  //     fail(err.toString());
-  //     loading = false;
-  //     notifyListeners();
-  //   }
-  // }
 
   Future createUser() async {
     try {
@@ -448,40 +356,6 @@ class UserModel with ChangeNotifier {
         await b.FirebaseAuth.instance.currentUser.delete();
       }
       throw (e.toString());
-    }
-  }
-
-  void resetPassword(
-      {password, accessToken, Function success, Function fail}) async {
-    try {
-      loading = true;
-      notifyListeners();
-      var resetPasswordResult = await _service.resetPassword(
-          password: password, accessToken: accessToken);
-
-      success(resetPasswordResult);
-      loading = false;
-      notifyListeners();
-    } catch (err) {
-      fail(err.toString());
-      loading = false;
-      notifyListeners();
-    }
-  }
-
-  void checkPIN({pin, token, Function success, Function fail}) async {
-    try {
-      loading = true;
-      notifyListeners();
-      var result = await _service.checkPIN(pin: pin, token: token);
-
-      success(result);
-      loading = false;
-      notifyListeners();
-    } catch (err) {
-      fail(err.toString());
-      loading = false;
-      notifyListeners();
     }
   }
 
@@ -607,7 +481,6 @@ class UserModel with ChangeNotifier {
       this.user.addresses[originalIndex] = address;
 
       success(true);
-      saveUser(user);
       notifyListeners();
     } catch (err) {
       fail("Fail to update address: " + err.toString());
@@ -633,7 +506,7 @@ class UserModel with ChangeNotifier {
       address.id = returnedAddress.id;
 
       success(true);
-      saveUser(user);
+
       notifyListeners();
     } catch (err) {
       fail("Fail to create address:  " + err.toString());
@@ -647,26 +520,11 @@ class UserModel with ChangeNotifier {
       user.addresses.remove(address);
 
       success(isSuccess);
-      saveUser(user);
+
       notifyListeners();
     } catch (err) {
       fail("Fail to delete address: " + err.toString());
       notifyListeners();
-    }
-  }
-
-  Future<bool> setUserCosmeticsTypesPref(
-      {String cosmeticsType, BuildContext context}) async {
-    try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      cosmeticPref = cosmeticsType;
-      // prefs.getString(cosmetics_type)
-
-      await prefs.setString("cosmetics_type", cosmeticsType);
-      notifyListeners();
-      return true;
-    } catch (err) {
-      return false;
     }
   }
 

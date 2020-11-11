@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert' as convert;
 import 'dart:convert' show utf8;
 import 'dart:convert';
-import "dart:core";
+import 'dart:core';
 import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/ingredient.dart';
 import 'package:Dimodo/models/order/cartItem.dart';
@@ -37,8 +37,8 @@ class GlowvyServices implements BaseServices {
   );
 
   String isSecure;
-  // String baseUrl = "http://172.16.0.184:80";
-  String baseUrl = "http://dimodo.app";
+  // String baseUrl = 'http://172.16.0.184:80';
+  String baseUrl = 'http://dimodo.app';
   DocumentSnapshot lastReviewSnap;
 
   void appConfig(appConfig) {
@@ -52,11 +52,11 @@ class GlowvyServices implements BaseServices {
 
   getAsync({String endPoint, Map<String, String> headers}) async {
     var url = '$baseUrl/$endPoint';
-    print("baseURL: $url");
-    print("accessToken: $kAccessToken");
+    print('baseURL: $url');
+    print('accessToken: $kAccessToken');
 
     headers = kAccessToken != null
-        ? {"Authorization": "Bearer $kAccessToken"}
+        ? {'Authorization': 'Bearer $kAccessToken'}
         : {'Content-Type': 'application/json'};
 
     final http.Response response = await http.get(url, headers: headers);
@@ -68,17 +68,17 @@ class GlowvyServices implements BaseServices {
     var url = '$baseUrl/$endPoint';
     var headers = kAccessToken != null
         ? {
-            "Authorization": "Bearer $kAccessToken",
+            'Authorization': 'Bearer $kAccessToken',
           }
         : null;
 
-    print("baseURL: $url");
-    print("headers: $headers");
+    print('baseURL: $url');
+    print('headers: $headers');
 
     if (headers != null) headers = headers;
 
     final http.Response response = await http.post(
-      "$url",
+      '$url',
       headers: headers,
       body: data,
     );
@@ -94,18 +94,18 @@ class GlowvyServices implements BaseServices {
   @override
   Future<Product> getProduct(id) async {
     try {
-      final body = await getAsync(endPoint: "api/products/id=$id/sr=brandi");
+      final body = await getAsync(endPoint: 'api/products/id=$id/sr=brandi');
       final product = body['Data'];
 
-      if (body["Success"] == true) {
-        print("product: ${product['options']}");
+      if (body['Success'] == true) {
+        print('product: ${product['options']}');
         return Product.fromJson(product);
       } else {
-        var message = body["Error"];
-        throw Exception("failed to retreieve product data: ${message}");
+        var message = body['Error'];
+        throw Exception('failed to retreieve product data: ${message}');
       }
     } on TimeoutException catch (e) {
-      print("canceling request due to time limit: getProduct by id");
+      print('canceling request due to time limit: getProduct by id');
     } catch (err) {
       throw err;
     }
@@ -120,14 +120,14 @@ class GlowvyServices implements BaseServices {
     try {
       final body = await getAsync(
           endPoint:
-              "api/products/review/id=$id/sr=brandi?offset=$offset&limit=$limit");
+              'api/products/review/id=$id/sr=brandi?offset=$offset&limit=$limit');
 
-      if (body["Success"] == true) {
-        var reviews = Reviews.fromJson(body["Data"]);
+      if (body['Success'] == true) {
+        var reviews = Reviews.fromJson(body['Data']);
         return reviews;
       } else {
-        var message = body["Error"];
-        throw Exception("failed to retreieve product data: ${message}");
+        var message = body['Error'];
+        throw Exception('failed to retreieve product data: ${message}');
       }
     } catch (err) {
       throw err;
@@ -166,7 +166,7 @@ class GlowvyServices implements BaseServices {
         }
         return list;
       } else {
-        throw Exception("no products were found");
+        throw Exception('no products were found');
       }
     } catch (err) {
       throw err;
@@ -198,7 +198,7 @@ class GlowvyServices implements BaseServices {
       } else {
         print('no products were found');
 
-        // throw Exception("no products were found");
+        // throw Exception('no products were found');
       }
     } catch (err) {
       throw err;
@@ -237,7 +237,7 @@ class GlowvyServices implements BaseServices {
         }
         return list;
       } else {
-        throw Exception("no products were found");
+        throw Exception('no products were found');
       }
     } catch (err) {
       throw err;
@@ -247,15 +247,15 @@ class GlowvyServices implements BaseServices {
   @override
   Future<Product> getCosmetics(productId) async {
     try {
-      var body = await getAsync(endPoint: "api/cosmetics/id=$productId");
-      final productJson = body["Data"];
-      if ((body["Success"] == false)) {
-        throw Exception(body["Success"]);
+      var body = await getAsync(endPoint: 'api/cosmetics/id=$productId');
+      final productJson = body['Data'];
+      if ((body['Success'] == false)) {
+        throw Exception(body['Success']);
       } else {
         return Product.fromJson(productJson);
       }
     } catch (e) {
-      print("Error: $e");
+      print('Error: $e');
 
       throw e;
     }
@@ -268,12 +268,12 @@ class GlowvyServices implements BaseServices {
       List<Product> list = [];
       var body = await getAsync(
           endPoint:
-              "api/products/categories=$categoryId?start=$start&count=$limit&sort_by=$sortBy");
+              'api/products/categories=$categoryId?start=$start&count=$limit&sort_by=$sortBy');
 
-      final products = body["Data"];
+      final products = body['Data'];
 
-      if ((body["Success"] == false)) {
-        throw Exception(body["Success"]);
+      if ((body['Success'] == false)) {
+        throw Exception(body['Success']);
       } else {
         for (var item in products) {
           list.add(Product.fromJson(item));
@@ -281,7 +281,7 @@ class GlowvyServices implements BaseServices {
         return list;
       }
     } catch (e) {
-      print("Error: $e");
+      print('Error: $e');
 
       throw e;
     }
@@ -293,20 +293,20 @@ class GlowvyServices implements BaseServices {
     try {
       List<Product> list = [];
       var body = await getAsync(
-          endPoint: "api/cosmetics/categories=$categoryId?skinType=$skinType");
-      final products = body["Data"];
+          endPoint: 'api/cosmetics/categories=$categoryId?skinType=$skinType');
+      final products = body['Data'];
 
-      if ((body["Success"] == false)) {
-        throw Exception(body["Success"]);
+      if ((body['Success'] == false)) {
+        throw Exception(body['Success']);
       } else {
         for (var item in products) {
           list.add(Product.fromJson(item));
         }
-        print("categoryId: $categoryId");
+        print('categoryId: $categoryId');
         return list;
       }
     } catch (e) {
-      print("Error: $e");
+      print('Error: $e');
       throw e;
     }
   }
@@ -328,13 +328,13 @@ class GlowvyServices implements BaseServices {
           // print(doc.data());q
           list.add(Product.fromJson(doc.data()));
         }
-        print("categoryId: $categoryId");
+        print('categoryId: $categoryId');
         return list;
       } else {
-        throw Exception("no products were found");
+        throw Exception('no products were found');
       }
     } catch (e) {
-      print("Error: $e");
+      print('Error: $e');
       throw e;
     }
   }
@@ -358,10 +358,10 @@ class GlowvyServices implements BaseServices {
       if (snapshot.docs.isNotEmpty) {
         return Product.fromJson(snapshot.docs.first.data());
       } else {
-        throw Exception("no products were found");
+        throw Exception('no products were found');
       }
     } catch (e) {
-      print("Error: $e");
+      print('Error: $e');
       throw e;
     }
   }
@@ -377,10 +377,10 @@ class GlowvyServices implements BaseServices {
         print('review id: ${writeRes.id}');
         return;
       } else {
-        throw Exception("failed to upload review");
+        throw Exception('failed to upload review');
       }
     } catch (e) {
-      print("Error: $e");
+      print('Error: $e');
       throw e;
     }
   }
@@ -402,13 +402,13 @@ class GlowvyServices implements BaseServices {
         return list;
       } else {
         results.forEach((item) {
-          // print("item :${item.data}");
+          // print('item :${item.data}');
           list.add(Product.fromJson(item.data));
         });
         return list;
       }
     } catch (e) {
-      print("Error: $e");
+      print('Error: $e');
 
       throw e;
     }
@@ -418,12 +418,12 @@ class GlowvyServices implements BaseServices {
   Future<List<Category>> getSubCategories({parentId}) async {
     try {
       List<Category> list = [];
-      var body = await getAsync(endPoint: "api/categories/parentId=$parentId");
+      var body = await getAsync(endPoint: 'api/categories/parentId=$parentId');
 
-      final categories = body["Data"];
+      final categories = body['Data'];
 
-      if ((body["Success"] == false)) {
-        throw Exception(body["Success"]);
+      if ((body['Success'] == false)) {
+        throw Exception(body['Success']);
       } else {
         for (var item in categories) {
           list.add(Category.fromJson(item));
@@ -431,7 +431,7 @@ class GlowvyServices implements BaseServices {
         return list;
       }
     } catch (e) {
-      print("Error: $e");
+      print('Error: $e');
 
       throw e;
     }
@@ -444,13 +444,13 @@ class GlowvyServices implements BaseServices {
       List<Product> list = [];
       var body = await getAsync(
           endPoint:
-              "api/products/tag=$tag?start=$start&count=$count&sort_by=$sortBy");
+              'api/products/tag=$tag?start=$start&count=$count&sort_by=$sortBy');
 
-      final products = body["Data"];
-      print("databody: $products");
+      final products = body['Data'];
+      print('databody: $products');
 
-      if ((body["Success"] == false)) {
-        throw Exception(body["Success"]);
+      if ((body['Success'] == false)) {
+        throw Exception(body['Success']);
       } else {
         for (var item in products) {
           list.add(Product.fromJson(item));
@@ -458,7 +458,7 @@ class GlowvyServices implements BaseServices {
         return list;
       }
     } catch (e) {
-      print("Error: $e");
+      print('Error: $e');
 
       throw e;
     }
@@ -468,13 +468,13 @@ class GlowvyServices implements BaseServices {
   Future<List<Product>> getProductsByShop({shopId}) async {
     try {
       List<Product> list = [];
-      var body = await getAsync(endPoint: "api/products/shop=$shopId?limit=10");
+      var body = await getAsync(endPoint: 'api/products/shop=$shopId?limit=10');
 
-      final products = body["Data"];
-      // print("products: $products");
+      final products = body['Data'];
+      // print('products: $products');
 
-      if ((body["Success"] == false)) {
-        throw Exception(body["Success"]);
+      if ((body['Success'] == false)) {
+        throw Exception(body['Success']);
       } else {
         for (var item in products) {
           list.add(Product.fromJson(item));
@@ -482,7 +482,7 @@ class GlowvyServices implements BaseServices {
         return list;
       }
     } catch (e) {
-      print("Error: $e");
+      print('Error: $e');
 
       throw e;
     }
@@ -495,26 +495,26 @@ class GlowvyServices implements BaseServices {
   Future<User> createUser({fullName, email, password}) async {
     try {
       final body = await postAsync(
-          endPoint: "api/account/signup",
+          endPoint: 'api/account/signup',
           data: json.encode(
-              {"full_name": fullName, "email": email, "password": password}));
+              {'full_name': fullName, 'email': email, 'password': password}));
 
       final userProfile = body['Data'];
 
-      if (body["Success"] == true) {
-        print("createUser called");
+      if (body['Success'] == true) {
+        print('createUser called');
         return User.fromJson(userProfile);
       } else {
-        var message = body["Error"];
-        throw Exception(message != null ? message : "Can not create the user.");
+        var message = body['Error'];
+        throw Exception(message != null ? message : 'Can not create the user.');
       }
     } catch (err) {
-      print("errorprinted: $err");
+      print('errorprinted: $err');
 
       if (err.toString() ==
-          'Exception: pq: duplicate key value violates unique constraint "accounts_email_key"') {
-        print("same yo!");
-        var duplicateErr = "Already Registered";
+          'Exception: pq: duplicate key value violates unique constraint 'accounts_email_key'') {
+        print('same yo!');
+        var duplicateErr = 'Already Registered';
         throw duplicateErr;
       }
       throw err;
@@ -525,16 +525,16 @@ class GlowvyServices implements BaseServices {
   Future<User> login({email, password}) async {
     try {
       final body = await postAsync(
-          endPoint: "api/account/signin",
+          endPoint: 'api/account/signin',
           data: convert.jsonEncode({'email': email, 'password': password}));
       final userProfile = body['Data'];
-      // print("logged in user: $userProfile");
+      // print('logged in user: $userProfile');
 
-      if (body["Success"] == true) {
+      if (body['Success'] == true) {
         return User.fromJson(userProfile);
       } else {
-        var message = body["Error"];
-        throw Exception("wrong password.");
+        var message = body['Error'];
+        throw Exception('wrong password.');
       }
     } catch (err) {
       throw err;
@@ -543,65 +543,65 @@ class GlowvyServices implements BaseServices {
 
   @override
   Future<User> loginFacebook({String token}) async {
-    print("facebook login token: $token");
+    print('facebook login token: $token');
     try {
       final body = await postAsync(
-          endPoint: "oauth2/facebook/login/$token", data: token);
+          endPoint: 'oauth2/facebook/login/$token', data: token);
 
       print('facebook jsondecode: $body');
-      if (body["Success"] == false) {
-        throw Exception("failed to login with FB${body["Error"]}");
+      if (body['Success'] == false) {
+        throw Exception('failed to login with FB${body['Error']}');
       } else {
         return User.fromJson(body);
       }
     } catch (e) {
-      print("loginFacebook error: $e");
+      print('loginFacebook error: $e');
       throw e;
     }
   }
 
   @override
   Future<User> loginApple(String code, fullName) async {
-    print("loginApple$code");
+    print('loginApple$code');
     try {
       final body = await postAsync(
-          endPoint: "sign_in_with_apple?code=$code&fullName=$fullName");
+          endPoint: 'sign_in_with_apple?code=$code&fullName=$fullName');
       // print()
 
       print('apple jsondecode: $body');
-      if (body["Success"] == false) {
-        throw Exception("failed to login with FB${body["Error"]}");
+      if (body['Success'] == false) {
+        throw Exception('failed to login with FB${body['Error']}');
       } else {
         return User.fromJson(body);
       }
       // print('apple login jsondecode: $body');
-      // if (body["Success"] == false) {
-      //   throw Exception("failed to login with FB${body["Error"]}");
+      // if (body['Success'] == false) {
+      //   throw Exception('failed to login with FB${body['Error']}');
       // } else {
       //   return User.fromJson(body);
       // }
     } catch (e) {
-      print("loginApple error: $e");
+      print('loginApple error: $e');
       throw e;
     }
   }
 
   @override
   Future<User> loginGoogle({String token}) async {
-    print("google login : $token");
+    print('google login : $token');
     try {
       final body =
-          await postAsync(endPoint: "oauth2/google/login/$token", data: token);
+          await postAsync(endPoint: 'oauth2/google/login/$token', data: token);
 
       print('googlee jsondecode: $body');
 
-      if (body["Account"] != null) {
+      if (body['Account'] != null) {
         return User.fromJson(body);
       } else {
-        throw ("fail to create user");
+        throw ('fail to create user');
       }
     } catch (e) {
-      print("loginGoogle error: $e");
+      print('loginGoogle error: $e');
 
       throw e;
     }
@@ -609,71 +609,71 @@ class GlowvyServices implements BaseServices {
 
   @override
   Future<String> requestPIN({email}) async {
-    print("email received: $email");
+    print('email received: $email');
     try {
       final body = await postAsync(
-          endPoint: "api/password/forgot",
-          data: convert.jsonEncode({"email": email}));
+          endPoint: 'api/password/forgot',
+          data: convert.jsonEncode({'email': email}));
 
-      String token = body["Data"];
-      String result = body["Success"].toString();
-      print("jsonDecode request PIN:$body");
+      String token = body['Data'];
+      String result = body['Success'].toString();
+      print('jsonDecode request PIN:$body');
       print('isSuccessful : $result]');
       print('accessToken : $token');
 
-      if (result == "true") {
+      if (result == 'true') {
         return token;
       } else {
-        throw ("some arbitrary error");
+        throw ('some arbitrary error');
       }
     } catch (e) {
-      print("error: fail to request PIN");
+      print('error: fail to request PIN');
 
       // throw
     }
   }
 
   Future<bool> checkPIN({pin, token}) async {
-    print("pin received: $pin token received: $token");
+    print('pin received: $pin token received: $token');
     try {
       final body = await postAsync(
-          endPoint: "api/password/checkpin",
-          data: convert.jsonEncode({"pin": pin}));
+          endPoint: 'api/password/checkpin',
+          data: convert.jsonEncode({'pin': pin}));
 
-      bool result = body["Success"];
-      print("jsonDecode $body");
+      bool result = body['Success'];
+      print('jsonDecode $body');
       print('isSuccessFul??  $result');
 
       if (result == true) {
         return result;
       } else {
-        throw ("Incorrect PIN");
+        throw ('Incorrect PIN');
       }
     } catch (e) {
-      print("error: fail to request PIN: $e");
+      print('error: fail to request PIN: $e');
 
       throw e;
     }
   }
 
   Future<bool> resetPassword({password, accessToken}) async {
-    print("pin received: $password");
+    print('pin received: $password');
     try {
       final body = await postAsync(
-          endPoint: "api/password/reset",
-          data: convert.jsonEncode({"new": password, "confirm_new": password}),
-          headers: {"TokenResetPassword": "Bearer $accessToken"});
+          endPoint: 'api/password/reset',
+          data: convert.jsonEncode({'new': password, 'confirm_new': password}),
+          headers: {'TokenResetPassword': 'Bearer $accessToken'});
 
-      bool result = body["Success"];
+      bool result = body['Success'];
       print('isSuccessFul??  $jsonDecode');
 
       if (result == true) {
         return result;
       } else {
-        throw ("failed to reset password");
+        throw ('failed to reset password');
       }
     } catch (e) {
-      print("error: fail to request PIN");
+      print('error: fail to request PIN');
 
       throw e;
     }
@@ -686,44 +686,44 @@ class GlowvyServices implements BaseServices {
   @override
   Future<Address> updateAddress({Address address, String accessToken}) async {
     try {
-      print("address : ${address.toJson()}");
+      print('address : ${address.toJson()}');
       final body = await postAsync(
-          endPoint: "api/address/update",
+          endPoint: 'api/address/update',
           data: jsonEncode({
-            "recipient_name": address.recipientName,
-            "id": address.id,
-            "street": address.street,
-            "ward_id": address.ward.id,
-            "phone_number": address.phoneNumber,
-            "is_default": address.isDefault,
+            'recipient_name': address.recipientName,
+            'id': address.id,
+            'street': address.street,
+            'ward_id': address.ward.id,
+            'phone_number': address.phoneNumber,
+            'is_default': address.isDefault,
           }));
-      if (body["Success"] == true && body["Data"] != null) {
-        return Address.fromJson(body["Data"]);
+      if (body['Success'] == true && body['Data'] != null) {
+        return Address.fromJson(body['Data']);
       } else {
         return null;
       }
     } catch (err) {
-      throw "err: $err";
+      throw 'err: $err';
     }
   }
 
   @override
   Future<bool> deleteAddress({Address address, String accessToken}) async {
     try {
-      print("address to delete: ${address.toJson()}");
+      print('address to delete: ${address.toJson()}');
       final body = await postAsync(
-          endPoint: "api/address/delete",
+          endPoint: 'api/address/delete',
           data: jsonEncode({
-            "id": address.id,
-            "recipient_name": address.recipientName,
-            "street": address.street,
-            "ward_id": address.ward.id,
-            "phone_number": address.phoneNumber,
-            "is_default": address.isDefault,
+            'id': address.id,
+            'recipient_name': address.recipientName,
+            'street': address.street,
+            'ward_id': address.ward.id,
+            'phone_number': address.phoneNumber,
+            'is_default': address.isDefault,
           }));
-      return body["isSuccess"];
+      return body['isSuccess'];
     } catch (err) {
-      throw "err: $err";
+      throw 'err: $err';
     }
   }
 
@@ -732,24 +732,24 @@ class GlowvyServices implements BaseServices {
     try {
       List<Address> addresses = [];
 
-      print("address : ${address.toJson()}");
+      print('address : ${address.toJson()}');
       final body = await postAsync(
-          endPoint: "api/address/create",
+          endPoint: 'api/address/create',
           data: jsonEncode({
-            "id": address.id,
-            "recipient_name": address.recipientName,
-            "street": address.street,
-            "ward_id": address.ward.id,
-            "phone_number": address.phoneNumber,
-            "is_default": address.isDefault,
+            'id': address.id,
+            'recipient_name': address.recipientName,
+            'street': address.street,
+            'ward_id': address.ward.id,
+            'phone_number': address.phoneNumber,
+            'is_default': address.isDefault,
           }));
-      if (body["Success"] == true && body["Data"] != null) {
-        return Address.fromJson(body["Data"]);
+      if (body['Success'] == true && body['Data'] != null) {
+        return Address.fromJson(body['Data']);
       } else {
         return null;
       }
     } catch (err) {
-      throw "err: $err";
+      throw 'err: $err';
     }
   }
 
@@ -757,11 +757,11 @@ class GlowvyServices implements BaseServices {
   Future<List<Address>> getAllAddresses({token}) async {
     try {
       List<Address> addresses = [];
-      final body = await getAsync(endPoint: "api/address/get");
+      final body = await getAsync(endPoint: 'api/address/get');
 
-      if (body["Success"] == true && body["Data"] != null) {
-        print("received ::: ${body["Data"]}");
-        for (var item in body["Data"]) {
+      if (body['Success'] == true && body['Data'] != null) {
+        print('received ::: ${body['Data']}');
+        for (var item in body['Data']) {
           addresses.add(Address.fromJson(item));
         }
         return addresses;
@@ -769,15 +769,15 @@ class GlowvyServices implements BaseServices {
         return null;
       }
     } catch (err) {
-      throw "err: $err";
+      throw 'err: $err';
     }
   }
 
   @override
   Future<List<Province>> getProvinces() async {
     try {
-      final body = await getAsync(endPoint: "api/provinces/all");
-      var provincesJsons = body["Data"];
+      final body = await getAsync(endPoint: 'api/provinces/all');
+      var provincesJsons = body['Data'];
       List<Province> list = [];
 
       for (var item in provincesJsons) {
@@ -786,16 +786,16 @@ class GlowvyServices implements BaseServices {
 
       return list;
     } catch (err) {
-      throw "Error: $err";
+      throw 'Error: $err';
     }
   }
 
   @override
   Future<List<District>> getDistricts({int provinceId}) async {
     try {
-      final body = await getAsync(endPoint: "api/districts/id=$provinceId");
+      final body = await getAsync(endPoint: 'api/districts/id=$provinceId');
 
-      var districtJsons = body["Data"];
+      var districtJsons = body['Data'];
       List<District> list = [];
 
       for (var item in districtJsons) {
@@ -804,25 +804,25 @@ class GlowvyServices implements BaseServices {
       // print(list);
       return list;
     } catch (err) {
-      throw "Err: $err";
+      throw 'Err: $err';
     }
   }
 
   @override
   Future<List<Ward>> getWards({int districtId}) async {
     try {
-      final body = await getAsync(endPoint: "api/wards/id=$districtId");
+      final body = await getAsync(endPoint: 'api/wards/id=$districtId');
 
-      var wardJsons = body["Data"];
+      var wardJsons = body['Data'];
       List<Ward> list = [];
 
       for (var item in wardJsons) {
         list.add(Ward.fromJson(item));
-        // print("${list[0].toJson()}");
+        // print('${list[0].toJson()}');
       }
       return list;
     } catch (err) {
-      throw "err: $err";
+      throw 'err: $err';
     }
   }
 
@@ -832,21 +832,21 @@ class GlowvyServices implements BaseServices {
   // ==========================================================================
   @override
   Future<int> createCartItem(CartItem cartItem) async {
-    print("cart item option: ${cartItem.optionId}");
+    print('cart item option: ${cartItem.optionId}');
 
     try {
       final body = await postAsync(
-          endPoint: "api/cart/new",
+          endPoint: 'api/cart/new',
           data: jsonEncode({
-            "product_id": cartItem.product.sid,
-            "quantity": cartItem.quantity,
-            "option": cartItem.option,
-            "option_id": cartItem.optionId,
+            'product_id': cartItem.product.sid,
+            'quantity': cartItem.quantity,
+            'option': cartItem.option,
+            'option_id': cartItem.optionId,
           }));
 
       return 1;
     } catch (err) {
-      throw "err: $err";
+      throw 'err: $err';
     }
   }
 
@@ -854,21 +854,21 @@ class GlowvyServices implements BaseServices {
   Future<int> updateCartItem(
     CartItem cartItem,
   ) async {
-    print("update quantity: ${cartItem.quantity}");
+    print('update quantity: ${cartItem.quantity}');
 
     try {
       final body = await postAsync(
-          endPoint: "api/cart/update",
+          endPoint: 'api/cart/update',
           data: jsonEncode({
-            "product_id": cartItem.product.sid,
-            "quantity": cartItem.quantity,
-            "option": cartItem.option,
-            "option_id": cartItem.optionId,
+            'product_id': cartItem.product.sid,
+            'quantity': cartItem.quantity,
+            'option': cartItem.option,
+            'option_id': cartItem.optionId,
           }));
 
       return 1;
     } catch (err) {
-      throw "err: $err";
+      throw 'err: $err';
     }
   }
 
@@ -878,15 +878,15 @@ class GlowvyServices implements BaseServices {
   ) async {
     try {
       final body = await postAsync(
-          endPoint: "api/cart/delete",
+          endPoint: 'api/cart/delete',
           data: jsonEncode({
-            "product_id": cartItem.product.sid,
-            "quantity": cartItem.quantity,
-            "option_id": cartItem.optionId,
+            'product_id': cartItem.product.sid,
+            'quantity': cartItem.quantity,
+            'option_id': cartItem.optionId,
           }));
       return 1;
     } catch (err) {
-      throw "err: $err";
+      throw 'err: $err';
     }
   }
 
@@ -894,11 +894,11 @@ class GlowvyServices implements BaseServices {
   Future<List<CartItem>> allCartItems() async {
     try {
       final body = await getAsync(
-        endPoint: "api/cart/all",
+        endPoint: 'api/cart/all',
       );
 
       final cartItems = body['Data'];
-      if (body["Success"] == true) {
+      if (body['Success'] == true) {
         List<CartItem> list = [];
         if (cartItems == null) {
           return list;
@@ -908,11 +908,11 @@ class GlowvyServices implements BaseServices {
         }
         return list;
       } else {
-        var message = body["Error"];
-        throw Exception("failed to retreieve product data: ${message}");
+        var message = body['Error'];
+        throw Exception('failed to retreieve product data: ${message}');
       }
     } catch (err) {
-      throw "err: $err";
+      throw 'err: $err';
     }
   }
 
@@ -920,11 +920,11 @@ class GlowvyServices implements BaseServices {
   Future<List<Coupon>> getCoupons() async {
     try {
       final body = await getAsync(
-        endPoint: "api/cart/coupons/all",
+        endPoint: 'api/cart/coupons/all',
       );
 
       final cartItems = body['Data'];
-      if (body["Success"] == true) {
+      if (body['Success'] == true) {
         List<Coupon> list = [];
         if (cartItems == null) {
           return list;
@@ -934,11 +934,11 @@ class GlowvyServices implements BaseServices {
         }
         return list;
       } else {
-        var message = body["Error"];
-        throw Exception("failed to retreieve coupons: ${message}");
+        var message = body['Error'];
+        throw Exception('failed to retreieve coupons: ${message}');
       }
     } catch (err) {
-      throw "err: $err";
+      throw 'err: $err';
     }
   }
 
@@ -948,20 +948,20 @@ class GlowvyServices implements BaseServices {
   @override
   Future<List<Order>> getMyOrders() async {
     try {
-      final body = await getAsync(endPoint: "api/order/all");
+      final body = await getAsync(endPoint: 'api/order/all');
 
       List<Order> list = [];
 
-      if (body["Success"] == true && body["Data"].length != 0) {
-        for (var item in body["Data"]) {
+      if (body['Success'] == true && body['Data'].length != 0) {
+        for (var item in body['Data']) {
           list.add(Order.fromJson(item));
         }
         return list;
-      } else if (body["Data"].length == 0) {
-        print("null orders");
+      } else if (body['Data'].length == 0) {
+        print('null orders');
         return list;
       } else {
-        throw Exception(body["message"]);
+        throw Exception(body['message']);
       }
     } catch (e) {
       throw e;
@@ -973,23 +973,23 @@ class GlowvyServices implements BaseServices {
     Order order,
   }) async {
     try {
-      print("order to submit: ${order.toJson()}");
+      print('order to submit: ${order.toJson()}');
       final body = await postAsync(
-          endPoint: "api/order/new", data: convert.jsonEncode(order));
+          endPoint: 'api/order/new', data: convert.jsonEncode(order));
 
-      bool result = body["Success"];
+      bool result = body['Success'];
 
-      var createdOrder = Order.fromJson(body["Data"]);
-      print("jsonDecode $body");
+      var createdOrder = Order.fromJson(body['Data']);
+      print('jsonDecode $body');
       print('Order isSuccessFul??  $result');
 
       if (result == true) {
         return createdOrder;
       } else {
-        throw ("Incorrect PIN");
+        throw ('Incorrect PIN');
       }
     } catch (e) {
-      print("submitorder : err$e");
+      print('submitorder : err$e');
       throw e;
     }
   }

@@ -69,12 +69,13 @@ class CosmeticsReviewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    sanitizedText = review.text.replaceAll("\n", "");
-    kSanitizedText = review.stext.replaceAll("\n", "");
+    sanitizedText = review.text.replaceAll('\n', '');
+    kSanitizedText = review.stext.replaceAll('\n', '');
+    print(review.product.sid);
 
     if (isPreview && sanitizedText.length > 70) {
       sanitizedText =
-          review.text.replaceAll("\n", "").substring(1, 70) + " ...";
+          review.text.replaceAll('\n', '').substring(1, 70) + ' ...';
     }
 
     return Container(
