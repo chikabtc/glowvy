@@ -1,11 +1,9 @@
-import 'package:Dimodo/models/survey.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:flutter/material.dart';
-import '../generated/i18n.dart';
-
-import 'package:Dimodo/common/styles.dart';
-
 import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/models/survey.dart';
+import 'package:flutter/material.dart';
+
+import '../generated/i18n.dart';
 
 class SurveyCard extends StatefulWidget {
   // SurveyWidget
@@ -47,7 +45,7 @@ class _SurveyCardState extends State<SurveyCard> {
             Container(
               height: 5,
             ),
-            // SizedBox(height: 8),
+            // const SizedBox(height: 8),
             for (var i = 0; i < widget.survey.options.length; i++)
               GestureDetector(
                 onTap: () => setState(() {
@@ -59,7 +57,7 @@ class _SurveyCardState extends State<SurveyCard> {
                   width: screenSize.width,
                   color: Colors.white,
                   child: Padding(
-                    padding: const EdgeInsets.only(bottom: 1.0),
+                    padding: EdgeInsets.only(bottom: 1.0),
                     child: Row(
                       children: <Widget>[
                         ClipRRect(

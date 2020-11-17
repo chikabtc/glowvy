@@ -1,12 +1,11 @@
+import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/common/widgets.dart';
+import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/models/address/address.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:Dimodo/common/styles.dart';
-
-import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:Dimodo/models/address/address.dart';
-import 'package:Dimodo/generated/i18n.dart';
 
 class ShippingAddressSmallCard extends StatelessWidget {
   ShippingAddressSmallCard(this.address);
@@ -22,7 +21,7 @@ class ShippingAddressSmallCard extends StatelessWidget {
               EdgeInsets.only(top: 16.0, bottom: 14, left: 16, right: 16),
           onTap: () {
             var isFromOrderScreen = true;
-            Navigator.pushNamed(context, "/manage_address",
+            Navigator.pushNamed(context, '/manage_address',
                 arguments: {'isFromConfirmOrderScreen': true});
           },
           title: address != null
@@ -31,12 +30,12 @@ class ShippingAddressSmallCard extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
                     Row(children: <Widget>[
-                      Text(address.recipientName ?? "not found",
+                      Text(address.recipientName ?? 'not found',
                           style: kBaseTextStyle.copyWith(
                             fontSize: 17,
                             fontWeight: FontWeight.w600,
                           )),
-                      SizedBox(width: 5),
+                      const SizedBox(width: 5),
                       Text(address.phoneNumber,
                           style: kBaseTextStyle.copyWith(
                               fontSize: 13,
@@ -45,9 +44,9 @@ class ShippingAddressSmallCard extends StatelessWidget {
                     ]),
                     Text(
                       address.ward.province.name +
-                          "  " +
+                          '  ' +
                           address.ward.district.name +
-                          "  " +
+                          '  ' +
                           address.ward.name,
                       textAlign: TextAlign.start,
                       style: kBaseTextStyle.copyWith(
@@ -73,7 +72,7 @@ class ShippingAddressSmallCard extends StatelessWidget {
                           fontSize: 17,
                           fontWeight: FontWeight.w600,
                         )),
-                    SizedBox(width: 5),
+                    const SizedBox(width: 5),
                     Text(S.of(context).pleaseInput,
                         style: kBaseTextStyle.copyWith(
                             fontSize: 13,
@@ -82,8 +81,7 @@ class ShippingAddressSmallCard extends StatelessWidget {
                   ],
                 ),
           trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[CommonIcons.arrowForward]),
+              mainAxisSize: MainAxisSize.min, children: <Widget>[arrowForward]),
         ));
   }
 }

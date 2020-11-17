@@ -1,24 +1,19 @@
 import 'package:Dimodo/common/popups.dart';
-import 'package:flutter/material.dart';
 import 'package:Dimodo/common/styles.dart';
-
-import 'package:Dimodo/common/colors.dart';
-import 'package:provider/provider.dart';
-import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
-import 'package:after_layout/after_layout.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:Dimodo/common/constants.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class VerifyEmailScreen extends StatefulWidget {
   VerifyEmailScreen();
 
   @override
-  _VerifyEmailScreenState createState() => _VerifyEmailScreenState();
+  _verifyEmailScreenState createState() => _verifyEmailScreenState();
 }
 
-class _VerifyEmailScreenState extends State<VerifyEmailScreen>
+class _verifyEmailScreenState extends State<VerifyEmailScreen>
     with TickerProviderStateMixin {
   AnimationController _verifyAnimationController;
   String code;
@@ -28,8 +23,8 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen>
   @override
   void initState() {
     super.initState();
-    _verifyAnimationController = new AnimationController(
-        duration: new Duration(milliseconds: 3000), vsync: this);
+    _verifyAnimationController = AnimationController(
+        duration: Duration(milliseconds: 3000), vsync: this);
   }
 
   @override
@@ -45,13 +40,13 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen>
     });
   }
   // void onCorrectPin(context) {
-  //   print("email is verified!");
+  //   print('email is verified!');
   //   _welcomeMessage(context);
 
   // }
 
 // show fail message in two cases: 1. the email is not registed. 2. PIN is wrong.
-  _onVerifyFailure(message, context) async {
+  Future _onVerifyFailure(message, context) async {
     await _verifyAnimationController.reverse();
     Popups.failMessage(message, context);
   }
@@ -60,11 +55,11 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen>
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
-    final Map arguments = ModalRoute.of(context).settings.arguments as Map;
+    final arguments = ModalRoute.of(context).settings.arguments as Map;
     if (arguments != null) print(arguments['fullName']);
     var fullName = arguments['fullName'];
 
-    _verifyEmail(email) async {
+    Future _verifyEmail(email) async {
       try {
         if (await Provider.of<UserModel>(context, listen: false)
             .isEmailVerified()) {
@@ -116,15 +111,15 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen>
                           ),
                         ],
                       ),
-                      SizedBox(height: 23.0),
+                      const SizedBox(height: 23.0),
                       Text(
-                          "We sent email to your address to verify your account. Please check the link and click verify button 🙏",
+                          'We sent email to your address to verify your account. Please check the link and click verify button 🙏',
                           style: kBaseTextStyle.copyWith(
                               fontSize: 14, fontWeight: FontWeight.w600)),
-                      SizedBox(height: 16.0),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       StaggerAnimation(
-                          buttonTitle: "verify email",
+                          buttonTitle: 'verify email',
                           buttonController: _verifyAnimationController.view,
                           onTap: () {
                             _verifyEmail(code);

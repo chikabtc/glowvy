@@ -1,9 +1,7 @@
-import 'package:Dimodo/common/styles.dart';
-
 import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/generated/i18n.dart';
-import 'package:flutter/material.dart';
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/styles.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 final SvgPicture arrowForward = SvgPicture.asset(
@@ -30,7 +28,7 @@ final SvgPicture arrowBackwardWhite = SvgPicture.asset(
   color: Colors.white,
 );
 
-backIcon(context, {color = kDarkAccent}) {
+Widget backIcon(context, {color = kDarkAccent}) {
   return IconButton(
       onPressed: () => Navigator.of(context).pop(),
       icon: SvgPicture.asset(
@@ -40,7 +38,7 @@ backIcon(context, {color = kDarkAccent}) {
       ));
 }
 
-arrowForwardIcon(context, {color = kDarkAccent, width = 26}) {
+Widget arrowForwardIcon(context, {color = kDarkAccent, width = 26}) {
   return GestureDetector(
     onTap: () => Navigator.of(context).pop(),
     child: IconButton(
@@ -52,7 +50,7 @@ arrowForwardIcon(context, {color = kDarkAccent, width = 26}) {
   );
 }
 
-closeIcon(context, {color = Colors.black87}) {
+Widget closeIcon(context, {color = Colors.black87}) {
   return GestureDetector(
     onTap: () => Navigator.of(context).pop(),
     child: Container(
@@ -67,7 +65,7 @@ closeIcon(context, {color = Colors.black87}) {
   );
 }
 
-forwardIcon(context, color) {
+Widget forwardIcon(context, color) {
   return SvgPicture.asset(
     'assets/icons/arrow_forward.svg',
     width: 24,
@@ -75,7 +73,7 @@ forwardIcon(context, color) {
   );
 }
 
-customButton(
+Widget customButton(
     {@required function,
     @required text,
     buttonColor = kPrimaryOrange,
@@ -97,6 +95,14 @@ customButton(
   );
 }
 
+Widget customDivider({color, thickness}) {
+  return Divider(
+    color: color ?? kQuaternaryGrey,
+    height: 0.7,
+    thickness: thickness ?? 0.7,
+  );
+}
+
 class CustomTextField extends StatefulWidget {
   CustomTextField(
       {@required this.onTextChange,
@@ -114,14 +120,14 @@ class CustomTextField extends StatefulWidget {
   String hintText;
   bool autoFocus;
 
-  var keyboardType;
+  TextInputType keyboardType;
 
   @override
   _CustomTextFieldState createState() => _CustomTextFieldState();
 }
 
 class _CustomTextFieldState extends State<CustomTextField> {
-  TextEditingController _textFieldController = TextEditingController();
+  final TextEditingController _textFieldController = TextEditingController();
   String text;
   final _formKey = GlobalKey<FormState>();
   bool isNumber(String value) {
@@ -142,10 +148,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
       color: kWhite,
       child: Form(
         child: TextFormField(
-          autofocus: widget.autoFocus != null ? widget.autoFocus : true,
-          keyboardType: widget.keyboardType != null
-              ? widget.keyboardType
-              : TextInputType.text,
+          autofocus: widget.autoFocus ?? true,
+          keyboardType: widget.keyboardType ?? TextInputType.text,
           controller: _textFieldController,
           cursorColor: theme.cursorColor,
           obscureText: widget.obscureText,
@@ -170,7 +174,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 : IconButton(
                     icon: Icon(
                       Icons.cancel,
-                      color: Color(0xffC4C4C4),
+                      color: const Color(0xffC4C4C4),
                       size: 20,
                     ),
                     onPressed: () {

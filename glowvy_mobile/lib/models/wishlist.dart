@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
-import '../models/product/product.dart';
+
 import '../common/constants.dart';
+import '../models/product/product.dart';
 
 class WishListModel extends ChangeNotifier {
   WishListModel() {
@@ -33,11 +34,11 @@ class WishListModel extends ChangeNotifier {
   }
 
   void saveWishlist(List<Product> products) async {
-    final LocalStorage storage = new LocalStorage("Dimodo");
+    final storage = LocalStorage('Dimodo');
     try {
       final ready = await storage.ready;
       if (ready) {
-        await storage.setItem(kLocalKey["wishlist"], products);
+        await storage.setItem(kLocalKey['wishlist'], products);
       }
     } catch (err) {
       print(err);
@@ -45,13 +46,13 @@ class WishListModel extends ChangeNotifier {
   }
 
   void getLocalWishlist() async {
-    final LocalStorage storage = new LocalStorage("Dimodo");
+    final storage = LocalStorage('Dimodo');
     try {
       final ready = await storage.ready;
       if (ready) {
-        final json = await storage.getItem(kLocalKey["wishlist"]);
+        final json = await storage.getItem(kLocalKey['wishlist']);
         if (json != null) {
-          List<Product> list = [];
+          var list = <Product>[];
           for (var item in json) {
             list.add(Product.fromJson(item));
           }

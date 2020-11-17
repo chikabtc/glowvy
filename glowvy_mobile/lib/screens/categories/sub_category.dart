@@ -33,8 +33,8 @@
 //     with WidgetsBindingObserver, AutomaticKeepAliveClientMixin {
 //   int currentIndex = 0;
 //   bool isAscending = false;
-//   String highToLow = "-sale_price";
-//   String lowToHigh = "sale_price";
+//   String highToLow = '-sale_price';
+//   String lowToHigh = 'sale_price';
 //   Future<List<Product>> getProductByTagTrending;
 //   Future<List<Product>> getProductsByCategoryId;
 //   Services service = Services();
@@ -52,7 +52,7 @@
 //     currentCate = widget.category;
 //     if (currentCate.firstCategoryId == 0) {
 //       getProductByTagTrending =
-//           service.getProductsByTag(tag: 5, sortBy: "sale_price");
+//           service.getProductsByTag(tag: 5, sortBy: 'sale_price');
 //     }
 
 //     getProductsByCategoryId = service.getProductsByCategory(
@@ -109,7 +109,7 @@
 //                       DefaultTabController(
 //                         length: widget.category.subCategories.length + 1,
 //                         child: Padding(
-//                           padding: const EdgeInsets.only(left: 16.0),
+//                           padding: EdgeInsets.only(left: 16.0),
 //                           child: TabBar(
 //                             indicatorSize: TabBarIndicatorSize.label,
 //                             labelPadding: EdgeInsets.symmetric(horizontal: 5.0),
@@ -179,7 +179,7 @@
 
 //     var allBtn = Container(
 //       child: Tab(
-//         child: Text("all",
+//         child: Text('all',
 //             style: kBaseTextStyle.copyWith(
 //               fontSize: 13,
 //               fontWeight: FontWeight.w600,

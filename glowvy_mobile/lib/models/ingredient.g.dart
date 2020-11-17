@@ -10,7 +10,7 @@ Ingredient _$IngredientFromJson(Map<String, dynamic> json) {
   return Ingredient(
     json['id'] as int,
     json['name_en'] as String,
-    (json['purposes'] as List)?.map((e) => e as String)?.toList(),
+    json['purpose_vi'] as String,
     json['hazard_score'] as int,
   );
 }
@@ -19,6 +19,6 @@ Map<String, dynamic> _$IngredientToJson(Ingredient instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name_en': instance.nameEn,
-      'purposes': instance.purposes,
+      'purpose_vi': instance.purposeVi,
       'hazard_score': instance.hazardScore,
     };

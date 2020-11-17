@@ -1,14 +1,13 @@
 import 'dart:convert';
 
-import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
-import '../common/config.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
+import '../common/config.dart';
 import '../generated/i18n.dart';
-import '../models/user/userPoints.dart';
 import '../models/user/userModel.dart';
+import '../models/user/userPoints.dart';
 
 class UserPoint extends StatefulWidget {
   @override
@@ -52,11 +51,12 @@ class _StateUserPoint extends State<UserPoint> {
         body: FutureBuilder<UserPoints>(
           future: getUserPoint(),
           builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting)
+            if (snapshot.connectionState == ConnectionState.waiting) {
               return Align(
                 child: CircularProgressIndicator(),
                 alignment: Alignment.center,
               );
+            }
             if (!snapshot.hasData) return Container();
             return Padding(
               child: SingleChildScrollView(
@@ -82,7 +82,7 @@ class _StateUserPoint extends State<UserPoint> {
                     ),
                     Divider(indent: 15.0, endIndent: 15.0),
                     Padding(
-                      padding: const EdgeInsets.all(15.0),
+                      padding: EdgeInsets.all(15.0),
                       child: Text(
                         S.of(context).events,
                         style: TextStyle(

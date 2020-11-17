@@ -2,23 +2,16 @@ import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/screens/detail/Cosmetics_review_card.dart';
 import 'package:Dimodo/screens/detail/review_images.dart';
-import 'package:Dimodo/widgets/cosmetics_review_filter_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../common/constants.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../common/colors.dart';
+import '../../common/constants.dart';
 import '../../common/styles.dart';
 import '../../common/widgets.dart';
-
-import '../../common/colors.dart';
-
 import '../../generated/i18n.dart';
-import '../../models/reviews.dart';
-import '../../services/index.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter/cupertino.dart';
-import 'cartAction.dart';
 
 class CosmeticsReviewScreen extends StatefulWidget {
   final Product product;
@@ -33,7 +26,6 @@ class CosmeticsReviewScreen extends StatefulWidget {
 
 class _StateReviews extends State<CosmeticsReviewScreen>
     with AutomaticKeepAliveClientMixin<CosmeticsReviewScreen> {
-  final services = Services();
   List<Review> reviews;
   bool showFiltered = false;
   List<Review> filteredReviews;
@@ -80,163 +72,154 @@ class _StateReviews extends State<CosmeticsReviewScreen>
             ),
             SliverList(
                 delegate: SliverChildListDelegate([
-              reviews == null
-                  ? Container(
-                      height: kScreenSizeHeight * 0.7,
-                      child: SpinKitThreeBounce(color: kPinkAccent, size: 23.0),
-                    )
-                  : (reviews.length == 0
-                      ? Container(
-                          child: Center(
-                            child: Text(
-                              S.of(context).noReviews,
-                              style: textTheme.headline5,
-                            ),
-                          ),
-                        )
-                      : Container(
-                          color: Colors.white,
-                          child: Column(
+              if (reviews == null)
+                Container(
+                  height: kScreenSizeHeight * 0.7,
+                  child:
+                      const SpinKitThreeBounce(color: kPinkAccent, size: 23.0),
+                ),
+              if (reviews.isEmpty)
+                Container(
+                  child: Center(
+                    child: Text(
+                      S.of(context).noReviews,
+                      style: textTheme.headline5,
+                    ),
+                  ),
+                ),
+              if (reviews.isNotEmpty)
+                Container(
+                  color: Colors.white,
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.only(
+                            top: 19, bottom: 19, left: 16, right: 16),
+                        color: Colors.white,
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: <Widget>[
+                              Text(
+                                  '${S.of(context).reviews} (${widget.product.reviewMetas.all.reviewCount})',
+                                  style: textTheme.caption1
+                                      .copyWith(color: kSecondaryGrey)),
+                              const Spacer(),
                               Container(
-                                padding: EdgeInsets.only(
-                                    top: 19, bottom: 19, left: 16, right: 16),
-                                color: Colors.white,
-                                child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(5)),
+                                ),
+                                child: Container(
+                                  height: 32,
+                                  decoration: BoxDecoration(
+                                    color: kTertiaryGray,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  padding: EdgeInsets.all(2),
+                                  child: ToggleButtons(
+                                    fillColor: Colors.white,
+                                    borderWidth: 0,
+                                    selectedBorderColor: Colors.white,
+                                    selectedColor: Colors.black,
+                                    color: Colors.grey,
+                                    borderRadius: BorderRadius.circular(20),
                                     children: <Widget>[
-                                      Text(
-                                          "${S.of(context).reviews} (${widget.product.reviewMetas.all.reviewCount})",
-                                          style: textTheme.caption1
-                                              .copyWith(color: kSecondaryGrey)),
-                                      Spacer(),
-                                      Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(5)),
-                                        ),
-                                        child: Container(
-                                          height: 32,
-                                          decoration: BoxDecoration(
-                                            color: kTertiaryGray,
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                          ),
-                                          padding: EdgeInsets.all(2),
-                                          child: ToggleButtons(
-                                            fillColor: Colors.white,
-                                            borderWidth: 0,
-                                            selectedBorderColor: Colors.white,
-                                            selectedColor: Colors.black,
-                                            color: Colors.grey,
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            children: <Widget>[
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 10,
-                                                    right: 6,
-                                                    top: 8,
-                                                    bottom: 8),
-                                                child: Text(
-                                                  'Tiếng Việt',
-                                                  style:
-                                                      TextStyle(fontSize: 10),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 6,
-                                                    right: 10,
-                                                    top: 8,
-                                                    bottom: 8),
-                                                child: Text(
-                                                  'Original',
-                                                  style:
-                                                      TextStyle(fontSize: 10),
-                                                ),
-                                              ),
-                                            ],
-                                            onPressed: (int index) {
-                                              setState(() {
-                                                for (int i = 0;
-                                                    i < isSelected.length;
-                                                    i++) {
-                                                  isSelected[i] = i == index;
-                                                  isKorean =
-                                                      index == 0 ? false : true;
-                                                }
-                                              });
-                                            },
-                                            isSelected: isSelected,
-                                          ),
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 10,
+                                            right: 6,
+                                            top: 8,
+                                            bottom: 8),
+                                        child: Text(
+                                          'Tiếng Việt',
+                                          style: TextStyle(fontSize: 10),
                                         ),
                                       ),
-                                    ]),
-                              ),
-                              // CosmeticsReviewFilterBar(
-                              //   showSorting: false,
-                              //   reviews: metaReviews.reviews,
-                              //   onFilterConfirm: (filResults) {
-                              //     setState(() {
-                              //       filteredReviews = filResults;
-                              //       showFiltered = true;
-                              //       print("filter :${filResults}\n");
-                              //     });
-                              //   },
-                              //   onReset: () {
-                              //     setState(() {
-                              //       // this.filteredResults = snapshot.data;
-                              //     });
-                              //   },
-                              //   onSkinTypeChanged: (skinTypeId) {
-                              //     setState(() {
-                              //       // this.skinTypeId = skinTypeId;
-                              //       // filteredReviews = filResults;
-                              //       // print("filter :${filResults}\n");
-                              //     });
-                              //   },
-                              // ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 16.0),
-                                child: ReviewImages(widget.product),
-                              ),
-                              Scrollbar(
-                                child: Container(
-                                  padding: EdgeInsets.only(left: 17, right: 17),
-                                  child: ListView.builder(
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      scrollDirection: Axis.vertical,
-                                      shrinkWrap: true,
-                                      itemCount: showFiltered
-                                          ? filteredReviews.length
-                                          : reviews.length,
-                                      itemBuilder: (context, i) =>
-                                          CosmeticsReviewCard(
-                                              context: context,
-                                              isKorean: isKorean,
-                                              showDivider:
-                                                  reviews.length - 1 == i
-                                                      ? false
-                                                      : true,
-                                              review: showFiltered
-                                                  ? filteredReviews[i]
-                                                  : reviews[i])),
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 6,
+                                            right: 10,
+                                            top: 8,
+                                            bottom: 8),
+                                        child: Text(
+                                          'Original',
+                                          style: TextStyle(fontSize: 10),
+                                        ),
+                                      ),
+                                    ],
+                                    onPressed: (int index) {
+                                      setState(() {
+                                        for (var i = 0;
+                                            i < isSelected.length;
+                                            i++) {
+                                          isSelected[i] = i == index;
+                                          isKorean = index == 0;
+                                        }
+                                      });
+                                    },
+                                    isSelected: isSelected,
+                                  ),
                                 ),
                               ),
-                              SvgPicture.asset(
-                                'assets/icons/heart-ballon.svg',
-                                width: 30,
-                                height: 42,
-                              ),
-                              Container(height: 10)
-                            ],
-                          ),
-                        ))
+                            ]),
+                      ),
+                      // CosmeticsReviewFilterBar(
+                      //   showSorting: false,
+                      //   reviews: metaReviews.reviews,
+                      //   onFilterConfirm: (filResults) {
+                      //     setState(() {
+                      //       filteredReviews = filResults;
+                      //       showFiltered = true;
+                      //       print('filter :${filResults}\n');
+                      //     });
+                      //   },
+                      //   onReset: () {
+                      //     setState(() {
+                      //       // this.filteredResults = snapshot.data;
+                      //     });
+                      //   },
+                      //   onSkinTypeChanged: (skinTypeId) {
+                      //     setState(() {
+                      //       // this.skinTypeId = skinTypeId;
+                      //       // filteredReviews = filResults;
+                      //       // print('filter :${filResults}\n');
+                      //     });
+                      //   },
+                      // ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16.0),
+                        child: ReviewImages(widget.product),
+                      ),
+                      Scrollbar(
+                        child: Container(
+                          padding: EdgeInsets.only(left: 17, right: 17),
+                          child: ListView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              itemCount: showFiltered
+                                  ? filteredReviews.length
+                                  : reviews.length,
+                              itemBuilder: (context, i) => CosmeticsReviewCard(
+                                  context: context,
+                                  isKorean: isKorean,
+                                  showDivider:
+                                      reviews.length - 1 == i ? false : true,
+                                  review: showFiltered
+                                      ? filteredReviews[i]
+                                      : reviews[i])),
+                        ),
+                      ),
+                      SvgPicture.asset(
+                        'assets/icons/heart-ballon.svg',
+                        width: 30,
+                        height: 42,
+                      ),
+                      Container(height: 10)
+                    ],
+                  ),
+                )
             ])),
           ])),
     );

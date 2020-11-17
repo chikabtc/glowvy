@@ -1,20 +1,14 @@
+import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/popups.dart';
-import 'package:flutter/material.dart';
-
-import 'package:provider/provider.dart';
+import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
-
-import 'package:Dimodo/common/constants.dart';
-
-import 'package:Dimodo/generated/i18n.dart';
-import 'package:Dimodo/common/styles.dart';
-
-import 'package:Dimodo/common/colors.dart';
-
 import 'package:Dimodo/widgets/login_animation.dart';
-
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 class SignupScreen extends StatefulWidget {
   final bool fromCart;
@@ -27,18 +21,18 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen>
     with TickerProviderStateMixin {
   AnimationController _loginButtonController;
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String fullName, email, password;
   final TextEditingController _emailController = TextEditingController();
   bool isLoading = false;
   bool isChecked = false;
-  var parentContext;
+  BuildContext parentContext;
 
   @override
   void initState() {
     super.initState();
-    _loginButtonController = new AnimationController(
-        duration: new Duration(milliseconds: 3000), vsync: this);
+    _loginButtonController = AnimationController(
+        duration: Duration(milliseconds: 3000), vsync: this);
   }
 
   @override
@@ -49,17 +43,17 @@ class _SignupScreenState extends State<SignupScreen>
 
   void onSignupSuccess(User user) async {
     await _loginButtonController.reverse();
-    Navigator.of(context).pushReplacementNamed('/verify_email',
+    await Navigator.of(context).pushReplacementNamed('/verify_email',
         arguments: {'fullName': fullName});
   }
 
-  _registerWithEmail(fullName, email, password, context) async {
+  Future _registerWithEmail(fullName, email, password, context) async {
     try {
       _loginButtonController.forward();
-      if (!email.contains("@")) {
-        throw ('Please input valid email format');
+      if (!email.contains('@')) {
+        throw 'Please input valid email format';
       } else if (fullName == null || email == null || password == null) {
-        throw ('Please input fill in all fields');
+        throw 'Please input fill in all fields';
       } else {
         var user = await Provider.of<UserModel>(context, listen: false).signup(
           fullName: fullName,
@@ -69,19 +63,19 @@ class _SignupScreenState extends State<SignupScreen>
         onSignupSuccess(user);
       }
     } catch (e) {
-      _onSignupFailure(e, context);
+      await _onSignupFailure(e, context);
     }
   }
   //
 
-  _onSignupFailure(message, context) async {
+  Future _onSignupFailure(message, context) async {
     await _loginButtonController.reverse();
     Popups.failMessage(message, context);
   }
 
   @override
   Widget build(BuildContext context) {
-    TextStyle buttonTextStyle =
+    var buttonTextStyle =
         Theme.of(context).textTheme.button.copyWith(fontSize: 16);
     final screenSize = MediaQuery.of(context).size;
     parentContext = context;
@@ -104,7 +98,7 @@ class _SignupScreenState extends State<SignupScreen>
             child: Text(S.of(context).login,
                 style: buttonTextStyle.copyWith(fontWeight: FontWeight.bold)),
             onPressed: () {
-              Navigator.pushReplacementNamed(context, "/login");
+              Navigator.pushReplacementNamed(context, '/login');
             },
           )
         ],
@@ -159,7 +153,7 @@ class _SignupScreenState extends State<SignupScreen>
                               ),
                             ),
                           )),
-                      SizedBox(height: 12.0),
+                      const SizedBox(height: 12.0),
                       Container(
                           width: screenSize.width,
                           height: 48,
@@ -180,7 +174,7 @@ class _SignupScreenState extends State<SignupScreen>
                                   hintText: S.of(parentContext).enterYourEmail,
                                 )),
                           )),
-                      SizedBox(height: 12.0),
+                      const SizedBox(height: 12.0),
                       Container(
                           width: screenSize.width,
                           height: 48,
@@ -200,10 +194,10 @@ class _SignupScreenState extends State<SignupScreen>
                                   hintText: S.of(parentContext).password,
                                 )),
                           )),
-                      SizedBox(
+                      const SizedBox(
                         height: 16.0,
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Builder(
                         builder: (context) => StaggerAnimation(
                             btnColor: kPrimaryOrange,
@@ -214,7 +208,7 @@ class _SignupScreenState extends State<SignupScreen>
                                   fullName, email, password, context);
                             }),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 24.0,
                       ),
                     ],

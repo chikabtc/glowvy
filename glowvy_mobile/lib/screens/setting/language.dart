@@ -1,11 +1,9 @@
-import 'package:Dimodo/common/styles.dart';
-
 import 'package:Dimodo/common/colors.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/app.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Language extends StatefulWidget {
   @override

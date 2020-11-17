@@ -1,9 +1,7 @@
-import 'package:Dimodo/widgets/customWidgets.dart';
+import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:Dimodo/common/styles.dart';
-
-import 'package:Dimodo/common/colors.dart';
 import 'package:flutter_svg/svg.dart';
 
 class SkinScore extends StatelessWidget {
@@ -14,12 +12,12 @@ class SkinScore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("skin type: $skinType1 and score: $score");
+    print('skin type: $skinType1 and score: $score');
     return Padding(
       padding: EdgeInsets.only(bottom: 20),
       child: Container(
         child: Row(children: <Widget>[
-          Spacer(),
+          const Spacer(),
           Container(
             width: 70,
             child: Text(
@@ -33,7 +31,7 @@ class SkinScore extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -51,17 +49,17 @@ class SkinScore extends StatelessWidget {
                   ),
                   score <= 3.2
                       ? Positioned(
-                          child: SvgPicture.asset("assets/icons/red-smile.svg"))
+                          child: SvgPicture.asset('assets/icons/red-smile.svg'))
                       : Container()
                 ],
               ),
-              SizedBox(width: 1),
-              ScoreElement(score > 3.2 && score <= 6.4 ? true : false),
-              SizedBox(width: 1),
-              ScoreElement(score > 6.4 && score <= 9.6 ? true : false),
-              SizedBox(width: 1),
-              ScoreElement(score > 9.6 && score <= 12.8 ? true : false),
-              SizedBox(width: 1),
+              const SizedBox(width: 1),
+              ScoreElement(score > 3.2 && score <= 6.4),
+              const SizedBox(width: 1),
+              ScoreElement(score > 6.4 && score <= 9.6),
+              const SizedBox(width: 1),
+              ScoreElement(score > 9.6 && score <= 12.8),
+              const SizedBox(width: 1),
               Stack(
                 alignment: Alignment.center,
                 children: <Widget>[
@@ -75,14 +73,14 @@ class SkinScore extends StatelessWidget {
                               bottomRight: Radius.circular(20)))),
                   score > 12.8
                       ? Positioned(
-                          child: SvgPicture.asset("assets/icons/red-smile.svg"))
+                          child: SvgPicture.asset('assets/icons/red-smile.svg'))
                       : Container()
                 ],
               ),
-              SizedBox(width: 1),
+              const SizedBox(width: 1),
             ],
           ),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Container(
             width: 70,
             child: Text(
@@ -96,7 +94,7 @@ class SkinScore extends StatelessWidget {
               ),
             ),
           ),
-          Spacer(),
+          const Spacer(),
         ]),
       ),
     );
@@ -114,7 +112,7 @@ class ScoreElement extends StatelessWidget {
       children: <Widget>[
         Container(height: 10, width: 32, color: kLightYellow),
         showSmile
-            ? Positioned(child: SvgPicture.asset("assets/icons/red-smile.svg"))
+            ? Positioned(child: SvgPicture.asset('assets/icons/red-smile.svg'))
             : Container()
       ],
     );

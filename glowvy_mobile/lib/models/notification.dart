@@ -1,5 +1,6 @@
-import 'package:localstorage/localstorage.dart';
 import 'dart:convert' as convert;
+
+import 'package:localstorage/localstorage.dart';
 
 class DimodoNotification {
   String body;
@@ -13,7 +14,7 @@ class DimodoNotification {
       body = notification['body'];
       title = notification['title'];
       seen = false;
-      date = (new DateTime.now()).toString();
+      date = DateTime.now().toString();
       print(date);
     } catch (e) {
       print(e.toString());
@@ -27,7 +28,7 @@ class DimodoNotification {
       title = notification['title'];
       seen = false;
       int time = notification['google.sent_time'] ?? ['from'];
-      date = (new DateTime.fromMillisecondsSinceEpoch(time)).toString();
+      date = DateTime.fromMillisecondsSinceEpoch(time).toString();
       print(date);
     } catch (e) {
       print(e.toString());
@@ -51,19 +52,22 @@ class DimodoNotification {
     seen = false;
   }
 
-  Map<String, dynamic> toJson() => {'body': body, 'title': title, 'seen': seen, 'date': date,};
+  Map<String, dynamic> toJson() => {
+        'body': body,
+        'title': title,
+        'seen': seen,
+        'date': date,
+      };
 
   void updateSeen(int index) async {
-    final LocalStorage storage = new LocalStorage("Dimodo");
-    this.seen = true;
+    final storage = LocalStorage('Dimodo');
+    seen = true;
     try {
       final ready = await storage.ready;
       if (ready) {
         var list = storage.getItem('notifications');
-        if (list == null) {
-          list = [];
-        }
-        list[index] = convert.jsonEncode(this.toJson());
+        list ??= [];
+        list[index] = convert.jsonEncode(toJson());
         await storage.setItem('notifications', list);
       }
     } catch (err) {
@@ -72,23 +76,21 @@ class DimodoNotification {
   }
 
   void saveToLocal(String id) async {
-    final LocalStorage storage = new LocalStorage("Dimodo");
-    
+    final storage = LocalStorage('Dimodo');
+
     try {
       final ready = await storage.ready;
       if (ready) {
         var list = storage.getItem('notifications');
-        String old = storage.getItem('message-id').toString();
-        if(old.isNotEmpty && id != 'null') {
+        var old = storage.getItem('message-id').toString();
+        if (old.isNotEmpty && id != 'null') {
           if (old == id) return;
           await storage.setItem('message-id', id);
         } else {
           await storage.setItem('message-id', id);
         }
-        if (list == null) {
-          list = [];
-        }
-        list.insert(0, convert.jsonEncode(this.toJson()));
+        list ??= [];
+        list.insert(0, convert.jsonEncode(toJson()));
         await storage.setItem('notifications', list);
       }
     } catch (err) {

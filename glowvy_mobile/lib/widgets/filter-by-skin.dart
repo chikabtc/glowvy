@@ -1,15 +1,14 @@
-import 'package:Dimodo/common/styles.dart';
-
 import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/productModel.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
+import 'package:Dimodo/models/user/userModel.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:Dimodo/generated/i18n.dart';
 
 class FilterBySkin extends StatefulWidget {
   Function onFilterConfirm;
@@ -24,50 +23,53 @@ class FilterBySkin extends StatefulWidget {
 }
 
 class Sorting {
-  static String low = "low";
-  static String high = "high";
-  static String rank = "rank";
+  static String low = 'low';
+  static String high = 'high';
+  static String rank = 'rank';
 }
 
 class _FilterBySkinState extends State<FilterBySkin> {
   ProductModel productModel;
   bool showFilter = false;
-  var screenSize;
-  var heightFactor;
+  Size screenSize;
+  double heightFactor;
   var sorting = Sorting.rank;
 
   List<String> chosenOptions = [];
   AppModel appModel;
+  UserModel userModel;
   Map<String, dynamic> cosmeticsFilters;
   var isAscending = false;
   List<Product> products;
 
   @override
-  initState() {
+  void initState() {
     super.initState();
     productModel = Provider.of<ProductModel>(context, listen: false);
+    userModel = Provider.of<UserModel>(context, listen: false);
     appModel = Provider.of<AppModel>(context, listen: false);
-    var appConfig = appModel.appConfig;
-    cosmeticsFilters = appConfig["Cosmetics-Filters"] as Map<String, dynamic>;
+    final appConfig = appModel.appConfig;
+    cosmeticsFilters = appConfig['Cosmetics-Filters'] as Map<String, dynamic>;
   }
 
+  @override
   void dispose() {
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    // print("Received products: ${widget.products}");
+    // print('Received products: ${widget.products}');
     screenSize = MediaQuery.of(context).size;
     heightFactor = 0.5;
-    List<Widget> widgets = [];
+    var widgets = <Widget>[];
 
     cosmeticsFilters.forEach((key, values) {
       var options = Wrap(children: <Widget>[
         for (var value in values)
           GestureDetector(
             onTap: () => setState(() {
-              widget.skinTypeId = value["id"];
+              widget.skinTypeId = value['id'];
               widget.onFilterConfirm(
                   sortProducts(widget.products), sorting, widget.skinTypeId);
             }),
@@ -75,20 +77,20 @@ class _FilterBySkinState extends State<FilterBySkin> {
               height: 24,
               padding: EdgeInsets.only(left: 10, right: 10, top: 2, bottom: 4),
               decoration: BoxDecoration(
-                color: widget.skinTypeId == value["id"]
+                color: widget.skinTypeId == value['id']
                     ? kLightYellow
                     : Color(0xFFEEEEEE),
                 border: Border.all(
-                    color: widget.skinTypeId == value["id"]
+                    color: widget.skinTypeId == value['id']
                         ? kDarkYellow
                         : Colors.transparent),
                 borderRadius: BorderRadius.circular(10.0),
               ),
               child: Text(
-                value["name"],
+                value['name'],
                 style: kBaseTextStyle.copyWith(
                     fontSize: 14,
-                    color: widget.skinTypeId == value["id"]
+                    color: widget.skinTypeId == value['id']
                         ? kDarkYellow
                         : kSecondaryGrey,
                     fontWeight: FontWeight.w600),
@@ -110,7 +112,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          // SizedBox(height: 25),
+          // const SizedBox(height: 25),
           Container(
             height: 40,
             width: screenSize.width,
@@ -118,7 +120,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
               children: <Widget>[
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 10, top: 5, bottom: 5),
+                    padding: EdgeInsets.only(left: 10, top: 5, bottom: 5),
                     child: ListView(
                         scrollDirection: Axis.horizontal, children: widgets),
                   ),
@@ -126,7 +128,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
               ],
             ),
           ),
-          SizedBox(height: 5)
+          const SizedBox(height: 5)
         ],
       ),
     );
@@ -135,19 +137,20 @@ class _FilterBySkinState extends State<FilterBySkin> {
   // filterProduct() {
   //   var filteredProducts = productModel.filterBySkinType(widget.products);
   //   return filteredProducts;
-  // }
+  // }voi
 
-  sortProducts(filteredProducts) {
-    var products;
+  List<Product> sortProducts(filteredProducts) {
+    List<Product> products;
     switch (sorting) {
-      case "high":
+      case 'high':
         products = productModel.sortByPrice(filteredProducts, false);
         break;
 
-      case "rank":
-        products = productModel.sortBySkinType(filteredProducts);
+      case 'rank':
+        products =
+            productModel.sortBySkinType(userModel.user, filteredProducts);
         break;
-      case "low":
+      case 'low':
         products = productModel.sortByPrice(filteredProducts, true);
         break;
       default:
@@ -155,7 +158,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
     return products;
   }
 
-  showCosmeticsSortingOptions() {
+  void showCosmeticsSortingOptions() {
     showModalBottomSheet(
         isScrollControlled: true,
         backgroundColor: Colors.transparent,
@@ -206,7 +209,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                               AppBar().preferredSize.height -
                               100,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 16.0),
+                            padding: EdgeInsets.only(left: 16.0),
                             child: ListView(
                               shrinkWrap: true,
                               children: <Widget>[
@@ -223,8 +226,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                                   60.0 + MediaQuery.of(context).padding.bottom,
                               color: Colors.white,
                               child: Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 9.0, bottom: 10),
+                                padding: EdgeInsets.only(top: 9.0, bottom: 10),
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -235,7 +237,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                                         height: 40,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                new BorderRadius.circular(25.0),
+                                                BorderRadius.circular(25.0),
                                             side: BorderSide(
                                                 color: kDarkYellow,
                                                 width: 1.5)),
@@ -251,7 +253,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                                           });
                                           Navigator.pop(context);
                                         }),
-                                    SizedBox(width: 16),
+                                    const SizedBox(width: 16),
                                     MaterialButton(
                                         elevation: 0,
                                         color: kDarkYellow,
@@ -259,7 +261,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                                         height: 40,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                new BorderRadius.circular(25.0),
+                                                BorderRadius.circular(25.0),
                                             side: BorderSide(
                                                 color: kDarkYellow,
                                                 width: 1.5)),
@@ -287,7 +289,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
         });
   }
 
-  showCosmeticsFilter() {
+  void showCosmeticsFilter() {
     showModalBottomSheet(
         isScrollControlled: true,
         backgroundColor: Colors.transparent,
@@ -338,7 +340,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                               AppBar().preferredSize.height -
                               100,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 16.0),
+                            padding: EdgeInsets.only(left: 16.0),
                             child: ListView(
                               shrinkWrap: true,
                               children: <Widget>[
@@ -355,8 +357,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                                   60.0 + MediaQuery.of(context).padding.bottom,
                               color: Colors.white,
                               child: Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 9.0, bottom: 10),
+                                padding: EdgeInsets.only(top: 9.0, bottom: 10),
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -367,7 +368,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                                         height: 40,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                new BorderRadius.circular(25.0),
+                                                BorderRadius.circular(25.0),
                                             side: BorderSide(
                                                 color: kDarkYellow,
                                                 width: 1.5)),
@@ -383,7 +384,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                                           });
                                           Navigator.pop(context);
                                         }),
-                                    SizedBox(width: 16),
+                                    const SizedBox(width: 16),
                                     MaterialButton(
                                         elevation: 0,
                                         color: kDarkYellow,
@@ -391,7 +392,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
                                         height: 40,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                new BorderRadius.circular(25.0),
+                                                BorderRadius.circular(25.0),
                                             side: BorderSide(
                                                 color: kDarkYellow,
                                                 width: 1.5)),
@@ -421,18 +422,18 @@ class _FilterBySkinState extends State<FilterBySkin> {
         });
   }
 
-  showCompoundOptions(StateSetter setState) {
-    List<Widget> widgets = [];
+  Widget showCompoundOptions(StateSetter setState) {
+    var widgets = <Widget>[];
     // enumerate the two compound options
 
     cosmeticsFilters.forEach((key, values) {
-      // print("Key: ${key}, value["name"]s : ${value["name"]s}");
+      // print('Key: ${key}, value['name']s : ${value['name']s}');
       var header = Text(
         key,
         style: kBaseTextStyle.copyWith(
             fontSize: 13, fontWeight: FontWeight.w600, color: kSecondaryGrey),
       );
-      // print("values :${values[0]}");
+      // print('values :${values[0]}');
 
       var options = Wrap(children: <Widget>[
         for (var value in values)
@@ -440,7 +441,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
             child: ActionChip(
               shape: RoundedRectangleBorder(
                 side: BorderSide(
-                  color: widget.skinTypeId == value["id"]
+                  color: widget.skinTypeId == value['id']
                       ? kDarkYellow
                       : kSecondaryWhite,
                 ),
@@ -449,15 +450,15 @@ class _FilterBySkinState extends State<FilterBySkin> {
               elevation: 0,
               onPressed: () {
                 setState(() {
-                  widget.skinTypeId = value["id"];
+                  widget.skinTypeId = value['id'];
                 });
               },
               backgroundColor: kSecondaryWhite,
               label: Text(
-                value["name"],
+                value['name'],
                 style: kBaseTextStyle.copyWith(
                     fontSize: 15,
-                    color: widget.skinTypeId == value["id"]
+                    color: widget.skinTypeId == value['id']
                         ? kDarkYellow
                         : kSecondaryGrey,
                     fontWeight: FontWeight.w600),
@@ -485,18 +486,18 @@ class _FilterBySkinState extends State<FilterBySkin> {
     );
   }
 
-  renderSortingOptions(StateSetter setState) {
-    List<Widget> widgets = [];
+  Widget renderSortingOptions(StateSetter setState) {
+    var widgets = <Widget>[];
     // enumerate the two compound options
 
     cosmeticsFilters.forEach((key, values) {
-      // print("Key: ${key}, value["name"]s : ${value["name"]s}");
+      // print('Key: ${key}, value['name']s : ${value['name']s}');
       var header = Text(
         key,
         style: kBaseTextStyle.copyWith(
             fontSize: 13, fontWeight: FontWeight.w600, color: kSecondaryGrey),
       );
-      // print("values :${values[0]}");
+      // print('values :${values[0]}');
 
       var options = Wrap(children: <Widget>[
         for (var value in values)
@@ -504,7 +505,7 @@ class _FilterBySkinState extends State<FilterBySkin> {
             child: ActionChip(
               shape: RoundedRectangleBorder(
                 side: BorderSide(
-                  color: widget.skinTypeId == value["id"]
+                  color: widget.skinTypeId == value['id']
                       ? kDarkYellow
                       : kSecondaryWhite,
                 ),
@@ -513,15 +514,15 @@ class _FilterBySkinState extends State<FilterBySkin> {
               elevation: 0,
               onPressed: () {
                 setState(() {
-                  widget.skinTypeId = value["id"];
+                  widget.skinTypeId = value['id'];
                 });
               },
               backgroundColor: kSecondaryWhite,
               label: Text(
-                value["name"],
+                value['name'],
                 style: kBaseTextStyle.copyWith(
                     fontSize: 15,
-                    color: widget.skinTypeId == value["id"]
+                    color: widget.skinTypeId == value['id']
                         ? kDarkYellow
                         : kSecondaryGrey,
                     fontWeight: FontWeight.w600),

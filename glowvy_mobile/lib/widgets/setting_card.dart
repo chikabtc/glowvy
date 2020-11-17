@@ -1,17 +1,14 @@
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:flutter/material.dart';
 
-import 'package:Dimodo/common/colors.dart';
-
-import 'package:Dimodo/common/styles.dart';
-
 class SettingCard extends StatelessWidget {
   final String title;
   final Function onTap;
-  final trailingWidget;
+  final Widget trailingWidget;
   final Color color;
-  final fontColor;
+  final Color fontColor;
   final String trailingText;
 
   SettingCard(
@@ -38,14 +35,14 @@ class SettingCard extends StatelessWidget {
                 title,
                 style: textTheme.headline5,
               ),
-              Spacer(),
+              const Spacer(),
               if (trailingText != null)
                 Text(trailingText,
                     style: textTheme.bodyText2.copyWith(color: kDarkSecondary)),
               if (trailingWidget != null) trailingWidget,
               arrowForward,
             ]),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             kFullDivider
           ])),
     );

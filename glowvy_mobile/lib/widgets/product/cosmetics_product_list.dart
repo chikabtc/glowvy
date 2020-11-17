@@ -1,21 +1,16 @@
-import 'package:Dimodo/common/styles.dart';
-
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/product/productModel.dart';
-import 'package:Dimodo/screens/request_cosmetics_screen.dart';
-import 'package:Dimodo/screens/setting/login.dart';
 import 'package:Dimodo/widgets/cosmetics_request_button.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/widgets/product/cosmetics_product_card.dart';
 import 'package:Dimodo/widgets/product/cosmetics_review_thumb_card.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
+
 import '../../common/constants.dart';
 import '../../models/product/product.dart';
-import 'package:flutter/cupertino.dart';
 
 class CosmeticsProductList extends StatefulWidget {
   final List<Product> products;
@@ -35,7 +30,7 @@ class CosmeticsProductList extends StatefulWidget {
     this.disableScrolling = false,
     this.showRank = false,
     this.isFromReviewSearch = false,
-    this.layout = "list",
+    this.layout = 'list',
     this.onProductSelect,
   });
 
@@ -51,23 +46,25 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
   bool isEnd = false;
   int offset = 0;
   int limit = 80;
+  @override
   bool get wantKeepAlive => true;
   ProductModel productModel;
   var currentIndex = 0;
 
   @override
-  initState() {
+  void initState() {
     super.initState();
     _products = widget.products;
     productModel = Provider.of<ProductModel>(context, listen: false);
   }
 
+  @override
   void dispose() {
     super.dispose();
   }
 
   @override
-  didUpdateWidget(Widget oldWidget) {
+  void didUpdateWidget(Widget oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (_products != widget.products) {
       setState(() {
@@ -76,7 +73,7 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
     }
   }
 
-  _loadData() async {
+  Future _loadData() async {
     offset += limit;
     await widget.onLoadMore(offset, limit);
     isEnd = productModel.isEnd;
@@ -90,23 +87,25 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
 
   @override
   Widget build(BuildContext context) {
-    // print("widgetproducts: ${widget.products[0].sname}");
+    // print('widgetproducts: ${widget.products[0].sname}');
     final screenSize = MediaQuery.of(context).size;
-    final widthContent = (screenSize.width);
+    final widthContent = screenSize.width;
 
     return _products == null
         ? Container(
             width: screenSize.width,
             height: 350,
-            child: CupertinoActivityIndicator(animating: true),
-          )
-        : _products.length == 0
+            child: Container(
+                height: kScreenSizeHeight * 0.5,
+                child: const SpinKitThreeBounce(
+                    color: kPrimaryOrange, size: 21.0)))
+        : _products.isEmpty
             ? Column(
                 children: [
                   Container(height: 41),
                   Center(
                     child: Text(
-                      "không tìm thấy sản phẩm",
+                      'không tìm thấy sản phẩm',
                       style: textTheme.bodyText2.copyWith(color: kTertiaryGray),
                     ),
                   ),
@@ -127,42 +126,58 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
                 },
                 child: Scrollbar(
                   child: ListView(
-                    padding: EdgeInsets.all(0),
+                    padding: const EdgeInsets.all(0),
                     shrinkWrap: true,
-                    physics: ScrollPhysics(),
+                    physics: const ScrollPhysics(),
                     children: <Widget>[
                       Scrollbar(
                         controller: _scrollController,
                         child: ListView.builder(
                             addAutomaticKeepAlives: true,
-                            padding: EdgeInsets.all(0.0),
+                            padding: const EdgeInsets.all(0.0),
                             physics: widget.disableScrolling
-                                ? NeverScrollableScrollPhysics()
-                                : ClampingScrollPhysics(),
+                                ? const NeverScrollableScrollPhysics()
+                                : const ClampingScrollPhysics(),
                             shrinkWrap: true,
                             itemCount: _products.length,
                             itemBuilder: (BuildContext context, int index) {
                               currentIndex = index;
-                              return Column(
-                                children: <Widget>[
-                                  !widget.isFromReviewSearch
-                                      ? CosmeticsProductCard(
-                                          ranking:
-                                              widget.showRank ? index : null,
-                                          isNameAvailable:
-                                              widget.isNameAvailable,
-                                          showDivider:
-                                              index != _products.length - 1,
-                                          product: _products[index],
-                                          width: widthContent)
-                                      : CosmeticsReviewThumbCard(
-                                          ranking:
-                                              widget.showRank ? index : null,
-                                          showDivider:
-                                              index != _products.length - 1,
-                                          product: _products[index])
-                                ],
-                              );
+                              return _products.isEmpty
+                                  ? Column(
+                                      children: [
+                                        Container(height: 41),
+                                        Center(
+                                          child: Text(
+                                            'không tìm thấy sản phẩm',
+                                            style: textTheme.bodyText2
+                                                .copyWith(color: kTertiaryGray),
+                                          ),
+                                        ),
+                                        CosmeticsRequestBtn(),
+                                      ],
+                                    )
+                                  : Column(
+                                      children: <Widget>[
+                                        !widget.isFromReviewSearch
+                                            ? CosmeticsProductCard(
+                                                ranking: widget.showRank
+                                                    ? index
+                                                    : null,
+                                                isNameAvailable:
+                                                    widget.isNameAvailable,
+                                                showDivider: index !=
+                                                    _products.length - 1,
+                                                product: _products[index],
+                                              )
+                                            : CosmeticsReviewThumbCard(
+                                                ranking: widget.showRank
+                                                    ? index
+                                                    : null,
+                                                showDivider: index !=
+                                                    _products.length - 1,
+                                                product: _products[index])
+                                      ],
+                                    );
                             }),
                       ),
                       isLoading

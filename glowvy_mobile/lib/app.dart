@@ -1,49 +1,37 @@
 import 'dart:async';
 import 'dart:ui';
-import 'package:Dimodo/models/address/address.dart';
-import 'package:Dimodo/screens/cart.dart';
+
 import 'package:Dimodo/screens/category.dart';
-import 'package:Dimodo/screens/categories/sub_category.dart';
-import 'package:Dimodo/screens/checkout/orderSubmitted.dart';
 import 'package:Dimodo/screens/glowvy-onboard.dart';
-import 'package:Dimodo/screens/orders.dart';
 import 'package:Dimodo/screens/search_screen.dart';
-import 'package:Dimodo/screens/setting/add_shipping_address.dart';
 import 'package:Dimodo/screens/setting/reset_password.dart';
-import 'package:Dimodo/screens/setting/manage_address.dart';
 import 'package:Dimodo/screens/setting/verify_email.dart';
 import 'package:after_layout/after_layout.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
-import 'package:localstorage/localstorage.dart';
-import 'screens/staticLaunchScreen.dart';
-import 'package:flare_splash_screen/flare_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 import 'common/config.dart';
-import 'common/constants.dart';
 import 'common/styles.dart';
-import 'common/tools.dart';
 import 'generated/i18n.dart';
-import 'models/app.dart';
-import 'models/order/cart.dart';
-import 'models/categoryModel.dart';
-import 'models/order/orderModel.dart';
 import 'models/address/addressModel.dart';
+import 'models/app.dart';
+import 'models/categoryModel.dart';
+import 'models/order/cart.dart';
+import 'models/order/orderModel.dart';
 import 'models/product/productModel.dart';
 import 'models/product/recent_product.dart';
 import 'models/user/userModel.dart';
 import 'models/wishlist.dart';
 import 'screens//setting/login.dart';
-import 'screens/onboard_screen.dart';
-import 'screens/setting/signup.dart';
-import 'services/index.dart';
-import 'tabbar.dart';
-import 'package:Dimodo/screens/setting/forgot_password.dart';
 import 'screens/profile.dart';
-import 'package:flutter/services.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
+import 'screens/setting/signup.dart';
+import 'tabbar.dart';
 
 class Glowvy extends StatefulWidget {
   @override
@@ -53,10 +41,10 @@ class Glowvy extends StatefulWidget {
 class _AppState extends State<Glowvy> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
             statusBarBrightness: Brightness.light) // Or Brightness.dark
         );
-    FirebaseAnalytics analytics = FirebaseAnalytics();
+    final analytics = FirebaseAnalytics();
 
     return MaterialApp(
         title: 'Glowvy',
@@ -82,6 +70,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
   final _product = ProductModel();
   final _wishlist = WishListModel();
   final _order = OrderModel();
+  final _category = CategoryModel();
   final _recent = RecentModel();
   bool isFirstSeen = false;
   bool isChecking = true;
@@ -90,9 +79,9 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
 
   @override
   void afterFirstLayout(BuildContext context) async {
-    Services().setAppConfig(serverConfig);
-    _app.loadAppConfig();
-    await _addressModel.getProvincess();
+    await _app.loadAppConfig();
+    await _addressModel.setProvinces();
+    await _category.setLocalCategories();
     isFirstSeen = await checkFirstSeen();
     isLoggedIn = await checkLogin();
     setState(() {
@@ -101,23 +90,23 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
   }
 
   Future checkFirstSeen() async {
-    final LocalStorage storage = new LocalStorage('Dimodo');
+    final storage = LocalStorage('Dimodo');
     final ready = await storage.ready;
 
-    bool _seen = storage.getItem('seen') ?? false;
+    final _seen = storage.getItem('seen') ?? false;
     print('isSeen?: ${storage.getItem('seen')}?');
 
-    if (_seen)
+    if (_seen) {
       return false;
-    else {
-      storage.setItem('seen', true);
+    } else {
+      await storage.setItem('seen', true);
 
       return true;
     }
   }
 
   Future checkLogin() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final prefs = await SharedPreferences.getInstance();
     return prefs.getBool('loggedIn') ?? false;
   }
 
@@ -131,7 +120,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
 
   @override
   Widget build(BuildContext context) {
-    final MediaQueryData data = MediaQuery.of(context);
+    final data = MediaQuery.of(context);
 
     print('building app.dart');
     if (isChecking) {
@@ -161,18 +150,18 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
               ChangeNotifierProvider(create: (_) => _addressModel),
               ChangeNotifierProvider(create: (_) => _userModel),
               ChangeNotifierProvider(create: (_) => CartModel()),
-              ChangeNotifierProvider(create: (_) => CategoryModel()),
+              ChangeNotifierProvider(create: (_) => _category),
             ],
             child: GestureDetector(
               onTap: () {
-                FocusScopeNode currentFocus = FocusScope.of(context);
+                final currentFocus = FocusScope.of(context);
                 if (!currentFocus.hasPrimaryFocus) {
                   currentFocus.unfocus();
                 }
               },
               child: MaterialApp(
                 debugShowCheckedModeBanner: false,
-                locale: new Locale(
+                locale: Locale(
                     Provider.of<AppModel>(context, listen: false).locale, ''),
                 navigatorObservers: [
                   FirebaseAnalyticsObserver(analytics: analytics),
@@ -189,33 +178,32 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
                 onGenerateRoute: (settings) {
                   final arguments = settings.arguments;
                   switch (settings.name) {
-                    case '/add_address':
-                      if (arguments is Address) {
-                        print('bullshit2');
+                    // case '/add_address':
+                    //   if (arguments is Address) {
+                    //     print('bullshit2');
 
-                        // the details page for one specific user
-                        return MaterialPageRoute<bool>(
-                            builder: (BuildContext context) =>
-                                AddShippingAddress(
-                                  address: arguments,
-                                ));
-                      } else {
-                        // a route showing the list of all users
-                        return MaterialPageRoute<bool>(
-                            builder: (BuildContext context) =>
-                                AddShippingAddress());
-                      }
-                      break;
-                    case '/manage_address':
-                      if (arguments is bool) {
-                        print('bullshit');
-                        return MaterialPageRoute<bool>(
-                            builder: (BuildContext context) =>
-                                ManageShippingScreen(
-                                  isFromOrderScreen: arguments,
-                                ));
-                      }
-                      break;
+                    //     // the details page for one specific user
+                    //     return MaterialPageRoute<bool>(
+                    //         builder: (BuildContext context) =>
+                    //             AddShippingAddress(
+                    //               address: arguments,
+                    //             ));
+                    //   } else {
+                    //     // a route showing the list of all users
+                    //     return MaterialPageRoute<bool>(
+                    //         builder: (BuildContext context) =>
+                    //             AddShippingAddress());
+                    //   }
+                    //   break;
+                    // case '/manage_address':
+                    //   if (arguments is bool) {
+                    //     print('bullshit');
+                    //     return MaterialPageRoute<bool>(
+                    //         builder: (BuildContext context) =>
+                    //             ManageShippingScreen(
+                    //               isFromOrderScreen: arguments,
+                    //             ));
+                    //   }
 
                     default:
                       return null;
@@ -225,14 +213,9 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
                   '/home': (context) => MainTabs(),
                   '/search_screen': (context) => SearchScreen(),
                   '/login': (context) => LoginScreen(),
-                  '/register': (context) => SignupScreen(),
-                  '/cart': (context) => CartScreen(),
-                  '/orders': (context) => OrdersScreen(),
-                  '/order_submitted': (context) => OrderSubmitted(),
-                  '/manage_address': (context) => ManageShippingScreen(),
+                  '/signup': (context) => SignupScreen(),
                   '/setting': (context) => ProfilePage(),
                   '/category': (context) => CategoryScreen(),
-                  // '/sub_category': (context) => SubCategoryScreen(),
                   '/verify_email': (context) => VerifyEmailScreen(),
                   '/reset_password': (context) => ResetPasswordScreen(),
                 },

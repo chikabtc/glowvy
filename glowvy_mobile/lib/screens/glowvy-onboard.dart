@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../common/constants.dart';
-import '../common/config.dart' as config;
-import '../common/styles.dart';
-import '../common/colors.dart';
 
+import '../common/colors.dart';
+import '../common/config.dart' as config;
+import '../common/constants.dart';
 import '../common/sizeConfig.dart';
 
 class GlowvyOnBoardScreen extends StatefulWidget {
@@ -15,10 +14,9 @@ class GlowvyOnBoardScreen extends StatefulWidget {
 class _GlowvyOnBoardScreenState extends State<GlowvyOnBoardScreen> {
   List<Widget> pages = [];
   final isRequiredLogin = config.kAdvanceConfig['IsRequiredLogin'];
-  PageController _pageController = PageController(
+  final PageController _pageController = PageController(
     initialPage: 0,
   );
-  var onboardingData;
 
   @override
   void dispose() {
@@ -38,26 +36,26 @@ class _GlowvyOnBoardScreenState extends State<GlowvyOnBoardScreen> {
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SvgPicture.asset("assets/icons/onborading-illustration-1.svg"),
-                SizedBox(height: 50),
+                SvgPicture.asset('assets/icons/onborading-illustration-1.svg'),
+                const SizedBox(height: 50),
                 Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 39.0),
-                    child: Text("Tỏa sáng làn da", style: textTheme.headline1)),
+                    padding: EdgeInsets.symmetric(horizontal: 39.0),
+                    child: Text('Tỏa sáng làn da', style: textTheme.headline1)),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Text("Đề xuất cho bạn những mỹ phẩm phù hợp",
+                  padding: EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Text('Đề xuất cho bạn những mỹ phẩm phù hợp',
                       style: textTheme.headline5.copyWith(
                           fontSize: 15,
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.w600)),
                 ),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 GestureDetector(
-                  onTap: () => Navigator.pushReplacementNamed(context, "/home"),
+                  onTap: () => Navigator.pushReplacementNamed(context, '/home'),
                   child: Container(
                       height: 34,
                       width: 150,
-                      padding: const EdgeInsets.only(
+                      padding: EdgeInsets.only(
                         left: 20,
                         right: 20,
                       ),
@@ -66,7 +64,7 @@ class _GlowvyOnBoardScreenState extends State<GlowvyOnBoardScreen> {
                         border: Border.all(color: kPrimaryOrange),
                       ),
                       alignment: Alignment.center,
-                      child: Text("Khám phá thêm",
+                      child: Text('Khám phá thêm',
                           style: textTheme.headline5.copyWith(
                             color: kPrimaryOrange,
                           ))),
@@ -86,8 +84,8 @@ class _GlowvyOnBoardScreenState extends State<GlowvyOnBoardScreen> {
                 //           width: 1,
                 //           style: BorderStyle.solid),
                 //       borderRadius: BorderRadius.circular(17)),
-                //   onPressed: () => Navigator.pushNamed(context, "/home"),
-                //   child: Text("Explore Now",
+                //   onPressed: () => Navigator.pushNamed(context, '/home'),
+                //   child: Text('Explore Now',
                 //       style: kBaseTextStyle.copyWith(
                 //           fontSize: 15,
                 //           color: kPrimaryOrange,

@@ -1,44 +1,18 @@
 import 'package:Dimodo/models/ingredient.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'dart:math';
-import '../../common/constants.dart';
-import '../../widgets/image_galery.dart';
-import '../../common/styles.dart';
 
 import '../../common/colors.dart';
-
-import '../../models/review.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
+import '../../widgets/image_galery.dart';
 
 class IngredientCard extends StatelessWidget {
-  IngredientCard({this.ingredient, this.showDivider = true});
+  const IngredientCard({this.ingredient, this.showDivider = true});
 
   final Ingredient ingredient;
-  final showDivider;
-  String safetyIcon = "assets/icons/green_shield.svg";
+  final bool showDivider;
+  final String safetyIcon = 'assets/icons/green_shield.svg';
 
-  List<Widget> renderImgs(context, Review review) {
-    var imgButtons = <Widget>[];
-
-    review.images?.forEach((element) {
-      var imgBtn = ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(8)),
-          child: IconButton(
-              iconSize: 150,
-              icon: Image.network(
-                element,
-                fit: BoxFit.fill,
-              ),
-              onPressed: () => _onShowGallery(context, review.images)));
-
-      imgButtons.add(imgBtn);
-    });
-    return imgButtons;
-    //on the external display, the lag is unusable..
-  }
-
-  _onShowGallery(context, images, [index = 0]) {
+  void _onShowGallery(context, images, [index = 0]) {
     showDialog<void>(
         context: context,
         builder: (BuildContext context) {
@@ -46,22 +20,22 @@ class IngredientCard extends StatelessWidget {
         });
   }
 
-  getHazardIcon() {
+  String getHazardIcon() {
     switch (ingredient.hazardScore) {
       case 0:
-        return "grey_shield.svg";
+        return 'grey_shield.svg';
         break;
       case 1:
-        return "green-shield.svg";
+        return 'green-shield.svg';
         break;
       case 2:
-        return "orange_shield.svg";
+        return 'orange_shield.svg';
         break;
       case 3:
-        return "red_shield.svg";
+        return 'red_shield.svg';
         break;
       default:
-        return "grey_shield.svg";
+        return 'grey_shield.svg';
     }
   }
 
@@ -79,29 +53,29 @@ class IngredientCard extends StatelessWidget {
             // height: 57,
             child: Column(
               children: <Widget>[
-                SvgPicture.asset("assets/icons/${getHazardIcon()}"),
-                SizedBox(height: 14),
+                SvgPicture.asset('assets/icons/${getHazardIcon()}'),
+                const SizedBox(height: 14),
               ],
             ),
           ),
-          SizedBox(width: 20),
+          const SizedBox(width: 20),
           Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 14),
+                const SizedBox(height: 14),
                 Text(ingredient.nameEn,
                     style:
                         TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
-                SizedBox(height: 3),
-                if (ingredient.purposes[0] != null)
-                  Text(ingredient.purposes.join(','),
+                const SizedBox(height: 3),
+                if (ingredient.purposeVi != null)
+                  Text(ingredient.purposeVi,
                       style: TextStyle(
                           color: kSecondaryGrey,
                           fontSize: 12,
                           fontWeight: FontWeight.w500)),
-                SizedBox(height: 14),
+                const SizedBox(height: 14),
                 if (showDivider) Divider(color: Colors.black.withOpacity(0.1)),
               ],
             ),

@@ -191,6 +191,12 @@
       "name": "Fashion"
     }
   ],
+  "Skin_types": [
+
+  ],
+  "Skin_issues": [
+
+  ],
 
   "Cosmetics_categories": [{
       "first_category_name": "làm sạch",
@@ -284,7 +290,7 @@
         ],
         "dont": [
           "Sử dụng sản phẩm chứa isopropyl myristate, cồn và hương liệu",
-          "Sử dụng sản phẩm 'cho da nhạy cảm'",
+          "Sử dụng sản phẩm cho da nhạy cảm",
           "Phơi nắng quá lâu",
           "Rửa mặt quá 5 phút",
           "Đi ngủ mà không tẩy trang",

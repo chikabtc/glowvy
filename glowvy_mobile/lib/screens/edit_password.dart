@@ -1,19 +1,11 @@
+import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/common/widgets.dart';
-import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
-
-import 'package:Dimodo/widgets/setting_card.dart';
-
 import 'package:flutter/material.dart';
-import 'package:Dimodo/common/constants.dart';
-import 'package:notification_permissions/notification_permissions.dart';
-
-import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/generated/i18n.dart';
-import 'package:Dimodo/models/user/user.dart';
-
 import 'package:provider/provider.dart';
 
 class EditPasswordPage extends StatefulWidget {
@@ -36,8 +28,8 @@ class EditPasswordPageState extends State<EditPasswordPage>
   void initState() {
     super.initState();
     userModel = Provider.of<UserModel>(context, listen: false);
-    _doneButtonController = new AnimationController(
-        duration: new Duration(milliseconds: 3000), vsync: this);
+    _doneButtonController = AnimationController(
+        duration: Duration(milliseconds: 3000), vsync: this);
   }
 
   @override
@@ -46,26 +38,26 @@ class EditPasswordPageState extends State<EditPasswordPage>
     super.dispose();
   }
 
-  validateInput() {
+  void validateInput() {
     if (currentPassword == null ||
         newPassword == null ||
         doubleCheckPw == null) {
-      throw ('Please provide passwords');
+      throw 'Please provide passwords';
     } else if (currentPassword == newPassword) {
-      throw ('Please provide new password.');
+      throw 'Please provide new password.';
     } else if (newPassword != doubleCheckPw) {
-      throw ('The new password does not equal');
+      throw 'The new password does not equal';
     }
   }
 
-  _updateUserName(context) async {
+  Future _updateUserName(context) async {
     try {
       validateInput();
       await userModel.updatePassword(newPassword);
       await _doneButtonController.reverse();
       Navigator.pop(context);
     } catch (e) {
-      print("_updateUserName error: $e");
+      print('_updateUserName error: $e');
       await _doneButtonController.reverse();
       Popups.failMessage(e, context);
     }
@@ -79,14 +71,14 @@ class EditPasswordPageState extends State<EditPasswordPage>
           elevation: 0,
           actions: [
             Padding(
-              padding: const EdgeInsets.only(right: 16.0),
+              padding: EdgeInsets.only(right: 16.0),
               child: Center(
                 child: Builder(
                   builder: (context) => StaggerAnimation(
                     btnColor: kPrimaryOrange,
                     width: 65,
                     height: 34,
-                    buttonTitle: "Done",
+                    buttonTitle: 'Done',
                     buttonController: _doneButtonController.view,
                     onTap: () async {
                       _doneButtonController.forward();

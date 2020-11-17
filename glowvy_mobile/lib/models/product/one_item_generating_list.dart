@@ -1,9 +1,6 @@
-import 'package:Dimodo/common/styles.dart';
-
 import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/common/colors.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class GeneratingOneRowList extends StatefulWidget {
   @override
@@ -14,7 +11,7 @@ class _GeneratingOneRowListState extends State<GeneratingOneRowList> {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    final widthContent = (screenSize.width / 3);
+    final widthContent = screenSize.width / 3;
 
     return Container(
       color: Colors.white,
@@ -23,11 +20,11 @@ class _GeneratingOneRowListState extends State<GeneratingOneRowList> {
         shrinkWrap: true,
         physics: ScrollPhysics(),
         children: <Widget>[
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
           ListView.separated(
               separatorBuilder: (context, index) => Container(height: 10),
               addAutomaticKeepAlives: true,
-              padding: const EdgeInsets.all(0.0),
+              padding: EdgeInsets.all(0.0),
               shrinkWrap: true,
               itemCount: 4,
               physics: ClampingScrollPhysics(),
@@ -46,9 +43,9 @@ class _GeneratingOneRowListState extends State<GeneratingOneRowList> {
                           color: kLightPink,
                         ),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Padding(
-                        padding: const EdgeInsets.only(left: 7.0, right: 7),
+                        padding: EdgeInsets.only(left: 7.0, right: 7),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
@@ -63,8 +60,8 @@ class _GeneratingOneRowListState extends State<GeneratingOneRowList> {
                                 color: kLightPink,
                               ),
                             ),
-                            Spacer(),
-                            SizedBox(height: 8),
+                            const Spacer(),
+                            const SizedBox(height: 8),
                             ClipRRect(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(6)),
@@ -74,7 +71,7 @@ class _GeneratingOneRowListState extends State<GeneratingOneRowList> {
                                 height: 23,
                               ),
                             ),
-                            SizedBox(height: 8),
+                            const SizedBox(height: 8),
                             ClipRRect(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(6)),

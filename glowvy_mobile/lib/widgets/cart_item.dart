@@ -1,16 +1,11 @@
 import 'package:Dimodo/models/order/cartItem.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
+import '../common/colors.dart';
 import '../common/constants.dart';
 import '../common/styles.dart';
-import '../common/colors.dart';
-
 import '../common/tools.dart';
-import '../models/product/product.dart';
-import '../models/app.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
 
 class CartItemRow extends StatefulWidget {
   CartItemRow(
@@ -75,7 +70,7 @@ class _CartItemRowState extends State<CartItemRow> {
                             // child: Tools.image(url: imageFeature)
                           )),
                     ]),
-                    SizedBox(width: 7.0),
+                    const SizedBox(width: 7.0),
                     Expanded(
                       child: Container(
                         child: Column(
@@ -83,8 +78,7 @@ class _CartItemRowState extends State<CartItemRow> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 26.0, bottom: 5),
+                              padding: EdgeInsets.only(right: 26.0, bottom: 5),
                               child: Text(widget.cartItem.product.name,
                                   style: kBaseTextStyle.copyWith(
                                       fontSize: 13,
@@ -93,7 +87,7 @@ class _CartItemRowState extends State<CartItemRow> {
                             Wrap(
                               children: <Widget>[
                                 Padding(
-                                  padding: const EdgeInsets.only(right: 36.0),
+                                  padding: EdgeInsets.only(right: 36.0),
                                   child: Container(
                                     padding: EdgeInsets.only(
                                         bottom: 2, top: 2, left: 5, right: 5),
@@ -103,7 +97,7 @@ class _CartItemRowState extends State<CartItemRow> {
                                           Radius.circular(6),
                                         )),
                                     child: Text(
-                                      "${widget.cartItem.option}",
+                                      '${widget.cartItem.option}',
                                       // maxLines: 0,
                                       style: kBaseTextStyle.copyWith(
                                           fontSize: 12,
@@ -114,7 +108,7 @@ class _CartItemRowState extends State<CartItemRow> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 3),
+                            const SizedBox(height: 3),
                             if (widget.cartItem.product.salePercent != null)
                               Opacity(
                                 opacity: 0.5,
@@ -126,7 +120,7 @@ class _CartItemRowState extends State<CartItemRow> {
                                         Radius.circular(6),
                                       )),
                                   child: Text(
-                                    "-${widget.cartItem.product.salePercent}%",
+                                    '-${widget.cartItem.product.salePercent}%',
                                     style: kBaseTextStyle.copyWith(
                                         fontSize: 12,
                                         fontWeight: FontWeight.bold,
@@ -134,7 +128,7 @@ class _CartItemRowState extends State<CartItemRow> {
                                   ),
                                 ),
                               ),
-                            SizedBox(height: 25),
+                            const SizedBox(height: 25),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: <Widget>[
@@ -145,7 +139,7 @@ class _CartItemRowState extends State<CartItemRow> {
                                     children: <Widget>[
                                       Text(
                                           Tools.getPriceProduct(
-                                              widget.cartItem.product, "VND",
+                                              widget.cartItem.product, 'VND',
                                               onSale: true),
                                           style: kBaseTextStyle.copyWith(
                                               fontSize: 14,
@@ -153,7 +147,7 @@ class _CartItemRowState extends State<CartItemRow> {
                                               color: widget.isOrder
                                                   ? kSecondaryGrey
                                                   : kPinkAccent)),
-                                      Spacer(),
+                                      const Spacer(),
                                       Row(
                                         children: <Widget>[
                                           Container(
@@ -178,7 +172,7 @@ class _CartItemRowState extends State<CartItemRow> {
                                                   //     widget.cartItem.quantity);
                                                 }),
                                           ),
-                                          SizedBox(width: 3),
+                                          const SizedBox(width: 3),
                                           Container(
                                             height: 24,
                                             width: 32,
@@ -199,7 +193,7 @@ class _CartItemRowState extends State<CartItemRow> {
                                                   color: kSecondaryGrey),
                                             ),
                                           ),
-                                          SizedBox(width: 3),
+                                          const SizedBox(width: 3),
                                           Container(
                                             width: 24,
                                             height: 24,
@@ -238,7 +232,7 @@ class _CartItemRowState extends State<CartItemRow> {
         ),
         if (widget.isDividerNeeded)
           Padding(
-            padding: const EdgeInsets.only(top: 8.0, bottom: 8),
+            padding: EdgeInsets.only(top: 8.0, bottom: 8),
             child: Divider(height: 0),
           )
       ]),

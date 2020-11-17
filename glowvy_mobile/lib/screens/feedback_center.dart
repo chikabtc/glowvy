@@ -1,19 +1,13 @@
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/models/user/userModel.dart';
-import 'package:Dimodo/widgets/baumann_quiz.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/widgets/webview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mailer/flutter_mailer.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:Dimodo/common/styles.dart';
-
-import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/generated/i18n.dart';
 import 'package:provider/provider.dart';
-import 'dart:math';
 
 class FeedbackCenter extends StatefulWidget {
   @override
@@ -38,7 +32,7 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
         appBar: AppBar(
             elevation: 0,
             title: Text(
-              "Phản hồi",
+              'Phản hồi',
               style: textTheme.headline3.copyWith(
                 color: kPrimaryBlue,
               ),
@@ -69,10 +63,10 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                             MaterialPageRoute(
                                 builder: (context) => WebView(
                                     url:
-                                        "https://parker893633.typeform.com/to/RgVtWWyZ",
-                                    title: "Glowvy Survey ⭐️"))),
+                                        'https://parker893633.typeform.com/to/RgVtWWyZ',
+                                    title: 'Glowvy Survey ⭐️'))),
                         child: Padding(
-                          padding: const EdgeInsets.only(
+                          padding: EdgeInsets.only(
                               top: 20, left: 20.0, right: 20, bottom: 30),
                           child: Container(
                             decoration: BoxDecoration(
@@ -87,13 +81,13 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
                                     Text(
-                                      "Thích/không thích ứng dụng?",
+                                      'Thích/không thích ứng dụng?',
                                       style: textTheme.headline3.copyWith(
                                         color: kPrimaryBlue,
                                       ),
                                     ),
                                     Text(
-                                      "Làm khảo sát bây giờ",
+                                      'Làm khảo sát bây giờ',
                                       // textAlign: TextAlign.center,
                                       style: textTheme.headline5.copyWith(
                                         color: kPrimaryBlue,
@@ -102,8 +96,8 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                                     ),
                                   ],
                                 ),
-                                Spacer(),
-                                SvgPicture.asset("assets/icons/arrow-more.svg")
+                                const Spacer(),
+                                SvgPicture.asset('assets/icons/arrow-more.svg')
                               ],
                             ),
                           ),
@@ -112,50 +106,50 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                       Positioned(
                           top: 0,
                           child: SvgPicture.asset(
-                              "assets/icons/blue-big-logo.svg")),
+                              'assets/icons/blue-big-logo.svg')),
                       Positioned(
                           top: 0,
                           left: screenSize.width / 2 + 58,
                           child: SvgPicture.asset(
-                              "assets/icons/light-blue-star.svg"))
+                              'assets/icons/light-blue-star.svg'))
                     ],
                   ),
                   Column(
                     children: <Widget>[
                       SvgPicture.asset(
-                        "assets/icons/nolt-illustration.svg",
+                        'assets/icons/nolt-illustration.svg',
                         width: screenSize.width,
                       ),
                       Container(
                         color: Colors.white,
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                          padding: EdgeInsets.symmetric(horizontal: 20.0),
                           child: Column(
                             children: <Widget>[
-                              SizedBox(height: 15),
-                              Text("Để giúp Glowvy phát triển hơn, bạn có thể:",
+                              const SizedBox(height: 15),
+                              Text('Để giúp Glowvy phát triển hơn, bạn có thể:',
                                   style: textTheme.headline3
                                       .copyWith(color: kSecondaryGrey)),
                               TextWithIcon(
-                                  "Đề xuất tính năng bạn muốn thêm vào trong ứng dụng",
-                                  "assets/icons/blue-smiley-face.svg"),
+                                  'Đề xuất tính năng bạn muốn thêm vào trong ứng dụng',
+                                  'assets/icons/blue-smiley-face.svg'),
                               TextWithIcon(
-                                  "Chia sẻ câu chuyện của bạn về trải nghiệm tốt/không tốt khi mua mỹ phẩm",
-                                  "assets/icons/blue-smiley-face.svg"),
+                                  'Chia sẻ câu chuyện của bạn về trải nghiệm tốt/không tốt khi mua mỹ phẩm',
+                                  'assets/icons/blue-smiley-face.svg'),
                               TextWithIcon(
-                                  "Bình chọn cho bất cứ tính năng nào bạn yêu thích",
-                                  "assets/icons/blue-smiley-face.svg"),
+                                  'Bình chọn cho bất cứ tính năng nào bạn yêu thích',
+                                  'assets/icons/blue-smiley-face.svg'),
                               TextWithIcon(
-                                  "Theo dõi quá trình phát triển của Glowvy",
-                                  "assets/icons/blue-smiley-face.svg"),
-                              SizedBox(height: 36),
+                                  'Theo dõi quá trình phát triển của Glowvy',
+                                  'assets/icons/blue-smiley-face.svg'),
+                              const SizedBox(height: 36),
                               GestureDetector(
                                 onTap: () => Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => WebView(
                                               url:
-                                                  "https://glowvy.nolt.io/newest",
+                                                  'https://glowvy.nolt.io/newest',
                                             ))),
                                 child: Container(
                                   decoration: BoxDecoration(
@@ -166,7 +160,7 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                                   height: 48,
                                   alignment: Alignment.center,
                                   child: Text(
-                                    "Phát triển Glowvy",
+                                    'Phát triển Glowvy',
                                     style: textTheme.headline5.copyWith(
                                         color: Colors.white,
                                         fontSize: 15,
@@ -174,7 +168,7 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 54),
+                              const SizedBox(height: 54),
                             ],
                           ),
                         ),
@@ -183,9 +177,9 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                         color: Colors.white,
                         child: Column(
                           children: <Widget>[
-                            SizedBox(height: 24),
+                            const SizedBox(height: 24),
                             SvgPicture.asset(
-                              "assets/icons/email-illustration.svg",
+                              'assets/icons/email-illustration.svg',
                               width: screenSize.width,
                             ),
                             // CustomPaint(
@@ -196,12 +190,12 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                               color: kQuaternaryBlue,
                               child: Column(
                                 children: <Widget>[
-                                  SizedBox(height: 10),
+                                  const SizedBox(height: 10),
                                   Padding(
                                     padding:
                                         EdgeInsets.only(left: 48, right: 48),
                                     child: Text(
-                                      "Có vấn đề với ứng dụng? Hãy gửi mail cho nhà phát triển! Glowvy team sẽ phản hồi nhanh nhất có thể.",
+                                      'Có vấn đề với ứng dụng? Hãy gửi mail cho nhà phát triển! Glowvy team sẽ phản hồi nhanh nhất có thể.',
                                       textAlign: TextAlign.center,
                                       style: textTheme.headline4.copyWith(
                                           color: kSecondaryGrey,
@@ -210,7 +204,7 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                                           fontWeight: FontWeight.w600),
                                     ),
                                   ),
-                                  SizedBox(height: 22),
+                                  const SizedBox(height: 22),
                                   GestureDetector(
                                     onTap: () async => await FlutterMailer.send(
                                         MailOptions(
@@ -227,7 +221,7 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                                           height: 48,
                                           alignment: Alignment.center,
                                           child: Text(
-                                              "Liên hệ nhà phát triển Glowvy",
+                                              'Liên hệ nhà phát triển Glowvy',
                                               textAlign: TextAlign.center,
                                               style: textTheme.button1.copyWith(
                                                   color: kPrimaryBlue,
@@ -259,18 +253,19 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
 }
 
 class TextWithIcon extends StatelessWidget {
-  final text;
-  final iconPath;
   TextWithIcon(this.text, this.iconPath);
+
+  String text;
+  String iconPath;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 16.0),
+      padding: EdgeInsets.only(top: 16.0),
       child: Row(
         children: <Widget>[
           SvgPicture.asset(iconPath),
-          SizedBox(width: 7),
+          const SizedBox(width: 7),
           Flexible(
             child: Text(
               text,

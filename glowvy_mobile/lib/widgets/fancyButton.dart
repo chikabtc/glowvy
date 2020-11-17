@@ -133,7 +133,7 @@ class _FancyButtonState extends State<FancyButton>
                                 color: _hslRelativeColor(l: 0.06),
                                 borderRadius: radius,
                               ),
-                              child: SizedBox.expand(),
+                              child: const SizedBox.expand(),
                             ),
                             Transform.translate(
                               offset: Offset(0.0, vertPadding * 2),
@@ -142,7 +142,7 @@ class _FancyButtonState extends State<FancyButton>
                                   color: _hslRelativeColor(),
                                   borderRadius: radius,
                                 ),
-                                child: SizedBox.expand(),
+                                child: const SizedBox.expand(),
                               ),
                             ),
                           ],

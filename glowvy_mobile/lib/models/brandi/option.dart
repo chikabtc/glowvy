@@ -1,7 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'notice.dart';
-import 'attribute.dart';
+
 import '../productAttribute.dart';
+import 'attribute.dart';
+import 'notice.dart';
 
 part 'option.g.dart';
 
@@ -58,8 +59,8 @@ class Option {
   static List<CompoundOption> newCompoundOptions(List<Option> options) {
     var com = CompoundOption();
     var com1 = CompoundOption();
-    com.options = Map<String, List<ProductAttribute>>();
-    com1.options = Map<String, List<ProductAttribute>>();
+    com.options = <String, List<ProductAttribute>>{};
+    com1.options = <String, List<ProductAttribute>>{};
 
     // print(options[0].isSoldOut);
 
@@ -81,7 +82,7 @@ class Option {
       com1.options[value1]
           .add(ProductAttribute(title, value, option.isSoldOut));
     });
-    // print(com1.options["S"][1].value);
+    // print(com1.options['S'][1].value);
     // print(json.encode(com1.options));
 
     return [com, com1];

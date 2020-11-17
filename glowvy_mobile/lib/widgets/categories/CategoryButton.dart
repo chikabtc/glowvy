@@ -1,30 +1,46 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:Dimodo/common/styles.dart';
-
 import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/models/category.dart';
-import 'package:Dimodo/models/product/productModel.dart';
-import 'package:Dimodo/generated/i18n.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter/material.dart';
 
-class CategoryButton extends StatelessWidget {
+class CategoryButton extends StatefulWidget {
+  CategoryButton(this.category,
+      {@required this.onTap, this.isSelected = false});
   final Category category;
-  CategoryButton(this.category);
+  final Function onTap;
+  bool isSelected;
 
   @override
+  _CategoryButtonState createState() => _CategoryButtonState();
+}
+
+class _CategoryButtonState extends State<CategoryButton> {
+  @override
   Widget build(BuildContext context) {
-    var productModel = Provider.of<ProductModel>(context, listen: false);
     return GestureDetector(
-      onTap: () =>
-          productModel.showSubCategoryPage(category, "+sale_price", context),
-      child: Column(children: <Widget>[
-        // Image.asset(category.image),
-        // Text(category.name,
-        //     style: kBaseTextStyle.copyWith(
-        //         fontSize: 13, fontWeight: FontWeight.w600))
-      ]),
+      onTap: widget.onTap,
+      child: Wrap(
+        children: [
+          Container(
+            width: 80,
+            height: 80,
+            color: widget.isSelected ? kPrimaryOrange : kQuaternaryGrey,
+            padding: const EdgeInsets.symmetric(horizontal: 2),
+            child: Center(
+              child: Text(widget.category.firstCategoryName,
+                  textAlign: TextAlign.center,
+                  style: textTheme.button.copyWith(
+                      fontSize: 15,
+                      color: widget.isSelected
+                          ? kWhite
+                          : kDarkAccent.withOpacity(0.7),
+                      fontWeight: FontWeight.w800)),
+            ),
+          ),
+          customDivider(color: kDarkAccent.withOpacity(0.1))
+        ],
+      ),
     );
   }
 }

@@ -1,6 +1,5 @@
 library cuberto_bottom_bar;
 
-import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 
 import '../common/tools.dart';
@@ -87,9 +86,9 @@ class _TabItemState extends State<TabItem> {
                     Positioned(
                       right: 2,
                       top: 4,
-                      child: new Container(
+                      child: Container(
                         padding: EdgeInsets.all(1),
-                        decoration: new BoxDecoration(
+                        decoration: BoxDecoration(
                           color: Colors.red,
                           borderRadius: BorderRadius.circular(8),
                         ),
@@ -97,9 +96,9 @@ class _TabItemState extends State<TabItem> {
                           minWidth: 16,
                           minHeight: 16,
                         ),
-                        child: new Text(
+                        child: Text(
                           widget.badge.toString(),
-                          style: new TextStyle(
+                          style: TextStyle(
                             color: Colors.white,
                             fontSize: isTablet ? 14 : 10,
                           ),
@@ -116,7 +115,7 @@ class _TabItemState extends State<TabItem> {
                       ? EdgeInsets.only(right: 6.0)
                       : EdgeInsets.all(0.0),
                   child: Text(
-                    widget.selected ? widget.title : "",
+                    widget.selected ? widget.title : '',
                     overflow: TextOverflow.clip,
                     maxLines: 1,
                     textAlign: TextAlign.start,
@@ -148,6 +147,7 @@ class CubertoBottomBar extends StatefulWidget {
   final CubertoDrawer drawer;
   final CubertoTabStyle tabStyle;
 
+  @override
   final Key key;
 
   CubertoBottomBar(
@@ -171,8 +171,8 @@ class CubertoBottomBar extends StatefulWidget {
 
 class CubertoBottomBarState extends State<CubertoBottomBar>
     with TickerProviderStateMixin, RouteAware {
-  String nextIcon = "assets/icons/tabs/icon-search.png";
-  String activeIcon = "assets/icons/tabs/icon-search.png";
+  String nextIcon = 'assets/icons/tabs/icon-search.png';
+  String activeIcon = 'assets/icons/tabs/icon-search.png';
 
   int currentSelected = 0;
   double _circleAlignX = 0;
@@ -223,8 +223,8 @@ class CubertoBottomBarState extends State<CubertoBottomBar>
     _setSelected(widget.tabs[widget.initialSelection].key);
   }
 
-  _setSelected(UniqueKey key) {
-    int selected = widget.tabs.indexWhere((tabData) => tabData.key == key);
+  void _setSelected(UniqueKey key) {
+    var selected = widget.tabs.indexWhere((tabData) => tabData.key == key);
 
     if (mounted) {
       setState(() {
@@ -285,7 +285,7 @@ class CubertoBottomBarState extends State<CubertoBottomBar>
     );
   }
 
-  rowTabs(
+  Widget rowTabs(
       List<TabData> tabs,
       Function(int position, String title, Color tabColor)
           onTabChangedListener) {
@@ -301,10 +301,10 @@ class CubertoBottomBarState extends State<CubertoBottomBar>
               title: t.title,
               iconColor: inactiveIconColor,
               textColor: textColor,
-              tabColor: t.tabColor == null ? inactiveIconColor : t.tabColor,
+              tabColor: t.tabColor ?? inactiveIconColor,
               badge: t.badge,
               callbackFunction: (uniqueKey) {
-                int selected =
+                var selected =
                     tabs.indexWhere((tabData) => tabData.key == uniqueKey);
                 onTabChangedListener(selected, t.title, t.tabColor);
                 _setSelected(uniqueKey);
@@ -314,7 +314,7 @@ class CubertoBottomBarState extends State<CubertoBottomBar>
     );
   }
 
-  setUptabs(
+  Widget setUptabs(
       CubertoDrawer drawer,
       List<TabData> tabs,
       Function(int position, String title, Color tabColor) onTabChangedListener,
@@ -340,13 +340,13 @@ class CubertoBottomBarState extends State<CubertoBottomBar>
     return widget;
   }
 
-  _initAnimationAndStart(double from, double to) {
+  void _initAnimationAndStart(double from, double to) {
     Future.delayed(Duration(milliseconds: ANIM_DURATION ~/ 5), () {
       setState(() {
         activeIcon = nextIcon;
       });
     }).then((_) {
-      Future.delayed(Duration(milliseconds: (ANIM_DURATION ~/ 5 * 3)), () {
+      Future.delayed(Duration(milliseconds: ANIM_DURATION ~/ 5 * 3), () {
         setState(() {});
       });
     });

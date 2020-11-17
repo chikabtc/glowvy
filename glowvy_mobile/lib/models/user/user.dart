@@ -1,12 +1,8 @@
-import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/models/user/skinScores.dart';
-import 'package:Dimodo/widgets/skin-score.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 import '../address/address.dart';
-import 'package:json_annotation/json_annotation.dart';
 import '../address/billing.dart';
 
 part 'user.g.dart';
@@ -22,10 +18,11 @@ class User {
   String picture;
   String gender;
   String skinType;
+  String baumannType;
   int skinTypeId;
   int birthYear;
   int age;
-  SkinScores skinScores;
+  SkinScores baumannScores;
   Address address = Address();
   List<Address> addresses = [];
   Review reviewDraft;
@@ -47,8 +44,8 @@ class User {
 
   // User.fromJsonEmail(Map<String, dynamic> json) {
   //   try {
-  //     var user = User.fromJson(json["Account"]);
-  //     // accessToken = json["AccessToken"];
+  //     var user = User.fromJson(json['Account']);
+  //     // accessToken = json['AccessToken'];
   //     // id = user.id;
   //     // loggedIn = user.loggedIn;
   //     fullName = user.fullName;
@@ -74,9 +71,9 @@ class User {
   //     id = user['id'];
   //     // skinType = user.skinType;
 
-  //     fullName = user["full_name"];
-  //     email = user["email"];
-  //     // picture = user["picture"]['data']['url'] ?? '';
+  //     fullName = user['full_name'];
+  //     email = user['email'];
+  //     // picture = user['picture']['data']['url'] ?? '';
   //   } catch (e) {
   //     print(e.toString());
   //   }
@@ -89,9 +86,9 @@ class User {
 
   //     var user = json['Account'];
   //     id = json['id'];
-  //     fullName = user["full_name"];
-  //     email = user["email"];
-  //     // picture = user["picture"]['data']['url'] ?? '';
+  //     fullName = user['full_name'];
+  //     email = user['email'];
+  //     // picture = user['picture']['data']['url'] ?? '';
   //   } catch (e) {
   //     print(e.toString());
   //   }
@@ -99,7 +96,7 @@ class User {
 
   // User.fromLocalJson(Map<String, dynamic> json) {
   //   try {
-  //     // print("fromLocalJsonUser: $json");
+  //     // print('fromLocalJsonUser: $json');
   //     accessToken = json['access_token'];
   //     var user = json['Account'];
   //     id = user['id'];

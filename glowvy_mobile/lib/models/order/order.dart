@@ -1,10 +1,8 @@
 import 'package:Dimodo/models/coupon.dart';
 import 'package:Dimodo/models/order/cartItem.dart';
-
-import '../address/address.dart';
-import 'cart.dart';
-import 'cartItem.dart';
 import 'package:json_annotation/json_annotation.dart';
+
+import 'cartItem.dart';
 
 part 'order.g.dart';
 

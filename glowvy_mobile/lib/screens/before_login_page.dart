@@ -1,18 +1,11 @@
 import 'dart:ui';
 
-import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/models/user/userModel.dart';
-import 'package:Dimodo/screens/edit_gender_page.dart';
-import 'package:Dimodo/screens/edit_name_page.dart';
 import 'package:Dimodo/screens/setting/signup.dart';
-import 'package:Dimodo/widgets/setting_card.dart';
 import 'package:flutter/material.dart';
-import 'package:Dimodo/common/constants.dart';
-
-import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/generated/i18n.dart';
-import 'package:Dimodo/models/user/user.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
@@ -33,7 +26,7 @@ class BeforeLoginPageState extends State<BeforeLoginPage>
     userModel = Provider.of<UserModel>(context, listen: false);
   }
 
-  login() async {
+  Future login() async {
     await userModel.logout();
     Navigator.of(context).popUntil((route) => route.isFirst);
   }
@@ -69,16 +62,16 @@ class BeforeLoginPageState extends State<BeforeLoginPage>
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 16.0),
+              padding: EdgeInsets.only(left: 16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 84,
                   ),
                   SvgPicture.asset('assets/icons/white_star.svg'),
                   Text(
-                    "About Glowvy  ——\nborn to help people find the suitable cosmetics for people’s skin type and issues.",
+                    'About Glowvy  ——\nborn to help people find the suitable cosmetics for people’s skin type and issues.',
                     style: textTheme.headline5.copyWith(color: kWhite),
                   ),
                 ],
@@ -98,7 +91,7 @@ class BeforeLoginPageState extends State<BeforeLoginPage>
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: <Widget>[
-                SizedBox(
+                const SizedBox(
                   height: 48,
                 ),
                 Text(
@@ -106,24 +99,24 @@ class BeforeLoginPageState extends State<BeforeLoginPage>
                   textAlign: TextAlign.center,
                   style: textTheme.headline2,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 customButton(
                   function: () => Navigator.push(context,
                       MaterialPageRoute(builder: (context) => SignupScreen())),
-                  text: "sign up",
+                  text: 'sign up',
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 29,
                 ),
                 SvgPicture.asset('assets/icons/pink_logo.svg'),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
-                Text("Making Vietnamese Skin Glow",
+                Text('Making Vietnamese Skin Glow',
                     style: textTheme.bodyText2.copyWith(color: kSecondaryGrey)),
-                SizedBox(height: 15)
+                const SizedBox(height: 15)
               ],
             ),
           ),

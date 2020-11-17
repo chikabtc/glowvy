@@ -1,29 +1,17 @@
-import 'package:Dimodo/common/alerts.dart';
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/common/styles.dart';
-import 'package:Dimodo/common/widgets.dart';
-import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/tools.dart';
-import 'package:Dimodo/models/product/product.dart';
-import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/models/review.dart';
-import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/search_review_cosmetisc.dart';
-import 'package:Dimodo/services/index.dart';
-import 'package:Dimodo/widgets/cosmetics_request_button.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
-import 'package:Dimodo/widgets/product_thumbnail.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import '../generated/i18n.dart';
-import 'package:algolia/algolia.dart';
 
 class WriteReviewScreen extends StatefulWidget {
   @override
@@ -35,7 +23,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
   Size screenSize;
   AnimationController _postButtonController;
   final TextEditingController _reviewTextController = TextEditingController();
-  Services service = Services();
+
   Review review = Review();
   UserModel userModel;
   bool isLoading = false;
@@ -45,10 +33,10 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
   void initState() {
     super.initState();
     userModel = Provider.of<UserModel>(context, listen: false);
-    // print("user:${userModel.user.toJson()}");
+    // print('user:${userModel.user.toJson()}');
 
-    _postButtonController = new AnimationController(
-        duration: new Duration(milliseconds: 3000), vsync: this);
+    _postButtonController = AnimationController(
+        duration: Duration(milliseconds: 3000), vsync: this);
   }
 
   @override
@@ -57,21 +45,21 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
     super.dispose();
   }
 
-  validateInput() {
+  void validateInput() {
     if (review.product == null) {
-      throw ("select product");
+      throw 'select product';
     } else if (review.rating == 0) {
-      throw ("select rating");
+      throw 'select rating';
     } else if (review.text == null) {
-      throw ("content too show at least over 20 characters");
+      throw 'content too show at least over 20 characters';
     } else if (review.text.length < 20) {
-      throw ("content too show at least over 20 characters");
+      throw 'content too show at least over 20 characters';
     } else if (review.text.length > 5000) {
-      throw ("content too long (up to 5000 chars");
+      throw 'content too long (up to 5000 chars';
     }
   }
 
-  uploadReview(context) async {
+  Future uploadReview(context) async {
     try {
       final user = userModel.user;
       validateInput();
@@ -79,11 +67,11 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
       var reviewJson = {
         'text': review.text,
         'user': {
-          "uid": user.uid,
-          "full_name": user.fullName,
-          "skin_type": 'dry',
-          "email": user.email,
-          "birth_year": user.birthYear,
+          'uid': user.uid,
+          'full_name': user.fullName,
+          'skin_type': 'dry',
+          'email': user.email,
+          'birth_year': user.birthYear,
         },
         'product': {
           'name': review.product.sname,
@@ -93,7 +81,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
           'sid': review.product.sid,
         },
         'rating': review.rating,
-        // "like_count": 0,
+        // 'like_count': 0,
         'created_at': DateTime.now().millisecondsSinceEpoch
       };
 
@@ -107,7 +95,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
     }
   }
 
-  getRatingExpression() {
+  String getRatingExpression() {
     if (review != null) {
       switch (review.rating) {
         case 0:
@@ -132,13 +120,12 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
           return 'Tap to rate';
       }
     } else {
-      return "Tap to rate";
+      return 'Tap to rate';
     }
   }
 
-  showSuccesPopup() {
+  void showSuccesPopup() {
     BuildContext dialogContext;
-
     showDialog(
         context: context,
         barrierColor: Color(0x01000000),
@@ -164,7 +151,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
         }).then((value) {});
   }
 
-  askSaveDraft() {
+  Future askSaveDraft() {
     final act = CupertinoActionSheet(
         title: Container(
           child: Text('If you go back now, your review edits will discarded.',
@@ -179,7 +166,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
               onPressed: () async {
                 // userModel
                 await userModel.discardReviewDraft();
-                Navigator.of(context, rootNavigator: true).pop("Discard");
+                Navigator.of(context, rootNavigator: true).pop('Discard');
 
                 Navigator.pop(context);
               },
@@ -191,7 +178,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
               child: Text('Save Draft', style: textTheme.bodyText1),
               onPressed: () async {
                 await userModel.saveDraft(review);
-                Navigator.of(context, rootNavigator: true).pop("Discard");
+                Navigator.of(context, rootNavigator: true).pop('Discard');
                 Navigator.pop(context);
                 print('pressed');
               },
@@ -205,7 +192,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
           child: CupertinoActionSheetAction(
             child: Text('Cancel', style: textTheme.bodyText1),
             onPressed: () {
-              Navigator.of(context, rootNavigator: true).pop("Discard");
+              Navigator.of(context, rootNavigator: true).pop('Discard');
             },
           ),
         ));
@@ -226,7 +213,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
             // height: 79,
             padding: EdgeInsets.only(left: 16, right: 16, top: 14, bottom: 14),
             child: GestureDetector(
-              onTap: () => print("gp"),
+              onTap: () => print('gp'),
               child: RichText(
                 textAlign: TextAlign.start,
                 text: TextSpan(
@@ -262,13 +249,13 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
           actions: [
             Center(
               child: Padding(
-                padding: const EdgeInsets.only(right: 16.0),
+                padding: EdgeInsets.only(right: 16.0),
                 child: Builder(
                   builder: (context) => StaggerAnimation(
                     btnColor: kPrimaryOrange,
                     width: 57,
                     height: 34,
-                    buttonTitle: "Done",
+                    buttonTitle: 'Done',
                     buttonController: _postButtonController.view,
                     onTap: () async {
                       _postButtonController.forward();
@@ -290,7 +277,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                 //1. if review draft is available, load the draft
                 if (user.reviewDraft != null) {
                   review = user.reviewDraft;
-                  print("user.reviewDraft ${user.reviewDraft.toJson()}");
+                  print('user.reviewDraft ${user.reviewDraft.toJson()}');
                   _reviewTextController.text = review.text;
 
                   //2. if product is chosen
@@ -320,12 +307,12 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                               SvgPicture.asset(
                                 'assets/icons/search_cosmetics.svg',
                               ),
-                              SizedBox(width: 7),
-                              Text("Select cosmetics",
+                              const SizedBox(width: 7),
+                              Text('Select cosmetics',
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: textTheme.button2),
-                              Spacer(),
+                              const Spacer(),
                               SvgPicture.asset(
                                 'assets/icons/arrow_forward.svg',
                                 width: 24,
@@ -370,12 +357,12 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      SizedBox(height: 2),
-                                      Text("${review.product.name}",
+                                      const SizedBox(height: 2),
+                                      Text('${review.product.name}',
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                           style: textTheme.button2),
-                                      Text("${review.product.name}",
+                                      Text('${review.product.name}',
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                           style: textTheme.caption2),
@@ -383,12 +370,12 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                                   ),
                                 ),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Text(
-                                    "Change",
+                                    'Change',
                                     style: textTheme.caption1
                                         .copyWith(color: kSecondaryGrey),
                                   ),
@@ -405,17 +392,17 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                       ),
                     Column(
                       children: [
-                        SizedBox(height: 7),
+                        const SizedBox(height: 7),
                         Text(
                             !isRatingEmpty
                                 ? getRatingExpression()
-                                : "Please Rate",
+                                : 'Please Rate',
                             style: textTheme.caption1.copyWith(
                                 fontWeight: FontWeight.w600,
                                 color: !isRatingEmpty
                                     ? kDefaultFontColor
                                     : kPrimaryOrange)),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         RatingBar(
                             initialRating: review.rating != null
                                 ? review.rating.toDouble()
@@ -437,7 +424,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                                   print(rating);
                                   review.rating = rating.toInt();
                                 })),
-                        SizedBox(height: 27),
+                        const SizedBox(height: 27),
                         Container(
                           height: screenSize.height -
                               367 +
@@ -449,9 +436,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                             maxLines: null,
                             cursorColor: kPinkAccent,
                             onChanged: (value) {
-                              if (review == null) {
-                                review = Review();
-                              }
+                              review ??= Review();
                               review.text = value;
                             },
                             style: textTheme.headline5

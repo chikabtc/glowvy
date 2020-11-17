@@ -24,9 +24,9 @@
 // }
 
 // class Sorting {
-//   static String low = "low";
-//   static String high = "high";
-//   static String rank = "rank";
+//   static String low = 'low';
+//   static String high = 'high';
+//   static String rank = 'rank';
 // }
 
 // class _CosmeticsFilterBarState extends State<CosmeticsFilterBar> {
@@ -48,7 +48,7 @@
 //     productModel = Provider.of<ProductModel>(context, listen: false);
 //     appModel = Provider.of<AppModel>(context, listen: false);
 //     var appConfig = appModel.appConfig;
-//     cosmeticsFilters = appConfig["Cosmetics-Filters"] as Map<String, dynamic>;
+//     cosmeticsFilters = appConfig['Cosmetics-Filters'] as Map<String, dynamic>;
 //   }
 
 //   void dispose() {
@@ -57,7 +57,7 @@
 
 //   @override
 //   Widget build(BuildContext context) {
-//     // print("Received products: ${widget.products}");
+//     // print('Received products: ${widget.products}');
 //     screenSize = MediaQuery.of(context).size;
 //     heightFactor = 0.5;
 //     return Column(
@@ -79,19 +79,19 @@
 //                       onTap: () {
 //                         var filtered = filterProduct();
 //                         switch (sorting) {
-//                           case "high":
+//                           case 'high':
 //                             sorting = Sorting.rank;
 //                             filtered =
 //                                 productModel.sortByAllRanking(widget.products);
 
 //                             break;
 
-//                           case "rank":
+//                           case 'rank':
 //                             sorting = Sorting.low;
 //                             filtered =
 //                                 productModel.sortByPrice(widget.products, true);
 //                             break;
-//                           case "low":
+//                           case 'low':
 //                             sorting = Sorting.high;
 //                             filtered = productModel.sortByPrice(
 //                                 widget.products, false);
@@ -113,32 +113,32 @@
 //                             mainAxisSize: MainAxisSize.min,
 //                             mainAxisAlignment: MainAxisAlignment.center,
 //                             children: <Widget>[
-//                               sorting == "rank"
+//                               sorting == 'rank'
 //                                   ? Image.asset(
-//                                       "assets/icons/filter-sort-active.png")
-//                                   : sorting == "low"
+//                                       'assets/icons/filter-sort-active.png')
+//                                   : sorting == 'low'
 //                                       ? Image.asset(
-//                                           "assets/icons/filter-sort.png")
+//                                           'assets/icons/filter-sort.png')
 //                                       : Image.asset(
-//                                           "assets/icons/filter-sort.png"),
+//                                           'assets/icons/filter-sort.png'),
 //                               Text(
-//                                 sorting == "rank"
+//                                 sorting == 'rank'
 //                                     ? S.of(context).byRanking
-//                                     : sorting == "low"
+//                                     : sorting == 'low'
 //                                         ? S.of(context).highestToLowest
 //                                         : S.of(context).lowestToHighest,
 //                                 textAlign: TextAlign.center,
 //                                 style: kBaseTextStyle.copyWith(
 //                                     fontSize: 13,
 //                                     fontWeight: FontWeight.w500,
-//                                     color: sorting == "rank"
+//                                     color: sorting == 'rank'
 //                                         ? kPinkAccent
 //                                         : kDarkAccent),
 //                               ),
 //                             ],
 //                           )),
 //                     ),
-//                     SizedBox(width: 16)
+//                     const SizedBox(width: 16)
 //                   ],
 //                 ),
 //               ),
@@ -150,7 +150,7 @@
 //                     mainAxisAlignment: MainAxisAlignment.center,
 //                     children: [
 //                       SvgPicture.asset(
-//                         "assets/icons/filter.svg",
+//                         'assets/icons/filter.svg',
 //                         width: 16,
 //                       ),
 //                       Text(
@@ -182,14 +182,14 @@
 //   sortProducts(filteredProducts) {
 //     var products;
 //     switch (sorting) {
-//       case "high":
+//       case 'high':
 //         products = productModel.sortByPrice(filteredProducts, false);
 //         break;
 
-//       case "rank":
+//       case 'rank':
 //         products = productModel.sortByAllRanking(filteredProducts);
 //         break;
-//       case "low":
+//       case 'low':
 //         products = productModel.sortByPrice(filteredProducts, true);
 //         break;
 //       default:
@@ -248,7 +248,7 @@
 //                               AppBar().preferredSize.height -
 //                               100,
 //                           child: Padding(
-//                             padding: const EdgeInsets.only(left: 16.0),
+//                             padding: EdgeInsets.only(left: 16.0),
 //                             child: ListView(
 //                               shrinkWrap: true,
 //                               children: <Widget>[
@@ -266,7 +266,7 @@
 //                               color: Colors.white,
 //                               child: Padding(
 //                                 padding:
-//                                     const EdgeInsets.only(top: 9.0, bottom: 10),
+//                                     EdgeInsets.only(top: 9.0, bottom: 10),
 //                                 child: Row(
 //                                   crossAxisAlignment: CrossAxisAlignment.start,
 //                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -293,7 +293,7 @@
 //                                           });
 //                                           Navigator.pop(context);
 //                                         }),
-//                                     SizedBox(width: 16),
+//                                     const SizedBox(width: 16),
 //                                     MaterialButton(
 //                                         elevation: 0,
 //                                         color: kPinkAccent,
@@ -380,7 +380,7 @@
 //                               AppBar().preferredSize.height -
 //                               100,
 //                           child: Padding(
-//                             padding: const EdgeInsets.only(left: 16.0),
+//                             padding: EdgeInsets.only(left: 16.0),
 //                             child: ListView(
 //                               shrinkWrap: true,
 //                               children: <Widget>[
@@ -398,7 +398,7 @@
 //                               color: Colors.white,
 //                               child: Padding(
 //                                 padding:
-//                                     const EdgeInsets.only(top: 9.0, bottom: 10),
+//                                     EdgeInsets.only(top: 9.0, bottom: 10),
 //                                 child: Row(
 //                                   crossAxisAlignment: CrossAxisAlignment.start,
 //                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -425,7 +425,7 @@
 //                                           });
 //                                           Navigator.pop(context);
 //                                         }),
-//                                     SizedBox(width: 16),
+//                                     const SizedBox(width: 16),
 //                                     MaterialButton(
 //                                         elevation: 0,
 //                                         color: kPinkAccent,
@@ -468,13 +468,13 @@
 //     // enumerate the two compound options
 
 //     cosmeticsFilters.forEach((key, values) {
-//       // print("Key: ${key}, value["name"]s : ${value["name"]s}");
+//       // print('Key: ${key}, value['name']s : ${value['name']s}');
 //       var header = Text(
 //         key,
 //         style: kBaseTextStyle.copyWith(
 //             fontSize: 13, fontWeight: FontWeight.w600, color: kDarkSecondary),
 //       );
-//       // print("values :${values[0]}");
+//       // print('values :${values[0]}');
 
 //       var options = Wrap(children: <Widget>[
 //         for (var value in values)
@@ -483,23 +483,23 @@
 //               shape: RoundedRectangleBorder(
 //                 side: BorderSide(
 //                   color:
-//                       widget.skinTypeId == value["id"] ? kPinkAccent : kLightBG,
+//                       widget.skinTypeId == value['id'] ? kPinkAccent : kLightBG,
 //                 ),
 //                 borderRadius: BorderRadius.circular(6.0),
 //               ),
 //               elevation: 0,
 //               onPressed: () {
 //                 setState(() {
-//                   widget.skinTypeId = value["id"];
+//                   widget.skinTypeId = value['id'];
 //                   productModel.updateSkinType(widget.skinTypeId);
 //                 });
 //               },
 //               backgroundColor: kLightBG,
 //               label: Text(
-//                 value["name"],
+//                 value['name'],
 //                 style: kBaseTextStyle.copyWith(
 //                     fontSize: 15,
-//                     color: widget.skinTypeId == value["id"]
+//                     color: widget.skinTypeId == value['id']
 //                         ? kPinkAccent
 //                         : kDarkSecondary,
 //                     fontWeight: FontWeight.w600),
@@ -532,13 +532,13 @@
 //     // enumerate the two compound options
 
 //     cosmeticsFilters.forEach((key, values) {
-//       // print("Key: ${key}, value["name"]s : ${value["name"]s}");
+//       // print('Key: ${key}, value['name']s : ${value['name']s}');
 //       var header = Text(
 //         key,
 //         style: kBaseTextStyle.copyWith(
 //             fontSize: 13, fontWeight: FontWeight.w600, color: kDarkSecondary),
 //       );
-//       // print("values :${values[0]}");
+//       // print('values :${values[0]}');
 
 //       var options = Wrap(children: <Widget>[
 //         for (var value in values)
@@ -547,22 +547,22 @@
 //               shape: RoundedRectangleBorder(
 //                 side: BorderSide(
 //                   color:
-//                       widget.skinTypeId == value["id"] ? kPinkAccent : kLightBG,
+//                       widget.skinTypeId == value['id'] ? kPinkAccent : kLightBG,
 //                 ),
 //                 borderRadius: BorderRadius.circular(6.0),
 //               ),
 //               elevation: 0,
 //               onPressed: () {
 //                 setState(() {
-//                   widget.skinTypeId = value["id"];
+//                   widget.skinTypeId = value['id'];
 //                 });
 //               },
 //               backgroundColor: kLightBG,
 //               label: Text(
-//                 value["name"],
+//                 value['name'],
 //                 style: kBaseTextStyle.copyWith(
 //                     fontSize: 15,
-//                     color: widget.skinTypeId == value["id"]
+//                     color: widget.skinTypeId == value['id']
 //                         ? kPinkAccent
 //                         : kDarkSecondary,
 //                     fontWeight: FontWeight.w600),

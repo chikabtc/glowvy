@@ -1,10 +1,10 @@
 import 'package:Dimodo/models/order/cart.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../../common/constants.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+
+import '../../common/constants.dart';
 
 class CartAction extends StatelessWidget {
   const CartAction({
@@ -16,10 +16,10 @@ class CartAction extends StatelessWidget {
     return Consumer<CartModel>(builder: (context, value, child) {
       return Stack(children: <Widget>[
         IconButton(
-          onPressed: () => Navigator.pushNamed(context, "/cart",
-              arguments: {"showBackSpace": true}),
+          onPressed: () => Navigator.pushNamed(context, '/cart',
+              arguments: {'showBackSpace': true}),
           icon: SvgPicture.asset(
-            "assets/icons/cart-product-detail.svg",
+            'assets/icons/cart-product-detail.svg',
             width: 24 * kSizeConfig.containerMultiplier,
             height: 24 * kSizeConfig.containerMultiplier,
           ),
@@ -30,7 +30,7 @@ class CartAction extends StatelessWidget {
             top: 7.5,
             child: Container(
               padding: EdgeInsets.all(1),
-              decoration: new BoxDecoration(
+              decoration: BoxDecoration(
                 color: Colors.red,
                 borderRadius: BorderRadius.circular(8),
               ),
@@ -38,9 +38,9 @@ class CartAction extends StatelessWidget {
                 minWidth: 16,
                 minHeight: 16,
               ),
-              child: new Text(
+              child: Text(
                 value.totalCartQuantity.toString(),
-                style: new TextStyle(
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 10,
                 ),

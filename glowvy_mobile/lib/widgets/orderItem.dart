@@ -1,19 +1,13 @@
 import 'package:Dimodo/models/order/cartItem.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
+import '../common/colors.dart';
 import '../common/constants.dart';
 import '../common/styles.dart';
-import '../common/colors.dart';
-
 import '../common/tools.dart';
-import '../models/product/product.dart';
-import '../models/app.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
 
 class OrderItemRow extends StatefulWidget {
-  OrderItemRow(
+  const OrderItemRow(
       {@required this.cartItem,
       this.onRemove,
       this.isDividerNeeded,
@@ -48,7 +42,7 @@ class _OrderItemRowState extends State<OrderItemRow> {
           key: ValueKey(widget.cartItem.product.id),
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(width: 24),
+            const SizedBox(width: 24),
             Expanded(
               child: Container(
                 child: Row(
@@ -73,7 +67,7 @@ class _OrderItemRowState extends State<OrderItemRow> {
                             // child: Tools.image(url: imageFeature)
                           )),
                     ]),
-                    SizedBox(width: 7.0),
+                    const SizedBox(width: 7.0),
                     Expanded(
                       child: Container(
                         child: Column(
@@ -81,8 +75,7 @@ class _OrderItemRowState extends State<OrderItemRow> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 26.0, bottom: 5),
+                              padding: EdgeInsets.only(right: 26.0, bottom: 5),
                               child: Text(widget.cartItem.product.name,
                                   style: kBaseTextStyle.copyWith(
                                       fontSize: 13,
@@ -91,7 +84,7 @@ class _OrderItemRowState extends State<OrderItemRow> {
                             Wrap(
                               children: <Widget>[
                                 Padding(
-                                  padding: const EdgeInsets.only(right: 36.0),
+                                  padding: EdgeInsets.only(right: 36.0),
                                   child: Container(
                                     padding: EdgeInsets.only(
                                         bottom: 2, top: 2, left: 8, right: 8),
@@ -101,7 +94,7 @@ class _OrderItemRowState extends State<OrderItemRow> {
                                           Radius.circular(6),
                                         )),
                                     child: Text(
-                                      "${widget.cartItem.option}",
+                                      '${widget.cartItem.option}',
                                       // maxLines: 0,
                                       style: kBaseTextStyle.copyWith(
                                           fontSize: 12,
@@ -110,10 +103,10 @@ class _OrderItemRowState extends State<OrderItemRow> {
                                     ),
                                   ),
                                 ),
-                                // if (!widget.isCart) Spacer(),
+                                // if (!widget.isCart) const Spacer(),
                               ],
                             ),
-                            SizedBox(height: 3),
+                            const SizedBox(height: 3),
                             Container(
                               // height: 24,
                               child: Row(
@@ -123,7 +116,7 @@ class _OrderItemRowState extends State<OrderItemRow> {
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: <Widget>[
                                       Text(
-                                        "x$quantity",
+                                        'x$quantity',
                                         textAlign: TextAlign.end,
                                         style: kBaseTextStyle.copyWith(
                                             fontSize: 12,
@@ -132,7 +125,7 @@ class _OrderItemRowState extends State<OrderItemRow> {
                                       ),
                                       Text(
                                           Tools.getPriceProduct(
-                                              widget.cartItem.product, "VND",
+                                              widget.cartItem.product, 'VND',
                                               onSale: true),
                                           style: kBaseTextStyle.copyWith(
                                               fontSize: 12,

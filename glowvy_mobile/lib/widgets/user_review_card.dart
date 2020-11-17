@@ -3,16 +3,13 @@ import 'package:Dimodo/widgets/product_thumbnail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
-import 'dart:math';
-import '../common/constants.dart';
-import 'image_galery.dart';
-import '../common/styles.dart';
 import 'package:intl/intl.dart';
 
 import '../common/colors.dart';
-
+import '../common/constants.dart';
+import '../common/styles.dart';
 import '../models/review.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
+import 'image_galery.dart';
 
 class UserReviewCard extends StatefulWidget {
   UserReviewCard({this.review, this.context});
@@ -28,7 +25,7 @@ class UserReviewCard extends StatefulWidget {
 class _UserReviewCardState extends State<UserReviewCard> {
   String sanitizedText;
   Product product;
-  final df = new DateFormat('dd/MM/yyyy');
+  final df = DateFormat('dd/MM/yyyy');
   bool showAll = false;
 
   // @override
@@ -56,7 +53,7 @@ class _UserReviewCardState extends State<UserReviewCard> {
     //on the external display, the lag is unusable..
   }
 
-  _onShowGallery(context, images, [index = 0]) {
+  void _onShowGallery(context, images, [index = 0]) {
     showDialog<void>(
         context: context,
         builder: (BuildContext context) {
@@ -66,10 +63,10 @@ class _UserReviewCardState extends State<UserReviewCard> {
 
   @override
   Widget build(BuildContext context) {
-    sanitizedText = widget.review.text.replaceAll("\n", "");
+    sanitizedText = widget.review.text.replaceAll('\n', '');
     // if (isPreview && sanitizedText.length > 70) {
     //   sanitizedText =
-    //       review.content.replaceAll("\n", "").substring(1, 70) + " ...";
+    //       review.content.replaceAll('\n', '').substring(1, 70) + ' ...';
     // }
 
     return Container(
@@ -87,7 +84,7 @@ class _UserReviewCardState extends State<UserReviewCard> {
               Image.asset(
                 'assets/icons/account/profile${1}.png',
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -119,21 +116,21 @@ class _UserReviewCardState extends State<UserReviewCard> {
               ),
             ],
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           GestureDetector(
             onTap: () => setState(() {
               showAll = !showAll;
             }),
             child: Wrap(
               children: <Widget>[
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(sanitizedText,
                     textAlign: TextAlign.start,
                     maxLines: showAll ? 300 : 3,
                     style: textTheme.headline5),
                 (!showAll && sanitizedText.length > 300)
                     ? Text(
-                        "... Nhiều hơn",
+                        '... Nhiều hơn',
                         textAlign: TextAlign.start,
                         style: textTheme.headline5.copyWith(
                           color: kSecondaryGrey,
@@ -145,7 +142,7 @@ class _UserReviewCardState extends State<UserReviewCard> {
           ),
 
           // Text(sanitizedText, maxLines: 200, style: textTheme.headline5),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           RatingBar(
               itemSize: 18,
               initialRating: widget.review.rating.toDouble(),
@@ -158,8 +155,8 @@ class _UserReviewCardState extends State<UserReviewCard> {
                 half: SvgPicture.asset('assets/icons/rank-flower.svg'),
                 empty: SvgPicture.asset('assets/icons/rank-flower.svg'),
               ),
-              onRatingUpdate: (rating) => print("dsd")),
-          SizedBox(height: 10),
+              onRatingUpdate: (rating) => print('dsd')),
+          const SizedBox(height: 10),
 
           ProductThumbnail(widget.review.product),
           // Container(
@@ -168,7 +165,7 @@ class _UserReviewCardState extends State<UserReviewCard> {
           //   color: kDefaultBackground,
           // ),
           Padding(
-            padding: const EdgeInsets.only(left: 8.0, top: 15, bottom: 36),
+            padding: EdgeInsets.only(left: 8.0, top: 15, bottom: 36),
             child: Text(
               'helpful (${widget.review.likeCount})',
               style: textTheme.caption2.copyWith(color: kSecondaryGrey),

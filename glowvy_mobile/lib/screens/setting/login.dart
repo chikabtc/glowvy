@@ -1,16 +1,14 @@
-import 'package:Dimodo/common/popups.dart';
-import 'package:flutter/material.dart';
-import 'package:Dimodo/common/styles.dart';
-
 import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/common/widgets.dart';
-import 'package:provider/provider.dart';
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/popups.dart';
+import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
-import 'package:after_layout/after_layout.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   final bool fromCart;
@@ -26,15 +24,15 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
   String email, password;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  var parentContext;
+  BuildContext parentContext;
   bool isLoading = false;
   bool isAvailableApple = false;
 
   @override
   void initState() {
     super.initState();
-    _loginButtonController = new AnimationController(
-        duration: new Duration(milliseconds: 3000), vsync: this);
+    _loginButtonController = AnimationController(
+        duration: Duration(milliseconds: 3000), vsync: this);
   }
 
   @override
@@ -54,12 +52,12 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
     }
   }
 
-  _loginEmail(context) async {
+  Future _loginEmail(context) async {
     try {
       _loginButtonController.forward();
 
       if (email == null || password == null) {
-        throw (S.of(context).pleaseInput);
+        throw S.of(context).pleaseInput;
       } else {
         var user =
             await Provider.of<UserModel>(context, listen: false).loginWithEmail(
@@ -73,20 +71,20 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
     }
   }
 
-  _onLoginSuccess(user, context) async {
+  Future _onLoginSuccess(user, context) async {
     await _loginButtonController.reverse();
     _welcomeMessage(user, context);
     Navigator.pop(context);
   }
 
-  _onLoginFailure(message, context) async {
+  Future _onLoginFailure(message, context) async {
     await _loginButtonController.reverse();
     Popups.failMessage(message, context);
   }
 
   @override
   Widget build(BuildContext context) {
-    TextStyle buttonTextStyle =
+    var buttonTextStyle =
         Theme.of(context).textTheme.button.copyWith(fontSize: 16);
     parentContext = context;
     final screenSize = MediaQuery.of(context).size;
@@ -103,8 +101,8 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
             child: Text(S.of(context).signup,
                 style: buttonTextStyle.copyWith(fontWeight: FontWeight.bold)),
             onPressed: () {
-              Navigator.pushReplacementNamed(context, "/register");
-              // Navigator.pushNamed(context, ");
+              Navigator.pushReplacementNamed(context, '/signup');
+              // Navigator.pushNamed(context, ');
             },
           )
         ],
@@ -124,7 +122,7 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
                     children: <Widget>[
                       Column(
                         children: <Widget>[
-                          SvgPicture.asset("assets/icons/star-vy-red.svg"),
+                          SvgPicture.asset('assets/icons/star-vy-red.svg'),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
@@ -177,7 +175,7 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
                                   hintText: S.of(parentContext).password,
                                 )),
                           )),
-                      SizedBox(
+                      const SizedBox(
                         height: 16.0,
                       ),
                       Builder(
@@ -190,13 +188,13 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
                           },
                         ),
                       ),
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       MaterialButton(
                           elevation: 0,
                           minWidth: 48,
                           height: 48,
                           shape: RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(25.0),
+                              borderRadius: BorderRadius.circular(25.0),
                               side: BorderSide(color: kPinkAccent, width: 1.5)),
                           child: Text(S.of(context).forgotpassword,
                               style: textTheme.button2
@@ -207,7 +205,7 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
                                   .pushReplacementNamed('/verify_email');
                             }
                           }),
-                      SizedBox(
+                      const SizedBox(
                         height: 24.0,
                       ),
                     ],

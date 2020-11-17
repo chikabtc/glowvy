@@ -1,18 +1,19 @@
+import 'dart:async';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'dart:async';
 import 'package:sentry/sentry.dart';
+
 import 'app.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 // import 'package:amplitude_flutter/amplitude.dart';
 // import 'package:amplitude_flutter/identify.dart';
 
-final SentryClient _sentry = new SentryClient(
+final SentryClient _sentry = SentryClient(
     dsn:
-        "https://866bdef953574dbdb81a7da5d08411da@o376105.ingest.sentry.io/5197560");
+        'https://866bdef953574dbdb81a7da5d08411da@o376105.ingest.sentry.io/5197560');
 
 void main() async {
   FlutterError.onError = (FlutterErrorDetails details) async {
@@ -30,11 +31,11 @@ void main() async {
     WidgetsFlutterBinding.ensureInitialized();
     Provider.debugCheckInvalidValueType = null;
 
-    SystemChrome.setPreferredOrientations(
+    await SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-    // final Amplitude analytics = Amplitude.getInstance(instanceName: "Dimodo");
+    // final Amplitude analytics = Amplitude.getInstance(instanceName: 'Dimodo');
 
-    var apiKey = "78f34e041572ba05a597df3c0a9d3f23";
+    var apiKey = '78f34e041572ba05a597df3c0a9d3f23';
 
     // // Initialize SDK
     // analytics.init(apiKey);
@@ -43,7 +44,7 @@ void main() async {
     // analytics.enableCoppaControl();
 
     // // Set user Id
-    // analytics.setUserId("test_user");
+    // analytics.setUserId('test_user');
 
     // // Turn on automatic session events
     // analytics.trackingSessionEvents(true);
@@ -186,7 +187,7 @@ void main() async {
 
 bool get isInDebugMode {
   // Assume you're in production mode.
-  bool inDebugMode = false;
+  var inDebugMode = false;
 
   // Assert expressions are only evaluated during development. They are ignored
   // in production. Therefore, this code only sets `inDebugMode` to true
@@ -207,7 +208,7 @@ Future<Null> _reportError(dynamic error, dynamic stackTrace) async {
   }
   print('Reporting to Sentry.io...');
 
-  final SentryResponse response = await _sentry.captureException(
+  final response = await _sentry.captureException(
     exception: error,
     stackTrace: stackTrace,
   );

@@ -1,9 +1,7 @@
-import 'package:Dimodo/widgets/customWidgets.dart';
+import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:Dimodo/common/styles.dart';
-
-import 'package:Dimodo/common/colors.dart';
 
 class TipsCard extends StatefulWidget {
   const TipsCard({
@@ -15,7 +13,7 @@ class TipsCard extends StatefulWidget {
 
   final bool isPositiveTip;
   final Size screenSize;
-  final tips;
+  final dynamic tips;
 
   @override
   _TipsCardState createState() => _TipsCardState();
@@ -45,7 +43,7 @@ class _TipsCardState extends State<TipsCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            // SizedBox(width: 10),
+            // const SizedBox(width: 10),
             for (var i = 0; i < widget.tips.length; i++)
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,8 +64,8 @@ class _TipsCardState extends State<TipsCard> {
                                 : WidgetSpan(child: Container()),
                             TextSpan(
                               text: widget.isPositiveTip
-                                  ? "${i + 1}." + widget.tips[i]["title"]
-                                  : widget.tips[i]["title"],
+                                  ? '${i + 1}.' + widget.tips[i]['title']
+                                  : widget.tips[i]['title'],
                               style: kBaseTextStyle.copyWith(
                                   fontWeight: FontWeight.w600, fontSize: 15),
                             ),
@@ -76,17 +74,17 @@ class _TipsCardState extends State<TipsCard> {
                       ),
                     ],
                   ),
-                  SizedBox(height: 3),
+                  const SizedBox(height: 3),
                   showAll
                       ? Text(
-                          widget.tips[i]["explanation"] + "\n",
+                          widget.tips[i]['explanation'] + '\n',
                           style: kBaseTextStyle.copyWith(
                               fontWeight: FontWeight.w500,
                               color: kDarkAccent.withOpacity(0.7),
                               fontSize: 13),
                         )
                       : Text(
-                          "\n",
+                          '\n',
                           style: kBaseTextStyle.copyWith(
                               fontWeight: FontWeight.w500, fontSize: 13),
                         ),
@@ -100,7 +98,7 @@ class _TipsCardState extends State<TipsCard> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         Text(
-                          "Learn More",
+                          'Learn More',
                           textAlign: TextAlign.end,
                           style: kBaseTextStyle.copyWith(
                             fontSize: 12,

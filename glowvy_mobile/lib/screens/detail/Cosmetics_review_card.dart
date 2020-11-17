@@ -1,14 +1,12 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'dart:math';
-import '../../common/constants.dart';
-import '../../widgets/image_galery.dart';
-import '../../common/styles.dart';
 
 import '../../common/colors.dart';
-
+import '../../common/constants.dart';
+import '../../common/styles.dart';
 import '../../models/review.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
 
 class CosmeticsReviewCard extends StatelessWidget {
   CosmeticsReviewCard(
@@ -21,10 +19,10 @@ class CosmeticsReviewCard extends StatelessWidget {
   final Review review;
   final bool isPreview;
   final bool isKorean;
-  final showDivider;
+  final bool showDivider;
 
   final BuildContext context;
-  Random rng = new Random();
+  Random rng = Random();
   String sanitizedText;
   String kSanitizedText;
 
@@ -94,7 +92,7 @@ class CosmeticsReviewCard extends StatelessWidget {
                 'assets/icons/review-avartar.svg',
                 width: isPreview ? 18 : 38,
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,19 +105,19 @@ class CosmeticsReviewCard extends StatelessWidget {
                                 fontSize: 14,
                                 fontWeight: FontWeight.normal,
                                 color: kSecondaryGrey)),
-                        SizedBox(width: 10),
+                        const SizedBox(width: 10),
                         Text(review.user.skinType,
                             style: textTheme.button2
                                 .copyWith(color: kSecondaryGrey)),
                       ],
                     ),
-                    SizedBox(height: 7),
+                    const SizedBox(height: 7),
                     Text(isKorean ? kSanitizedText : sanitizedText,
                         maxLines: isPreview ? 2 : 20,
                         style: textTheme.bodyText1.copyWith(
                             fontWeight: FontWeight.normal,
                             fontStyle: FontStyle.normal)),
-                    SizedBox(height: 14),
+                    const SizedBox(height: 14),
                     if (showDivider)
                       Divider(color: Colors.black.withOpacity(0.1)),
                   ],
@@ -134,6 +132,7 @@ class CosmeticsReviewCard extends StatelessWidget {
 }
 
 class Page2 extends StatelessWidget {
+  @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
     return Container(

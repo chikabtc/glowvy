@@ -1,4 +1,3 @@
-import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -38,7 +37,7 @@ class _SmartChatState extends State<SmartChat> with WidgetsBindingObserver {
         onPressed: () async {
           print(appUrl);
           if (await canLaunch(appUrl)) {
-            launch(appUrl);
+            await launch(appUrl);
             setState(() {
               setState(() {
                 canLaunchAppURL = true;
@@ -66,9 +65,9 @@ class _SmartChatState extends State<SmartChat> with WidgetsBindingObserver {
   }
 
   List<Widget> getFabIconButton() {
-    List<Widget> listWidget = [];
+    var listWidget = <Widget>[];
 
-    for (int i = 0; i < config.smartChat.length; i++) {
+    for (var i = 0; i < config.smartChat.length; i++) {
       switch (config.smartChat[i]['app']) {
         default:
           listWidget.add(getIconButton(config.smartChat[i]['iconData'], 35,

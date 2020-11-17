@@ -1,16 +1,15 @@
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/styles.dart';
 import 'package:flutter/material.dart';
+
 import '../../generated/i18n.dart';
 import '../../models/address/address.dart';
 
-import 'package:Dimodo/common/styles.dart';
-
-import 'package:Dimodo/common/colors.dart';
-
 class CustomTextFormField extends StatelessWidget {
   final Address address;
-  final labelText;
-  final hintText;
+  final String labelText;
+  final String hintText;
   final Function onTap;
   final bool isEnabled;
   final bool isNumber;
@@ -76,7 +75,7 @@ class CustomTextFormField extends StatelessWidget {
           },
           onChanged: (String value) {
             if (labelText == S.of(context).fullName) {
-              print("is it updating?");
+              print('is it updating?');
               address.recipientName = value;
             } else if (labelText == S.of(context).phoneNumber) {
               address.phoneNumber = value;
@@ -85,7 +84,7 @@ class CustomTextFormField extends StatelessWidget {
             } else if (labelText == S.of(context).streetName) {
               address.street = value;
             }
-            print("address updated: ${address.toJson()}");
+            print('address updated: ${address.toJson()}');
           }),
     );
   }

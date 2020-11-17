@@ -1,14 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:Dimodo/common/styles.dart';
-
 import 'package:Dimodo/common/colors.dart';
-import 'package:provider/provider.dart';
-import 'package:Dimodo/models/user/userModel.dart';
+import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
 import 'package:after_layout/after_layout.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:Dimodo/common/constants.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   @override
@@ -18,7 +16,7 @@ class ResetPasswordScreen extends StatefulWidget {
 class _ResetPasswordScreenState extends State<ResetPasswordScreen>
     with TickerProviderStateMixin, AfterLayoutMixin {
   AnimationController _resetButtonController;
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String password, recheckPassword;
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _recheckPasswordController =
@@ -26,14 +24,14 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen>
 
   bool isLoading = false;
   bool isChecked = false;
-  var parentContext;
+  BuildContext parentContext;
   //get kAccessToken from user information PRovider Package
 
   @override
   void initState() {
     super.initState();
-    _resetButtonController = new AnimationController(
-        duration: new Duration(milliseconds: 3000), vsync: this);
+    _resetButtonController = AnimationController(
+        duration: Duration(milliseconds: 3000), vsync: this);
   }
 
   @override
@@ -43,7 +41,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen>
   }
 
   void _onPasswordChanged(kAccessToken) {
-    print("_onPasswordChanged");
+    print('_onPasswordChanged');
     _stopAnimation();
     Navigator.of(context).pushReplacementNamed('/setting');
   }
@@ -117,17 +115,15 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen>
 
   @override
   Widget build(BuildContext context) {
-    TextStyle buttonTextStyle =
-        Theme.of(context).textTheme.button.copyWith(fontSize: 16);
     final screenSize = MediaQuery.of(context).size;
     parentContext = context;
 
-    _resetPassword() {
+    void _resetPassword() {
       if (password == null || password != recheckPassword) {
         _snackBar('Please input fill in all fields');
       } else {
         _playAnimation();
-        print("check this pin $password and accessToken: $kAccessToken");
+        print('check this pin $password and accessToken: $kAccessToken');
         // Provider.of<UserModel>(context, listen: false).resetPassword(
         //     password: password.trim(),
         //     accessToken: kAccessToken,
@@ -176,7 +172,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen>
                           ),
                         ],
                       ),
-                      SizedBox(height: 23.0),
+                      const SizedBox(height: 23.0),
                       Container(
                           width: screenSize.width,
                           height: 48,
@@ -202,7 +198,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen>
                               ),
                             ),
                           )),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       Container(
                           width: screenSize.width,
                           height: 48,
@@ -228,7 +224,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen>
                               ),
                             ),
                           )),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       StaggerAnimation(
                           buttonTitle: S.of(context).resetpassword,
                           buttonController: _resetButtonController.view,

@@ -1,14 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:Dimodo/common/styles.dart';
-
 import 'package:Dimodo/common/colors.dart';
-import 'package:provider/provider.dart';
-import 'package:Dimodo/models/user/userModel.dart';
+import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
 import 'package:after_layout/after_layout.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:Dimodo/common/constants.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   ForgotPasswordScreen();
@@ -20,20 +18,20 @@ class ForgotPasswordScreen extends StatefulWidget {
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
     with TickerProviderStateMixin, AfterLayoutMixin {
   AnimationController _loginButtonController;
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String email, code, password;
   final TextEditingController _emailController = TextEditingController();
   bool isLoading = false;
   bool isChecked = false;
   bool isEmailSent = false;
-  var parentContext;
+  BuildContext parentContext;
   String accessToken;
 
   @override
   void initState() {
     super.initState();
-    _loginButtonController = new AnimationController(
-        duration: new Duration(milliseconds: 3000), vsync: this);
+    _loginButtonController = AnimationController(
+        duration: Duration(milliseconds: 3000), vsync: this);
   }
 
   @override
@@ -51,18 +49,18 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
   }
 
   void _inputPIN(accessToken) {
-    print("_input pin called");
+    print('_input pin called');
     _stopAnimation();
     this.accessToken = accessToken;
     kAccessToken = accessToken;
-    print("accessToken Received here: $accessToken");
+    print('accessToken Received here: $accessToken');
     isEmailSent = true;
     _emailController.clear();
   }
 
   void _reset_password() {
-    print("_reset_password called");
-    Navigator.pushNamed(context, "/reset_password");
+    print('_reset_password called');
+    Navigator.pushNamed(context, '/reset_password');
   }
 
   void _failMess(message) {
@@ -127,14 +125,14 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
 
   @override
   Widget build(BuildContext context) {
-    TextStyle buttonTextStyle =
+    var buttonTextStyle =
         Theme.of(context).textTheme.button.copyWith(fontSize: 16);
     final screenSize = MediaQuery.of(context).size;
     parentContext = context;
 
-    _requestPIN(email) {
-      print("request pin: $email");
-      if (!email.contains("@")) {
+    Future _requestPIN(email) {
+      print('request pin: $email');
+      if (!email.contains('@')) {
         print(
             "Please input valid email'Please input valid email'Please input valid email'");
         _snackBar('Please input valid email');
@@ -146,12 +144,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
       }
     }
 
-    _checkPIN() {
+    Future _checkPIN() {
       if (email == null) {
         _snackBar('Please input fill in all fields');
       } else {
         _playAnimation();
-        print("check this pin $code,  accessToken: $accessToken");
+        print('check this pin $code,  accessToken: $accessToken');
         // Provider.of<UserModel>(context, listen: false).checkPIN(
         //     pin: code,
         //     token: accessToken,
@@ -177,7 +175,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
             child: Text(S.of(context).login,
                 style: buttonTextStyle.copyWith(fontWeight: FontWeight.bold)),
             onPressed: () {
-              Navigator.pushNamed(context, "/login");
+              Navigator.pushNamed(context, '/login');
             },
           )
         ],
@@ -211,14 +209,14 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                           ),
                         ],
                       ),
-                      SizedBox(height: 23.0),
+                      const SizedBox(height: 23.0),
                       Text(
                           isEmailSent
                               ? S.of(context).enterSixDigitCode
                               : S.of(context).enterEmailToGetPIN,
                           style: kBaseTextStyle.copyWith(
                               fontSize: 14, fontWeight: FontWeight.w600)),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       Container(
                           width: screenSize.width,
                           height: 48,
@@ -246,7 +244,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                               ),
                             ),
                           )),
-                      SizedBox(height: 16.0),
+                      const SizedBox(height: 16.0),
                       StaggerAnimation(
                           buttonTitle: isEmailSent
                               ? S.of(context).enter

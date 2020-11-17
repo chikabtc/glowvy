@@ -1,11 +1,11 @@
 library fab_circular_menu;
 
-import 'package:flutter/material.dart';
 import 'dart:math' as math;
+
+import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math.dart' as vector;
 
 class FabCircularMenu extends StatefulWidget {
-
   final Widget child;
   final List<Widget> options;
   final Color ringColor;
@@ -17,27 +17,25 @@ class FabCircularMenu extends StatefulWidget {
   final Icon fabCloseIcon;
   final Duration animationDuration;
 
-  FabCircularMenu({
-    @required this.child,
-    @required this.options,
-    this.ringColor = Colors.white,
-    this.ringDiameter,
-    this.ringWidth,
-    this.fabMargin = const EdgeInsets.all(24.0),
-    this.fabColor,
-    this.fabOpenIcon = const Icon(Icons.menu),
-    this.fabCloseIcon = const Icon(Icons.close),
-    this.animationDuration = const Duration(milliseconds: 800)
-  }) : assert(options != null && options.length > 0);
+  FabCircularMenu(
+      {@required this.child,
+      @required this.options,
+      this.ringColor = Colors.white,
+      this.ringDiameter,
+      this.ringWidth,
+      this.fabMargin = const EdgeInsets.all(24.0),
+      this.fabColor,
+      this.fabOpenIcon = const Icon(Icons.menu),
+      this.fabCloseIcon = const Icon(Icons.close),
+      this.animationDuration = const Duration(milliseconds: 800)})
+      : assert(options != null && options.isNotEmpty);
 
   @override
   _FabCircularMenuState createState() => _FabCircularMenuState();
-
 }
 
 class _FabCircularMenuState extends State<FabCircularMenu>
     with SingleTickerProviderStateMixin {
-
   double ringDiameter;
   double ringWidth;
   Color fabColor;
@@ -54,25 +52,21 @@ class _FabCircularMenuState extends State<FabCircularMenu>
   void initState() {
     super.initState();
 
-    animationController = AnimationController(
-        duration: widget.animationDuration,
-        vsync: this
-    );
+    animationController =
+        AnimationController(duration: widget.animationDuration, vsync: this);
 
     scaleCurve = CurvedAnimation(
-        parent: animationController, curve: Interval(0.0, 0.4, curve: Curves.easeInOutCirc)
-    );
-    scaleAnimation = Tween<double>(begin: 0.0, end: 1.0)
-        .animate(scaleCurve)
+        parent: animationController,
+        curve: Interval(0.0, 0.4, curve: Curves.easeInOutCirc));
+    scaleAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(scaleCurve)
       ..addListener(() {
         setState(() {});
       });
 
     rotateCurve = CurvedAnimation(
-        parent: animationController, curve: Interval(0.4, 1.0, curve: Curves.easeInOutCirc)
-    );
-    rotateAnimation = Tween<double>(begin: 1.0, end: 90.0)
-        .animate(rotateCurve)
+        parent: animationController,
+        curve: Interval(0.4, 1.0, curve: Curves.easeInOutCirc));
+    rotateAnimation = Tween<double>(begin: 1.0, end: 90.0).animate(rotateCurve)
       ..addListener(() {
         setState(() {});
       });
@@ -82,7 +76,8 @@ class _FabCircularMenuState extends State<FabCircularMenu>
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    ringDiameter = widget.ringDiameter ?? MediaQuery.of(context).size.width * 1.2;
+    ringDiameter =
+        widget.ringDiameter ?? MediaQuery.of(context).size.width * 1.2;
     ringWidth = widget.ringWidth ?? ringDiameter / 3;
     fabColor = widget.fabColor ?? Theme.of(context).primaryColor;
   }
@@ -96,14 +91,17 @@ class _FabCircularMenuState extends State<FabCircularMenu>
 
   @override
   Widget build(BuildContext context) {
-    final double bottom = -(scaleAnimation.value * ringDiameter / 2 - 40.0 - (widget.fabMargin.bottom / 2));
-    final double right = -(scaleAnimation.value * ringDiameter / 2 - 40.0 - (widget.fabMargin.right / 2));
+    final bottom = -(scaleAnimation.value * ringDiameter / 2 -
+        40.0 -
+        (widget.fabMargin.bottom / 2));
+    final right = -(scaleAnimation.value * ringDiameter / 2 -
+        40.0 -
+        (widget.fabMargin.right / 2));
 
     return Stack(
       alignment: Alignment.bottomRight,
       children: <Widget>[
         widget.child,
-
         Positioned(
           bottom: bottom,
           right: right,
@@ -113,12 +111,10 @@ class _FabCircularMenuState extends State<FabCircularMenu>
             child: CustomPaint(
               foregroundPainter: _RingPainter(
                   ringColor: widget.ringColor,
-                  ringWidth: scaleAnimation.value * ringWidth
-              ),
+                  ringWidth: scaleAnimation.value * ringWidth),
             ),
           ),
         ),
-
         Positioned(
           bottom: bottom,
           right: right,
@@ -129,12 +125,10 @@ class _FabCircularMenuState extends State<FabCircularMenu>
               angle: -(math.pi / rotateAnimation.value),
               child: Stack(
                   alignment: Alignment.center,
-                  children: _applyTranslations(widget.options)
-              ),
+                  children: _applyTranslations(widget.options)),
             ),
           ),
         ),
-
         Padding(
           padding: widget.fabMargin,
           child: FloatingActionButton(
@@ -154,59 +148,53 @@ class _FabCircularMenuState extends State<FabCircularMenu>
                     animating = false;
                   });
                 }
-              }
-          ),
+              }),
         )
       ],
     );
   }
 
   List<Widget> _applyTranslations(List<Widget> widgets) {
-    return widgets.asMap().map((index, widget) {
-      final double angle = 90.0 / (widgets.length * 2 - 2) * (index * 2);
-      return MapEntry(index, _applyTranslation(angle, widget));
-    }).values.toList();
+    return widgets
+        .asMap()
+        .map((index, widget) {
+          final angle = 90.0 / (widgets.length * 2 - 2) * (index * 2);
+          return MapEntry(index, _applyTranslation(angle, widget));
+        })
+        .values
+        .toList();
   }
 
   Widget _applyTranslation(double angle, Widget widget) {
-    final double rad = vector.radians(angle);
+    final rad = vector.radians(angle);
     return Transform(
       transform: Matrix4.identity()
-        ..translate(
-            -(ringDiameter / 2) * math.cos(rad),
-            -(ringDiameter / 2) * math.sin(rad)
-        ),
+        ..translate(-(ringDiameter / 2) * math.cos(rad),
+            -(ringDiameter / 2) * math.sin(rad)),
       child: widget,
     );
   }
-
 }
 
-
 class _RingPainter extends CustomPainter {
-
   final Color ringColor;
   final double ringWidth;
 
-  _RingPainter({
-    @required this.ringColor,
-    @required this.ringWidth
-  });
+  _RingPainter({@required this.ringColor, @required this.ringWidth});
 
   @override
   void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
+    var paint = Paint()
       ..color = ringColor
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke
       ..strokeWidth = ringWidth;
 
-    Offset center = Offset(size.width / 2, size.height / 2);
+    var center = Offset(size.width / 2, size.height / 2);
 
     canvas.drawCircle(center, size.width / 2, paint);
   }
 
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => true;
-
 }

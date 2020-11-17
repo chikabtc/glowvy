@@ -19,7 +19,7 @@ class HeartButton extends StatefulWidget {
 class _HeartButtonState extends State<HeartButton> {
   @override
   Widget build(BuildContext context) {
-    List<Product> wishlist = Provider.of<WishListModel>(context).getWishList();
+    var wishlist = Provider.of<WishListModel>(context).getWishList();
     final isExist = wishlist.firstWhere((item) => item.id == widget.product.id,
         orElse: () => null);
 

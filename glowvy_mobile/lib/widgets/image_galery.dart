@@ -26,7 +26,7 @@ class PicSwiperItem {
   String picUrl;
   String des;
 
-  PicSwiperItem(this.picUrl, {this.des = ""});
+  PicSwiperItem(this.picUrl, {this.des = ''});
 }
 
 class PicSwiper extends StatefulWidget {
@@ -87,7 +87,7 @@ class _PicSwiperState extends State<PicSwiper>
                   enableSlideOutPage: true,
                   mode: ExtendedImageMode.gesture,
                   initGestureConfigHandler: (state) {
-                    double initialScale = 1.0;
+                    var initialScale = 1.0;
 
                     if (state.extendedImageInfo != null &&
                         state.extendedImageInfo.image != null) {
@@ -109,7 +109,7 @@ class _PicSwiperState extends State<PicSwiper>
                   },
                   onDoubleTap: (ExtendedImageGestureState state) {
                     var pointerDownPosition = state.pointerDownPosition;
-                    double begin = state.gestureDetails.totalScale;
+                    var begin = state.gestureDetails.totalScale;
                     double end;
 
                     //remove old
@@ -211,16 +211,14 @@ class _PicSwiperState extends State<PicSwiper>
     var n1 = imageSize.height / imageSize.width;
     var n2 = size.height / size.width;
     if (n1 > n2) {
-      final FittedSizes fittedSizes =
-          applyBoxFit(BoxFit.contain, imageSize, size);
+      final fittedSizes = applyBoxFit(BoxFit.contain, imageSize, size);
       //final Size sourceSize = fittedSizes.source;
-      Size destinationSize = fittedSizes.destination;
+      var destinationSize = fittedSizes.destination;
       return size.width / destinationSize.width;
     } else if (n1 / n2 < 1 / 4) {
-      final FittedSizes fittedSizes =
-          applyBoxFit(BoxFit.contain, imageSize, size);
+      final fittedSizes = applyBoxFit(BoxFit.contain, imageSize, size);
       //final Size sourceSize = fittedSizes.source;
-      Size destinationSize = fittedSizes.destination;
+      var destinationSize = fittedSizes.destination;
       return size.height / destinationSize.height;
     }
 
@@ -251,13 +249,13 @@ class MySwiperPlugin extends StatelessWidget {
                   width: 10.0,
                 ),
                 Text(
-                  "${data.data + 1}",
+                  '${data.data + 1}',
                 ),
                 Text(
-                  " / ${pics.length}",
+                  ' / ${pics.length}',
                 ),
                 Expanded(
-                    child: Text(pics[data.data].des ?? "",
+                    child: Text(pics[data.data].des ?? '',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(fontSize: 16.0, color: Colors.white))),

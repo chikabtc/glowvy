@@ -1,17 +1,14 @@
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/models/categoryModel.dart';
+import 'package:Dimodo/models/user/user.dart';
+import 'package:Dimodo/widgets/categories/CategoryButton.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:notification_permissions/notification_permissions.dart';
 import 'package:provider/provider.dart';
-import 'package:Dimodo/common/styles.dart';
-
-import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/generated/i18n.dart';
-import 'package:Dimodo/models/user/user.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:Dimodo/widgets/categories/CategoryButton.dart';
-import 'package:Dimodo/models/categoryModel.dart';
-import 'package:flutter/cupertino.dart';
 
 class CategoryScreen extends StatefulWidget {
   final User user;
@@ -38,13 +35,13 @@ class CategoryScreenState extends State<CategoryScreen>
   Widget build(BuildContext context) {
     super.build(context);
     final screenSize = MediaQuery.of(context).size;
-    print("rebuilding category!");
+    print('rebuilding category!');
 
     final categories =
         Provider.of<CategoryModel>(context, listen: false).categories;
-    // print("categories length: ${categories.length}");
+    // print('categories length: ${categories.length}');
 
-    // print("categories?: ${categories[0].image}");
+    // print('categories?: ${categories[0].image}');
 
     categories.forEach((cate) => categoryButtons.add(CategoryButton(cate)));
 
@@ -79,7 +76,7 @@ class CategoryScreenState extends State<CategoryScreen>
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.only(
+                          padding: EdgeInsets.only(
                               left: 23.0, right: 23.0, bottom: 35),
                           child: Text(S.of(context).categoryScreenDescription,
                               style: kBaseTextStyle.copyWith(
@@ -93,14 +90,13 @@ class CategoryScreenState extends State<CategoryScreen>
                 ]),
               ),
               SliverPadding(
-                padding: const EdgeInsets.only(
-                    left: 23.0, right: 23.0, bottom: 35.0),
+                padding: EdgeInsets.only(left: 23.0, right: 23.0, bottom: 35.0),
                 sliver: SliverGrid(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     childAspectRatio: 1,
                     crossAxisCount: 4,
                   ),
-                  delegate: new SliverChildBuilderDelegate(
+                  delegate: SliverChildBuilderDelegate(
                     (context, index) => CategoryButton(categories[index]),
                     childCount: categories.length,
                   ),

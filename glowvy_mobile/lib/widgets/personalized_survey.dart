@@ -27,14 +27,14 @@
 //     SwiperController _controller = new SwiperController();
 //     var surveyQuestions = [
 //       [
-//         "1. What cosmetics are you looking for",
-//         "Speialized Acne",
-//         "Whiten Skin"
+//         '1. What cosmetics are you looking for',
+//         'Speialized Acne',
+//         'Whiten Skin'
 //       ],
-//       ["What is your age?", "15-22", "22-29"]
+//       ['What is your age?', '15-22', '22-29']
 //     ];
 
-//     print("survey received: ${widget.surveys[0].toJson()}");
+//     print('survey received: ${widget.surveys[0].toJson()}');
 
 //     var userModel = Provider.of<UserModel>(context, listen: false);
 
@@ -46,9 +46,9 @@
 //             children: [
 //               Row(
 //                 children: [
-//                   SizedBox(width: 21),
+//                   const SizedBox(width: 21),
 //                   Image.asset(
-//                     "assets/icons/survey.png",
+//                     'assets/icons/survey.png',
 //                   ),
 //                   Text(
 //                     S.of(context).customizeDimodo,
@@ -57,7 +57,7 @@
 //                   ),
 //                 ],
 //               ),
-//               SizedBox(height: 4),
+//               const SizedBox(height: 4),
 //               Container(
 //                 width: screenSize.width,
 //                 height: screenSize.height * 0.27,
@@ -68,7 +68,7 @@
 //                   // physics: NeverScrollableScrollPhysics(),
 //                   itemBuilder: (BuildContext context, int i) {
 //                     return Padding(
-//                       padding: const EdgeInsets.symmetric(horizontal: 7.0),
+//                       padding: EdgeInsets.symmetric(horizontal: 7.0),
 //                       child: Container(
 //                         decoration: BoxDecoration(
 //                           color: kQuaternaryBlue,
@@ -90,7 +90,7 @@
 //                             //     itemCount: surveyQuestions[i].length,
 //                             //     itemBuilder: (BuildContext ctxt, int index) =>
 //                             //         buildBody(ctxt, index)),
-//                             SizedBox(height: 10),
+//                             const SizedBox(height: 10),
 //                             MaterialButton(
 //                                 elevation: 0,
 //                                 color: kSecondaryBlue,
@@ -113,7 +113,7 @@
 //                                     //         widget.surveys[i].options[0],
 //                                     //     context: context);
 //                                     // _controller.next(animation: true);
-//                                     // print("indeX: $i");
+//                                     // print('indeX: $i');
 //                                   } else if (i == 1) {
 //                                     userModel.setUserAgeGroup(
 //                                         ageGroup: widget.surveys[i].options[1],
@@ -128,7 +128,7 @@
 //                                     });
 //                                   }
 //                                 }),
-//                             SizedBox(height: 10),
+//                             const SizedBox(height: 10),
 //                             MaterialButton(
 //                                 elevation: 0,
 //                                 color: kSecondaryBlue,
@@ -151,7 +151,7 @@
 //                                             widget.surveys[i].options[0],
 //                                         context: context);
 //                                     _controller.next(animation: true);
-//                                     print("indeX: $i");
+//                                     print('indeX: $i');
 //                                   } else if (i == 1) {
 //                                     userModel.setUserAgeGroup(
 //                                         ageGroup: widget.surveys[i].options[1],
@@ -166,7 +166,7 @@
 //                                     });
 //                                   }
 //                                 }),
-//                             SizedBox(height: 10),
+//                             const SizedBox(height: 10),
 //                             MaterialButton(
 //                                 elevation: 0,
 //                                 color: kSecondaryBlue,
@@ -189,7 +189,7 @@
 //                                             widget.surveys[i].options[0],
 //                                         context: context);
 //                                     _controller.next(animation: true);
-//                                     print("indeX: $i");
+//                                     print('indeX: $i');
 //                                   } else if (i == 1) {
 //                                     userModel.setUserAgeGroup(
 //                                         ageGroup: widget.surveys[i].options[1],

@@ -1,12 +1,9 @@
-import 'package:Dimodo/common/styles.dart';
-
 import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import '../common/constants.dart';
 import 'package:webview_flutter/webview_flutter.dart' as _widget;
-import 'package:Dimodo/widgets/customWidgets.dart';
 
 class WebView extends StatefulWidget {
   final String url;
@@ -59,7 +56,8 @@ class _WebViewState extends State<WebView> {
               },
               javascriptMode: _widget.JavascriptMode.unrestricted,
             ),
-            if (isLoading) SpinKitThreeBounce(color: kPrimaryBlue, size: 21.0)
+            if (isLoading)
+              const SpinKitThreeBounce(color: kPrimaryBlue, size: 21.0)
           ],
         ),
       ),

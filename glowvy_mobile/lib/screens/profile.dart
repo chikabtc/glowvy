@@ -1,35 +1,24 @@
 import 'dart:math';
 
+import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
+import 'package:Dimodo/screens/baumannTestIntro.dart';
 import 'package:Dimodo/screens/before_login_page.dart';
 import 'package:Dimodo/screens/edit_profile_page.dart';
-
-import 'package:Dimodo/screens/search_review_cosmetisc.dart';
-import 'package:Dimodo/screens/setting/login.dart';
+import 'package:Dimodo/screens/feedback_center.dart';
 import 'package:Dimodo/screens/write_review_screen.dart';
-
 import 'package:Dimodo/widgets/baumann_quiz.dart';
 import 'package:Dimodo/widgets/user_review_card.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart' as b;
-
 import 'package:flutter/material.dart';
-import 'package:Dimodo/common/constants.dart';
 import 'package:flutter/services.dart';
-import 'package:notification_permissions/notification_permissions.dart';
-import 'package:Dimodo/common/styles.dart';
-import 'package:Dimodo/screens/baumannTestIntro.dart';
-import 'package:Dimodo/screens/feedback_center.dart';
-import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/generated/i18n.dart';
-import 'package:Dimodo/models/user/user.dart';
-
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
-import 'package:share/share.dart';
-import 'dart:io' show Platform;
-import 'package:flutter_mailer/flutter_mailer.dart';
-import 'setting/language.dart';
 
 class ProfilePage extends StatefulWidget {
   final User user;
@@ -54,15 +43,15 @@ class ProfilePageState extends State<ProfilePage>
     userModel = Provider.of<UserModel>(context, listen: false);
   }
 
-  showSkinTest() {
+  void showSkinTest() {
     Navigator.push(
         context,
         MaterialPageRoute<void>(
           builder: (BuildContext context) => userModel.user.skinType == null
               ? BaumannTestIntro()
               : BaumannQuiz(
-                  skinType: userModel.user.skinType,
-                  skinScores: userModel.skinScores),
+                  baumannType: userModel.user.skinType,
+                  baumannScores: userModel.user.baumannScores),
           fullscreenDialog: true,
         ));
   }
@@ -73,13 +62,12 @@ class ProfilePageState extends State<ProfilePage>
     imageCache.clear();
     PaintingBinding.instance.imageCache.clear();
     SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(statusBarColor: kDefaultBackground));
+        const SystemUiOverlayStyle(statusBarColor: kDefaultBackground));
     return Scaffold(
 
         // extendBodyBehindAppBar: true,
         body: Consumer<UserModel>(builder: (context, userModel, child) {
-      User user = userModel.user;
-
+      final user = userModel.user;
       return !userModel.isLoggedIn
           ? BeforeLoginPage()
           : Container(
@@ -105,7 +93,7 @@ class ProfilePageState extends State<ProfilePage>
                             : ClipOval(
                                 child: CachedNetworkImage(
                                   imageUrl: user.picture +
-                                      '?v=${ValueKey(new Random().nextInt(100))}',
+                                      '?v=${ValueKey(Random().nextInt(100))}',
                                   width: 64,
                                   height: 64,
                                   fit: BoxFit.cover,
@@ -116,9 +104,11 @@ class ProfilePageState extends State<ProfilePage>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            Text(b.FirebaseAuth.instance.currentUser.email,
+                            Text(
+                                b.FirebaseAuth.instance.currentUser.email ??
+                                    ' ',
                                 style: textTheme.headline3),
-                            Text(userModel.user.fullName,
+                            Text(userModel.user.fullName ?? ' ',
                                 style: textTheme.caption2),
                             Container(height: 15),
                             Container(
@@ -126,7 +116,7 @@ class ProfilePageState extends State<ProfilePage>
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Spacer(),
+                                  const Spacer(),
                                   Container(
                                     decoration: BoxDecoration(
                                       border: Border.all(
@@ -176,25 +166,22 @@ class ProfilePageState extends State<ProfilePage>
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: <Widget>[
                                   Text(
-                                    S.of(context).yourSkin,
+                                    S.of(context).yourSkin ?? ' ',
                                     textAlign: TextAlign.start,
                                     style: textTheme.headline4.copyWith(
                                       color: kDarkYellow,
                                     ),
                                   ),
-                                  // SizedBox(height: 3.5),
+                                  // const SizedBox(height: 3.5),
                                   Container(
                                     padding: const EdgeInsets.all(3.0),
                                     decoration: BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(8)),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(8)),
                                       border: Border.all(color: kDarkYellow),
                                     ),
                                     child: Text(
-                                        userModel.user.skinType != null
-                                            ? userModel.getFullSkinType(context,
-                                                userModel.user.skinType)
-                                            : "????",
+                                        userModel.user.baumannType ?? '????',
                                         textAlign: TextAlign.start,
                                         style: textTheme.caption2.copyWith(
                                             height: 1.3,
@@ -203,8 +190,8 @@ class ProfilePageState extends State<ProfilePage>
                                   )
                                 ],
                               ),
-                              Spacer(),
-                              SvgPicture.asset("assets/icons/girl-face.svg"),
+                              const Spacer(),
+                              SvgPicture.asset('assets/icons/girl-face.svg'),
                             ],
                           ),
                         ),
@@ -242,13 +229,13 @@ class ProfilePageState extends State<ProfilePage>
                                       ),
                                     ),
                                     Container(
-                                      padding: const EdgeInsets.all(3.0),
+                                      padding: EdgeInsets.all(3.0),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(8)),
                                         border: Border.all(color: kPrimaryBlue),
                                       ),
-                                      child: Text("Cải thiện ứng dụng",
+                                      child: Text('Cải thiện ứng dụng',
                                           textAlign: TextAlign.start,
                                           style: textTheme.caption2.copyWith(
                                             fontWeight: FontWeight.w700,
@@ -257,9 +244,9 @@ class ProfilePageState extends State<ProfilePage>
                                     )
                                   ],
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 SvgPicture.asset(
-                                    "assets/icons/message-banner.svg"),
+                                    'assets/icons/message-banner.svg'),
                               ],
                             ),
                           ),
@@ -272,40 +259,42 @@ class ProfilePageState extends State<ProfilePage>
                     color: kDefaultBackground,
                   ),
                   Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(20),
                               topRight: Radius.circular(20))),
-                      padding: EdgeInsets.only(top: 14, left: 16, right: 16),
+                      padding:
+                          const EdgeInsets.only(top: 14, left: 16, right: 16),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         // mainAxisSize: MainAxisSize.max,
                         children: [
                           Text(
-                            "  Activity (${userModel.reviews.length})",
+                            '  Activity (${userModel.reviews.length})',
                             style: textTheme.headline5,
                           ),
-                          SizedBox(height: 16),
-                          if (userModel.reviews.length == 0)
+                          const SizedBox(height: 16),
+                          if (userModel.reviews.isEmpty)
                             Container(
                               width: screenSize.width,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   color: kQuaternaryOrange,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(20))),
-                              padding: EdgeInsets.only(top: 31, bottom: 19),
+                              padding:
+                                  const EdgeInsets.only(top: 31, bottom: 19),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   SvgPicture.asset('assets/icons/comment.svg'),
-                                  SizedBox(height: 18),
+                                  const SizedBox(height: 18),
                                   Text(
                                     'what cosmetics you use \nmore than two times so far?',
                                     style: textTheme.headline4
                                         .copyWith(color: kPrimaryOrange),
                                   ),
-                                  SizedBox(height: 8),
+                                  const SizedBox(height: 8),
                                   GestureDetector(
                                     onTap: () => Navigator.push(
                                         context,
@@ -331,7 +320,7 @@ class ProfilePageState extends State<ProfilePage>
                                             'assets/icons/review-cosmetics.svg',
                                             width: 16,
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             width: 5.5,
                                           ),
                                           Text(
@@ -344,9 +333,9 @@ class ProfilePageState extends State<ProfilePage>
                                       ),
                                     ),
                                   ),
-                                  SizedBox(height: 18),
+                                  const SizedBox(height: 18),
                                   Text(
-                                    "share my experience to \nhelp buddies choose better cosmetics",
+                                    'share my experience to \nhelp buddies choose better cosmetics',
                                     textAlign: TextAlign.center,
                                     style: textTheme.caption1
                                         .copyWith(color: kDarkSecondary),
@@ -354,7 +343,7 @@ class ProfilePageState extends State<ProfilePage>
                                 ],
                               ),
                             ),
-                          if (userModel.reviews.length > 0)
+                          if (userModel.reviews.isNotEmpty)
                             GestureDetector(
                               onTap: () => Navigator.push(
                                   context,
@@ -378,7 +367,7 @@ class ProfilePageState extends State<ProfilePage>
                                       'assets/icons/comment.svg',
                                       width: 16,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 5.5,
                                     ),
                                     Text(
@@ -390,7 +379,7 @@ class ProfilePageState extends State<ProfilePage>
                                 ),
                               ),
                             ),
-                          SizedBox(height: 19),
+                          const SizedBox(height: 19),
                         ],
                       )),
                   Container(

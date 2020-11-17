@@ -1,10 +1,9 @@
-import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:flutter/material.dart';
 import 'package:Dimodo/common/config.dart';
-import 'package:provider/provider.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/app.dart';
 import 'package:after_layout/after_layout.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Currencies extends StatefulWidget {
   @override
@@ -22,7 +21,7 @@ class CurrenciesState extends State<Currencies> with AfterLayoutMixin {
 
   @override
   Widget build(BuildContext context) {
-    List currencies = kAdvanceConfig["Currencies"] ?? [];
+    List currencies = kAdvanceConfig['Currencies'] ?? [];
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -51,15 +50,15 @@ class CurrenciesState extends State<Currencies> with AfterLayoutMixin {
                   elevation: 0,
                   margin: EdgeInsets.all(0),
                   child: ListTile(
-                    title: Text(currencies[i]["currency"]),
+                    title: Text(currencies[i]['currency']),
                     onTap: () {
                       setState(() {
-                        currency = currencies[i]["currency"];
+                        currency = currencies[i]['currency'];
                       });
                       Provider.of<AppModel>(context, listen: false)
-                          .changeCurrency(currencies[i]["currency"], context);
+                          .changeCurrency(currencies[i]['currency'], context);
                     },
-                    trailing: currency == currencies[i]["currency"]
+                    trailing: currency == currencies[i]['currency']
                         ? Icon(Icons.done)
                         : Container(
                             width: 20,

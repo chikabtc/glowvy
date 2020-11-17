@@ -1,25 +1,22 @@
+import 'package:Dimodo/common/widgets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../common/constants.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../common/styles.dart';
-
 import '../../common/colors.dart';
-
+import '../../common/constants.dart';
+import '../../common/styles.dart';
 import '../../generated/i18n.dart';
 import '../../models/reviews.dart';
-import '../../services/index.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'review_card.dart';
-import 'package:flutter/cupertino.dart';
 import 'cartAction.dart';
+import 'review_card.dart';
 
 class ReviewScreen extends StatefulWidget {
+  const ReviewScreen(this.metaReviews, this.onLoadMore);
+
   final Reviews metaReviews;
   final Function onLoadMore;
-
-  ReviewScreen(this.metaReviews, this.onLoadMore);
 
   @override
   _StateReviews createState() => _StateReviews(metaReviews);
@@ -27,11 +24,10 @@ class ReviewScreen extends StatefulWidget {
 
 class _StateReviews extends State<ReviewScreen>
     with AutomaticKeepAliveClientMixin<ReviewScreen> {
-  final services = Services();
+  _StateReviews(this.metaReviews);
+
   Reviews metaReviews;
   bool isEnd = false;
-
-  _StateReviews(this.metaReviews);
 
   bool isLoading = false;
 
@@ -61,12 +57,7 @@ class _StateReviews extends State<ReviewScreen>
           child: CustomScrollView(slivers: <Widget>[
             SliverAppBar(
               brightness: Brightness.light,
-              leading: IconButton(
-                icon: CommonIcons.arrowBackward,
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
+              leading: backIcon(context),
               actions: <Widget>[CartAction()],
               elevation: 0,
               backgroundColor: Colors.white,
@@ -74,115 +65,111 @@ class _StateReviews extends State<ReviewScreen>
             ),
             SliverList(
                 delegate: SliverChildListDelegate([
-              metaReviews == null
-                  ? Container(
-                      height: kScreenSizeHeight * 0.7,
-                      child: SpinKitThreeBounce(
-                          color: kPinkAccent,
-                          size: 23.0 * kSizeConfig.containerMultiplier),
-                    )
-                  : (metaReviews.reviews.length == 0
-                      ? Container(
-                          child: Center(
-                            child: Text(
-                              S.of(context).noReviews,
-                              style: kBaseTextStyle,
-                            ),
-                          ),
-                        )
-                      : Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
+              if (metaReviews == null)
+                Container(
+                  height: kScreenSizeHeight * 0.7,
+                  child: SpinKitThreeBounce(
+                      color: kPinkAccent,
+                      size: 23.0 * kSizeConfig.containerMultiplier),
+                ),
+              if (metaReviews.reviews.isEmpty)
+                Container(
+                  child: Center(
+                    child: Text(
+                      S.of(context).noReviews,
+                      style: kBaseTextStyle,
+                    ),
+                  ),
+                ),
+              if (metaReviews.reviews.isNotEmpty)
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Column(
+                    children: <Widget>[
+                      const SizedBox(height: 18),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 6.0),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: <Widget>[
-                              SizedBox(height: 18),
-                              Padding(
+                              Text(
+                                  '${S.of(context).reviews} (${metaReviews.totalCount})',
+                                  style: kBaseTextStyle.copyWith(
+                                      fontSize: 13,
+                                      color: kSecondaryGrey,
+                                      fontWeight: FontWeight.w600)),
+                              const Spacer(),
+                              Container(
                                 padding:
-                                    const EdgeInsets.symmetric(horizontal: 6.0),
-                                child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
-                                    children: <Widget>[
-                                      Text(
-                                          "${S.of(context).reviews} (${metaReviews.totalCount})",
-                                          style: kBaseTextStyle.copyWith(
-                                              fontSize: 13,
-                                              color: kSecondaryGrey,
-                                              fontWeight: FontWeight.w600)),
-                                      Spacer(),
-                                      Container(
-                                        padding:
-                                            EdgeInsets.symmetric(horizontal: 5),
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(5)),
-                                        ),
-                                        child: Row(children: <Widget>[
-                                          Image.asset(
-                                              "assets/icons/product_detail/google-translate.png"),
-                                          Text(
-                                            S.of(context).translatedByGoogle,
-                                            style: kBaseTextStyle.copyWith(
-                                                fontSize: 12,
-                                                color: kDarkAccent
-                                                    .withOpacity(0.7)),
-                                            textAlign: TextAlign.start,
-                                          ),
-                                        ]),
-                                      ),
-                                    ]),
+                                    const EdgeInsets.symmetric(horizontal: 5),
+                                decoration: const BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(5)),
+                                ),
+                                child: Row(children: <Widget>[
+                                  Image.asset(
+                                      'assets/icons/product_detail/google-translate.png'),
+                                  Text(
+                                    S.of(context).translatedByGoogle,
+                                    style: kBaseTextStyle.copyWith(
+                                        fontSize: 12,
+                                        color: kDarkAccent.withOpacity(0.7)),
+                                    textAlign: TextAlign.start,
+                                  ),
+                                ]),
                               ),
-                              ListView.builder(
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  scrollDirection: Axis.vertical,
-                                  shrinkWrap: true,
-                                  itemCount: metaReviews.reviews.length,
-                                  itemBuilder: (context, i) => ReviewCard(
-                                      context: context,
-                                      review: metaReviews.reviews[i])),
-                              isLoading
-                                  ? SpinKitCircle(
-                                      color: kPinkAccent,
-                                      size: 23.0 *
-                                          kSizeConfig.containerMultiplier)
-                                  : isEnd
-                                      ? SvgPicture.asset(
-                                          'assets/icons/heart-ballon.svg',
-                                          width: 30,
-                                          height: 42,
-                                        )
-                                      : MaterialButton(
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(6.0),
-                                          ),
-                                          elevation: 0,
-                                          onPressed: () async {
-                                            setState(() {
-                                              isLoading = true;
-                                            });
-                                            isEnd = await widget.onLoadMore();
-                                            setState(() {
-                                              print("isend?? $isEnd");
-                                              isLoading = false;
-                                            });
-                                          },
-                                          height: 40,
-                                          minWidth: 62,
-                                          color: kSecondaryWhite,
-                                          child: Center(
-                                              child: Text(
-                                            "Load More",
-                                            style: kBaseTextStyle.copyWith(
-                                                fontSize: 15,
-                                                color: kSecondaryGrey,
-                                                fontWeight: FontWeight.w600),
-                                          )),
-                                        ),
-                              Container(height: 10)
-                            ],
-                          ),
-                        ))
+                            ]),
+                      ),
+                      ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemCount: metaReviews.reviews.length,
+                          itemBuilder: (context, i) => ReviewCard(
+                              context: context,
+                              review: metaReviews.reviews[i])),
+                      isLoading
+                          ? SpinKitCircle(
+                              color: kPinkAccent,
+                              size: 23.0 * kSizeConfig.containerMultiplier)
+                          : isEnd
+                              ? SvgPicture.asset(
+                                  'assets/icons/heart-ballon.svg',
+                                  width: 30,
+                                  height: 42,
+                                )
+                              : MaterialButton(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(6.0),
+                                  ),
+                                  elevation: 0,
+                                  onPressed: () async {
+                                    setState(() {
+                                      isLoading = true;
+                                    });
+                                    isEnd = await widget.onLoadMore();
+                                    setState(() {
+                                      print('isend?? $isEnd');
+                                      isLoading = false;
+                                    });
+                                  },
+                                  height: 40,
+                                  minWidth: 62,
+                                  color: kSecondaryWhite,
+                                  child: Center(
+                                      child: Text(
+                                    'Load More',
+                                    style: kBaseTextStyle.copyWith(
+                                        fontSize: 15,
+                                        color: kSecondaryGrey,
+                                        fontWeight: FontWeight.w600),
+                                  )),
+                                ),
+                      Container(height: 10)
+                    ],
+                  ),
+                )
             ])),
           ])),
     );

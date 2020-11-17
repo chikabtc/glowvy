@@ -1,6 +1,7 @@
 import 'package:Dimodo/models/order/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../models/user/userModel.dart';
 import 'profile.dart';
 
@@ -19,13 +20,13 @@ class _UserScreenState extends State<UserScreen> {
     return ListenableProvider.value(
         value: userModel,
         child: Consumer<UserModel>(builder: (context, value, child) {
-          // print("user screen: ${value.user.toJson()}");
+          // print('user screen: ${value.user.toJson()}');
           return ProfilePage(
             user: value.user,
             onLogout: () async {
-              print("logged out tap!");
-              userModel.logout();
-              cartModel.clearCart();
+              print('logged out tap!');
+              await userModel.logout();
+              // cartModel.clearCart();
             },
           );
         }));

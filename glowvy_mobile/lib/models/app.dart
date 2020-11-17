@@ -1,17 +1,18 @@
-import 'package:flutter/material.dart';
 import 'dart:convert' as convert;
+
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
-import '../common/constants.dart';
-import 'package:provider/provider.dart';
-import '../models/categoryModel.dart';
+import 'package:localstorage/localstorage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../common/config.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:localstorage/localstorage.dart';
-import 'order/cart.dart';
+import '../common/constants.dart';
 
 class AppModel with ChangeNotifier {
+  AppModel() {
+    getConfig();
+  }
   Map<String, dynamic> appConfig;
   bool isLoading = true;
   String message;
@@ -23,56 +24,56 @@ class AppModel with ChangeNotifier {
   String username;
   bool isInit = false;
 
-  AppModel() {
-    getConfig();
-  }
-
   Future<bool> getConfig() async {
     try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      locale = prefs.getString("language") ?? kAdvanceConfig['DefaultLanguage'];
-      darkTheme = prefs.getBool("darkTheme") ?? false;
-      currency = prefs.getString("currency") ??
+      final prefs = await SharedPreferences.getInstance();
+      locale = prefs.getString('language') ?? kAdvanceConfig['DefaultLanguage'];
+      darkTheme = prefs.getBool('darkTheme') ?? false;
+      currency = prefs.getString('currency') ??
           (kAdvanceConfig['DefaultCurrency'] as Map)['currency'];
       isInit = true;
       return true;
-    } catch (err) {
+    } catch (e) {
       return false;
     }
   }
 
   Future<bool> changeLanguage(String country, BuildContext context) async {
     try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
+      final prefs = await SharedPreferences.getInstance();
       locale = country;
       // await Provider.of<CategoryModel>(context, listen: false)
       //     .getLocalCategories(context, lang: country);
-      await prefs.setString("language", country);
+      await prefs.setString('language', country);
       await loadAppConfig();
       notifyListeners();
       return true;
-    } catch (err) {
+    } catch (e) {
       return false;
     }
   }
 
-  void changeCurrency(String item, BuildContext context) async {
+  Future changeCurrency(String item, BuildContext context) async {
     try {
-      Provider.of<CartModel>(context, listen: false).changeCurrency(item);
-      SharedPreferences prefs = await SharedPreferences.getInstance();
+      // Provider.of<CartModel>(context, listen: false).changeCurrency(item);
+      final prefs = await SharedPreferences.getInstance();
       currency = item;
-      await prefs.setString("currency", currency);
+      await prefs.setString('currency', currency);
       notifyListeners();
-    } catch (err) {}
+    } catch (e) {
+      rethrow;
+    }
   }
 
-  void updateTheme(bool theme) async {
+  Future updateTheme(bool theme) async {
     try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
+      final prefs = await SharedPreferences.getInstance();
       darkTheme = theme;
-      await prefs.setBool("darkTheme", theme);
+      await prefs.setBool('darkTheme', theme);
       notifyListeners();
-    } catch (e) {}
+    } catch (e) {
+      rethrow;
+    }
   }
 
   void updateShowDemo(bool value) {
@@ -97,22 +98,21 @@ class AppModel with ChangeNotifier {
       if (!isInit) {
         await getConfig();
       }
-      final LocalStorage storage = LocalStorage('builder');
-      var config = await storage.getItem('config');
+      final storage = LocalStorage('builder');
+      final config = await storage.getItem('config');
       if (config != null) {
         appConfig = config;
       } else {
-        if (kAppConfig.indexOf('http') != -1) {
+        if (kAppConfig.contains('http')) {
           // load on cloud config and update on air
           final appJson = await http.get(Uri.encodeFull(kAppConfig),
-              headers: {"Accept": "application/json"});
+              headers: {'Accept': 'application/json'});
           appConfig = convert.jsonDecode(appJson.body);
         } else {
           final appJson = await rootBundle.loadString(kAppConfig);
           appConfig = convert.jsonDecode(appJson);
-          // // load local config
-          String path = "lib/common/config_$locale.json";
-          print("path app config:$path");
+          final path = 'lib/common/config_$locale.json';
+          print('path app config:$path');
           try {
             final appJson = await rootBundle.loadString(path);
             appConfig = convert.jsonDecode(appJson);
@@ -124,16 +124,16 @@ class AppModel with ChangeNotifier {
       }
       isLoading = false;
       notifyListeners();
-    } catch (err) {
+    } catch (e) {
       isLoading = false;
-      message = err.toString();
+      message = e.toString();
       notifyListeners();
     }
   }
 }
 
 class App {
-  Map<String, dynamic> appConfig;
-
   App(this.appConfig);
+
+  Map<String, dynamic> appConfig;
 }

@@ -1,17 +1,12 @@
-import 'dart:ffi';
-
-import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/ingredient.dart';
-import 'package:Dimodo/models/product/review_meta.dart';
 import 'package:Dimodo/models/product/review_metas.dart';
+import 'package:Dimodo/models/product_category.dart';
+import 'package:json_annotation/json_annotation.dart';
 
 import '../brandi/option.dart';
 import '../sizeDetail.dart';
-import 'package:json_annotation/json_annotation.dart';
 import 'seller.dart';
-import 'productEtcInfo.dart';
-import 'addInfo.dart';
-import 'tag.dart';
+
 part 'product.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
@@ -35,7 +30,7 @@ class Product {
   int salePercent;
   int purchaseCount;
   String volume;
-  Category category;
+  ProductCategory category;
   ReviewMetas reviewMetas;
   List<SizeDetail> sizeDetails;
   List<Option> options;

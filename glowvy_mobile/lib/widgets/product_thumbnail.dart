@@ -1,10 +1,9 @@
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
-import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:flutter/material.dart';
-
 import 'package:flutter_svg/svg.dart';
 
 class ProductThumbnail extends StatelessWidget {
@@ -40,12 +39,12 @@ class ProductThumbnail extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  SizedBox(height: 2),
-                  Text("${product.name}",
+                  const SizedBox(height: 2),
+                  Text('${product.name}',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: textTheme.button2),
-                  Text("${product.name}",
+                  Text('${product.name}',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: textTheme.caption2),
@@ -53,13 +52,13 @@ class ProductThumbnail extends StatelessWidget {
               ),
             ),
           ),
-          Spacer(),
+          const Spacer(),
           if (allowEdit)
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  "Change",
+                  'Change',
                   style: textTheme.caption1.copyWith(color: kSecondaryGrey),
                 ),
                 SvgPicture.asset(

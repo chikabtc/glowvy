@@ -1,14 +1,12 @@
-import 'package:Dimodo/models/app.dart';
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import '../common/constants.dart';
-import '../common/config.dart' as config;
-import '../common/styles.dart';
-import '../common/colors.dart';
-
-import '../common/sizeConfig.dart';
 import 'package:Dimodo/generated/i18n.dart';
+import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../common/colors.dart';
+import '../common/config.dart' as config;
+import '../common/constants.dart';
+import '../common/sizeConfig.dart';
+import '../common/styles.dart';
 
 class OnBoardScreen extends StatefulWidget {
   @override
@@ -18,10 +16,10 @@ class OnBoardScreen extends StatefulWidget {
 class _OnBoardScreenState extends State<OnBoardScreen> {
   List<Widget> pages = [];
   final isRequiredLogin = config.kAdvanceConfig['IsRequiredLogin'];
-  PageController _pageController = PageController(
+  final PageController _pageController = PageController(
     initialPage: 0,
   );
-  var onboardingData;
+  dynamic onboardingData;
 
   @override
   void dispose() {
@@ -35,12 +33,12 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
         Image.asset(
-          "assets/images/fogg-order-completed.png",
+          'assets/images/fogg-order-completed.png',
           height: 200,
           fit: BoxFit.fitWidth,
         ),
         Padding(
-          padding: const EdgeInsets.only(top: 50),
+          padding: EdgeInsets.only(top: 50),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -54,7 +52,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                 },
               ),
               Text(
-                "    |    ",
+                '    |    ',
                 // style: TextStyle(color: kTeal400, fontSize: 20.0),
               ),
               GestureDetector(
@@ -63,7 +61,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                   // style: TextStyle(color: kTeal400, fontSize: 20.0),
                 ),
                 onTap: () {
-                  Navigator.pushReplacementNamed(context, '/register');
+                  Navigator.pushReplacementNamed(context, '/signup');
                 },
               ),
             ],
@@ -82,26 +80,26 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
     // try {
     //   onboardingData =
     //       Provider.of<AppModel>(context, listen: false).appConfig['Onboarding'];
-    //   // print("surveys: $surveys");
+    //   // print('surveys: $surveys');
     //   // for (var item in surveys) {
     //   //   this.surveys.add(Survey.fromJson(item));
     //   // }
     // } catch (err) {
     //   var message =
-    //       "There is an issue with the app during request the data, please contact admin for fixing the issues " +
+    //       'There is an issue with the app during request the data, please contact admin for fixing the issues ' +
     //           err.toString();
 
-    //   print("error: $message");
+    //   print('error: $message');
     // }
 
-    for (int i = 0; i < onboardingData.length; i++) {
+    for (var i = 0; i < onboardingData.length; i++) {
       var page = Container(
         color: kDefaultBackground,
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.center,
           // crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            SizedBox(height: 60),
+            const SizedBox(height: 60),
             //make the image fit
             Container(
               width: screenSize.width,
@@ -110,9 +108,9 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                 fit: BoxFit.contain,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 22.0),
+              padding: EdgeInsets.symmetric(horizontal: 22.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -133,7 +131,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(onboardingData[i]['desc'],
                 style: kBaseTextStyle.copyWith(
                     fontWeight: FontWeight.bold,
@@ -153,7 +151,7 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                           color: kDarkAccent,
                           height: 48,
                           shape: RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(25.0),
+                            borderRadius: BorderRadius.circular(25.0),
                           ),
                           child: Text(S.of(context).getStarted,
                               style: kBaseTextStyle.copyWith(
@@ -161,10 +159,10 @@ class _OnBoardScreenState extends State<OnBoardScreen> {
                                   fontSize: 14,
                                   color: Colors.white)),
                           onPressed: () {
-                            Navigator.pushNamed(context, "/home");
+                            Navigator.pushNamed(context, '/home');
                           }),
                     Padding(
-                        padding: const EdgeInsets.only(
+                        padding: EdgeInsets.only(
                           top: 33,
                           left: 16,
                           right: 16,

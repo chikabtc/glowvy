@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
-import 'constants.dart';
+
 import 'colors.dart';
+import 'constants.dart';
 
 class AppThemeData {
   final BorderRadius borderRadius = BorderRadius.circular(8);
 
-  final Color colorYellow = Color(0xffffff00);
-  final Color colorPrimary = Color(0xffabcdef);
+  final Color colorYellow = const Color(0xffffff00);
+  final Color colorPrimary = const Color(0xffabcdef);
 
   ThemeData get materialTheme {
     return ThemeData(primaryColor: colorPrimary);
@@ -19,17 +19,17 @@ var kTextField = InputDecoration(
   hintStyle: textTheme.headline5.copyWith(
     color: theme.hintColor,
   ),
-  contentPadding: EdgeInsets.only(left: 16),
+  contentPadding: const EdgeInsets.only(left: 16),
 );
-var kButton = BoxDecoration(
+var kButton = const BoxDecoration(
   color: kPrimaryOrange,
-  borderRadius: BorderRadius.all(const Radius.circular(16.0)),
+  borderRadius: const BorderRadius.all(const Radius.circular(16.0)),
 );
 
 // var kButton =
 
 ThemeData buildLightTheme() {
-  final ThemeData base = ThemeData(fontFamily: 'Nunito');
+  final base = ThemeData(fontFamily: 'Nunito');
 
   return base.copyWith(
     // dividerColor: ,
@@ -55,11 +55,11 @@ ThemeData buildLightTheme() {
     accentColor: kLightAccent,
     cursorColor: kPinkAccent,
     scaffoldBackgroundColor: kDefaultBackground,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       elevation: 0,
       textTheme: TextTheme(
         title: TextStyle(
-          fontFamily: "Nunito",
+          fontFamily: 'Nunito',
           color: kDarkBG,
           fontSize: 18.0,
           fontWeight: FontWeight.w800,
@@ -117,28 +117,28 @@ TextTheme _buildTextTheme(TextTheme base) {
 
 extension CustomTextTheme on TextTheme {
   TextStyle get button1 => const TextStyle(
-        fontFamily: "Nunito",
+        fontFamily: 'Nunito',
         height: 1.25,
         color: kDefaultFontColor,
         fontSize: 15.0,
         fontWeight: FontWeight.bold,
       );
   TextStyle get button2 => const TextStyle(
-        fontFamily: "Nunito",
+        fontFamily: 'Nunito',
         height: 1.25,
         color: kDefaultFontColor,
         fontSize: 14.0,
         fontWeight: FontWeight.w600,
       );
   TextStyle get caption1 => const TextStyle(
-        fontFamily: "Nunito",
+        fontFamily: 'Nunito',
         height: 1.25,
         color: kDefaultFontColor,
         fontSize: 13.0,
         fontWeight: FontWeight.w400,
       );
   TextStyle get caption2 => const TextStyle(
-        fontFamily: "Nunito",
+        fontFamily: 'Nunito',
         color: kDefaultFontColor,
         height: 1.25,
         fontSize: 12.0,
@@ -174,7 +174,7 @@ extension CustomColorScheme on ColorScheme {
 
 var kBaseTextStyle = TextStyle(
   height: 1.25,
-  fontFamily: "Nunito",
+  fontFamily: 'Nunito',
   color: kDarkBG,
   fontSize: 15.0,
   fontWeight: FontWeight.w500,

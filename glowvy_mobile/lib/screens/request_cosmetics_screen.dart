@@ -1,22 +1,15 @@
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/common/widgets.dart';
+import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/user/userModel.dart';
-import 'package:Dimodo/widgets/baumann_quiz.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
-import 'package:Dimodo/common/popups.dart';
-import 'package:Dimodo/widgets/webview.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mailer/flutter_mailer.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:Dimodo/common/styles.dart';
-
-import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/generated/i18n.dart';
 import 'package:provider/provider.dart';
-import 'dart:math';
 
 class CosmeticsRequestScreen extends StatefulWidget {
   @override
@@ -27,11 +20,11 @@ class _CosmeticsRequestScreenState extends State<CosmeticsRequestScreen>
     with TickerProviderStateMixin {
   Size screenSize;
   UserModel userModel;
-  var category;
+  String category;
   AnimationController _requestController;
   bool isLoading;
-  var brand;
-  var productName;
+  String brand;
+  String productName;
   final TextEditingController _categoryController = TextEditingController();
   final TextEditingController _brandController = TextEditingController();
   final TextEditingController _productNameController = TextEditingController();
@@ -39,8 +32,8 @@ class _CosmeticsRequestScreenState extends State<CosmeticsRequestScreen>
   @override
   void initState() {
     super.initState();
-    _requestController = new AnimationController(
-        duration: new Duration(milliseconds: 3000), vsync: this);
+    _requestController = AnimationController(
+        duration: Duration(milliseconds: 3000), vsync: this);
     userModel = Provider.of<UserModel>(context, listen: false);
   }
 
@@ -73,7 +66,7 @@ class _CosmeticsRequestScreenState extends State<CosmeticsRequestScreen>
         appBar: AppBar(
             elevation: 0,
             title: Text(
-              "Phản hồi",
+              'Phản hồi',
               style: textTheme.headline3.copyWith(
                 color: kPrimaryOrange,
               ),
@@ -98,7 +91,7 @@ class _CosmeticsRequestScreenState extends State<CosmeticsRequestScreen>
                 children: [
                   SvgPicture.asset('assets/icons/request_flower.svg'),
                   Container(height: 14),
-                  SizedBox(height: 12.0),
+                  const SizedBox(height: 12.0),
                   Text(
                     'Hongbeom~ \nSubmit Cosmetics Info',
                     style: textTheme.headline1,
@@ -109,7 +102,7 @@ class _CosmeticsRequestScreenState extends State<CosmeticsRequestScreen>
                     style: textTheme.bodyText1,
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 14),
+                  const SizedBox(height: 14),
                   Container(
                       width: screenSize.width,
                       height: 48,
@@ -129,7 +122,7 @@ class _CosmeticsRequestScreenState extends State<CosmeticsRequestScreen>
                               hintText: S.of(context).category,
                             )),
                       )),
-                  SizedBox(height: 12.0),
+                  const SizedBox(height: 12.0),
                   Container(
                       width: screenSize.width,
                       height: 48,
@@ -149,7 +142,7 @@ class _CosmeticsRequestScreenState extends State<CosmeticsRequestScreen>
                               hintText: S.of(context).productAdded,
                             )),
                       )),
-                  SizedBox(height: 12.0),
+                  const SizedBox(height: 12.0),
                   Container(
                       width: screenSize.width,
                       height: 48,
@@ -168,7 +161,7 @@ class _CosmeticsRequestScreenState extends State<CosmeticsRequestScreen>
                             decoration: kTextField.copyWith(
                                 hintText: S.of(context).name)),
                       )),
-                  SizedBox(height: 13),
+                  const SizedBox(height: 13),
                   //add the product to the firestore
                   //then the trigger function will send the slack notification
 
@@ -192,11 +185,11 @@ class _CosmeticsRequestScreenState extends State<CosmeticsRequestScreen>
                                 .collection('cosmetics_requests')
                                 .add(cosmeticsRequest);
 
-                            _stopAnimation();
+                            await _stopAnimation();
                           });
                         } catch (err) {
-                          print("error sending cosmetics request: $err");
-                          throw err;
+                          print('error sending cosmetics request: $err');
+                          rethrow;
                         }
                         //save the requested cosmetics info on the firestore
                         //se
@@ -211,18 +204,18 @@ class _CosmeticsRequestScreenState extends State<CosmeticsRequestScreen>
 }
 
 class TextWithIcon extends StatelessWidget {
-  final text;
-  final iconPath;
+  String text;
+  String iconPath;
   TextWithIcon(this.text, this.iconPath);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 16.0),
+      padding: EdgeInsets.only(top: 16.0),
       child: Row(
         children: <Widget>[
           SvgPicture.asset(iconPath),
-          SizedBox(width: 7),
+          const SizedBox(width: 7),
           Flexible(
             child: Text(
               text,

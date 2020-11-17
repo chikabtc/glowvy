@@ -1,44 +1,32 @@
+import 'dart:math' as math;
+
+import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/models/app.dart';
-import 'package:Dimodo/models/category.dart';
+import 'package:Dimodo/models/product/product.dart';
+import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/models/product_category.dart';
+import 'package:Dimodo/models/survey.dart';
+import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
-import 'package:Dimodo/screens/baumannTestIntro.dart';
-import 'package:Dimodo/screens/feedback_center.dart';
 import 'package:Dimodo/screens/search_screen.dart';
-import 'package:Dimodo/screens/setting/signup.dart';
-import 'package:Dimodo/widgets/baumann_quiz.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:Dimodo/widgets/filter-by-skin.dart';
-import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
-import 'package:Dimodo/widgets/webview.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:after_layout/after_layout.dart';
+import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:provider/provider.dart';
-import 'package:Dimodo/common/styles.dart';
-
-import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/generated/i18n.dart';
-import 'package:Dimodo/models/user/user.dart';
-import 'package:Dimodo/models/survey.dart';
-import 'package:Dimodo/models/product/productModel.dart';
-import 'package:Dimodo/models/product/product.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:Dimodo/common/constants.dart';
-import 'package:flutter/services.dart';
-import 'package:Dimodo/services/index.dart';
-import 'dart:math' as math;
-import 'package:after_layout/after_layout.dart';
-import 'package:flutter_mailer/flutter_mailer.dart';
-import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   final User user;
   final VoidCallback onLogout;
 
-  HomeScreen({this.user, this.onLogout});
+  const HomeScreen({this.user, this.onLogout});
 
   @override
   State<StatefulWidget> createState() {
@@ -51,12 +39,11 @@ class HomeScreenState extends State<HomeScreen>
         AfterLayoutMixin<HomeScreen>,
         AutomaticKeepAliveClientMixin<HomeScreen>,
         TickerProviderStateMixin {
-  Services service = Services();
   Future<List<Product>> getProductByTagStar;
   Future<List<Product>> getProductByTagTrending;
   Future<List<Product>> getCosmeticsProductsByCategory;
-  var bottomPopupHeightFactor;
-  List<Category> tabList = [];
+
+  List<ProductCategory> tabList = [];
   TabController _tabController;
 
   bool isGenerating = true;
@@ -70,7 +57,7 @@ class HomeScreenState extends State<HomeScreen>
   int currentCateId = 3;
 
   int skinTypeId = 0;
-  Map<int, List<Product>> allProducts = Map();
+  Map<int, List<Product>> allProducts = {};
   // List<List<Product>> allProducts = [];
   bool isFiltering = false;
   List<Future<List<Product>>> futureLists = [];
@@ -79,12 +66,16 @@ class HomeScreenState extends State<HomeScreen>
   void initState() {
     super.initState();
 
+    _tabController = TabController(length: tabList.length, vsync: this);
+    userModel = Provider.of<UserModel>(context, listen: false);
+    productModel = Provider.of<ProductModel>(context, listen: false);
+
     Future.wait([
-      service.getCosmeticsProductsByCategoryF(categoryId: 32, skinType: 0),
-      service.getCosmeticsProductsByCategoryF(categoryId: 142, skinType: 0),
-      service.getCosmeticsProductsByCategoryF(categoryId: 3, skinType: 0),
-      service.getCosmeticsProductsByCategoryF(categoryId: 4, skinType: 0),
-      service.getCosmeticsProductsByCategoryF(categoryId: 14, skinType: 0),
+      productModel.getProductsByCategoryId(categoryId: 32),
+      productModel.getProductsByCategoryId(categoryId: 142),
+      productModel.getProductsByCategoryId(categoryId: 3),
+      productModel.getProductsByCategoryId(categoryId: 4),
+      productModel.getProductsByCategoryId(categoryId: 14),
     ]).then((responses) {
       allProducts[32] = responses.first;
       allProducts[142] = responses[1];
@@ -99,28 +90,24 @@ class HomeScreenState extends State<HomeScreen>
       tabList = [];
       final tabs = Provider.of<AppModel>(context, listen: false)
           .appConfig['Cosmetics_categories'] as List;
-      for (var tab in tabs) {
-        tabList.add(Category.fromJson(tab));
+      for (final tab in tabs) {
+        tabList.add(ProductCategory.fromJson(tab));
       }
     } catch (err) {
-      var message = "Fail to fetch products from firestore: " + err.toString();
+      final message =
+          'Fail to fetch products from firestore: ' + err.toString();
 
-      print("error: $message");
+      print('error: $message');
     }
-
-    _tabController = TabController(length: tabList.length, vsync: this);
-    userModel = Provider.of<UserModel>(context, listen: false);
-    var user = userModel.user;
-    productModel = Provider.of<ProductModel>(context, listen: false);
     // //setting the ski ntype when launching
     // if (user.skinType != null) {
-    //   if (user.skinType.contains("S")) {
+    //   if (user.skinType.contains('S')) {
     //     skinTypeId = 1;
-    //   } else if (user.skinType.contains("D")) {
+    //   } else if (user.skinType.contains('D')) {
     //     skinTypeId = 2;
-    //   } else if (user.skinType.contains("O")) {
+    //   } else if (user.skinType.contains('O')) {
     //     skinTypeId = 3;
-    //   } else if (user.skinType.contains("R")) {
+    //   } else if (user.skinType.contains('R')) {
     //     skinTypeId = 0;
     //   }
     // }
@@ -132,14 +119,14 @@ class HomeScreenState extends State<HomeScreen>
   @override
   bool get wantKeepAlive => true;
 
-  void onLoadMore(start, limit) {
-    Provider.of<ProductModel>(context, listen: false).getProductsByTag(
-      tag: 5,
-      sortBy: "id",
-      start: start,
-      limit: limit,
-    );
-  }
+  // void onLoadMore(start, limit) {
+  //   Provider.of<ProductModel>(context, listen: false).getProductsByTag(
+  //     tag: 5,
+  //     sortBy: 'id',
+  //     start: start,
+  //     limit: limit,
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -158,18 +145,18 @@ class HomeScreenState extends State<HomeScreen>
     //   }
     // } catch (err) {
     //   var message =
-    //       "There is an issue with the app during request the data, please contact admin for fixing the issues " +
+    //       'There is an issue with the app during request the data, please contact admin for fixing the issues ' +
     //           err.toString();
-    //   print("error: $message");
+    //   print('error: $message');
     // }
 
     List<Widget> renderTabbar() {
-      List<Widget> list = [];
+      var list = <Widget>[];
       // for (var l; )
 
       tabList.asMap().forEach((index, item) {
-        list.add(Tab(
-          text: "ds",
+        list.add(const Tab(
+          text: 'ds',
         ));
       });
       return list;
@@ -179,8 +166,8 @@ class HomeScreenState extends State<HomeScreen>
       backgroundColor: Colors.white,
       body: Consumer<UserModel>(builder: (context, userModel, child) {
         if (userModel.user.skinType != null) {
-          // print("USERMODEL SKIN ${userModel.user.skinType}");
-          // print("USERMODEL SKINSCORES ${userModel.skinScores?.dsScore}");
+          // print('USERMODEL SKIN ${userModel.user.skinType}');
+          // print('USERMODEL SKINSCORES ${userModel.skinScores?.dsScore}');
         }
         return SafeArea(
           top: true,
@@ -190,18 +177,18 @@ class HomeScreenState extends State<HomeScreen>
             child: NestedScrollView(
               headerSliverBuilder:
                   (BuildContext context, bool innerBoxIsScrolled) {
-                // These are the slivers that show up in the "outer" scroll view.
+                // These are the slivers that show up in the 'outer' scroll view.
                 return <Widget>[
                   SliverAppBar(
                     leading: Container(),
                     elevation: 0,
                     pinned: false,
                     backgroundColor: Colors.white,
-                    title: SvgPicture.asset("assets/icons/logo.svg"),
+                    title: SvgPicture.asset('assets/icons/logo.svg'),
                     actions: <Widget>[
                       IconButton(
                         icon: Image.asset(
-                          "assets/icons/search/search.png",
+                          'assets/icons/search/search.png',
                           fit: BoxFit.cover,
                           height: 24,
                         ),
@@ -214,7 +201,7 @@ class HomeScreenState extends State<HomeScreen>
                       ),
                     ],
                     bottom: PreferredSize(
-                      preferredSize: Size.fromHeight(170),
+                      preferredSize: const Size.fromHeight(170),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[
@@ -222,7 +209,7 @@ class HomeScreenState extends State<HomeScreen>
                             height: 80,
                             width: screenSize.width,
                             color: kPrimaryGreen,
-                            padding: EdgeInsets.only(
+                            padding: const EdgeInsets.only(
                               top: 13,
                               left: 25,
                               right: 17,
@@ -238,11 +225,11 @@ class HomeScreenState extends State<HomeScreen>
                                           CrossAxisAlignment.center,
                                       children: <Widget>[
                                         Text(
-                                            "Glowvy được ra đời xoay quanh những chủ đề về chăm sóc da",
+                                            'Glowvy được ra đời xoay quanh những chủ đề về chăm sóc da',
                                             textAlign: TextAlign.start,
                                             style: textTheme.headline4
                                                 .copyWith(color: Colors.white)),
-                                        // Text("Về Glowvy",
+                                        // Text('Về Glowvy',
                                         //     textAlign: TextAlign.start,
                                         //     style: textTheme.caption2.copyWith(
                                         //         height: 1.3,
@@ -251,7 +238,7 @@ class HomeScreenState extends State<HomeScreen>
                                       ],
                                     ),
                                   ),
-                                  SvgPicture.asset("assets/icons/Package.svg"),
+                                  SvgPicture.asset('assets/icons/Package.svg'),
                                 ],
                               ),
                             ),
@@ -270,22 +257,22 @@ class HomeScreenState extends State<HomeScreen>
                         children: <Widget>[
                           Expanded(
                             child: Container(
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(20),
                                       topRight: Radius.circular(20))),
-                              padding: EdgeInsets.only(top: 5),
+                              padding: const EdgeInsets.only(top: 5),
                               child: TabBar(
                                   controller: _tabController,
-                                  indicator: new BubbleTabIndicator(
+                                  indicator: const BubbleTabIndicator(
                                     indicatorHeight: 39.0,
                                     indicatorColor: kDarkAccent,
                                     tabBarIndicatorSize:
                                         TabBarIndicatorSize.tab,
                                   ),
                                   indicatorSize: TabBarIndicatorSize.tab,
-                                  labelPadding: EdgeInsets.only(
+                                  labelPadding: const EdgeInsets.only(
                                     left: 18.0,
                                     right: 18.0,
                                     top: 5,
@@ -305,7 +292,7 @@ class HomeScreenState extends State<HomeScreen>
                                   labelColor: Colors.white,
                                   tabs: renderTabbar(),
                                   onTap: (index) {
-                                    print("indeX!? " + index.toString());
+                                    print('indeX!? ' + index.toString());
                                     currentCateId =
                                         tabList[index].firstCategoryId;
                                     setState(() {
@@ -321,19 +308,19 @@ class HomeScreenState extends State<HomeScreen>
                                   color: Colors.white,
                                   child: Column(
                                     children: <Widget>[
-                                      SizedBox(height: 10),
+                                      const SizedBox(height: 10),
                                       GestureDetector(
                                         // onTap: () => showSkinTest(),
                                         child: Container(
                                           height: 40,
                                           width: screenSize.width - 32,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             color: Color(0xFFCFEEBEC),
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(24)),
                                           ),
                                           alignment: Alignment.center,
-                                          padding: EdgeInsets.symmetric(
+                                          padding: const EdgeInsets.symmetric(
                                               horizontal: 15),
                                           child: Row(
                                             crossAxisAlignment:
@@ -342,9 +329,9 @@ class HomeScreenState extends State<HomeScreen>
                                                 MainAxisAlignment.center,
                                             children: <Widget>[
                                               SvgPicture.asset(
-                                                  "assets/icons/funnel.svg"),
+                                                  'assets/icons/funnel.svg'),
                                               Text(
-                                                "Mở khóa bộ lọc bằng loại da của tôi",
+                                                'Mở khóa bộ lọc bằng loại da của tôi',
                                                 overflow: TextOverflow.fade,
                                                 textAlign: TextAlign.center,
                                                 style: textTheme.headline4
@@ -357,13 +344,13 @@ class HomeScreenState extends State<HomeScreen>
                                           ),
                                         ),
                                       ),
-                                      SizedBox(height: 15),
+                                      const SizedBox(height: 15),
                                     ],
                                   ),
                                 )
                               : FilterBySkin(
                                   skinTypeId: skinTypeId,
-                                  products: allProducts.length != 0
+                                  products: allProducts.isNotEmpty
                                       ? allProducts[currentCateId]
                                       : [],
                                   onFilterConfirm:
@@ -371,11 +358,10 @@ class HomeScreenState extends State<HomeScreen>
                                     setState(() {
                                       showFiltered = true;
                                       // this.sorting = sorting;
-                                      showRank =
-                                          sorting == "rank" ? true : false;
+                                      showRank = sorting == 'rank';
                                       this.skinTypeId = skinTypeId;
                                       isFiltering = true;
-                                      this.filteredResults = filteredProducts;
+                                      filteredResults = filteredProducts;
                                       Future.delayed(
                                           const Duration(milliseconds: 500),
                                           () {
@@ -399,7 +385,7 @@ class HomeScreenState extends State<HomeScreen>
               },
               body: TabBarView(
                 controller: _tabController,
-                children: tabList.map((Category category) {
+                children: tabList.map((ProductCategory category) {
                   return Builder(
                     builder: (BuildContext context) {
                       return CustomScrollView(
@@ -421,7 +407,7 @@ class HomeScreenState extends State<HomeScreen>
                                           Container(
                                               child: isGenerating
                                                   ? Text(
-                                                      "Cập nhật thông tin mỹ phẩm ...",
+                                                      'Cập nhật thông tin mỹ phẩm ...',
                                                       overflow:
                                                           TextOverflow.ellipsis,
                                                       style: textTheme.caption1
@@ -441,19 +427,19 @@ class HomeScreenState extends State<HomeScreen>
                                       : isFiltering
                                           ? Container(
                                               height: kScreenSizeHeight * 0.5,
-                                              child: SpinKitThreeBounce(
+                                              child: const SpinKitThreeBounce(
                                                   color: kPrimaryOrange,
                                                   size: 21.0),
                                             )
                                           : CosmeticsProductList(
                                               products:
                                                   productModel.sortProducts(
-                                                      "rank",
+                                                      'rank',
                                                       skinTypeId,
                                                       allProducts[category
                                                           .firstCategoryId]),
                                               showRank: true,
-                                              onLoadMore: onLoadMore,
+                                              // onLoadMore: onLoadMore,
                                               disableScrolling: true,
                                               showFilter: false,
                                             ),
@@ -471,13 +457,13 @@ class HomeScreenState extends State<HomeScreen>
                               //             MainAxisAlignment.spaceAround,
                               //         children: <Widget>[
                               //           Image.asset(
-                              //               "assets/images/peripera_logo.png"),
+                              //               'assets/images/peripera_logo.png'),
                               //           Image.asset(
-                              //               "assets/images/merzy_logo.png"),
+                              //               'assets/images/merzy_logo.png'),
                               //           Image.asset(
-                              //               "assets/images/etudehouse_logo.png"),
+                              //               'assets/images/etudehouse_logo.png'),
                               //           Image.asset(
-                              //               "assets/images/lilybyred_logo.png"),
+                              //               'assets/images/lilybyred_logo.png'),
                               //         ],
                               //       ),
                               //       Row(
@@ -485,13 +471,13 @@ class HomeScreenState extends State<HomeScreen>
                               //             MainAxisAlignment.spaceAround,
                               //         children: <Widget>[
                               //           Image.asset(
-                              //               "assets/images/Manmonde_logo.png"),
+                              //               'assets/images/Manmonde_logo.png'),
                               //           Image.asset(
-                              //               "assets/images/IOPE_logo.png"),
+                              //               'assets/images/IOPE_logo.png'),
                               //           Image.asset(
-                              //               "assets/images/LANEIGE_logo.png"),
+                              //               'assets/images/LANEIGE_logo.png'),
                               //           Image.asset(
-                              //               "assets/images/kirshblending_logo.png"),
+                              //               'assets/images/kirshblending_logo.png'),
                               //         ],
                               //       )
                               //     ],
@@ -533,8 +519,8 @@ class _SolidIndicatorPainter extends BoxPainter {
     assert(configuration != null);
     assert(configuration.size != null);
 
-    final Rect rect = offset & configuration.size;
-    final Paint paint = Paint();
+    final rect = offset & configuration.size;
+    final paint = Paint();
     paint.color = kDarkAccent;
     paint.style = PaintingStyle.fill;
 
@@ -562,7 +548,7 @@ class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return new SizedBox.expand(child: child);
+    return SizedBox.expand(child: child);
   }
 
   @override

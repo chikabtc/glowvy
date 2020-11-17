@@ -18,7 +18,6 @@ class CustomPageScreenState extends State<CustomPageScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return Container();
   }
 }

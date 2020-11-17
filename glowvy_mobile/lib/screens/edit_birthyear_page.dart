@@ -1,19 +1,11 @@
+import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/common/widgets.dart';
-import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
-
-import 'package:Dimodo/widgets/setting_card.dart';
-
 import 'package:flutter/material.dart';
-import 'package:Dimodo/common/constants.dart';
-import 'package:notification_permissions/notification_permissions.dart';
-
-import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/generated/i18n.dart';
-import 'package:Dimodo/models/user/user.dart';
-
 import 'package:provider/provider.dart';
 
 class EditBirthyearPage extends StatefulWidget {
@@ -42,8 +34,8 @@ class EditBirthyearPageState extends State<EditBirthyearPage>
     super.initState();
     userModel = Provider.of<UserModel>(context, listen: false);
 
-    _doneButtonController = new AnimationController(
-        duration: new Duration(milliseconds: 3000), vsync: this);
+    _doneButtonController = AnimationController(
+        duration: Duration(milliseconds: 3000), vsync: this);
   }
 
   @override
@@ -52,26 +44,26 @@ class EditBirthyearPageState extends State<EditBirthyearPage>
     super.dispose();
   }
 
-  validateInput(String value) {
+  void validateInput(String value) {
     print(value);
     if (value == null) {
-      throw ('Please provide year.');
+      throw 'Please provide year.';
     } else if (value.length != 4) {
-      throw ('Please input valid birthyear.');
+      throw 'Please input valid birthyear.';
     }
   }
 
-  _updateUserName(context) async {
+  Future _updateUserName(context) async {
     try {
       validateInput(year);
       await userModel.updateUser(
-        field: "birth_year",
+        field: 'birth_year',
         value: double.parse(year).toInt(),
       );
       await _doneButtonController.reverse();
       Navigator.pop(context);
     } catch (e) {
-      print("_updateUserName error: $e");
+      print('_updateUserName error: $e');
       await _doneButtonController.reverse();
       Popups.failMessage(e, context);
     }
@@ -85,14 +77,14 @@ class EditBirthyearPageState extends State<EditBirthyearPage>
             elevation: 0,
             actions: [
               Padding(
-                padding: const EdgeInsets.only(right: 16.0),
+                padding: EdgeInsets.only(right: 16.0),
                 child: Center(
                   child: Builder(
                     builder: (context) => StaggerAnimation(
                       btnColor: kPrimaryOrange,
                       width: 57,
                       height: 34,
-                      buttonTitle: "Done",
+                      buttonTitle: 'Done',
                       buttonController: _doneButtonController.view,
                       onTap: () async {
                         _doneButtonController.forward();
@@ -105,7 +97,7 @@ class EditBirthyearPageState extends State<EditBirthyearPage>
             ],
             leading: backIcon(context),
             backgroundColor: Colors.white,
-            title: Text("year", style: textTheme.headline3)),
+            title: Text('year', style: textTheme.headline3)),
         backgroundColor: kDefaultBackground,
         body: Container(
           color: kSecondaryWhite,

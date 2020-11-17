@@ -1,4 +1,7 @@
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/survey.dart';
 import 'package:Dimodo/models/user/skinScores.dart';
@@ -6,25 +9,20 @@ import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/skin-score.dart';
 import 'package:Dimodo/widgets/survey_card.dart';
 import 'package:Dimodo/widgets/tip-card.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import '../generated/i18n.dart';
-
-import 'package:Dimodo/common/styles.dart';
-
-import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/common/widgets.dart';
 import 'package:provider/provider.dart';
 
-class BaumannQuiz extends StatefulWidget {
-  BaumannQuiz({this.skinType, this.skinScores});
+import '../generated/i18n.dart';
 
-  String skinType;
-  SkinScores skinScores = SkinScores();
+class BaumannQuiz extends StatefulWidget {
+  BaumannQuiz({this.baumannType, this.baumannScores});
+
+  String baumannType;
+  SkinScores baumannScores = SkinScores();
 
   @override
   _BaumannQuizState createState() => _BaumannQuizState();
@@ -41,7 +39,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
   bool isSaving = false;
   bool calculatingResult = false;
   bool showFullExplanation = false;
-  var skinTypeResults;
+  dynamic skinTypeResults;
   List<dynamic> dos;
   List<dynamic> donts;
   double dsScore;
@@ -52,10 +50,10 @@ class _BaumannQuizState extends State<BaumannQuiz>
   var totalProgress = 0;
   SwiperController swipeController;
   List<String> tabList = [
-    "khô vs dầu",
-    "sắc tố và không sắc tố",
-    "căng vs Khỏe nhăn",
-    "Căng bóng vs Nhăn nhăn"
+    'khô vs dầu',
+    'sắc tố và không sắc tố',
+    'căng vs Khỏe nhăn',
+    'Căng bóng vs Nhăn nhăn'
   ];
 
   @override
@@ -67,26 +65,26 @@ class _BaumannQuizState extends State<BaumannQuiz>
     try {
       final baumannQuiz = Provider.of<AppModel>(context, listen: false)
           .appConfig['Baumann_quiz'];
-      final dVsO = baumannQuiz["khô vs da dầu"] as List;
-      final sVsR = baumannQuiz["Nhạy cảm vs đề kháng cao"] as List;
-      final nVsP = baumannQuiz["không sắc tố sắc tố và"] as List;
-      final tVsW = baumannQuiz["căng vs nhăn"] as List;
-      skinTypeResults = baumannQuiz["skin-type-results"];
-      descriptions = baumannQuiz["section-descriptions"];
+      final dVsO = baumannQuiz['khô vs da dầu'] as List;
+      final sVsR = baumannQuiz['Nhạy cảm vs đề kháng cao'] as List;
+      final nVsP = baumannQuiz['không sắc tố sắc tố và'] as List;
+      final tVsW = baumannQuiz['căng vs nhăn'] as List;
+      skinTypeResults = baumannQuiz['skin-type-results'];
+      descriptions = baumannQuiz['section-descriptions'];
 
-      List<Survey> dVsOSurvey = [];
+      final dVsOSurvey = <Survey>[];
       dVsO.forEach((e) {
         dVsOSurvey.add(Survey.fromJson(e));
       });
-      List<Survey> sVsRSurvey = [];
+      final sVsRSurvey = <Survey>[];
       sVsR.forEach((e) {
         sVsRSurvey.add(Survey.fromJson(e));
       });
-      List<Survey> nVsPSurvey = [];
+      final nVsPSurvey = <Survey>[];
       nVsP.forEach((e) {
         nVsPSurvey.add(Survey.fromJson(e));
       });
-      List<Survey> tVsWSurvey = [];
+      final tVsWSurvey = <Survey>[];
       tVsW.forEach((e) {
         tVsWSurvey.add(Survey.fromJson(e));
       });
@@ -96,8 +94,8 @@ class _BaumannQuizState extends State<BaumannQuiz>
         ..add(nVsPSurvey)
         ..add(tVsWSurvey);
     } catch (err) {
-      var message = "Fail to load the bauman_quiz_data:" + err.toString();
-      print("error: $message");
+      final message = 'Fail to load the bauman_quiz_data:' + err.toString();
+      print('error: $message');
     }
   }
 
@@ -110,20 +108,20 @@ class _BaumannQuizState extends State<BaumannQuiz>
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    if (widget.skinType != null && widget.skinScores != null) {
-      print("widget skin type: ${widget.skinType}");
+    if (widget.baumannType != null && widget.baumannScores != null) {
+      print('widget skin type: ${widget.baumannType}');
       surveyFinished = true;
       skinTypes.clear();
-      widget.skinType.runes.forEach((int rune) {
+      widget.baumannType.runes.forEach((int rune) {
         var character = String.fromCharCode(rune);
         skinTypes.add(character);
       });
-      dsScore = widget.skinScores.dsScore;
-      srScore = widget.skinScores.srScore;
-      pnScore = widget.skinScores.pnScore;
-      wnScore = widget.skinScores.wnScore;
+      dsScore = widget.baumannScores.dsScore;
+      srScore = widget.baumannScores.srScore;
+      pnScore = widget.baumannScores.pnScore;
+      wnScore = widget.baumannScores.wnScore;
       getSkinTypeResults();
-      if (widget.skinType.contains("R")) {
+      if (widget.baumannType.contains('R')) {
         showFullExplanation = true;
       }
     }
@@ -132,7 +130,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
       appBar: AppBar(
           elevation: 0,
           title: Text(
-              !surveyFinished ? "Test Baumann về da" : "Loại Da Của Tôi",
+              !surveyFinished ? 'Test Baumann về da' : 'Loại Da Của Tôi',
               style: textTheme.headline3.copyWith(color: kDarkYellow)),
           brightness: Brightness.light,
           leading: !surveyFinished
@@ -169,7 +167,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                             progressColor: Color(0xFFFDD13C),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 14,
                         ),
                         Container(
@@ -207,7 +205,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
             child: !surveyFinished
                 ? Container(
                     color: kLightYellow,
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    padding: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -216,13 +214,12 @@ class _BaumannQuizState extends State<BaumannQuiz>
                             child: ListView(
                           children: <Widget>[
                             Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 18.0),
-                              child: Text(descriptions["description2"],
+                              padding: EdgeInsets.symmetric(horizontal: 18.0),
+                              child: Text(descriptions['description2'],
                                   style: textTheme.button2
                                       .copyWith(color: kDarkYellow)),
                             ),
-                            SizedBox(height: 14),
+                            const SizedBox(height: 14),
                             Container(
                               height: screenSize.height * 0.6,
                               child: Swiper(
@@ -275,7 +272,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                         )),
                         answeredAll()
                             ? Padding(
-                                padding: const EdgeInsets.only(
+                                padding: EdgeInsets.only(
                                     top: 10, left: 16, right: 16, bottom: 40.0),
                                 child: MaterialButton(
                                     elevation: 0,
@@ -287,7 +284,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                     ),
                                     child: calculatingResult
                                         ? CupertinoActivityIndicator()
-                                        : Text("Kiểm tra loại da",
+                                        : Text('Kiểm tra loại da',
                                             style: kBaseTextStyle.copyWith(
                                                 fontSize: 15,
                                                 fontWeight: FontWeight.bold,
@@ -305,7 +302,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                         Future.delayed(
                                             const Duration(milliseconds: 2500),
                                             () {
-                                          SkinScores scores = SkinScores(
+                                          var scores = SkinScores(
                                               dsScore: dsScore,
                                               srScore: srScore,
                                               pnScore: pnScore,
@@ -315,8 +312,8 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                             surveyFinished = true;
                                             Provider.of<UserModel>(context,
                                                     listen: false)
-                                                .saveSkinType(
-                                                    widget.skinType, scores);
+                                                .saveBaumannResults(
+                                                    widget.baumannType, scores);
                                           });
                                         });
                                       }
@@ -338,7 +335,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                               Container(
                                   color: kLightYellow,
                                   child: SvgPicture.asset(
-                                    "assets/icons/smiley-girl-face.svg",
+                                    'assets/icons/smiley-girl-face.svg',
                                     height: 50,
                                     width: 280,
                                   ),
@@ -347,13 +344,13 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                 alignment: Alignment.center,
                                 color: Colors.white,
                                 child: Column(children: <Widget>[
-                                  SizedBox(height: 16.5),
-                                  SkinScore("Dầu", "Khô", score: dsScore),
-                                  SkinScore("Sắc tố", "Không có\nsắc tố",
+                                  const SizedBox(height: 16.5),
+                                  SkinScore('Dầu', 'Khô', score: dsScore),
+                                  SkinScore('Sắc tố', 'Không có\nsắc tố',
                                       score: srScore),
-                                  SkinScore("Nhạy cảm", "Khỏe mạnh",
+                                  SkinScore('Nhạy cảm', 'Khỏe mạnh',
                                       score: pnScore),
-                                  SkinScore("Căng bóng", "Nhăn nheo",
+                                  SkinScore('Căng bóng', 'Nhăn nheo',
                                       score: wnScore),
                                 ]),
                               ),
@@ -361,10 +358,10 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Padding(
-                                    padding: const EdgeInsets.only(
+                                    padding: EdgeInsets.only(
                                         top: 25.0, left: 38, right: 38),
                                     child: Text(
-                                      "Chuyên viên quản lý da chuyên nghiệp",
+                                      'Chuyên viên quản lý da chuyên nghiệp',
                                       textAlign: TextAlign.start,
                                       maxLines: showFullExplanation ? 30 : 3,
                                       style: textTheme.headline4.copyWith(
@@ -378,7 +375,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                         CrossAxisAlignment.start,
                                     children: <Widget>[
                                       SvgPicture.asset(
-                                          "assets/icons/big-double-quote.svg"),
+                                          'assets/icons/big-double-quote.svg'),
                                       GestureDetector(
                                         onTap: () {
                                           setState(() {
@@ -391,9 +388,10 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                           width: screenSize.width - 60,
                                           child: Wrap(
                                             children: <Widget>[
-                                              SizedBox(height: 10),
+                                              const SizedBox(height: 10),
                                               Text(
-                                                skinTypeResults[widget.skinType]
+                                                skinTypeResults[
+                                                        widget.baumannType]
                                                     ['explanation'],
                                                 textAlign: TextAlign.start,
                                                 maxLines: showFullExplanation
@@ -406,7 +404,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                               ),
                                               !showFullExplanation
                                                   ? Text(
-                                                      "... Nhiều hơn",
+                                                      '... Nhiều hơn',
                                                       textAlign:
                                                           TextAlign.start,
                                                       style: textTheme.headline5
@@ -425,7 +423,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                               ),
                               Container(height: 40),
                               Text(
-                                "- Tips chăm sóc da độc quyền -",
+                                '- Tips chăm sóc da độc quyền -',
                                 textAlign: TextAlign.center,
                                 style: textTheme.headline4.copyWith(
                                   color: kDarkAccent,
@@ -450,7 +448,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                         }
                                         return TipCard(dos[i], i + 1, true);
                                       })),
-                              SizedBox(height: 50),
+                              const SizedBox(height: 50),
                               GestureDetector(
                                 onTap: () {
                                   Navigator.pop(context);
@@ -482,31 +480,31 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 14),
+                              const SizedBox(height: 14),
                               Container(
                                 color: kDefaultBackground,
                                 child: Column(
                                   children: <Widget>[
-                                    SizedBox(height: 70),
+                                    const SizedBox(height: 70),
                                     SvgPicture.asset(
-                                        "assets/icons/glowvy-activity.svg"),
-                                    SizedBox(height: 14),
-                                    Text("Câu chuyện của Glowvy ",
+                                        'assets/icons/glowvy-activity.svg'),
+                                    const SizedBox(height: 14),
+                                    Text('Câu chuyện của Glowvy ',
                                         style: textTheme.headline4
                                             .copyWith(color: kDarkAccent)),
                                     Padding(
-                                      padding: const EdgeInsets.only(
+                                      padding: EdgeInsets.only(
                                           left: 33,
                                           right: 33,
                                           top: 14,
                                           bottom: 14),
                                       child: Text(
-                                          "Glowvy là đứa con tinh thần của một nhóm các bạn trẻ người Hàn Quốc nhằm giúp tìm ra loại mỹ phẩm phù hợp với loại da và các vấn đề về da của bạn. Với mục tiêu biến làn da trở nên căng bóng và tỏa sáng, Glowvy luôn nỗ lực để cung cấp những lời khuyên về mĩ phẩm, phân tích loại da và tips chăm sóc da phù hợp với riêng mỗi người. Bạn đã bao giờ trải qua việc mua phải và sử dụng những mĩ phẩm làm hỏng da của bạn chưa? Hãy kể cho Glowvy biết về điều đó~~",
+                                          'Glowvy là đứa con tinh thần của một nhóm các bạn trẻ người Hàn Quốc nhằm giúp tìm ra loại mỹ phẩm phù hợp với loại da và các vấn đề về da của bạn. Với mục tiêu biến làn da trở nên căng bóng và tỏa sáng, Glowvy luôn nỗ lực để cung cấp những lời khuyên về mĩ phẩm, phân tích loại da và tips chăm sóc da phù hợp với riêng mỗi người. Bạn đã bao giờ trải qua việc mua phải và sử dụng những mĩ phẩm làm hỏng da của bạn chưa? Hãy kể cho Glowvy biết về điều đó~~',
                                           style: textTheme.bodyText1
                                               .copyWith(color: kDarkAccent)),
                                     ),
                                     Padding(
-                                        padding: const EdgeInsets.only(
+                                        padding: EdgeInsets.only(
                                             top: 14,
                                             left: 20,
                                             right: 20,
@@ -522,7 +520,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                             ),
                                             child: !isSaving
                                                 ? Text(
-                                                    widget.skinType != null
+                                                    widget.baumannType != null
                                                         ? S.of(context).close
                                                         : S
                                                             .of(context)
@@ -535,22 +533,20 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                             //animation
                                             // popup
                                             onPressed: () {
-                                              if (FirebaseAuth
-                                                      .instance.currentUser !=
-                                                  null) {
+                                              if (!userModel.isLoggedIn) {
                                                 Navigator.pushNamed(
-                                                    context, "/login");
+                                                    context, '/login');
                                               } else {
                                                 print(
-                                                    "scores@@ ${widget.skinScores}");
+                                                    'scores@@ ${widget.baumannScores}');
                                                 setState(() {
                                                   isSaving = true;
                                                   Provider.of<UserModel>(
                                                           context,
                                                           listen: false)
-                                                      .saveSkinType(
-                                                          widget.skinType,
-                                                          widget.skinScores);
+                                                      .saveBaumannResults(
+                                                          widget.baumannType,
+                                                          widget.baumannScores);
                                                 });
                                                 Future.delayed(
                                                     const Duration(
@@ -563,11 +559,11 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                                 });
                                               }
                                             })),
-                                    Text("Glowvy x Căng bóng làn da",
+                                    Text('Glowvy x Căng bóng làn da',
                                         style: textTheme.bodyText2.copyWith(
                                             fontStyle: FontStyle.italic,
                                             color: kSecondaryGrey)),
-                                    SizedBox(
+                                    const SizedBox(
                                       height: 30,
                                     )
                                   ],
@@ -592,7 +588,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
       builder: (BuildContext buildContext) {
         return AlertDialog(
           title: Text(
-            "Please answer all questions",
+            'Please answer all questions',
             style: textTheme.headline5,
           ),
           actions: <Widget>[
@@ -611,7 +607,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
     );
   }
 
-  calculateProgress() {
+  void calculateProgress() {
     totalProgress = 0;
 
     surveys.forEach((element) {
@@ -623,7 +619,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
     });
   }
 
-  calculateSkinType() {
+  void calculateSkinType() {
     if (skinTypes.length == 4) {
       return;
     } else {
@@ -634,12 +630,12 @@ class _BaumannQuizState extends State<BaumannQuiz>
       //4 points for every “d”
       //2.5 points for every “e” answer.
       surveys.forEach((survey) {
-        double score = survey.fold(0.0, (previousValue, element) {
+        var score = survey.fold(0.0, (previousValue, element) {
           var index = element.options.indexOf(element.answer).toDouble();
           if (index == 5) {
             index = 2.5;
           }
-          print("index value score : ${index + 1}");
+          print('index value score : ${index + 1}');
           return previousValue + index + 1;
         });
 
@@ -647,23 +643,23 @@ class _BaumannQuizState extends State<BaumannQuiz>
         // If your score is between 27-33 you have slightly oily skin.
         // If your score is between 17-26 you have slightly dry skin.
         // If your score is between 11-16 you have dry skin.
-        print("score!! $score");
+        print('score!! $score');
 
         switch (surveys.indexOf(survey)) {
           case 0:
-            skinTypes.add(score < 8 ? "D" : "O");
+            skinTypes.add(score < 8 ? 'D' : 'O');
             dsScore = score;
             break;
           case 1:
-            skinTypes.add(score < 8 ? "R" : "S");
+            skinTypes.add(score < 8 ? 'R' : 'S');
             srScore = score;
             break;
           case 2:
-            skinTypes.add(score < 8 ? "N" : "P");
+            skinTypes.add(score < 8 ? 'N' : 'P');
             pnScore = score;
             break;
           case 3:
-            skinTypes.add(score < 8 ? "T" : "W");
+            skinTypes.add(score < 8 ? 'T' : 'W');
             wnScore = score;
 
             break;
@@ -674,15 +670,17 @@ class _BaumannQuizState extends State<BaumannQuiz>
     }
   }
 
-  getSkinTypeResults() {
-    widget.skinType = skinTypes.join();
-    print("widget.skinType: ${widget.skinType}");
-    dos = skinTypeResults[widget.skinType]["do"].map((item) => item).toList();
-    donts =
-        skinTypeResults[widget.skinType]["dont"].map((item) => item).toList();
+  void getSkinTypeResults() {
+    widget.baumannType = skinTypes.join();
+    print('widget.skinType: ${widget.baumannType}');
+    dos =
+        skinTypeResults[widget.baumannType]['do'].map((item) => item).toList();
+    donts = skinTypeResults[widget.baumannType]['dont']
+        .map((item) => item)
+        .toList();
   }
 
-  answeredAll() {
+  bool answeredAll() {
     var isAllAnswered = true;
     surveys.forEach((survey) {
       survey.forEach((element) {
@@ -696,7 +694,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
     return isAllAnswered;
   }
 
-  isSectionComplete(index) {
+  bool isSectionComplete(index) {
     var isAllAnswered = true;
     surveys[index].forEach((survey) {
       if (survey.answer == null) {

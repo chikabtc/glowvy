@@ -1,16 +1,13 @@
-import 'package:Dimodo/common/styles.dart';
-
 import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/app.dart';
-import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/models/review.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:Dimodo/generated/i18n.dart';
 
 class CosmeticsReviewFilterBar extends StatefulWidget {
   Function onFilterConfirm;
@@ -31,16 +28,16 @@ class CosmeticsReviewFilterBar extends StatefulWidget {
 }
 
 class Sorting {
-  static String low = "low";
-  static String high = "high";
-  static String rank = "rank";
+  static String low = 'low';
+  static String high = 'high';
+  static String rank = 'rank';
 }
 
 class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
   ProductModel productModel;
   bool showFilter = false;
-  var screenSize;
-  var heightFactor;
+  Size screenSize;
+  double heightFactor;
   var sorting = Sorting.low;
   int skinTypeId = 0;
 
@@ -50,22 +47,23 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
   var isAscending = false;
 
   @override
-  initState() {
+  void initState() {
     super.initState();
     productModel = Provider.of<ProductModel>(context, listen: false);
     appModel = Provider.of<AppModel>(context, listen: false);
-    var appConfig = appModel.appConfig;
-    cosmeticsFilters = appConfig["Cosmetics-Filters"] as Map<String, dynamic>;
-    print("products list ${widget.reviews}");
+    final appConfig = appModel.appConfig;
+    cosmeticsFilters = appConfig['Cosmetics-Filters'] as Map<String, dynamic>;
+    print('products list ${widget.reviews}');
   }
 
+  @override
   void dispose() {
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    // print("Received products: ${widget.products}");
+    // print('Received products: ${widget.products}');
     screenSize = MediaQuery.of(context).size;
     heightFactor = 0.5;
     return Column(
@@ -87,7 +85,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                       GestureDetector(
                         onTap: () {
                           // switch (sorting) {
-                          //   case "high":
+                          //   case 'high':
                           //     sorting = Sorting.rank;
                           //     var sortedProducts =
                           //         productModel.sortByDefaultRank(widget.reviews);
@@ -95,13 +93,13 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                           //     widget.onFilterConfirm(sortedProducts);
                           //     break;
 
-                          //   case "rank":
+                          //   case 'rank':
                           //     sorting = Sorting.low;
                           //     var sortedProducts =
                           //         productModel.sortByPrice(widget.reviews, true);
                           //     widget.onFilterConfirm(sortedProducts);
                           //     break;
-                          //   case "low":
+                          //   case 'low':
                           //     sorting = Sorting.high;
                           //     var sortedProducts =
                           //         productModel.sortByPrice(widget.reviews, false);
@@ -112,7 +110,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                           // filterProduct();
                         },
                         child: Container(
-                            decoration: new BoxDecoration(
+                            decoration: BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(6),
                             ),
@@ -122,32 +120,32 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                sorting == "rank"
+                                sorting == 'rank'
                                     ? Image.asset(
-                                        "assets/icons/filter-sort.png")
-                                    : sorting == "low"
+                                        'assets/icons/filter-sort.png')
+                                    : sorting == 'low'
                                         ? Image.asset(
-                                            "assets/icons/filter-sort.png")
+                                            'assets/icons/filter-sort.png')
                                         : Image.asset(
-                                            "assets/icons/filter-sort-active.png"),
+                                            'assets/icons/filter-sort-active.png'),
                                 Text(
-                                  sorting == "rank"
+                                  sorting == 'rank'
                                       ? S.of(context).byRanking
-                                      : sorting == "low"
+                                      : sorting == 'low'
                                           ? S.of(context).highestToLowest
                                           : S.of(context).lowestToHighest,
                                   textAlign: TextAlign.center,
                                   style: kBaseTextStyle.copyWith(
                                       fontSize: 13,
                                       fontWeight: FontWeight.w500,
-                                      color: sorting == "low"
+                                      color: sorting == 'low'
                                           ? kSecondaryGrey
                                           : kDarkAccent),
                                 ),
                               ],
                             )),
                       ),
-                      SizedBox(width: 16)
+                      const SizedBox(width: 16)
                     ],
                   ),
                 ),
@@ -159,7 +157,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SvgPicture.asset(
-                        "assets/icons/filter.svg",
+                        'assets/icons/filter.svg',
                         width: 16,
                       ),
                       Text(
@@ -180,33 +178,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
     );
   }
 
-  filterProduct() {
-    // var filteredProducts = productModel.filteredProductsBySkinType(
-    //     skinTypeId: skinTypeId, products: widget.reviews);
-    // widget.onFilterConfirm(filteredProducts);
-
-    // widget.onFilterConfirm(filteredProducts);
-    // switch (sorting) {
-    //   case "high":
-    //     var sortedProducts = productModel.sortByPrice(filteredProducts, false);
-
-    //     widget.onFilterConfirm(sortedProducts);
-    //     break;
-
-    //   case "rank":
-    //     var sortedProducts = productModel.sortByDefaultRank(filteredProducts);
-
-    //     widget.onFilterConfirm(sortedProducts);
-    //     break;
-    //   case "low":
-    //     var sortedProducts = productModel.sortByPrice(filteredProducts, true);
-    //     widget.onFilterConfirm(sortedProducts);
-    //     break;
-    //   default:
-    // }
-  }
-
-  showCosmeticsFilter() {
+  void showCosmeticsFilter() {
     showModalBottomSheet(
         isScrollControlled: true,
         backgroundColor: Colors.transparent,
@@ -257,7 +229,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                               AppBar().preferredSize.height -
                               100,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 16.0),
+                            padding: EdgeInsets.only(left: 16.0),
                             child: ListView(
                               shrinkWrap: true,
                               children: <Widget>[
@@ -274,8 +246,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                                   60.0 + MediaQuery.of(context).padding.bottom,
                               color: Colors.white,
                               child: Padding(
-                                padding:
-                                    const EdgeInsets.only(top: 9.0, bottom: 10),
+                                padding: EdgeInsets.only(top: 9.0, bottom: 10),
                                 child: Row(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -286,7 +257,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                                         height: 40,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                new BorderRadius.circular(25.0),
+                                                BorderRadius.circular(25.0),
                                             side: BorderSide(
                                                 color: kPinkAccent,
                                                 width: 1.5)),
@@ -303,7 +274,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                                           });
                                           Navigator.pop(context);
                                         }),
-                                    SizedBox(width: 16),
+                                    const SizedBox(width: 16),
                                     MaterialButton(
                                         elevation: 0,
                                         color: kPinkAccent,
@@ -311,7 +282,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                                         height: 40,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                new BorderRadius.circular(25.0),
+                                                BorderRadius.circular(25.0),
                                             side: BorderSide(
                                                 color: kPinkAccent,
                                                 width: 1.5)),
@@ -343,18 +314,18 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
         });
   }
 
-  showCompoundOptions(StateSetter setState) {
-    List<Widget> widgets = [];
+  Widget showCompoundOptions(StateSetter setState) {
+    var widgets = <Widget>[];
     // enumerate the two compound options
 
     cosmeticsFilters.forEach((key, values) {
-      // print("Key: ${key}, value["name"]s : ${value["name"]s}");
+      // print('Key: ${key}, value['name']s : ${value['name']s}');
       var header = Text(
         key,
         style: kBaseTextStyle.copyWith(
             fontSize: 13, fontWeight: FontWeight.w600, color: kSecondaryGrey),
       );
-      // print("values :${values[0]}");
+      // print('values :${values[0]}');
 
       var options = Wrap(children: <Widget>[
         for (var value in values)
@@ -363,22 +334,22 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
               shape: RoundedRectangleBorder(
                 side: BorderSide(
                   color:
-                      skinTypeId == value["id"] ? kPinkAccent : kSecondaryWhite,
+                      skinTypeId == value['id'] ? kPinkAccent : kSecondaryWhite,
                 ),
                 borderRadius: BorderRadius.circular(6.0),
               ),
               elevation: 0,
               onPressed: () {
                 setState(() {
-                  skinTypeId = value["id"];
+                  skinTypeId = value['id'];
                 });
               },
               backgroundColor: kSecondaryWhite,
               label: Text(
-                value["name"],
+                value['name'],
                 style: kBaseTextStyle.copyWith(
                     fontSize: 15,
-                    color: skinTypeId == value["id"]
+                    color: skinTypeId == value['id']
                         ? kPinkAccent
                         : kSecondaryGrey,
                     fontWeight: FontWeight.w600),

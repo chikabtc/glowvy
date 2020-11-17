@@ -1,33 +1,25 @@
 import 'package:Dimodo/common/constants.dart';
-import 'package:Dimodo/generated/i18n.dart';
-import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/models/user/userModel.dart';
-import 'package:Dimodo/screens/write_review_screen.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
+
+import '../../common/styles.dart';
 import '../../common/tools.dart';
 import '../../models/product/product.dart';
-import '../../screens/detail/cosmetics_product_detail.dart';
-import '../../common/styles.dart';
-
-import '../../common/colors.dart';
 
 class CosmeticsReviewThumbCard extends StatelessWidget {
-  final Product product;
-  final bool showDivider;
-  final bool showHeart;
-
-  final ranking;
-
-  CosmeticsReviewThumbCard({
+  const CosmeticsReviewThumbCard({
     this.product,
     this.ranking,
     this.showHeart = false,
     this.showDivider = true,
   });
+  final Product product;
+  final bool showDivider;
+  final bool showHeart;
+
+  final int ranking;
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +28,8 @@ class CosmeticsReviewThumbCard extends StatelessWidget {
       child: GestureDetector(
         onTap: () {
           print(product.sid);
-          UserModel userModel = Provider.of<UserModel>(context, listen: false);
-          userModel.setProductInReview(this.product);
+          var userModel = Provider.of<UserModel>(context, listen: false);
+          userModel.setProductInReview(product);
           Navigator.pop(context);
         },
         child: Column(
@@ -61,7 +53,7 @@ class CosmeticsReviewThumbCard extends StatelessWidget {
                     ),
                   ),
                   // // item name
-                  SizedBox(width: 7),
+                  const SizedBox(width: 7),
                   Flexible(
                     child: Container(
                       height: 35,
@@ -70,19 +62,19 @@ class CosmeticsReviewThumbCard extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          SizedBox(height: 2),
-                          Text("${product.name}",
+                          const SizedBox(height: 2),
+                          Text(product.name,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: textTheme.button2),
-                          Text("${product.name}",
+                          Text(product.name,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: textTheme.caption2),
 
-                          // SizedBox(height: 9),
+                          // const SizedBox(height: 9),
 
-                          // // SizedBox(height: 5),
+                          // // const SizedBox(height: 5),
                         ],
                       ),
                     ),
@@ -90,8 +82,8 @@ class CosmeticsReviewThumbCard extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 10),
-            showDivider ? Divider(height: 1) : Container()
+            const SizedBox(height: 10),
+            if (showDivider) kFullDivider
           ],
         ),
       ),

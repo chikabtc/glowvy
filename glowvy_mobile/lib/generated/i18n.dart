@@ -24,449 +24,449 @@ class S implements WidgetsLocalizations {
 // =============================================================================
 // Setting Page
 // =============================================================================
-  String get accounts => "Accounts";
-  String get clickToSignIn => "Click to Sign Up";
-  String get welcomeToDimodo => "Welcome to Dimodo";
-  String get privacyPolicy => "Privacy Policy";
-  String get changePassword => "Change password";
-  String get shipping => "Shipping";
-  String get orders => "Orders";
-  String get viewAll => "View All";
-  String get customerSupport => "Customer Support";
-  String get feedback => "Feedback";
-  String get shippingAddress => "Shipping Address";
-  String get paymentMethod => "Payment Method";
-  String get share => "Share";
-  String get rateTheApp => "Rate the app";
-  String get language => "Language";
-  String get appVersion => "Version";
+  String get accounts => 'Accounts';
+  String get clickToSignIn => 'Click to Sign Up';
+  String get welcomeToDimodo => 'Welcome to Dimodo';
+  String get privacyPolicy => 'Privacy Policy';
+  String get changePassword => 'Change password';
+  String get shipping => 'Shipping';
+  String get orders => 'Orders';
+  String get viewAll => 'View All';
+  String get customerSupport => 'Customer Support';
+  String get feedback => 'Feedback';
+  String get shippingAddress => 'Shipping Address';
+  String get paymentMethod => 'Payment Method';
+  String get share => 'Share';
+  String get rateTheApp => 'Rate the app';
+  String get language => 'Language';
+  String get appVersion => 'Version';
 
 // =============================================================================
 // Shipping Address
 // =============================================================================
-  String get manageShippingAddress => "Manage Shipping Address";
-  String get name => "Name";
-  String get lastName => "Last name";
-  String get noAddress => "No Shipping Address added yet";
-  String get addAddress => "Add Shipping Address";
-  String get editShippingAddress => "Edit Shipping Address";
-  String get selectShipping => "Select Shipping";
-  String get chooseShipping => "Choose Shipping";
-  String get save => "Save";
-  String get deliveryArea => "Delivery Area";
-  String get defaultString => "Default";
-  String get district => "District";
-  String get ward => "Ward";
+  String get manageShippingAddress => 'Manage Shipping Address';
+  String get name => 'Name';
+  String get lastName => 'Last name';
+  String get noAddress => 'No Shipping Address added yet';
+  String get addAddress => 'Add Shipping Address';
+  String get editShippingAddress => 'Edit Shipping Address';
+  String get selectShipping => 'Select Shipping';
+  String get chooseShipping => 'Choose Shipping';
+  String get save => 'Save';
+  String get deliveryArea => 'Delivery Area';
+  String get defaultString => 'Default';
+  String get district => 'District';
+  String get ward => 'Ward';
 
 // =============================================================================
 // Cart Page
 // =============================================================================
-  String get emptyCartSubtitle => "Shopping cart is empty go fill it up";
-  String get noCouponsAvailable => "No Coupons Available";
-  String get emptyWishlistSubtitle => "No Products in the cart yet";
-  String get youMayAlsoLike => "You may also like";
+  String get emptyCartSubtitle => 'Shopping cart is empty go fill it up';
+  String get noCouponsAvailable => 'No Coupons Available';
+  String get emptyWishlistSubtitle => 'No Products in the cart yet';
+  String get youMayAlsoLike => 'You may also like';
 
-  String get additionalInformation => "Additional Information";
+  String get additionalInformation => 'Additional Information';
   String get categoryScreenDescription =>
-      "Alo~ What kind of clothes are you looking for?";
-  String get total => "Total";
-  String get totalItems => "Total Items";
-  String get addedToYourCart => "Added to your cart successfully";
-  String get addAtLeastOneItemToSeeCoupons => "Added to your cart successfully";
-  String get totalTax => "Total tax";
+      'Alo~ What kind of clothes are you looking for?';
+  String get total => 'Total';
+  String get totalItems => 'Total Items';
+  String get addedToYourCart => 'Added to your cart successfully';
+  String get addAtLeastOneItemToSeeCoupons => 'Added to your cart successfully';
+  String get totalTax => 'Total tax';
 
-  String get checkout => "Checkout";
-  String get selectOrEnterCoupon => "Select or Enter Coupon";
+  String get checkout => 'Checkout';
+  String get selectOrEnterCoupon => 'Select or Enter Coupon';
 
   // ===========================================================================
   // Order Page
   // ===========================================================================
-  String get noOrdersDescription => "You’ve just been eye shopping";
-  String get continueShopping => "Continue Shopping";
-  String get askQuestion => "Ask question";
-  String get question => "Question";
+  String get noOrdersDescription => 'You’ve just been eye shopping';
+  String get continueShopping => 'Continue Shopping';
+  String get askQuestion => 'Ask question';
+  String get question => 'Question';
 
 // =============================================================================
 // Write Review Page
 // =============================================================================
-  String get askServiceQuality => "Does the product meet your expectations?";
-  String get customizeDimodo => "Customize your DIMODO";
+  String get askServiceQuality => 'Does the product meet your expectations?';
+  String get customizeDimodo => 'Customize your DIMODO';
   String get surveyDescription =>
-      "We appreciate you are trying our current feature we’ve been building in Dimodo. It will take 10 mins to collect your feedback about our product?";
+      'We appreciate you are trying our current feature we’ve been building in Dimodo. It will take 10 mins to collect your feedback about our product?';
   String get askForFeedback =>
-      "Talk about what you like and what you don’t like about your purchase";
-  String get writeReview => "Write your review";
+      'Talk about what you like and what you don’t like about your purchase';
+  String get writeReview => 'Write your review';
   String get discoverYourType =>
-      "Discover your match! Complimentary expert advice tailored to your skin care needs.";
+      'Discover your match! Complimentary expert advice tailored to your skin care needs.';
 
 // =============================================================================
 // Product Detail Page
 // =============================================================================
 
-  // String get rseet => "reset";
-  String get support => "Support";
-  String get supportedByGoogleTranslate => "Support By Google Translate";
-  String get choose => "Choose";
-  String get quantity => "Quantity";
-  String get size => "Size";
-  String get color => "Color";
-  String get translatedByGoogle => "translated by Google Translate";
+  // String get rseet => 'reset';
+  String get support => 'Support';
+  String get supportedByGoogleTranslate => 'Support By Google Translate';
+  String get choose => 'Choose';
+  String get quantity => 'Quantity';
+  String get size => 'Size';
+  String get color => 'Color';
+  String get translatedByGoogle => 'translated by Google Translate';
   String get soldByKoreanShopDirectShipping =>
-      "Korean Brand Direct Supply Overseas";
-  // String get soldByKoreanShopDirectShipping => "Korean Brand Direct Supply";
+      'Korean Brand Direct Supply Overseas';
+  // String get soldByKoreanShopDirectShipping => 'Korean Brand Direct Supply';
 
   // ===========================================================================
   // Confirm Order Page
   // ===========================================================================
-  String get dimodoPrice => "DIMODO price";
-  String get bestDealInKorea => "Best Deal in Korea";
+  String get dimodoPrice => 'DIMODO price';
+  String get bestDealInKorea => 'Best Deal in Korea';
 
-  String get confirmToOrder => "Confirm to order";
-  String get includingTaxAndFee => "including tax & fee";
-  String get includedInPrice => "included in price";
-  String get deliveryMethod => "Delivery Method";
-  String get deliveryMethodDescription => "Shipping by Air - 10 days";
-  String get importTax => "Import Tax";
-  String get satisfaction => "Satisfaction";
-  String get importTaxDescription => "Korean Import Tax (10%)";
-  String get serviceFee => "Service fee";
-  String get dimodoGuarantee => "Dimodo Guarantee";
-  String get dimodoSupport => "Dimodo Support";
+  String get confirmToOrder => 'Confirm to order';
+  String get includingTaxAndFee => 'including tax & fee';
+  String get includedInPrice => 'included in price';
+  String get deliveryMethod => 'Delivery Method';
+  String get deliveryMethodDescription => 'Shipping by Air - 10 days';
+  String get importTax => 'Import Tax';
+  String get satisfaction => 'Satisfaction';
+  String get importTaxDescription => 'Korean Import Tax (10%)';
+  String get serviceFee => 'Service fee';
+  String get dimodoGuarantee => 'Dimodo Guarantee';
+  String get dimodoSupport => 'Dimodo Support';
   String get dimodoGuaranteeDescription =>
-      "If item is inauthentic, Dimodo will refund buyers the full amount they paid for the items";
-  String get returnPolicy => "Return Policy";
+      'If item is inauthentic, Dimodo will refund buyers the full amount they paid for the items';
+  String get returnPolicy => 'Return Policy';
   String get returnPolicyDescription =>
-      "If there is any product quality problem (not including subjective reasons), you can apply for a return within 7 days purchase.";
+      'If there is any product quality problem (not including subjective reasons), you can apply for a return within 7 days purchase.';
   String get shippingFeePolicy =>
-      "Shipping fee is calculated by the weight.\n\nIf you have questions about shipping fee, please contact us anytime\n\nShipping is free for orders above 2,000,000₫\n";
+      'Shipping fee is calculated by the weight.\n\nIf you have questions about shipping fee, please contact us anytime\n\nShipping is free for orders above 2,000,000₫\n';
 
   String get serviceFeeDescription =>
-      "The service helps us run our platform and offer better experiences";
-  String get submitOrder => "Submit order";
-  String get officialQA => "Dimodo Official Q&A";
-  String get dimodoServices => "Dimodo Services";
-  String get needHelp => "Need Help?";
-  String get askUs => "Ask Us";
-  String get whereToDeliver => "Where do you need us to deliver?";
+      'The service helps us run our platform and offer better experiences';
+  String get submitOrder => 'Submit order';
+  String get officialQA => 'Dimodo Official Q&A';
+  String get dimodoServices => 'Dimodo Services';
+  String get needHelp => 'Need Help?';
+  String get askUs => 'Ask Us';
+  String get whereToDeliver => 'Where do you need us to deliver?';
 
   // ===========================================================================
   // Order Submitted Page
   // ===========================================================================
-  String get orderSubmitted => "Order Submitted";
-  String get oneStepLeft => "One Step Left";
+  String get orderSubmitted => 'Order Submitted';
+  String get oneStepLeft => 'One Step Left';
   String get transferDescription =>
-      "Your package is expecting to see you. Only take three minutes to make a deposit to the account below";
-  // String get bankAccountHolder => "Accounts";
-  String get payment => "Accounts";
-  String get paymentMethods => "Payment method";
-  String get bankInfo => "Bank information";
-  String get bankTransfer => "Bank transfer";
+      'Your package is expecting to see you. Only take three minutes to make a deposit to the account below';
+  // String get bankAccountHolder => 'Accounts';
+  String get payment => 'Accounts';
+  String get paymentMethods => 'Payment method';
+  String get bankInfo => 'Bank information';
+  String get bankTransfer => 'Bank transfer';
 
-  String get accountHolder => "Account holder";
-  String get whatIsMySkinType => "What is my skin type?";
-  String get mySkinCareGuide => "My skin care guide, inspired by Korean beauty";
-  String get ewgSafeLevel => "EWG safety level";
-  String get discoverTheBestProducts => "về loại da của bạn cùng chúng tôi!";
+  String get accountHolder => 'Account holder';
+  String get whatIsMySkinType => 'What is my skin type?';
+  String get mySkinCareGuide => 'My skin care guide, inspired by Korean beauty';
+  String get ewgSafeLevel => 'EWG safety level';
+  String get discoverTheBestProducts => 'về loại da của bạn cùng chúng tôi!';
   String get whyLowerThanMarketPriceQuestion =>
-      "1. Why Dimodo price is lower than the market price? ";
-  String get whereReviewsFromQuestion => "Where do those reviews come from?";
+      '1. Why Dimodo price is lower than the market price? ';
+  String get whereReviewsFromQuestion => 'Where do those reviews come from?';
   String get sameQualityAsInKoreaQuestion =>
-      "Is the quality of the goods the same as in the official stores ?";
+      'Is the quality of the goods the same as in the official stores ?';
   String get whyLowerThanMarketpriceAnswer =>
       "1. Why Dimodo price is lower than the market price?  \n\nDimodo's founder is Korean who believe Vietnamese deserve a better price to buy Korean cosmetics by providing Real-Time Korean price to Vietnamese.\n";
 
   String get whereReivewsFromAnswer =>
-      "2. Where do those reviews come from?  \n\nTo choose more suitable Korean cosmetics, Dimodo provides all reviews from Glowpick, the most famous popular Korean beauty ranking service in Korea.\n";
+      '2. Where do those reviews come from?  \n\nTo choose more suitable Korean cosmetics, Dimodo provides all reviews from Glowpick, the most famous popular Korean beauty ranking service in Korea.\n';
   String get sameQualityAsInKoreaAnswer =>
-      "Is the quality of the goods in the direct stores the same? \n\nThe products in Dimodo are strictly controlled by our Korean founder. From the selection of the goods to the after-sales service, Dimodo cosmetics purchase from Korean official channels and ship to your home. Make sure you buy it with ease, use it with peace of mind, you can buy it with confidence, the quality of the same product is completely consistent.\n";
+      'Is the quality of the goods in the direct stores the same? \n\nThe products in Dimodo are strictly controlled by our Korean founder. From the selection of the goods to the after-sales service, Dimodo cosmetics purchase from Korean official channels and ship to your home. Make sure you buy it with ease, use it with peace of mind, you can buy it with confidence, the quality of the same product is completely consistent.\n';
   String get provenKoreanCosmeticsStory =>
-      "1. Proven Korean Cosmetics  \n\nDimodo has been supplying more than 300 cosmetics since its service in early 2020. We only bring trustable reviews from Korean to help our users find the best cosmetics that suit our customers best. There are no identical consumers in the beauty market. Individual age, skin type, taste, and value. We aim to build a place that shows your true ideas and feelings.\n";
+      '1. Proven Korean Cosmetics  \n\nDimodo has been supplying more than 300 cosmetics since its service in early 2020. We only bring trustable reviews from Korean to help our users find the best cosmetics that suit our customers best. There are no identical consumers in the beauty market. Individual age, skin type, taste, and value. We aim to build a place that shows your true ideas and feelings.\n';
   String get getTheCheapesPriceStory =>
       "2. Get the cheapest Price \n\nDimodo's founder is Korean who lives in Danang and believes Vietnamese deserve a better price to buy Korean cosmetics by providing Real-Time Korean prices to users. Upcoming days we will offer the users a price match. \n";
   String get moneyBackGuaranteeStory =>
-      "3. Money Back Guarantee Policy? \n\nWe do have a 7 day money back guarantee for all of purchased cosmetics and clothes in our App. Our money back guarantee gives you peace of mind that our services will meet the expectations set out in the Terms of Service. To the maximum extent applicable under national law and without affecting your rights as a consumer, the money back guarantee is your sole and exclusive remedy should our services fail to meet the expectations set out in this Terms of Service. The following conditions apply to our money back guarantee: \n\n- Purchased items guaranteed for 7 days from the date of original purchase are in the warranty period. \n\n- The user provides corresponding certification materials sufficient to prove that the goods are fake, such as brand certification, third-party quality inspection certification, etc. \n\n- Defined as damaged or defective items are covered. \n\n- Unpacked or used products are not covered. \n\n- Man-made damaged, washed, or the signs disassembled products are not covered\n";
-  String get totalAmount => "Total amount";
-  String get baumannSkinTypeTest => "Baumann Skin Type Test";
-  String get shippingFrom => "Shipping From";
-  String get shippingTo => "Shipping To";
-  String get localKoreanShips => "Local Korean Shops";
-  String get seoulKorea => "Seoul, Korea";
-  String get filter => "filter";
+      '3. Money Back Guarantee Policy? \n\nWe do have a 7 day money back guarantee for all of purchased cosmetics and clothes in our App. Our money back guarantee gives you peace of mind that our services will meet the expectations set out in the Terms of Service. To the maximum extent applicable under national law and without affecting your rights as a consumer, the money back guarantee is your sole and exclusive remedy should our services fail to meet the expectations set out in this Terms of Service. The following conditions apply to our money back guarantee: \n\n- Purchased items guaranteed for 7 days from the date of original purchase are in the warranty period. \n\n- The user provides corresponding certification materials sufficient to prove that the goods are fake, such as brand certification, third-party quality inspection certification, etc. \n\n- Defined as damaged or defective items are covered. \n\n- Unpacked or used products are not covered. \n\n- Man-made damaged, washed, or the signs disassembled products are not covered\n';
+  String get totalAmount => 'Total amount';
+  String get baumannSkinTypeTest => 'Baumann Skin Type Test';
+  String get shippingFrom => 'Shipping From';
+  String get shippingTo => 'Shipping To';
+  String get localKoreanShips => 'Local Korean Shops';
+  String get seoulKorea => 'Seoul, Korea';
+  String get filter => 'filter';
 
-  String get sensitive => "sensitive";
-  String get wrinkled => "wrinkled";
-  String get nonPigmented => "non_pigmented";
-  String get pigmented => "pigmented";
-  String get tight => "tight";
-  String get resistant => "resistant";
-  String get oily => "oily";
-  String get dry => "dry";
+  String get sensitive => 'sensitive';
+  String get wrinkled => 'wrinkled';
+  String get nonPigmented => 'non_pigmented';
+  String get pigmented => 'pigmented';
+  String get tight => 'tight';
+  String get resistant => 'resistant';
+  String get oily => 'oily';
+  String get dry => 'dry';
   String get theMostFamousRanking =>
-      "The most famous popular Korean beauty ranking service in Korea";
+      'The most famous popular Korean beauty ranking service in Korea';
 
   // ===========================================================================
   // Order Details Page
   // ===========================================================================
   String get shippingDescription =>
-      "We receive your packages from Korean shops within 3-5 days. It takes another week to ship it to your doorway in Vietnam";
-  String get yourOrderDetail => "Your Order details";
-  String get thankYouForUsingDimodo => "Thank you for using Dimodo";
-  String get getToKnowYourSkin => "Get Know Your Skin Type";
-  // String get  => "Thank you for using Dimodo";
+      'We receive your packages from Korean shops within 3-5 days. It takes another week to ship it to your doorway in Vietnam';
+  String get yourOrderDetail => 'Your Order details';
+  String get thankYouForUsingDimodo => 'Thank you for using Dimodo';
+  String get getToKnowYourSkin => 'Get Know Your Skin Type';
+  // String get  => 'Thank you for using Dimodo';
 
-  String get confirmReceivePackage => "Confirm received the package";
+  String get confirmReceivePackage => 'Confirm received the package';
 
 // =============================================================================
 // Onboarding page
 // =============================================================================
-  String get onboardingTitle1 => "Meet Good quality";
-  String get onboardingTitle2 => "Discover Fashion Inspiration";
-  String get onboardingTitle3 => "Made & Design in Korea";
-  String get getStarted => "Get Started";
-  String get yourSkinTypeIs => "Get Started";
-  String get yourSkin => "Your Skin";
+  String get onboardingTitle1 => 'Meet Good quality';
+  String get onboardingTitle2 => 'Discover Fashion Inspiration';
+  String get onboardingTitle3 => 'Made & Design in Korea';
+  String get getStarted => 'Get Started';
+  String get yourSkinTypeIs => 'Get Started';
+  String get yourSkin => 'Your Skin';
 
   // ===========================================================================
   // Categories
   // ===========================================================================
-  String get all => "ALL";
-  String get top => "TOP";
-  String get coat => "COAT";
-  String get pant => "PANMT";
-  String get skirt => "SKIRT";
-  String get dress => "DRESS";
-  String get shoes => "SHOES";
-  String get lifeware => "LIFEWARE";
-  String get cosmetics => "COSMETICS";
+  String get all => 'ALL';
+  String get top => 'TOP';
+  String get coat => 'COAT';
+  String get pant => 'PANMT';
+  String get skirt => 'SKIRT';
+  String get dress => 'DRESS';
+  String get shoes => 'SHOES';
+  String get lifeware => 'LIFEWARE';
+  String get cosmetics => 'COSMETICS';
 
   // ===========================================================================
   // home page
   // ===========================================================================
   String get hitTheBottomDescription =>
-      "Oh! It seems to hit the bottom. \n Btw, do you like our app";
+      'Oh! It seems to hit the bottom. \n Btw, do you like our app';
 
-  String get address => "Address";
-  String get transactionSuccess => "Transaction success";
-  String get trendDesign => "Trend Design";
-  String get koreanShippingFee => "Korean Shipping fee per item: ";
-  String get shipFromKorea => "Ship from Korea";
-  String get fee => "Fee";
-  String get serviceIncludes => "Service includes";
-  String get quanlityGuarantee => "Quality Guarantee";
-  String get importTaxIncluded => "Import Tax Included";
+  String get address => 'Address';
+  String get transactionSuccess => 'Transaction success';
+  String get trendDesign => 'Trend Design';
+  String get koreanShippingFee => 'Korean Shipping fee per item: ';
+  String get shipFromKorea => 'Ship from Korea';
+  String get fee => 'Fee';
+  String get serviceIncludes => 'Service includes';
+  String get quanlityGuarantee => 'Quality Guarantee';
+  String get importTaxIncluded => 'Import Tax Included';
   String get importTaxFeeDescription =>
-      "This product already includes import taxes for cross-border e-commerce.";
+      'This product already includes import taxes for cross-border e-commerce.';
 
-  String get koreanShipping => "Korean Shipping";
-  String get trustReviews => "Trust Reviews";
-  String get bannerDescription => "Dress like a Korean celeb";
-  String get genuineSecurity => "Genuine Security";
-  String get bannerTitle => "Shopping Korea Together";
-  String get apply => "Apply";
-  String get arabic => "Arabic";
-  String get availability => "Availability";
-  String get backToShop => "Back to Shop";
-  String get bagsCollections => "Gears Collections";
-  String get blog => "Blog";
-  String get buyNow => "Buy Now";
-  String get byCategory => "By Category";
-  String get byPrice => "By Price";
-  String get byRanking => "By Ranking";
-  String get officialPrice => "Official Price";
-  String get cancel => "Cancel";
-  String get cart => "Cart";
-  String get category => "Category";
-  String get categories => "Categories";
-  String get addToCart => "Add To Cart";
-  // String get addToCart => "Add To Cart";
+  String get koreanShipping => 'Korean Shipping';
+  String get trustReviews => 'Trust Reviews';
+  String get bannerDescription => 'Dress like a Korean celeb';
+  String get genuineSecurity => 'Genuine Security';
+  String get bannerTitle => 'Shopping Korea Together';
+  String get apply => 'Apply';
+  String get arabic => 'Arabic';
+  String get availability => 'Availability';
+  String get backToShop => 'Back to Shop';
+  String get bagsCollections => 'Gears Collections';
+  String get blog => 'Blog';
+  String get buyNow => 'Buy Now';
+  String get byCategory => 'By Category';
+  String get byPrice => 'By Price';
+  String get byRanking => 'By Ranking';
+  String get officialPrice => 'Official Price';
+  String get cancel => 'Cancel';
+  String get cart => 'Cart';
+  String get category => 'Category';
+  String get categories => 'Categories';
+  String get addToCart => 'Add To Cart';
+  // String get addToCart => 'Add To Cart';
 
-  String get chooseYourPaymentMethod => "Choose your payment method";
-  String get city => "City";
-  String get cityIsRequired => "The city field is required";
-  String get clear => "Clear";
-  String get clearCart => "Clear Cart";
-  String get close => "Close";
-  String get commentFirst => "Please write your comment";
-  String get continueToPayment => "Continue to Payment";
-  String get continueToReview => "Continue to Review";
-  String get continueToShipping => "Continue to Shipping";
-  String get country => "Country";
-  String get countryIsRequired => "The country field is required";
-  String get couponCode => "Coupon code";
+  String get chooseYourPaymentMethod => 'Choose your payment method';
+  String get city => 'City';
+  String get cityIsRequired => 'The city field is required';
+  String get clear => 'Clear';
+  String get clearCart => 'Clear Cart';
+  String get close => 'Close';
+  String get commentFirst => 'Please write your comment';
+  String get continueToPayment => 'Continue to Payment';
+  String get continueToReview => 'Continue to Review';
+  String get continueToShipping => 'Continue to Shipping';
+  String get country => 'Country';
+  String get countryIsRequired => 'The country field is required';
+  String get couponCode => 'Coupon code';
   String get couponMsgSuccess =>
-      "Congratulations! Coupon code applied successfully";
-  String get createAnAccount => "Create an account";
-  String get ingredientInfo => "Ingredient Information";
-  String get currencies => "Currencies";
-  String get darkTheme => "Dark Theme";
-  String get date => "Date";
-  String get description => "Description";
-  String get discount => "Discount";
-  String get done => "Done";
-  String get dontHaveAccount => "Don't have an account?";
-  String get email => "Email";
-  String get emailIsRequired => "The email field is required";
+      'Congratulations! Coupon code applied successfully';
+  String get createAnAccount => 'Create an account';
+  String get ingredientInfo => 'Ingredient Information';
+  String get currencies => 'Currencies';
+  String get darkTheme => 'Dark Theme';
+  String get date => 'Date';
+  String get description => 'Description';
+  String get discount => 'Discount';
+  String get done => 'Done';
+  String get dontHaveAccount => "Don't have an account?'";
+  String get email => 'Email';
+  String get emailIsRequired => 'The email field is required';
 
-  String get english => "English";
-  String get enterYourEmail => "Enter your email";
-  String get enterYourPassword => "Enter your password";
-  String get enterPIN => "Enter PIN";
-  String get newPassword => "New Password";
-  String get confirmPassword => "Confirm Password";
-  String get confirm => "confirm";
+  String get english => 'English';
+  String get enterYourEmail => 'Enter your email';
+  String get enterYourPassword => 'Enter your password';
+  String get enterPIN => 'Enter PIN';
+  String get newPassword => 'New Password';
+  String get confirmPassword => 'Confirm Password';
+  String get confirm => 'confirm';
 
-  String get events => "Events";
-  String get featureProducts => "Feature Products";
-  String get fullName => "Name";
-  String get firstName => "First Name";
-  String get fullNameIsRequired => "The first name field is required";
-  String get generalSetting => "General Setting";
-  String get getNotification => "Get Notification";
-  String get goBackToAddress => "Go back to address";
-  String get goBackToReview => "Go back to review";
-  String get goBackToShipping => "Go back to shipping";
-  String get inStock => "In stock";
-  String get invalidSMSCode => "Invalid SMS Verification code";
-  String get items => "items";
+  String get events => 'Events';
+  String get featureProducts => 'Feature Products';
+  String get fullName => 'Name';
+  String get firstName => 'First Name';
+  String get fullNameIsRequired => 'The first name field is required';
+  String get generalSetting => 'General Setting';
+  String get getNotification => 'Get Notification';
+  String get goBackToAddress => 'Go back to address';
+  String get goBackToReview => 'Go back to review';
+  String get goBackToShipping => 'Go back to shipping';
+  String get inStock => 'In stock';
+  String get invalidSMSCode => 'Invalid SMS Verification code';
+  String get items => 'items';
   String get itsOrdered => "It's ordered!";
-  String get iwantToCreateAccount => "I want to create an account";
-  String get layout => "Layouts";
-  String get listMessages => "List Messages";
-  String get loading => "Loading...";
-  String get login => "Login";
-  String get loginToYourAccount => "Login to your account";
-  String get logout => "Logout";
-  String get manCollections => "Man Collections";
-  String get myCart => "My Cart";
-  String get myPoints => "My points";
-  String get myWishList => "My WishList";
-  String get next => "Next";
-  String get noFavoritesYet => "No favourites yet.";
-  String get noInternetConnection => "No internet connection";
-  String get noOrders => "No Orders";
-  String get noProduct => "No Product";
-  String get noReviews => "No Reviews";
-  String get or => "or";
-  String get loginWithSNS => "Or login with social accounts";
+  String get iwantToCreateAccount => 'I want to create an account';
+  String get layout => 'Layouts';
+  String get listMessages => 'List Messages';
+  String get loading => 'Loading...';
+  String get login => 'Login';
+  String get loginToYourAccount => 'Login to your account';
+  String get logout => 'Logout';
+  String get manCollections => 'Man Collections';
+  String get myCart => 'My Cart';
+  String get myPoints => 'My points';
+  String get myWishList => 'My WishList';
+  String get next => 'Next';
+  String get noFavoritesYet => 'No favourites yet.';
+  String get noInternetConnection => 'No internet connection';
+  String get noOrders => 'No Orders';
+  String get noProduct => 'No Product';
+  String get noReviews => 'No Reviews';
+  String get or => 'or';
+  String get loginWithSNS => 'Or login with social accounts';
   String get enterEmailToGetPIN =>
-      "Please, enter your email address. You will receive a link to create a new password via email.";
+      'Please, enter your email address. You will receive a link to create a new password via email.';
   String get enterSixDigitCode =>
-      "Enter the 6 digit code we sent you via email to continue";
+      'Enter the 6 digit code we sent you via email to continue';
 
-  String get orderDate => "Order Date";
-  String get orderHistory => "Order History";
-  String get orderNo => "Order No.";
-  String get orderNotes => "Order notes";
+  String get orderDate => 'Order Date';
+  String get orderHistory => 'Order History';
+  String get orderNo => 'Order No.';
+  String get orderNotes => 'Order notes';
   String get orderSuccessMsg1 =>
-      "You can check status of your order by using our delivery status feature. You will receive an order confirmation e-mail with details of your order and a link to track its progress.";
+      'You can check status of your order by using our delivery status feature. You will receive an order confirmation e-mail with details of your order and a link to track its progress.';
   String get orderSuccessMsg2 =>
-      "You can log to your account using e-mail and password defined earlier. On your account you can edit your profile data, check history of transactions, edit subscription to newsletter.";
+      'You can log to your account using e-mail and password defined earlier. On your account you can edit your profile data, check history of transactions, edit subscription to newsletter.';
   String get orderSuccessTitle1 => "You've successfully placed the order";
-  String get orderSuccessTitle2 => "Your account";
-  String get outOfStock => "Out of stock";
-  String get password => "Password";
-  String get phoneIsRequired => "The phone number field is required";
-  String get phoneNumber => "Phone Number";
-  String get intputReceiverPhoneNumber => "Please input reciever phone number";
-  String get placeMyOrder => "Place My Order";
-  String get pleaseInput => "Please input fill in all fields";
-  String get point => "Point";
-  String get productAdded => "The product is added";
-  String get productRating => "Your rating";
-  String get products => "Products";
-  String get ratingFirst => "Please rating before you send your comment";
-  String get reviews => "Reviews";
-  String get recentSearches => "Recent Searches";
-  String get recentView => "Your Recent View";
-  String get recents => "Recent";
-  String get refundRequest => "Refund Request";
-  String get remove => "Remove";
-  String get recommended => "Recommended";
-  String get trendingKorea => "Trending in Korea";
+  String get orderSuccessTitle2 => 'Your account';
+  String get outOfStock => 'Out of stock';
+  String get password => 'Password';
+  String get phoneIsRequired => 'The phone number field is required';
+  String get phoneNumber => 'Phone Number';
+  String get intputReceiverPhoneNumber => 'Please input reciever phone number';
+  String get placeMyOrder => 'Place My Order';
+  String get pleaseInput => 'Please input fill in all fields';
+  String get point => 'Point';
+  String get productAdded => 'The product is added';
+  String get productRating => 'Your rating';
+  String get products => 'Products';
+  String get ratingFirst => 'Please rating before you send your comment';
+  String get reviews => 'Reviews';
+  String get recentSearches => 'Recent Searches';
+  String get recentView => 'Your Recent View';
+  String get recents => 'Recent';
+  String get refundRequest => 'Refund Request';
+  String get remove => 'Remove';
+  String get recommended => 'Recommended';
+  String get trendingKorea => 'Trending in Korea';
   String get editorPicks => "Editor's Picks";
-  // String get theBeautyHallOfFame => "The Beauty Hall Of Fame";
-  String get lowPrice => "Low Price";
-  String get lowestToHighest => "Low to High";
-  String get highestToLowest => "High to Low";
+  // String get theBeautyHallOfFame => 'The Beauty Hall Of Fame';
+  String get lowPrice => 'Low Price';
+  String get lowestToHighest => 'Low to High';
+  String get highestToLowest => 'High to Low';
   String get finishedSurvey =>
-      "Congratulation on completing your skin type test!";
+      'Congratulation on completing your skin type test!';
 
-  String get reset => "Reset";
-  String get review => "review";
-  String get saveAddress => "Save Address";
-  String get saveResult => "Save Result";
-  String get checkYourSkinTYpe => "Çheck your Skin Type";
-  String get saveAddressSuccess => "Your address is exist in your local";
-  String get saveToWishList => "Save to WishList";
-  String get search => "Search";
-  String get searchForItems => "Search for Items";
-  String get peopleAreSearching => "People are searching";
-  String get searchInput => "Please write input in search field";
-  String get searchingAddress => "Searching Address";
-  String get seeAll => "See All";
-  String get seeMore => "See More";
-  String get selectAddress => "Select Address";
-  String get selectTheColor => "Select the color";
-  String get selectTheQuantity => "Select the quantity";
-  String get selectTheSize => "Select the size";
-  String get send => "Send";
-  String get enter => "contiue";
+  String get reset => 'Reset';
+  String get review => 'review';
+  String get saveAddress => 'Save Address';
+  String get saveResult => 'Save Result';
+  String get checkYourSkinTYpe => 'Çheck your Skin Type';
+  String get saveAddressSuccess => 'Your address is exist in your local';
+  String get saveToWishList => 'Save to WishList';
+  String get search => 'Search';
+  String get searchForItems => 'Search for Items';
+  String get peopleAreSearching => 'People are searching';
+  String get searchInput => 'Please write input in search field';
+  String get searchingAddress => 'Searching Address';
+  String get seeAll => 'See All';
+  String get seeMore => 'See More';
+  String get selectAddress => 'Select Address';
+  String get selectTheColor => 'Select the color';
+  String get selectTheQuantity => 'Select the quantity';
+  String get selectTheSize => 'Select the size';
+  String get send => 'Send';
+  String get enter => 'contiue';
 
-  String get shippingMethod => "Shipping Method";
-  String get shop => "Shop";
-  String get showAllMyOrdered => "Show All My Ordered";
-  String get showGallery => "Show Gallery";
-  String get signIn => "Sign In";
-  String get signInWithEmail => "Sign in with email";
-  String get signUp => "Sign Up";
-  String get signup => "Sign up";
-  String get forgotpassword => "Forgot password?";
-  String get enterPINCode => "Enter Pin Code";
-  String get resetpassword => "Reset password";
-  String get yesGood => "Yehh, it’s really good!";
-  String get noSendUsSuggestions => "No, share some suggestions ";
+  String get shippingMethod => 'Shipping Method';
+  String get shop => 'Shop';
+  String get showAllMyOrdered => 'Show All My Ordered';
+  String get showGallery => 'Show Gallery';
+  String get signIn => 'Sign In';
+  String get signInWithEmail => 'Sign in with email';
+  String get signUp => 'Sign Up';
+  String get signup => 'Sign up';
+  String get forgotpassword => 'Forgot password?';
+  String get enterPINCode => 'Enter Pin Code';
+  String get resetpassword => 'Reset password';
+  String get yesGood => 'Yehh, it’s really good!';
+  String get noSendUsSuggestions => 'No, share some suggestions ';
 
-  String get startShopping => "Start Shopping";
-  String get startTheTest => "Start the test";
-  String get stateIsRequired => "The state field is required";
-  String get province => "Province";
-  String get status => "Status";
-  String get streetIsRequired => "The street name field is required";
-  String get streetName => "Street Name";
-  String get subtotal => "Subtotal";
-  String get username => "Username";
-  String get toDos => "To dos";
-  String get notTodos => "Not To dos";
+  String get startShopping => 'Start Shopping';
+  String get startTheTest => 'Start the test';
+  String get stateIsRequired => 'The state field is required';
+  String get province => 'Province';
+  String get status => 'Status';
+  String get streetIsRequired => 'The street name field is required';
+  String get streetName => 'Street Name';
+  String get subtotal => 'Subtotal';
+  String get username => 'Username';
+  String get toDos => 'To dos';
+  String get notTodos => 'Not To dos';
 
-  String get trackingNumberIs => "Tracking number is";
-  String get trackingPage => "Tracking page";
-  String get unavailable => "Unavailable";
-  String get undecided => "Undecided";
-  String get low => "Low";
-  String get moderate => "Moderate";
-  String get high => "High";
-  String get verifySMSCode => "Verify";
-  String get video => "Video";
-  String get vietnamese => "Vietnamese";
-  String get welcome => "Welcome";
-  String get dimodo => "DIMODO";
+  String get trackingNumberIs => 'Tracking number is';
+  String get trackingPage => 'Tracking page';
+  String get unavailable => 'Unavailable';
+  String get undecided => 'Undecided';
+  String get low => 'Low';
+  String get moderate => 'Moderate';
+  String get high => 'High';
+  String get verifySMSCode => 'Verify';
+  String get video => 'Video';
+  String get vietnamese => 'Vietnamese';
+  String get welcome => 'Welcome';
+  String get dimodo => 'DIMODO';
 
-  String get writeComment => "Write your comment";
-  String get writeYourNote => "Write your note";
-  String get youMightAlsoLike => "You might also like";
-  String get yourBagIsEmpty => "Your bag is empty";
-  String get yourNote => "Your note";
-  String get sevenDayWorryFree => "Return within 7 days after sales";
-  String get zipCode => "Zip-code";
-  String get zipCodeIsRequired => "The zip code field is required";
-  String get beenSold => "sold";
-  String get starTheSkinTest => "Start the Skin Test";
-  String get allRankingResults => "All Ranking Results Based on";
+  String get writeComment => 'Write your comment';
+  String get writeYourNote => 'Write your note';
+  String get youMightAlsoLike => 'You might also like';
+  String get yourBagIsEmpty => 'Your bag is empty';
+  String get yourNote => 'Your note';
+  String get sevenDayWorryFree => 'Return within 7 days after sales';
+  String get zipCode => 'Zip-code';
+  String get zipCodeIsRequired => 'The zip code field is required';
+  String get beenSold => 'sold';
+  String get starTheSkinTest => 'Start the Skin Test';
+  String get allRankingResults => 'All Ranking Results Based on';
 
-  // String get otherProducts => "Other zip code field is required";
-  String sale(String percent) => "Sale $percent %";
-  String weFoundProducts(String length) => "We found $length products";
-  String youHavePoints(String point) => "You have $point points";
+  // String get otherProducts => 'Other zip code field is required';
+  String sale(String percent) => 'Sale $percent %';
+  String weFoundProducts(String length) => 'We found $length products';
+  String youHavePoints(String point) => 'You have $point points';
 }
 
 class $vi extends S {
@@ -476,603 +476,721 @@ class $vi extends S {
   TextDirection get textDirection => TextDirection.ltr;
 
   @override
-  String get accounts => "Tài Khoản";
-  String get baumannSkinTypeTest => "Baumann Test về da";
+  String get accounts => 'Tài Khoản';
+  @override
+  String get baumannSkinTypeTest => 'Baumann Test về da';
 
   @override
-  String get clickToSignIn => "Kích  Để Đăng Nhập";
-  String get continueShopping => "Tiếp tục mua sắm";
+  String get clickToSignIn => 'Kích  Để Đăng Nhập';
+  @override
+  String get continueShopping => 'Tiếp tục mua sắm';
 
-  String get askServiceQuality => "Sản phẩm có đáp ứng được mong đợi của bạn??";
+  @override
+  String get askServiceQuality => 'Sản phẩm có đáp ứng được mong đợi của bạn??';
+  @override
   String get askForFeedback =>
-      "Hãy cho chúng tôi biết về những gì bạn thích và những gì bạn không thích về mua hàng của bạn";
+      'Hãy cho chúng tôi biết về những gì bạn thích và những gì bạn không thích về mua hàng của bạn';
+  @override
   String get surveyDescription =>
-      "We appreciate you are trying our current feature we’ve been building in Dimodo. It will take 10 mins to collect your feedback about our product?";
-  String get officialQA => "Mục hỏi và đáp chính thức của Dimodo";
-  String get bestDealInKorea => "Giá tốt nhất ở";
-  String get ingredientInfo => "Thông tin thành phần";
+      'We appreciate you are trying our current feature we’ve been building in Dimodo. It will take 10 mins to collect your feedback about our product?';
+  @override
+  String get officialQA => 'Mục hỏi và đáp chính thức của Dimodo';
+  @override
+  String get bestDealInKorea => 'Giá tốt nhất ở';
+  @override
+  String get ingredientInfo => 'Thông tin thành phần';
 
   @override
-  String get privacyPolicy => "Chính Sách Bảo Mật";
-  String get dimodoPrice => "Giá của DIMODO";
+  String get privacyPolicy => 'Chính Sách Bảo Mật';
   @override
-  String get changePassword => "Đổi Mật Khẩu";
+  String get dimodoPrice => 'Giá của DIMODO';
   @override
-  String get shipping => "Vận Chuyển";
+  String get changePassword => 'Đổi Mật Khẩu';
   @override
-  String get orders => "Đặt Hàng";
-  String get deliveryArea => "Tỉnh /Thành phố";
-  String get addAddress => "Thêm địa chỉ mới";
-  String get editShippingAddress => "Edit Shipping Address";
-  String get discoverTheBestProducts => "về loại da của bạn cùng chúng tôi!";
-  String get district => "district";
-  String get ward => "ward";
-  String get confirm => "Xác nhận";
-  String get customizeDimodo => "Customize your DIMODO";
+  String get shipping => 'Vận Chuyển';
+  @override
+  String get orders => 'Đặt Hàng';
+  @override
+  String get deliveryArea => 'Tỉnh /Thành phố';
+  @override
+  String get addAddress => 'Thêm địa chỉ mới';
+  @override
+  String get editShippingAddress => 'Edit Shipping Address';
+  @override
+  String get discoverTheBestProducts => 'về loại da của bạn cùng chúng tôi!';
+  @override
+  String get district => 'district';
+  @override
+  String get ward => 'ward';
+  @override
+  String get confirm => 'Xác nhận';
+  @override
+  String get customizeDimodo => 'Customize your DIMODO';
 
   @override
-  String get viewAll => "Xem Tất Cả";
+  String get viewAll => 'Xem Tất Cả';
   @override
-  String get customerSupport => "Hỗ Trợ Khách Hàng";
+  String get customerSupport => 'Hỗ Trợ Khách Hàng';
   @override
-  String get feedback => "Phản Hồi";
+  String get feedback => 'Phản Hồi';
 
-  String get dry => "khô";
-  String get oily => "da dầu";
-  String get sensitive => "đề kháng cao";
-  String get resistant => "nhạy cảm ";
-  String get nonPigmented => "không sắc tố";
-  String get pigmented => "sắc tố";
-  String get wrinkled => "nhăn";
-  String get tight => "căng";
+  @override
+  String get dry => 'khô';
+  @override
+  String get oily => 'da dầu';
+  @override
+  String get sensitive => 'đề kháng cao';
+  @override
+  String get resistant => 'nhạy cảm ';
+  @override
+  String get nonPigmented => 'không sắc tố';
+  @override
+  String get pigmented => 'sắc tố';
+  @override
+  String get wrinkled => 'nhăn';
+  @override
+  String get tight => 'căng';
 
   @override
   String get shippingFeePolicy =>
-      "Phí vận chuyển được tính theo trọng lượng.\n\nNếu bạn có thắc mắc về phí vận chuyển, vui lòng liên hệ với chúng tôi bất cứ lúc nào \n\nVận chuyển miễn phí cho các đơn hàng trên 2.000.000 Mb\n";
-  String get shippingAddress => "Địa Chỉ Giao Hàng";
+      'Phí vận chuyển được tính theo trọng lượng.\n\nNếu bạn có thắc mắc về phí vận chuyển, vui lòng liên hệ với chúng tôi bất cứ lúc nào \n\nVận chuyển miễn phí cho các đơn hàng trên 2.000.000 Mb\n';
   @override
-  String get paymentMethod => "Phương Thức Thanh Toán";
+  String get shippingAddress => 'Địa Chỉ Giao Hàng';
   @override
-  String get yourSkin => "Da của bạn";
-  String get share => "Chia Sẻ";
+  String get paymentMethod => 'Phương Thức Thanh Toán';
   @override
-  String get rateTheApp => "Đánh Giá Ứng Dụng";
+  String get yourSkin => 'Da của bạn';
   @override
-  String get language => "Ngôn Ngữ";
+  String get share => 'Chia Sẻ';
   @override
-  String get question => "Câu hỏi";
+  String get rateTheApp => 'Đánh Giá Ứng Dụng';
+  @override
+  String get language => 'Ngôn Ngữ';
+  @override
+  String get question => 'Câu hỏi';
 
-  String get appVersion => "Phiên Bản";
+  @override
+  String get appVersion => 'Phiên Bản';
+  @override
   String get discoverYourType =>
-      "Nhận biết được sản phẩm phù hợp! Tư vấn miễn cho nhu cầu chăm sóc da của bạn";
+      'Nhận biết được sản phẩm phù hợp! Tư vấn miễn cho nhu cầu chăm sóc da của bạn';
 
   @override
-  String get cancel => "Hủy";
+  String get cancel => 'Hủy';
   @override
-  String get listMessages => "Danh sách tin nhắn";
+  String get listMessages => 'Danh sách tin nhắn';
   @override
-  String get unavailable => "Không có hàng";
+  String get unavailable => 'Không có hàng';
   @override
   @override
-  String get darkTheme => "Giao diện tối";
+  String get darkTheme => 'Giao diện tối';
   @override
-  String get discount => "Discount";
-  String get supportedByGoogleTranslate => "Dịch bằng Google";
-  String get choose => "Lựa chọn";
+  String get discount => 'Discount';
+  @override
+  String get supportedByGoogleTranslate => 'Dịch bằng Google';
+  @override
+  String get choose => 'Lựa chọn';
+  @override
   String get finishedSurvey =>
-      "Chúc mừng bạn đã hoàn thành bài kiểm tra về loại da của bạn !";
+      'Chúc mừng bạn đã hoàn thành bài kiểm tra về loại da của bạn !';
   @override
-  String get byPrice => "Theo giá";
+  String get byPrice => 'Theo giá';
   @override
   String get shippingDescription =>
-      "Chúng tôi nhận được gói của bạn từ các cửa hàng Hàn Quốc trong vòdng 3-5 ngày. Phải mất một tuần nữa để gửi nó đến cửa của bạn tại Việt Nam";
-  String get yourSkinTypeIs => "Loại da của bạn là";
+      'Chúng tôi nhận được gói của bạn từ các cửa hàng Hàn Quốc trong vòdng 3-5 ngày. Phải mất một tuần nữa để gửi nó đến cửa của bạn tại Việt Nam';
+  @override
+  String get yourSkinTypeIs => 'Loại da của bạn là';
 
-  String get name => "Name";
-  String get dimodoServices => "Dimodo Services";
-  // String get dimodoPrice => "Dimodo Price";
+  @override
+  String get name => 'Name';
+  @override
+  String get dimodoServices => 'Dimodo Services';
+  // String get dimodoPrice => 'Dimodo Price';
 
 // =============================================================================
 // tra
 // =============================================================================
-  String get officialPrice => "Giá chính thức";
+  @override
+  String get officialPrice => 'Giá chính thức';
 
+  @override
   String get categoryScreenDescription =>
-      "Alo ~ Bạn đang tìm loại quần áo nào?";
-  String get confirmToOrder => "Xác nhận đặt hàng";
-  String get includingTaxAndFee => "bao gồm thuế & phí";
-  String get deliveryMethod => "Phương thức phân phối";
+      'Alo ~ Bạn đang tìm loại quần áo nào?';
+  @override
+  String get confirmToOrder => 'Xác nhận đặt hàng';
+  @override
+  String get includingTaxAndFee => 'bao gồm thuế & phí';
+  @override
+  String get deliveryMethod => 'Phương thức phân phối';
+  @override
   String get deliveryMethodDescription =>
-      "Vận chuyển bằng đường hàng không - 10 ngày";
-  String get importTax => "Thuế nhập khẩu";
-  String get importTaxDescription => "Thuế nhập khẩu Hàn Quốc (10%)";
-  String get serviceFee => "Phí dịch vụ";
+      'Vận chuyển bằng đường hàng không - 10 ngày';
+  @override
+  String get importTax => 'Thuế nhập khẩu';
+  @override
+  String get importTaxDescription => 'Thuế nhập khẩu Hàn Quốc (10%)';
+  @override
+  String get serviceFee => 'Phí dịch vụ';
+  @override
   String get serviceFeeDescription =>
-      "Dịch vụ giúp chúng tôi chạy nền tảng của chúng tôi và cung cấp trải nghiệm tốt hơn";
-  String get submitOrder => "ĐẶT MUA";
-  String get fee => "Phí";
+      'Dịch vụ giúp chúng tôi chạy nền tảng của chúng tôi và cung cấp trải nghiệm tốt hơn';
+  @override
+  String get submitOrder => 'ĐẶT MUA';
+  @override
+  String get fee => 'Phí';
+  @override
   String get whatIsMySkinType =>
-      "Hãy cùng khám phá chi tiết về loại da của bạn cùng chúng tôi!";
+      'Hãy cùng khám phá chi tiết về loại da của bạn cùng chúng tôi!';
 
-  String get needHelp => "Cần trợ giúp?";
-  String get askUs => "Hỏi chúng tôi";
-  String get whereToDeliver => "Bạn cần chúng tôi giao hàng ở đâu?";
-  String get orderSubmitted => "Đã gửi đơn đặt hàng";
-  String get oneStepLeft => "Một bước còn lại";
+  @override
+  String get needHelp => 'Cần trợ giúp?';
+  @override
+  String get askUs => 'Hỏi chúng tôi';
+  @override
+  String get whereToDeliver => 'Bạn cần chúng tôi giao hàng ở đâu?';
+  @override
+  String get orderSubmitted => 'Đã gửi đơn đặt hàng';
+  @override
+  String get oneStepLeft => 'Một bước còn lại';
+  @override
   String get transferDescription =>
-      "Đơn hàng ​​sẽ được giao đến bạn. Chỉ mất ba phút để thanh toán vào tài khoản bên dưới";
-  String get bankAccountHolder => "Tài khoản";
-  String get payment => "Accounts";
-  String get paymentMethods => "Payment method";
-  String get bankInfo => "Thông tin ngân hàng";
-  String get bankTransfer => "Chuyển khoản ngân hàng";
-  String get intputReceiverPhoneNumber => "Please input reciever phone number";
+      'Đơn hàng ​​sẽ được giao đến bạn. Chỉ mất ba phút để thanh toán vào tài khoản bên dưới';
+  String get bankAccountHolder => 'Tài khoản';
+  @override
+  String get payment => 'Accounts';
+  @override
+  String get paymentMethods => 'Payment method';
+  @override
+  String get bankInfo => 'Thông tin ngân hàng';
+  @override
+  String get bankTransfer => 'Chuyển khoản ngân hàng';
+  @override
+  String get intputReceiverPhoneNumber => 'Please input reciever phone number';
 
-  String get accountHolder => "Chủ tài khoản";
+  @override
+  String get accountHolder => 'Chủ tài khoản';
   //hottest design in vietnamese
-  String get trendDesign => "Xu hướng Hot nhất";
-  String get totalAmount => "Tổng số tiền";
-  String get shippingFrom => "Vận chuyển từ";
-  String get shippingTo => "Vận chuyển đến";
-  String get localKoreanShips => "Cửa hàng Hàn Quốc địa phương";
-  String get seoulKorea => "Seoul, Hàn Quốc";
-  String get manageShippingAddress => "Địa Chỉ Của Tôi";
-  String get writeReview => "Viết nhận xét của bạn";
-  String get send => "Gửi";
-  String get checkYourSkinTYpe => "Çheck your Skin Type";
+  @override
+  String get trendDesign => 'Xu hướng Hot nhất';
+  @override
+  String get totalAmount => 'Tổng số tiền';
+  @override
+  String get shippingFrom => 'Vận chuyển từ';
+  @override
+  String get shippingTo => 'Vận chuyển đến';
+  @override
+  String get localKoreanShips => 'Cửa hàng Hàn Quốc địa phương';
+  @override
+  String get seoulKorea => 'Seoul, Hàn Quốc';
+  @override
+  String get manageShippingAddress => 'Địa Chỉ Của Tôi';
+  @override
+  String get writeReview => 'Viết nhận xét của bạn';
+  @override
+  String get send => 'Gửi';
+  @override
+  String get checkYourSkinTYpe => 'Çheck your Skin Type';
 
-  String get selectOrEnterCoupon => "Chọn Hoặc Nhập Mã";
-  String get byRanking => "Theo xếp hạng";
+  @override
+  String get selectOrEnterCoupon => 'Chọn Hoặc Nhập Mã';
+  @override
+  String get byRanking => 'Theo xếp hạng';
+  @override
   String get whyLowerThanMarketPriceQuestion =>
-      "1. Tại sao giá của Dimodo thấp hơn giá thị trường?";
-  String get whereReviewsFromQuestion => "2. Những đánh giá này đến từ đâu?";
+      '1. Tại sao giá của Dimodo thấp hơn giá thị trường?';
+  @override
+  String get whereReviewsFromQuestion => '2. Những đánh giá này đến từ đâu?';
+  @override
   String get sameQualityAsInKoreaQuestion =>
-      "3. Chất lượng hàng hóa trong các cửa hàng trực tiếp có giống nhau không?";
+      '3. Chất lượng hàng hóa trong các cửa hàng trực tiếp có giống nhau không?';
+  @override
   String get whyLowerThanMarketpriceAnswer =>
-      "1.Tại sao giá của Dimodo thấp hơn giá thị trường?  \n\nNhà sáng lập Dimodo, là một người Hàn Quốc, tin rằng người Việt Nam xứng đáng được hưởng mức giá tốt hơn khi mua mỹ phẩm Hàn Quốc bằng cách đưa ra mức giá tại Hàn Quốc theo thời gian thực cho người Việt Nam.\n";
+      '1.Tại sao giá của Dimodo thấp hơn giá thị trường?  \n\nNhà sáng lập Dimodo, là một người Hàn Quốc, tin rằng người Việt Nam xứng đáng được hưởng mức giá tốt hơn khi mua mỹ phẩm Hàn Quốc bằng cách đưa ra mức giá tại Hàn Quốc theo thời gian thực cho người Việt Nam.\n';
+  @override
   String get whereReivewsFromAnswer =>
-      "2.	Những đánh giá này đến từ đâu?\n\n Để giúp bạn chọn ra được những món mỹ phẩm Hàn Quốc phù hợp, Dimodo cung cấp những đánh giá từ Glowpick, dịch vụ đánh giá làm sản phẩm đẹp nổi tiếng và phổ biến nhất Hàn Quốc\n";
+      '2.	Những đánh giá này đến từ đâu?\n\n Để giúp bạn chọn ra được những món mỹ phẩm Hàn Quốc phù hợp, Dimodo cung cấp những đánh giá từ Glowpick, dịch vụ đánh giá làm sản phẩm đẹp nổi tiếng và phổ biến nhất Hàn Quốc\n';
+  @override
   String get sameQualityAsInKoreaAnswer =>
-      "3.	Chất lượng hàng hóa trong các cửa hàng trực tiếp có giống nhau không? \n\n Các sản phẩm từ Dimodo được kiểm soát chặt chẽ bởi nhà sáng lập người Hàn Quốc của chúng tôi. Từ việc lựa chọn hàng hóa cho đến dịch vụ hậu mãi, mỹ phẩm Dimodo mua từ các kênh chính thức của Hàn Quốc và vận chuyển đến nhà bạn. Hãy chắc chắn rằng bạn mua nó một cách dễ dàng, yên tâm sử dụng, bạn có thể tự tin mua nó, chất lượng của cùng một sản phẩm là hoàn toàn đồng nhất.\n";
+      '3.	Chất lượng hàng hóa trong các cửa hàng trực tiếp có giống nhau không? \n\n Các sản phẩm từ Dimodo được kiểm soát chặt chẽ bởi nhà sáng lập người Hàn Quốc của chúng tôi. Từ việc lựa chọn hàng hóa cho đến dịch vụ hậu mãi, mỹ phẩm Dimodo mua từ các kênh chính thức của Hàn Quốc và vận chuyển đến nhà bạn. Hãy chắc chắn rằng bạn mua nó một cách dễ dàng, yên tâm sử dụng, bạn có thể tự tin mua nó, chất lượng của cùng một sản phẩm là hoàn toàn đồng nhất.\n';
+  @override
   String get provenKoreanCosmeticsStory =>
-      "1. Mỹ phẩm Hàn Quốc được chứng nhận:\n\nDimodo đã cung cấp hơn 300 loại mỹ phẩm từ khi đi vào hoạt động vào đầu năm 2020. Chúng tôi chỉ đem lại những đánh giá đáng tin cậy từ người Hàn Quốc để giúp người dùng ứng dụng tìm ra được những sản phẩm tốt nhất và phù hợp với họ nhất. Không có những người tiêu dùng nào giống nhau trên thị trường làm đẹp. Độ tuổi, loại da, gu thẩm mỹ và cách nhìn nhận giá trị của mỗi người là khác nhau. Chúng tôi hướng đến tạo ra một môi trường giúp thể hiện được ý tưởng và cảm giác thật sự của bạn.\n";
+      '1. Mỹ phẩm Hàn Quốc được chứng nhận:\n\nDimodo đã cung cấp hơn 300 loại mỹ phẩm từ khi đi vào hoạt động vào đầu năm 2020. Chúng tôi chỉ đem lại những đánh giá đáng tin cậy từ người Hàn Quốc để giúp người dùng ứng dụng tìm ra được những sản phẩm tốt nhất và phù hợp với họ nhất. Không có những người tiêu dùng nào giống nhau trên thị trường làm đẹp. Độ tuổi, loại da, gu thẩm mỹ và cách nhìn nhận giá trị của mỗi người là khác nhau. Chúng tôi hướng đến tạo ra một môi trường giúp thể hiện được ý tưởng và cảm giác thật sự của bạn.\n';
+  @override
   String get getTheCheapesPriceStory =>
-      "2. Mua hàng với giá rẻ nhất \n\nNhà sáng lập Dimodo, một người Hàn Quốc hiện đang sinh sống tại Đà Nẵng, tin rằng người Việt Nam xứng đáng mua được mỹ phẩm Hàn với giá tốt hơn bằng cách cung cấp mức giá tại Hàn Quốc theo thời gian thực cho người dùng. Trong thời gian tới chúng tôi sẽ đưa ra mức giá phù hợp với khách hàng\n";
+      '2. Mua hàng với giá rẻ nhất \n\nNhà sáng lập Dimodo, một người Hàn Quốc hiện đang sinh sống tại Đà Nẵng, tin rằng người Việt Nam xứng đáng mua được mỹ phẩm Hàn với giá tốt hơn bằng cách cung cấp mức giá tại Hàn Quốc theo thời gian thực cho người dùng. Trong thời gian tới chúng tôi sẽ đưa ra mức giá phù hợp với khách hàng\n';
+  @override
   String get moneyBackGuaranteeStory =>
-      "3. Chính sách đảm bảo hoàn tiền \n\nChúng tôi có bảo đảm hoàn lại tiền trong 7 ngày cho tất cả các loại mỹ phẩm và quần áo đã mua trong Ứng dụng của chúng tôi. Chính sách đảm bảo hoàn tiền của chúng tôi mang đến cho bạn sự an tâm rằng các dịch vụ của chúng tôi sẽ đáp ứng các kỳ vọng được quy định trong Điều khoản dịch vụ. Trong phạm vi tối đa áp dụng theo luật quốc gia và không ảnh hưởng đến quyền lợi của bạn với tư cách là người tiêu dùng, bảo đảm hoàn tiền là biện pháp giải quyết duy nhất của bạn nếu dịch vụ của chúng tôi không đáp ứng được các kỳ vọng được quy định trong Điều khoản dịch vụ này. Các điều kiện sau đây áp dụng cho chính sách hoàn tiền của chúng tôi: \n\n -	Các mặt hàng đã mua được bảo đảm trong 7 ngày kể từ ngày mua ban đầu và đang trong thời hạn bảo hành.\n\n-	Người dùng cung cấp được các tài liệu chứng nhận tương ứng đủ để chứng minh rằng hàng hóa là giả, chẳng hạn như chứng nhận thương hiệu, chứng nhận kiểm tra chất lượng của bên thứ ba, v.v.\n\n-	Các mặt hàng bị hư hỏng hoặc bị lỗi được bảo đảm hoàn tiền.\n\n-	Các sản đã đập hộp hoặc đã qua sử dụng không được hưởng chính sách hoàn tiền. \n\n-	Các sản phẩm bị hư hỏng do tác động con người, rửa trôi, hoặc có tem nhãn/bao bì bị tháo rời không được áp dụng hoàn tiền.";
-  String get filter => "Bộ lọc";
-  String get allRankingResults => "Mọi kết quả xếp hạng dựa trên";
+      '3. Chính sách đảm bảo hoàn tiền \n\nChúng tôi có bảo đảm hoàn lại tiền trong 7 ngày cho tất cả các loại mỹ phẩm và quần áo đã mua trong Ứng dụng của chúng tôi. Chính sách đảm bảo hoàn tiền của chúng tôi mang đến cho bạn sự an tâm rằng các dịch vụ của chúng tôi sẽ đáp ứng các kỳ vọng được quy định trong Điều khoản dịch vụ. Trong phạm vi tối đa áp dụng theo luật quốc gia và không ảnh hưởng đến quyền lợi của bạn với tư cách là người tiêu dùng, bảo đảm hoàn tiền là biện pháp giải quyết duy nhất của bạn nếu dịch vụ của chúng tôi không đáp ứng được các kỳ vọng được quy định trong Điều khoản dịch vụ này. Các điều kiện sau đây áp dụng cho chính sách hoàn tiền của chúng tôi: \n\n -	Các mặt hàng đã mua được bảo đảm trong 7 ngày kể từ ngày mua ban đầu và đang trong thời hạn bảo hành.\n\n-	Người dùng cung cấp được các tài liệu chứng nhận tương ứng đủ để chứng minh rằng hàng hóa là giả, chẳng hạn như chứng nhận thương hiệu, chứng nhận kiểm tra chất lượng của bên thứ ba, v.v.\n\n-	Các mặt hàng bị hư hỏng hoặc bị lỗi được bảo đảm hoàn tiền.\n\n-	Các sản đã đập hộp hoặc đã qua sử dụng không được hưởng chính sách hoàn tiền. \n\n-	Các sản phẩm bị hư hỏng do tác động con người, rửa trôi, hoặc có tem nhãn/bao bì bị tháo rời không được áp dụng hoàn tiền.';
+  @override
+  String get filter => 'Bộ lọc';
+  @override
+  String get allRankingResults => 'Mọi kết quả xếp hạng dựa trên';
+  @override
   String get theMostFamousRanking =>
-      "Dịch vụ xếp hạng sản phẩm làm đẹp nổi tiếng và phổ biến nhất Hàn Quốc";
+      'Dịch vụ xếp hạng sản phẩm làm đẹp nổi tiếng và phổ biến nhất Hàn Quốc';
   // ===========================================================================
   // To Trnaslate
   // ===========================================================================
 
-  String get enterYourEmail => "Nhập email";
-  String get password => "Mật khẩu từ 6 đến 32 ký tự";
+  @override
+  String get enterYourEmail => 'Nhập email';
+  @override
+  String get password => 'Mật khẩu từ 6 đến 32 ký tự';
 
 // =============================================================================
 // To trnaslate
 // =============================================================================
-  String get importTaxIncluded => "Đã bao gồm thuế nhập khẩu";
-  String get translatedByGoogle => "dịch bởi Google Dịch";
-  String get toDos => "Nên làm";
-  String get notToDos => "ông nên làm";
+  @override
+  String get importTaxIncluded => 'Đã bao gồm thuế nhập khẩu';
+  @override
+  String get translatedByGoogle => 'dịch bởi Google Dịch';
+  @override
+  String get toDos => 'Nên làm';
+  String get notToDos => 'ông nên làm';
+  @override
   String get soldByKoreanShopDirectShipping =>
-      "Được cung cấp trực tiếp từ Hàn Quốc";
-  String get includedInPrice => "Giá đã bao gồm";
-  String get shipFromKorea => "Giao hàng từ Hàn Quốc";
-  String get dimodoGuarantee => "chính sách bảo hành của Dimodo";
-  String get dimodoSupport => "Hỗ trợ Dimodo";
+      'Được cung cấp trực tiếp từ Hàn Quốc';
+  @override
+  String get includedInPrice => 'Giá đã bao gồm';
+  @override
+  String get shipFromKorea => 'Giao hàng từ Hàn Quốc';
+  @override
+  String get dimodoGuarantee => 'chính sách bảo hành của Dimodo';
+  @override
+  String get dimodoSupport => 'Hỗ trợ Dimodo';
+  @override
   String get dimodoGuaranteeDescription =>
-      "nếu như hàng hóa thực tế nhận hàng không đúng với mô tả, khách hàng sẽ được hoàn trả lại số tiền đã thanh toán.";
-  String get returnPolicy => "Chính sách trả hàng";
+      'nếu như hàng hóa thực tế nhận hàng không đúng với mô tả, khách hàng sẽ được hoàn trả lại số tiền đã thanh toán.';
+  @override
+  String get returnPolicy => 'Chính sách trả hàng';
+  @override
   String get returnPolicyDescription =>
-      "Nếu như có bất kì vấn đề về chất lượng sản phẩm( không bao gồm các lý do chủ quan), khách hàng có thể đăng kí hoàn trả trong 7 ngày kể từ ngày nhận hàng";
+      'Nếu như có bất kì vấn đề về chất lượng sản phẩm( không bao gồm các lý do chủ quan), khách hàng có thể đăng kí hoàn trả trong 7 ngày kể từ ngày nhận hàng';
+  @override
   String get importTaxFeeDescription =>
-      "Hàng hóa bạn đăng kí mua đã được tính thuế thương mại nhập khẩu";
-  String get askQuestion => "Đặt câu hỏi cho chúng tôi";
-  String get koreanShippingFee => "Phí vận chuyển từ Hàn Quốc mỗi sản phẩm: ";
-  String get satisfaction => "Đánh giá trung bình";
+      'Hàng hóa bạn đăng kí mua đã được tính thuế thương mại nhập khẩu';
   @override
-  String get all => "TẤT CẢ";
+  String get askQuestion => 'Đặt câu hỏi cho chúng tôi';
   @override
-  String get top => "ÁO";
+  String get koreanShippingFee => 'Phí vận chuyển từ Hàn Quốc mỗi sản phẩm: ';
   @override
-  String get coat => "ÁO KHOÁC";
-  String get defaultString => "Default";
-  String get starTheSkinTest => "Start the Skin Test";
+  String get satisfaction => 'Đánh giá trung bình';
+  @override
+  String get all => 'TẤT CẢ';
+  @override
+  String get top => 'ÁO';
+  @override
+  String get coat => 'ÁO KHOÁC';
+  @override
+  String get defaultString => 'Default';
+  @override
+  String get starTheSkinTest => 'Start the Skin Test';
 
   @override
-  String get pant => "QUẦN";
+  String get pant => 'QUẦN';
   @override
-  String get skirt => "VÁY";
+  String get skirt => 'VÁY';
   @override
-  String get dress => "ĐẦM";
+  String get dress => 'ĐẦM';
   @override
-  String get shoes => "GIÀY DÉP";
+  String get shoes => 'GIÀY DÉP';
   @override
-  String get lifeware => "NỘI Y";
+  String get lifeware => 'NỘI Y';
   @override
-  String get cosmetics => "MỸ PHẨM";
+  String get cosmetics => 'MỸ PHẨM';
   @override
-  String get koreanShipping => "Vận chuyển từ Hàn Quốc";
+  String get koreanShipping => 'Vận chuyển từ Hàn Quốc';
   @override
-  String get trustReviews => "Đánh giá";
+  String get trustReviews => 'Đánh giá';
   @override
-  String get bannerDescription => "Hình ảnh của người nổi tiếng";
-  String get genuineSecurity => "Bảo mật xác thực";
-  String get sevenDayWorryFree => "Trả hàng trong vòng 7 ngày sau khi mua";
-  // String get wrinkled => "wrinkled";
+  String get bannerDescription => 'Hình ảnh của người nổi tiếng';
+  @override
+  String get genuineSecurity => 'Bảo mật xác thực';
+  @override
+  String get sevenDayWorryFree => 'Trả hàng trong vòng 7 ngày sau khi mua';
+  // String get wrinkled => 'wrinkled';
 
   @override
-  String get bannerTitle => "Mua sắm tiện lợi cùng nhau";
-  String get lowestToHighest => "Từ thấp đến cao";
-  String get highestToLowest => "Từ cao đến thấp";
+  String get bannerTitle => 'Mua sắm tiện lợi cùng nhau';
+  @override
+  String get lowestToHighest => 'Từ thấp đến cao';
+  @override
+  String get highestToLowest => 'Từ cao đến thấp';
 
   @override
-  String get trendingKorea => "Xu hướng Hàn Quốc";
+  String get trendingKorea => 'Xu hướng Hàn Quốc';
   @override
-  String get thankYouForUsingDimodo => "Cám ơn vì đã sử dụng ứng dụng Dimodo";
+  String get thankYouForUsingDimodo => 'Cám ơn vì đã sử dụng ứng dụng Dimodo';
   @override
-  String get confirmReceivePackage => "Xác nhận đã giao";
+  String get confirmReceivePackage => 'Xác nhận đã giao';
   @override
-  String get onboardingTitle1 => "Chất lượng tốt";
+  String get onboardingTitle1 => 'Chất lượng tốt';
   @override
-  String get onboardingTitle2 => "Khám phá cảm hứng thời trang";
+  String get onboardingTitle2 => 'Khám phá cảm hứng thời trang';
   @override
-  String get onboardingTitle3 => "Chất liệu & thiết kế từ Hàn Quốc";
+  String get onboardingTitle3 => 'Chất liệu & thiết kế từ Hàn Quốc';
   @override
-  String get getStarted => "Bắt đầu ngay";
+  String get getStarted => 'Bắt đầu ngay';
   @override
   String get hitTheBottomDescription =>
-      "Oh! It seems to hit the bottom. \n Btw, do you like our app";
+      'Oh! It seems to hit the bottom. \n Btw, do you like our app';
 
   @override
-  String get rseet => "Hỗ trợ";
+  String get rseet => 'Hỗ trợ';
   @override
-  String get categories => "Phân loại";
+  String get categories => 'Phân loại';
   @override
-  String get transactionSuccess => "Đã thanh toán";
+  String get transactionSuccess => 'Đã thanh toán';
   @override
-  String get youMayAlsoLike => "Các sản phẩm tương tự";
-  String get ewgSafeLevel => "Mức an toàn EWG";
+  String get youMayAlsoLike => 'Các sản phẩm tương tự';
+  @override
+  String get ewgSafeLevel => 'Mức an toàn EWG';
 
   @override
-  String get serviceIncludes => "Dịch vụ bao gồm";
+  String get serviceIncludes => 'Dịch vụ bao gồm';
   @override
-  String get quanlityGuarantee => "Hoàn tiền khi sản phẩm xuất xứ từ nơi khác";
+  String get quanlityGuarantee => 'Hoàn tiền khi sản phẩm xuất xứ từ nơi khác';
   @override
-  String get loginWithSNS => "Hoặc đăng nhập với";
+  String get loginWithSNS => 'Hoặc đăng nhập với';
   @override
-  String get forgotpassword => "Quên mật khẩu?";
+  String get forgotpassword => 'Quên mật khẩu?';
   @override
-  String get welcomeToDimodo => "Chào Mừng đến với DIMODO";
-  String get seeMore => "Xem thêm";
+  String get welcomeToDimodo => 'Chào Mừng đến với DIMODO';
+  @override
+  String get seeMore => 'Xem thêm';
 
   @override
   String get emptyWishlistSubtitle =>
-      "Chạm vào bất cứ trái tim nào bên cạnh sản phẩm mà bạn yêu thích. Chúng tôi sẽ lưu chúng cho bạn ở đây";
+      'Chạm vào bất cứ trái tim nào bên cạnh sản phẩm mà bạn yêu thích. Chúng tôi sẽ lưu chúng cho bạn ở đây';
   @override
-  String get getNotification => "Lấy thông báo";
+  String get getNotification => 'Lấy thông báo';
   @override
-  String get signUp => "Sign Up";
-  String get lowPrice => "GIÁ THẤP";
+  String get signUp => 'Sign Up';
   @override
-  String get cart => "Giỏ hàng";
+  String get lowPrice => 'GIÁ THẤP';
   @override
-  String get logout => "Đăng xuất";
-  String get startTheTest => "Bắt đầu test";
+  String get cart => 'Giỏ hàng';
+  @override
+  String get logout => 'Đăng xuất';
+  @override
+  String get startTheTest => 'Bắt đầu test';
 
   @override
-  String get recentSearches => "Tìm kiếm gần đây";
+  String get recentSearches => 'Tìm kiếm gần đây';
   @override
-  String get review => "Đang duyệt";
+  String get review => 'Đang duyệt';
   @override
-  String get signInWithEmail => "Đăng nhập bằng ";
+  String get signInWithEmail => 'Đăng nhập bằng ';
   @override
-  String get english => "Tiếng Anh";
+  String get english => 'Tiếng Anh';
   @override
-  String get inStock => "Trong kho";
-  String get saveResult => "Lưu kết quả";
+  String get inStock => 'Trong kho';
+  @override
+  String get saveResult => 'Lưu kết quả';
 
   @override
-  String get myWishList => "Danh sách ưa thích";
+  String get myWishList => 'Danh sách ưa thích';
   @override
-  String get productRating => "Đánh giá sản phẩm";
+  String get productRating => 'Đánh giá sản phẩm';
   @override
-  String get welcome => "Xin chào";
+  String get welcome => 'Xin chào';
   @override
-  String get selectTheColor => "Chọn màu";
+  String get selectTheColor => 'Chọn màu';
   @override
-  String get undecided => "Không chắc chắn";
-  String get low => "thấp";
-  String get moderate => "vừa phải";
-  String get high => "cao";
-  String get events => "Sự kiện";
+  String get undecided => 'Không chắc chắn';
   @override
-  String get myCart => "Giỏ hàng";
+  String get low => 'thấp';
   @override
-  String get fullNameIsRequired => "Họ không được bỏ trống";
+  String get moderate => 'vừa phải';
   @override
-  String get byCategory => "Theo loại";
+  String get high => 'cao';
   @override
-  String get continueToReview => "Tiếp tục để ki���m duyệt";
+  String get events => 'Sự kiện';
   @override
-  String get goBackToReview => "Quay lại ki���m duyệt";
+  String get myCart => 'Giỏ hàng';
   @override
-  String get orderHistory => "Lịch sử đặt hàng";
+  String get fullNameIsRequired => 'Họ không được bỏ trống';
   @override
-  String get featureProducts => "Sản phẩm s��p ra mắt";
+  String get byCategory => 'Theo loại';
   @override
-  String get itsOrdered => "Nó đã được đặt";
+  String get continueToReview => 'Tiếp tục để ki���m duyệt';
   @override
-  String get myPoints => "Điểm của tôi";
+  String get goBackToReview => 'Quay lại ki���m duyệt';
   @override
-  String get loading => "Đang tải, đừng làm phiền...";
+  String get orderHistory => 'Lịch sử đặt hàng';
   @override
-  String get backToShop => "Quay lại cửa hàng";
+  String get featureProducts => 'Sản phẩm s��p ra mắt';
   @override
-  String get countryIsRequired => "Tên quốc gia không được bỏ trống";
+  String get itsOrdered => 'Nó đã được đặt';
   @override
-  String get signup => "Đăng ký";
+  String get myPoints => 'Điểm của tôi';
   @override
-  String get loginToYourAccount => "Login to your account";
+  String get loading => 'Đang tải, đừng làm phiền...';
   @override
-  String get size => "Kích thước";
+  String get backToShop => 'Quay lại cửa hàng';
   @override
-  String get addedToYourCart => "Thêm vào giỏ hàng thành công!";
+  String get countryIsRequired => 'Tên quốc gia không được bỏ trống';
   @override
-  String get subtotal => "Tổng phụ";
-  String get emptyCartSubtitle => "Shopping cart is empty go fill it up";
+  String get signup => 'Đăng ký';
+  @override
+  String get loginToYourAccount => 'Login to your account';
+  @override
+  String get size => 'Kích thước';
+  @override
+  String get addedToYourCart => 'Thêm vào giỏ hàng thành công!';
+  @override
+  String get subtotal => 'Tổng phụ';
+  @override
+  String get emptyCartSubtitle => 'Shopping cart is empty go fill it up';
 
   @override
-  String get orderNotes => "Ghi chú đặt hàng";
+  String get orderNotes => 'Ghi chú đặt hàng';
   @override
-  String get reset => "Khôi phục";
+  String get reset => 'Khôi phục';
   @override
-  String get clearCart => "Xóa giỏ hàng";
+  String get clearCart => 'Xóa giỏ hàng';
   @override
-  String get noFavoritesYet => "Chưa có yêu thích nào";
+  String get noFavoritesYet => 'Chưa có yêu thích nào';
   @override
-  String get trackingNumberIs => "Số theo dõi là";
+  String get trackingNumberIs => 'Số theo dõi là';
   @override
-  String get items => "mặt hàng";
+  String get items => 'mặt hàng';
   @override
-  String get noProduct => "Không có sản phẩm";
+  String get noProduct => 'Không có sản phẩm';
   @override
-  String get status => "Trạng thái";
+  String get status => 'Trạng thái';
   @override
-  String get lastName => "Họ";
+  String get lastName => 'Họ';
   @override
-  String get city => "Thành phố";
+  String get city => 'Thành phố';
   @override
-  String get availability => "Sẵn có";
+  String get availability => 'Sẵn có';
   @override
-  String get login => "Đăng nhập";
+  String get login => 'Đăng nhập';
   @override
-  String get products => "Sản phẩm";
+  String get products => 'Sản phẩm';
   @override
-  String get beenSold => "Đã bán";
+  String get beenSold => 'Đã bán';
   @override
-  String get goBackToShipping => "Quay lại giao hàng";
+  String get goBackToShipping => 'Quay lại giao hàng';
   @override
-  String get search => "Tìm kiếm";
+  String get search => 'Tìm kiếm';
   @override
-  String get trackingPage => "Trang theo dõi";
+  String get trackingPage => 'Trang theo dõi';
   @override
-  String get arabic => "Tiếng Ả Rập";
+  String get arabic => 'Tiếng Ả Rập';
   @override
-  String get outOfStock => "Hết hàng";
+  String get outOfStock => 'Hết hàng';
 
   @override
-  String get addToCart => "Thêm vào giỏ hàng";
+  String get addToCart => 'Thêm vào giỏ hàng';
   @override
-  String get goBackToAddress => "Quay lại đia chỉ";
+  String get goBackToAddress => 'Quay lại đia chỉ';
   @override
-  String get pleaseInput => "Dữ liệu nhập bị thiếu ";
+  String get pleaseInput => 'Dữ liệu nhập bị thiếu ';
   @override
-  String get bagsCollections => "B�� sưu tập túi xách";
+  String get bagsCollections => 'B�� sưu tập túi xách';
   @override
-  String get close => "Đóng";
+  String get close => 'Đóng';
   @override
-  String get email => "Email";
+  String get email => 'Email';
   @override
-  String get searchingAddress => "Tìm địa chỉ";
+  String get searchingAddress => 'Tìm địa chỉ';
   @override
-  String get invalidSMSCode => "Invalid SMS Verification code";
+  String get invalidSMSCode => 'Invalid SMS Verification code';
   @override
-  String get address => "Địa chỉ";
+  String get address => 'Địa chỉ';
   @override
-  String get placeMyOrder => "Nơi đơn hàng của tôi";
+  String get placeMyOrder => 'Nơi đơn hàng của tôi';
   @override
-  String get phoneIsRequired => "Số điện thoại không được bỏ trống";
+  String get phoneIsRequired => 'Số điện thoại không được bỏ trống';
   @override
-  String get vietnamese => "Tiếng việt";
+  String get vietnamese => 'Tiếng việt';
   @override
-  String get dontHaveAccount => "Chưa tạo tài khoảng?";
+  String get dontHaveAccount => 'Chưa tạo tài khoảng?';
   @override
-  String get zipCodeIsRequired => "Mã bưu điện không được bỏ trống";
+  String get zipCodeIsRequired => 'Mã bưu điện không được bỏ trống';
   @override
   String get orderSuccessMsg2 =>
-      "You can log to your account using e-mail and password defined earlier. On your account you can edit your profile data, check history of transactions, edit subscription to newsletter.";
+      'You can log to your account using e-mail and password defined earlier. On your account you can edit your profile data, check history of transactions, edit subscription to newsletter.';
   @override
-  String get streetIsRequired => "Đ��a chỉ không được bỏ trống";
+  String get streetIsRequired => 'Đ��a chỉ không được bỏ trống';
   @override
-  String get saveAddressSuccess => "Your address is exist in your local";
+  String get saveAddressSuccess => 'Your address is exist in your local';
   @override
   String get orderSuccessMsg1 =>
-      "You can check status of your order by using our delivery status feature. You will receive an order confirmation e-mail with details of your order and a link to track its progress.";
+      'You can check status of your order by using our delivery status feature. You will receive an order confirmation e-mail with details of your order and a link to track its progress.';
   @override
-  String get couponCode => "Coupon code";
+  String get couponCode => 'Coupon code';
   @override
-  String get recentView => "Mới xem gần đây";
+  String get recentView => 'Mới xem gần đây';
   @override
-  String get currencies => "Currencies";
+  String get currencies => 'Currencies';
   @override
-  String get cityIsRequired => "Tên thành phố không được bỏ trống";
+  String get cityIsRequired => 'Tên thành phố không được bỏ trống';
   @override
-  String get date => "Ngày";
+  String get date => 'Ngày';
   @override
-  String get zipCode => "Mã bưu điện";
+  String get zipCode => 'Mã bưu điện';
   @override
-  String get country => "Quốc gia";
+  String get country => 'Quốc gia';
   @override
-  String get writeYourNote => "Write your note";
+  String get writeYourNote => 'Write your note';
   @override
-  String get manCollections => "Bộ sưu tập đàn ông";
+  String get manCollections => 'Bộ sưu tập đàn ông';
   @override
-  String get youMightAlsoLike => "Bạn có thể thật sự thích";
+  String get youMightAlsoLike => 'Bạn có thể thật sự thích';
   @override
-  String get showAllMyOrdered => "Hiện thị tất cả đơn hàng đã đặt";
+  String get showAllMyOrdered => 'Hiện thị tất cả đơn hàng đã đặt';
   @override
-  String get blog => "Tin Tức";
+  String get blog => 'Tin Tức';
   @override
-  String get continueToPayment => "Tiếp tục để thanh toán";
+  String get continueToPayment => 'Tiếp tục để thanh toán';
   @override
-  String get totalTax => "Tổng thuế";
+  String get totalTax => 'Tổng thuế';
   @override
-  String get yourNote => "Your note";
+  String get yourNote => 'Your note';
   @override
-  String get buyNow => "Mua ngay";
+  String get buyNow => 'Mua ngay';
   @override
-  String get commentFirst => "Hãy viết bình luận của bạn";
+  String get commentFirst => 'Hãy viết bình luận của bạn';
   @override
-  String get productAdded => "Sản phẩm đã được thêm";
+  String get productAdded => 'Sản phẩm đã được thêm';
   @override
-  String get additionalInformation => "Bổ sung thông tin";
+  String get additionalInformation => 'Bổ sung thông tin';
   @override
-  String get settings => "Cài đặt";
+  String get settings => 'Cài đặt';
   @override
-  String get searchInput => "Hãy điền thông tin ở ô tìm kiếm";
+  String get searchInput => 'Hãy điền thông tin ở ô tìm kiếm';
   @override
-  String get orderNo => "Nó không được đặt";
+  String get orderNo => 'Nó không được đặt';
   @override
-  String get shippingMethod => "Phương pháp giao hàng";
+  String get shippingMethod => 'Phương pháp giao hàng';
   @override
-  String get yourBagIsEmpty => "Không có sản phẩm nào trong túi của bạn";
+  String get yourBagIsEmpty => 'Không có sản phẩm nào trong túi của bạn';
   @override
-  String get province => "Tỉnh";
+  String get province => 'Tỉnh';
   @override
-  String get noInternetConnection => "Không có kết nối internet";
+  String get noInternetConnection => 'Không có kết nối internet';
   @override
-  String get done => "Done";
+  String get done => 'Done';
   @override
-  String get orderSuccessTitle2 => "Your account";
+  String get orderSuccessTitle2 => 'Your account';
   @override
   String get orderSuccessTitle1 => "You've successfully placed the order";
   @override
-  String get fullName => "Họ và tên";
+  String get fullName => 'Họ và tên';
   @override
-  String get firstName => "Tên đầu tiên";
+  String get firstName => 'Tên đầu tiên';
   @override
-  String get phoneNumber => "Số điện thoại";
+  String get phoneNumber => 'Số điện thoại';
   @override
-  String get seeAll => "Xem tất cả";
+  String get seeAll => 'Xem tất cả';
   @override
-  String get enterYourPassword => "Enter your password";
+  String get enterYourPassword => 'Enter your password';
   @override
-  String get selectTheQuantity => "Chọn số lượng";
+  String get selectTheQuantity => 'Chọn số lượng';
   @override
-  String get emailIsRequired => "Địa chỉ email không được bỏ trống";
+  String get emailIsRequired => 'Địa chỉ email không được bỏ trống';
   @override
-  String get orderDate => "Ngày đặt";
+  String get orderDate => 'Ngày đặt';
   @override
-  String get next => "kế tiếp";
+  String get next => 'kế tiếp';
   @override
-  String get writeComment => "Viết bình luận của bạn";
+  String get writeComment => 'Viết bình luận của bạn';
   @override
-  String get shop => "Cửa hàng";
+  String get shop => 'Cửa hàng';
 
   @override
-  String get createAnAccount => "Create an account";
+  String get createAnAccount => 'Create an account';
   @override
-  String get color => "Màu";
+  String get color => 'Màu';
   @override
-  String get noReviews => "Không có phản hồi";
+  String get noReviews => 'Không có phản hồi';
   @override
-  String get description => "Mô tả";
+  String get description => 'Mô tả';
   @override
-  String get video => "Video";
+  String get video => 'Video';
   @override
-  String get verifySMSCode => "Verify";
+  String get verifySMSCode => 'Verify';
   @override
-  String get point => "Điểm";
+  String get point => 'Điểm';
   @override
-  String get remove => "Remove";
+  String get remove => 'Remove';
   @override
-  String get streetName => "Tên địa chỉ";
+  String get streetName => 'Tên địa chỉ';
   @override
-  String get total => "Tổng";
+  String get total => 'Tổng';
   @override
-  String get totalItems => "Tổng tiền hàng";
+  String get totalItems => 'Tổng tiền hàng';
   @override
-  String get stateIsRequired => "Tên tỉnh không được bỏ trống";
+  String get stateIsRequired => 'Tên tỉnh không được bỏ trống';
   @override
-  String get selectTheSize => "Chọn kích thước";
+  String get selectTheSize => 'Chọn kích thước';
   @override
   String get ratingFirst =>
-      "Vui lòng đánh giá trước khi bạn gửi bình luận của bạn";
+      'Vui lòng đánh giá trước khi bạn gửi bình luận của bạn';
   @override
-  String get reviews => "NHẬN XÉT";
+  String get reviews => 'NHẬN XÉT';
   @override
-  String get checkout => "Thanh toán";
+  String get checkout => 'Thanh toán';
   @override
-  String get noOrders => "Không có hóa đơn";
+  String get noOrders => 'Không có hóa đơn';
   @override
-  String get startShopping => "Bắt đầu mua sắm";
+  String get startShopping => 'Bắt đầu mua sắm';
   @override
-  String get or => "or";
+  String get or => 'or';
   @override
-  String get saveToWishList => "Lưu vào danh sách ưa thích";
+  String get saveToWishList => 'Lưu vào danh sách ưa thích';
   @override
-  String get continueToShipping => "Tiếp tục để giao hàng";
+  String get continueToShipping => 'Tiếp tục để giao hàng';
   @override
-  String get apply => "Đồng ý";
+  String get apply => 'Đồng ý';
   @override
-  String get searchForItems => "Tìm kiếm mặt hàng";
-  String get peopleAreSearching => "People are searching";
+  String get searchForItems => 'Tìm kiếm mặt hàng';
   @override
-  String get clear => "Xóa";
+  String get peopleAreSearching => 'People are searching';
   @override
-  String get iwantToCreateAccount => "I want to create an account";
+  String get clear => 'Xóa';
+  @override
+  String get iwantToCreateAccount => 'I want to create an account';
   @override
   String get couponMsgSuccess =>
-      "Congratulations! Coupon code applied successfully";
+      'Congratulations! Coupon code applied successfully';
   @override
-  String get selectAddress => "Lưu địa chỉ";
+  String get selectAddress => 'Lưu địa chỉ';
   @override
-  String get layout => "Bố cục";
+  String get layout => 'Bố cục';
   @override
-  String get sendSMSCode => "Get code";
+  String get sendSMSCode => 'Get code';
   @override
-  String get chooseYourPaymentMethod => "Chọn phương pháp thanh toán của bạn";
+  String get chooseYourPaymentMethod => 'Chọn phương pháp thanh toán của bạn';
   @override
-  String get refundRequest => "Yêu cầu hoàn trả";
+  String get refundRequest => 'Yêu cầu hoàn trả';
   @override
-  String get womanCollections => "Bộ sưu tập phụ nữ";
+  String get womanCollections => 'Bộ sưu tập phụ nữ';
   @override
-  String get signIn => "Sign In";
+  String get signIn => 'Sign In';
   @override
-  String get yourOrderDetail => "Chi tiết đơn hàng";
+  String get yourOrderDetail => 'Chi tiết đơn hàng';
   @override
-  String get recents => "Gần đây";
+  String get recents => 'Gần đây';
   @override
-  String get showGallery => "Show Gallery";
+  String get showGallery => 'Show Gallery';
   @override
-  String get category => "Thể loại";
+  String get category => 'Thể loại';
   @override
-  String get generalSetting => "Cài đặt chung";
+  String get generalSetting => 'Cài đặt chung';
   @override
-  String get username => "Username";
+  String get username => 'Username';
 
   @override
-  String youHavePoints(String point) => "Bạn có $point điểm";
+  String youHavePoints(String point) => 'Bạn có $point điểm';
   @override
-  String sale(String percent) => "Sale $percent %";
+  String sale(String percent) => 'Sale $percent %';
   @override
   String weFoundProducts(String length) =>
-      "Chúng tôi tìm thấy $length sản phẩm";
+      'Chúng tôi tìm thấy $length sản phẩm';
 }
 
 class $en extends S {
@@ -1084,8 +1202,8 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
-      Locale("vi", ""),
-      Locale("en", ""),
+      Locale('vi', ''),
+      Locale('en', ''),
     ];
   }
 
@@ -1109,13 +1227,13 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
 
   @override
   Future<S> load(Locale locale) {
-    final String lang = getLang(locale);
+    final lang = getLang(locale);
     if (lang != null) {
       switch (lang) {
-        case "vi":
+        case 'vi':
           S.current = const $vi();
           return SynchronousFuture<S>(S.current);
-        case "en":
+        case 'en':
           S.current = const $en();
           return SynchronousFuture<S>(S.current);
         default:
@@ -1141,13 +1259,13 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
       return fallback ?? supported.first;
     }
 
-    final Locale languageLocale = Locale(locale.languageCode, "");
+    final languageLocale = Locale(locale.languageCode, '');
     if (supported.contains(locale)) {
       return locale;
     } else if (supported.contains(languageLocale)) {
       return languageLocale;
     } else {
-      final Locale fallbackLocale = fallback ?? supported.first;
+      final fallbackLocale = fallback ?? supported.first;
       return fallbackLocale;
     }
   }
@@ -1157,7 +1275,7 @@ class GeneratedLocalizationsDelegate extends LocalizationsDelegate<S> {
   ///
   bool _isSupported(Locale locale, bool withCountry) {
     if (locale != null) {
-      for (Locale supportedLocale in supportedLocales) {
+      for (var supportedLocale in supportedLocales) {
         // Language must always match both locales.
         if (supportedLocale.languageCode != locale.languageCode) {
           continue;

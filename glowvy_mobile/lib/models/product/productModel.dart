@@ -1,23 +1,18 @@
+import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/models/ingredient.dart';
 import 'package:Dimodo/models/product/generating_product_list.dart';
 import 'package:Dimodo/models/product/one_item_generating_list.dart';
-import 'package:Dimodo/models/product/review_meta.dart';
 import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
+import 'package:algolia/algolia.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart' as b;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../../common/constants.dart';
-import '../../services/index.dart';
-// import '../../widgets/product/product_list.dart';
-import '../../models/category.dart';
-import 'dart:convert' as convert;
-import 'package:http/http.dart' as http;
-import 'package:flutter/services.dart';
-import 'package:Dimodo/generated/i18n.dart';
 
-import 'package:Dimodo/screens/categories/sub_category.dart';
+import '../../common/constants.dart';
+import '../product_category.dart';
 import 'product.dart';
 
 class Sorting {
@@ -27,41 +22,27 @@ class Sorting {
 }
 
 class ProductModel with ChangeNotifier {
-  static Services service = Services();
   List<Product> products;
-  List<Review> reviews;
-  String message;
+  FirebaseFirestore db = FirebaseFirestore.instance;
+  b.User firebaseUser = b.FirebaseAuth.instance.currentUser;
   Map<String, dynamic> cosmeticsFilter;
+  DocumentSnapshot lastReviewSnap;
 
-  /// current select product id/name
-  int categoryId;
-  int _tagId;
-  String _sortBy;
-  String categoryName;
+  static Algolia algolia = const Algolia.init(
+    applicationId: '50G6MO803G',
+    apiKey: 'ab5eb7ec7552bb7865f3819a2b08f462',
+  );
 
   //list products for products screen
-  bool isFetching = false;
   bool isEnd = false;
-  bool isLoading = false;
   int offset = 0;
   int limit = 80;
   String highToLow = '-sale_price';
   String lowToHigh = 'sale_price';
   bool isAscending = false;
-  String errMsg;
-  int skinTypeId;
-  // ReviewMeta selectedreviewMeta;
-
-//ProductVariation can be used for layout variation
-  ProductVariation productVariation;
-
-  void setCategoryId({categoryId}) {
-    this.categoryId = categoryId;
-    notifyListeners();
-  }
 
   void saveProducts(Map<String, dynamic> data) async {
-    final LocalStorage storage = new LocalStorage('Dimodo');
+    final storage = LocalStorage('Dimodo');
     try {
       final ready = await storage.ready;
       if (ready) {
@@ -72,14 +53,14 @@ class ProductModel with ChangeNotifier {
     }
   }
 
-  sortProducts(sorting, skinTypeId, products) {
-    var sortedProducts;
+  dynamic sortProducts(sorting, skinTypeId, products) {
+    List<Product> sortedProducts;
     switch (sorting) {
       case 'high':
         sortedProducts = sortByPrice(products, false);
         break;
       case 'rank':
-        sortedProducts = sortBySkinType(products);
+        sortedProducts = sortBySkinType(skinTypeId, products);
         break;
       case 'low':
         sortedProducts = sortByPrice(products, true);
@@ -102,11 +83,7 @@ class ProductModel with ChangeNotifier {
     return products;
   }
 
-  updateSkinType(skinTypeId) {
-    this.skinTypeId = skinTypeId;
-  }
-
-  List<Product> sortBySkinType(List<Product> products) {
+  List<Product> sortBySkinType(skinTypeId, List<Product> products) {
     switch (skinTypeId) {
       //all
       case 0:
@@ -130,15 +107,7 @@ class ProductModel with ChangeNotifier {
             .compareTo(b.reviewMetas.oily.rankingScore));
         break;
       //oily
-      case 3:
-        products.sort((a, b) => a.reviewMetas.complex.rankingScore
-            .compareTo(b.reviewMetas.complex.rankingScore));
-        break;
       //oily
-      case 3:
-        products.sort((a, b) => a.reviewMetas.neutral.rankingScore
-            .compareTo(b.reviewMetas.neutral.rankingScore));
-        break;
     }
     return products;
   }
@@ -153,7 +122,7 @@ class ProductModel with ChangeNotifier {
 
   List<Product> filteredProducts(
       {List<String> filterOptions, List<Product> products}) {
-    var filterProducts = products.where((p) {
+    final filterProducts = products.where((p) {
       var isMatching = false;
       filterOptions.forEach((option) {
         if (p.tags.contains(option)) {
@@ -165,7 +134,7 @@ class ProductModel with ChangeNotifier {
     return filterProducts;
   }
 
-  getSkinTypeById(skinTypeId, context) {
+  String getSkinTypeById(skinTypeId, context) {
     switch (skinTypeId) {
       //all
       case 0:
@@ -193,45 +162,219 @@ class ProductModel with ChangeNotifier {
     }
   }
 
-  // List<Product> filterBySkinType(List<Product> products) {
-  //   print('fitered products: ${products.length}');
+  @override
+  Future<List<Review>> getReviewsByUserId(uid) async {
+    final list = <Review>[];
 
-  //   products = products.where((p) {
-  //     var isMatching = true;
-  //     switch (skinTypeId) {
-  //       //all
-  //       case 0:
-  //         break;
-  //       //sensitive
-  //       case 1:
-  //         isMatching = p.reviewMetas.sensitive.reviewCount == 0 ? false : true;
-  //         break;
-  //       //dry
-  //       case 2:
-  //         isMatching = p.reviewMetas.dry.reviewCount == 0 ? false : true;
-  //         if (isMatching = p.reviewMetas.dry.reviewCount != 0) {}
-  //         break;
-  //       //oily
-  //       case 3:
-  //         isMatching = p.reviewMetas.oily.reviewCount == 0 ? false : true;
-  //         break;
-  //       //complex
-  //       case 4:
-  //         isMatching = p.reviewMetas.oily.reviewCount == 0 ? false : true;
-  //         break;
-  //       //neutral
-  //       case 5:
-  //         isMatching = p.reviewMetas.neutral.reviewCount == 0 ? false : true;
-  //         break;
-  //       default:
-  //         isMatching = true;
-  //         break;
-  //     }
-  //     return isMatching;
-  //   }).toList();
-  //   print('fitered products: ${products.length}');
-  //   return products;
-  // }
+    try {
+      final query = FirebaseFirestore.instance
+          .collection('reviews')
+          .where('user.uid', isEqualTo: uid)
+          .orderBy('created_at', descending: true);
+      if (lastReviewSnap != null) {
+        query.startAfterDocument(lastReviewSnap).limit(15);
+      } else {
+        query.limit(15);
+      }
+
+      final snapshot = await query.get(const GetOptions(source: Source.server));
+
+      if (snapshot.docs.isNotEmpty) {
+        print(snapshot.docs.length);
+        for (final doc in snapshot.docs) {
+          list.add(Review.fromJson(doc.data()));
+        }
+      } else {
+        print('no products were found');
+
+        // throw Exception('no products were found');
+      }
+    } catch (err) {
+      rethrow;
+    }
+    return list;
+  }
+
+  Future<List<Ingredient>> getIngredients(productId) async {
+    try {
+      final list = <Ingredient>[];
+      //get the product ref from cache
+      //since all products are fetched from server on app launch,
+      //the cache of the product doc will always be available
+      final query = FirebaseFirestore.instance
+          .collection('products')
+          .where('sid', isEqualTo: productId);
+      final productSnap =
+          await query.get(const GetOptions(source: Source.cache));
+      final ingredientRef =
+          productSnap.docs.first.reference.collection('ingredients');
+
+      print('fetching ingredients from cache');
+      var ingredientSnaps =
+          await ingredientRef.get(const GetOptions(source: Source.cache));
+
+      if (ingredientSnaps.docs.isEmpty) {
+        print('No cached ingredients: fetching from server');
+        ingredientSnaps =
+            await ingredientRef.get(const GetOptions(source: Source.server));
+      }
+      print('ingredients length: ${ingredientSnaps.docs.length}');
+
+      if (ingredientSnaps.docs.isNotEmpty) {
+        for (final doc in ingredientSnaps.docs) {
+          list.add(Ingredient.fromJson(doc.data()));
+        }
+        return list;
+      } else {
+        print('no products were found');
+
+        return list;
+      }
+    } catch (err) {
+      rethrow;
+    }
+  }
+
+  @override
+  Future<void> uploadReview(reviewJson) async {
+    try {
+      final writeRes = await FirebaseFirestore.instance
+          .collection('reviews')
+          .add(reviewJson);
+
+      if (writeRes.id != null) {
+        print('review id: ${writeRes.id}');
+        return;
+      } else {
+        throw Exception('failed to upload review');
+      }
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+
+  @override
+  Future<Product> getProductById(id) async {
+    try {
+      final query = FirebaseFirestore.instance
+          .collection('products')
+          .where('sid', isEqualTo: id);
+
+      var snapshot = await query.get(const GetOptions(source: Source.cache));
+      print('fetching reviews from cache');
+
+      if (snapshot.docs.isEmpty) {
+        print('No Cached Reviews: fetching from server');
+        snapshot = await query.get(const GetOptions(source: Source.server));
+      }
+      print(snapshot.docs.length);
+
+      if (snapshot.docs.isNotEmpty) {
+        return Product.fromJson(snapshot.docs.first.data());
+      } else {
+        throw Exception('no products were found');
+      }
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+
+  Future<List<Product>> getProductsByCategoryId(
+      {categoryId, categoryField = 'third_category_id'}) async {
+    try {
+      List<Product> list = [];
+      final productSnapshot = await FirebaseFirestore.instance
+          .collection('products')
+          .where('category.${categoryField}', isEqualTo: categoryId)
+          .limit(15)
+          .get();
+      print(productSnapshot.docs.length);
+
+      if (productSnapshot.docs.isNotEmpty) {
+        for (final doc in productSnapshot.docs) {
+          // print(doc.data());q
+          list.add(Product.fromJson(doc.data()));
+        }
+        // print('categoryId: $categoryId');
+        return list;
+      } else {
+        return list;
+      }
+    } catch (e) {
+      print('Error: $e');
+      rethrow;
+    }
+  }
+
+  Future<List<Product>> getProductsBySearch({searchText}) async {
+    try {
+      final query = algolia.instance.index('cosmetics').search(searchText);
+
+      List<Product> list = <Product>[];
+      // Get Result/Objects
+      final querySnap = await query.getObjects();
+      final results = querySnap.hits;
+
+      print('Hits count: ${querySnap.hits.length}');
+
+      if (querySnap.hits.isEmpty) {
+        return list;
+      } else {
+        results.forEach((item) {
+          // print('item :${item.data}');
+          list.add(Product.fromJson(item.data));
+        });
+        return list;
+      }
+    } catch (e) {
+      print('Error: $e');
+
+      rethrow;
+    }
+  }
+
+  Future<List<Review>> getCosmeticsReviews(productId) async {
+    final list = <Review>[];
+
+    try {
+      final query = FirebaseFirestore.instance
+          .collection('reviews')
+          .where('product_id', isEqualTo: productId)
+          .orderBy('created_at');
+      if (lastReviewSnap != null) {
+        query.startAfterDocument(lastReviewSnap).limit(15);
+      } else {
+        query.limit(15);
+      }
+
+      var snapshot = await query.get(const GetOptions(source: Source.cache));
+      print('fetching reviews from cache');
+
+      if (snapshot.docs.isEmpty) {
+        print('No Cached Reviews: fetching from server');
+        snapshot = await query.get(const GetOptions(source: Source.server));
+      }
+
+      print(snapshot.docs.length);
+      lastReviewSnap = snapshot.docs.last;
+
+      if (snapshot.docs.isNotEmpty) {
+        for (final doc in snapshot.docs) {
+          list.add(Review.fromJson(doc.data()));
+        }
+        return list;
+      } else {
+        return list;
+      }
+    } catch (err) {
+      // return list;
+
+      print(err);
+      return list;
+    }
+  }
 
   List<Review> filteredReviewsBySkinType(
       {int skinTypeId, List<Review> reviews}) {
@@ -244,15 +387,15 @@ class ProductModel with ChangeNotifier {
           break;
         //sensitive
         case 1:
-          isMatching = r.user.skinTypeId == 1 ? true : false;
+          isMatching = r.user.skinTypeId == 1;
           break;
         //dry
         case 2:
-          isMatching = r.user.skinTypeId == 2 ? true : false;
+          isMatching = r.user.skinTypeId == 2;
           break;
         //oily
         case 3:
-          isMatching = r.user.skinTypeId == 3 ? true : false;
+          isMatching = r.user.skinTypeId == 3;
           print(isMatching);
           break;
         default:
@@ -264,103 +407,12 @@ class ProductModel with ChangeNotifier {
     return reviews;
   }
 
-  void getProductsList({categoryId, sortBy}) async {
-    try {
-      if (categoryId != null) {
-        this.categoryId = categoryId;
-      }
-      isFetching = true;
-      isEnd = false;
-      notifyListeners();
-
-      products = await service.getProductsByCategory(
-          categoryId: categoryId, sortBy: sortBy);
-      if (products.isEmpty) {
-        isEnd = true;
-      }
-      isFetching = false;
-      errMsg = null;
-      notifyListeners();
-    } catch (err) {
-      errMsg =
-          'There is an issue with the app during request the data, please contact admin for fixing the issues ' +
-              err.toString();
-      isFetching = false;
-      notifyListeners();
-    }
-  }
-
-  Future<Product> getProduct({id}) async {
-    try {
-      if (categoryId != null) {
-        this.categoryId = categoryId;
-      }
-      isFetching = true;
-      isEnd = false;
-      notifyListeners();
-
-      final product = await service.getProduct(id);
-
-      isFetching = false;
-      errMsg = null;
-      notifyListeners();
-      return product;
-    } catch (err) {
-      errMsg =
-          'There is an issue with the app during request the data, please contact admin for fixing the issues ' +
-              err.toString();
-
-      print('errMsg $errMsg');
-      isFetching = false;
-      notifyListeners();
-    }
-  }
-
-  void fetchProductsByCategory({categoryId, start, limit, sortBy}) async {
-    try {
-      if (categoryId != null) {
-        this.categoryId = categoryId;
-      }
-      isFetching = true;
-      isEnd = false;
-      notifyListeners();
-
-      final products = await service.getProductsByCategory(
-          categoryId: categoryId, start: start, limit: limit, sortBy: sortBy);
-      if (products.isEmpty) {
-        isEnd = true;
-      }
-      this.products = products;
-
-      isFetching = false;
-      errMsg = null;
-      notifyListeners();
-    } catch (err) {
-      errMsg =
-          'There is an issue with the app during request the data, please contact admin for fixing the issues ' +
-              err.toString();
-      isFetching = false;
-      notifyListeners();
-    }
-  }
-
-  void setProductsList(products) {
-    products = products;
-    isFetching = false;
-    isEnd = false;
-    notifyListeners();
-  }
-
-  showSubCategoryPage(Category category, String sortBy, context,
+  void showSubCategoryPage(ProductCategory category, String sortBy, context,
       {bool isNameAvailable}) {
-    final product = Provider.of<ProductModel>(context, listen: false);
     print('show subcate');
     print('cate id: ${category.firstCategoryName}');
 
     // for fetching beforehand
-    product.setCategoryId(categoryId: category.firstCategoryId);
-    product.setProductsList(List<Product>()); //clear old products
-    // _service.fetchProductsByCategory(categoryId: category.id);
 
     // Navigator.push(
     //     context,
@@ -368,55 +420,10 @@ class ProductModel with ChangeNotifier {
     //         builder: (context) => SubCategoryScreen(category: category)));
   }
 
-  // showProductListByCategory(
-  //     {cateId, sortBy, context, limit, isNameAvailable = false, onLoadMore}) {
-  //   return FutureBuilder<List<Product>>(
-  //     future: service.getProductsByCategory(
-  //       categoryId: cateId,
-  //       // start: start,
-  //       limit: limit,
-  //       sortBy: sortBy,
-  //     ),
-  //     builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
-  //       products = snapshot.data;
-  //       return ProductList(
-  //         products: snapshot.data,
-  //         onLoadMore: onLoadMore,
-  //         isNameAvailable: isNameAvailable,
-  //       );
-  //     },
-  //   );
-  // }
-
-  // Widget showProductList(
-  //     {isNameAvailable,
-  //     future,
-  //     isListView,
-  //     showFiler = false,
-  //     disableScroll = false,
-  //     Function onLoadMore,
-  //     sortBy}) {
-  //   return FutureBuilder<List<Product>>(
-  //     future: future,
-  //     builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
-  //       products = snapshot.data;
-
-  //       return ProductList(
-  //         products: snapshot.data,
-  //         onLoadMore: onLoadMore,
-  //         showFilter: showFiler,
-  //         isListView: isListView,
-  //         disableScrolling: disableScroll,
-  //         isNameAvailable: isNameAvailable,
-  //       );
-  //     },
-  //   );
-  // }
-
-  Widget showCosmeticsProductList(
-      {isNameAvailable,
-      future,
+  Widget showProductList(
+      {future,
       showFiler = false,
+      showRank = false,
       disableScroll = false,
       isFromReviewPage = false,
       Function onLoadMore,
@@ -431,7 +438,7 @@ class ProductModel with ChangeNotifier {
           showFilter: showFiler,
           isFromReviewSearch: isFromReviewPage,
           disableScrolling: true,
-          showRank: false,
+          showRank: showRank,
         );
       },
     );
@@ -443,18 +450,5 @@ class ProductModel with ChangeNotifier {
 
   Widget showGeneartingOneRowProductList() {
     return GeneratingOneRowList();
-  }
-
-  void getProductsByTag({tag, start, limit, sortBy}) async {
-    _tagId = tag;
-    _sortBy = sortBy;
-
-    this.products = await service.getProductsByTag(
-      tag: _tagId,
-      sortBy: _sortBy,
-      start: start,
-      count: limit,
-    );
-    print('new products2323 length: ${products.length}');
   }
 }

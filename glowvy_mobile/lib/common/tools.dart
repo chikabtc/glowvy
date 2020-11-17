@@ -8,40 +8,41 @@ import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:path/path.dart' as p;
 import 'package:quiver/strings.dart';
-import 'package:validate/validate.dart';
 import 'package:timeago/timeago.dart' as timeago;
+import 'package:url_launcher/url_launcher.dart';
+import 'package:validate/validate.dart';
+
 import 'config.dart';
 import 'constants.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 enum kSize { small, medium, large }
 
 class HexColor extends Color {
+  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
+
   static int _getColorFromHex(String hexColor) {
-    hexColor = hexColor.toUpperCase().replaceAll("#", "");
+    hexColor = hexColor.toUpperCase().replaceAll('#', '');
     if (hexColor.length == 6) {
-      hexColor = "FF" + hexColor;
+      hexColor = 'FF' + hexColor;
     }
     return int.parse(hexColor, radix: 16);
   }
-
-  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 }
 
 class Tools {
-  static formatDateString(String date) {
-    DateTime timeFormat = DateTime.parse(date);
+  static String formatDateString(String date) {
+    final timeFormat = DateTime.parse(date);
     final timeDif = DateTime.now().difference(timeFormat);
     return timeago.format(DateTime.now().subtract(timeDif), locale: 'en');
   }
 
   static String formatImage(String url, [kSize size = kSize.medium]) {
-    if (serverConfig["type"] == "woo") {
-      String pathWithoutExt = p.withoutExtension(url);
-      String ext = p.extension(url);
-      String imageURL = url ?? kDefaultImage;
+    if (serverConfig['type'] == 'woo') {
+      final pathWithoutExt = p.withoutExtension(url);
+      final ext = p.extension(url);
+      var imageURL = url ?? kDefaultImage;
 
-      if (ext == ".jpeg") {
+      if (ext == '.jpeg') {
         imageURL = url;
       } else {
         switch (size) {
@@ -69,7 +70,7 @@ class Tools {
 
   /// Smart image function to load image cache and check empty URL to return empty box
   /// Only apply for the product image resize with (small, medium, large)
-  static image({
+  static Widget image({
     String url,
     kSize size,
     double width,
@@ -134,54 +135,59 @@ class Tools {
     );
   }
 
-  static String getVariantPriceProductValue(product, String currency,
-      {bool onSale}) {
-    String price = onSale == true
+  static String getfinaliantPriceProductValue(product, String currency,
+      {bool onSale = false}) {
+    final price = onSale == true
         ? (isNotBlank(product.salePrice) ? product.salePrice : product.price)
         : product.price;
     if (product.multiCurrencies != null &&
         product.multiCurrencies[currency] != null) {
-      return product.multiCurrencies[currency]["price"];
+      return product.multiCurrencies[currency]['price'];
     } else {
       return price;
     }
   }
 
   static String getPriceProductValue(Product product, String currency,
-      {bool onSale}) {
-    String price =
-        onSale ? product.salePrice.toString() : product.sprice.toString();
-    var basePrice = double.parse(price);
-    var convertedP = basePrice * 21.5;
-    return convertedP.toString();
+      {bool onSale = false}) {
+    final price = product.sprice.toString();
+    try {
+      final basePrice = double.parse(price ?? 0);
+      final convertedP = basePrice * 21.5;
+      return convertedP.toString();
+    } catch (e) {
+      return '0';
+    }
+    // final price = onSale
+    //     ? product.salePrice.toString()
+    //     : product.officialPrice.toString();
   }
 
   static String getPriceProduct(Product product, String currency,
       {bool onSale}) {
-    String price = getPriceProductValue(product, currency,
-        onSale: product.salePrice == product.sprice ? false : true);
+    final price = getPriceProductValue(product, currency, onSale: onSale);
 
     return getCurrecyFormatted(price, currency: currency);
   }
 
   static String getCurrecyFormatted(price, {currency}) {
     Map<String, dynamic> defaultCurrency = kAdvanceConfig['DefaultCurrency'];
-    List currencies = kAdvanceConfig["Currencies"] ?? [];
-    if (currency != null && currencies.length > 0) {
+    List currencies = kAdvanceConfig['Currencies'] ?? [];
+    if (currency != null && currencies.isNotEmpty) {
       currencies.forEach((item) {
-        if ((item as Map)["currency"] == currency) {
+        if ((item as Map)['currency'] == currency) {
           defaultCurrency = item;
         }
       });
     }
 
-    final formatCurrency = new NumberFormat.currency(
-        symbol: "", decimalDigits: defaultCurrency['decimalDigits']);
+    final formatCurrency = NumberFormat.currency(
+        symbol: '', decimalDigits: defaultCurrency['decimalDigits']);
     try {
-      String number = "";
+      var number = '';
       if (price is String) {
-        var basePrice = double.parse(price);
-        // var convertedP = basePrice * 19;
+        final basePrice = double.parse(price ?? 0);
+        // final convertedP = basePrice * 19;
 
         number = formatCurrency.format(price.isNotEmpty ? basePrice : 0);
       } else {
@@ -197,71 +203,17 @@ class Tools {
     }
   }
 
-  // static String getPriceProductValue(product, String currency, {bool onSale}) {
-  //   String price = onSale == true
-  //       ? (isNotBlank(product.salePrice) ? product.salePrice : product.price)
-  //       : product.price;
-  //   Map<String, dynamic> defaultCurrency = kAdvanceConfig['DefaultCurrency'];
-
-  //   var basePrice = double.parse(price);
-  //   var converted = basePrice * defaultCurrency['multiplier'];
-
-  //   if (product.multiCurrencies != null &&
-  //       product.multiCurrencies[currency] != null) {
-  //     return product.multiCurrencies[currency]["price"];
-  //   } else {
-  //     return converted.toString();
-  //   }
-  // }
-
-  // static String getPriceProduct(product, String currency, {bool onSale}) {
-  //   String price = getPriceProductValue(product, currency, onSale: onSale);
-  //   return getCurrecyFormatted(price, currency: currency);
-  // }
-
-  // static String getCurrecyFormatted(price, {currency}) {
-  //   Map<String, dynamic> defaultCurrency = kAdvanceConfig['DefaultCurrency'];
-  //   List currencies = kAdvanceConfig["Currencies"] ?? [];
-  //   if (currency != null && currencies.length > 0) {
-  //     currencies.forEach((item) {
-  //       if ((item as Map)["currency"] == currency) {
-  //         defaultCurrency = item;
-  //       }
-  //     });
-  //   }
-
-  //   final formatCurrency = new NumberFormat.currency(
-  //       symbol: "", decimalDigits: defaultCurrency['decimalDigits']);
-  //   try {
-  //     String number = "";
-  //     if (price is String) {
-  //       number = formatCurrency.format(price.isNotEmpty ? price : 0);
-  //     } else {
-  //       number = formatCurrency.format(price);
-  //     }
-  //     print("number: $number");
-
-  //     return defaultCurrency['symbolBeforeTheNumber']
-  //         ? defaultCurrency['symbol'] + number
-  //         : number + defaultCurrency['symbol'];
-  //   } catch (err) {
-  //     return defaultCurrency['symbolBeforeTheNumber']
-  //         ? defaultCurrency['symbol'] + formatCurrency.format(0)
-  //         : formatCurrency.format(0) + defaultCurrency['symbol'];
-  //   }
-  // }
-
   /// check tablet screen
   static bool isTablet(MediaQueryData query) {
-    var size = query.size;
-    var diagonal =
+    final size = query.size;
+    final diagonal =
         sqrt((size.width * size.width) + (size.height * size.height));
-    var isTablet = diagonal > 1100.0;
+    final isTablet = diagonal > 1100.0;
     return isTablet;
   }
 
   /// cache avatar for the chat
-  static getCachedAvatar(String avatarUrl) {
+  static Widget getCachedAvatar(String avatarUrl) {
     return CachedNetworkImage(
       imageUrl: avatarUrl,
       imageBuilder: (context, imageProvider) => CircleAvatar(
@@ -289,12 +241,12 @@ class CustomerSupport {
   //open in the in-app-browser instead of goign to the different
   static void openFacebookMessenger(context) async {
     try {
-      bool launched = await launch(kFBMessenger, forceSafariVC: false);
+      final launched = await launch(kFBMessenger, forceSafariVC: false);
       // Navigator.push(
       //     context,
       //     MaterialPageRoute(
       //         builder: (context) => WebView(
-      //             url: "https://www.m.me/Dimodo.vn", title: "Ask Anything!")));
+      //             url: 'https://www.m.me/Dimodo.vn', title: 'Ask Anything!')));
       if (!launched) {
         await launch(kFBDimodoPage, forceSafariVC: false);
       }
@@ -321,14 +273,14 @@ class Videos {
 
   static String _getYoutubeLink(String content) {
     final regExp = RegExp(
-        "https://www.youtube.com/((v|embed))\/?[a-zA-Z0-9_-]+",
+        'https://www.youtube.com/((v|embed))\/?[a-zA-Z0-9_-]+',
         multiLine: true,
         caseSensitive: false);
 
     String youtubeUrl;
 
     try {
-      Iterable<RegExpMatch> matches = regExp.allMatches(content);
+      final matches = regExp.allMatches(content);
       youtubeUrl = matches.first.group(0);
     } catch (error) {}
     return youtubeUrl;
@@ -336,14 +288,14 @@ class Videos {
 
   static String _getFacebookLink(String content) {
     final regExp = RegExp(
-        "https://www.facebook.com\/[a-zA-Z0-9\.]+\/videos\/(?:[a-zA-Z0-9\.]+\/)?([0-9]+)",
+        'https://www.facebook.com\/[a-zA-Z0-9\.]+\/videos\/(?:[a-zA-Z0-9\.]+\/)?([0-9]+)',
         multiLine: true,
         caseSensitive: false);
 
     String facebookVideoId;
     String facebookUrl;
     try {
-      Iterable<RegExpMatch> matches = regExp.allMatches(content);
+      final matches = regExp.allMatches(content);
       facebookVideoId = matches.first.group(1);
 //      print(
 //          'facebook regex ${matches.map((m) => facebookVideoId = m.group(1))}');
@@ -356,13 +308,13 @@ class Videos {
   }
 
   static String _getVimeoLink(String content) {
-    final regExp = RegExp("https://player.vimeo.com/((v|video))\/?[0-9]+",
+    final regExp = RegExp('https://player.vimeo.com/((v|video))\/?[0-9]+',
         multiLine: true, caseSensitive: false);
 
     String vimeoUrl;
 
     try {
-      Iterable<RegExpMatch> matches = regExp.allMatches(content);
+      final matches = regExp.allMatches(content);
       vimeoUrl = matches.first.group(0);
 //      print('vimeo regex${matches.map((m) => vimeoUrl = m.group(0))}');
     } catch (error) {}

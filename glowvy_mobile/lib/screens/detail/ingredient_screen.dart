@@ -1,25 +1,14 @@
 import 'package:Dimodo/models/ingredient.dart';
-import 'package:Dimodo/models/product/product.dart';
-import 'package:Dimodo/models/review.dart';
-import 'package:Dimodo/screens/detail/Cosmetics_review_card.dart';
 import 'package:Dimodo/screens/detail/ingredient_card.dart';
-import 'package:Dimodo/widgets/cosmetics_review_filter_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../common/constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../common/styles.dart';
-
 import '../../common/colors.dart';
+import '../../common/constants.dart';
+import '../../common/styles.dart';
 import '../../common/widgets.dart';
-
 import '../../generated/i18n.dart';
-import '../../models/reviews.dart';
-import '../../services/index.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter/cupertino.dart';
-import 'cartAction.dart';
 
 class IngredientScreen extends StatefulWidget {
   final List<Ingredient> ingredients;
@@ -56,7 +45,7 @@ class IngredientScreenStates extends State<IngredientScreen>
     return Scaffold(
         appBar: AppBar(
           backgroundColor: kLightYellow,
-          title: Text("Thông tin thành phần",
+          title: Text('Thông tin thành phần',
               style: textTheme.headline3.copyWith(color: kDarkYellow)),
           brightness: Brightness.light,
           leading: backIcon(context, color: kDarkYellow),
@@ -70,7 +59,7 @@ class IngredientScreenStates extends State<IngredientScreen>
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      SizedBox(height: 34),
+                      const SizedBox(height: 34),
                       Text(widget.hazardLevel, style: textTheme.headline3),
                       Text(S.of(context).ewgSafeLevel,
                           style: textTheme.caption2.copyWith(
@@ -78,8 +67,8 @@ class IngredientScreenStates extends State<IngredientScreen>
                           )),
                     ],
                   ),
-                  SizedBox(height: 35),
-                  Spacer(),
+                  const SizedBox(height: 35),
+                  const Spacer(),
                   Container(
                     padding: EdgeInsets.only(
                         left: 44, right: 44, top: 16, bottom: 14),
@@ -88,21 +77,21 @@ class IngredientScreenStates extends State<IngredientScreen>
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         Column(children: <Widget>[
-                          SvgPicture.asset("assets/icons/grey_shield.svg"),
+                          SvgPicture.asset('assets/icons/grey_shield.svg'),
                           Text(S.of(context).undecided,
                               style: textTheme.caption2)
                         ]),
                         Column(children: <Widget>[
-                          SvgPicture.asset("assets/icons/green-shield.svg"),
+                          SvgPicture.asset('assets/icons/green-shield.svg'),
                           Text(S.of(context).low, style: textTheme.caption2)
                         ]),
                         Column(children: <Widget>[
-                          SvgPicture.asset("assets/icons/orange_shield.svg"),
+                          SvgPicture.asset('assets/icons/orange_shield.svg'),
                           Text(S.of(context).moderate,
                               style: textTheme.caption2)
                         ]),
                         Column(children: <Widget>[
-                          SvgPicture.asset("assets/icons/red_shield.svg"),
+                          SvgPicture.asset('assets/icons/red_shield.svg'),
                           Text(S.of(context).high, style: textTheme.caption2)
                         ]),
                       ],
@@ -125,10 +114,8 @@ class IngredientScreenStates extends State<IngredientScreen>
               shrinkWrap: true,
               itemCount: widget.ingredients.length,
               itemBuilder: (context, i) => IngredientCard(
-                    ingredient: widget.ingredients[i],
-                    showDivider:
-                        widget.ingredients.length == i + 1 ? false : true,
-                  )),
+                  ingredient: widget.ingredients[i],
+                  showDivider: widget.ingredients.length != i + 1)),
         ));
   }
 }

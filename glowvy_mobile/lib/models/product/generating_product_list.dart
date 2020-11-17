@@ -1,9 +1,6 @@
-import 'package:Dimodo/common/styles.dart';
-
 import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/common/colors.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class GeneratingProductList extends StatefulWidget {
   @override
@@ -14,18 +11,18 @@ class _GeneratingProductListState extends State<GeneratingProductList> {
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    final widthContent = (screenSize.width / 2);
+    final widthContent = screenSize.width / 2;
 
     return Padding(
-      padding: const EdgeInsets.only(left: 7.0, right: 7, bottom: 22),
+      padding: EdgeInsets.only(left: 7.0, right: 7, bottom: 22),
       child: ListView(
         shrinkWrap: true,
         physics: ScrollPhysics(),
         children: <Widget>[
-          SizedBox(height: 12),
+          const SizedBox(height: 12),
           GridView.builder(
               addAutomaticKeepAlives: true,
-              padding: const EdgeInsets.all(0.0),
+              padding: EdgeInsets.all(0.0),
               shrinkWrap: true,
               itemCount: 4,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -52,9 +49,9 @@ class _GeneratingProductListState extends State<GeneratingProductList> {
                           color: kLightPink,
                         ),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Padding(
-                        padding: const EdgeInsets.only(left: 7.0, right: 7),
+                        padding: EdgeInsets.only(left: 7.0, right: 7),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
@@ -70,13 +67,13 @@ class _GeneratingProductListState extends State<GeneratingProductList> {
                                 ),
                               ],
                             ),
-                            SizedBox(height: 8),
+                            const SizedBox(height: 8),
                             Container(
                               width: 34,
                               color: kLightPink,
                               height: 15,
                             ),
-                            SizedBox(height: 8),
+                            const SizedBox(height: 8),
                             Container(
                               width: 62,
                               color: kLightPink,

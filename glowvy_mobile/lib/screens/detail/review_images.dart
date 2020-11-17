@@ -1,9 +1,10 @@
+import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/widgets/image_galery.dart';
-import 'package:flutter/material.dart';
-import '../../common/constants.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:Dimodo/common/tools.dart';
+import 'package:flutter/material.dart';
+
+import '../../common/constants.dart';
 
 class ReviewImages extends StatefulWidget {
   Product product;
@@ -38,9 +39,9 @@ class _ReviewImagesState extends State<ReviewImages> {
     var imagesWidgets = <Widget>[];
     //create a concanteanated string
     var images = widget.product.descImages;
-    if (images != null && images != "") {
+    if (images != null && images != '') {
       images.forEach((img) {
-        // print("image to render: $img");
+        // print('image to render: $img');
         imagesWidgets.add(GestureDetector(
             onTap: () => Navigator.of(context)
                 .push(_createRoute(context, images, images.indexOf(img))),
@@ -62,7 +63,7 @@ class _ReviewImagesState extends State<ReviewImages> {
             child: ListView.separated(
                 padding: EdgeInsets.only(left: 16),
                 separatorBuilder: (BuildContext context, int index) =>
-                    SizedBox(width: 15),
+                    const SizedBox(width: 15),
                 scrollDirection: Axis.horizontal,
                 addAutomaticKeepAlives: true,
                 // shrinkWrap: true,

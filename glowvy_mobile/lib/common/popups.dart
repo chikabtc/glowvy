@@ -1,20 +1,16 @@
-import 'package:Dimodo/models/app.dart';
-import 'package:Dimodo/widgets/baumann_quiz.dart';
-import 'package:flutter/material.dart';
-import 'package:Dimodo/widgets/webview.dart';
-import 'package:flutter/rendering.dart';
-import 'package:Dimodo/common/styles.dart';
-
 import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/generated/i18n.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:Dimodo/common/constants.dart';
-import 'package:provider/provider.dart';
+import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/widgets/baumann_quiz.dart';
+import 'package:Dimodo/widgets/webview.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Popups {
-  static failMessage(message, context) {
+  static void failMessage(message, context) {
     FocusScope.of(context).requestFocus(FocusNode());
 
     final snackBar = SnackBar(
@@ -22,7 +18,7 @@ class Popups {
         '$message',
         style: textTheme.headline5.copyWith(color: Colors.white),
       ),
-      duration: Duration(seconds: 30),
+      duration: const Duration(seconds: 30),
       action: SnackBarAction(
         label: S.of(context).close,
         onPressed: () {
@@ -36,7 +32,7 @@ class Popups {
       ..showSnackBar(snackBar);
   }
 
-  static simpleAlert(context, bodyText, {buttonText = 'Ok'}) {
+  static void simpleAlert(context, bodyText, {buttonText = 'Ok'}) {
     showDialog(
         context: context,
         // barrierColor: kAlertBackground,
@@ -50,7 +46,7 @@ class Popups {
                   // A simplified version of dialog.
                   width: 315.0,
                   height: 125.0,
-                  padding: EdgeInsets.only(top: 28, bottom: 0),
+                  padding: const EdgeInsets.only(top: 28, bottom: 0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -59,19 +55,16 @@ class Popups {
                         style: textTheme.headline5
                             .copyWith(decoration: TextDecoration.none),
                       ),
-                      SizedBox(height: 28),
-                      Divider(
-                        color: kQuaternaryGrey,
-                        height: 1,
-                      ),
-                      // SizedBox(height: 14),
+                      const SizedBox(height: 28),
+                      kFullDivider,
+                      // const SizedBox(height: 14),
                       GestureDetector(
                         onTap: () => Navigator.pop(context),
                         child: Container(
                           height: 48,
                           color: Colors.transparent,
                           width: 315,
-                          // padding: EdgeInsets.only(left: 14, right: 14),
+                          // padding: const EdgeInsets.only(left: 14, right: 14),
                           child: Center(
                             child: Text(
                               buttonText,
@@ -92,14 +85,9 @@ class Popups {
     });
   }
 
-  static showPMF(BuildContext context) {
+  static void showPMF(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
-    var heighFactor = 1 -
-        (AppBar().preferredSize.height +
-                320 +
-                MediaQuery.of(context).padding.bottom) /
-            kScreenSizeHeight;
     showModalBottomSheet(
         isScrollControlled: true,
         backgroundColor: Colors.transparent,
@@ -111,7 +99,7 @@ class Popups {
           return StatefulBuilder(
             builder: (BuildContext context, StateSetter setState) {
               return Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20),
@@ -124,7 +112,7 @@ class Popups {
                   children: <Widget>[
                     Stack(children: <Widget>[
                       Container(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.only(
                                 topLeft: Radius.circular(20),
@@ -148,16 +136,16 @@ class Popups {
                             }),
                       )
                     ]),
-                    SizedBox(
+                    const SizedBox(
                       height: 14,
                     ),
                     SvgPicture.asset('assets/icons/big-logo.svg'),
-                    SizedBox(height: 14),
+                    const SizedBox(height: 14),
                     Padding(
                       padding: const EdgeInsets.only(
                           right: 32.0, left: 32, bottom: 34),
                       child: Text(
-                          "Hey~ Chúng tôi là Glowvy team và luôn mong muốn có thể cải thiện dịch vụ. Chúng tôi rất trân trọng các ý tưởng của bạn! Bạn có thể dành ra vài phút trả lời câu hỏi không?",
+                          'Hey~ Chúng tôi là Glowvy team và luôn mong muốn có thể cải thiện dịch vụ. Chúng tôi rất trân trọng các ý tưởng của bạn! Bạn có thể dành ra vài phút trả lời câu hỏi không?',
                           style: kBaseTextStyle.copyWith(
                             fontSize: 14,
                             color: kSecondaryGrey,
@@ -178,18 +166,18 @@ class Popups {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => WebView(
-                                            url: "https://bit.ly/measurepmf",
-                                            title: "DIMODO Users Survey ⭐️")));
+                                            url: 'https://bit.ly/measurepmf',
+                                            title: 'DIMODO Users Survey ⭐️')));
                               },
                               child: Container(
                                 height: 36,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     color: kDarkAccent,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(25))),
-                                padding: EdgeInsets.only(
+                                padding: const EdgeInsets.only(
                                     left: 30, right: 30, top: 7, bottom: 7),
-                                child: Text("Làm khảo sát",
+                                child: Text('Làm khảo sát',
                                     style: kBaseTextStyle.copyWith(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
@@ -206,10 +194,10 @@ class Popups {
         });
   }
 
-  static showBaummanQuiz(BuildContext context) {
+  static void showBaummanQuiz(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
-    var heighFactor = 1 -
+    final heighFactor = 1 -
         (AppBar().preferredSize.height +
                 450 +
                 MediaQuery.of(context).padding.bottom) /
@@ -227,7 +215,7 @@ class Popups {
               return FractionallySizedBox(
                 heightFactor: 0.27,
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
@@ -241,7 +229,7 @@ class Popups {
                     children: <Widget>[
                       Stack(children: <Widget>[
                         Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(20),
@@ -266,7 +254,7 @@ class Popups {
                               }),
                         )
                       ]),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Padding(
                         padding: const EdgeInsets.only(
                             right: 32.0, left: 32, bottom: 20),
@@ -290,9 +278,9 @@ class Popups {
                                 minWidth: kScreenSizeWidth,
                                 // height: 44,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: new BorderRadius.circular(25.0),
+                                  borderRadius: BorderRadius.circular(25.0),
                                 ),
-                                // padding: EdgeInsets.only(top: 8, bottom: 8),
+                                // padding: const EdgeInsets.only(top: 8, bottom: 8),
                                 child: Text(S.of(context).startTheTest,
                                     style: kBaseTextStyle.copyWith(
                                         fontSize: 15,
@@ -320,10 +308,10 @@ class Popups {
         });
   }
 
-  static showQandA(BuildContext context) {
+  static void showQandA(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
-    var heighFactor = 1 -
+    final heighFactor = 1 -
         (AppBar().preferredSize.height +
                 80 +
                 MediaQuery.of(context).padding.bottom) /
@@ -341,7 +329,7 @@ class Popups {
               return FractionallySizedBox(
                 heightFactor: heighFactor,
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
@@ -355,7 +343,7 @@ class Popups {
                     children: <Widget>[
                       Stack(children: <Widget>[
                         Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(20),
@@ -428,9 +416,9 @@ class Popups {
                       //                 context,
                       //                 MaterialPageRoute(
                       //                     builder: (context) => WebView(
-                      //                         url: "https://bit.ly/measurepmf",
+                      //                         url: 'https://bit.ly/measurepmf',
                       //                         title:
-                      //                             "DIMODO Users Survey ⭐️")));
+                      //                             'DIMODO Users Survey ⭐️')));
                       //           }),
                       //     ),
                       //   ),
@@ -444,10 +432,10 @@ class Popups {
         });
   }
 
-  static showGlowvyStory(BuildContext context) {
+  static void showGlowvyStory(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
-    var heighFactor = 1 -
+    final heighFactor = 1 -
         (AppBar().preferredSize.height +
                 160 +
                 MediaQuery.of(context).padding.bottom) /
@@ -465,7 +453,7 @@ class Popups {
               return FractionallySizedBox(
                 heightFactor: heighFactor,
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20),
@@ -479,7 +467,7 @@ class Popups {
                     children: <Widget>[
                       Stack(children: <Widget>[
                         Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.white,
                               borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(20),
@@ -552,9 +540,9 @@ class Popups {
                       //                 context,
                       //                 MaterialPageRoute(
                       //                     builder: (context) => WebView(
-                      //                         url: "https://bit.ly/measurepmf",
+                      //                         url: 'https://bit.ly/measurepmf',
                       //                         title:
-                      //                             "DIMODO Users Survey ⭐️")));
+                      //                             'DIMODO Users Survey ⭐️')));
                       //           }),
                       //     ),
                       //   ),

@@ -1,21 +1,22 @@
+import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/tools.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_swiper/flutter_swiper.dart';
+
 import '../../models/product/product.dart';
 import '../../widgets/image_galery.dart';
-import 'package:flutter_swiper/flutter_swiper.dart';
-import 'package:Dimodo/common/constants.dart';
 
 class ImageFeature extends StatelessWidget {
-  final Product product;
+  const ImageFeature(this.product);
 
-  ImageFeature(this.product);
+  final Product product;
 
   @override
   Widget build(BuildContext parentContext) {
     var screenSize = MediaQuery.of(parentContext).size;
 
-    _onShowGallery(context, [index = 0]) {
+    void _onShowGallery(context, [index = 0]) {
       showDialog<void>(
           context: context,
           builder: (BuildContext context) {

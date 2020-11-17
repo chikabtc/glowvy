@@ -1,14 +1,5 @@
 //make it a singleton.
 class SizeConfig {
-  double screenWidth;
-  double screenHeight;
-  double textMultiplier;
-  double containerMultiplier;
-  double heightDifferences;
-  double widthDifferences;
-  static double baseWidth = 375;
-  static double baseHeight = 812;
-
   SizeConfig(screenSize) {
     screenWidth = screenSize.width;
     screenHeight = screenSize.height;
@@ -26,4 +17,12 @@ class SizeConfig {
     textMultiplier = widthDifferences * heightDifferences;
     containerMultiplier = widthDifferences * heightDifferences;
   }
+  double screenWidth;
+  double screenHeight;
+  double textMultiplier;
+  double containerMultiplier;
+  double heightDifferences;
+  double widthDifferences;
+  static double baseWidth = 375;
+  static double baseHeight = 812;
 }

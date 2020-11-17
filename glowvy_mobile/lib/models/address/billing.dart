@@ -1,8 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
+
 part 'billing.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Billing {
+  Billing(this.fullName, this.company, this.shipping1, this.shipping2,
+      this.postCode, this.city, this.province, this.email, this.phone);
   String fullName;
   String company;
   String shipping1;
@@ -12,9 +15,6 @@ class Billing {
   String province;
   String email;
   String phone;
-
-  Billing(this.fullName, this.company, this.shipping1, this.shipping2,
-      this.postCode, this.city, this.province, this.email, this.phone);
 
   factory Billing.fromJson(Map<String, dynamic> json) =>
       _$BillingFromJson(json);

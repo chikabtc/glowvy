@@ -1,17 +1,13 @@
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/common/widgets.dart';
-
-import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/productModel.dart';
-import 'package:Dimodo/services/index.dart';
-import 'package:Dimodo/widgets/cosmetics_request_button.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
 import '../generated/i18n.dart';
-import 'package:algolia/algolia.dart';
 
 class ReviewCosmeticsSearchScreen extends StatefulWidget {
   bool isEditing;
@@ -25,10 +21,10 @@ class _ReviewCosmeticsSearchScreenState
     extends State<ReviewCosmeticsSearchScreen> {
   Size screenSize;
   Future<List<Product>> getProductBySearch;
-  Services service = Services();
+
   bool isAscending = false;
-  String highToLow = "-sale_price";
-  String lowToHigh = "sale_price";
+  String highToLow = '-sale_price';
+  String lowToHigh = 'sale_price';
 
   final TextEditingController searchController = TextEditingController();
   String searchText;
@@ -36,11 +32,11 @@ class _ReviewCosmeticsSearchScreenState
   bool isTextFieldSelected = false;
   ProductModel productModel;
 
-  var roundLab = "Round Labs";
-  var cleanser = "Làm Sạch Da Mặt";
-  var cream = "Kem Bôi";
-  var sunscreen = "Chống Nắng";
-  var serum = "Serum";
+  var roundLab = 'Round Labs';
+  var cleanser = 'Làm Sạch Da Mặt';
+  var cream = 'Kem Bôi';
+  var sunscreen = 'Chống Nắng';
+  var serum = 'Serum';
 
   @override
   void initState() {
@@ -48,11 +44,10 @@ class _ReviewCosmeticsSearchScreenState
     productModel = Provider.of<ProductModel>(context, listen: false);
   }
 
-  search(text) {
+  void search(text) {
     isTextFieldSelected = false;
     searchController.text = text;
-    getProductBySearch =
-        service.getProductsBySearch(searchText: text, sortBy: "id");
+    getProductBySearch = productModel.getProductsBySearch(searchText: text);
     showResults = true;
     FocusScope.of(context).unfocus();
   }
@@ -70,14 +65,14 @@ class _ReviewCosmeticsSearchScreenState
               ? GestureDetector(
                   onTap: () => Navigator.pop(context),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 16, top: 16),
-                    child: Text("Stop",
+                    padding: EdgeInsets.only(left: 16, top: 16),
+                    child: Text('Stop',
                         style: textTheme.headline5
                             .copyWith(color: kSecondaryGrey)),
                   ),
                 )
               : backIcon(context),
-          title: Text("select cosmetics", style: textTheme.headline3),
+          title: Text('select cosmetics', style: textTheme.headline3),
         ),
         body: SafeArea(
           top: true,
@@ -88,7 +83,7 @@ class _ReviewCosmeticsSearchScreenState
               child: ListView(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    padding: EdgeInsets.symmetric(horizontal: 16.0),
                     child: Row(
                       children: <Widget>[
                         Expanded(
@@ -107,7 +102,7 @@ class _ReviewCosmeticsSearchScreenState
                                 onChanged: (value) {
                                   setState(() {
                                     searchText = value;
-                                    if (value == "") {
+                                    if (value == '') {
                                       showResults = false;
                                     }
                                   });
@@ -116,9 +111,9 @@ class _ReviewCosmeticsSearchScreenState
                                   setState(() {
                                     isTextFieldSelected = false;
                                     getProductBySearch =
-                                        service.getProductsBySearch(
-                                            searchText: searchText,
-                                            sortBy: "id");
+                                        productModel.getProductsBySearch(
+                                      searchText: searchText,
+                                    );
                                     showResults = true;
 
                                     FocusScope.of(context).unfocus();
@@ -134,17 +129,15 @@ class _ReviewCosmeticsSearchScreenState
                       ],
                     ),
                   ),
-                  SizedBox(height: 21),
+                  const SizedBox(height: 21),
                   Text(
                     '  may realted',
                     style: textTheme.caption1.copyWith(color: kDarkAccent),
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   showResults
-                      ? productModel.showCosmeticsProductList(
-                          isNameAvailable: false,
-                          future: getProductBySearch,
-                          isFromReviewPage: true)
+                      ? productModel.showProductList(
+                          future: getProductBySearch, isFromReviewPage: true)
                       : Container(
                           padding:
                               EdgeInsets.only(left: 16, right: 16, top: 20),
@@ -152,30 +145,30 @@ class _ReviewCosmeticsSearchScreenState
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text(
-                                "Mọi người cũng tìm kiếm",
+                                'Mọi người cũng tìm kiếm',
                                 textAlign: TextAlign.center,
                                 style: textTheme.bodyText2
                                     .copyWith(color: kSecondaryGrey),
                               ),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Keyword(
                                   keyword: roundLab,
                                   onTap: () => search(roundLab)),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Keyword(
                                   keyword: cleanser,
                                   onTap: () => search(cleanser)),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Keyword(
                                   keyword: cream, onTap: () => search(cream)),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Keyword(
                                   keyword: sunscreen,
                                   onTap: () => search(sunscreen)),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                               Keyword(
                                   keyword: serum, onTap: () => search(serum)),
-                              SizedBox(height: 10),
+                              const SizedBox(height: 10),
                             ],
                           )),
                   // CosmeticsRequestBtn()
@@ -207,7 +200,7 @@ class Keyword extends StatelessWidget {
         ),
         // alignment: Alignment.center,
         child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 6),
+          padding: EdgeInsets.only(left: 20, right: 20, top: 6),
           child: Text(
             keyword,
             textAlign: TextAlign.center,

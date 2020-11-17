@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'product.dart';
 import 'package:localstorage/localstorage.dart';
+
+import 'product.dart';
 
 class RecentModel with ChangeNotifier {
   List<Product> products = [];

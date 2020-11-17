@@ -1,26 +1,30 @@
-import 'package:Dimodo/widgets/customWidgets.dart';
+import 'package:Dimodo/models/product/product.dart';
+import 'package:Dimodo/models/product/productModel.dart';
 import 'package:flutter/material.dart';
-
-import './../services/index.dart';
-import '../models/product/product.dart';
+import 'package:provider/provider.dart';
 // import 'detail/product_detail.dart';
 
 class ItemDeepLink extends StatefulWidget {
-  final int itemId;
+  const ItemDeepLink({this.itemId});
 
-  ItemDeepLink({this.itemId});
+  final int itemId;
 
   @override
   _ItemDeepLinkState createState() => _ItemDeepLinkState();
 }
 
 class _ItemDeepLinkState extends State<ItemDeepLink> {
-  final Services _service = Services();
+  ProductModel productModel;
+  @override
+  void initState() {
+    super.initState();
+    productModel = Provider.of<ProductModel>(context, listen: false);
+  }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Product>(
-      future: _service.getProduct(widget.itemId),
+      future: productModel.getProductById(widget.itemId),
       builder: (BuildContext context, AsyncSnapshot<Product> snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.none:
@@ -44,7 +48,7 @@ class _ItemDeepLinkState extends State<ItemDeepLink> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      Text(
+                      const Text(
                         'Opps, the product seems no longer exist',
                         style: TextStyle(color: Colors.black),
                       ),
@@ -53,7 +57,7 @@ class _ItemDeepLinkState extends State<ItemDeepLink> {
                         onPressed: () {
                           Navigator.pushReplacementNamed(context, '/home');
                         },
-                        child: new Text(
+                        child: const Text(
                           'Go back to home page',
                           style: TextStyle(color: Colors.white),
                         ),

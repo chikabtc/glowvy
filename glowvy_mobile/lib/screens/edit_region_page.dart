@@ -1,21 +1,15 @@
+import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/popups.dart';
-import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/common/widgets.dart';
+import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/address/addressModel.dart';
 import 'package:Dimodo/models/address/province.dart';
+import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
-
-import 'package:Dimodo/widgets/setting_card.dart';
-
 import 'package:flutter/material.dart';
-import 'package:Dimodo/common/constants.dart';
-import 'package:notification_permissions/notification_permissions.dart';
-
-import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/generated/i18n.dart';
-import 'package:Dimodo/models/user/user.dart';
-
 import 'package:provider/provider.dart';
 
 class EditRegionPage extends StatefulWidget {
@@ -42,8 +36,8 @@ class EditRegionPageState extends State<EditRegionPage>
     super.initState();
     userModel = Provider.of<UserModel>(context, listen: false);
     addressModel = Provider.of<AddressModel>(context, listen: false);
-    _doneButtonController = new AnimationController(
-        duration: new Duration(milliseconds: 3000), vsync: this);
+    _doneButtonController = AnimationController(
+        duration: Duration(milliseconds: 3000), vsync: this);
     province = userModel.user.address.province;
   }
 
@@ -53,24 +47,24 @@ class EditRegionPageState extends State<EditRegionPage>
     super.dispose();
   }
 
-  validateInput(String value) {
+  void validateInput(String value) {
     print(value);
     if (value == null) {
-      throw ('Please provide year.');
+      throw 'Please provide year.';
     } else if (value.length < 3) {
-      throw ('Please input valid name.');
+      throw 'Please input valid name.';
     }
   }
 
-  _updateRegion(context) async {
+  Future _updateRegion(context) async {
     try {
-      // validateInput(name);
+      // void validateInput(name);
       await userModel.updateUser(
           field: 'address.province', value: province.toJson());
       await _doneButtonController.reverse();
       Navigator.pop(context);
     } catch (e) {
-      print("_updateUserName error: $e");
+      print('_updateUserName error: $e');
       await _doneButtonController.reverse();
       Popups.failMessage(e, context);
     }
@@ -84,14 +78,14 @@ class EditRegionPageState extends State<EditRegionPage>
           elevation: 0,
           actions: [
             Padding(
-              padding: const EdgeInsets.only(right: 16.0),
+              padding: EdgeInsets.only(right: 16.0),
               child: Center(
                 child: Builder(
                   builder: (context) => StaggerAnimation(
                     btnColor: kPrimaryOrange,
                     width: 57,
                     height: 34,
-                    buttonTitle: "Done",
+                    buttonTitle: 'Done',
                     buttonController: _doneButtonController.view,
                     onTap: () async {
                       _doneButtonController.forward();

@@ -1,13 +1,12 @@
-import 'package:flutter/material.dart';
 import 'dart:math';
-import '../../common/constants.dart';
-import '../../widgets/image_galery.dart';
-import '../../common/styles.dart';
+
+import 'package:flutter/material.dart';
 
 import '../../common/colors.dart';
-
+import '../../common/constants.dart';
+import '../../common/styles.dart';
 import '../../models/review.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
+import '../../widgets/image_galery.dart';
 
 class ReviewCard extends StatelessWidget {
   ReviewCard({this.review, this.context, this.isPreview = false});
@@ -15,7 +14,7 @@ class ReviewCard extends StatelessWidget {
   final Review review;
   final bool isPreview;
   final BuildContext context;
-  Random rng = new Random();
+  Random rng = Random();
   String sanitizedText;
 
   List<Widget> renderImgs(context, Review review) {
@@ -38,7 +37,7 @@ class ReviewCard extends StatelessWidget {
     //on the external display, the lag is unusable..
   }
 
-  _onShowGallery(context, images, [index = 0]) {
+  void _onShowGallery(context, images, [index = 0]) {
     showDialog<void>(
         context: context,
         builder: (BuildContext context) {
@@ -48,10 +47,10 @@ class ReviewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    sanitizedText = review.text.replaceAll("\n", "");
+    sanitizedText = review.text.replaceAll('\n', '');
     if (isPreview && sanitizedText.length > 70) {
       sanitizedText =
-          review.text.replaceAll("\n", "").substring(1, 70) + " ...";
+          review.text.replaceAll('\n', '').substring(1, 70) + ' ...';
     }
 
     return Container(
@@ -69,7 +68,7 @@ class ReviewCard extends StatelessWidget {
               Image.asset(
                 'assets/icons/account/profile${1}.png',
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,12 +81,12 @@ class ReviewCard extends StatelessWidget {
                     //         color: kDarkSecondary.withOpacity(0.5),
                     //         fontSize: 11,
                     //         fontWeight: FontWeight.w500)),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(sanitizedText,
                         maxLines: isPreview ? 2 : 20,
                         style: kBaseTextStyle.copyWith(
                             fontSize: 13, fontWeight: FontWeight.w600)),
-                    if (review.images?.length != 0 && !isPreview)
+                    if (review.images.isNotEmpty && !isPreview)
                       Container(
                         height: 150,
                         child: ListView(
@@ -95,7 +94,7 @@ class ReviewCard extends StatelessWidget {
                             children: renderImgs(context, review)),
                       ),
                     // Row(children: renderImgs(context, review)),
-                    SizedBox(height: 12),
+                    const SizedBox(height: 12),
                   ],
                 ),
               ),

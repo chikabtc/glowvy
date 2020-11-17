@@ -1,16 +1,12 @@
+import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/widgets.dart';
+import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
-import 'package:Dimodo/screens/edit_email_page.dart';
-import 'package:Dimodo/screens/edit_gender_page.dart';
-import 'package:Dimodo/screens/edit_name_page.dart';
 import 'package:Dimodo/screens/edit_password.dart';
 import 'package:Dimodo/widgets/setting_card.dart';
 import 'package:flutter/material.dart';
-import 'package:Dimodo/common/constants.dart';
-
-import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/generated/i18n.dart';
-import 'package:Dimodo/models/user/user.dart';
 import 'package:provider/provider.dart';
 
 class SettingPage extends StatefulWidget {
@@ -34,7 +30,7 @@ class SettingPageState extends State<SettingPage>
     userModel = Provider.of<UserModel>(context, listen: false);
   }
 
-  logout() async {
+  Future logout() async {
     await userModel.logout();
     Navigator.of(context).popUntil((route) => route.isFirst);
   }
@@ -51,7 +47,7 @@ class SettingPageState extends State<SettingPage>
                 Text(S.of(context).generalSetting, style: textTheme.headline3)),
         backgroundColor: kDefaultBackground,
         body: Consumer<UserModel>(builder: (context, userModel, child) {
-          User user = userModel.user;
+          var user = userModel.user;
           return Container(
             child: ListView(
               physics: ClampingScrollPhysics(),
@@ -76,10 +72,10 @@ class SettingPageState extends State<SettingPage>
                               EditPasswordPage())),
                 ),
 
-                SizedBox(height: 7),
+                const SizedBox(height: 7),
                 // SettingCard(
                 //   color: kWhite,
-                //   title: "Account setting",
+                //   title: 'Account setting',
                 // ),
                 GestureDetector(
                   onTap: () async {

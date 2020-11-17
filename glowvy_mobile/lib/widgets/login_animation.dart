@@ -1,9 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
-
-import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
+import 'package:flutter/material.dart';
 
 class StaggerAnimation extends StatelessWidget {
   final VoidCallback onTap;
@@ -21,26 +18,26 @@ class StaggerAnimation extends StatelessWidget {
       this.btnTitleColor,
       this.height = 48,
       this.width,
-      this.buttonTitle = "Sign In"})
-      : buttonSqueezeanimation = new Tween(
+      this.buttonTitle = 'Sign In'})
+      : buttonSqueezeanimation = Tween(
           begin: 320.0,
           end: 50.0,
         ).animate(
-          new CurvedAnimation(
+          CurvedAnimation(
             parent: buttonController,
-            curve: new Interval(
+            curve: Interval(
               0.0,
               0.150,
             ),
           ),
         ),
-        containerCircleAnimation = new EdgeInsetsTween(
-          begin: const EdgeInsets.only(bottom: 30.0),
-          end: const EdgeInsets.only(bottom: 0.0),
+        containerCircleAnimation = EdgeInsetsTween(
+          begin: EdgeInsets.only(bottom: 30.0),
+          end: EdgeInsets.only(bottom: 0.0),
         ).animate(
-          new CurvedAnimation(
+          CurvedAnimation(
             parent: buttonController,
-            curve: new Interval(
+            curve: Interval(
               0.500,
               0.800,
               curve: Curves.ease,
@@ -54,33 +51,32 @@ class StaggerAnimation extends StatelessWidget {
   final Animation buttonSqueezeanimation;
 
   Widget _buildAnimation(BuildContext context, Widget child) {
-    return new GestureDetector(
+    return GestureDetector(
       onTap: () {
         if (!buttonController.isAnimating) {
           onTap();
         }
       },
       child: Container(
-          width: width != null ? width : kScreenSizeWidth,
+          width: width ?? kScreenSizeWidth,
           height: height,
           alignment: FractionalOffset.center,
           decoration: kButton.copyWith(borderRadius: BorderRadius.circular(12)),
           child: buttonSqueezeanimation.value > 75.0
-              ? new Text(
+              ? Text(
                   buttonTitle,
                   style: kBaseTextStyle.copyWith(
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
-                      color:
-                          btnTitleColor == null ? Colors.white : btnTitleColor),
+                      color: btnTitleColor ?? Colors.white),
                 )
-              : SizedBox(
+              : const SizedBox(
                   width: 24,
                   height: 24,
                   child: CircularProgressIndicator(
                     value: null,
                     strokeWidth: 1.0,
-                    valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),
+                    valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
                   ),
                 )),
     );
@@ -88,7 +84,7 @@ class StaggerAnimation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new AnimatedBuilder(
+    return AnimatedBuilder(
       builder: _buildAnimation,
       animation: buttonController,
     );

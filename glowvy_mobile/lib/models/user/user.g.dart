@@ -24,12 +24,13 @@ User _$UserFromJson(Map<String, dynamic> json) {
     ..firstName = json['first_name'] as String
     ..lastName = json['last_name'] as String
     ..gender = json['gender'] as String
+    ..baumannType = json['baumann_type'] as String
     ..skinTypeId = json['skin_type_id'] as int
     ..birthYear = json['birth_year'] as int
     ..age = json['age'] as int
-    ..skinScores = json['skin_scores'] == null
+    ..baumannScores = json['baumann_scores'] == null
         ? null
-        : SkinScores.fromJson(json['skin_scores'] as Map<String, dynamic>)
+        : SkinScores.fromJson(json['baumann_scores'] as Map<String, dynamic>)
     ..addresses = (json['addresses'] as List)
         ?.map((e) =>
             e == null ? null : Address.fromJson(e as Map<String, dynamic>))
@@ -49,10 +50,11 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'picture': instance.picture,
       'gender': instance.gender,
       'skin_type': instance.skinType,
+      'baumann_type': instance.baumannType,
       'skin_type_id': instance.skinTypeId,
       'birth_year': instance.birthYear,
       'age': instance.age,
-      'skin_scores': instance.skinScores,
+      'baumann_scores': instance.baumannScores,
       'address': instance.address,
       'addresses': instance.addresses,
       'review_draft': instance.reviewDraft,

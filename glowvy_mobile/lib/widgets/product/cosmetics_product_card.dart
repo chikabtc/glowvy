@@ -1,48 +1,41 @@
-import 'package:Dimodo/generated/i18n.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
+import 'package:Dimodo/common/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../../common/colors.dart';
+import '../../common/styles.dart';
 import '../../common/tools.dart';
 import '../../models/product/product.dart';
 import '../../screens/detail/cosmetics_product_detail.dart';
-import '../../common/styles.dart';
-
-import '../../common/colors.dart';
 
 class CosmeticsProductCard extends StatelessWidget {
-  final Product product;
-  final width;
-  final kSize size;
-  final bool isHero;
-  final bool showDivider;
-  final bool showHeart;
-  final height;
-  final bool hideDetail;
-  final offset;
-  final ranking;
-  final bool isNameAvailable;
-
-  CosmeticsProductCard({
+  const CosmeticsProductCard({
     this.product,
-    this.width,
     this.ranking,
     this.size = kSize.medium,
     this.isHero = false,
     this.showHeart = false,
     this.showDivider = true,
-    this.height,
-    this.offset,
     this.hideDetail = false,
     this.isNameAvailable = false,
   });
+  final Product product;
+  final kSize size;
+  final bool isHero;
+  final bool showDivider;
+  final bool showHeart;
+  final bool hideDetail;
+  final int ranking;
+  final bool isNameAvailable;
 
   @override
   Widget build(BuildContext context) {
+    print('product sid ${product.sid}');
     return Container(
       height: 112,
       color: Colors.white,
-      padding: EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: GestureDetector(
         onTap: () => Navigator.push(
             context,
@@ -58,38 +51,43 @@ class CosmeticsProductCard extends StatelessWidget {
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.0)),
           child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              ranking == null
-                  ? Container()
-                  : Stack(overflow: Overflow.clip, children: <Widget>[
-                      ranking < 3
-                          ? SvgPicture.asset("assets/icons/red-flower.svg")
-                          : SvgPicture.asset("assets/icons/yellow-flower.svg"),
-                      Positioned(
-                          top: 1,
-                          left: 0,
-                          child: Container(
-                            decoration: BoxDecoration(
-                                // color: Color(0xFFCFEEBEC),
-                                borderRadius: BorderRadius.only(
-                                    bottomRight: Radius.circular(28),
-                                    bottomLeft: Radius.circular(28))),
-                            width: 22,
-                            height: 20,
-                            padding: EdgeInsets.all(3),
-                            child: Text(
-                              (ranking + 1).toString(),
-                              textAlign: TextAlign.center,
-                              style: kBaseTextStyle.copyWith(
-                                height: 1,
-                                fontSize: 9,
-                                color: ranking < 3 ? Colors.white : kDarkYellow,
-                                fontWeight: FontWeight.w800,
-                              ),
-                            ),
-                          )),
-                    ]),
+              if (ranking != null)
+                Stack(overflow: Overflow.clip, children: <Widget>[
+                  if (ranking < 3)
+                    SvgPicture.asset('assets/icons/red-flower.svg'),
+                  if (ranking >= 3 && ranking <= 5)
+                    SvgPicture.asset('assets/icons/yellow-flower.svg'),
+                  if (ranking > 5)
+                    SvgPicture.asset(
+                      'assets/icons/yellow-flower.svg',
+                      color: Colors.transparent,
+                    ),
+                  Positioned(
+                      top: 1,
+                      left: 0,
+                      child: Container(
+                        decoration: const BoxDecoration(
+                            // color: Color(0xFFCFEEBEC),
+                            borderRadius: BorderRadius.only(
+                                bottomRight: Radius.circular(28),
+                                bottomLeft: Radius.circular(28))),
+                        width: 22,
+                        height: 20,
+                        padding: const EdgeInsets.all(3),
+                        child: Text(
+                          (ranking + 1).toString(),
+                          textAlign: TextAlign.center,
+                          style: kBaseTextStyle.copyWith(
+                            height: 1,
+                            fontSize: 9,
+                            color: ranking < 3 ? Colors.white : kDarkYellow,
+                            fontWeight: FontWeight.w800,
+                          ),
+                        ),
+                      )),
+                ]),
               FittedBox(
                 fit: BoxFit.cover,
                 child: Tools.image(
@@ -101,7 +99,7 @@ class CosmeticsProductCard extends StatelessWidget {
                 ),
               ),
               // // item name
-              SizedBox(width: 7),
+              const SizedBox(width: 7),
               Flexible(
                 child: Container(
                   height: 112,
@@ -110,7 +108,7 @@ class CosmeticsProductCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       Text(
                         product.brand.name,
                         maxLines: 1,
@@ -121,7 +119,7 @@ class CosmeticsProductCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "${product.name}",
+                        product.name,
                         maxLines: 1,
                         style: kBaseTextStyle.copyWith(
                           fontSize: 13,
@@ -129,11 +127,11 @@ class CosmeticsProductCard extends StatelessWidget {
                           fontWeight: FontWeight.normal,
                         ),
                       ),
-                      SizedBox(height: 5),
+                      const SizedBox(height: 5),
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          SvgPicture.asset("assets/icons/red-star.svg"),
+                          SvgPicture.asset('assets/icons/red-star.svg'),
                           Text(
                             double.parse(product.reviewMetas.all.averageRating
                                     .toString()
@@ -145,11 +143,11 @@ class CosmeticsProductCard extends StatelessWidget {
                                 fontSize: 13,
                                 fontWeight: FontWeight.w600),
                           ),
-                          SizedBox(width: 5),
+                          const SizedBox(width: 5),
                           if (product.purchaseCount != null)
                             Container(
                               child: Text(
-                                "(${product.purchaseCount})",
+                                '(${product.purchaseCount})',
                                 textAlign: TextAlign.end,
                                 maxLines: 1,
                                 style: kBaseTextStyle.copyWith(
@@ -158,10 +156,10 @@ class CosmeticsProductCard extends StatelessWidget {
                                     fontWeight: FontWeight.normal),
                               ),
                             ),
-                          Spacer(),
+                          const Spacer(),
                           Text(
-                            product.officialPrice.toString(),
-                            // Tools.getPriceProduct(product, "VND", onSale: true),
+                            Tools.getPriceProduct(product, 'VND',
+                                onSale: false),
                             style: kBaseTextStyle.copyWith(
                                 color: kSecondaryGrey,
                                 fontSize: 12,
@@ -169,23 +167,13 @@ class CosmeticsProductCard extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 7,
                       ),
-                      // Text(
-                      //   tagString,
-                      //   maxLines: 1,
-                      //   overflow: TextOverflow.ellipsis,
-                      //   style: kBaseTextStyle.copyWith(
-                      //       color: kSecondaryGrey,
-                      //       fontSize: 12,
-                      //       fontWeight: FontWeight.w500),
-                      // ),
+                      const SizedBox(height: 9),
+                      if (showDivider) kFullDivider
 
-                      SizedBox(height: 9),
-                      showDivider ? Divider(height: 1) : Container()
-
-                      // // SizedBox(height: 5),
+                      // // const SizedBox(height: 5),
                     ],
                   ),
                 ),

@@ -4,7 +4,7 @@
 //                         if (_tabController.index == 1)
 //                           Container(
 //                             child: Padding(
-//                               padding: const EdgeInsets.only(
+//                               padding: EdgeInsets.only(
 //                                   top: 21, bottom: 10, left: 16),
 //                               child: DynamicText(
 //                                 S.of(context).trendingKorea,
@@ -47,7 +47,7 @@
 
 // Container(
 //   child: Padding(
-//     padding: const EdgeInsets.only(
+//     padding: EdgeInsets.only(
 //         top: 21, bottom: 10, left: 16),
 //     child: DynamicText(
 //       S.of(context).trendingKorea,

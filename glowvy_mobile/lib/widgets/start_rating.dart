@@ -2,7 +2,7 @@ library smooth_star_rating;
 
 import 'package:flutter/material.dart';
 
-typedef void RatingChangeCallback(double rating);
+typedef RatingChangeCallback = void Function(double rating);
 
 class SmoothStarRating extends StatelessWidget {
   final int starCount;
@@ -16,14 +16,14 @@ class SmoothStarRating extends StatelessWidget {
 
   SmoothStarRating(
       {this.starCount = 5,
-        this.rating = 0.0,
-        this.onRatingChanged,
-        this.color,
-        this.borderColor,
-        this.size,
-        this.spacing = 0.0,
-        this.allowHalfRating = true}) {
-    assert(this.rating != null);
+      this.rating = 0.0,
+      this.onRatingChanged,
+      this.color,
+      this.borderColor,
+      this.size,
+      this.spacing = 0.0,
+      this.allowHalfRating = true}) {
+    assert(rating != null);
   }
 
   Widget buildStar(BuildContext context, int index) {
@@ -49,12 +49,13 @@ class SmoothStarRating extends StatelessWidget {
       );
     }
 
-    if (onRatingChanged == null)
+    if (onRatingChanged == null) {
       return icon;
+    }
 
     return GestureDetector(
       onTap: () {
-        if (this.onRatingChanged != null) onRatingChanged(index + 1.0);
+        if (onRatingChanged != null) onRatingChanged(index + 1.0);
       },
       onHorizontalDragUpdate: (dragDetails) {
         RenderBox box = context.findRenderObject();
@@ -67,7 +68,7 @@ class SmoothStarRating extends StatelessWidget {
         if (newRating < 0) {
           newRating = 0.0;
         }
-        if (this.onRatingChanged != null) onRatingChanged(newRating);
+        if (onRatingChanged != null) onRatingChanged(newRating);
       },
       child: icon,
     );
@@ -78,7 +79,7 @@ class SmoothStarRating extends StatelessWidget {
     return Wrap(
         alignment: WrapAlignment.start,
         spacing: spacing,
-        children: List.generate(
-            starCount, (index) => buildStar(context, index)));
+        children:
+            List.generate(starCount, (index) => buildStar(context, index)));
   }
 }

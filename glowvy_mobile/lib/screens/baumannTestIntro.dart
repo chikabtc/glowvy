@@ -1,14 +1,12 @@
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
-import 'package:Dimodo/models/user/userModel.dart';
-import 'package:Dimodo/widgets/baumann_quiz.dart';
-import 'package:Dimodo/widgets/customWidgets.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/common/widgets.dart';
-
-import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/models/user/userModel.dart';
+import 'package:Dimodo/widgets/baumann_quiz.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class BaumannTestIntro extends StatefulWidget {
@@ -20,8 +18,8 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
   Size screenSize;
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
-  var firstName;
-  var lastName;
+  String firstName;
+  String lastName;
   UserModel userModel;
   @override
   void initState() {
@@ -61,13 +59,13 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: <Widget>[
-                                Text("Know My Skin Type",
+                                Text('Know My Skin Type',
                                     style: textTheme.headline2),
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       left: 43.0, right: 43, bottom: 20),
                                   child: Text(
-                                    "Đây là lựa chọn phù hợp dành cho bạn! Lời khuyên đến từ chuyên gia phù hợp dành riêng cho nhu cầu chăm sóc da của bạn.",
+                                    'Đây là lựa chọn phù hợp dành cho bạn! Lời khuyên đến từ chuyên gia phù hợp dành riêng cho nhu cầu chăm sóc da của bạn.',
                                     style: textTheme.headline5
                                         .copyWith(fontStyle: FontStyle.italic),
                                   ),
@@ -77,53 +75,54 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                     width: screenSize.width - 80,
                                     height: screenSize.height / 2.9 - 92,
                                     child: SvgPicture.asset(
-                                        "assets/icons/closed-eye-girl.svg"))
+                                        'assets/icons/closed-eye-girl.svg'))
                               ])),
                       Container(
                         color: Colors.white,
-                        padding: EdgeInsets.all(20),
+                        padding: const EdgeInsets.all(20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Container(
                               height: 70,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: kLightYellow,
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
                               ),
-                              padding: EdgeInsets.only(left: 16, right: 16),
+                              padding:
+                                  const EdgeInsets.only(left: 16, right: 16),
                               child: Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: <Widget>[
                                   Flexible(
                                     child: Text(
-                                      "Bạn đã sẵn sàng để sở hữu làn da hoàn hảo nhất từ trước đến giờ?",
+                                      'Bạn đã sẵn sàng để sở hữu làn da hoàn hảo nhất từ trước đến giờ?',
                                       style: textTheme.headline4.copyWith(
                                         color: kDarkYellow,
                                       ),
                                     ),
                                   ),
                                   Image.asset(
-                                    "assets/icons/star-vy.png",
+                                    'assets/icons/star-vy.png',
                                     width: 80,
                                     height: 70,
                                   ),
                                 ],
                               ),
                             ),
-                            SizedBox(height: 20),
+                            const SizedBox(height: 20),
                             Text(
-                              "Sau bài test này, tôi sẽ biết được: ",
+                              'Sau bài test này, tôi sẽ biết được: ',
                               style: textTheme.headline3,
                             ),
                             TodoElement(
-                                "Những sản phẩm skincare được thiết kế cho riêng bạn"),
+                                'Những sản phẩm skincare được thiết kế cho riêng bạn'),
                             TodoElement(
-                                "Những tips skincare cho riêng cá nhân bạn"),
-                            TodoElement("Kế hoạch skincare độc quyền mỗi ngày"),
-                            TodoElement("Và nhiều hơn thế nữa..."),
+                                'Những tips skincare cho riêng cá nhân bạn'),
+                            TodoElement('Kế hoạch skincare độc quyền mỗi ngày'),
+                            TodoElement('Và nhiều hơn thế nữa...'),
                             Align(
                               alignment: FractionalOffset.bottomCenter,
                               child: Padding(
@@ -135,7 +134,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                       Container(
                                           width: (screenSize.width - 50) / 2,
                                           height: 48,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                               borderRadius: BorderRadius.all(
                                                   Radius.circular(16)),
                                               color: kQuaternaryOrange),
@@ -170,7 +169,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                                   //           color:
                                                   //               kPrimaryOrange),
                                                   //   contentPadding:
-                                                  //       EdgeInsets.only(left: 20),
+                                                  //       const EdgeInsets.only(left: 20),
                                                   // ),
                                                   ),
                                             ),
@@ -179,7 +178,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                       Container(
                                           width: (screenSize.width - 50) / 2,
                                           height: 48,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                               borderRadius: BorderRadius.all(
                                                   Radius.circular(16)),
                                               color: kQuaternaryOrange),
@@ -210,9 +209,9 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                         height: 48,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              new BorderRadius.circular(16.0),
+                                              BorderRadius.circular(16.0),
                                         ),
-                                        child: Text("Bắt đầu kiểm tra loại da",
+                                        child: Text('Bắt đầu kiểm tra loại da',
                                             style: textTheme.headline5
                                                 .copyWith(color: Colors.white)),
                                         onPressed: () {
@@ -246,7 +245,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
 }
 
 class TodoElement extends StatelessWidget {
-  final text;
+  final String text;
   TodoElement(this.text);
 
   @override
@@ -255,7 +254,7 @@ class TodoElement extends StatelessWidget {
       padding: const EdgeInsets.only(top: 16.0),
       child: Row(
         children: <Widget>[
-          SvgPicture.asset("assets/icons/yellow-smiley-face.svg"),
+          SvgPicture.asset('assets/icons/yellow-smiley-face.svg'),
           Flexible(
             child: Text(
               text,
