@@ -11,7 +11,7 @@ class Category {
   String firstCategoryName;
   List<SecondCategory> secondCategories;
   String firstCategoryImage;
-  int idFirstCategory;
+  int firstCategoryId;
   bool firstIsNew;
 
   Category({
@@ -20,7 +20,7 @@ class Category {
     this.firstCategoryName,
     this.secondCategories,
     this.firstCategoryImage,
-    this.idFirstCategory,
+    this.firstCategoryId,
     this.firstIsNew,
   });
   factory Category.fromJson(Map<String, dynamic> json) =>

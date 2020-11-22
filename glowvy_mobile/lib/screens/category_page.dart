@@ -33,6 +33,7 @@ class CategoryPageState extends State<CategoryPage>
     categories
       ..add(categoryModel.categories[0])
       ..add(categoryModel.categories[6])
+      ..add(categoryModel.categories[7])
       ..add(categoryModel.categories[8]);
     currentFirstCategory = categories[0];
   }

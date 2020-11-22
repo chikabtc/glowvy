@@ -6,7 +6,6 @@ import 'package:Dimodo/widgets/product/cosmetics_review_thumb_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../common/constants.dart';
@@ -22,7 +21,7 @@ class CosmeticsProductList extends StatefulWidget {
   final bool showRank;
   final bool isFromReviewSearch;
   final Function onProductSelect;
-  CosmeticsProductList({
+  const CosmeticsProductList({
     this.products,
     this.isNameAvailable = false,
     this.onLoadMore,
@@ -40,7 +39,7 @@ class CosmeticsProductList extends StatefulWidget {
 
 class _CosmeticsProductListState extends State<CosmeticsProductList>
     with AutomaticKeepAliveClientMixin<CosmeticsProductList> {
-  List<Product> _products;
+  List<Product> _products = [];
   ScrollController _scrollController;
   bool isLoading = false;
   bool isEnd = false;
@@ -55,6 +54,7 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
   void initState() {
     super.initState();
     _products = widget.products;
+    // print('product length:${_products.length}');
     productModel = Provider.of<ProductModel>(context, listen: false);
   }
 
@@ -87,112 +87,59 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
 
   @override
   Widget build(BuildContext context) {
-    // print('widgetproducts: ${widget.products[0].sname}');
     final screenSize = MediaQuery.of(context).size;
-    final widthContent = screenSize.width;
 
-    return _products == null
-        ? Container(
-            width: screenSize.width,
-            height: 350,
+    if (_products == null)
+      return Container(
+          width: screenSize.width,
+          height: screenSize.height,
+          child: Center(
             child: Container(
                 height: kScreenSizeHeight * 0.5,
                 child: const SpinKitThreeBounce(
-                    color: kPrimaryOrange, size: 21.0)))
-        : _products.isEmpty
-            ? Column(
-                children: [
-                  Container(height: 41),
-                  Center(
-                    child: Text(
-                      'không tìm thấy sản phẩm',
-                      style: textTheme.bodyText2.copyWith(color: kTertiaryGray),
-                    ),
-                  ),
-                  CosmeticsRequestBtn(),
-                ],
-              )
-            : NotificationListener<ScrollNotification>(
-                onNotification: (ScrollNotification scrollInfo) {
-                  if (!isLoading &&
-                      scrollInfo.metrics.pixels ==
-                          scrollInfo.metrics.maxScrollExtent) {
-                    _loadData();
-                    setState(() {
-                      isLoading = true;
-                    });
-                  }
-                  return false;
-                },
-                child: Scrollbar(
-                  child: ListView(
-                    padding: const EdgeInsets.all(0),
-                    shrinkWrap: true,
-                    physics: const ScrollPhysics(),
-                    children: <Widget>[
-                      Scrollbar(
-                        controller: _scrollController,
-                        child: ListView.builder(
-                            addAutomaticKeepAlives: true,
-                            padding: const EdgeInsets.all(0.0),
-                            physics: widget.disableScrolling
-                                ? const NeverScrollableScrollPhysics()
-                                : const ClampingScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: _products.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              currentIndex = index;
-                              return _products.isEmpty
-                                  ? Column(
-                                      children: [
-                                        Container(height: 41),
-                                        Center(
-                                          child: Text(
-                                            'không tìm thấy sản phẩm',
-                                            style: textTheme.bodyText2
-                                                .copyWith(color: kTertiaryGray),
-                                          ),
-                                        ),
-                                        CosmeticsRequestBtn(),
-                                      ],
-                                    )
-                                  : Column(
-                                      children: <Widget>[
-                                        !widget.isFromReviewSearch
-                                            ? CosmeticsProductCard(
-                                                ranking: widget.showRank
-                                                    ? index
-                                                    : null,
-                                                isNameAvailable:
-                                                    widget.isNameAvailable,
-                                                showDivider: index !=
-                                                    _products.length - 1,
-                                                product: _products[index],
-                                              )
-                                            : CosmeticsReviewThumbCard(
-                                                ranking: widget.showRank
-                                                    ? index
-                                                    : null,
-                                                showDivider: index !=
-                                                    _products.length - 1,
-                                                product: _products[index])
-                                      ],
-                                    );
-                            }),
-                      ),
-                      isLoading
-                          ? SpinKitCircle(
-                              color: kPrimaryOrange,
-                              size: 23.0 * kSizeConfig.containerMultiplier)
-                          : isEnd
-                              ? SvgPicture.asset(
-                                  'assets/icons/heart-ballon.svg',
-                                  width: 30,
-                                  height: 42,
-                                )
-                              : Container(),
-                    ],
-                  ),
-                ));
+                    color: kPrimaryOrange, size: 21.0)),
+          ));
+    else if (_products.isEmpty)
+      Column(
+        children: [
+          Container(height: 41),
+          Center(
+            child: Text(
+              'không tìm thấy sản phẩm',
+              style: textTheme.bodyText2.copyWith(color: kTertiaryGray),
+            ),
+          ),
+          CosmeticsRequestBtn(),
+        ],
+      );
+    else if (_products.isNotEmpty)
+      return ListView.builder(
+          addAutomaticKeepAlives: true,
+          padding: const EdgeInsets.all(0.0),
+          physics: widget.disableScrolling
+              ? const NeverScrollableScrollPhysics()
+              : const ClampingScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: _products.length,
+          itemBuilder: (BuildContext context, int index) {
+            currentIndex = index;
+            return Column(children: [
+              if (!widget.isFromReviewSearch)
+                // ignore: curly_braces_in_flow_control_structures
+                CosmeticsProductCard(
+                  ranking: widget.showRank ? index : null,
+                  isNameAvailable: widget.isNameAvailable,
+                  showDivider: index != _products.length - 1,
+                  product: _products[index],
+                )
+              else
+                CosmeticsReviewThumbCard(
+                    ranking: widget.showRank ? index : null,
+                    showDivider: index != _products.length - 1,
+                    product: _products[index])
+            ]);
+          });
+    else
+      Container();
   }
 }

@@ -18,7 +18,6 @@ class _GeneratingOneRowListState extends State<GeneratingOneRowList> {
       padding: EdgeInsets.only(left: 9.0, right: 9, bottom: 22),
       child: ListView(
         shrinkWrap: true,
-        physics: ScrollPhysics(),
         children: <Widget>[
           const SizedBox(height: 12),
           ListView.separated(

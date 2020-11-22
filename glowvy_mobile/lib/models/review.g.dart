@@ -10,10 +10,9 @@ Review _$ReviewFromJson(Map<String, dynamic> json) {
   return Review(
     id: json['id'] as int,
     createdAt: json['created_at'] as int,
-    text: json['text'] as String,
-    stext: json['stext'] as String,
+    content: json['content'] as String,
+    scontent: json['scontent'] as String,
     rating: json['rating'] as int,
-    productId: json['product_id'] as int,
     user: json['user'] == null
         ? null
         : User.fromJson(json['user'] as Map<String, dynamic>),
@@ -27,9 +26,8 @@ Review _$ReviewFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ReviewToJson(Review instance) => <String, dynamic>{
       'id': instance.id,
-      'text': instance.text,
-      'stext': instance.stext,
-      'product_id': instance.productId,
+      'content': instance.content,
+      'scontent': instance.scontent,
       'rating': instance.rating,
       'images': instance.images,
       'user': instance.user,

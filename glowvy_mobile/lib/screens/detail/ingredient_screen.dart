@@ -60,7 +60,8 @@ class IngredientScreenStates extends State<IngredientScreen>
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
                       const SizedBox(height: 34),
-                      Text(widget.hazardLevel, style: textTheme.headline3),
+                      Text(widget.hazardLevel ?? 'unknown',
+                          style: textTheme.headline3),
                       Text(S.of(context).ewgSafeLevel,
                           style: textTheme.caption2.copyWith(
                             color: kSecondaryGrey,

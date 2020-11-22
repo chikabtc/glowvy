@@ -63,7 +63,7 @@ class _UserReviewCardState extends State<UserReviewCard> {
 
   @override
   Widget build(BuildContext context) {
-    sanitizedText = widget.review.text.replaceAll('\n', '');
+    sanitizedText = widget.review.content.replaceAll('\n', '');
     // if (isPreview && sanitizedText.length > 70) {
     //   sanitizedText =
     //       review.content.replaceAll('\n', '').substring(1, 70) + ' ...';

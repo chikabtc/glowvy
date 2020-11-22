@@ -123,7 +123,7 @@ class _SignupScreenState extends State<SignupScreen>
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Text(S.of(parentContext).signup,
-                                  style: textTheme.headline2)
+                                  style: textTheme.headline1)
                             ],
                           ),
                         ],

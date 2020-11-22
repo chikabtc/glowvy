@@ -120,6 +120,14 @@ class ProductModel with ChangeNotifier {
     return products;
   }
 
+  List<Product> sortByRating(List<Product> products) {
+    // var skinType = getSkinTypeById(skinTypeId);
+    products.sort((a, b) => b.reviewMetas.all.averageRating
+        .compareTo(a.reviewMetas.all.averageRating));
+
+    return products;
+  }
+
   List<Product> filteredProducts(
       {List<String> filterOptions, List<Product> products}) {
     final filterProducts = products.where((p) {
@@ -195,6 +203,50 @@ class ProductModel with ChangeNotifier {
     return list;
   }
 
+//get all product info with ingredients
+  Future<Product> getWholeProduct(productId) async {
+    try {
+      Product product;
+      final ingredientList = <Ingredient>[];
+      //get the product ref from cache
+      //since all products are fetched from server on app launch,
+      //the cache of the product doc will always be available
+      final query = FirebaseFirestore.instance
+          .collection('products')
+          .where('sid', isEqualTo: productId);
+      final productSnap =
+          await query.get(const GetOptions(source: Source.server));
+      final ingredientRef =
+          productSnap.docs.first.reference.collection('ingredients');
+
+      print('fetching ingredients from cache');
+      var ingredientSnaps =
+          await ingredientRef.get(const GetOptions(source: Source.cache));
+
+      if (ingredientSnaps.docs.isEmpty) {
+        print('No cached ingredients: fetching from server');
+        ingredientSnaps =
+            await ingredientRef.get(const GetOptions(source: Source.server));
+      }
+      print('ingredients length: ${ingredientSnaps.docs.length}');
+
+      if (ingredientSnaps.docs.isNotEmpty) {
+        for (final doc in ingredientSnaps.docs) {
+          ingredientList.add(Ingredient.fromJson(doc.data()));
+        }
+        var product = Product.fromJson(productSnap.docs.first.data());
+        product.ingredients = ingredientList;
+        return product;
+      } else {
+        print('no products were found');
+
+        return product;
+      }
+    } catch (err) {
+      rethrow;
+    }
+  }
+
   Future<List<Ingredient>> getIngredients(productId) async {
     try {
       final list = <Ingredient>[];
@@ -205,7 +257,7 @@ class ProductModel with ChangeNotifier {
           .collection('products')
           .where('sid', isEqualTo: productId);
       final productSnap =
-          await query.get(const GetOptions(source: Source.cache));
+          await query.get(const GetOptions(source: Source.server));
       final ingredientRef =
           productSnap.docs.first.reference.collection('ingredients');
 
@@ -254,7 +306,6 @@ class ProductModel with ChangeNotifier {
     }
   }
 
-  @override
   Future<Product> getProductById(id) async {
     try {
       final query = FirebaseFirestore.instance
@@ -268,7 +319,6 @@ class ProductModel with ChangeNotifier {
         print('No Cached Reviews: fetching from server');
         snapshot = await query.get(const GetOptions(source: Source.server));
       }
-      print(snapshot.docs.length);
 
       if (snapshot.docs.isNotEmpty) {
         return Product.fromJson(snapshot.docs.first.data());
@@ -281,23 +331,32 @@ class ProductModel with ChangeNotifier {
     }
   }
 
-  Future<List<Product>> getProductsByCategoryId(
-      {categoryId, categoryField = 'third_category_id'}) async {
+  Future<List<Product>> getProductsByCategoryId(categoryId,
+      {isFirstCate = false,
+      isSecondCate = false,
+      isThirdCate = false,
+      orderBy = 'review_metas.all.average_rating'}) async {
+    var categoryField = 'third_category_id';
+    if (isFirstCate) {
+      categoryField = 'first_category_id';
+    } else if (isSecondCate) {
+      categoryField = 'second_category_id';
+    }
+
     try {
       List<Product> list = [];
       final productSnapshot = await FirebaseFirestore.instance
           .collection('products')
-          .where('category.${categoryField}', isEqualTo: categoryId)
+          .where('category.$categoryField', isEqualTo: categoryId)
           .limit(15)
           .get();
       print(productSnapshot.docs.length);
 
       if (productSnapshot.docs.isNotEmpty) {
         for (final doc in productSnapshot.docs) {
-          // print(doc.data());q
           list.add(Product.fromJson(doc.data()));
         }
-        // print('categoryId: $categoryId');
+        list = sortByRating(list);
         return list;
       } else {
         return list;
@@ -341,7 +400,7 @@ class ProductModel with ChangeNotifier {
     try {
       final query = FirebaseFirestore.instance
           .collection('reviews')
-          .where('product_id', isEqualTo: productId)
+          .where('product.sid', isEqualTo: productId)
           .orderBy('created_at');
       if (lastReviewSnap != null) {
         query.startAfterDocument(lastReviewSnap).limit(15);
@@ -358,7 +417,9 @@ class ProductModel with ChangeNotifier {
       }
 
       print(snapshot.docs.length);
-      lastReviewSnap = snapshot.docs.last;
+      if (snapshot.docs.isNotEmpty) {
+        lastReviewSnap = snapshot.docs.last;
+      }
 
       if (snapshot.docs.isNotEmpty) {
         for (final doc in snapshot.docs) {
@@ -369,6 +430,7 @@ class ProductModel with ChangeNotifier {
         return list;
       }
     } catch (err) {
+      throw (err);
       // return list;
 
       print(err);

@@ -47,10 +47,10 @@ class ReviewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    sanitizedText = review.text.replaceAll('\n', '');
+    sanitizedText = review.content.replaceAll('\n', '');
     if (isPreview && sanitizedText.length > 70) {
       sanitizedText =
-          review.text.replaceAll('\n', '').substring(1, 70) + ' ...';
+          review.content.replaceAll('\n', '').substring(1, 70) + ' ...';
     }
 
     return Container(

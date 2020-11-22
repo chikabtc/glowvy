@@ -36,7 +36,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
     // print('user:${userModel.user.toJson()}');
 
     _postButtonController = AnimationController(
-        duration: Duration(milliseconds: 3000), vsync: this);
+        duration: const Duration(milliseconds: 3000), vsync: this);
   }
 
   @override
@@ -50,11 +50,11 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
       throw 'select product';
     } else if (review.rating == 0) {
       throw 'select rating';
-    } else if (review.text == null) {
+    } else if (review.content == null) {
       throw 'content too show at least over 20 characters';
-    } else if (review.text.length < 20) {
+    } else if (review.content.length < 20) {
       throw 'content too show at least over 20 characters';
-    } else if (review.text.length > 5000) {
+    } else if (review.content.length > 5000) {
       throw 'content too long (up to 5000 chars';
     }
   }
@@ -65,7 +65,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
       validateInput();
 
       var reviewJson = {
-        'text': review.text,
+        'text': review.content,
         'user': {
           'uid': user.uid,
           'full_name': user.fullName,
@@ -81,7 +81,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
           'sid': review.product.sid,
         },
         'rating': review.rating,
-        // 'like_count': 0,
+        'like_count': 0,
         'created_at': DateTime.now().millisecondsSinceEpoch
       };
 
@@ -278,7 +278,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                 if (user.reviewDraft != null) {
                   review = user.reviewDraft;
                   print('user.reviewDraft ${user.reviewDraft.toJson()}');
-                  _reviewTextController.text = review.text;
+                  _reviewTextController.text = review.content;
 
                   //2. if product is chosen
                 } else if (review != Review() && user.reviewDraft != null) {
@@ -437,7 +437,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                             cursorColor: kPinkAccent,
                             onChanged: (value) {
                               review ??= Review();
-                              review.text = value;
+                              review.content = value;
                             },
                             style: textTheme.headline5
                                 .copyWith(color: kDefaultFontColor),

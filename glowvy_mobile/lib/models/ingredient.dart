@@ -6,13 +6,12 @@ part 'ingredient.g.dart';
 class Ingredient {
   int id;
   String nameEn;
-  String purposeVi;
+  List<String> purposes;
   int hazardScore;
 
   Ingredient(
     this.id,
     this.nameEn,
-    this.purposeVi,
     this.hazardScore,
   );
   factory Ingredient.fromJson(Map<String, dynamic> json) =>

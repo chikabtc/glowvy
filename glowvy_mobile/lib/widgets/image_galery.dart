@@ -11,7 +11,7 @@ class ImageGalery extends StatelessWidget {
   final List images;
   final int index;
 
-  ImageGalery({this.images, this.index});
+  const ImageGalery({this.images, this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class PicSwiper extends StatefulWidget {
   final int index;
   final List<PicSwiperItem> pics;
 
-  PicSwiper(this.index, this.pics);
+  const PicSwiper(this.index, this.pics);
 
   @override
   _PicSwiperState createState() => _PicSwiperState();
@@ -231,14 +231,14 @@ class MySwiperPlugin extends StatelessWidget {
   final int index;
   final StreamController<int> reBuild;
 
-  MySwiperPlugin(this.pics, this.index, this.reBuild);
+  const MySwiperPlugin(this.pics, this.index, this.reBuild);
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<int>(
       builder: (BuildContext context, data) {
         return DefaultTextStyle(
-          style: TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white),
           child: Container(
             height: 50.0,
             width: double.infinity,
@@ -258,7 +258,8 @@ class MySwiperPlugin extends StatelessWidget {
                     child: Text(pics[data.data].des ?? '',
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 16.0, color: Colors.white))),
+                        style: const TextStyle(
+                            fontSize: 16.0, color: Colors.white))),
                 Container(
                   width: 10.0,
                 ),

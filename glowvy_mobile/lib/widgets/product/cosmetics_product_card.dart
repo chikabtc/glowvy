@@ -144,18 +144,17 @@ class CosmeticsProductCard extends StatelessWidget {
                                 fontWeight: FontWeight.w600),
                           ),
                           const SizedBox(width: 5),
-                          if (product.purchaseCount != null)
-                            Container(
-                              child: Text(
-                                '(${product.purchaseCount})',
-                                textAlign: TextAlign.end,
-                                maxLines: 1,
-                                style: kBaseTextStyle.copyWith(
-                                    color: kSecondaryGrey.withOpacity(0.5),
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.normal),
-                              ),
+                          Container(
+                            child: Text(
+                              '(${product.reviewMetas.all.reviewCount})',
+                              textAlign: TextAlign.end,
+                              maxLines: 1,
+                              style: kBaseTextStyle.copyWith(
+                                  color: kSecondaryGrey.withOpacity(0.5),
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.normal),
                             ),
+                          ),
                           const Spacer(),
                           Text(
                             Tools.getPriceProduct(product, 'VND',

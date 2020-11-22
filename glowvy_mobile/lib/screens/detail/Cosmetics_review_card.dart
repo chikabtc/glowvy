@@ -31,7 +31,7 @@ class CosmeticsReviewCard extends StatelessWidget {
 
     review.images?.forEach((element) {
       var imgBtn = ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
           child: IconButton(
               iconSize: 150,
               icon: Image.network(
@@ -67,19 +67,19 @@ class CosmeticsReviewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    sanitizedText = review.text.replaceAll('\n', '');
-    kSanitizedText = review.stext.replaceAll('\n', '');
+    sanitizedText = review.content.replaceAll('\n', '');
+    kSanitizedText = review.scontent.replaceAll('\n', '');
     print(review.product.sid);
 
     if (isPreview && sanitizedText.length > 70) {
       sanitizedText =
-          review.text.replaceAll('\n', '').substring(1, 70) + ' ...';
+          review.content.replaceAll('\n', '').substring(1, 70) + ' ...';
     }
 
     return Container(
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(2.0)),
-      margin: EdgeInsets.only(bottom: 14.0),
+      margin: const EdgeInsets.only(bottom: 14.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -97,7 +97,8 @@ class CosmeticsReviewCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(review.user.displayName, style: textTheme.button2),
+                    Text(review.user.displayName ?? review.user.fullName,
+                        style: textTheme.button2),
                     Row(
                       children: <Widget>[
                         Text(review.user.age.toString(),

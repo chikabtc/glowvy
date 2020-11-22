@@ -1,18 +1,14 @@
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/user/user.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'reviewProduct.dart';
-import 'reviewUser.dart';
+
 part 'review.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Review {
   int id;
-  String text;
-  String stext;
-  // int userId;
-  int productId;
+  String content;
+  String scontent;
   int rating;
   List<String> images;
   User user;
@@ -23,10 +19,9 @@ class Review {
   Review({
     this.id,
     this.createdAt,
-    this.text,
-    this.stext,
+    this.content,
+    this.scontent,
     this.rating,
-    this.productId,
     this.user,
     // this.product,
     this.images,

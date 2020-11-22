@@ -13,19 +13,19 @@ import '../../common/styles.dart';
 import '../../common/widgets.dart';
 import '../../generated/i18n.dart';
 
-class CosmeticsReviewScreen extends StatefulWidget {
+class CosmeticsReviewPage extends StatefulWidget {
   final Product product;
   final List<Review> metaReviews;
   final Function onLoadMore;
 
-  CosmeticsReviewScreen(this.metaReviews, this.onLoadMore, this.product);
+  const CosmeticsReviewPage(this.metaReviews, this.onLoadMore, this.product);
 
   @override
   _StateReviews createState() => _StateReviews(metaReviews);
 }
 
-class _StateReviews extends State<CosmeticsReviewScreen>
-    with AutomaticKeepAliveClientMixin<CosmeticsReviewScreen> {
+class _StateReviews extends State<CosmeticsReviewPage>
+    with AutomaticKeepAliveClientMixin<CosmeticsReviewPage> {
   List<Review> reviews;
   bool showFiltered = false;
   List<Review> filteredReviews;
@@ -93,7 +93,7 @@ class _StateReviews extends State<CosmeticsReviewScreen>
                   child: Column(
                     children: <Widget>[
                       Container(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                             top: 19, bottom: 19, left: 16, right: 16),
                         color: Colors.white,
                         child: Row(
@@ -105,7 +105,7 @@ class _StateReviews extends State<CosmeticsReviewScreen>
                                       .copyWith(color: kSecondaryGrey)),
                               const Spacer(),
                               Container(
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Colors.white,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(5)),
@@ -116,7 +116,7 @@ class _StateReviews extends State<CosmeticsReviewScreen>
                                     color: kTertiaryGray,
                                     borderRadius: BorderRadius.circular(20),
                                   ),
-                                  padding: EdgeInsets.all(2),
+                                  padding: const EdgeInsets.all(2),
                                   child: ToggleButtons(
                                     fillColor: Colors.white,
                                     borderWidth: 0,
@@ -125,7 +125,7 @@ class _StateReviews extends State<CosmeticsReviewScreen>
                                     color: Colors.grey,
                                     borderRadius: BorderRadius.circular(20),
                                     children: <Widget>[
-                                      Padding(
+                                      const Padding(
                                         padding: EdgeInsets.only(
                                             left: 10,
                                             right: 6,
@@ -136,7 +136,7 @@ class _StateReviews extends State<CosmeticsReviewScreen>
                                           style: TextStyle(fontSize: 10),
                                         ),
                                       ),
-                                      Padding(
+                                      const Padding(
                                         padding: EdgeInsets.only(
                                             left: 6,
                                             right: 10,
@@ -187,13 +187,10 @@ class _StateReviews extends State<CosmeticsReviewScreen>
                       //     });
                       //   },
                       // ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 16.0),
-                        child: ReviewImages(widget.product),
-                      ),
+                      ReviewImages(widget.product),
                       Scrollbar(
                         child: Container(
-                          padding: EdgeInsets.only(left: 17, right: 17),
+                          padding: const EdgeInsets.only(left: 17, right: 17),
                           child: ListView.builder(
                               physics: const NeverScrollableScrollPhysics(),
                               scrollDirection: Axis.vertical,
@@ -204,8 +201,7 @@ class _StateReviews extends State<CosmeticsReviewScreen>
                               itemBuilder: (context, i) => CosmeticsReviewCard(
                                   context: context,
                                   isKorean: isKorean,
-                                  showDivider:
-                                      reviews.length - 1 == i ? false : true,
+                                  showDivider: reviews.length - 1 != i,
                                   review: showFiltered
                                       ? filteredReviews[i]
                                       : reviews[i])),

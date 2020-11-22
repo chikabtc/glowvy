@@ -11,7 +11,6 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
     id: json['id'] as int,
     hazardScore: json['hazard_score'] as int,
     thumbnail: json['thumbnail'] as String,
-    rating: json['rating'] as String,
     reviewMetas: json['review_metas'] == null
         ? null
         : ReviewMetas.fromJson(json['review_metas'] as Map<String, dynamic>),
@@ -69,7 +68,6 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'price': instance.price,
       'sprice': instance.sprice,
       'official_price': instance.officialPrice,
-      'rating': instance.rating,
       'sale_percent': instance.salePercent,
       'purchase_count': instance.purchaseCount,
       'volume': instance.volume,

@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
@@ -113,6 +115,7 @@ class CustomTextField extends StatefulWidget {
       this.obscureText = false,
       this.autoFocus});
   Function onTextChange;
+  String initialValue;
   bool obscureText;
   Function validator;
   bool isReadOnly;
@@ -187,5 +190,65 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ),
       ),
     );
+  }
+}
+
+/// Solid tab bar indicator.
+class SolidIndicator extends Decoration {
+  @override
+  BoxPainter createBoxPainter([VoidCallback onChanged]) {
+    return SolidIndicatorPainter(this, onChanged);
+  }
+}
+
+class SolidIndicatorPainter extends BoxPainter {
+  final SolidIndicator decoration;
+
+  SolidIndicatorPainter(this.decoration, VoidCallback onChanged)
+      : assert(decoration != null),
+        super(onChanged);
+
+  @override
+  void paint(Canvas canvas, Offset offset, ImageConfiguration configuration) {
+    assert(configuration != null);
+    assert(configuration.size != null);
+
+    final rect = offset & configuration.size;
+    final paint = Paint();
+    paint.color = kDarkAccent;
+    paint.style = PaintingStyle.fill;
+
+    canvas.drawRect(rect, paint);
+  }
+}
+
+class SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+  SliverAppBarDelegate({
+    @required this.minHeight,
+    @required this.maxHeight,
+    @required this.child,
+  });
+
+  final double minHeight;
+  final double maxHeight;
+  final Widget child;
+
+  @override
+  double get minExtent => minHeight;
+
+  @override
+  double get maxExtent => math.max(maxHeight, minHeight);
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return SizedBox.expand(child: child);
+  }
+
+  @override
+  bool shouldRebuild(SliverAppBarDelegate oldDelegate) {
+    return maxHeight != oldDelegate.maxHeight ||
+        minHeight != oldDelegate.minHeight ||
+        child != oldDelegate.child;
   }
 }

@@ -41,47 +41,50 @@ class IngredientCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // height: 100,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(2.0)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          //todo: assign the same profile pic
-          Container(
-            // height: 57,
-            child: Column(
-              children: <Widget>[
-                SvgPicture.asset('assets/icons/${getHazardIcon()}'),
-                const SizedBox(height: 14),
-              ],
+    if (ingredient.nameEn != null)
+      return Container(
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(2.0)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            //todo: assign the same profile pic
+            Container(
+              // height: 57,
+              child: Column(
+                children: <Widget>[
+                  SvgPicture.asset('assets/icons/${getHazardIcon()}'),
+                  const SizedBox(height: 14),
+                ],
+              ),
             ),
-          ),
-          const SizedBox(width: 20),
-          Flexible(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const SizedBox(height: 14),
-                Text(ingredient.nameEn,
-                    style:
-                        TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
-                const SizedBox(height: 3),
-                if (ingredient.purposeVi != null)
-                  Text(ingredient.purposeVi,
-                      style: TextStyle(
-                          color: kSecondaryGrey,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500)),
-                const SizedBox(height: 14),
-                if (showDivider) Divider(color: Colors.black.withOpacity(0.1)),
-              ],
+            const SizedBox(width: 20),
+            Flexible(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const SizedBox(height: 14),
+                  Text(ingredient.nameEn,
+                      style:
+                          TextStyle(fontSize: 12, fontWeight: FontWeight.w500)),
+                  const SizedBox(height: 3),
+                  if (ingredient.purposes != null)
+                    Text(ingredient.purposes.join(','),
+                        style: TextStyle(
+                            color: kSecondaryGrey,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500)),
+                  const SizedBox(height: 14),
+                  if (showDivider)
+                    Divider(color: Colors.black.withOpacity(0.1)),
+                ],
+              ),
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    else
+      return Container();
   }
 }

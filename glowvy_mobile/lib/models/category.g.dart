@@ -17,7 +17,7 @@ Category _$CategoryFromJson(Map<String, dynamic> json) {
             : SecondCategory.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     firstCategoryImage: json['first_category_image'] as String,
-    idFirstCategory: json['id_first_category'] as int,
+    firstCategoryId: json['first_category_id'] as int,
     firstIsNew: json['first_is_new'] as bool,
   );
 }
@@ -28,6 +28,6 @@ Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
       'first_category_name': instance.firstCategoryName,
       'second_categories': instance.secondCategories,
       'first_category_image': instance.firstCategoryImage,
-      'id_first_category': instance.idFirstCategory,
+      'first_category_id': instance.firstCategoryId,
       'first_is_new': instance.firstIsNew,
     };

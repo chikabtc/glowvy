@@ -182,16 +182,14 @@ class UserModel with ChangeNotifier {
 
   Future getUser() async {
     try {
+      print(isLoggedIn);
       if (isLoggedIn) {
         final query = _db.collection('users').doc(firebaseUser.uid);
         DocumentSnapshot doc;
-        doc = await query.get(const GetOptions(source: Source.cache));
-        print('user doc ${doc.data()}');
-        if (!doc.exists) {
-          print("user doesn't exist");
-          doc = await query.get(const GetOptions(source: Source.server));
-          print('No cached ingredients: fetching from server');
-        }
+        print("user doesn't exist");
+        doc = await query.get(const GetOptions(source: Source.server));
+        print('No cached ingredients: fetching from server');
+
         user = User.fromJson(doc.data());
       }
     } catch (e) {

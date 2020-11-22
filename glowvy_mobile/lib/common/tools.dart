@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:Dimodo/models/product/product.dart';
@@ -5,6 +6,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:path/path.dart' as p;
 import 'package:quiver/strings.dart';
@@ -62,6 +64,23 @@ class Tools {
     } else {
       return url;
     }
+  }
+
+  static Future sendSlackMessage(String messageText) async {
+    //Slack's Webhook URL
+    var url =
+        'https://hooks.slack.com/services/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';
+
+    //Makes request headers
+    Map<String, String> requestHeader = {
+      'Content-type': 'application/json',
+    };
+
+    var request = {
+      'text': messageText,
+    };
+
+    await http.post(url, body: json.encode(request), headers: requestHeader);
   }
 
   static NetworkImage networkImage(String url, [kSize size = kSize.medium]) {
@@ -158,15 +177,11 @@ class Tools {
     } catch (e) {
       return '0';
     }
-    // final price = onSale
-    //     ? product.salePrice.toString()
-    //     : product.officialPrice.toString();
   }
 
   static String getPriceProduct(Product product, String currency,
-      {bool onSale}) {
+      {bool onSale = false}) {
     final price = getPriceProductValue(product, currency, onSale: onSale);
-
     return getCurrecyFormatted(price, currency: currency);
   }
 

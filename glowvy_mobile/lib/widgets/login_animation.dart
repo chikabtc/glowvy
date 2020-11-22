@@ -32,12 +32,12 @@ class StaggerAnimation extends StatelessWidget {
           ),
         ),
         containerCircleAnimation = EdgeInsetsTween(
-          begin: EdgeInsets.only(bottom: 30.0),
-          end: EdgeInsets.only(bottom: 0.0),
+          begin: const EdgeInsets.only(bottom: 30.0),
+          end: const EdgeInsets.only(bottom: 0.0),
         ).animate(
           CurvedAnimation(
             parent: buttonController,
-            curve: Interval(
+            curve: const Interval(
               0.500,
               0.800,
               curve: Curves.ease,
@@ -61,7 +61,8 @@ class StaggerAnimation extends StatelessWidget {
           width: width ?? kScreenSizeWidth,
           height: height,
           alignment: FractionalOffset.center,
-          decoration: kButton.copyWith(borderRadius: BorderRadius.circular(12)),
+          decoration: kButton.copyWith(
+              borderRadius: BorderRadius.circular(12), color: btnColor),
           child: buttonSqueezeanimation.value > 75.0
               ? Text(
                   buttonTitle,

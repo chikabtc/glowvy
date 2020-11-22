@@ -35,11 +35,11 @@ class RankingByCategoryState extends State<RankingByCategory>
     thirdCategory = widget.thirdCategory;
     if (widget.secondCategory.thirdCategories.isEmpty) {
       getProductsByCategoryId = productModel.getProductsByCategoryId(
-          categoryId: widget.secondCategory.secondCategoryId,
-          categoryField: 'second_category_id');
+          widget.secondCategory.secondCategoryId,
+          isSecondCate: true);
     } else {
-      getProductsByCategoryId = productModel.getProductsByCategoryId(
-          categoryId: thirdCategory.thirdCategoryId);
+      getProductsByCategoryId =
+          productModel.getProductsByCategoryId(thirdCategory.thirdCategoryId);
     }
   }
 
@@ -67,7 +67,7 @@ class RankingByCategoryState extends State<RankingByCategory>
                           thirdCategory = cate;
                           getProductsByCategoryId =
                               productModel.getProductsByCategoryId(
-                            categoryId: cate.thirdCategoryId,
+                            cate.thirdCategoryId,
                           );
                         });
                       },

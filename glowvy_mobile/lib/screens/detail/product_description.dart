@@ -21,7 +21,7 @@ class _ProductDescriptionState extends State<ProductDescription>
     with AutomaticKeepAliveClientMixin<ProductDescription> {
   @override
   bool get wantKeepAlive => true;
-  bool isKorean = false;
+
   List<bool> isSelected;
 
   @override
@@ -77,9 +77,7 @@ class _ProductDescriptionState extends State<ProductDescription>
     // if \n has more than 4, replace them with null string
     String formattedDescription;
     if (widget.product.description != null) {
-      formattedDescription = isKorean
-          ? widget.product.sdescription.replaceAll('\n\n\n\n\n\n', '')
-          : widget.product.description.replaceAll('\n\n\n\n\n\n', '');
+      widget.product.description.replaceAll('\n\n\n\n\n\n', '');
     }
 
     return Container(
@@ -149,7 +147,6 @@ class _ProductDescriptionState extends State<ProductDescription>
                             setState(() {
                               for (var i = 0; i < isSelected.length; i++) {
                                 isSelected[i] = i == index;
-                                isKorean = i != 0;
                               }
                             });
                           },

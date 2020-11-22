@@ -3,9 +3,9 @@ import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/models/user/userModel.dart';
+import 'package:Dimodo/screens/inquiry_page.dart';
 import 'package:Dimodo/widgets/webview.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mailer/flutter_mailer.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
@@ -48,7 +48,7 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
             color: kQuaternaryBlue,
             child: Scrollbar(
               child: ListView(
-                padding: EdgeInsets.only(bottom: 30),
+                padding: const EdgeInsets.only(bottom: 30),
                 children: <Widget>[
                   Stack(
                     alignment: Alignment.bottomCenter,
@@ -66,14 +66,14 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                                         'https://parker893633.typeform.com/to/RgVtWWyZ',
                                     title: 'Glowvy Survey ⭐️'))),
                         child: Padding(
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                               top: 20, left: 20.0, right: 20, bottom: 30),
                           child: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
                                 color: kSecondaryBlue),
-                            padding: EdgeInsets.only(
+                            padding: const EdgeInsets.only(
                                 left: 16, right: 30, top: 14, bottom: 14),
                             child: Row(
                               children: <Widget>[
@@ -123,7 +123,7 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                       Container(
                         color: Colors.white,
                         child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
                           child: Column(
                             children: <Widget>[
                               const SizedBox(height: 15),
@@ -152,7 +152,7 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                                                   'https://glowvy.nolt.io/newest',
                                             ))),
                                 child: Container(
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       borderRadius:
                                           BorderRadius.all(Radius.circular(16)),
                                       color: kPrimaryBlue),
@@ -192,8 +192,8 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                                 children: <Widget>[
                                   const SizedBox(height: 10),
                                   Padding(
-                                    padding:
-                                        EdgeInsets.only(left: 48, right: 48),
+                                    padding: const EdgeInsets.only(
+                                        left: 48, right: 48),
                                     child: Text(
                                       'Có vấn đề với ứng dụng? Hãy gửi mail cho nhà phát triển! Glowvy team sẽ phản hồi nhanh nhất có thể.',
                                       textAlign: TextAlign.center,
@@ -206,17 +206,14 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                                   ),
                                   const SizedBox(height: 22),
                                   GestureDetector(
-                                    onTap: () async => await FlutterMailer.send(
-                                        MailOptions(
-                                            body: '',
-                                            subject:
-                                                'Làm thế nào chúng tôi có thể cải thiện ứng dụng cho bạn?',
-                                            recipients: [
-                                          'hbpfreeman@gmail.com'
-                                        ])),
+                                    onTap: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                InquiryPage())),
                                     child: Padding(
-                                      padding:
-                                          EdgeInsets.only(left: 48, right: 48),
+                                      padding: const EdgeInsets.only(
+                                          left: 48, right: 48),
                                       child: Container(
                                           height: 48,
                                           alignment: Alignment.center,

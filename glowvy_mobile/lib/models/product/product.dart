@@ -26,7 +26,7 @@ class Product {
   int price;
   double sprice;
   double officialPrice;
-  String rating;
+
   int salePercent;
   int purchaseCount;
   String volume;
@@ -41,7 +41,6 @@ class Product {
     this.id,
     this.hazardScore,
     this.thumbnail,
-    this.rating,
     this.reviewMetas,
     this.name,
     this.volume,

@@ -46,10 +46,7 @@ class _SearchScreenState extends State<SearchScreen> {
     super.initState();
     productModel = Provider.of<ProductModel>(context, listen: false);
     categoryModel = Provider.of<CategoryModel>(context, listen: false);
-    categories
-      ..add(categoryModel.categories[0])
-      ..add(categoryModel.categories[6])
-      ..add(categoryModel.categories[8]);
+    categories = categoryModel.categories;
     currentFirstCategory = categories[0];
   }
 

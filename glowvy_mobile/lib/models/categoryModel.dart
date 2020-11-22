@@ -13,15 +13,19 @@ class CategoryModel with ChangeNotifier {
       const provincePath = 'lib/common/categories.json';
       final provinceJsonString = await rootBundle.loadString(provincePath);
       final addressJson = convert.jsonDecode(provinceJsonString);
-      var localCates = <Category>[];
+      // var localCates = <Category>[];
 
-      for (final cate in addressJson) {
-        final category = Category.fromJson(cate);
-        // category.subCategories = cates;
+      // for (final cate in addressJson) {
+      //   final category = Category.fromJson(cate);
+      //   // category.subCategories = cates;
 
-        localCates.add(category);
-      }
-      categories = localCates;
+      //   localCates.add(category);
+      // }
+      categories
+        ..add(Category.fromJson(addressJson[0]))
+        ..add(Category.fromJson(addressJson[6]))
+        ..add(Category.fromJson(addressJson[7]))
+        ..add(Category.fromJson(addressJson[8]));
 
       notifyListeners();
     } catch (err) {
