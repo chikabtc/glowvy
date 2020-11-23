@@ -148,6 +148,12 @@
       "active-icon": "assets/icons/home-active.svg",
       "icon": "assets/icons/home-inactive.svg"
     },
+    {
+      "layout": "search",
+      "name": "search",
+      "active-icon": "assets/icons/search.svg",
+      "icon": "assets/icons/search.svg"
+    },
 
     {
       "layout": "profile",

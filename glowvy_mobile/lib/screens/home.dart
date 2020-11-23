@@ -144,8 +144,8 @@ class HomeScreenState extends State<HomeScreen>
                     title: SvgPicture.asset('assets/icons/logo.svg'),
                     actions: <Widget>[
                       IconButton(
-                        icon: Image.asset(
-                          'assets/icons/search/search.png',
+                        icon: SvgPicture.asset(
+                          'assets/icons/search.svg',
                           fit: BoxFit.cover,
                           height: 24,
                         ),
@@ -158,7 +158,7 @@ class HomeScreenState extends State<HomeScreen>
                       ),
                     ],
                     bottom: PreferredSize(
-                      preferredSize: const Size.fromHeight(40),
+                      preferredSize: const Size.fromHeight(80),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: <Widget>[

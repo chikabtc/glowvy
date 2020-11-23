@@ -3,6 +3,7 @@ import 'package:Dimodo/common/sizeConfig.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/category.dart';
 import 'package:Dimodo/screens/profile.dart';
+import 'package:Dimodo/screens/search_screen.dart';
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -39,6 +40,8 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
     switch (data['layout']) {
       case 'category':
         return CategoryScreen();
+      case 'search':
+        return SearchScreen();
       case 'profile':
         return ProfilePage();
       case 'dynamic':
