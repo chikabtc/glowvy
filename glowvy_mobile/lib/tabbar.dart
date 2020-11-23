@@ -137,7 +137,8 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
               padding: EdgeInsets.only(top: 11, bottom: 4),
               child: SvgPicture.asset(
                 currentPage == index ? item['active-icon'] : item['icon'],
-                // color:  ? Colors.black : kDarkSecondary,
+                color:
+                    currentPage == index ? kDefaultFontColor : kSecondaryGrey,
                 width: 24 * kSizeConfig.containerMultiplier,
                 height: 24 * kSizeConfig.containerMultiplier,
               ),

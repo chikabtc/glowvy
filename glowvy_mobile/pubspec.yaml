@@ -23,6 +23,9 @@ dependencies:
     sdk: flutter
   http: ^0.12.2
   flutter_rating_bar: ^3.0.1+1
+  implicitly_animated_reorderable_list: ^0.2.5
+  material_floating_search_bar: ^0.2.3
+  sliding_sheet: ^0.3.7
   intl: ^0.16.1
   firebase_analytics: ^5.0.14
   firebase_performance: ^0.4.0

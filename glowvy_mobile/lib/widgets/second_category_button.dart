@@ -59,6 +59,7 @@ class _SecondCategoryButtonState extends State<SecondCategoryButton> {
             ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: widget.category.thirdCategories.length,
                 itemBuilder: (context, index) => Container(
                       padding: const EdgeInsets.all(16),
