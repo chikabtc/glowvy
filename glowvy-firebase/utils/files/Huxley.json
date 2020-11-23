@@ -1,0 +1,3347 @@
+[
+    {
+        "name": "",
+        "sname": "바디 오일 모로칸 가드너",
+        "id": 263,
+        "sid": 98222,
+        "volume": "100ml",
+        "sprice": 45000,
+        "official_price": 967500,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_98222.jpg",
+        "description": "",
+        "sdescription": "산뜻한 텍스처의 오일이 피부를 매끄럽고 윤기 있게 가꿔주며 싱그러운 향기를 더해주는 바디 오일\r\n\r\n- 선인장 시드 오일이 가볍게 흡수되어 촉촉한 보습막을 형성\r\n- 저장력 오일 & 블렌드 기법으로 사용 후, 번들거리거나 끈적이지 않음\r\n- 이국적인 정원의 향기가 가득한 아로마 블렌딩의 헉슬리 시그니처 향",
+        "category": {
+            "first_category_id": 10,
+            "first_category_name": "chăm sóc da toàn thân",
+            "first_category_en_name": "bath & body",
+            "second_category_id": 50,
+            "second_category_name": "dầu/sáp dưỡng thể",
+            "second_category_en_name": "body oil/balm",
+            "third_category_id": 156,
+            "third_category_name": "dầu dưỡng thể",
+            "third_category_en_name": "body oil"
+        },
+        "ingredients": [
+            {
+                "purpose_ko": "향료, 피부컨디셔닝제, 수분증발차단제",
+                "purpose_en": "",
+                "name_en": "Prunus Amygdalus Dulcis (Sweet Almond) Oil",
+                "id": 271,
+                "hazard_score": 1,
+                "purpose_vi": "Hương thơm, chất điều hòa da, chất chặn bay hơi ẩm",
+                "name_vi": ""
+            },
+            {
+                "purpose_en": "",
+                "id": 61,
+                "hazard_score": 1,
+                "purpose_ko": "결합제, 착향제, 피부컨디셔닝제(유연제)",
+                "name_vi": "",
+                "name_en": "Isopropyl Myristate",
+                "purpose_vi": "Chất kết dính, chất tạo hương, chất điều hòa da (chất làm mềm)"
+            },
+            {
+                "purpose_vi": "Chất kết dính, hương thơm, làm mềm da",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "결합제, 향료, 피부유연화제",
+                "name_en": "Isopropyl Palmitate",
+                "id": 922,
+                "purpose_en": ""
+            },
+            {
+                "name_en": "Diisopropyl Adipate",
+                "purpose_ko": "향료, 가소제, 피부유연화제, 용제",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "id": 4021,
+            "sname": "헉슬리 (Huxley)",
+            "name": "Huxley",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "làm ẩm",
+            "cung cấp độ ẩm",
+            "tỏa sáng"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "클렌징 오일 딥 클린 딥 모이스트",
+        "id": 263,
+        "sid": 109355,
+        "volume": "200ml",
+        "sprice": 48000,
+        "official_price": 1032000,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_109355.jpg",
+        "description": "",
+        "sdescription": "선인장 시드 오일이 순하게 메이크업 및 노폐물을 녹여주고 촉촉하고 가벼운 텍스처로 산뜻한 세정이 가능한 클렌징 오일\r\n\r\n- 베이스 & 포인트 메이크업을 한 번에 간편한 올인원 클렌저\r\n- 모공을 막지 않는 산뜻한 클렌징 오일\r\n- 식물성 오일 보습막으로 세안 후에도 촉촉하게",
+        "category": {
+            "first_category_id": 7,
+            "first_category_name": "làm sạch",
+            "first_category_en_name": "cleansing",
+            "second_category_id": 33,
+            "second_category_name": "tẩy trang",
+            "second_category_en_name": "makeup remover",
+            "third_category_id": 118,
+            "third_category_name": "dầu tẩy trang",
+            "third_category_en_name": "cleansing oil"
+        },
+        "ingredients": [
+            {
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 922,
+                "purpose_vi": "Chất kết dính, hương thơm, làm mềm da",
+                "name_en": "Isopropyl Palmitate",
+                "purpose_ko": "결합제, 향료, 피부유연화제"
+            },
+            {
+                "purpose_vi": "Hương thơm, chất dưỡng tóc, chất chống bay hơi",
+                "id": 514,
+                "purpose_en": "",
+                "hazard_score": 1,
+                "name_vi": "",
+                "name_en": "Triethylhexanoin",
+                "purpose_ko": "향료, 모발컨디셔닝제, 수분증발차단제"
+            },
+            {
+                "hazard_score": 2,
+                "name_en": "PEG-20 Glyceryl Triisostearate",
+                "purpose_ko": "피부유연화제, 계면활성제-유화제"
+            },
+            {
+                "id": 111,
+                "purpose_vi": "Làm mềm da",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_en": "Isodecyl Isononanoate",
+                "purpose_ko": "피부유연화제"
+            },
+            {
+                "hazard_score": 1,
+                "id": 46,
+                "purpose_en": "",
+                "purpose_vi": "Chất làm mềm da, chất làm đặc không hòa tan",
+                "name_vi": "",
+                "purpose_ko": "피부유연화제, 점증제-비수용성",
+                "name_en": "Hydrogenated Polyisobutene"
+            },
+            {
+                "purpose_ko": "피부컨디셔닝제(수분차단제), 점도증가제(비수성)",
+                "name_en": "Triisostearin",
+                "id": 1224,
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_vi": "Chất điều hòa da (hàng rào độ ẩm), chất làm tăng độ nhớt (không phải nước)",
+                "hazard_score": 1
+            },
+            {
+                "name_en": "PEG-8 Glyceryl Isostearate",
+                "purpose_ko": "계면활성제-유화제",
+                "hazard_score": 2
+            }
+        ],
+        "brand": {
+            "sname": "헉슬리 (Huxley)",
+            "name": "Huxley",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg",
+            "id": 4021
+        },
+        "hazard_score": 3,
+        "tags": [
+            "làm ẩm",
+            "không gây dị ứng"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "오일에센스 에센스라이크 오일라이크",
+        "id": 263,
+        "sid": 55649,
+        "volume": "30ml",
+        "sprice": 43000,
+        "official_price": 924500,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_55649.jpg",
+        "description": "",
+        "sdescription": "오일과 에센스 최적의 밸런스로 선인장 씨드 오일이 함유되어 피부에 에너지와 활력을 공급하는 오일에센스\r\n\r\n- 오일과 에센스 최적의 배합으로 개발된 신제형 오일에센스\r\n- 오일처럼 부드럽게 발리지만 오일보다 빠른 피부 흡수와 산뜻함 부여\r\n- 하루 종일 생기 있는 피부 유지",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 12,
+            "third_category_name": "tinh chất dưỡng ẩm",
+            "third_category_en_name": "moisturizing essence"
+        },
+        "ingredients": [
+            {
+                "id": 542,
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "name_vi": "",
+                "purpose_en": "",
+                "name_en": "Opuntia Ficus-Indica Stem Extract",
+                "hazard_score": 1,
+                "purpose_vi": "Chất điều hòa da (khác)"
+            },
+            {
+                "name_en": "Butylene Glycol",
+                "hazard_score": 1,
+                "id": 35,
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_ko": "향료, 피부컨디셔닝제, 용제, 점도감소제",
+                "purpose_vi": "Hương thơm, chất điều hòa da, dung môi, chất làm giảm độ nhớt"
+            },
+            {
+                "purpose_en": "",
+                "name_en": "Glycerin",
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "id": 66,
+                "hazard_score": 1,
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "name_vi": ""
+            },
+            {
+                "id": 543,
+                "name_en": "Methyl Gluceth-20",
+                "purpose_en": "",
+                "purpose_vi": "Chất điều hòa da (kem dưỡng ẩm)",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "피부컨디셔닝제(보습제)"
+            },
+            {
+                "id": 447,
+                "purpose_en": "",
+                "name_vi": "",
+                "name_en": "Alcohol",
+                "purpose_vi": "Chất chống tạo bọt, chất làm se, hương liệu, dung môi, chất làm giảm độ nhớt",
+                "purpose_ko": "기포방지제, 수렴제, 향료, 용제, 점도감소제",
+                "hazard_score": 1
+            },
+            {
+                "id": 1,
+                "name_en": "Water;Aqua",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "name_vi": "",
+                "purpose_vi": "Chất dưỡng da, dung môi"
+            },
+            {
+                "name_vi": "",
+                "purpose_ko": "기포방지제, 피부보호제, 피부컨디셔닝제(수분차단제)",
+                "purpose_vi": "Chất chống tạo bọt, chất bảo vệ da, chất dưỡng da (chất chống ẩm)",
+                "name_en": "Dimethicone",
+                "id": 41,
+                "purpose_en": "",
+                "hazard_score": 2
+            },
+            {
+                "purpose_en": "",
+                "name_en": "1,2-Hexanediol",
+                "purpose_ko": "용제",
+                "hazard_score": 1,
+                "name_vi": "",
+                "id": 7,
+                "purpose_vi": "dung môi"
+            },
+            {
+                "name_en": "Opuntia Ficus-Indica Seed Oil",
+                "purpose_ko": "피부컨디셔닝제(유연제)",
+                "hazard_score": 0
+            }
+        ],
+        "brand": {
+            "name": "Huxley",
+            "id": 4021,
+            "sname": "헉슬리 (Huxley)",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "độ ẩm cao",
+            "làm ẩm",
+            "dưỡng chất",
+            "làm mềm da",
+            "độ đàn hồi của da",
+            "sức sống cho da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "오일 라이트 앤 모어",
+        "id": 263,
+        "sid": 55645,
+        "volume": "30ml",
+        "sprice": 48000,
+        "official_price": 1032000,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_55645.jpg",
+        "description": "",
+        "sdescription": "가벼우면서도 풍부한 보습력의 선인장 씨드 오일이 함유되어 피부에 빠르게 스며들어 각종 스트레스로부터 피부를 보호하고 강화시켜주는 페이셜 오일\r\n\r\n- 오일리하게 피부에 겉돌지 않는 가벼운 오일\r\n- 가볍고 흡수가 빨라 모든 피부 타입에 사용 가능\r\n- 건조한 피부에 풍부한 보습 제공",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 6,
+            "second_category_name": "dầu dưỡng da",
+            "second_category_en_name": "facial oil",
+            "third_category_id": null,
+            "third_category_name": null,
+            "third_category_en_name": null
+        },
+        "ingredients": [
+            {
+                "id": 110,
+                "purpose_vi": "Chất thơm và chất ngăn chặn hơi nước",
+                "purpose_ko": "향료, 수분증발차단제",
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_en": "",
+                "name_en": "Caprylic/Capric Triglyceride"
+            },
+            {
+                "id": 6,
+                "purpose_en": "",
+                "hazard_score": 1,
+                "purpose_vi": "Chất điều hòa da (làm mềm)",
+                "name_en": "Dicaprylyl Carbonate",
+                "name_vi": "",
+                "purpose_ko": "피부컨디셔닝제(유연제)"
+            },
+            {
+                "name_en": "Helianthus Annuus (Sunflower) Seed Oil",
+                "purpose_en": "",
+                "purpose_vi": "Chất dưỡng da, chất chống bay hơi",
+                "hazard_score": 1,
+                "name_vi": "",
+                "id": 52,
+                "purpose_ko": "피부컨디셔닝제, 수분증발차단제"
+            },
+            {
+                "id": 93,
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_ko": "모발컨디셔닝제, 수분증발차단제",
+                "hazard_score": 1,
+                "name_en": "Squalane",
+                "purpose_vi": "Chất dưỡng tóc, chất chống bay hơi"
+            },
+            {
+                "name_en": "Opuntia Ficus-Indica Seed Oil",
+                "purpose_ko": "피부컨디셔닝제(유연제)",
+                "hazard_score": 0
+            },
+            {
+                "hazard_score": 1,
+                "purpose_ko": "모발컨디셔닝제, 수분증발차단제",
+                "id": 525,
+                "name_en": "Simmondsia Chinensis (Jojoba) Seed Oil",
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_vi": "Chất dưỡng tóc, chất chống bay hơi"
+            },
+            {
+                "name_en": "Crambe Abyssinica Seed Oil",
+                "purpose_ko": "모발컨디셔닝제, 수분증발차단제",
+                "hazard_score": 1
+            },
+            {
+                "purpose_ko": "산화방지제, 피부컨디셔닝제",
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 2,
+                "purpose_vi": "Chất chống oxy hóa, chất điều hòa da",
+                "id": 106,
+                "name_en": "Tocopheryl Acetate"
+            },
+            {
+                "purpose_ko": "착향제",
+                "name_en": "Fragrance;Perfume;Parfum",
+                "hazard_score": 3
+            }
+        ],
+        "brand": {
+            "sname": "헉슬리 (Huxley)",
+            "name": "Huxley",
+            "id": 4021,
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "độ ẩm cao",
+            "làm ẩm",
+            "dưỡng chất",
+            "tỏa sáng",
+            "cải thiện nếp nhăn",
+            "làm mềm da",
+            "độ đàn hồi của da",
+            "sức sống cho da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "핸드 크림 모로칸 가드너",
+        "id": 263,
+        "sid": 87143,
+        "volume": "30ml",
+        "sprice": 15000,
+        "official_price": 322500,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_87143.jpg",
+        "description": "",
+        "sdescription": "* 본 제품은 리뉴얼된 제품입니다. \r\n\r\n사막과 대비되는 풍부한 신록이 가득한 모로코의 정원을 연상시키는 헉슬리 시그니처 향 핸드 크림",
+        "category": {
+            "first_category_id": 10,
+            "first_category_name": "chăm sóc da toàn thân",
+            "first_category_en_name": "bath & body",
+            "second_category_id": 55,
+            "second_category_name": "chăm sóc da tay",
+            "second_category_en_name": "hand care",
+            "third_category_id": 165,
+            "third_category_name": "kem dưỡng da tay",
+            "third_category_en_name": "hand cream"
+        },
+        "ingredients": [
+            {
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "hazard_score": 1,
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "name_vi": "",
+                "id": 1,
+                "name_en": "Water;Aqua",
+                "purpose_en": ""
+            },
+            {
+                "purpose_vi": "",
+                "purpose_en": "",
+                "hazard_score": 0,
+                "id": 1625,
+                "name_vi": "",
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "name_en": "Opuntia Ficus-Indica Extract;Cereus Grandiflorus (Cactus) Extract"
+            },
+            {
+                "id": 66,
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "purpose_en": "",
+                "name_vi": "",
+                "name_en": "Glycerin",
+                "hazard_score": 1
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "Chất điều hòa da (loại khác), chất điều hòa da (rào cản độ ẩm), chất làm tăng độ nhớt (không phải nước)",
+                "name_vi": "",
+                "hazard_score": 1,
+                "name_en": "Butyrospermum Parkii (Shea) Butter",
+                "purpose_ko": "피부컨디셔닝제(기타), 피부컨디셔닝제(수분차단제), 점도증가제(비수성)",
+                "id": 150
+            },
+            {
+                "hazard_score": 1,
+                "name_en": "Caprylic/Capric Triglyceride",
+                "id": 110,
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_ko": "향료, 수분증발차단제",
+                "purpose_vi": "Chất thơm và chất ngăn chặn hơi nước"
+            },
+            {
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_vi": "Chất ổn định chất nhũ hóa, chất làm mờ, chất tạo bọt bề mặt, chất làm đặc tan trong nước, chất làm đặc không tan trong nước",
+                "id": 97,
+                "name_vi": "",
+                "name_en": "Cetearyl Alcohol",
+                "purpose_ko": "유화안정제, 불투명화제, 계면활성제-거품형성제, 점증제-수용성, 점증제-비수용성"
+            },
+            {
+                "purpose_vi": "Chất thơm và chất ngăn chặn hơi nước",
+                "name_vi": "",
+                "name_en": "Olea Europaea (Olive) Fruit Oil",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "id": 269,
+                "purpose_ko": "향료, 수분증발차단제"
+            },
+            {
+                "purpose_vi": "Chất ngăn chặn bay hơi ẩm",
+                "name_vi": "",
+                "name_en": "Cetearyl Olivate",
+                "purpose_en": "",
+                "purpose_ko": "수분증발차단제",
+                "hazard_score": 1,
+                "id": 91
+            },
+            {
+                "name_en": "Sorbitan Olivate",
+                "id": 99,
+                "purpose_en": "",
+                "purpose_ko": "계면활성제-유화제",
+                "purpose_vi": "Chất hoạt động bề mặt",
+                "hazard_score": 1,
+                "name_vi": ""
+            },
+            {
+                "purpose_vi": "Chất ngăn chặn bay hơi ẩm, chất làm đặc không hòa tan",
+                "name_vi": "",
+                "id": 219,
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_ko": "수분증발차단제, 점증제-비수용성",
+                "name_en": "Hydrogenated Vegetable Oil"
+            },
+            {
+                "purpose_ko": "기포방지제",
+                "purpose_vi": "Chất chống tạo bọt",
+                "id": 759,
+                "purpose_en": "",
+                "name_en": "Simethicone",
+                "hazard_score": 1,
+                "name_vi": ""
+            },
+            {
+                "name_en": "Acrylates/C10-30 Alkyl Acrylate Crosspolymer",
+                "purpose_vi": "Chất ổn định chất nhũ hóa, chất làm đặc tan trong nước, chất làm đặc không tan trong nước",
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_ko": "유화안정제, 점증제-수용성, 점증제-비수용성",
+                "id": 245,
+                "hazard_score": 1
+            },
+            {
+                "purpose_en": "",
+                "id": 28,
+                "name_en": "Dipropylene Glycol",
+                "purpose_ko": "착향제, 용제, 점도감소제",
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_vi": "Chất tạo mùi, dung môi, chất làm giảm độ nhớt"
+            },
+            {
+                "name_vi": "",
+                "purpose_vi": "Hương liệu, chất điều chỉnh pH",
+                "purpose_ko": "향료, pH 조절제",
+                "id": 247,
+                "name_en": "Tromethamine",
+                "purpose_en": "",
+                "hazard_score": 1
+            },
+            {
+                "hazard_score": 1,
+                "name_en": "Hydroxyacetophenone",
+                "name_vi": "",
+                "purpose_vi": "Chống oxy hóa",
+                "purpose_ko": "산화방지제",
+                "purpose_en": "",
+                "id": 322
+            },
+            {
+                "purpose_vi": "Chất ổn định nhũ hóa, chất làm mờ, chất lơ lửng-không phải chất hoạt động bề mặt, chất làm đặc tan trong nước",
+                "id": 243,
+                "name_en": "Hydroxyethyl Acrylate/Sodium Acryloyldimethyl Taurate Copolymer",
+                "purpose_ko": "유화안정제, 불투명화제, 현탁화제-비계면활성제, 점증제-수용성",
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_en": ""
+            },
+            {
+                "name_en": "Caprylyl Glycol",
+                "hazard_score": 1,
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제",
+                "id": 81,
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da",
+                "purpose_en": "",
+                "name_vi": ""
+            },
+            {
+                "purpose_en": "",
+                "name_en": "1,2-Hexanediol",
+                "hazard_score": 1,
+                "id": 7,
+                "name_vi": "",
+                "purpose_vi": "dung môi",
+                "purpose_ko": "용제"
+            },
+            {
+                "name_vi": "",
+                "name_en": "Ethylhexylglycerin",
+                "hazard_score": 1,
+                "id": 24,
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제",
+                "purpose_vi": "Đại lý dưỡng da"
+            },
+            {
+                "purpose_vi": "Chất hoạt động bề mặt",
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_ko": "계면활성제-유화제",
+                "name_en": "Sorbitan Isostearate",
+                "hazard_score": 1,
+                "id": 80
+            },
+            {
+                "name_en": "Polysorbate 60",
+                "name_vi": "",
+                "hazard_score": 2,
+                "purpose_vi": "Hương thơm, chất nhũ hóa-chất nhũ hóa, chất hòa tan chất hoạt động bề mặt",
+                "purpose_ko": "향료, 계면활성제-유화제, 계면활성제-용해보조제",
+                "id": 100,
+                "purpose_en": ""
+            },
+            {
+                "purpose_en": "",
+                "name_en": "Dipotassium Glycyrrhizate",
+                "purpose_ko": "감미제, 피부컨디셔닝제",
+                "name_vi": "",
+                "id": 157,
+                "hazard_score": 1,
+                "purpose_vi": "Chất làm ngọt, chất dưỡng da"
+            },
+            {
+                "name_en": "Mangifera Indica (Mango) Seed Butter",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_ko": "수분증발차단제",
+                "id": 983,
+                "purpose_vi": "Chất ngăn chặn bay hơi ẩm"
+            },
+            {
+                "name_en": "Opuntia Ficus-Indica Seed Oil",
+                "purpose_ko": "피부컨디셔닝제(유연제)",
+                "hazard_score": 0
+            },
+            {
+                "purpose_vi": "Hương thơm, chất dưỡng tóc, chất dưỡng da, chất làm bay hơi ẩm",
+                "name_vi": "",
+                "id": 258,
+                "hazard_score": 1,
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제, 수분증발차단제",
+                "purpose_en": "",
+                "name_en": "Cocos Nucifera (Coconut) Oil"
+            },
+            {
+                "name_en": "Disodium EDTA",
+                "hazard_score": 1,
+                "purpose_vi": "Chặn ion kim loại",
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_ko": "금속이온봉쇄제",
+                "id": 109
+            },
+            {
+                "purpose_ko": "착향제",
+                "name_en": "Fragrance;Perfume;Parfum",
+                "hazard_score": 3
+            }
+        ],
+        "brand": {
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg",
+            "id": 4021,
+            "sname": "헉슬리 (Huxley)",
+            "name": "Huxley"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "làm ẩm",
+            "cải thiện nếp nhăn",
+            null
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "마스크 오일 앤 익스트랙트",
+        "id": 263,
+        "sid": 92310,
+        "volume": "25ml*3",
+        "sprice": 27000,
+        "official_price": 580500,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_92310.jpg",
+        "description": "",
+        "sdescription": "선인장 시드 오일과 선인장 수가 만나 시너지 효과를 느낄 수 있는 보습 마스크\r\n\r\n- 선인장 추출물과 선인장 시드 오일이 만난 최적의 제형\r\n- 항산화 & 보습의 시너지 효과\r\n- 먼지 입자를 흡착하는 효과를 지닌 마이크로 어웨이™시트가 미세먼지가 피부 속으로 침투하는 것을 차단\r\n\r\n* 성분 정보는 1제 기준으로 등록되었습니다.",
+        "category": {
+            "first_category_id": 8,
+            "first_category_name": "mặt nạ",
+            "first_category_en_name": "mask&pack",
+            "second_category_id": 37,
+            "second_category_name": "mặt nạ giấy",
+            "second_category_en_name": "sheet mask",
+            "third_category_id": 128,
+            "third_category_name": "mặt nạ dưỡng ẩm",
+            "third_category_en_name": "moisturizing mask"
+        },
+        "ingredients": [
+            {
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "id": 542,
+                "name_vi": "",
+                "name_en": "Opuntia Ficus-Indica Stem Extract",
+                "purpose_vi": "Chất điều hòa da (khác)"
+            },
+            {
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "hazard_score": 1,
+                "name_vi": "",
+                "name_en": "Water;Aqua",
+                "id": 1,
+                "purpose_en": "",
+                "purpose_vi": "Chất dưỡng da, dung môi"
+            },
+            {
+                "id": 329,
+                "name_en": "Methylpropanediol",
+                "purpose_vi": "dung môi",
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_ko": "용제",
+                "hazard_score": 1
+            },
+            {
+                "name_en": "Glycerin",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "purpose_en": "",
+                "id": 66,
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt"
+            },
+            {
+                "id": 7,
+                "purpose_en": "",
+                "hazard_score": 1,
+                "name_en": "1,2-Hexanediol",
+                "purpose_ko": "용제",
+                "name_vi": "",
+                "purpose_vi": "dung môi"
+            },
+            {
+                "purpose_vi": "Kem dưỡng ẩm cho da, chất làm giảm độ nhớt",
+                "id": 555,
+                "purpose_ko": "피부보습제, 점도감소제",
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 1,
+                "name_en": "Glycereth-26"
+            },
+            {
+                "hazard_score": 1,
+                "purpose_ko": "향료, 피부컨디셔닝제, 용제, 점도감소제",
+                "purpose_en": "",
+                "id": 35,
+                "name_en": "Butylene Glycol",
+                "purpose_vi": "Hương thơm, chất điều hòa da, dung môi, chất làm giảm độ nhớt",
+                "name_vi": ""
+            },
+            {
+                "name_en": "Coptis Japonica Extract",
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "hazard_score": 0
+            }
+        ],
+        "brand": {
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg",
+            "sname": "헉슬리 (Huxley)",
+            "name": "Huxley",
+            "id": 4021
+        },
+        "hazard_score": 3,
+        "tags": [
+            "làm ẩm",
+            "cung cấp độ ẩm",
+            "sức sống cho da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "에센스 그랩 워터",
+        "id": 263,
+        "sid": 73989,
+        "volume": "30ml",
+        "sprice": 43000,
+        "official_price": 924500,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_73989.jpg",
+        "description": "",
+        "sdescription": "선인장 시드 오일이 더해져 한층 더 촉촉하게 피부에 즉각적인 수분을 전달하는 워터 타입의 에센스\r\n\r\n- 오래도록 수분을 꽉 잡아주는 수분 에센스\r\n- 선인장 시드 오일 함유로 라이트한 사용감과 수분 공급\r\n- 페퍼민트 성분 함유로 천연 쿨링 효과",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 11,
+            "third_category_name": "tinh chất cấp nước",
+            "third_category_en_name": "hydrating essence"
+        },
+        "ingredients": [
+            {
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 542,
+                "purpose_vi": "Chất điều hòa da (khác)",
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "name_en": "Opuntia Ficus-Indica Stem Extract",
+                "purpose_en": ""
+            },
+            {
+                "purpose_en": "",
+                "purpose_ko": "향료, 피부컨디셔닝제, 용제, 점도감소제",
+                "id": 35,
+                "purpose_vi": "Hương thơm, chất điều hòa da, dung môi, chất làm giảm độ nhớt",
+                "name_en": "Butylene Glycol",
+                "name_vi": "",
+                "hazard_score": 1
+            },
+            {
+                "purpose_ko": "기포방지제, 수렴제, 향료, 용제, 점도감소제",
+                "name_en": "Alcohol",
+                "purpose_vi": "Chất chống tạo bọt, chất làm se, hương liệu, dung môi, chất làm giảm độ nhớt",
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 447,
+                "purpose_en": ""
+            },
+            {
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "purpose_en": "",
+                "id": 66,
+                "hazard_score": 1,
+                "name_en": "Glycerin",
+                "name_vi": "",
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt"
+            },
+            {
+                "id": 7,
+                "purpose_en": "",
+                "name_vi": "",
+                "name_en": "1,2-Hexanediol",
+                "purpose_vi": "dung môi",
+                "hazard_score": 1,
+                "purpose_ko": "용제"
+            },
+            {
+                "purpose_ko": "피부컨디셔닝제(유연제)",
+                "hazard_score": 0,
+                "name_en": "Opuntia Ficus-Indica Seed Oil"
+            },
+            {
+                "hazard_score": 1,
+                "id": 27,
+                "purpose_vi": "Đại lý dưỡng da",
+                "purpose_en": "",
+                "name_en": "Betula Alba Juice;Betula Platyphylla Japonica Juice",
+                "purpose_ko": "피부컨디셔닝제",
+                "name_vi": ""
+            },
+            {
+                "name_en": "Phyllostachis Bambusoides Juice",
+                "purpose_ko": "피부컨디셔닝제",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "name": "Huxley",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg",
+            "id": 4021,
+            "sname": "헉슬리 (Huxley)"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "cung cấp độ ẩm"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "클렌징 폼 딥 클린 딥 모이스트",
+        "id": 263,
+        "sid": 109211,
+        "volume": "100g",
+        "sprice": 25000,
+        "official_price": 537500,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_109211.jpg",
+        "description": "",
+        "sdescription": "선인장 추출물이 함유되어 있어 촉촉하며 부드럽고 쫀쫀한 거품이 모공에 끼인 노폐물과 메이크업을 깨끗하게 제거해주는 클렌징 폼\r\n\r\n- 민감성 피부도 사용가능한 저자극 자연 유래 성분\r\n- 블루컬러 성분을 사용해 효과적인 피부 진정 및 수분 공급\r\n- 쫀쫀한 극세 거품 입자로 모공까지 완벽 세정",
+        "category": {
+            "first_category_id": 7,
+            "first_category_name": "làm sạch",
+            "first_category_en_name": "cleansing",
+            "second_category_id": 32,
+            "second_category_name": "rửa mặt",
+            "second_category_en_name": "facial cleanser",
+            "third_category_id": 112,
+            "third_category_name": "sữa rửa mặt tạo bọt",
+            "third_category_en_name": "cleansing foam"
+        },
+        "ingredients": [],
+        "brand": {
+            "sname": "헉슬리 (Huxley)",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg",
+            "id": 4021,
+            "name": "Huxley"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "làm sạch sâu",
+            "cung cấp độ ẩm",
+            "không gây dị ứng",
+            "làm mềm da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "커버 쿠션 오운 애티튜드 [SPF23/PA++]",
+        "id": 263,
+        "sid": 120846,
+        "volume": "12g",
+        "sprice": 45000,
+        "official_price": 967500,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_120846.jpg",
+        "description": "",
+        "sdescription": "피부 본연의 자연스러움을 가리지 않으면서 얇고 가볍게 밀착되어 피부 결점을 섬세하고 촘촘하게 보정해주는 커버 쿠션\r\n\r\n- 덧발라도 뭉침 없이 부드럽게 발리며 첫 피부표현 그대로 산뜻하고 얇은 메이크업\r\n- 다공성 구상 파우더가 피부 유분량을 조절하여 땀과 먼지에 쉽게 지워지지 않고 오랜 시간 유지\r\n- 선인장 씨드 오일의 산뜻하고 높은 수분력으로 피부 속은 촉촉하게 마무리는 보송하게 완성\r\n\r\n* 성분 정보는 02 샌드 기준으로 등록되었습니다.",
+        "category": {
+            "first_category_id": 2,
+            "first_category_name": "trang điểm mặt",
+            "first_category_en_name": "face makeup",
+            "second_category_id": 7,
+            "second_category_name": "kem nền",
+            "second_category_en_name": "foundation",
+            "third_category_id": 31,
+            "third_category_name": "kem nền dạng cushion",
+            "third_category_en_name": "cusion foundation"
+        },
+        "ingredients": [
+            {
+                "name_en": "Opuntia Ficus-Indica Stem Extract",
+                "hazard_score": 1,
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "name_vi": "",
+                "purpose_en": "",
+                "id": 542,
+                "purpose_vi": "Chất điều hòa da (khác)"
+            },
+            {
+                "name_vi": "",
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "id": 1,
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_en": "Water;Aqua"
+            },
+            {
+                "id": 4,
+                "purpose_vi": "Chất tạo màu, chất làm mờ, kem chống nắng",
+                "name_en": "Titanium Dioxide",
+                "hazard_score": 2,
+                "purpose_ko": "착색제, 불투명화제, 자외선차단제",
+                "purpose_en": "",
+                "name_vi": ""
+            },
+            {
+                "id": 161,
+                "name_en": "Cyclopentasiloxane",
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제, 용제",
+                "name_vi": "",
+                "hazard_score": 2,
+                "purpose_en": "",
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da, dung môi"
+            },
+            {
+                "id": 160,
+                "hazard_score": 2,
+                "purpose_vi": "Kem chống nắng, ức chế đổi màu",
+                "purpose_en": "",
+                "name_en": "Ethylhexyl Methoxycinnamate",
+                "purpose_ko": "자외선차단제, 변색방지제",
+                "name_vi": ""
+            },
+            {
+                "name_vi": "",
+                "id": 28,
+                "purpose_vi": "Chất tạo mùi, dung môi, chất làm giảm độ nhớt",
+                "purpose_en": "",
+                "purpose_ko": "착향제, 용제, 점도감소제",
+                "hazard_score": 1,
+                "name_en": "Dipropylene Glycol"
+            },
+            {
+                "name_vi": "",
+                "name_en": "Cyclohexasiloxane",
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제, 용제",
+                "purpose_en": "",
+                "id": 162,
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da, dung môi",
+                "hazard_score": 1
+            },
+            {
+                "purpose_vi": "Hương thơm, kem chống nắng, chất ức chế đổi màu",
+                "name_vi": "",
+                "purpose_ko": "향료, 자외선차단제, 변색방지제",
+                "id": 87,
+                "purpose_en": "",
+                "name_en": "Ethylhexyl Salicylate",
+                "hazard_score": 2
+            },
+            {
+                "purpose_en": "",
+                "name_en": "Butylene Glycol Dicaprylate/Dicaprate",
+                "purpose_vi": "Chất điều hòa da (chặn ẩm)",
+                "purpose_ko": "피부컨디셔닝제(수분차단제)",
+                "name_vi": "",
+                "id": 218,
+                "hazard_score": 1
+            },
+            {
+                "hazard_score": 0,
+                "purpose_ko": "계면활성제(유화제)",
+                "name_en": "Lauryl PEG-10 Tris(Trimethylsiloxy)silylethyl Dimethicone"
+            },
+            {
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": "",
+                "name_en": "Diphenylsiloxy Phenyl Trimethicone",
+                "purpose_ko": "기포방지제, 헤어컨디셔닝제, 피부컨디셔닝제(기타)",
+                "purpose_vi": "Chất chống tạo bọt, chất dưỡng tóc, chất dưỡng da (loại khác)",
+                "id": 604
+            },
+            {
+                "name_en": "Tridecyl Trimellitate",
+                "name_vi": "",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "purpose_ko": "피부컨디셔닝제(수분차단제)",
+                "purpose_vi": "Chất điều hòa da (chặn ẩm)",
+                "id": 44
+            },
+            {
+                "id": 355,
+                "purpose_vi": "Chất điều hòa da (chặn ẩm)",
+                "purpose_ko": "피부컨디셔닝제(수분차단제)",
+                "name_vi": "",
+                "name_en": "Caprylyl Methicone",
+                "purpose_en": "",
+                "hazard_score": 1
+            },
+            {
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_ko": "용제",
+                "id": 7,
+                "purpose_vi": "dung môi",
+                "hazard_score": 1,
+                "name_en": "1,2-Hexanediol"
+            },
+            {
+                "id": 361,
+                "purpose_ko": "피막형성제, 점증제-비수용성",
+                "name_en": "Methyl Methacrylate Crosspolymer",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_vi": "Chất tạo màng, chất làm đặc không hòa tan",
+                "name_vi": ""
+            },
+            {
+                "hazard_score": 0,
+                "purpose_ko": "착색제",
+                "name_en": "Iron Oxide Yellow;Hydrated Ferric Oxide;CI 77492"
+            },
+            {
+                "hazard_score": 1,
+                "id": 12,
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_vi": "Đại lý dưỡng da",
+                "name_en": "Centella Asiatica Extract;Centella Extract",
+                "purpose_ko": "피부컨디셔닝제"
+            },
+            {
+                "name_en": "Anthemis Nobilis Flower Extract; Chamomilla Recutita (Matricaria) Flower Extract",
+                "purpose_vi": "Chất tạo mùi, chất điều hòa da (loại khác), chất làm dịu da (rào cản độ ẩm)",
+                "name_vi": "",
+                "purpose_ko": "착향제, 피부컨디셔닝제(기타), 피부컨디셔닝제(수분차단제)",
+                "id": 296,
+                "hazard_score": 1,
+                "purpose_en": ""
+            },
+            {
+                "purpose_ko": "피부컨디셔닝제(유연제)",
+                "name_en": "Opuntia Ficus-Indica Seed Oil",
+                "hazard_score": 0
+            },
+            {
+                "name_en": "Balanites roxburghii seed oil",
+                "purpose_ko": "피부컨디셔닝제(수분차단제)",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "id": 4021,
+            "sname": "헉슬리 (Huxley)",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg",
+            "name": "Huxley"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "Độ chính xác",
+            "cung cấp độ ẩm",
+            null,
+            "dưỡng chất",
+            "sửa tông da",
+            "kiểm soát bã nhờn"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "클레이 마스크 밸런스 블렌드",
+        "id": 263,
+        "sid": 136654,
+        "volume": "120g",
+        "sprice": 28000,
+        "official_price": 602000,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_136654.jpg",
+        "description": "",
+        "sdescription": "모로코 가슬 클레이가 모공 속 노폐물, 각질을 부드럽게 흡착하여 피부를 깨끗하고 매끄럽게 정돈해주는 클레이 마스크",
+        "category": {
+            "first_category_id": 8,
+            "first_category_name": "mặt nạ",
+            "first_category_en_name": "mask&pack",
+            "second_category_id": 38,
+            "second_category_name": "mặt nạ",
+            "second_category_en_name": "face mask",
+            "third_category_id": 134,
+            "third_category_name": "mặt nạ rửa",
+            "third_category_en_name": "wash-off mask"
+        },
+        "ingredients": [
+            {
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "name_en": "Water;Aqua",
+                "id": 1,
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "purpose_en": ""
+            },
+            {
+                "name_en": "Silt",
+                "purpose_ko": "흡수제, 수렴제, 피부보습제",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "name": "Huxley",
+            "id": 4021,
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg",
+            "sname": "헉슬리 (Huxley)"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "làm ẩm",
+            "cung cấp độ ẩm",
+            "không gây dị ứng",
+            "làm mềm da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "크림 프레시 앤 모어",
+        "id": 263,
+        "sid": 73991,
+        "volume": "50ml",
+        "sprice": 35000,
+        "official_price": 752500,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_73991.jpg",
+        "description": "",
+        "sdescription": "산뜻한 젤 타입의 포뮬라가 피부에 수분보호막을 씌워 건조한 환경에서도 하루 종일 촉촉한 피부로 가꾸어 주는 수분 크림\r\n\r\n- 매끈한 수분보호막을 형성하는 산뜻한 젤 타입의 수분크림\r\n- 선인장 시드 오일의 보습력으로 오래도록 수분 유지\r\n- 끈적임 없이 산뜻하고 촉촉",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 4,
+            "second_category_name": "kem dưỡng",
+            "second_category_en_name": "cream",
+            "third_category_id": 18,
+            "third_category_name": "kem dưỡng cấp nước",
+            "third_category_en_name": "hydrating cream"
+        },
+        "ingredients": [
+            {
+                "name_en": "Opuntia Ficus-Indica Stem Extract",
+                "id": 542,
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "purpose_vi": "Chất điều hòa da (khác)"
+            },
+            {
+                "purpose_vi": "Hương thơm, chất điều hòa da, dung môi, chất làm giảm độ nhớt",
+                "name_vi": "",
+                "purpose_en": "",
+                "name_en": "Butylene Glycol",
+                "id": 35,
+                "purpose_ko": "향료, 피부컨디셔닝제, 용제, 점도감소제",
+                "hazard_score": 1
+            },
+            {
+                "purpose_ko": "기포방지제, 피부보호제, 피부컨디셔닝제(수분차단제)",
+                "purpose_en": "",
+                "hazard_score": 2,
+                "id": 41,
+                "purpose_vi": "Chất chống tạo bọt, chất bảo vệ da, chất dưỡng da (chất chống ẩm)",
+                "name_en": "Dimethicone",
+                "name_vi": ""
+            },
+            {
+                "hazard_score": 2,
+                "name_vi": "",
+                "name_en": "Cyclopentasiloxane",
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da, dung môi",
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제, 용제",
+                "purpose_en": "",
+                "id": 161
+            },
+            {
+                "name_en": "Water;Aqua",
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "id": 1,
+                "purpose_vi": "Chất dưỡng da, dung môi"
+            },
+            {
+                "name_vi": "",
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "id": 66,
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "name_en": "Glycerin",
+                "hazard_score": 1,
+                "purpose_en": ""
+            },
+            {
+                "purpose_vi": "Kem dưỡng ẩm cho da, chất làm giảm độ nhớt",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_en": "Glycereth-26",
+                "purpose_ko": "피부보습제, 점도감소제",
+                "id": 555,
+                "name_vi": ""
+            },
+            {
+                "purpose_en": "",
+                "name_vi": "",
+                "name_en": "Cyclohexasiloxane",
+                "id": 162,
+                "hazard_score": 1,
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제, 용제",
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da, dung môi"
+            },
+            {
+                "id": 1027,
+                "purpose_en": "",
+                "name_en": "Trisiloxane",
+                "purpose_vi": "Chất chống tạo bọt, chất điều hòa da (loại khác)",
+                "purpose_ko": "기포방지제, 피부컨디셔닝제(기타)",
+                "name_vi": "",
+                "hazard_score": 1
+            },
+            {
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_vi": "dung môi",
+                "purpose_en": "",
+                "name_en": "1,2-Hexanediol",
+                "id": 7,
+                "purpose_ko": "용제"
+            },
+            {
+                "purpose_en": "",
+                "name_vi": "",
+                "name_en": "Cetyl Ethylhexanoate",
+                "purpose_ko": "피부유연화제",
+                "hazard_score": 1,
+                "id": 8,
+                "purpose_vi": "Làm mềm da"
+            },
+            {
+                "name_en": "Opuntia Ficus-Indica Seed Oil",
+                "purpose_ko": "피부컨디셔닝제(유연제)",
+                "hazard_score": 0
+            },
+            {
+                "purpose_en": "",
+                "hazard_score": 1,
+                "purpose_vi": "Dầu dưỡng tóc, chất bôi ngoài da",
+                "name_en": "Ceramide NP",
+                "purpose_ko": "모발조정제, 피부교질화제",
+                "id": 67,
+                "name_vi": ""
+            },
+            {
+                "purpose_ko": "피부컨디셔닝제",
+                "hazard_score": 1,
+                "name_en": "Phyllostachis Bambusoides Juice"
+            },
+            {
+                "id": 27,
+                "purpose_ko": "피부컨디셔닝제",
+                "name_vi": "",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "name_en": "Betula Alba Juice;Betula Platyphylla Japonica Juice",
+                "purpose_vi": "Đại lý dưỡng da"
+            },
+            {
+                "hazard_score": 1,
+                "name_en": "Portulaca Oleracea Extract",
+                "name_vi": "",
+                "purpose_vi": "Kem dưỡng ẩm cho da",
+                "id": 255,
+                "purpose_en": "",
+                "purpose_ko": "피부보습제"
+            },
+            {
+                "name_en": "Acorus Gramineus Root/Stem Extract",
+                "purpose_ko": "모발컨디셔닝제, 축모교정제, 피부컨디셔닝제",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "id": 4021,
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg",
+            "sname": "헉슬리 (Huxley)",
+            "name": "Huxley"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "cung cấp độ ẩm",
+            "dạng gel"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "모이스트 쿠션 오운 애티튜드 [SPF24/PA++]",
+        "id": 263,
+        "sid": 106302,
+        "volume": "12g",
+        "sprice": 45000,
+        "official_price": 967500,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_106302.jpg",
+        "description": "",
+        "sdescription": "얇고 가볍게 밀착되어 효과적으로 피부를 보정해주는 모이스트 쿠션\r\n\r\n- 스킨 피팅 폴리머가 얇은 보호막을 형성해 피부 속은 촉촉하게 겉은 끈적임 없는 매끈한 메이크업 완성\r\n- 선인장 씨드 오일과 선인장수를 적용한 수분 강화 텍스처가 피부에 닿는 순간 수분공급&진정 효과를 한번에\r\n- 독자적인 기술력 실리콘 겔 네크워크 시스템으로 피부에 고르게 밀착되어 피부 결점 완벽 보완\r\n\r\n* 성분 정보는 02 샌드 기준으로 등록되었습니다.",
+        "category": {
+            "first_category_id": 2,
+            "first_category_name": "trang điểm mặt",
+            "first_category_en_name": "face makeup",
+            "second_category_id": 7,
+            "second_category_name": "kem nền",
+            "second_category_en_name": "foundation",
+            "third_category_id": 31,
+            "third_category_name": "kem nền dạng cushion",
+            "third_category_en_name": "cusion foundation"
+        },
+        "ingredients": [
+            {
+                "hazard_score": 1,
+                "id": 542,
+                "name_en": "Opuntia Ficus-Indica Stem Extract",
+                "purpose_vi": "Chất điều hòa da (khác)",
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제(기타)"
+            },
+            {
+                "purpose_en": "",
+                "hazard_score": 1,
+                "name_en": "Water;Aqua",
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "id": 1,
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "name_vi": ""
+            },
+            {
+                "id": 4,
+                "name_en": "Titanium Dioxide",
+                "name_vi": "",
+                "hazard_score": 2,
+                "purpose_ko": "착색제, 불투명화제, 자외선차단제",
+                "purpose_en": "",
+                "purpose_vi": "Chất tạo màu, chất làm mờ, kem chống nắng"
+            },
+            {
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da, dung môi",
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제, 용제",
+                "hazard_score": 2,
+                "name_en": "Cyclopentasiloxane",
+                "id": 161
+            },
+            {
+                "hazard_score": 2,
+                "id": 160,
+                "name_en": "Ethylhexyl Methoxycinnamate",
+                "purpose_en": "",
+                "purpose_vi": "Kem chống nắng, ức chế đổi màu",
+                "name_vi": "",
+                "purpose_ko": "자외선차단제, 변색방지제"
+            },
+            {
+                "purpose_vi": "Chất chống tạo bọt, chất dưỡng tóc, chất dưỡng da (loại khác)",
+                "id": 604,
+                "purpose_en": "",
+                "name_en": "Diphenylsiloxy Phenyl Trimethicone",
+                "hazard_score": 1,
+                "purpose_ko": "기포방지제, 헤어컨디셔닝제, 피부컨디셔닝제(기타)",
+                "name_vi": ""
+            },
+            {
+                "purpose_vi": "Chất tạo mùi, dung môi, chất làm giảm độ nhớt",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "id": 28,
+                "name_vi": "",
+                "name_en": "Dipropylene Glycol",
+                "purpose_ko": "착향제, 용제, 점도감소제"
+            },
+            {
+                "purpose_vi": "Hương thơm, kem chống nắng, chất ức chế đổi màu",
+                "name_en": "Ethylhexyl Salicylate",
+                "purpose_ko": "향료, 자외선차단제, 변색방지제",
+                "id": 87,
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 2
+            },
+            {
+                "purpose_en": "",
+                "name_en": "Cyclohexasiloxane",
+                "id": 162,
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da, dung môi",
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제, 용제"
+            },
+            {
+                "name_vi": "",
+                "purpose_ko": "피부컨디셔닝제(수분차단제)",
+                "id": 218,
+                "purpose_vi": "Chất điều hòa da (chặn ẩm)",
+                "purpose_en": "",
+                "name_en": "Butylene Glycol Dicaprylate/Dicaprate",
+                "hazard_score": 1
+            },
+            {
+                "name_en": "Lauryl PEG-10 Tris(Trimethylsiloxy)silylethyl Dimethicone",
+                "purpose_ko": "계면활성제(유화제)",
+                "hazard_score": 0
+            },
+            {
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_vi": "Chất dưỡng tóc, chất dưỡng da, dung môi",
+                "name_en": "Methyl Trimethicone",
+                "id": 206,
+                "purpose_ko": "모발컨디셔닝제, 피부컨디셔닝제, 용제",
+                "purpose_en": ""
+            },
+            {
+                "purpose_vi": "Chất chống tạo bọt, chất bảo vệ da, chất dưỡng da (chất chống ẩm)",
+                "hazard_score": 2,
+                "purpose_en": "",
+                "name_vi": "",
+                "name_en": "Dimethicone",
+                "purpose_ko": "기포방지제, 피부보호제, 피부컨디셔닝제(수분차단제)",
+                "id": 41
+            },
+            {
+                "name_en": "1,2-Hexanediol",
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 7,
+                "purpose_vi": "dung môi",
+                "purpose_ko": "용제"
+            },
+            {
+                "hazard_score": 1,
+                "name_en": "Mica;CI 77019",
+                "purpose_ko": "착색제, 불투명화제"
+            },
+            {
+                "name_en": "Centella Asiatica Extract;Centella Extract",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": "",
+                "id": 12,
+                "purpose_vi": "Đại lý dưỡng da",
+                "purpose_ko": "피부컨디셔닝제"
+            },
+            {
+                "id": 296,
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_vi": "Chất tạo mùi, chất điều hòa da (loại khác), chất làm dịu da (rào cản độ ẩm)",
+                "purpose_ko": "착향제, 피부컨디셔닝제(기타), 피부컨디셔닝제(수분차단제)",
+                "name_en": "Anthemis Nobilis Flower Extract; Chamomilla Recutita (Matricaria) Flower Extract",
+                "hazard_score": 1
+            },
+            {
+                "name_en": "Opuntia Ficus-Indica Seed Oil",
+                "purpose_ko": "피부컨디셔닝제(유연제)",
+                "hazard_score": 0
+            },
+            {
+                "hazard_score": 1,
+                "purpose_ko": "피부컨디셔닝제(수분차단제)",
+                "name_en": "Balanites roxburghii seed oil"
+            },
+            {
+                "name_en": "PEG-10 Dimethicone",
+                "name_vi": "",
+                "purpose_vi": "Đại lý dưỡng tóc, đại lý dưỡng da",
+                "purpose_ko": "모발컨디셔닝제, 피부컨디셔닝제",
+                "purpose_en": "",
+                "id": 349,
+                "hazard_score": 2
+            },
+            {
+                "purpose_en": "",
+                "purpose_ko": "현탁화제-비계면활성제",
+                "name_vi": "",
+                "id": 10,
+                "name_en": "Disteardimonium Hectorite",
+                "purpose_vi": "Chất huyền phù không phải chất hoạt động bề mặt",
+                "hazard_score": 1
+            },
+            {
+                "purpose_en": "",
+                "purpose_ko": "벌킹제",
+                "purpose_vi": "Chất độn",
+                "name_vi": "",
+                "name_en": "Magnesium Sulfate",
+                "id": 9,
+                "hazard_score": 1
+            },
+            {
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_vi": "Gia vị, dung môi",
+                "id": 356,
+                "name_en": "Isododecane",
+                "purpose_ko": "향료, 용제"
+            },
+            {
+                "name_vi": "",
+                "purpose_vi": "Chất tạo màng, chất làm đặc không hòa tan",
+                "purpose_en": "",
+                "id": 361,
+                "hazard_score": 1,
+                "name_en": "Methyl Methacrylate Crosspolymer",
+                "purpose_ko": "피막형성제, 점증제-비수용성"
+            },
+            {
+                "purpose_en": "",
+                "id": 17,
+                "purpose_vi": "Hương liệu, Surfactant-Cleanser, Surfactant-Emulsifier",
+                "name_en": "Stearic Acid",
+                "name_vi": "",
+                "purpose_ko": "향료, 계면활성제-세정제, 계면활성제-유화제",
+                "hazard_score": 1
+            },
+            {
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_en": "Alumina",
+                "id": 166,
+                "purpose_vi": "Chà, thấm, chống đóng bánh, bulking, chất làm mờ",
+                "name_vi": "",
+                "purpose_ko": "스크럽제, 흡수제, 안티케이킹제, 벌킹제, 불투명화제"
+            },
+            {
+                "name_en": "Acrylates/Polytrimethylsiloxymethacrylate Copolymer",
+                "purpose_ko": "피막형성제, 모발고정제, 피부컨디셔닝제",
+                "hazard_score": 0
+            }
+        ],
+        "brand": {
+            "id": 4021,
+            "sname": "헉슬리 (Huxley)",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg",
+            "name": "Huxley"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "Độ chính xác",
+            "cung cấp độ ẩm",
+            null,
+            "bảo vệ khỏi tia UV",
+            "làm dịu"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "톤업 크림 스테이 선 세이프 [SPF50+/PA+++]",
+        "id": 263,
+        "sid": 93347,
+        "volume": "35ml",
+        "sprice": 28000,
+        "official_price": 602000,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_93347.jpg",
+        "description": "",
+        "sdescription": "보습, 자외선 차단, 미백, 톤 보정까지 가능한 톤업 크림\r\n\r\n- 크림 속 캡슐이 터지며 베이지톤으로 톤보정\r\n- 자연스러운 톤업으로 모든 피부타입, 남성까지 사용 가능\r\n- 촉촉한 보습감과 부드러운 발림성",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 4,
+            "second_category_name": "kem dưỡng",
+            "second_category_en_name": "cream",
+            "third_category_id": 20,
+            "third_category_name": "kem nâng tông",
+            "third_category_en_name": "tone-up cream"
+        },
+        "ingredients": [
+            {
+                "name_vi": "",
+                "hazard_score": 1,
+                "name_en": "Water;Aqua",
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "id": 1
+            },
+            {
+                "id": 542,
+                "purpose_en": "",
+                "hazard_score": 1,
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "purpose_vi": "Chất điều hòa da (khác)",
+                "name_vi": "",
+                "name_en": "Opuntia Ficus-Indica Stem Extract"
+            },
+            {
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da, dung môi",
+                "hazard_score": 2,
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제, 용제",
+                "id": 161,
+                "purpose_en": "",
+                "name_en": "Cyclopentasiloxane",
+                "name_vi": ""
+            },
+            {
+                "hazard_score": 2,
+                "purpose_en": "",
+                "name_vi": "",
+                "name_en": "Ethylhexyl Methoxycinnamate",
+                "id": 160,
+                "purpose_ko": "자외선차단제, 변색방지제",
+                "purpose_vi": "Kem chống nắng, ức chế đổi màu"
+            },
+            {
+                "name_en": "Titanium Dioxide",
+                "name_vi": "",
+                "purpose_en": "",
+                "hazard_score": 2,
+                "purpose_ko": "착색제, 불투명화제, 자외선차단제",
+                "purpose_vi": "Chất tạo màu, chất làm mờ, kem chống nắng",
+                "id": 4
+            },
+            {
+                "purpose_en": "",
+                "hazard_score": 2,
+                "purpose_ko": "벌킹제, 착색제, 피부보호제, 자외선차단제",
+                "id": 3,
+                "purpose_vi": "Đại lý Bulking, chất tạo màu, chất bảo vệ da, chất chống nắng",
+                "name_en": "Zinc Oxide",
+                "name_vi": ""
+            },
+            {
+                "purpose_vi": "Hương thơm, kem chống nắng, chất ức chế đổi màu",
+                "id": 87,
+                "name_vi": "",
+                "purpose_ko": "향료, 자외선차단제, 변색방지제",
+                "hazard_score": 2,
+                "name_en": "Ethylhexyl Salicylate",
+                "purpose_en": ""
+            },
+            {
+                "name_vi": "",
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "name_en": "Glycerin",
+                "id": 66,
+                "hazard_score": 1,
+                "purpose_en": ""
+            },
+            {
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_ko": "모발컨디셔닝제, 피부컨디셔닝제",
+                "id": 349,
+                "name_en": "PEG-10 Dimethicone",
+                "purpose_vi": "Đại lý dưỡng tóc, đại lý dưỡng da",
+                "hazard_score": 2
+            },
+            {
+                "purpose_vi": "Chất tạo mùi, dung môi, chất làm giảm độ nhớt",
+                "name_en": "Dipropylene Glycol",
+                "purpose_ko": "착향제, 용제, 점도감소제",
+                "hazard_score": 1,
+                "id": 28,
+                "purpose_en": "",
+                "name_vi": ""
+            },
+            {
+                "purpose_ko": "모발컨디셔닝제, 피부컨디셔닝제",
+                "hazard_score": 1,
+                "id": 149,
+                "name_vi": "",
+                "name_en": "Niacinamide",
+                "purpose_en": "",
+                "purpose_vi": "Đại lý dưỡng tóc, đại lý dưỡng da"
+            },
+            {
+                "purpose_en": "",
+                "name_en": "Dicaprylyl Carbonate",
+                "id": 6,
+                "purpose_vi": "Chất điều hòa da (làm mềm)",
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_ko": "피부컨디셔닝제(유연제)"
+            },
+            {
+                "name_vi": "",
+                "purpose_ko": "피부컨디셔닝제(수분차단제)",
+                "purpose_vi": "Chất điều hòa da (chặn ẩm)",
+                "hazard_score": 1,
+                "name_en": "Caprylyl Methicone",
+                "id": 355,
+                "purpose_en": ""
+            },
+            {
+                "hazard_score": 2,
+                "purpose_vi": "Chất chống tạo bọt, chất bảo vệ da, chất dưỡng da (chất chống ẩm)",
+                "name_en": "Dimethicone",
+                "purpose_ko": "기포방지제, 피부보호제, 피부컨디셔닝제(수분차단제)",
+                "purpose_en": "",
+                "name_vi": "",
+                "id": 41
+            },
+            {
+                "hazard_score": 1,
+                "purpose_ko": "미끄럼개선제",
+                "name_en": "Boron Nitride"
+            },
+            {
+                "purpose_vi": "Chất điều hòa da (làm mềm)",
+                "purpose_ko": "피부컨디셔닝제(유연제)",
+                "id": 1342,
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": "",
+                "name_en": "Isotridecyl Isononanoate"
+            },
+            {
+                "name_en": "Curcuma Longa (Turmeric) Root Extract",
+                "purpose_vi": "Gia vị",
+                "name_vi": "",
+                "purpose_ko": "향료",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "id": 340
+            },
+            {
+                "id": 29,
+                "purpose_en": "",
+                "name_en": "Echium Plantagineum Seed Oil",
+                "hazard_score": 1,
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "name_vi": "",
+                "purpose_ko": "피부컨디셔닝제, 용제"
+            },
+            {
+                "hazard_score": 1,
+                "purpose_vi": "Kem dưỡng ẩm cho da",
+                "name_en": "Portulaca Oleracea Extract",
+                "purpose_ko": "피부보습제",
+                "id": 255,
+                "purpose_en": "",
+                "name_vi": ""
+            },
+            {
+                "hazard_score": 1,
+                "id": 12,
+                "purpose_en": "",
+                "purpose_vi": "Đại lý dưỡng da",
+                "name_vi": "",
+                "purpose_ko": "피부컨디셔닝제",
+                "name_en": "Centella Asiatica Extract;Centella Extract"
+            },
+            {
+                "purpose_ko": "",
+                "name_en": "Houttuynia Cordata Extract",
+                "purpose_vi": "",
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 13,
+                "purpose_en": ""
+            },
+            {
+                "name_en": "Cardiospermum Halicacabum Flower/Leaf/Vine Extract",
+                "purpose_vi": "Đại lý dưỡng da",
+                "id": 36,
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "피부컨디셔닝제"
+            },
+            {
+                "name_en": "Helianthus Annuus (Sunflower) Seed Oil Unsaponifiables",
+                "hazard_score": 0,
+                "id": 1549,
+                "purpose_vi": "",
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_ko": "모발컨디셔닝제, 피부컨디셔닝제"
+            },
+            {
+                "name_en": "Opuntia Ficus-Indica Seed Oil",
+                "hazard_score": 0,
+                "purpose_ko": "피부컨디셔닝제(유연제)"
+            },
+            {
+                "purpose_vi": "Đại lý dưỡng da",
+                "name_vi": "",
+                "name_en": "Nymphaea Alba Flower Extract",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제",
+                "id": 34
+            },
+            {
+                "purpose_en": "",
+                "hazard_score": 1,
+                "purpose_vi": "Chất huyền phù không phải chất hoạt động bề mặt",
+                "purpose_ko": "현탁화제-비계면활성제",
+                "name_en": "Disteardimonium Hectorite",
+                "name_vi": "",
+                "id": 10
+            },
+            {
+                "name_en": "Magnesium Sulfate",
+                "purpose_ko": "벌킹제",
+                "id": 9,
+                "purpose_en": "",
+                "purpose_vi": "Chất độn",
+                "name_vi": "",
+                "hazard_score": 1
+            },
+            {
+                "purpose_ko": "불투명화제, 피부보호제",
+                "hazard_score": 1,
+                "name_en": "Aluminum Hydroxide",
+                "purpose_vi": "Tác nhân mờ đục, bảo vệ da",
+                "name_vi": "",
+                "id": 14,
+                "purpose_en": ""
+            },
+            {
+                "purpose_en": "",
+                "purpose_ko": "점도증가제(비수성)",
+                "name_en": "Dimethicone/Vinyl Dimethicone Crosspolymer",
+                "hazard_score": 1,
+                "id": 159,
+                "purpose_vi": "Chất làm tăng độ nhớt (không phải nước)",
+                "name_vi": ""
+            },
+            {
+                "purpose_en": "",
+                "hazard_score": 0,
+                "purpose_ko": "모발컨디셔닝제, 자외선차단제",
+                "name_en": "Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine",
+                "name_vi": "",
+                "id": 1550,
+                "purpose_vi": ""
+            },
+            {
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 11,
+                "purpose_vi": "Chất điều hòa da (khác)",
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "name_en": "Salvia Hispanica Seed Extract"
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "dung môi",
+                "purpose_ko": "용제",
+                "id": 7,
+                "name_vi": "",
+                "name_en": "1,2-Hexanediol",
+                "hazard_score": 1
+            },
+            {
+                "hazard_score": 1,
+                "purpose_vi": "Hương liệu, Surfactant-Cleanser, Surfactant-Emulsifier",
+                "id": 17,
+                "purpose_ko": "향료, 계면활성제-세정제, 계면활성제-유화제",
+                "name_en": "Stearic Acid",
+                "purpose_en": "",
+                "name_vi": ""
+            },
+            {
+                "purpose_ko": "피부컨디셔닝제(수분차단제), 표면조정제",
+                "name_en": "Methicone",
+                "purpose_vi": "Chất điều hòa da (chất chống ẩm), chất điều hòa bề mặt",
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 448,
+                "purpose_en": ""
+            },
+            {
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제",
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da",
+                "hazard_score": 1,
+                "id": 81,
+                "name_vi": "",
+                "purpose_en": "",
+                "name_en": "Caprylyl Glycol"
+            },
+            {
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_ko": "피부유연화제, 계면활성제-유화제",
+                "purpose_vi": "Chất làm mềm da, chất nhũ hóa bề mặt",
+                "id": 554,
+                "purpose_en": "",
+                "name_en": "Polyglyceryl-6 Polyricinoleate"
+            },
+            {
+                "purpose_ko": "향료, 피부유연화제",
+                "id": 25,
+                "name_vi": "",
+                "purpose_vi": "Chất làm mềm và làm mềm",
+                "name_en": "Octyldodecanol",
+                "purpose_en": "",
+                "hazard_score": 1
+            },
+            {
+                "name_en": "Cetearyl Dimethicone Crosspolymer",
+                "purpose_ko": "피막형성제, 모발고정제",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg",
+            "sname": "헉슬리 (Huxley)",
+            "id": 4021,
+            "name": "Huxley"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "làm trắng",
+            "làm ẩm",
+            "bảo vệ khỏi tia UV"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "토너 익스트랙트 잇",
+        "id": 263,
+        "sid": 55593,
+        "volume": "120ml",
+        "sprice": 32000,
+        "official_price": 688000,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_55593.jpg",
+        "description": "",
+        "sdescription": "피부를 촉촉하고 맑게 정돈하고 피부 밸런스를 지켜주는 자연 유래 성분 90%의 선인장 추출물 약산성 토너\r\n\r\n- 볼륨 있는 수분감으로 충분한 수분 공급\r\n- 정제수 대신 선인장 추출물을 사용한 90% 이상의 자연 유래 성분으로 이루어짐\r\n- 약산성 토너로 피부에 자극 없이 순한 토너",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 1,
+            "second_category_name": "toner/nước hoa hồng",
+            "second_category_en_name": "toner",
+            "third_category_id": 1,
+            "third_category_name": "toner dạng nước",
+            "third_category_en_name": "water toner"
+        },
+        "ingredients": [
+            {
+                "name_en": "Opuntia Ficus-Indica Stem Extract",
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "purpose_vi": "Chất điều hòa da (khác)",
+                "hazard_score": 1,
+                "id": 542
+            },
+            {
+                "id": 165,
+                "name_en": "Propanediol",
+                "purpose_vi": "Kem dưỡng ẩm, dung môi, điều chế độ nhớt, chất bảo quản",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_ko": "보습제, 용제, 점도조절제, 방부제"
+            },
+            {
+                "name_vi": "",
+                "name_en": "Dipropylene Glycol",
+                "hazard_score": 1,
+                "purpose_ko": "착향제, 용제, 점도감소제",
+                "purpose_en": "",
+                "purpose_vi": "Chất tạo mùi, dung môi, chất làm giảm độ nhớt",
+                "id": 28
+            },
+            {
+                "name_en": "1,2-Hexanediol",
+                "purpose_vi": "dung môi",
+                "purpose_ko": "용제",
+                "name_vi": "",
+                "purpose_en": "",
+                "id": 7,
+                "hazard_score": 1
+            },
+            {
+                "purpose_ko": "피부컨디셔닝제(유연제)",
+                "hazard_score": 0,
+                "name_en": "Opuntia Ficus-Indica Seed Oil"
+            },
+            {
+                "name_en": "Lagerstroemia Indica Flower Extract",
+                "purpose_ko": "피부컨디셔닝제",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "id": 4021,
+            "sname": "헉슬리 (Huxley)",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg",
+            "name": "Huxley"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "kiểm soát lỗ chân lông",
+            "làn da căng bóng trong suốt",
+            "làm mềm da",
+            "sức sống cho da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "크림 모어 댄 모이스트",
+        "id": 263,
+        "sid": 55589,
+        "volume": "50ml",
+        "sprice": 38000,
+        "official_price": 817000,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_55589.jpg",
+        "description": "",
+        "sdescription": "연약하고 민감한 피부를 보호해주고 매끈한 보습막을 형성하여 피부 장벽을 강화시켜 건강한 피부로 바꾸어 주는 고보습 크림\r\n\r\n- 매트한 버터 타입의 크림이나 피부에 발림과 동시에 부드럽게 녹아 내리는 멜팅 다운 제형\r\n- 연약한 피부를 포함한 모든 피부 타입에 사용 가능한 저자극 크림",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 4,
+            "second_category_name": "kem dưỡng",
+            "second_category_en_name": "cream",
+            "third_category_id": 19,
+            "third_category_name": "kem dưỡng cấp ẩm",
+            "third_category_en_name": "moisturizing cream"
+        },
+        "ingredients": [
+            {
+                "name_vi": "",
+                "id": 542,
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "name_en": "Opuntia Ficus-Indica Stem Extract",
+                "purpose_vi": "Chất điều hòa da (khác)"
+            },
+            {
+                "hazard_score": 1,
+                "name_en": "Glycerin",
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "name_vi": "",
+                "purpose_en": "",
+                "id": 66,
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt"
+            },
+            {
+                "name_en": "Butylene Glycol",
+                "id": 35,
+                "purpose_ko": "향료, 피부컨디셔닝제, 용제, 점도감소제",
+                "purpose_en": "",
+                "purpose_vi": "Hương thơm, chất điều hòa da, dung môi, chất làm giảm độ nhớt",
+                "hazard_score": 1,
+                "name_vi": ""
+            },
+            {
+                "name_en": "Dimethicone",
+                "purpose_en": "",
+                "purpose_vi": "Chất chống tạo bọt, chất bảo vệ da, chất dưỡng da (chất chống ẩm)",
+                "hazard_score": 2,
+                "purpose_ko": "기포방지제, 피부보호제, 피부컨디셔닝제(수분차단제)",
+                "name_vi": "",
+                "id": 41
+            },
+            {
+                "id": 150,
+                "hazard_score": 1,
+                "purpose_ko": "피부컨디셔닝제(기타), 피부컨디셔닝제(수분차단제), 점도증가제(비수성)",
+                "name_vi": "",
+                "name_en": "Butyrospermum Parkii (Shea) Butter",
+                "purpose_vi": "Chất điều hòa da (loại khác), chất điều hòa da (rào cản độ ẩm), chất làm tăng độ nhớt (không phải nước)",
+                "purpose_en": ""
+            },
+            {
+                "name_en": "Hydrogenated Olive Oil Lauryl Esters",
+                "purpose_ko": "결합제, 유화안정제, 피막형성제, 모발컨디셔닝제",
+                "hazard_score": 0
+            }
+        ],
+        "brand": {
+            "id": 4021,
+            "name": "Huxley",
+            "sname": "헉슬리 (Huxley)",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "độ ẩm cao",
+            "cung cấp độ ẩm",
+            "không gây dị ứng",
+            "bảo vệ da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "선크림 스테이 선 세이프 [SPF50+/PA++++]",
+        "id": 263,
+        "sid": 93260,
+        "volume": "35ml",
+        "sprice": 28000,
+        "official_price": 602000,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_93260.jpg",
+        "description": "",
+        "sdescription": "피부에 순하게 사용할 수 있는 촉촉한 수분 선크림\r\n\r\n- 유해 화학성분 무첨가\r\n- 온 가족이 사용 가능한 순한 선크림\r\n- 끈적임 없이 촉촉하게 발리는 제형",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 142,
+            "third_category_name": "sữa chống nắng",
+            "third_category_en_name": "mild sunscreen"
+        },
+        "ingredients": [
+            {
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "hazard_score": 1,
+                "id": 1,
+                "name_en": "Water;Aqua"
+            },
+            {
+                "id": 542,
+                "purpose_vi": "Chất điều hòa da (khác)",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "name_en": "Opuntia Ficus-Indica Stem Extract",
+                "name_vi": ""
+            },
+            {
+                "name_en": "Dibutyl Adipate",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_vi": "Chất làm dẻo, làm mềm da, dung môi",
+                "name_vi": "",
+                "id": 661,
+                "purpose_ko": "가소제, 피부유연화제, 용제"
+            },
+            {
+                "purpose_vi": "Kem dưỡng ẩm, dung môi, điều chế độ nhớt, chất bảo quản",
+                "id": 165,
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_en": "Propanediol",
+                "name_vi": "",
+                "purpose_ko": "보습제, 용제, 점도조절제, 방부제"
+            },
+            {
+                "hazard_score": 1,
+                "name_en": "Glycerin",
+                "purpose_en": "",
+                "id": 66,
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "name_vi": "",
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제"
+            },
+            {
+                "purpose_vi": "Làm mềm da",
+                "id": 89,
+                "purpose_en": "",
+                "name_en": "C12-15 Alkyl Benzoate",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "피부유연화제"
+            },
+            {
+                "id": 4,
+                "name_en": "Titanium Dioxide",
+                "purpose_ko": "착색제, 불투명화제, 자외선차단제",
+                "hazard_score": 2,
+                "purpose_vi": "Chất tạo màu, chất làm mờ, kem chống nắng",
+                "purpose_en": "",
+                "name_vi": ""
+            },
+            {
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_en": "Diethylamino Hydroxybenzoyl Hexyl Benzoate",
+                "id": 451,
+                "purpose_vi": "Chất chống biến màu, chống tia cực tím (mỹ phẩm chức năng)",
+                "purpose_ko": "변색방지제, 자외선차단(기능성화장품)",
+                "name_vi": ""
+            },
+            {
+                "purpose_ko": "모발컨디셔닝제, 피부컨디셔닝제, 용제",
+                "name_en": "Butyloctyl Salicylate",
+                "purpose_vi": "Chất dưỡng tóc, chất dưỡng da, dung môi",
+                "hazard_score": 1,
+                "id": 415,
+                "name_vi": "",
+                "purpose_en": ""
+            },
+            {
+                "name_en": "Polysilicone-15",
+                "purpose_ko": "변색방지제",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "id": 4021,
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg",
+            "name": "Huxley",
+            "sname": "헉슬리 (Huxley)"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "SPF40 trở lên",
+            "làm trắng",
+            null,
+            "làm ẩm",
+            "cung cấp độ ẩm",
+            "không gây dị ứng",
+            "kem/sữa"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "마스크 글로우 앤 브라이트니스",
+        "id": 263,
+        "sid": 105350,
+        "volume": "33ml*3",
+        "sprice": 33000,
+        "official_price": 709500,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_105350.jpg",
+        "description": "",
+        "sdescription": "선인장 줄기 추출물이 외부 유해환경으로부터 피부를 보호하고 밀크 에센스가 맑은 피부로 가꾸어 주는 브라이트닝 마스크\r\n\r\n- 불균형 한 피부 톤을 단시간에 개선\r\n- 독자적인 기술로 높은 오일 함량 대비 부드럽고 산뜻한 저점도 고보습 제형을 구현\r\n- 사용직전 터뜨리는 신선한 마스크\r\n\r\n* 성분 정보는 1제 기준으로 등록되었습니다.",
+        "category": {
+            "first_category_id": 8,
+            "first_category_name": "mặt nạ",
+            "first_category_en_name": "mask&pack",
+            "second_category_id": 37,
+            "second_category_name": "mặt nạ giấy",
+            "second_category_en_name": "sheet mask",
+            "third_category_id": 131,
+            "third_category_name": "mặt nạ dưỡng trắng da",
+            "third_category_en_name": "brightening mask"
+        },
+        "ingredients": [
+            {
+                "purpose_vi": "Chất điều hòa da (khác)",
+                "name_en": "Opuntia Ficus-Indica Stem Extract",
+                "id": 542,
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "name_vi": "",
+                "hazard_score": 1
+            },
+            {
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "name_en": "Water;Aqua",
+                "id": 1,
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "hazard_score": 1
+            },
+            {
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "name_en": "Glycerin",
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "purpose_en": "",
+                "id": 66,
+                "name_vi": "",
+                "hazard_score": 1
+            },
+            {
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_ko": "모발컨디셔닝제, 피부컨디셔닝제",
+                "id": 149,
+                "purpose_vi": "Đại lý dưỡng tóc, đại lý dưỡng da",
+                "hazard_score": 1,
+                "name_en": "Niacinamide"
+            },
+            {
+                "id": 447,
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_ko": "기포방지제, 수렴제, 향료, 용제, 점도감소제",
+                "name_en": "Alcohol",
+                "hazard_score": 1,
+                "purpose_vi": "Chất chống tạo bọt, chất làm se, hương liệu, dung môi, chất làm giảm độ nhớt"
+            },
+            {
+                "purpose_ko": "용제",
+                "id": 329,
+                "name_en": "Methylpropanediol",
+                "purpose_vi": "dung môi",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_en": ""
+            },
+            {
+                "name_en": "Althaea Rosea Flower Extract",
+                "id": 284,
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제",
+                "hazard_score": 1,
+                "purpose_vi": "Đại lý dưỡng da"
+            },
+            {
+                "name_en": "Gossypium Herbaceum (Cotton) Extract",
+                "purpose_ko": "",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg",
+            "id": 4021,
+            "sname": "헉슬리 (Huxley)",
+            "name": "Huxley"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "làm trắng",
+            "Độ bám",
+            "cung cấp độ ẩm"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "슬립 마스크 굿 나잇",
+        "id": 263,
+        "sid": 85891,
+        "volume": "100ml",
+        "sprice": 28000,
+        "official_price": 602000,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_85891.jpg",
+        "description": "",
+        "sdescription": "극심한 일교차를 견디는 선인장의 강인한 생명력을 담아, 밤 동안 수분을 지켜 생기있는 피부로 바꾸어주는 슬리핑 마스크\r\n\r\n- 끈적이지 않는 젤타입 제형으로 집중보습\r\n- 피부의 숙면을 도와 밤 사이 생기를 부여해 피부가 한층 더 맑아진 효과\r\n- 선인장 추출물, 시드오일을 비롯해 히알루론산, 항산화콤플렉스 성분을 담아 탁월한 항산화 효과",
+        "category": {
+            "first_category_id": 8,
+            "first_category_name": "mặt nạ",
+            "first_category_en_name": "mask&pack",
+            "second_category_id": 38,
+            "second_category_name": "mặt nạ",
+            "second_category_en_name": "face mask",
+            "third_category_id": 133,
+            "third_category_name": "mặt nạ ngủ",
+            "third_category_en_name": "sleeping mask"
+        },
+        "ingredients": [
+            {
+                "hazard_score": 1,
+                "id": 542,
+                "purpose_vi": "Chất điều hòa da (khác)",
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "name_vi": "",
+                "purpose_en": "",
+                "name_en": "Opuntia Ficus-Indica Stem Extract"
+            },
+            {
+                "name_en": "Glycerin",
+                "hazard_score": 1,
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "purpose_en": "",
+                "id": 66,
+                "name_vi": "",
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt"
+            },
+            {
+                "purpose_ko": "향료, 피부컨디셔닝제, 용제, 점도감소제",
+                "id": 35,
+                "purpose_en": "",
+                "name_en": "Butylene Glycol",
+                "purpose_vi": "Hương thơm, chất điều hòa da, dung môi, chất làm giảm độ nhớt",
+                "hazard_score": 1,
+                "name_vi": ""
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da, dung môi",
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제, 용제",
+                "id": 161,
+                "hazard_score": 2,
+                "name_vi": "",
+                "name_en": "Cyclopentasiloxane"
+            },
+            {
+                "id": 162,
+                "name_vi": "",
+                "hazard_score": 1,
+                "name_en": "Cyclohexasiloxane",
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제, 용제",
+                "purpose_en": "",
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da, dung môi"
+            },
+            {
+                "name_en": "Trehalose",
+                "hazard_score": 1,
+                "purpose_vi": "Chất làm ngọt, dưỡng ẩm",
+                "purpose_en": "",
+                "id": 332,
+                "purpose_ko": "감미제, 보습제",
+                "name_vi": ""
+            },
+            {
+                "name_vi": "",
+                "purpose_en": "",
+                "id": 1,
+                "name_en": "Water;Aqua",
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "hazard_score": 1
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "dung môi",
+                "purpose_ko": "용제",
+                "id": 7,
+                "name_vi": "",
+                "name_en": "1,2-Hexanediol",
+                "hazard_score": 1
+            },
+            {
+                "name_en": "Opuntia Ficus-Indica Seed Oil",
+                "purpose_ko": "피부컨디셔닝제(유연제)",
+                "hazard_score": 0
+            },
+            {
+                "hazard_score": 1,
+                "purpose_ko": "모발조정제, 피부교질화제",
+                "name_vi": "",
+                "purpose_vi": "Dầu dưỡng tóc, chất bôi ngoài da",
+                "id": 67,
+                "name_en": "Ceramide NP",
+                "purpose_en": ""
+            },
+            {
+                "name_vi": "",
+                "purpose_ko": "피부컨디셔닝제",
+                "id": 39,
+                "hazard_score": 1,
+                "name_en": "Sodium Hyaluronate",
+                "purpose_en": "",
+                "purpose_vi": "Đại lý dưỡng da"
+            },
+            {
+                "purpose_vi": "Đại lý Bulking, đại lý điều hòa da",
+                "purpose_ko": "벌킹제, 피부컨디셔닝제",
+                "hazard_score": 1,
+                "name_en": "Beta-Glucan",
+                "id": 346,
+                "purpose_en": "",
+                "name_vi": ""
+            },
+            {
+                "hazard_score": 1,
+                "name_en": "Centella Asiatica Leaf Extract",
+                "purpose_ko": "",
+                "purpose_en": "",
+                "purpose_vi": "",
+                "name_vi": "",
+                "id": 1067
+            },
+            {
+                "name_vi": "",
+                "name_en": "Perilla Ocymoides Leaf Extract",
+                "purpose_en": "",
+                "purpose_ko": "",
+                "purpose_vi": "",
+                "hazard_score": 1,
+                "id": 1495
+            },
+            {
+                "id": 656,
+                "hazard_score": 1,
+                "name_vi": "",
+                "name_en": "Paeonia Suffruticosa Root Extract",
+                "purpose_ko": "",
+                "purpose_en": "",
+                "purpose_vi": ""
+            },
+            {
+                "id": 580,
+                "name_en": "Salvia Officinalis (Sage) Leaf Extract",
+                "purpose_ko": "피부컨디셔닝제",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "purpose_vi": "Đại lý dưỡng da",
+                "name_vi": ""
+            },
+            {
+                "name_en": "Citrus Grandis (Grapefruit) Seed Extract",
+                "purpose_ko": "",
+                "hazard_score": 2
+            }
+        ],
+        "brand": {
+            "sname": "헉슬리 (Huxley)",
+            "name": "Huxley",
+            "id": 4021,
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "làm ẩm",
+            "sức sống",
+            "cung cấp độ ẩm",
+            "làm mềm da",
+            "sức sống cho da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "바디 로션 모로칸 가드너",
+        "id": 263,
+        "sid": 98253,
+        "volume": "300ml",
+        "sprice": 38000,
+        "official_price": 817000,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_98253.jpg",
+        "description": "",
+        "sdescription": "가벼우면서도 풍부한 보습력으로 건조한 피부 사이에 수분을 채워주고 싱그러운 향기를 더해주는 헉슬리 시그니처 향 바디 로션\r\n\r\n- 선인장 시드 오일의 높은 리놀렌산 함량으로 피부 장벽 강화에 도움\r\n- 미세 유화 공법 적용으로 수분 & 영양감 전달이 우수하여 피부 속 촉촉함이 오래도록 지속\r\n- 이국적인 정원의 향기가 가득한 아로마 블렌딩의 헉슬리 시그니처 향",
+        "category": {
+            "first_category_id": 10,
+            "first_category_name": "chăm sóc da toàn thân",
+            "first_category_en_name": "bath & body",
+            "second_category_id": 49,
+            "second_category_name": "kem/sữa dưỡng thể",
+            "second_category_en_name": "body lotion/cream",
+            "third_category_id": 153,
+            "third_category_name": "sữa dưỡng thể",
+            "third_category_en_name": "body lotion"
+        },
+        "ingredients": [
+            {
+                "name_en": "Water;Aqua",
+                "hazard_score": 1,
+                "id": 1,
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "purpose_vi": "Chất dưỡng da, dung môi"
+            },
+            {
+                "hazard_score": 1,
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "purpose_en": "",
+                "purpose_vi": "Chất điều hòa da (khác)",
+                "name_en": "Opuntia Ficus-Indica Stem Extract",
+                "id": 542,
+                "name_vi": ""
+            },
+            {
+                "hazard_score": 1,
+                "name_en": "Butylene Glycol",
+                "id": 35,
+                "name_vi": "",
+                "purpose_ko": "향료, 피부컨디셔닝제, 용제, 점도감소제",
+                "purpose_en": "",
+                "purpose_vi": "Hương thơm, chất điều hòa da, dung môi, chất làm giảm độ nhớt"
+            },
+            {
+                "name_en": "Glycerin",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "id": 66,
+                "purpose_en": ""
+            },
+            {
+                "hazard_score": 1,
+                "purpose_en": "",
+                "id": 110,
+                "name_vi": "",
+                "purpose_ko": "향료, 수분증발차단제",
+                "name_en": "Caprylic/Capric Triglyceride",
+                "purpose_vi": "Chất thơm và chất ngăn chặn hơi nước"
+            },
+            {
+                "purpose_vi": "dung môi",
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_en": "",
+                "id": 7,
+                "name_en": "1,2-Hexanediol",
+                "purpose_ko": "용제"
+            },
+            {
+                "name_vi": "",
+                "purpose_en": "",
+                "name_en": "Behenyl Alcohol",
+                "purpose_vi": "Chất kết dính, chất nhũ hóa, chất làm đặc không hòa tan",
+                "purpose_ko": "결합제, 유화안정제, 점증제-비수용성",
+                "hazard_score": 1,
+                "id": 240
+            },
+            {
+                "id": 766,
+                "hazard_score": 1,
+                "name_en": "Cetearyl Glucoside",
+                "purpose_en": "",
+                "purpose_ko": "계면활성제-유화제",
+                "name_vi": "",
+                "purpose_vi": "Chất hoạt động bề mặt"
+            },
+            {
+                "purpose_en": "",
+                "purpose_ko": "결합제, 피부컨디셔닝제(수분차단제), 점도증가제(비수성)",
+                "hazard_score": 1,
+                "name_vi": "",
+                "id": 272,
+                "name_en": "Pentaerythrityl Tetraethylhexanoate",
+                "purpose_vi": "Chất kết dính, chất điều hòa da (chất chống ẩm), chất làm tăng độ nhớt (không phải nước)"
+            },
+            {
+                "id": 41,
+                "purpose_vi": "Chất chống tạo bọt, chất bảo vệ da, chất dưỡng da (chất chống ẩm)",
+                "name_vi": "",
+                "purpose_en": "",
+                "name_en": "Dimethicone",
+                "purpose_ko": "기포방지제, 피부보호제, 피부컨디셔닝제(수분차단제)",
+                "hazard_score": 2
+            },
+            {
+                "hazard_score": 1,
+                "purpose_ko": "향료, 불투명화제, 계면활성제-세정제, 계면활성제-유화제",
+                "id": 237,
+                "name_en": "Palmitic Acid",
+                "purpose_vi": "Hương liệu, chất làm mờ, chất làm sạch bề mặt, chất nhũ hóa bề mặt",
+                "purpose_en": "",
+                "name_vi": ""
+            },
+            {
+                "purpose_vi": "Hương thơm, chất dưỡng tóc, chất chống bay hơi",
+                "id": 514,
+                "purpose_ko": "향료, 모발컨디셔닝제, 수분증발차단제",
+                "name_en": "Triethylhexanoin",
+                "name_vi": "",
+                "purpose_en": "",
+                "hazard_score": 1
+            },
+            {
+                "purpose_ko": "기포방지제, 피부컨디셔닝제(수분차단제)",
+                "purpose_vi": "Chất chống tạo bọt, chất điều hòa da (chất chống ẩm)",
+                "name_vi": "",
+                "id": 650,
+                "name_en": "Diphenyl Dimethicone",
+                "purpose_en": "",
+                "hazard_score": 1
+            },
+            {
+                "purpose_ko": "모발컨디셔닝제, 보습제, 피부보습제",
+                "purpose_en": "",
+                "name_en": "Betaine",
+                "name_vi": "",
+                "purpose_vi": "Chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da",
+                "id": 242,
+                "hazard_score": 1
+            },
+            {
+                "name_en": "Stearic Acid",
+                "name_vi": "",
+                "id": 17,
+                "purpose_ko": "향료, 계면활성제-세정제, 계면활성제-유화제",
+                "purpose_en": "",
+                "purpose_vi": "Hương liệu, Surfactant-Cleanser, Surfactant-Emulsifier",
+                "hazard_score": 1
+            },
+            {
+                "name_vi": "",
+                "purpose_ko": "피부컨디셔닝제(수분차단제), 점도증가제(비수성)",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "id": 476,
+                "purpose_vi": "Chất điều hòa da (hàng rào độ ẩm), chất làm tăng độ nhớt (không phải nước)",
+                "name_en": "Triolein"
+            },
+            {
+                "purpose_vi": "Làm mềm da",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "purpose_ko": "피부유연화제",
+                "name_en": "Glyceryl Dioleate",
+                "id": 481,
+                "name_vi": ""
+            },
+            {
+                "purpose_vi": "Chất tạo mùi, chất hoạt động bề mặt (chất nhũ hóa)",
+                "purpose_ko": "착향제, 계면활성제(유화제)",
+                "name_vi": "",
+                "id": 105,
+                "name_en": "Sorbitan Stearate",
+                "hazard_score": 1,
+                "purpose_en": ""
+            },
+            {
+                "purpose_ko": "피부컨디셔닝제, 계면활성제-유화제",
+                "purpose_en": "",
+                "name_vi": "",
+                "id": 1134,
+                "name_en": "Polyglyceryl-10 Myristate",
+                "hazard_score": 1,
+                "purpose_vi": "Chất điều hòa da, chất hoạt động bề mặt"
+            },
+            {
+                "purpose_en": "",
+                "id": 155,
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "모발컨디셔닝제",
+                "name_en": "Panthenol",
+                "purpose_vi": "Đại lý điều hòa tóc"
+            },
+            {
+                "hazard_score": 0,
+                "name_en": "Opuntia Ficus-Indica Seed Oil",
+                "purpose_ko": "피부컨디셔닝제(유연제)"
+            },
+            {
+                "purpose_vi": "Chất dưỡng da, chất chống bay hơi",
+                "hazard_score": 1,
+                "purpose_ko": "피부컨디셔닝제, 수분증발차단제",
+                "name_en": "Helianthus Annuus (Sunflower) Seed Oil",
+                "id": 52,
+                "name_vi": "",
+                "purpose_en": ""
+            },
+            {
+                "name_en": "Olea Europaea (Olive) Fruit Oil",
+                "purpose_en": "",
+                "purpose_ko": "향료, 수분증발차단제",
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 269,
+                "purpose_vi": "Chất thơm và chất ngăn chặn hơi nước"
+            },
+            {
+                "purpose_vi": "Đại lý dưỡng da",
+                "id": 685,
+                "purpose_ko": "피부컨디셔닝제",
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 1,
+                "name_en": "Vitis Vinifera (Grape) Seed Oil"
+            },
+            {
+                "purpose_en": "",
+                "name_en": "Carthamus Tinctorius (Safflower) Seed Oil",
+                "id": 537,
+                "purpose_ko": "향료, 수분증발차단제",
+                "name_vi": "",
+                "purpose_vi": "Chất thơm và chất ngăn chặn hơi nước",
+                "hazard_score": 1
+            },
+            {
+                "purpose_ko": "피부컨디셔닝제(보습제), 피부컨디셔닝제(수분차단제)",
+                "purpose_vi": "Tác nhân dưỡng da (dưỡng ẩm), chất dưỡng da (rào cản độ ẩm)",
+                "hazard_score": 1,
+                "name_en": "Camellia Sinensis Seed Oil",
+                "id": 799,
+                "purpose_en": "",
+                "name_vi": ""
+            },
+            {
+                "hazard_score": 1,
+                "id": 53,
+                "purpose_en": "",
+                "purpose_ko": "피부보호제, 피부컨디셔닝제(유연제), 피부컨디셔닝제(보습제), 피부컨디셔닝제(수분차단제)",
+                "name_en": "Moringa Oleifera Seed Oil",
+                "name_vi": "",
+                "purpose_vi": "Chất bảo vệ da, chất điều hòa da (chất làm mềm), chất điều hòa da (chất dưỡng ẩm), chất điều hòa da (rào cản độ ẩm)"
+            },
+            {
+                "name_en": "Brassica Oleracea Italica (Broccoli) Seed Oil",
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg",
+            "name": "Huxley",
+            "sname": "헉슬리 (Huxley)",
+            "id": 4021
+        },
+        "hazard_score": 3,
+        "tags": [
+            null,
+            "cung cấp độ ẩm",
+            "dưỡng chất",
+            null
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "클렌징 워터 비 클린 비 모이스트",
+        "id": 263,
+        "sid": 80916,
+        "volume": "200ml",
+        "sprice": 25000,
+        "official_price": 537500,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_80916.jpg",
+        "description": "",
+        "sdescription": "각종 피부 유해요소와 메이크업을 자극 없이 깨끗하게 제거하고  수분을 그대로 유지해주는 고보습 선인장 추출물 클렌징 워터",
+        "category": {
+            "first_category_id": 7,
+            "first_category_name": "làm sạch",
+            "first_category_en_name": "cleansing",
+            "second_category_id": 33,
+            "second_category_name": "tẩy trang",
+            "second_category_en_name": "makeup remover",
+            "third_category_id": 119,
+            "third_category_name": "nước tẩy trang",
+            "third_category_en_name": "cleansing water"
+        },
+        "ingredients": [
+            {
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "purpose_vi": "Chất điều hòa da (khác)",
+                "purpose_en": "",
+                "name_en": "Opuntia Ficus-Indica Stem Extract",
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 542
+            },
+            {
+                "hazard_score": 1,
+                "id": 66,
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "name_en": "Glycerin",
+                "purpose_en": "",
+                "name_vi": ""
+            },
+            {
+                "hazard_score": 2,
+                "purpose_ko": "피부유연화제, 계면활성제-유화제",
+                "name_en": "PEG-6 Caprylic/Capric Glycerides"
+            },
+            {
+                "name_en": "1,2-Hexanediol",
+                "purpose_en": "",
+                "id": 7,
+                "name_vi": "",
+                "purpose_ko": "용제",
+                "purpose_vi": "dung môi",
+                "hazard_score": 1
+            },
+            {
+                "name_en": "Opuntia Ficus-Indica Seed Oil",
+                "hazard_score": 0,
+                "purpose_ko": "피부컨디셔닝제(유연제)"
+            },
+            {
+                "purpose_en": "",
+                "hazard_score": 1,
+                "id": 39,
+                "name_vi": "",
+                "purpose_vi": "Đại lý dưỡng da",
+                "name_en": "Sodium Hyaluronate",
+                "purpose_ko": "피부컨디셔닝제"
+            },
+            {
+                "name_en": "Citrus Aurantium Dulcis (Orange) Fruit Extract",
+                "purpose_en": "",
+                "purpose_vi": "Nước hoa, chất dưỡng da",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "향료, 피부컨디셔닝제",
+                "id": 1347
+            },
+            {
+                "purpose_en": "",
+                "hazard_score": 1,
+                "purpose_ko": "향료, 피부컨디셔닝제, 수분증발차단제",
+                "purpose_vi": "Hương thơm, chất điều hòa da, chất chặn bay hơi ẩm",
+                "id": 463,
+                "name_en": "Citrus Limon (Lemon) Fruit Extract",
+                "name_vi": ""
+            },
+            {
+                "name_en": "Citrus Paradisi (Grapefruit) Fruit Extract",
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_ko": "",
+                "purpose_vi": "",
+                "hazard_score": 1,
+                "id": 714
+            },
+            {
+                "name_en": "Citrus Aurantifolia (Lime) Fruit Extract",
+                "purpose_vi": "Chất điều hòa da (khác)",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": "",
+                "id": 1380,
+                "purpose_ko": "피부컨디셔닝제(기타)"
+            },
+            {
+                "name_en": "Centella Asiatica Extract;Centella Extract",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "id": 12,
+                "purpose_ko": "피부컨디셔닝제",
+                "name_vi": "",
+                "purpose_vi": "Đại lý dưỡng da"
+            },
+            {
+                "name_en": "Betula Alba Bud Extract",
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "hazard_score": 0
+            }
+        ],
+        "brand": {
+            "name": "Huxley",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20161226/1482721924373_160.jpg",
+            "id": 4021,
+            "sname": "헉슬리 (Huxley)"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "làm ẩm",
+            "không gây dị ứng"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    }
+]

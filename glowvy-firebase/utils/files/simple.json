@@ -1,0 +1,498 @@
+[{
+        "name": "",
+        "sname": "마이셀 클렌징 워터",
+        "id": 263,
+        "sid": 82861,
+        "volume": "198ml",
+        "sprice": 0,
+        "official_price": 0,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_263.jpg",
+        "description": "",
+        "sdescription": "마이셀 클렌징 워터는 메이크업 잔여물을 부드럽게 지워주고, 피부의 하이드레이션을 90%까지 상승시켜줍니다.",
+
+        "brand": {
+            "id": 6244,
+            "sname": "심플 (simple)",
+            "name": "심플"
+        },
+        "category": {
+            "first_category_id": 7,
+            "first_category_name": "làm sạch",
+            "first_category_en_name": "cleansing",
+            "second_category_id": 33,
+            "second_category_name": "tẩy trang",
+            "second_category_en_name": "makeup remover",
+            "third_category_id": 119,
+            "third_category_name": "nước tẩy trang",
+            "third_category_en_name": "cleansing water"
+        },
+        "ingredients": [{
+                "name_en": "Water;Aqua",
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "name_vi": "",
+                "id": 1,
+                "hazard_score": 1
+            },
+            {
+                "purpose_vi": "Hương thơm, dung môi, chất làm giảm độ nhớt",
+                "purpose_en": "",
+                "purpose_ko": "향료, 용제, 점도감소제",
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 385,
+                "name_en": "Hexylene Glycol"
+            },
+            {
+                "hazard_score": 1,
+                "name_en": "Glycerin",
+                "name_vi": "",
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "id": 66,
+                "purpose_en": "",
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제"
+            },
+            {
+                "purpose_vi": "Chất tạo mùi, chất điều hòa da (loại khác), chất làm dịu da (rào cản độ ẩm)",
+                "name_vi": "",
+                "hazard_score": 1,
+                "name_en": "Anthemis Nobilis Flower Extract; Chamomilla Recutita (Matricaria) Flower Extract",
+                "purpose_ko": "착향제, 피부컨디셔닝제(기타), 피부컨디셔닝제(수분차단제)",
+                "purpose_en": "",
+                "id": 296
+            },
+            {
+                "purpose_ko": "모발컨디셔닝제",
+                "name_vi": "",
+                "purpose_vi": "Đại lý điều hòa tóc",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "name_en": "Panthenol",
+                "id": 155
+            },
+            {
+                "purpose_ko": "모발컨디셔닝제, 피부컨디셔닝제",
+                "purpose_vi": "Đại lý dưỡng tóc, đại lý dưỡng da",
+                "hazard_score": 1,
+                "id": 149,
+                "name_vi": "",
+                "purpose_en": "",
+                "name_en": "Niacinamide"
+            },
+            {
+                "hazard_score": 1,
+                "purpose_ko": "산화방지제",
+                "id": 626,
+                "purpose_vi": "Chống oxy hóa",
+                "purpose_en": "",
+                "name_en": "Sodium Ascorbyl Phosphate",
+                "name_vi": ""
+            },
+            {
+                "name_en": "PEG-6 Caprylic/Capric Glycerides",
+                "hazard_score": 2,
+                "purpose_ko": "피부유연화제, 계면활성제-유화제"
+            },
+            {
+                "name_en": "DMDM Hydantoin",
+                "purpose_ko": "살균보존제",
+                "hazard_score": 3
+            }
+        ],
+        "hazard_score": 3,
+        "tags": [
+            "làm ẩm",
+            "cung cấp độ ẩm",
+            "làn da căng bóng trong suốt"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "리플레니싱 리치 모이스처라이저",
+        "id": 263,
+        "sid": 87175,
+        "volume": "125ml",
+        "sprice": 0,
+        "official_price": 0,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_263.jpg",
+        "description": "",
+        "sdescription": "피부에 수분을 공급하면서 신속하게 흡수기켜 부드럽고 매끄러운 피부를 만들어 줍니다.\r\n\r\n민감성 피부도 사용 할 수 있는 저자극 리치 모이스처라이저",
+        "brand": {
+            "id": 6244,
+            "sname": "심플 (simple)",
+            "name": "심플"
+        },
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 2,
+            "second_category_name": "lotion/sữa dưỡng",
+            "second_category_en_name": "lotion/emulsion",
+            "third_category_id": 5,
+            "third_category_name": "lotion cấp nước",
+            "third_category_en_name": "hydrating lotion"
+        },
+        "ingredients": [{
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "hazard_score": 1,
+                "id": 1,
+                "name_en": "Water;Aqua",
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "name_vi": "",
+                "purpose_en": ""
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "Chất thơm và chất ngăn chặn hơi nước",
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 110,
+                "name_en": "Caprylic/Capric Triglyceride",
+                "purpose_ko": "향료, 수분증발차단제"
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "hazard_score": 1,
+                "name_en": "Glycerin",
+                "name_vi": "",
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "id": 66
+            },
+            {
+                "purpose_ko": "피부컨디셔닝제(유연제), 계면활성제(유화제)",
+                "name_vi": "",
+                "id": 324,
+                "purpose_vi": "Chất điều hòa da (chất làm mềm), chất hoạt động bề mặt (chất nhũ hóa)",
+                "hazard_score": 1,
+                "name_en": "Polyglyceryl-3 Methylglucose Distearate",
+                "purpose_en": ""
+            },
+            {
+                "purpose_en": "",
+                "purpose_ko": "유화안정제, 향료, 계면활성제-유화제, 계면활성제-거품형성제, 점증제-수용성, 점증제-비수용성",
+                "hazard_score": 1,
+                "purpose_vi": "Chất ổn định nhũ hóa, hương thơm, chất hoạt động bề mặt-chất nhũ hóa, chất tạo bọt bề mặt, chất làm đặc tan trong nước, chất làm đặc không tan trong nước",
+                "name_en": "Stearyl Alcohol",
+                "name_vi": "",
+                "id": 263
+            },
+            {
+                "purpose_ko": "모발컨디셔닝제",
+                "id": 155,
+                "name_en": "Panthenol",
+                "purpose_vi": "Đại lý điều hòa tóc",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": ""
+            },
+            {
+                "name_en": "Tocopheryl Acetate",
+                "purpose_en": "",
+                "purpose_ko": "산화방지제, 피부컨디셔닝제",
+                "hazard_score": 2,
+                "name_vi": "",
+                "id": 106,
+                "purpose_vi": "Chất chống oxy hóa, chất điều hòa da"
+            },
+            {
+                "hazard_score": 2,
+                "name_en": "Polyacrylamide",
+                "purpose_en": "",
+                "purpose_ko": "결합제, 피막형성제, 모발고정제",
+                "name_vi": "",
+                "purpose_vi": "Chất kết dính, chất tạo màng, chất cố định tóc",
+                "id": 1390
+            },
+            {
+                "purpose_ko": "향료, 계면활성제-세정제, 계면활성제-유화제",
+                "name_vi": "",
+                "purpose_en": "",
+                "id": 17,
+                "hazard_score": 1,
+                "purpose_vi": "Hương liệu, Surfactant-Cleanser, Surfactant-Emulsifier",
+                "name_en": "Stearic Acid"
+            },
+            {
+                "name_vi": "",
+                "id": 1387,
+                "name_en": "C13-14 Isoparaffin",
+                "hazard_score": 1,
+                "purpose_vi": "Chất điều hòa da (loại khác), dung môi",
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제(기타), 용제"
+            },
+            {
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da",
+                "id": 81,
+                "hazard_score": 1,
+                "name_vi": "",
+                "name_en": "Caprylyl Glycol",
+                "purpose_en": "",
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제"
+            },
+            {
+                "name_en": "Laureth-7",
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_vi": "Chất hoạt động bề mặt",
+                "id": 378,
+                "purpose_ko": "계면활성제-유화제",
+                "hazard_score": 2
+            },
+            {
+                "purpose_en": "",
+                "name_en": "Allantoin",
+                "purpose_ko": "피부컨디셔닝제, 피부보호제",
+                "hazard_score": 1,
+                "purpose_vi": "Đại lý dưỡng da, đại lý bảo vệ da",
+                "id": 154,
+                "name_vi": ""
+            },
+            {
+                "name_en": "Pentylene Glycol",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "id": 208,
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "name_vi": ""
+            },
+            {
+                "purpose_ko": "향료, 피부컨디셔닝제",
+                "id": 847,
+                "name_vi": "",
+                "hazard_score": 1,
+                "name_en": "Bisabolol",
+                "purpose_vi": "Nước hoa, chất dưỡng da",
+                "purpose_en": ""
+            },
+            {
+                "purpose_ko": "금속이온봉쇄제",
+                "id": 109,
+                "purpose_en": "",
+                "name_vi": "",
+                "name_en": "Disodium EDTA",
+                "hazard_score": 1,
+                "purpose_vi": "Chặn ion kim loại"
+            },
+            {
+                "purpose_ko": "각질제거제, 향료, 보습제, pH 조절제, 피부보습제, 피부컨디셔닝제",
+                "id": 712,
+                "hazard_score": 2,
+                "purpose_en": "",
+                "purpose_vi": "Tẩy tế bào chết, hương thơm, dưỡng ẩm, điều chỉnh pH, dưỡng ẩm da, chất dưỡng da",
+                "name_vi": "",
+                "name_en": "Lactic Acid"
+            },
+            {
+                "name_vi": "",
+                "id": 440,
+                "purpose_en": "",
+                "name_en": "Sodium Lactate",
+                "purpose_ko": "pH 완충제, 각질제거제, 보습제",
+                "hazard_score": 2,
+                "purpose_vi": "Đệm pH, tẩy da chết, dưỡng ẩm"
+            },
+            {
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "name_vi": "",
+                "name_en": "Serine",
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "id": 616
+            },
+            {
+                "purpose_en": "",
+                "id": 975,
+                "name_en": "Urea",
+                "purpose_vi": "Đệm pH, dưỡng ẩm, dưỡng ẩm da",
+                "purpose_ko": "pH 완충제, 보습제, 피부보습제",
+                "hazard_score": 2,
+                "name_vi": ""
+            },
+            {
+                "purpose_ko": "감미제, 착향제, 보습제, 피부컨디셔닝제(보습제)",
+                "purpose_en": "",
+                "purpose_vi": "Chất làm ngọt, hương liệu, dưỡng ẩm, chất dưỡng da (dưỡng ẩm)",
+                "name_vi": "",
+                "id": 885,
+                "hazard_score": 1,
+                "name_en": "Sorbitol"
+            },
+            {
+                "id": 460,
+                "purpose_ko": "감미제, 점증제-수용성",
+                "purpose_en": "",
+                "name_vi": "",
+                "name_en": "Sodium Chloride",
+                "hazard_score": 1,
+                "purpose_vi": "Chất làm ngọt, chất làm đặc tan trong nước"
+            },
+            {
+                "purpose_vi": "Hương liệu và khử trùng chất bảo quản",
+                "name_vi": "",
+                "purpose_ko": "향료, 살균보존제",
+                "purpose_en": "",
+                "name_en": "Phenoxyethanol",
+                "hazard_score": 2,
+                "id": 151
+            }
+        ],
+        "hazard_score": 2,
+        "tags": [
+            "chứa vitamin",
+            "cung cấp độ ẩm",
+            "không gây dị ứng"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "카인드 투 스킨 수딩 페이셜 토너",
+        "id": 263,
+        "sid": 105236,
+        "volume": "200ml",
+        "sprice": 0,
+        "official_price": 0,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_263.jpg",
+        "description": "",
+        "sdescription": "프로비타민 B5, 캐모마일, 위치하젤, 알란토인이 함유되어 밝고 생기 있는 피부로 유지해줍니다.",
+        "brand": {
+            "id": 6244,
+            "sname": "심플 (simple)",
+            "name": "심플"
+        },
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 1,
+            "second_category_name": "toner/nước hoa hồng",
+            "second_category_en_name": "toner",
+            "third_category_id": 1,
+            "third_category_name": "toner dạng nước",
+            "third_category_en_name": "water toner"
+        },
+        "ingredients": [],
+        "tags": [
+            "làm ẩm",
+            null,
+            "làn da căng bóng trong suốt",
+            "sức sống cho da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "카인드 투 스킨 모이스처라이징 페이셜 워시",
+        "id": 263,
+        "sid": 115322,
+        "volume": "148ml",
+        "sprice": 0,
+        "official_price": 0,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_263.jpg",
+        "description": "",
+        "sdescription": "- 피부를 깨끗하게 유지하고 영양분을 공급할 수 있도록 활성 성분과 비타민을 완벽하게 혼합\r\n- 부드럽게 클렌징하며 피부에 보습을 주며 민감한 피부에도 적합합니다.\r\n",
+        "brand": {
+            "id": 6244,
+            "sname": "심플 (simple)",
+            "name": "심플"
+        },
+        "category": {
+            "first_category_id": 7,
+            "first_category_name": "làm sạch",
+            "first_category_en_name": "cleansing",
+            "second_category_id": 32,
+            "second_category_name": "rửa mặt",
+            "second_category_en_name": "facial cleanser",
+            "third_category_id": 112,
+            "third_category_name": "sữa rửa mặt tạo bọt",
+            "third_category_en_name": "cleansing foam"
+        },
+        "ingredients": [],
+        "tags": [
+            "làm ẩm",
+            "cung cấp độ ẩm",
+            "dưỡng chất",
+            "không gây dị ứng"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    }
+]

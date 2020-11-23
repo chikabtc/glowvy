@@ -1,0 +1,1223 @@
+[{
+        "name": "",
+        "sname": "퍼펙트 UV 선스크린 스킨케어 밀크 [SPF50+/PA++++]",
+        "id": 263,
+        "sid": 135231,
+        "volume": "60ml",
+        "sprice": 36000,
+        "official_price": 774000,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_135231.jpg",
+        "description": "",
+        "sdescription": "* 본 제품은 리뉴얼된 제품입니다.\n\n아넷사만의 트리플 디펜스로 열(적외선), 땀, 물을 만나도 강력한 자외선 차단막을 유지하는 선밀크\n\n- 온도가 상승하거나 강렬한 햇빛(적외선)에도 자외선 차단막이 유지되어 고르게 밀착 \n- 땀과 물을 만나도 강력한 자외선 차단막이 유지되어 자외선으로부터 피부표면을 보호 \n- 땀과 물에도 지워지지 않는 수퍼 워터프루프 \n",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 142,
+            "third_category_name": "sữa chống nắng",
+            "third_category_en_name": "mild sunscreen"
+        },
+        "ingredients": [{
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "id": 1,
+                "name_en": "Water;Aqua",
+                "hazard_score": 1,
+                "purpose_vi": "Chất dưỡng da, dung môi"
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "Chất chống tạo bọt, chất bảo vệ da, chất dưỡng da (chất chống ẩm)",
+                "name_en": "Dimethicone",
+                "hazard_score": 2,
+                "id": 41,
+                "name_vi": "",
+                "purpose_ko": "기포방지제, 피부보호제, 피부컨디셔닝제(수분차단제)"
+            },
+            {
+                "purpose_ko": "벌킹제, 착색제, 피부보호제, 자외선차단제",
+                "purpose_vi": "Đại lý Bulking, chất tạo màu, chất bảo vệ da, chất chống nắng",
+                "name_vi": "",
+                "name_en": "Zinc Oxide",
+                "purpose_en": "",
+                "hazard_score": 2,
+                "id": 3
+            },
+            {
+                "purpose_vi": "Kem chống nắng, ức chế đổi màu",
+                "name_vi": "",
+                "purpose_en": "",
+                "id": 160,
+                "name_en": "Ethylhexyl Methoxycinnamate",
+                "purpose_ko": "자외선차단제, 변색방지제",
+                "hazard_score": 2
+            },
+            {
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제, 용제",
+                "purpose_en": "",
+                "hazard_score": 2,
+                "id": 161,
+                "name_en": "Cyclopentasiloxane",
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da, dung môi",
+                "name_vi": ""
+            },
+            {
+                "name_en": "Talc",
+                "name_vi": "",
+                "hazard_score": 2,
+                "purpose_ko": "스크럽제, 흡수제, 안티케이킹제, 벌킹제, 불투명화제, 피부보호제, 미끄럼개선제",
+                "purpose_vi": "Tẩy tế bào chết, hấp thụ, chất chống đóng bánh, chất làm phồng, chất làm mờ, chất bảo vệ da, chất chống trượt",
+                "id": 446,
+                "purpose_en": ""
+            },
+            {
+                "hazard_score": 1,
+                "purpose_ko": "피막형성제, 점증제-비수용성",
+                "purpose_en": "",
+                "name_en": "Methyl Methacrylate Crosspolymer",
+                "purpose_vi": "Chất tạo màng, chất làm đặc không hòa tan",
+                "name_vi": "",
+                "id": 361
+            },
+            {
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_vi": "Chất chống tạo bọt, chất làm se, hương liệu, dung môi, chất làm giảm độ nhớt",
+                "id": 447,
+                "name_en": "Alcohol",
+                "hazard_score": 1,
+                "purpose_ko": "기포방지제, 수렴제, 향료, 용제, 점도감소제"
+            },
+            {
+                "purpose_ko": "가소제, 피부유연화제, 용제",
+                "purpose_vi": "Chất làm dẻo, làm mềm da, dung môi",
+                "id": 1525,
+                "name_en": "Diisopropyl Sebacate",
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 1
+            },
+            {
+                "purpose_vi": "Gia vị, dung môi",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "purpose_ko": "향료, 용제",
+                "id": 356,
+                "name_en": "Isododecane",
+                "name_vi": ""
+            },
+            {
+                "id": 397,
+                "hazard_score": 1,
+                "name_en": "Zea Mays (Corn) Starch",
+                "purpose_vi": "Tẩy tế bào chết, thấm nước, bảo vệ da, làm đặc nước",
+                "name_vi": "",
+                "purpose_ko": "스크럽제, 흡수제, 피부보호제, 점증제-수용성",
+                "purpose_en": ""
+            },
+            {
+                "name_en": "PEG/PPG-9/2 Dimethyl Ether",
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "hazard_score": 0
+            }
+        ],
+        "brand": {
+            "id": 668,
+            "name": "ANESSA",
+            "ko_name": "",
+            "sname": "아넷사 (ANESSA)",
+            "img": "https://d9vmi5fxk1gsw.cloudfront.net/home/glowmee/upload/20140912/1410746143724_160.png"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "SPF40 trở lên",
+            "bảo vệ khỏi tia UV"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "퍼펙트 UV 선스크린 스킨케어 젤 [SPF50+/PA++++]",
+        "id": 263,
+        "sid": 135233,
+        "volume": "90g",
+        "sprice": 28000,
+        "official_price": 602000,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_135233.jpg",
+        "description": "",
+        "sdescription": "* 본 제품은 리뉴얼된 제품입니다.\n\n땀, 물을 만나도 강력한 자외선 차단막을 유지하는 선젤\n\n- 땀과 물을 만나도 강력한 자외선 차단막이 유지되어 자외선으로부터 피부표면을 보호\n- 땀과 물에도 지워지지 않는 수퍼 워터프루프  \n- 스킨케어 성분이 뜨거운 태양열에 지친 피부를 진정시키고 수분을 공급",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 142,
+            "third_category_name": "sữa chống nắng",
+            "third_category_en_name": "mild sunscreen"
+        },
+        "ingredients": [{
+                "purpose_en": "",
+                "id": 1,
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "name_en": "Water;Aqua"
+            },
+            {
+                "id": 447,
+                "name_en": "Alcohol",
+                "purpose_en": "",
+                "purpose_ko": "기포방지제, 수렴제, 향료, 용제, 점도감소제",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_vi": "Chất chống tạo bọt, chất làm se, hương liệu, dung môi, chất làm giảm độ nhớt"
+            },
+            {
+                "purpose_vi": "Chất chống tạo bọt, chất bảo vệ da, chất dưỡng da (chất chống ẩm)",
+                "id": 41,
+                "name_en": "Dimethicone",
+                "name_vi": "",
+                "hazard_score": 2,
+                "purpose_en": "",
+                "purpose_ko": "기포방지제, 피부보호제, 피부컨디셔닝제(수분차단제)"
+            },
+            {
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_ko": "자외선차단제, 변색방지제",
+                "hazard_score": 2,
+                "id": 160,
+                "purpose_vi": "Kem chống nắng, ức chế đổi màu",
+                "name_en": "Ethylhexyl Methoxycinnamate"
+            },
+            {
+                "purpose_ko": "향료, 자외선차단제, 변색방지제",
+                "purpose_vi": "Hương thơm, kem chống nắng, chất ức chế đổi màu",
+                "name_vi": "",
+                "id": 87,
+                "hazard_score": 2,
+                "purpose_en": "",
+                "name_en": "Ethylhexyl Salicylate"
+            },
+            {
+                "purpose_vi": "",
+                "name_en": "Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine",
+                "purpose_ko": "모발컨디셔닝제, 자외선차단제",
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 0,
+                "id": 1550
+            },
+            {
+                "purpose_ko": "변색방지제, 자외선차단(기능성화장품)",
+                "purpose_en": "",
+                "id": 451,
+                "name_en": "Diethylamino Hydroxybenzoyl Hexyl Benzoate",
+                "hazard_score": 1,
+                "purpose_vi": "Chất chống biến màu, chống tia cực tím (mỹ phẩm chức năng)",
+                "name_vi": ""
+            },
+            {
+                "purpose_vi": "Chất làm dẻo, làm mềm da, dung môi",
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 1525,
+                "name_en": "Diisopropyl Sebacate",
+                "purpose_en": "",
+                "purpose_ko": "가소제, 피부유연화제, 용제"
+            },
+            {
+                "name_en": "Ethylhexyl Triazone",
+                "purpose_vi": "Kem chống nắng",
+                "id": 663,
+                "purpose_ko": "자외선차단제",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_en": ""
+            },
+            {
+                "hazard_score": 1,
+                "purpose_vi": "Tẩy tế bào chết, hấp thụ, chất chống đóng bánh, chất làm phồng, chất làm mờ, chất lơ lửng - chất không phải chất hoạt động bề mặt",
+                "name_en": "Silica",
+                "purpose_en": "",
+                "name_vi": "",
+                "id": 85,
+                "purpose_ko": "스크럽제, 흡수제, 안티케이킹제, 벌킹제, 불투명화제, 현탁화제-비계면활성제"
+            },
+            {
+                "name_en": "Titanium Dioxide",
+                "id": 4,
+                "purpose_vi": "Chất tạo màu, chất làm mờ, kem chống nắng",
+                "purpose_en": "",
+                "purpose_ko": "착색제, 불투명화제, 자외선차단제",
+                "name_vi": "",
+                "hazard_score": 2
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "hazard_score": 1,
+                "name_en": "Glycerin",
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "name_vi": "",
+                "id": 66
+            },
+            {
+                "name_en": "Caprylyl Methicone",
+                "purpose_vi": "Chất điều hòa da (chặn ẩm)",
+                "id": 355,
+                "purpose_ko": "피부컨디셔닝제(수분차단제)",
+                "name_vi": "",
+                "purpose_en": "",
+                "hazard_score": 1
+            },
+            {
+                "hazard_score": 1,
+                "purpose_vi": "",
+                "name_vi": "",
+                "name_en": "PPG-17",
+                "purpose_ko": "",
+                "purpose_en": "",
+                "id": 1526
+            },
+            {
+                "name_en": "Acrylamides/DMAPA Acrylates/Methoxy PEG Methacrylate Copolymer",
+                "purpose_ko": "",
+                "hazard_score": 0
+            }
+        ],
+        "brand": {
+            "ko_name": "",
+            "id": 668,
+            "name": "ANESSA",
+            "sname": "아넷사 (ANESSA)",
+            "img": "https://d9vmi5fxk1gsw.cloudfront.net/home/glowmee/upload/20140912/1410746143724_160.png"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "SPF40 trở lên",
+            "cung cấp độ ẩm",
+            "bảo vệ khỏi tia UV",
+            "dạng gel"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "화이트닝 UV 선스크린 젤 [SPF50+/PA++++]",
+        "id": 263,
+        "sid": 135235,
+        "volume": "90g",
+        "sprice": 28000,
+        "official_price": 602000,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_135235.jpg",
+        "description": "",
+        "sdescription": "* 본 제품은 리뉴얼된 제품입니다.\n\n피부에 수분과 빛을 더하는 화이트닝 UV\n\n- 얼굴 전체에 빛을 더하는 피부 미백 효과 \n- 매끈하면서도 맑고 투명한 피부톤 완성\n- 피부결을 매끄럽게 완성해주고 피부톤은 맑고 투명하게 케어\n",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 143,
+            "third_category_name": "kem chống nắng nâng tông",
+            "third_category_en_name": "tone-up sunscrean"
+        },
+        "ingredients": [{
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "name_vi": "",
+                "id": 1,
+                "name_en": "Water;Aqua",
+                "purpose_vi": "Chất dưỡng da, dung môi"
+            },
+            {
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_ko": "가소제, 피부유연화제, 용제",
+                "id": 1525,
+                "name_en": "Diisopropyl Sebacate",
+                "purpose_vi": "Chất làm dẻo, làm mềm da, dung môi",
+                "purpose_en": ""
+            },
+            {
+                "name_en": "Alcohol",
+                "name_vi": "",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "id": 447,
+                "purpose_ko": "기포방지제, 수렴제, 향료, 용제, 점도감소제",
+                "purpose_vi": "Chất chống tạo bọt, chất làm se, hương liệu, dung môi, chất làm giảm độ nhớt"
+            },
+            {
+                "purpose_ko": "벌킹제, 착색제, 피부보호제, 자외선차단제",
+                "id": 3,
+                "hazard_score": 2,
+                "purpose_vi": "Đại lý Bulking, chất tạo màu, chất bảo vệ da, chất chống nắng",
+                "name_vi": "",
+                "name_en": "Zinc Oxide",
+                "purpose_en": ""
+            },
+            {
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "id": 66,
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "name_en": "Glycerin"
+            },
+            {
+                "name_en": "Ethylhexyl Methoxycinnamate",
+                "id": 160,
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_vi": "Kem chống nắng, ức chế đổi màu",
+                "purpose_ko": "자외선차단제, 변색방지제",
+                "hazard_score": 2
+            },
+            {
+                "name_vi": "",
+                "purpose_en": "",
+                "id": 35,
+                "hazard_score": 1,
+                "purpose_ko": "향료, 피부컨디셔닝제, 용제, 점도감소제",
+                "purpose_vi": "Hương thơm, chất điều hòa da, dung môi, chất làm giảm độ nhớt",
+                "name_en": "Butylene Glycol"
+            },
+            {
+                "purpose_ko": "모발컨디셔닝제, 자외선차단제",
+                "purpose_vi": "",
+                "name_vi": "",
+                "purpose_en": "",
+                "name_en": "Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine",
+                "hazard_score": 0,
+                "id": 1550
+            },
+            {
+                "hazard_score": 1,
+                "id": 451,
+                "name_vi": "",
+                "purpose_vi": "Chất chống biến màu, chống tia cực tím (mỹ phẩm chức năng)",
+                "purpose_en": "",
+                "purpose_ko": "변색방지제, 자외선차단(기능성화장품)",
+                "name_en": "Diethylamino Hydroxybenzoyl Hexyl Benzoate"
+            },
+            {
+                "name_en": "Tranexamic Acid",
+                "name_vi": "",
+                "purpose_ko": "수렴제, 피부컨디셔닝제",
+                "purpose_vi": "Chất làm se da",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "id": 359
+            },
+            {
+                "name_en": "Hydrated Silica",
+                "purpose_ko": "스크럽제, 흡수제, 안티케이킹제, 벌킹제, 불투명화제,? 피부컨디셔닝제, 점증제-수용성",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "sname": "아넷사 (ANESSA)",
+            "ko_name": "",
+            "id": 668,
+            "img": "https://d9vmi5fxk1gsw.cloudfront.net/home/glowmee/upload/20140912/1410746143724_160.png",
+            "name": "ANESSA"
+        },
+        "hazard_score": 3,
+        "tags": [
+            "SPF40 trở lên",
+            "làm trắng",
+            "cung cấp độ ẩm",
+            "sửa tông da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "퍼펙트 UV 선스크린 마일드 밀크 [SPF50+/PA++++]",
+        "id": 263,
+        "sid": 107887,
+        "volume": "60ml",
+        "sprice": 36000,
+        "official_price": 774000,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_107887.jpg",
+        "description": "",
+        "sdescription": "- 외부 유해환경과 자외선으로 인한 피부 손상을 최소화\r\n- 물과 땀을 만나도 강력한 자외선 차단막이 유지되어 자외선으로부터 피부 표면을 보호하는 아쿠아 부스터 기술\r\n- 이지 워셔블, 전용 리무버 없이 간편 클렌징\r\n- 저자극 테스트, 피부과 테스트 완료",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 142,
+            "third_category_name": "sữa chống nắng",
+            "third_category_en_name": "mild sunscreen"
+        },
+        "ingredients": [{
+                "name_vi": "",
+                "name_en": "Cyclopentasiloxane",
+                "hazard_score": 2,
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제, 용제",
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da, dung môi",
+                "purpose_en": "",
+                "id": 161
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "Đại lý Bulking, chất tạo màu, chất bảo vệ da, chất chống nắng",
+                "name_en": "Zinc Oxide",
+                "name_vi": "",
+                "hazard_score": 2,
+                "id": 3,
+                "purpose_ko": "벌킹제, 착색제, 피부보호제, 자외선차단제"
+            },
+            {
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": "",
+                "id": 361,
+                "name_en": "Methyl Methacrylate Crosspolymer",
+                "purpose_ko": "피막형성제, 점증제-비수용성",
+                "purpose_vi": "Chất tạo màng, chất làm đặc không hòa tan"
+            },
+            {
+                "purpose_ko": "가소제, 피부유연화제, 용제",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_vi": "Chất làm dẻo, làm mềm da, dung môi",
+                "id": 1525,
+                "name_vi": "",
+                "name_en": "Diisopropyl Sebacate"
+            },
+            {
+                "name_en": "Water;Aqua",
+                "purpose_en": "",
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "id": 1,
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_ko": "피부컨디셔닝제, 용제"
+            },
+            {
+                "hazard_score": 1,
+                "name_en": "Cetyl Ethylhexanoate",
+                "name_vi": "",
+                "purpose_ko": "피부유연화제",
+                "purpose_en": "",
+                "purpose_vi": "Làm mềm da",
+                "id": 8
+            },
+            {
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 514,
+                "purpose_ko": "향료, 모발컨디셔닝제, 수분증발차단제",
+                "name_en": "Triethylhexanoin",
+                "purpose_en": "",
+                "purpose_vi": "Hương thơm, chất dưỡng tóc, chất chống bay hơi"
+            },
+            {
+                "purpose_en": "",
+                "hazard_score": 1,
+                "purpose_vi": "Chất kết dính, chất điều hòa da (chất chống ẩm), chất làm tăng độ nhớt (không phải nước)",
+                "name_en": "Pentaerythrityl Tetraethylhexanoate",
+                "name_vi": "",
+                "purpose_ko": "결합제, 피부컨디셔닝제(수분차단제), 점도증가제(비수성)",
+                "id": 272
+            },
+            {
+                "purpose_ko": "향료, 피부컨디셔닝제, 용제, 점도감소제",
+                "purpose_vi": "Hương thơm, chất điều hòa da, dung môi, chất làm giảm độ nhớt",
+                "name_en": "Butylene Glycol",
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 35
+            },
+            {
+                "hazard_score": 1,
+                "id": 432,
+                "purpose_vi": "Chất làm dẻo, làm mềm da, dung môi",
+                "purpose_ko": "가소제, 피부유연화제, 용제",
+                "purpose_en": "",
+                "name_vi": "",
+                "name_en": "Diethylhexyl Succinate"
+            },
+            {
+                "purpose_vi": "Chất tạo màu, chất làm mờ, kem chống nắng",
+                "purpose_en": "",
+                "name_en": "Titanium Dioxide",
+                "purpose_ko": "착색제, 불투명화제, 자외선차단제",
+                "name_vi": "",
+                "id": 4,
+                "hazard_score": 2
+            },
+            {
+                "name_en": "Glycerin",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "id": 66
+            },
+            {
+                "purpose_vi": "Chất chống tạo bọt, chất bảo vệ da, chất dưỡng da (chất chống ẩm)",
+                "name_en": "Dimethicone",
+                "name_vi": "",
+                "purpose_en": "",
+                "hazard_score": 2,
+                "id": 41,
+                "purpose_ko": "기포방지제, 피부보호제, 피부컨디셔닝제(수분차단제)"
+            },
+            {
+                "id": 207,
+                "name_en": "Polymethylsilsesquioxane",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_vi": "Công cụ thay thế",
+                "purpose_ko": "불투명화제",
+                "name_vi": ""
+            },
+            {
+                "name_en": "Dextrin Palmitate",
+                "purpose_en": "",
+                "purpose_vi": "Chất chống đóng bánh, chất hoạt động bề mặt",
+                "id": 905,
+                "purpose_ko": "안티케이킹제, 계면활성제-유화제",
+                "name_vi": "",
+                "hazard_score": 1
+            },
+            {
+                "purpose_en": "",
+                "name_en": "Ethylhexyl Triazone",
+                "purpose_vi": "Kem chống nắng",
+                "name_vi": "",
+                "id": 663,
+                "hazard_score": 1,
+                "purpose_ko": "자외선차단제"
+            },
+            {
+                "name_vi": "",
+                "purpose_ko": "변색방지제, 자외선차단(기능성화장품)",
+                "purpose_en": "",
+                "id": 451,
+                "purpose_vi": "Chất chống biến màu, chống tia cực tím (mỹ phẩm chức năng)",
+                "name_en": "Diethylamino Hydroxybenzoyl Hexyl Benzoate",
+                "hazard_score": 1
+            },
+            {
+                "purpose_vi": "Chất điều hòa da, chất hoạt động bề mặt",
+                "name_vi": "",
+                "purpose_ko": "피부컨디셔닝제, 계면활성제-유화제",
+                "hazard_score": 2,
+                "name_en": "PEG-9 Polydimethylsiloxyethyl Dimethicone",
+                "purpose_en": "",
+                "id": 899
+            },
+            {
+                "id": 10,
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_ko": "현탁화제-비계면활성제",
+                "purpose_vi": "Chất huyền phù không phải chất hoạt động bề mặt",
+                "hazard_score": 1,
+                "name_en": "Disteardimonium Hectorite"
+            },
+            {
+                "purpose_vi": "Đại lý dưỡng tóc, đại lý dưỡng da",
+                "hazard_score": 2,
+                "name_vi": "",
+                "name_en": "PEG-10 Dimethicone",
+                "purpose_en": "",
+                "purpose_ko": "모발컨디셔닝제, 피부컨디셔닝제",
+                "id": 349
+            },
+            {
+                "name_en": "Aluminum Hydroxide",
+                "purpose_en": "",
+                "name_vi": "",
+                "id": 14,
+                "purpose_vi": "Tác nhân mờ đục, bảo vệ da",
+                "purpose_ko": "불투명화제, 피부보호제",
+                "hazard_score": 1
+            },
+            {
+                "name_en": "Stearic Acid",
+                "name_vi": "",
+                "purpose_en": "",
+                "id": 17,
+                "hazard_score": 1,
+                "purpose_vi": "Hương liệu, Surfactant-Cleanser, Surfactant-Emulsifier",
+                "purpose_ko": "향료, 계면활성제-세정제, 계면활성제-유화제"
+            },
+            {
+                "id": 1550,
+                "name_en": "Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine",
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 0,
+                "purpose_ko": "모발컨디셔닝제, 자외선차단제",
+                "purpose_vi": ""
+            },
+            {
+                "hazard_score": 1,
+                "purpose_ko": "스크럽제, 흡수제, 안티케이킹제, 벌킹제, 불투명화제, 현탁화제-비계면활성제",
+                "name_en": "Silica",
+                "purpose_en": "",
+                "purpose_vi": "Tẩy tế bào chết, hấp thụ, chất chống đóng bánh, chất làm phồng, chất làm mờ, chất lơ lửng - chất không phải chất hoạt động bề mặt",
+                "name_vi": "",
+                "id": 85
+            },
+            {
+                "purpose_vi": "Chất chống tạo bọt, chất điều hòa da (chất chống ẩm)",
+                "name_vi": "",
+                "purpose_ko": "기포방지제, 피부컨디셔닝제(수분차단제)",
+                "name_en": "Trimethylsiloxysilicate",
+                "id": 427,
+                "hazard_score": 1,
+                "purpose_en": ""
+            },
+            {
+                "name_en": "PEG/PPG-14/7 Dimethyl Ether",
+                "name_vi": "",
+                "purpose_en": "",
+                "hazard_score": 2,
+                "purpose_ko": "",
+                "id": 1527,
+                "purpose_vi": ""
+            },
+            {
+                "name_en": "Sodium Chloride",
+                "purpose_en": "",
+                "purpose_ko": "감미제, 점증제-수용성",
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_vi": "Chất làm ngọt, chất làm đặc tan trong nước",
+                "id": 460
+            },
+            {
+                "purpose_en": "",
+                "name_en": "Sodium Citrate",
+                "id": 184,
+                "hazard_score": 1,
+                "purpose_ko": "pH 완충제, 금속이온봉쇄제, 향료, pH 조절제",
+                "name_vi": "",
+                "purpose_vi": "Đệm pH, chặn ion kim loại, hương thơm, điều chỉnh pH"
+            },
+            {
+                "purpose_en": "",
+                "purpose_ko": "감미제, 피부컨디셔닝제",
+                "name_vi": "",
+                "name_en": "Dipotassium Glycyrrhizate",
+                "hazard_score": 1,
+                "purpose_vi": "Chất làm ngọt, chất dưỡng da",
+                "id": 157
+            },
+            {
+                "name_en": "Sodium Metabisulfite",
+                "hazard_score": 2,
+                "id": 1324,
+                "purpose_ko": "산화방지제, 환원제",
+                "purpose_vi": "Chất chống oxy hóa, chất khử",
+                "purpose_en": "",
+                "name_vi": ""
+            },
+            {
+                "purpose_vi": "",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_ko": "",
+                "id": 496,
+                "name_en": "Angelica Acutiloba Root Extract"
+            },
+            {
+                "purpose_ko": "산화방지제, 향료, 피부컨디셔닝제, 수분증발차단제",
+                "id": 38,
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_en": "Tocopherol",
+                "purpose_vi": "Chất chống oxy hóa, hương thơm, chất điều hòa da, chất chặn bay hơi ẩm",
+                "name_vi": ""
+            },
+            {
+                "name_en": "Thymus Serpillum Extract",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "purpose_vi": "Chất điều hòa da (khác)",
+                "id": 727
+            },
+            {
+                "hazard_score": 1,
+                "purpose_ko": "",
+                "purpose_en": "",
+                "purpose_vi": "",
+                "name_vi": "",
+                "name_en": "Rosa Roxburghii Fruit Extract",
+                "id": 1109
+            },
+            {
+                "name_en": "Sodium Hyaluronate",
+                "hazard_score": 1,
+                "id": 39,
+                "purpose_ko": "피부컨디셔닝제",
+                "purpose_vi": "Đại lý dưỡng da",
+                "purpose_en": "",
+                "name_vi": ""
+            }
+        ],
+        "brand": {
+            "ko_name": "",
+            "img": "https://d9vmi5fxk1gsw.cloudfront.net/home/glowmee/upload/20140912/1410746143724_160.png",
+            "sname": "아넷사 (ANESSA)",
+            "name": "ANESSA",
+            "id": 668
+        },
+        "hazard_score": 2,
+        "tags": [
+            "SPF40 trở lên",
+            "không gây dị ứng"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": " 에센스 UV 선스크린 마일드 밀크",
+        "id": 263,
+        "sid": 106311,
+        "volume": "60ml",
+        "sprice": 36000,
+        "official_price": 774000,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_106311.jpg",
+        "description": "",
+        "sdescription": "내일의 피부가지 케어하는 UV선스킨케어",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 142,
+            "third_category_name": "sữa chống nắng",
+            "third_category_en_name": "mild sunscreen"
+        },
+        "ingredients": [{
+                "name_en": "Methyl Methacrylate Crosspolymer",
+                "hazard_score": 1,
+                "purpose_ko": "피막형성제, 점증제-비수용성",
+                "purpose_vi": "Chất tạo màng, chất làm đặc không hòa tan",
+                "purpose_en": "",
+                "id": 361,
+                "name_vi": ""
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da, dung môi",
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제, 용제",
+                "name_vi": "",
+                "hazard_score": 2,
+                "id": 161,
+                "name_en": "Cyclopentasiloxane"
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "id": 1,
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "hazard_score": 1,
+                "name_en": "Water;Aqua",
+                "name_vi": ""
+            },
+            {
+                "purpose_en": "",
+                "name_en": "Diisopropyl Sebacate",
+                "id": 1525,
+                "name_vi": "",
+                "purpose_vi": "Chất làm dẻo, làm mềm da, dung môi",
+                "hazard_score": 1,
+                "purpose_ko": "가소제, 피부유연화제, 용제"
+            },
+            {
+                "id": 35,
+                "purpose_ko": "향료, 피부컨디셔닝제, 용제, 점도감소제",
+                "name_vi": "",
+                "purpose_vi": "Hương thơm, chất điều hòa da, dung môi, chất làm giảm độ nhớt",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_en": "Butylene Glycol"
+            },
+            {
+                "hazard_score": 1,
+                "id": 8,
+                "purpose_vi": "Làm mềm da",
+                "purpose_ko": "피부유연화제",
+                "purpose_en": "",
+                "name_en": "Cetyl Ethylhexanoate",
+                "name_vi": ""
+            },
+            {
+                "name_en": "Pentaerythrityl Tetraethylhexanoate",
+                "purpose_vi": "Chất kết dính, chất điều hòa da (chất chống ẩm), chất làm tăng độ nhớt (không phải nước)",
+                "hazard_score": 1,
+                "purpose_ko": "결합제, 피부컨디셔닝제(수분차단제), 점도증가제(비수성)",
+                "purpose_en": "",
+                "name_vi": "",
+                "id": 272
+            },
+            {
+                "purpose_ko": "향료, 모발컨디셔닝제, 수분증발차단제",
+                "name_en": "Triethylhexanoin",
+                "purpose_vi": "Hương thơm, chất dưỡng tóc, chất chống bay hơi",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": "",
+                "id": 514
+            },
+            {
+                "purpose_en": "",
+                "hazard_score": 2,
+                "purpose_vi": "Đại lý Bulking, chất tạo màu, chất bảo vệ da, chất chống nắng",
+                "id": 3,
+                "purpose_ko": "벌킹제, 착색제, 피부보호제, 자외선차단제",
+                "name_vi": "",
+                "name_en": "Zinc Oxide"
+            },
+            {
+                "id": 432,
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_vi": "Chất làm dẻo, làm mềm da, dung môi",
+                "purpose_ko": "가소제, 피부유연화제, 용제",
+                "name_en": "Diethylhexyl Succinate",
+                "hazard_score": 1
+            },
+            {
+                "hazard_score": 2,
+                "id": 41,
+                "purpose_ko": "기포방지제, 피부보호제, 피부컨디셔닝제(수분차단제)",
+                "name_en": "Dimethicone",
+                "purpose_vi": "Chất chống tạo bọt, chất bảo vệ da, chất dưỡng da (chất chống ẩm)",
+                "name_vi": "",
+                "purpose_en": ""
+            },
+            {
+                "name_en": "Glycerin",
+                "hazard_score": 1,
+                "id": 66,
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제"
+            },
+            {
+                "name_vi": "",
+                "purpose_ko": "안티케이킹제, 계면활성제-유화제",
+                "name_en": "Dextrin Palmitate",
+                "purpose_en": "",
+                "purpose_vi": "Chất chống đóng bánh, chất hoạt động bề mặt",
+                "hazard_score": 1,
+                "id": 905
+            },
+            {
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_ko": "불투명화제",
+                "hazard_score": 1,
+                "id": 207,
+                "name_en": "Polymethylsilsesquioxane",
+                "purpose_vi": "Công cụ thay thế"
+            },
+            {
+                "name_en": "Ethylhexyl Triazone",
+                "purpose_ko": "자외선차단제",
+                "id": 663,
+                "purpose_en": "",
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_vi": "Kem chống nắng"
+            },
+            {
+                "purpose_vi": "Chất điều hòa da, chất hoạt động bề mặt",
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제, 계면활성제-유화제",
+                "name_en": "PEG-9 Polydimethylsiloxyethyl Dimethicone",
+                "hazard_score": 2,
+                "id": 899
+            },
+            {
+                "purpose_vi": "Chất huyền phù không phải chất hoạt động bề mặt",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_en": "Disteardimonium Hectorite",
+                "id": 10,
+                "name_vi": "",
+                "purpose_ko": "현탁화제-비계면활성제"
+            },
+            {
+                "purpose_en": "",
+                "name_en": "Trimethylsiloxysilicate",
+                "name_vi": "",
+                "purpose_vi": "Chất chống tạo bọt, chất điều hòa da (chất chống ẩm)",
+                "id": 427,
+                "hazard_score": 1,
+                "purpose_ko": "기포방지제, 피부컨디셔닝제(수분차단제)"
+            },
+            {
+                "purpose_vi": "Chất chống biến màu, chống tia cực tím (mỹ phẩm chức năng)",
+                "id": 451,
+                "purpose_en": "",
+                "name_en": "Diethylamino Hydroxybenzoyl Hexyl Benzoate",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "변색방지제, 자외선차단(기능성화장품)"
+            },
+            {
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 85,
+                "purpose_en": "",
+                "name_en": "Silica",
+                "purpose_vi": "Tẩy tế bào chết, hấp thụ, chất chống đóng bánh, chất làm phồng, chất làm mờ, chất lơ lửng - chất không phải chất hoạt động bề mặt",
+                "purpose_ko": "스크럽제, 흡수제, 안티케이킹제, 벌킹제, 불투명화제, 현탁화제-비계면활성제"
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "",
+                "purpose_ko": "모발컨디셔닝제, 자외선차단제",
+                "name_en": "Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine",
+                "name_vi": "",
+                "id": 1550,
+                "hazard_score": 0
+            },
+            {
+                "purpose_en": "",
+                "hazard_score": 2,
+                "purpose_vi": "Đại lý dưỡng tóc, đại lý dưỡng da",
+                "name_vi": "",
+                "id": 349,
+                "name_en": "PEG-10 Dimethicone",
+                "purpose_ko": "모발컨디셔닝제, 피부컨디셔닝제"
+            },
+            {
+                "name_en": "PEG/PPG-14/7 Dimethyl Ether",
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_ko": "",
+                "id": 1527,
+                "hazard_score": 2,
+                "purpose_vi": ""
+            },
+            {
+                "name_en": "Sodium Citrate",
+                "name_vi": "",
+                "purpose_ko": "pH 완충제, 금속이온봉쇄제, 향료, pH 조절제",
+                "purpose_en": "",
+                "purpose_vi": "Đệm pH, chặn ion kim loại, hương thơm, điều chỉnh pH",
+                "hazard_score": 1,
+                "id": 184
+            },
+            {
+                "purpose_vi": "Chất làm ngọt, chất làm đặc tan trong nước",
+                "name_en": "Sodium Chloride",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "감미제, 점증제-수용성",
+                "purpose_en": "",
+                "id": 460
+            },
+            {
+                "name_vi": "",
+                "name_en": "Stearic Acid",
+                "purpose_vi": "Hương liệu, Surfactant-Cleanser, Surfactant-Emulsifier",
+                "purpose_ko": "향료, 계면활성제-세정제, 계면활성제-유화제",
+                "id": 17,
+                "purpose_en": "",
+                "hazard_score": 1
+            },
+            {
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_vi": "Chất làm ngọt, chất dưỡng da",
+                "id": 157,
+                "name_en": "Dipotassium Glycyrrhizate",
+                "purpose_ko": "감미제, 피부컨디셔닝제",
+                "name_vi": ""
+            },
+            {
+                "name_vi": "",
+                "purpose_en": "",
+                "id": 1324,
+                "purpose_ko": "산화방지제, 환원제",
+                "hazard_score": 2,
+                "name_en": "Sodium Metabisulfite",
+                "purpose_vi": "Chất chống oxy hóa, chất khử"
+            },
+            {
+                "id": 496,
+                "purpose_en": "",
+                "purpose_vi": "",
+                "name_en": "Angelica Acutiloba Root Extract",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": ""
+            },
+            {
+                "id": 727,
+                "hazard_score": 1,
+                "name_en": "Thymus Serpillum Extract",
+                "purpose_vi": "Chất điều hòa da (khác)",
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제(기타)"
+            },
+            {
+                "name_vi": "",
+                "id": 38,
+                "purpose_en": "",
+                "hazard_score": 1,
+                "name_en": "Tocopherol",
+                "purpose_vi": "Chất chống oxy hóa, hương thơm, chất điều hòa da, chất chặn bay hơi ẩm",
+                "purpose_ko": "산화방지제, 향료, 피부컨디셔닝제, 수분증발차단제"
+            },
+            {
+                "name_en": "Sodium Hyaluronate",
+                "id": 39,
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_vi": "Đại lý dưỡng da",
+                "purpose_ko": "피부컨디셔닝제"
+            },
+            {
+                "purpose_en": "",
+                "id": 1109,
+                "name_en": "Rosa Roxburghii Fruit Extract",
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_ko": "",
+                "purpose_vi": ""
+            }
+        ],
+        "brand": {
+            "ko_name": "",
+            "name": "ANESSA",
+            "id": 668,
+            "sname": "아넷사 (ANESSA)",
+            "img": "https://d9vmi5fxk1gsw.cloudfront.net/home/glowmee/upload/20140912/1410746143724_160.png"
+        },
+        "hazard_score": 2,
+        "tags": [
+            "SPF20-40",
+            "Chống nước",
+            "không gây dị ứng"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    }
+]

@@ -1,0 +1,362 @@
+[
+    {
+        "sid": 132014,
+        "name": "",
+        "sname": "프로페셔널 미셀라에어 클렌징 워터",
+        "description": "",
+        "sdescription": "피부를 즉각적으로 숨쉬게 하는 원스텝 산소클렌징\r\n\r\n- 진한 메이크업까지 원스텝 클렌징\r\n- 딥클렌징으로 잔여물 0%\r\n- 말끔하게 닦아 피부가 즉각적으로 숨쉬도록 산소투과율 향상",
+        "category": {
+            "first_category_id": 7,
+            "first_category_name": "làm sạch",
+            "first_category_en_name": "cleansing",
+            "second_category_id": 33,
+            "second_category_name": "tẩy trang",
+            "second_category_en_name": "makeup remover",
+            "third_category_id": 119,
+            "third_category_name": "nước tẩy trang",
+            "third_category_en_name": "cleansing water"
+        }
+    },
+    {
+        "sid": 39483,
+        "name": "",
+        "sname": "선 프로텍트 워터젤 [SPF50/PA+++]",
+        "description": "",
+        "sdescription": "일상 강력한 자외선으로부터 피부를 부드럽게 보호합니다.\r\n\r\n선크림임에도 화장수 같은 질감은 UV워터젤입니다.\r\n\r\n녹는 듯이 피부에 스며들어 흡수되며 유분이나 백탁현상없이 산뜻하게 사용할 수 있습니다.\r\n\r\n전용 클렌징 필요 없이 항상 사용하는 비누나 클렌저 등으로도 클렌징이 가능합니다.\r\n",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 44,
+            "second_category_name": "gel chống nắng",
+            "second_category_en_name": "sun gel",
+            "third_category_id": null,
+            "third_category_name": null,
+            "third_category_en_name": null
+        }
+    },
+    {
+        "sid": 132012,
+        "name": "",
+        "sname": "센서티브 미셀라에어 클렌징 워터",
+        "description": "",
+        "sdescription": "외부 오염 및 메이크업으로 민감해진 피부에 편안하고 건강한 클렌징을 선사하는 클렌징 워터\r\n\r\n- 독자적으로 개발한 마이크로 미셀라 입자가 높은 커버력의 메이크업도 잔여물 없이 말끔하게 클렌징\r\n- 예민해진 피부를 위한 피부장벽 강화, 피부 진정 효과\r\n- 향료, 색소, 벤조페논, 벤질알코올, 이미다졸리디닐우레아, 살리실릭애씨드, 파라벤 7종 무첨가 및 엄격한 정제공정을 거친 독일 퓨어워터 사용",
+        "category": {
+            "first_category_id": 7,
+            "first_category_name": "làm sạch",
+            "first_category_en_name": "cleansing",
+            "second_category_id": 33,
+            "second_category_name": "tẩy trang",
+            "second_category_en_name": "makeup remover",
+            "third_category_id": 119,
+            "third_category_name": "nước tẩy trang",
+            "third_category_en_name": "cleansing water"
+        }
+    },
+    {
+        "sid": 89686,
+        "name": "",
+        "sname": "선 프로텍트 앤 화이트 오일 컨트롤 선세럼 [SPF50+/PA+++]",
+        "description": "",
+        "sdescription": "가볍게 밀착되고 번들거림이나 끈적임 없이 산뜻하게 지속되는 저자극 선 세럼\r\n\r\nNO 번들거림! NO 끈적임! 가볍게 밀착되는 페이스 선세럼 니베아 오일컨트롤 선세럼\r\n\r\n유수분 밸런스의 완성\r\n-모공의 유분기를 86%까지 감소시킬 수 있는 L-키르니틴 함유\r\n\r\n자외선 강력 차단\r\n-SPF50+PA+++\r\n\r\n가벼운 밀착으로 화장도 산뜻하게\r\n-메이크업 베이스 겸용 제품",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 142,
+            "third_category_name": "sữa chống nắng",
+            "third_category_en_name": "mild sunscreen"
+        }
+    },
+    {
+        "sid": 75697,
+        "name": "",
+        "sname": "선 프로텍트 앤 리프레쉬 선 로션 [SPF50]",
+        "description": "",
+        "sdescription": "-지속적이고 효과적인 자외선 A, B 차단 시스템\r\n-끈적임 없이 산뜻한 사용감\r\n-내수성 : 땀이나 물에 쉽게 지워지지 않음 ",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 142,
+            "third_category_name": "sữa chống nắng",
+            "third_category_en_name": "mild sunscreen"
+        }
+    },
+    {
+        "sid": 37806,
+        "name": "",
+        "sname": "선 라이트 텍스쳐 선 크림 [SPF50+/PA+++]",
+        "description": "",
+        "sdescription": "뛰어난 흡수력으로 모공을 막지 않는 자외선 차단 메이크업\r\n-뛰어난 릅수력으로 끈적임 없는 라이트 텍스쳐\r\n-진주핑크로 피부 톤을 화사하게 톤업!",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 142,
+            "third_category_name": "sữa chống nắng",
+            "third_category_en_name": "mild sunscreen"
+        }
+    },
+    {
+        "sid": 75994,
+        "name": "",
+        "sname": "라이트 텍스쳐 선 프로텍션 세럼",
+        "description": "",
+        "sdescription": "* 뛰어난 흡수력으로 수시 덧바름에도 밀림걱정없는 라이트 텍스쳐 선 세럼\r\n* 파우치 안에 쏙! 언제 어디서나 원하는 부위에 바로 덧바름에 용이한 튜브타입\r\n* 뛰어난 UVA/UVB 차단 시스템으로 효과적인 자외선 차단\r\n* 로즈핑크로 피부결을 고르게 정돈!",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 142,
+            "third_category_name": "sữa chống nắng",
+            "third_category_en_name": "mild sunscreen"
+        }
+    },
+    {
+        "sid": 48701,
+        "name": "",
+        "sname": "선 프로텍트 앤 라이트 필 선 로션 [SPF50+/PA+++]",
+        "description": "",
+        "sdescription": "- 지속적이고 효과적인 자외선 차단 시스템\r\n- 끈적임 없이 산뜻한 사용감의 선 로션\r\n- 내수성, 땀이나 물에 쉽게 지워지지 않음 ",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 142,
+            "third_category_name": "sữa chống nắng",
+            "third_category_en_name": "mild sunscreen"
+        }
+    },
+    {
+        "sid": 74930,
+        "name": "",
+        "sname": "라이트 선 라이트 필 선 스프레이 ",
+        "description": "",
+        "sdescription": "-투명한 포뮬러로 끈적이지 않고 가볍게!\r\n\r\n-스프레이 타입으로 더욱 편리하게 !",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 46,
+            "second_category_name": "xịt chống nắng",
+            "second_category_en_name": "sun spray",
+            "third_category_id": null,
+            "third_category_name": null,
+            "third_category_en_name": null
+        }
+    },
+    {
+        "sid": 88073,
+        "name": "",
+        "sname": "프로텍트 앤 모이스춰 선 로션 [SPF30/PA++]",
+        "description": "",
+        "sdescription": "효과적인 자외선 차단 성분이 자외선으로부터 안전하게 피부를 보호하면서 푸매 손상 및 피부 내 콜라겐 손상을 방지해 줍니다.\r\n\r\n",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 142,
+            "third_category_name": "sữa chống nắng",
+            "third_category_en_name": "mild sunscreen"
+        }
+    },
+    {
+        "sid": 77045,
+        "name": "",
+        "sname": "선 프로텍션 롤온[SPF50+/PA+++]",
+        "description": "",
+        "sdescription": "프로비타민 함유로 태양으로 지친 피부를 촉촉하게 보호!\r\n\r\n-액상으로 빠르게 흡수가 가능하여 뭉침이나 백탁없이 가볍게 바르기 편합니다.\r\n\r\n-프로비타민 B5(판테놀) 함유로 뜨거운 태양빛에도 수분을 공급하여 피부를 진정 시켜 줍니다.",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 43,
+            "second_category_name": "thanh chống nắng",
+            "second_category_en_name": "sun stick",
+            "third_category_id": null,
+            "third_category_name": null,
+            "third_category_en_name": null
+        }
+    },
+    {
+        "sid": 24327,
+        "name": "",
+        "sname": "퓨어 앤 센서티브 선 로션 [SPF50+/PA+++]",
+        "description": "",
+        "sdescription": "무방부제, 무색소, 인공향 무첨가의 자연 친화적인 제품으로 민감한 피부를 보호하면서 효과적으로 자외선을 차단합니다.\r\n\r\n* 뛰어난 UVA, UVB 차단 시스템으로 오랜 시간 자외선 노출에도 민감하고 연약한 피부를 효과적으로 보호해 줍니다.\r\n* 무방부제, 무색소, 인공향 무첨가의 순산 저자극 제품으로 민감하고 연약한 피부에 적합합니다.\r\n* 자연보습 성분 알로에 베라가 피부에 촉촉함을 선사합니다.\r\n* 땀이나 물에 쉽게 지워지지 않는 내수성 기능이 있습니다.\r\n* 자외선에 노출 되는 부위에 적당량을 골고루 펴발라 줍니다.\r\n* 옷과의 직접적인 접촉한 피해주시고 눈 주위에 바르지 마세요.",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 142,
+            "third_category_name": "sữa chống nắng",
+            "third_category_en_name": "mild sunscreen"
+        }
+    },
+    {
+        "sid": 24497,
+        "name": "",
+        "sname": "퓨어 앤 센서티브 선 스프레이 [SPF50+/PA+++]",
+        "description": "",
+        "sdescription": "퓨어 앤 센서티브 선 스프레이는 무색소, 인공향 무첨가 제품으로 피부 트러블을 일으키지 않는 피부과 테스트 완료된 제품입니다. 예민하고 민감한 피부도 안전하게 자외선으로부터 보호해주며, 스프레이 타입으로 발림성이 뛰어난 제품입니다.\r\n\r\n* 간편한 사용의 스프레이 타입 선 로션\r\n* 강한 자외선으로부터 예민하고 민감한 피부까지 안전하게 보호\r\n* 무색소, 인공향 무첨가의 퓨어한 성분이 안전하게 자외선을 차단\r\n* 자외선으로 지친 피부를 진정시켜주는 알로에 베라 성분 함유",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 46,
+            "second_category_name": "xịt chống nắng",
+            "second_category_en_name": "sun spray",
+            "third_category_id": null,
+            "third_category_name": null,
+            "third_category_en_name": null
+        }
+    },
+    {
+        "sid": 24326,
+        "name": "",
+        "sname": "라이트 필링 선 로션 [SPF50+/PA+++]",
+        "description": "",
+        "sdescription": "강하고 오래지속되는 자외선 A,B 차단효과와 혁신적인 라이트 필링(Light feeling) 포뮬라의 빠른 흡수, 가벼운 사용감으로 건강한 피부를 가뿐하게 지키세요.\r\n\r\n-우수한 자외선 차단 필터 시스템이 강한 자외선으로부터 피부 보호\r\n-끈적임 없이 산뜻한 라이트 필링 (Light Feeling) 포뮬라로 피부에 빨리 흡수되어 얼굴 및 몸 사용에 적합\r\n-땀이나 물등의 접촉에도 쉽게 지워지지 않는 내수성 기능(식약청 인증)\r\n-은은한 로맨틱 할리데이 향\r\n-구입처: 전국 이마트, 테스코, 롯테마트 매장에서만 한정 판매",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 142,
+            "third_category_name": "sữa chống nắng",
+            "third_category_en_name": "mild sunscreen"
+        }
+    },
+    {
+        "sid": 24498,
+        "name": "",
+        "sname": "아쿠아 프로텍트 선 스프레이 [SPF30/PA++]",
+        "description": "",
+        "sdescription": "투명한 인비져블 포뮬라로 보다 산뜻한 사용감과 빠른 흡수로 사용하기 더욱 편리하며, 효과적인 자외선 A, B 차단 필터시스템이 강한 자외선으로부터 피부를 보호해줍니다.\r\n\r\n-은은한 로맨틱 할리데이 향으로 사용이 더욱 즐겁습니다.\r\n-사용방법: 사용 전 충분히 흔들어준 후 햇빛에 노출되는 부위에 적당량을 분시하여 골고루 펴 바릅니다. 옷과 직접적인 접촉은 피하도록 하며, 눈 및 얼굴 주위에 직접 분사하지 마십시오.",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 46,
+            "second_category_name": "xịt chống nắng",
+            "second_category_en_name": "sun spray",
+            "third_category_id": null,
+            "third_category_name": null,
+            "third_category_en_name": null
+        }
+    },
+    {
+        "sid": 2467,
+        "name": "",
+        "sname": "썬 프로텍트 앤 리프레쉬 쿨링 미스트",
+        "description": "",
+        "sdescription": "프로택트 앤 리프레쉬 쿨링 미스트는 SPF50+ PA+++로 효과적으로 자외선을 차단해주며, 끈적이지 않는 시원한 쿨링 효과로 야외활동 시 편리하게 사용 가능한 제품입니다.\r\n\r\n스프레이 타입으로 손이 닿지 않는 곳까지 고르게 분사 가능하며, 쿨링 효과로 야외활동 시 받은 피부 자극을 진정시켜줍니다.",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 46,
+            "second_category_name": "xịt chống nắng",
+            "second_category_en_name": "sun spray",
+            "third_category_id": null,
+            "third_category_name": null,
+            "third_category_en_name": null
+        }
+    },
+    {
+        "sid": 1922,
+        "name": "",
+        "sname": "페이스 선 블록 모이스춰라이징 크림",
+        "description": "",
+        "sdescription": "혁신적인 자외선 A,B 필터 시스템으로 일상 자외선은 물론 강한 자외선에서도 더욱 지속적으로 얼굴 피부를 건강하게 보호해줍니다.",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 142,
+            "third_category_name": "sữa chống nắng",
+            "third_category_en_name": "mild sunscreen"
+        }
+    },
+    {
+        "sid": 61017,
+        "name": "",
+        "sname": "프로텍트 앤 센서티브 선 로션 [SPF50+/PA+++]",
+        "description": "",
+        "sdescription": "* 뛰어난 UVA, UVB 차단 시스템으로 오랜 시간 자외선 노출에도 민감하고 연약한 피부를 효과적으로 보호해 줍니다.\r\n\r\n* 무방부제, 무색소, 인공향 무첨가의 순산 저자극 제품으로 민감하고 연약한 피부에 적합합니다.\r\n\r\n* 자연보습 성분 알로에 베라가 피부에 촉촉함을 선사합니다.\r\n\r\n* 땀이나 물에 쉽게 지워지지 않는 내수성 기능이 있습니다.\r\n\r\n* 자외선에 노출 되는 부위에 적당량을 골고루 펴발라 줍니다.\r\n\r\n* 옷과의 직접적인 접촉한 피해주시고 눈 주위에 바르지 마세요.",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 142,
+            "third_category_name": "sữa chống nắng",
+            "third_category_en_name": "mild sunscreen"
+        }
+    },
+    {
+        "sid": 24499,
+        "name": "",
+        "sname": "페이스 선 블록 화이트닝 크림 [SPF50/PA+++]",
+        "description": "",
+        "sdescription": "강하고 오래지속되는 자외선 A,B 차단효과와 감초추출물의 미백 기능으로 화사하고 건강한 얼굴 피부를 가꾸세요. \r\n우수한 미백기능의 감초 추출물이 멜라닌에 작용하여 칙칙해진 피부톤을 한층 밝고 환하게 가꿔주고 효과적인 화이트닝을 겸비한 얼굴전용 선크림\r\n\r\n-자외선으로 인한 피부내 콜라겐 손상 방지\r\n-혁신적인 자외선 A, B 필터 시스템으로 일상 자외선은 물론 강한 자외선에서도 더욱 지속적으로 피부를 건강하게 지켜줍니다.\r\n-비타민 E 유도체 및 다양한 보습성분이 자외선 노출로 인해 건조해지기 쉬운 피부를 촉촉하게 지켜줍니다.\r\n-자외선으로 야기되는 잡티, 색소 침착으로 부터 피부를 적극적으로 보호해 주며 미백효과의 감초추출물이 피부를 더욱 깨끗하고 환하게 가꾸어 줍니다.\r\n-피부에 빨리 흡수되고 사용감이 산뜻하며, 땀이나 물에 잘 지워지지 않아 메이크업 베이스로도 적합니다.",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 142,
+            "third_category_name": "sữa chống nắng",
+            "third_category_en_name": "mild sunscreen"
+        }
+    },
+    {
+        "sid": 24328,
+        "name": "",
+        "sname": "선 후레쉬 선 로션 [SPF47/PA++]",
+        "description": "",
+        "sdescription": "효과적인 자외선 차단 성분이 자외선으로부터 안전하게 피부를 보호하면서 푸매 손상 및 피부 내 콜라겐 손상을 방지해 줍니다.\r\n\r\n* 지속적인 자외선 A,B 차단 기능으로 피부를 건강하게 지켜 줍니다.\r\n\r\n* 보습 성분과 비타민 E 유도체가 피부를 보다 촉촉하게 해 줍니다.\r\n\r\n* 땀이나 물에 강한 수상베이스로 끈적임 없이 산뜻한 사용감을 느낄 수 있습니다. \r\n\r\n* 자외선에 노출 되는 부위에 적당량을 골고루 펴발라 줍니다.\r\n\r\n* 옷과의 직접적인 접촉한 피해주시고 눈 주위에 바르지 마세요.",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 142,
+            "third_category_name": "sữa chống nắng",
+            "third_category_en_name": "mild sunscreen"
+        }
+    }
+]

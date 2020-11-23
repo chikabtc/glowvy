@@ -1,0 +1,218 @@
+[
+    {
+        "sid": 6400,
+        "name": "",
+        "sname": "테이크 잇 어웨이 아이 앤 립 리무버",
+        "description": "",
+        "sdescription": "첨단 기술이 적용된 놀라운 성능의 1단계 포뮬라가 롱웨어 및 워터프루프 메이크업을 화장솜 한 장만 있으면 깔끔하게 지울 수 있게 해줍니다. 로즈 워터 성분을 함유하여 눈가 주위의 민감한 피부를 편안하게 해줍니다.",
+        "category": {
+            "first_category_id": 7,
+            "first_category_name": "làm sạch",
+            "first_category_en_name": "cleansing",
+            "second_category_id": 34,
+            "second_category_name": "tẩy trang theo vùng",
+            "second_category_en_name": "point remover",
+            "third_category_id": null,
+            "third_category_name": null,
+            "third_category_en_name": null
+        }
+    },
+    {
+        "sid": 6398,
+        "name": "",
+        "sname": "퍼펙틀리 클린 트리플-액션 클렌저/토너/메이크업 리무버",
+        "description": "",
+        "sdescription": "3가지 기능이 있는 멀티 클렌저로, 롱 웨어 메이크업과 피부 불순물을 제거하고, 피부를 정돈합니다.",
+        "category": {
+            "first_category_id": 7,
+            "first_category_name": "làm sạch",
+            "first_category_en_name": "cleansing",
+            "second_category_id": 32,
+            "second_category_name": "rửa mặt",
+            "second_category_en_name": "facial cleanser",
+            "third_category_id": 113,
+            "third_category_name": "sữa rửa mặt dạng bọt",
+            "third_category_en_name": "bubble cleanser"
+        }
+    },
+    {
+        "sid": 92319,
+        "name": "",
+        "sname": "뉴트리셔스 마이크로-알게 포어 퓨리파잉 클렌징 젤리",
+        "description": "",
+        "sdescription": "트리플 알게가 함유되어 모공속 불순물까지 깨끗하게 씻어주는 부드러운 젤리 클렌저\r\n\r\n트리플 알게 블렌드 함유\r\n\r\n바다에서 찾아낸 놀라운 트리플 알게의 힘을 느껴보세요.\r\n\r\n에스티 로더의 고영양의 트리플 알게는 특별한 방법으로 양식되며 냉각 과정을 통해 주요 영양분을 보존해 더욱 건강한 피부로 가꿔줍니다. \r\n\r\n프랑스 청정지역에서 추출한 클로렐라, 스피룰리나, 라마나리아 사카리나 세가지의 특별한 알게는 피부 정화 및 피부에 유수분 밸런스를 맞춰주어 모공에 과도한 유분은 제거하고 더욱 산뜻해진 피부로 가꿔줍니다.",
+        "category": {
+            "first_category_id": 7,
+            "first_category_name": "làm sạch",
+            "first_category_en_name": "cleansing",
+            "second_category_id": 32,
+            "second_category_name": "rửa mặt",
+            "second_category_en_name": "facial cleanser",
+            "third_category_id": 114,
+            "third_category_name": "sữa rửa mặt dạng gel",
+            "third_category_en_name": "cleansing gel"
+        }
+    },
+    {
+        "sid": 76775,
+        "name": "",
+        "sname": "어드밴스드 나이트 마이크로 클렌징 밤",
+        "description": "",
+        "sdescription": "부드럽게 피부에 녹아내려 메이크업을 깔끔하게 지워주며 세안 후에도 촉촉한 피부를 유지시켜주는 클렌징 밤.\r\n마이크로 퓨리파잉 : 초미세먼지와 일상생활의 오염물질을 부드럽고 깨끗하게 씻어내줍니다. 모공 깊숙한 노폐물까지 제거합니다.\r\n마이크로 액티브 : 마이크로 영양소의 미네랄 성분이 피부에 깊숙이 전달되어 피부의 유수분 밸런스를 지켜줍니다.\r\n마이크로 스트렝스닝 : 세안 후에도 촉촉하게 피부 보습을 지켜주어 건강한 피부로 지켜줍니다.",
+        "category": {
+            "first_category_id": 7,
+            "first_category_name": "làm sạch",
+            "first_category_en_name": "cleansing",
+            "second_category_id": 33,
+            "second_category_name": "tẩy trang",
+            "second_category_en_name": "makeup remover",
+            "third_category_id": 117,
+            "third_category_name": "sáp tẩy trang",
+            "third_category_en_name": "cleansing balm"
+        }
+    },
+    {
+        "sid": 6407,
+        "name": "",
+        "sname": "테이크 잇 어웨이 메이크업 리무버 오일",
+        "description": "",
+        "sdescription": "롱웨어 및 워터프루프 메이크업을 빠른 시간 내에 지워주는 클렌징 오일로서 메이크업 잔여물과 먼지, 불순물 등을 깔끔하게 지워줍니다. 모든 피부 타입에 적합하며 지성 피부에 사용해도 좋을 만큼 가벼운 텍스처입니다.",
+        "category": {
+            "first_category_id": 7,
+            "first_category_name": "làm sạch",
+            "first_category_en_name": "cleansing",
+            "second_category_id": 33,
+            "second_category_name": "tẩy trang",
+            "second_category_en_name": "makeup remover",
+            "third_category_id": 118,
+            "third_category_name": "dầu tẩy trang",
+            "third_category_en_name": "cleansing oil"
+        }
+    },
+    {
+        "sid": 6401,
+        "name": "",
+        "sname": "퍼펙틀리 클린 멀티-액션 크림 클렌저/ 모이스춰 마스크",
+        "description": "",
+        "sdescription": "풍부하고 부드러운 크림이 피부표면의 노폐물과 메이크업을 깨끗하게 닦아주면서 피부에 당김과 건조함 없이 부드러움과 촉촉함을 남깁니다.",
+        "category": {
+            "first_category_id": 7,
+            "first_category_name": "làm sạch",
+            "first_category_en_name": "cleansing",
+            "second_category_id": 33,
+            "second_category_name": "tẩy trang",
+            "second_category_en_name": "makeup remover",
+            "third_category_id": 121,
+            "third_category_name": "kem tẩy trang",
+            "third_category_en_name": "cleansing cream"
+        }
+    },
+    {
+        "sid": 26543,
+        "name": "",
+        "sname": "크레센트 화이트 UV 프로텍터 [SPF50/PA+++]",
+        "description": "",
+        "sdescription": "피부 본연의 리듬으로 더 투명하게 빛나는 피부, 크레센트 화이트\r\n\r\n자외선 차단은 물론, 주름을 개선하는 스킨케어 효과까지 갖춘 가볍고 부드러운 자외선 차단제 \r\n가벼운 텍스처로 높은 차단지수를 가진 크레센트 화이트 UV 프로텍터는 더 환하고 기미없는 피부를 위한 제품으로 UVA/UVB의 효과적인 차단은 물론, 강력하게 피부를 보호하고 안정시켜, 더욱 더 빛나도록 도와줍니다. 포뮬러의 부드럽고 가벼운 질감은 바르기 쉬울 뿐 만 아니라, 피부를 화장하기 최적의 상태로 만들어줍니다.\r\n\r\n* 크리에센 화이트의 5가지 효과\r\n\r\n1.피부 잡티, 기미 개선 효과 \r\n2.강력한 브라이트닝 효과 \r\n3.피부 진정 효과 \r\n4.저자극 포뮬라 \r\n5.촉촉한 화이트닝",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 142,
+            "third_category_name": "sữa chống nắng",
+            "third_category_en_name": "mild sunscreen"
+        }
+    },
+    {
+        "sid": 74987,
+        "name": "",
+        "sname": "어드밴스드 나이트 마이크로 클렌징폼",
+        "description": "",
+        "sdescription": "미세한 거품이 초미세먼지와 메이크업 잔여물을 씻어내고 미네랄 영양 성분을 공급해 세안 후 생기있는 피부를 선사하는 클렌징 폼",
+        "category": {
+            "first_category_id": 7,
+            "first_category_name": "làm sạch",
+            "first_category_en_name": "cleansing",
+            "second_category_id": 32,
+            "second_category_name": "rửa mặt",
+            "second_category_en_name": "facial cleanser",
+            "third_category_id": 112,
+            "third_category_name": "sữa rửa mặt tạo bọt",
+            "third_category_en_name": "cleansing foam"
+        }
+    },
+    {
+        "sid": 3872,
+        "name": "",
+        "sname": "사이버화이트 HD 어드밴스드 브라이트닝 UV 프로텍터 [SPF50/PA+++]",
+        "description": "",
+        "sdescription": "자외선 차단만으로 만족하지 마세요. 피부의 칙칙함과 잡티의 원인이 되는 자외선 및 외부환경으로부터의 보호는 물론, 피부 수분막 강화, 주름개선, 잡티 커버 및 브라이트닝 효과까지. 사이버 화이트 UV 프로텍터는 자외선 차단과 메이크업 베이스 기능을 동시에 하는 멀티 베이스 제품입니다.",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 41,
+            "second_category_name": "kem chống nắng",
+            "second_category_en_name": "suncreen",
+            "third_category_id": 143,
+            "third_category_name": "kem chống nắng nâng tông",
+            "third_category_en_name": "tone-up sunscrean"
+        }
+    },
+    {
+        "sid": 6475,
+        "name": "",
+        "sname": "리-뉴트리브 래디언트 UV 베이스 [SPF50/PA+++]",
+        "description": "",
+        "sdescription": "아시아 여성을 위해 독자적으로 개발된 UV 베이스로 폭 넓은 스펙트럼의 자외선 차단력으로 고급스럽고 보호 효과가 뛰어납니다. 섬세하도록 얇게 발리는 UV베이스가 피부를 보호하는 눈부신 베일을 만들어 냅니다.\r\n\r\n에스티 로더만의 라이프-리뉴잉 분자™가 활력을 더해줍니다. 피부에 에너지를 주고, 피부가 빛나도록 개선, 재충전을 도와주는 라이프-리뉴잉 분자™는 UV로 인한 손상으로부터 피부를 보호합니다.",
+        "category": {
+            "first_category_id": 9,
+            "first_category_name": "chống nắng",
+            "first_category_en_name": "sun care",
+            "second_category_id": 45,
+            "second_category_name": "kem lót chống nắng",
+            "second_category_en_name": "sun base",
+            "third_category_id": null,
+            "third_category_name": null,
+            "third_category_en_name": null
+        }
+    },
+    {
+        "sid": 6396,
+        "name": "",
+        "sname": "뉴트리셔스 바이탈리티8 투-인-원 폼 클렌저",
+        "description": "",
+        "sdescription": "석류에너지로 깨우는 핑크빛 수분생기 신제품. 뉴트리셔스 바이탈리티8™ 래디언트 컬렉션 클레이 (진흙)성분이 피부 표면의 오염 노폐물과 메이크업 잔여물까지 깔끔하게 클렌징해줍니다. 피부를 정화하여 다음 단계의 스킨케어를 위해 피부를 정돈해줍니다. 데일리 클렌저로 사용하거나 딥 클렌징 마스크로 사용할 수 있으며, 피부를 탄력 있고 산뜻하며 편안한 느낌으로 정화해줍니다. ",
+        "category": {
+            "first_category_id": 7,
+            "first_category_name": "làm sạch",
+            "first_category_en_name": "cleansing",
+            "second_category_id": 32,
+            "second_category_name": "rửa mặt",
+            "second_category_en_name": "facial cleanser",
+            "third_category_id": 112,
+            "third_category_name": "sữa rửa mặt tạo bọt",
+            "third_category_en_name": "cleansing foam"
+        }
+    },
+    {
+        "sid": 6399,
+        "name": "",
+        "sname": "테이크 잇 어웨이 메이크업 리무버 로션",
+        "description": "",
+        "sdescription": "실키하고 가벼운 클렌징 밀크로서 메이크업 및 먼지, 피부 불순물을 부드럽고 깨끗하게 지워줍니다. 높은 보습 효과로 건성 피부에 특히 적합하며 지성 타입도 사용할 수 있는 가벼운 텍스처입니다.",
+        "category": {
+            "first_category_id": 7,
+            "first_category_name": "làm sạch",
+            "first_category_en_name": "cleansing",
+            "second_category_id": 33,
+            "second_category_name": "tẩy trang",
+            "second_category_en_name": "makeup remover",
+            "third_category_id": 120,
+            "third_category_name": "sữa tẩy trang",
+            "third_category_en_name": "cleansing lotion"
+        }
+    }
+]

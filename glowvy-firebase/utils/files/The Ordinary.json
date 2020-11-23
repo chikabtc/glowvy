@@ -1,0 +1,4658 @@
+[
+    {
+        "name": "",
+        "sname": "100% 오가닉 냉압축 로즈힙 오일",
+        "id": 263,
+        "sid": 95337,
+        "volume": "30ml",
+        "sprice": 9900,
+        "official_price": 212850,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_95337.jpg",
+        "description": "",
+        "sdescription": "지성, 트러블 피부에까지 가볍고 효과가 좋은 로즈힙 씨드 오일\r\n여드름 자국이나 색소침착 부위에 집중적으로 발라주시면 효과를 보실꺼에요.\r\n\r\n모든 피부 타입을 위한 데일리 서포트, 오일리하지 않는 로즈 힙 씨드에서 추출한 페이셜 오일입니다.\r\n수분을 공급하고 피부에 광이 나게 하는 제품으로, 아침과 저녁에 수분 베이스 제품 후에 사용하세요.",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 6,
+            "second_category_name": "dầu dưỡng da",
+            "second_category_en_name": "facial oil",
+            "third_category_id": null,
+            "third_category_name": null,
+            "third_category_en_name": null
+        },
+        "ingredients": [
+            {
+                "name_en": "Rosa Canina (Rosehip) Seed Oil",
+                "hazard_score": 0,
+                "purpose_ko": ""
+            }
+        ],
+        "brand": {
+            "sname": "디 오디너리 (The Ordinary)",
+            "name": "The Ordinary",
+            "id": 6851,
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png"
+        },
+        "tags": [
+            "cung cấp độ ẩm",
+            "tỏa sáng",
+            "làm mềm da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "뷔페",
+        "id": 263,
+        "sid": 91799,
+        "volume": "30ml",
+        "sprice": 14800,
+        "official_price": 318200,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_91799.jpg",
+        "description": "",
+        "sdescription": "이 포뮬라는 노화로 인한 여러 가지 증상을 모두 함께 개선시키기 위해 연구된 포괄적 기술을 한데 결합해 놓았습니다. \r\n\r\n그 기술은 피부 친화적 아미노산에 함유된 매트릭실 3,000 펩타이드 컴플렉스 (팔미토일-펜타펩타이드 35와 결합), \r\n매트릭실 신더'6 펩타이드 컴플렉스 (팔미토일 트리펩타이드-38와 결합), \r\n씨네이크 펩타이드 컴플렉스 (디펩타이드 디아미노부티로일 벤질아마이드 디아세테이트와 결합), \r\nArgirelox 펩티드 컴플렉스 (아세틸 헥사펩타이드-8, 펜타펩타이드-18과 결합), \r\n프로바이오틱 컴플렉스(락토코쿠스 락티스 용해물)와 함께 다양한 히알루론산 컴플렉스를 포함하고 있습니다. \r\n이 결합된 기술의 총 중량 기준 농도는 25.1%입니다.",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 17,
+            "third_category_name": "tinh chất chông lão hóa",
+            "third_category_en_name": "anti-aging essence"
+        },
+        "ingredients": [
+            {
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "id": 1,
+                "purpose_en": "",
+                "hazard_score": 1,
+                "name_vi": "",
+                "name_en": "Water;Aqua",
+                "purpose_ko": "피부컨디셔닝제, 용제"
+            },
+            {
+                "name_en": "Glycerin",
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "hazard_score": 1,
+                "id": 66,
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt"
+            },
+            {
+                "purpose_ko": "",
+                "hazard_score": 0,
+                "name_en": "Lactococcus Ferment Lysate"
+            },
+            {
+                "name_vi": "",
+                "purpose_ko": "",
+                "name_en": "Acetyl Hexapeptide-8",
+                "id": 321,
+                "hazard_score": 1,
+                "purpose_vi": "",
+                "purpose_en": ""
+            },
+            {
+                "purpose_ko": "",
+                "hazard_score": 1,
+                "name_en": "Pentapeptide-18"
+            },
+            {
+                "name_en": "Palmitoyl Tripeptide-1",
+                "purpose_vi": "Chất điều hòa da (khác)",
+                "hazard_score": 1,
+                "id": 323,
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "purpose_en": "",
+                "name_vi": ""
+            },
+            {
+                "purpose_ko": "피부컨디셔닝제",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_en": "Palmitoyl Tetrapeptide-7",
+                "name_vi": "",
+                "purpose_vi": "Đại lý dưỡng da",
+                "id": 316
+            },
+            {
+                "purpose_vi": "Chất điều hòa da (khác)",
+                "name_en": "Palmitoyl Tripeptide-38",
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 762,
+                "purpose_en": ""
+            },
+            {
+                "purpose_vi": "Đại lý dưỡng da",
+                "hazard_score": 1,
+                "purpose_ko": "피부컨디셔닝제",
+                "id": 1140,
+                "name_en": "Dipeptide Diaminobutyroyl Benzylamide Diacetate",
+                "purpose_en": "",
+                "name_vi": ""
+            },
+            {
+                "name_en": "Acetylarginyltryptophyl Diphenylglycine",
+                "hazard_score": 0,
+                "purpose_ko": "피부컨디셔닝제"
+            },
+            {
+                "name_vi": "",
+                "name_en": "Sodium Hyaluronate Crosspolymer",
+                "hazard_score": 1,
+                "id": 458,
+                "purpose_en": "",
+                "purpose_vi": "Kem dưỡng ẩm da, chất dưỡng da",
+                "purpose_ko": "피부보습제, 피부컨디셔닝제"
+            },
+            {
+                "hazard_score": 1,
+                "purpose_vi": "Đại lý dưỡng da",
+                "purpose_ko": "피부컨디셔닝제",
+                "id": 39,
+                "name_vi": "",
+                "purpose_en": "",
+                "name_en": "Sodium Hyaluronate"
+            },
+            {
+                "name_en": "Allantoin",
+                "name_vi": "",
+                "purpose_vi": "Đại lý dưỡng da, đại lý bảo vệ da",
+                "id": 154,
+                "purpose_en": "",
+                "hazard_score": 1,
+                "purpose_ko": "피부컨디셔닝제, 피부보호제"
+            },
+            {
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_vi": "Đệm pH, hương thơm, chất dưỡng tóc, chất dưỡng da",
+                "purpose_ko": "pH 완충제, 향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "name_en": "Glycine",
+                "id": 618
+            },
+            {
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "name_en": "Alanine",
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "id": 720
+            },
+            {
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "name_en": "Serine",
+                "name_vi": "",
+                "id": 616
+            },
+            {
+                "name_en": "Valine",
+                "id": 936,
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제"
+            },
+            {
+                "id": 510,
+                "purpose_vi": "Tác nhân dưỡng tóc, chất dưỡng da (khác)",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_ko": "헤어컨디셔닝제, 피부컨디셔닝제(기타)",
+                "name_en": "Isoleucine",
+                "name_vi": ""
+            },
+            {
+                "id": 723,
+                "hazard_score": 1,
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "name_en": "Proline",
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da"
+            },
+            {
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "id": 722,
+                "name_en": "Threonine",
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da"
+            },
+            {
+                "hazard_score": 1,
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "id": 617,
+                "purpose_en": "",
+                "name_vi": "",
+                "name_en": "Histidine",
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제"
+            },
+            {
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "name_en": "Phenylalanine",
+                "id": 935,
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": ""
+            },
+            {
+                "purpose_ko": "향료, 모발컨디셔닝제, 스킨컨디셔닝제",
+                "name_vi": "",
+                "name_en": "Arginine",
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "purpose_en": "",
+                "id": 508,
+                "hazard_score": 1
+            },
+            {
+                "id": 932,
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "name_vi": "",
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "name_en": "Aspartic Acid",
+                "purpose_en": "",
+                "hazard_score": 1
+            },
+            {
+                "name_en": "Trehalose",
+                "name_vi": "",
+                "id": 332,
+                "purpose_vi": "Chất làm ngọt, dưỡng ẩm",
+                "purpose_ko": "감미제, 보습제",
+                "hazard_score": 1,
+                "purpose_en": ""
+            },
+            {
+                "purpose_vi": "Chất làm ngọt, dưỡng ẩm, dưỡng ẩm cho da",
+                "name_vi": "",
+                "purpose_ko": "감미제, 보습제, 피부보습제",
+                "id": 1304,
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_en": "Fructose"
+            },
+            {
+                "name_en": "Glucose",
+                "purpose_ko": "감미제, 보습제, 피부보습제, 피부컨디셔닝제",
+                "hazard_score": 1,
+                "purpose_vi": "Chất làm ngọt, dưỡng ẩm, dưỡng ẩm da, chất dưỡng da",
+                "id": 37,
+                "name_vi": "",
+                "purpose_en": ""
+            },
+            {
+                "name_en": "Maltose",
+                "purpose_ko": "감미제, 보습제, 피부보습제",
+                "hazard_score": 1
+            },
+            {
+                "name_en": "Urea",
+                "id": 975,
+                "hazard_score": 2,
+                "name_vi": "",
+                "purpose_ko": "pH 완충제, 보습제, 피부보습제",
+                "purpose_vi": "Đệm pH, dưỡng ẩm, dưỡng ẩm da",
+                "purpose_en": ""
+            },
+            {
+                "hazard_score": 1,
+                "purpose_vi": "Chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da",
+                "id": 438,
+                "purpose_en": "",
+                "name_en": "Sodium PCA",
+                "purpose_ko": "모발컨디셔닝제, 보습제, 피부보습제",
+                "name_vi": ""
+            },
+            {
+                "purpose_vi": "Kem dưỡng ẩm cho da",
+                "id": 1160,
+                "name_en": "PCA",
+                "hazard_score": 2,
+                "purpose_ko": "피부보습제",
+                "purpose_en": "",
+                "name_vi": ""
+            },
+            {
+                "name_en": "Sodium Lactate",
+                "name_vi": "",
+                "purpose_vi": "Đệm pH, tẩy da chết, dưỡng ẩm",
+                "purpose_ko": "pH 완충제, 각질제거제, 보습제",
+                "id": 440,
+                "hazard_score": 2,
+                "purpose_en": ""
+            },
+            {
+                "name_en": "Citric Acid",
+                "purpose_en": "",
+                "purpose_vi": "Chặn ion kim loại, hương thơm, điều chỉnh pH",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "금속이온봉쇄제, 향료, pH 조절제",
+                "id": 201
+            },
+            {
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "금속이온봉쇄제, 유화안정제",
+                "purpose_vi": "Chất ngăn chặn ion kim loại, chất ổn định nhũ hóa",
+                "id": 821,
+                "name_en": "Hydroxypropyl Cyclodextrin",
+                "purpose_en": ""
+            },
+            {
+                "name_vi": "",
+                "purpose_ko": "감미제, 점증제-수용성",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "id": 460,
+                "name_en": "Sodium Chloride",
+                "purpose_vi": "Chất làm ngọt, chất làm đặc tan trong nước"
+            },
+            {
+                "purpose_ko": "변성제, pH 조절제",
+                "purpose_en": "",
+                "id": 101,
+                "name_en": "Sodium Hydroxide",
+                "purpose_vi": "Chất khử màu, chất điều chỉnh pH",
+                "name_vi": "",
+                "hazard_score": 2
+            },
+            {
+                "purpose_vi": "Hương thơm, chất điều hòa da, dung môi, chất làm giảm độ nhớt",
+                "hazard_score": 1,
+                "name_vi": "",
+                "id": 35,
+                "purpose_en": "",
+                "name_en": "Butylene Glycol",
+                "purpose_ko": "향료, 피부컨디셔닝제, 용제, 점도감소제"
+            },
+            {
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "hazard_score": 1,
+                "name_en": "Pentylene Glycol",
+                "purpose_en": "",
+                "name_vi": "",
+                "id": 208,
+                "purpose_ko": "피부컨디셔닝제, 용제"
+            },
+            {
+                "purpose_vi": "Chất kết dính, hương liệu",
+                "name_vi": "",
+                "hazard_score": 2,
+                "name_en": "Acacia Senegal Gum",
+                "purpose_ko": "점착제, 착향제",
+                "id": 248,
+                "purpose_en": ""
+            },
+            {
+                "name_en": "Xanthan Gum",
+                "purpose_en": "",
+                "id": 170,
+                "hazard_score": 1,
+                "purpose_ko": "결합제, 유화안정제, 피부컨디셔닝제, 계면활성제-유화제, 점증제-수용성",
+                "name_vi": "",
+                "purpose_vi": "Chất kết dính, chất nhũ hóa, chất điều hòa da, chất nhũ hóa-chất nhũ hóa, chất làm đặc tan trong nước"
+            },
+            {
+                "name_en": "Carbomer",
+                "purpose_vi": "Chất nhũ hóa, chất làm đặc tan trong nước",
+                "id": 169,
+                "purpose_ko": "유화안정제, 점증제-수용성",
+                "name_vi": "",
+                "purpose_en": "",
+                "hazard_score": 1
+            },
+            {
+                "id": 173,
+                "purpose_en": "",
+                "purpose_vi": "Hương thơm, chất nhũ hóa-chất nhũ hóa, chất hòa tan chất hoạt động bề mặt",
+                "hazard_score": 2,
+                "name_en": "Polysorbate 20",
+                "name_vi": "",
+                "purpose_ko": "향료, 계면활성제-유화제, 계면활성제-용해보조제"
+            },
+            {
+                "purpose_en": "",
+                "id": 1453,
+                "name_vi": "",
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da, chất hoạt động bề mặt",
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제, 계면활성제-유화제",
+                "hazard_score": 1,
+                "name_en": "PPG-26-Buteth-26"
+            },
+            {
+                "purpose_en": "",
+                "purpose_ko": "향료, 계면활성제-유화제, 계면활성제-용해보조제",
+                "name_vi": "",
+                "hazard_score": 2,
+                "id": 804,
+                "purpose_vi": "Hương thơm, chất nhũ hóa-chất nhũ hóa, chất hòa tan chất hoạt động bề mặt",
+                "name_en": "PEG-40 Hydrogenated Castor Oil"
+            },
+            {
+                "hazard_score": 1,
+                "purpose_ko": "금속이온봉쇄제",
+                "name_vi": "",
+                "name_en": "Trisodium Ethylenediamine Disuccinate",
+                "purpose_vi": "Chặn ion kim loại",
+                "id": 483,
+                "purpose_en": ""
+            },
+            {
+                "purpose_vi": "Chất tạo mùi, dung môi, chất làm giảm độ nhớt",
+                "hazard_score": 1,
+                "purpose_ko": "착향제, 용제, 점도감소제",
+                "name_en": "Ethoxydiglycol",
+                "name_vi": "",
+                "purpose_en": "",
+                "id": 948
+            },
+            {
+                "purpose_vi": "Chất ức chế ăn mòn, hương thơm, chất bảo quản khử trùng",
+                "purpose_en": "",
+                "hazard_score": 2,
+                "name_vi": "",
+                "name_en": "Sodium Benzoate",
+                "purpose_ko": "부식방지제, 향료, 살균보존제",
+                "id": 202
+            },
+            {
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제",
+                "name_en": "Caprylyl Glycol",
+                "hazard_score": 1,
+                "id": 81,
+                "purpose_en": "",
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da",
+                "name_vi": ""
+            },
+            {
+                "purpose_ko": "피부컨디셔닝제",
+                "id": 24,
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_en": "Ethylhexylglycerin",
+                "name_vi": "",
+                "purpose_vi": "Đại lý dưỡng da"
+            },
+            {
+                "name_en": "Phenoxyethanol",
+                "purpose_vi": "Hương liệu và khử trùng chất bảo quản",
+                "id": 151,
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 2,
+                "purpose_ko": "향료, 살균보존제"
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "Chất bảo quản sát trùng",
+                "id": 257,
+                "hazard_score": 1,
+                "purpose_ko": "살균보존제",
+                "name_en": "Chlorphenesin",
+                "name_vi": ""
+            }
+        ],
+        "brand": {
+            "name": "The Ordinary",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "id": 6851,
+            "sname": "디 오디너리 (The Ordinary)"
+        },
+        "hazard_score": 2,
+        "tags": [
+            "làm ẩm",
+            "cung cấp độ ẩm",
+            "cải thiện nếp nhăn",
+            "độ đàn hồi của da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "글라이콜릭 애시드 7% 토닝 솔루션",
+        "id": 263,
+        "sid": 103247,
+        "volume": "240ml",
+        "sprice": 8700,
+        "official_price": 187050,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_103247.jpg",
+        "description": "",
+        "sdescription": "AHA 성분이 순하게 피부의 각질을 제거하고 피부 광채를 살려 투명 피부로 만들어줍니다.",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 1,
+            "second_category_name": "toner/nước hoa hồng",
+            "second_category_en_name": "toner",
+            "third_category_id": 1,
+            "third_category_name": "toner dạng nước",
+            "third_category_en_name": "water toner"
+        },
+        "ingredients": [
+            {
+                "name_en": "Water;Aqua",
+                "purpose_en": "",
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "name_vi": "",
+                "id": 1,
+                "hazard_score": 1
+            },
+            {
+                "name_en": "Glycolic Acid",
+                "id": 690,
+                "hazard_score": 2,
+                "purpose_ko": "pH 조정제",
+                "name_vi": "",
+                "purpose_vi": "Điều chỉnh pH",
+                "purpose_en": ""
+            },
+            {
+                "purpose_ko": "향료, 피부컨디셔닝제",
+                "id": 343,
+                "purpose_vi": "Nước hoa, chất dưỡng da",
+                "name_vi": "",
+                "hazard_score": 1,
+                "name_en": "Rosa Damascena Flower Water",
+                "purpose_en": ""
+            },
+            {
+                "id": 1277,
+                "name_vi": "",
+                "purpose_ko": "",
+                "hazard_score": 1,
+                "name_en": "Centaurea Cyanus Flower Water",
+                "purpose_en": "",
+                "purpose_vi": ""
+            },
+            {
+                "name_en": "Aloe Barbadensis Leaf Water",
+                "purpose_ko": "향료",
+                "hazard_score": 1
+            },
+            {
+                "purpose_ko": "보습제, 용제, 점도조절제, 방부제",
+                "purpose_en": "",
+                "id": 165,
+                "name_en": "Propanediol",
+                "purpose_vi": "Kem dưỡng ẩm, dung môi, điều chế độ nhớt, chất bảo quản",
+                "name_vi": "",
+                "hazard_score": 1
+            },
+            {
+                "id": 66,
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "name_vi": "",
+                "hazard_score": 1,
+                "name_en": "Glycerin",
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "purpose_en": ""
+            },
+            {
+                "hazard_score": 2,
+                "name_en": "Triethanolamine",
+                "purpose_ko": "향료, pH 조절제, 계면활성제-유화제",
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_vi": "Hương liệu, chất điều chỉnh pH, chất nhũ hóa bề mặt",
+                "id": 182
+            },
+            {
+                "hazard_score": 1,
+                "name_en": "Aminomethyl Propanediol",
+                "purpose_ko": "착향제, pH 조정제"
+            },
+            {
+                "purpose_en": "",
+                "id": 494,
+                "hazard_score": 1,
+                "purpose_ko": "피부컨디셔닝제",
+                "purpose_vi": "Đại lý dưỡng da",
+                "name_vi": "",
+                "name_en": "Panax Ginseng Root Extract"
+            },
+            {
+                "name_en": "Tasmannia Lanceolata Fruit Extract",
+                "purpose_ko": "피부교질화제",
+                "hazard_score": 0
+            }
+        ],
+        "brand": {
+            "sname": "디 오디너리 (The Ordinary)",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "id": 6851,
+            "name": "The Ordinary"
+        },
+        "hazard_score": 2,
+        "tags": [
+            "tỏa sáng",
+            null,
+            "làn da căng bóng trong suốt"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "나이아신아마이드 10% + 징크 1%",
+        "id": 263,
+        "sid": 91801,
+        "volume": "30ml",
+        "sprice": 5900,
+        "official_price": 126850,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_91801.jpg",
+        "description": "",
+        "sdescription": "나이아신아마이드(비타민 B3)는 피부 잡티와 트러블을 감소시킵니다. \r\n\r\n이 포뮬라의 10% 고농도 비타민은 피롤리돈 카복실산의 아연염과 함께 피부 피지 활동의 균형을 잡아 줍니다.",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 16,
+            "third_category_name": "tinh chất dưỡng trắng",
+            "third_category_en_name": "brightening essence"
+        },
+        "ingredients": [
+            {
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "id": 1,
+                "name_en": "Water;Aqua",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제, 용제"
+            },
+            {
+                "name_en": "Niacinamide",
+                "name_vi": "",
+                "purpose_vi": "Đại lý dưỡng tóc, đại lý dưỡng da",
+                "id": 149,
+                "purpose_en": "",
+                "purpose_ko": "모발컨디셔닝제, 피부컨디셔닝제",
+                "hazard_score": 1
+            },
+            {
+                "name_en": "Pentylene Glycol",
+                "hazard_score": 1,
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "purpose_en": "",
+                "name_vi": "",
+                "id": 208,
+                "purpose_ko": "피부컨디셔닝제, 용제"
+            },
+            {
+                "hazard_score": 2,
+                "purpose_ko": "피부컨디셔닝제",
+                "name_en": "Zinc PCA"
+            },
+            {
+                "purpose_ko": "점착제, 유화안정제, 점증제-수용성",
+                "name_en": "Tamarindus Indica Seed Gum",
+                "hazard_score": 0
+            },
+            {
+                "purpose_ko": "결합제, 유화안정제, 피부컨디셔닝제, 계면활성제-유화제, 점증제-수용성",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "id": 170,
+                "name_vi": "",
+                "purpose_vi": "Chất kết dính, chất nhũ hóa, chất điều hòa da, chất nhũ hóa-chất nhũ hóa, chất làm đặc tan trong nước",
+                "name_en": "Xanthan Gum"
+            },
+            {
+                "purpose_en": "",
+                "purpose_ko": "계면활성제-유화제, 계면활성제-용해보조제",
+                "purpose_vi": "Chất hoạt động bề mặt-chất nhũ hóa, chất hỗ trợ hòa tan chất hoạt động bề mặt",
+                "name_en": "Isoceteth-20",
+                "id": 981,
+                "hazard_score": 2,
+                "name_vi": ""
+            },
+            {
+                "hazard_score": 1,
+                "id": 948,
+                "purpose_en": "",
+                "name_vi": "",
+                "name_en": "Ethoxydiglycol",
+                "purpose_vi": "Chất tạo mùi, dung môi, chất làm giảm độ nhớt",
+                "purpose_ko": "착향제, 용제, 점도감소제"
+            },
+            {
+                "hazard_score": 2,
+                "purpose_en": "",
+                "purpose_ko": "향료, 살균보존제",
+                "name_vi": "",
+                "name_en": "Phenoxyethanol",
+                "purpose_vi": "Hương liệu và khử trùng chất bảo quản",
+                "id": 151
+            },
+            {
+                "name_en": "Chlorphenesin",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_vi": "Chất bảo quản sát trùng",
+                "name_vi": "",
+                "id": 257,
+                "purpose_ko": "살균보존제"
+            }
+        ],
+        "brand": {
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "id": 6851,
+            "name": "The Ordinary",
+            "sname": "디 오디너리 (The Ordinary)"
+        },
+        "hazard_score": 2,
+        "tags": [
+            "làm ẩm",
+            "chứa vitamin",
+            "cung cấp độ ẩm",
+            "chăm sóc cho những rắc rối",
+            "kiểm soát bã nhờn"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "히알루로닉 애시드 2% + B5",
+        "id": 263,
+        "sid": 95516,
+        "volume": "30ml",
+        "sprice": 6800,
+        "official_price": 146200,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_95516.jpg",
+        "description": "",
+        "sdescription": "초고순도 비건 히알루론산 함유, 수분 공급 포뮬라.\r\n\r\n히알루론산과 비타민 B5가 함유된 수분 베이스 세럼입니다.\r\n\r\n수분을 공급하고 매끈하고 탄력있는 피부로 가꾸어 줍니다.\r\n",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 11,
+            "third_category_name": "tinh chất cấp nước",
+            "third_category_en_name": "hydrating essence"
+        },
+        "ingredients": [],
+        "brand": {
+            "id": 6851,
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "name": "The Ordinary",
+            "sname": "디 오디너리 (The Ordinary)"
+        },
+        "tags": [
+            "cung cấp độ ẩm",
+            "độ đàn hồi của da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "100% 플랜트 디라이브드 스쿠알란",
+        "id": 263,
+        "sid": 103007,
+        "volume": "30ml",
+        "sprice": 7900,
+        "official_price": 169850,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_103007.jpg",
+        "description": "",
+        "sdescription": "건강한 수분 공급을 위한 식물 추출 경량 솔루션\r\n\r\n스쿠알렌은 안정된 포화 탄화수소로 자연적으로 피부에서 발견됩니다. \r\n\r\n스쿠알렌은 굉장히 높은 유화성을 가지고 있으며, 매우 뛰어난 보습제로 수분 손실로 인한 진피 유연성 손상을 방지합니다. \r\n\r\n또한, 논-코메도제닉(모공을 막지 않아 여드름을 유발하지 않음) 성분으로 모든 피부 타입에 적합합니다. \r\n\r\n열로부터의 보호, 윤기 개선과 손상 감소를 위해 모발에도 사용 가능합니다.",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 6,
+            "second_category_name": "dầu dưỡng da",
+            "second_category_en_name": "facial oil",
+            "third_category_id": null,
+            "third_category_name": null,
+            "third_category_en_name": null
+        },
+        "ingredients": [
+            {
+                "purpose_vi": "Chất dưỡng tóc, chất chống bay hơi",
+                "id": 93,
+                "name_vi": "",
+                "purpose_ko": "모발컨디셔닝제, 수분증발차단제",
+                "name_en": "Squalane",
+                "purpose_en": "",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "name": "The Ordinary",
+            "id": 6851,
+            "sname": "디 오디너리 (The Ordinary)"
+        },
+        "hazard_score": 1,
+        "tags": [],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "랙틱 애시드 10% + 에이치에이 2%",
+        "id": 263,
+        "sid": 95343,
+        "volume": "30ml",
+        "sprice": 6700,
+        "official_price": 144050,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_95343.jpg",
+        "description": "",
+        "sdescription": "락틱 애시드와 히알루론산이 함유된 강력한 각질 제거 세럼\n\n- 어둡고 불균형한 피부톤과 피부결을 개선 \n\n",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 16,
+            "third_category_name": "tinh chất dưỡng trắng",
+            "third_category_en_name": "brightening essence"
+        },
+        "ingredients": [],
+        "brand": {
+            "id": 6851,
+            "name": "The Ordinary",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "sname": "디 오디너리 (The Ordinary)"
+        },
+        "tags": [
+            null,
+            "làn da căng bóng trong suốt"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "세럼 파운데이션 [SPF15]",
+        "id": 263,
+        "sid": 96032,
+        "volume": "30ml",
+        "sprice": 7800,
+        "official_price": 167700,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_96032.jpg",
+        "description": "",
+        "sdescription": "세럼 파운데이션은 경량의 중간 커버리지 포뮬레이션으로 21가지의 다른 색상을 제공합니다. \r\n\r\n이 제품은 중간 커버력과 함께 가벼운 세럼 제형으로 자연스러운 피부 표현을 가능하게 합니다. \r\n\r\n낮은 점성을 가지며, 제품과 함께 제공되는 펌프 혹은 별도로 구매 가능한 유리 소재 드로퍼와 함께 사용합니다. \r\n\r\n이 제품에 사용된 피그먼트는 풍부한 색감을 나타낼 수 있도록 만들어졌습니다. \r\n이 피그먼트는 데시엠의 전매특허 발림성 시스템을 기반으로 피부에 자연스러운 표현을 가능하게 하고 주름 사이 끼임을 방지하며 더 장시간 지속될 수 있도록 합니다. \r\n\r\n해당 파운데이션은 세미-매트 피니쉬 제품으로, 어떤 프라이머와 사용하여도 적합하며 특히 더 오디너리의 프라이머와는 최고의 조합이 만들어질 수 있도록 개발되었습니다. \r\n\r\n\r\n* 전성분 1.0N기준으로 작성되었습니다.",
+        "category": {
+            "first_category_id": 2,
+            "first_category_name": "trang điểm mặt",
+            "first_category_en_name": "face makeup",
+            "second_category_id": 7,
+            "second_category_name": "kem nền",
+            "second_category_en_name": "foundation",
+            "third_category_id": 30,
+            "third_category_name": "kem nền dạng lỏng",
+            "third_category_en_name": "liquid foundation"
+        },
+        "ingredients": [
+            {
+                "id": 161,
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da, dung môi",
+                "hazard_score": 2,
+                "name_en": "Cyclopentasiloxane",
+                "purpose_en": "",
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제, 용제",
+                "name_vi": ""
+            },
+            {
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_en": "Water;Aqua",
+                "id": 1,
+                "name_vi": "",
+                "purpose_vi": "Chất dưỡng da, dung môi"
+            },
+            {
+                "purpose_ko": "피부컨디셔닝제(수분차단제)",
+                "name_en": "Caprylyl Methicone",
+                "name_vi": "",
+                "purpose_vi": "Chất điều hòa da (chặn ẩm)",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "id": 355
+            },
+            {
+                "name_en": "Coconut Alkanes",
+                "purpose_ko": "피부유연화제, 용매",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "id": 6851,
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "name": "The Ordinary",
+            "sname": "디 오디너리 (The Ordinary)"
+        },
+        "hazard_score": 2,
+        "tags": [
+            "Độ chính xác"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "100% 냉압착 버진 마룰라 오일",
+        "id": 263,
+        "sid": 90003,
+        "volume": "30ml",
+        "sprice": 9900,
+        "official_price": 212850,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_90003.jpg",
+        "description": "",
+        "sdescription": "\"럭셔리\"오일로 불리는이 산화 방지제가 풍부한 오일은 Marula tree 과일의 커널에서 얻어집니다. 주로 올레산과 리놀레산으로 이루어져 있지만 프로시아니딘, 카테킨, 플라 바 노이드도 포함되어 있습니다. Marula 오일은 항산화제를 제공하고 피부를 수분 공급하며 빛나는 색조를 회복시키는 데 도움을줍니다.",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 6,
+            "second_category_name": "dầu dưỡng da",
+            "second_category_en_name": "facial oil",
+            "third_category_id": null,
+            "third_category_name": null,
+            "third_category_en_name": null
+        },
+        "ingredients": [
+            {
+                "name_vi": "",
+                "purpose_ko": "헤어컨디셔닝제, 피부컨디셔닝제(유연제)",
+                "id": 1066,
+                "name_en": "Sclerocarya Birrea Seed Oil",
+                "purpose_vi": "Chất dưỡng tóc, chất dưỡng da (làm mềm)",
+                "purpose_en": "",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "id": 6851,
+            "name": "The Ordinary",
+            "sname": "디 오디너리 (The Ordinary)",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png"
+        },
+        "hazard_score": 1,
+        "tags": [
+            "cung cấp độ ẩm",
+            "tỏa sáng"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "알파 알부틴2% + HA",
+        "id": 263,
+        "sid": 94111,
+        "volume": "30ml",
+        "sprice": 8900,
+        "official_price": 191350,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_94111.jpg",
+        "description": "",
+        "sdescription": "정제된 알파 알부틴과 히알루론산이 함유된 고농축 세럼\r\n\r\n피부에 나타나는 스팟이나 과색소침착 자국을 감소시킵니다.\r\n고농축 2% 혹은 일반적인 1% 농도로 사용되며 차세대 형식 히알루론산의 함유로 더욱 효과적인 흡수를 가능하게 합니다.\r\n",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 16,
+            "third_category_name": "tinh chất dưỡng trắng",
+            "third_category_en_name": "brightening essence"
+        },
+        "ingredients": [
+            {
+                "name_vi": "",
+                "name_en": "Water;Aqua",
+                "hazard_score": 1,
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "id": 1,
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "purpose_en": ""
+            },
+            {
+                "id": 657,
+                "name_en": "Alpha-Arbutin",
+                "name_vi": "",
+                "purpose_vi": "",
+                "purpose_ko": "",
+                "purpose_en": "",
+                "hazard_score": 1
+            },
+            {
+                "purpose_en": "",
+                "purpose_ko": "유화안정제, 점증제-수용성",
+                "hazard_score": 1,
+                "name_en": "Polyacrylate Crosspolymer-6",
+                "id": 210,
+                "purpose_vi": "Chất nhũ hóa, chất làm đặc tan trong nước",
+                "name_vi": ""
+            },
+            {
+                "purpose_en": "",
+                "hazard_score": 0,
+                "purpose_vi": "",
+                "id": 1650,
+                "name_en": "Hydrolyzed Sodium Hyaluronate",
+                "purpose_ko": "피부교질화제",
+                "name_vi": ""
+            },
+            {
+                "name_en": "Propanediol",
+                "purpose_vi": "Kem dưỡng ẩm, dung môi, điều chế độ nhớt, chất bảo quản",
+                "purpose_ko": "보습제, 용제, 점도조절제, 방부제",
+                "name_vi": "",
+                "purpose_en": "",
+                "id": 165,
+                "hazard_score": 1
+            },
+            {
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제, 계면활성제-유화제",
+                "id": 1453,
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da, chất hoạt động bề mặt",
+                "name_en": "PPG-26-Buteth-26",
+                "name_vi": ""
+            },
+            {
+                "purpose_vi": "Hương thơm, chất nhũ hóa-chất nhũ hóa, chất hòa tan chất hoạt động bề mặt",
+                "name_en": "PEG-40 Hydrogenated Castor Oil",
+                "id": 804,
+                "purpose_en": "",
+                "purpose_ko": "향료, 계면활성제-유화제, 계면활성제-용해보조제",
+                "name_vi": "",
+                "hazard_score": 2
+            },
+            {
+                "purpose_vi": "Tẩy tế bào chết, hương thơm, dưỡng ẩm, điều chỉnh pH, dưỡng ẩm da, chất dưỡng da",
+                "hazard_score": 2,
+                "purpose_ko": "각질제거제, 향료, 보습제, pH 조절제, 피부보습제, 피부컨디셔닝제",
+                "id": 712,
+                "name_vi": "",
+                "purpose_en": "",
+                "name_en": "Lactic Acid"
+            },
+            {
+                "purpose_ko": "금속이온봉쇄제",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "name_vi": "",
+                "id": 483,
+                "name_en": "Trisodium Ethylenediamine Disuccinate",
+                "purpose_vi": "Chặn ion kim loại"
+            },
+            {
+                "id": 948,
+                "name_vi": "",
+                "name_en": "Ethoxydiglycol",
+                "hazard_score": 1,
+                "purpose_vi": "Chất tạo mùi, dung môi, chất làm giảm độ nhớt",
+                "purpose_en": "",
+                "purpose_ko": "착향제, 용제, 점도감소제"
+            },
+            {
+                "purpose_en": "",
+                "name_vi": "",
+                "id": 151,
+                "hazard_score": 2,
+                "purpose_ko": "향료, 살균보존제",
+                "name_en": "Phenoxyethanol",
+                "purpose_vi": "Hương liệu và khử trùng chất bảo quản"
+            },
+            {
+                "id": 257,
+                "name_en": "Chlorphenesin",
+                "purpose_ko": "살균보존제",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_vi": "Chất bảo quản sát trùng",
+                "name_vi": ""
+            }
+        ],
+        "brand": {
+            "id": 6851,
+            "sname": "디 오디너리 (The Ordinary)",
+            "name": "The Ordinary",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png"
+        },
+        "hazard_score": 2,
+        "tags": [
+            "độ ẩm cao",
+            "làm trắng",
+            "cung cấp độ ẩm",
+            "chăm sóc cho những vết đốm/mụn li ti trên da",
+            "nhiều",
+            "không gây dị ứng"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "100% 오가닉 냉압착 모로칸 아르간 오일",
+        "id": 263,
+        "sid": 90006,
+        "volume": "30ml",
+        "sprice": 6800,
+        "official_price": 146200,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_90006.jpg",
+        "description": "",
+        "sdescription": "이 배합은 오일의 지방산, 비타민, 페놀 (카페 산 포함) 및 카로틴의 무결성을 유지하는 냉간 압착으로 추출한 100 % 순수 모로코 아르간 시드 오일을 사용합니다.\r\n\r\n아르간 오일의 주요 지방산 함량은 올레산과 리놀레산으로 구성되어 있습니다.\r\n\r\n오일은 건강한 피부를 유지하고 박편 모양을 감소시킵니다.\r\n\r\n또한 머리에 부드러운 광택과 강도를 부여합니다.",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 6,
+            "second_category_name": "dầu dưỡng da",
+            "second_category_en_name": "facial oil",
+            "third_category_id": null,
+            "third_category_name": null,
+            "third_category_en_name": null
+        },
+        "ingredients": [
+            {
+                "name_en": "Argania Spinosa Kernel Oil",
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 302,
+                "purpose_ko": "피부유연화제, 피부컨디셔닝제, 수분증발차단제",
+                "purpose_en": "",
+                "purpose_vi": "Chất làm mềm da, chất điều hòa da, chất chặn bay hơi ẩm"
+            }
+        ],
+        "brand": {
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "id": 6851,
+            "name": "The Ordinary",
+            "sname": "디 오디너리 (The Ordinary)"
+        },
+        "hazard_score": 1,
+        "tags": [
+            "làm ẩm",
+            "tỏa sáng"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "카페인 솔루션 5% + 이지씨지",
+        "id": 263,
+        "sid": 120186,
+        "volume": "30ml",
+        "sprice": 6700,
+        "official_price": 144050,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_120186.jpg",
+        "description": "",
+        "sdescription": "- 눈 주변의 색소 침착과 붓기 감소\r\n- 카페인과 녹차 추출물이 함유된 수분 베이스 아이 세럼\r\n- 다크 써클과 눈밑 지방 쳐짐을 개선\r\n- 아침과 저녁으로 눈 아래에 발라줍니다. ",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 4,
+            "second_category_name": "kem dưỡng",
+            "second_category_en_name": "cream",
+            "third_category_id": 23,
+            "third_category_name": "kem mắt",
+            "third_category_en_name": "eye cream"
+        },
+        "ingredients": [
+            {
+                "name_en": "Water;Aqua",
+                "purpose_en": "",
+                "id": 1,
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "name_vi": "",
+                "hazard_score": 1
+            },
+            {
+                "name_en": "Caffeine",
+                "purpose_vi": "Nước hoa, chất dưỡng da",
+                "id": 373,
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_ko": "향료, 피부컨디셔닝제"
+            },
+            {
+                "id": 317,
+                "purpose_vi": "Chất hấp thụ, chất kết dính, chất ổn định nhũ hóa, chất tạo màng, chất dưỡng tóc, chất điều hòa da, chất lơ lửng-chất không hoạt động bề mặt",
+                "name_en": "Maltodextrin",
+                "name_vi": "",
+                "purpose_ko": "흡수제, 결합제, 유화안정제, 피막형성제, 모발컨디셔닝제, 피부컨디셔닝제, 현탁화제-비계면활성제",
+                "purpose_en": "",
+                "hazard_score": 1
+            },
+            {
+                "name_en": "Glycerin",
+                "name_vi": "",
+                "id": 66,
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제"
+            },
+            {
+                "purpose_vi": "Kem dưỡng ẩm, dung môi, điều chế độ nhớt, chất bảo quản",
+                "purpose_ko": "보습제, 용제, 점도조절제, 방부제",
+                "name_en": "Propanediol",
+                "name_vi": "",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "id": 165
+            },
+            {
+                "name_en": "Dimethyl Isosorbide",
+                "purpose_ko": "산화방지제",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "name": "The Ordinary",
+            "sname": "디 오디너리 (The Ordinary)",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "id": 6851
+        },
+        "hazard_score": 2,
+        "tags": [
+            "làm giảm quầng thâm",
+            "sưng tấy",
+            "cung cấp độ ẩm",
+            "chăm sóc cho những vết đốm/mụn li ti trên da",
+            "cải thiện nếp nhăn",
+            "làm mềm da",
+            "độ đàn hồi của da",
+            "sức sống cho da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "내추럴 모이스처라이징 팩터스+HA",
+        "id": 263,
+        "sid": 99974,
+        "volume": "30ml",
+        "sprice": 5800,
+        "official_price": 124700,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_99974.jpg",
+        "description": "",
+        "sdescription": "내추럴 모이스처라이징 팩터스(NMF)는 피부 외층을 보호해주고, 수분을 충족시켜줍니다.\r\n\r\nNMF는 다양한 아미노산과 지방산, 트리글리세라이드, 글리세린, 당류, 소듐 PCA를 비롯하여 히알루론산과 본래 피부에 존재하는 여러 가지 성분들로 이루어져 있습니다.\r\n\r\n이 포뮬라는 NMF 성분을 국부에 직접적으로 보충하여 번들거림 없이 수분을 공급하며, 11가지 아미노산, 인지질, 알파/베타/감마 지방산, 트리글리세리드, 스테롤과 스테롤 에스터, 글리세린, 세라마이드 프리커서, 요소, 당류, 소듐 PCA 그리고 히알루론산을 포함하고 있습니다.\r\n\r\n즉각적으로 수분을 공급하며 계속된 사용으로 그 효과를 지속시킬 수 있습니다.",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 4,
+            "second_category_name": "kem dưỡng",
+            "second_category_en_name": "cream",
+            "third_category_id": 18,
+            "third_category_name": "kem dưỡng cấp nước",
+            "third_category_en_name": "hydrating cream"
+        },
+        "ingredients": [
+            {
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "name_vi": "",
+                "name_en": "Water;Aqua",
+                "id": 1
+            },
+            {
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 1,
+                "name_en": "Caprylic/Capric Triglyceride",
+                "id": 110,
+                "purpose_ko": "향료, 수분증발차단제",
+                "purpose_vi": "Chất thơm và chất ngăn chặn hơi nước"
+            },
+            {
+                "name_en": "Cetyl Alcohol",
+                "hazard_score": 1,
+                "purpose_ko": "유화안정제, 향료, 불투명화제, 계면활성제-유화제, 계면활성제-거품형성제, 점증제-수용성, 점증제-비수용성",
+                "purpose_vi": "Chất ổn định nhũ hóa, hương thơm, chất làm mờ, chất nhũ hóa chất hoạt động bề mặt, chất tạo bọt bề mặt, chất làm đặc tan trong nước, chất làm đặc không tan trong nước",
+                "name_vi": "",
+                "id": 163,
+                "purpose_en": ""
+            },
+            {
+                "purpose_vi": "Kem dưỡng ẩm, dung môi, điều chế độ nhớt, chất bảo quản",
+                "id": 165,
+                "purpose_ko": "보습제, 용제, 점도조절제, 방부제",
+                "name_en": "Propanediol",
+                "name_vi": "",
+                "purpose_en": "",
+                "hazard_score": 1
+            },
+            {
+                "purpose_en": "",
+                "hazard_score": 1,
+                "purpose_vi": "Chất ổn định nhũ hóa, hương thơm, chất hoạt động bề mặt-chất nhũ hóa, chất tạo bọt bề mặt, chất làm đặc tan trong nước, chất làm đặc không tan trong nước",
+                "id": 263,
+                "name_vi": "",
+                "name_en": "Stearyl Alcohol",
+                "purpose_ko": "유화안정제, 향료, 계면활성제-유화제, 계면활성제-거품형성제, 점증제-수용성, 점증제-비수용성"
+            },
+            {
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_en": "",
+                "name_en": "Glycerin",
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "id": 66
+            },
+            {
+                "name_en": "Sodium Hyaluronate",
+                "purpose_ko": "피부컨디셔닝제",
+                "id": 39,
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_vi": "Đại lý dưỡng da",
+                "hazard_score": 1
+            },
+            {
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "purpose_ko": "향료, 모발컨디셔닝제, 스킨컨디셔닝제",
+                "id": 508,
+                "name_vi": "",
+                "hazard_score": 1,
+                "name_en": "Arginine",
+                "purpose_en": ""
+            },
+            {
+                "name_en": "Aspartic Acid",
+                "purpose_en": "",
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "hazard_score": 1,
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "id": 932,
+                "name_vi": ""
+            },
+            {
+                "name_en": "Glycine",
+                "purpose_ko": "pH 완충제, 향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_vi": "Đệm pH, hương thơm, chất dưỡng tóc, chất dưỡng da",
+                "purpose_en": "",
+                "id": 618
+            },
+            {
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "id": 720,
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "hazard_score": 1,
+                "name_en": "Alanine",
+                "name_vi": "",
+                "purpose_en": ""
+            },
+            {
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "name_en": "Serine",
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "id": 616
+            },
+            {
+                "id": 936,
+                "name_en": "Valine",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "purpose_en": "",
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da"
+            },
+            {
+                "purpose_vi": "Tác nhân dưỡng tóc, chất dưỡng da (khác)",
+                "purpose_en": "",
+                "id": 510,
+                "purpose_ko": "헤어컨디셔닝제, 피부컨디셔닝제(기타)",
+                "name_vi": "",
+                "hazard_score": 1,
+                "name_en": "Isoleucine"
+            },
+            {
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "name_en": "Proline",
+                "hazard_score": 1,
+                "id": 723
+            },
+            {
+                "purpose_en": "",
+                "hazard_score": 1,
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "name_en": "Threonine",
+                "name_vi": "",
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "id": 722
+            },
+            {
+                "id": 617,
+                "name_en": "Histidine",
+                "name_vi": "",
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "hazard_score": 1,
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "purpose_en": ""
+            },
+            {
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "hazard_score": 1,
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "id": 935,
+                "name_en": "Phenylalanine",
+                "name_vi": "",
+                "purpose_en": ""
+            },
+            {
+                "name_en": "Glucose",
+                "hazard_score": 1,
+                "purpose_vi": "Chất làm ngọt, dưỡng ẩm, dưỡng ẩm da, chất dưỡng da",
+                "purpose_en": "",
+                "purpose_ko": "감미제, 보습제, 피부보습제, 피부컨디셔닝제",
+                "name_vi": "",
+                "id": 37
+            },
+            {
+                "hazard_score": 1,
+                "purpose_ko": "감미제, 보습제, 피부보습제",
+                "name_en": "Maltose"
+            },
+            {
+                "purpose_vi": "Chất làm ngọt, dưỡng ẩm, dưỡng ẩm cho da",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "id": 1304,
+                "name_en": "Fructose",
+                "purpose_ko": "감미제, 보습제, 피부보습제",
+                "name_vi": ""
+            },
+            {
+                "purpose_ko": "감미제, 보습제",
+                "purpose_en": "",
+                "name_en": "Trehalose",
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_vi": "Chất làm ngọt, dưỡng ẩm",
+                "id": 332
+            },
+            {
+                "purpose_en": "",
+                "hazard_score": 1,
+                "purpose_ko": "모발컨디셔닝제, 보습제, 피부보습제",
+                "purpose_vi": "Chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da",
+                "name_vi": "",
+                "name_en": "Sodium PCA",
+                "id": 438
+            },
+            {
+                "purpose_vi": "Kem dưỡng ẩm cho da",
+                "name_vi": "",
+                "id": 1160,
+                "name_en": "PCA",
+                "hazard_score": 2,
+                "purpose_ko": "피부보습제",
+                "purpose_en": ""
+            },
+            {
+                "purpose_vi": "Đệm pH, tẩy da chết, dưỡng ẩm",
+                "name_vi": "",
+                "purpose_ko": "pH 완충제, 각질제거제, 보습제",
+                "purpose_en": "",
+                "id": 440,
+                "name_en": "Sodium Lactate",
+                "hazard_score": 2
+            },
+            {
+                "purpose_ko": "pH 완충제, 보습제, 피부보습제",
+                "id": 975,
+                "purpose_en": "",
+                "purpose_vi": "Đệm pH, dưỡng ẩm, dưỡng ẩm da",
+                "name_en": "Urea",
+                "hazard_score": 2,
+                "name_vi": ""
+            },
+            {
+                "hazard_score": 1,
+                "name_en": "Allantoin",
+                "id": 154,
+                "purpose_ko": "피부컨디셔닝제, 피부보호제",
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_vi": "Đại lý dưỡng da, đại lý bảo vệ da"
+            },
+            {
+                "purpose_en": "",
+                "purpose_ko": "착향제, 헤어컨디셔닝제, 피부컨디셔닝제(기타), 계면활성제(세정제)",
+                "name_en": "Linoleic Acid",
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 708,
+                "purpose_vi": "Chất tạo mùi, chất dưỡng tóc, chất dưỡng da (loại khác), chất hoạt động bề mặt (sữa rửa mặt)"
+            },
+            {
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_vi": "Hương thơm, chất tẩy rửa bề mặt",
+                "purpose_ko": "향료, 계면활성제-세정제",
+                "name_vi": "",
+                "id": 676,
+                "name_en": "Oleic Acid"
+            },
+            {
+                "name_en": "Phytosteryl Canola Glycerides",
+                "purpose_ko": "모발컨디셔닝제, 피부컨디셔닝제",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "sname": "디 오디너리 (The Ordinary)",
+            "id": 6851,
+            "name": "The Ordinary",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png"
+        },
+        "hazard_score": 2,
+        "tags": [
+            "làm ẩm",
+            "cung cấp độ ẩm",
+            "tỏa sáng"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "아스코빅 애씨드 8% + 알파 알부틴 2%",
+        "id": 263,
+        "sid": 139069,
+        "volume": "30ml",
+        "sprice": 10000,
+        "official_price": 215000,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_139069.jpg",
+        "description": "",
+        "sdescription": "순수한 비타민 C와 알바 알부틴이 워터 프리 포뮬라에 안정적으로 용해된 세럼\n\n- 효과적인 항산화제인 비타민 C가 피부톤을 밝게 하며 노화의 증상을 개선\n- 고순도의 생합성 유효성분인 알파 알부틴이 색소 침착과 불균형한 피부톤을 개선",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 16,
+            "third_category_name": "tinh chất dưỡng trắng",
+            "third_category_en_name": "brightening essence"
+        },
+        "ingredients": [
+            {
+                "purpose_en": "",
+                "purpose_ko": "보습제, 용제, 점도조절제, 방부제",
+                "purpose_vi": "Kem dưỡng ẩm, dung môi, điều chế độ nhớt, chất bảo quản",
+                "id": 165,
+                "name_vi": "",
+                "hazard_score": 1,
+                "name_en": "Propanediol"
+            },
+            {
+                "purpose_en": "",
+                "purpose_ko": "산화방지제, 향료, pH 조절제, 피부컨디셔닝제",
+                "purpose_vi": "Chất chống oxy hóa, nước hoa, chất điều chỉnh pH, chất điều hòa da",
+                "name_vi": "",
+                "id": 518,
+                "name_en": "Ascorbic Acid;Vitamin C",
+                "hazard_score": 1
+            },
+            {
+                "name_en": "Alpha-Arbutin",
+                "name_vi": "",
+                "purpose_vi": "",
+                "purpose_ko": "",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "id": 657
+            }
+        ],
+        "brand": {
+            "sname": "디 오디너리 (The Ordinary)",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "id": 6851,
+            "name": "The Ordinary"
+        },
+        "hazard_score": 1,
+        "tags": [],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "AHA 30% + BHA 2% 필링 솔루션",
+        "id": 263,
+        "sid": 124939,
+        "volume": "30ml",
+        "sprice": 14900,
+        "official_price": 320350,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_124939.jpg",
+        "description": "",
+        "sdescription": "AHA성분과 BHA성분이 pH밸런스를 맞추어 각질을 제거해주고 모공과 피부결 개선에 도움울 주는 세럼",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 14,
+            "third_category_name": "tinh chất se khít lỗ chân lông",
+            "third_category_en_name": "pore essence"
+        },
+        "ingredients": [
+            {
+                "purpose_vi": "Điều chỉnh pH",
+                "id": 690,
+                "purpose_en": "",
+                "purpose_ko": "pH 조정제",
+                "name_vi": "",
+                "hazard_score": 2,
+                "name_en": "Glycolic Acid"
+            },
+            {
+                "hazard_score": 1,
+                "name_en": "Water;Aqua",
+                "purpose_en": "",
+                "id": 1,
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "name_vi": "",
+                "purpose_ko": "피부컨디셔닝제, 용제"
+            },
+            {
+                "hazard_score": 1,
+                "name_en": "Aloe Barbadensis Leaf Water",
+                "purpose_ko": "향료"
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "Chất khử màu, chất điều chỉnh pH",
+                "hazard_score": 2,
+                "id": 101,
+                "purpose_ko": "변성제, pH 조절제",
+                "name_vi": "",
+                "name_en": "Sodium Hydroxide"
+            },
+            {
+                "name_en": "Daucus Carota Sativa (Carrot) Extract",
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "hazard_score": 0
+            }
+        ],
+        "brand": {
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "id": 6851,
+            "sname": "디 오디너리 (The Ordinary)",
+            "name": "The Ordinary"
+        },
+        "hazard_score": 2,
+        "tags": [
+            "kiểm soát keratin",
+            "kiểm soát lỗ chân lông"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "랙틱 애시드 5% + 에이치에이 2%",
+        "id": 263,
+        "sid": 104386,
+        "volume": "30ml",
+        "sprice": 6500,
+        "official_price": 139750,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_104386.jpg",
+        "description": "",
+        "sdescription": "순한 락트산 표층 박피 포뮬라\n\n- pH 3.60-3.80, 알콜프리, 실리콘프리, 넛프리, 비건, 동물실험 반대\n- 젖산과 히알루론산이 함유된 순한 각질 제거 세럼 \n- 어둡고 불균형한 피부톤과 피부결을 개선",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 16,
+            "third_category_name": "tinh chất dưỡng trắng",
+            "third_category_en_name": "brightening essence"
+        },
+        "ingredients": [],
+        "brand": {
+            "sname": "디 오디너리 (The Ordinary)",
+            "name": "The Ordinary",
+            "id": 6851,
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png"
+        },
+        "tags": [
+            null,
+            "làn da căng bóng trong suốt"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "EUK 134 0.1%",
+        "id": 263,
+        "sid": 119980,
+        "volume": "30ml",
+        "sprice": 8800,
+        "official_price": 189200,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_119980.jpg",
+        "description": "",
+        "sdescription": "EUK 134는 수퍼옥시드 디스무타아제와 카탈라아제와 유사한 유기 화합물로 자생력이 있는 분자가 초과산화물을 찾아내 과산화수소를 제거하고 활성산소를 물과 산소로 변형시킵니다.\r\n오랜 시간 알려져 있던 성분이지만 시장에 나온 아주 소수의 제품만이 이 강력하고 자생력이 있어 끊임없이 항산화 기능을 하는 항산화제를 함유하고 있습니다,\r\n아스코르브산과 같은 강한 산 성분과 함께 사용하면 EUK 134를 완전히 파괴할 수 있으니 함께 사용하지 마세요\r\n워터, 실리콘, 오일, 알코올을 함유하고 있지 않습니다.",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 17,
+            "third_category_name": "tinh chất chông lão hóa",
+            "third_category_en_name": "anti-aging essence"
+        },
+        "ingredients": [
+            {
+                "name_vi": "",
+                "purpose_ko": "보습제, 용제, 점도조절제, 방부제",
+                "id": 165,
+                "name_en": "Propanediol",
+                "hazard_score": 1,
+                "purpose_vi": "Kem dưỡng ẩm, dung môi, điều chế độ nhớt, chất bảo quản",
+                "purpose_en": ""
+            },
+            {
+                "name_en": "Ethylbisiminomethylguaiacol Manganese Chloride",
+                "purpose_ko": "산화방지제",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "sname": "디 오디너리 (The Ordinary)",
+            "id": 6851,
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "name": "The Ordinary"
+        },
+        "hazard_score": 1,
+        "tags": [
+            "không gây dị ứng"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "아지렐린 솔루션 10%",
+        "id": 263,
+        "sid": 139065,
+        "volume": "30ml",
+        "sprice": 7900,
+        "official_price": 169850,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_139065.jpg",
+        "description": "",
+        "sdescription": "깊은 주름에 효과가 있는 가벼운 세럼\n\n- 수분 베이스 포뮬라로 오일, 에스터, 실리콘 불포함\n- 아지렐린이 눈 주위와 이마 부분을 포함한 깊은 주름이 생기기 쉬운 얼굴 부위를 개선",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 17,
+            "third_category_name": "tinh chất chông lão hóa",
+            "third_category_en_name": "anti-aging essence"
+        },
+        "ingredients": [
+            {
+                "purpose_en": "",
+                "name_en": "Water;Aqua",
+                "id": 1,
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_vi": "Chất dưỡng da, dung môi"
+            },
+            {
+                "name_en": "Propanediol",
+                "purpose_vi": "Kem dưỡng ẩm, dung môi, điều chế độ nhớt, chất bảo quản",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_ko": "보습제, 용제, 점도조절제, 방부제",
+                "id": 165
+            },
+            {
+                "name_vi": "",
+                "purpose_ko": "",
+                "id": 321,
+                "name_en": "Acetyl Hexapeptide-8",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "purpose_vi": ""
+            },
+            {
+                "id": 483,
+                "name_en": "Trisodium Ethylenediamine Disuccinate",
+                "hazard_score": 1,
+                "purpose_vi": "Chặn ion kim loại",
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_ko": "금속이온봉쇄제"
+            },
+            {
+                "name_en": "Gellan Gum",
+                "purpose_en": "",
+                "id": 611,
+                "hazard_score": 1,
+                "purpose_vi": "Chất nhũ hóa, chất làm đặc tan trong nước",
+                "purpose_ko": "유화안정제, 점증제-수용성",
+                "name_vi": ""
+            },
+            {
+                "purpose_en": "",
+                "name_vi": "",
+                "name_en": "Sodium Chloride",
+                "hazard_score": 1,
+                "purpose_vi": "Chất làm ngọt, chất làm đặc tan trong nước",
+                "purpose_ko": "감미제, 점증제-수용성",
+                "id": 460
+            },
+            {
+                "id": 981,
+                "purpose_ko": "계면활성제-유화제, 계면활성제-용해보조제",
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 2,
+                "purpose_vi": "Chất hoạt động bề mặt-chất nhũ hóa, chất hỗ trợ hòa tan chất hoạt động bề mặt",
+                "name_en": "Isoceteth-20"
+            },
+            {
+                "hazard_score": 1,
+                "purpose_ko": "산화방지제",
+                "name_en": "Dimethyl Isosorbide"
+            },
+            {
+                "purpose_ko": "향료, 살균보존제",
+                "id": 395,
+                "name_en": "Potassium Sorbate",
+                "purpose_en": "",
+                "hazard_score": 2,
+                "name_vi": "",
+                "purpose_vi": "Hương liệu và khử trùng chất bảo quản"
+            },
+            {
+                "purpose_en": "",
+                "purpose_ko": "향료, 살균보존제",
+                "name_vi": "",
+                "hazard_score": 2,
+                "name_en": "Phenoxyethanol",
+                "id": 151,
+                "purpose_vi": "Hương liệu và khử trùng chất bảo quản"
+            },
+            {
+                "hazard_score": 1,
+                "name_en": "Chlorphenesin",
+                "name_vi": "",
+                "id": 257,
+                "purpose_ko": "살균보존제",
+                "purpose_vi": "Chất bảo quản sát trùng",
+                "purpose_en": ""
+            }
+        ],
+        "brand": {
+            "id": 6851,
+            "name": "The Ordinary",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "sname": "디 오디너리 (The Ordinary)"
+        },
+        "hazard_score": 2,
+        "tags": [
+            "cải thiện nếp nhăn"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "마그네슘 아스코빌 포스페이트 10%",
+        "id": 263,
+        "sid": 99936,
+        "volume": "30ml",
+        "sprice": 9600,
+        "official_price": 206400,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_99936.jpg",
+        "description": "",
+        "sdescription": "안정화된 비타민 C 파생성분이 함유된 브라이트닝 하이드레이터\r\n\r\n- pH 6.50-7.50, 알콜프리, 넛프리, 비건, 동물실험 반대\r\n- 피부 자극이 없는 비타민 C 형태가 함유된 가벼운 크림 \r\n- 기미, 색소침착을 개선하고 피부톤을 밝게 하며 수분을 공급\r\n- 아침과 저녁에 수분 베이스 제품 후에 사용\r\n\r\n마그네슘 아스코빌 포스페이트는 비타민C 성분을 보완하고자 만들었는데, 피부에 자극이 덜하고 중성 pH로 안정적입니다.",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 4,
+            "second_category_name": "kem dưỡng",
+            "second_category_en_name": "cream",
+            "third_category_id": 25,
+            "third_category_name": "kem dưỡng trắng da",
+            "third_category_en_name": "brightening cream"
+        },
+        "ingredients": [],
+        "brand": {
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "name": "The Ordinary",
+            "id": 6851,
+            "sname": "디 오디너리 (The Ordinary)"
+        },
+        "tags": [
+            "chứa vitamin",
+            "cung cấp độ ẩm",
+            "không gây dị ứng",
+            null
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "만델릭 애시드 10% + 에이치에이",
+        "id": 263,
+        "sid": 139064,
+        "volume": "30ml",
+        "sprice": 6700,
+        "official_price": 144050,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_139064.jpg",
+        "description": "",
+        "sdescription": "다른 AHA보다 순하지만 효과적으로 각질 제거를 해주는 세럼",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 16,
+            "third_category_name": "tinh chất dưỡng trắng",
+            "third_category_en_name": "brightening essence"
+        },
+        "ingredients": [
+            {
+                "purpose_ko": "보습제, 용제, 점도조절제, 방부제",
+                "id": 165,
+                "name_en": "Propanediol",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_vi": "Kem dưỡng ẩm, dung môi, điều chế độ nhớt, chất bảo quản"
+            },
+            {
+                "id": 1,
+                "name_en": "Water;Aqua",
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "name_vi": ""
+            },
+            {
+                "name_en": "Mandelic Acid",
+                "purpose_ko": "",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "name": "The Ordinary",
+            "id": 6851,
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "sname": "디 오디너리 (The Ordinary)"
+        },
+        "hazard_score": 2,
+        "tags": [
+            null,
+            "làn da căng bóng trong suốt"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "멀티-펩타이드 세럼 포 헤어 덴시티",
+        "id": 263,
+        "sid": 124893,
+        "volume": "60ml",
+        "sprice": 17900,
+        "official_price": 384850,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_124893.jpg",
+        "description": "",
+        "sdescription": "모발의 건강을 서포트해 건강하고 굵고 탱탱한 모발로 가꾸어주는 고농축 포뮬라의 헤어 세럼",
+        "category": {
+            "first_category_id": 11,
+            "first_category_name": "chăm sóc tóc",
+            "first_category_en_name": "hair",
+            "second_category_id": 65,
+            "second_category_name": "chăm sóc tóc",
+            "second_category_en_name": "hair care",
+            "third_category_id": 198,
+            "third_category_name": "tinh chất dưỡng tóc",
+            "third_category_en_name": "hair essence/serum"
+        },
+        "ingredients": [
+            {
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "purpose_en": "",
+                "id": 1,
+                "hazard_score": 1,
+                "name_vi": "",
+                "name_en": "Water;Aqua",
+                "purpose_vi": "Chất dưỡng da, dung môi"
+            },
+            {
+                "purpose_vi": "Kem dưỡng ẩm, dung môi, điều chế độ nhớt, chất bảo quản",
+                "name_en": "Propanediol",
+                "id": 165,
+                "purpose_ko": "보습제, 용제, 점도조절제, 방부제",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_en": ""
+            },
+            {
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_ko": "향료, 피부컨디셔닝제, 용제, 점도감소제",
+                "name_vi": "",
+                "id": 35,
+                "purpose_vi": "Hương thơm, chất điều hòa da, dung môi, chất làm giảm độ nhớt",
+                "name_en": "Butylene Glycol"
+            },
+            {
+                "name_vi": "",
+                "id": 66,
+                "hazard_score": 1,
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "name_en": "Glycerin",
+                "purpose_en": ""
+            },
+            {
+                "hazard_score": 1,
+                "purpose_ko": "향료, 피부컨디셔닝제",
+                "name_vi": "",
+                "name_en": "Caffeine",
+                "purpose_en": "",
+                "id": 373,
+                "purpose_vi": "Nước hoa, chất dưỡng da"
+            },
+            {
+                "name_en": "Biotinoyl Tripeptide-1",
+                "purpose_ko": "",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "sname": "디 오디너리 (The Ordinary)",
+            "id": 6851,
+            "name": "The Ordinary"
+        },
+        "hazard_score": 2,
+        "tags": [
+            null
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "아스코빌 테트라이소팔미테이트 솔루션 20% 인 비타민 에프",
+        "id": 263,
+        "sid": 95340,
+        "volume": "30ml",
+        "sprice": 17800,
+        "official_price": 382700,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_95340.jpg",
+        "description": "",
+        "sdescription": "비타민 F에 첨가된 고강도 지용성 비타민 C 파생성분.\r\n워터프리,알콜프리,실리콘프리,넛프리,비건,글루텐프리,소이프리,동물실험 반대\r\n\r\n- 무엇인가요: 지방산과 피부 자극이 없는 비타민 C 형태가 함유된 오일 세럼 \r\n\r\n- 어떤 효과가 있나요: 기미, 색소침착을 개선하고 피부톤을 밝게 합니다. \r\n\r\n- 어떻게 사용하나요: 아침과 저녁에 수분 베이스 제품 후에 사용하세요.",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 16,
+            "third_category_name": "tinh chất dưỡng trắng",
+            "third_category_en_name": "brightening essence"
+        },
+        "ingredients": [
+            {
+                "name_en": "Coconut Alkanes",
+                "purpose_ko": "피부유연화제, 용매",
+                "hazard_score": 1
+            },
+            {
+                "id": 906,
+                "purpose_ko": "산화방지제, 피부컨디셔닝제",
+                "purpose_vi": "Chất chống oxy hóa, chất điều hòa da",
+                "name_en": "Tetrahexyldecyl Ascorbate",
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_en": ""
+            },
+            {
+                "hazard_score": 1,
+                "name_en": "Ethyl Linoleate",
+                "purpose_ko": "향료, 피부유연화제"
+            },
+            {
+                "name_en": "Coco-Caprylate/Caprate",
+                "hazard_score": 1,
+                "id": 926,
+                "purpose_ko": "피부유연화제",
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_vi": "Làm mềm da"
+            },
+            {
+                "purpose_ko": "모발컨디셔닝제, 수분증발차단제",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "id": 525,
+                "name_en": "Simmondsia Chinensis (Jojoba) Seed Oil",
+                "name_vi": "",
+                "purpose_vi": "Chất dưỡng tóc, chất chống bay hơi"
+            },
+            {
+                "name_en": "Solanum Lycopersicum (Tomato) Fruit Extract; Lycopersicon Esculentum Fruit Extract",
+                "purpose_ko": "산화방지제",
+                "hazard_score": 0
+            }
+        ],
+        "brand": {
+            "sname": "디 오디너리 (The Ordinary)",
+            "name": "The Ordinary",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "id": 6851
+        },
+        "hazard_score": 1,
+        "tags": [
+            "làm trắng",
+            "cung cấp độ ẩm",
+            "không gây dị ứng"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "아스코빌 글루코사이드 솔루션 12%",
+        "id": 263,
+        "sid": 95339,
+        "volume": "30ml",
+        "sprice": 12900,
+        "official_price": 277350,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_95339.jpg",
+        "description": "",
+        "sdescription": "피부 자극이 없는 비타민 C 형태가 함유된 수분 베이스 세럼으로 기미, 색소침착을 개선하고 피부톤을 밝게 합니다. \r\n아침과 저녁에 크림이나 로션 전에 사용하세요.\r\n\r\n비타민 C는 효과적인 항산화 물질로, 피부톤을 밝게 해주고, 피부 노화의 증상을 개선시킵니다.",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 16,
+            "third_category_name": "tinh chất dưỡng trắng",
+            "third_category_en_name": "brightening essence"
+        },
+        "ingredients": [
+            {
+                "hazard_score": 1,
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "purpose_en": "",
+                "name_en": "Water;Aqua",
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "name_vi": "",
+                "id": 1
+            },
+            {
+                "purpose_ko": "산화방지제",
+                "name_en": "Ascorbyl Glucoside",
+                "name_vi": "",
+                "purpose_vi": "Chống oxy hóa",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "id": 417
+            },
+            {
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 165,
+                "name_en": "Propanediol",
+                "purpose_ko": "보습제, 용제, 점도조절제, 방부제",
+                "purpose_en": "",
+                "purpose_vi": "Kem dưỡng ẩm, dung môi, điều chế độ nhớt, chất bảo quản"
+            },
+            {
+                "purpose_ko": "착향제, pH 조정제",
+                "name_en": "Aminomethyl Propanediol",
+                "hazard_score": 1
+            },
+            {
+                "purpose_en": "",
+                "purpose_ko": "향료, pH 조절제, 계면활성제-유화제",
+                "purpose_vi": "Hương liệu, chất điều chỉnh pH, chất nhũ hóa bề mặt",
+                "name_en": "Triethanolamine",
+                "hazard_score": 2,
+                "name_vi": "",
+                "id": 182
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "Chất hoạt động bề mặt-chất nhũ hóa, chất hỗ trợ hòa tan chất hoạt động bề mặt",
+                "purpose_ko": "계면활성제-유화제, 계면활성제-용해보조제",
+                "name_vi": "",
+                "name_en": "Isoceteth-20",
+                "hazard_score": 2,
+                "id": 981
+            },
+            {
+                "purpose_ko": "결합제, 유화안정제, 피부컨디셔닝제, 계면활성제-유화제, 점증제-수용성",
+                "hazard_score": 1,
+                "name_en": "Xanthan Gum",
+                "name_vi": "",
+                "purpose_vi": "Chất kết dính, chất nhũ hóa, chất điều hòa da, chất nhũ hóa-chất nhũ hóa, chất làm đặc tan trong nước",
+                "purpose_en": "",
+                "id": 170
+            },
+            {
+                "hazard_score": 1,
+                "purpose_ko": "산화방지제",
+                "name_en": "Dimethyl Isosorbide"
+            },
+            {
+                "purpose_vi": "Chất tạo mùi, dung môi, chất làm giảm độ nhớt",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "name_vi": "",
+                "id": 948,
+                "purpose_ko": "착향제, 용제, 점도감소제",
+                "name_en": "Ethoxydiglycol"
+            },
+            {
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": "",
+                "name_en": "Trisodium Ethylenediamine Disuccinate",
+                "purpose_vi": "Chặn ion kim loại",
+                "purpose_ko": "금속이온봉쇄제",
+                "id": 483
+            },
+            {
+                "name_en": "1,2-Hexanediol",
+                "hazard_score": 1,
+                "id": 7,
+                "purpose_vi": "dung môi",
+                "name_vi": "",
+                "purpose_ko": "용제",
+                "purpose_en": ""
+            },
+            {
+                "id": 81,
+                "name_en": "Caprylyl Glycol",
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da",
+                "name_vi": ""
+            }
+        ],
+        "brand": {
+            "sname": "디 오디너리 (The Ordinary)",
+            "id": 6851,
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "name": "The Ordinary"
+        },
+        "hazard_score": 2,
+        "tags": [
+            "làm trắng",
+            "cung cấp độ ẩm",
+            "không gây dị ứng"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "아미노 애시드+비5",
+        "id": 263,
+        "sid": 120865,
+        "volume": "30ml",
+        "sprice": 6800,
+        "official_price": 146200,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_120865.jpg",
+        "description": "",
+        "sdescription": "아미노산 및 아미노산 유도체가 포함되며 총 농도 17%입니다.\r\n이 농축액은 피부장벽, 탄력에 도움이 될 수 있습니다\r\n또한 이 포뮬라에는 D-판테놀이 5% 함유되어 있으며, D-판테놀은 비타민 B5 계열성분으로서 피부의 수분 보충을 돕는 성분입니다.\r\n",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 11,
+            "third_category_name": "tinh chất cấp nước",
+            "third_category_en_name": "hydrating essence"
+        },
+        "ingredients": [
+            {
+                "hazard_score": 1,
+                "id": 1,
+                "name_vi": "",
+                "name_en": "Water;Aqua",
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제, 용제"
+            },
+            {
+                "name_en": "Propanediol",
+                "purpose_ko": "보습제, 용제, 점도조절제, 방부제",
+                "id": 165,
+                "hazard_score": 1,
+                "purpose_en": "",
+                "purpose_vi": "Kem dưỡng ẩm, dung môi, điều chế độ nhớt, chất bảo quản",
+                "name_vi": ""
+            },
+            {
+                "name_en": "Betaine",
+                "purpose_vi": "Chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da",
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_ko": "모발컨디셔닝제, 보습제, 피부보습제",
+                "id": 242,
+                "hazard_score": 1
+            },
+            {
+                "id": 438,
+                "hazard_score": 1,
+                "purpose_ko": "모발컨디셔닝제, 보습제, 피부보습제",
+                "purpose_vi": "Chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da",
+                "name_en": "Sodium PCA",
+                "name_vi": "",
+                "purpose_en": ""
+            },
+            {
+                "purpose_vi": "Đại lý điều hòa tóc",
+                "id": 155,
+                "name_en": "Panthenol",
+                "purpose_ko": "모발컨디셔닝제",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "name_vi": ""
+            },
+            {
+                "id": 440,
+                "purpose_vi": "Đệm pH, tẩy da chết, dưỡng ẩm",
+                "purpose_en": "",
+                "hazard_score": 2,
+                "name_en": "Sodium Lactate",
+                "purpose_ko": "pH 완충제, 각질제거제, 보습제",
+                "name_vi": ""
+            },
+            {
+                "hazard_score": 1,
+                "name_en": "Arginine",
+                "purpose_ko": "향료, 모발컨디셔닝제, 스킨컨디셔닝제",
+                "id": 508,
+                "purpose_en": "",
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "name_vi": ""
+            },
+            {
+                "name_en": "PCA",
+                "purpose_ko": "피부보습제",
+                "name_vi": "",
+                "id": 1160,
+                "purpose_vi": "Kem dưỡng ẩm cho da",
+                "hazard_score": 2,
+                "purpose_en": ""
+            },
+            {
+                "id": 932,
+                "name_en": "Aspartic Acid",
+                "purpose_en": "",
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "name_vi": "",
+                "hazard_score": 1
+            },
+            {
+                "purpose_vi": "Đệm pH, hương thơm, chất dưỡng tóc, chất dưỡng da",
+                "name_en": "Glycine",
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "pH 완충제, 향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "id": 618
+            },
+            {
+                "name_en": "Alanine",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "purpose_en": "",
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "id": 720
+            },
+            {
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "purpose_en": "",
+                "id": 616,
+                "name_en": "Serine",
+                "name_vi": "",
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "hazard_score": 1
+            },
+            {
+                "name_vi": "",
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "name_en": "Threonine",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "id": 722,
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제"
+            },
+            {
+                "purpose_en": "",
+                "name_en": "Valine",
+                "id": 936,
+                "hazard_score": 1,
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "name_vi": ""
+            },
+            {
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "name_en": "Proline",
+                "name_vi": "",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "id": 723
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "Tác nhân dưỡng tóc, chất dưỡng da (khác)",
+                "id": 510,
+                "hazard_score": 1,
+                "purpose_ko": "헤어컨디셔닝제, 피부컨디셔닝제(기타)",
+                "name_en": "Isoleucine",
+                "name_vi": ""
+            },
+            {
+                "name_en": "Lysine HCL",
+                "purpose_ko": "피부컨디셔닝제",
+                "hazard_score": 0
+            }
+        ],
+        "brand": {
+            "name": "The Ordinary",
+            "id": 6851,
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "sname": "디 오디너리 (The Ordinary)"
+        },
+        "hazard_score": 2,
+        "tags": [
+            "làm ẩm",
+            "chứa vitamin",
+            "cải thiện nếp nhăn",
+            "độ đàn hồi của da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "매트릭실 10% + 에이치에이",
+        "id": 263,
+        "sid": 121451,
+        "volume": "30ml",
+        "sprice": 11500,
+        "official_price": 247250,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_121451.jpg",
+        "description": "",
+        "sdescription": "펩타이드가 함유된 수분 베이스 세럼\r\n\r\n- 고강도 펩타이드 포뮬레이션\r\n- pH 5.0 ~ 6.0, 실리콘프리, 넛프리, 비건, 동물실험 반대\r\n- 수분공급 및 탄력에 도움을 줍니다\r\n",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 11,
+            "third_category_name": "tinh chất cấp nước",
+            "third_category_en_name": "hydrating essence"
+        },
+        "ingredients": [],
+        "brand": {
+            "sname": "디 오디너리 (The Ordinary)",
+            "name": "The Ordinary",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "id": 6851
+        },
+        "tags": [
+            "cung cấp độ ẩm",
+            "không gây dị ứng",
+            "cải thiện nếp nhăn",
+            "độ đàn hồi của da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "하이 스프레더빌러티 플루이드 프라이머",
+        "id": 263,
+        "sid": 92824,
+        "volume": "30ml",
+        "sprice": 7900,
+        "official_price": 169850,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_92824.jpg",
+        "description": "",
+        "sdescription": "고탄력 실리콘 성분 함유, 우수한 발림성의 피부 표면 보정용 경량 프라이머\r\n\r\n이 차세대 프라이머는 세럼 같은 경량의 포뮬라로서 이후의 안면 메이크업의 확산성을 개선해서 특히 눈 주위와 건조한 피부에 잘 나타나는, 부자연스럽고 고르지 않은 색소의 축적을 막아줍니다. 또한 이 포뮬라는 가벼운 비오일성 피부 수분 공급제의 역할을 수행해서 자연스럽고 촉촉한 느낌을 연출합니다.",
+        "category": {
+            "first_category_id": 2,
+            "first_category_name": "trang điểm mặt",
+            "first_category_en_name": "face makeup",
+            "second_category_id": 10,
+            "second_category_name": "kem lót",
+            "second_category_en_name": "base/primer",
+            "third_category_id": 41,
+            "third_category_name": "kem lót",
+            "third_category_en_name": "primer"
+        },
+        "ingredients": [
+            {
+                "name_en": "Hexamethylindanopyran",
+                "purpose_ko": "향료",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "name": "The Ordinary",
+            "sname": "디 오디너리 (The Ordinary)",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "id": 6851
+        },
+        "hazard_score": 2,
+        "tags": [
+            "Độ chính xác",
+            "Độ lì"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "어드밴스드 레티노이드 2%",
+        "id": 263,
+        "sid": 95338,
+        "volume": "30ml",
+        "sprice": 9900,
+        "official_price": 212850,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_95338.jpg",
+        "description": "",
+        "sdescription": "이 포뮬라는 두 가지 차세대 레티노이드 활성제를 결합한 중량 기준 2% 농도의 제품입니다\r\n\r\n두 가지 활성제는 다음과 같습니다:\r\n\r\na) 용해된 하이드록시피나콜론 레티노에이트는 아주 발전된 레티노이드 형태로, 전 트랜스 다이렉트 레티노산의 에스터가 레티놀, 레티닐팔마테이트 등과 같이 처방전 없이 받을 수 있는 어떠한 레티노이드보다 노화 증상 개선 효과를 높입니다. \r\n\r\nb) 보호 캡슐 시스템에 담겨 지속적인 딜리버리 형태를 유지하는 순수 레티놀은 용해된 하이드록시피나콜론 레티노이트의 전달과 효과를 지원합니다.\r\n\r\n이 제품에 사용된 두 가지 종류의 레티노이드는 보통 레티노이드(레티놀 포함)를 사용했을 때 흔히 발생하는 자극 없이 노화의 증상을 더 효과적으로 개선합니다. ",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 17,
+            "third_category_name": "tinh chất chông lão hóa",
+            "third_category_en_name": "anti-aging essence"
+        },
+        "ingredients": [],
+        "brand": {
+            "name": "The Ordinary",
+            "id": 6851,
+            "sname": "디 오디너리 (The Ordinary)",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png"
+        },
+        "tags": [
+            "cung cấp độ ẩm",
+            "không gây dị ứng"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "뷔페 + 코퍼 펩타이즈 1%",
+        "id": 263,
+        "sid": 139077,
+        "volume": "30ml",
+        "sprice": 28900,
+        "official_price": 621350,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_139077.jpg",
+        "description": "",
+        "sdescription": "일련의 연구된 기술들의 종합적인 결과물로 여러가지 피부 노화 증세를 타게팅하는 세럼",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 17,
+            "third_category_name": "tinh chất chông lão hóa",
+            "third_category_en_name": "anti-aging essence"
+        },
+        "ingredients": [
+            {
+                "name_en": "Water;Aqua",
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "id": 1,
+                "hazard_score": 1
+            },
+            {
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "hazard_score": 1,
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "name_vi": "",
+                "name_en": "Glycerin",
+                "id": 66,
+                "purpose_en": ""
+            },
+            {
+                "purpose_ko": "",
+                "hazard_score": 0,
+                "name_en": "Lactococcus Ferment Lysate"
+            },
+            {
+                "purpose_vi": "Đại lý dưỡng da",
+                "purpose_en": "",
+                "name_en": "Copper Tripeptide-1",
+                "name_vi": "",
+                "purpose_ko": "피부컨디셔닝제",
+                "id": 824,
+                "hazard_score": 1
+            },
+            {
+                "purpose_en": "",
+                "purpose_ko": "",
+                "name_vi": "",
+                "id": 321,
+                "name_en": "Acetyl Hexapeptide-8",
+                "hazard_score": 1,
+                "purpose_vi": ""
+            },
+            {
+                "hazard_score": 1,
+                "purpose_ko": "",
+                "name_en": "Pentapeptide-18"
+            },
+            {
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_vi": "Chất điều hòa da (khác)",
+                "name_en": "Palmitoyl Tripeptide-1",
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "id": 323
+            },
+            {
+                "hazard_score": 1,
+                "name_vi": "",
+                "name_en": "Palmitoyl Tetrapeptide-7",
+                "purpose_ko": "피부컨디셔닝제",
+                "id": 316,
+                "purpose_vi": "Đại lý dưỡng da",
+                "purpose_en": ""
+            },
+            {
+                "purpose_ko": "피부컨디셔닝제(기타)",
+                "id": 762,
+                "name_en": "Palmitoyl Tripeptide-38",
+                "name_vi": "",
+                "purpose_vi": "Chất điều hòa da (khác)",
+                "purpose_en": "",
+                "hazard_score": 1
+            },
+            {
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": "",
+                "id": 1140,
+                "purpose_vi": "Đại lý dưỡng da",
+                "name_en": "Dipeptide Diaminobutyroyl Benzylamide Diacetate",
+                "purpose_ko": "피부컨디셔닝제"
+            },
+            {
+                "purpose_ko": "피부컨디셔닝제",
+                "hazard_score": 0,
+                "name_en": "Acetylarginyltryptophyl Diphenylglycine"
+            },
+            {
+                "purpose_ko": "피부보습제, 피부컨디셔닝제",
+                "id": 458,
+                "name_en": "Sodium Hyaluronate Crosspolymer",
+                "purpose_vi": "Kem dưỡng ẩm da, chất dưỡng da",
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 1
+            },
+            {
+                "hazard_score": 1,
+                "name_en": "Sodium Hyaluronate",
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제",
+                "id": 39,
+                "name_vi": "",
+                "purpose_vi": "Đại lý dưỡng da"
+            },
+            {
+                "name_vi": "",
+                "id": 154,
+                "purpose_vi": "Đại lý dưỡng da, đại lý bảo vệ da",
+                "purpose_ko": "피부컨디셔닝제, 피부보호제",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "name_en": "Allantoin"
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "Đệm pH, hương thơm, chất dưỡng tóc, chất dưỡng da",
+                "name_vi": "",
+                "purpose_ko": "pH 완충제, 향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "hazard_score": 1,
+                "name_en": "Glycine",
+                "id": 618
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "name_vi": "",
+                "hazard_score": 1,
+                "name_en": "Alanine",
+                "id": 720
+            },
+            {
+                "name_vi": "",
+                "purpose_en": "",
+                "hazard_score": 1,
+                "id": 616,
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "name_en": "Serine",
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제"
+            },
+            {
+                "name_en": "Valine",
+                "purpose_en": "",
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "hazard_score": 1,
+                "name_vi": "",
+                "id": 936
+            },
+            {
+                "purpose_ko": "헤어컨디셔닝제, 피부컨디셔닝제(기타)",
+                "name_en": "Isoleucine",
+                "purpose_en": "",
+                "purpose_vi": "Tác nhân dưỡng tóc, chất dưỡng da (khác)",
+                "id": 510,
+                "name_vi": "",
+                "hazard_score": 1
+            },
+            {
+                "name_en": "Proline",
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "purpose_en": "",
+                "id": 723,
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "name_vi": "",
+                "hazard_score": 1
+            },
+            {
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "id": 722,
+                "purpose_en": "",
+                "name_en": "Threonine",
+                "hazard_score": 1,
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "name_vi": ""
+            },
+            {
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "hazard_score": 1,
+                "name_vi": "",
+                "id": 617,
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "purpose_en": "",
+                "name_en": "Histidine"
+            },
+            {
+                "hazard_score": 1,
+                "name_en": "Phenylalanine",
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "name_vi": "",
+                "id": 935,
+                "purpose_en": ""
+            },
+            {
+                "purpose_ko": "향료, 모발컨디셔닝제, 스킨컨디셔닝제",
+                "name_vi": "",
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "id": 508,
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_en": "Arginine"
+            },
+            {
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": "",
+                "name_en": "Aspartic Acid",
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "id": 932
+            },
+            {
+                "id": 332,
+                "purpose_en": "",
+                "purpose_vi": "Chất làm ngọt, dưỡng ẩm",
+                "hazard_score": 1,
+                "purpose_ko": "감미제, 보습제",
+                "name_en": "Trehalose",
+                "name_vi": ""
+            },
+            {
+                "purpose_en": "",
+                "name_vi": "",
+                "hazard_score": 1,
+                "id": 1304,
+                "name_en": "Fructose",
+                "purpose_vi": "Chất làm ngọt, dưỡng ẩm, dưỡng ẩm cho da",
+                "purpose_ko": "감미제, 보습제, 피부보습제"
+            },
+            {
+                "purpose_ko": "감미제, 보습제, 피부보습제, 피부컨디셔닝제",
+                "id": 37,
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_vi": "Chất làm ngọt, dưỡng ẩm, dưỡng ẩm da, chất dưỡng da",
+                "name_en": "Glucose",
+                "hazard_score": 1
+            },
+            {
+                "hazard_score": 1,
+                "purpose_ko": "감미제, 보습제, 피부보습제",
+                "name_en": "Maltose"
+            },
+            {
+                "name_en": "Urea",
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_ko": "pH 완충제, 보습제, 피부보습제",
+                "purpose_vi": "Đệm pH, dưỡng ẩm, dưỡng ẩm da",
+                "id": 975,
+                "hazard_score": 2
+            },
+            {
+                "id": 438,
+                "name_vi": "",
+                "purpose_ko": "모발컨디셔닝제, 보습제, 피부보습제",
+                "name_en": "Sodium PCA",
+                "purpose_en": "",
+                "purpose_vi": "Chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da",
+                "hazard_score": 1
+            },
+            {
+                "hazard_score": 2,
+                "purpose_ko": "피부보습제",
+                "name_en": "PCA",
+                "id": 1160,
+                "purpose_en": "",
+                "purpose_vi": "Kem dưỡng ẩm cho da",
+                "name_vi": ""
+            },
+            {
+                "hazard_score": 2,
+                "id": 440,
+                "name_vi": "",
+                "name_en": "Sodium Lactate",
+                "purpose_vi": "Đệm pH, tẩy da chết, dưỡng ẩm",
+                "purpose_en": "",
+                "purpose_ko": "pH 완충제, 각질제거제, 보습제"
+            },
+            {
+                "purpose_ko": "금속이온봉쇄제, 향료, pH 조절제",
+                "purpose_en": "",
+                "name_en": "Citric Acid",
+                "id": 201,
+                "hazard_score": 1,
+                "purpose_vi": "Chặn ion kim loại, hương thơm, điều chỉnh pH",
+                "name_vi": ""
+            },
+            {
+                "id": 821,
+                "name_vi": "",
+                "purpose_ko": "금속이온봉쇄제, 유화안정제",
+                "name_en": "Hydroxypropyl Cyclodextrin",
+                "purpose_en": "",
+                "purpose_vi": "Chất ngăn chặn ion kim loại, chất ổn định nhũ hóa",
+                "hazard_score": 1
+            },
+            {
+                "hazard_score": 1,
+                "purpose_ko": "감미제, 점증제-수용성",
+                "purpose_vi": "Chất làm ngọt, chất làm đặc tan trong nước",
+                "name_vi": "",
+                "id": 460,
+                "purpose_en": "",
+                "name_en": "Sodium Chloride"
+            },
+            {
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_vi": "Chất khử màu, chất điều chỉnh pH",
+                "name_en": "Sodium Hydroxide",
+                "hazard_score": 2,
+                "purpose_ko": "변성제, pH 조절제",
+                "id": 101
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "Hương thơm, chất điều hòa da, dung môi, chất làm giảm độ nhớt",
+                "hazard_score": 1,
+                "name_en": "Butylene Glycol",
+                "name_vi": "",
+                "id": 35,
+                "purpose_ko": "향료, 피부컨디셔닝제, 용제, 점도감소제"
+            },
+            {
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "hazard_score": 1,
+                "id": 208,
+                "name_en": "Pentylene Glycol",
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_vi": "Chất dưỡng da, dung môi"
+            },
+            {
+                "purpose_ko": "점착제, 착향제",
+                "purpose_en": "",
+                "purpose_vi": "Chất kết dính, hương liệu",
+                "name_en": "Acacia Senegal Gum",
+                "name_vi": "",
+                "id": 248,
+                "hazard_score": 2
+            },
+            {
+                "purpose_en": "",
+                "name_en": "Xanthan Gum",
+                "name_vi": "",
+                "id": 170,
+                "purpose_vi": "Chất kết dính, chất nhũ hóa, chất điều hòa da, chất nhũ hóa-chất nhũ hóa, chất làm đặc tan trong nước",
+                "purpose_ko": "결합제, 유화안정제, 피부컨디셔닝제, 계면활성제-유화제, 점증제-수용성",
+                "hazard_score": 1
+            },
+            {
+                "purpose_ko": "유화안정제, 점증제-수용성",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": "",
+                "id": 169,
+                "name_en": "Carbomer",
+                "purpose_vi": "Chất nhũ hóa, chất làm đặc tan trong nước"
+            },
+            {
+                "name_vi": "",
+                "name_en": "Polysorbate 20",
+                "hazard_score": 2,
+                "purpose_ko": "향료, 계면활성제-유화제, 계면활성제-용해보조제",
+                "purpose_en": "",
+                "id": 173,
+                "purpose_vi": "Hương thơm, chất nhũ hóa-chất nhũ hóa, chất hòa tan chất hoạt động bề mặt"
+            },
+            {
+                "purpose_ko": "산화방지제",
+                "hazard_score": 1,
+                "name_en": "Dimethyl Isosorbide"
+            },
+            {
+                "name_vi": "",
+                "hazard_score": 2,
+                "purpose_vi": "Chất ức chế ăn mòn, hương thơm, chất bảo quản khử trùng",
+                "purpose_en": "",
+                "purpose_ko": "부식방지제, 향료, 살균보존제",
+                "name_en": "Sodium Benzoate",
+                "id": 202
+            },
+            {
+                "id": 81,
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제",
+                "purpose_en": "",
+                "name_en": "Caprylyl Glycol",
+                "hazard_score": 1,
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da",
+                "name_vi": ""
+            },
+            {
+                "purpose_en": "",
+                "hazard_score": 1,
+                "name_en": "Ethylhexylglycerin",
+                "purpose_ko": "피부컨디셔닝제",
+                "id": 24,
+                "purpose_vi": "Đại lý dưỡng da",
+                "name_vi": ""
+            },
+            {
+                "hazard_score": 2,
+                "id": 151,
+                "name_en": "Phenoxyethanol",
+                "purpose_en": "",
+                "name_vi": "",
+                "purpose_ko": "향료, 살균보존제",
+                "purpose_vi": "Hương liệu và khử trùng chất bảo quản"
+            },
+            {
+                "name_en": "Chlorphenesin",
+                "hazard_score": 1,
+                "purpose_ko": "살균보존제",
+                "id": 257,
+                "purpose_en": "",
+                "purpose_vi": "Chất bảo quản sát trùng",
+                "name_vi": ""
+            }
+        ],
+        "brand": {
+            "sname": "디 오디너리 (The Ordinary)",
+            "name": "The Ordinary",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "id": 6851
+        },
+        "hazard_score": 2,
+        "tags": [
+            "cung cấp độ ẩm",
+            "làm mềm da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "레티놀 1%",
+        "id": 263,
+        "sid": 95344,
+        "volume": "30ml",
+        "sprice": 6700,
+        "official_price": 144050,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_95344.jpg",
+        "description": "",
+        "sdescription": "이 수분 미함유 포뮬라는 광손상 및 일반적인 피부 노화에 의한 잔주름의 출현을 줄여주는 1% 순수 레티놀이 포함되어 있습니다. \r\n\r\n레티놀에 관해서는 많은 연구가 진행되었습니다. 피부에 자극적이지만 피부 자극을 유발하지 않고 레티놀의 효과를 재현할 수 있는 최신 기술이 존재합니다. \r\n\r\n참고: 피부가 내성을 쌓는 동안 이 포뮬라를 희석시켜서 자극의 가능성을 줄일 수 있습니다\r\n",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 4,
+            "second_category_name": "kem dưỡng",
+            "second_category_en_name": "cream",
+            "third_category_id": 26,
+            "third_category_name": "kem dưỡng chống lão hóa",
+            "third_category_en_name": "anti-aging cream"
+        },
+        "ingredients": [],
+        "brand": {
+            "id": 6851,
+            "sname": "디 오디너리 (The Ordinary)",
+            "name": "The Ordinary",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png"
+        },
+        "tags": [
+            "chứa vitamin",
+            "cải thiện nếp nhăn"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "아젤라익 애시드 서스펜션 10%",
+        "id": 263,
+        "sid": 95341,
+        "volume": "30ml",
+        "sprice": 7900,
+        "official_price": 169850,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_95341.jpg",
+        "description": "",
+        "sdescription": "다기능 브라이트닝의 성분, 아젤라익산이 함유된 가벼운 크림젤입니다.\r\n\r\n피부톤을 밝게 하고 여드름과 홍조를 개선합니다.\r\n\r\n저녁에 수분 베이스 제품 후 사용하세요.",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 4,
+            "second_category_name": "kem dưỡng",
+            "second_category_en_name": "cream",
+            "third_category_id": 18,
+            "third_category_name": "kem dưỡng cấp nước",
+            "third_category_en_name": "hydrating cream"
+        },
+        "ingredients": [],
+        "brand": {
+            "name": "The Ordinary",
+            "id": 6851,
+            "sname": "디 오디너리 (The Ordinary)",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png"
+        },
+        "tags": [
+            "làm trắng",
+            "dạng gel",
+            "chăm sóc cho những rắc rối",
+            "làm mềm da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "하이 어드히런스 실리콘 프라이머",
+        "id": 263,
+        "sid": 100279,
+        "volume": "30ml",
+        "sprice": 4900,
+        "official_price": 105350,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_100279.jpg",
+        "description": "",
+        "sdescription": "- 고밀착 피부 표면 보정용 프라이머\r\n\r\n- pH 7.00-7.75, 알콜프리, 오일프리, 넛프리, 비건, 동물실험 반대\r\n\r\n- 차세대 실리콘을 사용해 매트한 마무리가 가능한 프라이머\r\n\r\n- 매티파잉, 블러링과 화장이 오래 지속될 수 있도록 프라이머 기능을 합니다. \r\n\r\n- 단독으로 사용 시, 번들거림 없이 모공과 피부 결점을 감춰주는 하이드레이터 역할",
+        "category": {
+            "first_category_id": 2,
+            "first_category_name": "trang điểm mặt",
+            "first_category_en_name": "face makeup",
+            "second_category_id": 10,
+            "second_category_name": "kem lót",
+            "second_category_en_name": "base/primer",
+            "third_category_id": 41,
+            "third_category_name": "kem lót",
+            "third_category_en_name": "primer"
+        },
+        "ingredients": [],
+        "brand": {
+            "id": 6851,
+            "sname": "디 오디너리 (The Ordinary)",
+            "name": "The Ordinary",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png"
+        },
+        "tags": [
+            "Che lỗ chân lông",
+            "Sức sống",
+            "Dạng ống"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "커버리지 파운데이션 [SPF15]",
+        "id": 263,
+        "sid": 96729,
+        "volume": "30ml",
+        "sprice": 7900,
+        "official_price": 169850,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_96729.jpg",
+        "description": "",
+        "sdescription": "커버리지 파운데이션은 풀 커버리지 포뮬레이션으로 21가지의 다른 색상을 제공합니다. \r\n\r\n이 제품은 중간 커버력과 함께 가벼운 세럼 제형으로 자연스러운 피부 표현을 가능하게 합니다. \r\n\r\n낮은 점성을 가지며, 제품과 함께 제공되는 펌프 혹은 별도로 구매 가능한 유리 소재 드로퍼와 함께 사용합니다. \r\n\r\n유럽연합 국가에서 판매되는 커버리지 파운데이션은 SPF 15를 제공합니다.\r\n",
+        "category": {
+            "first_category_id": 2,
+            "first_category_name": "trang điểm mặt",
+            "first_category_en_name": "face makeup",
+            "second_category_id": 7,
+            "second_category_name": "kem nền",
+            "second_category_en_name": "foundation",
+            "third_category_id": 30,
+            "third_category_name": "kem nền dạng lỏng",
+            "third_category_en_name": "liquid foundation"
+        },
+        "ingredients": [],
+        "brand": {
+            "name": "The Ordinary",
+            "sname": "디 오디너리 (The Ordinary)",
+            "id": 6851,
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png"
+        },
+        "tags": [
+            "Độ chính xác",
+            null,
+            "bảo vệ khỏi tia UV",
+            "không gây dị ứng"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "100% 오가닉 버진 씨-벅톤 푸르트 오일",
+        "id": 263,
+        "sid": 139076,
+        "volume": "30ml",
+        "sprice": 14900,
+        "official_price": 320350,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_139076.jpg",
+        "description": "",
+        "sdescription": "자연 그대로의 정제되지 않은 100% 순수 씨벅톤 과일 오일\n\n- 피부 영양 공급과 보호를 위한 희귀 팔미톨레산이 높은 농도로 함유\n- 피부를 활성 산소로부터 보호\n- 피부의 정상적인 장벽 기능을 유지하는 데 도움",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 6,
+            "second_category_name": "dầu dưỡng da",
+            "second_category_en_name": "facial oil",
+            "third_category_id": null,
+            "third_category_name": null,
+            "third_category_en_name": null
+        },
+        "ingredients": [
+            {
+                "name_en": "Hippophae Rhamnoides Fruit Oil",
+                "purpose_ko": "피부보호제",
+                "hazard_score": 0
+            }
+        ],
+        "brand": {
+            "id": 6851,
+            "name": "The Ordinary",
+            "sname": "디 오디너리 (The Ordinary)",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png"
+        },
+        "tags": [
+            "dưỡng chất"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "100% 오가닉 버진 치아 씨드 오일",
+        "id": 263,
+        "sid": 139074,
+        "volume": "30ml",
+        "sprice": 7700,
+        "official_price": 165550,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_139074.jpg",
+        "description": "",
+        "sdescription": "순수 유기농 냉압착 과정을 거친 100% 순수 치아 씨앗 오일\n\n- 즉시 피부를 진정시키고 충분한 영양을 공급\n- 중요한 필수 지방산인 알파-리놀렌 산과 리놀레산, 올레산, 스테아르산, 팰미트산이 매우 높은 농도로 함유\n- 다양한 비타민과 미네랄, 항산화 성분이 포함",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 6,
+            "second_category_name": "dầu dưỡng da",
+            "second_category_en_name": "facial oil",
+            "third_category_id": null,
+            "third_category_name": null,
+            "third_category_en_name": null
+        },
+        "ingredients": [
+            {
+                "name_vi": "",
+                "purpose_vi": "",
+                "hazard_score": 1,
+                "purpose_ko": "",
+                "id": 809,
+                "name_en": "Salvia Hispanica Seed Oil",
+                "purpose_en": ""
+            }
+        ],
+        "brand": {
+            "id": 6851,
+            "name": "The Ordinary",
+            "sname": "디 오디너리 (The Ordinary)",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png"
+        },
+        "hazard_score": 1,
+        "tags": [
+            "dưỡng chất",
+            "làm mềm da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "100% 오가닉 콜드 프레스드 보리지 씨드 오일",
+        "id": 263,
+        "sid": 139072,
+        "volume": "30ml",
+        "sprice": 4200,
+        "official_price": 90300,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_139072.jpg",
+        "description": "",
+        "sdescription": "냉압착 과정을 거친 유기농 100% 순수 보리지 씨앗 오일\n\n- 피부를 진정시키고 충분한 영양을 공급\n- 필수 지방산인 감마-리놀렌 산, 리놀렌산, 올레산, 팰미트산이 매우 높은 농도로 함유",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 6,
+            "second_category_name": "dầu dưỡng da",
+            "second_category_en_name": "facial oil",
+            "third_category_id": null,
+            "third_category_name": null,
+            "third_category_en_name": null
+        },
+        "ingredients": [
+            {
+                "name_en": "Borago Officinalis Seed Oil",
+                "name_vi": "",
+                "id": 231,
+                "purpose_ko": "피부유연화제",
+                "purpose_vi": "Làm mềm da",
+                "hazard_score": 1,
+                "purpose_en": ""
+            }
+        ],
+        "brand": {
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "id": 6851,
+            "name": "The Ordinary",
+            "sname": "디 오디너리 (The Ordinary)"
+        },
+        "hazard_score": 1,
+        "tags": [
+            "làm ẩm",
+            "dưỡng chất",
+            "làm mềm da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "마린 히알루로닉스",
+        "id": 263,
+        "sid": 139073,
+        "volume": "30ml",
+        "sprice": 6800,
+        "official_price": 146200,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_139073.jpg",
+        "description": "",
+        "sdescription": "해양 추출물을 포함한 아주 가벼운 수분 공급 서포트",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 11,
+            "third_category_name": "tinh chất cấp nước",
+            "third_category_en_name": "hydrating essence"
+        },
+        "ingredients": [
+            {
+                "purpose_vi": "Chất dưỡng da, dung môi",
+                "hazard_score": 1,
+                "id": 1,
+                "purpose_en": "",
+                "name_en": "Water;Aqua",
+                "purpose_ko": "피부컨디셔닝제, 용제",
+                "name_vi": ""
+            },
+            {
+                "purpose_vi": "Chất khử màu, hương thơm, chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da, bảo vệ da, giảm độ nhớt",
+                "name_vi": "",
+                "purpose_ko": "변성제, 향료, 모발컨디셔닝제, 보습제, 피부보습제, 피부보호제, 점도감소제",
+                "name_en": "Glycerin",
+                "id": 66,
+                "hazard_score": 1,
+                "purpose_en": ""
+            },
+            {
+                "name_en": "Dimethyl Isosorbide",
+                "purpose_ko": "산화방지제",
+                "hazard_score": 1
+            },
+            {
+                "id": 948,
+                "purpose_en": "",
+                "purpose_ko": "착향제, 용제, 점도감소제",
+                "name_en": "Ethoxydiglycol",
+                "name_vi": "",
+                "purpose_vi": "Chất tạo mùi, dung môi, chất làm giảm độ nhớt",
+                "hazard_score": 1
+            },
+            {
+                "name_en": "Polysorbate 20",
+                "purpose_en": "",
+                "purpose_ko": "향료, 계면활성제-유화제, 계면활성제-용해보조제",
+                "name_vi": "",
+                "purpose_vi": "Hương thơm, chất nhũ hóa-chất nhũ hóa, chất hòa tan chất hoạt động bề mặt",
+                "hazard_score": 2,
+                "id": 173
+            },
+            {
+                "purpose_vi": "Kem dưỡng ẩm, dung môi, điều chế độ nhớt, chất bảo quản",
+                "id": 165,
+                "purpose_en": "",
+                "name_en": "Propanediol",
+                "name_vi": "",
+                "purpose_ko": "보습제, 용제, 점도조절제, 방부제",
+                "hazard_score": 1
+            },
+            {
+                "name_en": "Algae Extract",
+                "purpose_vi": "Hương thơm, dưỡng ẩm, làm mềm da, chất dưỡng da",
+                "hazard_score": 1,
+                "purpose_ko": "향료, 보습제, 피부유연화제, 피부컨디셔닝제",
+                "id": 333,
+                "purpose_en": "",
+                "name_vi": ""
+            },
+            {
+                "purpose_en": "",
+                "purpose_vi": "Chất dưỡng tóc, dưỡng ẩm, dưỡng ẩm da",
+                "purpose_ko": "모발컨디셔닝제, 보습제, 피부보습제",
+                "name_en": "Sodium PCA",
+                "name_vi": "",
+                "id": 438,
+                "hazard_score": 1
+            },
+            {
+                "name_vi": "",
+                "purpose_vi": "Kem dưỡng ẩm, dưỡng ẩm cho da",
+                "purpose_en": "",
+                "purpose_ko": "보습제, 피부보습제",
+                "hazard_score": 1,
+                "id": 273,
+                "name_en": "Pseudoalteromonas Ferment Extract"
+            },
+            {
+                "id": 81,
+                "purpose_vi": "Chất dưỡng tóc, làm mềm da",
+                "purpose_en": "",
+                "name_en": "Caprylyl Glycol",
+                "hazard_score": 1,
+                "name_vi": "",
+                "purpose_ko": "모발컨디셔닝제, 피부유연화제"
+            },
+            {
+                "name_en": "1,2-Hexanediol",
+                "purpose_ko": "용제",
+                "id": 7,
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_vi": "dung môi",
+                "purpose_en": ""
+            },
+            {
+                "name_vi": "",
+                "name_en": "Sodium Lactate",
+                "purpose_en": "",
+                "purpose_vi": "Đệm pH, tẩy da chết, dưỡng ẩm",
+                "hazard_score": 2,
+                "id": 440,
+                "purpose_ko": "pH 완충제, 각질제거제, 보습제"
+            },
+            {
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "id": 508,
+                "name_vi": "",
+                "purpose_en": "",
+                "name_en": "Arginine",
+                "purpose_ko": "향료, 모발컨디셔닝제, 스킨컨디셔닝제",
+                "hazard_score": 1
+            },
+            {
+                "id": 201,
+                "name_en": "Citric Acid",
+                "name_vi": "",
+                "purpose_ko": "금속이온봉쇄제, 향료, pH 조절제",
+                "hazard_score": 1,
+                "purpose_vi": "Chặn ion kim loại, hương thơm, điều chỉnh pH",
+                "purpose_en": ""
+            },
+            {
+                "name_en": "Aspartic Acid",
+                "purpose_ko": "향료, 모발컨디셔닝제, 피부컨디셔닝제",
+                "id": 932,
+                "purpose_vi": "Nước hoa, chất dưỡng tóc, chất dưỡng da",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_vi": ""
+            },
+            {
+                "purpose_ko": "피부보습제",
+                "purpose_en": "",
+                "hazard_score": 2,
+                "id": 1160,
+                "name_vi": "",
+                "name_en": "PCA",
+                "purpose_vi": "Kem dưỡng ẩm cho da"
+            },
+            {
+                "name_en": "Ahnfeltiopsis Concinna Extract",
+                "purpose_ko": "",
+                "hazard_score": 0
+            }
+        ],
+        "brand": {
+            "sname": "디 오디너리 (The Ordinary)",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "name": "The Ordinary",
+            "id": 6851
+        },
+        "hazard_score": 2,
+        "tags": [
+            "cung cấp độ ẩm"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "비타민 씨 서스펜션 23% + 에이치에이 스피어스 2%",
+        "id": 263,
+        "sid": 139063,
+        "volume": "30ml",
+        "sprice": 5800,
+        "official_price": 124700,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_139063.jpg",
+        "description": "",
+        "sdescription": "워터 프리, 실리콘 프리, 안정화된 비타민 C 서스펜션\n\n- 아스코르브산이 피부 노화의 여러 증상을 개선\n- 히알루론산 입자가 함유되어 피부 표면을 매끄럽게",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 17,
+            "third_category_name": "tinh chất chông lão hóa",
+            "third_category_en_name": "anti-aging essence"
+        },
+        "ingredients": [
+            {
+                "purpose_en": "",
+                "name_vi": "",
+                "id": 518,
+                "hazard_score": 1,
+                "purpose_ko": "산화방지제, 향료, pH 조절제, 피부컨디셔닝제",
+                "purpose_vi": "Chất chống oxy hóa, nước hoa, chất điều chỉnh pH, chất điều hòa da",
+                "name_en": "Ascorbic Acid;Vitamin C"
+            },
+            {
+                "hazard_score": 1,
+                "purpose_vi": "Chất dưỡng tóc, chất chống bay hơi",
+                "purpose_ko": "모발컨디셔닝제, 수분증발차단제",
+                "id": 93,
+                "purpose_en": "",
+                "name_vi": "",
+                "name_en": "Squalane"
+            },
+            {
+                "purpose_en": "",
+                "id": 1044,
+                "purpose_ko": "피부컨디셔닝제(유연제)",
+                "hazard_score": 1,
+                "name_vi": "",
+                "name_en": "Isodecyl Neopentanoate",
+                "purpose_vi": "Chất điều hòa da (làm mềm)"
+            },
+            {
+                "name_en": "Dodecane",
+                "purpose_ko": "피부연화제",
+                "hazard_score": 1
+            }
+        ],
+        "brand": {
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "id": 6851,
+            "sname": "디 오디너리 (The Ordinary)",
+            "name": "The Ordinary"
+        },
+        "hazard_score": 2,
+        "tags": [
+            "làm trắng",
+            "chứa vitamin",
+            "làn da căng bóng trong suốt"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "비타민 씨 서스펜션 30% 인 실리콘",
+        "id": 263,
+        "sid": 139067,
+        "volume": "30ml",
+        "sprice": 7900,
+        "official_price": 169850,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_139067.jpg",
+        "description": "",
+        "sdescription": "실리콘 베이스의 안정화된 워터 프리 30% 순수 아스코르브산 함유 세럼",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 16,
+            "third_category_name": "tinh chất dưỡng trắng",
+            "third_category_en_name": "brightening essence"
+        },
+        "ingredients": [
+            {
+                "name_en": "Dimethicone",
+                "purpose_en": "",
+                "hazard_score": 2,
+                "id": 41,
+                "name_vi": "",
+                "purpose_vi": "Chất chống tạo bọt, chất bảo vệ da, chất dưỡng da (chất chống ẩm)",
+                "purpose_ko": "기포방지제, 피부보호제, 피부컨디셔닝제(수분차단제)"
+            },
+            {
+                "name_en": "Ascorbic Acid;Vitamin C",
+                "name_vi": "",
+                "purpose_ko": "산화방지제, 향료, pH 조절제, 피부컨디셔닝제",
+                "hazard_score": 1,
+                "purpose_vi": "Chất chống oxy hóa, nước hoa, chất điều chỉnh pH, chất điều hòa da",
+                "purpose_en": "",
+                "id": 518
+            },
+            {
+                "purpose_ko": "피막형성제",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_en": "Polysilicone-11",
+                "name_vi": "",
+                "id": 365,
+                "purpose_vi": "Chất tạo màng"
+            },
+            {
+                "name_vi": "",
+                "purpose_ko": "모발컨디셔닝제, 피부컨디셔닝제",
+                "purpose_vi": "Đại lý dưỡng tóc, đại lý dưỡng da",
+                "name_en": "PEG-10 Dimethicone",
+                "id": 349,
+                "purpose_en": "",
+                "hazard_score": 2
+            }
+        ],
+        "brand": {
+            "sname": "디 오디너리 (The Ordinary)",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "name": "The Ordinary",
+            "id": 6851
+        },
+        "hazard_score": 2,
+        "tags": [
+            "chứa vitamin",
+            "làn da căng bóng trong suốt"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "스쿠알란 클렌저",
+        "id": 263,
+        "sid": 139075,
+        "volume": "50ml",
+        "sprice": 7900,
+        "official_price": 169850,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_139075.jpg",
+        "description": "",
+        "sdescription": "메이크업을 깔끔하게 지우고 피부를 부드럽고 촉촉하게 해주는 클렌저\n\n- 스쿠알란과 지방 친화성 에스터가 함유된 순한 포뮬러로 높은 보습력\n- 모공을 막지 않고 비누가 포함되지 않아 매일 사용해도 자극이 없는 클렌저",
+        "category": {
+            "first_category_id": 7,
+            "first_category_name": "làm sạch",
+            "first_category_en_name": "cleansing",
+            "second_category_id": 33,
+            "second_category_name": "tẩy trang",
+            "second_category_en_name": "makeup remover",
+            "third_category_id": 117,
+            "third_category_name": "sáp tẩy trang",
+            "third_category_en_name": "cleansing balm"
+        },
+        "ingredients": [],
+        "brand": {
+            "name": "The Ordinary",
+            "sname": "디 오디너리 (The Ordinary)",
+            "id": 6851,
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png"
+        },
+        "tags": [],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "에틸레이티드 아스코르빅 애씨드 15% 솔루션",
+        "id": 263,
+        "sid": 137506,
+        "volume": "30ml",
+        "sprice": 18000,
+        "official_price": 387000,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_137506.jpg",
+        "description": "",
+        "sdescription": "15% 에틸레이티드 아스코르브산을 아주 안정적인 워터-프리 솔루션에 담은 포뮬라",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 11,
+            "third_category_name": "tinh chất cấp nước",
+            "third_category_en_name": "hydrating essence"
+        },
+        "ingredients": [
+            {
+                "purpose_en": "",
+                "hazard_score": 1,
+                "id": 165,
+                "name_vi": "",
+                "purpose_ko": "보습제, 용제, 점도조절제, 방부제",
+                "purpose_vi": "Kem dưỡng ẩm, dung môi, điều chế độ nhớt, chất bảo quản",
+                "name_en": "Propanediol"
+            },
+            {
+                "purpose_vi": "Chất dưỡng da, làm trắng da (mỹ phẩm chức năng)",
+                "hazard_score": 1,
+                "name_en": "3-O-Ethyl Ascorbic Acid",
+                "id": 640,
+                "purpose_ko": "피부컨디셔닝제, 미백개선(기능성화장품)",
+                "name_vi": "",
+                "purpose_en": ""
+            }
+        ],
+        "brand": {
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "name": "The Ordinary",
+            "sname": "디 오디너리 (The Ordinary)",
+            "id": 6851
+        },
+        "hazard_score": 1,
+        "tags": [
+            "làm ẩm",
+            "chứa vitamin",
+            "cung cấp độ ẩm"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "에틸레이티드 아스코빅 애씨드 15% 솔루션",
+        "id": 263,
+        "sid": 139071,
+        "volume": "30ml",
+        "sprice": 18000,
+        "official_price": 387000,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_139071.jpg",
+        "description": "",
+        "sdescription": "아주 안정적인 워터 프리 솔루션에 담은 에틸레이티드 비타민\n\n- 직접적이고 즉각적으로 밝고 건강한 피부톤으로 케어\n- 에틸화된 형태로 비타민 C와 분자량이 비슷해 눈에 띄는 효과를 빠르게 선사",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 16,
+            "third_category_name": "tinh chất dưỡng trắng",
+            "third_category_en_name": "brightening essence"
+        },
+        "ingredients": [
+            {
+                "purpose_vi": "Kem dưỡng ẩm, dung môi, điều chế độ nhớt, chất bảo quản",
+                "id": 165,
+                "purpose_ko": "보습제, 용제, 점도조절제, 방부제",
+                "name_vi": "",
+                "hazard_score": 1,
+                "purpose_en": "",
+                "name_en": "Propanediol"
+            },
+            {
+                "name_vi": "",
+                "hazard_score": 1,
+                "name_en": "3-O-Ethyl Ascorbic Acid",
+                "purpose_en": "",
+                "purpose_ko": "피부컨디셔닝제, 미백개선(기능성화장품)",
+                "id": 640,
+                "purpose_vi": "Chất dưỡng da, làm trắng da (mỹ phẩm chức năng)"
+            }
+        ],
+        "brand": {
+            "name": "The Ordinary",
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "sname": "디 오디너리 (The Ordinary)",
+            "id": 6851
+        },
+        "hazard_score": 1,
+        "tags": [
+            "chứa vitamin",
+            null,
+            null
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    },
+    {
+        "name": "",
+        "sname": "피크노제놀 5%",
+        "id": 263,
+        "sid": 139070,
+        "volume": "15ml",
+        "sprice": 13000,
+        "official_price": 279500,
+        "thumbnail": "http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_139070.jpg",
+        "description": "",
+        "sdescription": "식물에서 추출한 고강도 항산화제\n\n- 프로시아니딘, 바이오플라보노이드, 오가닉 산 성분을 함유해 피부에 활기를 선사\n- 수분과 탄력을 개선하고 피부 안과 밖에서 영양을 공급\n- 산화 스트레스의 원인인 활성산소를 제거",
+        "category": {
+            "first_category_id": 1,
+            "first_category_name": "chăm sóc da",
+            "first_category_en_name": "skincare",
+            "second_category_id": 3,
+            "second_category_name": "tinh chất",
+            "second_category_en_name": "essence/serum",
+            "third_category_id": 17,
+            "third_category_name": "tinh chất chông lão hóa",
+            "third_category_en_name": "anti-aging essence"
+        },
+        "ingredients": [
+            {
+                "name_en": "Propanediol",
+                "purpose_vi": "Kem dưỡng ẩm, dung môi, điều chế độ nhớt, chất bảo quản",
+                "hazard_score": 1,
+                "purpose_ko": "보습제, 용제, 점도조절제, 방부제",
+                "purpose_en": "",
+                "id": 165,
+                "name_vi": ""
+            },
+            {
+                "id": 742,
+                "hazard_score": 1,
+                "name_en": "Pinus Pinaster Bark Extract",
+                "purpose_vi": "Chống oxy hóa",
+                "name_vi": "",
+                "purpose_en": "",
+                "purpose_ko": "산화방지제"
+            }
+        ],
+        "brand": {
+            "img": "https://dn5hzapyfrpio.cloudfront.net/home/glowmee/upload/20170405/1491370376622_160.png",
+            "id": 6851,
+            "sname": "디 오디너리 (The Ordinary)",
+            "name": "The Ordinary"
+        },
+        "hazard_score": 1,
+        "tags": [
+            "cung cấp độ ẩm",
+            "dưỡng chất",
+            "độ đàn hồi của da"
+        ],
+        "review_metas": {
+            "reviews_meta.all.review_count": 0,
+            "reviews_meta.all.average_rating": 0,
+            "reviews_meta.all.ranking_score": 0,
+            "reviews_meta.oily.review_count": 0,
+            "reviews_meta.oily.ranking_score": 0,
+            "reviews_meta.sensitive.review_count": 0,
+            "reviews_meta.sensitive.average_rating": 0,
+            "reviews_meta.sensitive.ranking_score": 0,
+            "reviews_meta.complex.review_count": 0,
+            "reviews_meta.complex.average_rating": 0,
+            "reviews_meta.complex.ranking_score": 0,
+            "reviews_meta.neutral.review_count": 0,
+            "reviews_meta.neutral.average_rating": 0,
+            "reviews_meta.neutral.ranking_score": 0,
+            "reviews_meta.dry.review_count": 0,
+            "reviews_meta.dry.average_rating": 0,
+            "reviews_meta.dry.ranking_score": 0
+        }
+    }
+]

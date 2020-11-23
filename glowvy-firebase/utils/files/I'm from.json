@@ -1,0 +1,20 @@
+[
+    {
+        "sid": 134813,
+        "name": "",
+        "sname": "피그 스크럽 마스크",
+        "description": "",
+        "sdescription": "고운 무화과 가루가 콕콕 박힌 흑설탕 컬러의 밀도감 높은 엑스폴리에이팅 마스크\n\n- 무화과 효소 공법\n- 가볍지만 진한 보습\n- 2중 노폐물, 각질 케어",
+        "category": {
+            "first_category_id": 7,
+            "first_category_name": "làm sạch",
+            "first_category_en_name": "cleansing",
+            "second_category_id": 35,
+            "second_category_name": "tẩy da chết",
+            "second_category_en_name": "exfoliator",
+            "third_category_id": 124,
+            "third_category_name": "tẩy da chết dạng hạt",
+            "third_category_en_name": "scrubs"
+        }
+    }
+]

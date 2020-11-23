@@ -1,0 +1,421 @@
+[{
+    "id": 1,
+    "ko_name": "피부활력",
+    "en_name": "Skin vitality",
+    "name": "sức sống cho da"
+  },
+  {
+    "id": 2,
+    "ko_name": "고보습",
+    "en_name": "High moisture",
+    "name": "độ ẩm cao"
+  },
+  {
+    "id": 3,
+    "ko_name": "저자극",
+    "en_name": "Hypoallergenic",
+    "name": "không gây dị ứng"
+  },
+  {
+    "id": 4,
+    "ko_name": "피부탄력",
+    "en_name": "Skin elasticity",
+    "name": "độ đàn hồi của da"
+  },
+  {
+    "id": 5,
+    "ko_name": "피부유연",
+    "en_name": "Skin softening",
+    "name": "làm mềm da"
+  },
+  {
+    "id": 6,
+    "ko_name": "피부보호",
+    "en_name": "Skin protection",
+    "name": "bảo vệ da"
+  },
+  {
+    "id": 7,
+    "ko_name": "미백",
+    "en_name": "Whitening",
+    "name": "làm trắng"
+  },
+  {
+    "id": 8,
+    "ko_name": "트러블케어",
+    "en_name": "Trouble Care",
+    "name": "chăm sóc cho những rắc rối"
+  },
+  {
+    "id": 9,
+    "ko_name": "윤기부여",
+    "en_name": "Shine",
+    "name": "tỏa sáng"
+  },
+  {
+    "id": 10,
+    "ko_name": "주름개선",
+    "en_name": "wrinkle improvement",
+    "name": "cải thiện nếp nhăn"
+  },
+  {
+    "id": 11,
+    "ko_name": "밤타입",
+    "en_name": "Chestnut type",
+    "name": "dạng (màu) hạt dẻ"
+  },
+  {
+    "id": 12,
+    "ko_name": "젤타입",
+    "en_name": "Gel type",
+    "name": "dạng gel"
+  },
+  {
+    "id": 13,
+    "ko_name": "피부재생",
+    "en_name": "Skin regeneration",
+    "name": "tái tạo da"
+  },
+  {
+    "id": 14,
+    "ko_name": "비타민함유",
+    "en_name": "Contains vitamin",
+    "name": "chứa vitamin"
+  },
+  {
+    "id": 15,
+    "ko_name": "유수분조절",
+    "en_name": "Oil and moisture control",
+    "name": "kiểm soát dầu nhờn và độ ẩm"
+  },
+  {
+    "id": 16,
+    "ko_name": "쿨링",
+    "en_name": "Cooling",
+    "name": "làm dịu"
+  },
+  {
+    "id": 17,
+    "ko_name": "각질관리",
+    "en_name": "Keratin management",
+    "name": "kiểm soát keratin"
+  },
+  {
+    "id": 18,
+    "ko_name": "다크서클완화",
+    "en_name": "Dark circle relaxation",
+    "name": "làm giảm quầng thâm"
+  },
+  {
+    "id": 19,
+    "ko_name": "붓기완화",
+    "en_name": "Swelling",
+    "name": "sưng tấy"
+  },
+  {
+    "id": 20,
+    "ko_name": "나이트전용",
+    "en_name": "Knight only",
+    "name": "chỉ dùng cho ban đêm"
+  },
+  {
+    "id": 21,
+    "ko_name": "모공관리",
+    "en_name": "Pore management",
+    "name": "kiểm soát lỗ chân lông"
+  },
+  {
+    "id": 22,
+    "ko_name": "피부투명",
+    "en_name": "Skin transparency",
+    "name": "độ trong suốt của da"
+  },
+  {
+    "id": 23,
+    "ko_name": "피지조절",
+    "en_name": "Sebum control",
+    "name": "kiểm soát bã nhờn"
+  },
+  {
+    "id": 24,
+    "ko_name": "두피건강",
+    "en_name": "Scalp health",
+    "name": "sức khỏe của da đầu"
+  },
+  {
+    "id": 25,
+    "ko_name": "딥클렌징",
+    "en_name": "Deep cleansing",
+    "name": "làm sạch sâu"
+  },
+  {
+    "id": 26,
+    "ko_name": "스크럽",
+    "en_name": "Scrub",
+    "name": "tẩy tế bào chết"
+  },
+  {
+    "id": 27,
+    "ko_name": "엔자임",
+    "en_name": "Enzyme",
+    "name": "en-zim"
+  },
+  {
+    "id": 28,
+    "ko_name": "약산성",
+    "en_name": "Weak acidity",
+    "name": "độ axit yếu"
+  },
+  {
+    "id": 29,
+    "ko_name": "피부결정돈",
+    "en_name": "Skin crystal money",
+    "name": "làn da căng bóng trong suốt"
+  },
+  {
+    "id": 30,
+    "ko_name": "버블타입",
+    "en_name": "Bubble type",
+    "name": "dạng bong bóng"
+  },
+  {
+    "id": 31,
+    "ko_name": "스크럽/필링",
+    "en_name": "Scrub&Peeling",
+    "name": "tẩy tế bào chết/lột"
+  },
+  {
+    "id": 32,
+    "ko_name": "한방화장품",
+    "en_name": "Herbal cosmetics",
+    "name": "mỹ phẩm thảo dược"
+  },
+  {
+    "id": 33,
+    "ko_name": "앰플",
+    "en_name": "ample",
+    "name": "nhiều"
+  },
+  {
+    "id": 39,
+    "ko_name": "베스트",
+    "en_name": "best",
+    "name": "tốt nhất"
+  },
+  {
+    "id": 40,
+    "ko_name": "스팟케어",
+    "en_name": "Spot Care",
+    "name": "chăm sóc cho những vết đốm/mụn li ti trên da"
+  },
+  {
+    "id": 41,
+    "ko_name": "SPF40이상",
+    "en_name": "SPF40 or more",
+    "name": "SPF40 trở lên"
+  },
+  {
+    "id": 42,
+    "ko_name": "유기자차",
+    "en_name": "Organic tea",
+    "name": "trà organic"
+  },
+  {
+    "id": 43,
+    "ko_name": "혼합자차",
+    "en_name": "Mixed tea",
+    "name": "trà tổng hợp"
+  },
+  {
+    "id": 44,
+    "ko_name": "베이스겸용",
+    "en_name": "Combined base",
+    "name": "nền tổng hợp"
+  },
+  {
+    "id": 45,
+    "ko_name": "크림/밀크",
+    "en_name": "Cream&milk",
+    "name": "kem/sữa"
+  },
+  {
+    "id": 46,
+    "ko_name": "워터프루프",
+    "en_name": "Waterproof",
+    "name": "Chống nước"
+  },
+  {
+    "id": 47,
+    "ko_name": "SPF20-40",
+    "en_name": "SPF20-40",
+    "name": "SPF20-40"
+  },
+  {
+    "id": 48,
+    "ko_name": "무기자차",
+    "en_name": "An armored vehicle",
+    "name": "Lớp chắn bảo vệ"
+  },
+  {
+    "id": 49,
+    "ko_name": "광택부여",
+    "en_name": "Polished",
+    "name": "lớp bảo vệ"
+  },
+  {
+    "id": 50,
+    "ko_name": "밀착력",
+    "en_name": "Adhesion",
+    "name": "Độ bám"
+  },
+  {
+    "id": 51,
+    "ko_name": "결보정",
+    "en_name": "Correction",
+    "name": "Độ chính xác"
+  },
+  {
+    "id": 52,
+    "ko_name": "모공커버",
+    "en_name": "Pore cover",
+    "name": "Che lỗ chân lông"
+  },
+  {
+    "id": 53,
+    "ko_name": "지속력",
+    "en_name": "vitality",
+    "name": "Sức sống"
+  },
+  {
+    "id": 54,
+    "ko_name": "매트",
+    "en_name": "mat",
+    "name": "Độ lì"
+  },
+  {
+    "id": 55,
+    "ko_name": "톤보정",
+    "en_name": "Tone correction",
+    "name": "Đúng tông da"
+  },
+  {
+    "id": 56,
+    "ko_name": "펄",
+    "en_name": "pearl",
+    "name": "Ngọc trai"
+  },
+  {
+    "id": 57,
+    "ko_name": "튜브형",
+    "en_name": "Tube type",
+    "name": "Dạng ống"
+  },
+  {
+    "id": 58,
+    "ko_name": "메이크업베이스겸용",
+    "en_name": "Combined makeup base",
+    "name": "kết hợp với lớp nền"
+  },
+  {
+    "id": 59,
+    "ko_name": "미백증진",
+    "en_name": "Whitening enhancement",
+    "name": "Tăng cường làm trắng"
+  },
+  {
+    "id": 60,
+    "ko_name": "볼륨감",
+    "en_name": "Volume",
+    "name": "Làm căng mọng"
+  },
+  {
+    "id": 61,
+    "ko_name": "글로시",
+    "en_name": "Glossy",
+    "name": "Làm bóng"
+  },
+  {
+    "id": 62,
+    "ko_name": "입술진정",
+    "en_name": "Lips",
+    "name": "Dưỡng ẩm"
+  },
+  {
+    "id": 63,
+    "ko_name": "모공케어",
+    "en_name": "Pore care",
+    "name": "Chăm sóc lỗ chân lông"
+  },
+  {
+    "id": 64,
+    "ko_name": "탄력강화",
+    "en_name": "Strengthening elasticity",
+    "name": "Tăng cường độ đàn hồi"
+  },
+  {
+    "id": 65,
+    "ko_name": "선명한라인",
+    "en_name": "Vivid line",
+    "name": "Sinh động"
+  },
+  {
+    "id": 66,
+    "ko_name": "스틱타입",
+    "en_name": "Stick type",
+    "name": "Dạng cây"
+  },
+  {
+    "id": 67,
+    "ko_name": "생기부여",
+    "en_name": "Vitality",
+    "name": "sức sống"
+  },
+  {
+    "id": 68,
+    "ko_name": "부스팅",
+    "en_name": "Boosting",
+    "name": "thúc đẩy"
+  },
+  {
+    "id": 69,
+    "ko_name": "파우더타입",
+    "en_name": "Powder type",
+    "name": "dạng bột"
+  },
+  {
+    "id": 70,
+    "ko_name": "피부톤보정",
+    "en_name": "Skin tone correction",
+    "name": "sửa tông da"
+  },
+  {
+    "id": 71,
+    "ko_name": "자외선차단",
+    "en_name": "UV protection",
+    "name": "bảo vệ khỏi tia UV"
+  },
+  {
+    "id": 72,
+    "ko_name": "보습",
+    "en_name": "Moisturizing",
+    "name": "làm ẩm"
+  },
+  {
+    "id": 73,
+    "ko_name": "수분공급",
+    "en_name": "Moisture supply",
+    "name": "cung cấp độ ẩm"
+  },
+  {
+    "id": 74,
+    "ko_name": "영양공급",
+    "en_name": "Nutrition",
+    "name": "dưỡng chất"
+  },
+  {
+    "id": 75,
+    "ko_name": "피부진정",
+    "en_name": "Skin soothing",
+    "name": "làm mềm da"
+  }
+]
