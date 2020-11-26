@@ -127,7 +127,6 @@ const kDivider = Divider(
 );
 const kFullDivider = Divider(
   color: kQuaternaryGrey,
-  height: 0.7,
   thickness: 0.7,
 );
 

@@ -9,6 +9,7 @@ import 'package:Dimodo/widgets/brand_card_list.dart';
 import 'package:Dimodo/widgets/categories/CategoryButton.dart';
 import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
 import 'package:Dimodo/widgets/second_category_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
@@ -39,6 +40,7 @@ class _SearchScreenState extends State<SearchScreen> {
   Category currentFirstCategory;
 
   bool isFocused = false;
+  bool isQueryEmpty = true;
   final searchController = FloatingSearchBarController();
   final _scrollController = ScrollController();
 
@@ -138,7 +140,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
     Widget buildCategoryPage() {
       return Padding(
-        padding: const EdgeInsets.only(top: 70.0),
+        padding: const EdgeInsets.only(top: 86.0),
         child: Row(
           children: [
             Container(
@@ -184,29 +186,48 @@ class _SearchScreenState extends State<SearchScreen> {
         builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
           if (snapshot.hasData) {
             return Scrollbar(
-              child: SingleChildScrollView(
-                padding: EdgeInsets.zero,
-                physics: const NeverScrollableScrollPhysics(),
-                child: Column(mainAxisSize: MainAxisSize.min, children: [
-                  const SizedBox(height: 30),
-                  BrandList(
-                    brands: searchModel.filtedBrands,
-                    disableScrolling: true,
-                  ),
-                  const SizedBox(height: 35),
-                  // const Divider(
-                  //   thickness: 1.5,
-                  //   color: kQuaternaryGrey,
-                  //   indent: 15,
-                  //   endIndent: 15,
-                  // ),
-                  const SizedBox(height: 35),
-                  CosmeticsProductList(
-                    products: snapshot.data,
-                    disableScrolling: true,
-                  )
-                ]),
-              ),
+              child: ListView(
+                  shrinkWrap: true,
+                  padding: EdgeInsets.zero,
+                  scrollDirection: Axis.vertical,
+                  // physics: const NeverScrollableScrollPhysics(),
+                  children: [
+                    Column(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          if (searchModel.filtedBrands.isNotEmpty)
+                            Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(height: 30),
+                                  Text(
+                                      '${searchModel.filtedBrands.length} brand',
+                                      style: textTheme.bodyText1),
+                                  const Divider(
+                                    color: kQuaternaryGrey,
+                                    thickness: 1.5,
+                                  )
+                                ]),
+
+                          BrandList(
+                            brands: searchModel.filtedBrands,
+                            disableScrolling: true,
+                          ),
+                          const SizedBox(height: 35),
+                          // const SizedBox(height: 35),
+                          Text('${snapshot.data.length} results',
+                              style: textTheme.bodyText1),
+                          const Divider(
+                            color: kQuaternaryGrey,
+                            thickness: 1.5,
+                          ),
+                          CosmeticsProductList(
+                            products: snapshot.data,
+                            disableScrolling: true,
+                          )
+                        ]),
+                  ]),
             );
           } else {
             return Container(
@@ -295,6 +316,16 @@ class _SearchScreenState extends State<SearchScreen> {
                             ),
                           ),
                         )),
+                        // SliverPersistentHeader(
+                        //   pinned: true,
+                        //   delegate: SliverAppBarDelegate(
+                        //     minHeight: 60,
+                        //     maxHeight: 60,
+                        //     child: Column(
+                        //       children: <Widget>[IOSs],
+                        //     ),
+                        //   ),
+                        // ),
                       ];
                     },
                     body: Padding(
@@ -303,102 +334,135 @@ class _SearchScreenState extends State<SearchScreen> {
                         top: true,
                         child:
                             Consumer<SearchModel>(builder: (context, model, _) {
-                          return NotificationListener(
-                            onNotification:
-                                (ScrollUpdateNotification notification) {},
-                            child: FloatingSearchBar(
-                              onFocusChanged: (isFocused) {
-                                setState(() {
-                                  this.isFocused = isFocused;
-                                });
-                                if (_scrollController.hasClients) {
-                                  _scrollController.animateTo(
-                                      isFocused ? 52 : 0,
-                                      duration:
-                                          const Duration(milliseconds: 250),
-                                      curve: Curves.easeIn);
-                                }
-                              },
-                              elevation: 0,
-                              borderRadius: BorderRadius.circular(12),
-                              backgroundColor: kQuaternaryGrey,
-                              automaticallyImplyBackButton: false,
-                              controller: searchController,
-                              clearQueryOnClose: true,
-                              hint: 'search me...',
-                              iconColor: Colors.grey,
+                          return FloatingSearchBar(
+                            onFocusChanged: (isFocused) {
+                              setState(() {
+                                this.isFocused = isFocused;
+                              });
+                              if (_scrollController.hasClients) {
+                                _scrollController.animateTo(isFocused ? 52 : 0,
+                                    duration: const Duration(milliseconds: 250),
+                                    curve: Curves.easeIn);
+                              }
+                            },
+                            elevation: 0,
+                            borderRadius: BorderRadius.circular(12),
+                            backgroundColor: kQuaternaryGrey,
+                            automaticallyImplyBackButton: true,
+                            controller: searchController,
+                            clearQueryOnClose: true,
+                            hint: 'search me...',
+                            iconColor: Colors.grey,
+                            scrollPadding: EdgeInsets.zero,
+                            padding: const EdgeInsets.only(left: 0, right: 0),
+                            margins:
+                                EdgeInsets.only(top: 16, left: 16, right: 16),
+                            transitionDuration:
+                                const Duration(milliseconds: 250),
+                            transitionCurve: Curves.linear,
+                            axisAlignment: 0.0,
+                            openAxisAlignment: 0.0,
+                            closeOnBackdropTap: true,
+                            maxWidth: screenSize.width,
+                            backdropColor: kWhite,
+                            isScrollControlled: true,
+                            leadingActions: [
+                              // CupertinoTextSelectionToolbar()
+                              // FloatingSearchBarAction.b(
 
-                              scrollPadding: EdgeInsets.zero,
-                              padding: EdgeInsets.zero,
-                              margins: EdgeInsets.only(left: 24, right: 24),
+                              //     // showIfClosed: true,
+                              //     // showIfOpened: true,
+                              //     // onTap: () => print('tn'),
+                              //     // duration: const Duration(milliseconds: 500),
+                              //     ),
 
-                              // scrollPadding:
-                              //     const EdgeInsets.only(top: 16, bottom: 56),
-
-                              transitionDuration:
-                                  const Duration(milliseconds: 250),
-                              transitionCurve: Curves.linear,
-                              physics: const BouncingScrollPhysics(),
-                              axisAlignment: 0.0,
-                              openAxisAlignment: 0.0,
-                              closeOnBackdropTap: true,
-                              maxWidth: screenSize.width,
-                              // backdropColor: kWhite,
-                              isScrollControlled: true,
-                              leadingActions: [
-                                FloatingSearchBarAction.icon(
-                                  icon: SvgPicture.asset(
-                                      'assets/icons/search.svg'),
-                                  // showIfClosed: true,
-                                  showIfOpened: true,
-                                  onTap: () => print('tn'),
-                                  // duration: const Duration(milliseconds: 500),
-                                ),
-                              ],
-                              actions: [
-                                FloatingSearchBarAction(
-                                  showIfClosed: false,
-                                  showIfOpened: true,
-                                  builder: (context, animation) {
-                                    final canPop = Navigator.canPop(context);
-
-                                    return CircularButton(
-                                      tooltip: 'Back',
-                                      size: 24,
-                                      icon: Text(
-                                        'cancel',
-                                        style: textTheme.bodyText1
-                                            .copyWith(color: kPrimaryOrange),
+                              isFocused
+                                  ? FloatingSearchBarAction.back()
+                                  : FloatingSearchBarAction.icon(
+                                      icon: SvgPicture.asset(
+                                        'assets/icons/search.svg',
+                                        color: Colors.grey,
                                       ),
-                                      onPressed: () {
-                                        final bar =
-                                            FloatingSearchAppBar.of(context);
+                                      // showIfClosed: true,
+                                      showIfOpened: true,
+                                      onTap: () => print('tn'),
+                                      // duration: const Duration(milliseconds: 500),
+                                    ),
+                            ],
+                            actions: [
+                              if (!isQueryEmpty)
+                                FloatingSearchBarAction(
+                                  showIfOpened: true,
+                                  showIfClosed: false,
+                                  builder: (context, animation) {
+                                    final bar =
+                                        FloatingSearchAppBar.of(context);
 
-                                        if (bar.isOpen && !bar.isAlwaysOpened) {
-                                          bar.close();
-                                        } else if (canPop) {
-                                          Navigator.pop(context);
-                                        }
+                                    return ValueListenableBuilder<String>(
+                                      valueListenable: bar.queryNotifer,
+                                      builder: (context, query, _) {
+                                        final isEmpty = query.isEmpty;
+
+                                        return CircularButton(
+                                          tooltip: 'Back',
+                                          size: 24,
+                                          icon: Icon(Icons.clear),
+                                          onPressed: () {
+                                            final bar = FloatingSearchAppBar.of(
+                                                context);
+                                            bar.clear();
+                                          },
+                                        );
                                       },
                                     );
                                   },
-                                ),
-                              ],
+                                )
+                              // FloatingSearchBarAction(
+                              //   showIfClosed: false,
+                              //   showIfOpened: true,
+                              //   builder: (context, animation) {
+                              //     final canPop = Navigator.canPop(context);
 
-                              onSubmitted: (value) {
-                                search(value);
-                              },
-                              debounceDelay: const Duration(milliseconds: 500),
-                              onQueryChanged: model.onQueryChanged,
-                              transition:
-                                  SlideFadeFloatingSearchBarTransition(),
-                              builder: (context, _) {
-                                return showResults
-                                    ? buildSearchResult()
-                                    : buildExpandableBody(model);
-                              },
-                              body: buildCategoryPage(),
-                            ),
+                              //     return CircularButton(
+                              //       tooltip: 'Back',
+                              //       size: 24,
+                              //       icon: Text(
+                              //         'cancel',
+                              //         style: textTheme.bodyText1
+                              //             .copyWith(color: kPrimaryOrange),
+                              //       ),
+                              //       onPressed: () {
+                              //         final bar =
+                              //             FloatingSearchAppBar.of(context);
+
+                              //         if (bar.isOpen && !bar.isAlwaysOpened) {
+                              //           bar.clear();
+                              //           bar.close();
+                              //         } else if (canPop) {
+                              //           Navigator.pop(context);
+                              //         }
+                              //       },
+                              //     );
+                              //   },
+                              // ),
+                            ],
+                            onSubmitted: (value) {
+                              search(value);
+                            },
+                            debounceDelay: const Duration(milliseconds: 500),
+                            onQueryChanged: (query) {
+                              setState(() {
+                                isQueryEmpty = query.isNotEmpty ? false : true;
+                              });
+                              model.onQueryChanged;
+                            },
+                            transition: SlideFadeFloatingSearchBarTransition(),
+                            builder: (context, _) {
+                              return showResults
+                                  ? buildSearchResult()
+                                  : buildExpandableBody(model);
+                            },
+                            body: buildCategoryPage(),
                           );
                         }),
                       ),

@@ -56,7 +56,6 @@ class BrandCard extends StatelessWidget {
                       style: textTheme.bodyText1),
                 ],
               ),
-              kFullDivider
             ],
           ),
         ),

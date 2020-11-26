@@ -367,11 +367,15 @@ class ProductModel with ChangeNotifier {
     }
   }
 
-  Future<List<Product>> getProductsBySearch({searchText}) async {
+  Future<List<Product>> getProductsBySearch({String searchText}) async {
     try {
+      List<Product> list = <Product>[];
+
+      if (searchText.isEmpty) {
+        return list;
+      }
       final query = algolia.instance.index('cosmetics').search(searchText);
 
-      List<Product> list = <Product>[];
       // Get Result/Objects
       final querySnap = await query.getObjects();
       final results = querySnap.hits;

@@ -1,10 +1,7 @@
-import 'dart:convert';
-
 import 'package:Dimodo/models/product/brand.dart';
 import 'package:Dimodo/widgets/brand_card_list.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 
 class SearchModel extends ChangeNotifier {
   bool _isLoading = false;
@@ -118,11 +115,10 @@ class SearchModel extends ChangeNotifier {
     if (query.isEmpty) {
       _suggestions = history;
     } else {
-      final response = await http.get('http://photon.komoot.de/api/?q=$query');
-      final body = json.decode(utf8.decode(response.bodyBytes));
-      final features = body['features'] as List;
+      // item.autocompleteterm
+      // .toLowerCase()
+      // .startsWith(query.toLowerCase());
 
-      // _suggestions = features.map((e) => Place.fromJson(e)).toSet().toList();
     }
 
     _isLoading = false;

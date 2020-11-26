@@ -1,3 +1,4 @@
+import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/models/user/skinScores.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -25,17 +26,18 @@ class User {
   SkinScores baumannScores;
   Address address = Address();
   List<Address> addresses = [];
+  List<Product> viewedProducts = [];
   Review reviewDraft;
 
   Billing billing;
   User(
-      {
-      // this.loggedIn,
-      this.fullName,
+      {this.fullName,
       this.email,
       this.picture,
       this.skinType,
-      // this.accessToken,
+      this.birthYear,
+      this.gender,
+      this.viewedProducts,
       this.address,
       this.billing});
 
