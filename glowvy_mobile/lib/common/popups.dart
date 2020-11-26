@@ -32,6 +32,33 @@ class Popups {
       ..showSnackBar(snackBar);
   }
 
+  static void showSuccesPopup(context) {
+    BuildContext dialogContext;
+    showDialog(
+        context: context,
+        barrierColor: Color(0x01000000),
+        builder: (BuildContext context) {
+          dialogContext = context;
+
+          return Center(
+              // Aligns the container to center
+              child: Container(
+                  decoration: BoxDecoration(
+                      color: kDarkAccent,
+                      borderRadius: BorderRadius.circular(44)),
+                  // A simplified version of dialog.
+                  width: 152.0,
+                  height: 44.0,
+                  child: Center(
+                    child: Text(
+                      'posted successfully',
+                      style: textTheme.caption2.copyWith(
+                          color: Colors.white, decoration: TextDecoration.none),
+                    ),
+                  )));
+        }).then((value) {});
+  }
+
   static void simpleAlert(context, bodyText, {buttonText = 'Ok'}) {
     showDialog(
         context: context,

@@ -31,7 +31,7 @@ class CosmeticsProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('product sid ${product.sid}');
+    // print('product sid ${product.sid}');
     return Container(
       height: 112,
       color: Colors.white,

@@ -46,7 +46,7 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
         return ProfilePage();
       case 'dynamic':
       default:
-        return HomeScreen();
+        return const HomeScreen();
     }
   }
 
@@ -82,7 +82,7 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
           resizeToAvoidBottomPadding: false,
           key: _scaffoldKey,
           body: TabBarView(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             children: _tabView,
           ),
           bottomNavigationBar: Container(
@@ -100,7 +100,7 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
               top: false,
               bottom: true,
               child: Container(
-                  height: 60,
+                  height: 50,
                   color: Colors.white,
                   width: screenSize.width /
                       (2 / (screenSize.height / screenSize.width)),
@@ -130,17 +130,17 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
     tabData.asMap().forEach((index, item) {
       list.add(Stack(children: <Widget>[
         Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               width: 35,
-              padding: EdgeInsets.only(top: 11, bottom: 4),
+              padding: const EdgeInsets.only(top: 4, bottom: 4),
               child: SvgPicture.asset(
                 currentPage == index ? item['active-icon'] : item['icon'],
                 color:
                     currentPage == index ? kDefaultFontColor : kSecondaryGrey,
-                width: 24 * kSizeConfig.containerMultiplier,
-                height: 24 * kSizeConfig.containerMultiplier,
+                width: 24,
+                height: 24,
               ),
             ),
             Text(
@@ -149,7 +149,7 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
                 fontFamily: 'Nunito',
                 height: 1.25,
                 fontStyle: FontStyle.normal,
-                fontSize: 10.0 * kSizeConfig.textMultiplier,
+                fontSize: 12,
                 color:
                     currentPage == index ? kDefaultFontColor : kSecondaryGrey,
                 fontWeight: FontWeight.w600,
@@ -164,18 +164,18 @@ class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
                 top: 0,
                 child: cartModel.totalCartQuantity > 0
                     ? Container(
-                        padding: EdgeInsets.all(1),
+                        padding: const EdgeInsets.all(1),
                         decoration: BoxDecoration(
                           color: Colors.red,
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        constraints: BoxConstraints(
+                        constraints: const BoxConstraints(
                           minWidth: 16,
                           minHeight: 16,
                         ),
                         child: Text(
                           cartModel.totalCartQuantity.toString(),
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 10,
                           ),

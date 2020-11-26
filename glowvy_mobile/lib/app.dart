@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:Dimodo/models/search_model.dart';
 import 'package:Dimodo/screens/category.dart';
 import 'package:Dimodo/screens/glowvy-onboard.dart';
 import 'package:Dimodo/screens/search_screen.dart';
@@ -72,6 +73,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
   final _order = OrderModel();
   final _category = CategoryModel();
   final _recent = RecentModel();
+  final _search = SearchModel();
   bool isFirstSeen = false;
   bool isChecking = true;
   bool isLoggedIn = false;
@@ -81,6 +83,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
   void afterFirstLayout(BuildContext context) async {
     await _app.loadAppConfig();
     await _addressModel.setProvinces();
+    await _search.setBrands();
     await _category.setLocalCategories();
     isFirstSeen = await checkFirstSeen();
     isLoggedIn = await checkLogin();
@@ -151,6 +154,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
               ChangeNotifierProvider(create: (_) => _userModel),
               ChangeNotifierProvider(create: (_) => CartModel()),
               ChangeNotifierProvider(create: (_) => _category),
+              ChangeNotifierProvider(create: (_) => _search),
             ],
             child: GestureDetector(
               onTap: () {

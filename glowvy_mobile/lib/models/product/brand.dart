@@ -1,9 +1,10 @@
 import 'package:Dimodo/models/product/businessInfo.dart';
 import 'package:Dimodo/models/product/tag.dart';
 import 'package:json_annotation/json_annotation.dart';
+
 import 'type.dart';
 
-part 'seller.g.dart';
+part 'brand.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Brand {
@@ -14,7 +15,7 @@ class Brand {
   String email;
   String enName;
   int id;
-  String imageUrl;
+  String image;
   String name;
   String operationTime;
   List<Tag> tags;
@@ -30,7 +31,7 @@ class Brand {
     this.email,
     this.enName,
     this.id,
-    this.imageUrl,
+    this.image,
     this.name,
     this.operationTime,
     this.tags,

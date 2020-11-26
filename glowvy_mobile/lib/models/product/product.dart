@@ -5,7 +5,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import '../brandi/option.dart';
 import '../sizeDetail.dart';
-import 'seller.dart';
+import 'brand.dart';
 
 part 'product.g.dart';
 

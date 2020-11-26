@@ -1,20 +1,21 @@
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
-import 'package:Dimodo/common/styles.dart';
-import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/categoryModel.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/productModel.dart';
-import 'package:Dimodo/screens/search_review_cosmetisc.dart';
+import 'package:Dimodo/models/search_model.dart';
+import 'package:Dimodo/widgets/brand_card_list.dart';
 import 'package:Dimodo/widgets/categories/CategoryButton.dart';
+import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
 import 'package:Dimodo/widgets/second_category_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
+import 'package:implicitly_animated_reorderable_list/transitions.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:provider/provider.dart';
-
-import '../generated/i18n.dart';
 
 class SearchScreen extends StatefulWidget {
   @override
@@ -28,16 +29,18 @@ class _SearchScreenState extends State<SearchScreen> {
   String highToLow = '-sale_price';
   String lowToHigh = 'sale_price';
 
-  final TextEditingController searchController = TextEditingController();
   String searchText;
   bool showResults = false;
   bool isTextFieldSelected = false;
   ProductModel productModel;
   CategoryModel categoryModel;
+  SearchModel searchModel;
   List<Category> categories = [];
   Category currentFirstCategory;
-  bool showTitle = false;
-  final controller = FloatingSearchBarController();
+
+  bool isFocused = false;
+  final searchController = FloatingSearchBarController();
+  final _scrollController = ScrollController();
 
   var roundLab = 'Round Labs';
   var cleanser = 'Làm Sạch Da Mặt';
@@ -50,14 +53,25 @@ class _SearchScreenState extends State<SearchScreen> {
     super.initState();
     productModel = Provider.of<ProductModel>(context, listen: false);
     categoryModel = Provider.of<CategoryModel>(context, listen: false);
+    categoryModel = Provider.of<CategoryModel>(context, listen: false);
+    searchModel = Provider.of<SearchModel>(context, listen: false);
     categories = categoryModel.categories;
     currentFirstCategory = categories[0];
   }
 
+  @override
+  void dispose() {
+    searchController.dispose();
+    super.dispose();
+  }
+
   void search(text) {
-    searchController.text = text;
     getProductBySearch = productModel.getProductsBySearch(searchText: text);
+    showResults = false;
+
+    searchModel.searchBrands(text);
     showResults = true;
+
     FocusScope.of(context).unfocus();
   }
 
@@ -65,312 +79,328 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     screenSize = MediaQuery.of(context).size;
 
+    Widget buildItem(BuildContext context, Place place) {
+      final theme = Theme.of(context);
+      final textTheme = theme.textTheme;
+
+      final model = Provider.of<SearchModel>(context, listen: false);
+
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          InkWell(
+            onTap: () {
+              FloatingSearchBar.of(context).close();
+              Future.delayed(
+                const Duration(milliseconds: 500),
+                () => model.clear(),
+              );
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  const SizedBox(
+                    width: 36,
+                    child: AnimatedSwitcher(
+                      duration: Duration(milliseconds: 500),
+                      child: Icon(Icons.history, key: Key('history')),
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          place.name,
+                          style: textTheme.subtitle1,
+                        ),
+                        const SizedBox(height: 2),
+                        Text(
+                          place.level2Address,
+                          style: textTheme.bodyText2
+                              .copyWith(color: Colors.grey.shade600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          if (model.suggestions.isNotEmpty && place != model.suggestions.last)
+            const Divider(height: 0),
+        ],
+      );
+    }
+
+    Widget buildCategoryPage() {
+      return Padding(
+        padding: const EdgeInsets.only(top: 70.0),
+        child: Row(
+          children: [
+            Container(
+                width: 80,
+                decoration: const BoxDecoration(
+                    color: kQuaternaryGrey,
+                    border: Border(
+                        right: BorderSide(
+                      color: kQuaternaryGrey,
+                      width: 0.7,
+                    ))),
+                child: ListView.builder(
+                    physics: const ClampingScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    itemCount: categories.length,
+                    itemBuilder: (context, index) => CategoryButton(
+                          categories[index],
+                          isSelected: currentFirstCategory == categories[index],
+                          onTap: () {
+                            setState(() {
+                              currentFirstCategory = categories[index];
+                            });
+                          },
+                        ))),
+            Container(
+              width: kScreenSizeWidth - 80,
+              child: ListView.builder(
+                  physics: const ClampingScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  itemCount: currentFirstCategory.secondCategories.length,
+                  itemBuilder: (context, index) => SecondCategoryButton(
+                      currentFirstCategory.secondCategories[index],
+                      onTap: () {})),
+            )
+          ],
+        ),
+      );
+    }
+
+    Widget buildSearchResult() {
+      return FutureBuilder<List<Product>>(
+        future: getProductBySearch,
+        builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
+          if (snapshot.hasData) {
+            return Scrollbar(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.zero,
+                physics: const NeverScrollableScrollPhysics(),
+                child: Column(mainAxisSize: MainAxisSize.min, children: [
+                  const SizedBox(height: 30),
+                  BrandList(
+                    brands: searchModel.filtedBrands,
+                    disableScrolling: true,
+                  ),
+                  const SizedBox(height: 35),
+                  // const Divider(
+                  //   thickness: 1.5,
+                  //   color: kQuaternaryGrey,
+                  //   indent: 15,
+                  //   endIndent: 15,
+                  // ),
+                  const SizedBox(height: 35),
+                  CosmeticsProductList(
+                    products: snapshot.data,
+                    disableScrolling: true,
+                  )
+                ]),
+              ),
+            );
+          } else {
+            return Container(
+                width: screenSize.width,
+                height: screenSize.height / 1.3,
+                child: Center(
+                  child: const SpinKitThreeBounce(
+                      color: kPrimaryOrange, size: 21.0),
+                ));
+          }
+        },
+      );
+    }
+
+    Widget buildExpandableBody(SearchModel model) {
+      return Material(
+        color: Colors.white,
+        elevation: 4.0,
+        borderRadius: BorderRadius.circular(8),
+        child: ImplicitlyAnimatedList<Place>(
+          shrinkWrap: true,
+          padding: EdgeInsets.zero,
+          physics: const NeverScrollableScrollPhysics(),
+          items: model.suggestions.take(6).toList(),
+          areItemsTheSame: (a, b) => a == b,
+          itemBuilder: (context, animation, place, i) {
+            return SizeFadeTransition(
+              animation: animation,
+              child: buildItem(context, place),
+            );
+          },
+          updateItemBuilder: (context, animation, place) {
+            return FadeTransition(
+              opacity: animation,
+              child: buildItem(context, place),
+            );
+          },
+        ),
+      );
+    }
+
     return Scaffold(
+        resizeToAvoidBottomPadding: false,
         backgroundColor: Colors.white,
         body: SafeArea(
             top: true,
             bottom: false,
             child: Container(
-                color: kDefaultBackground,
-                child: NotificationListener(
-                    onNotification: (ScrollUpdateNotification notification) {
-                      setState(() {
-                        if (notification.metrics.pixels > 52 && !showTitle) {
-                          showTitle = true;
-                        } else if (notification.metrics.pixels < 52 &&
-                            showTitle) {
-                          showTitle = false;
-                        }
-                      });
-                    },
-                    child: NestedScrollView(
-                      headerSliverBuilder:
-                          (BuildContext context, bool innerBoxIsScrolled) {
-                        return <Widget>[
+                color: kWhite,
+                child: NestedScrollView(
+                    physics: const ClampingScrollPhysics(),
+                    controller: _scrollController,
+                    headerSliverBuilder:
+                        (BuildContext context, bool innerBoxIsScrolled) {
+                      return <Widget>[
+                        if (!isFocused)
                           SliverAppBar(
                               floating: false,
-                              pinned: true,
+                              pinned: false,
                               elevation: 0,
                               backgroundColor: Colors.white,
                               title: AnimatedOpacity(
-                                  opacity: showTitle ? 1.0 : 0.0,
+                                  opacity: 0.0,
                                   duration: const Duration(milliseconds: 100),
                                   child: Text(
                                     'Search',
                                     style: textTheme.headline3,
                                     textAlign: TextAlign.start,
                                   ))),
-                          SliverList(
-                              delegate: SliverChildListDelegate([
-                            Container(
-                              color: Colors.white,
-                              padding: const EdgeInsets.only(top: 0, left: 16),
-                              child: Align(
-                                alignment: Alignment.centerLeft,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Search',
-                                      style: textTheme.headline1
-                                          .copyWith(fontSize: 32),
-                                      textAlign: TextAlign.start,
-                                    ),
-                                    const SizedBox(height: 24),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ])),
-                          SliverPersistentHeader(
-                            pinned: true,
-                            delegate: SliverAppBarDelegate(
-                              minHeight: 76,
-                              maxHeight: 76,
-                              child: Container(
-                                color: Colors.white,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    FloatingSearchBar(
-                                      automaticallyImplyBackButton: false,
-                                      controller: controller,
-                                      clearQueryOnClose: true,
-                                      hint: 'search me...',
-                                      iconColor: Colors.grey,
-                                      transitionDuration:
-                                          const Duration(milliseconds: 800),
-                                      transitionCurve: Curves.easeIn,
-                                      physics: const BouncingScrollPhysics(),
-                                      axisAlignment: isPortrait ? 0.0 : -1.0,
-                                      openAxisAlignment: 0.0,
-                                      maxWidth: isPortrait ? 600 : 500,
-                                      actions: actions,
-                                      progress: model.isLoading,
-                                      debounceDelay:
-                                          const Duration(milliseconds: 500),
-                                      onQueryChanged: model.onQueryChanged,
-                                      scrollPadding: EdgeInsets.zero,
-                                      transition:
-                                          ExpandingFloatingSearchBarTransition(),
-                                      builder: (context, _) =>
-                                          buildExpandableBody(model),
-                                      body: buildBody(),
-                                    ),
-                                    Row(
-                                      children: <Widget>[
-                                        Expanded(
-                                          child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: 16),
-                                            child: Container(
-                                              height: 36,
-                                              decoration: BoxDecoration(
-                                                color: kQuaternaryGrey,
-                                                borderRadius:
-                                                    BorderRadius.circular(10),
-                                              ),
-                                              child: TextField(
-                                                  textAlignVertical:
-                                                      TextAlignVertical.center,
-                                                  onTap: () {
-                                                    setState(() {
-                                                      isTextFieldSelected =
-                                                          true;
-                                                    });
-                                                  },
-                                                  cursorColor:
-                                                      theme.cursorColor,
-                                                  controller: searchController,
-                                                  onChanged: (value) {
-                                                    setState(() {
-                                                      searchText = value;
-                                                      if (value == '') {
-                                                        showResults = false;
-                                                      }
-                                                    });
-                                                  },
-                                                  onSubmitted: (value) {
-                                                    setState(() {
-                                                      getProductBySearch =
-                                                          productModel
-                                                              .getProductsBySearch(
-                                                                  searchText:
-                                                                      searchText);
-                                                      showResults = true;
-
-                                                      FocusScope.of(context)
-                                                          .unfocus();
-                                                    });
-                                                  },
-                                                  decoration: kTextField
-                                                      .copyWith(
-                                                          prefixIcon:
-                                                              IconButton(
-                                                        icon: SvgPicture.asset(
-                                                            'assets/icons/search.svg',
-                                                            color:
-                                                                kSecondaryGrey),
-                                                      ))
-                                                      .copyWith(
-                                                        hintText: S
-                                                            .of(context)
-                                                            .search,
-                                                        contentPadding:
-                                                            const EdgeInsets
-                                                                    .only(
-                                                                bottom: 12,
-                                                                left: 12),
-                                                      )),
-                                            ),
-                                          ),
-                                        ),
-                                        if (isTextFieldSelected)
-                                          Container(
-                                            padding: const EdgeInsets.only(
-                                                right: 16, left: 10),
-                                            child: GestureDetector(
-                                              onTap: () => setState(() {
-                                                searchText = '';
-                                                searchController.text =
-                                                    searchText;
-                                                isTextFieldSelected = false;
-                                                showResults = false;
-                                                FocusScope.of(context)
-                                                    .unfocus();
-                                              }),
-                                              child: Container(
-                                                child: Text(
-                                                    S.of(context).cancel,
-                                                    style: textTheme.bodyText2),
-                                              ),
-                                            ),
-                                          )
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ];
-                      },
-                      body: Stack(
-                        children: [
-                          Positioned.fill(
+                        SliverToBoxAdapter(
                             child: Container(
-                                // height: screenSize.height,
-                                decoration:
-                                    const BoxDecoration(color: Colors.white),
-                                child: (!isTextFieldSelected && !showResults)
-                                    ? Row(
-                                        children: [
-                                          Container(
-                                              width: 80,
-                                              decoration: const BoxDecoration(
-                                                  color: kQuaternaryGrey,
-                                                  border: Border(
-                                                      right: BorderSide(
-                                                    color: kQuaternaryGrey,
-                                                    width: 0.7,
-                                                  ))),
-                                              child: ListView.builder(
-                                                  physics:
-                                                      const ClampingScrollPhysics(),
-                                                  scrollDirection:
-                                                      Axis.vertical,
-                                                  itemCount: categories.length,
-                                                  itemBuilder:
-                                                      (context, index) =>
-                                                          CategoryButton(
-                                                            categories[index],
-                                                            isSelected:
-                                                                currentFirstCategory ==
-                                                                    categories[
-                                                                        index],
-                                                            onTap: () {
-                                                              setState(() {
-                                                                currentFirstCategory =
-                                                                    categories[
-                                                                        index];
-                                                              });
-                                                            },
-                                                          ))),
-                                          Container(
-                                            width: kScreenSizeWidth - 80,
-                                            child: ListView.builder(
-                                                physics:
-                                                    const ClampingScrollPhysics(),
-                                                scrollDirection: Axis.vertical,
-                                                itemCount: currentFirstCategory
-                                                    .secondCategories.length,
-                                                itemBuilder: (context, index) =>
-                                                    SecondCategoryButton(
-                                                        currentFirstCategory
-                                                                .secondCategories[
-                                                            index],
-                                                        onTap: () {})),
-                                          )
-                                        ],
-                                      )
-                                    : ListView(
-                                        physics: const ClampingScrollPhysics(),
-                                        children: <Widget>[
-                                          if (showResults)
-                                            productModel.showProductList(
-                                                future: getProductBySearch)
-                                          else
-                                            Container(
-                                                padding: const EdgeInsets.only(
-                                                    left: 16,
-                                                    right: 16,
-                                                    top: 20),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: <Widget>[
-                                                    Text(
-                                                      'Mọi người cũng tìm kiếm',
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: textTheme.bodyText2
-                                                          .copyWith(
-                                                              color:
-                                                                  kSecondaryGrey),
-                                                    ),
-                                                    const SizedBox(height: 10),
-                                                    Keyword(
-                                                        keyword: roundLab,
-                                                        onTap: () =>
-                                                            search(roundLab)),
-                                                    const SizedBox(height: 10),
-                                                    Keyword(
-                                                        keyword: cleanser,
-                                                        onTap: () =>
-                                                            search(cleanser)),
-                                                    const SizedBox(height: 10),
-                                                    Keyword(
-                                                        keyword: cream,
-                                                        onTap: () =>
-                                                            search(cream)),
-                                                    const SizedBox(height: 10),
-                                                    Keyword(
-                                                        keyword: sunscreen,
-                                                        onTap: () =>
-                                                            search(sunscreen)),
-                                                    const SizedBox(height: 10),
-                                                    Keyword(
-                                                        keyword: serum,
-                                                        onTap: () =>
-                                                            search(serum)),
-                                                    const SizedBox(height: 10),
-                                                  ],
-                                                )),
-                                          // CosmeticsRequestBtn()
-                                        ],
-                                      )),
+                          color: Colors.white,
+                          padding: const EdgeInsets.only(top: 0, left: 16),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Search',
+                                  style: textTheme.headline1
+                                      .copyWith(fontSize: 32),
+                                  textAlign: TextAlign.start,
+                                ),
+                              ],
+                            ),
                           ),
-                        ],
+                        )),
+                      ];
+                    },
+                    body: Padding(
+                      padding: const EdgeInsets.only(top: 0),
+                      child: SafeArea(
+                        top: true,
+                        child:
+                            Consumer<SearchModel>(builder: (context, model, _) {
+                          return NotificationListener(
+                            onNotification:
+                                (ScrollUpdateNotification notification) {},
+                            child: FloatingSearchBar(
+                              onFocusChanged: (isFocused) {
+                                setState(() {
+                                  this.isFocused = isFocused;
+                                });
+                                if (_scrollController.hasClients) {
+                                  _scrollController.animateTo(
+                                      isFocused ? 52 : 0,
+                                      duration:
+                                          const Duration(milliseconds: 250),
+                                      curve: Curves.easeIn);
+                                }
+                              },
+                              elevation: 0,
+                              borderRadius: BorderRadius.circular(12),
+                              backgroundColor: kQuaternaryGrey,
+                              automaticallyImplyBackButton: false,
+                              controller: searchController,
+                              clearQueryOnClose: true,
+                              hint: 'search me...',
+                              iconColor: Colors.grey,
+
+                              scrollPadding: EdgeInsets.zero,
+                              padding: EdgeInsets.zero,
+                              margins: EdgeInsets.only(left: 24, right: 24),
+
+                              // scrollPadding:
+                              //     const EdgeInsets.only(top: 16, bottom: 56),
+
+                              transitionDuration:
+                                  const Duration(milliseconds: 250),
+                              transitionCurve: Curves.linear,
+                              physics: const BouncingScrollPhysics(),
+                              axisAlignment: 0.0,
+                              openAxisAlignment: 0.0,
+                              closeOnBackdropTap: true,
+                              maxWidth: screenSize.width,
+                              // backdropColor: kWhite,
+                              isScrollControlled: true,
+                              leadingActions: [
+                                FloatingSearchBarAction.icon(
+                                  icon: SvgPicture.asset(
+                                      'assets/icons/search.svg'),
+                                  // showIfClosed: true,
+                                  showIfOpened: true,
+                                  onTap: () => print('tn'),
+                                  // duration: const Duration(milliseconds: 500),
+                                ),
+                              ],
+                              actions: [
+                                FloatingSearchBarAction(
+                                  showIfClosed: false,
+                                  showIfOpened: true,
+                                  builder: (context, animation) {
+                                    final canPop = Navigator.canPop(context);
+
+                                    return CircularButton(
+                                      tooltip: 'Back',
+                                      size: 24,
+                                      icon: Text(
+                                        'cancel',
+                                        style: textTheme.bodyText1
+                                            .copyWith(color: kPrimaryOrange),
+                                      ),
+                                      onPressed: () {
+                                        final bar =
+                                            FloatingSearchAppBar.of(context);
+
+                                        if (bar.isOpen && !bar.isAlwaysOpened) {
+                                          bar.close();
+                                        } else if (canPop) {
+                                          Navigator.pop(context);
+                                        }
+                                      },
+                                    );
+                                  },
+                                ),
+                              ],
+
+                              onSubmitted: (value) {
+                                search(value);
+                              },
+                              debounceDelay: const Duration(milliseconds: 500),
+                              onQueryChanged: model.onQueryChanged,
+                              transition:
+                                  SlideFadeFloatingSearchBarTransition(),
+                              builder: (context, _) {
+                                return showResults
+                                    ? buildSearchResult()
+                                    : buildExpandableBody(model);
+                              },
+                              body: buildCategoryPage(),
+                            ),
+                          );
+                        }),
                       ),
                     )))));
   }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'seller.dart';
+part of 'brand.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
@@ -17,7 +17,7 @@ Brand _$BrandFromJson(Map<String, dynamic> json) {
     email: json['email'] as String,
     enName: json['en_name'] as String,
     id: json['id'] as int,
-    imageUrl: json['image_url'] as String,
+    image: json['image'] as String,
     name: json['name'] as String,
     operationTime: json['operation_time'] as String,
     tags: (json['tags'] as List)
@@ -39,7 +39,7 @@ Map<String, dynamic> _$BrandToJson(Brand instance) => <String, dynamic>{
       'email': instance.email,
       'en_name': instance.enName,
       'id': instance.id,
-      'image_url': instance.imageUrl,
+      'image': instance.image,
       'name': instance.name,
       'operation_time': instance.operationTime,
       'tags': instance.tags,

@@ -54,7 +54,7 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
   void initState() {
     super.initState();
     _products = widget.products;
-    // print('product length:${_products.length}');
+
     productModel = Provider.of<ProductModel>(context, listen: false);
   }
 
@@ -92,12 +92,9 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
     if (_products == null)
       return Container(
           width: screenSize.width,
-          height: screenSize.height,
+          height: screenSize.height / 1.3,
           child: Center(
-            child: Container(
-                height: kScreenSizeHeight * 0.5,
-                child: const SpinKitThreeBounce(
-                    color: kPrimaryOrange, size: 21.0)),
+            child: const SpinKitThreeBounce(color: kPrimaryOrange, size: 21.0),
           ));
     else if (_products.isEmpty)
       Column(
@@ -123,21 +120,19 @@ class _CosmeticsProductListState extends State<CosmeticsProductList>
           itemCount: _products.length,
           itemBuilder: (BuildContext context, int index) {
             currentIndex = index;
-            return Column(children: [
-              if (!widget.isFromReviewSearch)
-                // ignore: curly_braces_in_flow_control_structures
-                CosmeticsProductCard(
+            if (!widget.isFromReviewSearch)
+              // ignore: curly_braces_in_flow_control_structures
+              return CosmeticsProductCard(
+                ranking: widget.showRank ? index : null,
+                isNameAvailable: widget.isNameAvailable,
+                showDivider: index != _products.length - 1,
+                product: _products[index],
+              );
+            else
+              CosmeticsReviewThumbCard(
                   ranking: widget.showRank ? index : null,
-                  isNameAvailable: widget.isNameAvailable,
                   showDivider: index != _products.length - 1,
-                  product: _products[index],
-                )
-              else
-                CosmeticsReviewThumbCard(
-                    ranking: widget.showRank ? index : null,
-                    showDivider: index != _products.length - 1,
-                    product: _products[index])
-            ]);
+                  product: _products[index]);
           });
     else
       Container();

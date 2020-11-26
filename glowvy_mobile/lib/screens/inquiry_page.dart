@@ -58,6 +58,7 @@ class _InquiryPageState extends State<InquiryPage>
       await Tools.sendSlackMessage(
           'inquiry type: $inquiryType\nemail: $email\ninquiry: $inquiry');
       await _postButtonController.reverse();
+      Popups.showSuccesPopup(context);
       Navigator.of(context).pop();
     } catch (e) {
       await _postButtonController.reverse();
@@ -213,6 +214,7 @@ class _InquiryPageState extends State<InquiryPage>
                             child: Column(
                               children: [
                                 CustomTextField(
+                                  autoFocus: false,
                                   onTextChange: (value) {
                                     setState(() {
                                       email = value;

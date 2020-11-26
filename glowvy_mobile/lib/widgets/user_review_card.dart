@@ -1,9 +1,15 @@
+import 'dart:math';
+
 import 'package:Dimodo/models/product/product.dart';
+import 'package:Dimodo/models/user/user.dart';
+import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/product_thumbnail.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
 
 import '../common/colors.dart';
 import '../common/constants.dart';
@@ -27,11 +33,17 @@ class _UserReviewCardState extends State<UserReviewCard> {
   Product product;
   final df = DateFormat('dd/MM/yyyy');
   bool showAll = false;
+  User user;
 
   // @override
   // void initState() {
   //   super.initState();
   // }
+  @override
+  void initState() {
+    super.initState();
+    user = Provider.of<UserModel>(context, listen: false).user;
+  }
 
   List<Widget> renderImgs(context, Review review) {
     var imgButtons = <Widget>[];
@@ -81,8 +93,14 @@ class _UserReviewCardState extends State<UserReviewCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               //todo: assign the same profile pic
-              Image.asset(
-                'assets/icons/account/profile${1}.png',
+              ClipOval(
+                child: CachedNetworkImage(
+                  imageUrl:
+                      user.picture + '?v=${ValueKey(Random().nextInt(100))}',
+                  width: 36,
+                  height: 36,
+                  fit: BoxFit.cover,
+                ),
               ),
               const SizedBox(width: 10),
               Expanded(
