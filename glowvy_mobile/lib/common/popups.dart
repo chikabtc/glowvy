@@ -2,12 +2,15 @@ import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/models/product/product.dart';
+import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/widgets/baumann_quiz.dart';
 import 'package:Dimodo/widgets/webview.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class Popups {
   static void failMessage(message, context) {
@@ -212,6 +215,208 @@ class Popups {
                               )),
                         ),
                       ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+        });
+  }
+
+  static void showReviewGuidelines(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
+    showModalBottomSheet(
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) {
+              return Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20)),
+                ),
+                width: screenSize.width,
+                height: 650,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Stack(children: <Widget>[
+                      Container(
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20)),
+                          ),
+                          height: AppBar().preferredSize.height,
+                          width: kScreenSizeWidth,
+                          child: Center(
+                            child: Text('Các tiêu chí xét duyệt review',
+                                style: kBaseTextStyle.copyWith(
+                                    fontSize: 16, fontWeight: FontWeight.w600)),
+                          )),
+                      Positioned(
+                        top: 6,
+                        right: 0,
+                        child: IconButton(
+                            icon: SvgPicture.asset(
+                                'assets/icons/address/close-popup.svg'),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            }),
+                      )
+                    ]),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 32.0, left: 32),
+                      child: Text(
+                          'Cùng nhau xây dựng một Glowvy có ích cho tất cả mọi người hơn bằng cách chú ý những điều sau đây khi viết review nhé!',
+                          style: textTheme.caption1
+                              .copyWith(color: kSecondaryGrey),
+                          textAlign: TextAlign.justify),
+                    ),
+                    const SizedBox(height: 28),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        right: 32.0,
+                        left: 32,
+                      ),
+                      child: Text(
+                          '1. Review thiếu thông tin hoặc review quá chung chung\n\n2. Review có nhiều nội dung lặp đi lặp lại và lỗi đánh máy nghiêm trọng\n\n3. Review sử dụng các từ ngữ chửi thề, thô tục\n\n4. Review các sản phẩm mà bản thân chưa hề sử dụng\n\n5. Review với những hình ảnh không hợp lệ\n\n6.Review bao gồm thông tin cá nhân( địa chỉ liên lạc, email)\n\n7. Review có chứa các thông tin nhằm thuyết phục trao đổi, mua bán\n\n8. Review không lịch sự, thô lỗ\n\n9. Review chứa các nội dung phỉ báng, vi phạm bản quyền hoặc liên quan đến trộm cắp',
+                          style: textTheme.bodyText2,
+                          textAlign: TextAlign.justify),
+                    ),
+                    Expanded(
+                      child: Align(
+                        alignment: FractionalOffset.bottomCenter,
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 16, right: 16, bottom: 50.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child:
+                                SvgPicture.asset('assets/icons/big-logo.svg'),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          );
+        });
+  }
+
+  static void showSortOptions(BuildContext context, List<Product> products,
+      {@required onTap, option}) {
+    final screenSize = MediaQuery.of(context).size;
+    var productModel = Provider.of<ProductModel>(context, listen: false);
+
+    showModalBottomSheet(
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) {
+              return Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20)),
+                ),
+                width: screenSize.width,
+                height: 230,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    const SizedBox(height: 10),
+                    // Stack(children: <Widget>[
+                    //   Container(
+                    //       decoration: const BoxDecoration(
+                    //         color: Colors.white,
+                    //         borderRadius: BorderRadius.only(
+                    //             topLeft: Radius.circular(20),
+                    //             topRight: Radius.circular(20)),
+                    //       ),
+                    //       height: AppBar().preferredSize.height,
+                    //       width: kScreenSizeWidth,
+                    //       child: Center(
+                    //         child: Text('Các tiêu chí xét duyệt review',
+                    //             style: kBaseTextStyle.copyWith(
+                    //                 fontSize: 16, fontWeight: FontWeight.w600)),
+                    //       )),
+                    //   Positioned(
+                    //     top: 6,
+                    //     right: 0,
+                    //     child: IconButton(
+                    //         icon: SvgPicture.asset(
+                    //             'assets/icons/address/close-popup.svg'),
+                    //         onPressed: () {
+                    //           Navigator.pop(context);
+                    //         }),
+                    //   ),
+                    // ]),
+                    FlatButton(
+                      child: Text('By ranking',
+                          style: textTheme.caption
+                              .copyWith(color: kDefaultFontColor)),
+                      onPressed: () {
+                        productModel.sortByAllRanking(products);
+                        onTap(products, 'By ranking');
+                        Navigator.pop(context);
+                        //return sorted products here
+                      },
+                    ),
+                    FlatButton(
+                      child: Text('By review count',
+                          style: textTheme.caption
+                              .copyWith(color: kDefaultFontColor)),
+                      onPressed: () {
+                        productModel.sortByHighReviews(products,
+                            isDescending: true);
+                        onTap(products, 'By review count');
+                        Navigator.pop(context);
+                        //return sorted products here
+                      },
+                    ),
+                    FlatButton(
+                      child: Text('Price low to high',
+                          style: textTheme.caption
+                              .copyWith(color: kDefaultFontColor)),
+                      onPressed: () {
+                        productModel.sortByPrice(products, isDescending: false);
+                        onTap(products, 'Price low to high');
+                        Navigator.pop(context);
+                        //return sorted products here
+                      },
+                    ),
+                    FlatButton(
+                      child: Text('New In',
+                          style: textTheme.caption
+                              .copyWith(color: kDefaultFontColor)),
+                      onPressed: () {
+                        productModel.sortByCreatedDate(products,
+                            isAscending: true);
+                        onTap(products, 'New In');
+                        Navigator.pop(context);
+                        //return sorted products here
+                      },
                     ),
                   ],
                 ),

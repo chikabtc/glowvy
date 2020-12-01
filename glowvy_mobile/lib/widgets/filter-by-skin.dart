@@ -143,7 +143,8 @@ class _FilterBySkinState extends State<FilterBySkin> {
     List<Product> products;
     switch (sorting) {
       case 'high':
-        products = productModel.sortByPrice(filteredProducts, false);
+        products =
+            productModel.sortByPrice(filteredProducts, isDescending: false);
         break;
 
       case 'rank':
@@ -151,7 +152,8 @@ class _FilterBySkinState extends State<FilterBySkin> {
             productModel.sortBySkinType(userModel.user, filteredProducts);
         break;
       case 'low':
-        products = productModel.sortByPrice(filteredProducts, true);
+        products =
+            productModel.sortByPrice(filteredProducts, isDescending: true);
         break;
       default:
     }

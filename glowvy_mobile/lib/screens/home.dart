@@ -168,7 +168,7 @@ class HomeScreenState extends State<HomeScreen>
                             const SizedBox(height: 24),
                             Text(
                               'weekly ranking',
-                              style: textTheme.headline1.copyWith(fontSize: 22),
+                              style: textTheme.headline4.copyWith(fontSize: 22),
                               textAlign: TextAlign.start,
                             ),
                           ],

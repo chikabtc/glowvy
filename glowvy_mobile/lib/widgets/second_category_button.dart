@@ -57,27 +57,30 @@ class _SecondCategoryButtonState extends State<SecondCategoryButton> {
           ),
           if (isSelected)
             ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: widget.category.thirdCategories.length,
-                itemBuilder: (context, index) => Container(
-                      padding: const EdgeInsets.all(16),
-                      child: GestureDetector(
-                        onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => RankingByCategory(
-                                    secondCategory: widget.category,
-                                    thirdCategory: widget
-                                        .category.thirdCategories[index]))),
-                        child: Text(
-                          widget.category.thirdCategories[index]
-                              .thirdCategoryName,
-                          style: textTheme.caption.copyWith(color: kDarkAccent),
-                        ),
-                      ),
-                    )),
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: widget.category.thirdCategories.length,
+              itemBuilder: (context, index) => FlatButton(
+                color: Colors.transparent,
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => RankingByCategory(
+                            secondCategory: widget.category,
+                            thirdCategory:
+                                widget.category.thirdCategories[index]))),
+                padding: const EdgeInsets.all(16),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    widget.category.thirdCategories[index].thirdCategoryName,
+                    textAlign: TextAlign.start,
+                    style: textTheme.caption.copyWith(color: kDarkAccent),
+                  ),
+                ),
+              ),
+            ),
           kDivider
         ],
       ),

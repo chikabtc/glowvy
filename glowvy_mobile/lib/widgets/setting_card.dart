@@ -10,6 +10,7 @@ class SettingCard extends StatelessWidget {
   final Color color;
   final Color fontColor;
   final String trailingText;
+  final bool showDivider;
 
   SettingCard(
       {this.title,
@@ -17,6 +18,7 @@ class SettingCard extends StatelessWidget {
       this.fontColor = kDarkBG,
       this.trailingWidget,
       this.trailingText,
+      this.showDivider = true,
       this.color = Colors.transparent});
 
   @override
@@ -28,12 +30,14 @@ class SettingCard extends StatelessWidget {
       child: Container(
           width: screenSize.width,
           color: color,
-          padding: EdgeInsets.only(left: 16, right: 12, top: 16),
-          child: Column(children: [
-            Row(children: [
-              Text(
-                title,
-                style: textTheme.headline5,
+          padding: const EdgeInsets.only(left: 16, right: 12, top: 12),
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+              Container(
+                child: Text(
+                  title,
+                  style: textTheme.headline5,
+                ),
               ),
               const Spacer(),
               if (trailingText != null)
@@ -42,8 +46,8 @@ class SettingCard extends StatelessWidget {
               if (trailingWidget != null) trailingWidget,
               arrowForward,
             ]),
-            const SizedBox(height: 16),
-            kFullDivider
+            const SizedBox(height: 12),
+            if (showDivider) kFullDivider
           ])),
     );
   }

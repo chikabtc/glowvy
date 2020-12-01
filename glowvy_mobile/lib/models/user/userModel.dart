@@ -14,10 +14,7 @@ import '../address/address.dart';
 import 'user.dart';
 
 class UserModel with ChangeNotifier {
-  UserModel() {
-    //todo: make the init functions synchronosu
-    initData();
-  }
+  UserModel();
 
   User user = User();
   bool isLoggedIn = b.FirebaseAuth.instance.currentUser != null;
@@ -27,10 +24,64 @@ class UserModel with ChangeNotifier {
   final b.FirebaseAuth _auth = b.FirebaseAuth.instance;
   final firebase_storage.FirebaseStorage _storage =
       firebase_storage.FirebaseStorage.instance;
+  DocumentSnapshot lastReviewSnap;
 
   Future<void> initData() async {
     listenToAuthStateUpdate();
     await getUser();
+    if (firebaseUser != null && isLoggedIn) {
+      await setReviewsByUserId(firebaseUser.uid);
+    }
+  }
+
+  void listenToAuthStateUpdate() {
+    _auth.authStateChanges().listen((b.User user) async {
+      if (user == null) {
+        isLoggedIn = false;
+        firebaseUser = user;
+        print('User is currently signed out!');
+      } else {
+        isLoggedIn = true;
+        firebaseUser = user;
+        print('User is signed in and auth changed!');
+        await setReviewsByUserId(user.uid);
+      }
+    });
+  }
+
+  Future setReviewsByUserId(uid) async {
+    print('fetching reviews user has written');
+    final list = <Review>[];
+
+    try {
+      final query = FirebaseFirestore.instance
+          .collection('reviews')
+          .where('user.uid', isEqualTo: uid)
+          .orderBy('created_at', descending: true);
+      if (lastReviewSnap != null) {
+        query.startAfterDocument(lastReviewSnap).limit(15);
+      } else {
+        query.limit(15);
+      }
+
+      final snapshot = await query.get(const GetOptions(source: Source.server));
+
+      if (snapshot.docs.isNotEmpty) {
+        print(snapshot.docs.length);
+        for (final doc in snapshot.docs) {
+          list.add(Review.fromJson(doc.data()));
+        }
+        reviews = list;
+        await reloadUser();
+      } else {
+        print('no reviews were found');
+
+        // throw Exception('no products were found');
+      }
+    } catch (err) {
+      rethrow;
+    }
+    return;
   }
 
   void setName(String firstName, lastName) {
@@ -168,28 +219,13 @@ class UserModel with ChangeNotifier {
     await firebaseUser.reload();
   }
 
-  void listenToAuthStateUpdate() {
-    _auth.authStateChanges().listen((b.User user) {
-      if (user == null) {
-        isLoggedIn = false;
-        print('User is currently signed out!');
-      } else {
-        isLoggedIn = true;
-        print('User is signed in and auth changed!');
-      }
-    });
-  }
-
   Future getUser() async {
     try {
       print(isLoggedIn);
       if (isLoggedIn) {
         final query = _db.collection('users').doc(firebaseUser.uid);
         DocumentSnapshot doc;
-        print("user doesn't exist");
         doc = await query.get(const GetOptions(source: Source.server));
-        print('No cached ingredients: fetching from server');
-
         user = User.fromJson(doc.data());
       }
     } catch (e) {

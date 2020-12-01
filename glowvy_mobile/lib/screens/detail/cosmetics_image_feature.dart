@@ -29,7 +29,7 @@ class CosmeticsImageFeature extends StatelessWidget {
             child: Tools.image(
               url: product.thumbnail,
               fit: BoxFit.cover,
-              height: 227,
+              height: 120,
               size: kSize.large,
             ));
       },

@@ -124,7 +124,7 @@ class EditGenderPageState extends State<EditGenderPage>
                         fontSize: 15, fontWeight: FontWeight.w600),
                   ),
                 ),
-                kDivider
+                if ((genders.length - 1 != index)) kDivider
               ],
             );
           },

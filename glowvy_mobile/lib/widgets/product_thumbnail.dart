@@ -14,12 +14,15 @@ class ProductThumbnail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // print('review product: ${product.toJson()}');
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(6), color: kSecondaryWhite),
-      padding: EdgeInsets.only(left: 10, right: 10, top: 10.5, bottom: 10.5),
+          borderRadius: BorderRadius.circular(6),
+          color: allowEdit ? kWhite : kSecondaryWhite),
+      padding:
+          const EdgeInsets.only(left: 10, right: 10, top: 10.5, bottom: 10.5),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           FittedBox(
@@ -32,19 +35,19 @@ class ProductThumbnail extends StatelessWidget {
               size: kSize.large,
             ),
           ),
+          const SizedBox(width: 7),
+
           Flexible(
             child: Container(
-              height: 35,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  const SizedBox(height: 2),
-                  Text('${product.name}',
+                  Text(product.name,
                       maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                      // overflow: TextOverflow.ellipsis,
                       style: textTheme.button2),
-                  Text('${product.name}',
+                  Text('${product.category.firstCategoryName}',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: textTheme.caption2),
@@ -52,11 +55,12 @@ class ProductThumbnail extends StatelessWidget {
               ),
             ),
           ),
-          const Spacer(),
+          // const Spacer(),
           if (allowEdit)
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                // const Spacer(),
                 Text(
                   'Change',
                   style: textTheme.caption1.copyWith(color: kSecondaryGrey),

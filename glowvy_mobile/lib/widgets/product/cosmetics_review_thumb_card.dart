@@ -24,7 +24,7 @@ class CosmeticsReviewThumbCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      // padding: EdgeInsets.all(10),
       child: GestureDetector(
         onTap: () {
           print(product.sid);
@@ -63,11 +63,11 @@ class CosmeticsReviewThumbCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           const SizedBox(height: 2),
-                          Text(product.name,
+                          Text(product.brand.name + ' ' + product.name,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: textTheme.button2),
-                          Text(product.name,
+                          Text(product.category.firstCategoryName,
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: textTheme.caption2),

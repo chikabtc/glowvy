@@ -74,18 +74,6 @@ class _CosmeticsProductListState extends State<CosmeticsProductList> {
     }
   }
 
-  // Future _loadData() async {
-  //   offset += limit;
-  //   await widget.onLoadMore(offset, limit);
-  //   isEnd = productModel.isEnd;
-  //   setState(() {
-  //     if (!isEnd) {
-  //       _products = [..._products, ...productModel.products];
-  //     }
-  //     isLoading = false;
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -120,11 +108,12 @@ class _CosmeticsProductListState extends State<CosmeticsProductList> {
                   showDivider: index != _products.length - 1,
                   product: _products[index],
                 );
-              else
-                CosmeticsReviewThumbCard(
+              else {
+                return CosmeticsReviewThumbCard(
                     ranking: widget.showRank ? index : null,
                     showDivider: index != _products.length - 1,
                     product: _products[index]);
+              }
             }),
       );
     } else

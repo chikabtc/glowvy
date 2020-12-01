@@ -19,7 +19,6 @@ Brand _$BrandFromJson(Map<String, dynamic> json) {
     id: json['id'] as int,
     image: json['image'] as String,
     name: json['name'] as String,
-    operationTime: json['operation_time'] as String,
     tags: (json['tags'] as List)
         ?.map((e) => e == null ? null : Tag.fromJson(e as Map<String, dynamic>))
         ?.toList(),
@@ -28,7 +27,10 @@ Brand _$BrandFromJson(Map<String, dynamic> json) {
     type: json['type'] == null
         ? null
         : Type.fromJson(json['type'] as Map<String, dynamic>),
-  );
+  )..categories = (json['categories'] as List)
+      ?.map((e) =>
+          e == null ? null : Category.fromJson(e as Map<String, dynamic>))
+      ?.toList();
 }
 
 Map<String, dynamic> _$BrandToJson(Brand instance) => <String, dynamic>{
@@ -41,9 +43,9 @@ Map<String, dynamic> _$BrandToJson(Brand instance) => <String, dynamic>{
       'id': instance.id,
       'image': instance.image,
       'name': instance.name,
-      'operation_time': instance.operationTime,
       'tags': instance.tags,
       'telephone': instance.telephone,
       'text': instance.text,
+      'categories': instance.categories,
       'type': instance.type,
     };

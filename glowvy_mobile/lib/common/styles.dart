@@ -97,7 +97,7 @@ TextTheme _buildTextTheme(TextTheme base) {
           fontStyle: FontStyle.italic,
           color: kDefaultFontColor),
       headline5: base.headline5.copyWith(
-          height: 1.25,
+          height: 1.5,
           fontSize: 15.0,
           fontWeight: FontWeight.w600,
           color: kDefaultFontColor),

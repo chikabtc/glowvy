@@ -40,90 +40,97 @@ class BeforeLoginPageState extends State<BeforeLoginPage>
     }
 
     return Container(
+        color: const Color(0xffFFE0B7),
         child: Column(
-      children: [
-        Stack(
           children: [
-            Container(
-              width: kScreenSizeWidth,
-              height: screenSize.height - 294 - 64 - bottomSafeArea,
-              child: Image.asset(
-                'assets/icons/before_login_banner.png',
-                fit: BoxFit.fill,
-              ),
-            ),
-            Positioned.fill(
-              bottom: -20,
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Image.asset(
-                  'assets/icons/before_login_package.png',
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 16.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    height: 84,
+            Stack(
+              children: [
+                Container(
+                  width: kScreenSizeWidth,
+                  height: screenSize.height - 294 - 64 - bottomSafeArea,
+                  child: Image.asset(
+                    'assets/icons/before_login_banner.png',
+                    fit: BoxFit.fill,
                   ),
-                  SvgPicture.asset('assets/icons/white_star.svg'),
-                  Text(
-                    'About Glowvy  ——\nborn to help people find the suitable cosmetics for people’s skin type and issues.',
-                    style: textTheme.headline5.copyWith(color: kWhite),
+                ),
+                Positioned.fill(
+                  bottom: -20,
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Image.asset(
+                      'assets/icons/before_login_package.png',
+                    ),
                   ),
-                ],
-              ),
-            )
-          ],
-        ),
-        Container(
-          decoration: BoxDecoration(
-            color: kWhite,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-          ),
-          width: kScreenSizeWidth,
-          height: 297,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              children: <Widget>[
-                const SizedBox(
-                  height: 48,
                 ),
-                Text(
-                  'Spend three mins \nGet know my skin better',
-                  textAlign: TextAlign.center,
-                  style: textTheme.headline2,
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                customButton(
-                  function: () => Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignupScreen())),
-                  text: 'sign up',
-                ),
-                const SizedBox(
-                  height: 29,
-                ),
-                SvgPicture.asset('assets/icons/pink_logo.svg'),
-                const SizedBox(
-                  height: 15,
-                ),
-                Text('Making Vietnamese Skin Glow',
-                    style: textTheme.bodyText2.copyWith(color: kSecondaryGrey)),
-                const SizedBox(height: 15)
+                Padding(
+                  padding: EdgeInsets.only(left: 16.0, right: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(
+                        height: 84,
+                      ),
+                      SvgPicture.asset('assets/icons/white_star.svg'),
+                      Text(
+                        'About Glowvy  ——\nborn to help people find the suitable cosmetics for people’s skin type and issues.',
+                        style: textTheme.headline5.copyWith(color: kWhite),
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
-          ),
-        ),
-        // Container(child:
-        // ,)
-      ],
-    ));
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: kWhite,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20)),
+                ),
+                width: kScreenSizeWidth,
+                // height: 297,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    children: <Widget>[
+                      const SizedBox(
+                        height: 48,
+                      ),
+                      Text(
+                        'Spend three mins \nGet know my skin better',
+                        textAlign: TextAlign.center,
+                        style: textTheme.headline2,
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      customButton(
+                        function: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SignupScreen())),
+                        text: 'sign up',
+                      ),
+                      const SizedBox(
+                        height: 29,
+                      ),
+                      SvgPicture.asset('assets/icons/pink_logo.svg'),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      Text('Making Vietnamese Skin Glow',
+                          style: textTheme.bodyText2
+                              .copyWith(color: kSecondaryGrey)),
+                      const SizedBox(height: 15)
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            // Container(child:
+            // ,)
+          ],
+        ));
   }
 }

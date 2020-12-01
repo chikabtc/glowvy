@@ -82,6 +82,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
   @override
   void afterFirstLayout(BuildContext context) async {
     await _app.loadAppConfig();
+    await _userModel.initData();
     await _addressModel.setProvinces();
     await _search.setBrands();
     await _category.setLocalCategories();
@@ -124,6 +125,12 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
   @override
   Widget build(BuildContext context) {
     final data = MediaQuery.of(context);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarIconBrightness:
+            Brightness.dark, // Only honored in Android M and above
+
+        statusBarBrightness: Brightness.light));
 
     print('building app.dart');
     if (isChecking) {

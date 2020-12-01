@@ -1,6 +1,7 @@
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/models/product/brand.dart';
+import 'package:Dimodo/screens/brand_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -20,14 +21,11 @@ class BrandCard extends StatelessWidget {
       color: Colors.white,
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: GestureDetector(
-        // onTap: () => Navigator.push(
-        //     context,
-        //     MaterialPageRoute(
-        //       builder: (context) => CosmeticsProductDetail(
-        //         product: product,
-        //         rank: ranking,
-        //       ),
-        //     )),
+        onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => BrandHomePage(brand),
+            )),
         child: Card(
           color: Colors.white,
           elevation: 0,

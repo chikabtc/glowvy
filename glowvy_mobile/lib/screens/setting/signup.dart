@@ -204,6 +204,7 @@ class _SignupScreenState extends State<SignupScreen>
                             buttonTitle: S.of(context).signup,
                             buttonController: _loginButtonController.view,
                             onTap: () {
+                              FocusScope.of(context).unfocus();
                               _registerWithEmail(
                                   fullName, email, password, context);
                             }),

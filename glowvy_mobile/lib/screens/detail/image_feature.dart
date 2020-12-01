@@ -31,8 +31,8 @@ class ImageFeature extends StatelessWidget {
           height: screenSize.height * 0.52,
           child: Swiper(
             physics: product.sliderImages.length == 1
-                ? NeverScrollableScrollPhysics()
-                : AlwaysScrollableScrollPhysics(),
+                ? const NeverScrollableScrollPhysics()
+                : const AlwaysScrollableScrollPhysics(),
             itemBuilder: (BuildContext context, int i) {
               return GestureDetector(
                 onTap: () => _onShowGallery(context, i),

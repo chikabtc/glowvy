@@ -36,7 +36,7 @@ class _OrderItemRowState extends State<OrderItemRow> {
 
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.only(right: 12.0, bottom: 10, top: 10),
+      padding: const EdgeInsets.only(right: 12.0, bottom: 10, top: 10),
       child: Column(children: [
         Row(
           key: ValueKey(widget.cartItem.product.id),

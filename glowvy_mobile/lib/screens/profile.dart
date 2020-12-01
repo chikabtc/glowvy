@@ -12,7 +12,7 @@ import 'package:Dimodo/screens/edit_profile_page.dart';
 import 'package:Dimodo/screens/feedback_center.dart';
 import 'package:Dimodo/screens/write_review_screen.dart';
 import 'package:Dimodo/widgets/baumann_quiz.dart';
-import 'package:Dimodo/widgets/user_review_card.dart';
+import 'package:Dimodo/widgets/profile_review_card.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart' as b;
 import 'package:flutter/material.dart';
@@ -75,43 +75,39 @@ class ProfilePageState extends State<ProfilePage>
               child: ListView(
                 physics: ClampingScrollPhysics(),
                 children: <Widget>[
-                  GestureDetector(
-                    onTap: () => {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => EditProfilePage()))
-                    },
-                    child: Container(
-                      padding: EdgeInsets.only(left: 16, bottom: 14, top: 84),
-                      color: Colors.white,
-                      child: Row(children: <Widget>[
-                        user.picture == null
-                            ? Image.asset(
-                                'assets/icons/default-avatar.png',
-                              )
-                            : ClipOval(
-                                child: CachedNetworkImage(
-                                  imageUrl: user.picture +
-                                      '?v=${ValueKey(Random().nextInt(100))}',
-                                  width: 64,
-                                  height: 64,
-                                  fit: BoxFit.cover,
-                                ),
+                  Container(
+                    padding: EdgeInsets.only(left: 16, bottom: 14, top: 84),
+                    color: Colors.white,
+                    child: Row(children: <Widget>[
+                      user.picture == null
+                          ? Image.asset(
+                              'assets/icons/default-avatar.png',
+                            )
+                          : ClipOval(
+                              child: CachedNetworkImage(
+                                imageUrl: user.picture +
+                                    '?v=${ValueKey(Random().nextInt(100))}',
+                                width: 64,
+                                height: 64,
+                                fit: BoxFit.cover,
                               ),
-                        Container(width: 16),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                                b.FirebaseAuth.instance.currentUser.email ??
-                                    ' ',
-                                style: textTheme.headline3),
-                            Text(userModel.user.fullName ?? ' ',
-                                style: textTheme.caption2),
-                            Container(height: 15),
-                            Container(
+                            ),
+                      Container(width: 16),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(b.FirebaseAuth.instance.currentUser.email ?? ' ',
+                              style: textTheme.headline3),
+                          Text(userModel.user.fullName ?? ' ',
+                              style: textTheme.caption2),
+                          Container(height: 15),
+                          GestureDetector(
+                            onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => EditProfilePage())),
+                            child: Container(
                               width: screenSize.width - 122,
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
@@ -138,10 +134,10 @@ class ProfilePageState extends State<ProfilePage>
                                 ],
                               ),
                             ),
-                          ],
-                        ),
-                      ]),
-                    ),
+                          ),
+                        ],
+                      ),
+                    ]),
                   ),
                   Row(
                     children: <Widget>[
@@ -207,11 +203,12 @@ class ProfilePageState extends State<ProfilePage>
                           height: 70,
                           width: screenSize.width / 2,
                           color: kPrimaryBlue.withOpacity(0.3),
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                             top: 13,
                             bottom: 12,
                             left: 16,
                             right: 17,
+                            //
                           ),
                           child: Center(
                             child: Row(
@@ -229,13 +226,13 @@ class ProfilePageState extends State<ProfilePage>
                                       ),
                                     ),
                                     Container(
-                                      padding: EdgeInsets.all(3.0),
+                                      padding: const EdgeInsets.all(3.0),
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(
+                                        borderRadius: const BorderRadius.all(
                                             Radius.circular(8)),
                                         border: Border.all(color: kPrimaryBlue),
                                       ),
-                                      child: Text('Cải thiện ứng dụng',
+                                      child: Text('Cải thiện Glowvy',
                                           textAlign: TextAlign.start,
                                           style: textTheme.caption2.copyWith(
                                             fontWeight: FontWeight.w700,
@@ -351,7 +348,7 @@ class ProfilePageState extends State<ProfilePage>
                                       builder: (context) =>
                                           WriteReviewScreen())),
                               child: Container(
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     color: kQuaternaryOrange,
                                     borderRadius:
                                         BorderRadius.all(Radius.circular(20))),

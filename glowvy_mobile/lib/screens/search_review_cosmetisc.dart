@@ -5,6 +5,7 @@ import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/productModel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 import '../generated/i18n.dart';
@@ -65,7 +66,7 @@ class _ReviewCosmeticsSearchScreenState
               ? GestureDetector(
                   onTap: () => Navigator.pop(context),
                   child: Padding(
-                    padding: EdgeInsets.only(left: 16, top: 16),
+                    padding: const EdgeInsets.only(left: 16, top: 16),
                     child: Text('Stop',
                         style: textTheme.headline5
                             .copyWith(color: kSecondaryGrey)),
@@ -78,12 +79,12 @@ class _ReviewCosmeticsSearchScreenState
           top: true,
           child: Container(
               height: screenSize.height,
-              decoration: BoxDecoration(color: Colors.white),
-              padding: EdgeInsets.symmetric(horizontal: 6),
+              decoration: const BoxDecoration(color: Colors.white),
+              padding: const EdgeInsets.symmetric(horizontal: 6),
               child: ListView(
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Row(
                       children: <Widget>[
                         Expanded(
@@ -95,7 +96,6 @@ class _ReviewCosmeticsSearchScreenState
                             ),
                             child: TextField(
                                 autofocus: true,
-                                textAlignVertical: TextAlignVertical.center,
                                 onTap: () => isTextFieldSelected = true,
                                 cursorColor: theme.cursorColor,
                                 controller: searchController,
@@ -120,9 +120,15 @@ class _ReviewCosmeticsSearchScreenState
                                   });
                                 },
                                 decoration: kTextField.copyWith(
+                                  prefixIcon: IconButton(
+                                    icon: SvgPicture.asset(
+                                      'assets/icons/search.svg',
+                                      color: Colors.grey,
+                                    ),
+                                  ),
                                   hintText: S.of(context).search,
-                                  contentPadding:
-                                      EdgeInsets.only(bottom: 12, left: 12),
+                                  contentPadding: const EdgeInsets.only(
+                                      bottom: 12, left: 12),
                                 )),
                           ),
                         ),

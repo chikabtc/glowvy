@@ -57,13 +57,13 @@ class ProductModel with ChangeNotifier {
     List<Product> sortedProducts;
     switch (sorting) {
       case 'high':
-        sortedProducts = sortByPrice(products, false);
+        sortedProducts = sortByPrice(products, isDescending: false);
         break;
       case 'rank':
         sortedProducts = sortBySkinType(skinTypeId, products);
         break;
       case 'low':
-        sortedProducts = sortByPrice(products, true);
+        sortedProducts = sortByPrice(products, isDescending: true);
         break;
       default:
         sortedProducts = sortByAllRanking(products);
@@ -74,12 +74,37 @@ class ProductModel with ChangeNotifier {
     return sortedProducts;
   }
 
-  List<Product> sortByPrice(List<Product> products, bool isAscending) {
-    print('sorb y price : ${products.length}');
-    products.sort((a, b) => isAscending
-        ? b.salePrice.compareTo(a.salePrice)
-        : a.salePrice.compareTo(b.salePrice));
+  List<Product> sortByPrice(List<Product> products, {bool isDescending}) {
+    products.sort((a, b) => isDescending
+        ? b.sprice.compareTo(a.sprice)
+        : a.sprice.compareTo(b.sprice));
     // print('rating: ${products[0].rating}');
+    return products;
+  }
+
+  List<Product> sortByCreatedDate(List<Product> products, {bool isAscending}) {
+    products.sort((a, b) => isAscending
+        ? b.createdAt.compareTo(a.createdAt)
+        : a.createdAt.compareTo(b.createdAt));
+    // print('rating: ${products[0].rating}');
+    return products;
+  }
+
+  List<Product> sortByHighReviews(List<Product> products, {bool isDescending}) {
+    products.sort((a, b) => isDescending
+        ? b.reviewMetas.all.reviewCount.compareTo(a.reviewMetas.all.reviewCount)
+        : a.reviewMetas.all.reviewCount
+            .compareTo(b.reviewMetas.all.reviewCount));
+
+    return products;
+  }
+
+  List<Product> sortByAllRanking(List<Product> products) {
+    products.sort((a, b) {
+      // print('compare a: ${a.reviewMetas.all.toJson()} and b: ${b.sid}');
+      return b.reviewMetas.all.rankingScore
+          .compareTo(a.reviewMetas.all.rankingScore);
+    });
     return products;
   }
 
@@ -109,14 +134,6 @@ class ProductModel with ChangeNotifier {
       //oily
       //oily
     }
-    return products;
-  }
-
-  List<Product> sortByAllRanking(List<Product> products) {
-    // var skinType = getSkinTypeById(skinTypeId);
-    products.sort((a, b) => b.reviewMetas.all.rankingScore
-        .compareTo(a.reviewMetas.all.rankingScore));
-
     return products;
   }
 
@@ -170,37 +187,68 @@ class ProductModel with ChangeNotifier {
     }
   }
 
-  @override
-  Future<List<Review>> getReviewsByUserId(uid) async {
-    final list = <Review>[];
+  // //brand id + category id
+  // Future<List<Product>> getProductsByBrand(id,
+  //     {@required categoryId,
+  //     isFirstCate = false,
+  //     isSecondCate = false,
+  //     isThirdCate = false,
+  //     orderBy = 'review_metas.all.average_rating'}) async {
+  //   var categoryField = 'third_category_id';
+  //   if (isFirstCate) {
+  //     categoryField = 'first_category_id';
+  //   } else if (isSecondCate) {
+  //     categoryField = 'second_category_id';
+  //   }
+  //   try {
+  //     var list = <Product>[];
+  //     final productSnapshot = await FirebaseFirestore.instance
+  //         .collection('products')
+  //         .where('categoryField', isEqualTo: categoryId)
+  //         .where('brand.$id', isEqualTo: id)
+  //         .limit(15)
+  //         .get();
+  //     print(productSnapshot.docs.length);
 
+  //     if (productSnapshot.docs.isNotEmpty) {
+  //       for (final doc in productSnapshot.docs) {
+  //         list.add(Product.fromJson(doc.data()));
+  //       }
+  //       list = sortByRating(list);
+  //       return list;
+  //     } else {
+  //       return list;
+  //     }
+  //   } catch (e) {
+  //     print('Error: $e');
+  //     rethrow;
+  //   }
+  // }
+  //brand id + category id
+  Future<List<Product>> getProductsByBrand(id) async {
+    print('brand id: ${id}');
     try {
-      final query = FirebaseFirestore.instance
-          .collection('reviews')
-          .where('user.uid', isEqualTo: uid)
-          .orderBy('created_at', descending: true);
-      if (lastReviewSnap != null) {
-        query.startAfterDocument(lastReviewSnap).limit(15);
-      } else {
-        query.limit(15);
-      }
+      var list = <Product>[];
+      final productSnapshot = await FirebaseFirestore.instance
+          .collection('products')
+          .where('brand.id', isEqualTo: id)
+          .limit(15)
+          .get();
+      print(productSnapshot.docs.length);
 
-      final snapshot = await query.get(const GetOptions(source: Source.server));
-
-      if (snapshot.docs.isNotEmpty) {
-        print(snapshot.docs.length);
-        for (final doc in snapshot.docs) {
-          list.add(Review.fromJson(doc.data()));
+      if (productSnapshot.docs.isNotEmpty) {
+        for (final doc in productSnapshot.docs) {
+          list.add(Product.fromJson(doc.data()));
         }
+        list = sortByRating(list);
+        return list;
       } else {
-        print('no products were found');
-
-        // throw Exception('no products were found');
+        return list;
       }
-    } catch (err) {
+    } catch (e) {
+      print('Error: $e');
       rethrow;
     }
-    return list;
   }
 
 //get all product info with ingredients
@@ -492,6 +540,7 @@ class ProductModel with ChangeNotifier {
       showRank = false,
       disableScroll = false,
       isFromReviewPage = false,
+      showPadding = true,
       Function onLoadMore,
       sortBy}) {
     return FutureBuilder<List<Product>>(
@@ -505,6 +554,7 @@ class ProductModel with ChangeNotifier {
           isFromReviewSearch: isFromReviewPage,
           disableScrolling: true,
           showRank: showRank,
+          showPadding: showPadding ?? false,
         );
       },
     );

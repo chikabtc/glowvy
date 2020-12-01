@@ -2,11 +2,11 @@ import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/common/styles.dart';
-import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/search_review_cosmetisc.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
+import 'package:Dimodo/widgets/product_thumbnail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -64,7 +64,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
       final user = userModel.user;
       validateInput();
 
-      var reviewJson = {
+      final reviewJson = {
         'content': review.content,
         'user': {
           'uid': user.uid,
@@ -74,8 +74,8 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
           'birth_year': user.birthYear,
         },
         'product': {
-          'name': review.product.sname,
-          'brand_name': review.product.brand.name,
+          'name': review.product.name,
+          'brand': review.product.brand.toJson(),
           'category': review.product.category.toJson(),
           'thumbnail': review.product.thumbnail,
           'sid': review.product.sid,
@@ -184,16 +184,21 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
           child: Container(
             color: kSecondaryWhite,
             // height: 79,
-            padding: EdgeInsets.only(left: 16, right: 16, top: 14, bottom: 14),
+            padding:
+                const EdgeInsets.only(left: 16, right: 16, top: 14, bottom: 14),
             child: GestureDetector(
-              onTap: () => print('gp'),
+              onTap: () {
+                FocusScope.of(context).requestFocus(FocusNode());
+
+                Popups.showReviewGuidelines(context);
+              },
               child: RichText(
                 textAlign: TextAlign.start,
                 text: TextSpan(
                   style: textTheme.caption1.copyWith(
                       fontWeight: FontWeight.w600, color: kSecondaryGrey),
                   children: <TextSpan>[
-                    TextSpan(
+                    const TextSpan(
                         text:
                             'To ensure effectiveness and fairness, learn more about '),
                     TextSpan(
@@ -201,7 +206,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                         style: textTheme.bodyText2.copyWith(
                           color: kPrimaryBlue,
                         )),
-                    TextSpan(text: 'here'),
+                    const TextSpan(text: 'here'),
                   ],
                 ),
               ),
@@ -222,7 +227,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
           actions: [
             Center(
               child: Padding(
-                padding: EdgeInsets.only(right: 16.0),
+                padding: const EdgeInsets.only(right: 16.0),
                 child: Builder(
                   builder: (context) => StaggerAnimation(
                     btnColor: kPrimaryOrange,
@@ -271,7 +276,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                                     ReviewCosmeticsSearchScreen())),
                         child: Container(
                           color: kWhite,
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                               left: 10, right: 10, top: 20, bottom: 20),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -297,72 +302,17 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                       ),
                     if (review.product != null)
                       GestureDetector(
-                        onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    ReviewCosmeticsSearchScreen(
-                                      isEditing: true,
-                                    ))),
-                        child: Container(
-                          color: Colors.white,
-                          padding: EdgeInsets.only(
-                              left: 10, right: 10, top: 20, bottom: 20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              FittedBox(
-                                fit: BoxFit.cover,
-                                child: Tools.image(
-                                  url: review.product.thumbnail,
-                                  fit: BoxFit.cover,
-                                  width: 34,
-                                  height: 36,
-                                  size: kSize.large,
-                                ),
-                              ),
-                              Flexible(
-                                child: Container(
-                                  height: 35,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      const SizedBox(height: 2),
-                                      Text('${review.product.name}',
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: textTheme.button2),
-                                      Text('${review.product.name}',
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                          style: textTheme.caption2),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              const Spacer(),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    'Change',
-                                    style: textTheme.caption1
-                                        .copyWith(color: kSecondaryGrey),
-                                  ),
-                                  SvgPicture.asset(
-                                    'assets/icons/arrow_forward.svg',
-                                    width: 24,
-                                    color: kSecondaryGrey,
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
+                          onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      ReviewCosmeticsSearchScreen(
+                                        isEditing: true,
+                                      ))),
+                          child: ProductThumbnail(
+                            review.product,
+                            allowEdit: true,
+                          )),
                     Column(
                       children: [
                         const SizedBox(height: 7),
@@ -407,6 +357,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                             controller: _reviewTextController,
                             keyboardType: TextInputType.multiline,
                             maxLines: null,
+                            autofocus: false,
                             cursorColor: kPinkAccent,
                             onChanged: (value) {
                               review ??= Review();
@@ -422,7 +373,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                               hintStyle: textTheme.headline5.copyWith(
                                 color: kSecondaryGrey.withOpacity(0.5),
                               ),
-                              contentPadding: EdgeInsets.only(left: 20),
+                              contentPadding: const EdgeInsets.only(left: 20),
                             ),
                           ),
                         ),

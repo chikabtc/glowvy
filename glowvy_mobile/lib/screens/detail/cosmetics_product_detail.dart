@@ -1,6 +1,8 @@
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/review.dart';
+import 'package:Dimodo/screens/brand_home.dart';
 import 'package:Dimodo/screens/detail/Cosmetics_review_card.dart';
 import 'package:Dimodo/screens/detail/cosmetics_image_feature.dart';
 import 'package:Dimodo/screens/detail/cosmetics_review_page.dart';
@@ -91,7 +93,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
   @override
   Widget build(BuildContext context) {
     screenSize = MediaQuery.of(context).size;
-    // print('product sid: ${product.sid}');
+    print('product sid: ${product.sid}');
 
     switch (product.hazardScore) {
       case 0:
@@ -238,11 +240,6 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Container(
-                                    width: MediaQuery.of(context).size.width,
-                                    child: Text(product.brand.name,
-                                        maxLines: 2,
-                                        style: textTheme.bodyText2)),
                                 Text(product.name,
                                     maxLines: 2, style: textTheme.headline3),
                                 Text(
@@ -358,6 +355,56 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                       Container(
                         height: 24.5,
                       ),
+                      GestureDetector(
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    BrandHomePage(product.brand))),
+                        child: Container(
+                          color: Colors.white,
+                          child: Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 16.0, left: 16, top: 10),
+                              child: Container(
+                                  decoration: const BoxDecoration(
+                                      color: kDefaultBackground,
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(12))),
+                                  padding: const EdgeInsets.only(
+                                      left: 16, right: 16, top: 5, bottom: 8),
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        Container(
+                                          decoration: const BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(8))),
+                                          height: 24,
+                                          width: 24,
+                                          child: Tools.image(
+                                            url: product.brand.image,
+                                            fit: BoxFit.contain,
+                                          ),
+                                        ),
+                                        const SizedBox(width: 10),
+                                        Text(product.brand.name,
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: textTheme.caption1),
+                                        const Spacer(),
+                                        Icon(
+                                          Icons.home,
+                                          color: Colors.grey.withOpacity(0.7),
+                                        )
+                                      ]))),
+                        ),
+                      ),
                       Container(
                           color: Colors.white,
                           padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -365,7 +412,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
                               Container(
-                                height: 24.5,
+                                height: 15,
                               ),
                               Container(
                                   decoration: const BoxDecoration(

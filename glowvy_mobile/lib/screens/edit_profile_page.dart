@@ -112,6 +112,7 @@ class EditProfilePageState extends State<EditProfilePage>
                 SettingCard(
                   color: kWhite,
                   title: 'Region',
+                  showDivider: false,
                   trailingText: user.address?.province == null
                       ? ''
                       : user.address.province.name,
@@ -120,6 +121,7 @@ class EditProfilePageState extends State<EditProfilePage>
                       MaterialPageRoute<void>(
                           builder: (BuildContext context) => EditRegionPage())),
                 ),
+                const SizedBox(height: 7),
                 SettingCard(
                   color: kWhite,
                   title: 'Birthday',
@@ -138,12 +140,14 @@ class EditProfilePageState extends State<EditProfilePage>
                 SettingCard(
                   color: kWhite,
                   title: 'Skin Issues',
+                  showDivider: false,
                   // trailingText: userModel.user.fullName,
                 ),
                 const SizedBox(height: 7),
                 SettingCard(
                   color: kWhite,
                   title: 'Account setting',
+                  showDivider: false,
                   onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute<void>(

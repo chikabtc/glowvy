@@ -140,29 +140,35 @@ class _InquiryPageState extends State<InquiryPage>
                             style: textTheme.headline3,
                           ),
                           const SizedBox(height: 15),
-                          DropdownButton<String>(
-                            value: inquiryType,
-                            isExpanded: true,
-                            icon: const Icon(Icons.arrow_drop_down),
-                            iconSize: 24,
-                            elevation: 0,
-                            style: textTheme.bodyText1,
-                            underline: kFullDivider,
-                            onChanged: (String newValue) {
-                              setState(() {
-                                inquiryType = newValue;
-                              });
-                            },
-                            items: inquiryTypes
-                                .map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(
-                                  value,
-                                  style: textTheme.bodyText1,
-                                ),
-                              );
-                            }).toList(),
+                          Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    width: 0.7, color: kQuaternaryGrey)),
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: DropdownButton<String>(
+                              value: inquiryType,
+                              isExpanded: true,
+                              icon: const Icon(Icons.arrow_drop_down),
+                              iconSize: 24,
+                              elevation: 0,
+                              style: textTheme.bodyText1,
+                              underline: SizedBox(),
+                              onChanged: (String newValue) {
+                                setState(() {
+                                  inquiryType = newValue;
+                                });
+                              },
+                              items: inquiryTypes.map<DropdownMenuItem<String>>(
+                                  (String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(
+                                    value,
+                                    style: textTheme.bodyText1,
+                                  ),
+                                );
+                              }).toList(),
+                            ),
                           ),
                           const SizedBox(height: 15),
                           Text(
@@ -175,7 +181,8 @@ class _InquiryPageState extends State<InquiryPage>
                               border: Border.all(
                                   color: kQuaternaryGrey, width: 1.5),
                             ),
-                            padding: const EdgeInsets.all(8),
+                            padding: const EdgeInsets.only(
+                                left: 10, right: 10, bottom: 8),
                             height: screenSize.height / 2,
                             child: TextFormField(
                               controller: _reviewTextController,
@@ -215,6 +222,7 @@ class _InquiryPageState extends State<InquiryPage>
                               children: [
                                 CustomTextField(
                                   autoFocus: false,
+                                  height: 48,
                                   onTextChange: (value) {
                                     setState(() {
                                       email = value;

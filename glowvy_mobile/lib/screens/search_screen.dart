@@ -140,7 +140,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
     Widget buildCategoryPage() {
       return Padding(
-        padding: const EdgeInsets.only(top: 86.0),
+        padding: const EdgeInsets.only(top: 70.0),
         child: Row(
           children: [
             Container(
@@ -335,6 +335,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         child:
                             Consumer<SearchModel>(builder: (context, model, _) {
                           return FloatingSearchBar(
+                            height: 40,
                             onFocusChanged: (isFocused) {
                               setState(() {
                                 this.isFocused = isFocused;
@@ -351,12 +352,15 @@ class _SearchScreenState extends State<SearchScreen> {
                             automaticallyImplyBackButton: true,
                             controller: searchController,
                             clearQueryOnClose: true,
-                            hint: 'search me...',
+                            accentColor: kPrimaryOrange,
+                            queryStyle: textTheme.headline5,
+                            hintStyle: textTheme.headline5
+                                .copyWith(color: kSecondaryGrey),
                             iconColor: Colors.grey,
                             scrollPadding: EdgeInsets.zero,
-                            padding: const EdgeInsets.only(left: 0, right: 0),
-                            margins:
-                                EdgeInsets.only(top: 16, left: 16, right: 16),
+                            padding: EdgeInsets.zero,
+                            margins: const EdgeInsets.only(
+                                top: 16, left: 16, right: 16),
                             transitionDuration:
                                 const Duration(milliseconds: 250),
                             transitionCurve: Curves.linear,
@@ -376,18 +380,19 @@ class _SearchScreenState extends State<SearchScreen> {
                               //     // duration: const Duration(milliseconds: 500),
                               //     ),
 
-                              isFocused
-                                  ? FloatingSearchBarAction.back()
-                                  : FloatingSearchBarAction.icon(
-                                      icon: SvgPicture.asset(
-                                        'assets/icons/search.svg',
-                                        color: Colors.grey,
-                                      ),
-                                      // showIfClosed: true,
-                                      showIfOpened: true,
-                                      onTap: () => print('tn'),
-                                      // duration: const Duration(milliseconds: 500),
-                                    ),
+                              if (isFocused)
+                                FloatingSearchBarAction.back()
+                              else
+                                FloatingSearchBarAction.icon(
+                                  icon: SvgPicture.asset(
+                                    'assets/icons/search.svg',
+                                    color: Colors.grey,
+                                  ),
+                                  // showIfClosed: true,
+                                  showIfOpened: true,
+                                  onTap: () => print('tn'),
+                                  // duration: const Duration(milliseconds: 500),
+                                ),
                             ],
                             actions: [
                               if (!isQueryEmpty)
@@ -403,10 +408,11 @@ class _SearchScreenState extends State<SearchScreen> {
                                       builder: (context, query, _) {
                                         final isEmpty = query.isEmpty;
 
-                                        return CircularButton(
+                                        return IconButton(
                                           tooltip: 'Back',
-                                          size: 24,
-                                          icon: Icon(Icons.clear),
+                                          // size: 20,
+
+                                          icon: Icon(Icons.cancel),
                                           onPressed: () {
                                             final bar = FloatingSearchAppBar.of(
                                                 context);

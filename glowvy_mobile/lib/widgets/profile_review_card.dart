@@ -18,7 +18,7 @@ import '../models/review.dart';
 import 'image_galery.dart';
 
 class UserReviewCard extends StatefulWidget {
-  UserReviewCard({this.review, this.context});
+  const UserReviewCard({this.review, this.context});
 
   final Review review;
   // final Product product;
@@ -183,7 +183,7 @@ class _UserReviewCardState extends State<UserReviewCard> {
           //   color: kDefaultBackground,
           // ),
           Padding(
-            padding: EdgeInsets.only(left: 8.0, top: 15, bottom: 36),
+            padding: const EdgeInsets.only(left: 8.0, top: 15, bottom: 36),
             child: Text(
               'helpful (${widget.review.likeCount})',
               style: textTheme.caption2.copyWith(color: kSecondaryGrey),

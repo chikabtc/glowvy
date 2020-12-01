@@ -12,6 +12,12 @@ User _$UserFromJson(Map<String, dynamic> json) {
     email: json['email'] as String,
     picture: json['picture'] as String,
     skinType: json['skin_type'] as String,
+    birthYear: json['birth_year'] as int,
+    gender: json['gender'] as String,
+    viewedProducts: (json['viewed_products'] as List)
+        ?.map((e) =>
+            e == null ? null : Product.fromJson(e as Map<String, dynamic>))
+        ?.toList(),
     address: json['address'] == null
         ? null
         : Address.fromJson(json['address'] as Map<String, dynamic>),
@@ -23,10 +29,8 @@ User _$UserFromJson(Map<String, dynamic> json) {
     ..displayName = json['display_name'] as String
     ..firstName = json['first_name'] as String
     ..lastName = json['last_name'] as String
-    ..gender = json['gender'] as String
     ..baumannType = json['baumann_type'] as String
     ..skinTypeId = json['skin_type_id'] as int
-    ..birthYear = json['birth_year'] as int
     ..age = json['age'] as int
     ..baumannScores = json['baumann_scores'] == null
         ? null
@@ -57,6 +61,7 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'baumann_scores': instance.baumannScores,
       'address': instance.address,
       'addresses': instance.addresses,
+      'viewed_products': instance.viewedProducts,
       'review_draft': instance.reviewDraft,
       'billing': instance.billing,
     };

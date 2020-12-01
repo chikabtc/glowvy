@@ -11,7 +11,7 @@ description: Mobile commerce app by Flutter
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 2.0.0+157
+version: 2.0.0+158
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -24,7 +24,10 @@ dependencies:
   http: ^0.12.2
   flutter_rating_bar: ^3.0.1+1
   implicitly_animated_reorderable_list: ^0.2.5
-  material_floating_search_bar: ^0.2.3
+  material_floating_search_bar: 
+    git: 
+      url: https://github.com/HongbeomPark/material_floating_search_bar
+
   sliding_sheet: ^0.3.7
   intl: ^0.16.1
   firebase_analytics: ^5.0.14
@@ -32,6 +35,7 @@ dependencies:
   firebase_core: "^0.5.0+1"
   cloud_firestore: "^0.14.0+2"
   path: any
+  flutter_picker: ^1.1.5
   firebase_storage: ^5.0.1
   pedantic: ^1.9.0
   smooth_page_indicator: ^0.1.4
@@ -91,6 +95,8 @@ flutter_icons:
 flutter_native_splash:
   image: assets/icons/3.0x/launch-logo.png
   color: "7CE5C6"
+flutter_picker:
+  git: git://github.com/yangyxd/flutter_picker.git
 
 # For information on the generic Dart part of this file, see the
 # following page: https://www.dartlang.org/tools/pub/pubspec

@@ -113,12 +113,14 @@ class CustomTextField extends StatefulWidget {
       this.validator,
       this.isReadOnly = false,
       this.obscureText = false,
+      this.height = 48,
       this.autoFocus});
   Function onTextChange;
   String initialValue;
   bool obscureText;
   Function validator;
   bool isReadOnly;
+  double height;
 
   String hintText;
   bool autoFocus;
@@ -146,11 +148,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
     final screenSize = MediaQuery.of(context).size;
 
     return Container(
-      height: 52,
+      height: widget.height,
       width: screenSize.width,
       color: kWhite,
       child: Form(
         child: TextFormField(
+          textAlignVertical: TextAlignVertical.center,
           autofocus: widget.autoFocus ?? true,
           keyboardType: widget.keyboardType ?? TextInputType.text,
           controller: _textFieldController,
@@ -165,7 +168,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
           },
           readOnly: widget.isReadOnly,
           decoration: kTextField.copyWith(
-            contentPadding: EdgeInsets.only(left: 16, top: 16),
+            contentPadding: EdgeInsets.only(
+              left: 16,
+            ),
             hintText: widget.hintText,
             suffixIcon: (text == null || widget.isReadOnly)
                 ? IconButton(

@@ -46,8 +46,7 @@ class CustomTextFormField extends StatelessWidget {
           controller: nameController,
           cursorColor: kPinkAccent,
           style: kBaseTextStyle.copyWith(
-              fontSize: 15 * kSizeConfig.textMultiplier,
-              fontWeight: FontWeight.w600),
+              fontSize: 15, fontWeight: FontWeight.w600),
           decoration: InputDecoration(
               hintText: hintText,
               enabledBorder: UnderlineInputBorder(

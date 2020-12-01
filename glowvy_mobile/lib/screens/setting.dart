@@ -64,6 +64,7 @@ class SettingPageState extends State<SettingPage>
                 SettingCard(
                   color: kWhite,
                   title: 'password',
+                  showDivider: false,
                   // trailingText: ,
                   onTap: () => Navigator.push(
                       context,

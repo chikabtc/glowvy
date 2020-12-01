@@ -184,6 +184,7 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
                           buttonTitle: S.of(context).signInWithEmail,
                           buttonController: _loginButtonController.view,
                           onTap: () {
+                            FocusScope.of(context).unfocus();
                             _loginEmail(context);
                           },
                         ),

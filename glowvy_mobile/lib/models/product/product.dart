@@ -24,6 +24,7 @@ class Product {
   List<String> tags;
   int salePrice;
   int price;
+  int createdAt;
   double sprice;
   double officialPrice;
 
@@ -46,6 +47,7 @@ class Product {
     this.volume,
     this.sname,
     this.description,
+    this.createdAt,
     this.sdescription,
     this.descImages,
     this.ingredients,
@@ -78,7 +80,8 @@ class Product {
   Map<String, dynamic> toJson() => _$ProductToJson(this);
 
   @override
-  String toString() => 'Product { id: $sid name: $name }';
+  String toString() =>
+      'Product { id: $sid name: $name price $sprice reviewCount: ${reviewMetas.all.reviewCount} ranking_score: ${reviewMetas.all.rankingScore}';
 }
 
 class ProductVariation {

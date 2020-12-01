@@ -1,3 +1,4 @@
+import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/product/businessInfo.dart';
 import 'package:Dimodo/models/product/tag.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -17,10 +18,11 @@ class Brand {
   int id;
   String image;
   String name;
-  String operationTime;
   List<Tag> tags;
   String telephone;
   String text;
+  List<Category> categories;
+
   Type type;
 
   Brand({
@@ -33,7 +35,6 @@ class Brand {
     this.id,
     this.image,
     this.name,
-    this.operationTime,
     this.tags,
     this.telephone,
     this.text,
