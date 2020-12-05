@@ -1,3 +1,4 @@
+/* eslint-disable no-prototype-builtins */
 import algoliasearch = require('algoliasearch');
 
 const fs = require('fs');
@@ -17,6 +18,7 @@ export function uploadJsonFiles(db: any, file: any, fileName: String) {
     }
 
     file.forEach((obj: any) => {
+      obj.created_at = Date.now();
       const { ingredients } = obj;
       delete obj.ingredients;
       // console.log(obj)
@@ -35,4 +37,103 @@ export function uploadJsonFiles(db: any, file: any, fileName: String) {
     });
     return 0;
   });
+}
+
+export async function updateAvailableBrandCategories(db, product): Promise<void> {
+  // 1. get the brand doc
+  const brandSnap = await db.collection('brands').where('id', '==', product.brand.id).get();
+  const brandDoc = brandSnap.docs[0];
+  const brand = brandDoc.data();
+  console.log(`brand name ${brand.name}`);
+  const firstCateIds = [] as any;
+  const secondCateIds = [] as any;
+  const thirdCateIds = [] as any;
+
+  const prodCate = product.category;
+  if (brand.hasOwnProperty('categories')) {
+    const brandCategories = brand.categories;
+    for (const brandCate of brand.categories) {
+      firstCateIds.push(brandCate.id);
+      for (const secondCate of brandCate.second_categories) {
+        secondCateIds.push(secondCate.id);
+        for (const thirdCate of secondCate.third_categories) {
+          thirdCateIds.push(thirdCate.id);
+        }
+      }
+    }
+    console.log(`${firstCateIds}\n${secondCateIds}\n${thirdCateIds}`);
+    // 1. if the first category id is not included, then add the whole category
+    if (!firstCateIds.includes(prodCate.first_category_id)) {
+      console.log('first category missing');
+
+      const category = {
+        id: prodCate.first_category_id,
+        name: prodCate.first_category_name,
+        second_categories: [{
+          id: prodCate.second_category_id,
+          name: prodCate.second_category_name,
+          third_categories: [{
+            id: prodCate.third_category_id,
+            name: prodCate.third_category_name,
+          }],
+        }],
+      };
+      brandCategories.push(category);
+    } else if (!secondCateIds.includes(prodCate.second_category_id)) {
+      console.log('second category missing');
+      const firstCateIndex = brandCategories.findIndex((cate) => cate.id === prodCate.first_category_id);
+      console.log(firstCateIndex);
+      const firstCate = brandCategories[firstCateIndex];
+      console.log(firstCate);
+
+      firstCate.second_categories.push({
+        id: prodCate.second_category_id,
+        name: prodCate.second_category_name,
+        third_categories: [{
+          id: prodCate.third_category_id,
+          name: prodCate.third_category_name,
+        }],
+      });
+
+      brandCategories[firstCateIndex] = firstCate;
+    } else if (!thirdCateIds.includes(prodCate.third_category_id)) {
+      console.log('third category missing');
+
+      const firstCateIndex = brandCategories.findIndex((cate) => cate.id === prodCate.first_category_id);
+      const firstCate = brandCategories[firstCateIndex];
+      const secondCateIndex = firstCate.second_categories.findIndex((cate) => cate.id === prodCate.second_category_id);
+      const secondCate = brandCategories[firstCateIndex].second_categories[secondCateIndex];
+
+      secondCate.third_categories.push({
+        id: prodCate.third_category_id,
+        name: prodCate.third_category_name,
+      });
+      firstCate.second_categories[secondCateIndex] = secondCate;
+      brandCategories[firstCateIndex] = firstCate;
+    }
+    brandDoc.ref.update({
+      categories: brandCategories,
+    }).then(() => console.log('added category'));
+  } else {
+    console.log('no categories available on the brand doc');
+    brand.categories = [];
+    const category = {
+      id: prodCate.first_category_id,
+      name: prodCate.first_category_name,
+      second_categories: [{
+        id: prodCate.second_category_id,
+        name: prodCate.second_category_name,
+        third_categories: [{
+          id: prodCate.third_category_id,
+          name: prodCate.third_category_name,
+        }],
+      }],
+    };
+    const categories = [] as any;
+    categories.push(category);
+    console.log(categories);
+    brandDoc.ref.update({
+      categories,
+    }).then(() => console.log('added category'));
+  }
 }

@@ -1,3 +1,5 @@
+/* eslint-disable no-prototype-builtins */
+/* eslint-disable no-var */
 /* eslint-disable no-console */
 
 import { WebClient } from '@slack/web-api';
@@ -8,7 +10,9 @@ import admin = require('firebase-admin');
 import algolia = require('algoliasearch');
 import math = require('../node_modules/@types/mathjs');
 import rankingHelper = require('./helpers/ranking');
+import utils = require('./helpers/utils')
 
+const crypto = require('crypto');
 const serviceAccount = require('../lib/service_key.json');
 
 const client = algolia.default('50G6MO803G', 'ab5eb7ec7552bb7865f3819a2b08f462');
@@ -62,43 +66,6 @@ exports.onCosmeticsRequest = functions.region('asia-east2').firestore
     // send slack notification about this new product
   });
 
-// exports.userRequest = functions.region('asia-east2').firestore
-//   .document('/users/{userId}/{cosmetics_requests}/{documentId}')
-//   .onCreate(async (snap: functions.firestore.QueryDocumentSnapshot, context: any) => {
-//     const requestedCosmetics = snap.data();
-//     const web = new WebClient(functions.config().slack.token);
-//     try {
-//       // Use the `chat.postMessage` method to send a message from this app
-//       await web.chat.postMessage({
-//         channel: 'C01D94HK7EU',
-//         text: `New cosmetics has been requested!
-//         name: ${requestedCosmetics?.name}
-//         category: ${requestedCosmetics?.category}
-//         brand: ${requestedCosmetics?.brand}\n`,
-//       });
-//     } catch (error) {
-//       console.log(error);
-//     }
-//     // send slack notification about this new product
-//   });
-
-// exports.getProducts = functions.https.onRequest(async (req, res) => {
-//   await utils.uploadJsonFiles(db, productsFile, 'products');
-//   res.json({ result: 'added products' });
-
-//   // Grab the text parameter.
-
-//   // Push the new message into Cloud Firestore using the Firebase Admin SDK.
-// });
-// exports.getReviews = functions.https.onRequest(async (req, res) => {
-//   await utils.uploadJsonFiles(db, reviewsFile, 'reviews');
-//   res.json({ result: 'added products' });
-
-//   // Grab the text parameter.
-
-//   // Push the new message into Cloud Firestore using the Firebase Admin SDK.
-// });
-
 exports.algoliaProductSync = functions.region('asia-east2')
   .firestore.document('products/{documentId}').onWrite(async (change, _context) => {
     const oldData = change.before;
@@ -125,6 +92,7 @@ exports.algoliaProductSync = functions.region('asia-east2')
 
     if (!oldData.exists && newData.exists) {
       console.log('product is created');
+      utils.updateAvailableBrandCategories(db, product);
       return cosmeticsIndex.saveObject(algoliaRecrod);
       // deleting
     } if (!newData.exists && oldData.exists) {
@@ -221,3 +189,67 @@ exports.onReviewUpdate = functions.region('asia-east2')
     }
     // return cosmeticsIndex.saveObject({ objectID, ...algoliaRecrod });
   });
+function parsedSignedRequest(signedRequest) {
+  // 1. parse the signedRequest
+  const parts = signedRequest.split('.');
+  const sig = window.atob(parts[0]);
+  const payload = window.atob(parts[1]);
+  console.log(sig, JSON.parse(payload));
+  const appSecret = '67d922662897913f932b417e0b44f13b';
+  // TODO(parker): might need to decode the data before passing them into hmac decoder
+
+  // 2. confirm the signature
+  const expectedSig = crypto.createHmac('sha256', appSecret).update(payload).digest().toString('base64');
+  if (sig !== expectedSig) {
+    console.log('Bad Signed JSON signature!');
+    return null;
+  }
+
+  // $expected_sig = hash_hmac('sha256', $payload, $secret, $raw = true);
+
+  return payload;
+}
+
+// exports.onDataDeletionRequest = functions.region('asia-east2').https.onRequest(async (req, res) => {
+//   // 1. parse the signed request and get the userID
+//   const signedRequest = req;
+//   const data = parsedSignedRequest(signedRequest);
+//   const userId = data.user_id;
+
+//   // 2. delete the user info on the firestore
+//   const snap = await db
+//     .collection('users').where('facebook_user_id', '==', userId).get();
+//   if (snap?.empty) {
+//     console.log('no matching documents');
+//     return;
+//   }
+
+//   const userDoc = snap.docs[0];
+//   const user = userDoc.data();
+
+//   const confirmationCode = user.uid; // unique code for the deletion request
+//   const statusUrl = `https://www.<your_website>.com/deletion?id=${confirmationCode}`; //
+//   userDoc.ref.delete().then(() => console.log('deleted facebook user'));
+
+//   // URL for checking the user status on firestore && URL to track the deletion
+
+//   res.json({
+//     url: statusUrl,
+//     confirmationCode,
+//   });
+// });
+
+exports.checkDeletionRequestStatus = functions.region('asia-east2').https.onRequest(async (req, res) => {
+  const uid = req.query.id;
+  const snap = await db
+    .collection('users').where('uid', '==', uid).get();
+  var statusMessage = '';
+  if (snap?.empty) {
+    statusMessage = "it's successfully deleted";
+  } else {
+    statusMessage = 'deletion request has failed. Please contact Glowvy';
+  }
+  res.json({
+    status: statusMessage,
+  });
+});
