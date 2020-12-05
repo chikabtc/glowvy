@@ -207,37 +207,39 @@ function parsedSignedRequest(signedRequest) {
 
   // $expected_sig = hash_hmac('sha256', $payload, $secret, $raw = true);
 
-  return payload;
+  return JSON.parse(payload);
 }
 
-// exports.onDataDeletionRequest = functions.region('asia-east2').https.onRequest(async (req, res) => {
-//   // 1. parse the signed request and get the userID
-//   const signedRequest = req;
-//   const data = parsedSignedRequest(signedRequest);
-//   const userId = data.user_id;
+exports.onDataDeletionRequest = functions.region('asia-east2').https.onRequest(async (req, res) => {
+  // 1. parse the signed request and get the userID
+  const signedRequest = req;
+  const data = parsedSignedRequest(signedRequest);
+  const userId = data?.user_id;
 
-//   // 2. delete the user info on the firestore
-//   const snap = await db
-//     .collection('users').where('facebook_user_id', '==', userId).get();
-//   if (snap?.empty) {
-//     console.log('no matching documents');
-//     return;
-//   }
+  // 2. delete the user info on the firestore
+  const snap = await db
+    .collection('users').where('facebook_user_id', '==', userId).get();
+  if (snap?.empty) {
+    console.log('no matching documents');
+    return;
+  }
 
-//   const userDoc = snap.docs[0];
-//   const user = userDoc.data();
+  const userDoc = snap.docs[0];
+  const user = userDoc.data();
 
-//   const confirmationCode = user.uid; // unique code for the deletion request
-//   const statusUrl = `https://www.<your_website>.com/deletion?id=${confirmationCode}`; //
-//   userDoc.ref.delete().then(() => console.log('deleted facebook user'));
+  const confirmationCode = user.uid; // unique code for the deletion request
 
-//   // URL for checking the user status on firestore && URL to track the deletion
+  // https://asia-east2-glowvy-b6cf4.cloudfunctions.net/checkDeletionRequestStatus?id=yyCpqGf5PRb9VGyoL6pdJDdl3fH3
+  const statusUrl = `https://asia-east2-glowvy-b6cf4.cloudfunctions.net/checkDeletionRequestStatus?id${confirmationCode}`; //
+  userDoc.ref.delete().then(() => console.log('deleted facebook user'));
 
-//   res.json({
-//     url: statusUrl,
-//     confirmationCode,
-//   });
-// });
+  // URL for checking the user status on firestore && URL to track the deletion
+
+  res.json({
+    url: statusUrl,
+    confirmationCode,
+  });
+});
 
 exports.checkDeletionRequestStatus = functions.region('asia-east2').https.onRequest(async (req, res) => {
   const uid = req.query.id;
