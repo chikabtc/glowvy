@@ -13,7 +13,6 @@ import 'package:Dimodo/screens/feedback_center.dart';
 import 'package:Dimodo/screens/write_review_screen.dart';
 import 'package:Dimodo/widgets/baumann_quiz.dart';
 import 'package:Dimodo/widgets/profile_review_card.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_auth/firebase_auth.dart' as b;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,7 +23,7 @@ class ProfilePage extends StatefulWidget {
   final User user;
   final VoidCallback onLogout;
 
-  ProfilePage({this.user, this.onLogout});
+  const ProfilePage({this.user, this.onLogout});
 
   @override
   State<StatefulWidget> createState() {
@@ -64,8 +63,6 @@ class ProfilePageState extends State<ProfilePage>
     SystemChrome.setSystemUIOverlayStyle(
         const SystemUiOverlayStyle(statusBarColor: kDefaultBackground));
     return Scaffold(
-
-        // extendBodyBehindAppBar: true,
         body: Consumer<UserModel>(builder: (context, userModel, child) {
       final user = userModel.user;
       return !userModel.isLoggedIn
@@ -73,25 +70,25 @@ class ProfilePageState extends State<ProfilePage>
           : Container(
               color: kWhite,
               child: ListView(
-                physics: ClampingScrollPhysics(),
                 children: <Widget>[
                   Container(
-                    padding: EdgeInsets.only(left: 16, bottom: 14, top: 84),
+                    padding:
+                        const EdgeInsets.only(left: 16, bottom: 14, top: 84),
                     color: Colors.white,
                     child: Row(children: <Widget>[
-                      user.picture == null
-                          ? Image.asset(
-                              'assets/icons/default-avatar.png',
-                            )
-                          : ClipOval(
-                              child: CachedNetworkImage(
-                                imageUrl: user.picture +
-                                    '?v=${ValueKey(Random().nextInt(100))}',
-                                width: 64,
-                                height: 64,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
+                      if (user.picture == null)
+                        Image.asset(
+                          'assets/icons/default-avatar.png',
+                        )
+                      else
+                        ClipOval(
+                            child: Image.network(
+                          user.picture +
+                              '?v=${ValueKey(Random().nextInt(100))}',
+                          width: 64,
+                          height: 64,
+                          fit: BoxFit.cover,
+                        )),
                       Container(width: 16),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,7 +103,8 @@ class ProfilePageState extends State<ProfilePage>
                             onTap: () => Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => EditProfilePage())),
+                                    builder: (context) =>
+                                        const EditProfilePage())),
                             child: Container(
                               width: screenSize.width - 122,
                               child: Row(
@@ -117,12 +115,12 @@ class ProfilePageState extends State<ProfilePage>
                                     decoration: BoxDecoration(
                                       border: Border.all(
                                           width: 0.7, color: kSecondaryGrey),
-                                      borderRadius: BorderRadius.all(
+                                      borderRadius: const BorderRadius.all(
                                           Radius.circular(
                                               8.0) //                 <--- border radius here
                                           ),
                                     ),
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                         left: 10, right: 10, top: 2, bottom: 2),
                                     child: Text('Edit Profile',
                                         style: textTheme.caption2.copyWith(
@@ -299,11 +297,11 @@ class ProfilePageState extends State<ProfilePage>
                                             builder: (context) =>
                                                 WriteReviewScreen())),
                                     child: Container(
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                           color: kSecondaryOrange,
                                           borderRadius: BorderRadius.all(
                                               Radius.circular(20))),
-                                      padding: EdgeInsets.only(
+                                      padding: const EdgeInsets.only(
                                           left: 16,
                                           right: 16,
                                           top: 9,
@@ -354,7 +352,7 @@ class ProfilePageState extends State<ProfilePage>
                                         BorderRadius.all(Radius.circular(20))),
                                 width: screenSize.width,
                                 height: 48,
-                                padding: EdgeInsets.only(
+                                padding: const EdgeInsets.only(
                                     left: 15, right: 15, top: 9, bottom: 9),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,

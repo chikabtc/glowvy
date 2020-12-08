@@ -27,14 +27,14 @@ class CosmeticsRequestBtn extends StatelessWidget {
                             ? CosmeticsRequestScreen()
                             : LoginScreen())),
             child: Padding(
-              padding: EdgeInsets.only(left: 20.0, right: 20, bottom: 30),
+              padding: const EdgeInsets.only(left: 20.0, right: 20, bottom: 30),
               child: Container(
                 height: 72,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                     color: kSecondaryOrange),
-                padding:
-                    EdgeInsets.only(left: 16, right: 30, top: 14, bottom: 14),
+                padding: const EdgeInsets.only(
+                    left: 16, right: 16, top: 14, bottom: 14),
                 child: Row(
                   children: <Widget>[
                     Column(

@@ -17,7 +17,6 @@ class AddressModel with ChangeNotifier {
 
   Future setProvinces() async {
     try {
-      print('fail to getProvinces');
       const provincePath = 'lib/common/provinces.json';
       final provinceJsonString = await rootBundle.loadString(provincePath);
       final provincesJson = convert.jsonDecode(provinceJsonString);

@@ -14,7 +14,7 @@ description: Mobile commerce app by Flutter
 version: 2.0.0+158
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.8.0 <3.0.0"
 
 dependencies:
   logs:
@@ -23,12 +23,14 @@ dependencies:
     sdk: flutter
   http: ^0.12.2
   flutter_rating_bar: ^3.0.1+1
+  firebase_crashlytics: "^0.2.4"
   implicitly_animated_reorderable_list: ^0.2.5
   material_floating_search_bar: 
     git: 
       url: https://github.com/HongbeomPark/material_floating_search_bar
 
   sliding_sheet: ^0.3.7
+  infinite_scroll_pagination: ^2.2.0
   intl: ^0.16.1
   firebase_analytics: ^5.0.14
   firebase_performance: ^0.4.0
@@ -37,6 +39,7 @@ dependencies:
   path: any
   flutter_picker: ^1.1.5
   firebase_storage: ^5.0.1
+  crypto: ^2.1.5
   pedantic: ^1.9.0
   smooth_page_indicator: ^0.1.4
   firebase_auth: "^0.18.1+2"
@@ -52,7 +55,7 @@ dependencies:
   after_layout: 1.0.7+2
   json_annotation: ^3.0.1
   font_awesome_flutter: 8.5.0
-  vector_math: 2.0.8
+  vector_math: any
   timeago: 2.0.22
   share: 0.6.3+5
   validate: 1.7.0

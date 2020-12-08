@@ -23,7 +23,6 @@ class Review {
     this.scontent,
     this.rating,
     this.user,
-    // this.product,
     this.images,
   });
   // @JsonKey(fromJson: _fromJson, toJson: _toJson)

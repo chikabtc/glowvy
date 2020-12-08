@@ -12,7 +12,6 @@ import 'package:Dimodo/screens/edit_name_page.dart';
 import 'package:Dimodo/screens/edit_region_page.dart';
 import 'package:Dimodo/screens/setting.dart';
 import 'package:Dimodo/widgets/setting_card.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -79,8 +78,8 @@ class EditProfilePageState extends State<EditProfilePage>
                             'assets/icons/default-avatar.png',
                           )
                         : ClipOval(
-                            child: CachedNetworkImage(
-                              imageUrl: user.picture +
+                            child: Image.network(
+                              user.picture +
                                   '?v=${ValueKey(Random().nextInt(100))}',
                               key: ValueKey(Random().nextInt(100)),
                               width: 64,
@@ -125,7 +124,8 @@ class EditProfilePageState extends State<EditProfilePage>
                 SettingCard(
                   color: kWhite,
                   title: 'Birthday',
-                  trailingText: user.birthYear.toString(),
+                  trailingText:
+                      user.birthYear != null ? user.birthYear.toString() : '',
                   onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute<void>(
@@ -133,10 +133,9 @@ class EditProfilePageState extends State<EditProfilePage>
                               EditBirthyearPage())),
                 ),
                 SettingCard(
-                  color: kWhite,
-                  title: 'Skin Type',
-                  trailingText: userModel.user.fullName,
-                ),
+                    color: kWhite,
+                    title: 'Skin Type',
+                    trailingText: user.skinType ?? ''),
                 SettingCard(
                   color: kWhite,
                   title: 'Skin Issues',

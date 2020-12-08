@@ -32,6 +32,8 @@ class SettingPageState extends State<SettingPage>
 
   Future logout() async {
     await userModel.logout();
+    // TODO(parker): this causes the app to crash
+    //go to the before signup page
     Navigator.of(context).popUntil((route) => route.isFirst);
   }
 
@@ -50,14 +52,13 @@ class SettingPageState extends State<SettingPage>
           var user = userModel.user;
           return Container(
             child: ListView(
-              physics: ClampingScrollPhysics(),
               children: <Widget>[
                 // SettingCard(
                 //   color: kWhite,
                 //   title: S.of(context).email,
                 //   trailingText: user.email,
                 //   onTap: () => Navigator.push(
-                //       context,
+                //       context,ro
                 //       MaterialPageRoute<void>(
                 //           builder: (BuildContext context) => EditEmailPage())),
                 // ),

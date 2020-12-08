@@ -37,7 +37,7 @@ class EditRegionPageState extends State<EditRegionPage>
     userModel = Provider.of<UserModel>(context, listen: false);
     addressModel = Provider.of<AddressModel>(context, listen: false);
     _doneButtonController = AnimationController(
-        duration: Duration(milliseconds: 3000), vsync: this);
+        duration: const Duration(milliseconds: 3000), vsync: this);
     province = userModel.user.address.province;
   }
 

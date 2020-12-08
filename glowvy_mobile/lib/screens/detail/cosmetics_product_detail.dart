@@ -24,6 +24,7 @@ import '../../models/product/product.dart';
 import '../../models/product/productModel.dart';
 import 'cosmetics_product_description.dart';
 
+// ignore: must_be_immutable
 class CosmeticsProductDetail extends StatefulWidget {
   Product product;
   int rank;
@@ -40,7 +41,6 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
   int totalCount = 0;
   String hazardLevel;
   List<Review> reviews = [];
-  int offset = 0;
   int limit = 3;
   Product product;
   ProductModel productModel;
@@ -59,7 +59,6 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
           reviews = onValue;
         });
         totalCount = product.reviewMetas.all.reviewCount;
-        offset += 3;
       }
     });
     productModel.getWholeProduct(product.sid).then((onValue) {
@@ -67,7 +66,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
         setState(() {
           product = onValue;
           isLoading = false;
-          print('hazardScore: ${product.hazardScore}');
+          // print('hazardScore: ${product.hazardScore}');
         });
       }
     });
@@ -86,7 +85,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
         reviews.add(element);
       });
     });
-    offset += 3;
+
     return false;
   }
 
@@ -132,7 +131,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
 
     Route _createRoute() {
       var thumbnailList = [product.thumbnail];
-      if (product.descImages.isNotEmpty) {
+      if (product.descImages != null) {
         thumbnailList += product.descImages;
       }
       return PageRouteBuilder(
@@ -426,7 +425,7 @@ class _CosmeticsProductDetailState extends State<CosmeticsProductDetail> {
                                           MaterialPageRoute(
                                               builder: (context) =>
                                                   IngredientScreen(
-                                                    widget.product.ingredients,
+                                                    product.ingredients,
                                                     hazardLevel,
                                                   ))),
                                       child: Container(

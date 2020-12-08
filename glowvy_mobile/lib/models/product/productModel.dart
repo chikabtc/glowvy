@@ -1,45 +1,41 @@
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/ingredient.dart';
 import 'package:Dimodo/models/product/generating_product_list.dart';
 import 'package:Dimodo/models/product/one_item_generating_list.dart';
 import 'package:Dimodo/models/review.dart';
-import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
+import 'package:Dimodo/widgets/product/list_page.dart';
+import 'package:Dimodo/widgets/product/paginated_product_list.dart';
+import 'package:Dimodo/widgets/product/products_list_view.dart';
 import 'package:algolia/algolia.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as b;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:localstorage/localstorage.dart';
 
 import '../../common/constants.dart';
 import '../product_category.dart';
 import 'product.dart';
 
-class Sorting {
-  static String low = 'low';
-  static String high = 'high';
-  static String rank = 'rank';
+class PagesInfo {
+  int algoliaPage = 0;
+  DocumentSnapshot lastReviewSnap;
+  DocumentSnapshot lastBrandProdutSnap;
+  DocumentSnapshot lastCategoryProductSnap;
 }
 
 class ProductModel with ChangeNotifier {
   List<Product> products;
   FirebaseFirestore db = FirebaseFirestore.instance;
   b.User firebaseUser = b.FirebaseAuth.instance.currentUser;
-  Map<String, dynamic> cosmeticsFilter;
-  DocumentSnapshot lastReviewSnap;
+  PagesInfo pagesInfo = PagesInfo();
 
   static Algolia algolia = const Algolia.init(
     applicationId: '50G6MO803G',
     apiKey: 'ab5eb7ec7552bb7865f3819a2b08f462',
   );
-
-  //list products for products screen
-  bool isEnd = false;
-  int offset = 0;
-  int limit = 80;
-  String highToLow = '-sale_price';
-  String lowToHigh = 'sale_price';
-  bool isAscending = false;
 
   void saveProducts(Map<String, dynamic> data) async {
     final storage = LocalStorage('Dimodo');
@@ -225,18 +221,40 @@ class ProductModel with ChangeNotifier {
   //   }
   // }
   //brand id + category id
-  Future<List<Product>> getProductsByBrand(id) async {
+  void clearPagesInfo() {
+    pagesInfo = PagesInfo();
+    pagesInfo.algoliaPage = 0;
+  }
+
+  Future<List<Product>> getProductsByBrand(id,
+      {sortMethod = 'review_metas.all.ranking_score'}) async {
     print('brand id: ${id}');
     try {
+      var sortBy = sortMethod;
       var list = <Product>[];
-      final productSnapshot = await FirebaseFirestore.instance
-          .collection('products')
-          .where('brand.id', isEqualTo: id)
-          .limit(15)
-          .get();
-      print(productSnapshot.docs.length);
+      QuerySnapshot productSnapshot;
+
+      if (pagesInfo.lastBrandProdutSnap == null) {
+        print('productsnapshot');
+        productSnapshot = await FirebaseFirestore.instance
+            .collection('products')
+            .where('brand.id', isEqualTo: id)
+            .limit(10)
+            // .orderBy('review_metas.all.ranking_score', descending: true)
+            .get();
+      } else {
+        print('productsnapshot');
+
+        productSnapshot = await FirebaseFirestore.instance
+            .collection('products')
+            .where('brand.id', isEqualTo: id)
+            .startAfterDocument(pagesInfo.lastBrandProdutSnap)
+            .limit(10)
+            .get();
+      }
 
       if (productSnapshot.docs.isNotEmpty) {
+        pagesInfo.lastBrandProdutSnap = productSnapshot.docs.last;
         for (final doc in productSnapshot.docs) {
           list.add(Product.fromJson(doc.data()));
         }
@@ -379,11 +397,12 @@ class ProductModel with ChangeNotifier {
     }
   }
 
-  Future<List<Product>> getProductsByCategoryId(categoryId,
+  Future<ListPage<Product>> getProductsByCategoryId(categoryId,
       {isFirstCate = false,
       isSecondCate = false,
       isThirdCate = false,
       orderBy = 'review_metas.all.average_rating'}) async {
+    print('getProductsByCategoryId: $categoryId');
     var categoryField = 'third_category_id';
     if (isFirstCate) {
       categoryField = 'first_category_id';
@@ -392,22 +411,37 @@ class ProductModel with ChangeNotifier {
     }
 
     try {
-      List<Product> list = [];
-      final productSnapshot = await FirebaseFirestore.instance
-          .collection('products')
-          .where('category.$categoryField', isEqualTo: categoryId)
-          .limit(15)
-          .get();
-      print(productSnapshot.docs.length);
+      var listPage = ListPage(grandTotalCount: 0, itemList: <Product>[]);
+      var list = <Product>[];
+      QuerySnapshot productSnapshot;
+      if (pagesInfo.lastCategoryProductSnap != null) {
+        productSnapshot = await FirebaseFirestore.instance
+            .collection('products')
+            .where('category.$categoryField', isEqualTo: categoryId)
+            .startAfterDocument(pagesInfo.lastCategoryProductSnap)
+            .limit(15)
+            .get();
+      } else {
+        print('no last nsap');
+
+        productSnapshot = await FirebaseFirestore.instance
+            .collection('products')
+            .where('category.$categoryField', isEqualTo: categoryId)
+            .limit(15)
+            .get();
+      }
 
       if (productSnapshot.docs.isNotEmpty) {
         for (final doc in productSnapshot.docs) {
           list.add(Product.fromJson(doc.data()));
         }
         list = sortByRating(list);
-        return list;
+        listPage.itemList = list;
+        pagesInfo.lastCategoryProductSnap = productSnapshot.docs.last;
+        listPage.grandTotalCount = 0;
+        return listPage;
       } else {
-        return list;
+        return listPage;
       }
     } catch (e) {
       print('Error: $e');
@@ -415,29 +449,34 @@ class ProductModel with ChangeNotifier {
     }
   }
 
-  Future<List<Product>> getProductsBySearch({String searchText}) async {
+  Future<ListPage<Product>> getProductsBySearch(String searchText) async {
+    print('searching products');
     try {
-      List<Product> list = <Product>[];
+      var page = ListPage(grandTotalCount: 0, itemList: <Product>[]);
 
-      if (searchText.isEmpty) {
-        return list;
-      }
-      final query = algolia.instance.index('cosmetics').search(searchText);
+      assert(searchText.isNotEmpty);
+
+      final querySnap = await algolia.instance
+          .index('cosmetics')
+          .setHitsPerPage(1000)
+          .search(searchText)
+          .getObjects();
 
       // Get Result/Objects
-      final querySnap = await query.getObjects();
       final results = querySnap.hits;
 
       print('Hits count: ${querySnap.hits.length}');
 
       if (querySnap.hits.isEmpty) {
-        return list;
+        print('passing empty page');
+        return page;
       } else {
+        pagesInfo.algoliaPage++;
+        page.grandTotalCount = querySnap.hits.length;
         results.forEach((item) {
-          // print('item :${item.data}');
-          list.add(Product.fromJson(item.data));
+          page.itemList.add(Product.fromJson(item.data));
         });
-        return list;
+        return page;
       }
     } catch (e) {
       print('Error: $e');
@@ -454,8 +493,8 @@ class ProductModel with ChangeNotifier {
           .collection('reviews')
           .where('product.sid', isEqualTo: productId)
           .orderBy('created_at');
-      if (lastReviewSnap != null) {
-        query.startAfterDocument(lastReviewSnap).limit(15);
+      if (pagesInfo.lastReviewSnap != null) {
+        query.startAfterDocument(pagesInfo.lastReviewSnap).limit(15);
       } else {
         query.limit(15);
       }
@@ -470,7 +509,7 @@ class ProductModel with ChangeNotifier {
 
       print(snapshot.docs.length);
       if (snapshot.docs.isNotEmpty) {
-        lastReviewSnap = snapshot.docs.last;
+        pagesInfo.lastReviewSnap = snapshot.docs.last;
       }
 
       if (snapshot.docs.isNotEmpty) {
@@ -483,10 +522,6 @@ class ProductModel with ChangeNotifier {
       }
     } catch (err) {
       throw (err);
-      // return list;
-
-      print(err);
-      return list;
     }
   }
 
@@ -547,15 +582,52 @@ class ProductModel with ChangeNotifier {
       future: future,
       builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
         products = snapshot.data;
-        return CosmeticsProductList(
-          products: snapshot.data,
-          onLoadMore: onLoadMore,
-          showFilter: showFiler,
-          isFromReviewSearch: isFromReviewPage,
-          disableScrolling: true,
-          showRank: showRank,
-          showPadding: showPadding ?? false,
-        );
+        if (snapshot.hasData) {
+          return ProductsListView(
+            products: snapshot.data,
+            onLoadMore: onLoadMore,
+            showFilter: showFiler,
+            isFromReviewSearch: isFromReviewPage,
+            disableScrolling: true,
+            showRank: showRank,
+            showPadding: showPadding ?? false,
+          );
+        } else {
+          return Center(
+              child: SpinKitThreeBounce(color: kPrimaryOrange, size: 21.0));
+        }
+      },
+    );
+  }
+
+  Widget showPaginatedProductList(
+      {future,
+      showFiler = false,
+      showRank = false,
+      isFromReviewPage = false,
+      showPadding = true,
+      fetchProducts,
+      sortBy}) {
+    return FutureBuilder<ListPage<Product>>(
+      future: future,
+      builder:
+          (BuildContext context, AsyncSnapshot<ListPage<Product>> snapshot) {
+        print('click new ate');
+
+        if (snapshot.hasData) {
+          products = snapshot.data.itemList;
+          print(products.length);
+          return PaginatedProductListView(
+            initialPage: snapshot.data,
+            showFilter: showFiler,
+            fetchProducts: fetchProducts,
+            isFromReviewSearch: isFromReviewPage,
+            showRank: showRank,
+            showPadding: showPadding,
+          );
+        } else {
+          return Container();
+        }
       },
     );
   }

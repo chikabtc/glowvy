@@ -880,7 +880,7 @@ class $vi extends S {
   @override
   String get review => 'Đang duyệt';
   @override
-  String get signInWithEmail => 'Đăng nhập bằng ';
+  String get signInWithEmail => 'Đăng nhập';
   @override
   String get english => 'Tiếng Anh';
   @override

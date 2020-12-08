@@ -21,7 +21,8 @@ class MainTabs extends StatefulWidget {
   }
 }
 
-class MainTabsState extends State<MainTabs> with AfterLayoutMixin {
+class MainTabsState extends State<MainTabs>
+    with AfterLayoutMixin, TickerProviderStateMixin {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   int currentPage = 0;
   String currentTitle = 'Home';

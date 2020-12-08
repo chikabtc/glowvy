@@ -56,22 +56,22 @@ class _CosmeticsProductDescriptionState
                       style: textTheme.headline5,
                       textAlign: TextAlign.start,
                     ),
-                    const SizedBox(height: 33),
+                    const SizedBox(height: 15),
                     Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                'ID: ${widget.product.sid.toString()}',
-                                style: textTheme.bodyText2
-                                    .copyWith(color: kSecondaryGrey),
-                                textAlign: TextAlign.start,
-                              ),
-                            ],
-                          ),
+                          // Column(
+                          //   crossAxisAlignment: CrossAxisAlignment.start,
+                          //   children: <Widget>[
+                          //     Text(
+                          //       'ID: ${widget.product.sid.toString()}',
+                          //       style: textTheme.bodyText2
+                          //           .copyWith(color: kSecondaryGrey),
+                          //       textAlign: TextAlign.start,
+                          //     ),
+                          //   ],
+                          // ),
                           // Container(
                           //   height: 32,
                           //   decoration: BoxDecoration(

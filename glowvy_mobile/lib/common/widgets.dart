@@ -1,8 +1,10 @@
+import 'dart:io';
 import 'dart:math' as math;
 
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -30,9 +32,22 @@ final SvgPicture arrowBackwardWhite = SvgPicture.asset(
   color: Colors.white,
 );
 
-Widget backIcon(context, {color = kDarkAccent}) {
+Widget kIndicator() {
+  return Platform.isAndroid
+      ? const CircularProgressIndicator(
+          strokeWidth: 2,
+        )
+      : const CupertinoActivityIndicator();
+}
+
+Widget backIcon(context, {color = kDarkAccent, Function onPop}) {
   return IconButton(
-      onPressed: () => Navigator.of(context).pop(),
+      onPressed: () {
+        if (onPop != null) {
+          onPop();
+        }
+        Navigator.of(context).pop();
+      },
       icon: SvgPicture.asset(
         'assets/icons/arrow_backward.svg',
         width: 26,

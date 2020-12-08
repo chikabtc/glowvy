@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/popups.dart';
@@ -8,11 +10,12 @@ import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class SignupScreen extends StatefulWidget {
   final bool fromCart;
-  SignupScreen({this.fromCart = false});
+  const SignupScreen({this.fromCart = false});
 
   @override
   _SignupScreenState createState() => _SignupScreenState();
@@ -32,7 +35,7 @@ class _SignupScreenState extends State<SignupScreen>
   void initState() {
     super.initState();
     _loginButtonController = AnimationController(
-        duration: Duration(milliseconds: 3000), vsync: this);
+        duration: const Duration(milliseconds: 3000), vsync: this);
   }
 
   @override
@@ -41,42 +44,105 @@ class _SignupScreenState extends State<SignupScreen>
     super.dispose();
   }
 
-  void onSignupSuccess(User user) async {
-    await _loginButtonController.reverse();
-    await Navigator.of(context).pushReplacementNamed('/verify_email',
-        arguments: {'fullName': fullName});
+  Future _playAnimation() async {
+    await _loginButtonController.forward();
   }
 
-  Future _registerWithEmail(fullName, email, password, context) async {
+  Future _stopAnimation() async {
+    await _loginButtonController.reverse();
+  }
+
+  void _onLoginFailure(message, context) {
+    _stopAnimation();
+    showFailMessage(message, context);
+  }
+
+  Future onSignupSuccess(User user) async {
+    Future.delayed(const Duration(milliseconds: 1000), () {
+      Navigator.of(context).pop();
+    });
+  }
+
+  bool isInputValid() {
     try {
-      _loginButtonController.forward();
       if (!email.contains('@')) {
         throw 'Please input valid email format';
       } else if (fullName == null || email == null || password == null) {
         throw 'Please input fill in all fields';
       } else {
-        var user = await Provider.of<UserModel>(context, listen: false).signup(
-          fullName: fullName,
-          password: password,
-          email: email,
-        );
-        onSignupSuccess(user);
+        return true;
       }
     } catch (e) {
-      await _onSignupFailure(e, context);
+      showFailMessage(e, context);
+      return false;
     }
   }
+
+  Future _registerWithEmail(fullName, email, password, context) async {
+    _playAnimation();
+    if (isInputValid()) {
+      await Provider.of<UserModel>(context, listen: false).registerWithEmail(
+        email: email,
+        password: password,
+        fullName: fullName,
+        success: (user) {
+          onSignupSuccess(user);
+        },
+        fail: (message) {
+          _onLoginFailure(message, context);
+        },
+      );
+    }
+  }
+
+  Future _registerWithFacebook(context) async {
+    await _playAnimation();
+    await Provider.of<UserModel>(context, listen: false).loginFB(
+      success: (user) {
+        onSignupSuccess(user);
+      },
+      fail: (message) {
+        _onLoginFailure(message, context);
+      },
+    );
+  }
+
+  Future _registerWithGoogle(context) async {
+    _playAnimation();
+
+    await Provider.of<UserModel>(context, listen: false).loginGoogle(
+      success: (user) {
+        onSignupSuccess(user);
+      },
+      fail: (message) {
+        _onLoginFailure(message, context);
+      },
+    );
+  }
+
+  Future _registerWithApple(context) async {
+    _playAnimation();
+
+    Provider.of<UserModel>(context, listen: false).loginApple(
+      success: (user) {
+        _playAnimation();
+
+        onSignupSuccess(user);
+      },
+      fail: (message) {
+        _onLoginFailure(message, context);
+      },
+    );
+  }
+
   //
 
-  Future _onSignupFailure(message, context) async {
-    await _loginButtonController.reverse();
+  Future showFailMessage(message, context) async {
     Popups.failMessage(message, context);
   }
 
   @override
   Widget build(BuildContext context) {
-    var buttonTextStyle =
-        Theme.of(context).textTheme.button.copyWith(fontSize: 16);
     final screenSize = MediaQuery.of(context).size;
     parentContext = context;
 
@@ -96,7 +162,7 @@ class _SignupScreenState extends State<SignupScreen>
         actions: <Widget>[
           FlatButton(
             child: Text(S.of(context).login,
-                style: buttonTextStyle.copyWith(fontWeight: FontWeight.bold)),
+                style: textTheme.button.copyWith(fontWeight: FontWeight.bold)),
             onPressed: () {
               Navigator.pushReplacementNamed(context, '/login');
             },
@@ -132,7 +198,7 @@ class _SignupScreenState extends State<SignupScreen>
                       Container(
                           width: screenSize.width,
                           height: 48,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(6)),
                               color: kQuaternaryOrange),
@@ -149,7 +215,7 @@ class _SignupScreenState extends State<SignupScreen>
                                 hintStyle: textTheme.headline5.copyWith(
                                   color: kSecondaryGrey.withOpacity(0.5),
                                 ),
-                                contentPadding: EdgeInsets.only(left: 20),
+                                contentPadding: const EdgeInsets.only(left: 20),
                               ),
                             ),
                           )),
@@ -157,7 +223,7 @@ class _SignupScreenState extends State<SignupScreen>
                       Container(
                           width: screenSize.width,
                           height: 48,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(6)),
                               color: kQuaternaryOrange),
@@ -178,7 +244,7 @@ class _SignupScreenState extends State<SignupScreen>
                       Container(
                           width: screenSize.width,
                           height: 48,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(6)),
                               color: kQuaternaryOrange),
@@ -211,6 +277,59 @@ class _SignupScreenState extends State<SignupScreen>
                       ),
                       const SizedBox(
                         height: 24.0,
+                      ),
+                      Text(S.of(context).loginWithSNS,
+                          style: TextStyle(
+                              fontSize: 12, color: Colors.grey.shade400)),
+                      const SizedBox(
+                        height: 24.0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          MaterialButton(
+                            color: kPrimaryOrange,
+                            minWidth: 48,
+                            height: 48,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16.0)),
+                            onPressed: () => _registerWithFacebook(context),
+                            child: SvgPicture.asset(
+                              'assets/icons/facebook-social.svg',
+                              width: 24,
+                            ),
+                            elevation: 0.0,
+                          ),
+                          const SizedBox(width: 35),
+                          MaterialButton(
+                            color: kPrimaryOrange,
+                            minWidth: 48,
+                            height: 48,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16.0)),
+                            onPressed: () => _registerWithGoogle(context),
+                            child: SvgPicture.asset(
+                              'assets/icons/google-social.svg',
+                              width: 24,
+                            ),
+                            elevation: 0.0,
+                          ),
+                          if (Platform.isIOS) const SizedBox(width: 35),
+                          if (Platform.isIOS)
+                            MaterialButton(
+                              color: kPrimaryOrange,
+                              minWidth: 48,
+                              height: 48,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16.0)),
+                              onPressed: () => _registerWithApple(context),
+                              child: SvgPicture.asset(
+                                'assets/icons/apple.svg',
+                                width: 24,
+                              ),
+                              elevation: 0.0,
+                            ),
+                        ],
                       ),
                     ],
                   ),

@@ -20,15 +20,11 @@ class BeforeLoginPageState extends State<BeforeLoginPage>
     with TickerProviderStateMixin, WidgetsBindingObserver {
   UserModel userModel;
   Size screenSize;
+
   @override
   void initState() {
     super.initState();
     userModel = Provider.of<UserModel>(context, listen: false);
-  }
-
-  Future login() async {
-    await userModel.logout();
-    Navigator.of(context).popUntil((route) => route.isFirst);
   }
 
   @override

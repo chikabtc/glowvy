@@ -346,32 +346,6 @@ class Popups {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     const SizedBox(height: 10),
-                    // Stack(children: <Widget>[
-                    //   Container(
-                    //       decoration: const BoxDecoration(
-                    //         color: Colors.white,
-                    //         borderRadius: BorderRadius.only(
-                    //             topLeft: Radius.circular(20),
-                    //             topRight: Radius.circular(20)),
-                    //       ),
-                    //       height: AppBar().preferredSize.height,
-                    //       width: kScreenSizeWidth,
-                    //       child: Center(
-                    //         child: Text('Các tiêu chí xét duyệt review',
-                    //             style: kBaseTextStyle.copyWith(
-                    //                 fontSize: 16, fontWeight: FontWeight.w600)),
-                    //       )),
-                    //   Positioned(
-                    //     top: 6,
-                    //     right: 0,
-                    //     child: IconButton(
-                    //         icon: SvgPicture.asset(
-                    //             'assets/icons/address/close-popup.svg'),
-                    //         onPressed: () {
-                    //           Navigator.pop(context);
-                    //         }),
-                    //   ),
-                    // ]),
                     FlatButton(
                       child: Text('By ranking',
                           style: textTheme.caption

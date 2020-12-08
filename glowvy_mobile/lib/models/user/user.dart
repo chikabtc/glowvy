@@ -11,6 +11,8 @@ part 'user.g.dart';
 @JsonSerializable(fieldRename: FieldRename.snake)
 class User {
   String uid;
+  String facebookId;
+
   String displayName;
   String firstName;
   String lastName;
@@ -24,7 +26,8 @@ class User {
   int birthYear;
   int age;
   SkinScores baumannScores;
-  Address address = Address();
+  Address address;
+  int createdAt;
   List<Address> addresses = [];
   List<Product> viewedProducts = [];
   Review reviewDraft;
@@ -34,9 +37,11 @@ class User {
       {this.fullName,
       this.email,
       this.picture,
+      this.facebookId,
       this.skinType,
       this.birthYear,
       this.gender,
+      this.createdAt,
       this.viewedProducts,
       this.address,
       this.billing});

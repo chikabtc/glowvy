@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class VerifyEmailScreen extends StatefulWidget {
-  VerifyEmailScreen();
+  const VerifyEmailScreen();
 
   @override
   _verifyEmailScreenState createState() => _verifyEmailScreenState();
@@ -24,7 +24,7 @@ class _verifyEmailScreenState extends State<VerifyEmailScreen>
   void initState() {
     super.initState();
     _verifyAnimationController = AnimationController(
-        duration: Duration(milliseconds: 3000), vsync: this);
+        duration: const Duration(milliseconds: 3000), vsync: this);
   }
 
   @override
@@ -63,7 +63,7 @@ class _verifyEmailScreenState extends State<VerifyEmailScreen>
       try {
         if (await Provider.of<UserModel>(context, listen: false)
             .isEmailVerified()) {
-          await Provider.of<UserModel>(context, listen: false).createUser();
+          // await Provider.of<UserModel>(context, listen: false).createUser();
         }
 
         _onVerifySuccess();

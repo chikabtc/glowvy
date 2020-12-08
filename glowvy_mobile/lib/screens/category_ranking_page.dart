@@ -26,8 +26,6 @@ class RankingByCategoryState extends State<RankingByCategory>
   Future getProductsByCategoryId;
   ThirdCategory thirdCategory;
 
-  //category variable
-  //second cate variable
   @override
   void initState() {
     super.initState();
@@ -49,55 +47,75 @@ class RankingByCategoryState extends State<RankingByCategory>
         appBar: AppBar(
             brightness: Brightness.light,
             elevation: 0,
-            leading: backIcon(context),
+            leading:
+                backIcon(context, onPop: () => productModel.clearPagesInfo()),
             backgroundColor: Colors.white,
             title: Text(widget.secondCategory.secondCategoryName,
                 style: textTheme.headline3)),
         backgroundColor: kDefaultBackground,
-        body: ListView(
-          children: [
-            Container(
-              color: kWhite,
-              child: Wrap(
-                children: [
-                  for (var cate in widget.secondCategory.thirdCategories)
-                    GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          thirdCategory = cate;
-                          getProductsByCategoryId =
-                              productModel.getProductsByCategoryId(
-                            cate.thirdCategoryId,
-                          );
-                        });
-                      },
-                      child: Container(
-                        height: 60,
-                        width: kScreenSizeWidth / 3,
-                        decoration: BoxDecoration(
-                          border:
-                              Border.all(color: kQuaternaryGrey, width: 0.5),
-                        ),
-                        padding: const EdgeInsets.all(12),
-                        child: Text(
-                          cate.thirdCategoryName,
-                          style: textTheme.button.copyWith(
-                              color: thirdCategory == cate
-                                  ? kPrimaryOrange
-                                  : kDefaultFontColor,
-                              fontWeight: thirdCategory == cate
-                                  ? FontWeight.w600
-                                  : FontWeight.w500),
-                        ),
+        body: NestedScrollView(
+          physics: const ClampingScrollPhysics(),
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverToBoxAdapter(
+                  child: Container(
+                width: kScreenSizeWidth,
+                child: Column(
+                  children: [
+                    Container(
+                      color: kWhite,
+                      child: Wrap(
+                        children: [
+                          for (var cate
+                              in widget.secondCategory.thirdCategories)
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  thirdCategory = cate;
+                                  productModel.clearPagesInfo();
+                                });
+                              },
+                              child: Container(
+                                height: 60,
+                                width: kScreenSizeWidth / 3,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: kQuaternaryGrey, width: 0.5),
+                                ),
+                                padding: const EdgeInsets.all(12),
+                                child: Center(
+                                  child: Text(
+                                    cate.thirdCategoryName,
+                                    style: textTheme.button.copyWith(
+                                        color: thirdCategory == cate
+                                            ? kPrimaryOrange
+                                            : kDefaultFontColor,
+                                        fontWeight: thirdCategory == cate
+                                            ? FontWeight.w600
+                                            : FontWeight.w500),
+                                  ),
+                                ),
+                              ),
+                            ),
+                        ],
                       ),
                     ),
-                ],
-              ),
-            ),
-            Container(height: 12, color: Colors.transparent),
-            productModel.showProductList(
-                future: getProductsByCategoryId, showRank: true)
-          ],
+                    Container(height: 12, color: Colors.transparent),
+                  ],
+                ),
+              ))
+            ];
+          },
+          body: Container(
+            color: kWhite,
+            child: productModel.showPaginatedProductList(
+                future: productModel
+                    .getProductsByCategoryId(thirdCategory.thirdCategoryId),
+                fetchProducts: () => productModel.getProductsByCategoryId(
+                      thirdCategory.thirdCategoryId,
+                    ),
+                showRank: true),
+          ),
         ));
   }
 }

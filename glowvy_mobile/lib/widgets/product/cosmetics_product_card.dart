@@ -60,29 +60,29 @@ class CosmeticsProductCard extends StatelessWidget {
                         'assets/icons/yellow-flower.svg',
                         color: Colors.transparent,
                       ),
-                    Positioned(
-                        top: 1,
-                        left: 0,
-                        child: Container(
-                          decoration: const BoxDecoration(
-                              // color: Color(0xFFCFEEBEC),
-                              borderRadius: BorderRadius.only(
-                                  bottomRight: Radius.circular(28),
-                                  bottomLeft: Radius.circular(28))),
-                          width: 22,
-                          height: 20,
-                          padding: const EdgeInsets.all(3),
-                          child: Text(
-                            (ranking + 1).toString(),
-                            textAlign: TextAlign.center,
-                            style: kBaseTextStyle.copyWith(
-                              height: 1,
-                              fontSize: 9,
-                              color: ranking < 3 ? Colors.white : kDarkYellow,
-                              fontWeight: FontWeight.w800,
+                    if (ranking < 99)
+                      Positioned(
+                          top: 1,
+                          left: 0,
+                          child: Container(
+                            decoration: const BoxDecoration(
+                                borderRadius: BorderRadius.only(
+                                    bottomRight: Radius.circular(28),
+                                    bottomLeft: Radius.circular(28))),
+                            width: 22,
+                            height: 20,
+                            padding: const EdgeInsets.all(3),
+                            child: Text(
+                              (ranking + 1).toString(),
+                              textAlign: TextAlign.center,
+                              style: kBaseTextStyle.copyWith(
+                                height: 1,
+                                fontSize: 9,
+                                color: ranking < 3 ? Colors.white : kDarkYellow,
+                                fontWeight: FontWeight.w800,
+                              ),
                             ),
-                          ),
-                        )),
+                          )),
                   ]),
                 Column(
                   children: [

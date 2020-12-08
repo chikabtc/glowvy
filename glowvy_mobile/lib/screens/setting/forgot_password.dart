@@ -31,7 +31,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
   void initState() {
     super.initState();
     _loginButtonController = AnimationController(
-        duration: Duration(milliseconds: 3000), vsync: this);
+        duration: const Duration(milliseconds: 3000), vsync: this);
   }
 
   @override
@@ -240,7 +240,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                                   fontWeight: FontWeight.w600,
                                   color: kSecondaryGrey.withOpacity(0.5),
                                 ),
-                                contentPadding: EdgeInsets.only(left: 20),
+                                contentPadding: const EdgeInsets.only(left: 20),
                               ),
                             ),
                           )),
@@ -265,7 +265,5 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
   }
 
   @override
-  void afterFirstLayout(BuildContext context) {
-    // TODO: implement afterFirstLayout
-  }
+  void afterFirstLayout(BuildContext context) {}
 }

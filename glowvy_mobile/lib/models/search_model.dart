@@ -82,10 +82,10 @@ class SearchModel extends ChangeNotifier {
       //since all products are fetched from server on app launch,
       //the cache of the product doc will always be available
       final query = FirebaseFirestore.instance.collection('brands');
-      var brandsSnap = await query.get(const GetOptions(source: Source.cache));
+      var brandsSnap = await query.get(const GetOptions(source: Source.server));
 
       if (brandsSnap.docs.isEmpty) {
-        print('No cached ingredients: fetching from server');
+        print('No cached brands: fetching from server');
         brandsSnap = await query.get(const GetOptions(source: Source.server));
       }
       print('brandsSnap length: ${brandsSnap.docs.length}');

@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +35,7 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _loginButtonController = AnimationController(
-        duration: Duration(milliseconds: 3000), vsync: this);
+        duration: const Duration(milliseconds: 3000), vsync: this);
   }
 
   @override
@@ -52,23 +55,90 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
     }
   }
 
-  Future _loginEmail(context) async {
-    try {
-      _loginButtonController.forward();
+  Future _playAnimation() async {
+    await _loginButtonController.forward();
+  }
 
-      if (email == null || password == null) {
-        throw S.of(context).pleaseInput;
+  Future _stopAnimation() async {
+    await _loginButtonController.reverse();
+  }
+
+  bool isInputValid() {
+    try {
+      if (!email.contains('@')) {
+        throw 'Please input valid email format';
+      } else if (email == null || password == null) {
+        throw 'Please input fill in all fields';
       } else {
-        var user =
-            await Provider.of<UserModel>(context, listen: false).loginWithEmail(
-          email: email.trim(),
-          password: password.trim(),
-        );
-        _onLoginSuccess(user, context);
+        print('correct');
+        return true;
       }
     } catch (e) {
-      _onLoginFailure(e, context);
+      Popups.failMessage(e, context);
+      return false;
     }
+  }
+
+  Future _signinWithEmail(context) async {
+    _playAnimation();
+    if (isInputValid()) {
+      await Provider.of<UserModel>(context, listen: false).loginWithEmail(
+        email: email,
+        password: password,
+        success: (user) {
+          onSignupSuccess(user);
+        },
+        fail: (message) {
+          _onLoginFailure(message, context);
+        },
+      );
+    }
+  }
+
+  Future onSignupSuccess(User user) async {
+    Future.delayed(const Duration(milliseconds: 1000), () {
+      Navigator.of(context).pop();
+    });
+  }
+
+  Future _signinWithFacebook(context) async {
+    await _playAnimation();
+    await Provider.of<UserModel>(context, listen: false).loginFB(
+      success: (user) {
+        onSignupSuccess(user);
+      },
+      fail: (message) {
+        _onLoginFailure(message, context);
+      },
+    );
+  }
+
+  Future _signinWithGoogle(context) async {
+    _playAnimation();
+
+    await Provider.of<UserModel>(context, listen: false).loginGoogle(
+      success: (user) {
+        onSignupSuccess(user);
+      },
+      fail: (message) {
+        _onLoginFailure(message, context);
+      },
+    );
+  }
+
+  Future _signinWithApple(context) async {
+    _playAnimation();
+
+    Provider.of<UserModel>(context, listen: false).loginApple(
+      success: (user) {
+        _playAnimation();
+
+        onSignupSuccess(user);
+      },
+      fail: (message) {
+        _onLoginFailure(message, context);
+      },
+    );
   }
 
   Future _onLoginSuccess(user, context) async {
@@ -185,7 +255,7 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
                           buttonController: _loginButtonController.view,
                           onTap: () {
                             FocusScope.of(context).unfocus();
-                            _loginEmail(context);
+                            _signinWithEmail(context);
                           },
                         ),
                       ),
@@ -208,6 +278,53 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
                           }),
                       const SizedBox(
                         height: 24.0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          MaterialButton(
+                            color: kPrimaryOrange,
+                            minWidth: 48,
+                            height: 48,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16.0)),
+                            onPressed: () => _signinWithFacebook(context),
+                            child: SvgPicture.asset(
+                              'assets/icons/facebook-social.svg',
+                              width: 24,
+                            ),
+                            elevation: 0.0,
+                          ),
+                          const SizedBox(width: 35),
+                          MaterialButton(
+                            color: kPrimaryOrange,
+                            minWidth: 48,
+                            height: 48,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16.0)),
+                            onPressed: () => _signinWithGoogle(context),
+                            child: SvgPicture.asset(
+                              'assets/icons/google-social.svg',
+                              width: 24,
+                            ),
+                            elevation: 0.0,
+                          ),
+                          if (Platform.isIOS) const SizedBox(width: 35),
+                          if (Platform.isIOS)
+                            MaterialButton(
+                              color: kPrimaryOrange,
+                              minWidth: 48,
+                              height: 48,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16.0)),
+                              onPressed: () => _signinWithApple(context),
+                              child: SvgPicture.asset(
+                                'assets/icons/apple.svg',
+                                width: 24,
+                              ),
+                              elevation: 0.0,
+                            ),
+                        ],
                       ),
                     ],
                   ),

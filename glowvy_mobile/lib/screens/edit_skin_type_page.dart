@@ -33,7 +33,7 @@ class EditSkinTypePageState extends State<EditSkinTypePage>
     skinTypes = Provider.of<AppModel>(context, listen: false)
         .appConfig['Baumann_quiz'] as List;
     _doneButtonController = AnimationController(
-        duration: Duration(milliseconds: 3000), vsync: this);
+        duration: const Duration(milliseconds: 3000), vsync: this);
   }
 
   @override

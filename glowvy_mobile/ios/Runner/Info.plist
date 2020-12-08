@@ -31,8 +31,7 @@
 				<string>inspireui.com</string>
 				<key>CFBundleURLSchemes</key>
 				<array>
-					<string>DIMODO</string>
-					<string>fb540414906860627</string>
+					<string>fb759583248229292</string>
 				</array>
 			</dict>
 			<dict>
@@ -40,16 +39,17 @@
 				<string>Editor</string>
 				<key>CFBundleURLSchemes</key>
 				<array>
-					<string>com.googleusercontent.apps.199541424798-1ccf2g196esns6e74ruvrt4utfa7dhhr</string>
+					<string>com.googleusercontent.apps.526553449350-2bas42r1hkbd3blkku6q2hk8qu1alnkg</string>
 				</array>
 			</dict>
 		</array>
 		<key>CFBundleVersion</key>
+
 		<string>$(CURRENT_PROJECT_VERSION)</string>
 		<key>FacebookAppID</key>
-		<string>540414906860627</string>
+		<string>759583248229292</string>
 		<key>FacebookDisplayName</key>
-		<string>DIMODO</string>
+		<string>Glowvy</string>
 		<key>FirebaseAppDelegateProxyEnabled</key>
 		<string>NO</string>
 		<key>GADApplicationIdentifier</key>

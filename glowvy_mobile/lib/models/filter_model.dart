@@ -39,7 +39,7 @@ class FilterModel extends ChangeNotifier {
       }
     });
     _filtedBrands = list;
-    print('helo');
+
     // print('brands hit: ${list.length}');
 
     notifyListeners();

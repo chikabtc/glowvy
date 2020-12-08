@@ -109,7 +109,8 @@ class IngredientScreenStates extends State<IngredientScreen>
           color: kDefaultBackground,
           width: screenSize.width,
           height: screenSize.height,
-          padding: EdgeInsets.only(top: 24, left: 24, right: 24, bottom: 24),
+          padding:
+              const EdgeInsets.only(top: 24, left: 24, right: 24, bottom: 24),
           child: ListView.builder(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,

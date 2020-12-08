@@ -5,43 +5,45 @@
     "project_id": "glowvy-b6cf4",
     "storage_bucket": "glowvy-b6cf4.appspot.com"
   },
-  "client": [
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:526553449350:android:58033cd0d5633976f02207",
-        "android_client_info": {
-          "package_name": "app.dimodo.android"
+  "client": [{
+    "client_info": {
+      "mobilesdk_app_id": "1:526553449350:android:58033cd0d5633976f02207",
+      "android_client_info": {
+        "package_name": "app.dimodo.android"
+      }
+    },
+    "oauth_client": [{
+        "client_id": "526553449350-lrqq377rrh5817og49quo36p0c78uo02.apps.googleusercontent.com",
+        "client_type": 1,
+        "android_info": {
+          "package_name": "app.dimodo.android",
+          "certificate_hash": "0d8dbf80628797921d9e9b88467cf06a83035af3"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "526553449350-psev0qiji8b3hmc4p1b0igpgh671538g.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDt4dWbQ21za3ME5OKThvxZnA9NjjvQQdU"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "526553449350-psev0qiji8b3hmc4p1b0igpgh671538g.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "526553449350-91u1j0e2qiebrd2tlkchod6ir1upn4qp.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "app.dimodo.ios"
-              }
+      {
+        "client_id": "526553449350-psev0qiji8b3hmc4p1b0igpgh671538g.apps.googleusercontent.com",
+        "client_type": 3
+      }
+    ],
+    "api_key": [{
+      "current_key": "AIzaSyDt4dWbQ21za3ME5OKThvxZnA9NjjvQQdU"
+    }],
+    "services": {
+      "appinvite_service": {
+        "other_platform_oauth_client": [{
+            "client_id": "526553449350-elqbncqf4la4to7l3jaicpvlr8d63jbb.apps.googleusercontent.com",
+            "client_type": 3
+          },
+          {
+            "client_id": "526553449350-2bas42r1hkbd3blkku6q2hk8qu1alnkg.apps.googleusercontent.com",
+            "client_type": 2,
+            "ios_info": {
+              "bundle_id": "app.dimodo.iOS"
             }
-          ]
-        }
+          }
+        ]
       }
     }
-  ],
+  }],
   "configuration_version": "1"
 }

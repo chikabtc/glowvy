@@ -11,9 +11,11 @@ User _$UserFromJson(Map<String, dynamic> json) {
     fullName: json['full_name'] as String,
     email: json['email'] as String,
     picture: json['picture'] as String,
+    facebookId: json['facebook_id'] as String,
     skinType: json['skin_type'] as String,
     birthYear: json['birth_year'] as int,
     gender: json['gender'] as String,
+    createdAt: json['created_at'] as int,
     viewedProducts: (json['viewed_products'] as List)
         ?.map((e) =>
             e == null ? null : Product.fromJson(e as Map<String, dynamic>))
@@ -46,6 +48,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'uid': instance.uid,
+      'facebook_id': instance.facebookId,
       'display_name': instance.displayName,
       'first_name': instance.firstName,
       'last_name': instance.lastName,
@@ -60,6 +63,7 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'age': instance.age,
       'baumann_scores': instance.baumannScores,
       'address': instance.address,
+      'created_at': instance.createdAt,
       'addresses': instance.addresses,
       'viewed_products': instance.viewedProducts,
       'review_draft': instance.reviewDraft,

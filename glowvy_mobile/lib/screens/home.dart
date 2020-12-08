@@ -11,7 +11,7 @@ import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/inquiry_page.dart';
-import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
+import 'package:Dimodo/widgets/product/products_list_view.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -89,11 +89,11 @@ class HomeScreenState extends State<HomeScreen>
       productModel.getProductsByCategoryId(8, isFirstCate: true),
       productModel.getProductsByCategoryId(9, isFirstCate: true),
     ]).then((responses) {
-      allProducts[1] = responses.first;
-      allProducts[7] = responses[1];
-      allProducts[8] = responses[2];
-      allProducts[9] = responses[3];
-      print('eweweweweew ${allProducts[1].length}');
+      allProducts[1] = responses.first.itemList;
+      allProducts[7] = responses[1].itemList;
+      allProducts[8] = responses[2].itemList;
+      allProducts[9] = responses[3].itemList;
+
       setState(() {
         isLoading = false;
       });
@@ -273,7 +273,7 @@ class HomeScreenState extends State<HomeScreen>
                                 shrinkWrap: true,
                                 children: <Widget>[
                                   if (!isLoading)
-                                    CosmeticsProductList(
+                                    ProductsListView(
                                       products:
                                           allProducts[category.firstCategoryId],
                                       showRank: true,

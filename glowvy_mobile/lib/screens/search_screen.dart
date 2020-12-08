@@ -7,11 +7,11 @@ import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/models/search_model.dart';
 import 'package:Dimodo/widgets/brand_card_list.dart';
 import 'package:Dimodo/widgets/categories/CategoryButton.dart';
-import 'package:Dimodo/widgets/product/cosmetics_product_list.dart';
+import 'package:Dimodo/widgets/product/list_page.dart';
+import 'package:Dimodo/widgets/product/paginated_product_list.dart';
 import 'package:Dimodo/widgets/second_category_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
 import 'package:implicitly_animated_reorderable_list/transitions.dart';
@@ -25,11 +25,7 @@ class SearchScreen extends StatefulWidget {
 
 class _SearchScreenState extends State<SearchScreen> {
   Size screenSize;
-  Future<List<Product>> getProductBySearch;
-  bool isAscending = false;
-  String highToLow = '-sale_price';
-  String lowToHigh = 'sale_price';
-
+  Future<ListPage<Product>> getProductBySearch;
   String searchText;
   bool showResults = false;
   bool isTextFieldSelected = false;
@@ -65,16 +61,6 @@ class _SearchScreenState extends State<SearchScreen> {
   void dispose() {
     searchController.dispose();
     super.dispose();
-  }
-
-  void search(text) {
-    getProductBySearch = productModel.getProductsBySearch(searchText: text);
-    showResults = false;
-
-    searchModel.searchBrands(text);
-    showResults = true;
-
-    FocusScope.of(context).unfocus();
   }
 
   @override
@@ -181,62 +167,53 @@ class _SearchScreenState extends State<SearchScreen> {
     }
 
     Widget buildSearchResult() {
-      return FutureBuilder<List<Product>>(
+      return FutureBuilder<ListPage<Product>>(
         future: getProductBySearch,
-        builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
+        builder:
+            (BuildContext context, AsyncSnapshot<ListPage<Product>> snapshot) {
           if (snapshot.hasData) {
-            return Scrollbar(
-              child: ListView(
-                  shrinkWrap: true,
-                  padding: EdgeInsets.zero,
-                  scrollDirection: Axis.vertical,
-                  // physics: const NeverScrollableScrollPhysics(),
-                  children: [
+            final listPage = snapshot.data;
+
+            // print('future builder co: ${listPage.itemList[0].brand.toJson()}');
+            return Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (searchModel.filtedBrands.isNotEmpty)
                     Column(
-                        mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          if (searchModel.filtedBrands.isNotEmpty)
-                            Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  const SizedBox(height: 30),
-                                  Text(
-                                      '${searchModel.filtedBrands.length} brand',
-                                      style: textTheme.bodyText1),
-                                  const Divider(
-                                    color: kQuaternaryGrey,
-                                    thickness: 1.5,
-                                  )
-                                ]),
-
-                          BrandList(
-                            brands: searchModel.filtedBrands,
-                            disableScrolling: true,
-                          ),
-                          const SizedBox(height: 35),
-                          // const SizedBox(height: 35),
-                          Text('${snapshot.data.length} results',
+                          const SizedBox(height: 30),
+                          Text('${searchModel.filtedBrands.length} brand',
                               style: textTheme.bodyText1),
                           const Divider(
                             color: kQuaternaryGrey,
                             thickness: 1.5,
-                          ),
-                          CosmeticsProductList(
-                            products: snapshot.data,
-                            disableScrolling: true,
                           )
                         ]),
-                  ]),
-            );
+
+                  BrandList(
+                    brands: searchModel.filtedBrands,
+                    disableScrolling: true,
+                  ),
+                  const SizedBox(height: 35),
+                  // const SizedBox(height: 35),
+                  if (snapshot.data != null)
+                    Text('${listPage.grandTotalCount} results',
+                        style: textTheme.bodyText1),
+                  if (snapshot.data != null)
+                    const Divider(
+                      color: kQuaternaryGrey,
+                      thickness: 1.5,
+                    ),
+                  PaginatedProductListView(
+                      initialPage: snapshot.data,
+                      fetchProducts: () => productModel.getProductsBySearch(
+                            searchText,
+                          ))
+                ]);
           } else {
-            return Container(
-                width: screenSize.width,
-                height: screenSize.height / 1.3,
-                child: Center(
-                  child: const SpinKitThreeBounce(
-                      color: kPrimaryOrange, size: 21.0),
-                ));
+            return Container();
           }
         },
       );
@@ -316,16 +293,6 @@ class _SearchScreenState extends State<SearchScreen> {
                             ),
                           ),
                         )),
-                        // SliverPersistentHeader(
-                        //   pinned: true,
-                        //   delegate: SliverAppBarDelegate(
-                        //     minHeight: 60,
-                        //     maxHeight: 60,
-                        //     child: Column(
-                        //       children: <Widget>[IOSs],
-                        //     ),
-                        //   ),
-                        // ),
                       ];
                     },
                     body: Padding(
@@ -371,15 +338,6 @@ class _SearchScreenState extends State<SearchScreen> {
                             backdropColor: kWhite,
                             isScrollControlled: true,
                             leadingActions: [
-                              // CupertinoTextSelectionToolbar()
-                              // FloatingSearchBarAction.b(
-
-                              //     // showIfClosed: true,
-                              //     // showIfOpened: true,
-                              //     // onTap: () => print('tn'),
-                              //     // duration: const Duration(milliseconds: 500),
-                              //     ),
-
                               if (isFocused)
                                 FloatingSearchBarAction.back()
                               else
@@ -412,7 +370,10 @@ class _SearchScreenState extends State<SearchScreen> {
                                           tooltip: 'Back',
                                           // size: 20,
 
-                                          icon: Icon(Icons.cancel),
+                                          icon: const Icon(
+                                            Icons.cancel,
+                                            size: 18,
+                                          ),
                                           onPressed: () {
                                             final bar = FloatingSearchAppBar.of(
                                                 context);
@@ -423,37 +384,22 @@ class _SearchScreenState extends State<SearchScreen> {
                                     );
                                   },
                                 )
-                              // FloatingSearchBarAction(
-                              //   showIfClosed: false,
-                              //   showIfOpened: true,
-                              //   builder: (context, animation) {
-                              //     final canPop = Navigator.canPop(context);
-
-                              //     return CircularButton(
-                              //       tooltip: 'Back',
-                              //       size: 24,
-                              //       icon: Text(
-                              //         'cancel',
-                              //         style: textTheme.bodyText1
-                              //             .copyWith(color: kPrimaryOrange),
-                              //       ),
-                              //       onPressed: () {
-                              //         final bar =
-                              //             FloatingSearchAppBar.of(context);
-
-                              //         if (bar.isOpen && !bar.isAlwaysOpened) {
-                              //           bar.clear();
-                              //           bar.close();
-                              //         } else if (canPop) {
-                              //           Navigator.pop(context);
-                              //         }
-                              //       },
-                              //     );
-                              //   },
-                              // ),
                             ],
                             onSubmitted: (value) {
-                              search(value);
+                              showResults = false;
+                              setState(() {
+                                productModel.clearPagesInfo();
+
+                                searchText = value;
+                                getProductBySearch =
+                                    productModel.getProductsBySearch(
+                                  searchText,
+                                );
+                                searchModel.searchBrands(value);
+                                showResults = true;
+                              });
+
+                              FocusScope.of(context).unfocus();
                             },
                             debounceDelay: const Duration(milliseconds: 500),
                             onQueryChanged: (query) {

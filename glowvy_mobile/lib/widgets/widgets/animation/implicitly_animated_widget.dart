@@ -29,10 +29,8 @@ abstract class ImplicitlyAnimatedWidgetState<T,
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      duration: widget.duration,
-      vsync: this,
-    )..value = 1.0;
+    _controller = AnimationController(duration: widget.duration, vsync: this)
+      ..value = 1.0;
 
     _animation = CurvedAnimation(
       curve: widget.curve ?? Curves.linear,

@@ -4,6 +4,7 @@ import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/widgets/product/list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +22,7 @@ class ReviewCosmeticsSearchScreen extends StatefulWidget {
 class _ReviewCosmeticsSearchScreenState
     extends State<ReviewCosmeticsSearchScreen> {
   Size screenSize;
-  Future<List<Product>> getProductBySearch;
+  Future<ListPage<Product>> getProductBySearch;
 
   bool isAscending = false;
   String highToLow = '-sale_price';
@@ -45,10 +46,10 @@ class _ReviewCosmeticsSearchScreenState
     productModel = Provider.of<ProductModel>(context, listen: false);
   }
 
-  void search(text) {
+  void search(text, {pageKey}) {
     isTextFieldSelected = false;
     searchController.text = text;
-    getProductBySearch = productModel.getProductsBySearch(searchText: text);
+    getProductBySearch = productModel.getProductsBySearch(text);
     showResults = true;
     FocusScope.of(context).unfocus();
   }
@@ -110,13 +111,7 @@ class _ReviewCosmeticsSearchScreenState
                                 onSubmitted: (value) {
                                   setState(() {
                                     isTextFieldSelected = false;
-                                    getProductBySearch =
-                                        productModel.getProductsBySearch(
-                                      searchText: searchText,
-                                    );
-                                    showResults = true;
-
-                                    FocusScope.of(context).unfocus();
+                                    search(value);
                                   });
                                 },
                                 decoration: kTextField.copyWith(
@@ -206,7 +201,7 @@ class Keyword extends StatelessWidget {
         ),
         // alignment: Alignment.center,
         child: Padding(
-          padding: EdgeInsets.only(left: 20, right: 20, top: 6),
+          padding: const EdgeInsets.only(left: 20, right: 20, top: 6),
           child: Text(
             keyword,
             textAlign: TextAlign.center,
