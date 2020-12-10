@@ -66,9 +66,9 @@ class EditProfilePageState extends State<EditProfilePage>
         backgroundColor: kDefaultBackground,
         body: Consumer<UserModel>(builder: (context, userModel, child) {
           var user = userModel.user;
+          print('user profile photo: ${user.picture}');
           return Container(
             child: ListView(
-              physics: ClampingScrollPhysics(),
               children: <Widget>[
                 SettingCard(
                     color: kWhite,

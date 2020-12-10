@@ -16,6 +16,10 @@ final SentryClient _sentry = SentryClient(
         'https://866bdef953574dbdb81a7da5d08411da@o376105.ingest.sentry.io/5197560');
 
 void main() async {
+  // if (kDebugMode) {
+  //   await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(false);
+  // } else {}
+
   FlutterError.onError = (FlutterErrorDetails details) async {
     if (isInDebugMode) {
       // In development mode simply print to console.
@@ -176,6 +180,7 @@ void main() async {
         null);
 
     await Firebase.initializeApp();
+    // FirebaseCrashlytics.instance.crash();
 
     runApp(Glowvy());
   }, onError: (error, stackTrace) async {

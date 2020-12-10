@@ -21,7 +21,7 @@ class Popups {
         '$message',
         style: textTheme.headline5.copyWith(color: Colors.white),
       ),
-      duration: const Duration(seconds: 30),
+      duration: const Duration(seconds: 4),
       action: SnackBarAction(
         label: S.of(context).close,
         onPressed: () {
@@ -35,7 +35,7 @@ class Popups {
       ..showSnackBar(snackBar);
   }
 
-  static void showSuccesPopup(context) {
+  static void showSuccesPopup(context, {message = 'success'}) {
     BuildContext dialogContext;
     showDialog(
         context: context,
@@ -54,7 +54,7 @@ class Popups {
                   height: 44.0,
                   child: Center(
                     child: Text(
-                      'posted successfully',
+                      message,
                       style: textTheme.caption2.copyWith(
                           color: Colors.white, decoration: TextDecoration.none),
                     ),

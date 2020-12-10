@@ -13,11 +13,27 @@
       }
     },
     "oauth_client": [{
-        "client_id": "526553449350-lrqq377rrh5817og49quo36p0c78uo02.apps.googleusercontent.com",
+        "client_id": "526553449350-d8cslto0chbhc13m06vee91itetvnus6.apps.googleusercontent.com",
         "client_type": 1,
         "android_info": {
           "package_name": "app.dimodo.android",
           "certificate_hash": "0d8dbf80628797921d9e9b88467cf06a83035af3"
+        }
+      },
+      {
+        "client_id": "526553449350-i8man8t89stf4uocbomrfm50trilqa7j.apps.googleusercontent.com",
+        "client_type": 1,
+        "android_info": {
+          "package_name": "app.dimodo.android",
+          "certificate_hash": "d6134f6f6c5b2a58931d0514673d0011648bce17"
+        }
+      },
+      {
+        "client_id": "526553449350-obddp99s85e2msh6ft5bbheff5tm9inl.apps.googleusercontent.com",
+        "client_type": 1,
+        "android_info": {
+          "package_name": "app.dimodo.android",
+          "certificate_hash": "0fdc9f45a21ecc6cce4218a0778788d7e99c3bea"
         }
       },
       {

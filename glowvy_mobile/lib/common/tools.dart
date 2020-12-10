@@ -126,7 +126,9 @@ class Tools {
               alignment: Alignment(
                   (offset >= -1 && offset <= 1)
                       ? offset
-                      : (offset > 0) ? 1.0 : -1.0,
+                      : (offset > 0)
+                          ? 1.0
+                          : -1.0,
                   0.0),
             ),
           ),
@@ -149,7 +151,11 @@ class Tools {
       cache: true,
       enableLoadState: false,
       alignment: Alignment(
-          (offset >= -1 && offset <= 1) ? offset : (offset > 0) ? 1.0 : -1.0,
+          (offset >= -1 && offset <= 1)
+              ? offset
+              : (offset > 0)
+                  ? 1.0
+                  : -1.0,
           0.0),
     );
   }

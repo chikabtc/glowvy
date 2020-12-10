@@ -4,6 +4,7 @@ import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/user/user.dart';
@@ -16,7 +17,7 @@ import 'package:provider/provider.dart';
 class LoginScreen extends StatefulWidget {
   final bool fromCart;
 
-  LoginScreen({this.fromCart = false});
+  const LoginScreen({this.fromCart = false});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -64,25 +65,27 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
   }
 
   bool isInputValid() {
-    try {
-      if (!email.contains('@')) {
-        throw 'Please input valid email format';
-      } else if (email == null || password == null) {
-        throw 'Please input fill in all fields';
-      } else {
-        print('correct');
-        return true;
-      }
-    } catch (e) {
-      Popups.failMessage(e, context);
-      return false;
+    final emailValid = RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(email);
+
+    if (!email.contains('@')) {
+      throw 'Please input valid email format';
+    } else if (email == null || password == null) {
+      throw 'Please input fill in all fields';
+    } else if (!emailValid) {
+      throw 'wrong email format';
+    } else {
+      return true;
     }
   }
 
   Future _signinWithEmail(context) async {
     _playAnimation();
-    if (isInputValid()) {
-      await Provider.of<UserModel>(context, listen: false).loginWithEmail(
+    try {
+      Validator.validateEmail(email);
+
+      await Provider.of<UserModel>(context, listen: false).signInWithEmail(
         email: email,
         password: password,
         success: (user) {
@@ -92,6 +95,8 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
           _onLoginFailure(message, context);
         },
       );
+    } catch (e) {
+      _onLoginFailure(e, context);
     }
   }
 
@@ -186,7 +191,7 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
               value: Provider.of<UserModel>(context, listen: false),
               child: Consumer<UserModel>(builder: (context, model, child) {
                 return Container(
-                  padding: EdgeInsets.only(right: 16, left: 16),
+                  padding: const EdgeInsets.only(right: 16, left: 16),
                   width: screenSize.width,
                   child: Column(
                     children: <Widget>[
@@ -208,7 +213,7 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
                       Container(
                           width: screenSize.width,
                           height: 48,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(6)),
                               color: kQuaternaryOrange),
@@ -217,6 +222,7 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
                             child: TextField(
                                 controller: _emailController,
                                 cursorColor: theme.cursorColor,
+                                keyboardType: TextInputType.emailAddress,
                                 style: textTheme.headline5
                                     .copyWith(color: kPrimaryOrange),
                                 onChanged: (value) => email = value,
@@ -228,7 +234,7 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
                       Container(
                           width: screenSize.width,
                           height: 48,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(6)),
                               color: kQuaternaryOrange),
@@ -266,14 +272,15 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
                           height: 48,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25.0),
-                              side: BorderSide(color: kPinkAccent, width: 1.5)),
+                              side: const BorderSide(
+                                  color: kPinkAccent, width: 1.5)),
                           child: Text(S.of(context).forgotpassword,
                               style: textTheme.button2
                                   .copyWith(color: kPinkAccent)),
                           onPressed: () {
                             if (!isLoading) {
                               Navigator.of(context)
-                                  .pushReplacementNamed('/verify_email');
+                                  .pushReplacementNamed('/forgot_password');
                             }
                           }),
                       const SizedBox(
@@ -295,20 +302,20 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
                             ),
                             elevation: 0.0,
                           ),
-                          const SizedBox(width: 35),
-                          MaterialButton(
-                            color: kPrimaryOrange,
-                            minWidth: 48,
-                            height: 48,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16.0)),
-                            onPressed: () => _signinWithGoogle(context),
-                            child: SvgPicture.asset(
-                              'assets/icons/google-social.svg',
-                              width: 24,
-                            ),
-                            elevation: 0.0,
-                          ),
+                          // const SizedBox(width: 35),
+                          // MaterialButton(
+                          //   color: kPrimaryOrange,
+                          //   minWidth: 48,
+                          //   height: 48,
+                          //   shape: RoundedRectangleBorder(
+                          //       borderRadius: BorderRadius.circular(16.0)),
+                          //   onPressed: () => _signinWithGoogle(context),
+                          //   child: SvgPicture.asset(
+                          //     'assets/icons/google-social.svg',
+                          //     width: 24,
+                          //   ),
+                          //   elevation: 0.0,
+                          // ),
                           if (Platform.isIOS) const SizedBox(width: 35),
                           if (Platform.isIOS)
                             MaterialButton(

@@ -71,6 +71,8 @@
 			<key>NSAllowsArbitraryLoadsInWebContent</key>
 			<true />
 		</dict>
+		<key>NSMicrophoneUsageDescription</key>
+		<string>Need the microphone for recording their voice and sharing with other users</string>
 		<key>NSLocationAlwaysUsageDescription</key>
 		<string>Need current location access</string>
 		<key>NSLocationWhenInUseUsageDescription</key>

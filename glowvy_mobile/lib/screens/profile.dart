@@ -65,6 +65,7 @@ class ProfilePageState extends State<ProfilePage>
     return Scaffold(
         body: Consumer<UserModel>(builder: (context, userModel, child) {
       final user = userModel.user;
+      final firebaseUser = userModel.firebaseUser;
       return !userModel.isLoggedIn
           ? BeforeLoginPage()
           : Container(
@@ -76,14 +77,14 @@ class ProfilePageState extends State<ProfilePage>
                         const EdgeInsets.only(left: 16, bottom: 14, top: 84),
                     color: Colors.white,
                     child: Row(children: <Widget>[
-                      if (user.picture == null)
+                      if (firebaseUser.photoURL == null)
                         Image.asset(
                           'assets/icons/default-avatar.png',
                         )
                       else
                         ClipOval(
                             child: Image.network(
-                          user.picture +
+                          firebaseUser.photoURL +
                               '?v=${ValueKey(Random().nextInt(100))}',
                           width: 64,
                           height: 64,
@@ -94,10 +95,14 @@ class ProfilePageState extends State<ProfilePage>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Text(b.FirebaseAuth.instance.currentUser.email ?? ' ',
-                              style: textTheme.headline3),
-                          Text(userModel.user.fullName ?? ' ',
-                              style: textTheme.caption2),
+                          Text(
+                            b.FirebaseAuth.instance.currentUser.displayName ??
+                                ' ',
+                            overflow: TextOverflow.ellipsis,
+                            style: textTheme.headline3,
+                            softWrap: true,
+                          ),
+                          Text('dsd', style: textTheme.caption2),
                           Container(height: 15),
                           GestureDetector(
                             onTap: () => Navigator.push(
@@ -145,7 +150,7 @@ class ProfilePageState extends State<ProfilePage>
                           height: 70,
                           width: screenSize.width / 2,
                           color: kLightYellow,
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                             top: 13,
                             bottom: 11,
                             left: 16,

@@ -1,6 +1,8 @@
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
@@ -9,15 +11,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
-  ForgotPasswordScreen();
-
   @override
   _ForgotPasswordScreenState createState() => _ForgotPasswordScreenState();
 }
 
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
     with TickerProviderStateMixin, AfterLayoutMixin {
-  AnimationController _loginButtonController;
+  AnimationController _emailButtonController;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   String email, code, password;
   final TextEditingController _emailController = TextEditingController();
@@ -30,13 +30,13 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
   @override
   void initState() {
     super.initState();
-    _loginButtonController = AnimationController(
+    _emailButtonController = AnimationController(
         duration: const Duration(milliseconds: 3000), vsync: this);
   }
 
   @override
   void dispose() {
-    _loginButtonController.dispose();
+    _emailButtonController.dispose();
     super.dispose();
   }
 
@@ -54,7 +54,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
     this.accessToken = accessToken;
     kAccessToken = accessToken;
     print('accessToken Received here: $accessToken');
-    isEmailSent = true;
     _emailController.clear();
   }
 
@@ -73,7 +72,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
     final snackBar = SnackBar(
       content:
           Text('$text', style: kBaseTextStyle.copyWith(color: Colors.white)),
-      duration: Duration(seconds: 10),
+      duration: const Duration(seconds: 10),
       action: SnackBarAction(
         label: 'Close',
         onPressed: () {
@@ -84,18 +83,18 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
     _scaffoldKey.currentState.showSnackBar(snackBar);
   }
 
-  Future<Null> _playAnimation() async {
+  Future _playAnimation() async {
     try {
       setState(() {
         isLoading = true;
       });
-      await _loginButtonController.forward();
+      await _emailButtonController.forward();
     } on TickerCanceled {}
   }
 
   Future<Null> _stopAnimation() async {
     try {
-      await _loginButtonController.reverse();
+      await _emailButtonController.reverse();
       setState(() {
         isLoading = false;
       });
@@ -108,7 +107,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
     /// Ability so close message
     final snackBar = SnackBar(
       content: Text('Warning: $message', style: kBaseTextStyle),
-      duration: Duration(seconds: 30),
+      duration: const Duration(seconds: 30),
       action: SnackBarAction(
         label: S.of(context).close,
         onPressed: () {
@@ -123,6 +122,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
       ..showSnackBar(snackBar);
   }
 
+  Future _onFailure(message, context) async {
+    await _emailButtonController.reverse();
+    Popups.failMessage(message, context);
+  }
+
   @override
   Widget build(BuildContext context) {
     var buttonTextStyle =
@@ -130,17 +134,24 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
     final screenSize = MediaQuery.of(context).size;
     parentContext = context;
 
-    Future _requestPIN(email) {
-      print('request pin: $email');
-      if (!email.contains('@')) {
-        print(
-            "Please input valid email'Please input valid email'Please input valid email'");
-        _snackBar('Please input valid email');
-      } else if (email == null) {
-        _snackBar('Please input fill in all fields');
-      } else {
-        _playAnimation();
-        // Provider.of<UserModel>(context, listen: false).verifyEmail();
+    Future _sendPasswordResetEmail(email, context) async {
+      _playAnimation();
+      try {
+        Validator.validateEmail(email);
+
+        await Provider.of<UserModel>(context, listen: false)
+            .sendPasswordResetEmail(email, success: () {
+          _stopAnimation();
+          Popups.showSuccesPopup(context, message: 'sent');
+          setState(() {
+            isEmailSent = true;
+          });
+        }, fail: () {
+          _stopAnimation();
+        });
+      } catch (e) {
+        _onFailure(e, context);
+        // _onLoginFailure(e, context);
       }
     }
 
@@ -163,19 +174,26 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
       key: _scaffoldKey,
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
+        brightness: Brightness.light,
         leading: Navigator.of(context).canPop()
             ? IconButton(
-                icon: Icon(Icons.arrow_back_ios),
+                icon: const Icon(Icons.arrow_back_ios),
                 onPressed: () {
                   Navigator.of(context).pop();
                 })
             : Container(),
+        //logout the user and send to the login page
         actions: <Widget>[
           FlatButton(
             child: Text(S.of(context).login,
                 style: buttonTextStyle.copyWith(fontWeight: FontWeight.bold)),
-            onPressed: () {
-              Navigator.pushNamed(context, '/login');
+            onPressed: () async {
+              //1. logout
+              //2. pop all the pages except the
+              //3. go to login in page
+              await Provider.of<UserModel>(context, listen: false).logout();
+              Navigator.pushNamedAndRemoveUntil(
+                  context, '/login', (route) => route.isFirst);
             },
           )
         ],
@@ -199,9 +217,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Text(
-                                isEmailSent
-                                    ? S.of(parentContext).enterPINCode
-                                    : S.of(parentContext).forgotpassword,
+                                S.of(parentContext).forgotpassword,
                                 style: kBaseTextStyle.copyWith(
                                     fontWeight: FontWeight.bold, fontSize: 24),
                               )
@@ -210,17 +226,14 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                         ],
                       ),
                       const SizedBox(height: 23.0),
-                      Text(
-                          isEmailSent
-                              ? S.of(context).enterSixDigitCode
-                              : S.of(context).enterEmailToGetPIN,
+                      Text(S.of(context).enterEmailToGetPIN,
                           style: kBaseTextStyle.copyWith(
                               fontSize: 14, fontWeight: FontWeight.w600)),
                       const SizedBox(height: 16.0),
                       Container(
                           width: screenSize.width,
                           height: 48,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(6)),
                               color: kPureWhite),
@@ -228,14 +241,14 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                               Center(
                             child: TextField(
                               controller: _emailController,
-                              onChanged: (value) =>
-                                  isEmailSent ? code = value : email = value,
+                              onChanged: (value) => email = value,
                               keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
+                              cursorColor: theme.cursorColor,
+                              style: textTheme.headline5
+                                  .copyWith(color: kPrimaryOrange),
+                              decoration: kTextField.copyWith(
                                 border: InputBorder.none,
-                                hintText: isEmailSent
-                                    ? S.of(parentContext).enterPIN
-                                    : S.of(parentContext).enterYourEmail,
+                                hintText: S.of(parentContext).enterYourEmail,
                                 hintStyle: kBaseTextStyle.copyWith(
                                   fontWeight: FontWeight.w600,
                                   color: kSecondaryGrey.withOpacity(0.5),
@@ -246,12 +259,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen>
                           )),
                       const SizedBox(height: 16.0),
                       StaggerAnimation(
-                          buttonTitle: isEmailSent
-                              ? S.of(context).enter
-                              : S.of(context).send,
-                          buttonController: _loginButtonController.view,
+                          buttonTitle:
+                              isEmailSent ? 'resend' : S.of(context).send,
+                          buttonController: _emailButtonController.view,
                           onTap: () {
-                            isEmailSent ? _checkPIN() : _requestPIN(email);
+                            _sendPasswordResetEmail(email, context);
                           }),
                     ],
                   ),

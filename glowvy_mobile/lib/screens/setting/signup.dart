@@ -4,6 +4,7 @@ import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
@@ -28,6 +29,7 @@ class _SignupScreenState extends State<SignupScreen>
   String fullName, email, password;
   final TextEditingController _emailController = TextEditingController();
   bool isLoading = false;
+  bool isPasswordVisible = false;
   bool isChecked = false;
   BuildContext parentContext;
 
@@ -52,7 +54,7 @@ class _SignupScreenState extends State<SignupScreen>
     await _loginButtonController.reverse();
   }
 
-  void _onLoginFailure(message, context) {
+  void _onsignupFailure(message, context) {
     _stopAnimation();
     showFailMessage(message, context);
   }
@@ -64,23 +66,25 @@ class _SignupScreenState extends State<SignupScreen>
   }
 
   bool isInputValid() {
-    try {
-      if (!email.contains('@')) {
-        throw 'Please input valid email format';
-      } else if (fullName == null || email == null || password == null) {
-        throw 'Please input fill in all fields';
-      } else {
-        return true;
-      }
-    } catch (e) {
-      showFailMessage(e, context);
-      return false;
+    final emailValid = RegExp(
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        .hasMatch(email);
+
+    if (!email.contains('@')) {
+      throw 'Please input valid email format';
+    } else if (fullName == null || email == null || password == null) {
+      throw 'Please input fill in all fields';
+    } else if (!emailValid) {
+      throw 'wrong email format';
+    } else {
+      return true;
     }
   }
 
   Future _registerWithEmail(fullName, email, password, context) async {
-    _playAnimation();
-    if (isInputValid()) {
+    try {
+      _playAnimation();
+      Validator.validateEmail(email);
       await Provider.of<UserModel>(context, listen: false).registerWithEmail(
         email: email,
         password: password,
@@ -89,9 +93,11 @@ class _SignupScreenState extends State<SignupScreen>
           onSignupSuccess(user);
         },
         fail: (message) {
-          _onLoginFailure(message, context);
+          _onsignupFailure(message, context);
         },
       );
+    } catch (e) {
+      _onsignupFailure(e, context);
     }
   }
 
@@ -102,7 +108,7 @@ class _SignupScreenState extends State<SignupScreen>
         onSignupSuccess(user);
       },
       fail: (message) {
-        _onLoginFailure(message, context);
+        _onsignupFailure(message, context);
       },
     );
   }
@@ -115,7 +121,7 @@ class _SignupScreenState extends State<SignupScreen>
         onSignupSuccess(user);
       },
       fail: (message) {
-        _onLoginFailure(message, context);
+        _onsignupFailure(message, context);
       },
     );
   }
@@ -130,7 +136,7 @@ class _SignupScreenState extends State<SignupScreen>
         onSignupSuccess(user);
       },
       fail: (message) {
-        _onLoginFailure(message, context);
+        _onsignupFailure(message, context);
       },
     );
   }
@@ -178,7 +184,7 @@ class _SignupScreenState extends State<SignupScreen>
               value: Provider.of<UserModel>(context, listen: false),
               child: Consumer<UserModel>(builder: (context, model, child) {
                 return Container(
-                  padding: EdgeInsets.only(right: 16, left: 16),
+                  padding: const EdgeInsets.only(right: 16, left: 16),
                   width: screenSize.width,
                   child: Column(
                     children: <Widget>[
@@ -233,9 +239,9 @@ class _SignupScreenState extends State<SignupScreen>
                                 style: textTheme.headline5
                                     .copyWith(color: kPrimaryOrange),
                                 controller: _emailController,
+                                keyboardType: TextInputType.emailAddress,
                                 cursorColor: kPinkAccent,
                                 onChanged: (value) => email = value,
-                                keyboardType: TextInputType.emailAddress,
                                 decoration: kTextField.copyWith(
                                   hintText: S.of(parentContext).enterYourEmail,
                                 )),
@@ -250,16 +256,32 @@ class _SignupScreenState extends State<SignupScreen>
                               color: kQuaternaryOrange),
                           child: // Group 6
                               Center(
-                            child: TextField(
-                                style: textTheme.headline5
-                                    .copyWith(color: kPrimaryOrange),
-                                cursorColor: kPinkAccent,
-                                onChanged: (value) => password = value,
-                                obscureText: true,
-                                decoration: kTextField.copyWith(
-                                  hintText: S.of(parentContext).password,
-                                )),
-                          )),
+                                  child: TextField(
+                            style: textTheme.headline5
+                                .copyWith(color: kPrimaryOrange),
+                            keyboardType: TextInputType.text,
+                            cursorColor: kPinkAccent,
+                            onChanged: (value) => password = value,
+                            obscureText: isPasswordVisible,
+                            decoration: kTextField.copyWith(
+                              hintText: S.of(parentContext).password,
+                              suffixIcon: IconButton(
+                                icon: Icon(
+                                  // Based on passwordVisible state choose the icon
+                                  isPasswordVisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                  color: Theme.of(context).primaryColorDark,
+                                ),
+                                onPressed: () {
+                                  // Update the state i.e. toogle the state of passwordVisible variable
+                                  setState(() {
+                                    isPasswordVisible = !isPasswordVisible;
+                                  });
+                                },
+                              ),
+                            ),
+                          ))),
                       const SizedBox(
                         height: 16.0,
                       ),
@@ -300,20 +322,20 @@ class _SignupScreenState extends State<SignupScreen>
                             ),
                             elevation: 0.0,
                           ),
-                          const SizedBox(width: 35),
-                          MaterialButton(
-                            color: kPrimaryOrange,
-                            minWidth: 48,
-                            height: 48,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16.0)),
-                            onPressed: () => _registerWithGoogle(context),
-                            child: SvgPicture.asset(
-                              'assets/icons/google-social.svg',
-                              width: 24,
-                            ),
-                            elevation: 0.0,
-                          ),
+                          // const SizedBox(width: 35),
+                          // MaterialButton(
+                          //   color: kPrimaryOrange,
+                          //   minWidth: 48,
+                          //   height: 48,
+                          //   shape: RoundedRectangleBorder(
+                          //       borderRadius: BorderRadius.circular(16.0)),
+                          //   onPressed: () => _registerWithGoogle(context),
+                          //   child: SvgPicture.asset(
+                          //     'assets/icons/google-social.svg',
+                          //     width: 24,
+                          //   ),
+                          //   elevation: 0.0,
+                          // ),
                           if (Platform.isIOS) const SizedBox(width: 35),
                           if (Platform.isIOS)
                             MaterialButton(

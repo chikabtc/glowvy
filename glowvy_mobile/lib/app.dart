@@ -5,6 +5,7 @@ import 'package:Dimodo/models/search_model.dart';
 import 'package:Dimodo/screens/category.dart';
 import 'package:Dimodo/screens/glowvy-onboard.dart';
 import 'package:Dimodo/screens/search_screen.dart';
+import 'package:Dimodo/screens/setting/forgot_password.dart';
 import 'package:Dimodo/screens/setting/reset_password.dart';
 import 'package:Dimodo/screens/setting/verify_email.dart';
 import 'package:after_layout/after_layout.dart';
@@ -229,6 +230,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
                   '/category': (context) => CategoryScreen(),
                   '/verify_email': (context) => VerifyEmailScreen(),
                   '/reset_password': (context) => ResetPasswordScreen(),
+                  '/forgot_password': (context) => ForgotPasswordScreen(),
                 },
                 theme: buildLightTheme(),
               ),

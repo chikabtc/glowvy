@@ -183,11 +183,10 @@ class UserModel with ChangeNotifier {
           _storage.ref().child(profileImageBucketPath + '$filePath');
 
       await reference.putFile(file);
+      await firebaseUser.updateProfile(
+          photoURL:
+              'http://storage.googleapis.com/glowvy-b6cf4.appspot.com/users/pictures/$filePath');
 
-      // await _db.collection('users').doc(firebaseUser.uid).update({
-      //   'picture':
-      //       'http://storage.googleapis.com/glowvy-b6cf4.appspot.com/users/pictures/$filePath',
-      // });
       await reloadUser();
     } catch (e) {
       print('uploadProfilePicture: $e');
@@ -275,9 +274,30 @@ class UserModel with ChangeNotifier {
     }
   }
 
+  // keytool -list -v -keystore keystore_file_name.jks
+
   Future sendEmailVerification(email) async {
     await firebaseUser.verifyBeforeUpdateEmail(email);
   }
+
+  Future sendPasswordResetEmail(email,
+      {@required Function success, @required Function fail}) async {
+    try {
+      print('send');
+      await _auth.sendPasswordResetEmail(email: email);
+      success();
+    } on b.FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('The code is invalid.');
+        // TODO(parker): translate
+        fail('user is not found with associated email');
+      }
+    }
+  }
+
+  // Future verifyPasswordReset(code) async {
+
+  // }
 
   Future<User> registerWithEmail(
       {@required fullName,
@@ -288,9 +308,11 @@ class UserModel with ChangeNotifier {
     try {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
+      await firebaseUser.updateProfile(displayName: fullName);
       final user = User();
       user.fullName = fullName;
       user.email = email;
+      await createUser(user);
       notifyListeners();
       success(user);
     } on b.FirebaseAuthException catch (e) {
@@ -313,7 +335,7 @@ class UserModel with ChangeNotifier {
     return null;
   }
 
-  Future loginWithEmail(
+  Future signInWithEmail(
       {@required email,
       @required password,
       Function success,
@@ -322,6 +344,7 @@ class UserModel with ChangeNotifier {
       final userCredential = await b.FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
       firebaseUser = userCredential.user;
+      print('uid: ${firebaseUser.uid}');
       final snap = await _db.collection('users').doc(firebaseUser.uid).get();
       if (snap.exists) {
         final userJson = snap.data();
@@ -518,7 +541,8 @@ class UserModel with ChangeNotifier {
       await reloadUser();
       success(user);
     } catch (err) {
-      fail('Canceled Apple Sign in: $err');
+      // TODO(parker): translate
+      fail('Apple Sign in is cancelled');
     }
   }
 
