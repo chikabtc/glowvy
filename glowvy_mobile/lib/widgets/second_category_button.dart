@@ -19,71 +19,102 @@ class _SecondCategoryButtonState extends State<SecondCategoryButton> {
   bool isSelected = false;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          isSelected = !isSelected;
-          if (widget.category.thirdCategories.isEmpty) {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        RankingByCategory(secondCategory: widget.category)));
-          }
-        });
-      },
-      child: Column(
-        children: [
-          Container(
-            height: 50,
+    return Column(
+      children: [
+        FlatButton(
+          height: 50,
+          color: Colors.transparent,
+          padding: const EdgeInsets.only(left: 16, right: 5),
+          child: Center(
+            child: Row(
+              children: [
+                Text(widget.category.secondCategoryName,
+                    textAlign: TextAlign.left,
+                    style: textTheme.headline5.copyWith(fontSize: 16)),
+                const Spacer(),
+                Icon(
+                  isSelected ? Icons.arrow_drop_up : Icons.arrow_drop_down,
+                  color: widget.category.thirdCategories.isEmpty
+                      ? Colors.transparent
+                      : kSecondaryGrey,
+                ),
+              ],
+            ),
+          ),
+          onPressed: () {
+            setState(() {
+              isSelected = !isSelected;
+              if (widget.category.thirdCategories.isEmpty) {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => RankingByCategory(
+                            secondCategory: widget.category)));
+              }
+            });
+          },
+        ),
+        if (isSelected && widget.category.thirdCategories.isNotEmpty)
+          FlatButton(
             color: Colors.transparent,
-            padding: const EdgeInsets.only(left: 16, right: 5),
-            child: Center(
-              child: Row(
-                children: [
-                  Text(widget.category.secondCategoryName,
-                      textAlign: TextAlign.left,
-                      style: textTheme.headline5.copyWith(fontSize: 16)),
-                  const Spacer(),
-                  Icon(
-                    isSelected ? Icons.arrow_drop_up : Icons.arrow_drop_down,
-                    color: widget.category.thirdCategories.isEmpty
-                        ? Colors.transparent
-                        : kSecondaryGrey,
-                  ),
-                ],
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          RankingByCategory(secondCategory: widget.category)));
+            },
+            padding: const EdgeInsets.all(16),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Tất cả sản phẩm',
+                textAlign: TextAlign.start,
+                style: textTheme.caption.copyWith(color: kDarkAccent),
               ),
             ),
           ),
-          if (isSelected)
-            ListView.builder(
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: widget.category.thirdCategories.length,
-              itemBuilder: (context, index) => FlatButton(
-                color: Colors.transparent,
-                onPressed: () => Navigator.push(
+        AnimatedCrossFade(
+          duration: const Duration(milliseconds: 100),
+          secondChild: ListView.builder(
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: widget.category.thirdCategories.length,
+            itemBuilder: (context, index) => FlatButton(
+              color: Colors.transparent,
+              onPressed: () {
+                setState(() {
+                  selectedThirdCategory =
+                      widget.category.thirdCategories[index];
+                });
+
+                Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => RankingByCategory(
                             secondCategory: widget.category,
-                            thirdCategory:
-                                widget.category.thirdCategories[index]))),
-                padding: const EdgeInsets.all(16),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    widget.category.thirdCategories[index].thirdCategoryName,
-                    textAlign: TextAlign.start,
-                    style: textTheme.caption.copyWith(color: kDarkAccent),
-                  ),
+                            thirdCategory: selectedThirdCategory)));
+              },
+              padding: const EdgeInsets.all(16),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  widget.category.thirdCategories[index].thirdCategoryName,
+                  textAlign: TextAlign.start,
+                  style: textTheme.caption.copyWith(color: kDarkAccent),
                 ),
               ),
             ),
-          kDivider
-        ],
-      ),
+          ),
+          firstChild: Container(), // When you don't want to show menu..
+          crossFadeState:
+              isSelected ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+        ),
+        // if (isSelected)
+
+        kDivider
+      ],
     );
   }
 }

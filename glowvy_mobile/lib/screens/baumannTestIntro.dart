@@ -16,10 +16,6 @@ class BaumannTestIntro extends StatefulWidget {
 
 class _BaumannTestIntroState extends State<BaumannTestIntro> {
   Size screenSize;
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _lastNameController = TextEditingController();
-  String firstName;
-  String lastName;
   UserModel userModel;
   @override
   void initState() {
@@ -59,13 +55,13 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                           child: Column(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: <Widget>[
-                                Text('Know My Skin Type',
+                                Text('Bạn hiểu làn da mình đến mức nào?',
                                     style: textTheme.headline2),
                                 Padding(
                                   padding: const EdgeInsets.only(
                                       left: 43.0, right: 43, bottom: 20),
                                   child: Text(
-                                    'Đây là lựa chọn phù hợp dành cho bạn! Lời khuyên đến từ chuyên gia phù hợp dành riêng cho nhu cầu chăm sóc da của bạn.',
+                                    'Làn da mỗi người là hoàn toàn khác nhau. Bài kiểm tra đánh giá làn da từ chuyên gia Lessie Baumann sẽ giúp bạn tìm được những lựa chọn phù hợp dành riêng cho bản thân mình',
                                     style: textTheme.headline5
                                         .copyWith(fontStyle: FontStyle.italic),
                                   ),
@@ -114,7 +110,7 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                             ),
                             const SizedBox(height: 20),
                             Text(
-                              'Sau bài test này, tôi sẽ biết được: ',
+                              'Sau bài test này, bạn sẽ biết được": ',
                               style: textTheme.headline3,
                             ),
                             TodoElement(
@@ -123,114 +119,114 @@ class _BaumannTestIntroState extends State<BaumannTestIntro> {
                                 'Những tips skincare cho riêng cá nhân bạn'),
                             TodoElement('Kế hoạch skincare độc quyền mỗi ngày'),
                             TodoElement('Và nhiều hơn thế nữa...'),
-                            Align(
-                              alignment: FractionalOffset.bottomCenter,
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 28, bottom: 70.0),
-                                child: Column(
-                                  children: <Widget>[
-                                    Row(children: <Widget>[
-                                      Container(
-                                          width: (screenSize.width - 50) / 2,
-                                          height: 48,
-                                          decoration: const BoxDecoration(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(16)),
-                                              color: kQuaternaryOrange),
-                                          child: // Group 6
-                                              Center(
-                                            child: MediaQuery(
-                                              data: MediaQuery.of(context)
-                                                  .copyWith(textScaleFactor: 1),
-                                              child: TextField(
-                                                  controller:
-                                                      _firstNameController,
-                                                  cursorColor:
-                                                      theme.cursorColor,
-                                                  onChanged: (value) =>
-                                                      firstName = value,
-                                                  style: textTheme.headline5
-                                                      .copyWith(
-                                                          color: kDarkAccent),
-                                                  decoration:
-                                                      kTextField.copyWith(
-                                                    hintText:
-                                                        S.of(context).firstName,
-                                                  )
-                                                  // decoration: InputDecoration(
-                                                  //   border: InputBorder.none,
-                                                  //   hintText:
-                                                  //       S.of(context).firstName,
-                                                  //   hintStyle: textTheme.headline5
-                                                  //       .copyWith(
-                                                  //           fontWeight:
-                                                  //               FontWeight.w600,
-                                                  //           color:
-                                                  //               kPrimaryOrange),
-                                                  //   contentPadding:
-                                                  //       const EdgeInsets.only(left: 20),
-                                                  // ),
-                                                  ),
-                                            ),
-                                          )),
-                                      const SizedBox(width: 10.0),
-                                      Container(
-                                          width: (screenSize.width - 50) / 2,
-                                          height: 48,
-                                          decoration: const BoxDecoration(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(16)),
-                                              color: kQuaternaryOrange),
-                                          child: // Group 6
-                                              Center(
-                                            child: TextField(
-                                                controller: _lastNameController,
-                                                style: textTheme.headline5
-                                                    .copyWith(
-                                                        color: kDarkAccent),
-                                                cursorColor: theme.cursorColor,
-                                                onChanged: (value) =>
-                                                    lastName = value,
-                                                decoration: kTextField.copyWith(
-                                                  hintText:
-                                                      S.of(context).lastName,
-                                                )),
-                                          )),
-                                    ]),
-                                    const SizedBox(height: 16.0),
-                                    MaterialButton(
-                                        elevation: 0,
-                                        color: kPrimaryOrange,
-                                        minWidth: screenSize.width,
-                                        splashColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        enableFeedback: false,
-                                        height: 48,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(16.0),
-                                        ),
-                                        child: Text('Bắt đầu kiểm tra loại da',
-                                            style: textTheme.headline5
-                                                .copyWith(color: Colors.white)),
-                                        onPressed: () {
-                                          if (firstName != null &&
-                                              lastName != null) {
-                                            Navigator.pop(context);
-                                            userModel.setName(
-                                                firstName, lastName);
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        BaumannQuiz()));
-                                          }
-                                        }),
-                                  ],
-                                ),
-                              ),
-                            )
+                            // Align(
+                            //   alignment: FractionalOffset.bottomCenter,
+                            //   child: Padding(
+                            //     padding: const EdgeInsets.only(
+                            //         top: 28, bottom: 70.0),
+                            //     child: Column(
+                            //       children: <Widget>[
+                            //         Row(children: <Widget>[
+                            //           Container(
+                            //               width: (screenSize.width - 50) / 2,
+                            //               height: 48,
+                            //               decoration: const BoxDecoration(
+                            //                   borderRadius: BorderRadius.all(
+                            //                       Radius.circular(16)),
+                            //                   color: kQuaternaryOrange),
+                            //               child: // Group 6
+                            //                   Center(
+                            //                 child: MediaQuery(
+                            //                   data: MediaQuery.of(context)
+                            //                       .copyWith(textScaleFactor: 1),
+                            //                   child: TextField(
+                            //                       controller:
+                            //                           _firstNameController,
+                            //                       cursorColor:
+                            //                           theme.cursorColor,
+                            //                       onChanged: (value) =>
+                            //                           firstName = value,
+                            //                       style: textTheme.headline5
+                            //                           .copyWith(
+                            //                               color: kDarkAccent),
+                            //                       decoration:
+                            //                           kTextField.copyWith(
+                            //                         hintText:
+                            //                             S.of(context).firstName,
+                            //                       )
+                            //                       // decoration: InputDecoration(
+                            //                       //   border: InputBorder.none,
+                            //                       //   hintText:
+                            //                       //       S.of(context).firstName,
+                            //                       //   hintStyle: textTheme.headline5
+                            //                       //       .copyWith(
+                            //                       //           fontWeight:
+                            //                       //               FontWeight.w600,
+                            //                       //           color:
+                            //                       //               kPrimaryOrange),
+                            //                       //   contentPadding:
+                            //                       //       const EdgeInsets.only(left: 20),
+                            //                       // ),
+                            //                       ),
+                            //                 ),
+                            //               )),
+                            //           const SizedBox(width: 10.0),
+                            //           Container(
+                            //               width: (screenSize.width - 50) / 2,
+                            //               height: 48,
+                            //               decoration: const BoxDecoration(
+                            //                   borderRadius: BorderRadius.all(
+                            //                       Radius.circular(16)),
+                            //                   color: kQuaternaryOrange),
+                            //               child: // Group 6
+                            //                   Center(
+                            //                 child: TextField(
+                            //                     controller: _lastNameController,
+                            //                     style: textTheme.headline5
+                            //                         .copyWith(
+                            //                             color: kDarkAccent),
+                            //                     cursorColor: theme.cursorColor,
+                            //                     onChanged: (value) =>
+                            //                         lastName = value,
+                            //                     decoration: kTextField.copyWith(
+                            //                       hintText:
+                            //                           S.of(context).lastName,
+                            //                     )),
+                            //               )),
+                            //         ]),
+                            //         const SizedBox(height: 16.0),
+                            //         MaterialButton(
+                            //             elevation: 0,
+                            //             color: kPrimaryOrange,
+                            //             minWidth: screenSize.width,
+                            //             splashColor: Colors.transparent,
+                            //             highlightColor: Colors.transparent,
+                            //             enableFeedback: false,
+                            //             height: 48,
+                            //             shape: RoundedRectangleBorder(
+                            //               borderRadius:
+                            //                   BorderRadius.circular(16.0),
+                            //             ),
+                            //             child: Text('Bắt đầu kiểm tra loại da',
+                            //                 style: textTheme.headline5
+                            //                     .copyWith(color: Colors.white)),
+                            //             onPressed: () {
+                            //               if (firstName != null &&
+                            //                   lastName != null) {
+                            //                 Navigator.pop(context);
+                            //                 userModel.setName(
+                            //                     firstName, lastName);
+                            //                 Navigator.push(
+                            //                     context,
+                            //                     MaterialPageRoute(
+                            //                         builder: (context) =>
+                            //                             BaumannQuiz()));
+                            //               }
+                            //             }),
+                            //       ],
+                            //     ),
+                            //   ),
+                            // )
                           ],
                         ),
                       )

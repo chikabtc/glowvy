@@ -100,6 +100,9 @@ class UserModel with ChangeNotifier {
 
   Future saveBaumannResults(
       String baummanType, SkinScores baumannScores) async {
+    // TODO(parker): overwrite the user skin type by bauman type
+    // var skinType
+    if (baummanType.contains('D')) {}
     try {
       await _db.collection('users').doc(firebaseUser.uid).update({
         'baumann_type': baummanType,
@@ -183,9 +186,10 @@ class UserModel with ChangeNotifier {
           _storage.ref().child(profileImageBucketPath + '$filePath');
 
       await reference.putFile(file);
-      await firebaseUser.updateProfile(
-          photoURL:
-              'http://storage.googleapis.com/glowvy-b6cf4.appspot.com/users/pictures/$filePath');
+      await _db.collection('users').doc(firebaseUser.uid).update({
+        'picture':
+            'http://storage.googleapis.com/glowvy-b6cf4.appspot.com/users/pictures/$filePath',
+      });
 
       await reloadUser();
     } catch (e) {
@@ -199,6 +203,41 @@ class UserModel with ChangeNotifier {
     });
     await reloadUser();
   }
+
+  Future updateUserBirthyear(int year) async {
+    await _db.collection('users').doc(firebaseUser.uid).update({
+      'birth_year': year,
+    });
+    await reloadUser();
+  }
+
+  Future updateUserSkinType(String skinType) async {
+    await _db.collection('users').doc(firebaseUser.uid).update({
+      'skin_type': skinType,
+    });
+    await reloadUser();
+  }
+
+  Future updateUserGender(String gender) async {
+    await _db.collection('users').doc(firebaseUser.uid).update({
+      'gender': gender,
+    });
+    await reloadUser();
+  }
+
+  Future updateUserIssues(List<String> issues) async {
+    await _db.collection('users').doc(firebaseUser.uid).update({
+      'skin_issues': issues,
+    });
+    await reloadUser();
+  }
+
+  // Future updateUserAge(int year) async {
+  //   await _db.collection('users').doc(firebaseUser.uid).update({
+  //     'birth_year': year,
+  //   });
+  //   await reloadUser();
+  // }
 
   Future updateEmail(email) async {
     try {
@@ -352,7 +391,7 @@ class UserModel with ChangeNotifier {
         notifyListeners();
         success(user);
       } else {
-        throw "user data doesn't exist: ${firebaseUser.uid}";
+        fail("user data doesn't exist: ${firebaseUser.uid}");
       }
     } on b.FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

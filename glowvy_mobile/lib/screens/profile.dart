@@ -15,7 +15,6 @@ import 'package:Dimodo/widgets/baumann_quiz.dart';
 import 'package:Dimodo/widgets/profile_review_card.dart';
 import 'package:firebase_auth/firebase_auth.dart' as b;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
@@ -49,7 +48,7 @@ class ProfilePageState extends State<ProfilePage>
           builder: (BuildContext context) => userModel.user.skinType == null
               ? BaumannTestIntro()
               : BaumannQuiz(
-                  baumannType: userModel.user.skinType,
+                  baumannType: userModel.user.baumannType,
                   baumannScores: userModel.user.baumannScores),
           fullscreenDialog: true,
         ));
@@ -60,8 +59,7 @@ class ProfilePageState extends State<ProfilePage>
     final screenSize = MediaQuery.of(context).size;
     imageCache.clear();
     PaintingBinding.instance.imageCache.clear();
-    SystemChrome.setSystemUIOverlayStyle(
-        const SystemUiOverlayStyle(statusBarColor: kDefaultBackground));
+
     return Scaffold(
         body: Consumer<UserModel>(builder: (context, userModel, child) {
       final user = userModel.user;
@@ -72,75 +70,87 @@ class ProfilePageState extends State<ProfilePage>
               color: kWhite,
               child: ListView(
                 children: <Widget>[
-                  Container(
-                    padding:
-                        const EdgeInsets.only(left: 16, bottom: 14, top: 84),
-                    color: Colors.white,
-                    child: Row(children: <Widget>[
-                      if (firebaseUser.photoURL == null)
-                        Image.asset(
-                          'assets/icons/default-avatar.png',
-                        )
-                      else
-                        ClipOval(
-                            child: Image.network(
-                          firebaseUser.photoURL +
-                              '?v=${ValueKey(Random().nextInt(100))}',
-                          width: 64,
-                          height: 64,
-                          fit: BoxFit.cover,
-                        )),
-                      Container(width: 16),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            b.FirebaseAuth.instance.currentUser.displayName ??
-                                ' ',
-                            overflow: TextOverflow.ellipsis,
-                            style: textTheme.headline3,
-                            softWrap: true,
-                          ),
-                          Text('dsd', style: textTheme.caption2),
-                          Container(height: 15),
-                          GestureDetector(
-                            onTap: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const EditProfilePage())),
-                            child: Container(
-                              width: screenSize.width - 122,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  const Spacer(),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                          width: 0.7, color: kSecondaryGrey),
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(
-                                              8.0) //                 <--- border radius here
-                                          ),
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const EditProfilePage())),
+                    child: Container(
+                      padding:
+                          const EdgeInsets.only(left: 16, bottom: 14, top: 84),
+                      color: Colors.white,
+                      child: Row(children: <Widget>[
+                        if (user.picture == null)
+                          Image.asset(
+                            'assets/icons/default-avatar.png',
+                          )
+                        else
+                          ClipOval(
+                              child: Image.network(
+                            user.picture +
+                                '?v=${ValueKey(Random().nextInt(100))}',
+                            width: 64,
+                            height: 64,
+                            fit: BoxFit.cover,
+                          )),
+                        Container(width: 16),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              b.FirebaseAuth.instance.currentUser.displayName ??
+                                  ' ',
+                              overflow: TextOverflow.ellipsis,
+                              style: textTheme.headline3,
+                              softWrap: true,
+                            ),
+                            // TODO(parker): age and skin type
+                            Text(
+                                '${DateTime.now().year - user.birthYear} years old / ${user.skinType}',
+                                style: textTheme.caption2),
+                            Container(height: 15),
+                            GestureDetector(
+                              onTap: () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const EditProfilePage())),
+                              child: Container(
+                                width: screenSize.width - 122,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    const Spacer(),
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                            width: 0.7, color: kSecondaryGrey),
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(
+                                                8.0) //                 <--- border radius here
+                                            ),
+                                      ),
+                                      padding: const EdgeInsets.only(
+                                          left: 10,
+                                          right: 10,
+                                          top: 2,
+                                          bottom: 2),
+                                      child: Text('Edit Profile',
+                                          style: textTheme.caption2.copyWith(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 12,
+                                              fontStyle: FontStyle.normal,
+                                              color: kSecondaryGrey)),
                                     ),
-                                    padding: const EdgeInsets.only(
-                                        left: 10, right: 10, top: 2, bottom: 2),
-                                    child: Text('Edit Profile',
-                                        style: textTheme.caption2.copyWith(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 12,
-                                            fontStyle: FontStyle.normal,
-                                            color: kSecondaryGrey)),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ]),
+                          ],
+                        ),
+                      ]),
+                    ),
                   ),
                   Row(
                     children: <Widget>[
@@ -394,10 +404,10 @@ class ProfilePageState extends State<ProfilePage>
                             // product: ,
                             review: userModel.reviews[i])),
                   ),
-                  Container(
-                    height: 200,
-                    color: Colors.white,
-                  )
+                  // Container(
+                  //   height: 200,
+                  //   color: Colors.white,
+                  // )
                 ],
               ),
             );

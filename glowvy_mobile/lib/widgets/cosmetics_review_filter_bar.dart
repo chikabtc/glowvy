@@ -3,6 +3,7 @@ import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/models/product/review_model.dart';
 import 'package:Dimodo/models/review.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,7 @@ class Sorting {
 
 class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
   ProductModel productModel;
+  ReviewModel reviewModel;
   bool showFilter = false;
   Size screenSize;
   double heightFactor;
@@ -50,6 +52,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
   void initState() {
     super.initState();
     productModel = Provider.of<ProductModel>(context, listen: false);
+    reviewModel = Provider.of<ReviewModel>(context, listen: false);
     appModel = Provider.of<AppModel>(context, listen: false);
     final appConfig = appModel.appConfig;
     cosmeticsFilters = appConfig['Cosmetics-Filters'] as Map<String, dynamic>;
@@ -77,7 +80,6 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
             children: [
               if (widget.showSorting)
                 Container(
-                  // color: Colors.orange,
                   width: screenSize.width / 2 - 10,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -192,7 +194,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
               return FractionallySizedBox(
                 heightFactor: heightFactor,
                 child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(20),
@@ -258,8 +260,8 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(25.0),
-                                            side: BorderSide(
-                                                color: kPinkAccent,
+                                            side: const BorderSide(
+                                                color: kPrimaryOrange,
                                                 width: 1.5)),
                                         child: Text(S.of(context).reset,
                                             style: kBaseTextStyle.copyWith(
@@ -277,13 +279,13 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                                     const SizedBox(width: 16),
                                     MaterialButton(
                                         elevation: 0,
-                                        color: kPinkAccent,
+                                        color: kPrimaryOrange,
                                         minWidth: (screenSize.width - 48) * 0.5,
                                         height: 40,
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(25.0),
-                                            side: BorderSide(
+                                            side: const BorderSide(
                                                 color: kPinkAccent,
                                                 width: 1.5)),
                                         child: Text(S.of(context).confirm,
@@ -291,7 +293,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                                                 fontWeight: FontWeight.w600,
                                                 color: Colors.white)),
                                         onPressed: () {
-                                          var filteredReviews = productModel
+                                          final filteredReviews = reviewModel
                                               .filteredReviewsBySkinType(
                                                   skinTypeId: skinTypeId,
                                                   reviews: widget.reviews);
@@ -320,7 +322,7 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
 
     cosmeticsFilters.forEach((key, values) {
       // print('Key: ${key}, value['name']s : ${value['name']s}');
-      var header = Text(
+      final header = Text(
         key,
         style: kBaseTextStyle.copyWith(
             fontSize: 13, fontWeight: FontWeight.w600, color: kSecondaryGrey),
@@ -333,8 +335,9 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
             child: ActionChip(
               shape: RoundedRectangleBorder(
                 side: BorderSide(
-                  color:
-                      skinTypeId == value['id'] ? kPinkAccent : kSecondaryWhite,
+                  color: skinTypeId == value['id']
+                      ? kPrimaryOrange
+                      : kSecondaryWhite,
                 ),
                 borderRadius: BorderRadius.circular(6.0),
               ),
@@ -350,17 +353,18 @@ class _CosmeticsReviewFilterBarState extends State<CosmeticsReviewFilterBar> {
                 style: kBaseTextStyle.copyWith(
                     fontSize: 15,
                     color: skinTypeId == value['id']
-                        ? kPinkAccent
+                        ? kPrimaryOrange
                         : kSecondaryGrey,
                     fontWeight: FontWeight.w600),
               ),
             ),
-            margin: EdgeInsets.only(left: 12, right: 12, top: 2, bottom: 2),
+            margin:
+                const EdgeInsets.only(left: 12, right: 12, top: 2, bottom: 2),
           )
       ]);
       widgets.addAll([
         Padding(
-          padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+          padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
           child: Divider(
             height: 1,
             color: kSecondaryGrey.withOpacity(0.3),

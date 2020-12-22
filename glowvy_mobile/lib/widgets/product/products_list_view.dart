@@ -1,7 +1,7 @@
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/screens/error_indicator.dart';
-import 'package:Dimodo/widgets/product/cosmetics_product_card.dart';
+import 'package:Dimodo/widgets/product/product_card.dart';
 import 'package:Dimodo/widgets/product/cosmetics_review_thumb_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -83,7 +83,7 @@ class _ProductsListViewState extends State<ProductsListView> {
               itemBuilder: (context, product, index) {
                 if (!widget.isFromReviewSearch)
                   // ignore: curly_braces_in_flow_control_structures
-                  return CosmeticsProductCard(
+                  return ProductCard(
                     ranking: widget.showRank ? index : null,
                     isNameAvailable: widget.isNameAvailable,
                     showDivider: index != _pagingController.itemList.length - 1,

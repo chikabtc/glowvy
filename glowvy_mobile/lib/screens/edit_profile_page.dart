@@ -10,6 +10,8 @@ import 'package:Dimodo/screens/edit_birthyear_page.dart';
 import 'package:Dimodo/screens/edit_gender_page.dart';
 import 'package:Dimodo/screens/edit_name_page.dart';
 import 'package:Dimodo/screens/edit_region_page.dart';
+import 'package:Dimodo/screens/edit_skin_issues_page.dart';
+import 'package:Dimodo/screens/edit_skin_type_page.dart';
 import 'package:Dimodo/screens/setting.dart';
 import 'package:Dimodo/widgets/setting_card.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +32,7 @@ class EditProfilePageState extends State<EditProfilePage>
   bool enabledNotification = true;
   UserModel userModel;
   final picker = ImagePicker();
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -39,11 +42,17 @@ class EditProfilePageState extends State<EditProfilePage>
 
   Future uploadImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    setState(() {
+      isLoading = true;
+    });
     if (pickedFile != null) {
       await userModel.uploadProfilePicture(File(pickedFile.path));
     } else {
       print('No image selected.');
     }
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
@@ -65,7 +74,8 @@ class EditProfilePageState extends State<EditProfilePage>
             title: Text(S.of(context).accounts, style: textTheme.headline3)),
         backgroundColor: kDefaultBackground,
         body: Consumer<UserModel>(builder: (context, userModel, child) {
-          var user = userModel.user;
+          final user = userModel.user;
+          final firebaseUser = userModel.firebaseUser;
           print('user profile photo: ${user.picture}');
           return Container(
             child: ListView(
@@ -73,20 +83,22 @@ class EditProfilePageState extends State<EditProfilePage>
                 SettingCard(
                     color: kWhite,
                     title: 'profile photo',
-                    trailingWidget: user.picture == null
-                        ? Image.asset(
-                            'assets/icons/default-avatar.png',
-                          )
-                        : ClipOval(
-                            child: Image.network(
-                              user.picture +
-                                  '?v=${ValueKey(Random().nextInt(100))}',
-                              key: ValueKey(Random().nextInt(100)),
-                              width: 64,
-                              height: 64,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
+                    trailingWidget: isLoading
+                        ? kIndicator()
+                        : user?.picture == null
+                            ? Image.asset(
+                                'assets/icons/default-avatar.png',
+                              )
+                            : ClipOval(
+                                child: Image.network(
+                                  user.picture +
+                                      '?v=${ValueKey(Random().nextInt(100))}',
+                                  key: ValueKey(Random().nextInt(100)),
+                                  width: 64,
+                                  height: 64,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
                     onTap: () async {
                       await uploadImage();
                     }),
@@ -106,7 +118,8 @@ class EditProfilePageState extends State<EditProfilePage>
                   onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute<void>(
-                          builder: (BuildContext context) => EditGenderPage())),
+                          builder: (BuildContext context) =>
+                              const EditGenderPage())),
                 ),
                 SettingCard(
                   color: kWhite,
@@ -135,11 +148,25 @@ class EditProfilePageState extends State<EditProfilePage>
                 SettingCard(
                     color: kWhite,
                     title: 'Skin Type',
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute<void>(
+                            builder: (BuildContext context) =>
+                                const EditSkinTypePage())),
                     trailingText: user.skinType ?? ''),
                 SettingCard(
                   color: kWhite,
                   title: 'Skin Issues',
                   showDivider: false,
+                  trailingText:
+                      user.skinIssues != null && user.skinIssues.isNotEmpty
+                          ? user.skinIssues.first
+                          : '',
+                  onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute<void>(
+                          builder: (BuildContext context) =>
+                              const EidtSkinIssuesPage())),
                   // trailingText: userModel.user.fullName,
                 ),
                 const SizedBox(height: 7),

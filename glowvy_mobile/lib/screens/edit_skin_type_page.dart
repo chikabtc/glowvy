@@ -22,7 +22,7 @@ class EditSkinTypePageState extends State<EditSkinTypePage>
     with TickerProviderStateMixin, WidgetsBindingObserver {
   UserModel userModel;
   AnimationController _doneButtonController;
-  List<dynamic> skinTypes;
+  List<String> skinTypes = ['Da dầu', 'Da khô', 'Da hỗn hợp', 'Da thường'];
   String skinType;
 
   @override
@@ -30,10 +30,9 @@ class EditSkinTypePageState extends State<EditSkinTypePage>
     super.initState();
     userModel = Provider.of<UserModel>(context, listen: false);
 
-    skinTypes = Provider.of<AppModel>(context, listen: false)
-        .appConfig['Baumann_quiz'] as List;
     _doneButtonController = AnimationController(
         duration: const Duration(milliseconds: 3000), vsync: this);
+    skinType = userModel.user.skinType;
   }
 
   @override
@@ -73,7 +72,7 @@ class EditSkinTypePageState extends State<EditSkinTypePage>
           elevation: 0,
           actions: [
             Padding(
-              padding: EdgeInsets.only(right: 16.0),
+              padding: const EdgeInsets.only(right: 16.0),
               child: Center(
                 child: Builder(
                   builder: (context) => StaggerAnimation(
@@ -109,17 +108,17 @@ class EditSkinTypePageState extends State<EditSkinTypePage>
                     });
                   },
                   trailing: skinType == skinTypes[index]
-                      ? Icon(
+                      ? const Icon(
                           Icons.check,
                           color: kPrimaryOrange,
                         )
-                      : Icon(
+                      : const Icon(
                           Icons.check,
                           color: kPrimaryOrange,
                           size: 0,
                         ),
                   title: Text(
-                    '${skinTypes[index]}',
+                    skinTypes[index],
                     style: kBaseTextStyle.copyWith(
                         fontSize: 15, fontWeight: FontWeight.w600),
                   ),

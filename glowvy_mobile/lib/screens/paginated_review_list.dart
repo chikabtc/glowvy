@@ -1,11 +1,10 @@
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/widgets.dart';
-import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/models/product/review_model.dart';
+import 'package:Dimodo/models/review.dart';
+import 'package:Dimodo/screens/detail/review_card.dart';
 import 'package:Dimodo/screens/error_indicator.dart';
-import 'package:Dimodo/widgets/cosmetics_request_button.dart';
-import 'package:Dimodo/widgets/product/product_card.dart';
-import 'package:Dimodo/widgets/product/cosmetics_review_thumb_card.dart';
 import 'package:Dimodo/widgets/product/list_page.dart';
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,66 +14,57 @@ import 'package:flutter_svg/svg.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
 
-import '../../models/product/product.dart';
+class PaginatedReviewListView extends StatefulWidget {
+  final ListPage<Review> initialPage;
 
-class PaginatedProductListView extends StatefulWidget {
-  final ListPage<Product> initialPage;
-
-  final bool showFilter;
-  final bool showRank;
-  final bool isFromReviewSearch;
-  final dynamic fetchProducts;
-  final dynamic listPreferences;
+  final dynamic fetchReviews;
   final bool showPadding;
-  final bool showNoMoreItemsIndicator;
-  // final ListPreferences listPreferences;
+  final FilterOptions filterOptions;
 
-  const PaginatedProductListView({
+  const PaginatedReviewListView({
+    Key key,
     this.initialPage,
-    this.showFilter = false,
-    this.showRank = false,
-    this.isFromReviewSearch = false,
-    this.fetchProducts,
-    this.listPreferences,
+    this.fetchReviews,
+    this.filterOptions,
     this.showPadding = false,
-    this.showNoMoreItemsIndicator = true,
-  });
+  }) : super(key: key);
 
   @override
-  _PaginatedProductListViewState createState() =>
-      _PaginatedProductListViewState();
+  _PaginatedReviewListViewState createState() =>
+      _PaginatedReviewListViewState();
 }
 
-class _PaginatedProductListViewState extends State<PaginatedProductListView>
+class _PaginatedReviewListViewState extends State<PaginatedReviewListView>
     with AfterLayoutMixin {
-  ProductModel productModel;
-  final _pagingController = PagingController<int, Product>(firstPageKey: 0);
+  ReviewModel _reviewModel;
+  final _pagingController = PagingController<int, Review>(firstPageKey: 0);
 
   @override
   void initState() {
     super.initState();
-    _pagingController.itemList = widget.initialPage.itemList;
+    _reviewModel = Provider.of<ReviewModel>(context, listen: false);
 
+    _pagingController.itemList =
+        _reviewModel.filter(widget.initialPage.itemList, widget.filterOptions);
+    ;
     if (widget.initialPage.isLastPage(0)) {
-      print('set last page ');
+      print('set last page');
       _pagingController.nextPageKey = null;
     }
 
-    productModel = Provider.of<ProductModel>(context, listen: false);
     _pagingController.addPageRequestListener((pageKey) {
-      print('listen');
       _fetchPage(pageKey);
     });
   }
 
   @override
-  void didUpdateWidget(PaginatedProductListView oldWidget) {
-    if (oldWidget.listPreferences != widget.listPreferences) {
+  void didUpdateWidget(PaginatedReviewListView oldWidget) {
+    if (oldWidget.filterOptions != widget.filterOptions) {
+      print('filter options is updated');
+      _reviewModel.clearPaginationHistory();
+      _pagingController.itemList =
+          _reviewModel.filter(_pagingController.itemList, widget.filterOptions);
       _pagingController.refresh();
-    }
-    if (oldWidget.initialPage != widget.initialPage) {
-      _pagingController.itemList = widget.initialPage.itemList;
-      // _pagingController.refresh();
     }
     super.didUpdateWidget(oldWidget);
   }
@@ -91,20 +81,22 @@ class _PaginatedProductListViewState extends State<PaginatedProductListView>
   Future<void> _fetchPage(int pageKey) async {
     if (_pagingController.nextPageKey != null) {
       try {
-        print('fetching');
-        final ListPage<Product> newPage = await widget.fetchProducts();
+        final ListPage<Review> newPage = await widget.fetchReviews();
         if (newPage != null) {
           print('new page exists');
           final previouslyFetchedItemsCount =
               _pagingController.itemList?.length ?? 0;
           final isLastPage = newPage.itemList.isEmpty ||
               newPage.isLastPage(previouslyFetchedItemsCount);
+          final filteredReviews =
+              _reviewModel.filter(newPage.itemList, widget.filterOptions);
           if (isLastPage) {
             print('last page');
-            _pagingController.appendLastPage(newPage.itemList);
+
+            _pagingController.appendLastPage(filteredReviews);
           } else {
             final nextPageKey = pageKey + 1;
-            _pagingController.appendPage(newPage.itemList, nextPageKey);
+            _pagingController.appendPage(filteredReviews, nextPageKey);
           }
         } else {
           print('new page is null');
@@ -125,20 +117,12 @@ class _PaginatedProductListViewState extends State<PaginatedProductListView>
         addAutomaticKeepAlives: false,
         shrinkWrap: true,
         physics: const ClampingScrollPhysics(),
-        builderDelegate: PagedChildBuilderDelegate<Product>(
-            itemBuilder: (context, product, index) {
-              if (!widget.isFromReviewSearch) {
-                return ProductCard(
-                  ranking: widget.showRank ? index : null,
-                  showDivider: index != _pagingController.itemList.length - 1,
-                  product: product,
-                );
-              } else {
-                return CosmeticsReviewThumbCard(
-                    ranking: widget.showRank ? index : null,
-                    showDivider: index != _pagingController.itemList.length - 1,
-                    product: product);
-              }
+        builderDelegate: PagedChildBuilderDelegate<Review>(
+            itemBuilder: (context, review, i) {
+              return ReviewCard(
+                  context: context,
+                  showDivider: i != _pagingController.itemList.length - 1,
+                  review: review);
             },
             firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(
                   error: _pagingController.error,
@@ -154,20 +138,22 @@ class _PaginatedProductListViewState extends State<PaginatedProductListView>
                             textTheme.bodyText2.copyWith(color: kTertiaryGray),
                       ),
                     ),
-                    CosmeticsRequestBtn(),
+                    const SizedBox(height: 10),
+                    SvgPicture.asset(
+                      'assets/icons/heart-ballon.svg',
+                      width: 30,
+                      height: 42,
+                    ),
                   ],
                 ),
-            noMoreItemsIndicatorBuilder: (context) =>
-                widget.showNoMoreItemsIndicator
-                    ? Padding(
-                        padding: const EdgeInsets.only(top: 28.0, bottom: 28),
-                        child: SvgPicture.asset(
-                          'assets/icons/heart-ballon.svg',
-                          width: 30,
-                          height: 42,
-                        ),
-                      )
-                    : Container(),
+            noMoreItemsIndicatorBuilder: (context) => Padding(
+                  padding: const EdgeInsets.only(top: 28.0, bottom: 28),
+                  child: SvgPicture.asset(
+                    'assets/icons/heart-ballon.svg',
+                    width: 30,
+                    height: 42,
+                  ),
+                ),
             firstPageProgressIndicatorBuilder: (context) => Container(
                 width: screenSize.width,
                 height: screenSize.height / 3,

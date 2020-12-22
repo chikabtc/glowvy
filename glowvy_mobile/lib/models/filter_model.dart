@@ -102,29 +102,4 @@ class FilterModel extends ChangeNotifier {
       rethrow;
     }
   }
-
-  // void onQueryChanged(String query) async {
-  //   if (query == _query) return;
-
-  //   _query = query;
-  //   _isLoading = true;
-  //   notifyListeners();
-
-  //   if (query.isEmpty) {
-  //     _suggestions = history;
-  //   } else {
-  //     // item.autocompleteterm
-  //     // .toLowerCase()
-  //     // .startsWith(query.toLowerCase());
-
-  //   }
-
-  //   _isLoading = false;
-  //   notifyListeners();
-  // }
-
-  // void clear() {
-  //   _suggestions = history;
-  //   notifyListeners();
-  // }
 }

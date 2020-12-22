@@ -9,6 +9,7 @@ import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
+import 'package:Dimodo/screens/setting/signup.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -31,6 +32,7 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
   BuildContext parentContext;
   bool isLoading = false;
   bool isAvailableApple = false;
+  bool isPasswordVisible = false;
 
   @override
   void initState() {
@@ -169,14 +171,16 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
       backgroundColor: Colors.white,
       appBar: AppBar(
         brightness: Brightness.light,
-        leading:
-            Navigator.of(context).canPop() ? backIcon(context) : Container(),
+        leading: backIcon(context),
         actions: <Widget>[
           FlatButton(
             child: Text(S.of(context).signup,
                 style: buttonTextStyle.copyWith(fontWeight: FontWeight.bold)),
             onPressed: () {
-              Navigator.pushReplacementNamed(context, '/signup');
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SignupScreen()));
               // Navigator.pushNamed(context, ');
             },
           )
@@ -245,10 +249,26 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
                                 style: textTheme.headline5
                                     .copyWith(color: kPrimaryOrange),
                                 onChanged: (value) => password = value,
-                                obscureText: true,
+                                obscureText: !isPasswordVisible,
+                                textAlignVertical: TextAlignVertical.center,
                                 controller: _passwordController,
                                 decoration: kTextField.copyWith(
                                   hintText: S.of(parentContext).password,
+                                  suffixIcon: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        isPasswordVisible = !isPasswordVisible;
+                                      });
+                                    },
+                                    child: Container(
+                                      child: Icon(
+                                        isPasswordVisible
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                        color: kDarkSecondary,
+                                      ),
+                                    ),
+                                  ),
                                 )),
                           )),
                       const SizedBox(

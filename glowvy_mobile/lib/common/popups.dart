@@ -4,6 +4,8 @@ import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/models/product/review_model.dart';
+import 'package:Dimodo/screens/detail/product_description.dart';
 import 'package:Dimodo/widgets/baumann_quiz.dart';
 import 'package:Dimodo/widgets/webview.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,7 +23,7 @@ class Popups {
         '$message',
         style: textTheme.headline5.copyWith(color: Colors.white),
       ),
-      duration: const Duration(seconds: 4),
+      duration: const Duration(seconds: 3),
       action: SnackBarAction(
         label: S.of(context).close,
         onPressed: () {
@@ -216,6 +218,71 @@ class Popups {
                         ),
                       ),
                     ),
+                  ],
+                ),
+              );
+            },
+          );
+        });
+  }
+
+  static void showProductDescription(Product product, BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
+    showModalBottomSheet(
+        isScrollControlled: true,
+        backgroundColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) {
+              return Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20)),
+                ),
+                width: screenSize.width,
+                height: kScreenSizeHeight * 0.85,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Stack(children: <Widget>[
+                      Container(
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20)),
+                          ),
+                          height: AppBar().preferredSize.height,
+                          width: kScreenSizeWidth,
+                          child: Center(
+                            // TODO(parker): translate
+                            child: Text('Mô tả sản phẩm',
+                                style: kBaseTextStyle.copyWith(
+                                    fontSize: 16, fontWeight: FontWeight.w600)),
+                          )),
+                      Positioned(
+                        top: 6,
+                        right: 0,
+                        child: IconButton(
+                            icon: SvgPicture.asset(
+                                'assets/icons/address/close-popup.svg'),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            }),
+                      )
+                    ]),
+                    const SizedBox(
+                      height: 14,
+                    ),
+                    ProductDescription(product),
+                    const SizedBox(height: 14),
                   ],
                 ),
               );

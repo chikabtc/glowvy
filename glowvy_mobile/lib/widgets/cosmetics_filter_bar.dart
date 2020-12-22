@@ -265,8 +265,7 @@
 //                                   60.0 + MediaQuery.of(context).padding.bottom,
 //                               color: Colors.white,
 //                               child: Padding(
-//                                 padding:
-//                                     EdgeInsets.only(top: 9.0, bottom: 10),
+//                                 padding: EdgeInsets.only(top: 9.0, bottom: 10),
 //                                 child: Row(
 //                                   crossAxisAlignment: CrossAxisAlignment.start,
 //                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -397,8 +396,7 @@
 //                                   60.0 + MediaQuery.of(context).padding.bottom,
 //                               color: Colors.white,
 //                               child: Padding(
-//                                 padding:
-//                                     EdgeInsets.only(top: 9.0, bottom: 10),
+//                                 padding: EdgeInsets.only(top: 9.0, bottom: 10),
 //                                 child: Row(
 //                                   crossAxisAlignment: CrossAxisAlignment.start,
 //                                   mainAxisAlignment: MainAxisAlignment.center,

@@ -3,7 +3,6 @@ import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/common/widgets.dart';
-import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/address/addressModel.dart';
 import 'package:Dimodo/models/address/province.dart';
 import 'package:Dimodo/models/user/user.dart';
@@ -98,7 +97,8 @@ class EditRegionPageState extends State<EditRegionPage>
           ],
           leading: backIcon(context),
           backgroundColor: Colors.white,
-          title: Text(S.of(context).name, style: textTheme.headline3)),
+          // TODO(parker): translate
+          title: Text('region', style: textTheme.headline3)),
       backgroundColor: kDefaultBackground,
       body: Container(
         color: kWhite,
@@ -113,18 +113,18 @@ class EditRegionPageState extends State<EditRegionPage>
                       province = addressModel.provinces[index];
                     });
                   },
-                  trailing: province.id == addressModel.provinces[index].id
-                      ? Icon(
+                  trailing: province?.id == addressModel.provinces[index].id
+                      ? const Icon(
                           Icons.check,
                           color: kPrimaryOrange,
                         )
-                      : Icon(
+                      : const Icon(
                           Icons.check,
                           color: kPrimaryOrange,
                           size: 0,
                         ),
                   title: Text(
-                    '${addressModel.provinces[index].name}',
+                    addressModel.provinces[index].name,
                     style: kBaseTextStyle.copyWith(
                         fontSize: 15, fontWeight: FontWeight.w600),
                   ),

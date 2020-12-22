@@ -5,6 +5,7 @@ import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/survey.dart';
 import 'package:Dimodo/models/user/skinScores.dart';
+import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/skin-score.dart';
 import 'package:Dimodo/widgets/survey_card.dart';
@@ -19,8 +20,9 @@ import 'package:provider/provider.dart';
 import '../generated/i18n.dart';
 
 class BaumannQuiz extends StatefulWidget {
-  BaumannQuiz({this.baumannType, this.baumannScores});
+  BaumannQuiz({this.baumannType, this.baumannScores, this.isRetake = false});
 
+  bool isRetake;
   String baumannType;
   SkinScores baumannScores = SkinScores();
 
@@ -49,10 +51,11 @@ class _BaumannQuizState extends State<BaumannQuiz>
   UserModel userModel;
   var totalProgress = 0;
   SwiperController swipeController;
+  User user;
   List<String> tabList = [
-    'khô vs dầu',
-    'sắc tố và không sắc tố',
-    'căng vs Khỏe nhăn',
+    'Khô vs Da dầu',
+    'Nhạy cảm vs Khỏe mạnh',
+    'Sắc tố và Không sắc tố',
     'Căng bóng vs Nhăn nhăn'
   ];
 
@@ -60,15 +63,16 @@ class _BaumannQuizState extends State<BaumannQuiz>
   void initState() {
     super.initState();
     userModel = Provider.of<UserModel>(context, listen: false);
+    user = userModel.user;
 
     swipeController = SwiperController();
     try {
       final baumannQuiz = Provider.of<AppModel>(context, listen: false)
           .appConfig['Baumann_quiz'];
-      final dVsO = baumannQuiz['khô vs da dầu'] as List;
-      final sVsR = baumannQuiz['Nhạy cảm vs đề kháng cao'] as List;
-      final nVsP = baumannQuiz['không sắc tố sắc tố và'] as List;
-      final tVsW = baumannQuiz['căng vs nhăn'] as List;
+      final dVsO = baumannQuiz['Khô vs Da dầu'] as List;
+      final sVsR = baumannQuiz['Nhạy cảm vs Khỏe mạnh'] as List;
+      final nVsP = baumannQuiz['Sắc tố và Không sắc tố'] as List;
+      final tVsW = baumannQuiz['Căng bóng vs Nhăn nhăn'] as List;
       skinTypeResults = baumannQuiz['skin-type-results'];
       descriptions = baumannQuiz['section-descriptions'];
 
@@ -97,6 +101,28 @@ class _BaumannQuizState extends State<BaumannQuiz>
       final message = 'Fail to load the bauman_quiz_data:' + err.toString();
       print('error: $message');
     }
+    if (user.baumannType != null &&
+        user.baumannScores != null &&
+        !widget.isRetake) {
+      print('호박나비 한마리가');
+      widget.baumannType = user.baumannType;
+      widget.baumannScores = user.baumannScores;
+      print('widget skin type: ${widget.baumannType}');
+      surveyFinished = true;
+      skinTypes.clear();
+      user.baumannType.runes.forEach((int rune) {
+        final character = String.fromCharCode(rune);
+        skinTypes.add(character);
+      });
+      dsScore = user.baumannScores.dsScore;
+      srScore = user.baumannScores.srScore;
+      pnScore = user.baumannScores.pnScore;
+      wnScore = user.baumannScores.wnScore;
+      getSkinTypeResults();
+      if (user.baumannType.contains('R')) {
+        showFullExplanation = true;
+      }
+    }
   }
 
   @override
@@ -108,23 +134,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    if (widget.baumannType != null && widget.baumannScores != null) {
-      print('widget skin type: ${widget.baumannType}');
-      surveyFinished = true;
-      skinTypes.clear();
-      widget.baumannType.runes.forEach((int rune) {
-        var character = String.fromCharCode(rune);
-        skinTypes.add(character);
-      });
-      dsScore = widget.baumannScores.dsScore;
-      srScore = widget.baumannScores.srScore;
-      pnScore = widget.baumannScores.pnScore;
-      wnScore = widget.baumannScores.wnScore;
-      getSkinTypeResults();
-      if (widget.baumannType.contains('R')) {
-        showFullExplanation = true;
-      }
-    }
+    print('reload :${widget.baumannType}');
 
     return Scaffold(
       appBar: AppBar(
@@ -135,7 +145,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
           brightness: Brightness.light,
           leading: !surveyFinished
               ? IconButton(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.close,
                     color: kDarkYellow,
                   ),
@@ -144,7 +154,6 @@ class _BaumannQuizState extends State<BaumannQuiz>
                   })
               : backIcon(context, color: kDarkYellow),
           backgroundColor: kLightYellow,
-          //if the survey is completed or the user provided the skinType
           bottom: !surveyFinished
               ? PreferredSize(
                   preferredSize: const Size.fromHeight(55),
@@ -153,7 +162,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                     child: Column(
                       children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.only(top: 5.0),
+                          padding: const EdgeInsets.only(top: 5.0),
                           child: LinearPercentIndicator(
                             alignment: MainAxisAlignment.center,
                             animateFromLastPercent: true,
@@ -164,7 +173,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                             percent: totalProgress / 16,
                             backgroundColor: Colors.white,
                             linearStrokeCap: LinearStrokeCap.roundAll,
-                            progressColor: Color(0xFFFDD13C),
+                            progressColor: const Color(0xFFFDD13C),
                           ),
                         ),
                         const SizedBox(
@@ -172,7 +181,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                         ),
                         Container(
                           width: screenSize.width,
-                          padding: EdgeInsets.symmetric(horizontal: 28),
+                          padding: const EdgeInsets.symmetric(horizontal: 28),
                           child: Text(
                             tabList[currentPage],
                             textAlign: TextAlign.start,
@@ -195,17 +204,15 @@ class _BaumannQuizState extends State<BaumannQuiz>
           top: true,
           bottom: false,
           child: Container(
-            decoration: BoxDecoration(
-              // color: kLightYellow,
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20), topRight: Radius.circular(20)),
             ),
             width: screenSize.width,
-            // padding: EdgeInsets.symmetric(horizontal: 7),
             child: !surveyFinished
                 ? Container(
                     color: kLightYellow,
-                    padding: EdgeInsets.symmetric(horizontal: 10.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -214,8 +221,9 @@ class _BaumannQuizState extends State<BaumannQuiz>
                             child: ListView(
                           children: <Widget>[
                             Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 18.0),
-                              child: Text(descriptions['description2'],
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 18.0),
+                              child: Text(descriptions[currentPage],
                                   style: textTheme.button2
                                       .copyWith(color: kDarkYellow)),
                             ),
@@ -227,8 +235,8 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                 key: Key(tabList[currentPage]),
                                 controller: swipeController,
                                 physics: surveys[0].length == 1
-                                    ? NeverScrollableScrollPhysics()
-                                    : AlwaysScrollableScrollPhysics(),
+                                    ? const NeverScrollableScrollPhysics()
+                                    : const AlwaysScrollableScrollPhysics(),
                                 itemBuilder: (BuildContext context, int i) {
                                   return SurveyCard(
                                     survey: surveys[currentPage][i],
@@ -262,7 +270,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                     },
                                   );
                                 },
-                                control: SwiperControl(
+                                control: const SwiperControl(
                                     iconNext: null,
                                     iconPrevious: null,
                                     color: Colors.red),
@@ -270,56 +278,54 @@ class _BaumannQuizState extends State<BaumannQuiz>
                             ),
                           ],
                         )),
-                        answeredAll()
-                            ? Padding(
-                                padding: EdgeInsets.only(
-                                    top: 10, left: 16, right: 16, bottom: 40.0),
-                                child: MaterialButton(
-                                    elevation: 0,
-                                    color: kPrimaryOrange,
-                                    minWidth: kScreenSizeWidth,
-                                    height: 48,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16.0),
-                                    ),
-                                    child: calculatingResult
-                                        ? CupertinoActivityIndicator()
-                                        : Text('Kiểm tra loại da',
-                                            style: kBaseTextStyle.copyWith(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white)),
-                                    onPressed: () {
-                                      if (!answeredAll()) {
-                                        alertUnfilledQuestion();
-                                        //answered all for that page and not the last page
-                                      } else {
-                                        calculateSkinType();
-                                        getSkinTypeResults();
-                                        setState(() {
-                                          calculatingResult = true;
-                                        });
-                                        Future.delayed(
-                                            const Duration(milliseconds: 2500),
-                                            () {
-                                          var scores = SkinScores(
-                                              dsScore: dsScore,
-                                              srScore: srScore,
-                                              pnScore: pnScore,
-                                              wnScore: wnScore);
-                                          setState(() {
-                                            calculatingResult = false;
-                                            surveyFinished = true;
-                                            Provider.of<UserModel>(context,
-                                                    listen: false)
-                                                .saveBaumannResults(
-                                                    widget.baumannType, scores);
-                                          });
-                                        });
-                                      }
-                                    }),
-                              )
-                            : Container()
+                        if (answeredAll())
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 10, left: 16, right: 16, bottom: 40.0),
+                            child: MaterialButton(
+                                elevation: 0,
+                                color: kPrimaryOrange,
+                                minWidth: kScreenSizeWidth,
+                                height: 48,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(16.0),
+                                ),
+                                child: calculatingResult
+                                    ? const CupertinoActivityIndicator()
+                                    : Text('Kiểm tra loại da',
+                                        style: kBaseTextStyle.copyWith(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.white)),
+                                onPressed: () {
+                                  if (!answeredAll()) {
+                                    alertUnfilledQuestion();
+                                    //answered all for that page and not the last page
+                                  } else {
+                                    calculateSkinType();
+                                    getSkinTypeResults();
+                                    setState(() {
+                                      calculatingResult = true;
+                                    });
+                                    Future.delayed(
+                                        const Duration(milliseconds: 2500), () {
+                                      final scores = SkinScores(
+                                          dsScore: dsScore,
+                                          srScore: srScore,
+                                          pnScore: pnScore,
+                                          wnScore: wnScore);
+                                      setState(() {
+                                        calculatingResult = false;
+                                        surveyFinished = true;
+                                        Provider.of<UserModel>(context,
+                                                listen: false)
+                                            .saveBaumannResults(
+                                                widget.baumannType, scores);
+                                      });
+                                    });
+                                  }
+                                }),
+                          )
                       ],
                     ),
                   )
@@ -345,7 +351,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                 color: Colors.white,
                                 child: Column(children: <Widget>[
                                   const SizedBox(height: 16.5),
-                                  SkinScore('Dầu', 'Khô', score: dsScore),
+                                  SkinScore('Khô', 'Dầu', score: dsScore),
                                   SkinScore('Sắc tố', 'Không có\nsắc tố',
                                       score: srScore),
                                   SkinScore('Nhạy cảm', 'Khỏe mạnh',
@@ -358,7 +364,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
                                   Padding(
-                                    padding: EdgeInsets.only(
+                                    padding: const EdgeInsets.only(
                                         top: 25.0, left: 38, right: 38),
                                     child: Text(
                                       'Chuyên viên quản lý da chuyên nghiệp',
@@ -384,15 +390,20 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                           });
                                         },
                                         child: Container(
-                                          padding: EdgeInsets.only(top: 15),
+                                          padding:
+                                              const EdgeInsets.only(top: 15),
                                           width: screenSize.width - 60,
                                           child: Wrap(
                                             children: <Widget>[
                                               const SizedBox(height: 10),
                                               Text(
-                                                skinTypeResults[
-                                                        widget.baumannType]
-                                                    ['explanation'],
+                                                skinTypeResults[widget
+                                                            .baumannType] !=
+                                                        null
+                                                    ? skinTypeResults[
+                                                            widget.baumannType]
+                                                        ['explanation']
+                                                    : 'ds',
                                                 textAlign: TextAlign.start,
                                                 maxLines: showFullExplanation
                                                     ? 30
@@ -402,17 +413,15 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                                   color: kDarkYellow,
                                                 ),
                                               ),
-                                              !showFullExplanation
-                                                  ? Text(
-                                                      '... Nhiều hơn',
-                                                      textAlign:
-                                                          TextAlign.start,
-                                                      style: textTheme.headline5
-                                                          .copyWith(
-                                                        color: kDarkYellow,
-                                                      ),
-                                                    )
-                                                  : Container()
+                                              if (!showFullExplanation)
+                                                Text(
+                                                  '... Nhiều hơn',
+                                                  textAlign: TextAlign.start,
+                                                  style: textTheme.headline5
+                                                      .copyWith(
+                                                    color: kDarkYellow,
+                                                  ),
+                                                )
                                             ],
                                           ),
                                         ),
@@ -435,7 +444,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                   height: 223,
                                   // padding: EdgeInsets.only(left: 10),
                                   child: ListView.separated(
-                                      padding: EdgeInsets.only(left: 10),
+                                      padding: const EdgeInsets.only(left: 10),
                                       separatorBuilder: (context, index) =>
                                           Container(width: 10),
                                       scrollDirection: Axis.horizontal,
@@ -456,7 +465,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                       context,
                                       MaterialPageRoute<void>(
                                         builder: (BuildContext context) =>
-                                            BaumannQuiz(),
+                                            BaumannQuiz(isRetake: true),
                                         fullscreenDialog: true,
                                       ));
                                 },
@@ -467,15 +476,15 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                       color: kSecondaryGrey,
                                     ),
                                     children: <TextSpan>[
-                                      TextSpan(
+                                      const TextSpan(
                                           text:
                                               'Bạn không hài lòng với kết quả? \nHãy '),
                                       TextSpan(
                                           text: 'bấm vào đây ',
                                           style: textTheme.bodyText2.copyWith(
-                                            color: kSecondaryGrey,
-                                          )),
-                                      TextSpan(text: ' để thử lại'),
+                                              color: kSecondaryGrey,
+                                              fontWeight: FontWeight.bold)),
+                                      const TextSpan(text: ' để thử lại'),
                                     ],
                                   ),
                                 ),
@@ -493,7 +502,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                         style: textTheme.headline4
                                             .copyWith(color: kDarkAccent)),
                                     Padding(
-                                      padding: EdgeInsets.only(
+                                      padding: const EdgeInsets.only(
                                           left: 33,
                                           right: 33,
                                           top: 14,
@@ -504,7 +513,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                               .copyWith(color: kDarkAccent)),
                                     ),
                                     Padding(
-                                        padding: EdgeInsets.only(
+                                        padding: const EdgeInsets.only(
                                             top: 14,
                                             left: 20,
                                             right: 20,
@@ -519,44 +528,18 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                                   BorderRadius.circular(16.0),
                                             ),
                                             child: !isSaving
-                                                ? Text(
-                                                    widget.baumannType != null
-                                                        ? S.of(context).close
-                                                        : S
-                                                            .of(context)
-                                                            .saveResult,
+                                                ? Text(S.of(context).close,
                                                     style: textTheme.headline5
                                                         .copyWith(
                                                             color:
                                                                 Colors.white))
-                                                : CupertinoActivityIndicator(),
-                                            //animation
-                                            // popup
+                                                : const CupertinoActivityIndicator(),
                                             onPressed: () {
                                               if (!userModel.isLoggedIn) {
                                                 Navigator.pushNamed(
                                                     context, '/login');
                                               } else {
-                                                print(
-                                                    'scores@@ ${widget.baumannScores}');
-                                                setState(() {
-                                                  isSaving = true;
-                                                  Provider.of<UserModel>(
-                                                          context,
-                                                          listen: false)
-                                                      .saveBaumannResults(
-                                                          widget.baumannType,
-                                                          widget.baumannScores);
-                                                });
-                                                Future.delayed(
-                                                    const Duration(
-                                                        milliseconds: 1500),
-                                                    () {
-                                                  setState(() {
-                                                    isSaving = false;
-                                                    Navigator.pop(context);
-                                                  });
-                                                });
+                                                Navigator.pop(context);
                                               }
                                             })),
                                     Text('Glowvy x Căng bóng làn da',
@@ -684,7 +667,6 @@ class _BaumannQuizState extends State<BaumannQuiz>
     var isAllAnswered = true;
     surveys.forEach((survey) {
       survey.forEach((element) {
-        //check if the answer is null
         if (element.answer == null) {
           isAllAnswered = false;
           return;

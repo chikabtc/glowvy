@@ -49,17 +49,8 @@ class BeforeLoginPageState extends State<BeforeLoginPage>
                     fit: BoxFit.fill,
                   ),
                 ),
-                Positioned.fill(
-                  bottom: -20,
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Image.asset(
-                      'assets/icons/before_login_package.png',
-                    ),
-                  ),
-                ),
                 Padding(
-                  padding: EdgeInsets.only(left: 16.0, right: 16),
+                  padding: const EdgeInsets.only(left: 16.0, right: 16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -78,7 +69,7 @@ class BeforeLoginPageState extends State<BeforeLoginPage>
             ),
             Expanded(
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: kWhite,
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20),
@@ -87,7 +78,7 @@ class BeforeLoginPageState extends State<BeforeLoginPage>
                 width: kScreenSizeWidth,
                 // height: 297,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
                     children: <Widget>[
                       const SizedBox(
@@ -105,7 +96,7 @@ class BeforeLoginPageState extends State<BeforeLoginPage>
                         function: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SignupScreen())),
+                                builder: (context) => const SignupScreen())),
                         text: 'sign up',
                       ),
                       const SizedBox(

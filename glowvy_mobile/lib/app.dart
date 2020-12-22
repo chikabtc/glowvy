@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:Dimodo/models/product/review_model.dart';
 import 'package:Dimodo/models/search_model.dart';
 import 'package:Dimodo/screens/category.dart';
 import 'package:Dimodo/screens/glowvy-onboard.dart';
@@ -43,9 +44,6 @@ class Glowvy extends StatefulWidget {
 class _AppState extends State<Glowvy> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-            statusBarBrightness: Brightness.light) // Or Brightness.dark
-        );
     final analytics = FirebaseAnalytics();
 
     return MaterialApp(
@@ -70,6 +68,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
   final _addressModel = AddressModel();
   final _userModel = UserModel();
   final _product = ProductModel();
+  final _review = ReviewModel();
   final _wishlist = WishListModel();
   final _order = OrderModel();
   final _category = CategoryModel();
@@ -87,6 +86,8 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
     await _addressModel.setProvinces();
     await _search.setBrands();
     await _category.setLocalCategories();
+    await precacheImage(
+        const AssetImage('assets/icons/default-avatar.png'), context);
     isFirstSeen = await checkFirstSeen();
     isLoggedIn = await checkLogin();
     setState(() {
@@ -117,7 +118,9 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
 
   Widget renderFirstScreen() {
     if (isFirstSeen) return GlowvyOnBoardScreen();
-    if (kAdvanceConfig['IsRequiredLogin'] && !isLoggedIn) return LoginScreen();
+    if (kAdvanceConfig['IsRequiredLogin'] && !isLoggedIn) {
+      return const LoginScreen();
+    }
     final data = MediaQuery.of(context).copyWith(textScaleFactor: 1);
 
     return MediaQuery(data: data, child: MainTabs());
@@ -126,7 +129,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
   @override
   Widget build(BuildContext context) {
     final data = MediaQuery.of(context);
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
         statusBarIconBrightness:
             Brightness.dark, // Only honored in Android M and above
@@ -155,6 +158,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
           return MultiProvider(
             providers: [
               Provider<ProductModel>.value(value: _product),
+              Provider<ReviewModel>.value(value: _review),
               Provider<WishListModel>.value(value: _wishlist),
               Provider<OrderModel>.value(value: _order),
               Provider<RecentModel>.value(value: _recent),
@@ -224,11 +228,11 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
                 routes: <String, WidgetBuilder>{
                   '/home': (context) => MainTabs(),
                   '/search_screen': (context) => SearchScreen(),
-                  '/login': (context) => LoginScreen(),
-                  '/signup': (context) => SignupScreen(),
-                  '/setting': (context) => ProfilePage(),
+                  '/login': (context) => const LoginScreen(),
+                  '/signup': (context) => const SignupScreen(),
+                  '/setting': (context) => const ProfilePage(),
                   '/category': (context) => CategoryScreen(),
-                  '/verify_email': (context) => VerifyEmailScreen(),
+                  '/verify_email': (context) => const VerifyEmailScreen(),
                   '/reset_password': (context) => ResetPasswordScreen(),
                   '/forgot_password': (context) => ForgotPasswordScreen(),
                 },

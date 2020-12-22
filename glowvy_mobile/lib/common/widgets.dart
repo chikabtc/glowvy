@@ -41,18 +41,22 @@ Widget kIndicator() {
 }
 
 Widget backIcon(context, {color = kDarkAccent, Function onPop}) {
-  return IconButton(
-      onPressed: () {
-        if (onPop != null) {
-          onPop();
-        }
-        Navigator.of(context).pop();
-      },
-      icon: SvgPicture.asset(
-        'assets/icons/arrow_backward.svg',
-        width: 26,
-        color: color,
-      ));
+  return Navigator.of(context).canPop()
+      ? IconButton(
+          onPressed: () {
+            if (onPop != null) {
+              onPop();
+            }
+            Navigator.of(context).pop();
+          },
+          icon: Platform.isAndroid
+              ? Icon(Icons.arrow_back)
+              : SvgPicture.asset(
+                  'assets/icons/arrow_backward.svg',
+                  width: 26,
+                  color: color,
+                ))
+      : Container();
 }
 
 Widget arrowForwardIcon(context, {color = kDarkAccent, width = 26}) {

@@ -32,6 +32,25 @@ class HexColor extends Color {
 }
 
 class Tools {
+  static String getUserAgeGroup(int birthYear) {
+    if (birthYear != null) {
+      final userAge = DateTime.now().year - birthYear;
+      if (userAge < 20) {
+        return 'tất cả';
+      } else if (userAge < 25) {
+        return 'dưới 20';
+      } else if (userAge < 30) {
+        return 'từ 20 đến 24';
+      } else if (userAge < 35) {
+        return 'Từ 25 đến 29';
+      } else if (userAge < 40) {
+        return 'từ 30 đến 34';
+      } else {
+        return 'từ 35';
+      }
+    }
+  }
+
   static String formatDateString(String date) {
     final timeFormat = DateTime.parse(date);
     final timeDif = DateTime.now().difference(timeFormat);

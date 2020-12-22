@@ -21,11 +21,12 @@ class User {
   String picture;
   String gender;
   String skinType;
+  List<String> skinIssues;
   String baumannType;
+  SkinScores baumannScores;
   int skinTypeId;
   int birthYear;
   int age;
-  SkinScores baumannScores;
   Address address;
   int createdAt;
   List<Address> addresses = [];
@@ -39,6 +40,7 @@ class User {
       this.picture,
       this.facebookId,
       this.skinType,
+      this.skinIssues,
       this.birthYear,
       this.gender,
       this.createdAt,

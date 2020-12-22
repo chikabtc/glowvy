@@ -151,6 +151,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             });
                           },
                         ))),
+            // TODO(parker): add animation for opening the sub category
             Container(
               width: kScreenSizeWidth - 80,
               child: ListView.builder(
@@ -174,7 +175,6 @@ class _SearchScreenState extends State<SearchScreen> {
           if (snapshot.hasData) {
             final listPage = snapshot.data;
 
-            // print('future builder co: ${listPage.itemList[0].brand.toJson()}');
             return Column(
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -388,7 +388,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             onSubmitted: (value) {
                               showResults = false;
                               setState(() {
-                                productModel.clearPagesInfo();
+                                productModel.clearPaginationHistory();
 
                                 searchText = value;
                                 getProductBySearch =

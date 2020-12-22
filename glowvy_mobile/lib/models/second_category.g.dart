@@ -8,7 +8,6 @@ part of 'second_category.dart';
 
 SecondCategory _$SecondCategoryFromJson(Map<String, dynamic> json) {
   return SecondCategory(
-    showMergedChildren: json['show_merged_children'] as bool,
     secondCategoryKoName: json['second_category_ko_name'] as String,
     secondCategoryEnName: json['second_category_en_name'] as String,
     secondCategoryName: json['second_category_name'] as String,
@@ -26,7 +25,6 @@ SecondCategory _$SecondCategoryFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$SecondCategoryToJson(SecondCategory instance) =>
     <String, dynamic>{
-      'show_merged_children': instance.showMergedChildren,
       'second_category_ko_name': instance.secondCategoryKoName,
       'second_category_en_name': instance.secondCategoryEnName,
       'second_category_name': instance.secondCategoryName,

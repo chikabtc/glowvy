@@ -7,10 +7,10 @@ import '../../common/colors.dart';
 import '../../common/styles.dart';
 import '../../common/tools.dart';
 import '../../models/product/product.dart';
-import '../../screens/detail/cosmetics_product_detail.dart';
+import '../../screens/detail/product_detail.dart';
 
-class CosmeticsProductCard extends StatelessWidget {
-  const CosmeticsProductCard({
+class ProductCard extends StatelessWidget {
+  const ProductCard({
     this.product,
     this.ranking,
     this.size = kSize.medium,
@@ -39,7 +39,7 @@ class CosmeticsProductCard extends StatelessWidget {
         onTap: () => Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => CosmeticsProductDetail(
+              builder: (context) => ProductDetailPage(
                 product: product,
                 rank: ranking,
               ),

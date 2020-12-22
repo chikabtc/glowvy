@@ -1561,6 +1561,29 @@
         "second_category_id": 46,
         "third_categories": []
       },
+      // {
+      //   "showMergedChildren": true,
+      //   "second_category_ko_name": "태닝",
+      //   "second_category_en_name": "Tanning",
+      //   "second_category_name": "Sản phẩm nhuộm da",
+      //   "secondIsNew": false,
+      //   "second_category_id": 47,
+      //   "third_categories": [{
+      //       "thirdIsNew": false,
+      //       "third_category_ko_name": "태닝오일",
+      //       "third_category_en_name": "Tanning oil",
+      //       "third_category_name": "Dầu tắm nắng",
+      //       "third_category_id": 150
+      //     },
+      //     {
+      //       "thirdIsNew": false,
+      //       "third_category_ko_name": "태닝로션",
+      //       "third_category_en_name": "Tanning lotion",
+      //       "third_category_name": "Lotion tắm nắng",
+      //       "third_category_id": 151
+      //     }
+      //   ]
+      // },
       {
         "showMergedChildren": true,
         "second_category_ko_name": "에프터선",

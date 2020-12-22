@@ -29,7 +29,6 @@ class MainTabsState extends State<MainTabs>
   TabController _tabController;
   List<Widget> _tabView = [];
   UserModel userModel;
-  GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
   List<BottomNavigationBarRootItem> _bottomNavigationBarRootItems = [];
 
   List<BuildContext> navStack = [null, null, null];
@@ -40,28 +39,39 @@ class MainTabsState extends State<MainTabs>
     _tabController = TabController(length: 3, vsync: this);
     userModel = Provider.of<UserModel>(context, listen: false);
     _tabView = <Widget>[
-      Navigator(onGenerateRoute: (RouteSettings settings) {
-        return PageRouteBuilder(pageBuilder: (context, animiX, animiY) {
-          // use page PageRouteBuilder instead of 'PageRouteBuilder' to avoid material route animation
-          navStack[0] = context;
-          return const HomeScreen();
-        });
-      }),
-      Navigator(onGenerateRoute: (RouteSettings settings) {
-        return PageRouteBuilder(pageBuilder: (context, animiX, animiY) {
-          // use page PageRouteBuilder instead of 'PageRouteBuilder' to avoid material route animation
-          navStack[1] = context;
-          return SearchScreen();
-        });
-      }),
-      Navigator(onGenerateRoute: (RouteSettings settings) {
-        return PageRouteBuilder(pageBuilder: (context, animiX, animiY) {
-          // use page PageRouteBuilder instead of 'PageRouteBuilder' to avoid material route animation
-          navStack[2] = context;
-          return const ProfilePage();
-        });
-      }),
+      const HomeScreen(),
+      SearchScreen(),
+      const ProfilePage()
     ];
+    // _tabView = <Widget>[
+    //   Navigator(onGenerateRoute: (RouteSettings settings) {
+    //     return PageRouteBuilder(
+    //         transitionDuration: const Duration(milliseconds: 1),
+    //         pageBuilder: (context, animiX, animiY) {
+    //           // use page PageRouteBuilder instead of 'PageRouteBuilder' to avoid material route animation
+    //           navStack[0] = context;
+    //           return const HomeScreen();
+    //         });
+    //   }),
+    //   Navigator(onGenerateRoute: (RouteSettings settings) {
+    //     return PageRouteBuilder(
+    //         transitionDuration: const Duration(milliseconds: 1),
+    //         pageBuilder: (context, animiX, animiY) {
+    //           // use page PageRouteBuilder instead of 'PageRouteBuilder' to avoid material route animation
+    //           navStack[1] = context;
+    //           return SearchScreen();
+    //         });
+    //   }),
+    //   Navigator(onGenerateRoute: (RouteSettings settings) {
+    //     return PageRouteBuilder(
+    //         transitionDuration: const Duration(milliseconds: 1),
+    //         pageBuilder: (context, animiX, animiY) {
+    //           // use page PageRouteBuilder instead of 'PageRouteBuilder' to avoid material route animation
+    //           navStack[2] = context;
+    //           return const ProfilePage();
+    //         });
+    //   }),
+    // ];
     setTabBars();
   }
 
@@ -175,6 +185,7 @@ class MainTabsState extends State<MainTabs>
   }
 
   void _onItemTapped(int index) {
+    navStack[index] = context;
     _tabController.index = index;
     setState(() => _selectedIndex = index);
   }

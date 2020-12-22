@@ -6,7 +6,6 @@ part 'second_category.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class SecondCategory {
-  bool showMergedChildren;
   String secondCategoryKoName;
   String secondCategoryEnName;
   String secondCategoryName;
@@ -17,7 +16,6 @@ class SecondCategory {
   String thirdCategoryName;
 
   SecondCategory({
-    this.showMergedChildren,
     this.secondCategoryKoName,
     this.secondCategoryEnName,
     this.secondCategoryName,

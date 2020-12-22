@@ -180,8 +180,11 @@ void main() async {
         null);
 
     await Firebase.initializeApp();
-    // FirebaseCrashlytics.instance.crash();
 
+    // FirebaseCrashlytics.instance.crash();
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent, // transparent status bar
+    ));
     runApp(Glowvy());
   }, onError: (error, stackTrace) async {
     // Whenever an error occurs, call the `_reportError` function. This sends

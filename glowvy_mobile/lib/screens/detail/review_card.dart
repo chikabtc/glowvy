@@ -1,35 +1,47 @@
 import 'dart:math';
 
+import 'package:Dimodo/models/user/userModel.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:path/path.dart';
+import 'package:provider/provider.dart';
 
 import '../../common/colors.dart';
 import '../../common/constants.dart';
 import '../../common/styles.dart';
 import '../../models/review.dart';
-import '../../widgets/image_galery.dart';
 
 class ReviewCard extends StatelessWidget {
-  ReviewCard({this.review, this.context, this.isPreview = false});
+  ReviewCard(
+      {this.review,
+      this.isKorean = false,
+      this.context,
+      this.showDivider = true,
+      this.isPreview = false});
 
   final Review review;
   final bool isPreview;
+  final bool isKorean;
+  final bool showDivider;
+
   final BuildContext context;
   Random rng = Random();
   String sanitizedText;
+  String kSanitizedText;
 
   List<Widget> renderImgs(context, Review review) {
     var imgButtons = <Widget>[];
 
     review.images?.forEach((element) {
       var imgBtn = ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
           child: IconButton(
               iconSize: 150,
               icon: Image.network(
                 element,
                 fit: BoxFit.fill,
               ),
-              onPressed: () => _onShowGallery(context, review.images)));
+              onPressed: () => Navigator.of(context).push(_createRoute())));
 
       imgButtons.add(imgBtn);
     });
@@ -37,17 +49,34 @@ class ReviewCard extends StatelessWidget {
     //on the external display, the lag is unusable..
   }
 
-  void _onShowGallery(context, images, [index = 0]) {
-    showDialog<void>(
-        context: context,
-        builder: (BuildContext context) {
-          return ImageGalery(images: images, index: index);
-        });
+  Route _createRoute() {
+    return PageRouteBuilder(
+      pageBuilder: (context, animation, secondaryAnimation) => Page2(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        var begin = Offset(0.0, 1.0);
+        var end = Offset.zero;
+        var curve = Curves.ease;
+
+        var tween =
+            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+        return SlideTransition(
+          position: animation.drive(tween),
+          child: child,
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     sanitizedText = review.content.replaceAll('\n', '');
+    kSanitizedText = review.scontent.replaceAll('\n', '');
+    final skinIssues =
+        review.user.skinIssues != null ? review.user.skinIssues.toString() : '';
+
+    // print(review.product.sid);
+
     if (isPreview && sanitizedText.length > 70) {
       sanitizedText =
           review.content.replaceAll('\n', '').substring(1, 70) + ' ...';
@@ -56,7 +85,7 @@ class ReviewCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(2.0)),
-      margin: EdgeInsets.only(bottom: 10.0),
+      margin: const EdgeInsets.only(bottom: 14.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -65,49 +94,70 @@ class ReviewCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               //todo: assign the same profile pic
-              Image.asset(
-                'assets/icons/account/profile${1}.png',
-              ),
+              if (review.user.picture == null)
+                SvgPicture.asset(
+                  'assets/icons/review-avartar.svg',
+                  width: isPreview ? 18 : 38,
+                )
+              else
+                ClipOval(
+                  child: Image.network(
+                    review.user.picture +
+                        '?v=${ValueKey(Random().nextInt(100))}',
+                    key: ValueKey(Random().nextInt(100)),
+                    width: 64,
+                    height: 64,
+                    fit: BoxFit.cover,
+                  ),
+                ),
               const SizedBox(width: 10),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(review.user.fullName,
-                        style: TextStyle(
-                            fontSize: 13, fontWeight: FontWeight.w600)),
-                    // Text(review.optionName,
-                    //     style: TextStyle(
-                    //         color: kDarkSecondary.withOpacity(0.5),
-                    //         fontSize: 11,
-                    //         fontWeight: FontWeight.w500)),
-                    const SizedBox(height: 10),
-                    Text(sanitizedText,
+                    Text(review.user.displayName ?? review.user.fullName,
+                        style: textTheme.button2),
+                    Row(
+                      children: <Widget>[
+                        Text(review.user.age.toString(),
+                            style: textTheme.button2.copyWith(
+                                fontSize: 14,
+                                fontWeight: FontWeight.normal,
+                                color: kSecondaryGrey)),
+                        const SizedBox(width: 10),
+                        Text(review.user.skinType + ' ' + skinIssues,
+                            style: textTheme.button2
+                                .copyWith(color: kSecondaryGrey)),
+                      ],
+                    ),
+                    const SizedBox(height: 7),
+                    Text(isKorean ? kSanitizedText : sanitizedText,
                         maxLines: isPreview ? 2 : 20,
-                        style: kBaseTextStyle.copyWith(
-                            fontSize: 13, fontWeight: FontWeight.w600)),
-                    if (review.images.isNotEmpty && !isPreview)
-                      Container(
-                        height: 150,
-                        child: ListView(
-                            scrollDirection: Axis.horizontal,
-                            children: renderImgs(context, review)),
-                      ),
-                    // Row(children: renderImgs(context, review)),
-                    const SizedBox(height: 12),
+                        style: textTheme.bodyText1.copyWith(
+                            fontWeight: FontWeight.normal,
+                            fontStyle: FontStyle.normal)),
+                    const SizedBox(height: 14),
+                    if (showDivider)
+                      Divider(color: Colors.black.withOpacity(0.1)),
                   ],
                 ),
               ),
             ],
           ),
-          if (!isPreview)
-            Container(
-              height: 5,
-              width: kScreenSizeWidth,
-              color: kDefaultBackground,
-            ),
         ],
       ),
+    );
+  }
+}
+
+class Page2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var screenSize = MediaQuery.of(context).size;
+    return Container(
+      height: screenSize.height,
+      width: screenSize.width,
+      color: Colors.purple,
     );
   }
 }

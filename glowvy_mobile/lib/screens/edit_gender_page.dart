@@ -14,7 +14,7 @@ class EditGenderPage extends StatefulWidget {
   final User user;
   final VoidCallback onLogout;
 
-  EditGenderPage({this.user, this.onLogout});
+  const EditGenderPage({this.user, this.onLogout});
 
   @override
   State<StatefulWidget> createState() {
@@ -27,7 +27,7 @@ class EditGenderPageState extends State<EditGenderPage>
   UserModel userModel;
   AnimationController _doneButtonController;
   String gender;
-  List<String> genders = ['female', 'male'];
+  List<String> genders = ['giống cái', 'Nam giới'];
 
   @override
   void initState() {
@@ -52,10 +52,10 @@ class EditGenderPageState extends State<EditGenderPage>
     }
   }
 
-  Future _updateRegion(context) async {
+  Future _updateGender(context) async {
     try {
       // void validateInput(name);
-      await userModel.updateUser(field: 'gender', value: gender);
+      await userModel.updateUserGender(gender);
       await _doneButtonController.reverse();
       Navigator.pop(context);
     } catch (e) {
@@ -73,7 +73,7 @@ class EditGenderPageState extends State<EditGenderPage>
           elevation: 0,
           actions: [
             Padding(
-              padding: EdgeInsets.only(right: 16.0),
+              padding: const EdgeInsets.only(right: 16.0),
               child: Center(
                 child: Builder(
                   builder: (context) => StaggerAnimation(
@@ -84,7 +84,7 @@ class EditGenderPageState extends State<EditGenderPage>
                     buttonController: _doneButtonController.view,
                     onTap: () async {
                       _doneButtonController.forward();
-                      await _updateRegion(context);
+                      await _updateGender(context);
                     },
                   ),
                 ),
@@ -109,22 +109,22 @@ class EditGenderPageState extends State<EditGenderPage>
                     });
                   },
                   trailing: gender == genders[index]
-                      ? Icon(
+                      ? const Icon(
                           Icons.check,
                           color: kPrimaryOrange,
                         )
-                      : Icon(
+                      : const Icon(
                           Icons.check,
                           color: kPrimaryOrange,
                           size: 0,
                         ),
                   title: Text(
-                    '${genders[index]}',
+                    genders[index],
                     style: kBaseTextStyle.copyWith(
                         fontSize: 15, fontWeight: FontWeight.w600),
                   ),
                 ),
-                if ((genders.length - 1 != index)) kDivider
+                if (genders.length - 1 != index) kDivider
               ],
             );
           },

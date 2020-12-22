@@ -5,9 +5,12 @@ import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/common/tools.dart';
+import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
+import 'package:Dimodo/screens/birth_year_onboarding_page.dart';
+import 'package:Dimodo/screens/setting/login.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -60,9 +63,12 @@ class _SignupScreenState extends State<SignupScreen>
   }
 
   Future onSignupSuccess(User user) async {
-    Future.delayed(const Duration(milliseconds: 1000), () {
-      Navigator.of(context).pop();
-    });
+    _stopAnimation();
+    //1. instead of push, has to replace and push
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => const BirthyearOnboardingPage()));
   }
 
   bool isInputValid() {
@@ -158,19 +164,14 @@ class _SignupScreenState extends State<SignupScreen>
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
         brightness: Brightness.light,
-        leading: Navigator.of(context).canPop()
-            ? IconButton(
-                icon: Icon(Icons.arrow_back_ios),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                })
-            : Container(),
+        leading: backIcon(context),
         actions: <Widget>[
           FlatButton(
             child: Text(S.of(context).login,
                 style: textTheme.button.copyWith(fontWeight: FontWeight.bold)),
             onPressed: () {
-              Navigator.pushReplacementNamed(context, '/login');
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const LoginScreen()));
             },
           )
         ],
@@ -262,23 +263,24 @@ class _SignupScreenState extends State<SignupScreen>
                             keyboardType: TextInputType.text,
                             cursorColor: kPinkAccent,
                             onChanged: (value) => password = value,
-                            obscureText: isPasswordVisible,
+                            textAlignVertical: TextAlignVertical.center,
+                            obscureText: !isPasswordVisible,
                             decoration: kTextField.copyWith(
                               hintText: S.of(parentContext).password,
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  // Based on passwordVisible state choose the icon
-                                  isPasswordVisible
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
-                                  color: Theme.of(context).primaryColorDark,
-                                ),
-                                onPressed: () {
-                                  // Update the state i.e. toogle the state of passwordVisible variable
+                              suffixIcon: GestureDetector(
+                                onTap: () {
                                   setState(() {
                                     isPasswordVisible = !isPasswordVisible;
                                   });
                                 },
+                                child: Container(
+                                  child: Icon(
+                                    isPasswordVisible
+                                        ? Icons.visibility
+                                        : Icons.visibility_off,
+                                    color: kDarkSecondary,
+                                  ),
+                                ),
                               ),
                             ),
                           ))),
