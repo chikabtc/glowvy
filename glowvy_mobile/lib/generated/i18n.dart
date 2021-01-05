@@ -148,6 +148,14 @@ class S implements WidgetsLocalizations {
   String get needHelp => 'Need Help?';
   String get askUs => 'Ask Us';
   String get whereToDeliver => 'Where do you need us to deliver?';
+  // ===========================================================================
+  // list preferences
+  // ===========================================================================
+  // String get byLowRating => 'Dimodo Official Q&A';
+  // String get byHighRating => 'Dimodo Services';
+  // String get byMostLiked => 'Need Help?';
+  // String get byRecent => 'Ask Us';
+  // String get byOldest => 'Where do you need us to deliver?';
 
   // ===========================================================================
   // Order Submitted Page

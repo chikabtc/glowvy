@@ -96,48 +96,44 @@ class RegionOnboardingPageState extends State<RegionOnboardingPage>
         elevation: 0,
         leading: backIcon(context),
         backgroundColor: kDefaultBackground,
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(30),
+          child: Column(children: [
+            Text('Where are you from?', style: textTheme.headline2),
+            const SizedBox()
+          ]),
+        ),
       ),
       backgroundColor: kDefaultBackground,
-      body: Column(
-        children: [
-          Text('Where are you from?', style: textTheme.headline2),
-          const SizedBox(
-            height: 30,
-          ),
-          Container(
-            height: kScreenSizeHeight - 243,
-            child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: addressModel.provinces.length,
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    ListTile(
-                      onTap: () async {
-                        setState(() {
-                          province = addressModel.provinces[index];
-                        });
-                      },
-                      trailing: province?.id == addressModel.provinces[index].id
-                          ? const Icon(
-                              Icons.check,
-                              color: kPrimaryOrange,
-                            )
-                          : const Icon(
-                              Icons.check,
-                              color: kPrimaryOrange,
-                              size: 0,
-                            ),
-                      title: Text(addressModel.provinces[index].name,
-                          style: textTheme.button),
-                    ),
-                    kDivider,
-                  ],
-                );
-              },
-            ),
-          ),
-        ],
+      body: ListView.builder(
+        shrinkWrap: true,
+        itemCount: addressModel.provinces.length,
+        itemBuilder: (context, index) {
+          return Column(
+            children: [
+              ListTile(
+                onTap: () async {
+                  setState(() {
+                    province = addressModel.provinces[index];
+                  });
+                },
+                trailing: province?.id == addressModel.provinces[index].id
+                    ? const Icon(
+                        Icons.check,
+                        color: kPrimaryOrange,
+                      )
+                    : const Icon(
+                        Icons.check,
+                        color: kPrimaryOrange,
+                        size: 0,
+                      ),
+                title: Text(addressModel.provinces[index].name,
+                    style: textTheme.button),
+              ),
+              kDivider,
+            ],
+          );
+        },
       ),
     );
   }

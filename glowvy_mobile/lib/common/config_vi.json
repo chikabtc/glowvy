@@ -154,6 +154,12 @@
       "active-icon": "assets/icons/search.svg",
       "icon": "assets/icons/search.svg"
     },
+    {
+      "layout": "add",
+      "name": "add",
+      "active-icon": "assets/icons/square_add.svg",
+      "icon": "assets/icons/square_add.svg"
+    },
 
     {
       "layout": "profile",

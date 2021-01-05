@@ -35,21 +35,71 @@ class Tools {
   static String getUserAgeGroup(int birthYear) {
     if (birthYear != null) {
       final userAge = DateTime.now().year - birthYear;
-      if (userAge < 20) {
-        return 'tất cả';
-      } else if (userAge < 25) {
-        return 'dưới 20';
-      } else if (userAge < 30) {
-        return 'từ 20 đến 24';
-      } else if (userAge < 35) {
-        return 'Từ 25 đến 29';
-      } else if (userAge < 40) {
-        return 'từ 30 đến 34';
-      } else {
+      if (userAge > 34) {
         return 'từ 35';
+      } else if (userAge <= 34 && userAge > 29) {
+        return 'từ 30 đến 34';
+      } else if (userAge <= 29 && userAge > 24) {
+        return 'Từ 25 đến 29';
+      } else if (userAge <= 24 && userAge > 20) {
+        return 'từ 20 đến 24';
+      } else {
+        return 'dưới 20';
       }
     }
   }
+
+  static List<TextSpan> highlightOccurrences(String source, String query) {
+    if (query == null ||
+        query.isEmpty ||
+        !source.toLowerCase().contains(query.toLowerCase())) {
+      return [TextSpan(text: source)];
+    }
+    final matches = query.toLowerCase().allMatches(source.toLowerCase());
+
+    int lastMatchEnd = 0;
+
+    final List<TextSpan> children = [];
+    for (var i = 0; i < matches.length; i++) {
+      final match = matches.elementAt(i);
+
+      if (match.start != lastMatchEnd) {
+        children.add(TextSpan(
+          text: source.substring(lastMatchEnd, match.start),
+        ));
+      }
+
+      children.add(TextSpan(
+        text: source.substring(match.start, match.end),
+        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+      ));
+
+      if (i == matches.length - 1 && match.end != source.length) {
+        children.add(TextSpan(
+          text: source.substring(match.end, source.length),
+        ));
+      }
+
+      lastMatchEnd = match.end;
+    }
+    return children;
+  }
+
+  // static int getMaxAgeFromAgeGroups(String ageGroup) {
+  //   if (ageGroup == 'từ 35') {
+  //     return 100;}
+
+  //     else if (ageGroup == 'từ 30 đến 34') {
+  //       return 34;
+  //     } else if (userAge <= 29 && userAge > 24) {
+  //       return 'Từ 25 đến 29';
+  //     } else if (userAge <= 24 && userAge > 20) {
+  //       return 'từ 20 đến 24';
+  //     } else {
+  //       return 'dưới 20';
+  //     }
+  //   }
+  // }
 
   static String formatDateString(String date) {
     final timeFormat = DateTime.parse(date);
@@ -91,11 +141,11 @@ class Tools {
         'https://hooks.slack.com/services/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';
 
     //Makes request headers
-    Map<String, String> requestHeader = {
+    final requestHeader = <String, String>{
       'Content-type': 'application/json',
     };
 
-    var request = {
+    final request = {
       'text': messageText,
     };
 

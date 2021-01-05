@@ -59,31 +59,31 @@ class _ReviewCosmeticsSearchScreenState
     screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          brightness: Brightness.light,
-          backgroundColor: Colors.transparent,
-          leading: widget.isEditing
-              ? GestureDetector(
-                  onTap: () => Navigator.pop(context),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 16, top: 16),
-                    child: Text('Stop',
-                        style: textTheme.headline5
-                            .copyWith(color: kSecondaryGrey)),
-                  ),
-                )
-              : backIcon(context),
-          title: Text('select cosmetics', style: textTheme.headline3),
-        ),
-        body: SafeArea(
-          top: true,
-          child: Container(
-              height: screenSize.height,
-              decoration: const BoxDecoration(color: Colors.white),
-              padding: const EdgeInsets.symmetric(horizontal: 6),
-              child: ListView(
-                children: <Widget>[
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        brightness: Brightness.light,
+        backgroundColor: Colors.transparent,
+        leading: widget.isEditing
+            ? GestureDetector(
+                onTap: () => Navigator.pop(context),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 16, top: 16),
+                  child: Text('Stop',
+                      style:
+                          textTheme.headline5.copyWith(color: kSecondaryGrey)),
+                ),
+              )
+            : backIcon(context),
+        title: Text('select cosmetics', style: textTheme.headline3),
+      ),
+      body: NestedScrollView(
+        physics: const NeverScrollableScrollPhysics(),
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return <Widget>[
+            SliverToBoxAdapter(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Row(
@@ -130,52 +130,40 @@ class _ReviewCosmeticsSearchScreenState
                       ],
                     ),
                   ),
-                  const SizedBox(height: 21),
-                  Text(
-                    '  may realted',
-                    style: textTheme.caption1.copyWith(color: kDarkAccent),
-                  ),
-                  const SizedBox(height: 24),
-                  showResults
-                      ? productModel.showProductList(
-                          future: getProductBySearch, isFromReviewPage: true)
-                      : Container(
-                          padding:
-                              EdgeInsets.only(left: 16, right: 16, top: 20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                'Mọi người cũng tìm kiếm',
-                                textAlign: TextAlign.center,
-                                style: textTheme.bodyText2
-                                    .copyWith(color: kSecondaryGrey),
-                              ),
-                              const SizedBox(height: 10),
-                              Keyword(
-                                  keyword: roundLab,
-                                  onTap: () => search(roundLab)),
-                              const SizedBox(height: 10),
-                              Keyword(
-                                  keyword: cleanser,
-                                  onTap: () => search(cleanser)),
-                              const SizedBox(height: 10),
-                              Keyword(
-                                  keyword: cream, onTap: () => search(cream)),
-                              const SizedBox(height: 10),
-                              Keyword(
-                                  keyword: sunscreen,
-                                  onTap: () => search(sunscreen)),
-                              const SizedBox(height: 10),
-                              Keyword(
-                                  keyword: serum, onTap: () => search(serum)),
-                              const SizedBox(height: 10),
-                            ],
-                          )),
-                  // CosmeticsRequestBtn()
                 ],
-              )),
-        ));
+              ),
+            )
+          ];
+        },
+        body: showResults
+            ? productModel.showPaginatedProductList(
+                future: getProductBySearch, isFromReviewPage: true)
+            : Container(
+                padding: const EdgeInsets.only(left: 16, right: 16, top: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Mọi người cũng tìm kiếm',
+                      textAlign: TextAlign.center,
+                      style:
+                          textTheme.bodyText2.copyWith(color: kSecondaryGrey),
+                    ),
+                    const SizedBox(height: 10),
+                    Keyword(keyword: roundLab, onTap: () => search(roundLab)),
+                    const SizedBox(height: 10),
+                    Keyword(keyword: cleanser, onTap: () => search(cleanser)),
+                    const SizedBox(height: 10),
+                    Keyword(keyword: cream, onTap: () => search(cream)),
+                    const SizedBox(height: 10),
+                    Keyword(keyword: sunscreen, onTap: () => search(sunscreen)),
+                    const SizedBox(height: 10),
+                    Keyword(keyword: serum, onTap: () => search(serum)),
+                    const SizedBox(height: 10),
+                  ],
+                )),
+      ),
+    );
   }
 }
 

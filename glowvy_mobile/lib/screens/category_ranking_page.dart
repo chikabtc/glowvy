@@ -23,7 +23,6 @@ class RankingByCategory extends StatefulWidget {
 
 class RankingByCategoryState extends State<RankingByCategory>
     with TickerProviderStateMixin, WidgetsBindingObserver {
-  CategoryModel categoryModel;
   ProductModel productModel;
   Future getProductsByCategoryId;
   ThirdCategory _thirdCategory;
@@ -58,8 +57,10 @@ class RankingByCategoryState extends State<RankingByCategory>
         appBar: AppBar(
             brightness: Brightness.light,
             elevation: 0,
-            leading: backIcon(context,
-                onPop: () => productModel.clearPaginationHistory()),
+            leading: backIcon(context, onPop: () {
+              Navigator.pop(context);
+              productModel.clearPaginationHistory();
+            }),
             backgroundColor: Colors.white,
             title: Text(widget.secondCategory.secondCategoryName,
                 style: textTheme.headline3)),

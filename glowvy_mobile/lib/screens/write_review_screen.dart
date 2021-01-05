@@ -2,6 +2,7 @@ import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/search_review_cosmetisc.dart';
@@ -216,14 +217,15 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
         appBar: AppBar(
           brightness: Brightness.light,
           backgroundColor: kWhite,
-          leading: IconButton(
-              onPressed: () =>
-                  review == null ? Navigator.of(context).pop() : askSaveDraft(),
-              icon: SvgPicture.asset(
-                'assets/icons/arrow_backward.svg',
-                width: 26,
-                color: kDarkAccent,
-              )),
+          leading: backIcon(context, onPop: () {
+            if (review.content == null &&
+                review.rating == null &&
+                review.product == null) {
+              Navigator.pop(context);
+            } else {
+              askSaveDraft();
+            }
+          }),
           actions: [
             Center(
               child: Padding(

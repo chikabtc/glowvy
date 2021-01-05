@@ -6,17 +6,18 @@ import 'package:Dimodo/screens/category_ranking_page.dart';
 import 'package:flutter/material.dart';
 
 class SecondCategoryButton extends StatefulWidget {
-  const SecondCategoryButton(this.category, {this.onTap});
+  SecondCategoryButton(this.category);
   final SecondCategory category;
-  final Function onTap;
+  var isSelected = false;
 
   @override
   _SecondCategoryButtonState createState() => _SecondCategoryButtonState();
 }
 
-class _SecondCategoryButtonState extends State<SecondCategoryButton> {
+class _SecondCategoryButtonState extends State<SecondCategoryButton>
+    with AutomaticKeepAliveClientMixin<SecondCategoryButton> {
   ThirdCategory selectedThirdCategory;
-  bool isSelected = false;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -33,7 +34,9 @@ class _SecondCategoryButtonState extends State<SecondCategoryButton> {
                     style: textTheme.headline5.copyWith(fontSize: 16)),
                 const Spacer(),
                 Icon(
-                  isSelected ? Icons.arrow_drop_up : Icons.arrow_drop_down,
+                  widget.isSelected
+                      ? Icons.arrow_drop_up
+                      : Icons.arrow_drop_down,
                   color: widget.category.thirdCategories.isEmpty
                       ? Colors.transparent
                       : kSecondaryGrey,
@@ -43,7 +46,7 @@ class _SecondCategoryButtonState extends State<SecondCategoryButton> {
           ),
           onPressed: () {
             setState(() {
-              isSelected = !isSelected;
+              widget.isSelected = !widget.isSelected;
               if (widget.category.thirdCategories.isEmpty) {
                 Navigator.push(
                     context,
@@ -54,7 +57,7 @@ class _SecondCategoryButtonState extends State<SecondCategoryButton> {
             });
           },
         ),
-        if (isSelected && widget.category.thirdCategories.isNotEmpty)
+        if (widget.isSelected && widget.category.thirdCategories.isNotEmpty)
           FlatButton(
             color: Colors.transparent,
             onPressed: () {
@@ -108,13 +111,16 @@ class _SecondCategoryButtonState extends State<SecondCategoryButton> {
             ),
           ),
           firstChild: Container(), // When you don't want to show menu..
-          crossFadeState:
-              isSelected ? CrossFadeState.showSecond : CrossFadeState.showFirst,
+          crossFadeState: widget.isSelected
+              ? CrossFadeState.showSecond
+              : CrossFadeState.showFirst,
         ),
         // if (isSelected)
-
         kDivider
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

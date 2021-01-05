@@ -8,6 +8,7 @@ import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/categoryModel.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/models/search_model.dart';
 import 'package:Dimodo/models/survey.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
@@ -70,8 +71,7 @@ class HomeScreenState extends State<HomeScreen>
     super.initState();
     try {
       tabList = [];
-      final tabs =
-          Provider.of<CategoryModel>(context, listen: false).categories;
+      final tabs = Provider.of<SearchModel>(context, listen: false).categories;
       tabs.forEach((tab) {
         tabList.add(tab);
       });
@@ -264,33 +264,32 @@ class HomeScreenState extends State<HomeScreen>
                               child: const SpinKitThreeBounce(
                                   color: kPrimaryOrange, size: 21.0)),
                         ))
-                    : NotificationListener(
-                        onNotification:
-                            (ScrollUpdateNotification notification) {
-                          if (notification != null &&
-                              notification.metrics.axisDirection !=
-                                  AxisDirection.left &&
-                              notification.metrics.axisDirection !=
-                                  AxisDirection.right) {
-                            setState(() {
-                              if (notification.metrics.pixels > 52 &&
-                                  !showTitle) {
-                                showTitle = true;
-                                print('show title');
-                              } else if (notification.metrics.pixels < 52 &&
-                                  showTitle) {
-                                showTitle = false;
-                                print('dont show title:');
-                              }
-                            });
-                          }
-                        },
-                        child: TabBarView(
-                          controller: _tabController,
-                          children: tabList.map((Category category) {
-                            return Builder(
-                              builder: (BuildContext context) {
-                                return ListView(
+                    : TabBarView(
+                        controller: _tabController,
+                        children: tabList.map((Category category) {
+                          return Builder(
+                            builder: (BuildContext context) {
+                              return NotificationListener(
+                                onNotification:
+                                    (ScrollUpdateNotification notification) {
+                                  if (notification != null &&
+                                      notification.metrics.axisDirection !=
+                                          AxisDirection.left &&
+                                      notification.metrics.axisDirection !=
+                                          AxisDirection.right) {
+                                    setState(() {
+                                      if (notification.metrics.pixels > 52 &&
+                                          !showTitle) {
+                                        showTitle = true;
+                                      } else if (notification.metrics.pixels <
+                                              52 &&
+                                          showTitle) {
+                                        showTitle = false;
+                                      }
+                                    });
+                                  }
+                                },
+                                child: ListView(
                                   shrinkWrap: true,
                                   children: <Widget>[
                                     if (!isLoading)
@@ -308,7 +307,7 @@ class HomeScreenState extends State<HomeScreen>
                                         children: <Widget>[
                                           const SizedBox(height: 10),
                                           Padding(
-                                            padding: EdgeInsets.only(
+                                            padding: const EdgeInsets.only(
                                                 left: 48, right: 48),
                                             child: Text(
                                               'Có vấn đề với ứng dụng? Hãy gửi mail cho nhà phát triển! Glowvy team sẽ phản hồi nhanh nhất có thể.',
@@ -411,11 +410,11 @@ class HomeScreenState extends State<HomeScreen>
                                         ],
                                       )
                                   ],
-                                );
-                              },
-                            );
-                          }).toList(),
-                        ),
+                                ),
+                              );
+                            },
+                          );
+                        }).toList(),
                       ),
               ),
             ));

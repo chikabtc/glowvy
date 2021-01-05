@@ -46,11 +46,12 @@ Widget backIcon(context, {color = kDarkAccent, Function onPop}) {
           onPressed: () {
             if (onPop != null) {
               onPop();
+            } else {
+              Navigator.pop(context);
             }
-            Navigator.of(context).pop();
           },
           icon: Platform.isAndroid
-              ? Icon(Icons.arrow_back)
+              ? const Icon(Icons.arrow_back)
               : SvgPicture.asset(
                   'assets/icons/arrow_backward.svg',
                   width: 26,

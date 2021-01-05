@@ -3,6 +3,7 @@ import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/categoryModel.dart';
+import 'package:Dimodo/models/search_model.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/widgets/categories/CategoryButton.dart';
 import 'package:flutter/cupertino.dart';
@@ -38,7 +39,7 @@ class CategoryScreenState extends State<CategoryScreen>
     print('rebuilding category!');
 
     final categories =
-        Provider.of<CategoryModel>(context, listen: false).categories;
+        Provider.of<SearchModel>(context, listen: false).categories;
     // print('categories length: ${categories.length}');
 
     // print('categories?: ${categories[0].image}');

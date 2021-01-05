@@ -9,7 +9,6 @@ import 'package:Dimodo/widgets/product/list_page.dart';
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
@@ -17,15 +16,17 @@ import 'package:provider/provider.dart';
 class PaginatedReviewListView extends StatefulWidget {
   final ListPage<Review> initialPage;
 
+  final int productId;
   final dynamic fetchReviews;
   final bool showPadding;
-  final FilterOptions filterOptions;
+  final ListPreferences listPreferences;
 
   const PaginatedReviewListView({
     Key key,
     this.initialPage,
     this.fetchReviews,
-    this.filterOptions,
+    this.productId,
+    this.listPreferences,
     this.showPadding = false,
   }) : super(key: key);
 
@@ -43,15 +44,7 @@ class _PaginatedReviewListViewState extends State<PaginatedReviewListView>
   void initState() {
     super.initState();
     _reviewModel = Provider.of<ReviewModel>(context, listen: false);
-
-    _pagingController.itemList =
-        _reviewModel.filter(widget.initialPage.itemList, widget.filterOptions);
-    ;
-    if (widget.initialPage.isLastPage(0)) {
-      print('set last page');
-      _pagingController.nextPageKey = null;
-    }
-
+    _reviewModel.clearPaginationHistory();
     _pagingController.addPageRequestListener((pageKey) {
       _fetchPage(pageKey);
     });
@@ -59,12 +52,9 @@ class _PaginatedReviewListViewState extends State<PaginatedReviewListView>
 
   @override
   void didUpdateWidget(PaginatedReviewListView oldWidget) {
-    if (oldWidget.filterOptions != widget.filterOptions) {
-      print('filter options is updated');
-      _reviewModel.clearPaginationHistory();
-      _pagingController.itemList =
-          _reviewModel.filter(_pagingController.itemList, widget.filterOptions);
+    if (oldWidget.listPreferences != widget.listPreferences) {
       _pagingController.refresh();
+      // _fetchPage(0);
     }
     super.didUpdateWidget(oldWidget);
   }
@@ -79,24 +69,22 @@ class _PaginatedReviewListViewState extends State<PaginatedReviewListView>
   }
 
   Future<void> _fetchPage(int pageKey) async {
+    print('fetching new page..');
     if (_pagingController.nextPageKey != null) {
       try {
-        final ListPage<Review> newPage = await widget.fetchReviews();
+        final newPage = await _reviewModel.getProductReviews(widget.productId,
+            listPreferences: widget.listPreferences);
         if (newPage != null) {
-          print('new page exists');
-          final previouslyFetchedItemsCount =
-              _pagingController.itemList?.length ?? 0;
-          final isLastPage = newPage.itemList.isEmpty ||
-              newPage.isLastPage(previouslyFetchedItemsCount);
-          final filteredReviews =
-              _reviewModel.filter(newPage.itemList, widget.filterOptions);
+          final isLastPage =
+              newPage.itemList.isEmpty || newPage.itemList.length < 15;
+
           if (isLastPage) {
             print('last page');
-
-            _pagingController.appendLastPage(filteredReviews);
+            _pagingController.appendLastPage(newPage.itemList);
           } else {
+            print('added new page');
             final nextPageKey = pageKey + 1;
-            _pagingController.appendPage(filteredReviews, nextPageKey);
+            _pagingController.appendPage(newPage.itemList, nextPageKey);
           }
         } else {
           print('new page is null');
@@ -112,11 +100,10 @@ class _PaginatedReviewListViewState extends State<PaginatedReviewListView>
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
-    return Scrollbar(
+    return CupertinoScrollbar(
       child: PagedListView.separated(
-        addAutomaticKeepAlives: false,
+        addAutomaticKeepAlives: true,
         shrinkWrap: true,
-        physics: const ClampingScrollPhysics(),
         builderDelegate: PagedChildBuilderDelegate<Review>(
             itemBuilder: (context, review, i) {
               return ReviewCard(
@@ -139,15 +126,10 @@ class _PaginatedReviewListViewState extends State<PaginatedReviewListView>
                       ),
                     ),
                     const SizedBox(height: 10),
-                    SvgPicture.asset(
-                      'assets/icons/heart-ballon.svg',
-                      width: 30,
-                      height: 42,
-                    ),
                   ],
                 ),
             noMoreItemsIndicatorBuilder: (context) => Padding(
-                  padding: const EdgeInsets.only(top: 28.0, bottom: 28),
+                  padding: const EdgeInsets.only(top: 28.0, bottom: 40),
                   child: SvgPicture.asset(
                     'assets/icons/heart-ballon.svg',
                     width: 30,
@@ -157,13 +139,11 @@ class _PaginatedReviewListViewState extends State<PaginatedReviewListView>
             firstPageProgressIndicatorBuilder: (context) => Container(
                 width: screenSize.width,
                 height: screenSize.height / 3,
-                child: const Center(
-                    child:
-                        SpinKitThreeBounce(color: kPrimaryOrange, size: 21.0))),
+                child: Center(child: kIndicator())),
             newPageProgressIndicatorBuilder: (context) => Container(
-                  height: screenSize.height / 10,
-                  child: Center(child: kIndicator()),
-                )),
+                width: screenSize.width,
+                height: screenSize.height / 10,
+                child: Center(child: kIndicator()))),
         pagingController: _pagingController,
         padding: widget.showPadding
             ? const EdgeInsets.symmetric(horizontal: 16)

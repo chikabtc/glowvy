@@ -115,15 +115,17 @@ class UserModel with ChangeNotifier {
   }
 
   Future discardReviewDraft() async {
-    try {
-      user.reviewDraft = null;
-      await _db
-          .collection('users')
-          .doc(firebaseUser.uid)
-          .update({'review_draft': FieldValue.delete()});
-      await reloadUser();
-    } catch (e) {
-      print('discardReviewDraft e: $e');
+    if (firebaseUser != null) {
+      try {
+        user.reviewDraft = null;
+        await _db
+            .collection('users')
+            .doc(firebaseUser.uid)
+            .update({'review_draft': FieldValue.delete()});
+        await reloadUser();
+      } catch (e) {
+        print('discardReviewDraft e: $e');
+      }
     }
   }
 
@@ -204,6 +206,36 @@ class UserModel with ChangeNotifier {
     await reloadUser();
   }
 
+  Future saveRecentQueries(List<String> queries) async {
+    if (firebaseUser != null) {
+      try {
+        user.reviewDraft = null;
+        await _db
+            .collection('users')
+            .doc(firebaseUser.uid)
+            .update({'recent_queries': queries});
+        await reloadUser();
+      } catch (e) {
+        print('saveRecentQueries e: $e');
+      }
+    }
+  }
+
+  Future saveRecentSearchItems(List<Product> items) async {
+    if (firebaseUser != null) {
+      try {
+        user.reviewDraft = null;
+        await _db
+            .collection('users')
+            .doc(firebaseUser.uid)
+            .update({'recent_search_items': items});
+        await reloadUser();
+      } catch (e) {
+        print('saveRecentSearchItems e: $e');
+      }
+    }
+  }
+
   Future updateUserBirthyear(int year) async {
     await _db.collection('users').doc(firebaseUser.uid).update({
       'birth_year': year,
@@ -231,13 +263,6 @@ class UserModel with ChangeNotifier {
     });
     await reloadUser();
   }
-
-  // Future updateUserAge(int year) async {
-  //   await _db.collection('users').doc(firebaseUser.uid).update({
-  //     'birth_year': year,
-  //   });
-  //   await reloadUser();
-  // }
 
   Future updateEmail(email) async {
     try {

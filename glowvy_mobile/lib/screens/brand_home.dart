@@ -24,7 +24,6 @@ class BrandHomePage extends StatefulWidget {
 
 class BrandHomePageState extends State<BrandHomePage>
     with TickerProviderStateMixin, WidgetsBindingObserver {
-  CategoryModel categoryModel;
   ProductModel productModel;
   Future<ListPage<Product>> getProductsByBrand;
   Category currentCategory;
@@ -58,16 +57,13 @@ class BrandHomePageState extends State<BrandHomePage>
       appBar: AppBar(
           brightness: Brightness.light,
           elevation: 0,
-          leading:
-              backIcon(context, onPop: productModel.clearPaginationHistory),
+          leading: backIcon(context, onPop: () {
+            Navigator.pop(context);
+            productModel.clearPaginationHistory();
+          }),
           backgroundColor: Colors.white,
           title: Text(widget.brand.name)),
       backgroundColor: kWhite,
-      // body: PaginatedProductListView(
-      //   fetchProducts: () => productModel.getProductsByBrand(widget.brand.id),
-      //   showRank: false,
-      //   showPadding: true,
-      // ),
       body: NestedScrollView(
           physics: const NeverScrollableScrollPhysics(),
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {

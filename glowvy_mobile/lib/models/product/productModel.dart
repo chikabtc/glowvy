@@ -417,7 +417,7 @@ class ProductModel with ChangeNotifier {
 
       final querySnap = await algolia.instance
           .index('cosmetics')
-          .setHitsPerPage(1000)
+          .setHitsPerPage(200)
           .search(searchText)
           .getObjects();
 
@@ -467,13 +467,15 @@ class ProductModel with ChangeNotifier {
       showPadding = true,
       Function onLoadMore,
       sortBy}) {
-    return FutureBuilder<List<Product>>(
+    return FutureBuilder<ListPage<Product>>(
       future: future,
-      builder: (BuildContext context, AsyncSnapshot<List<Product>> snapshot) {
-        products = snapshot.data;
+      builder:
+          (BuildContext context, AsyncSnapshot<ListPage<Product>> snapshot) {
         if (snapshot.hasData) {
+          products = snapshot.data.itemList;
+
           return ProductsListView(
-            products: snapshot.data,
+            products: snapshot.data.itemList,
             onLoadMore: onLoadMore,
             showFilter: showFiler,
             isFromReviewSearch: isFromReviewPage,

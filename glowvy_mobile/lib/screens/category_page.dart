@@ -20,7 +20,6 @@ class CategoryPage extends StatefulWidget {
 
 class CategoryPageState extends State<CategoryPage>
     with TickerProviderStateMixin, WidgetsBindingObserver {
-  CategoryModel categoryModel;
   List<Category> categories = [];
   Category currentFirstCategory;
 
@@ -29,13 +28,6 @@ class CategoryPageState extends State<CategoryPage>
   @override
   void initState() {
     super.initState();
-    categoryModel = Provider.of<CategoryModel>(context, listen: false);
-    categories
-      ..add(categoryModel.categories[0])
-      ..add(categoryModel.categories[6])
-      ..add(categoryModel.categories[7])
-      ..add(categoryModel.categories[8]);
-    currentFirstCategory = categories[0];
   }
 
   @override
@@ -79,8 +71,7 @@ class CategoryPageState extends State<CategoryPage>
                 scrollDirection: Axis.vertical,
                 itemCount: currentFirstCategory.secondCategories.length,
                 itemBuilder: (context, index) => SecondCategoryButton(
-                    currentFirstCategory.secondCategories[index],
-                    onTap: () {})),
+                    currentFirstCategory.secondCategories[index])),
           )
         ],
       ),

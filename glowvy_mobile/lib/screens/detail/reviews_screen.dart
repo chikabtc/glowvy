@@ -3,8 +3,10 @@ import 'dart:math';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/review_model.dart';
 import 'package:Dimodo/models/review.dart';
+import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/detail/review_images.dart';
 import 'package:Dimodo/screens/paginated_review_list.dart';
+import 'package:Dimodo/screens/setting/login.dart';
 import 'package:Dimodo/widgets/filter_option_button.dart';
 import 'package:Dimodo/widgets/product/list_page.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,29 +21,34 @@ import '../../common/styles.dart';
 import '../../common/widgets.dart';
 import '../../generated/i18n.dart';
 
-class ReviewsPage extends StatefulWidget {
+class ReviewsScreen extends StatefulWidget {
   final Product product;
   final ListPage<Review> initialPage;
 
-  const ReviewsPage(this.initialPage, this.product);
+  const ReviewsScreen(this.initialPage, this.product);
 
   @override
   _StateReviews createState() => _StateReviews();
 }
 
-class _StateReviews extends State<ReviewsPage>
-    with AutomaticKeepAliveClientMixin<ReviewsPage> {
+class _StateReviews extends State<ReviewsScreen>
+    with AutomaticKeepAliveClientMixin<ReviewsScreen> {
   ListPage<Review> initialPage;
-  FilterOptions _filterOptions;
+  ListPreferences _listPreferences;
   ReviewModel _reviewModel;
   bool isFiltered = false;
   int randomNumber;
+  List<bool> isSelected;
+  UserModel _userModel;
+  Future<ListPage<Review>> getReviews;
+  String _orderBy = 'Mới nhất';
 
   @override
   void initState() {
-    _filterOptions = FilterOptions(
-        genders: [], skinIssues: [], skinTypes: [], ageGroups: []);
+    _listPreferences = ListPreferences.init();
 
+    isSelected = [true, false];
+    _userModel = Provider.of<UserModel>(context, listen: false);
     initialPage = widget.initialPage;
     _reviewModel = Provider.of<ReviewModel>(context, listen: false);
     super.initState();
@@ -58,92 +65,156 @@ class _StateReviews extends State<ReviewsPage>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      body: Container(
-          color: Colors.white,
-          width: screenSize.width,
-          height: screenSize.height,
-          child: CustomScrollView(slivers: <Widget>[
-            SliverAppBar(
-              brightness: Brightness.light,
-              leading: backIcon(context,
-                  onPop: () => _reviewModel.clearPaginationHistory()),
-              elevation: 0,
-              backgroundColor: Colors.white,
-              pinned: true,
-            ),
-            SliverList(
-                delegate: SliverChildListDelegate([
-              if (initialPage == null)
-                Container(
-                  height: kScreenSizeHeight * 0.7,
-                  child:
-                      const SpinKitThreeBounce(color: kPinkAccent, size: 23.0),
-                ),
-              if (initialPage.itemList.isEmpty)
-                Container(
-                  child: Center(
-                    child: Text(
-                      S.of(context).noReviews,
-                      style: textTheme.headline5,
-                    ),
-                  ),
-                ),
-              if (initialPage.itemList.isNotEmpty)
-                Container(
-                  color: Colors.white,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: <Widget>[
-                      Container(
-                        padding:
-                            const EdgeInsets.only(top: 19, left: 16, right: 16),
-                        color: Colors.white,
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: <Widget>[
-                              Text(
-                                  '${S.of(context).reviews} (${widget.product.reviewMetas.all.reviewCount})',
-                                  style: textTheme.caption2),
-                              const Spacer(),
-                              GestureDetector(
-                                onTap: () => showCosmeticsFilter(context),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+      appBar: AppBar(
+        brightness: Brightness.light,
+        leading: backIcon(context, onPop: () {
+          _reviewModel.clearPaginationHistory();
+          Navigator.pop(context);
+        }),
+        elevation: 0,
+        backgroundColor: Colors.white,
+      ),
+      backgroundColor: Colors.white,
+      body: NestedScrollView(
+          physics: const NeverScrollableScrollPhysics(),
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverPersistentHeader(
+                pinned: true,
+                delegate: SliverAppBarDelegate(
+                  minHeight: 60,
+                  maxHeight: 60,
+                  child: Container(
+                    padding:
+                        const EdgeInsets.only(top: 19, left: 16, right: 16),
+                    color: Colors.white,
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: <Widget>[
+                          GestureDetector(
+                            onTap: () => showSortOptions(context),
+                            child: Stack(
+                              children: [
+                                Row(
                                   children: [
-                                    Text('Filters', style: textTheme.caption1),
-                                    SvgPicture.asset('assets/icons/filter.svg',
-                                        width: 24, color: kDarkAccent),
+                                    SvgPicture.asset(
+                                      'assets/icons/sort.svg',
+                                      color: kDarkSecondary,
+                                      width: 16,
+                                    ),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(_orderBy ?? '',
+                                        style: textTheme.caption1
+                                            .copyWith(color: kDarkSecondary))
                                   ],
                                 ),
-                              ),
-                            ]),
-                      ),
-                      ReviewImages(widget.product),
-                      // PaginatedReviewListView()
-
-                      // if (isFiltered)
-                      PaginatedReviewListView(
-                        initialPage: widget.initialPage,
-                        key: Key(randomNumber.toString()),
-                        fetchReviews: () => _reviewModel
-                            .getCosmeticsReviews(widget.product.sid),
-                        filterOptions: _filterOptions,
-                        showPadding: true,
-                      ),
-
-                      Container(height: 10)
-                    ],
+                              ],
+                            ),
+                          ),
+                          const Spacer(),
+                          Text('My Skin Type', style: textTheme.caption1),
+                          Switch(
+                            focusColor: Colors.white,
+                            hoverColor: Colors.white,
+                            inactiveThumbColor: Colors.white,
+                            activeColor: Colors.white,
+                            activeTrackColor: kPrimaryOrange,
+                            inactiveTrackColor: kSecondaryGrey.withOpacity(0.7),
+                            onChanged: (newValue) {
+                              setState(() {
+                                _reviewModel.clearPaginationHistory();
+                                //1.check if the user is logged in
+                                if (_userModel.isLoggedIn) {
+                                  //2.set filter to my skin type filter
+                                  if (newValue) {
+                                    _listPreferences = _reviewModel
+                                        .getUserSkinFilter(_userModel.user);
+                                  } else {
+                                    _listPreferences = ListPreferences.init();
+                                  }
+                                  isFiltered = newValue;
+                                } else {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const LoginScreen()));
+                                }
+                              });
+                            },
+                            value: isFiltered,
+                          ),
+                          GestureDetector(
+                            onTap: () => showFilterOptions(context),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                    height: 15,
+                                    width: 0.5,
+                                    color: kSecondaryGrey),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                SvgPicture.asset(
+                                  'assets/icons/filter.svg',
+                                  color: _listPreferences.isOptionEmpty()
+                                      ? kSecondaryGrey
+                                      : kPrimaryOrange,
+                                  width: 24,
+                                ),
+                                Text('Filters',
+                                    style: textTheme.caption1.copyWith(
+                                        color: _listPreferences.isOptionEmpty()
+                                            ? kDefaultFontColor
+                                            : kPrimaryOrange))
+                              ],
+                            ),
+                          ),
+                        ]),
                   ),
-                )
-            ])),
-          ])),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      color: Colors.white,
+                      child: Column(
+                        children: <Widget>[
+                          if (initialPage == null)
+                            Container(
+                              height: kScreenSizeHeight * 0.7,
+                              child: const SpinKitThreeBounce(
+                                  color: kPinkAccent, size: 23.0),
+                            ),
+                          if (initialPage.itemList.isNotEmpty)
+                            ReviewImages(widget.product),
+                          Container(height: 10)
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ];
+          },
+          body: PaginatedReviewListView(
+            // initialPage: widget.initialPage,
+            key: Key(randomNumber.toString()),
+            productId: widget.product.sid,
+            listPreferences: _listPreferences,
+            showPadding: true,
+          )),
     );
   }
 
-  void showCosmeticsFilter(context) {
+  void showFilterOptions(context) {
     final screenSize = MediaQuery.of(context).size;
     final heightFactor = 1 -
         (AppBar().preferredSize.height +
@@ -151,12 +222,11 @@ class _StateReviews extends State<ReviewsPage>
             kScreenSizeHeight;
     final genders = <String>['Nữ', 'Nam'];
     final skinTypes = <String>['Da dầu', 'Da khô', 'Da hỗn hợp', 'Da thường'];
-    var tempFilterOptions = FilterOptions(
-        genders: [], skinIssues: [], skinTypes: [], ageGroups: []);
+    var tempFilterOptions = ListPreferences.init();
 
-    if (!_filterOptions.isOptionEmpty()) {
+    if (!_listPreferences.isOptionEmpty()) {
       print('filter exsits');
-      tempFilterOptions = _filterOptions;
+      tempFilterOptions = _listPreferences;
       //
     }
 
@@ -169,7 +239,6 @@ class _StateReviews extends State<ReviewsPage>
     ];
 
     final ageGroups = <String>[
-      'tất cả',
       'dưới 20',
       'từ 20 đến 24',
       'Từ 25 đến 29',
@@ -179,7 +248,8 @@ class _StateReviews extends State<ReviewsPage>
 
     showModalBottomSheet(
         isScrollControlled: true,
-        backgroundColor: Colors.transparent,
+        isDismissible: false,
+        // backgroundColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
@@ -246,21 +316,19 @@ class _StateReviews extends State<ReviewsPage>
                                       name: skinType,
                                       onTap: () {
                                         setModalState(() {
-                                          if (tempFilterOptions.skinTypes
-                                              .contains(skinType)) {
-                                            print('why is that');
-                                            tempFilterOptions.skinTypes
-                                                .remove(skinType);
+                                          if (tempFilterOptions.skinType ==
+                                              skinType) {
+                                            tempFilterOptions.skinType = null;
                                           } else {
-                                            tempFilterOptions.skinTypes
-                                                .add(skinType);
+                                            tempFilterOptions.skinType =
+                                                skinType;
                                           }
                                           print(
-                                              'tem : ${tempFilterOptions.skinTypes}');
+                                              'tem : ${tempFilterOptions.skinType}');
                                         });
                                       },
-                                      isSelected: tempFilterOptions.skinTypes
-                                          .contains(skinType),
+                                      isSelected: tempFilterOptions.skinType ==
+                                          skinType,
                                     )
                                 ]),
                                 Text(
@@ -383,13 +451,10 @@ class _StateReviews extends State<ReviewsPage>
                                                 color: kPinkAccent)),
                                         onPressed: () {
                                           //1. clear the filterOptions UIs
-                                          tempFilterOptions = FilterOptions(
-                                              genders: [],
-                                              skinIssues: [],
-                                              skinTypes: [],
-                                              ageGroups: []);
+
                                           setModalState(() {
-                                            _filterOptions = tempFilterOptions;
+                                            tempFilterOptions =
+                                                ListPreferences.init();
                                           });
                                           //2. show the original review list
                                           setState(() {
@@ -413,13 +478,15 @@ class _StateReviews extends State<ReviewsPage>
                                                 fontWeight: FontWeight.w600,
                                                 color: Colors.white)),
                                         onPressed: () {
+                                          _reviewModel.clearPaginationHistory();
+
                                           setState(() {
-                                            _filterOptions = tempFilterOptions;
+                                            final random = Random();
+                                            randomNumber =
+                                                random.nextInt(90) + 10;
+                                            _listPreferences =
+                                                tempFilterOptions;
                                           });
-                                          final random = Random();
-                                          randomNumber = random.nextInt(90) +
-                                              10; // from 10 upto 99 included
-                                          // print(_filterOptions.skinTypes);
 
                                           Navigator.pop(context);
                                         }),
@@ -431,6 +498,118 @@ class _StateReviews extends State<ReviewsPage>
                         ),
                       ],
                     )),
+              );
+            },
+          );
+        });
+  }
+
+  void showSortOptions(context) {
+    final screenSize = MediaQuery.of(context).size;
+
+    final options = <String>[
+      'Mới nhất',
+      'Cũ nhất',
+      'Được yêu thích nhất',
+      'Xếp hạng cao',
+      'Xếp hạng thấp'
+    ];
+
+    showModalBottomSheet(
+        isScrollControlled: true,
+
+        // backgroundColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(
+            builder: (BuildContext context, StateSetter setModalState) {
+              return Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20)),
+                ),
+                width: screenSize.width,
+                height: 330,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 5),
+                    Container(
+                      width: 40,
+                      height: 4,
+                      decoration: const BoxDecoration(
+                        color: kQuaternaryGrey,
+                        borderRadius: BorderRadius.all(Radius.circular(20)),
+                      ),
+                    ),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: 5,
+                      itemBuilder: (context, index) {
+                        return Column(
+                          children: [
+                            ListTile(
+                              onTap: () async {
+                                setState(() {
+                                  _reviewModel.clearPaginationHistory();
+                                  setModalState(() {
+                                    final random = Random();
+                                    randomNumber = random.nextInt(90) + 10;
+                                    //set the descending value
+                                    //set the field name
+                                    _orderBy = options[index];
+                                    switch (index) {
+                                      case 0:
+                                        _listPreferences.orderBy = 'created_at';
+                                        _listPreferences.isDescending = true;
+                                        break;
+                                      case 1:
+                                        _listPreferences.orderBy = 'created_at';
+                                        _listPreferences.isDescending = false;
+                                        break;
+                                      case 2:
+                                        _listPreferences.orderBy = 'like_count';
+                                        _listPreferences.isDescending = true;
+                                        break;
+                                      case 3:
+                                        _listPreferences.orderBy = 'rating';
+                                        _listPreferences.isDescending = true;
+                                        break;
+                                      case 4:
+                                        _listPreferences.orderBy = 'rating';
+                                        _listPreferences.isDescending = false;
+                                        break;
+                                      default:
+                                    }
+                                  });
+                                  //pass the sort option to the paginated review list
+                                });
+                                Navigator.pop(context);
+                              },
+                              trailing: _orderBy == options[index]
+                                  ? const Icon(
+                                      Icons.check,
+                                      color: kPrimaryOrange,
+                                    )
+                                  : const Icon(
+                                      Icons.check,
+                                      color: kPrimaryOrange,
+                                      size: 0,
+                                    ),
+                              title: Text(options[index],
+                                  style: textTheme.bodyText1),
+                            ),
+                            if (index != options.length - 1) kDivider,
+                          ],
+                        );
+                      },
+                    ),
+                  ],
+                ),
               );
             },
           );

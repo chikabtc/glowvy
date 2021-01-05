@@ -71,7 +71,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
   final _review = ReviewModel();
   final _wishlist = WishListModel();
   final _order = OrderModel();
-  final _category = CategoryModel();
+
   final _recent = RecentModel();
   final _search = SearchModel();
   bool isFirstSeen = false;
@@ -85,7 +85,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
     await _userModel.initData();
     await _addressModel.setProvinces();
     await _search.setBrands();
-    await _category.setLocalCategories();
+    await _search.setLocalCategories();
     await precacheImage(
         const AssetImage('assets/icons/default-avatar.png'), context);
     isFirstSeen = await checkFirstSeen();
@@ -165,7 +165,6 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
               ChangeNotifierProvider(create: (_) => _addressModel),
               ChangeNotifierProvider(create: (_) => _userModel),
               ChangeNotifierProvider(create: (_) => CartModel()),
-              ChangeNotifierProvider(create: (_) => _category),
               ChangeNotifierProvider(create: (_) => _search),
             ],
             child: GestureDetector(

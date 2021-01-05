@@ -70,15 +70,15 @@ class _ProductsListViewState extends State<ProductsListView> {
     final screenSize = MediaQuery.of(context).size;
     return Container(
       color: kWhite,
-      padding: widget.showPadding
-          ? const EdgeInsets.symmetric(horizontal: 16)
-          : EdgeInsets.zero,
       child: Scrollbar(
         child: PagedListView.separated(
           shrinkWrap: true,
           physics: widget.disableScrolling
               ? const NeverScrollableScrollPhysics()
               : const ClampingScrollPhysics(),
+          padding: widget.showPadding
+              ? const EdgeInsets.symmetric(horizontal: 16)
+              : EdgeInsets.zero,
           builderDelegate: PagedChildBuilderDelegate<Product>(
               itemBuilder: (context, product, index) {
                 if (!widget.isFromReviewSearch)
@@ -101,19 +101,6 @@ class _ProductsListViewState extends State<ProductsListView> {
                     error: _pagingController.error,
                     onTryAgain: () => _pagingController.refresh(),
                   ),
-              // noItemsFoundIndicatorBuilder: (context) => Column(
-              //       children: [
-              //         Container(height: 41),
-              //         Center(
-              //           child: Text(
-              //             'không tìm thấy sản phẩm',
-              //             style: textTheme.bodyText2
-              //                 .copyWith(color: kTertiaryGray),
-              //           ),
-              //         ),
-              //         CosmeticsRequestBtn(),
-              //       ],
-              //     ),
               firstPageProgressIndicatorBuilder: (context) => Container(
                   width: screenSize.width,
                   height: screenSize.height / 1.3,

@@ -7,7 +7,7 @@ import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/screens/brand_home.dart';
 import 'package:Dimodo/screens/detail/review_card.dart';
 import 'package:Dimodo/screens/detail/image_feature.dart';
-import 'package:Dimodo/screens/detail/reviews_page.dart';
+import 'package:Dimodo/screens/detail/reviews_screen.dart';
 import 'package:Dimodo/screens/detail/ingredient_card.dart';
 import 'package:Dimodo/screens/detail/ingredient_screen.dart';
 import 'package:Dimodo/screens/detail/review_images.dart';
@@ -25,7 +25,6 @@ import '../../common/styles.dart';
 import '../../common/widgets.dart';
 import '../../models/product/product.dart';
 import '../../models/product/productModel.dart';
-import 'product_description.dart';
 
 // ignore: must_be_immutable
 class ProductDetailPage extends StatefulWidget {
@@ -60,20 +59,18 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     isLoading = true;
     print('product ${product.sid}');
 
-    reviewModel.getCosmeticsReviews(product.sid).then((onValue) {
+    reviewModel.getProductReviews(product.sid).then((onValue) {
       if (mounted) {
+        totalCount = product.reviewMetas.all.reviewCount;
+
         setState(() {
-          print(
-              'review count:${onValue != null ? onValue.itemList.length : 0}');
           initialReviewPage = onValue;
         });
-        totalCount = product.reviewMetas.all.reviewCount;
       }
     });
     productModel.getWholeProduct(product.sid).then((onValue) {
       if (mounted) {
         setState(() {
-          print('why no product: ${onValue}');
           product = onValue;
           isLoading = false;
           // print('hazardScore: ${product.hazardScore}');
@@ -110,25 +107,6 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
       default:
     }
 
-    List<Widget> renderIngredients() {
-      var index = 0;
-      var widgets = <Widget>[];
-      // print('product ingreidnelt legth :${product.ingredients.length}');
-      if (product.ingredients != null) {
-        while (index < 3 && product.ingredients.length > index) {
-          final card = IngredientCard(
-            showDivider: index != 2,
-            ingredient: product.ingredients[index],
-          );
-          widgets.add(card);
-          index++;
-        }
-        return widgets;
-      } else {
-        return widgets;
-      }
-    }
-
     Route _createRoute() {
       var thumbnailList = [product.thumbnail];
       if (product.descImages != null) {
@@ -157,7 +135,10 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
       appBar: AppBar(
         elevation: 0,
         brightness: Brightness.light,
-        leading: backIcon(context),
+        leading: backIcon(context, onPop: () {
+          Navigator.pop(context);
+          reviewModel.clearPaginationHistory();
+        }),
         backgroundColor: Colors.transparent,
       ),
       body: isLoading
@@ -418,8 +399,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                             ),
                                             children: <TextSpan>[
                                               const TextSpan(
-                                                  text:
-                                                      'This product contains'),
+                                                  text: 'it contains'),
                                               TextSpan(
                                                   text: ' $hazardLevel risk',
                                                   style: textTheme.caption1
@@ -478,65 +458,66 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                             ],
                           ),
                           const Spacer(),
-                          Column(
-                            children: <Widget>[
-                              ReviewRatingBar(
-                                  title: '5.0',
-                                  percentage: totalCount != 0
-                                      ? initialReviewPage.itemList.fold(
-                                              0,
-                                              (previousValue, element) =>
-                                                  element.rating == 5
-                                                      ? previousValue + 1
-                                                      : previousValue) /
-                                          totalCount
-                                      : 0),
-                              ReviewRatingBar(
-                                  title: '4.0',
-                                  percentage: totalCount != 0
-                                      ? initialReviewPage.itemList.fold(
-                                              0,
-                                              (previousValue, element) =>
-                                                  element.rating == 4
-                                                      ? previousValue + 1
-                                                      : previousValue) /
-                                          totalCount
-                                      : 0),
-                              ReviewRatingBar(
-                                  title: '3.0',
-                                  percentage: totalCount != 0
-                                      ? initialReviewPage.itemList.fold(
-                                              0,
-                                              (previousValue, element) =>
-                                                  element.rating == 3
-                                                      ? previousValue + 1
-                                                      : previousValue) /
-                                          totalCount
-                                      : 0),
-                              ReviewRatingBar(
-                                  title: '2.0',
-                                  percentage: totalCount != 0
-                                      ? initialReviewPage.itemList.fold(
-                                              0,
-                                              (previousValue, element) =>
-                                                  element.rating == 2
-                                                      ? previousValue + 1
-                                                      : previousValue) /
-                                          totalCount
-                                      : 0),
-                              ReviewRatingBar(
-                                  title: '1.0',
-                                  percentage: totalCount != 0
-                                      ? initialReviewPage.itemList.fold(
-                                              0,
-                                              (previousValue, element) =>
-                                                  element.rating == 1
-                                                      ? previousValue + 1
-                                                      : previousValue) /
-                                          totalCount
-                                      : 0),
-                            ],
-                          )
+                          if (initialReviewPage != null)
+                            Column(
+                              children: <Widget>[
+                                ReviewRatingBar(
+                                    title: '5.0',
+                                    percentage: totalCount != 0
+                                        ? initialReviewPage.itemList.fold(
+                                                0,
+                                                (previousValue, element) =>
+                                                    element.rating == 5
+                                                        ? previousValue + 1
+                                                        : previousValue) /
+                                            totalCount
+                                        : 0),
+                                ReviewRatingBar(
+                                    title: '4.0',
+                                    percentage: totalCount != 0
+                                        ? initialReviewPage.itemList.fold(
+                                                0,
+                                                (previousValue, element) =>
+                                                    element.rating == 4
+                                                        ? previousValue + 1
+                                                        : previousValue) /
+                                            totalCount
+                                        : 0),
+                                ReviewRatingBar(
+                                    title: '3.0',
+                                    percentage: totalCount != 0
+                                        ? initialReviewPage.itemList.fold(
+                                                0,
+                                                (previousValue, element) =>
+                                                    element.rating == 3
+                                                        ? previousValue + 1
+                                                        : previousValue) /
+                                            totalCount
+                                        : 0),
+                                ReviewRatingBar(
+                                    title: '2.0',
+                                    percentage: totalCount != 0
+                                        ? initialReviewPage.itemList.fold(
+                                                0,
+                                                (previousValue, element) =>
+                                                    element.rating == 2
+                                                        ? previousValue + 1
+                                                        : previousValue) /
+                                            totalCount
+                                        : 0),
+                                ReviewRatingBar(
+                                    title: '1.0',
+                                    percentage: totalCount != 0
+                                        ? initialReviewPage.itemList.fold(
+                                                0,
+                                                (previousValue, element) =>
+                                                    element.rating == 1
+                                                        ? previousValue + 1
+                                                        : previousValue) /
+                                            totalCount
+                                        : 0),
+                              ],
+                            )
                         ],
                       ),
                     ),
@@ -546,75 +527,75 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                     color: kDefaultBackground,
                   ),
                   Container(height: 14, color: Colors.white),
-
-                  GestureDetector(
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  ReviewsPage(initialReviewPage, product))),
-                      child: !isLoading
-                          ? Container(
-                              width: screenSize.width,
-                              color: Colors.white,
-                              child: Column(
-                                children: <Widget>[
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 16),
-                                    child: Row(
-                                      children: <Widget>[
-                                        Text(
-                                            'Đánh giá (${product.reviewMetas.all.reviewCount})',
-                                            style: textTheme.headline5),
-                                        const Spacer(),
-                                        if (totalCount != 0)
-                                          Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            children: <Widget>[arrowForward],
-                                          ),
-                                      ],
-                                    ),
-                                  ),
-                                  if (product.descImages != null)
-                                    ReviewImages(product),
-                                  if (product.descImages == null)
-                                    Container(height: 20),
-                                  Container(height: 20),
-                                  if (totalCount > 2)
+                  if (initialReviewPage != null)
+                    GestureDetector(
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    ReviewsScreen(initialReviewPage, product))),
+                        child: !isLoading
+                            ? Container(
+                                width: screenSize.width,
+                                color: Colors.white,
+                                child: Column(
+                                  children: <Widget>[
                                     Container(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 16),
-                                      child: Column(
+                                      child: Row(
                                         children: <Widget>[
-                                          ReviewCard(
-                                              isPreview: true,
-                                              context: context,
-                                              review: initialReviewPage
-                                                  .itemList[0]),
-                                          ReviewCard(
-                                              isPreview: true,
-                                              context: context,
-                                              review: initialReviewPage
-                                                  .itemList[1]),
-                                          ReviewCard(
-                                              isPreview: true,
-                                              context: context,
-                                              showDivider: false,
-                                              review: initialReviewPage
-                                                  .itemList[2]),
+                                          Text(
+                                              'Đánh giá (${product.reviewMetas.all.reviewCount})',
+                                              style: textTheme.headline5),
+                                          const Spacer(),
+                                          if (totalCount != 0)
+                                            Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: <Widget>[arrowForward],
+                                            ),
                                         ],
                                       ),
                                     ),
-                                ],
-                              ),
-                            )
-                          : Container(
-                              width: screenSize.width,
-                              height: 90,
-                              child: const SpinKitThreeBounce(
-                                  color: kPrimaryOrange, size: 21.0))),
+                                    if (product.descImages != null)
+                                      ReviewImages(product),
+                                    if (product.descImages == null)
+                                      Container(height: 20),
+                                    Container(height: 20),
+                                    if (totalCount > 2)
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 16),
+                                        child: Column(
+                                          children: <Widget>[
+                                            ReviewCard(
+                                                isPreview: true,
+                                                context: context,
+                                                review: initialReviewPage
+                                                    .itemList[0]),
+                                            ReviewCard(
+                                                isPreview: true,
+                                                context: context,
+                                                review: initialReviewPage
+                                                    .itemList[1]),
+                                            ReviewCard(
+                                                isPreview: true,
+                                                context: context,
+                                                showDivider: false,
+                                                review: initialReviewPage
+                                                    .itemList[2]),
+                                          ],
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              )
+                            : Container(
+                                width: screenSize.width,
+                                height: 90,
+                                child: const SpinKitThreeBounce(
+                                    color: kPrimaryOrange, size: 21.0))),
                   // Container(
                   //   height: 28,
                   // ),

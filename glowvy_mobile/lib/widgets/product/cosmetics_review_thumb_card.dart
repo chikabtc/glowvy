@@ -67,7 +67,7 @@ class CosmeticsReviewThumbCard extends StatelessWidget {
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: textTheme.button2),
-                          Text(product.category.firstCategoryName,
+                          Text(product.category.firstCategoryName ?? '',
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: textTheme.caption2),

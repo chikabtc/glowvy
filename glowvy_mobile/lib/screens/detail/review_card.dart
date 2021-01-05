@@ -75,7 +75,7 @@ class ReviewCard extends StatelessWidget {
     final skinIssues =
         review.user.skinIssues != null ? review.user.skinIssues.toString() : '';
 
-    // print(review.product.sid);
+    // print(review.rating);
 
     if (isPreview && sanitizedText.length > 70) {
       sanitizedText =
@@ -119,13 +119,15 @@ class ReviewCard extends StatelessWidget {
                         style: textTheme.button2),
                     Row(
                       children: <Widget>[
-                        Text(review.user.age.toString(),
+                        Text(
+                            (DateTime.now().year - review.user.birthYear)
+                                .toString(),
                             style: textTheme.button2.copyWith(
                                 fontSize: 14,
                                 fontWeight: FontWeight.normal,
                                 color: kSecondaryGrey)),
                         const SizedBox(width: 10),
-                        Text(review.user.skinType + ' ' + skinIssues,
+                        Text(review.user.skinType ?? '' + ' ' + skinIssues,
                             style: textTheme.button2
                                 .copyWith(color: kSecondaryGrey)),
                       ],

@@ -1,7 +1,7 @@
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/models/category.dart';
-import 'package:Dimodo/models/categoryModel.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/productModel.dart';
 import 'package:Dimodo/models/search_model.dart';
@@ -13,8 +13,6 @@ import 'package:Dimodo/widgets/second_category_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:implicitly_animated_reorderable_list/implicitly_animated_reorderable_list.dart';
-import 'package:implicitly_animated_reorderable_list/transitions.dart';
 import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -23,14 +21,14 @@ class SearchScreen extends StatefulWidget {
   _SearchScreenState createState() => _SearchScreenState();
 }
 
-class _SearchScreenState extends State<SearchScreen> {
+class _SearchScreenState extends State<SearchScreen>
+    with AutomaticKeepAliveClientMixin<SearchScreen> {
   Size screenSize;
   Future<ListPage<Product>> getProductBySearch;
   String searchText;
   bool showResults = false;
   bool isTextFieldSelected = false;
   ProductModel productModel;
-  CategoryModel categoryModel;
   SearchModel searchModel;
   List<Category> categories = [];
   Category currentFirstCategory;
@@ -50,10 +48,8 @@ class _SearchScreenState extends State<SearchScreen> {
   void initState() {
     super.initState();
     productModel = Provider.of<ProductModel>(context, listen: false);
-    categoryModel = Provider.of<CategoryModel>(context, listen: false);
-    categoryModel = Provider.of<CategoryModel>(context, listen: false);
     searchModel = Provider.of<SearchModel>(context, listen: false);
-    categories = categoryModel.categories;
+    categories = searchModel.categories;
     currentFirstCategory = categories[0];
   }
 
@@ -66,63 +62,6 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     screenSize = MediaQuery.of(context).size;
-
-    Widget buildItem(BuildContext context, Place place) {
-      final theme = Theme.of(context);
-      final textTheme = theme.textTheme;
-
-      final model = Provider.of<SearchModel>(context, listen: false);
-
-      return Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          InkWell(
-            onTap: () {
-              FloatingSearchBar.of(context).close();
-              Future.delayed(
-                const Duration(milliseconds: 500),
-                () => model.clear(),
-              );
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                children: [
-                  const SizedBox(
-                    width: 36,
-                    child: AnimatedSwitcher(
-                      duration: Duration(milliseconds: 500),
-                      child: Icon(Icons.history, key: Key('history')),
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-                  Expanded(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          place.name,
-                          style: textTheme.subtitle1,
-                        ),
-                        const SizedBox(height: 2),
-                        Text(
-                          place.level2Address,
-                          style: textTheme.bodyText2
-                              .copyWith(color: Colors.grey.shade600),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          if (model.suggestions.isNotEmpty && place != model.suggestions.last)
-            const Divider(height: 0),
-        ],
-      );
-    }
 
     Widget buildCategoryPage() {
       return Padding(
@@ -139,6 +78,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       width: 0.7,
                     ))),
                 child: ListView.builder(
+                    addAutomaticKeepAlives: true,
                     physics: const ClampingScrollPhysics(),
                     scrollDirection: Axis.vertical,
                     itemCount: categories.length,
@@ -151,16 +91,16 @@ class _SearchScreenState extends State<SearchScreen> {
                             });
                           },
                         ))),
-            // TODO(parker): add animation for opening the sub category
             Container(
               width: kScreenSizeWidth - 80,
               child: ListView.builder(
+                  addAutomaticKeepAlives: true,
                   physics: const ClampingScrollPhysics(),
                   scrollDirection: Axis.vertical,
                   itemCount: currentFirstCategory.secondCategories.length,
                   itemBuilder: (context, index) => SecondCategoryButton(
-                      currentFirstCategory.secondCategories[index],
-                      onTap: () {})),
+                        currentFirstCategory.secondCategories[index],
+                      )),
             )
           ],
         ),
@@ -219,30 +159,53 @@ class _SearchScreenState extends State<SearchScreen> {
       );
     }
 
-    Widget buildExpandableBody(SearchModel model) {
-      return Material(
-        color: Colors.white,
-        elevation: 4.0,
-        borderRadius: BorderRadius.circular(8),
-        child: ImplicitlyAnimatedList<Place>(
-          shrinkWrap: true,
-          padding: EdgeInsets.zero,
-          physics: const NeverScrollableScrollPhysics(),
-          items: model.suggestions.take(6).toList(),
-          areItemsTheSame: (a, b) => a == b,
-          itemBuilder: (context, animation, place, i) {
-            return SizeFadeTransition(
-              animation: animation,
-              child: buildItem(context, place),
-            );
-          },
-          updateItemBuilder: (context, animation, place) {
-            return FadeTransition(
-              opacity: animation,
-              child: buildItem(context, place),
-            );
-          },
-        ),
+    Widget showAutoComplete(SearchModel model) {
+      //local auto completes
+      return Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          const SizedBox(height: 8),
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: kScreenSizeHeight,
+              maxHeight: 100000,
+            ),
+            child: ListView.builder(
+              shrinkWrap: true,
+              itemCount: model.brandSuggestions.length,
+              itemBuilder: (context, index) => Container(
+                padding:
+                    const EdgeInsets.only(left: 0, right: 0, top: 8, bottom: 8),
+                //aggregate all suggestions and show different result based on the index.
+                child: Column(
+                  children: [
+                    //1. brand card &j category
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.search,
+                          color: kDarkAccent,
+                        ),
+                        const SizedBox(width: 16),
+                        RichText(
+                          overflow: TextOverflow.ellipsis,
+                          text: TextSpan(
+                            children: Tools.highlightOccurrences(
+                                model.brandSuggestions[index].name,
+                                searchController.query),
+                            style: textTheme.bodyText1.copyWith(fontSize: 13),
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    kFullDivider
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       );
     }
 
@@ -333,27 +296,54 @@ class _SearchScreenState extends State<SearchScreen> {
                             transitionCurve: Curves.linear,
                             axisAlignment: 0.0,
                             openAxisAlignment: 0.0,
-                            closeOnBackdropTap: true,
+                            closeOnBackdropTap: false,
                             maxWidth: screenSize.width,
                             backdropColor: kWhite,
                             isScrollControlled: true,
                             leadingActions: [
                               if (isFocused)
-                                FloatingSearchBarAction.back()
+                                FloatingSearchBarAction(
+                                  showIfClosed: false,
+                                  showIfOpened: true,
+                                  builder: (context, animation) {
+                                    final canPop = Navigator.canPop(context);
+
+                                    return CircularButton(
+                                      tooltip: 'Back',
+                                      size: 24,
+                                      icon: const Icon(Icons.arrow_back),
+                                      onPressed: () {
+                                        final bar =
+                                            FloatingSearchAppBar.of(context);
+
+                                        if (bar.isOpen && !bar.isAlwaysOpened) {
+                                          bar.close();
+                                          model.clear();
+                                        } else if (canPop) {
+                                          setState(() {
+                                            showResults = false;
+                                          });
+
+                                          Navigator.pop(context);
+                                        }
+                                      },
+                                    );
+                                  },
+                                )
                               else
                                 FloatingSearchBarAction.icon(
-                                  icon: SvgPicture.asset(
-                                    'assets/icons/search.svg',
-                                    color: Colors.grey,
-                                  ),
-                                  // showIfClosed: true,
-                                  showIfOpened: true,
-                                  onTap: () => print('tn'),
-                                  // duration: const Duration(milliseconds: 500),
-                                ),
+                                    icon: SvgPicture.asset(
+                                      'assets/icons/search.svg',
+                                      color: Colors.grey,
+                                    ),
+                                    // showIfClosed: true,
+                                    showIfOpened: true,
+                                    onTap: () {}
+                                    // duration: const Duration(milliseconds: 500),
+                                    ),
                             ],
                             actions: [
-                              if (!isQueryEmpty)
+                              if (searchController?.query?.isNotEmpty ?? false)
                                 FloatingSearchBarAction(
                                   showIfOpened: true,
                                   showIfClosed: false,
@@ -364,12 +354,8 @@ class _SearchScreenState extends State<SearchScreen> {
                                     return ValueListenableBuilder<String>(
                                       valueListenable: bar.queryNotifer,
                                       builder: (context, query, _) {
-                                        final isEmpty = query.isEmpty;
-
                                         return IconButton(
                                           tooltip: 'Back',
-                                          // size: 20,
-
                                           icon: const Icon(
                                             Icons.cancel,
                                             size: 18,
@@ -378,6 +364,8 @@ class _SearchScreenState extends State<SearchScreen> {
                                             final bar = FloatingSearchAppBar.of(
                                                 context);
                                             bar.clear();
+                                            model.clear();
+                                            setState(() {});
                                           },
                                         );
                                       },
@@ -385,6 +373,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                   },
                                 )
                             ],
+
                             onSubmitted: (value) {
                               showResults = false;
                               setState(() {
@@ -402,17 +391,20 @@ class _SearchScreenState extends State<SearchScreen> {
                               FocusScope.of(context).unfocus();
                             },
                             debounceDelay: const Duration(milliseconds: 500),
+                            // TODO(parker): show autocomplete
                             onQueryChanged: (query) {
-                              setState(() {
-                                isQueryEmpty = query.isNotEmpty ? false : true;
-                              });
-                              model.onQueryChanged;
+                              model.onQueryChanged(query);
                             },
                             transition: SlideFadeFloatingSearchBarTransition(),
                             builder: (context, _) {
-                              return showResults
-                                  ? buildSearchResult()
-                                  : buildExpandableBody(model);
+                              if (showResults) {
+                                return buildSearchResult();
+                              } else if (true) {
+                                return showAutoComplete(model);
+                              } else if (searchController?.query?.isEmpty ||
+                                  searchController.query == null) {
+                                return Container();
+                              }
                             },
                             body: buildCategoryPage(),
                           );
@@ -420,4 +412,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                     )))));
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

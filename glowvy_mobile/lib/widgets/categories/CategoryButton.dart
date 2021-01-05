@@ -15,9 +15,11 @@ class CategoryButton extends StatefulWidget {
   _CategoryButtonState createState() => _CategoryButtonState();
 }
 
-class _CategoryButtonState extends State<CategoryButton> {
+class _CategoryButtonState extends State<CategoryButton>
+    with AutomaticKeepAliveClientMixin<CategoryButton> {
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return GestureDetector(
       onTap: widget.onTap,
       child: Wrap(
@@ -43,4 +45,7 @@ class _CategoryButtonState extends State<CategoryButton> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

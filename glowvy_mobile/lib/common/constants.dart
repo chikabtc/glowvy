@@ -119,15 +119,16 @@ const kProductListLayout = [
 //   height: 1.0,
 //   //endIndent: 20,
 // );
-const kDivider = Divider(
-  color: kQuaternaryGrey,
+final kDivider = Divider(
+  color: kDividerColor,
   height: 0.7,
-  thickness: 0.7,
+  thickness: 0.5,
   indent: 15,
 );
-const kFullDivider = Divider(
-  color: kQuaternaryGrey,
-  thickness: 0.7,
+final kFullDivider = Divider(
+  color: kDividerColor,
+  thickness: 0.5,
+  height: 0.7,
 );
 
 SizeConfig kSizeConfig;

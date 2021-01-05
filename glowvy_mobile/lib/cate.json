@@ -2,6 +2,7 @@
     "first_category_ko_name": "스킨케어",
     "first_category_en_name": "Skincare",
     "first_category_name": "Chăm sóc da",
+    "first_category_synonyms": [""],
     "second_categories": [{
         "showMergedChildren": true,
         "second_category_ko_name": "스킨/토너",
@@ -15,6 +16,7 @@
             "third_category_ko_name": "워터토너",
             "third_category_en_name": "Water toner",
             "third_category_name": "Toner dạng nước",
+            "third_category_synonyms": [""],
             "third_category_id": 1
           },
           {
