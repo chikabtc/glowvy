@@ -1,9 +1,10 @@
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/widgets.dart';
+import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/categoryModel.dart';
 import 'package:Dimodo/models/product/product.dart';
-import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/models/product/product_model.dart';
 import 'package:Dimodo/models/second_category.dart';
 import 'package:Dimodo/models/third_category.dart';
 import 'package:Dimodo/widgets/product/list_page.dart';
@@ -12,8 +13,8 @@ import 'package:provider/provider.dart';
 
 class RankingByCategory extends StatefulWidget {
   const RankingByCategory({this.secondCategory, this.thirdCategory});
-  final SecondCategory secondCategory;
-  final ThirdCategory thirdCategory;
+  final Category secondCategory;
+  final Category thirdCategory;
 
   @override
   State<StatefulWidget> createState() {
@@ -25,7 +26,7 @@ class RankingByCategoryState extends State<RankingByCategory>
     with TickerProviderStateMixin, WidgetsBindingObserver {
   ProductModel productModel;
   Future getProductsByCategoryId;
-  ThirdCategory _thirdCategory;
+  Category _thirdCategory;
   var whiteSpace = Container(
     height: 60,
     width: kScreenSizeWidth / 3,
@@ -62,8 +63,8 @@ class RankingByCategoryState extends State<RankingByCategory>
               productModel.clearPaginationHistory();
             }),
             backgroundColor: Colors.white,
-            title: Text(widget.secondCategory.secondCategoryName,
-                style: textTheme.headline3)),
+            title:
+                Text(widget.secondCategory.name, style: textTheme.headline3)),
         backgroundColor: kDefaultBackground,
         body: NestedScrollView(
           physics: const ClampingScrollPhysics(),
@@ -77,7 +78,7 @@ class RankingByCategoryState extends State<RankingByCategory>
                     Container(
                       color: kWhite,
                       child: Wrap(children: [
-                        if (widget.secondCategory.thirdCategories.isNotEmpty)
+                        if (widget.secondCategory.subCategories.isNotEmpty)
                           GestureDetector(
                             onTap: () {
                               setState(() {
@@ -113,7 +114,7 @@ class RankingByCategoryState extends State<RankingByCategory>
                               ),
                             ),
                           ),
-                        for (var cate in widget.secondCategory.thirdCategories)
+                        for (var cate in widget.secondCategory.subCategories)
                           GestureDetector(
                             onTap: () {
                               setState(() {
@@ -138,7 +139,7 @@ class RankingByCategoryState extends State<RankingByCategory>
                               padding: const EdgeInsets.all(12),
                               child: Center(
                                 child: Text(
-                                  cate.thirdCategoryName,
+                                  cate.name,
                                   style: textTheme.button.copyWith(
                                       color: _thirdCategory == cate
                                           ? kPrimaryOrange
@@ -150,7 +151,7 @@ class RankingByCategoryState extends State<RankingByCategory>
                               ),
                             ),
                           ),
-                        if (widget.secondCategory.thirdCategories.length == 1)
+                        if (widget.secondCategory.subCategories.length == 1)
                           whiteSpace
                       ]),
                     ),

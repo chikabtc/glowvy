@@ -27,7 +27,7 @@ import 'models/app.dart';
 import 'models/categoryModel.dart';
 import 'models/order/cart.dart';
 import 'models/order/orderModel.dart';
-import 'models/product/productModel.dart';
+import 'models/product/product_model.dart';
 import 'models/product/recent_product.dart';
 import 'models/user/userModel.dart';
 import 'models/wishlist.dart';

@@ -1,5 +1,5 @@
 import 'package:Dimodo/models/product/product.dart';
-import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/models/product/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 // import 'detail/product_detail.dart';

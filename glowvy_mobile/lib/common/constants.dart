@@ -128,7 +128,13 @@ final kDivider = Divider(
 final kFullDivider = Divider(
   color: kDividerColor,
   thickness: 0.5,
-  height: 0.7,
+  height: 0.5,
+);
+
+final kFullSectionDivider = Divider(
+  color: kSectionDividerColor,
+  thickness: 0.5,
+  height: 0.5,
 );
 
 SizeConfig kSizeConfig;

@@ -1,3 +1,4 @@
+import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/models/product/brand.dart';
 import 'package:Dimodo/widgets/brand_card.dart';
 import 'package:flutter/cupertino.dart';
@@ -32,8 +33,8 @@ class _BrandListState extends State<BrandList> {
   Widget build(BuildContext context) {
     return widget.brands.isEmpty
         ? Container()
-        : ListView.builder(
-            padding: const EdgeInsets.all(0.0),
+        : ListView.separated(
+            padding: EdgeInsets.zero,
             physics: !widget.disableScrolling
                 ? const NeverScrollableScrollPhysics()
                 : const ClampingScrollPhysics(),
@@ -44,6 +45,7 @@ class _BrandListState extends State<BrandList> {
               return BrandCard(
                 brand: widget.brands[index],
               );
-            });
+            },
+            separatorBuilder: (context, index) => kFullDivider);
   }
 }

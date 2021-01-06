@@ -3,7 +3,7 @@ import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/product/product.dart';
-import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/models/product/product_model.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

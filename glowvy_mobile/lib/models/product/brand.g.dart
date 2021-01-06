@@ -27,6 +27,7 @@ Brand _$BrandFromJson(Map<String, dynamic> json) {
     type: json['type'] == null
         ? null
         : Type.fromJson(json['type'] as Map<String, dynamic>),
+    grandTotalCount: json['grand_total_count'] as int,
   )..categories = (json['categories'] as List)
       ?.map((e) =>
           e == null ? null : Category.fromJson(e as Map<String, dynamic>))
@@ -47,5 +48,6 @@ Map<String, dynamic> _$BrandToJson(Brand instance) => <String, dynamic>{
       'telephone': instance.telephone,
       'text': instance.text,
       'categories': instance.categories,
+      'grand_total_count': instance.grandTotalCount,
       'type': instance.type,
     };

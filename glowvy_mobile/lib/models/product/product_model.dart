@@ -2,6 +2,7 @@ import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/ingredient.dart';
+import 'package:Dimodo/models/product/brand.dart';
 import 'package:Dimodo/models/product/generating_product_list.dart';
 import 'package:Dimodo/models/product/one_item_generating_list.dart';
 import 'package:Dimodo/models/second_category.dart';
@@ -190,43 +191,36 @@ class ProductModel with ChangeNotifier {
     pagesInfo.algoliaPage = 0;
   }
 
-  Future<ListPage<Product>> getProductsByBrand(id,
+  Future<ListPage<Product>> getProductsByBrand(Brand brand,
       {sortMethod = 'review_metas.all.ranking_score'}) async {
-    print('brand id: $id');
+    print('brand id: ${brand.id}');
     try {
       var listPage = ListPage(grandTotalCount: 0, itemList: <Product>[]);
-      var list = <Product>[];
-      var sortBy = sortMethod;
+
+      var query = FirebaseFirestore.instance
+          .collection('products')
+          .where('brand.id', isEqualTo: brand.id);
       QuerySnapshot productSnapshot;
 
       if (pagesInfo.lastBrandProdutSnap == null) {
         print('productsnapshot');
-        productSnapshot = await FirebaseFirestore.instance
-            .collection('products')
-            .where('brand.id', isEqualTo: id)
-            .limit(10)
-            // .orderBy('review_metas.all.ranking_score', descending: true)
-            .get();
+        productSnapshot = await query.limit(10).get();
       } else {
-        print('productsnapshot');
-
-        productSnapshot = await FirebaseFirestore.instance
-            .collection('products')
-            .where('brand.id', isEqualTo: id)
+        print('startAfterDoc: ${pagesInfo.lastBrandProdutSnap.data()}');
+        productSnapshot = await query
             .startAfterDocument(pagesInfo.lastBrandProdutSnap)
             .limit(10)
             .get();
       }
 
       if (productSnapshot.docs.isNotEmpty) {
-        // listPage.grandTotalCount = productSnapshot.docs.length;
-
         pagesInfo.lastBrandProdutSnap = productSnapshot.docs.last;
         for (final doc in productSnapshot.docs) {
-          list.add(Product.fromJson(doc.data()));
+          listPage.itemList.add(Product.fromJson(doc.data()));
         }
-        list = sortByRating(list);
-        listPage.itemList = list;
+        listPage.grandTotalCount = brand.grandTotalCount;
+        print('not my e: ${listPage.itemList.length}');
+
         return listPage;
       } else {
         return listPage;
@@ -351,17 +345,17 @@ class ProductModel with ChangeNotifier {
 
   Future<ListPage<Product>> getProductsByCategory(
       {Category firstCategory,
-      ThirdCategory thirdCategory,
-      SecondCategory secondCategory,
+      Category thirdCategory,
+      Category secondCategory,
       orderBy = 'review_metas.all.average_rating'}) async {
-    var categoryId = thirdCategory?.thirdCategoryId;
+    var categoryId = thirdCategory?.id;
     var categoryField = 'third_category_id';
     if (firstCategory != null) {
       categoryField = 'first_category_id';
-      categoryId = firstCategory.firstCategoryId;
+      categoryId = firstCategory.id;
     } else if (secondCategory != null) {
       categoryField = 'second_category_id';
-      categoryId = secondCategory.secondCategoryId;
+      categoryId = secondCategory.id;
     }
     print('getProductsByCategoryId: $categoryId');
 
@@ -509,7 +503,6 @@ class ProductModel with ChangeNotifier {
           //     'showPaginatedProductList product length: ${products?.first.sid}');
           return PaginatedProductListView(
             initialPage: snapshot.data,
-            showFilter: showFiler,
             fetchProducts: fetchProducts,
             isFromReviewSearch: isFromReviewPage,
             showRank: showRank,

@@ -2,7 +2,7 @@ import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/app.dart';
-import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/models/product/product_model.dart';
 import 'package:Dimodo/models/product/review_model.dart';
 import 'package:Dimodo/models/review.dart';
 import 'package:flutter/cupertino.dart';

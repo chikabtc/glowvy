@@ -1,5 +1,6 @@
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/second_category.dart';
 import 'package:Dimodo/models/third_category.dart';
 import 'package:Dimodo/screens/category_ranking_page.dart';
@@ -7,7 +8,7 @@ import 'package:flutter/material.dart';
 
 class SecondCategoryButton extends StatefulWidget {
   SecondCategoryButton(this.category);
-  final SecondCategory category;
+  final Category category;
   var isSelected = false;
 
   @override
@@ -16,7 +17,7 @@ class SecondCategoryButton extends StatefulWidget {
 
 class _SecondCategoryButtonState extends State<SecondCategoryButton>
     with AutomaticKeepAliveClientMixin<SecondCategoryButton> {
-  ThirdCategory selectedThirdCategory;
+  Category selectedThirdCategory;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class _SecondCategoryButtonState extends State<SecondCategoryButton>
           child: Center(
             child: Row(
               children: [
-                Text(widget.category.secondCategoryName,
+                Text(widget.category.name,
                     textAlign: TextAlign.left,
                     style: textTheme.headline5.copyWith(fontSize: 16)),
                 const Spacer(),
@@ -37,7 +38,7 @@ class _SecondCategoryButtonState extends State<SecondCategoryButton>
                   widget.isSelected
                       ? Icons.arrow_drop_up
                       : Icons.arrow_drop_down,
-                  color: widget.category.thirdCategories.isEmpty
+                  color: widget.category.subCategories.isEmpty
                       ? Colors.transparent
                       : kSecondaryGrey,
                 ),
@@ -47,7 +48,7 @@ class _SecondCategoryButtonState extends State<SecondCategoryButton>
           onPressed: () {
             setState(() {
               widget.isSelected = !widget.isSelected;
-              if (widget.category.thirdCategories.isEmpty) {
+              if (widget.category.subCategories.isEmpty) {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -57,7 +58,7 @@ class _SecondCategoryButtonState extends State<SecondCategoryButton>
             });
           },
         ),
-        if (widget.isSelected && widget.category.thirdCategories.isNotEmpty)
+        if (widget.isSelected && widget.category.subCategories.isNotEmpty)
           FlatButton(
             color: Colors.transparent,
             onPressed: () {
@@ -83,13 +84,12 @@ class _SecondCategoryButtonState extends State<SecondCategoryButton>
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: widget.category.thirdCategories.length,
+            itemCount: widget.category.subCategories.length,
             itemBuilder: (context, index) => FlatButton(
               color: Colors.transparent,
               onPressed: () {
                 setState(() {
-                  selectedThirdCategory =
-                      widget.category.thirdCategories[index];
+                  selectedThirdCategory = widget.category.subCategories[index];
                 });
 
                 Navigator.push(
@@ -103,7 +103,7 @@ class _SecondCategoryButtonState extends State<SecondCategoryButton>
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  widget.category.thirdCategories[index].thirdCategoryName,
+                  widget.category.subCategories[index].name,
                   textAlign: TextAlign.start,
                   style: textTheme.caption.copyWith(color: kDarkAccent),
                 ),

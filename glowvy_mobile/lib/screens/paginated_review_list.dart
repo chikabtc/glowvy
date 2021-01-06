@@ -14,8 +14,6 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
 
 class PaginatedReviewListView extends StatefulWidget {
-  final ListPage<Review> initialPage;
-
   final int productId;
   final dynamic fetchReviews;
   final bool showPadding;
@@ -23,7 +21,6 @@ class PaginatedReviewListView extends StatefulWidget {
 
   const PaginatedReviewListView({
     Key key,
-    this.initialPage,
     this.fetchReviews,
     this.productId,
     this.listPreferences,
@@ -54,7 +51,6 @@ class _PaginatedReviewListViewState extends State<PaginatedReviewListView>
   void didUpdateWidget(PaginatedReviewListView oldWidget) {
     if (oldWidget.listPreferences != widget.listPreferences) {
       _pagingController.refresh();
-      // _fetchPage(0);
     }
     super.didUpdateWidget(oldWidget);
   }
@@ -75,8 +71,9 @@ class _PaginatedReviewListViewState extends State<PaginatedReviewListView>
         final newPage = await _reviewModel.getProductReviews(widget.productId,
             listPreferences: widget.listPreferences);
         if (newPage != null) {
-          final isLastPage =
-              newPage.itemList.isEmpty || newPage.itemList.length < 15;
+          final isLastPage = newPage.itemList.isEmpty ||
+              newPage.itemList.length < 10 ||
+              newPage.isLastPage(_pagingController.itemList.length);
 
           if (isLastPage) {
             print('last page');

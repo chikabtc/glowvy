@@ -173,7 +173,7 @@ class ReviewModel with ChangeNotifier {
       query = query
           .orderBy(listPreferences.orderBy,
               descending: listPreferences.isDescending ?? false)
-          .limit(15);
+          .limit(10);
     } else {
       // TODO(parker): the orderBy is applied twice because of the startAfterDocument
       print('dsd');
@@ -182,7 +182,7 @@ class ReviewModel with ChangeNotifier {
           .orderBy(listPreferences.orderBy,
               descending: listPreferences.isDescending ?? false)
           .startAfterDocument(lastReviewSnap)
-          .limit(15);
+          .limit(10);
     }
 
     try {

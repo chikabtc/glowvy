@@ -24,7 +24,7 @@ import '../../common/colors.dart';
 import '../../common/styles.dart';
 import '../../common/widgets.dart';
 import '../../models/product/product.dart';
-import '../../models/product/productModel.dart';
+import '../../models/product/product_model.dart';
 
 // ignore: must_be_immutable
 class ProductDetailPage extends StatefulWidget {

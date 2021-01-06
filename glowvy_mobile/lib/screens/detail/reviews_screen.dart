@@ -205,7 +205,6 @@ class _StateReviews extends State<ReviewsScreen>
             ];
           },
           body: PaginatedReviewListView(
-            // initialPage: widget.initialPage,
             key: Key(randomNumber.toString()),
             productId: widget.product.sid,
             listPreferences: _listPreferences,

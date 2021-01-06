@@ -17,6 +17,7 @@ class ProductCard extends StatelessWidget {
     this.isHero = false,
     this.showHeart = false,
     this.showDivider = true,
+    this.showFullDivider = false,
     this.hideDetail = false,
     this.isNameAvailable = false,
   });
@@ -24,6 +25,7 @@ class ProductCard extends StatelessWidget {
   final kSize size;
   final bool isHero;
   final bool showDivider;
+  final bool showFullDivider;
   final bool showHeart;
   final bool hideDetail;
   final int ranking;
@@ -33,7 +35,7 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     // print('product sid ${product.sid}');
     return Container(
-      height: 112,
+      height: 112.7,
       color: Colors.white,
       child: GestureDetector(
         onTap: () => Navigator.push(
@@ -107,15 +109,10 @@ class ProductCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         const SizedBox(height: 10),
-                        Text(
-                          product.brand.name,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: kBaseTextStyle.copyWith(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+                        Text(product.brand.name,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: textTheme.bodyText1),
                         Text(
                           product.name,
                           maxLines: 1,
@@ -166,14 +163,13 @@ class ProductCard extends StatelessWidget {
                         ),
                         const SizedBox(height: 12),
                         if (showDivider) kFullDivider
-
-                        // // const SizedBox(height: 5),
                       ],
                     ),
                   ),
                 ),
               ],
             ),
+            if (showFullDivider) kFullDivider
           ],
         ),
       ),

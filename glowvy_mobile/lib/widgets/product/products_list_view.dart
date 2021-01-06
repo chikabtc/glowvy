@@ -1,5 +1,5 @@
 import 'package:Dimodo/common/colors.dart';
-import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/models/product/product_model.dart';
 import 'package:Dimodo/screens/error_indicator.dart';
 import 'package:Dimodo/widgets/product/product_card.dart';
 import 'package:Dimodo/widgets/product/cosmetics_review_thumb_card.dart';

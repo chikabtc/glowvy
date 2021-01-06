@@ -6,23 +6,23 @@ part 'category.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class Category {
-  String firstCategoryKoName;
-  String firstCategoryEnName;
-  String firstCategoryName;
-  List<SecondCategory> secondCategories;
-  String firstCategoryImage;
-  int firstCategoryId;
-  bool firstIsNew;
+  String koName;
+  String enName;
+  String name;
+  List<Category> subCategories;
+  String image;
+  int id;
+  int level;
+  int grandTotalCount;
 
-  Category({
-    this.firstCategoryKoName,
-    this.firstCategoryEnName,
-    this.firstCategoryName,
-    this.secondCategories,
-    this.firstCategoryImage,
-    this.firstCategoryId,
-    this.firstIsNew,
-  });
+  Category(
+      {this.koName,
+      this.enName,
+      this.name,
+      this.subCategories,
+      this.image,
+      this.id,
+      this.level});
   factory Category.fromJson(Map<String, dynamic> json) =>
       _$CategoryFromJson(json);
   Map<String, dynamic> toJson() => _$CategoryToJson(this);

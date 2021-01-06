@@ -1,7 +1,10 @@
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/widgets.dart';
-import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/models/category.dart';
+import 'package:Dimodo/models/product/brand.dart';
+import 'package:Dimodo/models/product/product_model.dart';
+import 'package:Dimodo/models/product/review_model.dart';
 import 'package:Dimodo/screens/error_indicator.dart';
 import 'package:Dimodo/widgets/cosmetics_request_button.dart';
 import 'package:Dimodo/widgets/product/product_card.dart';
@@ -20,20 +23,22 @@ import '../../models/product/product.dart';
 class PaginatedProductListView extends StatefulWidget {
   final ListPage<Product> initialPage;
 
-  final bool showFilter;
+  final Brand brand;
+  final Category category;
+
   final bool showRank;
   final bool isFromReviewSearch;
   final dynamic fetchProducts;
-  final dynamic listPreferences;
+  final ListPreferences listPreferences;
   final bool showPadding;
   final bool showNoMoreItemsIndicator;
-  // final ListPreferences listPreferences;
 
   const PaginatedProductListView({
     this.initialPage,
-    this.showFilter = false,
     this.showRank = false,
     this.isFromReviewSearch = false,
+    this.brand,
+    this.category,
     this.fetchProducts,
     this.listPreferences,
     this.showPadding = false,
@@ -53,14 +58,10 @@ class _PaginatedProductListViewState extends State<PaginatedProductListView>
   @override
   void initState() {
     super.initState();
-    _pagingController.itemList = widget.initialPage.itemList;
-
-    if (widget.initialPage.isLastPage(0)) {
-      print('set last page ');
-      _pagingController.nextPageKey = null;
-    }
 
     productModel = Provider.of<ProductModel>(context, listen: false);
+    productModel.clearPaginationHistory();
+
     _pagingController.addPageRequestListener((pageKey) {
       print('listen');
       _fetchPage(pageKey);
@@ -69,12 +70,14 @@ class _PaginatedProductListViewState extends State<PaginatedProductListView>
 
   @override
   void didUpdateWidget(PaginatedProductListView oldWidget) {
-    if (oldWidget.listPreferences != widget.listPreferences) {
+    // if (oldWidget.listPreferences != widget.listPreferences) {
+    //   _pagingController.refresh();
+    // }
+    // if (oldWidget.initialPage != widget.initialPage) {
+    //   _pagingController.refresh();
+    // }
+    if (oldWidget.brand != widget.brand) {
       _pagingController.refresh();
-    }
-    if (oldWidget.initialPage != widget.initialPage) {
-      _pagingController.itemList = widget.initialPage.itemList;
-      // _pagingController.refresh();
     }
     super.didUpdateWidget(oldWidget);
   }
@@ -89,20 +92,24 @@ class _PaginatedProductListViewState extends State<PaginatedProductListView>
   }
 
   Future<void> _fetchPage(int pageKey) async {
+    print('fetching new page..');
+
     if (_pagingController.nextPageKey != null) {
       try {
-        print('fetching');
-        final ListPage<Product> newPage = await widget.fetchProducts();
+        ListPage<Product> newPage;
+        if (widget.brand != null) {
+          newPage = await productModel.getProductsByBrand(widget.brand);
+        }
+
         if (newPage != null) {
-          print('new page exists');
-          final previouslyFetchedItemsCount =
-              _pagingController.itemList?.length ?? 0;
           final isLastPage = newPage.itemList.isEmpty ||
-              newPage.isLastPage(previouslyFetchedItemsCount);
+              newPage.itemList.length < 10 ||
+              newPage.isLastPage(_pagingController?.itemList?.length ?? 0);
           if (isLastPage) {
             print('last page');
             _pagingController.appendLastPage(newPage.itemList);
           } else {
+            print('added new page');
             final nextPageKey = pageKey + 1;
             _pagingController.appendPage(newPage.itemList, nextPageKey);
           }
@@ -124,7 +131,6 @@ class _PaginatedProductListViewState extends State<PaginatedProductListView>
       child: PagedListView.separated(
         addAutomaticKeepAlives: false,
         shrinkWrap: true,
-        physics: const ClampingScrollPhysics(),
         builderDelegate: PagedChildBuilderDelegate<Product>(
             itemBuilder: (context, product, index) {
               if (!widget.isFromReviewSearch) {
@@ -158,7 +164,8 @@ class _PaginatedProductListViewState extends State<PaginatedProductListView>
                   ],
                 ),
             noMoreItemsIndicatorBuilder: (context) =>
-                widget.showNoMoreItemsIndicator
+                widget.showNoMoreItemsIndicator &&
+                        _pagingController.itemList.length > 4
                     ? Padding(
                         padding: const EdgeInsets.only(top: 28.0, bottom: 28),
                         child: SvgPicture.asset(

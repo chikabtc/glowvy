@@ -6,7 +6,7 @@ import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/categoryModel.dart';
 import 'package:Dimodo/models/product/brand.dart';
 import 'package:Dimodo/models/product/product.dart';
-import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/models/product/product_model.dart';
 import 'package:Dimodo/widgets/product/list_page.dart';
 import 'package:Dimodo/widgets/product/paginated_product_list.dart';
 import 'package:flutter/material.dart';
@@ -39,8 +39,8 @@ class BrandHomePageState extends State<BrandHomePage>
   void initState() {
     super.initState();
     productModel = Provider.of<ProductModel>(context, listen: false);
-    getProductsByBrand = productModel.getProductsByBrand(widget.brand.id);
-    Future.wait([productModel.getProductsByBrand(widget.brand.id)])
+    getProductsByBrand = productModel.getProductsByBrand(widget.brand);
+    Future.wait([productModel.getProductsByBrand(widget.brand)])
         .then((responses) {
       brandProducts = responses[0];
 
@@ -125,7 +125,7 @@ class BrandHomePageState extends State<BrandHomePage>
                   showPadding: true,
                   showNoMoreItemsIndicator: false,
                   fetchProducts: () =>
-                      productModel.getProductsByBrand(widget.brand.id),
+                      productModel.getProductsByBrand(widget.brand),
                 );
               } else {
                 return Container();

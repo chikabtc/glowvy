@@ -69,9 +69,9 @@ class CategoryPageState extends State<CategoryPage>
             width: kScreenSizeWidth - 80,
             child: ListView.builder(
                 scrollDirection: Axis.vertical,
-                itemCount: currentFirstCategory.secondCategories.length,
+                itemCount: currentFirstCategory.subCategories.length,
                 itemBuilder: (context, index) => SecondCategoryButton(
-                    currentFirstCategory.secondCategories[index])),
+                    currentFirstCategory.subCategories[index])),
           )
         ],
       ),

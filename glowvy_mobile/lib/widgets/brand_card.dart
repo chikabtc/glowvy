@@ -19,43 +19,37 @@ class BrandCard extends StatelessWidget {
     return Container(
       // height: 48,
       color: Colors.white,
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+
       child: GestureDetector(
         onTap: () => Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => BrandHomePage(brand),
             )),
-        child: Card(
-          color: Colors.white,
-          elevation: 0,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.0)),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  FittedBox(
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                FittedBox(
+                  fit: BoxFit.cover,
+                  child: Tools.image(
+                    url: brand.image,
                     fit: BoxFit.cover,
-                    child: Tools.image(
-                      url: brand.image,
-                      fit: BoxFit.cover,
-                      width: 92,
-                      height: 48,
-                      size: kSize.large,
-                    ),
+                    width: 92,
+                    height: 48,
+                    size: kSize.large,
                   ),
-                  const SizedBox(width: 7),
-                  Text(brand.name,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: textTheme.bodyText1),
-                ],
-              ),
-            ],
-          ),
+                ),
+                const SizedBox(width: 7),
+                Text(brand.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: textTheme.bodyText1),
+              ],
+            ),
+          ],
         ),
       ),
     );

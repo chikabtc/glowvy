@@ -22,24 +22,25 @@ class Brand {
   String telephone;
   String text;
   List<Category> categories;
+  int grandTotalCount;
 
   Type type;
 
-  Brand({
-    this.address1,
-    this.address2,
-    this.bookmarkCount,
-    this.businessInfo,
-    this.email,
-    this.enName,
-    this.id,
-    this.image,
-    this.name,
-    this.tags,
-    this.telephone,
-    this.text,
-    this.type,
-  });
+  Brand(
+      {this.address1,
+      this.address2,
+      this.bookmarkCount,
+      this.businessInfo,
+      this.email,
+      this.enName,
+      this.id,
+      this.image,
+      this.name,
+      this.tags,
+      this.telephone,
+      this.text,
+      this.type,
+      this.grandTotalCount});
   factory Brand.fromJson(Map<String, dynamic> json) => _$BrandFromJson(json);
   Map<String, dynamic> toJson() => _$BrandToJson(this);
 }

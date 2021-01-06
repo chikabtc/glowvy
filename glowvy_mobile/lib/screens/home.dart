@@ -7,7 +7,7 @@ import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/categoryModel.dart';
 import 'package:Dimodo/models/product/product.dart';
-import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/models/product/product_model.dart';
 import 'package:Dimodo/models/search_model.dart';
 import 'package:Dimodo/models/survey.dart';
 import 'package:Dimodo/models/user/user.dart';
@@ -135,7 +135,7 @@ class HomeScreenState extends State<HomeScreen>
 
       tabList.asMap().forEach((index, item) {
         list.add(Tab(
-          text: item.firstCategoryName,
+          text: item.name,
         ));
       });
       return list;
@@ -240,8 +240,7 @@ class HomeScreenState extends State<HomeScreen>
                                     labelColor: Colors.white,
                                     tabs: renderTabbar(),
                                     onTap: (index) {
-                                      currentCateId =
-                                          tabList[index].firstCategoryId;
+                                      currentCateId = tabList[index].id;
                                       setState(() {
                                         showFiltered = false;
                                       });
@@ -294,8 +293,7 @@ class HomeScreenState extends State<HomeScreen>
                                   children: <Widget>[
                                     if (!isLoading)
                                       ProductsListView(
-                                        products: allProducts[
-                                            category.firstCategoryId],
+                                        products: allProducts[category.id],
                                         showRank: true,
                                         disableScrolling: true,
                                         showFilter: false,

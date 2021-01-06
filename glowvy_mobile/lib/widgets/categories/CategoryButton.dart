@@ -30,7 +30,7 @@ class _CategoryButtonState extends State<CategoryButton>
             color: widget.isSelected ? kPrimaryOrange : kQuaternaryGrey,
             padding: const EdgeInsets.symmetric(horizontal: 2),
             child: Center(
-              child: Text(widget.category.firstCategoryName,
+              child: Text(widget.category.name,
                   textAlign: TextAlign.center,
                   style: textTheme.button.copyWith(
                       fontSize: 15,

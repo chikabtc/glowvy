@@ -3,7 +3,7 @@ import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/models/product/product.dart';
-import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/models/product/product_model.dart';
 import 'package:Dimodo/widgets/product/list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

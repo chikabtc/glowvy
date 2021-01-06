@@ -2,13 +2,16 @@ import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/models/category.dart';
+import 'package:Dimodo/models/product/brand.dart';
 import 'package:Dimodo/models/product/product.dart';
-import 'package:Dimodo/models/product/productModel.dart';
+import 'package:Dimodo/models/product/product_model.dart';
 import 'package:Dimodo/models/search_model.dart';
 import 'package:Dimodo/widgets/brand_card_list.dart';
 import 'package:Dimodo/widgets/categories/CategoryButton.dart';
 import 'package:Dimodo/widgets/product/list_page.dart';
 import 'package:Dimodo/widgets/product/paginated_product_list.dart';
+import 'package:Dimodo/widgets/product/products_list_view.dart';
+
 import 'package:Dimodo/widgets/second_category_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -24,17 +27,20 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen>
     with AutomaticKeepAliveClientMixin<SearchScreen> {
   Size screenSize;
-  Future<ListPage<Product>> getProductBySearch;
-  String searchText;
-  bool showResults = false;
-  bool isTextFieldSelected = false;
+  Future<ListPage<Product>> getProducts;
   ProductModel productModel;
   SearchModel searchModel;
   List<Category> categories = [];
   Category currentFirstCategory;
 
+  Brand pickedBrand;
+  Category pickedCategory;
+
   bool isFocused = false;
-  bool isQueryEmpty = true;
+  bool showResults = false;
+  bool isBrandSearch = false;
+  bool isAlgoliaSearch = false;
+
   final searchController = FloatingSearchBarController();
   final _scrollController = ScrollController();
 
@@ -61,7 +67,37 @@ class _SearchScreenState extends State<SearchScreen>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     screenSize = MediaQuery.of(context).size;
+
+    void searchByBrand(Brand brand) {
+      FocusScope.of(context).unfocus();
+      searchController.query = brand.name;
+
+      setState(() {
+        productModel.clearPaginationHistory();
+        isAlgoliaSearch = false;
+
+        isBrandSearch = true;
+        pickedBrand = brand;
+        searchModel.searchBrands(searchController.query);
+        showResults = true;
+      });
+    }
+
+    void searchAlgolia() {
+      FocusScope.of(context).unfocus();
+      setState(() {
+        showResults = true;
+
+        productModel.clearPaginationHistory();
+        getProducts = productModel.getProductsBySearch(
+          searchController.query,
+        );
+        searchModel.searchBrands(searchController.query);
+        isAlgoliaSearch = true;
+      });
+    }
 
     Widget buildCategoryPage() {
       return Padding(
@@ -97,9 +133,9 @@ class _SearchScreenState extends State<SearchScreen>
                   addAutomaticKeepAlives: true,
                   physics: const ClampingScrollPhysics(),
                   scrollDirection: Axis.vertical,
-                  itemCount: currentFirstCategory.secondCategories.length,
+                  itemCount: currentFirstCategory.subCategories.length,
                   itemBuilder: (context, index) => SecondCategoryButton(
-                        currentFirstCategory.secondCategories[index],
+                        currentFirstCategory.subCategories[index],
                       )),
             )
           ],
@@ -108,55 +144,73 @@ class _SearchScreenState extends State<SearchScreen>
     }
 
     Widget buildSearchResult() {
-      return FutureBuilder<ListPage<Product>>(
-        future: getProductBySearch,
-        builder:
-            (BuildContext context, AsyncSnapshot<ListPage<Product>> snapshot) {
-          if (snapshot.hasData) {
-            final listPage = snapshot.data;
+      Widget brandWidget;
+      if (searchModel.filtedBrands.isNotEmpty) {
+        brandWidget =
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const SizedBox(height: 15),
+          Text('${searchModel.filtedBrands.length} brand',
+              style: textTheme.bodyText1),
+          const SizedBox(height: 5),
+          kFullSectionDivider,
+          BrandList(
+            brands: searchModel.filtedBrands,
+            disableScrolling: true,
+          ),
+          const SizedBox(height: 35),
+        ]);
+      } else {
+        brandWidget = Container();
+      }
 
-            return Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (searchModel.filtedBrands.isNotEmpty)
-                    Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 30),
-                          Text('${searchModel.filtedBrands.length} brand',
-                              style: textTheme.bodyText1),
-                          const Divider(
-                            color: kQuaternaryGrey,
-                            thickness: 1.5,
-                          )
-                        ]),
-
-                  BrandList(
-                    brands: searchModel.filtedBrands,
-                    disableScrolling: true,
-                  ),
-                  const SizedBox(height: 35),
-                  // const SizedBox(height: 35),
-                  if (snapshot.data != null)
-                    Text('${listPage.grandTotalCount} results',
-                        style: textTheme.bodyText1),
-                  if (snapshot.data != null)
-                    const Divider(
-                      color: kQuaternaryGrey,
-                      thickness: 1.5,
-                    ),
-                  PaginatedProductListView(
-                      initialPage: snapshot.data,
-                      fetchProducts: () => productModel.getProductsBySearch(
-                            searchText,
-                          ))
-                ]);
-          } else {
-            return Container();
-          }
-        },
-      );
+      //algolia result
+      if (isAlgoliaSearch) {
+        return FutureBuilder<ListPage<Product>>(
+          future: getProducts,
+          builder: (BuildContext context,
+              AsyncSnapshot<ListPage<Product>> snapshot) {
+            if (snapshot.hasData) {
+              final listPage = snapshot.data;
+              return Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    brandWidget,
+                    if (snapshot.data != null)
+                      Text('${listPage.grandTotalCount} results',
+                          style: textTheme.bodyText1),
+                    if (snapshot.data != null)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 5.0),
+                        child: kFullSectionDivider,
+                      ),
+                    ProductsListView(
+                      products: snapshot.data.itemList,
+                    )
+                  ]);
+            } else {
+              return Container();
+            }
+          },
+        );
+      } else if (isBrandSearch) {
+        print('show brands search');
+        return Column(
+            // mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              brandWidget,
+              Text('${pickedBrand.grandTotalCount} results',
+                  style: textTheme.bodyText1),
+              Padding(
+                padding: const EdgeInsets.only(top: 5.0),
+                child: kFullSectionDivider,
+              ),
+              PaginatedProductListView(
+                brand: pickedBrand,
+              )
+            ]);
+      }
     }
 
     Widget showAutoComplete(SearchModel model) {
@@ -167,43 +221,76 @@ class _SearchScreenState extends State<SearchScreen>
           const SizedBox(height: 8),
           ConstrainedBox(
             constraints: BoxConstraints(
-              minHeight: kScreenSizeHeight,
+              minHeight: kScreenSizeHeight - 200,
               maxHeight: 100000,
             ),
             child: ListView.builder(
-              shrinkWrap: true,
-              itemCount: model.brandSuggestions.length,
-              itemBuilder: (context, index) => Container(
-                padding:
-                    const EdgeInsets.only(left: 0, right: 0, top: 8, bottom: 8),
-                //aggregate all suggestions and show different result based on the index.
-                child: Column(
-                  children: [
-                    //1. brand card &j category
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.search,
-                          color: kDarkAccent,
+                physics: const ClampingScrollPhysics(),
+                shrinkWrap: true,
+                //if no suggestions are found, show the current query in the
+                //suggestion
+                itemCount: model.isSuggestionEmpty()
+                    ? 1
+                    : model.brandSuggestions.length +
+                        model.categorySuggestion.length,
+                itemBuilder: (context, index) {
+                  final isBrandSuggestion = model.brandSuggestions.isNotEmpty &&
+                      index < model.brandSuggestions.length;
+                  final isCategorySuggestion =
+                      model.categorySuggestion.isNotEmpty &&
+                          index <
+                              model.categorySuggestion.length +
+                                  model.brandSuggestions.length;
+                  var suggestion = '';
+                  if (isBrandSuggestion) {
+                    suggestion = model.brandSuggestions[index].name;
+                  } else if (isCategorySuggestion) {
+                    suggestion = model
+                        .categorySuggestion[
+                            index - model.brandSuggestions.length]
+                        .name;
+                  } else if (model.isSuggestionEmpty()) {
+                    suggestion = searchController.query;
+                  }
+                  return Container(
+                      padding: const EdgeInsets.only(
+                          left: 0, right: 0, top: 8, bottom: 8),
+                      child: GestureDetector(
+                        onTap: () {
+                          if (isBrandSuggestion) {
+                            searchByBrand(model.brandSuggestions[index]);
+                            //search by brand products same as in brand home
+                          } else if (isCategorySuggestion) {
+                            //search by category same as in category page
+
+                          } else if (model.isSuggestionEmpty()) {}
+                        },
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.search,
+                                  color: kDarkAccent,
+                                ),
+                                const SizedBox(width: 16),
+                                RichText(
+                                  overflow: TextOverflow.ellipsis,
+                                  text: TextSpan(
+                                    children: Tools.highlightOccurrences(
+                                        suggestion, searchController.query),
+                                    style: textTheme.bodyText1
+                                        .copyWith(fontSize: 13),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 8),
+                            kFullDivider
+                          ],
                         ),
-                        const SizedBox(width: 16),
-                        RichText(
-                          overflow: TextOverflow.ellipsis,
-                          text: TextSpan(
-                            children: Tools.highlightOccurrences(
-                                model.brandSuggestions[index].name,
-                                searchController.query),
-                            style: textTheme.bodyText1.copyWith(fontSize: 13),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    kFullDivider
-                  ],
-                ),
-              ),
-            ),
+                      ));
+                }),
           ),
         ],
       );
@@ -319,6 +406,7 @@ class _SearchScreenState extends State<SearchScreen>
                                         if (bar.isOpen && !bar.isAlwaysOpened) {
                                           bar.close();
                                           model.clear();
+                                          productModel.clearPaginationHistory();
                                         } else if (canPop) {
                                           setState(() {
                                             showResults = false;
@@ -373,36 +461,28 @@ class _SearchScreenState extends State<SearchScreen>
                                   },
                                 )
                             ],
-
-                            onSubmitted: (value) {
-                              showResults = false;
-                              setState(() {
-                                productModel.clearPaginationHistory();
-
-                                searchText = value;
-                                getProductBySearch =
-                                    productModel.getProductsBySearch(
-                                  searchText,
-                                );
-                                searchModel.searchBrands(value);
-                                showResults = true;
-                              });
-
-                              FocusScope.of(context).unfocus();
-                            },
-                            debounceDelay: const Duration(milliseconds: 500),
-                            // TODO(parker): show autocomplete
+                            debounceDelay: const Duration(milliseconds: 300),
                             onQueryChanged: (query) {
+                              //hasFocus tells us whether user is viewing the
+                              //search result
+                              if (FocusScope.of(context).hasFocus) {
+                                setState(() {
+                                  //hide search result if the user is typing
+                                  showResults = false;
+                                });
+                              }
                               model.onQueryChanged(query);
                             },
+                            onSubmitted: (value) => searchAlgolia(),
                             transition: SlideFadeFloatingSearchBarTransition(),
                             builder: (context, _) {
+                              // print('show result: ${showResults}');
                               if (showResults) {
                                 return buildSearchResult();
-                              } else if (true) {
+                              } else if (searchController?.query?.isNotEmpty ??
+                                  false) {
                                 return showAutoComplete(model);
-                              } else if (searchController?.query?.isEmpty ||
-                                  searchController.query == null) {
+                              } else {
                                 return Container();
                               }
                             },

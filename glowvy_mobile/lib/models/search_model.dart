@@ -1,15 +1,10 @@
-import 'package:Dimodo/models/category.dart';
-import 'package:Dimodo/models/categoryModel.dart';
-import 'package:Dimodo/models/product/brand.dart';
-import 'package:Dimodo/models/user/user.dart';
-import 'package:Dimodo/models/user/userModel.dart';
-import 'package:Dimodo/widgets/brand_card_list.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart' as b;
-import 'package:flutter/material.dart';
 import 'dart:convert' as convert;
 
 import 'package:Dimodo/models/category.dart';
+import 'package:Dimodo/models/product/brand.dart';
+import 'package:Dimodo/widgets/brand_card_list.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart' as b;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -31,13 +26,13 @@ class SearchModel extends ChangeNotifier {
 
   List<Category> _categorySuggestion = [];
   List<Category> get categorySuggestion => _categorySuggestion;
-  List<dynamic> categoriese = [];
 
   String _query = '';
   String get query => _query;
 
   //add method for searching brands
   List<Category> categories = [];
+  List<Category> flatCategories = [];
 
   void clear() {
     print('emtpy queri');
@@ -51,9 +46,9 @@ class SearchModel extends ChangeNotifier {
   Future setLocalCategories() async {
     print('Try to get localCate!');
     try {
-      const provincePath = 'lib/common/categories.json';
-      final provinceJsonString = await rootBundle.loadString(provincePath);
-      final addressJson = convert.jsonDecode(provinceJsonString);
+      const categoryPath = 'lib/common/categories.json';
+      final categoryJsonString = await rootBundle.loadString(categoryPath);
+      final cateJson = convert.jsonDecode(categoryJsonString);
       // var localCates = <Category>[];
 
       // for (final cate in addressJson) {
@@ -63,10 +58,23 @@ class SearchModel extends ChangeNotifier {
       //   localCates.add(category);
       // }
       categories
-        ..add(Category.fromJson(addressJson[0]))
-        ..add(Category.fromJson(addressJson[6]))
-        ..add(Category.fromJson(addressJson[7]))
-        ..add(Category.fromJson(addressJson[8]));
+        ..add(Category.fromJson(cateJson[0]))
+        ..add(Category.fromJson(cateJson[6]))
+        ..add(Category.fromJson(cateJson[7]))
+        ..add(Category.fromJson(cateJson[8]));
+      //put all categories into one array
+      categories.forEach((firstCate) {
+        flatCategories.add(firstCate);
+
+        firstCate.subCategories.forEach((secondCate) {
+          flatCategories.add(secondCate);
+
+          secondCate.subCategories.forEach((thirdCate) {
+            flatCategories.add(thirdCate);
+          });
+        });
+      });
+      print('length cflt: ${flatCategories.length}');
 
       notifyListeners();
     } catch (err) {
@@ -83,9 +91,10 @@ class SearchModel extends ChangeNotifier {
       _filtedBrands.clear();
       return;
     }
-    _filtedBrands = _brands.where(
-        (brand) => brand.name.toLowerCase().startsWith(query.toLowerCase()));
-    print('helo');
+    _filtedBrands = _brands
+        .where(
+            (brand) => brand.name.toLowerCase().startsWith(query.toLowerCase()))
+        .toList();
     // print('brands hit: ${list.length}');
 
     notifyListeners();
@@ -96,6 +105,10 @@ class SearchModel extends ChangeNotifier {
       brands: brands,
       disableScrolling: true,
     );
+  }
+
+  bool isSuggestionEmpty() {
+    return brandSuggestions.isEmpty && categorySuggestion.isEmpty;
   }
 
   Future setBrands() async {
@@ -133,7 +146,7 @@ class SearchModel extends ChangeNotifier {
     if (query == _query) return;
 
     _query = query;
-    print('query: $query');
+
     _isLoading = true;
     notifyListeners();
 
@@ -142,18 +155,15 @@ class SearchModel extends ChangeNotifier {
       // _suggestions = history;
       //if query exists, then search through the local brand, categories json, user' search history (items and queries)
     } else {
-      //show relevant suggestions
-      //1. search brands
       _brandSuggestions = _brands
           .where((brand) =>
               brand.name.toLowerCase().startsWith(query.toLowerCase()))
           .toList();
 
       //2. search categories -> use json search
-      categoriese = categories
-          .where((category) => category.firstCategoryEnName
-              .toLowerCase()
-              .startsWith(query.toLowerCase()))
+      _categorySuggestion = flatCategories
+          .where((category) =>
+              category.name.toLowerCase().startsWith(query.toLowerCase()))
           .toList();
     }
 
