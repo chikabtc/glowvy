@@ -73,7 +73,7 @@ class _PaginatedReviewListViewState extends State<PaginatedReviewListView>
         if (newPage != null) {
           final isLastPage = newPage.itemList.isEmpty ||
               newPage.itemList.length < 10 ||
-              newPage.isLastPage(_pagingController.itemList.length);
+              newPage.isLastPage(_pagingController?.itemList?.length ?? 0);
 
           if (isLastPage) {
             print('last page');

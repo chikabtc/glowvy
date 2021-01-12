@@ -206,7 +206,6 @@ class ProductModel with ChangeNotifier {
         print('productsnapshot');
         productSnapshot = await query.limit(10).get();
       } else {
-        print('startAfterDoc: ${pagesInfo.lastBrandProdutSnap.data()}');
         productSnapshot = await query
             .startAfterDocument(pagesInfo.lastBrandProdutSnap)
             .limit(10)

@@ -32,6 +32,7 @@ class PaginatedProductListView extends StatefulWidget {
   final ListPreferences listPreferences;
   final bool showPadding;
   final bool showNoMoreItemsIndicator;
+  final bool disableSrolling;
 
   const PaginatedProductListView({
     this.initialPage,
@@ -42,6 +43,7 @@ class PaginatedProductListView extends StatefulWidget {
     this.fetchProducts,
     this.listPreferences,
     this.showPadding = false,
+    this.disableSrolling = false,
     this.showNoMoreItemsIndicator = true,
   });
 
@@ -128,9 +130,13 @@ class _PaginatedProductListViewState extends State<PaginatedProductListView>
     final screenSize = MediaQuery.of(context).size;
 
     return Scrollbar(
+      thickness: widget.disableSrolling ? 0.0 : .5,
       child: PagedListView.separated(
         addAutomaticKeepAlives: false,
         shrinkWrap: true,
+        physics: widget.disableSrolling
+            ? NeverScrollableScrollPhysics()
+            : ClampingScrollPhysics(),
         builderDelegate: PagedChildBuilderDelegate<Product>(
             itemBuilder: (context, product, index) {
               if (!widget.isFromReviewSearch) {
