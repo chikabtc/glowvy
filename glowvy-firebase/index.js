@@ -35,6 +35,18 @@ const {
 const utils = require('./utils/utils');
 const parser = require('./crawler/parser');
 const glowpick = require("./crawler/glowpick");
+const {
+  BADNAME
+} = require("dns");
+const {
+  prod
+} = require("mathjs");
+const {
+  bohrRadiusDependencies
+} = require("mathjs");
+const {
+  get
+} = require("http");
 
 
 
@@ -47,44 +59,548 @@ function writeJsonToFile(path, json) {
     };
     console.log("File has been created");
   });
-
 }
 
+// async function updateAvailableBrandCategories(product) {
+//   // 1. get the brand doc
+//   const brandSnap = await db.collection('brands').where('id', '==', product.brand.id).get();
+//   const brandDoc = brandSnap.docs[0];
+//   const brand = brandDoc.data();
+//   console.log(`brand name ` + brand.name)
+//   var firstCateIds = [];
+//   var secondCateIds = [];
+//   var thirdCateIds = [];
+
+//   var prodCate = product.category
+//   if (brand.hasOwnProperty('categories')) {
+//     var brandCategories = brand.categories
+//     for (const brandCate of brand.categories) {
+//       firstCateIds.push(brandCate.id)
+//       for (const secondCate of brandCate.second_categories) {
+//         secondCateIds.push(secondCate.id)
+//         for (const thirdCate of secondCate.third_categories) {
+//           thirdCateIds.push(thirdCate.id)
+//         }
+//       }
+//     }
+//     console.log(firstCateIds + '\n' + secondCateIds + '\n' + thirdCateIds)
+//     //1. if the first category id is not included, then add the whole category
+//     if (!firstCateIds.includes(prodCate.first_category_id)) {
+//       console.log('first category missing')
+
+
+//       var category = {
+//         id: prodCate.first_category_id,
+//         name: prodCate.first_category_name,
+//         second_categories: [{
+//           id: prodCate.second_category_id,
+//           name: prodCate.second_category_name,
+//           third_categories: [{
+//             id: prodCate.third_category_id,
+//             name: prodCate.third_category_name,
+//           }]
+//         }]
+//       }
+//       brandCategories.push(category)
+//     } else if (!secondCateIds.includes(prodCate.second_category_id)) {
+
+//       console.log('second category missing')
+//       var firstCateIndex = brandCategories.findIndex(cate => cate.id == prodCate.first_category_id)
+//       console.log(firstCateIndex)
+//       var firstCate = brandCategories[firstCateIndex]
+//       console.log(firstCate)
+
+//       firstCate.second_categories.push({
+//         id: prodCate.second_category_id,
+//         name: prodCate.second_category_name,
+//         third_categories: [{
+//           id: prodCate.third_category_id,
+//           name: prodCate.third_category_name,
+//         }]
+//       })
+
+//       brandCategories[firstCateIndex] = firstCate
+//     } else if (!thirdCateIds.includes(prodCate.third_category_id)) {
+//       console.log('third category missing')
+
+//       var firstCateIndex = brandCategories.findIndex(cate => cate.id == prodCate.first_category_id)
+//       var firstCate = brandCategories[firstCateIndex]
+//       var secondCateIndex = firstCate.second_categories.findIndex(cate => cate.id == prodCate.second_category_id);
+//       var secondCate = brandCategories[firstCateIndex].second_categories[secondCateIndex]
+
+//       secondCate.third_categories.push({
+//         id: prodCate.third_category_id,
+//         name: prodCate.third_category_name,
+//       })
+//       firstCate.second_categories[secondCateIndex] = secondCate;
+//       brandCategories[firstCateIndex] = firstCate
+//     }
+//     brandDoc.ref.update({
+//       'categories': brandCategories
+//     }).then(() => console.log('added category'))
+
+//   } else {
+//     console.log('no categories available on the brand doc')
+//     brand.categories = [];
+//     var category = {
+//       id: prodCate.first_category_id,
+//       name: prodCate.first_category_name,
+//       second_categories: [{
+//         id: prodCate.second_category_id,
+//         name: prodCate.second_category_name,
+//         third_categories: [{
+//           id: prodCate.third_category_id,
+//           name: prodCate.third_category_name,
+//         }]
+//       }]
+//     }
+//     var categories = [];
+//     categories.push(category)
+//     console.log(categories)
+//     brandDoc.ref.update({
+//       'categories': categories
+//     }).then(() => console.log('added category'))
+//   }
+// }
 (async () => {
+
+  var snap = await db.collection('reviews').limit(100).get()
+  console.log(snap.docs.length);
+  db.settings({
+    ignoreUndefinedProperties: true
+  })
+})().catch(e => {
+  // Deal with the fact the chain failed
+});
+
+(async () => {
+
+  var snap = await db.collection('reviews').limit(100).get()
+  console.log(snap.docs.length);
+  db.settings({
+    ignoreUndefinedProperties: true
+  })
+
+
+  // ===========================================================================
+  // add counter to the categories
+  // ===========================================================================
+  //1. loop through all products
+  //2. increment the count to the categories
+
+
+  // for (const doc of snap.docs) {
+  //   var productJson = doc.data()
+  //   //get the cateogry snap 
+  //   if (productJson.category.first_category_id != undefined) {
+  //     var snap = await db.collection('categories').where('id', '==', productJson.category.first_category_id).get()
+  //     var categoryDoc = snap.docs[0]
+  //     var category = snap.docs[0].data()
+  //     var subCategories = category.sub_categories;
+  //     category.grand_total_count++
+
+  //     //find the subcategories the product belongs to 
+  //     if (subCategories != null) {
+  //       if (productJson.category.second_category_id != null) {
+  //         const secondCate = category.sub_categories.find((category) => category.id === productJson.category.second_category_id);
+  //         const index = category.sub_categories.findIndex((category) => secondCate.id == category.id)
+
+  //         subCategories[index].grand_total_count++
+  //         // console.log(secondCate)
+
+  //         if (productJson.category.third_category_id != null) {
+  //           const thirdCategory = secondCate.sub_categories.find((category) => category.id === productJson.category.third_category_id);
+  //           const thirdIndex = secondCate.sub_categories.findIndex((category) => thirdCategory.id == category.id)
+  //           subCategories[index].sub_categories[thirdIndex].grand_total_count++
+
+  //           console.log(thirdCategory)
+
+  //         }
+  //       }
+  //     }
+  //     console.log(subCategories)
+
+  //     // await categoryDoc.ref.update({
+  //     //   'grand_total_count': category.grand_total_count,
+  //     //   'sub_categories': subCategories
+  //     // }).then(() => console.log('holooo'))
+  //   }
+
+  // }
+
+
+
+  // ===========================================================================
+  // update brands sub categories field names and the category name
+  // ===========================================================================
+  // var snap = await db.collection('brands').get()
+  // if (!snap.empty) {
+  //   for (const doc of snap.docs) {
+  //     var brand = doc.data()
+  //     if (brand.categories != null) {
+
+  //       var firstCategories = [];
+  //       //0. loop through the first categories
+  //       for (const cate of brand.categories) {
+  //         //get firstCate from categories collection
+  //         var snap = await db.collection('categories').where('id', '==', cate.id).get()
+  //         var officialCate = snap.docs[0].data();
+  //         var firstCate = snap.docs[0].data();
+  //         delete firstCate.sub_categories
+  //         // delete officialCate.sub_categories
+
+  //         //update category field name and name
+  //         //1. create empty list
+
+  //         if (cate.second_categories != null) {
+  //           var secondCategories = [];
+  //           //2. loop through second categories
+  //           for (const secondCategory of cate.second_categories) {
+  //             //3. find updated category 
+  //             const secondCate = officialCate.sub_categories.find((category) => category.id === secondCategory.id);
+
+  //             if (secondCategory.third_categories != null) {
+  //               var thirdCategories = [];
+  //               for (const thirdCategory of secondCategory.third_categories) {
+  //                 //5. find the updated thirdCategory
+  //                 var index = officialCate
+  //                 const thirdCate = secondCate.sub_categories.find((category) => category.id === thirdCategory.id);
+  //                 //6. add the cate to the thirdCategories array
+  //                 thirdCategories.push(thirdCate)
+  //               }
+  //               //7. add the thirdCategories to the secondCategory
+  //               secondCate.sub_categories = thirdCategories
+  //             } else {
+  //               delete secondCate.sub_categories
+  //             }
+  //             //8. add the secondCategory to the secondCategories
+  //             secondCategories.push(secondCate)
+  //           }
+  //           firstCate.sub_categories = secondCategories;
+  //         }
+
+  //         //9. add the second categories to the first categories
+  //         firstCategories.push(firstCate);
+  //         // console.log(firstCate.name)
+  //         // console.log(firstCate.sub_categories)
+  //         // console.log(`${officialCate.name} \n`);
+  //         // console.log(secondCategories)
+  //       }
+  //     }
+  //     await doc.ref.update({
+  //       'categoriess': firestore.FieldValue.delete(),
+  //       'categories': firstCategories
+  //     }).then(() => console.log('holooo'))
+  //   }
+  // }
+  // ===========================================================================
+  // add grandTotalCount to every brand document 
+  // ===========================================================================
+
+  //1. get all products
+  //2. loop through each
+  //3. update its' brand count 
+  // var snap = await db.collection('products').get()
+  // if (!snap.empty) {
+
+  //   for (const doc of snap.docs) {
+  //     var productDoc = doc;
+  //     var brand = productDoc.data().brand
+  //     console.log(brand)
+  //     var snap = await db.collection('brands').where('id', '==', brand.id).get()
+  //     var brandDoc = snap.docs[0];
+  //     brandDoc.ref.update({
+  //       grand_total_count: firestore.FieldValue.increment(1)
+  //     }).then(() => console.log('incremented'))
+  //   }
+  // }
+
+  // ===========================================================================
+  // add like count to all review
+  // ===========================================================================
+
+  // var snap = await db.collection('reviews').get()
+  // console.log(snap.docs.length);
+
+  // for (const doc of snap.docs) {
+  //   doc.ref.update({
+  //     'like_count': 0,
+  //   }).then(() => console.log('updatedreviews'))
+  // }
+
+
+  // ===========================================================================
+  // update products categories info
+  // ===========================================================================
+  //1. update the categories collection
+  // var menu = require("./crawled/categories.json");
+
+
+  // menu.forEach(function (obj) {
+  //   db
+  //     .collection('categories')
+  //     .doc(obj.en_name)
+  //     .set(obj)
+  //     .then(function (res) {
+  //       console.log("Document written");
+
+  //       // console.log(typeof ingredientsJson)
+
+  //     })
+  //     .catch(function (error) {
+  //       console.error("Error adding document: ", error);
+  //     });
+  // });
+  //2. get all products from firestores
+
+  // var snap = await db.collection('products').get()
+  // console.log(snap.docs.length);
+  // var count = 0
+  // for (const doc of snap.docs) {
+  //   var productJson = doc.data()
+  //   var category = productJson.category;
+  //   // console.log(category);
+  //   if (category.first_category_id != undefined) {
+
+  //     let categoryDoc = await db.collection('categories').where("first_category_id", '==', category.first_category_id).get();
+  //     var glowvyCategory = categoryDoc.docs[0].data()
+
+  //     let secondCate = glowvyCategory.second_categories.find(element => element.second_category_id == category.second_category_id);
+
+
+
+  //     var thirdCategory
+  //     var secondCateSynonyms
+  //     var firstCateSynonyms = category.first_category_synonyms;
+  //     var thirdCateSynonyms
+
+  //     if (secondCate != undefined) {
+  //       thirdCategory = secondCate.third_categories.find(element => element.third_category_id == category.third_category_id);
+  //       secondCateSynonyms = secondCate.second_category_synonyms;
+  //       console.log(secondCateSynonyms)
+  //     }
+
+  //     if (thirdCategory != undefined) {
+  //       thirdCateSynonyms = thirdCategory.third_category_synonyms;
+  //       console.log(thirdCateSynonyms)
+  //     }
+
+
+  //     try {
+
+  //       doc.ref.update({
+  //         'category.first_category_name': glowvyCategory.first_category_name,
+  //         'category.second_category_name': secondCate != undefined ? secondCate.second_category_name : null,
+  //         'category.third_category_name': thirdCategory != undefined ? thirdCategory.third_category_name : null,
+  //         'category.first_category_synonyms': firstCateSynonyms != undefined ? firstCateSynonyms : [],
+  //         'category.second_category_synonyms': secondCateSynonyms != undefined ? secondCateSynonyms : [],
+  //         'category.third_category_synonyms': thirdCateSynonyms != undefined ? thirdCateSynonyms : [],
+  //         'second_category_synonyms': firestore.FieldValue.delete(),
+  //         'third_category_synonyms': firestore.FieldValue.delete(),
+  //       }).then(() => console.log('successfully updated'))
+  //     } catch (error) {
+  //       console.log(secondCate)
+  //       console.log(thirdCategory)
+  //       console.log(error);
+
+  //     }
+
+
+  //   } else {
+  //     count++
+  //   }
+  // }
+  // console.log(`total wrong cate format: ${count}`);
+
+  // ===========================================================================
+  // update existing reviewer's info: add birthyear, add gender, and add skin type
+  // ===========================================================================
+  // ===========================================================================
+  // update missing names
+  // ==========================================================================
+  // var snap = await db.collection('reviews').get()
+  // console.log(snap.docs.length);
+
+  // for (const doc of snap.docs) {
+  //   var reviewJson = doc.data()
+  //   if (doc.data().user.skin_type_id === 1) {
+  //     doc.ref.update({
+  //       'user.skin_type': '',
+  //     }).then(() => console.log('updated sensitive skin type'))
+  //   } else {
+  //     // doc.ref.update({
+  //     //   'user.birth_year': 2020 - reviewJson.user.age,
+  //     //   'user.gender': 'Nữ',
+  //     // }).then(() => console.log('upadted normal skintyp'))
+  //   }
+  // }
+  // var products = require("./crawled/products.json");
+  // console.log(products.length)
+
+  // var count = 0
+
+  // products.forEach(async function (obj) {
+
+  //   var snap = await db.collection('products').where('sid', '==', obj.sid).get()
+  //   if (!snap.empty) {
+  //     var productDoc = snap.docs[0];
+  //     if (obj.name !== '') {
+  //       count++
+
+  //       console.log(obj.name);
+  //       productDoc.ref.update({
+  //           'name': obj.name
+  //         })
+  //         .then(() => console.log('party'))
+  //     }
+  //   }
+  // })
+  // console.log(count)
+  //   // delete obj.ingredients
+  //   // console.log(obj)
+
+  // });
+  // var count = 0
+
+  // var snap = await db.collection('products').get()
+  // var count = 0
+  // var products = [];
+
+  // for (const doc of snap.docs) {
+  //   var productJson = doc.data()
+  //   if (doc.data().name == '') {
+  //     count++
+  //     console.log(doc.data().sid)
+  //     var toTranslate = {
+  //       'sid': productJson.sid,
+  //       'name': productJson.name,
+  //       'sname': productJson.sname,
+  //       'description': productJson.description,
+  //       'sdescription': productJson.sdescription,
+  //       'category': productJson.category,
+  //       'brand': productJson.brand
+  //     }
+  //     products.push(toTranslate)
+  //   }
+  // }
+  // utils.writeJsonToFile('./crawled/missing_name_products.json', products)
+  // console.log(count)
+
+
+
+  // ===========================================================================
+  // fix ranking score field
+  // ===========================================================================
+  // // console.log(Date.now())
+  // var snap = await db.collection('products').get()
+  // console.log(snap.docs.length)
+  // //fix the brand id
+  // var count = 0
+  // for (const doc of snap.docs) {
+  //   var reviewMetas = doc.data().review_metas
+  //   if (reviewMetas.all.hasOwnProperty('ranking_scroe')) {
+  //     // console.log('wrong')
+  //     // count++
+
+  //     doc.ref.update({
+  //       'reviewMetas.all.ranking_scroe': firestore.FieldValue.delete(),
+  //       'reviewMetas.complex.ranking_scroe': firestore.FieldValue.delete(),
+  //       'reviewMetas.dry.ranking_scroe': firestore.FieldValue.delete(),
+  //       'reviewMetas.neutral.ranking_scroe': firestore.FieldValue.delete(),
+  //       'reviewMetas.oily.ranking_scroe': firestore.FieldValue.delete(),
+  //       'reviewMetas.sensitive.ranking_scroe': firestore.FieldValue.delete(),
+  //     }).then(() => console.log('added category'))
+  //   }
+
+  // }
+  // console.log(count)
+  // ===========================================================================
+  // add created date to products
+  // ===========================================================================
+  // // console.log(Date.now())
+  // var snap = await db.collection('products').get()
+  // console.log(snap.docs.length)
+  // //fix the brand id
+  // for (const doc of snap.docs) {
+  //   doc.ref.update({
+  //     'created_at': Date.now()
+  //   }).then(() => console.log('added category'))
+  // }
+
+  // ===========================================================================
+  // 1. fix the brand id -> use the brand id in the brands collection
+  // update brand's categories 
+  // ===========================================================================
+
+
+  // var snap = await db.collection('products').get()
+  // console.log(snap.docs.length)
+  // //fix the brand id
+  // for (const doc of snap.docs) {
+  //   console.log(`product sid ` + doc.data().sid)
+  //   if (doc.data().brand.img != null) {
+  //     doc.ref.update({
+  //       'brand.image': doc.data().brand.img
+  //     }).then(() => console.log('added category'))
+  //   }
+  // }
+
+
+
+
+
+
+
+  // var snap = await db.collection('brands').get()
+  // console.log(snap.docs.length)
+  // for (const doc of snap.docs) {
+  //   try {
+  //     var product = doc.data();
+  //     doc.ref.update({
+  //       'img': firestore.FieldValue.delete()
+  //     }).then(() => console.log('uu'))
+  //   } catch (error) {
+  //     console.log(error)
+
+  //   }
+
+
+  // }
   // ===========================================================================
   // add missing product field to the algolia
   // ===========================================================================
-  // cosmeticsIndex.delete();
-
-  var snap = await db.collection('products').where('category.first_category_id', '==', 8).get()
-  console.log(snap.docs.length)
-  for (const doc of snap.docs) {
-    try {
-      var product = doc.data();
-      const algoliaRecrod = {
-        name: product.name,
-        sprice: product.sprice,
-        sid: product.sid,
-        objectID: product.sid,
-        description: product.description,
-        volume: product.volume,
-        // desc_images: product.desc_images,
-        hazard_level: product.hazard_score,
-        // 'sdescription': product.sdescription,
-        brand: product.brand,
-        category: product.category,
-        tags: product.tags,
-        review_metas: product.review_metas,
-        thumbnail: product.thumbnail,
-      };
-      cosmeticsIndex.saveObject(algoliaRecrod).then(() => console.log('uu'));
-    } catch (error) {
-      console.log(error)
-
-    }
 
 
-  }
+
+  // var snap = await db.collection('products').where('category.first_category_id', '==', 8).get()
+  // console.log(snap.docs.length)
+  // for (const doc of snap.docs) {
+  //   try {
+  //     var product = doc.data();
+  //     const algoliaRecrod = {
+  //       name: product.name,
+  //       sprice: product.sprice,
+  //       sid: product.sid,
+  //       objectID: product.sid,
+  //       description: product.description,
+  //       volume: product.volume,
+  //       // desc_images: product.desc_images,
+  //       hazard_level: product.hazard_score,
+  //       // 'sdescription': product.sdescription,
+  //       brand: product.brand,
+  //       category: product.category,
+  //       tags: product.tags,
+  //       review_metas: product.review_metas,
+  //       thumbnail: product.thumbnail,
+  //     };
+  //     cosmeticsIndex.saveObject(algoliaRecrod).then(() => console.log('uu'));
+  //   } catch (error) {
+  //     console.log(error)
+
+  //   }
+
+
+  // }
 
 
 
@@ -334,38 +850,38 @@ function writeJsonToFile(path, json) {
 
 
 
-})()
+})
 
-function translateSkinTypeToEn(skinType) {
-  switch (skinType) {
-    case 'Da dầu':
-      return 'oily'
-    case 'Da khô':
-      return 'dry'
-    case 'Da hỗn hợp':
-      return 'complex'
-    case 'Da thường':
-      return 'neutral'
-    case 'Nhạy cảm':
-      return 'sensitive'
-    default:
-      break;
-  }
-}
+// function translateSkinTypeToEn(skinType) {
+//   switch (skinType) {
+//     case 'Da dầu':
+//       return 'oily'
+//     case 'Da khô':
+//       return 'dry'
+//     case 'Da hỗn hợp':
+//       return 'complex'
+//     case 'Da thường':
+//       return 'neutral'
+//     case 'Nhạy cảm':
+//       return 'sensitive'
+//     default:
+//       break;
+//   }
+// }
 
-function translateSkinTypeToVi(skinType) {
-  switch (skinType) {
-    case 'oily':
-      return 'Da dầu'
-    case 'dry':
-      return 'Da khô'
-    case 'complex':
-      return 'Da hỗn hợp'
-    case 'neutral':
-      return 'Da thường'
-    case 'sensitive':
-      return 'Nhạy cảm'
-    default:
-      break;
-  }
-}
+// function translateSkinTypeToVi(skinType) {
+//   switch (skinType) {
+//     case 'oily':
+//       return 'Da dầu'
+//     case 'dry':
+//       return 'Da khô'
+//     case 'complex':
+//       return 'Da hỗn hợp'
+//     case 'neutral':
+//       return 'Da thường'
+//     case 'sensitive':
+//       return 'Nhạy cảm'
+//     default:
+//       break;
+//   }
+// }

@@ -64,7 +64,7 @@ async function crawlProductById(admin, id, page) {
             "id": product.brand.idBrand,
             "sname": product.brand.brandTitle,
             "name": brandName,
-            "img": product.brand.brandImg
+            "image": product.brand.brandImg
         }
         const glowpickCategory = product.categoryInfo[0];
         if (!brandDoc.exists) {
@@ -149,6 +149,7 @@ async function crawlProductById(admin, id, page) {
             // 'id': productId,
             'sid': product.idProduct,
             'volume': product.volume,
+            'created_at': Date.now(),
             'sprice': product.price,
             'official_price': vnPrice,
             'thumbnail': `http://storage.googleapis.com/glowvy-b6cf4.appspot.com/product/thumbnail/thumbnail_${product.idProduct}.jpg`,
