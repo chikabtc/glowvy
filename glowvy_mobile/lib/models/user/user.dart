@@ -8,7 +8,7 @@ import '../address/billing.dart';
 
 part 'user.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class User {
   String uid;
   String facebookId;
@@ -30,7 +30,8 @@ class User {
   Address address;
   int createdAt;
   List<Address> addresses = [];
-  List<Product> viewedProducts = [];
+  List<Product> recentSearchItems = [];
+  List<String> recentSearchQueries;
   Review reviewDraft;
 
   Billing billing;
@@ -44,8 +45,9 @@ class User {
       this.birthYear,
       this.gender,
       this.createdAt,
-      this.viewedProducts,
+      this.recentSearchItems,
       this.address,
+      this.recentSearchQueries,
       this.billing});
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);

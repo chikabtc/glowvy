@@ -199,41 +199,15 @@ class UserModel with ChangeNotifier {
     }
   }
 
+  Future updateUserName(name) async {
+    await firebaseUser.updateProfile(displayName: name);
+  }
+
   Future updateUser({@required field, @required value}) async {
     await _db.collection('users').doc(firebaseUser.uid).update({
       field: value,
     });
     await reloadUser();
-  }
-
-  Future saveRecentQueries(List<String> queries) async {
-    if (firebaseUser != null) {
-      try {
-        user.reviewDraft = null;
-        await _db
-            .collection('users')
-            .doc(firebaseUser.uid)
-            .update({'recent_queries': queries});
-        await reloadUser();
-      } catch (e) {
-        print('saveRecentQueries e: $e');
-      }
-    }
-  }
-
-  Future saveRecentSearchItems(List<Product> items) async {
-    if (firebaseUser != null) {
-      try {
-        user.reviewDraft = null;
-        await _db
-            .collection('users')
-            .doc(firebaseUser.uid)
-            .update({'recent_search_items': items});
-        await reloadUser();
-      } catch (e) {
-        print('saveRecentSearchItems e: $e');
-      }
-    }
   }
 
   Future updateUserBirthyear(int year) async {
@@ -296,7 +270,6 @@ class UserModel with ChangeNotifier {
         DocumentSnapshot doc;
         doc = await query.get(const GetOptions(source: Source.server));
         if (doc.exists) {
-          print('doc : ${doc.data()}');
           user = User.fromJson(doc.data());
         }
       }
@@ -372,7 +345,7 @@ class UserModel with ChangeNotifier {
     try {
       await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
-      await firebaseUser.updateProfile(displayName: fullName);
+      // await firebaseUser.updateProfile(displayName: fullName);
       final user = User();
       user.fullName = fullName;
       user.email = email;
@@ -474,8 +447,8 @@ class UserModel with ChangeNotifier {
               await _auth.signInWithCredential(facebookAuthCred);
           firebaseUser = userCredential.user;
 
-          print(
-              'user fb displayname: ${firebaseUser.displayName} and email :${firebaseUser.email}');
+          // print(
+          //     'user fb displayname: ${firebaseUser.displayName} and email :${firebaseUser.email}');
           final snap =
               await _db.collection('users').doc(firebaseUser.uid).get();
 

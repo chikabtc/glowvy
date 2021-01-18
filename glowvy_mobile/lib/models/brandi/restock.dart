@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'restock.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Restock {
   bool isManaged;
   bool isRequested;
@@ -13,4 +13,5 @@ class Restock {
   );
   factory Restock.fromJson(Map<String, dynamic> json) =>
       _$RestockFromJson(json);
+  Map<String, dynamic> toJson() => _$RestockToJson(this);
 }

@@ -15,6 +15,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class WriteReviewScreen extends StatefulWidget {
+  final ScrollController scrollController;
+  WriteReviewScreen({this.scrollController});
   @override
   _WriteReviewScreenState createState() => _WriteReviewScreenState();
 }
@@ -308,9 +310,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      ReviewCosmeticsSearchScreen(
-                                        isEditing: true,
-                                      ))),
+                                      ReviewCosmeticsSearchScreen())),
                           child: ProductThumbnail(
                             review.product,
                             allowEdit: true,

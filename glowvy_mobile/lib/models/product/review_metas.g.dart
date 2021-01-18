@@ -31,10 +31,10 @@ ReviewMetas _$ReviewMetasFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ReviewMetasToJson(ReviewMetas instance) =>
     <String, dynamic>{
-      'all': instance.all,
-      'complex': instance.complex,
-      'dry': instance.dry,
-      'neutral': instance.neutral,
-      'oily': instance.oily,
-      'sensitive': instance.sensitive,
+      'all': instance.all?.toJson(),
+      'complex': instance.complex?.toJson(),
+      'dry': instance.dry?.toJson(),
+      'neutral': instance.neutral?.toJson(),
+      'oily': instance.oily?.toJson(),
+      'sensitive': instance.sensitive?.toJson(),
     };

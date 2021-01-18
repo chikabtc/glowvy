@@ -5,7 +5,7 @@ import 'province.dart';
 
 part 'ward.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Ward {
   Ward(
       {this.id,

@@ -18,13 +18,16 @@ User _$UserFromJson(Map<String, dynamic> json) {
     birthYear: json['birth_year'] as int,
     gender: json['gender'] as String,
     createdAt: json['created_at'] as int,
-    viewedProducts: (json['viewed_products'] as List)
+    recentSearchItems: (json['recent_search_items'] as List)
         ?.map((e) =>
             e == null ? null : Product.fromJson(e as Map<String, dynamic>))
         ?.toList(),
     address: json['address'] == null
         ? null
         : Address.fromJson(json['address'] as Map<String, dynamic>),
+    recentSearchQueries: (json['recent_search_queries'] as List)
+        ?.map((e) => e as String)
+        ?.toList(),
     billing: json['billing'] == null
         ? null
         : Billing.fromJson(json['billing'] as Map<String, dynamic>),
@@ -61,14 +64,16 @@ Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
       'skin_type': instance.skinType,
       'skin_issues': instance.skinIssues,
       'baumann_type': instance.baumannType,
-      'baumann_scores': instance.baumannScores,
+      'baumann_scores': instance.baumannScores?.toJson(),
       'skin_type_id': instance.skinTypeId,
       'birth_year': instance.birthYear,
       'age': instance.age,
-      'address': instance.address,
+      'address': instance.address?.toJson(),
       'created_at': instance.createdAt,
-      'addresses': instance.addresses,
-      'viewed_products': instance.viewedProducts,
-      'review_draft': instance.reviewDraft,
-      'billing': instance.billing,
+      'addresses': instance.addresses?.map((e) => e?.toJson())?.toList(),
+      'recent_search_items':
+          instance.recentSearchItems?.map((e) => e?.toJson())?.toList(),
+      'recent_search_queries': instance.recentSearchQueries,
+      'review_draft': instance.reviewDraft?.toJson(),
+      'billing': instance.billing?.toJson(),
     };

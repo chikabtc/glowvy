@@ -58,22 +58,19 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
 
     isLoading = true;
     print('product ${product.sid}');
-
-    reviewModel.getProductReviews(product.sid).then((onValue) {
-      if (mounted) {
-        totalCount = product.reviewMetas.all.reviewCount;
-
-        setState(() {
-          initialReviewPage = onValue;
-        });
-      }
-    });
     productModel.getWholeProduct(product.sid).then((onValue) {
       if (mounted) {
-        setState(() {
-          product = onValue;
-          isLoading = false;
-          // print('hazardScore: ${product.hazardScore}');
+        product = onValue;
+
+        reviewModel.getProductReviews(product.sid).then((onValue) {
+          if (mounted) {
+            totalCount = product.reviewMetas?.all?.reviewCount;
+
+            setState(() {
+              initialReviewPage = onValue;
+              isLoading = false;
+            });
+          }
         });
       }
     });
@@ -146,10 +143,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               width: screenSize.width,
               height: screenSize.height,
               child: Center(
-                child: Container(
-                    height: kScreenSizeHeight * 0.5,
-                    child: const SpinKitThreeBounce(
-                        color: kPrimaryOrange, size: 21.0)),
+                child: Container(child: kIndicator()),
               ))
           : SafeArea(
               bottom: false,
@@ -182,7 +176,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                               right: 14,
                               child: Container(
                                   // width: 67,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                       color: kSecondaryGrey,
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(20))),
@@ -588,14 +582,29 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                           ],
                                         ),
                                       ),
+                                    if (totalCount == 0)
+                                      Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Center(
+                                            child: Text(
+                                              'No Reviws Available',
+                                              style: textTheme.bodyText1
+                                                  .copyWith(
+                                                      fontSize: 14,
+                                                      color: kSecondaryGrey),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height: 50,
+                                          )
+                                        ],
+                                      ),
                                   ],
                                 ),
                               )
-                            : Container(
-                                width: screenSize.width,
-                                height: 90,
-                                child: const SpinKitThreeBounce(
-                                    color: kPrimaryOrange, size: 21.0))),
+                            : Container()),
                   // Container(
                   //   height: 28,
                   // ),

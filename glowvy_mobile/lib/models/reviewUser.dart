@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'reviewUser.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class ReviewUser {
   String id;
   String name;

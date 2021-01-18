@@ -56,8 +56,7 @@ class _WebViewState extends State<WebView> {
               },
               javascriptMode: _widget.JavascriptMode.unrestricted,
             ),
-            if (isLoading)
-              const SpinKitThreeBounce(color: kPrimaryBlue, size: 21.0)
+            if (isLoading) kIndicator()
           ],
         ),
       ),

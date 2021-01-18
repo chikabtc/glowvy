@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'province.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Province {
   Province({
     this.id,

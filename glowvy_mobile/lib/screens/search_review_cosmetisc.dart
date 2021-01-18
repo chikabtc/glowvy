@@ -1,202 +1,517 @@
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
-import 'package:Dimodo/common/styles.dart';
-import 'package:Dimodo/common/widgets.dart';
+import 'package:Dimodo/common/tools.dart';
+import 'package:Dimodo/models/category.dart';
+import 'package:Dimodo/models/product/brand.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/product_model.dart';
+import 'package:Dimodo/models/search_model.dart';
+import 'package:Dimodo/packages/floating_search_bar/material_floating_search_bar.dart';
+import 'package:Dimodo/widgets/brand_card_list.dart';
+import 'package:Dimodo/widgets/categories/CategoryButton.dart';
 import 'package:Dimodo/widgets/product/list_page.dart';
+import 'package:Dimodo/widgets/product/paginated_product_list.dart';
+import 'package:Dimodo/widgets/product/products_list_view.dart';
+
+import 'package:Dimodo/widgets/second_category_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+// import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:provider/provider.dart';
 
-import '../generated/i18n.dart';
-
 class ReviewCosmeticsSearchScreen extends StatefulWidget {
-  bool isEditing;
-  ReviewCosmeticsSearchScreen({this.isEditing = false});
+  final ScrollController appScrollController;
+  ReviewCosmeticsSearchScreen({this.appScrollController});
+
   @override
   _ReviewCosmeticsSearchScreenState createState() =>
       _ReviewCosmeticsSearchScreenState();
 }
 
 class _ReviewCosmeticsSearchScreenState
-    extends State<ReviewCosmeticsSearchScreen> {
-  Size screenSize;
-  Future<ListPage<Product>> getProductBySearch;
-
-  bool isAscending = false;
-  String highToLow = '-sale_price';
-  String lowToHigh = 'sale_price';
-
-  final TextEditingController searchController = TextEditingController();
-  String searchText;
-  bool showResults = false;
-  bool isTextFieldSelected = false;
+    extends State<ReviewCosmeticsSearchScreen>
+    with AutomaticKeepAliveClientMixin<ReviewCosmeticsSearchScreen> {
+  Future<ListPage<Product>> getProducts;
   ProductModel productModel;
+  SearchModel searchModel;
+  Category currentFirstCategory;
 
-  var roundLab = 'Round Labs';
-  var cleanser = 'Làm Sạch Da Mặt';
-  var cream = 'Kem Bôi';
-  var sunscreen = 'Chống Nắng';
-  var serum = 'Serum';
+  Brand pickedBrand;
+  Category pickedCategory;
+
+  bool isFocused = false;
+  bool showResults = false;
+
+  final searchController = FloatingSearchBarController();
+  final _scrollController = ScrollController();
+  final _innerScrollController = ScrollController();
 
   @override
   void initState() {
     super.initState();
     productModel = Provider.of<ProductModel>(context, listen: false);
+    searchModel = Provider.of<SearchModel>(context, listen: false);
+    currentFirstCategory = searchModel.categories[0];
   }
 
-  void search(text, {pageKey}) {
-    isTextFieldSelected = false;
-    searchController.text = text;
-    getProductBySearch = productModel.getProductsBySearch(text);
-    showResults = true;
-    FocusScope.of(context).unfocus();
+  @override
+  void dispose() {
+    searchController.dispose();
+    _scrollController.dispose();
+    _innerScrollController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    screenSize = MediaQuery.of(context).size;
+    super.build(context);
 
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        brightness: Brightness.light,
-        backgroundColor: Colors.transparent,
-        leading: widget.isEditing
-            ? GestureDetector(
-                onTap: () => Navigator.pop(context),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 16, top: 16),
-                  child: Text('Stop',
-                      style:
-                          textTheme.headline5.copyWith(color: kSecondaryGrey)),
-                ),
-              )
-            : backIcon(context),
-        title: Text('select cosmetics', style: textTheme.headline3),
-      ),
-      body: NestedScrollView(
-        physics: const NeverScrollableScrollPhysics(),
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return <Widget>[
-            SliverToBoxAdapter(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Container(
-                            height: 36,
-                            decoration: BoxDecoration(
-                              color: kDefaultBackground,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: TextField(
-                                autofocus: true,
-                                onTap: () => isTextFieldSelected = true,
-                                cursorColor: theme.cursorColor,
-                                controller: searchController,
-                                onChanged: (value) {
-                                  setState(() {
-                                    searchText = value;
-                                    if (value == '') {
-                                      showResults = false;
-                                    }
-                                  });
-                                },
-                                onSubmitted: (value) {
-                                  setState(() {
-                                    isTextFieldSelected = false;
-                                    search(value);
-                                  });
-                                },
-                                decoration: kTextField.copyWith(
-                                  prefixIcon: IconButton(
-                                    icon: SvgPicture.asset(
-                                      'assets/icons/search.svg',
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                  hintText: S.of(context).search,
-                                  contentPadding: const EdgeInsets.only(
-                                      bottom: 12, left: 12),
-                                )),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+    void searchAlgolia() {
+      FocusScope.of(context).unfocus();
+      setState(() {
+        showResults = true;
+        productModel.clearPaginationHistory();
+        getProducts = productModel.getProductsBySearch(
+          searchController.query,
+        );
+        searchModel.searchBrands(searchController.query);
+      });
+    }
+
+    Widget buildCategoryPage() {
+      return Padding(
+        padding: const EdgeInsets.only(top: 70.0),
+        child: Row(
+          children: [
+            Container(
+                width: 80,
+                decoration: const BoxDecoration(
+                    color: kQuaternaryGrey,
+                    border: Border(
+                        right: BorderSide(
+                      color: kQuaternaryGrey,
+                      width: 0.7,
+                    ))),
+                child: ListView.builder(
+                    addAutomaticKeepAlives: true,
+                    physics: const ClampingScrollPhysics(),
+                    scrollDirection: Axis.vertical,
+                    itemCount: searchModel.categories.length,
+                    itemBuilder: (context, index) => CategoryButton(
+                          searchModel.categories[index],
+                          isSelected: currentFirstCategory ==
+                              searchModel.categories[index],
+                          onTap: () {
+                            setState(() {
+                              currentFirstCategory =
+                                  searchModel.categories[index];
+                            });
+                          },
+                        ))),
+            Container(
+              width: kScreenSizeWidth - 80,
+              child: ListView.builder(
+                  addAutomaticKeepAlives: true,
+                  physics: const ClampingScrollPhysics(),
+                  scrollDirection: Axis.vertical,
+                  itemCount: currentFirstCategory.subCategories.length,
+                  itemBuilder: (context, index) => SecondCategoryButton(
+                        currentFirstCategory.subCategories[index],
+                      )),
             )
-          ];
-        },
-        body: showResults
-            ? productModel.showPaginatedProductList(
-                future: getProductBySearch, isFromReviewPage: true)
-            : Container(
-                padding: const EdgeInsets.only(left: 16, right: 16, top: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      'Mọi người cũng tìm kiếm',
-                      textAlign: TextAlign.center,
-                      style:
-                          textTheme.bodyText2.copyWith(color: kSecondaryGrey),
-                    ),
-                    const SizedBox(height: 10),
-                    Keyword(keyword: roundLab, onTap: () => search(roundLab)),
-                    const SizedBox(height: 10),
-                    Keyword(keyword: cleanser, onTap: () => search(cleanser)),
-                    const SizedBox(height: 10),
-                    Keyword(keyword: cream, onTap: () => search(cream)),
-                    const SizedBox(height: 10),
-                    Keyword(keyword: sunscreen, onTap: () => search(sunscreen)),
-                    const SizedBox(height: 10),
-                    Keyword(keyword: serum, onTap: () => search(serum)),
-                    const SizedBox(height: 10),
-                  ],
-                )),
-      ),
-    );
-  }
-}
-
-class Keyword extends StatelessWidget {
-  const Keyword({
-    Key key,
-    @required this.keyword,
-    @required this.onTap,
-  }) : super(key: key);
-
-  final String keyword;
-  final Function onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => onTap(),
-      child: Container(
-        height: 30,
-        decoration: BoxDecoration(
-          color: kLightYellow,
-          borderRadius: BorderRadius.circular(10),
+          ],
         ),
-        // alignment: Alignment.center,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 6),
-          child: Text(
-            keyword,
-            textAlign: TextAlign.center,
-            style: textTheme.bodyText2.copyWith(color: kDarkYellow),
+      );
+    }
+
+    Widget buildSearchResult() {
+      Widget brandWidget;
+      if (searchModel.filtedBrands.isNotEmpty) {
+        brandWidget =
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          const SizedBox(height: 15),
+          Text('${searchModel.filtedBrands.length ?? 0} brand',
+              style: textTheme.bodyText1),
+          const SizedBox(height: 5),
+          kFullSectionDivider,
+          BrandList(
+            brands: searchModel.filtedBrands,
+            disableScrolling: true,
+          ),
+          const SizedBox(height: 35),
+        ]);
+      } else {
+        brandWidget = Container(
+          height: 15,
+        );
+      }
+      return FutureBuilder<ListPage<Product>>(
+          future: getProducts,
+          builder: (BuildContext context,
+              AsyncSnapshot<ListPage<Product>> snapshot) {
+            if (snapshot.hasData) {
+              final listPage = snapshot.data;
+              return CupertinoScrollbar(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: NestedScrollView(
+                      controller: widget.appScrollController,
+                      headerSliverBuilder:
+                          (BuildContext context, bool innerBoxIsScrolled) {
+                        return <Widget>[
+                          SliverToBoxAdapter(
+                              child: Container(
+                            color: Colors.white,
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  brandWidget,
+                                  Text(
+                                      '${snapshot.data.itemList.length ?? 0} results',
+                                      style: textTheme.bodyText1),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
+                                  kFullSectionDivider,
+                                ],
+                              ),
+                            ),
+                          )),
+                        ];
+                      },
+                      body: ProductsListView(
+                        products: snapshot.data.itemList,
+                        disableScrolling: true,
+                      )),
+                ),
+              );
+            } else {
+              return Container();
+            }
+          });
+    }
+
+    Widget showRecentSearchItems(SearchModel model) {
+      return Padding(
+        padding: const EdgeInsets.only(top: 70),
+        child: CupertinoScrollbar(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 16.0, right: 16),
+            child: NestedScrollView(
+                controller: widget.appScrollController,
+                headerSliverBuilder:
+                    (BuildContext context, bool innerBoxIsScrolled) {
+                  return <Widget>[
+                    SliverToBoxAdapter(
+                        child: Container(
+                      color: Colors.white,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(height: 15),
+                            if (model.recentSearchItems.isNotEmpty)
+                              Text('Recently Searched',
+                                  style: textTheme.bodyText1),
+                            const SizedBox(height: 5),
+                            kFullSectionDivider,
+                            const SizedBox(height: 5),
+                          ],
+                        ),
+                      ),
+                    )),
+                  ];
+                },
+                body: model.recentSearchItems.isNotEmpty
+                    ? ProductsListView(
+                        products: model.recentSearchItems,
+                        isRecentSearchItem: true,
+                        // isFromReviewSearch: true,
+                      )
+                    : Container()),
           ),
         ),
-      ),
-    );
+      );
+    }
+
+    Widget showSuggestions(SearchModel model) {
+      const maxSuggestionCount = 5;
+      //local auto completes
+      ///show only 5 suggestions at most
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            const SizedBox(height: 8),
+            ListView.builder(
+                keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
+                shrinkWrap: true,
+                //if no suggestions are found, show the current query in the
+                //suggestion
+                itemCount: searchModel.getSuggestionCount(),
+                itemBuilder: (context, index) {
+                  return Container(
+                      padding: const EdgeInsets.only(
+                          left: 0, right: 0, top: 8, bottom: 8),
+                      child: GestureDetector(
+                        onTap: () {
+                          //search by brand products same as in brand home
+                          if (model.isSuggestionEmpty()) {
+                            searchAlgolia();
+                          } else if (index <
+                              model.recentQuerySuggestions.length) {
+                            searchController.query = searchModel.getSuggestion(
+                                index, searchController.query);
+                            searchAlgolia();
+                          }
+                        },
+                        child: Container(
+                          width: kScreenSizeWidth,
+                          color: Colors.transparent,
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  const Icon(
+                                    Icons.search,
+                                    color: kDarkAccent,
+                                  ),
+                                  const SizedBox(width: 16),
+                                  RichText(
+                                    overflow: TextOverflow.ellipsis,
+                                    text: TextSpan(
+                                      children: Tools.highlightOccurrences(
+                                          searchModel.getSuggestion(
+                                              index, searchController.query),
+                                          searchController.query),
+                                      style: textTheme.bodyText1
+                                          .copyWith(fontSize: 13),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 8),
+                              kFullDivider
+                            ],
+                          ),
+                        ),
+                      ));
+                }),
+          ],
+        ),
+      );
+    }
+
+    return Scaffold(
+        resizeToAvoidBottomPadding: false,
+        backgroundColor: Colors.white,
+        body: SafeArea(
+            top: true,
+            bottom: false,
+            child: Container(
+                color: kWhite,
+                child: NestedScrollView(
+                    controller: _scrollController,
+                    headerSliverBuilder:
+                        (BuildContext context, bool innerBoxIsScrolled) {
+                      return <Widget>[
+                        if (!isFocused)
+                          SliverAppBar(
+                              floating: false,
+                              pinned: false,
+                              elevation: 0,
+                              backgroundColor: Colors.white,
+                              title: AnimatedOpacity(
+                                  opacity: 0.0,
+                                  duration: const Duration(milliseconds: 100),
+                                  child: Text(
+                                    'Search',
+                                    style: textTheme.headline3,
+                                    textAlign: TextAlign.start,
+                                  ))),
+                        SliverToBoxAdapter(
+                            child: Container(
+                          color: Colors.white,
+                          padding: const EdgeInsets.only(top: 0, left: 16),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Search',
+                                  style: textTheme.headline1
+                                      .copyWith(fontSize: 32),
+                                  textAlign: TextAlign.start,
+                                )
+                              ],
+                            ),
+                          ),
+                        )),
+                      ];
+                    },
+                    body: Consumer<SearchModel>(builder: (context, model, _) {
+                      return FloatingSearchBar(
+                        height: 36,
+                        onFocusChanged: (isFocused) {
+                          setState(() {
+                            this.isFocused = isFocused;
+                          });
+                          if (_scrollController.hasClients) {
+                            _scrollController.animateTo(isFocused ? 52 : 0,
+                                duration: const Duration(milliseconds: 250),
+                                curve: Curves.easeIn);
+                          }
+                        },
+                        hint: 'search',
+                        elevation: 0,
+                        scrollController: _scrollController,
+                        borderRadius: BorderRadius.circular(10),
+                        backgroundColor: kSearchBarColor,
+                        automaticallyImplyBackButton: false,
+                        controller: searchController,
+                        clearQueryOnClose: true,
+                        accentColor: kPrimaryOrange,
+                        queryStyle: textTheme.headline5
+                            .copyWith(fontSize: 17, height: 1.2),
+                        hintStyle: textTheme.headline5.copyWith(
+                            color: kSecondaryGrey, fontSize: 17, height: 1.2),
+                        iconColor: Colors.grey,
+                        scrollPadding: EdgeInsets.zero,
+                        padding: EdgeInsets.zero,
+                        margins:
+                            const EdgeInsets.only(top: 16, left: 16, right: 16),
+                        transitionDuration: const Duration(milliseconds: 250),
+                        transitionCurve: Curves.linear,
+                        axisAlignment: 0.0,
+                        openAxisAlignment: 0.0,
+                        closeOnBackdropTap: false,
+                        maxWidth: kScreenSizeWidth,
+                        backdropColor: kWhite,
+                        isScrollControlled: true,
+                        leadingActions: [
+                          FloatingSearchBarAction(
+                            showIfOpened: true,
+                            showIfClosed: true,
+                            builder: (context, animation) {
+                              final bar = FloatingSearchAppBar.of(context);
+                              return ValueListenableBuilder<String>(
+                                valueListenable: bar.queryNotifer,
+                                builder: (context, query, _) {
+                                  final canPop = Navigator.canPop(context);
+
+                                  return GestureDetector(
+                                    onTap: () {
+                                      if (isFocused) {
+                                        final bar =
+                                            FloatingSearchAppBar.of(context);
+                                        setState(() {
+                                          showResults = false;
+                                        });
+
+                                        if (bar.isOpen && !bar.isAlwaysOpened) {
+                                          bar.close();
+                                          model.clear();
+                                          productModel.clearPaginationHistory();
+                                        } else if (canPop) {
+                                          Navigator.pop(context);
+                                        }
+                                      }
+                                    },
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 4.0,
+                                          right: 4,
+                                          bottom: isFocused ? 0 : 1),
+                                      child: Container(
+                                        height: 24,
+                                        width: 24,
+                                        child: isFocused
+                                            ? Icon(
+                                                Icons.arrow_back,
+                                                color: kSecondaryGrey,
+                                                size: 22,
+                                              )
+                                            : SvgPicture.asset(
+                                                'assets/icons/search.svg',
+                                                color: kSecondaryGrey),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          )
+                        ],
+                        actions: [
+                          if (searchController?.query?.isNotEmpty ?? false)
+                            FloatingSearchBarAction(
+                              showIfOpened: true,
+                              showIfClosed: false,
+                              builder: (context, animation) {
+                                final bar = FloatingSearchAppBar.of(context);
+
+                                return ValueListenableBuilder<String>(
+                                  valueListenable: bar.queryNotifer,
+                                  builder: (context, query, _) {
+                                    return IconButton(
+                                      tooltip: 'cancel',
+                                      padding: EdgeInsets.zero,
+                                      icon: const Icon(
+                                        Icons.cancel,
+                                        size: 20,
+                                      ),
+                                      onPressed: () {
+                                        final bar =
+                                            FloatingSearchAppBar.of(context);
+                                        bar.clear();
+                                        model.clear();
+                                        setState(() {
+                                          showResults = false;
+                                        });
+                                        setState(() {});
+                                      },
+                                    );
+                                  },
+                                );
+                              },
+                            )
+                        ],
+                        debounceDelay: const Duration(milliseconds: 100),
+                        onQueryChanged: (query) {
+                          if (FocusScope.of(context).hasFocus) {
+                            setState(() {
+                              showResults = false;
+                            });
+                          }
+                          model.onQueryChanged(query);
+                        },
+                        onSubmitted: (value) {
+                          searchModel.onQuerySubmitted(value);
+                          searchAlgolia();
+                        },
+                        transition: SlideFadeFloatingSearchBarTransition(),
+                        builder: (context, _) {
+                          if (showResults) {
+                            return buildSearchResult();
+                          } else if (searchController?.query?.isNotEmpty ??
+                              false) {
+                            return showSuggestions(model);
+                          } else {
+                            return Container();
+                          }
+                        },
+                        body: showRecentSearchItems(model),
+                      );
+                    })))));
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

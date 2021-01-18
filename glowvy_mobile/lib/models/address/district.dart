@@ -4,7 +4,7 @@ import 'province.dart';
 
 part 'district.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class District {
   District({
     this.id,

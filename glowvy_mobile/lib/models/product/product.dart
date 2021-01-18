@@ -9,7 +9,7 @@ import 'brand.dart';
 
 part 'product.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Product {
   int id;
   int sid;
@@ -27,10 +27,10 @@ class Product {
   int createdAt;
   double sprice;
   double officialPrice;
-
   int salePercent;
   int purchaseCount;
   String volume;
+
   ProductCategory category;
   ReviewMetas reviewMetas;
   List<SizeDetail> sizeDetails;
@@ -59,7 +59,6 @@ class Product {
     this.purchaseCount,
     this.sizeDetails,
     this.options,
-    // this.productEtcInfo,
     this.brand,
     this.sid,
   });

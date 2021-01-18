@@ -15,5 +15,5 @@ Notice _$NoticeFromJson(Map<String, dynamic> json) {
 }
 
 Map<String, dynamic> _$NoticeToJson(Notice instance) => <String, dynamic>{
-      'restock': instance.restock,
+      'restock': instance.restock?.toJson(),
     };

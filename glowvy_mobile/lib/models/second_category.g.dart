@@ -30,7 +30,8 @@ Map<String, dynamic> _$SecondCategoryToJson(SecondCategory instance) =>
       'second_category_name': instance.secondCategoryName,
       'second_is_new': instance.secondIsNew,
       'second_category_id': instance.secondCategoryId,
-      'third_categories': instance.thirdCategories,
+      'third_categories':
+          instance.thirdCategories?.map((e) => e?.toJson())?.toList(),
       'third_category_en_name': instance.thirdCategoryEnName,
       'third_category_name': instance.thirdCategoryName,
     };

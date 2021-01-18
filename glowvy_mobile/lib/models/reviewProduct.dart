@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'reviewProduct.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class ReviewProduct {
   String id;
   String sid;

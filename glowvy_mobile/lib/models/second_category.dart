@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'second_category.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class SecondCategory {
   String secondCategoryKoName;
   String secondCategoryEnName;

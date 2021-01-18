@@ -3,7 +3,7 @@
 // import 'package:json_annotation/json_annotation.dart';
 // part 'cosmetics_product.g.dart';
 
-// @JsonSerializable(fieldRename: FieldRename.snake)
+// @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 // class CosmeticProduct {
 //   int id;
 //   int sid;

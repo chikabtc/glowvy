@@ -7,14 +7,15 @@ import 'package:Dimodo/models/categoryModel.dart';
 import 'package:Dimodo/models/product/brand.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/product_model.dart';
+import 'package:Dimodo/models/search_model.dart';
 import 'package:Dimodo/widgets/product/list_page.dart';
 import 'package:Dimodo/widgets/product/paginated_product_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class BrandHomePage extends StatefulWidget {
-  const BrandHomePage(this.brand);
-  final Brand brand;
+  BrandHomePage(this.brand);
+  Brand brand;
 
   @override
   State<StatefulWidget> createState() {
@@ -38,6 +39,11 @@ class BrandHomePageState extends State<BrandHomePage>
   @override
   void initState() {
     super.initState();
+    //get the brand from searchModel by id
+    final brands = Provider.of<SearchModel>(context, listen: false).brands;
+    widget.brand =
+        brands.where((element) => widget.brand.id == element.id).first;
+
     productModel = Provider.of<ProductModel>(context, listen: false);
     getProductsByBrand = productModel.getProductsByBrand(widget.brand);
     Future.wait([productModel.getProductsByBrand(widget.brand)])
@@ -54,17 +60,17 @@ class BrandHomePageState extends State<BrandHomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          brightness: Brightness.light,
-          elevation: 0,
-          leading: backIcon(context, onPop: () {
-            Navigator.pop(context);
-            productModel.clearPaginationHistory();
-          }),
-          backgroundColor: Colors.white,
-          title: Text(widget.brand.name)),
-      backgroundColor: kWhite,
-      body: NestedScrollView(
+        appBar: AppBar(
+            brightness: Brightness.light,
+            elevation: 0,
+            leading: backIcon(context, onPop: () {
+              Navigator.pop(context);
+              productModel.clearPaginationHistory();
+            }),
+            backgroundColor: Colors.white,
+            title: Text(widget.brand.name)),
+        backgroundColor: kWhite,
+        body: NestedScrollView(
           physics: const NeverScrollableScrollPhysics(),
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
@@ -104,7 +110,8 @@ class BrandHomePageState extends State<BrandHomePage>
                     Row(
                       children: [
                         const SizedBox(width: 16),
-                        Text('$itemsCount items', style: textTheme.caption),
+                        Text('${widget.brand.grandTotalCount} items',
+                            style: textTheme.caption),
                         const Spacer(),
                         const SizedBox(width: 8),
                         kFullDivider,
@@ -115,23 +122,11 @@ class BrandHomePageState extends State<BrandHomePage>
               )
             ];
           },
-          body: FutureBuilder<ListPage<Product>>(
-            future: getProductsByBrand,
-            builder: (BuildContext context,
-                AsyncSnapshot<ListPage<Product>> snapshot) {
-              if (snapshot.hasData) {
-                return PaginatedProductListView(
-                  initialPage: snapshot.data,
-                  showPadding: true,
-                  showNoMoreItemsIndicator: false,
-                  fetchProducts: () =>
-                      productModel.getProductsByBrand(widget.brand),
-                );
-              } else {
-                return Container();
-              }
-            },
-          )),
-    );
+          body: PaginatedProductListView(
+            showPadding: true,
+            showNoMoreItemsIndicator: false,
+            brand: widget.brand,
+          ),
+        ));
   }
 }

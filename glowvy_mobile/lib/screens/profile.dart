@@ -21,8 +21,9 @@ import 'package:provider/provider.dart';
 class ProfilePage extends StatefulWidget {
   final User user;
   final VoidCallback onLogout;
+  final ScrollController appScrollController;
 
-  const ProfilePage({this.user, this.onLogout});
+  const ProfilePage({this.user, this.onLogout, this.appScrollController});
 
   @override
   State<StatefulWidget> createState() {
@@ -57,9 +58,8 @@ class ProfilePageState extends State<ProfilePage>
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-    imageCache.clear();
-    PaintingBinding.instance.imageCache.clear();
 
+    precacheImage(const AssetImage('assets/icons/default-avatar.png'), context);
     return Scaffold(
         body: Consumer<UserModel>(builder: (context, userModel, child) {
       final user = userModel.user;
@@ -69,6 +69,7 @@ class ProfilePageState extends State<ProfilePage>
           : Container(
               color: kWhite,
               child: ListView(
+                controller: widget.appScrollController,
                 children: <Widget>[
                   GestureDetector(
                     onTap: () => Navigator.push(
@@ -99,16 +100,16 @@ class ProfilePageState extends State<ProfilePage>
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Text(
-                              b.FirebaseAuth.instance.currentUser.displayName ??
-                                  ' ',
+                              user.fullName ?? ' ',
                               overflow: TextOverflow.ellipsis,
                               style: textTheme.headline3,
                               softWrap: true,
                             ),
                             // TODO(parker): age and skin type
-                            Text(
-                                '${DateTime.now().year - user.birthYear} years old / ${user.skinType}',
-                                style: textTheme.caption2),
+                            if (user.birthYear != null)
+                              Text(
+                                  '${DateTime.now().year - user.birthYear} years old / ${user.skinType}',
+                                  style: textTheme.caption2),
                             Container(height: 15),
                             GestureDetector(
                               onTap: () => Navigator.push(

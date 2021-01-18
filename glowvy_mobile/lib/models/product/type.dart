@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'type.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Type {
   String id;
   String name;

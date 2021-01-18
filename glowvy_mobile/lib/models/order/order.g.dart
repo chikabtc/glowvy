@@ -36,6 +36,7 @@ Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
       'user_id': instance.userId,
       'address_id': instance.addressId,
       'date_created': instance.dateCreated,
-      'order_items': instance.orderItems,
-      'applied_coupons': instance.appliedCoupons,
+      'order_items': instance.orderItems?.map((e) => e?.toJson())?.toList(),
+      'applied_coupons':
+          instance.appliedCoupons?.map((e) => e?.toJson())?.toList(),
     };

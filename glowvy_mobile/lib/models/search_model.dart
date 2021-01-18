@@ -2,6 +2,8 @@ import 'dart:convert' as convert;
 
 import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/product/brand.dart';
+import 'package:Dimodo/models/product/product.dart';
+import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/brand_card_list.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart' as b;
@@ -9,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class SearchModel extends ChangeNotifier {
-  FirebaseFirestore db = FirebaseFirestore.instance;
+  FirebaseFirestore _db = FirebaseFirestore.instance;
   b.User firebaseUser = b.FirebaseAuth.instance.currentUser;
 
   bool _isLoading = false;
@@ -27,6 +29,14 @@ class SearchModel extends ChangeNotifier {
   List<Category> _categorySuggestion = [];
   List<Category> get categorySuggestion => _categorySuggestion;
 
+  List<String> queryHistory = [];
+  List<String> _recentQuerySuggestions = [];
+  List<String> get recentQuerySuggestions => _recentQuerySuggestions;
+
+  List<Product> recentSearchItems = [];
+  List<Product> _itemSuggestion = [];
+  List<Product> get itemSuggestion => _itemSuggestion;
+
   String _query = '';
   String get query => _query;
 
@@ -43,25 +53,41 @@ class SearchModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future setLocalCategories() async {
-    print('Try to get localCate!');
+  void setSerchHistory(UserModel userModel) {
     try {
-      const categoryPath = 'lib/common/categories.json';
-      final categoryJsonString = await rootBundle.loadString(categoryPath);
-      final cateJson = convert.jsonDecode(categoryJsonString);
-      // var localCates = <Category>[];
+      queryHistory = userModel.user.recentSearchQueries ?? [];
+      recentSearchItems = userModel.user.recentSearchItems ?? [];
+      if (recentSearchItems.isNotEmpty) {
+        recentSearchItems.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+      }
+      notifyListeners();
+    } catch (err) {
+      'There is an issue with the app during request the data, please contact admin for fixing the issues ' +
+          err.toString();
 
-      // for (final cate in addressJson) {
-      //   final category = Category.fromJson(cate);
-      //   // category.subCategories = cates;
+      print('error: $err');
+      notifyListeners();
+    }
+  }
 
-      //   localCates.add(category);
-      // }
+  Future setCategories() async {
+    try {
+      var snap = await FirebaseFirestore.instance
+          .collection('categories')
+          .orderBy('id', descending: false)
+          .get();
+
+      var allCategories = <Category>[];
+      snap.docs.forEach((element) {
+        allCategories.add(Category.fromJson(element.data()));
+      });
+
       categories
-        ..add(Category.fromJson(cateJson[0]))
-        ..add(Category.fromJson(cateJson[6]))
-        ..add(Category.fromJson(cateJson[7]))
-        ..add(Category.fromJson(cateJson[8]));
+        ..add(allCategories[0])
+        ..add(allCategories[6])
+        ..add(allCategories[7])
+        ..add(allCategories[8]);
+
       //put all categories into one array
       categories.forEach((firstCate) {
         flatCategories.add(firstCate);
@@ -139,16 +165,12 @@ class SearchModel extends ChangeNotifier {
     }
   }
 
-  // TODO(parker): search the local brands, categories, and recent quries and recently viewed products
   Future onQueryChanged(
     String query,
   ) async {
     if (query == _query) return;
 
     _query = query;
-
-    _isLoading = true;
-    notifyListeners();
 
     //if the query is empty, show the recently viewed items
     if (query.isEmpty) {
@@ -165,9 +187,128 @@ class SearchModel extends ChangeNotifier {
           .where((category) =>
               category.name.toLowerCase().startsWith(query.toLowerCase()))
           .toList();
+      _recentQuerySuggestions = queryHistory
+          .where((recentQuery) =>
+              recentQuery.toLowerCase().startsWith(query.toLowerCase()))
+          .toList();
     }
 
-    _isLoading = false;
     notifyListeners();
   }
+
+  Future onQuerySubmitted(String query) async {
+    try {
+      await _db.collection('users').doc(firebaseUser.uid).update({
+        'recent_search_queries': FieldValue.arrayUnion([query])
+      });
+      _recentQuerySuggestions.add(query);
+
+      notifyListeners();
+      return;
+    } catch (e) {
+      throw 'onQuerySubmitted e: $e';
+    }
+  }
+
+  Future saveRecentSearchItem(Product product) async {
+    try {
+      recentSearchItems.add(product);
+
+      print(product.toJson());
+      final json = {
+        'sid': product.sid,
+        'name': product.name,
+        'thumbnail': product.thumbnail,
+        'volume': product.volume,
+        'hazard_score': product.hazardScore,
+        'created_at': DateTime.now().millisecondsSinceEpoch,
+        'brand': product.brand.toJson(),
+        'category': product.category.toJson(),
+      };
+
+      await _db.collection('users').doc(firebaseUser.uid).update({
+        'recent_search_items': FieldValue.arrayUnion([json])
+      });
+
+      notifyListeners();
+      return;
+    } catch (e) {
+      throw 'saveRecentSearchItem e: $e';
+    }
+  }
+
+  int getSuggestionCount() {
+    var itemCount;
+    if (isSuggestionEmpty()) {
+      itemCount = 1;
+    } else {
+      itemCount = brandSuggestions.length +
+          categorySuggestion.length +
+          recentQuerySuggestions.length;
+      ;
+    }
+    return itemCount <= 5 ? itemCount : 5;
+  }
+
+  String getSuggestion(index, query) {
+    var suggestion = '';
+    if (isSuggestionEmpty()) {
+      suggestion = query;
+    } else if (index < _recentQuerySuggestions.length) {
+      suggestion = _recentQuerySuggestions[index];
+    } else if (index <
+        _categorySuggestion.length + _recentQuerySuggestions.length) {
+      suggestion =
+          categorySuggestion[index - _recentQuerySuggestions.length].name;
+    } else {
+      suggestion = _brandSuggestions[index -
+              _recentQuerySuggestions.length -
+              _categorySuggestion.length]
+          .name;
+    }
+    return suggestion;
+  }
 }
+
+// Future setCategories() async {
+//   print('Try to get localCate!');
+//   try {
+//     const categoryPath = 'lib/common/categories.json';
+//     final categoryJsonString = await rootBundle.loadString(categoryPath);
+//     final cateJson = convert.jsonDecode(categoryJsonString);
+//     // var localCates = <Category>[];
+
+//     // for (final cate in addressJson) {
+//     //   final category = Category.fromJson(cate);
+//     //   // category.subCategories = cates;
+
+//     //   localCates.add(category);
+//     // }
+//     categories
+//       ..add(Category.fromJson(cateJson[0]))
+//       ..add(Category.fromJson(cateJson[6]))
+//       ..add(Category.fromJson(cateJson[7]))
+//       ..add(Category.fromJson(cateJson[8]));
+//     //put all categories into one array
+//     categories.forEach((firstCate) {
+//       flatCategories.add(firstCate);
+
+//       firstCate.subCategories.forEach((secondCate) {
+//         flatCategories.add(secondCate);
+
+//         secondCate.subCategories.forEach((thirdCate) {
+//           flatCategories.add(thirdCate);
+//         });
+//       });
+//     });
+//     print('length cflt: ${flatCategories.length}');
+
+//     notifyListeners();
+//   } catch (err) {
+//     'There is an issue with the app during request the data, please contact admin for fixing the issues ' +
+//         err.toString();
+
+//     print('error: $err');
+//     notifyListeners();
+//   }
+// }

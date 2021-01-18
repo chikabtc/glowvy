@@ -32,6 +32,7 @@ class HexColor extends Color {
 }
 
 class Tools {
+  // get level of category
   static String getUserAgeGroup(int birthYear) {
     if (birthYear != null) {
       final userAge = DateTime.now().year - birthYear;

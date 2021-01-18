@@ -4,7 +4,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'category.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Category {
   String koName;
   String enName;
@@ -13,13 +13,14 @@ class Category {
   String image;
   int id;
   int level;
-  int grandTotalCount;
+  double grandTotalCount;
 
   Category(
       {this.koName,
       this.enName,
       this.name,
       this.subCategories,
+      this.grandTotalCount,
       this.image,
       this.id,
       this.level});

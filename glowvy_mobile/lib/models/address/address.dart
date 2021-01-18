@@ -7,7 +7,7 @@ import 'ward.dart';
 
 part 'address.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Address {
   Address({
     this.recipientName,

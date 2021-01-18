@@ -190,8 +190,7 @@ class _StateReviews extends State<ReviewsScreen>
                           if (initialPage == null)
                             Container(
                               height: kScreenSizeHeight * 0.7,
-                              child: const SpinKitThreeBounce(
-                                  color: kPinkAccent, size: 23.0),
+                              child: kIndicator(),
                             ),
                           if (initialPage.itemList.isNotEmpty)
                             ReviewImages(widget.product),

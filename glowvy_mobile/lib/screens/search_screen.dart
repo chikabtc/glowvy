@@ -6,6 +6,8 @@ import 'package:Dimodo/models/product/brand.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/product_model.dart';
 import 'package:Dimodo/models/search_model.dart';
+import 'package:Dimodo/models/user/userModel.dart';
+import 'package:Dimodo/packages/floating_search_bar/material_floating_search_bar.dart';
 import 'package:Dimodo/widgets/brand_card_list.dart';
 import 'package:Dimodo/widgets/categories/CategoryButton.dart';
 import 'package:Dimodo/widgets/product/list_page.dart';
@@ -16,10 +18,13 @@ import 'package:Dimodo/widgets/second_category_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:material_floating_search_bar/material_floating_search_bar.dart';
+// import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:provider/provider.dart';
 
 class SearchScreen extends StatefulWidget {
+  final ScrollController appScrollController;
+  SearchScreen({this.appScrollController});
+
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
@@ -38,6 +43,7 @@ class _SearchScreenState extends State<SearchScreen>
   bool showResults = false;
   bool isBrandSearch = false;
   bool isAlgoliaSearch = false;
+  bool isCategorySearch = false;
 
   final searchController = FloatingSearchBarController();
   final _scrollController = ScrollController();
@@ -79,6 +85,20 @@ class _SearchScreenState extends State<SearchScreen>
         isBrandSearch = true;
         pickedBrand = brand;
         searchModel.searchBrands(searchController.query);
+        showResults = true;
+      });
+    }
+
+    void searchByCategory(Category category) {
+      FocusScope.of(context).unfocus();
+      searchController.query = category.name;
+
+      setState(() {
+        productModel.clearPaginationHistory();
+        isAlgoliaSearch = false;
+        isBrandSearch = false;
+        isCategorySearch = true;
+        pickedCategory = category;
         showResults = true;
       });
     }
@@ -148,7 +168,7 @@ class _SearchScreenState extends State<SearchScreen>
         brandWidget =
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const SizedBox(height: 15),
-          Text('${searchModel.filtedBrands.length} brand',
+          Text('${searchModel.filtedBrands.length ?? 0} brand',
               style: textTheme.bodyText1),
           const SizedBox(height: 5),
           kFullSectionDivider,
@@ -167,42 +187,57 @@ class _SearchScreenState extends State<SearchScreen>
       //algolia result
       if (isAlgoliaSearch) {
         return FutureBuilder<ListPage<Product>>(
-          future: getProducts,
-          builder: (BuildContext context,
-              AsyncSnapshot<ListPage<Product>> snapshot) {
-            if (snapshot.hasData) {
-              final listPage = snapshot.data;
-              return Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      brandWidget,
-                      if (snapshot.data != null)
-                        Text('${listPage.grandTotalCount} results',
-                            style: textTheme.bodyText1),
-                      if (snapshot.data != null)
-                        Padding(
-                          padding: const EdgeInsets.only(top: 5.0),
-                          child: kFullSectionDivider,
-                        ),
-                      ProductsListView(
-                        products: snapshot.data.itemList,
-                      )
-                    ]),
-              );
-            } else {
-              return Container();
-            }
-          },
-        );
+            future: getProducts,
+            builder: (BuildContext context,
+                AsyncSnapshot<ListPage<Product>> snapshot) {
+              if (snapshot.hasData) {
+                final listPage = snapshot.data;
+                return CupertinoScrollbar(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: NestedScrollView(
+                        controller: widget.appScrollController,
+                        headerSliverBuilder:
+                            (BuildContext context, bool innerBoxIsScrolled) {
+                          return <Widget>[
+                            SliverToBoxAdapter(
+                                child: Container(
+                              color: Colors.white,
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    brandWidget,
+                                    Text(
+                                        '${snapshot.data.itemList.length ?? 0} results',
+                                        style: textTheme.bodyText1),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    kFullSectionDivider,
+                                  ],
+                                ),
+                              ),
+                            )),
+                          ];
+                        },
+                        body: ProductsListView(
+                          products: snapshot.data.itemList,
+                          disableScrolling: true,
+                        )),
+                  ),
+                );
+              } else {
+                return Container();
+              }
+            });
       } else if (isBrandSearch) {
-        return Scrollbar(
+        return CupertinoScrollbar(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: NestedScrollView(
-              controller: _innerScrollController,
+              controller: widget.appScrollController,
               headerSliverBuilder:
                   (BuildContext context, bool innerBoxIsScrolled) {
                 return <Widget>[
@@ -215,7 +250,7 @@ class _SearchScreenState extends State<SearchScreen>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           brandWidget,
-                          Text('${pickedBrand.grandTotalCount} results',
+                          Text('${pickedBrand.grandTotalCount ?? 0} results',
                               style: textTheme.bodyText1),
                           const SizedBox(
                             height: 5,
@@ -230,6 +265,45 @@ class _SearchScreenState extends State<SearchScreen>
               body: PaginatedProductListView(
                 brand: pickedBrand,
                 disableSrolling: true,
+                onProductTap: searchModel.saveRecentSearchItem,
+              ),
+            ),
+          ),
+        );
+      } else if (isCategorySearch) {
+        return CupertinoScrollbar(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: NestedScrollView(
+              controller: widget.appScrollController,
+              headerSliverBuilder:
+                  (BuildContext context, bool innerBoxIsScrolled) {
+                return <Widget>[
+                  SliverToBoxAdapter(
+                      child: Container(
+                    color: Colors.white,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          brandWidget,
+                          Text(
+                              '${pickedCategory.grandTotalCount.toInt() ?? 0} results',
+                              style: textTheme.bodyText1),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          kFullSectionDivider,
+                        ],
+                      ),
+                    ),
+                  )),
+                ];
+              },
+              body: PaginatedProductListView(
+                category: pickedCategory,
+                disableSrolling: true,
               ),
             ),
           ),
@@ -237,69 +311,92 @@ class _SearchScreenState extends State<SearchScreen>
       }
     }
 
-    Widget showAutoComplete(SearchModel model) {
+    Widget showRecentSearchItems(SearchModel model) {
+      return CupertinoScrollbar(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: NestedScrollView(
+              controller: widget.appScrollController,
+              headerSliverBuilder:
+                  (BuildContext context, bool innerBoxIsScrolled) {
+                return <Widget>[
+                  SliverToBoxAdapter(
+                      child: Container(
+                    color: Colors.white,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 15),
+                          if (model.recentSearchItems.isNotEmpty)
+                            Text('Recently Searched',
+                                style: textTheme.bodyText1),
+                          const SizedBox(height: 5),
+                          kFullSectionDivider,
+                          const SizedBox(height: 5),
+                        ],
+                      ),
+                    ),
+                  )),
+                ];
+              },
+              body: model.recentSearchItems.isNotEmpty
+                  ? ProductsListView(
+                      products: model.recentSearchItems,
+                      isRecentSearchItem: true,
+                      // isFromReviewSearch: true,
+                    )
+                  : Container()),
+        ),
+      );
+    }
+
+    Widget showSuggestions(SearchModel model) {
       const maxSuggestionCount = 5;
-
-      var itemCount;
-      if (model.isSuggestionEmpty()) {
-        itemCount = 1;
-      } else {
-        itemCount =
-            model.brandSuggestions.length + model.categorySuggestion.length;
-      }
-
       //local auto completes
       ///show only 5 suggestions at most
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: SingleChildScrollView(
-          physics: const NeverScrollableScrollPhysics(),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              const SizedBox(height: 8),
-              ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  //if no suggestions are found, show the current query in the
-                  //suggestion
-                  itemCount: itemCount,
-                  itemBuilder: (context, index) {
-                    final isBrandSuggestion =
-                        model.brandSuggestions.isNotEmpty &&
-                            index < model.brandSuggestions.length;
-                    final isCategorySuggestion =
-                        model.categorySuggestion.isNotEmpty &&
-                            index <
-                                model.categorySuggestion.length +
-                                    model.brandSuggestions.length;
-                    var suggestion = '';
-                    if (isBrandSuggestion) {
-                      suggestion = model.brandSuggestions[index].name;
-                    } else if (isCategorySuggestion) {
-                      suggestion = model
-                          .categorySuggestion[
-                              index - model.brandSuggestions.length]
-                          .name;
-                    } else if (model.isSuggestionEmpty()) {
-                      suggestion = searchController.query;
-                    }
-                    return Container(
-                        padding: const EdgeInsets.only(
-                            left: 0, right: 0, top: 8, bottom: 8),
-                        child: GestureDetector(
-                          onTap: () {
-                            if (isBrandSuggestion) {
-                              searchByBrand(model.brandSuggestions[index]);
-                              //search by brand products same as in brand home
-                            } else if (isCategorySuggestion) {
-                              //search by category same as in category page
-
-                            } else if (model.isSuggestionEmpty()) {
-                              // TODO(parker): algolia keyword search
-                              searchAlgolia();
-                            }
-                          },
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            const SizedBox(height: 8),
+            ListView.builder(
+                keyboardDismissBehavior:
+                    ScrollViewKeyboardDismissBehavior.onDrag,
+                shrinkWrap: true,
+                //if no suggestions are found, show the current query in the
+                //suggestion
+                itemCount: searchModel.getSuggestionCount(),
+                itemBuilder: (context, index) {
+                  return Container(
+                      padding: const EdgeInsets.only(
+                          left: 0, right: 0, top: 8, bottom: 8),
+                      child: GestureDetector(
+                        onTap: () {
+                          //search by brand products same as in brand home
+                          if (model.isSuggestionEmpty()) {
+                            searchAlgolia();
+                          } else if (index <
+                              model.recentQuerySuggestions.length) {
+                            searchController.query = searchModel.getSuggestion(
+                                index, searchController.query);
+                            searchAlgolia();
+                          } else if (index <
+                              model.categorySuggestion.length +
+                                  model.recentQuerySuggestions.length) {
+                            searchByCategory(model.categorySuggestion[
+                                index - model.recentQuerySuggestions.length]);
+                          } else {
+                            searchByBrand(model.brandSuggestions[index -
+                                model.recentQuerySuggestions.length -
+                                model.categorySuggestion.length]);
+                          }
+                        },
+                        child: Container(
+                          width: kScreenSizeWidth,
+                          color: Colors.transparent,
                           child: Column(
                             children: [
                               Row(
@@ -313,7 +410,9 @@ class _SearchScreenState extends State<SearchScreen>
                                     overflow: TextOverflow.ellipsis,
                                     text: TextSpan(
                                       children: Tools.highlightOccurrences(
-                                          suggestion, searchController.query),
+                                          searchModel.getSuggestion(
+                                              index, searchController.query),
+                                          searchController.query),
                                       style: textTheme.bodyText1
                                           .copyWith(fontSize: 13),
                                     ),
@@ -324,10 +423,10 @@ class _SearchScreenState extends State<SearchScreen>
                               kFullDivider
                             ],
                           ),
-                        ));
-                  }),
-            ],
-          ),
+                        ),
+                      ));
+                }),
+          ],
         ),
       );
     }
@@ -393,17 +492,19 @@ class _SearchScreenState extends State<SearchScreen>
                                 curve: Curves.easeIn);
                           }
                         },
+                        hint: 'search',
                         elevation: 0,
                         scrollController: _scrollController,
-                        borderRadius: BorderRadius.circular(12),
-                        backgroundColor: kQuaternaryGrey,
-                        automaticallyImplyBackButton: true,
+                        borderRadius: BorderRadius.circular(10),
+                        backgroundColor: kSearchBarColor,
+                        automaticallyImplyBackButton: false,
                         controller: searchController,
                         clearQueryOnClose: true,
                         accentColor: kPrimaryOrange,
-                        queryStyle: textTheme.headline5,
-                        hintStyle:
-                            textTheme.headline5.copyWith(color: kSecondaryGrey),
+                        queryStyle: textTheme.headline5
+                            .copyWith(fontSize: 17, height: 1.2),
+                        hintStyle: textTheme.headline5.copyWith(
+                            color: kSecondaryGrey, fontSize: 17, height: 1.2),
                         iconColor: Colors.grey,
                         scrollPadding: EdgeInsets.zero,
                         padding: EdgeInsets.zero,
@@ -418,55 +519,60 @@ class _SearchScreenState extends State<SearchScreen>
                         backdropColor: kWhite,
                         isScrollControlled: true,
                         leadingActions: [
-                          if (isFocused)
-                            FloatingSearchBarAction(
-                              showIfOpened: true,
-                              showIfClosed: false,
-                              builder: (context, animation) {
-                                final bar = FloatingSearchAppBar.of(context);
+                          // FloatingSearchBarAction.hamburgerToBack(),
 
-                                return ValueListenableBuilder<String>(
-                                  valueListenable: bar.queryNotifer,
-                                  builder: (context, query, _) {
-                                    final canPop = Navigator.canPop(context);
-
-                                    return IconButton(
-                                      tooltip: 'Back',
-                                      padding: EdgeInsets.zero,
-                                      icon: const Icon(
-                                        Icons.arrow_back,
-                                        size: 24,
-                                      ),
-                                      onPressed: () {
+                          FloatingSearchBarAction(
+                            showIfOpened: true,
+                            showIfClosed: true,
+                            builder: (context, animation) {
+                              final bar = FloatingSearchAppBar.of(context);
+                              return ValueListenableBuilder<String>(
+                                valueListenable: bar.queryNotifer,
+                                builder: (context, query, _) {
+                                  final canPop = Navigator.canPop(context);
+                                  // return Container();
+                                  return GestureDetector(
+                                    onTap: () {
+                                      if (isFocused) {
                                         final bar =
                                             FloatingSearchAppBar.of(context);
+                                        setState(() {
+                                          showResults = false;
+                                        });
 
                                         if (bar.isOpen && !bar.isAlwaysOpened) {
                                           bar.close();
                                           model.clear();
                                           productModel.clearPaginationHistory();
                                         } else if (canPop) {
-                                          setState(() {
-                                            showResults = false;
-                                          });
-
                                           Navigator.pop(context);
                                         }
-                                      },
-                                    );
-                                  },
-                                );
-                              },
-                            )
-                          else
-                            FloatingSearchBarAction.icon(
-                              icon: SvgPicture.asset(
-                                'assets/icons/search.svg',
-                                color: Colors.grey,
-                              ),
-                              onTap: () {},
-                              showIfOpened: true,
-                            ),
+                                      }
+                                    },
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                          left: 5.0,
+                                          right: 8,
+                                          bottom: isFocused ? 0 : 1),
+                                      child: Container(
+                                        height: 24,
+                                        width: 24,
+                                        child: isFocused
+                                            ? Icon(
+                                                Icons.arrow_back,
+                                                color: kSecondaryGrey,
+                                                size: 24,
+                                              )
+                                            : SvgPicture.asset(
+                                                'assets/icons/search.svg',
+                                                color: kSecondaryGrey),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          )
                         ],
                         actions: [
                           if (searchController?.query?.isNotEmpty ?? false)
@@ -480,16 +586,20 @@ class _SearchScreenState extends State<SearchScreen>
                                   valueListenable: bar.queryNotifer,
                                   builder: (context, query, _) {
                                     return IconButton(
-                                      tooltip: 'Back',
+                                      tooltip: 'cancel',
+                                      padding: EdgeInsets.zero,
                                       icon: const Icon(
                                         Icons.cancel,
-                                        size: 18,
+                                        size: 20,
                                       ),
                                       onPressed: () {
                                         final bar =
                                             FloatingSearchAppBar.of(context);
                                         bar.clear();
                                         model.clear();
+                                        setState(() {
+                                          showResults = false;
+                                        });
                                         setState(() {});
                                       },
                                     );
@@ -500,27 +610,29 @@ class _SearchScreenState extends State<SearchScreen>
                         ],
                         debounceDelay: const Duration(milliseconds: 100),
                         onQueryChanged: (query) {
-                          //hasFocus tells us whether user is viewing the
-                          //search result
                           if (FocusScope.of(context).hasFocus) {
                             setState(() {
-                              //hide search result if the user is typing
                               showResults = false;
                             });
                           }
                           model.onQueryChanged(query);
                         },
-                        onSubmitted: (value) => searchAlgolia(),
+                        onSubmitted: (value) {
+                          if (Provider.of<UserModel>(context, listen: false)
+                              .isLoggedIn) {
+                            searchModel.onQuerySubmitted(value);
+                          }
+                          searchAlgolia();
+                        },
                         transition: SlideFadeFloatingSearchBarTransition(),
                         builder: (context, _) {
-                          // print('show result: ${showResults}');
                           if (showResults) {
                             return buildSearchResult();
                           } else if (searchController?.query?.isNotEmpty ??
                               false) {
-                            return showAutoComplete(model);
+                            return showSuggestions(model);
                           } else {
-                            return Container();
+                            return showRecentSearchItems(model);
                           }
                         },
                         body: buildCategoryPage(),

@@ -1,7 +1,9 @@
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/models/user/userModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../common/colors.dart';
 import '../../common/styles.dart';
@@ -13,39 +15,42 @@ class ProductCard extends StatelessWidget {
   const ProductCard({
     this.product,
     this.ranking,
-    this.size = kSize.medium,
-    this.isHero = false,
-    this.showHeart = false,
     this.showDivider = true,
+    this.onTap,
     this.showFullDivider = false,
-    this.hideDetail = false,
-    this.isNameAvailable = false,
   });
+
   final Product product;
-  final kSize size;
-  final bool isHero;
   final bool showDivider;
   final bool showFullDivider;
-  final bool showHeart;
-  final bool hideDetail;
   final int ranking;
-  final bool isNameAvailable;
+  final Function onTap;
 
   @override
   Widget build(BuildContext context) {
     // print('product sid ${product.sid}');
     return Container(
-      height: 112.7,
       color: Colors.white,
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: GestureDetector(
-        onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ProductDetailPage(
-                product: product,
-                rank: ranking,
-              ),
-            )),
+        onTap: () {
+          if (onTap != null) {
+            final loggedin =
+                Provider.of<UserModel>(context, listen: false).isLoggedIn;
+            if (loggedin) {
+              print('saving search history');
+              onTap(product);
+            }
+          }
+          Navigator.push(
+              context,
+              CupertinoPageRoute(
+                builder: (context) => ProductDetailPage(
+                  product: product,
+                  rank: ranking,
+                ),
+              ));
+        },
         child: Column(
           children: [
             Row(
@@ -58,10 +63,8 @@ class ProductCard extends StatelessWidget {
                     if (ranking >= 3 && ranking <= 5)
                       SvgPicture.asset('assets/icons/yellow-flower.svg'),
                     if (ranking > 5)
-                      SvgPicture.asset(
-                        'assets/icons/yellow-flower.svg',
-                        color: Colors.transparent,
-                      ),
+                      SvgPicture.asset('assets/icons/yellow-flower.svg',
+                          color: Colors.transparent),
                     if (ranking < 99)
                       Positioned(
                           top: 1,
@@ -78,11 +81,11 @@ class ProductCard extends StatelessWidget {
                               (ranking + 1).toString(),
                               textAlign: TextAlign.center,
                               style: kBaseTextStyle.copyWith(
-                                height: 1,
-                                fontSize: 9,
-                                color: ranking < 3 ? Colors.white : kDarkYellow,
-                                fontWeight: FontWeight.w800,
-                              ),
+                                  height: 1,
+                                  fontSize: 9,
+                                  color:
+                                      ranking < 3 ? Colors.white : kDarkYellow,
+                                  fontWeight: FontWeight.w800),
                             ),
                           )),
                   ]),
@@ -102,7 +105,6 @@ class ProductCard extends StatelessWidget {
                 const SizedBox(width: 15),
                 Flexible(
                   child: Container(
-                    height: 112,
                     color: Colors.white,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,

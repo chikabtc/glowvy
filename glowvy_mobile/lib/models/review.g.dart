@@ -30,8 +30,8 @@ Map<String, dynamic> _$ReviewToJson(Review instance) => <String, dynamic>{
       'scontent': instance.scontent,
       'rating': instance.rating,
       'images': instance.images,
-      'user': instance.user,
+      'user': instance.user?.toJson(),
       'created_at': instance.createdAt,
-      'product': instance.product,
+      'product': instance.product?.toJson(),
       'like_count': instance.likeCount,
     };

@@ -30,7 +30,7 @@ class _SecondCategoryButtonState extends State<SecondCategoryButton>
           child: Center(
             child: Row(
               children: [
-                Text(widget.category.name,
+                Text(widget.category.name ?? 'ds',
                     textAlign: TextAlign.left,
                     style: textTheme.headline5.copyWith(fontSize: 16)),
                 const Spacer(),

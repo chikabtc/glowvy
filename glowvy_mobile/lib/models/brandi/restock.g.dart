@@ -8,12 +8,12 @@ part of 'restock.dart';
 
 Restock _$RestockFromJson(Map<String, dynamic> json) {
   return Restock(
-    json['isManaged'] as bool,
-    json['isRequested'] as bool,
+    json['is_managed'] as bool,
+    json['is_requested'] as bool,
   );
 }
 
 Map<String, dynamic> _$RestockToJson(Restock instance) => <String, dynamic>{
-      'isManaged': instance.isManaged,
-      'isRequested': instance.isRequested,
+      'is_managed': instance.isManaged,
+      'is_requested': instance.isRequested,
     };

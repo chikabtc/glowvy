@@ -30,13 +30,14 @@ class TextController extends TextEditingController {
 
     value = value.copyWith(
       text: newText,
-      selection: TextSelection.collapsed(),
+      selection: TextSelection.collapsed(offset: offset),
       composing: TextRange.empty,
     );
   }
 
   /// Moves the Cursor to the end of the current text.
-  void moveCursorToEnd() => selection = TextSelection.collapsed();
+  void moveCursorToEnd() =>
+      selection = TextSelection.collapsed(offset: text.length);
 
   /// Request focus for the [FocusNode] wrapped by this
   /// [TextController].

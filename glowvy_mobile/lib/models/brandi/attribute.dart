@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'attribute.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class OptionAttribute {
   String title;
   String value;

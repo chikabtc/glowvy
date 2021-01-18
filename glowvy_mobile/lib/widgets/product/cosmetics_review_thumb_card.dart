@@ -71,9 +71,6 @@ class CosmeticsReviewThumbCard extends StatelessWidget {
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                               style: textTheme.caption2),
-
-                          // const SizedBox(height: 9),
-
                           // // const SizedBox(height: 5),
                         ],
                       ),

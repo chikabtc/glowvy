@@ -342,21 +342,20 @@ class ProductModel with ChangeNotifier {
     }
   }
 
-  Future<ListPage<Product>> getProductsByCategory(
-      {Category firstCategory,
-      Category thirdCategory,
-      Category secondCategory,
-      orderBy = 'review_metas.all.average_rating'}) async {
-    var categoryId = thirdCategory?.id;
-    var categoryField = 'third_category_id';
-    if (firstCategory != null) {
+  Future<ListPage<Product>> getProductsByCategory(Category category,
+      {orderBy = 'review_metas.all.average_rating'}) async {
+    // ignore: prefer_typing_uninitialized_variables
+    var categoryField;
+
+    if (category.level == 0) {
       categoryField = 'first_category_id';
-      categoryId = firstCategory.id;
-    } else if (secondCategory != null) {
+    } else if (category.level == 1) {
       categoryField = 'second_category_id';
-      categoryId = secondCategory.id;
+    } else if (category.level == 2) {
+      categoryField = 'third_category_id';
     }
-    print('getProductsByCategoryId: $categoryId');
+
+    print('getProductsByCategoryId: ${category.id}');
 
     try {
       var listPage = ListPage(grandTotalCount: 0, itemList: <Product>[]);
@@ -370,7 +369,7 @@ class ProductModel with ChangeNotifier {
             'firestore category pagination last product cate id: ${product.sid}');
         productSnapshot = await FirebaseFirestore.instance
             .collection('products')
-            .where('category.$categoryField', isEqualTo: categoryId)
+            .where('category.$categoryField', isEqualTo: category.id)
             .startAfterDocument(pagesInfo.lastCategoryProductSnap)
             .limit(15)
             .get();
@@ -378,7 +377,7 @@ class ProductModel with ChangeNotifier {
         print('no firestore category pagination data');
         productSnapshot = await FirebaseFirestore.instance
             .collection('products')
-            .where('category.$categoryField', isEqualTo: categoryId)
+            .where('category.$categoryField', isEqualTo: category.id)
             .limit(15)
             .get();
       }
@@ -442,76 +441,6 @@ class ProductModel with ChangeNotifier {
       {bool isNameAvailable}) {
     print('show subcate');
     print('cate id: ${category.firstCategoryName}');
-
-    // for fetching beforehand
-
-    // Navigator.push(
-    //     context,
-    //     CupertinoPageRoute(
-    //         builder: (context) => SubCategoryScreen(category: category)));
-  }
-
-  Widget showProductList(
-      {future,
-      showFiler = false,
-      showRank = false,
-      disableScroll = false,
-      isFromReviewPage = false,
-      showPadding = true,
-      Function onLoadMore,
-      sortBy}) {
-    return FutureBuilder<ListPage<Product>>(
-      future: future,
-      builder:
-          (BuildContext context, AsyncSnapshot<ListPage<Product>> snapshot) {
-        if (snapshot.hasData) {
-          products = snapshot.data.itemList;
-
-          return ProductsListView(
-            products: snapshot.data.itemList,
-            onLoadMore: onLoadMore,
-            showFilter: showFiler,
-            isFromReviewSearch: isFromReviewPage,
-            disableScrolling: true,
-            showRank: showRank,
-            showPadding: showPadding ?? false,
-          );
-        } else {
-          return const Center(
-              child: SpinKitThreeBounce(color: kPrimaryOrange, size: 21.0));
-        }
-      },
-    );
-  }
-
-  Widget showPaginatedProductList(
-      {future,
-      showFiler = false,
-      showRank = false,
-      isFromReviewPage = false,
-      showPadding = true,
-      fetchProducts,
-      sortBy}) {
-    return FutureBuilder<ListPage<Product>>(
-      future: future,
-      builder:
-          (BuildContext context, AsyncSnapshot<ListPage<Product>> snapshot) {
-        if (snapshot.hasData) {
-          products = snapshot.data.itemList;
-          // print(
-          //     'showPaginatedProductList product length: ${products?.first.sid}');
-          return PaginatedProductListView(
-            initialPage: snapshot.data,
-            fetchProducts: fetchProducts,
-            isFromReviewSearch: isFromReviewPage,
-            showRank: showRank,
-            showPadding: showPadding,
-          );
-        } else {
-          return Container();
-        }
-      },
-    );
   }
 
   Widget showGeneartingProductList() {

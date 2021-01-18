@@ -22,6 +22,6 @@ Map<String, dynamic> _$OrderItemToJson(OrderItem instance) => <String, dynamic>{
       'option': instance.option,
       'option_id': instance.optionId,
       'quantity': instance.quantity,
-      'product': instance.product,
+      'product': instance.product?.toJson(),
       'order_id': instance.orderId,
     };

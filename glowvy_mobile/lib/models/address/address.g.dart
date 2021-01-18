@@ -30,8 +30,8 @@ Map<String, dynamic> _$AddressToJson(Address instance) => <String, dynamic>{
       'recipient_name': instance.recipientName,
       'street': instance.street,
       'phone_number': instance.phoneNumber,
-      'ward': instance.ward,
-      'district': instance.district,
-      'province': instance.province,
+      'ward': instance.ward?.toJson(),
+      'district': instance.district?.toJson(),
+      'province': instance.province?.toJson(),
       'is_default': instance.isDefault,
     };

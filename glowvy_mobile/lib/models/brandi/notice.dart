@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'restock.dart';
 part 'notice.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Notice {
   Restock restock;
 

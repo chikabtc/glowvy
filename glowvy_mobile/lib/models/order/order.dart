@@ -6,7 +6,7 @@ import 'cartItem.dart';
 
 part 'order.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Order {
   int orderId;
   bool isPaid;

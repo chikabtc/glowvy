@@ -18,5 +18,5 @@ SizeDetail _$SizeDetailFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$SizeDetailToJson(SizeDetail instance) =>
     <String, dynamic>{
-      'attributes': instance.attributes,
+      'attributes': instance.attributes?.map((e) => e?.toJson())?.toList(),
     };

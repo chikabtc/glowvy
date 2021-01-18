@@ -12,6 +12,7 @@ import 'package:Dimodo/screens/setting/verify_email.dart';
 import 'package:after_layout/after_layout.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_analytics/observer.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -46,7 +47,7 @@ class _AppState extends State<Glowvy> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     final analytics = FirebaseAnalytics();
 
-    return MaterialApp(
+    return CupertinoApp(
         title: 'Glowvy',
         debugShowCheckedModeBanner: false,
         navigatorObservers: [
@@ -85,7 +86,8 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
     await _userModel.initData();
     await _addressModel.setProvinces();
     await _search.setBrands();
-    await _search.setLocalCategories();
+    await _search.setCategories();
+    _search.setSerchHistory(_userModel);
     await precacheImage(
         const AssetImage('assets/icons/default-avatar.png'), context);
     isFirstSeen = await checkFirstSeen();
@@ -138,7 +140,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
 
     print('building app.dart');
     if (isChecking) {
-      return MaterialApp(
+      return CupertinoApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           body: Container(),
@@ -170,11 +172,12 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
             child: GestureDetector(
               onTap: () {
                 final currentFocus = FocusScope.of(context);
-                if (!currentFocus.hasPrimaryFocus) {
-                  currentFocus.unfocus();
-                }
+                currentFocus.unfocus();
+
+                // if (!currentFocus.hasPrimaryFocus) {
+                // }
               },
-              child: MaterialApp(
+              child: CupertinoApp(
                 debugShowCheckedModeBanner: false,
                 locale: Locale(
                     Provider.of<AppModel>(context, listen: false).locale, ''),
@@ -235,7 +238,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
                   '/reset_password': (context) => ResetPasswordScreen(),
                   '/forgot_password': (context) => ForgotPasswordScreen(),
                 },
-                theme: buildLightTheme(),
+                theme: buildiOSLightTheme(),
               ),
             ),
           );

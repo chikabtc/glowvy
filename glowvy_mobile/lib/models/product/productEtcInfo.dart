@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'productEtcInfo.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class ProductEtcInfo {
   List<ProductAttribute> attributes;
 

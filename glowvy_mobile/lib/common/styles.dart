@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'colors.dart';
@@ -72,6 +73,12 @@ ThemeData buildLightTheme() {
   );
 }
 
+CupertinoThemeData buildiOSLightTheme() {
+  final base = CupertinoThemeData();
+
+  return base;
+}
+
 TextTheme _buildTextTheme(TextTheme base) {
   return kTextTheme(base).copyWith(
       headline1: base.headline1.copyWith(
@@ -97,7 +104,7 @@ TextTheme _buildTextTheme(TextTheme base) {
           fontStyle: FontStyle.italic,
           color: kDefaultFontColor),
       headline5: base.headline5.copyWith(
-          height: 1.5,
+          height: null,
           fontSize: 15.0,
           fontWeight: FontWeight.w600,
           color: kDefaultFontColor),
@@ -156,24 +163,8 @@ extension CustomColorScheme on ColorScheme {
   Color get danger => const Color(0xFFdc3545);
 }
 
-// const ColorScheme kColorScheme = ColorScheme(
-//   primary: kTeal100,
-//   primaryVariant: kGrey900,
-//   secondary: kTeal50,
-//   secondaryVariant: kGrey900,
-//   surface: kSurfaceWhite,
-//   background: kDefaultBackground,
-//   error: kErrorRed,
-//   onPrimary: kGrey900,
-//   onSecondary: kGrey900,
-//   onSurface: kGrey900,
-//   onBackground: kGrey900,
-//   onError: kSurfaceWhite,
-//   brightness: Brightness.light,
-// );
-
 var kBaseTextStyle = TextStyle(
-  height: 1.25,
+  // height: 1.25,
   fontFamily: 'Nunito',
   color: kDarkBG,
   fontSize: 15.0,

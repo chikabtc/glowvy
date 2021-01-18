@@ -18,17 +18,39 @@ import 'package:Dimodo/widgets/personalized_survey.dart';
 import 'package:Dimodo/widgets/product/products_list_view.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
 
+class CustomAppBar extends PreferredSize {
+  final Widget child;
+  final double height;
+
+  CustomAppBar({@required this.child, this.height = kToolbarHeight});
+
+  @override
+  Size get preferredSize => Size.fromHeight(height);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: preferredSize.height,
+      color: Colors.orange,
+      alignment: Alignment.center,
+      child: child,
+    );
+  }
+}
+
 class HomeScreen extends StatefulWidget {
   final User user;
   final VoidCallback onLogout;
+  final ScrollController appScrollController;
 
-  const HomeScreen({this.user, this.onLogout});
+  HomeScreen({this.user, this.onLogout, this.appScrollController});
 
   @override
   State<StatefulWidget> createState() {
@@ -56,6 +78,7 @@ class HomeScreenState extends State<HomeScreen>
   int skinTypeId = 0;
   Map<int, List<Product>> allProducts = {};
   List<Survey> surveys = [];
+  final _scrollController = ScrollController();
 
   bool isFiltering = false;
   final divider = const Divider(
@@ -88,10 +111,10 @@ class HomeScreenState extends State<HomeScreen>
     productModel = Provider.of<ProductModel>(context, listen: false);
 
     Future.wait([
-      productModel.getProductsByCategory(firstCategory: tabList[0]),
-      productModel.getProductsByCategory(firstCategory: tabList[1]),
-      productModel.getProductsByCategory(firstCategory: tabList[2]),
-      productModel.getProductsByCategory(firstCategory: tabList[3]),
+      productModel.getProductsByCategory(tabList[0]),
+      productModel.getProductsByCategory(tabList[1]),
+      productModel.getProductsByCategory(tabList[2]),
+      productModel.getProductsByCategory(tabList[3]),
     ]).then((responses) {
       allProducts[1] = responses.first.itemList;
       allProducts[7] = responses[1].itemList;
@@ -102,19 +125,6 @@ class HomeScreenState extends State<HomeScreen>
         isLoading = false;
       });
     });
-
-    // try {
-    //   final surveys = Provider.of<AppModel>(context, listen: false)
-    //       .appConfig['Cosmetics_Survey'];
-    //   for (var item in surveys) {
-    //     this.surveys.add(Survey.fromJson(item));
-    //   }
-    // } catch (err) {
-    //   var message =
-    //       'There is an issue with the app during request the data, please contact admin for fixing the issues ' +
-    //           err.toString();
-    //   print('error: $message');
-    // }
   }
 
   @override
@@ -150,6 +160,7 @@ class HomeScreenState extends State<HomeScreen>
             child: Container(
               color: kDefaultBackground,
               child: NestedScrollView(
+                controller: widget.appScrollController,
                 physics: const NeverScrollableScrollPhysics(),
                 headerSliverBuilder:
                     (BuildContext context, bool innerBoxIsScrolled) {
@@ -158,15 +169,29 @@ class HomeScreenState extends State<HomeScreen>
                         floating: false,
                         pinned: true,
                         elevation: 0,
+                        titleSpacing: 0,
                         leading: Container(),
                         backgroundColor: Colors.white,
                         title: AnimatedOpacity(
                           opacity: showTitle ? 1.0 : 0.0,
                           duration: const Duration(milliseconds: 100),
-                          child: Text(
-                            'Home',
-                            style: textTheme.headline3,
-                            textAlign: TextAlign.start,
+                          child: GestureDetector(
+                            onTap: () {
+                              widget.appScrollController.animateTo(
+                                0.0,
+                                curve: Curves.easeOut,
+                                duration: const Duration(milliseconds: 300),
+                              );
+                            },
+                            child: Container(
+                              // color: Colors.red,
+                              // width: double.infinity,
+                              child: Text(
+                                'Home',
+                                style: textTheme.headline3,
+                                textAlign: TextAlign.start,
+                              ),
+                            ),
                           ),
                         )),
                     SliverToBoxAdapter(
@@ -201,53 +226,59 @@ class HomeScreenState extends State<HomeScreen>
                       delegate: SliverAppBarDelegate(
                         minHeight: 60,
                         maxHeight: 60,
-                        child: Column(
-                          children: <Widget>[
-                            Expanded(
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(20),
-                                        topRight: Radius.circular(20))),
-                                padding: const EdgeInsets.only(top: 5),
-                                child: TabBar(
-                                    controller: _tabController,
-                                    indicator: const BubbleTabIndicator(
-                                      indicatorHeight: 39.0,
-                                      indicatorColor: kDarkAccent,
-                                      tabBarIndicatorSize:
-                                          TabBarIndicatorSize.tab,
-                                    ),
-                                    indicatorSize: TabBarIndicatorSize.tab,
-                                    labelPadding: const EdgeInsets.only(
-                                      left: 18.0,
-                                      right: 18.0,
-                                      top: 5,
-                                    ),
-                                    isScrollable: true,
-                                    indicatorColor: Colors.white,
-                                    unselectedLabelColor: kSecondaryGrey,
-                                    unselectedLabelStyle: textTheme.headline4
-                                        .copyWith(
-                                            color: kSecondaryGrey,
-                                            fontStyle: FontStyle.normal,
-                                            fontWeight: FontWeight.bold),
-                                    labelStyle: textTheme.headline4.copyWith(
-                                        color: Colors.white,
-                                        fontStyle: FontStyle.normal,
-                                        fontWeight: FontWeight.bold),
-                                    labelColor: Colors.white,
-                                    tabs: renderTabbar(),
-                                    onTap: (index) {
-                                      currentCateId = tabList[index].id;
-                                      setState(() {
-                                        showFiltered = false;
-                                      });
-                                    }),
+                        child: Container(
+                          height: 60,
+                          color: Colors.white,
+                          child: Column(
+                            children: <Widget>[
+                              Expanded(
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(20),
+                                          topRight: Radius.circular(20))),
+                                  padding: const EdgeInsets.only(top: 5),
+                                  child: TabBar(
+                                      physics:
+                                          const AlwaysScrollableScrollPhysics(),
+                                      controller: _tabController,
+                                      indicator: const BubbleTabIndicator(
+                                        indicatorHeight: 39.0,
+                                        indicatorColor: kDarkAccent,
+                                        tabBarIndicatorSize:
+                                            TabBarIndicatorSize.tab,
+                                      ),
+                                      indicatorSize: TabBarIndicatorSize.tab,
+                                      labelPadding: const EdgeInsets.only(
+                                        left: 18.0,
+                                        right: 18.0,
+                                        top: 5,
+                                      ),
+                                      isScrollable: true,
+                                      indicatorColor: Colors.white,
+                                      unselectedLabelColor: kSecondaryGrey,
+                                      unselectedLabelStyle: textTheme.headline4
+                                          .copyWith(
+                                              color: kSecondaryGrey,
+                                              fontStyle: FontStyle.normal,
+                                              fontWeight: FontWeight.bold),
+                                      labelStyle: textTheme.headline4.copyWith(
+                                          color: Colors.white,
+                                          fontStyle: FontStyle.normal,
+                                          fontWeight: FontWeight.bold),
+                                      labelColor: Colors.white,
+                                      tabs: renderTabbar(),
+                                      onTap: (index) {
+                                        currentCateId = tabList[index].id;
+                                        setState(() {
+                                          showFiltered = false;
+                                        });
+                                      }),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -259,50 +290,49 @@ class HomeScreenState extends State<HomeScreen>
                         height: screenSize.height,
                         child: Center(
                           child: Container(
-                              height: kScreenSizeHeight * 0.5,
-                              child: const SpinKitThreeBounce(
-                                  color: kPrimaryOrange, size: 21.0)),
+                              // height: kScreenSizeHeight * 0.35,
+                              child: kIndicator()),
                         ))
-                    : TabBarView(
-                        controller: _tabController,
-                        children: tabList.map((Category category) {
-                          return Builder(
-                            builder: (BuildContext context) {
-                              return NotificationListener(
-                                onNotification:
-                                    (ScrollUpdateNotification notification) {
-                                  if (notification != null &&
-                                      notification.metrics.axisDirection !=
-                                          AxisDirection.left &&
-                                      notification.metrics.axisDirection !=
-                                          AxisDirection.right) {
-                                    setState(() {
-                                      if (notification.metrics.pixels > 52 &&
-                                          !showTitle) {
-                                        showTitle = true;
-                                      } else if (notification.metrics.pixels <
-                                              52 &&
-                                          showTitle) {
-                                        showTitle = false;
-                                      }
-                                    });
-                                  }
-                                },
-                                child: ListView(
-                                  shrinkWrap: true,
-                                  children: <Widget>[
-                                    if (!isLoading)
-                                      ProductsListView(
-                                        products: allProducts[category.id],
-                                        showRank: true,
-                                        disableScrolling: true,
-                                        showFilter: false,
-                                        showPadding: true,
-                                      ),
-                                    Container(height: 50),
-                                    Container(
+                    : Padding(
+                        padding: const EdgeInsets.only(top: 0.0),
+                        child: TabBarView(
+                          controller: _tabController,
+                          physics: const NeverScrollableScrollPhysics(),
+                          children: tabList.map((Category category) {
+                            return Builder(
+                              builder: (BuildContext context) {
+                                return NotificationListener(
+                                  onNotification:
+                                      (ScrollUpdateNotification notification) {
+                                    if (notification != null &&
+                                        notification.metrics.axisDirection !=
+                                            AxisDirection.left &&
+                                        notification.metrics.axisDirection !=
+                                            AxisDirection.right) {
+                                      setState(() {
+                                        if (notification.metrics.pixels > 52 &&
+                                            !showTitle) {
+                                          showTitle = true;
+                                        } else if (notification.metrics.pixels <
+                                                52 &&
+                                            showTitle) {
+                                          showTitle = false;
+                                        }
+                                      });
+                                    }
+                                  },
+                                  child: CupertinoScrollbar(
+                                    child: SingleChildScrollView(
                                       child: Column(
                                         children: <Widget>[
+                                          ProductsListView(
+                                            products: allProducts[category.id],
+                                            disableScrolling: true,
+                                            showPadding: true,
+                                          ),
+                                          Container(
+                                            height: 50,
+                                          ),
                                           const SizedBox(height: 10),
                                           Padding(
                                             padding: const EdgeInsets.only(
@@ -357,12 +387,6 @@ class HomeScreenState extends State<HomeScreen>
                                                   )),
                                             ),
                                           ),
-                                        ],
-                                      ),
-                                    ),
-                                    if (!isLoading)
-                                      Column(
-                                        children: [
                                           Container(height: 20),
                                           GestureDetector(
                                             onTap: () {
@@ -406,13 +430,14 @@ class HomeScreenState extends State<HomeScreen>
                                           divider,
                                           Container(height: 50),
                                         ],
-                                      )
-                                  ],
-                                ),
-                              );
-                            },
-                          );
-                        }).toList(),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          }).toList(),
+                        ),
                       ),
               ),
             ));

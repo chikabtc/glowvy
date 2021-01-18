@@ -1,8 +1,12 @@
 import 'package:Dimodo/common/colors.dart';
+import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/models/product/product_model.dart';
 import 'package:Dimodo/screens/error_indicator.dart';
+import 'package:Dimodo/widgets/cosmetics_request_button.dart';
 import 'package:Dimodo/widgets/product/product_card.dart';
 import 'package:Dimodo/widgets/product/cosmetics_review_thumb_card.dart';
+import 'package:Dimodo/widgets/product/search_product_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -19,6 +23,7 @@ class ProductsListView extends StatefulWidget {
   final bool disableScrolling;
   final bool showRank;
   final bool isFromReviewSearch;
+  final bool isRecentSearchItem;
   final bool showPadding;
   // final ListPreferences listPreferences;
 
@@ -29,6 +34,7 @@ class ProductsListView extends StatefulWidget {
     this.showFilter = false,
     this.disableScrolling = false,
     this.showRank = false,
+    this.isRecentSearchItem = false,
     this.isFromReviewSearch = false,
     this.showPadding = false,
   });
@@ -70,48 +76,61 @@ class _ProductsListViewState extends State<ProductsListView> {
     final screenSize = MediaQuery.of(context).size;
     return Container(
       color: kWhite,
-      child: Scrollbar(
-        child: PagedListView.separated(
-          shrinkWrap: true,
-          physics: widget.disableScrolling
-              ? const NeverScrollableScrollPhysics()
-              : const ClampingScrollPhysics(),
-          padding: widget.showPadding
-              ? const EdgeInsets.symmetric(horizontal: 16)
-              : EdgeInsets.zero,
-          builderDelegate: PagedChildBuilderDelegate<Product>(
-              itemBuilder: (context, product, index) {
-                if (!widget.isFromReviewSearch)
-                  // ignore: curly_braces_in_flow_control_structures
-                  return ProductCard(
+      child: PagedListView.separated(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        shrinkWrap: true,
+        physics: widget.disableScrolling
+            ? const NeverScrollableScrollPhysics()
+            : const ClampingScrollPhysics(),
+        padding: widget.showPadding
+            ? const EdgeInsets.symmetric(horizontal: 16)
+            : EdgeInsets.zero,
+        builderDelegate: PagedChildBuilderDelegate<Product>(
+            itemBuilder: (context, product, index) {
+              if (widget.isFromReviewSearch) {
+                return CosmeticsReviewThumbCard(
                     ranking: widget.showRank ? index : null,
-                    isNameAvailable: widget.isNameAvailable,
                     showDivider: index != _pagingController.itemList.length - 1,
-                    product: product,
-                  );
-                else {
-                  return CosmeticsReviewThumbCard(
-                      ranking: widget.showRank ? index : null,
-                      showDivider:
-                          index != _pagingController.itemList.length - 1,
-                      product: product);
-                }
-              },
-              firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(
-                    error: _pagingController.error,
-                    onTryAgain: () => _pagingController.refresh(),
-                  ),
-              firstPageProgressIndicatorBuilder: (context) => Container(
-                  width: screenSize.width,
-                  height: screenSize.height / 1.3,
-                  child: const Center(
-                      child: SpinKitThreeBounce(
-                          color: kPrimaryOrange, size: 21.0))),
-              newPageProgressIndicatorBuilder: (context) => Container()),
-          pagingController: _pagingController,
-          separatorBuilder: (context, index) => const SizedBox(
-            height: 0,
-          ),
+                    product: product);
+              } else if (widget.isRecentSearchItem) {
+                return SearchProductCard(
+                  ranking: widget.showRank ? index : null,
+                  showDivider: index != _pagingController.itemList.length - 1,
+                  product: product,
+                );
+              } else {
+                return ProductCard(
+                  ranking: widget.showRank ? index : null,
+                  showDivider: index != _pagingController.itemList.length - 1,
+                  product: product,
+                );
+              }
+            },
+            noItemsFoundIndicatorBuilder: (context) => Column(
+                  children: [
+                    Container(height: 41),
+                    Center(
+                      child: Text(
+                        'không tìm thấy sản phẩm',
+                        style:
+                            textTheme.bodyText2.copyWith(color: kTertiaryGray),
+                      ),
+                    ),
+                    CosmeticsRequestBtn(),
+                  ],
+                ),
+            firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(
+                  error: _pagingController.error,
+                  onTryAgain: () => _pagingController.refresh(),
+                ),
+            firstPageProgressIndicatorBuilder: (context) => Container(
+                width: screenSize.width,
+                height: screenSize.height / 1.3,
+                child: Center(child: kIndicator())),
+            newPageProgressIndicatorBuilder: (context) => Container()),
+        pagingController: _pagingController,
+        separatorBuilder: (context, index) => const SizedBox(
+          height: 0,
         ),
       ),
     );

@@ -8,6 +8,7 @@ import 'package:Dimodo/models/product/product_model.dart';
 import 'package:Dimodo/models/second_category.dart';
 import 'package:Dimodo/models/third_category.dart';
 import 'package:Dimodo/widgets/product/list_page.dart';
+import 'package:Dimodo/widgets/product/paginated_product_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -44,11 +45,11 @@ class RankingByCategoryState extends State<RankingByCategory>
     _thirdCategory = widget.thirdCategory;
 
     if (widget.thirdCategory == null) {
-      getProductsByCategoryId = productModel.getProductsByCategory(
-          secondCategory: widget.secondCategory);
+      getProductsByCategoryId =
+          productModel.getProductsByCategory(widget.secondCategory);
     } else {
       getProductsByCategoryId =
-          productModel.getProductsByCategory(thirdCategory: _thirdCategory);
+          productModel.getProductsByCategory(_thirdCategory);
     }
   }
 
@@ -87,7 +88,7 @@ class RankingByCategoryState extends State<RankingByCategory>
                                 productModel.clearPaginationHistory();
                                 getProductsByCategoryId =
                                     productModel.getProductsByCategory(
-                                        secondCategory: widget.secondCategory);
+                                        widget.secondCategory);
                                 ;
                                 //
                               });
@@ -122,9 +123,8 @@ class RankingByCategoryState extends State<RankingByCategory>
                                 productModel.clearPaginationHistory();
 
                                 _thirdCategory = cate;
-                                getProductsByCategoryId =
-                                    productModel.getProductsByCategory(
-                                        thirdCategory: _thirdCategory);
+                                getProductsByCategoryId = productModel
+                                    .getProductsByCategory(_thirdCategory);
                                 ;
                                 //
                               });
@@ -163,13 +163,10 @@ class RankingByCategoryState extends State<RankingByCategory>
           },
           body: Container(
             color: kWhite,
-            child: productModel.showPaginatedProductList(
-                future: getProductsByCategoryId,
-                fetchProducts: () => _thirdCategory != null
-                    ? productModel.getProductsByCategory(
-                        thirdCategory: _thirdCategory)
-                    : productModel.getProductsByCategory(
-                        secondCategory: widget.secondCategory)),
+            child: PaginatedProductListView(
+              category: _thirdCategory ?? widget.secondCategory,
+              showPadding: true,
+            ),
           ),
         ));
   }

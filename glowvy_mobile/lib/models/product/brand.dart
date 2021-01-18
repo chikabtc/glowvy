@@ -7,7 +7,7 @@ import 'type.dart';
 
 part 'brand.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Brand {
   String address1;
   String address2;

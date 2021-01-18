@@ -34,8 +34,12 @@ final SvgPicture arrowBackwardWhite = SvgPicture.asset(
 
 Widget kIndicator() {
   return Platform.isAndroid
-      ? const CircularProgressIndicator(
-          strokeWidth: 2,
+      ? Container(
+          width: 24,
+          height: 24,
+          child: const CircularProgressIndicator(
+            strokeWidth: 2,
+          ),
         )
       : const CupertinoActivityIndicator();
 }

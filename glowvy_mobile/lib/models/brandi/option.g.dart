@@ -42,8 +42,8 @@ Map<String, dynamic> _$OptionToJson(Option instance) => <String, dynamic>{
       'delivery_date': instance.deliveryDate,
       'qty': instance.qty,
       'is_essential': instance.isEssential,
-      'notice': instance.notice,
+      'notice': instance.notice?.toJson(),
       'is_sold_out': instance.isSoldOut,
       'is_temporary_sold_out': instance.isTemporarySoldOut,
-      'attributes': instance.attributes,
+      'attributes': instance.attributes?.map((e) => e?.toJson())?.toList(),
     };

@@ -7,6 +7,7 @@ import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/models/search_model.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/setting/signup.dart';
@@ -33,12 +34,14 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
   bool isLoading = false;
   bool isAvailableApple = false;
   bool isPasswordVisible = false;
+  UserModel _userModel;
 
   @override
   void initState() {
     super.initState();
     _loginButtonController = AnimationController(
         duration: const Duration(milliseconds: 3000), vsync: this);
+    _userModel = Provider.of<UserModel>(context, listen: false);
   }
 
   @override
@@ -103,7 +106,11 @@ class _LoginPageState extends State<LoginScreen> with TickerProviderStateMixin {
   }
 
   Future onSignupSuccess(User user) async {
+    await Provider.of<SearchModel>(context, listen: false)
+        .setSerchHistory(_userModel);
     Future.delayed(const Duration(milliseconds: 1000), () {
+      //1. load the search history
+
       Navigator.of(context).pop();
     });
   }

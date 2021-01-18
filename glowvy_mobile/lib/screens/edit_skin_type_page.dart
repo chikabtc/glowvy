@@ -1,5 +1,6 @@
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/generated/i18n.dart';
@@ -51,17 +52,16 @@ class EditSkinTypePageState extends State<EditSkinTypePage>
   }
 
   Future _updateSkinType(context) async {
-    // try {
-    //   // void validateInput(name);
-    //   await userModel.updateUser(
-    //       field: 'skin_type', value:
-    //   await _doneButtonController.reverse();
-    //   Navigator.pop(context);
-    // } catch (e) {
-    //   print('_updateUserName error: $e');
-    //   await _doneButtonController.reverse();
-    //   Popups.failMessage(e, context);
-    // }
+    try {
+      // void validateInput(name);
+      await userModel.updateUser(field: 'skin_type', value: skinType);
+      await _doneButtonController.reverse();
+      Navigator.pop(context);
+    } catch (e) {
+      print('_updateUserName error: $e');
+      await _doneButtonController.reverse();
+      Popups.failMessage(e, context);
+    }
   }
 
   @override

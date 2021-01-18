@@ -20,6 +20,6 @@ District _$DistrictFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$DistrictToJson(District instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      'province': instance.province,
+      'province': instance.province?.toJson(),
       'province_id': instance.provinceId,
     };

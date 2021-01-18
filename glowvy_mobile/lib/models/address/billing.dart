@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'billing.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Billing {
   Billing(this.fullName, this.company, this.shipping1, this.shipping2,
       this.postCode, this.city, this.province, this.email, this.phone);

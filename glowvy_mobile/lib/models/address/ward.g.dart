@@ -24,8 +24,8 @@ Ward _$WardFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$WardToJson(Ward instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
-      'province': instance.province,
+      'province': instance.province?.toJson(),
       'provice_id': instance.proviceId,
-      'district': instance.district,
+      'district': instance.district?.toJson(),
       'district_i_d': instance.districtID,
     };

@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'review.dart';
 part 'reviews.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Reviews {
   int totalCount;
   int averageSatisfaction;

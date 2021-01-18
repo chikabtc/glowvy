@@ -1,38 +1,34 @@
 import 'dart:async';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry/sentry.dart';
+import 'package:flutter/foundation.dart' show kDebugMode;
 
 import 'app.dart';
-// import 'package:amplitude_flutter/amplitude.dart';
-// import 'package:amplitude_flutter/identify.dart';
-
-final SentryClient _sentry = SentryClient(
-    dsn:
-        'https://866bdef953574dbdb81a7da5d08411da@o376105.ingest.sentry.io/5197560');
 
 void main() async {
   // if (kDebugMode) {
   //   await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(false);
   // } else {}
 
-  FlutterError.onError = (FlutterErrorDetails details) async {
-    if (isInDebugMode) {
-      // In development mode simply print to console.
-      FlutterError.dumpErrorToConsole(details);
-    } else {
-      // In production mode report to the application zone to report to
-      // Sentry.
-      Zone.current.handleUncaughtError(details.exception, details.stack);
-    }
-  };
+  // FlutterError.onError = (FlutterErrorDetails details) async {
+  //   if (kDebugMode) {
+  //     // In development mode simply print to console.
+  //     FlutterError.dumpErrorToConsole(details);
+  //   } else {
+  //     // In production mode report to the application zone to report to
+  //     // Sentry.
+  //     Zone.current.handleUncaughtError(details.exception, details.stack);
+  //   }
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
 
-  await runZoned<Future<Null>>(() async {
-    WidgetsFlutterBinding.ensureInitialized();
+  await runZonedGuarded<Future<Null>>(() async {
     Provider.debugCheckInvalidValueType = null;
 
     await SystemChrome.setPreferredOrientations(
@@ -41,36 +37,7 @@ void main() async {
 
     var apiKey = '78f34e041572ba05a597df3c0a9d3f23';
 
-    // // Initialize SDK
-    // analytics.init(apiKey);
-
-    // // Enable COPPA privacy guard. This is useful when you choose not to report sensitive user information.
-    // analytics.enableCoppaControl();
-
-    // // Set user Id
-    // analytics.setUserId('test_user');
-
-    // // Turn on automatic session events
-    // analytics.trackingSessionEvents(true);
-
-    // // Log an event
-    // analytics.logEvent('Dimodo startup',
-    //     eventProperties: {'friend_num': 10, 'is_heavy_user': true});
-
-    // // Identify
-    // final Identify identify1 = Identify()
-    //   ..set('identify_test',
-    //       'identify sent at ${DateTime.now().millisecondsSinceEpoch}')
-    //   ..add('identify_count', 1);
-    // analytics.identify(identify1);
-
-    // // Set group
-    // analytics.setGroup('orgId', 15);
-
-    // Group identify
-    // final Identify identify2 = Identify()..set('identify_count', 1);
-    // analytics.groupIdentify('orgId', '15', identify2);
-    await precachePicture(
+    precachePicture(
         ExactAssetPicture(SvgPicture.svgStringDecoder,
             'assets/icons/onborading-illustration-1.svg'),
         null);
@@ -86,6 +53,11 @@ void main() async {
         ExactAssetPicture(
             SvgPicture.svgStringDecoder, 'assets/icons/nolt-illustration.svg'),
         null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/email-illustration.svg'),
+        null);
+
     await precachePicture(
         ExactAssetPicture(
             SvgPicture.svgStringDecoder, 'assets/icons/blue-big-logo.svg'),
@@ -105,6 +77,10 @@ void main() async {
     await precachePicture(
         ExactAssetPicture(
             SvgPicture.svgStringDecoder, 'assets/icons/yellow-smiley-face.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/blue-smiley-face.svg'),
         null);
     await precachePicture(
         ExactAssetPicture(
@@ -179,51 +155,14 @@ void main() async {
             SvgPicture.svgStringDecoder, 'assets/icons/before_login_bg.svg'),
         null);
 
-    await Firebase.initializeApp();
-
-    // FirebaseCrashlytics.instance.crash();
+    if (kDebugMode) {
+      await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(false);
+    } else {}
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent, // transparent status bar
     ));
+    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
+
     runApp(Glowvy());
-  }, onError: (error, stackTrace) async {
-    // Whenever an error occurs, call the `_reportError` function. This sends
-    // Dart errors to the dev console or Sentry depending on the environment.
-    await _reportError(error, stackTrace);
-  });
-}
-
-bool get isInDebugMode {
-  // Assume you're in production mode.
-  var inDebugMode = false;
-
-  // Assert expressions are only evaluated during development. They are ignored
-  // in production. Therefore, this code only sets `inDebugMode` to true
-  // in a development environment.
-  assert(inDebugMode = true);
-  return inDebugMode;
-}
-
-Future<Null> _reportError(dynamic error, dynamic stackTrace) async {
-  print('Sentry Caught error: $error');
-  // Errors thrown in development mode are unlikely to be interesting. You can
-  // check if you are running in dev mode using an assertion and omit sending
-  // the report.
-  if (isInDebugMode) {
-    print(stackTrace);
-    print('In dev mode. Not sending report to Sentry.io.');
-    return;
-  }
-  print('Reporting to Sentry.io...');
-
-  final response = await _sentry.captureException(
-    exception: error,
-    stackTrace: stackTrace,
-  );
-
-  if (response.isSuccessful) {
-    print('Success! Event ID: ${response.eventId}');
-  } else {
-    print('Failed to report to Sentry.io: ${response.error}');
-  }
+  }, FirebaseCrashlytics.instance.recordError);
 }

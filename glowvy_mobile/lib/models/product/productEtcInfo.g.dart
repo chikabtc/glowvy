@@ -18,5 +18,5 @@ ProductEtcInfo _$ProductEtcInfoFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$ProductEtcInfoToJson(ProductEtcInfo instance) =>
     <String, dynamic>{
-      'attributes': instance.attributes,
+      'attributes': instance.attributes?.map((e) => e?.toJson())?.toList(),
     };

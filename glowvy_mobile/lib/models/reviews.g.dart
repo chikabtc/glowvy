@@ -25,7 +25,7 @@ Reviews _$ReviewsFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$ReviewsToJson(Reviews instance) => <String, dynamic>{
       'total_count': instance.totalCount,
       'average_satisfaction': instance.averageSatisfaction,
-      'reviews': instance.reviews,
+      'reviews': instance.reviews?.map((e) => e?.toJson())?.toList(),
       'point1': instance.point1,
       'point2': instance.point2,
       'point3': instance.point3,

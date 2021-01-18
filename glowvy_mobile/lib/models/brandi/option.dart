@@ -6,7 +6,7 @@ import 'notice.dart';
 
 part 'option.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake)
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class Option {
   String productId;
   String sku;

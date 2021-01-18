@@ -33,6 +33,8 @@ class PaginatedProductListView extends StatefulWidget {
   final bool showPadding;
   final bool showNoMoreItemsIndicator;
   final bool disableSrolling;
+  final bool trackSearchHistory;
+  final Function onProductTap;
 
   const PaginatedProductListView({
     this.initialPage,
@@ -44,7 +46,9 @@ class PaginatedProductListView extends StatefulWidget {
     this.listPreferences,
     this.showPadding = false,
     this.disableSrolling = false,
+    this.trackSearchHistory = false,
     this.showNoMoreItemsIndicator = true,
+    this.onProductTap,
   });
 
   @override
@@ -101,6 +105,8 @@ class _PaginatedProductListViewState extends State<PaginatedProductListView>
         ListPage<Product> newPage;
         if (widget.brand != null) {
           newPage = await productModel.getProductsByBrand(widget.brand);
+        } else if (widget.category != null) {
+          newPage = await productModel.getProductsByCategory(widget.category);
         }
 
         if (newPage != null) {
@@ -125,80 +131,88 @@ class _PaginatedProductListViewState extends State<PaginatedProductListView>
     }
   }
 
+  showIndicator() {
+    //1. start timer
+    //2. if the result is not loaded, setState and show indicator
+    //3. else, containe
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
-
-    return Scrollbar(
-      thickness: widget.disableSrolling ? 0.0 : .5,
-      child: PagedListView.separated(
-        addAutomaticKeepAlives: false,
-        shrinkWrap: true,
-        physics: widget.disableSrolling
-            ? NeverScrollableScrollPhysics()
-            : ClampingScrollPhysics(),
-        builderDelegate: PagedChildBuilderDelegate<Product>(
-            itemBuilder: (context, product, index) {
-              if (!widget.isFromReviewSearch) {
-                return ProductCard(
+    final paginatedListView = PagedListView.separated(
+      addAutomaticKeepAlives: false,
+      shrinkWrap: true,
+      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+      physics: widget.disableSrolling
+          ? const NeverScrollableScrollPhysics()
+          : const AlwaysScrollableScrollPhysics(),
+      builderDelegate: PagedChildBuilderDelegate<Product>(
+          itemBuilder: (context, product, index) {
+            if (!widget.isFromReviewSearch) {
+              return ProductCard(
+                ranking: widget.showRank ? index : null,
+                showDivider: index != _pagingController.itemList.length - 1,
+                product: product,
+                onTap: widget.onProductTap,
+              );
+            } else {
+              return CosmeticsReviewThumbCard(
                   ranking: widget.showRank ? index : null,
                   showDivider: index != _pagingController.itemList.length - 1,
-                  product: product,
-                );
-              } else {
-                return CosmeticsReviewThumbCard(
-                    ranking: widget.showRank ? index : null,
-                    showDivider: index != _pagingController.itemList.length - 1,
-                    product: product);
-              }
-            },
-            firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(
-                  error: _pagingController.error,
-                  onTryAgain: () => _pagingController.refresh(),
-                ),
-            noItemsFoundIndicatorBuilder: (context) => Column(
-                  children: [
-                    Container(height: 41),
-                    Center(
-                      child: Text(
-                        'không tìm thấy sản phẩm',
-                        style:
-                            textTheme.bodyText2.copyWith(color: kTertiaryGray),
-                      ),
+                  product: product);
+            }
+          },
+          // newPageErrorIndicatorBuilder: ,
+          firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(
+                error: _pagingController.error,
+                onTryAgain: () => _pagingController.refresh(),
+              ),
+          noItemsFoundIndicatorBuilder: (context) => Column(
+                children: [
+                  Container(height: 41),
+                  Center(
+                    child: Text(
+                      'không tìm thấy sản phẩm',
+                      style: textTheme.bodyText2.copyWith(color: kTertiaryGray),
                     ),
-                    CosmeticsRequestBtn(),
-                  ],
-                ),
-            noMoreItemsIndicatorBuilder: (context) =>
-                widget.showNoMoreItemsIndicator &&
-                        _pagingController.itemList.length > 4
-                    ? Padding(
-                        padding: const EdgeInsets.only(top: 28.0, bottom: 28),
-                        child: SvgPicture.asset(
-                          'assets/icons/heart-ballon.svg',
-                          width: 30,
-                          height: 42,
-                        ),
-                      )
-                    : Container(),
-            firstPageProgressIndicatorBuilder: (context) => Container(
-                width: screenSize.width,
-                height: screenSize.height / 3,
-                child: const Center(
-                    child:
-                        SpinKitThreeBounce(color: kPrimaryOrange, size: 21.0))),
-            newPageProgressIndicatorBuilder: (context) => Container(
-                  height: screenSize.height / 10,
-                  child: Center(child: kIndicator()),
-                )),
-        pagingController: _pagingController,
-        padding: widget.showPadding
-            ? const EdgeInsets.symmetric(horizontal: 16)
-            : EdgeInsets.zero,
-        separatorBuilder: (context, index) => const SizedBox(
-          height: 0,
-        ),
+                  ),
+                  CosmeticsRequestBtn(),
+                ],
+              ),
+          noMoreItemsIndicatorBuilder: (context) =>
+              widget.showNoMoreItemsIndicator &&
+                      _pagingController.itemList.length > 4
+                  ? Padding(
+                      padding: const EdgeInsets.only(top: 28.0, bottom: 28),
+                      child: SvgPicture.asset(
+                        'assets/icons/heart-ballon.svg',
+                        width: 30,
+                        height: 42,
+                      ),
+                    )
+                  : Container(),
+          firstPageProgressIndicatorBuilder: (context) => Container(
+              width: screenSize.width,
+              height: screenSize.height / 3,
+              child: Center(child: kIndicator())),
+          newPageProgressIndicatorBuilder: (context) => Container(
+                height: screenSize.height / 10,
+                child: Center(child: kIndicator()),
+              )),
+      pagingController: _pagingController,
+      padding: widget.showPadding
+          ? const EdgeInsets.symmetric(horizontal: 16)
+          : EdgeInsets.zero,
+      separatorBuilder: (context, index) => const SizedBox(
+        height: 0,
       ),
     );
+
+    return widget.disableSrolling
+        ? paginatedListView
+        : CupertinoScrollbar(
+            child: paginatedListView,
+          );
   }
 }

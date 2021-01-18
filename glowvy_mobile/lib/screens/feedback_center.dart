@@ -182,10 +182,6 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
                               'assets/icons/email-illustration.svg',
                               width: screenSize.width,
                             ),
-                            // CustomPaint(
-                            //     size: Size(screenSize.width, 231), //2
-                            //     painter:
-                            //         ProfileCardPainter(color: kQuaternaryBlue)),
                             Container(
                               color: kQuaternaryBlue,
                               child: Column(
