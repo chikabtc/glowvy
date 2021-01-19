@@ -44,5 +44,5 @@ const kSecondaryYellow = Color(0xFFFDD13C);
 const kBackground = Color(0xFFF2F2F2);
 final kDividerColor = const Color(0xff3C3C43).withOpacity(0.16);
 final kSectionDividerColor = const Color(0xff111111).withOpacity(0.25);
-final kTabbarColor = const Color(0xffF9F9F9).withOpacity(0.94);
+final kBottomNavBarColor = const Color(0xffF9F9F9).withOpacity(0.94);
 final kSearchBarColor = Color(0xffEEEEF0);

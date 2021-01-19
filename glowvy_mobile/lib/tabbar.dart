@@ -172,8 +172,7 @@ class MainTabsState extends State<MainTabs>
             }
           },
           child: Scaffold(
-            backgroundColor: Theme.of(context).backgroundColor,
-            resizeToAvoidBottomPadding: false,
+            resizeToAvoidBottomInset: false,
             key: _scaffoldKey,
             body: PageView(
               controller: _pageController,
@@ -193,7 +192,7 @@ class MainTabsState extends State<MainTabs>
                       kFullSectionDivider,
                       BottomNavigationBar(
                         type: BottomNavigationBarType.fixed,
-                        backgroundColor: kTabbarColor,
+                        backgroundColor: kBottomNavBarColor,
                         items: _bottomNavigationBarRootItems
                             .map((e) => e.bottomNavigationBarItem)
                             .toList(),

@@ -27,12 +27,14 @@ class EditGenderPageState extends State<EditGenderPage>
   UserModel userModel;
   AnimationController _doneButtonController;
   String gender;
-  List<String> genders = ['giống cái', 'Nam giới'];
+  List<String> genders = ['Nữ', 'Nam'];
 
   @override
   void initState() {
     super.initState();
     userModel = Provider.of<UserModel>(context, listen: false);
+    gender = userModel.user.gender;
+
     _doneButtonController = AnimationController(
         duration: const Duration(milliseconds: 3000), vsync: this);
   }

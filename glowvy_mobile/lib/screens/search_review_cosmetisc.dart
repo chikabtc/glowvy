@@ -16,6 +16,7 @@ import 'package:Dimodo/widgets/product/products_list_view.dart';
 import 'package:Dimodo/widgets/second_category_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_svg/svg.dart';
 // import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:provider/provider.dart';
@@ -79,80 +80,14 @@ class _ReviewCosmeticsSearchScreenState
       });
     }
 
-    Widget buildCategoryPage() {
-      return Padding(
-        padding: const EdgeInsets.only(top: 70.0),
-        child: Row(
-          children: [
-            Container(
-                width: 80,
-                decoration: const BoxDecoration(
-                    color: kQuaternaryGrey,
-                    border: Border(
-                        right: BorderSide(
-                      color: kQuaternaryGrey,
-                      width: 0.7,
-                    ))),
-                child: ListView.builder(
-                    addAutomaticKeepAlives: true,
-                    physics: const ClampingScrollPhysics(),
-                    scrollDirection: Axis.vertical,
-                    itemCount: searchModel.categories.length,
-                    itemBuilder: (context, index) => CategoryButton(
-                          searchModel.categories[index],
-                          isSelected: currentFirstCategory ==
-                              searchModel.categories[index],
-                          onTap: () {
-                            setState(() {
-                              currentFirstCategory =
-                                  searchModel.categories[index];
-                            });
-                          },
-                        ))),
-            Container(
-              width: kScreenSizeWidth - 80,
-              child: ListView.builder(
-                  addAutomaticKeepAlives: true,
-                  physics: const ClampingScrollPhysics(),
-                  scrollDirection: Axis.vertical,
-                  itemCount: currentFirstCategory.subCategories.length,
-                  itemBuilder: (context, index) => SecondCategoryButton(
-                        currentFirstCategory.subCategories[index],
-                      )),
-            )
-          ],
-        ),
-      );
-    }
-
     Widget buildSearchResult() {
-      Widget brandWidget;
-      if (searchModel.filtedBrands.isNotEmpty) {
-        brandWidget =
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const SizedBox(height: 15),
-          Text('${searchModel.filtedBrands.length ?? 0} brand',
-              style: textTheme.bodyText1),
-          const SizedBox(height: 5),
-          kFullSectionDivider,
-          BrandList(
-            brands: searchModel.filtedBrands,
-            disableScrolling: true,
-          ),
-          const SizedBox(height: 35),
-        ]);
-      } else {
-        brandWidget = Container(
-          height: 15,
-        );
-      }
       return FutureBuilder<ListPage<Product>>(
           future: getProducts,
           builder: (BuildContext context,
               AsyncSnapshot<ListPage<Product>> snapshot) {
             if (snapshot.hasData) {
               final listPage = snapshot.data;
-              return CupertinoScrollbar(
+              return Scrollbar(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: NestedScrollView(
@@ -168,7 +103,7 @@ class _ReviewCosmeticsSearchScreenState
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  brandWidget,
+                                  const SizedBox(height: 35),
                                   Text(
                                       '${snapshot.data.itemList.length ?? 0} results',
                                       style: textTheme.bodyText1),
@@ -184,7 +119,9 @@ class _ReviewCosmeticsSearchScreenState
                       },
                       body: ProductsListView(
                         products: snapshot.data.itemList,
+                        isFromReviewSearch: true,
                         disableScrolling: true,
+                        saveHistory: true,
                       )),
                 ),
               );
@@ -197,7 +134,7 @@ class _ReviewCosmeticsSearchScreenState
     Widget showRecentSearchItems(SearchModel model) {
       return Padding(
         padding: const EdgeInsets.only(top: 70),
-        child: CupertinoScrollbar(
+        child: Scrollbar(
           child: Padding(
             padding: const EdgeInsets.only(left: 16.0, right: 16),
             child: NestedScrollView(
@@ -213,10 +150,26 @@ class _ReviewCosmeticsSearchScreenState
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            const SizedBox(height: 15),
                             if (model.recentSearchItems.isNotEmpty)
-                              Text('Recently Searched',
-                                  style: textTheme.bodyText1),
+                              Row(
+                                children: [
+                                  Text('Recently Searched',
+                                      style: textTheme.bodyText1.copyWith(
+                                          fontWeight: FontWeight.w700)),
+                                  const Spacer(),
+                                  Container(
+                                    height: 24,
+                                    child: PlatformButton(
+                                      onPressed: () => model.clear(),
+                                      padding: EdgeInsets.zero,
+                                      child: Text('Clear',
+                                          style: textTheme.bodyText1.copyWith(
+                                              color: kPrimaryOrange,
+                                              fontWeight: FontWeight.w700)),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             const SizedBox(height: 5),
                             kFullSectionDivider,
                             const SizedBox(height: 5),
@@ -228,9 +181,9 @@ class _ReviewCosmeticsSearchScreenState
                 },
                 body: model.recentSearchItems.isNotEmpty
                     ? ProductsListView(
+                        isFromReviewSearch: true,
                         products: model.recentSearchItems,
                         isRecentSearchItem: true,
-                        // isFromReviewSearch: true,
                       )
                     : Container()),
           ),
@@ -254,7 +207,7 @@ class _ReviewCosmeticsSearchScreenState
                 shrinkWrap: true,
                 //if no suggestions are found, show the current query in the
                 //suggestion
-                itemCount: searchModel.getSuggestionCount(),
+                itemCount: searchModel.recentQuerySuggestions.length + 1,
                 itemBuilder: (context, index) {
                   return Container(
                       padding: const EdgeInsets.only(
@@ -346,8 +299,9 @@ class _ReviewCosmeticsSearchScreenState
                               children: [
                                 Text(
                                   'Search',
-                                  style: textTheme.headline1
-                                      .copyWith(fontSize: 32),
+                                  style: textTheme.headline1.copyWith(
+                                      fontSize: 32,
+                                      fontStyle: FontStyle.normal),
                                   textAlign: TextAlign.start,
                                 )
                               ],
@@ -490,7 +444,7 @@ class _ReviewCosmeticsSearchScreenState
                               showResults = false;
                             });
                           }
-                          model.onQueryChanged(query);
+                          model.onQueryChangedProductReviewSearch(query);
                         },
                         onSubmitted: (value) {
                           searchModel.onQuerySubmitted(value);

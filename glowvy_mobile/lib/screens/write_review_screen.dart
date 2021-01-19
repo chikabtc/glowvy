@@ -142,7 +142,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
               onPressed: () async {
                 // userModel
                 await userModel.discardReviewDraft();
-                Navigator.of(context, rootNavigator: true).pop('Discard');
+                // Navigator.of(context, rootNavigator: true).pop('Discard');
 
                 Navigator.pop(context);
               },
@@ -218,6 +218,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
         ),
         appBar: AppBar(
           brightness: Brightness.light,
+          elevation: 0,
           backgroundColor: kWhite,
           leading: backIcon(context, onPop: () {
             if (review.content == null &&
@@ -259,7 +260,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                 //1. if review draft is available, load the draft
                 if (user.reviewDraft != null) {
                   review = user.reviewDraft;
-                  print('user.reviewDraft ${user.reviewDraft.toJson()}');
+                  // print('user.reviewDraft ${user.reviewDraft.toJson()}');
                   _reviewTextController.text = review.content;
 
                   //2. if product is chosen

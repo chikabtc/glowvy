@@ -123,7 +123,7 @@ class _StateReviews extends State<ReviewsScreen>
                             inactiveThumbColor: Colors.white,
                             activeColor: Colors.white,
                             activeTrackColor: kPrimaryOrange,
-                            inactiveTrackColor: kSecondaryGrey.withOpacity(0.7),
+                            inactiveTrackColor: kSecondaryGrey.withOpacity(0.3),
                             onChanged: (newValue) {
                               setState(() {
                                 _reviewModel.clearPaginationHistory();

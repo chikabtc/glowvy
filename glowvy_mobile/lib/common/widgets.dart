@@ -6,6 +6,7 @@ import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 final SvgPicture arrowForward = SvgPicture.asset(
@@ -38,29 +39,38 @@ Widget kIndicator() {
           width: 24,
           height: 24,
           child: const CircularProgressIndicator(
-            strokeWidth: 2,
+            strokeWidth: 3,
           ),
         )
       : const CupertinoActivityIndicator();
 }
 
 Widget backIcon(context, {color = kDarkAccent, Function onPop}) {
+  var pop = () {
+    if (onPop != null) {
+      onPop();
+    } else {
+      Navigator.pop(context);
+    }
+  };
   return Navigator.of(context).canPop()
-      ? IconButton(
-          onPressed: () {
-            if (onPop != null) {
-              onPop();
-            } else {
-              Navigator.pop(context);
-            }
-          },
-          icon: Platform.isAndroid
-              ? const Icon(Icons.arrow_back)
-              : SvgPicture.asset(
-                  'assets/icons/arrow_backward.svg',
-                  width: 26,
-                  color: color,
-                ))
+      ? Container(
+          padding: const EdgeInsets.all(0.0),
+          width: 24,
+          child: PlatformIconButton(
+              padding: EdgeInsets.zero,
+              materialIcon: Icon(
+                Icons.arrow_back,
+                color: color,
+                size: 24,
+              ),
+              cupertinoIcon: Icon(
+                Icons.arrow_back_ios,
+                color: color,
+                size: 22,
+              ),
+              onPressed: pop),
+        )
       : Container();
 }
 

@@ -2,8 +2,6 @@ import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/models/category.dart';
-import 'package:Dimodo/models/categoryModel.dart';
-import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/product_model.dart';
 import 'package:Dimodo/models/second_category.dart';
 import 'package:Dimodo/models/third_category.dart';
@@ -121,11 +119,8 @@ class RankingByCategoryState extends State<RankingByCategory>
                               setState(() {
                                 //resetting the _thirdCategory works but the list is not?
                                 productModel.clearPaginationHistory();
-
                                 _thirdCategory = cate;
-                                getProductsByCategoryId = productModel
-                                    .getProductsByCategory(_thirdCategory);
-                                ;
+
                                 //
                               });
                             },

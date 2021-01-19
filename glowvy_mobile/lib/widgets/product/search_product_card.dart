@@ -1,7 +1,9 @@
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/models/user/userModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../common/colors.dart';
 import '../../common/styles.dart';
@@ -15,12 +17,15 @@ class SearchProductCard extends StatelessWidget {
     this.ranking,
     this.showDivider = true,
     this.onTap,
+    this.isReviewCard = false,
     this.showFullDivider = false,
   });
 
   final Product product;
   final bool showDivider;
   final bool showFullDivider;
+  final bool isReviewCard;
+
   final int ranking;
   final Function onTap;
 
@@ -32,7 +37,12 @@ class SearchProductCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10),
       child: GestureDetector(
         onTap: () {
-          if (onTap != null) {
+          if (isReviewCard) {
+            print(product.sid);
+            var userModel = Provider.of<UserModel>(context, listen: false);
+            userModel.setProductInReview(product);
+            Navigator.pop(context);
+          } else if (onTap != null) {
             onTap(product);
           }
           Navigator.push(
@@ -124,31 +134,6 @@ class SearchProductCard extends StatelessWidget {
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
-                            // SvgPicture.asset('assets/icons/red-star.svg'),
-                            // Text(
-                            //   double.parse(product.reviewMetas.all.averageRating
-                            //           .toString()
-                            //           .substring(0, 3))
-                            //       .toString(),
-                            //   maxLines: 1,
-                            //   style: kBaseTextStyle.copyWith(
-                            //       color: kPrimaryOrange,
-                            //       fontSize: 13,
-                            //       fontWeight: FontWeight.w600),
-                            // ),
-                            // const SizedBox(width: 5),
-                            // Container(
-                            //   child: Text(
-                            //     '(${product.reviewMetas.all.reviewCount})',
-                            //     textAlign: TextAlign.end,
-                            //     maxLines: 1,
-                            //     style: kBaseTextStyle.copyWith(
-                            //         color: kSecondaryGrey.withOpacity(0.5),
-                            //         fontSize: 13,
-                            //         fontWeight: FontWeight.normal),
-                            //   ),
-                            // ),
-                            // const Spacer(),
                             Text(
                               Tools.getPriceProduct(product, 'VND',
                                   onSale: false),

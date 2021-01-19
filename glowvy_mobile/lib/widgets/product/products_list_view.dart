@@ -24,6 +24,7 @@ class ProductsListView extends StatefulWidget {
   final bool showRank;
   final bool isFromReviewSearch;
   final bool isRecentSearchItem;
+  final bool saveHistory;
   final bool showPadding;
   // final ListPreferences listPreferences;
 
@@ -37,6 +38,7 @@ class ProductsListView extends StatefulWidget {
     this.isRecentSearchItem = false,
     this.isFromReviewSearch = false,
     this.showPadding = false,
+    this.saveHistory = false,
   });
 
   @override
@@ -87,24 +89,14 @@ class _ProductsListViewState extends State<ProductsListView> {
             : EdgeInsets.zero,
         builderDelegate: PagedChildBuilderDelegate<Product>(
             itemBuilder: (context, product, index) {
-              if (widget.isFromReviewSearch) {
-                return CosmeticsReviewThumbCard(
-                    ranking: widget.showRank ? index : null,
-                    showDivider: index != _pagingController.itemList.length - 1,
-                    product: product);
-              } else if (widget.isRecentSearchItem) {
-                return SearchProductCard(
-                  ranking: widget.showRank ? index : null,
-                  showDivider: index != _pagingController.itemList.length - 1,
-                  product: product,
-                );
-              } else {
-                return ProductCard(
-                  ranking: widget.showRank ? index : null,
-                  showDivider: index != _pagingController.itemList.length - 1,
-                  product: product,
-                );
-              }
+              return ProductCard(
+                ranking: widget.showRank ? index : null,
+                showDivider: index != _pagingController.itemList.length - 1,
+                product: product,
+                saveHistory: widget.saveHistory,
+                isReviewCard: widget.isFromReviewSearch,
+                isRecentSearchItem: widget.isRecentSearchItem,
+              );
             },
             noItemsFoundIndicatorBuilder: (context) => Column(
                   children: [

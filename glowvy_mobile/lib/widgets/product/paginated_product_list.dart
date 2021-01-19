@@ -33,7 +33,8 @@ class PaginatedProductListView extends StatefulWidget {
   final bool showPadding;
   final bool showNoMoreItemsIndicator;
   final bool disableSrolling;
-  final bool trackSearchHistory;
+  final bool saveHistory;
+
   final Function onProductTap;
 
   const PaginatedProductListView({
@@ -46,7 +47,7 @@ class PaginatedProductListView extends StatefulWidget {
     this.listPreferences,
     this.showPadding = false,
     this.disableSrolling = false,
-    this.trackSearchHistory = false,
+    this.saveHistory = false,
     this.showNoMoreItemsIndicator = true,
     this.onProductTap,
   });
@@ -83,6 +84,9 @@ class _PaginatedProductListViewState extends State<PaginatedProductListView>
     //   _pagingController.refresh();
     // }
     if (oldWidget.brand != widget.brand) {
+      _pagingController.refresh();
+    }
+    if (oldWidget.category != widget.category) {
       _pagingController.refresh();
     }
     super.didUpdateWidget(oldWidget);
@@ -149,21 +153,13 @@ class _PaginatedProductListViewState extends State<PaginatedProductListView>
           : const AlwaysScrollableScrollPhysics(),
       builderDelegate: PagedChildBuilderDelegate<Product>(
           itemBuilder: (context, product, index) {
-            if (!widget.isFromReviewSearch) {
-              return ProductCard(
-                ranking: widget.showRank ? index : null,
-                showDivider: index != _pagingController.itemList.length - 1,
-                product: product,
-                onTap: widget.onProductTap,
-              );
-            } else {
-              return CosmeticsReviewThumbCard(
-                  ranking: widget.showRank ? index : null,
-                  showDivider: index != _pagingController.itemList.length - 1,
-                  product: product);
-            }
+            return ProductCard(
+              ranking: widget.showRank ? index : null,
+              showDivider: index != _pagingController.itemList.length - 1,
+              product: product,
+              saveHistory: widget.saveHistory,
+            );
           },
-          // newPageErrorIndicatorBuilder: ,
           firstPageErrorIndicatorBuilder: (context) => ErrorIndicator(
                 error: _pagingController.error,
                 onTryAgain: () => _pagingController.refresh(),
@@ -211,7 +207,7 @@ class _PaginatedProductListViewState extends State<PaginatedProductListView>
 
     return widget.disableSrolling
         ? paginatedListView
-        : CupertinoScrollbar(
+        : Scrollbar(
             child: paginatedListView,
           );
   }

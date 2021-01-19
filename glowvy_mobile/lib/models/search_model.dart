@@ -44,14 +44,14 @@ class SearchModel extends ChangeNotifier {
   List<Category> categories = [];
   List<Category> flatCategories = [];
 
-  void clear() {
-    print('emtpy queri');
+  // void clear() {
+  //   print('emtpy queri');
 
-    _query = '';
-    _brandSuggestions = [];
-    _categorySuggestion = [];
-    notifyListeners();
-  }
+  //   _query = '';
+  //   _brandSuggestions = [];
+  //   _categorySuggestion = [];
+  //   notifyListeners();
+  // }
 
   void setSerchHistory(UserModel userModel) {
     try {
@@ -196,12 +196,67 @@ class SearchModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future onQueryChangedProductReviewSearch(
+    String query,
+  ) async {
+    if (query == _query) return;
+
+    _query = query;
+
+    //if the query is empty, show the recently viewed items
+    if (query.isEmpty) {
+      // _suggestions = history;
+      //if query exists, then search through the local brand, categories json, user' search history (items and queries)
+    } else {
+      _recentQuerySuggestions = queryHistory
+          .where((recentQuery) =>
+              recentQuery.toLowerCase().startsWith(query.toLowerCase()))
+          .toList();
+    }
+
+    notifyListeners();
+  }
+
+  Future clearSuggestion() async {
+    try {
+      _query = '';
+      _brandSuggestions = [];
+      _categorySuggestion = [];
+
+      notifyListeners();
+      return;
+    } catch (e) {
+      throw 'clearSuggestion e: $e';
+    }
+  }
+
+  Future clear() async {
+    try {
+      await _db
+          .collection('users')
+          .doc(firebaseUser.uid)
+          .update({'recent_search_items': FieldValue.delete()});
+      recentSearchItems = [];
+
+      _query = '';
+      _brandSuggestions = [];
+      _categorySuggestion = [];
+
+      notifyListeners();
+      return;
+    } catch (e) {
+      throw 'clearSearchHistory e: $e';
+    }
+  }
+
   Future onQuerySubmitted(String query) async {
     try {
       await _db.collection('users').doc(firebaseUser.uid).update({
         'recent_search_queries': FieldValue.arrayUnion([query])
       });
-      _recentQuerySuggestions.add(query);
+      if (!_recentQuerySuggestions.contains(query)) {
+        _recentQuerySuggestions.add(query);
+      }
 
       notifyListeners();
       return;
@@ -214,7 +269,6 @@ class SearchModel extends ChangeNotifier {
     try {
       recentSearchItems.add(product);
 
-      print(product.toJson());
       final json = {
         'sid': product.sid,
         'name': product.name,

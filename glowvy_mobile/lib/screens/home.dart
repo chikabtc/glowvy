@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/category.dart';
@@ -12,35 +13,39 @@ import 'package:Dimodo/models/search_model.dart';
 import 'package:Dimodo/models/survey.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
-import 'package:Dimodo/screens/birth_year_onboarding_page.dart';
 import 'package:Dimodo/screens/inquiry_page.dart';
-import 'package:Dimodo/widgets/personalized_survey.dart';
 import 'package:Dimodo/widgets/product/products_list_view.dart';
 import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
 
 class CustomAppBar extends PreferredSize {
-  final Widget child;
-  final double height;
+  final Widget leading;
+  final Widget title;
+  final Color backgroundColor;
 
-  CustomAppBar({@required this.child, this.height = kToolbarHeight});
+  CustomAppBar(
+      {@required this.leading,
+      this.title,
+      this.backgroundColor = Colors.transparent});
 
   @override
-  Size get preferredSize => Size.fromHeight(height);
+  Size get preferredSize => Size.fromHeight(88);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: preferredSize.height,
-      color: Colors.orange,
-      alignment: Alignment.center,
-      child: child,
+    return PreferredSize(
+      preferredSize: preferredSize,
+      child: AppBar(
+        elevation: 0,
+        brightness: Brightness.light,
+        leading: leading,
+        title: title,
+        backgroundColor: Colors.transparent,
+      ),
     );
   }
 }
@@ -50,7 +55,7 @@ class HomeScreen extends StatefulWidget {
   final VoidCallback onLogout;
   final ScrollController appScrollController;
 
-  HomeScreen({this.user, this.onLogout, this.appScrollController});
+  const HomeScreen({this.user, this.onLogout, this.appScrollController});
 
   @override
   State<StatefulWidget> createState() {
@@ -159,169 +164,176 @@ class HomeScreenState extends State<HomeScreen>
             bottom: false,
             child: Container(
               color: kDefaultBackground,
-              child: NestedScrollView(
-                controller: widget.appScrollController,
-                physics: const NeverScrollableScrollPhysics(),
-                headerSliverBuilder:
-                    (BuildContext context, bool innerBoxIsScrolled) {
-                  return <Widget>[
-                    SliverAppBar(
-                        floating: false,
-                        pinned: true,
-                        elevation: 0,
-                        titleSpacing: 0,
-                        leading: Container(),
-                        backgroundColor: Colors.white,
-                        title: AnimatedOpacity(
-                          opacity: showTitle ? 1.0 : 0.0,
-                          duration: const Duration(milliseconds: 100),
-                          child: GestureDetector(
-                            onTap: () {
-                              widget.appScrollController.animateTo(
-                                0.0,
-                                curve: Curves.easeOut,
-                                duration: const Duration(milliseconds: 300),
-                              );
-                            },
-                            child: Container(
-                              // color: Colors.red,
-                              // width: double.infinity,
-                              child: Text(
-                                'Home',
-                                style: textTheme.headline3,
-                                textAlign: TextAlign.start,
+              child: NotificationListener(
+                onNotification: (ScrollUpdateNotification notification) {
+                  if (notification != null &&
+                      notification.metrics.axisDirection !=
+                          AxisDirection.left &&
+                      notification.metrics.axisDirection !=
+                          AxisDirection.right) {
+                    setState(() {
+                      if (notification.metrics.pixels > 38 && !showTitle) {
+                        showTitle = true;
+                      } else if (notification.metrics.pixels < 38 &&
+                          showTitle) {
+                        showTitle = false;
+                      }
+                    });
+                  }
+                },
+                child: NestedScrollView(
+                  controller: widget.appScrollController,
+                  physics: const NeverScrollableScrollPhysics(),
+                  headerSliverBuilder:
+                      (BuildContext context, bool innerBoxIsScrolled) {
+                    return <Widget>[
+                      SliverAppBar(
+                          floating: false,
+                          pinned: true,
+                          elevation: 0,
+                          titleSpacing: 0,
+                          leading: Container(),
+                          backgroundColor: Colors.white,
+                          centerTitle: true,
+                          title: AnimatedOpacity(
+                            opacity: showTitle ? 1.0 : 0.0,
+                            duration: const Duration(milliseconds: 300),
+                            child: GestureDetector(
+                              onTap: () {
+                                Tools.scrollToTop(widget.appScrollController);
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Container(
+                                    // color: Colors.red,
+
+                                    child: Text(
+                                      'Home',
+                                      style: textTheme.bodyText1.copyWith(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w800),
+                                      textAlign: TextAlign.start,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                          ),
-                        )),
-                    SliverToBoxAdapter(
-                      child: Container(
-                        color: Colors.white,
-                        padding: const EdgeInsets.only(top: 0, left: 16),
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'Home',
-                                style:
-                                    textTheme.headline1.copyWith(fontSize: 32),
-                                textAlign: TextAlign.start,
-                              ),
-                              const SizedBox(height: 24),
-                              Text(
-                                'weekly ranking',
-                                style:
-                                    textTheme.headline4.copyWith(fontSize: 22),
-                                textAlign: TextAlign.start,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    SliverPersistentHeader(
-                      pinned: true,
-                      delegate: SliverAppBarDelegate(
-                        minHeight: 60,
-                        maxHeight: 60,
+                          )),
+                      SliverToBoxAdapter(
                         child: Container(
-                          height: 60,
                           color: Colors.white,
-                          child: Column(
-                            children: <Widget>[
-                              Expanded(
-                                child: Container(
-                                  decoration: const BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(20),
-                                          topRight: Radius.circular(20))),
-                                  padding: const EdgeInsets.only(top: 5),
-                                  child: TabBar(
-                                      physics:
-                                          const AlwaysScrollableScrollPhysics(),
-                                      controller: _tabController,
-                                      indicator: const BubbleTabIndicator(
-                                        indicatorHeight: 39.0,
-                                        indicatorColor: kDarkAccent,
-                                        tabBarIndicatorSize:
-                                            TabBarIndicatorSize.tab,
-                                      ),
-                                      indicatorSize: TabBarIndicatorSize.tab,
-                                      labelPadding: const EdgeInsets.only(
-                                        left: 18.0,
-                                        right: 18.0,
-                                        top: 5,
-                                      ),
-                                      isScrollable: true,
-                                      indicatorColor: Colors.white,
-                                      unselectedLabelColor: kSecondaryGrey,
-                                      unselectedLabelStyle: textTheme.headline4
-                                          .copyWith(
-                                              color: kSecondaryGrey,
-                                              fontStyle: FontStyle.normal,
-                                              fontWeight: FontWeight.bold),
-                                      labelStyle: textTheme.headline4.copyWith(
-                                          color: Colors.white,
-                                          fontStyle: FontStyle.normal,
-                                          fontWeight: FontWeight.bold),
-                                      labelColor: Colors.white,
-                                      tabs: renderTabbar(),
-                                      onTap: (index) {
-                                        currentCateId = tabList[index].id;
-                                        setState(() {
-                                          showFiltered = false;
-                                        });
-                                      }),
+                          padding: const EdgeInsets.only(top: 0, left: 16),
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Home',
+                                  style: textTheme.headline1.copyWith(
+                                      fontSize: 32,
+                                      fontStyle: FontStyle.normal),
+                                  textAlign: TextAlign.start,
                                 ),
-                              ),
-                            ],
+                                const SizedBox(height: 24),
+                                Text(
+                                  'weekly ranking',
+                                  style: textTheme.headline4.copyWith(
+                                      fontSize: 22,
+                                      fontStyle: FontStyle.normal),
+                                  textAlign: TextAlign.start,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ];
-                },
-                body: isLoading
-                    ? Container(
-                        width: screenSize.width,
-                        height: screenSize.height,
-                        child: Center(
+                      SliverPersistentHeader(
+                        pinned: true,
+                        delegate: SliverAppBarDelegate(
+                          minHeight: 60,
+                          maxHeight: 60,
                           child: Container(
-                              // height: kScreenSizeHeight * 0.35,
-                              child: kIndicator()),
-                        ))
-                    : Padding(
-                        padding: const EdgeInsets.only(top: 0.0),
-                        child: TabBarView(
-                          controller: _tabController,
-                          physics: const NeverScrollableScrollPhysics(),
-                          children: tabList.map((Category category) {
-                            return Builder(
-                              builder: (BuildContext context) {
-                                return NotificationListener(
-                                  onNotification:
-                                      (ScrollUpdateNotification notification) {
-                                    if (notification != null &&
-                                        notification.metrics.axisDirection !=
-                                            AxisDirection.left &&
-                                        notification.metrics.axisDirection !=
-                                            AxisDirection.right) {
-                                      setState(() {
-                                        if (notification.metrics.pixels > 52 &&
-                                            !showTitle) {
-                                          showTitle = true;
-                                        } else if (notification.metrics.pixels <
-                                                52 &&
-                                            showTitle) {
-                                          showTitle = false;
-                                        }
-                                      });
-                                    }
-                                  },
-                                  child: CupertinoScrollbar(
+                            height: 60,
+                            color: Colors.white,
+                            child: Column(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Container(
+                                    decoration: const BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(20),
+                                            topRight: Radius.circular(20))),
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: TabBar(
+                                        physics:
+                                            const AlwaysScrollableScrollPhysics(),
+                                        controller: _tabController,
+                                        indicator: const BubbleTabIndicator(
+                                          indicatorHeight: 39.0,
+                                          indicatorColor: kDarkAccent,
+                                          tabBarIndicatorSize:
+                                              TabBarIndicatorSize.tab,
+                                        ),
+                                        indicatorSize: TabBarIndicatorSize.tab,
+                                        labelPadding: const EdgeInsets.only(
+                                          left: 18.0,
+                                          right: 18.0,
+                                          top: 5,
+                                        ),
+                                        isScrollable: true,
+                                        indicatorColor: Colors.white,
+                                        unselectedLabelColor: kSecondaryGrey,
+                                        unselectedLabelStyle:
+                                            textTheme.headline4.copyWith(
+                                                color: kSecondaryGrey,
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.bold),
+                                        labelStyle: textTheme.headline4
+                                            .copyWith(
+                                                color: Colors.white,
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.bold),
+                                        labelColor: Colors.white,
+                                        tabs: renderTabbar(),
+                                        onTap: (index) {
+                                          currentCateId = tabList[index].id;
+                                          setState(() {
+                                            showFiltered = false;
+                                          });
+                                        }),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ];
+                  },
+                  body: isLoading
+                      ? Container(
+                          width: screenSize.width,
+                          height: screenSize.height,
+                          child: Center(
+                            child: Container(
+                                // height: kScreenSizeHeight * 0.35,
+                                child: kIndicator()),
+                          ))
+                      : Padding(
+                          padding: const EdgeInsets.only(top: 0.0),
+                          child: TabBarView(
+                            controller: _tabController,
+                            physics: Platform.isAndroid
+                                ? const AlwaysScrollableScrollPhysics()
+                                : const NeverScrollableScrollPhysics(),
+                            children: tabList.map((Category category) {
+                              return Builder(
+                                builder: (BuildContext context) {
+                                  return Scrollbar(
                                     child: SingleChildScrollView(
                                       child: Column(
                                         children: <Widget>[
@@ -329,6 +341,7 @@ class HomeScreenState extends State<HomeScreen>
                                             products: allProducts[category.id],
                                             disableScrolling: true,
                                             showPadding: true,
+                                            showRank: true,
                                           ),
                                           Container(
                                             height: 50,
@@ -432,13 +445,13 @@ class HomeScreenState extends State<HomeScreen>
                                         ],
                                       ),
                                     ),
-                                  ),
-                                );
-                              },
-                            );
-                          }).toList(),
+                                  );
+                                },
+                              );
+                            }).toList(),
+                          ),
                         ),
-                      ),
+                ),
               ),
             ));
       }),

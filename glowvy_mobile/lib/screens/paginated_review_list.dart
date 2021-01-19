@@ -97,7 +97,7 @@ class _PaginatedReviewListViewState extends State<PaginatedReviewListView>
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
-    return CupertinoScrollbar(
+    return Scrollbar(
       child: PagedListView.separated(
         addAutomaticKeepAlives: true,
         shrinkWrap: true,

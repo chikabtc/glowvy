@@ -161,7 +161,7 @@ class _SignupScreenState extends State<SignupScreen>
     return Scaffold(
       resizeToAvoidBottomInset: false,
       key: _scaffoldKey,
-      backgroundColor: Theme.of(context).backgroundColor,
+      backgroundColor: kDefaultBackground,
       appBar: AppBar(
         brightness: Brightness.light,
         leading: backIcon(context),

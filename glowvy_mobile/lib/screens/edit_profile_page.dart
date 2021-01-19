@@ -14,6 +14,7 @@ import 'package:Dimodo/screens/edit_skin_issues_page.dart';
 import 'package:Dimodo/screens/edit_skin_type_page.dart';
 import 'package:Dimodo/screens/setting.dart';
 import 'package:Dimodo/widgets/setting_card.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -90,8 +91,8 @@ class EditProfilePageState extends State<EditProfilePage>
                                 'assets/icons/default-avatar.png',
                               )
                             : ClipOval(
-                                child: Image.network(
-                                  user.picture +
+                                child: CachedNetworkImage(
+                                  imageUrl: user.picture +
                                       '?v=${ValueKey(Random().nextInt(100))}',
                                   key: ValueKey(Random().nextInt(100)),
                                   width: 64,

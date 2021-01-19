@@ -155,25 +155,29 @@ class ReviewModel with ChangeNotifier {
       //The initial orderBy() field '[[FieldPath([created_at]), false]][0][0]' has to be the same as the where() field parameter 'FieldPath([user, age])' when an inequality operator is invoked.
     }
     if (listPreferences.skinType.isNotEmpty) {
+      print('fiters type');
       query =
           query.where('user.skin_type', isEqualTo: listPreferences.skinType);
     }
     //make skin type singular
     if (listPreferences.genders.isNotEmpty &&
         listPreferences.genders.length != 2) {
+      print('fiters gender');
+
       query =
           query.where('user.gender', isEqualTo: listPreferences.genders.first);
     }
 
     if (listPreferences.skinIssues.isNotEmpty) {
+      print('fiters skinissue');
+
       query = query.where('user.skin_issues',
           arrayContainsAny: listPreferences.skinIssues);
     }
     if (lastReviewSnap == null) {
-      query = query
-          .orderBy(listPreferences.orderBy,
-              descending: listPreferences.isDescending ?? false)
-          .limit(10);
+      print('fiters order by');
+
+      query = query.limit(10);
     } else {
       // TODO(parker): the orderBy is applied twice because of the startAfterDocument
       print('dsd');

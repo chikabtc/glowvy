@@ -17,6 +17,7 @@ import 'package:Dimodo/widgets/product/products_list_view.dart';
 import 'package:Dimodo/widgets/second_category_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_svg/svg.dart';
 // import 'package:material_floating_search_bar/material_floating_search_bar.dart';
 import 'package:provider/provider.dart';
@@ -192,7 +193,7 @@ class _SearchScreenState extends State<SearchScreen>
                 AsyncSnapshot<ListPage<Product>> snapshot) {
               if (snapshot.hasData) {
                 final listPage = snapshot.data;
-                return CupertinoScrollbar(
+                return Scrollbar(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: NestedScrollView(
@@ -225,6 +226,7 @@ class _SearchScreenState extends State<SearchScreen>
                         body: ProductsListView(
                           products: snapshot.data.itemList,
                           disableScrolling: true,
+                          saveHistory: true,
                         )),
                   ),
                 );
@@ -233,7 +235,7 @@ class _SearchScreenState extends State<SearchScreen>
               }
             });
       } else if (isBrandSearch) {
-        return CupertinoScrollbar(
+        return Scrollbar(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: NestedScrollView(
@@ -265,13 +267,12 @@ class _SearchScreenState extends State<SearchScreen>
               body: PaginatedProductListView(
                 brand: pickedBrand,
                 disableSrolling: true,
-                onProductTap: searchModel.saveRecentSearchItem,
               ),
             ),
           ),
         );
       } else if (isCategorySearch) {
-        return CupertinoScrollbar(
+        return Scrollbar(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: NestedScrollView(
@@ -312,7 +313,7 @@ class _SearchScreenState extends State<SearchScreen>
     }
 
     Widget showRecentSearchItems(SearchModel model) {
-      return CupertinoScrollbar(
+      return Scrollbar(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: NestedScrollView(
@@ -330,8 +331,25 @@ class _SearchScreenState extends State<SearchScreen>
                         children: [
                           const SizedBox(height: 15),
                           if (model.recentSearchItems.isNotEmpty)
-                            Text('Recently Searched',
-                                style: textTheme.bodyText1),
+                            Row(
+                              children: [
+                                Text('Recently Searched',
+                                    style: textTheme.bodyText1
+                                        .copyWith(fontWeight: FontWeight.w700)),
+                                const Spacer(),
+                                Container(
+                                  height: 24,
+                                  child: PlatformButton(
+                                    onPressed: () => model.clear(),
+                                    padding: EdgeInsets.zero,
+                                    child: Text('Clear',
+                                        style: textTheme.bodyText1.copyWith(
+                                            color: kPrimaryOrange,
+                                            fontWeight: FontWeight.w700)),
+                                  ),
+                                ),
+                              ],
+                            ),
                           const SizedBox(height: 5),
                           kFullSectionDivider,
                           const SizedBox(height: 5),
@@ -469,8 +487,9 @@ class _SearchScreenState extends State<SearchScreen>
                               children: [
                                 Text(
                                   'Search',
-                                  style: textTheme.headline1
-                                      .copyWith(fontSize: 32),
+                                  style: textTheme.headline1.copyWith(
+                                      fontSize: 32,
+                                      fontStyle: FontStyle.normal),
                                   textAlign: TextAlign.start,
                                 )
                               ],
@@ -542,7 +561,7 @@ class _SearchScreenState extends State<SearchScreen>
 
                                         if (bar.isOpen && !bar.isAlwaysOpened) {
                                           bar.close();
-                                          model.clear();
+                                          model.clearSuggestion();
                                           productModel.clearPaginationHistory();
                                         } else if (canPop) {
                                           Navigator.pop(context);
@@ -596,7 +615,7 @@ class _SearchScreenState extends State<SearchScreen>
                                         final bar =
                                             FloatingSearchAppBar.of(context);
                                         bar.clear();
-                                        model.clear();
+                                        model.clearSuggestion();
                                         setState(() {
                                           showResults = false;
                                         });

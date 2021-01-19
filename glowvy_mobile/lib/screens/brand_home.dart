@@ -33,7 +33,7 @@ class BrandHomePageState extends State<BrandHomePage>
   bool isLoading = false;
   int itemsCount = 0;
   ListPage<Product> brandProducts;
-
+  Brand _brand;
   //category variable
   //second cate variable
   @override
@@ -41,19 +41,11 @@ class BrandHomePageState extends State<BrandHomePage>
     super.initState();
     //get the brand from searchModel by id
     final brands = Provider.of<SearchModel>(context, listen: false).brands;
-    widget.brand =
-        brands.where((element) => widget.brand.id == element.id).first;
+    _brand = brands.where((element) => widget.brand.id == element.id).first;
 
     productModel = Provider.of<ProductModel>(context, listen: false);
     getProductsByBrand = productModel.getProductsByBrand(widget.brand);
-    Future.wait([productModel.getProductsByBrand(widget.brand)])
-        .then((responses) {
-      brandProducts = responses[0];
 
-      setState(() {
-        isLoading = false;
-      });
-    });
     //fetch all products
   }
 
@@ -68,7 +60,7 @@ class BrandHomePageState extends State<BrandHomePage>
               productModel.clearPaginationHistory();
             }),
             backgroundColor: Colors.white,
-            title: Text(widget.brand.name)),
+            title: Text(_brand.name)),
         backgroundColor: kWhite,
         body: NestedScrollView(
           physics: const NeverScrollableScrollPhysics(),
@@ -91,7 +83,7 @@ class BrandHomePageState extends State<BrandHomePage>
                             borderRadius: BorderRadius.all(Radius.circular(20)),
                           ),
                           child: Tools.image(
-                            url: widget.brand.image,
+                            url: _brand.image,
                             width: 48,
                             fit: BoxFit.contain,
                           ),
@@ -99,8 +91,7 @@ class BrandHomePageState extends State<BrandHomePage>
                       ),
                     ),
                     const SizedBox(height: 5),
-                    Text(widget.brand.name,
-                        maxLines: 1, style: textTheme.bodyText2),
+                    Text(_brand.name, maxLines: 1, style: textTheme.bodyText2),
                     const SizedBox(height: 15),
                     Container(
                       height: 5,
@@ -110,7 +101,7 @@ class BrandHomePageState extends State<BrandHomePage>
                     Row(
                       children: [
                         const SizedBox(width: 16),
-                        Text('${widget.brand.grandTotalCount} items',
+                        Text('${_brand.grandTotalCount} items',
                             style: textTheme.caption),
                         const Spacer(),
                         const SizedBox(width: 8),
@@ -125,7 +116,7 @@ class BrandHomePageState extends State<BrandHomePage>
           body: PaginatedProductListView(
             showPadding: true,
             showNoMoreItemsIndicator: false,
-            brand: widget.brand,
+            brand: _brand,
           ),
         ));
   }

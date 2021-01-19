@@ -71,7 +71,7 @@ class ReviewCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     sanitizedText = review.content.replaceAll('\n', '');
-    kSanitizedText = review.scontent.replaceAll('\n', '');
+    kSanitizedText = review.scontent?.replaceAll('\n', '');
     final skinIssues =
         review.user.skinIssues != null ? review.user.skinIssues.toString() : '';
 

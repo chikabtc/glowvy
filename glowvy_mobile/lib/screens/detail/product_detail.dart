@@ -61,17 +61,21 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
     productModel.getWholeProduct(product.sid).then((onValue) {
       if (mounted) {
         product = onValue;
-
-        reviewModel.getProductReviews(product.sid).then((onValue) {
-          if (mounted) {
-            totalCount = product.reviewMetas?.all?.reviewCount;
-
-            setState(() {
+        if (product.reviewMetas.all.reviewCount != 0) {
+          reviewModel.getProductReviews(product.sid).then((onValue) {
+            if (mounted) {
+              totalCount = product.reviewMetas?.all?.reviewCount;
               initialReviewPage = onValue;
-              isLoading = false;
-            });
-          }
-        });
+              setState(() {
+                isLoading = false;
+              });
+            }
+          });
+        } else {
+          setState(() {
+            isLoading = false;
+          });
+        }
       }
     });
   }
@@ -126,6 +130,23 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
       );
     }
 
+    Widget getInitialThreeReviews() {
+      const maxReviewNumberToShow = 3;
+      final itemCount = initialReviewPage.itemList.length;
+      // print('count :${itemCount}');
+      var items = <Review>[];
+      var widgets = [];
+      if (itemCount < maxReviewNumberToShow) {
+        items = initialReviewPage.itemList.getRange(0, itemCount).toList();
+      } else {
+        items = initialReviewPage.itemList.getRange(0, 3).toList();
+      }
+      return Column(children: [
+        for (var item in items)
+          ReviewCard(isPreview: true, context: context, review: item)
+      ]);
+    }
+
     return Scaffold(
       backgroundColor: kDefaultBackground,
       extendBodyBehindAppBar: true,
@@ -147,381 +168,370 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
               ))
           : SafeArea(
               bottom: false,
-              child: ListView(
-                padding: const EdgeInsets.only(
-                  top: 0,
-                ),
-                children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      GestureDetector(
-                        onTap: () => Navigator.of(context).push(_createRoute()),
-                        child: Stack(
-                          alignment: Alignment.center,
-                          children: <Widget>[
-                            Container(
-                              width: screenSize.width - 20,
-                              height: 225,
-                              decoration: const BoxDecoration(
-                                color: Colors.white,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                              ),
-                            ),
-                            ImageFeature(
-                              product,
-                            ),
-                            Positioned(
-                              bottom: 14,
-                              right: 14,
-                              child: Container(
-                                  // width: 67,
-                                  decoration: BoxDecoration(
-                                      color: kSecondaryGrey,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(20))),
-                                  padding: const EdgeInsets.only(
-                                      right: 10,
-                                      left: 10,
-                                      top: 4.5,
-                                      bottom: 4.5),
-                                  child: Row(
-                                    children: <Widget>[
-                                      SvgPicture.asset(
-                                          'assets/icons/image-icon.svg'),
-                                      const SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                          product.descImages != null
-                                              ? (product.descImages.length + 1)
-                                                  .toString()
-                                              : '1',
-                                          style: textTheme.caption1.copyWith(
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w600,
-                                              color: Colors.white)),
-                                    ],
-                                  )),
-                            )
-                          ],
-                        ),
-                      ),
-                      Container(
-                        height: 10,
-                      ),
-                      Container(
-                        color: Colors.white,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Container(
-                              padding: const EdgeInsets.only(
-                                  top: 10, bottom: 10, right: 16, left: 16),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Text(product.name,
-                                      textAlign: TextAlign.center,
-                                      maxLines: 2,
-                                      style: textTheme.headline3),
-                                  const SizedBox(height: 5),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                          "${Tools.getPriceProduct(product, 'VND', onSale: true)} . ",
-                                          style: textTheme.caption1),
-                                      Text(product.volume,
-                                          style: textTheme.caption1.copyWith(
-                                            color: kSecondaryGrey,
-                                          )),
-                                    ],
-                                  ),
-                                  if (widget.rank != null)
-                                    Text(
-                                        'No.${widget.rank + 1} trong danh sách ${product.category.firstCategoryName}',
-                                        maxLines: 1,
-                                        style: textTheme.caption2
-                                            .copyWith(color: kSecondaryGrey)),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      // if (isLoading)
-
-                      GestureDetector(
-                        onTap: () =>
-                            Popups.showProductDescription(product, context),
-                        child: Container(
-                          color: Colors.white,
-                          child: Padding(
-                              padding: const EdgeInsets.only(
-                                  right: 16.0, left: 16, top: 10),
-                              child: Container(
-                                  decoration: const BoxDecoration(
-                                    color: kWhite,
-                                    border: Border(
-                                      top: BorderSide(
-                                          color: kQuaternaryGrey, width: 0.5),
-                                      bottom: BorderSide(
-                                          color: kQuaternaryGrey, width: 0.5),
-                                    ),
-                                  ),
-                                  padding: const EdgeInsets.only(
-                                      left: 16, right: 16, top: 5, bottom: 8),
-                                  width: MediaQuery.of(context).size.width,
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: <Widget>[
-                                        Icon(
-                                          Icons.info,
-                                          size: 20,
-                                          color: Colors.grey.withOpacity(0.7),
-                                        ),
-                                        const SizedBox(width: 10),
-                                        Text('product descriptions',
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                            style: textTheme.caption1),
-                                        // const Spacer(),
-                                        // Icon(
-                                        //   Icons.arrow_forward_ios,
-                                        //   size: 12,
-                                        //   color: Colors.grey,
-                                        // )
-                                      ]))),
-                        ),
-                      ),
-                      Container(
-                        height: 20,
-                        color: Colors.white,
-                      ),
-                      GestureDetector(
-                        onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    BrandHomePage(product.brand))),
-                        child: Container(
-                          color: Colors.white,
-                          child: Padding(
-                              padding: const EdgeInsets.only(
-                                  right: 16.0, left: 16, top: 10),
-                              child: Container(
-                                  decoration: const BoxDecoration(
-                                      color: kDefaultBackground,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(12))),
-                                  padding: const EdgeInsets.only(
-                                      left: 16, right: 16, top: 5, bottom: 8),
-                                  width: MediaQuery.of(context).size.width,
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: <Widget>[
-                                        Container(
-                                          decoration: const BoxDecoration(
-                                              color: Colors.white,
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(8))),
-                                          height: 24,
-                                          width: 24,
-                                          child: Tools.image(
-                                            url: product.brand.image,
-                                            fit: BoxFit.contain,
-                                          ),
-                                        ),
-                                        const SizedBox(width: 10),
-                                        Text(product.brand.name,
-                                            maxLines: 1,
-                                            overflow: TextOverflow.ellipsis,
-                                            style: textTheme.caption1),
-                                        const Spacer(),
-                                        Icon(
-                                          Icons.home,
-                                          size: 20,
-                                          color: Colors.grey.withOpacity(0.7),
-                                        )
-                                      ]))),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () => product.ingredients != null
-                            ? Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => IngredientScreen(
-                                          product.ingredients,
-                                          hazardLevel,
-                                        )))
-                            : null,
-                        child: Container(
-                          color: Colors.white,
-                          child: Padding(
-                              padding: const EdgeInsets.only(
-                                  right: 16.0, left: 16, top: 10),
-                              child: Container(
-                                  decoration: const BoxDecoration(
-                                      color: kDefaultBackground,
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(12))),
-                                  padding: const EdgeInsets.only(
-                                      left: 16, right: 16, top: 5, bottom: 8),
-                                  width: MediaQuery.of(context).size.width,
-                                  child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      children: <Widget>[
-                                        //
-                                        // TODO(parker): translate
-                                        RichText(
-                                          textAlign: TextAlign.center,
-                                          text: TextSpan(
-                                            style: textTheme.caption1.copyWith(
-                                              color: kSecondaryGrey,
-                                            ),
-                                            children: <TextSpan>[
-                                              const TextSpan(
-                                                  text: 'it contains'),
-                                              TextSpan(
-                                                  text: ' $hazardLevel risk',
-                                                  style: textTheme.caption1
-                                                      .copyWith(
-                                                          color:
-                                                              hazardLevelColor,
-                                                          fontWeight:
-                                                              FontWeight.bold)),
-                                              const TextSpan(
-                                                  text: ' ingredients'),
-                                            ],
-                                          ),
-                                        ),
-
-                                        const Spacer(),
-                                        Icon(
-                                          Icons.warning,
-                                          size: 20,
-                                          color: Colors.grey.withOpacity(0.7),
-                                        )
-                                      ]))),
-                        ),
-                      ),
-                    ],
+              child: Scrollbar(
+                child: ListView(
+                  padding: const EdgeInsets.only(
+                    top: 0,
                   ),
-                  Container(
-                    height: 10,
-                    color: Colors.white,
-                  ),
-                  Container(
-                    height: 5,
-                    color: kDefaultBackground,
-                  ),
-                  Container(
-                    color: Colors.white,
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                          left: 40.0, right: 30, top: 15, bottom: 15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () => Navigator.of(context).push(_createRoute()),
+                      child: Stack(
+                        alignment: Alignment.center,
                         children: <Widget>[
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                  product.reviewMetas.all.averageRating
-                                      .toString()
-                                      .substring(0, 3),
-                                  style: kBaseTextStyle.copyWith(
-                                      fontSize: 30,
-                                      fontWeight: FontWeight.bold)),
-                              Text('trên 5', style: textTheme.caption1),
-                              Text('(${product.reviewMetas.all.reviewCount})',
-                                  style: textTheme.caption2
-                                      .copyWith(color: kSecondaryGrey)),
-                            ],
+                          Container(
+                            width: screenSize.width - 20,
+                            height: 225,
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20)),
+                            ),
                           ),
-                          const Spacer(),
-                          if (initialReviewPage != null)
-                            Column(
-                              children: <Widget>[
-                                ReviewRatingBar(
-                                    title: '5.0',
-                                    percentage: totalCount != 0
-                                        ? initialReviewPage.itemList.fold(
-                                                0,
-                                                (previousValue, element) =>
-                                                    element.rating == 5
-                                                        ? previousValue + 1
-                                                        : previousValue) /
-                                            totalCount
-                                        : 0),
-                                ReviewRatingBar(
-                                    title: '4.0',
-                                    percentage: totalCount != 0
-                                        ? initialReviewPage.itemList.fold(
-                                                0,
-                                                (previousValue, element) =>
-                                                    element.rating == 4
-                                                        ? previousValue + 1
-                                                        : previousValue) /
-                                            totalCount
-                                        : 0),
-                                ReviewRatingBar(
-                                    title: '3.0',
-                                    percentage: totalCount != 0
-                                        ? initialReviewPage.itemList.fold(
-                                                0,
-                                                (previousValue, element) =>
-                                                    element.rating == 3
-                                                        ? previousValue + 1
-                                                        : previousValue) /
-                                            totalCount
-                                        : 0),
-                                ReviewRatingBar(
-                                    title: '2.0',
-                                    percentage: totalCount != 0
-                                        ? initialReviewPage.itemList.fold(
-                                                0,
-                                                (previousValue, element) =>
-                                                    element.rating == 2
-                                                        ? previousValue + 1
-                                                        : previousValue) /
-                                            totalCount
-                                        : 0),
-                                ReviewRatingBar(
-                                    title: '1.0',
-                                    percentage: totalCount != 0
-                                        ? initialReviewPage.itemList.fold(
-                                                0,
-                                                (previousValue, element) =>
-                                                    element.rating == 1
-                                                        ? previousValue + 1
-                                                        : previousValue) /
-                                            totalCount
-                                        : 0),
-                              ],
-                            )
+                          ImageFeature(
+                            product,
+                          ),
+                          Positioned(
+                            bottom: 14,
+                            right: 14,
+                            child: Container(
+                                // width: 67,
+                                decoration: BoxDecoration(
+                                    color: kSecondaryGrey,
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(20))),
+                                padding: const EdgeInsets.only(
+                                    right: 10, left: 10, top: 4.5, bottom: 4.5),
+                                child: Row(
+                                  children: <Widget>[
+                                    SvgPicture.asset(
+                                        'assets/icons/image-icon.svg'),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    Text(
+                                        product.descImages != null
+                                            ? (product.descImages.length + 1)
+                                                .toString()
+                                            : '1',
+                                        style: textTheme.caption1.copyWith(
+                                            fontSize: 13,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.white)),
+                                  ],
+                                )),
+                          )
                         ],
                       ),
                     ),
-                  ),
-                  Container(
-                    height: 5,
-                    color: kDefaultBackground,
-                  ),
-                  Container(height: 14, color: Colors.white),
-                  if (initialReviewPage != null)
+                    Container(
+                      height: 10,
+                    ),
+                    Container(
+                      color: Colors.white,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Container(
+                            padding: const EdgeInsets.only(
+                                top: 10, bottom: 10, right: 16, left: 16),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Text(product.name,
+                                    textAlign: TextAlign.center,
+                                    maxLines: 2,
+                                    style: textTheme.headline3),
+                                const SizedBox(height: 5),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                        "${Tools.getPriceProduct(product, 'VND', onSale: true)} . ",
+                                        style: textTheme.caption1),
+                                    Text(product.volume,
+                                        style: textTheme.caption1.copyWith(
+                                          color: kSecondaryGrey,
+                                        )),
+                                  ],
+                                ),
+                                if (widget.rank != null)
+                                  Text(
+                                      'No.${widget.rank + 1} trong danh sách ${product.category.firstCategoryName}',
+                                      maxLines: 1,
+                                      style: textTheme.caption2
+                                          .copyWith(color: kSecondaryGrey)),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    // if (isLoading)
+
+                    GestureDetector(
+                      onTap: () =>
+                          Popups.showProductDescription(product, context),
+                      child: Container(
+                        color: Colors.white,
+                        child: Padding(
+                            padding: const EdgeInsets.only(
+                                right: 16.0, left: 16, top: 10),
+                            child: Container(
+                                decoration: const BoxDecoration(
+                                  color: kWhite,
+                                  border: Border(
+                                    top: BorderSide(
+                                        color: kQuaternaryGrey, width: 0.5),
+                                    bottom: BorderSide(
+                                        color: kQuaternaryGrey, width: 0.5),
+                                  ),
+                                ),
+                                padding: const EdgeInsets.only(
+                                    left: 16, right: 16, top: 5, bottom: 8),
+                                width: MediaQuery.of(context).size.width,
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      Icon(
+                                        Icons.info,
+                                        size: 20,
+                                        color: Colors.grey.withOpacity(0.7),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Text('product descriptions',
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: textTheme.caption1),
+                                      // const Spacer(),
+                                      // Icon(
+                                      //   Icons.arrow_forward_ios,
+                                      //   size: 12,
+                                      //   color: Colors.grey,
+                                      // )
+                                    ]))),
+                      ),
+                    ),
+                    Container(
+                      height: 20,
+                      color: Colors.white,
+                    ),
+                    GestureDetector(
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  BrandHomePage(product.brand))),
+                      child: Container(
+                        color: Colors.white,
+                        child: Padding(
+                            padding: const EdgeInsets.only(
+                                right: 16.0, left: 16, top: 10),
+                            child: Container(
+                                decoration: const BoxDecoration(
+                                    color: kDefaultBackground,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(12))),
+                                padding: const EdgeInsets.only(
+                                    left: 16, right: 16, top: 5, bottom: 8),
+                                width: MediaQuery.of(context).size.width,
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      Container(
+                                        decoration: const BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(8))),
+                                        height: 24,
+                                        width: 24,
+                                        child: Tools.image(
+                                          url: product.brand.image,
+                                          fit: BoxFit.contain,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 10),
+                                      Text(product.brand.name,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: textTheme.caption1),
+                                      const Spacer(),
+                                      Icon(
+                                        Icons.home,
+                                        size: 20,
+                                        color: Colors.grey.withOpacity(0.7),
+                                      )
+                                    ]))),
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () => product.ingredients != null
+                          ? Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => IngredientScreen(
+                                        product.ingredients,
+                                        hazardLevel,
+                                      )))
+                          : null,
+                      child: Container(
+                        color: Colors.white,
+                        child: Padding(
+                            padding: const EdgeInsets.only(
+                                right: 16.0, left: 16, top: 10),
+                            child: Container(
+                                decoration: const BoxDecoration(
+                                    color: kDefaultBackground,
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(12))),
+                                padding: const EdgeInsets.only(
+                                    left: 16, right: 16, top: 5, bottom: 8),
+                                width: MediaQuery.of(context).size.width,
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      //
+                                      // TODO(parker): translate
+                                      RichText(
+                                        textAlign: TextAlign.center,
+                                        text: TextSpan(
+                                          style: textTheme.caption1.copyWith(
+                                            color: kSecondaryGrey,
+                                          ),
+                                          children: <TextSpan>[
+                                            const TextSpan(text: 'it contains'),
+                                            TextSpan(
+                                                text: ' $hazardLevel risk',
+                                                style: textTheme.caption1
+                                                    .copyWith(
+                                                        color: hazardLevelColor,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                            const TextSpan(
+                                                text: ' ingredients'),
+                                          ],
+                                        ),
+                                      ),
+
+                                      const Spacer(),
+                                      Icon(
+                                        Icons.warning,
+                                        size: 20,
+                                        color: Colors.grey.withOpacity(0.7),
+                                      )
+                                    ]))),
+                      ),
+                    ),
+
+                    Container(
+                      height: 10,
+                      color: Colors.white,
+                    ),
+                    Container(
+                      height: 5,
+                      color: kDefaultBackground,
+                    ),
+                    Container(
+                      color: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                            left: 40.0, right: 30, top: 15, bottom: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Text(
+                                    product.reviewMetas.all.averageRating
+                                        .toString()
+                                        .substring(0, 3),
+                                    style: kBaseTextStyle.copyWith(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.bold)),
+                                Text('trên 5', style: textTheme.caption1),
+                                Text('(${product.reviewMetas.all.reviewCount})',
+                                    style: textTheme.caption2
+                                        .copyWith(color: kSecondaryGrey)),
+                              ],
+                            ),
+                            const Spacer(),
+                            if (initialReviewPage != null)
+                              Column(
+                                children: <Widget>[
+                                  ReviewRatingBar(
+                                      title: '5.0',
+                                      percentage: totalCount != 0
+                                          ? initialReviewPage.itemList.fold(
+                                                  0,
+                                                  (previousValue, element) =>
+                                                      element.rating == 5
+                                                          ? previousValue + 1
+                                                          : previousValue) /
+                                              totalCount
+                                          : 0),
+                                  ReviewRatingBar(
+                                      title: '4.0',
+                                      percentage: totalCount != 0
+                                          ? initialReviewPage.itemList.fold(
+                                                  0,
+                                                  (previousValue, element) =>
+                                                      element.rating == 4
+                                                          ? previousValue + 1
+                                                          : previousValue) /
+                                              totalCount
+                                          : 0),
+                                  ReviewRatingBar(
+                                      title: '3.0',
+                                      percentage: totalCount != 0
+                                          ? initialReviewPage.itemList.fold(
+                                                  0,
+                                                  (previousValue, element) =>
+                                                      element.rating == 3
+                                                          ? previousValue + 1
+                                                          : previousValue) /
+                                              totalCount
+                                          : 0),
+                                  ReviewRatingBar(
+                                      title: '2.0',
+                                      percentage: totalCount != 0
+                                          ? initialReviewPage.itemList.fold(
+                                                  0,
+                                                  (previousValue, element) =>
+                                                      element.rating == 2
+                                                          ? previousValue + 1
+                                                          : previousValue) /
+                                              totalCount
+                                          : 0),
+                                  ReviewRatingBar(
+                                      title: '1.0',
+                                      percentage: totalCount != 0
+                                          ? initialReviewPage.itemList.fold(
+                                                  0,
+                                                  (previousValue, element) =>
+                                                      element.rating == 1
+                                                          ? previousValue + 1
+                                                          : previousValue) /
+                                              totalCount
+                                          : 0),
+                                ],
+                              )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      height: 5,
+                      color: kDefaultBackground,
+                    ),
+                    Container(height: 14, color: Colors.white),
                     GestureDetector(
                         onTap: () => Navigator.push(
                             context,
@@ -557,31 +567,11 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                     if (product.descImages == null)
                                       Container(height: 20),
                                     Container(height: 20),
-                                    if (totalCount > 2)
+                                    if (initialReviewPage != null)
                                       Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 16),
-                                        child: Column(
-                                          children: <Widget>[
-                                            ReviewCard(
-                                                isPreview: true,
-                                                context: context,
-                                                review: initialReviewPage
-                                                    .itemList[0]),
-                                            ReviewCard(
-                                                isPreview: true,
-                                                context: context,
-                                                review: initialReviewPage
-                                                    .itemList[1]),
-                                            ReviewCard(
-                                                isPreview: true,
-                                                context: context,
-                                                showDivider: false,
-                                                review: initialReviewPage
-                                                    .itemList[2]),
-                                          ],
-                                        ),
-                                      ),
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 16),
+                                          child: getInitialThreeReviews()),
                                     if (totalCount == 0)
                                       Column(
                                         mainAxisAlignment:
@@ -589,14 +579,15 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                         children: [
                                           Center(
                                             child: Text(
-                                              'No Reviws Available',
+                                              'không tìm thấy sản phẩm',
                                               style: textTheme.bodyText1
                                                   .copyWith(
                                                       fontSize: 14,
-                                                      color: kSecondaryGrey),
+                                                      color: kPrimaryOrange),
                                             ),
                                           ),
-                                          SizedBox(
+                                          Container(
+                                            color: kWhite,
                                             height: 50,
                                           )
                                         ],
@@ -605,10 +596,11 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                 ),
                               )
                             : Container()),
-                  // Container(
-                  //   height: 28,
-                  // ),
-                ],
+                    // Container(
+                    //   height: 28,
+                    // ),
+                  ],
+                ),
               ),
             ),
     );

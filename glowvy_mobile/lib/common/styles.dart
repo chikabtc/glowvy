@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'colors.dart';
@@ -35,7 +34,7 @@ ThemeData buildLightTheme() {
   return base.copyWith(
     // dividerColor: ,
     // colorScheme: kColorScheme,
-    buttonColor: kPrimaryOrange,
+
     // cardColor: Colors.white,
     // textSelectionColor: kTeal100,
     // errorColor: kErrorRed,
@@ -71,12 +70,6 @@ ThemeData buildLightTheme() {
       ),
     ),
   );
-}
-
-CupertinoThemeData buildiOSLightTheme() {
-  final base = CupertinoThemeData();
-
-  return base;
 }
 
 TextTheme _buildTextTheme(TextTheme base) {
@@ -150,6 +143,13 @@ extension CustomTextTheme on TextTheme {
         height: 1.25,
         fontSize: 12.0,
         fontWeight: FontWeight.w400,
+      );
+  TextStyle get appBar => const TextStyle(
+        fontFamily: 'Nunito',
+        color: kDefaultFontColor,
+        height: 1.25,
+        fontSize: 18.0,
+        fontWeight: FontWeight.w800,
       );
   Color get info => const Color(0xFF17a2b8);
   Color get warning => const Color(0xFFffc107);

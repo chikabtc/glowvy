@@ -16,6 +16,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -47,7 +48,7 @@ class _AppState extends State<Glowvy> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     final analytics = FirebaseAnalytics();
 
-    return CupertinoApp(
+    return PlatformApp(
         title: 'Glowvy',
         debugShowCheckedModeBanner: false,
         navigatorObservers: [
@@ -140,7 +141,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
 
     print('building app.dart');
     if (isChecking) {
-      return CupertinoApp(
+      return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           body: Container(),
@@ -177,7 +178,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
                 // if (!currentFocus.hasPrimaryFocus) {
                 // }
               },
-              child: CupertinoApp(
+              child: MaterialApp(
                 debugShowCheckedModeBanner: false,
                 locale: Locale(
                     Provider.of<AppModel>(context, listen: false).locale, ''),
@@ -238,7 +239,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
                   '/reset_password': (context) => ResetPasswordScreen(),
                   '/forgot_password': (context) => ForgotPasswordScreen(),
                 },
-                theme: buildiOSLightTheme(),
+                theme: buildLightTheme(),
               ),
             ),
           );

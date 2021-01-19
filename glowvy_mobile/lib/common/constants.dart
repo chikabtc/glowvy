@@ -3,6 +3,7 @@
 import 'package:Dimodo/common/sizeConfig.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:localstorage/localstorage.dart';
@@ -136,7 +137,17 @@ final kFullSectionDivider = Divider(
   thickness: 0.5,
   height: 0.5,
 );
+final kCupertinoAppBarData = (_, __) => CupertinoNavigationBarData(
+    brightness: Brightness.light, backgroundColor: Colors.white
+    // Issue with cupertino where a bar with no transparency
+    // will push the list down. Adding some alpha value fixes it (in a hacky way)
+    );
+final kMaterialAppBarData = (_, __) => MaterialAppBarData(
+    brightness: Brightness.light
 
+    // Issue with cupertino where a bar with no transparency
+    // will push the list down. Adding some alpha value fixes it (in a hacky way)
+    );
 SizeConfig kSizeConfig;
 RateMyApp kRateMyApp = RateMyApp(
   preferencesPrefix: 'rateMyApp_',

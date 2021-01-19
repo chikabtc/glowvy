@@ -50,6 +50,14 @@ class Tools {
     }
   }
 
+  static void scrollToTop(controller) {
+    controller.animateTo(
+      0.0,
+      curve: Curves.easeOut,
+      duration: const Duration(milliseconds: 300),
+    );
+  }
+
   static List<TextSpan> highlightOccurrences(String source, String query) {
     if (query == null ||
         query.isEmpty ||
