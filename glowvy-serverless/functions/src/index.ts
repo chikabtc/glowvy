@@ -35,7 +35,7 @@ function getAverageRating(reviewMeta: any, newReviewRating: number) {
   if (reviewMeta.review_count === 0) {
     return 0;
   }
-  return (reviewMeta.average_rating * reviewMeta.review_count + newReviewRating) / (reviewMeta.review_count);
+  return (reviewMeta.average_rating * (reviewMeta.review_count - 1) + newReviewRating) / (reviewMeta.review_count);
 }
 
 exports.updateProductCount = functions.region('asia-east2').firestore
@@ -89,14 +89,21 @@ exports.algoliaProductSync = functions.region('asia-east2')
       thumbnail: product?.thumbnail,
     };
     // creating
-
     if (!oldData.exists && newData.exists) {
       console.log('product is created');
       utils.updateAvailableBrandCategories(db, product);
+      utils.updateCategoryProductCount(db, product, 1);
+      utils.updateBrandProductCounter(db, product, 1);
+
+      // update product count in categories and brands
       return cosmeticsIndex.saveObject(algoliaRecrod);
       // deleting
     } if (!newData.exists && oldData.exists) {
       console.log('product is deleted');
+      // update product count in categories and brands
+      utils.updateCategoryProductCount(db, product, -1);
+      utils.updateBrandProductCounter(db, product, -1);
+
       return cosmeticsIndex.deleteObject(objectID);
     }
     console.log('product is updated');

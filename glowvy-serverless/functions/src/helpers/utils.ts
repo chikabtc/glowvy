@@ -137,3 +137,61 @@ export async function updateAvailableBrandCategories(db, product): Promise<void>
     }).then(() => console.log('added category'));
   }
 }
+
+export async function updateCategoryProductCount(db, productJson, incrementBy) {
+  const snap = await db.collection('categories').where('id', '==', productJson.category.first_category_id).get();
+  const categoryDoc = snap.docs[0];
+  const category = snap.docs[0].data();
+  const subCategories = category.sub_categories;
+  if (productJson.category.first_category_id !== undefined) {
+    if (category.hasOwnProperty('grand_total_count')) {
+      category.grand_total_count += incrementBy;
+    } else {
+      category.grand_total_count = 1;
+    }
+
+    // find the subcategories the product belongs to
+    if (subCategories != null) {
+      if (productJson.category.second_category_id != null) {
+        const secondCate = category.sub_categories.find((cate) => cate.id === productJson.category.second_category_id);
+        const index = category.sub_categories.findIndex((cate) => secondCate.id === cate.id);
+        if (subCategories[index].hasOwnProperty('grand_total_count')) {
+          subCategories[index].grand_total_count += incrementBy;
+        } else {
+          subCategories[index].grand_total_count = 1;
+        }
+
+        if (productJson.category.third_category_id != null) {
+          const thirdCategory = secondCate.sub_categories.find((cate) => cate.id === productJson.category.third_category_id);
+          const thirdIndex = secondCate.sub_categories.findIndex((cate) => thirdCategory.id === cate.id);
+          // eslint-disable-next-line no-plusplus
+          subCategories[index].sub_categories[thirdIndex].grand_total_count++;
+
+          if (subCategories[index].sub_categories[thirdIndex].hasOwnProperty('grand_total_count')) {
+            subCategories[index].sub_categories[thirdIndex].grand_total_count += incrementBy;
+          } else {
+            subCategories[index].sub_categories[thirdIndex].grand_total_count = 1;
+          }
+
+          // console.log(thirdCategory)
+        }
+      }
+    }
+    // console.log(subCategories)
+
+    await categoryDoc.ref.update({
+      grand_total_count: category.grand_total_count,
+      sub_categories: subCategories,
+    }).then(() => console.log('holooo'));
+  }
+}
+export async function updateBrandProductCounter(db, productJson, incrementBy) {
+  const { brand } = productJson;
+  console.log(brand);
+  const snap = await db.collection('brands').where('id', '==', brand.id).get();
+  const brandDoc = snap.docs[0];
+  const count = brandDoc.data().grand_total_count + incrementBy;
+  brandDoc.ref.update({
+    grand_total_count: count,
+  }).then(() => console.log('incremented'));
+}
