@@ -372,7 +372,7 @@ class Popups {
                               Navigator.pop(context);
                             },
                             child:
-                                SvgPicture.asset('assets/icons/big-logo.svg'),
+                                SvgPicture.asset('assets/icons/logo_smile.svg'),
                           ),
                         ),
                       ),

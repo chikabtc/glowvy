@@ -1,5 +1,8 @@
 // The config app layout variable
 // or this value can load online https://json-inspire-ui.inspire.now.sh/config.json - see document
+
+import 'dart:io' as p;
+
 import 'package:Dimodo/common/sizeConfig.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:flutter/material.dart';
@@ -178,3 +181,4 @@ TextTheme kHeadlineTheme(theme) {
 var theme = buildLightTheme();
 var textTheme = buildLightTheme().textTheme;
 var colorTheme = buildLightTheme().colorScheme;
+final kScrollbarThickness = p.Platform.isAndroid ? 0.0 : 2.0;

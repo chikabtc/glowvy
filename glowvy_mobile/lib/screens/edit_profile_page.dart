@@ -83,7 +83,7 @@ class EditProfilePageState extends State<EditProfilePage>
               children: <Widget>[
                 SettingCard(
                     color: kWhite,
-                    title: 'profile photo',
+                    title: 'Ảnh đại diện',
                     trailingWidget: isLoading
                         ? kIndicator()
                         : user?.picture == null
@@ -105,7 +105,7 @@ class EditProfilePageState extends State<EditProfilePage>
                     }),
                 SettingCard(
                   color: kWhite,
-                  title: S.of(context).name,
+                  title: 'Tên',
                   trailingText: user.fullName,
                   onTap: () => Navigator.push(
                       context,
@@ -114,7 +114,7 @@ class EditProfilePageState extends State<EditProfilePage>
                 ),
                 SettingCard(
                   color: kWhite,
-                  title: 'gender',
+                  title: 'Giới tính',
                   trailingText: user.gender,
                   onTap: () => Navigator.push(
                       context,
@@ -124,7 +124,7 @@ class EditProfilePageState extends State<EditProfilePage>
                 ),
                 SettingCard(
                   color: kWhite,
-                  title: 'Region',
+                  title: 'Khu vực',
                   showDivider: false,
                   trailingText: user.address?.province == null
                       ? ''
@@ -137,7 +137,7 @@ class EditProfilePageState extends State<EditProfilePage>
                 const SizedBox(height: 7),
                 SettingCard(
                   color: kWhite,
-                  title: 'Birthday',
+                  title: 'Năm sinh',
                   trailingText:
                       user.birthYear != null ? user.birthYear.toString() : '',
                   onTap: () => Navigator.push(
@@ -148,7 +148,7 @@ class EditProfilePageState extends State<EditProfilePage>
                 ),
                 SettingCard(
                     color: kWhite,
-                    title: 'Skin Type',
+                    title: 'Loại da',
                     onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute<void>(
@@ -157,7 +157,7 @@ class EditProfilePageState extends State<EditProfilePage>
                     trailingText: user.skinType ?? ''),
                 SettingCard(
                   color: kWhite,
-                  title: 'Skin Issues',
+                  title: 'Tình trạng da',
                   showDivider: false,
                   trailingText:
                       user.skinIssues != null && user.skinIssues.isNotEmpty
@@ -173,7 +173,7 @@ class EditProfilePageState extends State<EditProfilePage>
                 const SizedBox(height: 7),
                 SettingCard(
                   color: kWhite,
-                  title: 'Account setting',
+                  title: 'Cài đặt tài khoản',
                   showDivider: false,
                   onTap: () => Navigator.push(
                     context,

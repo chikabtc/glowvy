@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
+import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/models/user/skinScores.dart';
@@ -115,6 +116,7 @@ class UserModel with ChangeNotifier {
   }
 
   Future discardReviewDraft() async {
+    print('dw');
     if (firebaseUser != null) {
       try {
         user.reviewDraft = null;
@@ -200,7 +202,9 @@ class UserModel with ChangeNotifier {
   }
 
   Future updateUserName(name) async {
-    await firebaseUser.updateProfile(displayName: name);
+    await _db.collection('users').doc(firebaseUser.uid).update({
+      'full_name': name,
+    });
   }
 
   Future updateUser({@required field, @required value}) async {
@@ -218,9 +222,8 @@ class UserModel with ChangeNotifier {
   }
 
   Future updateUserSkinType(String skinType) async {
-    await _db.collection('users').doc(firebaseUser.uid).update({
-      'skin_type': skinType,
-    });
+    await _db.collection('users').doc(firebaseUser.uid).update(
+        {'skin_type': skinType, 'skin_type_en': Tools.getEnSkinType(skinType)});
     await reloadUser();
   }
 

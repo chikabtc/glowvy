@@ -101,7 +101,7 @@ class BrandHomePageState extends State<BrandHomePage>
                     Row(
                       children: [
                         const SizedBox(width: 16),
-                        Text('${_brand.grandTotalCount} items',
+                        Text('${_brand.grandTotalCount ?? 0} sản phẩm',
                             style: textTheme.caption),
                         const Spacer(),
                         const SizedBox(width: 8),

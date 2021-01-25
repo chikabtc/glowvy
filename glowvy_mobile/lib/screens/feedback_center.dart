@@ -47,6 +47,7 @@ class _FeedbackCenterState extends State<FeedbackCenter> {
             width: screenSize.width,
             color: kQuaternaryBlue,
             child: Scrollbar(
+              thickness: kScrollbarThickness,
               child: ListView(
                 padding: const EdgeInsets.only(bottom: 30),
                 children: <Widget>[

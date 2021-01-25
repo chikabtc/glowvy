@@ -92,20 +92,20 @@ class ExceptionIndicator extends StatelessWidget {
                   ),
                   if (onTryAgain != null)
                     Container(
-                      height: 48,
+                      height: 40,
                       // color: kPrimaryOrange,
                       width: double.infinity,
                       child: FlatButton.icon(
                         color: kPrimaryOrange,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0)),
+                            borderRadius: BorderRadius.circular(16)),
                         onPressed: onTryAgain,
                         icon: const Icon(
                           Icons.refresh,
                           color: Colors.white,
                         ),
                         label: Text(
-                          'Try Again',
+                          'Thử lại',
                           style: textTheme.bodyText1.copyWith(
                             fontSize: 16,
                             color: Colors.white,

@@ -110,14 +110,12 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
 
     Route _createRoute() {
       var thumbnailList = [product.thumbnail];
-      if (product.descImages != null) {
-        thumbnailList += product.descImages;
-      }
+      // if (product.descImages != null) {
+      //   thumbnailList += product.descImages;
+      // }
       return PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => ImageGalery(
-            images:
-                thumbnailList.isNotEmpty ? thumbnailList : product.descImages,
-            index: 0),
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            ImageGalery(images: thumbnailList, index: 0),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           final tween = Tween(begin: const Offset(0.0, 1.0), end: Offset.zero)
               .chain(CurveTween(curve: Curves.ease));
@@ -169,6 +167,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
           : SafeArea(
               bottom: false,
               child: Scrollbar(
+                thickness: kScrollbarThickness,
                 child: ListView(
                   padding: const EdgeInsets.only(
                     top: 0,
@@ -209,11 +208,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                     const SizedBox(
                                       width: 5,
                                     ),
-                                    Text(
-                                        product.descImages != null
-                                            ? (product.descImages.length + 1)
-                                                .toString()
-                                            : '1',
+                                    Text('1',
                                         style: textTheme.caption1.copyWith(
                                             fontSize: 13,
                                             fontWeight: FontWeight.w600,
@@ -302,7 +297,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                         color: Colors.grey.withOpacity(0.7),
                                       ),
                                       const SizedBox(width: 10),
-                                      Text('product descriptions',
+                                      Text('Mô tả sản phẩm',
                                           maxLines: 1,
                                           overflow: TextOverflow.ellipsis,
                                           style: textTheme.caption1),
@@ -406,16 +401,17 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                             color: kSecondaryGrey,
                                           ),
                                           children: <TextSpan>[
-                                            const TextSpan(text: 'it contains'),
+                                            const TextSpan(
+                                                text:
+                                                    'Sản phẩm chứa thành phần có'),
                                             TextSpan(
-                                                text: ' $hazardLevel risk',
+                                                text:
+                                                    ' độ an toàn $hazardLevel',
                                                 style: textTheme.caption1
                                                     .copyWith(
                                                         color: hazardLevelColor,
                                                         fontWeight:
                                                             FontWeight.bold)),
-                                            const TextSpan(
-                                                text: ' ingredients'),
                                           ],
                                         ),
                                       ),
@@ -562,8 +558,8 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                         ],
                                       ),
                                     ),
-                                    if (product.descImages != null)
-                                      ReviewImages(product),
+                                    // if (product.descImages != null)
+                                    //   ReviewImages(product),
                                     if (product.descImages == null)
                                       Container(height: 20),
                                     Container(height: 20),

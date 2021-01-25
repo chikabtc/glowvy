@@ -88,6 +88,7 @@ class _ReviewCosmeticsSearchScreenState
             if (snapshot.hasData) {
               final listPage = snapshot.data;
               return Scrollbar(
+                thickness: kScrollbarThickness,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: NestedScrollView(
@@ -135,6 +136,7 @@ class _ReviewCosmeticsSearchScreenState
       return Padding(
         padding: const EdgeInsets.only(top: 70),
         child: Scrollbar(
+          thickness: kScrollbarThickness,
           child: Padding(
             padding: const EdgeInsets.only(left: 16.0, right: 16),
             child: NestedScrollView(
@@ -153,7 +155,7 @@ class _ReviewCosmeticsSearchScreenState
                             if (model.recentSearchItems.isNotEmpty)
                               Row(
                                 children: [
-                                  Text('Recently Searched',
+                                  Text('Tìm kiếm gần đây',
                                       style: textTheme.bodyText1.copyWith(
                                           fontWeight: FontWeight.w700)),
                                   const Spacer(),
@@ -162,7 +164,7 @@ class _ReviewCosmeticsSearchScreenState
                                     child: PlatformButton(
                                       onPressed: () => model.clear(),
                                       padding: EdgeInsets.zero,
-                                      child: Text('Clear',
+                                      child: Text('Xóa',
                                           style: textTheme.bodyText1.copyWith(
                                               color: kPrimaryOrange,
                                               fontWeight: FontWeight.w700)),
@@ -284,7 +286,7 @@ class _ReviewCosmeticsSearchScreenState
                                   opacity: 0.0,
                                   duration: const Duration(milliseconds: 100),
                                   child: Text(
-                                    'Search',
+                                    'Tìm kiếm',
                                     style: textTheme.headline3,
                                     textAlign: TextAlign.start,
                                   ))),
@@ -298,7 +300,7 @@ class _ReviewCosmeticsSearchScreenState
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Search',
+                                  'Tìm kiếm',
                                   style: textTheme.headline1.copyWith(
                                       fontSize: 32,
                                       fontStyle: FontStyle.normal),
@@ -323,7 +325,7 @@ class _ReviewCosmeticsSearchScreenState
                                 curve: Curves.easeIn);
                           }
                         },
-                        hint: 'search',
+                        hint: 'Sản phẩm, danh mục, thương hiệu',
                         elevation: 0,
                         scrollController: _scrollController,
                         borderRadius: BorderRadius.circular(10),

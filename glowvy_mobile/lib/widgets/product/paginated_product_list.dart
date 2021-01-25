@@ -208,6 +208,7 @@ class _PaginatedProductListViewState extends State<PaginatedProductListView>
     return widget.disableSrolling
         ? paginatedListView
         : Scrollbar(
+            thickness: kScrollbarThickness,
             child: paginatedListView,
           );
   }

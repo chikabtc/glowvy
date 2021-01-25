@@ -113,6 +113,7 @@ Widget customButton(
     {@required function,
     @required text,
     buttonColor = kPrimaryOrange,
+    borderColor = Colors.transparent,
     textColor = kWhite}) {
   return GestureDetector(
     onTap: function,
@@ -125,7 +126,7 @@ Widget customButton(
                 color: textColor, fontSize: 15, fontWeight: FontWeight.bold)),
         decoration: BoxDecoration(
           color: buttonColor,
-          border: Border.all(color: buttonColor, width: 1),
+          border: Border.all(color: borderColor, width: 1),
           borderRadius: BorderRadius.circular(16),
         )),
   );

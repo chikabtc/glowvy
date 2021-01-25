@@ -250,6 +250,9 @@ class S implements WidgetsLocalizations {
   // ===========================================================================
   // home page
   // ===========================================================================
+  String get home => 'Home';
+  String get weeklyRanking => 'Weekly Ranking';
+
   String get hitTheBottomDescription =>
       'Oh! It seems to hit the bottom. \n Btw, do you like our app';
 
@@ -309,6 +312,7 @@ class S implements WidgetsLocalizations {
   String get darkTheme => 'Dark Theme';
   String get date => 'Date';
   String get description => 'Description';
+  String get productDescription => 'product description';
   String get discount => 'Discount';
   String get done => 'Done';
   String get dontHaveAccount => "Don't have an account?'";
@@ -482,6 +486,10 @@ class $vi extends S {
 
   @override
   TextDirection get textDirection => TextDirection.ltr;
+  @override
+  String get home => 'Trang chủ';
+  @override
+  String get weeklyRanking => 'Xếp hạng tuần';
 
   @override
   String get accounts => 'Tài Khoản';
@@ -582,7 +590,8 @@ class $vi extends S {
   @override
   String get discoverYourType =>
       'Nhận biết được sản phẩm phù hợp! Tư vấn miễn cho nhu cầu chăm sóc da của bạn';
-
+  @override
+  String get productDescription => 'Thông tin sản phẩm';
   @override
   String get cancel => 'Hủy';
   @override
@@ -907,11 +916,11 @@ class $vi extends S {
   @override
   String get undecided => 'Không chắc chắn';
   @override
-  String get low => 'thấp';
+  String get low => 'cao';
   @override
-  String get moderate => 'vừa phải';
+  String get moderate => 'trung bình';
   @override
-  String get high => 'cao';
+  String get high => 'thấp';
   @override
   String get events => 'Sự kiện';
   @override

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:Dimodo/models/user/userModel.dart';
+import 'package:Dimodo/widgets/start_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:path/path.dart';
@@ -68,12 +69,36 @@ class ReviewCard extends StatelessWidget {
     );
   }
 
+  getReviewDate() {
+    final difference = DateTime.now()
+        .difference(DateTime.fromMillisecondsSinceEpoch(review.createdAt));
+    if (difference.inMinutes < 1) {
+      print('min');
+      return difference.inSeconds.toString() + ' giây trước';
+    }
+    if (difference.inMinutes < 60) {
+      print('min');
+      return difference.inMinutes.toString() + ' phút trước';
+    } else if (difference.inHours < 24) {
+      //
+      print('hour');
+
+      return difference.inHours.toString() + ' giờ trước';
+    } else if (difference.inDays > 1) {
+      print('day');
+
+      return difference.inDays.toString() + ' ngày trước';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     sanitizedText = review.content.replaceAll('\n', '');
     kSanitizedText = review.scontent?.replaceAll('\n', '');
-    final skinIssues =
-        review.user.skinIssues != null ? review.user.skinIssues.toString() : '';
+    // final title =
+    final skinIssues = review.user.skinIssues != null
+        ? '/ ${review.user.skinIssues.join(',').toString()}'
+        : '';
 
     // print(review.rating);
 
@@ -115,21 +140,31 @@ class ReviewCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(review.user.displayName ?? review.user.fullName,
+                    Text(
+                        review.user.displayName +
+                            ' (' +
+                            (DateTime.now().year - review.user.birthYear)
+                                .toString() +
+                            '/' +
+                            review.user.skinType +
+                            '' +
+                            skinIssues +
+                            ')',
                         style: textTheme.button2),
                     Row(
-                      children: <Widget>[
-                        Text(
-                            (DateTime.now().year - review.user.birthYear)
-                                .toString(),
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SmoothStarRating(
+                          starCount: 5,
+                          size: 14,
+                          rating: review.rating.toDouble(),
+                        ),
+                        const SizedBox(width: 5),
+                        Text(getReviewDate(),
                             style: textTheme.button2.copyWith(
                                 fontSize: 14,
                                 fontWeight: FontWeight.normal,
                                 color: kSecondaryGrey)),
-                        const SizedBox(width: 10),
-                        Text(review.user.skinType ?? '' + ' ' + skinIssues,
-                            style: textTheme.button2
-                                .copyWith(color: kSecondaryGrey)),
                       ],
                     ),
                     const SizedBox(height: 7),

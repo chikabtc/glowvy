@@ -7,6 +7,7 @@ import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/category.dart';
 import 'package:Dimodo/screens/profile.dart';
 import 'package:Dimodo/screens/search_screen.dart';
+import 'package:Dimodo/screens/setting/login.dart';
 import 'package:Dimodo/screens/write_review_screen.dart';
 import 'package:Dimodo/widgets/bottom_navigation_bar_root_item.dart';
 import 'package:after_layout/after_layout.dart';
@@ -172,6 +173,7 @@ class MainTabsState extends State<MainTabs>
             }
           },
           child: Scaffold(
+            backgroundColor: kWhite,
             resizeToAvoidBottomInset: false,
             key: _scaffoldKey,
             body: PageView(
@@ -192,7 +194,7 @@ class MainTabsState extends State<MainTabs>
                       kFullSectionDivider,
                       BottomNavigationBar(
                         type: BottomNavigationBarType.fixed,
-                        backgroundColor: kBottomNavBarColor,
+                        backgroundColor: kWhite,
                         items: _bottomNavigationBarRootItems
                             .map((e) => e.bottomNavigationBarItem)
                             .toList(),
@@ -209,17 +211,17 @@ class MainTabsState extends State<MainTabs>
                           height: 1.25,
                           fontStyle: FontStyle.normal,
                           fontSize: 12,
-                          color: kDefaultFontColor,
+                          color: kPrimaryOrange,
                           fontWeight: FontWeight.w600,
                         ),
                         // selectedItemColor: kDefaultFontColor,
-                        unselectedItemColor: Color(0x3C3C43).withOpacity(0.6),
+                        unselectedItemColor: kSecondaryGrey,
                         unselectedLabelStyle: textTheme.bodyText2.copyWith(
                           fontFamily: 'Nunito',
                           height: 1.25,
                           fontStyle: FontStyle.normal,
                           fontSize: 12,
-                          color: Color(0x3C3C43).withOpacity(0.4),
+                          color: kSecondaryGrey,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -264,7 +266,7 @@ class MainTabsState extends State<MainTabs>
                   padding: const EdgeInsets.only(bottom: 2),
                   child: SvgPicture.asset(
                     item['icon'],
-                    color: Color(0x3C3C43).withOpacity(0.6),
+                    color: kSecondaryGrey,
                     width: value,
                     height: value,
                   ),
@@ -301,8 +303,14 @@ class MainTabsState extends State<MainTabs>
         duration: const Duration(milliseconds: 300),
       );
     } else if (index == 2) {
+      if (userModel.isLoggedIn) {
+        Navigator.of(context).push(_createRoute());
+      } else {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => const LoginScreen()));
+      }
+
       //push the page from the bottom
-      Navigator.of(context).push(_createRoute());
     } else {
       navStack[index] = context;
       _tabController.index = index;

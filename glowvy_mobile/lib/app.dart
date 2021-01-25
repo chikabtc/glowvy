@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
+import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/models/product/review_model.dart';
 import 'package:Dimodo/models/search_model.dart';
 import 'package:Dimodo/screens/category.dart';
@@ -17,6 +18,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -86,8 +88,8 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
     await _app.loadAppConfig();
     await _userModel.initData();
     await _addressModel.setProvinces();
-    await _search.setBrands();
-    await _search.setCategories();
+    await _search.initData();
+
     _search.setSerchHistory(_userModel);
     await precacheImage(
         const AssetImage('assets/icons/default-avatar.png'), context);
@@ -144,7 +146,13 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          body: Container(),
+          body: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            color: kPrimaryGreen,
+            child:
+                Center(child: SvgPicture.asset('assets/icons/launch-logo.svg')),
+          ),
         ),
       );
     }

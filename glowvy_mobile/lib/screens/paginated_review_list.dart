@@ -98,6 +98,7 @@ class _PaginatedReviewListViewState extends State<PaginatedReviewListView>
     final screenSize = MediaQuery.of(context).size;
 
     return Scrollbar(
+      thickness: kScrollbarThickness,
       child: PagedListView.separated(
         addAutomaticKeepAlives: true,
         shrinkWrap: true,

@@ -33,6 +33,20 @@ class HexColor extends Color {
 
 class Tools {
   // get level of category
+  static getEnSkinType(String vnSkinType) {
+    switch (vnSkinType) {
+      case 'Da dầu':
+        return 'oily';
+      case 'Da khô':
+        return 'dry';
+      case 'Da hỗn hợp':
+        return 'complex';
+      case 'Da thường':
+        return 'neutral';
+      default:
+    }
+  }
+
   static String getUserAgeGroup(int birthYear) {
     if (birthYear != null) {
       final userAge = DateTime.now().year - birthYear;

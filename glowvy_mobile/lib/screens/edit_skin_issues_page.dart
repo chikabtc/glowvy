@@ -27,13 +27,7 @@ class EidtSkinIssuesPageState extends State<EidtSkinIssuesPage>
   AnimationController _doneButtonController;
 
   List<String> selectedIssues = [];
-  List<String> skinIssues = [
-    'Mụn',
-    'Nhạy cảm',
-    'Chàm',
-    'Nhăn',
-    'Tăng sắc tố da'
-  ];
+  List<String> skinIssues = ['Mụn', 'Chàm', 'Nhăn', 'Tăng sắc tố da'];
 
   @override
   void initState() {
@@ -88,14 +82,14 @@ class EidtSkinIssuesPageState extends State<EidtSkinIssuesPage>
             elevation: 0,
             actions: [
               Padding(
-                padding: EdgeInsets.only(right: 16.0),
+                padding: const EdgeInsets.only(right: 16.0),
                 child: Center(
                   child: Builder(
                     builder: (context) => StaggerAnimation(
                       btnColor: kPrimaryOrange,
                       width: 57,
                       height: 34,
-                      buttonTitle: 'Done',
+                      buttonTitle: 'Xong',
                       buttonController: _doneButtonController.view,
                       onTap: () async {
                         _doneButtonController.forward();
@@ -109,7 +103,7 @@ class EidtSkinIssuesPageState extends State<EidtSkinIssuesPage>
             leading: backIcon(context),
             backgroundColor: kDefaultBackground,
             // TODO(parker): translate
-            title: Text('skin issues', style: textTheme.headline3)),
+            title: Text('Tình trạng da', style: textTheme.headline3)),
         backgroundColor: kDefaultBackground,
         body: Column(
           children: [

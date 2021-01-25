@@ -114,6 +114,7 @@ class IngredientScreenStates extends State<IngredientScreen>
           // elevation: 0,
         ),
         body: Scrollbar(
+          thickness: kScrollbarThickness,
           child: SingleChildScrollView(
             controller: _scrollController,
             child: Column(

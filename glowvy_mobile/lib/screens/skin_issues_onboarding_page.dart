@@ -27,13 +27,7 @@ class SkinIssuesOnboardingPageState extends State<SkinIssuesOnboardingPage>
   AnimationController _doneButtonController;
 
   List<String> selectedIssues = [];
-  List<String> skinIssues = [
-    'Mụn',
-    'Nhạy cảm',
-    'Chàm',
-    'Nhăn',
-    'Tăng sắc tố da'
-  ];
+  List<String> skinIssues = ['Mụn', 'Chàm', 'Nhăn', 'Tăng sắc tố da'];
 
   @override
   void initState() {

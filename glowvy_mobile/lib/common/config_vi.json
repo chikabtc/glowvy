@@ -144,26 +144,26 @@
   },
   "TabBar": [{
       "layout": "home",
-      "name": "home",
+      "name": "Trang chủ",
       "active-icon": "assets/icons/home-active.svg",
       "icon": "assets/icons/home-inactive.svg"
     },
     {
       "layout": "search",
-      "name": "search",
+      "name": "Tìm kiếm",
       "active-icon": "assets/icons/search.svg",
       "icon": "assets/icons/search.svg"
     },
     {
       "layout": "add",
-      "name": "add",
+      "name": "Đánh giá",
       "active-icon": "assets/icons/square_add.svg",
       "icon": "assets/icons/square_add.svg"
     },
 
     {
       "layout": "profile",
-      "name": "me",
+      "name": "Cá nhân",
       "active-icon": "assets/icons/profile-active.svg",
       "icon": "assets/icons/profile-inactive.svg"
     }

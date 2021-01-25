@@ -160,38 +160,36 @@ async function crawlProductById(admin, id, page) {
             'brand': brand,
             'hazard_score': hazardScore,
             'tags': glowvyTags,
-            review_metas: {
-                all: {
-                    review_count: 0,
-                    average_rating: 0,
-                    ranking_scroe: 0,
+            'review_metas': {
+                'all': {
+                    'review_count': 0,
+                    'average_rating': 0,
+                    'ranking_score': 0,
                 },
-                complex: {
-                    translation: all,
-
-                    review_count: 0,
-                    average_rating: 0,
-                    ranking_scroe: 0,
+                'complex': {
+                    'review_count': 0,
+                    'average_rating': 0,
+                    'ranking_score': 0,
                 },
-                dry: {
-                    review_count: 0,
-                    average_rating: 0,
-                    ranking_scroe: 0,
+                'dry': {
+                    'review_count': 0,
+                    'average_rating': 0,
+                    'ranking_score': 0,
                 },
-                neutral: {
-                    review_count: 0,
-                    average_rating: 0,
-                    ranking_scroe: 0,
+                'neutral': {
+                    'review_count': 0,
+                    'average_rating': 0,
+                    'ranking_score': 0,
                 },
-                oily: {
-                    review_count: 0,
-                    average_rating: 0,
-                    ranking_scroe: 0,
+                'oily': {
+                    'review_count': 0,
+                    'average_rating': 0,
+                    'ranking_score': 0,
                 },
-                sensitive: {
-                    review_count: 0,
-                    average_rating: 0,
-                    ranking_scroe: 0,
+                'sensitive': {
+                    'review_count': 0,
+                    'average_rating': 0,
+                    'ranking_score': 0,
                 }
             }
         }
@@ -233,7 +231,6 @@ function writeJsonToFile(path, json) {
         };
         console.log("File has been created");
     });
-
 }
 
 async function uploadProductToFirestore(admin, json, thumbnail) {

@@ -3,6 +3,7 @@ import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/models/product/review_model.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
@@ -57,6 +58,13 @@ class EditNamePageState extends State<EditNamePage>
         field: 'full_name',
         value: name,
       );
+      //update the user name in the reviews
+      userModel.reviews.forEach((element) {
+        element.user.fullName = name;
+      });
+      await Provider.of<ReviewModel>(context, listen: false)
+          .updateReviewerName(userModel.user.uid, name);
+      //fetch the new reviews
       await _doneButtonController.reverse();
       Navigator.pop(context);
     } catch (e) {
@@ -81,7 +89,7 @@ class EditNamePageState extends State<EditNamePage>
                     btnColor: kPrimaryOrange,
                     width: 57,
                     height: 34,
-                    buttonTitle: 'Done',
+                    buttonTitle: 'Xong',
                     buttonController: _doneButtonController.view,
                     onTap: () async {
                       _doneButtonController.forward();

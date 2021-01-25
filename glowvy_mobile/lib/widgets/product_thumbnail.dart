@@ -36,7 +36,6 @@ class ProductThumbnail extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 7),
-
           Flexible(
             child: Container(
               child: Column(
@@ -55,14 +54,13 @@ class ProductThumbnail extends StatelessWidget {
               ),
             ),
           ),
-          // const Spacer(),
+          const Spacer(),
           if (allowEdit)
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                // const Spacer(),
                 Text(
-                  'Change',
+                  'Thay đổi',
                   style: textTheme.caption1.copyWith(color: kSecondaryGrey),
                 ),
                 SvgPicture.asset(

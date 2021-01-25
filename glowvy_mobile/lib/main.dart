@@ -154,6 +154,14 @@ void main() async {
         ExactAssetPicture(
             SvgPicture.svgStringDecoder, 'assets/icons/before_login_bg.svg'),
         null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/icons/logo_smile.svg'),
+        null);
+    await precachePicture(
+        ExactAssetPicture(
+            SvgPicture.svgStringDecoder, 'assets/images/before_login_bg.svg'),
+        null);
 
     if (kDebugMode) {
       await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(false);

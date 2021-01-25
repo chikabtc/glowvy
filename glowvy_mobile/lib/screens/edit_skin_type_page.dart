@@ -23,7 +23,13 @@ class EditSkinTypePageState extends State<EditSkinTypePage>
     with TickerProviderStateMixin, WidgetsBindingObserver {
   UserModel userModel;
   AnimationController _doneButtonController;
-  List<String> skinTypes = ['Da dầu', 'Da khô', 'Da hỗn hợp', 'Da thường'];
+  List<String> skinTypes = [
+    'Da dầu',
+    'Da khô',
+    'Da Nhạy cảm',
+    'Da hỗn hợp',
+    'Da thường'
+  ];
   String skinType;
 
   @override
@@ -54,7 +60,7 @@ class EditSkinTypePageState extends State<EditSkinTypePage>
   Future _updateSkinType(context) async {
     try {
       // void validateInput(name);
-      await userModel.updateUser(field: 'skin_type', value: skinType);
+      await userModel.updateUserSkinType(skinType);
       await _doneButtonController.reverse();
       Navigator.pop(context);
     } catch (e) {
@@ -66,67 +72,70 @@ class EditSkinTypePageState extends State<EditSkinTypePage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          brightness: Brightness.light,
-          elevation: 0,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 16.0),
-              child: Center(
-                child: Builder(
-                  builder: (context) => StaggerAnimation(
-                    btnColor: kPrimaryOrange,
-                    width: 57,
-                    height: 34,
-                    buttonTitle: 'Done',
-                    buttonController: _doneButtonController.view,
-                    onTap: () async {
-                      _doneButtonController.forward();
-                      await _updateSkinType(context);
-                    },
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: Scaffold(
+        appBar: AppBar(
+            brightness: Brightness.light,
+            elevation: 0,
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: 16.0),
+                child: Center(
+                  child: Builder(
+                    builder: (context) => StaggerAnimation(
+                      btnColor: kPrimaryOrange,
+                      width: 57,
+                      height: 34,
+                      buttonTitle: 'Xong',
+                      buttonController: _doneButtonController.view,
+                      onTap: () async {
+                        _doneButtonController.forward();
+                        await _updateSkinType(context);
+                      },
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
-          leading: backIcon(context),
-          backgroundColor: Colors.white,
-          title: Text(S.of(context).name, style: textTheme.headline3)),
-      backgroundColor: kDefaultBackground,
-      body: Container(
-        color: kWhite,
-        child: ListView.builder(
-          itemCount: skinTypes.length,
-          itemBuilder: (context, index) {
-            return Column(
-              children: [
-                ListTile(
-                  onTap: () async {
-                    setState(() {
-                      skinType = skinTypes[index];
-                    });
-                  },
-                  trailing: skinType == skinTypes[index]
-                      ? const Icon(
-                          Icons.check,
-                          color: kPrimaryOrange,
-                        )
-                      : const Icon(
-                          Icons.check,
-                          color: kPrimaryOrange,
-                          size: 0,
-                        ),
-                  title: Text(
-                    skinTypes[index],
-                    style: kBaseTextStyle.copyWith(
-                        fontSize: 15, fontWeight: FontWeight.w600),
+            ],
+            leading: backIcon(context),
+            backgroundColor: Colors.white,
+            title: Text('Loại da', style: textTheme.headline3)),
+        backgroundColor: kDefaultBackground,
+        body: Container(
+          color: kWhite,
+          child: ListView.builder(
+            itemCount: skinTypes.length,
+            itemBuilder: (context, index) {
+              return Column(
+                children: [
+                  ListTile(
+                    onTap: () async {
+                      setState(() {
+                        skinType = skinTypes[index];
+                      });
+                    },
+                    trailing: skinType == skinTypes[index]
+                        ? const Icon(
+                            Icons.check,
+                            color: kPrimaryOrange,
+                          )
+                        : const Icon(
+                            Icons.check,
+                            color: kPrimaryOrange,
+                            size: 0,
+                          ),
+                    title: Text(
+                      skinTypes[index],
+                      style: kBaseTextStyle.copyWith(
+                          fontSize: 15, fontWeight: FontWeight.w600),
+                    ),
                   ),
-                ),
-                kDivider
-              ],
-            );
-          },
+                  kDivider
+                ],
+              );
+            },
+          ),
         ),
       ),
     );

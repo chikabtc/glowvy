@@ -143,8 +143,9 @@ class ProductCard extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: <Widget>[
                               Text(
-                                Tools.getPriceProduct(product, 'VND',
-                                    onSale: false),
+                                '${product.volume} /' +
+                                    Tools.getPriceProduct(product, 'VND',
+                                        onSale: false),
                                 style: kBaseTextStyle.copyWith(
                                     color: kSecondaryGrey,
                                     fontSize: 12,
@@ -183,8 +184,9 @@ class ProductCard extends StatelessWidget {
                               ),
                               const Spacer(),
                               Text(
-                                Tools.getPriceProduct(product, 'VND',
-                                    onSale: false),
+                                '${product.volume} /' +
+                                    Tools.getPriceProduct(product, 'VND',
+                                        onSale: false),
                                 style: kBaseTextStyle.copyWith(
                                     color: kSecondaryGrey,
                                     fontSize: 12,

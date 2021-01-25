@@ -4,6 +4,7 @@ import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/common/widgets.dart';
+import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/categoryModel.dart';
@@ -210,7 +211,7 @@ class HomeScreenState extends State<HomeScreen>
                                     // color: Colors.red,
 
                                     child: Text(
-                                      'Home',
+                                      'Trang chủ',
                                       style: textTheme.bodyText1.copyWith(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w800),
@@ -231,7 +232,7 @@ class HomeScreenState extends State<HomeScreen>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Home',
+                                  'Trang chủ',
                                   style: textTheme.headline1.copyWith(
                                       fontSize: 32,
                                       fontStyle: FontStyle.normal),
@@ -239,7 +240,7 @@ class HomeScreenState extends State<HomeScreen>
                                 ),
                                 const SizedBox(height: 24),
                                 Text(
-                                  'weekly ranking',
+                                  'Xếp hạng tuần',
                                   style: textTheme.headline4.copyWith(
                                       fontSize: 22,
                                       fontStyle: FontStyle.normal),
@@ -334,6 +335,7 @@ class HomeScreenState extends State<HomeScreen>
                               return Builder(
                                 builder: (BuildContext context) {
                                   return Scrollbar(
+                                    thickness: kScrollbarThickness,
                                     child: SingleChildScrollView(
                                       child: Column(
                                         children: <Widget>[
@@ -351,7 +353,7 @@ class HomeScreenState extends State<HomeScreen>
                                             padding: const EdgeInsets.only(
                                                 left: 48, right: 48),
                                             child: Text(
-                                              'Có vấn đề với ứng dụng? Hãy gửi mail cho nhà phát triển! Glowvy team sẽ phản hồi nhanh nhất có thể.',
+                                              'Bạn gặp vấn đề với ứng dụng này? Hãy liên hệ với Glowvy Team ngay nhé! Chúng tớ sẽ cố gắng trả lời bạn nhanh nhất có thể.',
                                               textAlign: TextAlign.center,
                                               style: textTheme.headline4
                                                   .copyWith(
@@ -379,7 +381,7 @@ class HomeScreenState extends State<HomeScreen>
                                                   height: 48,
                                                   alignment: Alignment.center,
                                                   child: Text(
-                                                      'Liên hệ nhà phát triển Glowvy',
+                                                      'Liên hệ với Glowvy Team',
                                                       textAlign:
                                                           TextAlign.center,
                                                       style: textTheme.button
@@ -412,7 +414,7 @@ class HomeScreenState extends State<HomeScreen>
                                               height: 48,
                                               child: Center(
                                                 child: Text(
-                                                    'Share with your friends',
+                                                    'Chia sẻ ứng dụng cùng bạn bè',
                                                     style: textTheme.headline5
                                                         .copyWith(
                                                             color:
@@ -429,10 +431,14 @@ class HomeScreenState extends State<HomeScreen>
                                             },
                                             child: Container(
                                               color: Colors.transparent,
-                                              height: 48,
+                                              // height: 48,
+                                              width: double.infinity,
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 16, vertical: 4),
                                               child: Center(
                                                 child: Text(
-                                                    'Complement Glowvy!',
+                                                    'Yêu thích Glowvy? \nHãy dành một ít lời khen để tạo động lực cho chúng tớ nhé!',
+                                                    textAlign: TextAlign.center,
                                                     style: textTheme.headline5
                                                         .copyWith(
                                                             color:

@@ -12,7 +12,7 @@ class ListPreferences {
   List<String> genders = [];
   String skinType;
   List<String> skinIssues = [];
-  List<String> ageGroups = [];
+  String ageGroup;
   // sort options
   String orderBy;
   bool isDescending;
@@ -23,11 +23,11 @@ class ListPreferences {
       @required this.skinIssues,
       @required this.orderBy,
       @required this.isDescending,
-      @required this.ageGroups});
+      @required this.ageGroup});
 
   bool isOptionEmpty() {
     return (genders.isEmpty &&
-        ageGroups.isEmpty &&
+        ageGroup == '' &&
         skinType == '' &&
         skinIssues.isEmpty);
   }
@@ -37,7 +37,7 @@ class ListPreferences {
         genders: [],
         skinIssues: [],
         skinType: '',
-        ageGroups: [],
+        ageGroup: '',
         orderBy: 'created_at',
         isDescending: false);
   }
@@ -49,60 +49,60 @@ class ReviewModel with ChangeNotifier {
   // TODO(parker): add all the filter options here and make them immutable
   DocumentSnapshot lastReviewSnap;
 
-  List<Review> filter(List<Review> reviews, {ListPreferences listPreferences}) {
-    // print('filter option: ${reviews.length}');
-    //gotta save the filter parameters
-    var filteredReviews = reviews;
-    if (listPreferences.genders.isNotEmpty) {
-      filteredReviews = filteredReviews.where((i) {
-        if (listPreferences.genders.contains(i.user.gender)) {
-          return true;
-        } else {
-          return false;
-        }
-      }).toList();
-    }
-    if (listPreferences.ageGroups.isNotEmpty) {
-      filteredReviews = filteredReviews.where((i) {
-        if (listPreferences.ageGroups
-            .contains(Tools.getUserAgeGroup(i.user.birthYear))) {
-          return true;
-        } else {
-          return false;
-        }
-      }).toList();
-    }
-    if (listPreferences.skinType.isNotEmpty) {
-      filteredReviews = filteredReviews.where((i) {
-        if (listPreferences.skinType.contains(i.user.skinType)) {
-          return true;
-        } else {
-          return false;
-        }
-      }).toList();
-    }
-    if (listPreferences.skinIssues.isNotEmpty) {
-      filteredReviews = filteredReviews.where((i) {
-        if (i.user.skinIssues == listPreferences.skinIssues) {
-          return true;
-        } else {
-          return false;
-        }
-      }).toList();
-    }
-    if (listPreferences.isOptionEmpty()) {
-      // print('option empty dayo');
-    }
+  // List<Review> filter(List<Review> reviews, {ListPreferences listPreferences}) {
+  //   // print('filter option: ${reviews.length}');
+  //   //gotta save the filter parameters
+  //   var filteredReviews = reviews;
+  //   if (listPreferences.genders.isNotEmpty) {
+  //     filteredReviews = filteredReviews.where((i) {
+  //       if (listPreferences.genders.contains(i.user.gender)) {
+  //         return true;
+  //       } else {
+  //         return false;
+  //       }
+  //     }).toList();
+  //   }
+  //   if (listPreferences.ageGroups.isNotEmpty) {
+  //     filteredReviews = filteredReviews.where((i) {
+  //       if (listPreferences.ageGroups
+  //           .contains(Tools.getUserAgeGroup(i.user.birthYear))) {
+  //         return true;
+  //       } else {
+  //         return false;
+  //       }
+  //     }).toList();
+  //   }
+  //   if (listPreferences.skinType.isNotEmpty) {
+  //     filteredReviews = filteredReviews.where((i) {
+  //       if (listPreferences.skinType.contains(i.user.skinType)) {
+  //         return true;
+  //       } else {
+  //         return false;
+  //       }
+  //     }).toList();
+  //   }
+  //   if (listPreferences.skinIssues.isNotEmpty) {
+  //     filteredReviews = filteredReviews.where((i) {
+  //       if (i.user.skinIssues == listPreferences.skinIssues) {
+  //         return true;
+  //       } else {
+  //         return false;
+  //       }
+  //     }).toList();
+  //   }
+  //   if (listPreferences.isOptionEmpty()) {
+  //     // print('option empty dayo');
+  //   }
 
-    // print('products filtered : ${sortedProducts.length}');
+  //   // print('products filtered : ${sortedProducts.length}');
 
-    return listPreferences.isOptionEmpty() ? reviews : filteredReviews;
-    //
-  }
+  //   return listPreferences.isOptionEmpty() ? reviews : filteredReviews;
+  //   //
+  // }
 
   ListPreferences getUserSkinFilter(User user) {
     final options = ListPreferences(
-        ageGroups: [Tools.getUserAgeGroup(user.birthYear)],
+        ageGroup: Tools.getUserAgeGroup(user.birthYear),
         genders: [user.gender],
         skinType: user.skinType,
         orderBy: 'created_at',
@@ -116,6 +116,28 @@ class ReviewModel with ChangeNotifier {
     lastReviewSnap = null;
   }
 
+  Future<List<Review>> getUserReviews(uid) async {
+    var list = <Review>[];
+    final snap = await FirebaseFirestore.instance
+        .collection('reviews')
+        .where('user.uid', isEqualTo: uid)
+        .get();
+    for (final doc in snap.docs) {
+      list.add(Review.fromJson(doc.data()));
+    }
+    return list;
+  }
+
+  Future<void> updateReviewerName(uid, name) async {
+    final snap = await FirebaseFirestore.instance
+        .collection('reviews')
+        .where('user.uid', isEqualTo: uid)
+        .get();
+    for (final doc in snap.docs) {
+      await doc.reference.update({'user.full_name': name});
+    }
+  }
+
   Future<ListPage<Review>> getProductReviews(productId,
       {ListPreferences listPreferences}) async {
     var listPage = ListPage(grandTotalCount: 0, itemList: <Review>[]);
@@ -126,34 +148,6 @@ class ReviewModel with ChangeNotifier {
         .collection('reviews')
         .where('product.sid', isEqualTo: productId);
 
-    if (listPreferences.ageGroups.isNotEmpty) {
-      var minAge;
-      var maxAge = 1000;
-
-      if (listPreferences.ageGroups.contains('dưới 20')) {
-        minAge = 0;
-      }
-      if (listPreferences.ageGroups.contains('từ 20 đến 24')) {
-        minAge ??= 20;
-        maxAge = 24;
-      }
-      if (listPreferences.ageGroups.contains('từ 25 đến 29')) {
-        minAge ??= 25;
-        maxAge = 29;
-      }
-      if (listPreferences.ageGroups.contains('từ 30 đến 34')) {
-        minAge ??= 30;
-        maxAge = 34;
-      }
-      if (listPreferences.ageGroups.contains('từ 35')) {
-        maxAge = 1000;
-      }
-      query = query.where('user.age', isGreaterThanOrEqualTo: minAge);
-      query = query.where('user.age', isLessThanOrEqualTo: maxAge);
-      query = query.orderBy('user.age', descending: true);
-
-      //The initial orderBy() field '[[FieldPath([created_at]), false]][0][0]' has to be the same as the where() field parameter 'FieldPath([user, age])' when an inequality operator is invoked.
-    }
     if (listPreferences.skinType.isNotEmpty) {
       print('fiters type');
       query =
@@ -163,7 +157,6 @@ class ReviewModel with ChangeNotifier {
     if (listPreferences.genders.isNotEmpty &&
         listPreferences.genders.length != 2) {
       print('fiters gender');
-
       query =
           query.where('user.gender', isEqualTo: listPreferences.genders.first);
     }
@@ -174,23 +167,58 @@ class ReviewModel with ChangeNotifier {
       query = query.where('user.skin_issues',
           arrayContainsAny: listPreferences.skinIssues);
     }
-    if (lastReviewSnap == null) {
-      print('fiters order by');
+    //if the pagination history doesn't exist
+    print(
+        'order reviews by: ${listPreferences.orderBy} ${listPreferences.isDescending ? 'isDescending' : 'isAscending'}');
+    if (listPreferences.ageGroup.isNotEmpty) {
+      var minAge;
+      var maxAge = 1000;
 
-      query = query.limit(10);
+      if (listPreferences.ageGroup == 'Dưới 20') {
+        minAge = 0;
+        maxAge = 19;
+      } else if (listPreferences.ageGroup == 'Từ 20 đến 24') {
+        minAge = 20;
+        maxAge = 23;
+      } else if (listPreferences.ageGroup == 'Từ 25 đến 29') {
+        print('holod');
+        minAge = 25;
+        maxAge = 29;
+      } else if (listPreferences.ageGroup == 'Từ 30 đến 34') {
+        minAge = 30;
+        maxAge = 34;
+      } else if (listPreferences.ageGroup == 'Từ 35') {
+        minAge = 35;
+        maxAge = 1000;
+      }
+      print('minAge :$minAge and maxAge: $maxAge');
+      query = query.where('user.age', isGreaterThanOrEqualTo: minAge);
+      query = query.where('user.age', isLessThanOrEqualTo: maxAge);
+      query = query.orderBy('user.age', descending: false).limit(50);
+      // TODO(parker): sort the list locally
+
+      //The initial orderBy() field '[[FieldPath([created_at]), false]][0][0]' has to be the same as the where() field parameter 'FieldPath([user, age])' when an inequality operator is invoked.
+    }
+    if (lastReviewSnap == null) {
+      print('no pagination history');
+      if (listPreferences.ageGroup.isEmpty) {
+        query = query.limit(10).orderBy(listPreferences.orderBy,
+            descending: listPreferences.isDescending ?? false);
+      }
     } else {
       // TODO(parker): the orderBy is applied twice because of the startAfterDocument
       print('dsd');
-
-      query = query
-          .orderBy(listPreferences.orderBy,
-              descending: listPreferences.isDescending ?? false)
-          .startAfterDocument(lastReviewSnap)
-          .limit(10);
+      if (listPreferences.ageGroup.isEmpty) {
+        query = query
+            .orderBy(listPreferences.orderBy,
+                descending: listPreferences.isDescending ?? false)
+            .startAfterDocument(lastReviewSnap)
+            .limit(10);
+      }
     }
 
     try {
-      var snapshot = await query.get(const GetOptions(source: Source.cache));
+      var snapshot = await query.get(const GetOptions(source: Source.server));
 
       if (snapshot.docs.isEmpty) {
         print('No cached reviews: fetching from server');
@@ -205,7 +233,6 @@ class ReviewModel with ChangeNotifier {
           list.add(Review.fromJson(doc.data()));
         }
         listPage.itemList = list;
-        listPage.grandTotalCount = 0;
       }
       return listPage;
     } catch (err) {

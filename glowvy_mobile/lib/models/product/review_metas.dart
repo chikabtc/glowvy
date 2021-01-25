@@ -18,7 +18,6 @@ class ReviewMetas {
     this.dry,
     this.complex,
     this.oily,
-    this.sensitive,
   );
   factory ReviewMetas.fromJson(Map<String, dynamic> json) =>
       _$ReviewMetasFromJson(json);

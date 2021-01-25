@@ -113,7 +113,7 @@ class EditEmailPageState extends State<EditEmailPage>
                           btnColor: kPrimaryOrange,
                           width: 57,
                           height: 34,
-                          buttonTitle: 'Done',
+                          buttonTitle: 'Xong',
                           buttonController: _doneButtonController.view,
                           onTap: () async {
                             _doneButtonController.forward();

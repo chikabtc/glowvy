@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class SearchModel extends ChangeNotifier {
-  FirebaseFirestore _db = FirebaseFirestore.instance;
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
   b.User firebaseUser = b.FirebaseAuth.instance.currentUser;
 
   bool _isLoading = false;
@@ -20,8 +20,8 @@ class SearchModel extends ChangeNotifier {
   List<Brand> _brands = [];
   List<Brand> get brands => _brands;
 
-  List<Brand> _filtedBrands = [];
-  List<Brand> get filtedBrands => _filtedBrands;
+  List<Brand> _filteredBrands = [];
+  List<Brand> get filteredBrands => _filteredBrands;
 
   List<Brand> _brandSuggestions = [];
   List<Brand> get brandSuggestions => _brandSuggestions;
@@ -39,11 +39,29 @@ class SearchModel extends ChangeNotifier {
 
   String _query = '';
   String get query => _query;
+  final b.FirebaseAuth _auth = b.FirebaseAuth.instance;
 
   //add method for searching brands
   List<Category> categories = [];
   List<Category> flatCategories = [];
 
+  Future<void> initData() async {
+    listenToAuthStateUpdate();
+    await setBrands();
+    await setCategories();
+  }
+
+  void listenToAuthStateUpdate() {
+    _auth.authStateChanges().listen((b.User user) async {
+      if (user == null) {
+        firebaseUser = user;
+        print('User is currently signed out!');
+      } else {
+        firebaseUser = user;
+        print('User is signed in and auth changed!');
+      }
+    });
+  }
   // void clear() {
   //   print('emtpy queri');
 
@@ -78,7 +96,9 @@ class SearchModel extends ChangeNotifier {
           .get();
 
       var allCategories = <Category>[];
+
       snap.docs.forEach((element) {
+        print(element.data()['sub_categories']);
         allCategories.add(Category.fromJson(element.data()));
       });
 
@@ -107,17 +127,17 @@ class SearchModel extends ChangeNotifier {
       'There is an issue with the app during request the data, please contact admin for fixing the issues ' +
           err.toString();
 
-      print('error: $err');
+      print('setCategories error: $err');
       notifyListeners();
     }
   }
 
   void searchBrands(String query) {
     if (query == '') {
-      _filtedBrands.clear();
+      _filteredBrands.clear();
       return;
     }
-    _filtedBrands = _brands
+    _filteredBrands = _brands
         .where(
             (brand) => brand.name.toLowerCase().startsWith(query.toLowerCase()))
         .toList();
@@ -150,7 +170,6 @@ class SearchModel extends ChangeNotifier {
         print('No cached brands: fetching from server');
         brandsSnap = await query.get(const GetOptions(source: Source.server));
       }
-      print('brandsSnap length: ${brandsSnap.docs.length}');
 
       if (brandsSnap.docs.isNotEmpty) {
         for (final doc in brandsSnap.docs) {
@@ -160,6 +179,7 @@ class SearchModel extends ChangeNotifier {
       } else {
         print('no _brands were found');
       }
+      print('brandsSnap length: ${brandsSnap.docs.length}');
     } catch (err) {
       rethrow;
     }
@@ -247,6 +267,11 @@ class SearchModel extends ChangeNotifier {
     } catch (e) {
       throw 'clearSearchHistory e: $e';
     }
+  }
+
+  void clearBrandsResult() {
+    _filteredBrands = [];
+    notifyListeners();
   }
 
   Future onQuerySubmitted(String query) async {

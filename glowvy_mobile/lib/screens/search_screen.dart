@@ -1,6 +1,7 @@
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/tools.dart';
+import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/category.dart';
 import 'package:Dimodo/models/product/brand.dart';
 import 'package:Dimodo/models/product/product.dart';
@@ -96,6 +97,7 @@ class _SearchScreenState extends State<SearchScreen>
 
       setState(() {
         productModel.clearPaginationHistory();
+        searchModel.clearBrandsResult();
         isAlgoliaSearch = false;
         isBrandSearch = false;
         isCategorySearch = true;
@@ -165,16 +167,16 @@ class _SearchScreenState extends State<SearchScreen>
 
     Widget buildSearchResult() {
       Widget brandWidget;
-      if (searchModel.filtedBrands.isNotEmpty) {
+      if (searchModel.filteredBrands.isNotEmpty) {
         brandWidget =
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const SizedBox(height: 15),
-          Text('${searchModel.filtedBrands.length ?? 0} brand',
+          Text('${searchModel.filteredBrands.length ?? 0} brand',
               style: textTheme.bodyText1),
           const SizedBox(height: 5),
           kFullSectionDivider,
           BrandList(
-            brands: searchModel.filtedBrands,
+            brands: searchModel.filteredBrands,
             disableScrolling: true,
           ),
           const SizedBox(height: 35),
@@ -194,6 +196,7 @@ class _SearchScreenState extends State<SearchScreen>
               if (snapshot.hasData) {
                 final listPage = snapshot.data;
                 return Scrollbar(
+                  thickness: kScrollbarThickness,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: NestedScrollView(
@@ -236,6 +239,7 @@ class _SearchScreenState extends State<SearchScreen>
             });
       } else if (isBrandSearch) {
         return Scrollbar(
+          thickness: kScrollbarThickness,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: NestedScrollView(
@@ -272,7 +276,12 @@ class _SearchScreenState extends State<SearchScreen>
           ),
         );
       } else if (isCategorySearch) {
+        var count = 0;
+        if (pickedCategory.grandTotalCount != null) {
+          count = pickedCategory.grandTotalCount.toInt();
+        } else {}
         return Scrollbar(
+          thickness: kScrollbarThickness,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: NestedScrollView(
@@ -289,12 +298,8 @@ class _SearchScreenState extends State<SearchScreen>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           brandWidget,
-                          Text(
-                              '${pickedCategory.grandTotalCount.toInt() ?? 0} results',
-                              style: textTheme.bodyText1),
-                          const SizedBox(
-                            height: 5,
-                          ),
+                          Text('$count results', style: textTheme.bodyText1),
+                          const SizedBox(height: 5),
                           kFullSectionDivider,
                         ],
                       ),
@@ -314,6 +319,7 @@ class _SearchScreenState extends State<SearchScreen>
 
     Widget showRecentSearchItems(SearchModel model) {
       return Scrollbar(
+        thickness: kScrollbarThickness,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: NestedScrollView(
@@ -333,7 +339,7 @@ class _SearchScreenState extends State<SearchScreen>
                           if (model.recentSearchItems.isNotEmpty)
                             Row(
                               children: [
-                                Text('Recently Searched',
+                                Text('Tìm kiếm gần đây',
                                     style: textTheme.bodyText1
                                         .copyWith(fontWeight: FontWeight.w700)),
                                 const Spacer(),
@@ -341,8 +347,12 @@ class _SearchScreenState extends State<SearchScreen>
                                   height: 24,
                                   child: PlatformButton(
                                     onPressed: () => model.clear(),
+                                    materialFlat: (_, __) =>
+                                        MaterialFlatButtonData(
+                                            elevation: 0,
+                                            color: Colors.transparent),
                                     padding: EdgeInsets.zero,
-                                    child: Text('Clear',
+                                    child: Text('Xóa',
                                         style: textTheme.bodyText1.copyWith(
                                             color: kPrimaryOrange,
                                             fontWeight: FontWeight.w700)),
@@ -472,7 +482,7 @@ class _SearchScreenState extends State<SearchScreen>
                                   opacity: 0.0,
                                   duration: const Duration(milliseconds: 100),
                                   child: Text(
-                                    'Search',
+                                    S.of(context).search,
                                     style: textTheme.headline3,
                                     textAlign: TextAlign.start,
                                   ))),
@@ -486,7 +496,7 @@ class _SearchScreenState extends State<SearchScreen>
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Search',
+                                  S.of(context).search,
                                   style: textTheme.headline1.copyWith(
                                       fontSize: 32,
                                       fontStyle: FontStyle.normal),
@@ -511,7 +521,7 @@ class _SearchScreenState extends State<SearchScreen>
                                 curve: Curves.easeIn);
                           }
                         },
-                        hint: 'search',
+                        hint: 'Sản phẩm, danh mục, thương hiệu',
                         elevation: 0,
                         scrollController: _scrollController,
                         borderRadius: BorderRadius.circular(10),

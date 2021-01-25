@@ -27,7 +27,13 @@ class SkinTypeOnboardingPageState extends State<SkinTypeOnboardingPage>
   UserModel userModel;
   AnimationController _doneButtonController;
   String skinType;
-  List<String> skinTypes = ['Da dầu', 'Da khô', 'Da hỗn hợp', 'Da thường'];
+  List<String> skinTypes = [
+    'Da dầu',
+    'Da khô',
+    'Da Nhạy cảm',
+    'Da hỗn hợp',
+    'Da thường'
+  ];
 
   @override
   void initState() {

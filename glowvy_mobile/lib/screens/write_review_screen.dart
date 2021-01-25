@@ -6,6 +6,7 @@ import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/models/review.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/search_review_cosmetisc.dart';
+import 'package:Dimodo/screens/setting/login.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
 import 'package:Dimodo/widgets/product_thumbnail.dart';
 import 'package:flutter/cupertino.dart';
@@ -72,7 +73,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
         'user': {
           'uid': user.uid,
           'full_name': user.fullName,
-          'skin_type': 'dry',
+          'skin_type': user.skinType,
           'email': user.email,
           'birth_year': user.birthYear,
         },
@@ -101,26 +102,26 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
   String getRatingExpression() {
     if (review != null) {
       switch (review.rating) {
-        case 0:
-          return 'Tap to rate';
-          break;
         case 1:
-          return 'Tap to rate2';
+          return 'Siêu tệ!';
           break;
         case 2:
-          return 'Tap to rate1';
+          return ' Khá tệ ';
           break;
         case 3:
-          return 'Tap to rat4e';
+          return 'Bình thường';
           break;
         case 4:
-          return 'Tap to rate4';
+          return 'Ổn áp';
           break;
         case 5:
+          return 'Siêu tốt!';
+          break;
+        case 0:
           return 'Tap to rate5';
           break;
         default:
-          return 'Tap to rate';
+          return 'nhấn để đánh giá';
       }
     } else {
       return 'Tap to rate';
@@ -130,19 +131,20 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
   Future askSaveDraft() {
     final act = CupertinoActionSheet(
         title: Container(
-          child: Text('If you go back now, your review edits will discarded.',
+          child: Text(
+              'Nếu bạn rời khỏi trang này, đánh giá của bạn sẽ bị hủy bỏ',
               style: textTheme.caption1),
         ),
         actions: <Widget>[
           Container(
             // color: kDefaultBackground2,
             child: CupertinoActionSheetAction(
-              child: Text('Discard',
+              child: Text('Bỏ đánh giá',
                   style: textTheme.bodyText1.copyWith(color: kPrimaryOrange)),
               onPressed: () async {
                 // userModel
                 await userModel.discardReviewDraft();
-                // Navigator.of(context, rootNavigator: true).pop('Discard');
+                Navigator.of(context, rootNavigator: true).pop('Discard');
 
                 Navigator.pop(context);
               },
@@ -151,9 +153,16 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
           Container(
             // color: kDefaultBackground2,
             child: CupertinoActionSheetAction(
-              child: Text('Save Draft', style: textTheme.bodyText1),
+              child: Text('Lưu bản nháp', style: textTheme.bodyText1),
               onPressed: () async {
-                await userModel.saveDraft(review);
+                if (userModel.isLoggedIn) {
+                  await userModel.saveDraft(review);
+                } else {
+                  await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginScreen()));
+                }
                 Navigator.of(context, rootNavigator: true).pop('Discard');
                 Navigator.pop(context);
                 print('pressed');
@@ -166,7 +175,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
               color: Color(0xffEFEFEF),
               borderRadius: BorderRadius.circular(16)),
           child: CupertinoActionSheetAction(
-            child: Text('Cancel', style: textTheme.bodyText1),
+            child: Text('Tiếp tục chỉnh sửa', style: textTheme.bodyText1),
             onPressed: () {
               Navigator.of(context, rootNavigator: true).pop('Discard');
             },
@@ -198,18 +207,19 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
               child: RichText(
                 textAlign: TextAlign.start,
                 text: TextSpan(
-                  style: textTheme.caption1.copyWith(
+                  style: textTheme.bodyText2.copyWith(
                       fontWeight: FontWeight.w600, color: kSecondaryGrey),
                   children: <TextSpan>[
                     const TextSpan(
                         text:
-                            'To ensure effectiveness and fairness, learn more about '),
+                            'Cùng Glowvy xây dựng một cộng đồng làm đẹp lành mạnh và hiệu quả với '),
                     TextSpan(
-                        text: 'review guidelines ',
+                        text: 'Chính sách đánh giá sản phẩm chất lượng',
                         style: textTheme.bodyText2.copyWith(
+                          fontWeight: FontWeight.w600,
                           color: kPrimaryBlue,
                         )),
-                    const TextSpan(text: 'here'),
+                    const TextSpan(text: ' trước khi bắt đầu viết nha'),
                   ],
                 ),
               ),
@@ -238,7 +248,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                     btnColor: kPrimaryOrange,
                     width: 57,
                     height: 34,
-                    buttonTitle: 'Done',
+                    buttonTitle: 'Xong',
                     buttonController: _postButtonController.view,
                     onTap: () async {
                       _postButtonController.forward();
@@ -271,6 +281,8 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                 }
 
                 return ListView(
+                  keyboardDismissBehavior:
+                      ScrollViewKeyboardDismissBehavior.onDrag,
                   children: <Widget>[
                     if (review.product == null)
                       GestureDetector(
@@ -291,7 +303,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                                 'assets/icons/search_cosmetics.svg',
                               ),
                               const SizedBox(width: 7),
-                              Text('Select cosmetics',
+                              Text('chọn sản phẩm',
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: textTheme.button2),
@@ -344,7 +356,8 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                               empty: SvgPicture.asset(
                                   'assets/icons/rank-flower.svg'),
                             ),
-                            itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                            itemPadding:
+                                const EdgeInsets.symmetric(horizontal: 4.0),
                             onRatingUpdate: (rating) => setState(() {
                                   isRatingEmpty = false;
                                   print(rating);
@@ -372,7 +385,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
                               border: InputBorder.none,
                               hintMaxLines: 10,
                               hintText:
-                                  'Share any thoughts about this product (advantage, disadvantage, result, how to use...)',
+                                  'Hãy chia sẻ cảm xúc và trải nghiệm của bạn về sản phẩm này nhé (bất cứ điều gì như ưu nhược điểm, kết quả sau khi sử dụng, bạn đã dùng như thế nào, v.v.)',
                               hintStyle: textTheme.headline5.copyWith(
                                 color: kSecondaryGrey.withOpacity(0.5),
                               ),

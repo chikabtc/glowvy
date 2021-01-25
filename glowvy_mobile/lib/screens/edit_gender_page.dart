@@ -82,7 +82,7 @@ class EditGenderPageState extends State<EditGenderPage>
                     btnColor: kPrimaryOrange,
                     width: 57,
                     height: 34,
-                    buttonTitle: 'Done',
+                    buttonTitle: 'Xong',
                     buttonController: _doneButtonController.view,
                     onTap: () async {
                       _doneButtonController.forward();
@@ -95,7 +95,7 @@ class EditGenderPageState extends State<EditGenderPage>
           ],
           leading: backIcon(context),
           backgroundColor: Colors.white,
-          title: Text(S.of(context).name, style: textTheme.headline3)),
+          title: Text('Giới tính', style: textTheme.headline3)),
       backgroundColor: kDefaultBackground,
       body: Container(
         color: kWhite,

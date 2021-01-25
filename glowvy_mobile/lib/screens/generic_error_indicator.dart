@@ -46,9 +46,9 @@ class GenericErrorIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ExceptionIndicator(
-        title: 'Something went wrong',
-        message: 'The application has encountered an unknown error.\n'
-            'Please try again later.',
+        title: 'lỗi mất rồi',
+        message:
+            'Glowvy đang gặp một chút sự cố nhỏ. Bạn vui lòng thử tải lại trang nhé. ',
         assetName: 'assets/icons/logo.svg',
         onTryAgain: onTryAgain,
       );

@@ -368,7 +368,7 @@ class ProfilePageState extends State<ProfilePage>
                                                 width: 5.5,
                                               ),
                                               Text(
-                                                'select one related cosmetics',
+                                                'Chọn 1 sản phẩm liên quan',
                                                 style: textTheme.caption1
                                                     .copyWith(
                                                         fontWeight:
@@ -381,7 +381,7 @@ class ProfilePageState extends State<ProfilePage>
                                       ),
                                       const SizedBox(height: 18),
                                       Text(
-                                        'share my experience to \nhelp buddies choose better cosmetics',
+                                        'Cùng nhau chia sẻ kinh nghiệm',
                                         textAlign: TextAlign.center,
                                         style: textTheme.caption1
                                             .copyWith(color: kDarkSecondary),
@@ -430,7 +430,6 @@ class ProfilePageState extends State<ProfilePage>
                             ],
                           )),
                       Container(
-                        color: Colors.red,
                         child: ListView.builder(
                             physics: const ClampingScrollPhysics(),
                             scrollDirection: Axis.vertical,
@@ -438,7 +437,6 @@ class ProfilePageState extends State<ProfilePage>
                             itemCount: userModel.reviews.length,
                             itemBuilder: (context, i) => UserReviewCard(
                                 context: context,
-                                // product: ,
                                 review: userModel.reviews[i])),
                       ),
                     ],

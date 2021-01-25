@@ -116,7 +116,7 @@ class _StateReviews extends State<ReviewsScreen>
                             ),
                           ),
                           const Spacer(),
-                          Text('My Skin Type', style: textTheme.caption1),
+                          Text('Da của tôi', style: textTheme.caption1),
                           Switch(
                             focusColor: Colors.white,
                             hoverColor: Colors.white,
@@ -167,7 +167,7 @@ class _StateReviews extends State<ReviewsScreen>
                                       : kPrimaryOrange,
                                   width: 24,
                                 ),
-                                Text('Filters',
+                                Text('Bộ lọc',
                                     style: textTheme.caption1.copyWith(
                                         color: _listPreferences.isOptionEmpty()
                                             ? kDefaultFontColor
@@ -192,8 +192,8 @@ class _StateReviews extends State<ReviewsScreen>
                               height: kScreenSizeHeight * 0.7,
                               child: kIndicator(),
                             ),
-                          if (initialPage.itemList.isNotEmpty)
-                            ReviewImages(widget.product),
+                          // if (initialPage.itemList.isNotEmpty)
+                          //   ReviewImages(widget.product),
                           Container(height: 10)
                         ],
                       ),
@@ -219,7 +219,13 @@ class _StateReviews extends State<ReviewsScreen>
                 MediaQuery.of(context).padding.bottom) /
             kScreenSizeHeight;
     final genders = <String>['Nữ', 'Nam'];
-    final skinTypes = <String>['Da dầu', 'Da khô', 'Da hỗn hợp', 'Da thường'];
+    final skinTypes = <String>[
+      'Da dầu',
+      'Da khô',
+      'Da Nhạy cảm',
+      'Da hỗn hợp',
+      'Da thường'
+    ];
     var tempFilterOptions = ListPreferences.init();
 
     if (!_listPreferences.isOptionEmpty()) {
@@ -228,20 +234,14 @@ class _StateReviews extends State<ReviewsScreen>
       //
     }
 
-    final skinIssues = <String>[
-      'Mụn',
-      'Nhạy cảm',
-      'Chàm',
-      'Nhăn',
-      'Tăng sắc tố da'
-    ];
+    final skinIssues = <String>['Mụn', 'Chàm', 'Nhăn', 'Tăng sắc tố da'];
 
     final ageGroups = <String>[
-      'dưới 20',
-      'từ 20 đến 24',
+      'Dưới 20',
+      'Từ 20 đến 24',
       'Từ 25 đến 29',
-      'từ 30 đến 34',
-      'từ 35'
+      'Từ 30 đến 34',
+      'Từ 35'
     ];
 
     showModalBottomSheet(
@@ -316,7 +316,7 @@ class _StateReviews extends State<ReviewsScreen>
                                         setModalState(() {
                                           if (tempFilterOptions.skinType ==
                                               skinType) {
-                                            tempFilterOptions.skinType = null;
+                                            tempFilterOptions.skinType = '';
                                           } else {
                                             tempFilterOptions.skinType =
                                                 skinType;
@@ -368,24 +368,29 @@ class _StateReviews extends State<ReviewsScreen>
                                 Wrap(children: <Widget>[
                                   for (var ageGroup in ageGroups)
                                     FilterOptionButton(
-                                      name: ageGroup,
-                                      onTap: () {
-                                        setModalState(
-                                          () {
-                                            if (tempFilterOptions.ageGroups
-                                                .contains(ageGroup)) {
-                                              tempFilterOptions.ageGroups
-                                                  .remove(ageGroup);
-                                            } else {
-                                              tempFilterOptions.ageGroups
-                                                  .add(ageGroup);
-                                            }
-                                          },
-                                        );
-                                      },
-                                      isSelected: tempFilterOptions.ageGroups
-                                          .contains(ageGroup),
-                                    )
+                                        name: ageGroup,
+                                        onTap: () {
+                                          setModalState(
+                                            () {
+                                              setModalState(() {
+                                                if (tempFilterOptions
+                                                        .ageGroup ==
+                                                    ageGroup) {
+                                                  tempFilterOptions.ageGroup =
+                                                      '';
+                                                } else {
+                                                  tempFilterOptions.ageGroup =
+                                                      ageGroup;
+                                                }
+                                                print(
+                                                    'tem ageGroup: ${tempFilterOptions.ageGroup}');
+                                              });
+                                            },
+                                          );
+                                        },
+                                        isSelected:
+                                            tempFilterOptions.ageGroup ==
+                                                ageGroup)
                                 ]),
                                 Text(
                                   'Gender',
@@ -505,6 +510,11 @@ class _StateReviews extends State<ReviewsScreen>
   void showSortOptions(context) {
     final screenSize = MediaQuery.of(context).size;
 
+//        'Latest',
+//        'Oldest',
+//        'Most liked',
+//        'High rating',
+//        'Low rating'
     final options = <String>[
       'Mới nhất',
       'Cũ nhất',

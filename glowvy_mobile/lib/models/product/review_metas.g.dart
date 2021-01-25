@@ -23,10 +23,9 @@ ReviewMetas _$ReviewMetasFromJson(Map<String, dynamic> json) {
     json['oily'] == null
         ? null
         : ReviewMeta.fromJson(json['oily'] as Map<String, dynamic>),
-    json['sensitive'] == null
-        ? null
-        : ReviewMeta.fromJson(json['sensitive'] as Map<String, dynamic>),
-  );
+  )..sensitive = json['sensitive'] == null
+      ? null
+      : ReviewMeta.fromJson(json['sensitive'] as Map<String, dynamic>);
 }
 
 Map<String, dynamic> _$ReviewMetasToJson(ReviewMetas instance) =>

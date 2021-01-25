@@ -84,7 +84,7 @@ class EditBirthyearPageState extends State<EditBirthyearPage>
                       btnColor: kPrimaryOrange,
                       width: 57,
                       height: 34,
-                      buttonTitle: 'Done',
+                      buttonTitle: 'Xong',
                       buttonController: _doneButtonController.view,
                       onTap: () async {
                         _doneButtonController.forward();
@@ -97,7 +97,7 @@ class EditBirthyearPageState extends State<EditBirthyearPage>
             ],
             leading: backIcon(context),
             backgroundColor: Colors.white,
-            title: Text('year', style: textTheme.headline3)),
+            title: Text('Năm sinh', style: textTheme.headline3)),
         backgroundColor: kDefaultBackground,
         body: Container(
           color: kSecondaryWhite,
