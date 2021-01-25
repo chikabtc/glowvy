@@ -106,7 +106,7 @@ class _ReviewCosmeticsSearchScreenState
                                 children: [
                                   const SizedBox(height: 35),
                                   Text(
-                                      '${snapshot.data.itemList.length ?? 0} results',
+                                      '${snapshot.data.itemList.length ?? 0} Kết quả',
                                       style: textTheme.bodyText1),
                                   const SizedBox(
                                     height: 5,

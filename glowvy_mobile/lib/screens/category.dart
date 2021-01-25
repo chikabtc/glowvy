@@ -2,7 +2,7 @@ import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/generated/i18n.dart';
-import 'package:Dimodo/models/categoryModel.dart';
+
 import 'package:Dimodo/models/search_model.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/widgets/categories/CategoryButton.dart';

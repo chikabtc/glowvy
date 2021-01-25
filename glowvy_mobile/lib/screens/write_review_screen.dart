@@ -51,7 +51,7 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
 
   void validateInput() {
     if (review.product == null) {
-      throw 'select product';
+      throw 'Sản phẩm chưa được chọn';
     } else if (review.rating == 0) {
       throw 'select rating';
     } else if (review.content == null) {

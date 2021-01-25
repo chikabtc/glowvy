@@ -64,7 +64,7 @@ class SettingPageState extends State<SettingPage>
                 // ),
                 SettingCard(
                   color: kWhite,
-                  title: 'password',
+                  title: 'Mật khẩu',
                   showDivider: false,
                   // trailingText: ,
                   onTap: () => Navigator.push(
@@ -92,7 +92,7 @@ class SettingPageState extends State<SettingPage>
                     width: kScreenSizeWidth - 32,
                     child: Center(
                       child: Text(
-                        'log out',
+                        'Đăng xuất',
                         style:
                             textTheme.bodyText1.copyWith(color: kPrimaryOrange),
                       ),

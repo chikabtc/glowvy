@@ -7,7 +7,7 @@ import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/app.dart';
 import 'package:Dimodo/models/category.dart';
-import 'package:Dimodo/models/categoryModel.dart';
+
 import 'package:Dimodo/models/product/product.dart';
 import 'package:Dimodo/models/product/product_model.dart';
 import 'package:Dimodo/models/search_model.dart';

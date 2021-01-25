@@ -183,7 +183,7 @@ class _UserReviewCardState extends State<UserReviewCard> {
           Padding(
             padding: const EdgeInsets.only(left: 8.0, top: 15, bottom: 36),
             child: Text(
-              'helpful (${widget.review.likeCount})',
+              'Yêu thích (${widget.review.likeCount})',
               style: textTheme.caption2.copyWith(color: kSecondaryGrey),
             ),
           )

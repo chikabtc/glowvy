@@ -22,7 +22,8 @@ class _InquiryPageState extends State<InquiryPage>
 
   UserModel userModel;
   String inquiry;
-  List<String> inquiryTypes = ['Idea Suggestion', 'Report Bugs'];
+  //ideas suggestion, report bugs
+  List<String> inquiryTypes = ['Đề xuất ý tưởng', 'Báo cáo lỗi'];
   String inquiryType;
   String email;
   AnimationController _doneButtonController;
@@ -45,11 +46,13 @@ class _InquiryPageState extends State<InquiryPage>
 
   void validateInput() {
     if (inquiry == null) {
-      throw 'select product';
+      throw 'Sản phẩm chưa được chọn';
     } else if (inquiry.length < 20) {
-      throw 'content too show at least over 20 characters';
+      // content too short. type at least over 20 characters
+      throw 'Nội dung quá ngắn. Hãy nhập ít nhất 20 ký tự';
     } else if (inquiry.length > 5000) {
-      throw 'content too long (up to 5000 chars';
+      // content too long (up to 5000 chars)
+      throw 'Nội dung quá dài (tối đa 5000 ký tự)';
     }
   }
 
@@ -85,7 +88,7 @@ class _InquiryPageState extends State<InquiryPage>
                   builder: (context) => StaggerAnimation(
                     width: 57,
                     height: 34,
-                    buttonTitle: 'Send',
+                    buttonTitle: 'Gửi',
                     buttonController: _postButtonController.view,
                     onTap: () async {
                       _postButtonController.forward();
@@ -114,14 +117,14 @@ class _InquiryPageState extends State<InquiryPage>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Tell us about the issues you encountered and features you wish existed ',
+                            'Hãy nói cho chúng tôi biết những vấn đề mà bạn gặp phải cũng như tính năng mà bạn muốn có trên Glowvy!',
                             style: textTheme.headline5.copyWith(
                                 color: kDarkGrey,
                                 fontWeight: FontWeight.w700,
                                 fontSize: 18),
                           ),
                           Text(
-                            'Glowvy is a service we make with you.',
+                            'Glowvy là sản phẩm chung mà chúng ta cùng nhau tạo nên!',
                             style: textTheme.bodyText1.copyWith(
                               color: kSecondaryGrey,
                             ),
@@ -136,7 +139,7 @@ class _InquiryPageState extends State<InquiryPage>
                         children: [
                           const SizedBox(height: 15),
                           Text(
-                            'Inquiry Types',
+                            'Yêu cầu',
                             style: textTheme.headline3,
                           ),
                           const SizedBox(height: 15),
@@ -172,7 +175,7 @@ class _InquiryPageState extends State<InquiryPage>
                           ),
                           const SizedBox(height: 15),
                           Text(
-                            'Inquiry Explanation',
+                            'Giải thích thêm',
                             style: textTheme.headline3,
                           ),
                           const SizedBox(height: 15),
@@ -208,7 +211,7 @@ class _InquiryPageState extends State<InquiryPage>
                           ),
                           const SizedBox(height: 15),
                           Text(
-                            'Feedback email',
+                            'Email của bạn',
                             style: textTheme.headline3,
                           ),
                           const SizedBox(height: 15),

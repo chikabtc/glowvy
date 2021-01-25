@@ -91,7 +91,7 @@ class EditPasswordPageState extends State<EditPasswordPage>
           ],
           leading: backIcon(context),
           backgroundColor: Colors.white,
-          title: Text(S.of(context).name, style: textTheme.headline3)),
+          title: Text('Thay đổi mật khẩu', style: textTheme.headline3)),
       backgroundColor: kDefaultBackground,
       body: Container(
         color: kSecondaryWhite,
@@ -104,7 +104,7 @@ class EditPasswordPageState extends State<EditPasswordPage>
                 });
               },
               obscureText: true,
-              hintText: 'Current Password',
+              hintText: 'Mật khẩu hiện tại',
             ),
             kDivider,
             CustomTextField(
@@ -114,7 +114,7 @@ class EditPasswordPageState extends State<EditPasswordPage>
                 });
               },
               obscureText: true,
-              hintText: 'New Password',
+              hintText: 'Mật khẩu mới',
             ),
             kDivider,
             CustomTextField(
@@ -124,7 +124,7 @@ class EditPasswordPageState extends State<EditPasswordPage>
                 });
               },
               obscureText: true,
-              hintText: 'New Password Again',
+              hintText: 'Nhập lại mật khẩu',
             ),
           ],
         ),

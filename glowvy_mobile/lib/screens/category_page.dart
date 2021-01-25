@@ -3,7 +3,7 @@ import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/category.dart';
-import 'package:Dimodo/models/categoryModel.dart';
+
 import 'package:Dimodo/widgets/categories/CategoryButton.dart';
 import 'package:Dimodo/widgets/second_category_button.dart';
 import 'package:flutter/material.dart';

@@ -171,7 +171,7 @@ class _SearchScreenState extends State<SearchScreen>
         brandWidget =
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const SizedBox(height: 15),
-          Text('${searchModel.filteredBrands.length ?? 0} brand',
+          Text('${searchModel.filteredBrands.length ?? 0} thương hiệu',
               style: textTheme.bodyText1),
           const SizedBox(height: 5),
           kFullSectionDivider,
@@ -214,7 +214,7 @@ class _SearchScreenState extends State<SearchScreen>
                                   children: [
                                     brandWidget,
                                     Text(
-                                        '${snapshot.data.itemList.length ?? 0} results',
+                                        '${snapshot.data.itemList.length ?? 0} Kết quả',
                                         style: textTheme.bodyText1),
                                     const SizedBox(
                                       height: 5,
@@ -256,7 +256,7 @@ class _SearchScreenState extends State<SearchScreen>
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           brandWidget,
-                          Text('${pickedBrand.grandTotalCount ?? 0} results',
+                          Text('${pickedBrand.grandTotalCount ?? 0} Kết quả',
                               style: textTheme.bodyText1),
                           const SizedBox(
                             height: 5,

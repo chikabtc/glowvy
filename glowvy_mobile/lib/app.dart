@@ -28,7 +28,7 @@ import 'common/styles.dart';
 import 'generated/i18n.dart';
 import 'models/address/addressModel.dart';
 import 'models/app.dart';
-import 'models/categoryModel.dart';
+
 import 'models/order/cart.dart';
 import 'models/order/orderModel.dart';
 import 'models/product/product_model.dart';
@@ -150,8 +150,7 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             color: kPrimaryGreen,
-            child:
-                Center(child: SvgPicture.asset('assets/icons/launch-logo.svg')),
+            child: Center(child: Image.asset('assets/icons/launch-logo.png')),
           ),
         ),
       );

@@ -125,7 +125,7 @@ class ProfilePageState extends State<ProfilePage>
                                 // TODO(parker): age and skin type
                                 if (user.birthYear != null)
                                   Text(
-                                      '${DateTime.now().year - user.birthYear} years old / ${user.skinType}',
+                                      '${DateTime.now().year - user.birthYear} tuổi / ${user.skinType}',
                                       style: textTheme.caption2),
                                 Container(height: 15),
                                 GestureDetector(
@@ -156,7 +156,7 @@ class ProfilePageState extends State<ProfilePage>
                                               right: 10,
                                               top: 2,
                                               bottom: 2),
-                                          child: Text('Edit Profile',
+                                          child: Text('Chỉnh sửa hồ sơ',
                                               style: textTheme.caption2
                                                   .copyWith(
                                                       fontWeight:
@@ -313,7 +313,7 @@ class ProfilePageState extends State<ProfilePage>
                             // mainAxisSize: MainAxisSize.max,
                             children: [
                               Text(
-                                '  Activity (${userModel.reviews.length})',
+                                '  Hoạt động (${userModel.reviews.length})',
                                 style: textTheme.headline5,
                               ),
                               const SizedBox(height: 16),
@@ -334,7 +334,7 @@ class ProfilePageState extends State<ProfilePage>
                                           'assets/icons/comment.svg'),
                                       const SizedBox(height: 18),
                                       Text(
-                                        'what cosmetics you use \nmore than two times so far?',
+                                        'Đã có sản phẩm nào bạn đã từng dùng thử hơn 2 lần chưa? ',
                                         style: textTheme.headline4
                                             .copyWith(color: kPrimaryOrange),
                                       ),
