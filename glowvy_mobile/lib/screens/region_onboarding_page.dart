@@ -48,30 +48,26 @@ class RegionOnboardingPageState extends State<RegionOnboardingPage>
   void validateInput(String value) {
     final year = double.parse(value);
     print(year);
-
-    // TODO(parker): translate
-    if (value == null) {
-      throw 'Please provide year.';
-    } else if (value.length != 4) {
-      throw 'Please input valid birthyear.';
-    } else if (year > 2020 || year < 1900) {
-      throw 'Please input valid birthyear.';
-    }
-  }
-
-  Future _updateRegion(context) async {
     try {
-      // void validateInput(name);
-      await userModel.updateUser(
-          field: 'address.province', value: province.toJson());
-      await Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => const GenderOnboardingPage()));
+      // TODO(parker): translate
+      if (value == null) {
+        throw 'Please select region.';
+      } else if (value.length != 4) {
+        throw 'Please input valid birthyear.';
+      } else if (year > 2020 || year < 1900) {
+        throw 'Please input valid birthyear.';
+      }
     } catch (e) {
       print('_updateUserName error: $e');
       Popups.failMessage(e, context);
     }
+  }
+
+  Future _updateRegion(context) async {
+    await userModel.updateUser(
+        field: 'address.province', value: province.toJson());
+    await Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const GenderOnboardingPage()));
   }
 
   @override

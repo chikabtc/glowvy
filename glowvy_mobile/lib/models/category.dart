@@ -10,6 +10,7 @@ class Category {
   String enName;
   String name;
   List<Category> subCategories;
+  List<String> synonyms;
   String image;
   int id;
   int level;
@@ -20,6 +21,7 @@ class Category {
       this.enName,
       this.name,
       this.subCategories,
+      this.synonyms,
       this.grandTotalCount,
       this.image,
       this.id,

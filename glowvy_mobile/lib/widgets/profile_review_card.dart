@@ -27,7 +27,8 @@ class UserReviewCard extends StatefulWidget {
   _UserReviewCardState createState() => _UserReviewCardState();
 }
 
-class _UserReviewCardState extends State<UserReviewCard> {
+class _UserReviewCardState extends State<UserReviewCard>
+    with AutomaticKeepAliveClientMixin {
   String sanitizedText;
   Product product;
   final df = DateFormat('dd/MM/yyyy');
@@ -44,12 +45,14 @@ class _UserReviewCardState extends State<UserReviewCard> {
     user = Provider.of<UserModel>(context, listen: false).user;
   }
 
+  @override
+  bool get wantKeepAlive => true;
   List<Widget> renderImgs(context, Review review) {
     var imgButtons = <Widget>[];
 
     review.images?.forEach((element) {
       var imgBtn = ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(8)),
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
           child: IconButton(
               iconSize: 150,
               icon: Image.network(
@@ -91,15 +94,21 @@ class _UserReviewCardState extends State<UserReviewCard> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              //todo: assign the same profile pic
-              ClipOval(
-                child: Image.network(
-                  user.picture + '?v=${ValueKey(Random().nextInt(100))}',
+              if (user.picture == null)
+                Image.asset(
+                  'assets/icons/default-avatar.png',
                   width: 36,
                   height: 36,
-                  fit: BoxFit.cover,
+                )
+              else
+                ClipOval(
+                  child: Image.network(
+                    user.picture + '?v=${ValueKey(Random().nextInt(100))}',
+                    width: 36,
+                    height: 36,
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
               const SizedBox(width: 10),
               Expanded(
                 child: Column(
@@ -111,8 +120,8 @@ class _UserReviewCardState extends State<UserReviewCard> {
                     Text(
                         df.format(DateTime.fromMillisecondsSinceEpoch(
                             widget.review.createdAt)),
-                        style: textTheme.headline5
-                            .copyWith(color: kDarkSecondary)),
+                        style:
+                            textTheme.caption2.copyWith(color: kDarkSecondary)),
                     // Text(review.optionName,
                     //     style: TextStyle(
                     //         color: kDarkSecondary.withOpacity(0.5),
@@ -133,28 +142,23 @@ class _UserReviewCardState extends State<UserReviewCard> {
             ],
           ),
           const SizedBox(height: 10),
-          GestureDetector(
-            onTap: () => setState(() {
-              showAll = !showAll;
-            }),
-            child: Wrap(
-              children: <Widget>[
-                const SizedBox(height: 10),
-                Text(sanitizedText,
-                    textAlign: TextAlign.start,
-                    maxLines: showAll ? 300 : 3,
-                    style: textTheme.headline5),
-                (!showAll && sanitizedText.length > 300)
-                    ? Text(
-                        '... Nhiều hơn',
-                        textAlign: TextAlign.start,
-                        style: textTheme.headline5.copyWith(
-                          color: kSecondaryGrey,
-                        ),
-                      )
-                    : Container()
-              ],
-            ),
+          Wrap(
+            children: <Widget>[
+              const SizedBox(height: 10),
+              Text(sanitizedText,
+                  textAlign: TextAlign.start,
+                  maxLines: showAll ? 300 : 3,
+                  style: textTheme.headline5),
+              (!showAll && sanitizedText.length > 300)
+                  ? Text(
+                      '... Nhiều hơn',
+                      textAlign: TextAlign.start,
+                      style: textTheme.headline5.copyWith(
+                        color: kSecondaryGrey,
+                      ),
+                    )
+                  : Container()
+            ],
           ),
 
           // Text(sanitizedText, maxLines: 200, style: textTheme.headline5),

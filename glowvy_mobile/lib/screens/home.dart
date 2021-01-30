@@ -87,13 +87,6 @@ class HomeScreenState extends State<HomeScreen>
   final _scrollController = ScrollController();
 
   bool isFiltering = false;
-  final divider = const Divider(
-    color: kQuaternaryGrey,
-    height: 0.7,
-    thickness: 0.7,
-    indent: 15,
-    endIndent: 15,
-  );
 
   @override
   void initState() {
@@ -348,24 +341,7 @@ class HomeScreenState extends State<HomeScreen>
                                           Container(
                                             height: 50,
                                           ),
-                                          const SizedBox(height: 10),
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 48, right: 48),
-                                            child: Text(
-                                              'Bạn gặp vấn đề với ứng dụng này? Hãy liên hệ với Glowvy Team ngay nhé! Chúng tớ sẽ cố gắng trả lời bạn nhanh nhất có thể.',
-                                              textAlign: TextAlign.center,
-                                              style: textTheme.headline4
-                                                  .copyWith(
-                                                      color: kSecondaryGrey,
-                                                      fontSize: 16,
-                                                      fontStyle:
-                                                          FontStyle.italic,
-                                                      fontWeight:
-                                                          FontWeight.w600),
-                                            ),
-                                          ),
-                                          const SizedBox(height: 22),
+
                                           GestureDetector(
                                             onTap: () {
                                               Navigator.push(
@@ -381,7 +357,7 @@ class HomeScreenState extends State<HomeScreen>
                                                   height: 48,
                                                   alignment: Alignment.center,
                                                   child: Text(
-                                                      'Liên hệ với Glowvy Team',
+                                                      'Báo lỗi ứng dụng',
                                                       textAlign:
                                                           TextAlign.center,
                                                       style: textTheme.button
@@ -403,6 +379,7 @@ class HomeScreenState extends State<HomeScreen>
                                             ),
                                           ),
                                           Container(height: 20),
+                                          kDivider,
                                           GestureDetector(
                                             onTap: () {
                                               Share.share(Platform.isAndroid
@@ -413,8 +390,7 @@ class HomeScreenState extends State<HomeScreen>
                                               color: Colors.transparent,
                                               height: 48,
                                               child: Center(
-                                                child: Text(
-                                                    'Chia sẻ ứng dụng cùng bạn bè',
+                                                child: Text('Chia sẻ ứng dụng',
                                                     style: textTheme.headline5
                                                         .copyWith(
                                                             color:
@@ -422,22 +398,30 @@ class HomeScreenState extends State<HomeScreen>
                                               ),
                                             ),
                                           ),
-                                          divider,
+                                          kDivider,
                                           GestureDetector(
                                             onTap: () {
                                               kRateMyApp
-                                                  .showRateDialog(context)
+                                                  .showRateDialog(context,
+                                                      title:
+                                                          'Đánh giá ứng dụng',
+                                                      message:
+                                                          'Nếu bạn yêu thích Glowvy, hãy dành một chút thời gian để khen ngợi chúng tôi nhé! Điều đó thực sự rất có ý nghĩa với chúng tôi và cũng chỉ mất chưa đến 1 phút để hoàn thành.',
+                                                      rateButton: 'Đánh giá',
+                                                      noButton: 'Không',
+                                                      laterButton: 'Để sau')
                                                   .then((v) => setState(() {}));
                                             },
                                             child: Container(
                                               color: Colors.transparent,
                                               // height: 48,
                                               width: double.infinity,
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 16, vertical: 4),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 16,
+                                                      vertical: 16),
                                               child: Center(
-                                                child: Text(
-                                                    'Yêu thích Glowvy? \nHãy dành một ít lời khen để tạo động lực cho chúng tớ nhé!',
+                                                child: Text('Yêu thích Glowvy?',
                                                     textAlign: TextAlign.center,
                                                     style: textTheme.headline5
                                                         .copyWith(
@@ -446,8 +430,8 @@ class HomeScreenState extends State<HomeScreen>
                                               ),
                                             ),
                                           ),
-                                          divider,
-                                          Container(height: 50),
+                                          // divider,
+                                          Container(height: 30),
                                         ],
                                       ),
                                     ),

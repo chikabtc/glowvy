@@ -53,14 +53,14 @@ class SkinTypeOnboardingPageState extends State<SkinTypeOnboardingPage>
   void validateInput(String value) {
     final year = double.parse(value);
     print(year);
-
-    // TODO(parker): translate
-    if (value == null) {
-      throw 'Please provide year.';
-    } else if (value.length != 4) {
-      throw 'Please input valid birthyear.';
-    } else if (year > 2020 || year < 1900) {
-      throw 'Please input valid birthyear.';
+    try {
+      if (value == null) {
+        throw 'Hãy chọn loại da của bạn';
+      }
+    } catch (e) {
+      print('_updateSkinType error: $e');
+      // _stopAnimation();
+      Popups.failMessage(e, context);
     }
   }
 
@@ -94,9 +94,21 @@ class SkinTypeOnboardingPageState extends State<SkinTypeOnboardingPage>
         body: Column(
           children: [
             // TODO(parker): translate
-            Text('Choose your skin type', style: textTheme.headline2),
+            Text('Loại da',
+                style: textTheme.headline1.copyWith(
+                    fontStyle: FontStyle.normal, fontWeight: FontWeight.w800)),
             const SizedBox(
-              height: 30,
+              height: 15,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 50.0),
+              child: Text(
+                  'Loại da được sử dụng để giúp Glowvy lọc ra những sản phẩm và đánh giá phù hợp với kiểu da của bạn',
+                  textAlign: TextAlign.center,
+                  style: textTheme.bodyText1),
+            ),
+            const SizedBox(
+              height: 45,
             ),
             ListView.builder(
               shrinkWrap: true,
@@ -136,7 +148,7 @@ class SkinTypeOnboardingPageState extends State<SkinTypeOnboardingPage>
                   child: Builder(
                     builder: (context) => StaggerAnimation(
                         btnColor: kPrimaryOrange,
-                        buttonTitle: 'continue',
+                        buttonTitle: 'Tiếp tục',
                         buttonController: _doneButtonController.view,
                         onTap: () {
                           _updateSkinType(context);

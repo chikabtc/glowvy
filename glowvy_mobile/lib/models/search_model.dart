@@ -34,8 +34,6 @@ class SearchModel extends ChangeNotifier {
   List<String> get recentQuerySuggestions => _recentQuerySuggestions;
 
   List<Product> recentSearchItems = [];
-  List<Product> _itemSuggestion = [];
-  List<Product> get itemSuggestion => _itemSuggestion;
 
   String _query = '';
   String get query => _query;
@@ -51,6 +49,14 @@ class SearchModel extends ChangeNotifier {
     await setCategories();
   }
 
+  void onLogout() {
+    queryHistory = [];
+    recentSearchItems = [];
+    _recentQuerySuggestions = [];
+    _query = '';
+    notifyListeners();
+  }
+
   void listenToAuthStateUpdate() {
     _auth.authStateChanges().listen((b.User user) async {
       if (user == null) {
@@ -62,14 +68,6 @@ class SearchModel extends ChangeNotifier {
       }
     });
   }
-  // void clear() {
-  //   print('emtpy queri');
-
-  //   _query = '';
-  //   _brandSuggestions = [];
-  //   _categorySuggestion = [];
-  //   notifyListeners();
-  // }
 
   void setSerchHistory(UserModel userModel) {
     try {
@@ -98,7 +96,6 @@ class SearchModel extends ChangeNotifier {
       var allCategories = <Category>[];
 
       snap.docs.forEach((element) {
-        print(element.data()['sub_categories']);
         allCategories.add(Category.fromJson(element.data()));
       });
 
@@ -154,7 +151,9 @@ class SearchModel extends ChangeNotifier {
   }
 
   bool isSuggestionEmpty() {
-    return brandSuggestions.isEmpty && categorySuggestion.isEmpty;
+    return brandSuggestions.isEmpty &&
+        categorySuggestion.isEmpty &&
+        _recentQuerySuggestions.isEmpty;
   }
 
   Future setBrands() async {
@@ -212,6 +211,7 @@ class SearchModel extends ChangeNotifier {
               recentQuery.toLowerCase().startsWith(query.toLowerCase()))
           .toList();
     }
+    print(_recentQuerySuggestions.length);
 
     notifyListeners();
   }
@@ -276,11 +276,11 @@ class SearchModel extends ChangeNotifier {
 
   Future onQuerySubmitted(String query) async {
     try {
-      await _db.collection('users').doc(firebaseUser.uid).update({
-        'recent_search_queries': FieldValue.arrayUnion([query])
-      });
-      if (!_recentQuerySuggestions.contains(query)) {
-        _recentQuerySuggestions.add(query);
+      if (!queryHistory.contains(query)) {
+        queryHistory.add(query);
+        await _db.collection('users').doc(firebaseUser.uid).update({
+          'recent_search_queries': FieldValue.arrayUnion([query])
+        });
       }
 
       notifyListeners();
@@ -292,8 +292,6 @@ class SearchModel extends ChangeNotifier {
 
   Future saveRecentSearchItem(Product product) async {
     try {
-      recentSearchItems.add(product);
-
       final json = {
         'sid': product.sid,
         'name': product.name,
@@ -305,9 +303,12 @@ class SearchModel extends ChangeNotifier {
         'category': product.category.toJson(),
       };
 
-      await _db.collection('users').doc(firebaseUser.uid).update({
-        'recent_search_items': FieldValue.arrayUnion([json])
-      });
+      if (!recentSearchItems.contains(product)) {
+        recentSearchItems.add(product);
+        await _db.collection('users').doc(firebaseUser.uid).update({
+          'recent_search_items': FieldValue.arrayUnion([json])
+        });
+      }
 
       notifyListeners();
       return;
@@ -323,7 +324,7 @@ class SearchModel extends ChangeNotifier {
     } else {
       itemCount = brandSuggestions.length +
           categorySuggestion.length +
-          recentQuerySuggestions.length;
+          _recentQuerySuggestions.length;
       ;
     }
     return itemCount <= 5 ? itemCount : 5;
@@ -348,46 +349,3 @@ class SearchModel extends ChangeNotifier {
     return suggestion;
   }
 }
-
-// Future setCategories() async {
-//   print('Try to get localCate!');
-//   try {
-//     const categoryPath = 'lib/common/categories.json';
-//     final categoryJsonString = await rootBundle.loadString(categoryPath);
-//     final cateJson = convert.jsonDecode(categoryJsonString);
-//     // var localCates = <Category>[];
-
-//     // for (final cate in addressJson) {
-//     //   final category = Category.fromJson(cate);
-//     //   // category.subCategories = cates;
-
-//     //   localCates.add(category);
-//     // }
-//     categories
-//       ..add(Category.fromJson(cateJson[0]))
-//       ..add(Category.fromJson(cateJson[6]))
-//       ..add(Category.fromJson(cateJson[7]))
-//       ..add(Category.fromJson(cateJson[8]));
-//     //put all categories into one array
-//     categories.forEach((firstCate) {
-//       flatCategories.add(firstCate);
-
-//       firstCate.subCategories.forEach((secondCate) {
-//         flatCategories.add(secondCate);
-
-//         secondCate.subCategories.forEach((thirdCate) {
-//           flatCategories.add(thirdCate);
-//         });
-//       });
-//     });
-//     print('length cflt: ${flatCategories.length}');
-
-//     notifyListeners();
-//   } catch (err) {
-//     'There is an issue with the app during request the data, please contact admin for fixing the issues ' +
-//         err.toString();
-
-//     print('error: $err');
-//     notifyListeners();
-//   }
-// }

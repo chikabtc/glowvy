@@ -163,6 +163,10 @@ class _ReviewCosmeticsSearchScreenState
                                     height: 24,
                                     child: PlatformButton(
                                       onPressed: () => model.clear(),
+                                      materialFlat: (_, __) =>
+                                          MaterialFlatButtonData(
+                                              elevation: 0,
+                                              color: Colors.transparent),
                                       padding: EdgeInsets.zero,
                                       child: Text('Xóa',
                                           style: textTheme.bodyText1.copyWith(
@@ -209,7 +213,9 @@ class _ReviewCosmeticsSearchScreenState
                 shrinkWrap: true,
                 //if no suggestions are found, show the current query in the
                 //suggestion
-                itemCount: searchModel.recentQuerySuggestions.length + 1,
+                itemCount: searchModel.recentQuerySuggestions.isEmpty
+                    ? 1
+                    : searchModel.recentQuerySuggestions.length,
                 itemBuilder: (context, index) {
                   return Container(
                       padding: const EdgeInsets.only(

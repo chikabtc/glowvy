@@ -77,7 +77,7 @@ TextTheme _buildTextTheme(TextTheme base) {
       headline1: base.headline1.copyWith(
           height: 1.25,
           fontStyle: FontStyle.italic,
-          fontSize: 24.0,
+          fontSize: 32.0,
           fontWeight: FontWeight.w900,
           color: kDefaultFontColor),
       headline2: base.headline2.copyWith(

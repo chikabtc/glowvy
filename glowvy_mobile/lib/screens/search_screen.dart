@@ -270,6 +270,7 @@ class _SearchScreenState extends State<SearchScreen>
               },
               body: PaginatedProductListView(
                 brand: pickedBrand,
+                saveHistory: true,
                 disableSrolling: true,
               ),
             ),
@@ -309,6 +310,7 @@ class _SearchScreenState extends State<SearchScreen>
               },
               body: PaginatedProductListView(
                 category: pickedCategory,
+                saveHistory: true,
                 disableSrolling: true,
               ),
             ),
@@ -381,6 +383,7 @@ class _SearchScreenState extends State<SearchScreen>
     }
 
     Widget showSuggestions(SearchModel model) {
+      print('showsuggestion');
       const maxSuggestionCount = 5;
       //local auto completes
       ///show only 5 suggestions at most

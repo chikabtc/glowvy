@@ -97,8 +97,7 @@ class EditRegionPageState extends State<EditRegionPage>
           ],
           leading: backIcon(context),
           backgroundColor: Colors.white,
-          // TODO(parker): translate
-          title: Text('region', style: textTheme.headline3)),
+          title: Text('Khu vực lưu trú', style: textTheme.headline3)),
       backgroundColor: kDefaultBackground,
       body: Container(
         color: kWhite,

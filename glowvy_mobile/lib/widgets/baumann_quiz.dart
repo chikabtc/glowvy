@@ -53,10 +53,10 @@ class _BaumannQuizState extends State<BaumannQuiz>
   SwiperController swipeController;
   User user;
   List<String> tabList = [
-    'Khô vs Da dầu',
+    'Da khô vs Da dầu',
     'Nhạy cảm vs Khỏe mạnh',
-    'Sắc tố và Không sắc tố',
-    'Căng bóng vs Nhăn nhăn'
+    'Căng bóng vs Nhăn nheo',
+    'Tăng sắc tố vs Giảm sắc tố',
   ];
 
   @override
@@ -238,6 +238,9 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                     ? const NeverScrollableScrollPhysics()
                                     : const AlwaysScrollableScrollPhysics(),
                                 itemBuilder: (BuildContext context, int i) {
+                                  if (totalProgress == 16) {
+                                    totalProgress = totalProgress - 1;
+                                  }
                                   return SurveyCard(
                                     survey: surveys[currentPage][i],
                                     index: totalProgress,
@@ -291,7 +294,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                   borderRadius: BorderRadius.circular(16.0),
                                 ),
                                 child: calculatingResult
-                                    ? const CupertinoActivityIndicator()
+                                    ? kIndicator()
                                     : Text('Kiểm tra loại da',
                                         style: kBaseTextStyle.copyWith(
                                             fontSize: 15,
@@ -352,10 +355,10 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                 child: Column(children: <Widget>[
                                   const SizedBox(height: 16.5),
                                   SkinScore('Khô', 'Dầu', score: dsScore),
-                                  SkinScore('Sắc tố', 'Không có\nsắc tố',
-                                      score: srScore),
                                   SkinScore('Nhạy cảm', 'Khỏe mạnh',
                                       score: pnScore),
+                                  SkinScore('Sắc tố', 'Không có\nsắc tố',
+                                      score: srScore),
                                   SkinScore('Căng bóng', 'Nhăn nheo',
                                       score: wnScore),
                                 ]),
@@ -415,7 +418,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                               ),
                                               if (!showFullExplanation)
                                                 Text(
-                                                  '... Nhiều hơn',
+                                                  '... Xem thêm',
                                                   textAlign: TextAlign.start,
                                                   style: textTheme.headline5
                                                       .copyWith(
@@ -508,7 +511,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                           top: 14,
                                           bottom: 14),
                                       child: Text(
-                                          'Glowvy là đứa con tinh thần của một nhóm các bạn trẻ người Hàn Quốc nhằm giúp tìm ra loại mỹ phẩm phù hợp với loại da và các vấn đề về da của bạn. Với mục tiêu biến làn da trở nên căng bóng và tỏa sáng, Glowvy luôn nỗ lực để cung cấp những lời khuyên về mĩ phẩm, phân tích loại da và tips chăm sóc da phù hợp với riêng mỗi người. Bạn đã bao giờ trải qua việc mua phải và sử dụng những mĩ phẩm làm hỏng da của bạn chưa? Hãy kể cho Glowvy biết về điều đó~~',
+                                          'Glowvy là đứa con tinh thần của một nhóm các bạn trẻ tạo ra đồng hành cùng mọi người trên con đường tìm kiếm làn da mơ ước với mục tiêu biến làn da bạn trở nên căng bóng và tỏa sáng. Đã bao giờ bạn trải nghiệm những sản phẩm không phù hợp với mình chưa? Hãy kể với Glowvy về điều đó nhé ~',
                                           style: textTheme.bodyText1
                                               .copyWith(color: kDarkAccent)),
                                     ),
@@ -527,13 +530,10 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                               borderRadius:
                                                   BorderRadius.circular(16.0),
                                             ),
-                                            child: !isSaving
-                                                ? Text(S.of(context).close,
-                                                    style: textTheme.headline5
-                                                        .copyWith(
-                                                            color:
-                                                                Colors.white))
-                                                : const CupertinoActivityIndicator(),
+                                            child: Text(S.of(context).close,
+                                                style: textTheme.headline5
+                                                    .copyWith(
+                                                        color: Colors.white)),
                                             onPressed: () {
                                               if (!userModel.isLoggedIn) {
                                                 Navigator.pushNamed(
@@ -542,7 +542,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                                 Navigator.pop(context);
                                               }
                                             })),
-                                    Text('Glowvy x Căng bóng làn da',
+                                    Text('Make Vietnamese Skin Glow',
                                         style: textTheme.bodyText2.copyWith(
                                             fontStyle: FontStyle.italic,
                                             color: kSecondaryGrey)),

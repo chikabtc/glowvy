@@ -58,6 +58,8 @@ class ProductCard extends StatelessWidget {
             final loggedin =
                 Provider.of<UserModel>(context, listen: false).isLoggedIn;
             if (loggedin) {
+              print('hohohohohohh');
+
               await Provider.of<SearchModel>(context, listen: false)
                   .saveRecentSearchItem(product);
             }
@@ -94,7 +96,7 @@ class ProductCard extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: kBaseTextStyle.copyWith(
                                   height: 1,
-                                  fontSize: 9,
+                                  fontSize: ranking > 5 ? 11 : 10,
                                   color:
                                       ranking < 3 ? Colors.white : kDarkYellow,
                                   fontWeight: FontWeight.w800),

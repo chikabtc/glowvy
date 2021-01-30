@@ -2,6 +2,7 @@ import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/models/search_model.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/edit_password.dart';
@@ -24,6 +25,7 @@ class SettingPage extends StatefulWidget {
 class SettingPageState extends State<SettingPage>
     with TickerProviderStateMixin, WidgetsBindingObserver {
   UserModel userModel;
+
   @override
   void initState() {
     super.initState();
@@ -32,8 +34,6 @@ class SettingPageState extends State<SettingPage>
 
   Future logout() async {
     await userModel.logout();
-    // TODO(parker): this causes the app to crash
-    //go to the before signup page
     Navigator.of(context).popUntil((route) => route.isFirst);
   }
 
@@ -82,6 +82,7 @@ class SettingPageState extends State<SettingPage>
                 GestureDetector(
                   onTap: () async {
                     await logout();
+                    Provider.of<SearchModel>(context, listen: false).onLogout();
                   },
                   child: Container(
                     decoration: BoxDecoration(

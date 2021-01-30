@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/styles.dart';
@@ -37,8 +39,9 @@ class Popups {
       ..showSnackBar(snackBar);
   }
 
-  static void showSuccesPopup(context, {message = 'success'}) {
+  static void showSuccesPopup(context, {message = 'Thành công'}) {
     BuildContext dialogContext;
+
     showDialog(
         context: context,
         barrierColor: Color(0x01000000),
@@ -62,6 +65,9 @@ class Popups {
                     ),
                   )));
         }).then((value) {});
+    Future.delayed(const Duration(milliseconds: 2000), () {
+      Navigator.of(dialogContext).pop(true);
+    });
   }
 
   static void simpleAlert(context, bodyText, {buttonText = 'Ok'}) {
@@ -109,12 +115,7 @@ class Popups {
                       ),
                     ],
                   )));
-        }).then((value) {
-      // Future.delayed(const Duration(milliseconds: 700), () {
-      //   Navigator.of(context).pop();
-      //   // Navigator.of(dialogContext).pop();
-      // });
-    });
+        }).then((value) {});
   }
 
   static void showPMF(BuildContext context) {
@@ -262,7 +263,6 @@ class Popups {
                           height: AppBar().preferredSize.height,
                           width: kScreenSizeWidth,
                           child: Center(
-                            // TODO(parker): translate
                             child: Text('Mô tả sản phẩm',
                                 style: kBaseTextStyle.copyWith(
                                     fontSize: 16, fontWeight: FontWeight.w600)),

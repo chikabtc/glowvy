@@ -50,7 +50,7 @@ class _AppState extends State<Glowvy> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     final analytics = FirebaseAnalytics();
 
-    return PlatformApp(
+    return MaterialApp(
         title: 'Glowvy',
         debugShowCheckedModeBanner: false,
         navigatorObservers: [
@@ -91,8 +91,8 @@ class GlowvyState extends State<MyApp> with AfterLayoutMixin {
     await _search.initData();
 
     _search.setSerchHistory(_userModel);
-    await precacheImage(
-        const AssetImage('assets/icons/default-avatar.png'), context);
+    // await precacheImage(
+    //     const AssetImage('assets/icons/default-avatar.png'), context);
     isFirstSeen = await checkFirstSeen();
     isLoggedIn = await checkLogin();
     setState(() {

@@ -2,6 +2,7 @@ import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/common/widgets.dart';
+import 'package:Dimodo/models/product/review_model.dart';
 
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
@@ -47,6 +48,8 @@ class SkinIssuesOnboardingPageState extends State<SkinIssuesOnboardingPage>
   Future _updateSkinIssues(context) async {
     try {
       await userModel.updateUserIssues(selectedIssues);
+      await Provider.of<ReviewModel>(context, listen: false)
+          .updateReviewerInfo(userModel.user);
       //1. success popup
       Navigator.of(context).popUntil((route) => route.isFirst);
       //2. pop everything and go to setting pagess
@@ -69,10 +72,21 @@ class SkinIssuesOnboardingPageState extends State<SkinIssuesOnboardingPage>
         backgroundColor: kDefaultBackground,
         body: Column(
           children: [
-            // TODO(parker): translate
-            Text('Choose your skin issues', style: textTheme.headline2),
+            Text('Tình trạng da',
+                style: textTheme.headline1.copyWith(
+                    fontStyle: FontStyle.normal, fontWeight: FontWeight.w800)),
             const SizedBox(
-              height: 30,
+              height: 15,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 50.0),
+              child: Text(
+                  'Tình trạng da được sử dụng để giúp Glowvy lọc ra những sản phẩm và đánh giá dành riêng cho da bạn',
+                  textAlign: TextAlign.center,
+                  style: textTheme.bodyText1),
+            ),
+            const SizedBox(
+              height: 45,
             ),
             ListView.builder(
               shrinkWrap: true,
@@ -116,7 +130,7 @@ class SkinIssuesOnboardingPageState extends State<SkinIssuesOnboardingPage>
                   child: Builder(
                     builder: (context) => StaggerAnimation(
                         btnColor: kPrimaryOrange,
-                        buttonTitle: 'Start Glowvy',
+                        buttonTitle: 'Bắt đầu sử dụng Glowvy',
                         buttonController: _doneButtonController.view,
                         onTap: () {
                           _updateSkinIssues(context);

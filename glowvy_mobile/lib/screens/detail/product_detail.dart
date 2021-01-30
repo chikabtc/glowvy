@@ -87,25 +87,25 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
 
     switch (product.hazardScore) {
       case 0:
-        hazardLevel = S.of(context).undecided;
+        hazardLevel = 'chưa xác định';
         hazardLevelColor = kDarkGrey;
         break;
       case 1:
-        hazardLevel = S.of(context).low;
+        hazardLevel = 'thấp';
         hazardLevelColor = kDarkGrey;
 
         break;
       case 2:
-        hazardLevel = S.of(context).moderate;
+        hazardLevel = 'trung bình';
         hazardLevelColor = kSecondaryOrange;
 
         break;
       case 3:
-        hazardLevel = S.of(context).high;
+        hazardLevel = 'cao';
         hazardLevelColor = kPrimaryOrange;
-
         break;
       default:
+        hazardLevel = 'chưa xác định';
     }
 
     Route _createRoute() {
@@ -392,8 +392,6 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: <Widget>[
-                                      //
-                                      // TODO(parker): translate
                                       RichText(
                                         textAlign: TextAlign.center,
                                         text: TextSpan(
@@ -402,20 +400,18 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                           ),
                                           children: <TextSpan>[
                                             const TextSpan(
-                                                text:
-                                                    'Sản phẩm chứa thành phần có'),
+                                                text: 'Chứa thành phần'),
                                             TextSpan(
-                                                text:
-                                                    ' độ an toàn $hazardLevel',
+                                                text: ' rủi ro $hazardLevel',
                                                 style: textTheme.caption1
                                                     .copyWith(
                                                         color: hazardLevelColor,
                                                         fontWeight:
                                                             FontWeight.bold)),
+                                            const TextSpan(text: ' cho da'),
                                           ],
                                         ),
                                       ),
-
                                       const Spacer(),
                                       Icon(
                                         Icons.warning,
@@ -459,66 +455,66 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                               ],
                             ),
                             const Spacer(),
-                            if (initialReviewPage != null)
-                              Column(
-                                children: <Widget>[
-                                  ReviewRatingBar(
-                                      title: '5.0',
-                                      percentage: totalCount != 0
-                                          ? initialReviewPage.itemList.fold(
-                                                  0,
-                                                  (previousValue, element) =>
-                                                      element.rating == 5
-                                                          ? previousValue + 1
-                                                          : previousValue) /
-                                              totalCount
-                                          : 0),
-                                  ReviewRatingBar(
-                                      title: '4.0',
-                                      percentage: totalCount != 0
-                                          ? initialReviewPage.itemList.fold(
-                                                  0,
-                                                  (previousValue, element) =>
-                                                      element.rating == 4
-                                                          ? previousValue + 1
-                                                          : previousValue) /
-                                              totalCount
-                                          : 0),
-                                  ReviewRatingBar(
-                                      title: '3.0',
-                                      percentage: totalCount != 0
-                                          ? initialReviewPage.itemList.fold(
-                                                  0,
-                                                  (previousValue, element) =>
-                                                      element.rating == 3
-                                                          ? previousValue + 1
-                                                          : previousValue) /
-                                              totalCount
-                                          : 0),
-                                  ReviewRatingBar(
-                                      title: '2.0',
-                                      percentage: totalCount != 0
-                                          ? initialReviewPage.itemList.fold(
-                                                  0,
-                                                  (previousValue, element) =>
-                                                      element.rating == 2
-                                                          ? previousValue + 1
-                                                          : previousValue) /
-                                              totalCount
-                                          : 0),
-                                  ReviewRatingBar(
-                                      title: '1.0',
-                                      percentage: totalCount != 0
-                                          ? initialReviewPage.itemList.fold(
-                                                  0,
-                                                  (previousValue, element) =>
-                                                      element.rating == 1
-                                                          ? previousValue + 1
-                                                          : previousValue) /
-                                              totalCount
-                                          : 0),
-                                ],
-                              )
+                            // if (initialReviewPage != null)
+                            Column(
+                              children: <Widget>[
+                                ReviewRatingBar(
+                                    title: '5.0',
+                                    percentage: totalCount != 0
+                                        ? initialReviewPage.itemList.fold(
+                                                0,
+                                                (previousValue, element) =>
+                                                    element.rating == 5
+                                                        ? previousValue + 1
+                                                        : previousValue) /
+                                            totalCount
+                                        : 0),
+                                ReviewRatingBar(
+                                    title: '4.0',
+                                    percentage: totalCount != 0
+                                        ? initialReviewPage.itemList.fold(
+                                                0,
+                                                (previousValue, element) =>
+                                                    element.rating == 4
+                                                        ? previousValue + 1
+                                                        : previousValue) /
+                                            totalCount
+                                        : 0),
+                                ReviewRatingBar(
+                                    title: '3.0',
+                                    percentage: totalCount != 0
+                                        ? initialReviewPage.itemList.fold(
+                                                0,
+                                                (previousValue, element) =>
+                                                    element.rating == 3
+                                                        ? previousValue + 1
+                                                        : previousValue) /
+                                            totalCount
+                                        : 0),
+                                ReviewRatingBar(
+                                    title: '2.0',
+                                    percentage: totalCount != 0
+                                        ? initialReviewPage.itemList.fold(
+                                                0,
+                                                (previousValue, element) =>
+                                                    element.rating == 2
+                                                        ? previousValue + 1
+                                                        : previousValue) /
+                                            totalCount
+                                        : 0),
+                                ReviewRatingBar(
+                                    title: '1.0',
+                                    percentage: totalCount != 0
+                                        ? initialReviewPage.itemList.fold(
+                                                0,
+                                                (previousValue, element) =>
+                                                    element.rating == 1
+                                                        ? previousValue + 1
+                                                        : previousValue) /
+                                            totalCount
+                                        : 0),
+                              ],
+                            )
                           ],
                         ),
                       ),
@@ -529,11 +525,13 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                     ),
                     Container(height: 14, color: Colors.white),
                     GestureDetector(
-                        onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    ReviewsScreen(initialReviewPage, product))),
+                        onTap: () => totalCount != 0
+                            ? Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => ReviewsScreen(
+                                        initialReviewPage, product)))
+                            : null,
                         child: !isLoading
                             ? Container(
                                 width: screenSize.width,
@@ -575,7 +573,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                         children: [
                                           Center(
                                             child: Text(
-                                              'không tìm thấy sản phẩm',
+                                              'Chưa có đánh giá',
                                               style: textTheme.bodyText1
                                                   .copyWith(
                                                       fontSize: 14,

@@ -39,28 +39,40 @@ class EditPasswordPageState extends State<EditPasswordPage>
   }
 
   void validateInput() {
-    if (currentPassword == null ||
-        newPassword == null ||
-        doubleCheckPw == null) {
-      throw 'Please provide passwords';
-    } else if (currentPassword == newPassword) {
-      throw 'Please provide new password.';
-    } else if (newPassword != doubleCheckPw) {
-      throw 'The new password does not equal';
+    try {
+      validateInput();
+
+      if (currentPassword == null ||
+          newPassword == null ||
+          doubleCheckPw == null) {
+        //please provide pw
+        throw 'Nhập mật khẩu';
+      } else if (currentPassword == newPassword) {
+        //please provide new pw
+        throw 'Nhập mật khẩu mới';
+      } else if (newPassword != doubleCheckPw) {
+        //pw doesn't match
+        throw 'Mật khẩu mới không khớp';
+      }
+    } catch (e) {
+      print('_updateUserName error: $e');
+      _doneButtonController.reverse();
+      Popups.failMessage(e, context);
     }
   }
 
-  Future _updateUserName(context) async {
-    try {
-      validateInput();
-      await userModel.updatePassword(newPassword);
-      await _doneButtonController.reverse();
+  Future _updatePassword(context) async {
+    await userModel.updatePassword(currentPassword, newPassword, success: () {
+      Popups.showSuccesPopup(context);
+      _doneButtonController.reverse();
       Navigator.pop(context);
-    } catch (e) {
-      print('_updateUserName error: $e');
-      await _doneButtonController.reverse();
+      Navigator.pop(context);
+    }, fail: (e) {
+      _doneButtonController.reverse();
+
+      Navigator.pop(context);
       Popups.failMessage(e, context);
-    }
+    });
   }
 
   @override
@@ -82,7 +94,7 @@ class EditPasswordPageState extends State<EditPasswordPage>
                     buttonController: _doneButtonController.view,
                     onTap: () async {
                       _doneButtonController.forward();
-                      await _updateUserName(context);
+                      await _updatePassword(context);
                     },
                   ),
                 ),

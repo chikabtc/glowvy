@@ -1,8 +1,11 @@
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/common/styles.dart';
+import 'package:Dimodo/common/tools.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/models/product_request.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -20,11 +23,9 @@ class _CosmeticsRequestScreenState extends State<CosmeticsRequestScreen>
     with TickerProviderStateMixin {
   Size screenSize;
   UserModel userModel;
-  String category;
   AnimationController _requestController;
+  ProductRequest _productRequest = ProductRequest();
   bool isLoading;
-  String brand;
-  String productName;
   final TextEditingController _categoryController = TextEditingController();
   final TextEditingController _brandController = TextEditingController();
   final TextEditingController _productNameController = TextEditingController();
@@ -77,125 +78,136 @@ class _CosmeticsRequestScreenState extends State<CosmeticsRequestScreen>
             backgroundColor: kSecondaryOrange),
         body: SafeArea(
           bottom: false,
-          child: Container(
-            width: screenSize.width,
-            color: kSecondaryOrange,
-            padding: EdgeInsets.only(left: 10, top: 20, right: 10),
+          child: SingleChildScrollView(
             child: Container(
-              height: 612,
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(20)),
-              padding:
-                  EdgeInsets.only(top: 40, bottom: 53, left: 16, right: 16),
-              child: Column(
-                children: [
-                  SvgPicture.asset('assets/icons/request_flower.svg'),
-                  Container(height: 14),
-                  const SizedBox(height: 12.0),
-                  Text(
-                    'Hongbeom~ \nSubmit Cosmetics Info',
-                    style: textTheme.headline1,
-                    textAlign: TextAlign.center,
-                  ),
-                  Text(
-                    'Soon you will get a chance to check the cosmetics ingredients and reviews. When it’s ready, Glowvy team will send you a notification.',
-                    style: textTheme.bodyText1,
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 14),
-                  Container(
-                      width: screenSize.width,
-                      height: 48,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(16)),
-                          color: kQuaternaryOrange),
-                      child: // Group 6
-                          Center(
-                        child: TextField(
-                            style: textTheme.headline5
-                                .copyWith(color: kPrimaryOrange),
-                            controller: _categoryController,
-                            cursorColor: theme.cursorColor,
-                            onChanged: (value) => category = value,
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: kTextField.copyWith(
-                              hintText: S.of(context).category,
-                            )),
-                      )),
-                  const SizedBox(height: 12.0),
-                  Container(
-                      width: screenSize.width,
-                      height: 48,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(16)),
-                          color: kQuaternaryOrange),
-                      child: // Group 6
-                          Center(
-                        child: TextField(
-                            style: textTheme.headline5
-                                .copyWith(color: kPrimaryOrange),
-                            controller: _brandController,
-                            cursorColor: theme.cursorColor,
-                            onChanged: (value) => brand = value,
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: kTextField.copyWith(
-                              hintText: S.of(context).productAdded,
-                            )),
-                      )),
-                  const SizedBox(height: 12.0),
-                  Container(
-                      width: screenSize.width,
-                      height: 48,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(16)),
-                          color: kQuaternaryOrange),
-                      child: // Group 6
-                          Center(
-                        child: TextField(
-                            style: textTheme.headline5
-                                .copyWith(color: kPrimaryOrange),
-                            controller: _productNameController,
-                            cursorColor: theme.cursorColor,
-                            onChanged: (value) => productName = value,
-                            keyboardType: TextInputType.emailAddress,
-                            decoration: kTextField.copyWith(
-                                hintText: S.of(context).name)),
-                      )),
-                  const SizedBox(height: 13),
-                  //add the product to the firestore
-                  //then the trigger function will send the slack notification
+              width: screenSize.width,
+              color: kSecondaryOrange,
+              padding: EdgeInsets.only(left: 10, top: 20, right: 10),
+              child: Container(
+                height: 612,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(20)),
+                padding:
+                    EdgeInsets.only(top: 40, bottom: 53, left: 16, right: 16),
+                child: Column(
+                  children: [
+                    SvgPicture.asset('assets/icons/request_flower.svg'),
+                    Container(height: 14),
+                    const SizedBox(height: 12.0),
+                    Text(
+                      '${userModel.user.fullName} ơi \Nhập thông tin sản phẩm tại đây',
+                      style: textTheme.headline1,
+                      textAlign: TextAlign.center,
+                    ),
+                    Text(
+                      'Nhanh thôi, bạn sẽ có thể kiểm tra thành phần và đánh giá của sản phẩm này. Glowvy sẽ gửi thông báo ngay khi sản phẩm được cập nhật',
+                      style: textTheme.bodyText1,
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 14),
+                    Container(
+                        width: screenSize.width,
+                        height: 48,
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(16)),
+                            color: kQuaternaryOrange),
+                        child: // Group 6
+                            Center(
+                          child: TextField(
+                              style: textTheme.headline5
+                                  .copyWith(color: kPrimaryOrange),
+                              controller: _categoryController,
+                              cursorColor: theme.cursorColor,
+                              onChanged: (value) =>
+                                  _productRequest.categoryName = value,
+                              keyboardType: TextInputType.text,
+                              decoration:
+                                  kTextField.copyWith(hintText: 'Danh mục')),
+                        )),
+                    const SizedBox(height: 12.0),
+                    Container(
+                        width: screenSize.width,
+                        height: 48,
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(16)),
+                            color: kQuaternaryOrange),
+                        child: // Group 6
+                            Center(
+                          child: TextField(
+                              style: textTheme.headline5
+                                  .copyWith(color: kPrimaryOrange),
+                              controller: _brandController,
+                              cursorColor: theme.cursorColor,
+                              onChanged: (value) =>
+                                  _productRequest.productName = value,
+                              keyboardType: TextInputType.text,
+                              decoration: kTextField.copyWith(
+                                  hintText: 'Tên sản phẩm')),
+                        )),
+                    const SizedBox(height: 12.0),
+                    Container(
+                        width: screenSize.width,
+                        height: 48,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(16)),
+                            color: kQuaternaryOrange),
+                        child: // Group 6
+                            Center(
+                          child: TextField(
+                              style: textTheme.headline5
+                                  .copyWith(color: kPrimaryOrange),
+                              controller: _productNameController,
+                              cursorColor: theme.cursorColor,
+                              onChanged: (value) =>
+                                  _productRequest.brandName = value,
+                              keyboardType: TextInputType.text,
+                              decoration:
+                                  kTextField.copyWith(hintText: 'Tên hãng')),
+                        )),
+                    const SizedBox(height: 13),
+                    //add the product to the firestore
+                    //then the trigger function will send the slack notification
 
-                  StaggerAnimation(
-                      buttonTitle: S.of(context).send,
-                      buttonController: _requestController.view,
-                      onTap: () {
-                        _playAnimation();
+                    StaggerAnimation(
+                        height: 48,
+                        buttonTitle: S.of(context).send,
+                        buttonController: _requestController.view,
+                        onTap: () {
+                          _playAnimation();
 
-                        try {
-                          Future.delayed(const Duration(milliseconds: 1000),
-                              () async {
-                            var cosmeticsRequest = {
-                              'name': productName,
-                              'brand': brand,
-                              'category': category
-                            };
-                            await FirebaseFirestore.instance
-                                .collection('users')
-                                .doc(user.uid)
-                                .collection('cosmetics_requests')
-                                .add(cosmeticsRequest);
+                          try {
+                            Future.delayed(const Duration(milliseconds: 1000),
+                                //only save the uid, full_name here?
+                                () async {
+                              var cosmeticsRequest = {
+                                'name': _productRequest.productName,
+                                'brand': _productRequest.brandName,
+                                'category': _productRequest.categoryName,
+                                'user': userModel.user.toJson(),
+                              };
+                              await FirebaseFirestore.instance
+                                  .collection('product_requests')
+                                  .add(cosmeticsRequest);
 
-                            await _stopAnimation();
-                          });
-                        } catch (err) {
-                          print('error sending cosmetics request: $err');
-                          rethrow;
-                        }
-                        //save the requested cosmetics info on the firestore
-                        //se
-                        // _submitRegister(fullName, email, password);
-                      }),
-                ],
+                              await _stopAnimation();
+                              Popups.showSuccesPopup(context);
+                              Navigator.pop(context);
+                              Tools.sendSlackMessage(
+                                  'cosmetics request:\nbrand: ${_productRequest.brandName}\nemail: ${_productRequest.categoryName}\nproduct name: ${_productRequest.productName}\n\n user email:${user.email} \n uid: ${user.uid}');
+                            });
+                          } catch (err) {
+                            //handle errors
+
+                            print('error sending cosmetics request: $err');
+                            rethrow;
+                          }
+                          //save the requested cosmetics info on the firestore
+                          //se
+                          // _submitRegister(fullName, email, password);
+                        }),
+                  ],
+                ),
               ),
             ),
           ),

@@ -17,7 +17,8 @@ import 'package:provider/provider.dart';
 
 class WriteReviewScreen extends StatefulWidget {
   final ScrollController scrollController;
-  WriteReviewScreen({this.scrollController});
+  Function onReviewComplete;
+  WriteReviewScreen({this.scrollController, this.onReviewComplete});
   @override
   _WriteReviewScreenState createState() => _WriteReviewScreenState();
 }
@@ -93,9 +94,10 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
       await _postButtonController.reverse();
       Popups.showSuccesPopup(context);
       Navigator.of(context).popUntil((route) => route.isFirst);
+      widget.onReviewComplete();
     } catch (e) {
       await _postButtonController.reverse();
-      Popups.simpleAlert(context, e);
+      Popups.failMessage(e.toString(), context);
     }
   }
 
@@ -118,13 +120,11 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
           return 'Siêu tốt!';
           break;
         case 0:
-          return 'Tap to rate5';
+          return 'Nhấn để đánh giá';
           break;
         default:
           return 'nhấn để đánh giá';
       }
-    } else {
-      return 'Tap to rate';
     }
   }
 
@@ -189,215 +189,226 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
   Widget build(BuildContext context) {
     screenSize = MediaQuery.of(context).size;
     // if (user)
+    onBackButtonClick() {
+      if (review.content == null &&
+          review.rating == null &&
+          review.product == null) {
+        Navigator.pop(context);
+      } else {
+        askSaveDraft();
+      }
+    }
 
-    return Scaffold(
-        backgroundColor: kSecondaryWhite,
-        bottomNavigationBar: SafeArea(
-          child: Container(
-            color: kSecondaryWhite,
-            // height: 79,
-            padding:
-                const EdgeInsets.only(left: 16, right: 16, top: 14, bottom: 14),
-            child: GestureDetector(
-              onTap: () {
-                FocusScope.of(context).requestFocus(FocusNode());
+    return WillPopScope(
+      onWillPop: () async {
+        onBackButtonClick();
+      },
+      child: Scaffold(
+          backgroundColor: kSecondaryWhite,
+          bottomNavigationBar: SafeArea(
+            child: Container(
+              color: kSecondaryWhite,
+              // height: 79,
+              padding: const EdgeInsets.only(
+                  left: 16, right: 16, top: 14, bottom: 14),
+              child: GestureDetector(
+                onTap: () {
+                  FocusScope.of(context).requestFocus(FocusNode());
 
-                Popups.showReviewGuidelines(context);
-              },
-              child: RichText(
-                textAlign: TextAlign.start,
-                text: TextSpan(
-                  style: textTheme.bodyText2.copyWith(
-                      fontWeight: FontWeight.w600, color: kSecondaryGrey),
-                  children: <TextSpan>[
-                    const TextSpan(
-                        text:
-                            'Cùng Glowvy xây dựng một cộng đồng làm đẹp lành mạnh và hiệu quả với '),
-                    TextSpan(
-                        text: 'Chính sách đánh giá sản phẩm chất lượng',
-                        style: textTheme.bodyText2.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: kPrimaryBlue,
-                        )),
-                    const TextSpan(text: ' trước khi bắt đầu viết nha'),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ),
-        appBar: AppBar(
-          brightness: Brightness.light,
-          elevation: 0,
-          backgroundColor: kWhite,
-          leading: backIcon(context, onPop: () {
-            if (review.content == null &&
-                review.rating == null &&
-                review.product == null) {
-              Navigator.pop(context);
-            } else {
-              askSaveDraft();
-            }
-          }),
-          actions: [
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.only(right: 16.0),
-                child: Builder(
-                  builder: (context) => StaggerAnimation(
-                    btnColor: kPrimaryOrange,
-                    width: 57,
-                    height: 34,
-                    buttonTitle: 'Xong',
-                    buttonController: _postButtonController.view,
-                    onTap: () async {
-                      _postButtonController.forward();
-                      await uploadReview(context);
-                    },
+                  Popups.showReviewGuidelines(context);
+                },
+                child: RichText(
+                  textAlign: TextAlign.start,
+                  text: TextSpan(
+                    style: textTheme.bodyText2.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: kSecondaryGrey.withOpacity(0.5)),
+                    children: <TextSpan>[
+                      const TextSpan(
+                          text:
+                              'Cùng Glowvy xây dựng một cộng đồng làm đẹp lành mạnh và hiệu quả với '),
+                      TextSpan(
+                          text: 'Chính sách đánh giá sản phẩm chất lượng',
+                          style: textTheme.bodyText2.copyWith(
+                            fontWeight: FontWeight.w600,
+                            color: kPrimaryBlue,
+                          )),
+                      const TextSpan(text: ' trước khi bắt đầu viết nha'),
+                    ],
                   ),
                 ),
               ),
             ),
-          ],
-        ),
-        body: SafeArea(
-          top: true,
-          child: Container(
-              color: kWhite,
-              height: screenSize.height,
-              child: Consumer<UserModel>(builder: (context, userModel, child) {
-                var user = userModel.user;
-                //1. if review draft is available, load the draft
-                if (user.reviewDraft != null) {
-                  review = user.reviewDraft;
-                  // print('user.reviewDraft ${user.reviewDraft.toJson()}');
-                  _reviewTextController.text = review.content;
+          ),
+          appBar: AppBar(
+            brightness: Brightness.light,
+            elevation: 0,
+            backgroundColor: kWhite,
+            leading: backIcon(context, onPop: () {
+              onBackButtonClick();
+            }),
+            actions: [
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 16.0),
+                  child: Builder(
+                    builder: (context) => StaggerAnimation(
+                      btnColor: kPrimaryOrange,
+                      width: 57,
+                      height: 34,
+                      buttonTitle: 'Xong',
+                      buttonController: _postButtonController.view,
+                      onTap: () async {
+                        _postButtonController.forward();
+                        await uploadReview(context);
+                      },
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+          body: SafeArea(
+            top: true,
+            child: Container(
+                color: kWhite,
+                height: screenSize.height,
+                child:
+                    Consumer<UserModel>(builder: (context, userModel, child) {
+                  var user = userModel.user;
+                  //1. if review draft is available, load the draft
+                  if (user.reviewDraft != null) {
+                    review = user.reviewDraft;
+                    // print('user.reviewDraft ${user.reviewDraft.toJson()}');
+                    _reviewTextController.text = review.content;
 
-                  //2. if product is chosen
-                } else if (review != Review() && user.reviewDraft != null) {
-                  if (user.reviewDraft.product != null) {
-                    review.product = user.reviewDraft.product;
+                    //2. if product is chosen
+                  } else if (review != Review() && user.reviewDraft != null) {
+                    if (user.reviewDraft.product != null) {
+                      review.product = user.reviewDraft.product;
+                    }
                   }
-                }
 
-                return ListView(
-                  keyboardDismissBehavior:
-                      ScrollViewKeyboardDismissBehavior.onDrag,
-                  children: <Widget>[
-                    if (review.product == null)
-                      GestureDetector(
-                        onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    ReviewCosmeticsSearchScreen())),
-                        child: Container(
-                          color: kWhite,
-                          padding: const EdgeInsets.only(
-                              left: 10, right: 10, top: 20, bottom: 20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              SvgPicture.asset(
-                                'assets/icons/search_cosmetics.svg',
-                              ),
-                              const SizedBox(width: 7),
-                              Text('chọn sản phẩm',
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: textTheme.button2),
-                              const Spacer(),
-                              SvgPicture.asset(
-                                'assets/icons/arrow_forward.svg',
-                                width: 24,
-                                color: kSecondaryGrey,
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    if (review.product != null)
-                      GestureDetector(
+                  return ListView(
+                    keyboardDismissBehavior:
+                        ScrollViewKeyboardDismissBehavior.onDrag,
+                    children: <Widget>[
+                      if (review.product == null)
+                        GestureDetector(
                           onTap: () => Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
                                       ReviewCosmeticsSearchScreen())),
-                          child: ProductThumbnail(
-                            review.product,
-                            allowEdit: true,
-                          )),
-                    Column(
-                      children: [
-                        const SizedBox(height: 7),
-                        Text(
-                            !isRatingEmpty
-                                ? getRatingExpression()
-                                : 'Please Rate',
-                            style: textTheme.caption1.copyWith(
-                                fontWeight: FontWeight.w600,
-                                color: !isRatingEmpty
-                                    ? kDefaultFontColor
-                                    : kPrimaryOrange)),
-                        const SizedBox(height: 20),
-                        RatingBar(
-                            initialRating: review.rating != null
-                                ? review.rating.toDouble()
-                                : 0,
-                            direction: Axis.horizontal,
-                            itemCount: 5,
-                            ratingWidget: RatingWidget(
-                              full: SvgPicture.asset(
-                                  'assets/icons/rank-flower.svg',
-                                  color: kPrimaryOrange),
-                              half: SvgPicture.asset(
-                                  'assets/icons/rank-flower.svg'),
-                              empty: SvgPicture.asset(
-                                  'assets/icons/rank-flower.svg'),
-                            ),
-                            itemPadding:
-                                const EdgeInsets.symmetric(horizontal: 4.0),
-                            onRatingUpdate: (rating) => setState(() {
-                                  isRatingEmpty = false;
-                                  print(rating);
-                                  review.rating = rating.toInt();
-                                })),
-                        const SizedBox(height: 27),
-                        Container(
-                          height: screenSize.height -
-                              367 +
-                              MediaQuery.of(context).padding.top,
-                          // color: Colors.red,
-                          child: TextFormField(
-                            controller: _reviewTextController,
-                            keyboardType: TextInputType.multiline,
-                            maxLines: null,
-                            autofocus: false,
-                            cursorColor: kPinkAccent,
-                            onChanged: (value) {
-                              review ??= Review();
-                              review.content = value;
-                            },
-                            style: textTheme.headline5
-                                .copyWith(color: kDefaultFontColor),
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintMaxLines: 10,
-                              hintText:
-                                  'Hãy chia sẻ cảm xúc và trải nghiệm của bạn về sản phẩm này nhé (bất cứ điều gì như ưu nhược điểm, kết quả sau khi sử dụng, bạn đã dùng như thế nào, v.v.)',
-                              hintStyle: textTheme.headline5.copyWith(
-                                color: kSecondaryGrey.withOpacity(0.5),
-                              ),
-                              contentPadding: const EdgeInsets.only(left: 20),
+                          child: Container(
+                            color: kWhite,
+                            padding: const EdgeInsets.only(
+                                left: 10, right: 10, top: 20, bottom: 20),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                SvgPicture.asset(
+                                  'assets/icons/search_cosmetics.svg',
+                                ),
+                                const SizedBox(width: 7),
+                                Text('chọn sản phẩm',
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: textTheme.button2),
+                                const Spacer(),
+                                SvgPicture.asset(
+                                  'assets/icons/arrow_forward.svg',
+                                  width: 24,
+                                  color: kSecondaryGrey,
+                                )
+                              ],
                             ),
                           ),
                         ),
-                      ],
-                    )
-                  ],
-                );
-              })),
-        ));
+                      if (review.product != null)
+                        GestureDetector(
+                            onTap: () => Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ReviewCosmeticsSearchScreen())),
+                            child: ProductThumbnail(
+                              review.product,
+                              allowEdit: true,
+                            )),
+                      Column(
+                        children: [
+                          const SizedBox(height: 7),
+                          Text(
+                              !isRatingEmpty
+                                  ? getRatingExpression()
+                                  : 'Please Rate',
+                              style: textTheme.caption1.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                  color: !isRatingEmpty
+                                      ? kDefaultFontColor
+                                      : kPrimaryOrange)),
+                          const SizedBox(height: 20),
+                          RatingBar(
+                              initialRating: review.rating != null
+                                  ? review.rating.toDouble()
+                                  : 0,
+                              direction: Axis.horizontal,
+                              itemCount: 5,
+                              ratingWidget: RatingWidget(
+                                full: SvgPicture.asset(
+                                    'assets/icons/rank-flower.svg',
+                                    color: kPrimaryOrange),
+                                half: SvgPicture.asset(
+                                    'assets/icons/rank-flower.svg'),
+                                empty: SvgPicture.asset(
+                                    'assets/icons/rank-flower.svg'),
+                              ),
+                              itemPadding:
+                                  const EdgeInsets.symmetric(horizontal: 4.0),
+                              onRatingUpdate: (rating) => setState(() {
+                                    isRatingEmpty = false;
+                                    print(rating);
+                                    review.rating = rating.toInt();
+                                  })),
+                          const SizedBox(height: 27),
+                          Container(
+                            height: screenSize.height -
+                                367 +
+                                MediaQuery.of(context).padding.top,
+                            // color: Colors.red,
+                            child: TextFormField(
+                              controller: _reviewTextController,
+                              keyboardType: TextInputType.multiline,
+                              maxLines: null,
+                              autofocus: false,
+                              cursorColor: kPinkAccent,
+                              onChanged: (value) {
+                                review ??= Review();
+                                review.content = value;
+                              },
+                              style: textTheme.headline5
+                                  .copyWith(color: kDefaultFontColor),
+                              decoration: InputDecoration(
+                                border: InputBorder.none,
+                                hintMaxLines: 10,
+                                hintText:
+                                    'Hãy chia sẻ cảm xúc và trải nghiệm của bạn về sản phẩm này nhé (bất cứ điều gì như ưu nhược điểm, kết quả sau khi sử dụng, bạn đã dùng như thế nào, v.v.)',
+                                hintStyle: textTheme.headline5.copyWith(
+                                  color: kSecondaryGrey.withOpacity(0.5),
+                                ),
+                                contentPadding:
+                                    const EdgeInsets.only(left: 16, right: 16),
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  );
+                })),
+          )),
+    );
   }
 }

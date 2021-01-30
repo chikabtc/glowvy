@@ -43,6 +43,13 @@ class MainTabsState extends State<MainTabs>
 
   List<BuildContext> navStack = [null, null, null, null];
 
+  void onReviewComplete() {
+    navStack[3] = context;
+    _tabController.index = 3;
+    setState(() => _currentPage = 3);
+    _pageController.jumpToPage(3);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -74,68 +81,37 @@ class MainTabsState extends State<MainTabs>
     setTabBars();
   }
 
-  // Route _createRoute() {
-  //   return PageRouteBuilder(
-  //     pageBuilder: (context, animation, secondaryAnimation) => Page2(),
-  //     transitionsBuilder: (context, animation, secondaryAnimation, child) {
-  //       var begin = Offset(0.0, 1.0);
-  //       var end = Offset.zero;
-  //       var curve = Curves.ease;
-
-  //       var tween =
-  //           Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-  //       return SlideTransition(
-  //         position: animation.drive(tween),
-  //         child: child,
-  //       );
-  //     },
-  //   );
-  // }
-
-  // addAnimationToPage(page) {
-
-  // var begin = Offset(0.0, 1.0);
-  // var end = Offset.zero;
-  // var tween = Tween(begin: begin, end: end);
-  // var offsetAnimation = animation.drive(tween);
-
-  // return SlideTransition(
-  //   position: offsetAnimation,
-  //   child: child,
-  // );
-
   @override
   void afterFirstLayout(BuildContext context) {
     print('after first layout!!');
     // loadTabBar(userModel);
   }
 
-  Widget tabView(userModel, Map<String, dynamic> data) {
-    switch (data['layout']) {
-      case 'category':
-        return CategoryScreen();
-      case 'search':
-        return SearchScreen();
-      case 'add':
-        return WriteReviewScreen();
-      case 'profile':
-        return const ProfilePage();
-      case 'dynamic':
-      default:
-        return HomeScreen();
-    }
-  }
+  // Widget tabView(userModel, Map<String, dynamic> data) {
+  //   switch (data['layout']) {
+  //     case 'category':
+  //       return CategoryScreen();
+  //     case 'search':
+  //       return SearchScreen();
+  //     case 'add':
+  //       return WriteReviewScreen();
+  //     case 'profile':
+  //       return const ProfilePage();
+  //     case 'dynamic':
+  //     default:
+  //       return const HomeScreen();
+  //   }
+  // }
 
-  void loadTabBar(userModel) {
-    final tabData = Provider.of<AppModel>(context, listen: false)
-        .appConfig['TabBar'] as List;
-    for (var i = 0; i < tabData.length; i++) {
-      setState(() {
-        _tabView.add(tabView(userModel, Map.from(tabData[i])));
-      });
-    }
-  }
+  // void loadTabBar(userModel) {
+  //   final tabData = Provider.of<AppModel>(context, listen: false)
+  //       .appConfig['TabBar'] as List;
+  //   for (var i = 0; i < tabData.length; i++) {
+  //     setState(() {
+  //       _tabView.add(tabView(userModel, Map.from(tabData[i])));
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -203,7 +179,7 @@ class MainTabsState extends State<MainTabs>
                         selectedFontSize: 1,
                         unselectedFontSize: 1,
                         currentIndex: _currentPage,
-                        onTap: _onItemTapped,
+                        onTap: _onBottomTabbarTapped,
                         showSelectedLabels: true,
                         showUnselectedLabels: true,
                         selectedLabelStyle: textTheme.bodyText2.copyWith(
@@ -252,7 +228,7 @@ class MainTabsState extends State<MainTabs>
             nestedNavigator: null,
             bottomNavigationBarItem: BottomNavigationBarItem(
                 activeIcon: Padding(
-                  padding: const EdgeInsets.only(bottom: 2),
+                  padding: EdgeInsets.only(top: index == 3 ? 2 : 0, bottom: 2),
                   child: Container(
                     child: SvgPicture.asset(
                       item['active-icon'],
@@ -263,7 +239,7 @@ class MainTabsState extends State<MainTabs>
                   ),
                 ),
                 icon: Padding(
-                  padding: const EdgeInsets.only(bottom: 2),
+                  padding: EdgeInsets.only(top: index == 3 ? 2 : 0, bottom: 2),
                   child: SvgPicture.asset(
                     item['icon'],
                     color: kSecondaryGrey,
@@ -279,7 +255,7 @@ class MainTabsState extends State<MainTabs>
   Route _createRoute() {
     return PageRouteBuilder(
       pageBuilder: (context, animation, secondaryAnimation) =>
-          WriteReviewScreen(),
+          WriteReviewScreen(onReviewComplete: onReviewComplete),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         const begin = Offset(0.0, 1.0);
         const end = Offset.zero;
@@ -295,7 +271,7 @@ class MainTabsState extends State<MainTabs>
     );
   }
 
-  void _onItemTapped(int index) {
+  void _onBottomTabbarTapped(int index) {
     if (_currentPage == index) {
       _scrollController.animateTo(
         0.0,
@@ -344,7 +320,7 @@ class HomeNavigator extends NestedNavigator {
         WidgetBuilder builder;
         switch (settings.name) {
           case '/':
-            builder = (BuildContext context) => HomeScreen();
+            builder = (BuildContext context) => const HomeScreen();
             break;
           case '/search':
             builder = (BuildContext context) => SearchScreen();

@@ -45,20 +45,6 @@ class EidtSkinIssuesPageState extends State<EidtSkinIssuesPage>
     super.dispose();
   }
 
-  void validateInput(String value) {
-    final year = double.parse(value);
-    print(year);
-
-    // TODO(parker): translate
-    if (value == null) {
-      throw 'Please provide year.';
-    } else if (value.length != 4) {
-      throw 'Please input valid birthyear.';
-    } else if (year > 2020 || year < 1900) {
-      throw 'Please input valid birthyear.';
-    }
-  }
-
   Future _updateSkinIssues(context) async {
     try {
       // validateInput(year);
@@ -102,7 +88,6 @@ class EidtSkinIssuesPageState extends State<EidtSkinIssuesPage>
             ],
             leading: backIcon(context),
             backgroundColor: kDefaultBackground,
-            // TODO(parker): translate
             title: Text('Tình trạng da', style: textTheme.headline3)),
         backgroundColor: kDefaultBackground,
         body: Column(

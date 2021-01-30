@@ -59,6 +59,7 @@ class UserModel with ChangeNotifier {
   Future setReviewsByUserId(uid) async {
     print('fetching reviews user has written');
     final list = <Review>[];
+    print('UID: ${uid}');
 
     try {
       final query = FirebaseFirestore.instance
@@ -101,7 +102,6 @@ class UserModel with ChangeNotifier {
 
   Future saveBaumannResults(
       String baummanType, SkinScores baumannScores) async {
-    // TODO(parker): overwrite the user skin type by bauman type
     // var skinType
     if (baummanType.contains('D')) {}
     try {
@@ -259,10 +259,28 @@ class UserModel with ChangeNotifier {
   }
 
   //skinScore is json object
-  Future updatePassword(password) async {
-    await firebaseUser.updatePassword(password);
-    print('Succesfull changed password');
-    await firebaseUser.reload();
+  Future updatePassword(oldPassword, password,
+      {@required Function success, @required Function fail}) async {
+    try {
+      await firebaseUser.updatePassword(password);
+      print('Succesfull changed password');
+      await firebaseUser.reload();
+      success();
+    } on b.FirebaseAuthException catch (e) {
+      if (e.code == 'requires-recent-login') {
+        //if recent login required
+        //1. enter the password again get the credentials and reauthentiate in the
+        var email = user.email;
+        // await logout();
+        final userCredential = await b.FirebaseAuth.instance
+            .signInWithEmailAndPassword(email: email, password: oldPassword);
+        await firebaseUser.updatePassword(password);
+        print('Succesfully changed password');
+        await firebaseUser.reload();
+      } else {
+        fail(e.code);
+      }
+    }
   }
 
   Future getUser() async {
@@ -329,8 +347,7 @@ class UserModel with ChangeNotifier {
     } on b.FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('The code is invalid.');
-        // TODO(parker): translate
-        fail('user is not found with associated email');
+        fail('Không tìm thấy email khả dụng');
       }
     }
   }
@@ -357,11 +374,9 @@ class UserModel with ChangeNotifier {
       success(user);
     } on b.FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        // TODO(parker): translate
-        fail('The password provided is too weak.');
+        fail('Nhập mật khẩu tối thiểu 6 ký tự');
       } else if (e.code == 'email-already-in-use') {
-        // TODO(parker): translate
-        fail('The account already exists for that email.');
+        fail('Email này đã tồn tại');
       } else if (e.code == 'account-exists-with-different-credential') {
         fail(
             'An account already exists with the same email address but different sign-in');
@@ -396,11 +411,9 @@ class UserModel with ChangeNotifier {
       }
     } on b.FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        // TODO(parker): translate
-        fail('No user found for that email.');
+        fail('Không tìm thấy email khả dụng.');
       } else if (e.code == 'wrong-password') {
-        // TODO(parker): translate
-        fail('Wrong password provided for that user');
+        fail('Mật khẩu nhập không đúng');
       } else if (e.code == 'account-exists-with-different-credential') {
         fail(
             'An account already exists with the same email address but different sign-in');
@@ -414,6 +427,7 @@ class UserModel with ChangeNotifier {
 
   Future logout() async {
     user = User();
+    reviews = [];
     try {
       await _auth.signOut();
     } catch (e) {
@@ -581,8 +595,8 @@ class UserModel with ChangeNotifier {
       await reloadUser();
       success(user);
     } catch (err) {
-      // TODO(parker): translate
-      fail('Apple Sign in is cancelled');
+      //apple sign in is cancelled
+      fail('Đăng nhập với Apple không thành công');
     }
   }
 

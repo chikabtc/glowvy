@@ -41,13 +41,13 @@ class CosmeticsRequestBtn extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          'Thích/không thích ứng dụng?',
+                          'Không tìm thấy sản phẩm?',
                           style: textTheme.headline3.copyWith(
                             color: kPrimaryOrange,
                           ),
                         ),
                         Text(
-                          'Làm khảo sát bây giờ',
+                          'Yêu cầu sản phẩm ngay!',
                           // textAlign: TextAlign.center,
                           style: textTheme.headline5.copyWith(
                             color: kPrimaryOrange,

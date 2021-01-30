@@ -33,7 +33,10 @@ class ProfilePage extends StatefulWidget {
 }
 
 class ProfilePageState extends State<ProfilePage>
-    with TickerProviderStateMixin, WidgetsBindingObserver {
+    with
+        TickerProviderStateMixin,
+        AutomaticKeepAliveClientMixin,
+        WidgetsBindingObserver {
   bool enabledNotification = true;
   UserModel userModel;
 
@@ -47,7 +50,7 @@ class ProfilePageState extends State<ProfilePage>
     Navigator.push(
         context,
         MaterialPageRoute<void>(
-          builder: (BuildContext context) => userModel.user.skinType == null
+          builder: (BuildContext context) => userModel.user.baumannType == null
               ? BaumannTestIntro()
               : BaumannQuiz(
                   baumannType: userModel.user.baumannType,
@@ -57,10 +60,12 @@ class ProfilePageState extends State<ProfilePage>
   }
 
   @override
+  bool get wantKeepAlive => true;
+  @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
 
-    precacheImage(const AssetImage('assets/icons/default-avatar.png'), context);
+    // precacheImage(const AssetImage('assets/icons/default-avatar.png'), context);
     return Scaffold(
         backgroundColor: kWhite,
         body: Consumer<UserModel>(builder: (context, userModel, child) {
@@ -71,6 +76,7 @@ class ProfilePageState extends State<ProfilePage>
               : Container(
                   color: kWhite,
                   child: ListView(
+                    // physics:   const ClampingScrollPhysics(),
                     controller: widget.appScrollController,
                     children: <Widget>[
                       AppBar(
@@ -85,28 +91,19 @@ class ProfilePageState extends State<ProfilePage>
                             MaterialPageRoute(
                                 builder: (context) => const EditProfilePage())),
                         child: Container(
+                          width: screenSize.width,
                           padding: const EdgeInsets.only(
                               left: 16, bottom: 14, top: 14),
                           color: Colors.white,
                           child: Row(children: <Widget>[
                             if (user.picture == null)
-                              CachedNetworkImage(
-                                imageUrl: 'assets/icons/default-avatar.png',
-                                placeholderFadeInDuration:
-                                    const Duration(milliseconds: 0),
-                                fadeInDuration: const Duration(milliseconds: 0),
-                                fadeOutDuration:
-                                    const Duration(milliseconds: 0),
-                                placeholder: (context, url) =>
-                                    CircularProgressIndicator(),
-                                errorWidget: (context, url, error) =>
-                                    Icon(Icons.error),
-                              )
+                              Image.asset('assets/icons/default-avatar.png')
                             else
                               ClipOval(
                                   child: Image.network(
                                 user.picture +
                                     '?v=${ValueKey(Random().nextInt(100))}',
+                                gaplessPlayback: true,
                                 width: 64,
                                 height: 64,
                                 fit: BoxFit.cover,
@@ -128,46 +125,36 @@ class ProfilePageState extends State<ProfilePage>
                                       '${DateTime.now().year - user.birthYear} tuổi / ${user.skinType}',
                                       style: textTheme.caption2),
                                 Container(height: 15),
-                                GestureDetector(
-                                  onTap: () => Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const EditProfilePage())),
-                                  child: Container(
-                                    width: screenSize.width - 122,
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        const Spacer(),
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            border: Border.all(
-                                                width: 0.7,
-                                                color: kSecondaryGrey),
-                                            borderRadius: const BorderRadius
-                                                    .all(
-                                                Radius.circular(
-                                                    8.0) //                 <--- border radius here
-                                                ),
-                                          ),
-                                          padding: const EdgeInsets.only(
-                                              left: 10,
-                                              right: 10,
-                                              top: 2,
-                                              bottom: 2),
-                                          child: Text('Chỉnh sửa hồ sơ',
-                                              style: textTheme.caption2
-                                                  .copyWith(
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                      fontSize: 12,
-                                                      fontStyle:
-                                                          FontStyle.normal,
-                                                      color: kSecondaryGrey)),
+
+                                Container(
+                                  width: screenSize.width - 118,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      const Spacer(),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          border: Border.all(
+                                              width: 0.7,
+                                              color: kSecondaryGrey),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(
+                                                  8.0) //                 <--- border radius here
+                                              ),
                                         ),
-                                      ],
-                                    ),
+                                        padding: const EdgeInsets.only(
+                                            left: 10,
+                                            right: 10,
+                                            top: 2,
+                                            bottom: 2),
+                                        child: Text('Chỉnh sửa hồ sơ',
+                                            style: textTheme.caption2.copyWith(
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: 12,
+                                                fontStyle: FontStyle.normal,
+                                                color: kSecondaryGrey)),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
@@ -297,12 +284,11 @@ class ProfilePageState extends State<ProfilePage>
                         ],
                       ),
                       Container(
-                        height: 40.0,
+                        height: 35.0,
                         color: kDefaultBackground,
                       ),
                       Container(
                           decoration: const BoxDecoration(
-                              color: Colors.white,
                               borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(20),
                                   topRight: Radius.circular(20))),
@@ -333,10 +319,15 @@ class ProfilePageState extends State<ProfilePage>
                                       SvgPicture.asset(
                                           'assets/icons/comment.svg'),
                                       const SizedBox(height: 18),
-                                      Text(
-                                        'Đã có sản phẩm nào bạn đã từng dùng thử hơn 2 lần chưa? ',
-                                        style: textTheme.headline4
-                                            .copyWith(color: kPrimaryOrange),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 48.0),
+                                        child: Text(
+                                          'Bắt đầu chia sẻ trải nghiệm sử dụng sản phẩm',
+                                          textAlign: TextAlign.center,
+                                          style: textTheme.headline4
+                                              .copyWith(color: kPrimaryOrange),
+                                        ),
                                       ),
                                       const SizedBox(height: 8),
                                       GestureDetector(
@@ -368,7 +359,7 @@ class ProfilePageState extends State<ProfilePage>
                                                 width: 5.5,
                                               ),
                                               Text(
-                                                'Chọn 1 sản phẩm liên quan',
+                                                'Chọn 1 sản phẩm',
                                                 style: textTheme.caption1
                                                     .copyWith(
                                                         fontWeight:
@@ -418,7 +409,7 @@ class ProfilePageState extends State<ProfilePage>
                                           width: 5.5,
                                         ),
                                         Text(
-                                          'select one related cosmetics',
+                                          'Đánh giá sản phẩm mới',
                                           style: textTheme.headline4
                                               .copyWith(color: kPrimaryOrange),
                                         )

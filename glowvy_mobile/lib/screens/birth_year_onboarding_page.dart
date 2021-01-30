@@ -60,11 +60,11 @@ class BirthyearOnboardingPageState extends State<BirthyearOnboardingPage>
 
     // TODO(parker): translate
     if (value == null) {
-      throw 'Please provide year.';
+      throw 'Hãy nhập năm sinh';
     } else if (value.length != 4) {
-      throw 'Please input valid birthyear.';
+      throw 'Hãy nhập đúng năm sinh của bạn';
     } else if (year > 2020 || year < 1900) {
-      throw 'Please input valid birthyear.';
+      throw 'Hãy nhập đúng năm sinh của bạn';
     }
   }
 
@@ -81,7 +81,7 @@ class BirthyearOnboardingPageState extends State<BirthyearOnboardingPage>
       await Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => const RegionOnboardingPage()));
+              builder: (context) => const GenderOnboardingPage()));
       // Navigator.pop(context);
     } catch (e) {
       print('_updateUserName error: $e');
@@ -96,6 +96,7 @@ class BirthyearOnboardingPageState extends State<BirthyearOnboardingPage>
         appBar: AppBar(
           brightness: Brightness.light,
           elevation: 0,
+          leading: Container(),
           backgroundColor: kDefaultBackground,
         ),
         backgroundColor: kDefaultBackground,
@@ -105,9 +106,22 @@ class BirthyearOnboardingPageState extends State<BirthyearOnboardingPage>
           child: Column(
             children: [
               // TODO(parker): translate
-              Text('When were you born?', style: textTheme.headline2),
+              Text('Năm sinh',
+                  style: textTheme.headline1.copyWith(
+                      fontStyle: FontStyle.normal,
+                      fontWeight: FontWeight.w800)),
               const SizedBox(
-                height: 30,
+                height: 15,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50.0),
+                child: Text(
+                    'Năm sinh được sử dụng để giúp Glowvy lọc ra những sản phẩm và đánh giá phù hợp với độ tuổi da của bạn',
+                    textAlign: TextAlign.center,
+                    style: textTheme.bodyText1),
+              ),
+              const SizedBox(
+                height: 45,
               ),
               CustomTextField(
                 onTextChange: (value) {
@@ -129,7 +143,7 @@ class BirthyearOnboardingPageState extends State<BirthyearOnboardingPage>
                     child: Builder(
                       builder: (context) => StaggerAnimation(
                           btnColor: kPrimaryOrange,
-                          buttonTitle: 'continue',
+                          buttonTitle: 'Tiếp tục',
                           buttonController: _doneButtonController.view,
                           onTap: () {
                             _updateUserBirthYear(context);

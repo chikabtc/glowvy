@@ -12,7 +12,6 @@ part 'user.g.dart';
 class User {
   String uid;
   String facebookId;
-
   String displayName;
   String firstName;
   String lastName;

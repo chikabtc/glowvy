@@ -5,6 +5,7 @@ import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/models/product/review_model.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/edit_birthyear_page.dart';
 import 'package:Dimodo/screens/edit_gender_page.dart';
@@ -102,6 +103,8 @@ class EditProfilePageState extends State<EditProfilePage>
                               ),
                     onTap: () async {
                       await uploadImage();
+                      await Provider.of<ReviewModel>(context, listen: false)
+                          .updateReviewerInfo(userModel.user);
                     }),
                 SettingCard(
                   color: kWhite,
@@ -121,18 +124,6 @@ class EditProfilePageState extends State<EditProfilePage>
                       MaterialPageRoute<void>(
                           builder: (BuildContext context) =>
                               const EditGenderPage())),
-                ),
-                SettingCard(
-                  color: kWhite,
-                  title: 'Khu vực',
-                  showDivider: false,
-                  trailingText: user.address?.province == null
-                      ? ''
-                      : user.address.province.name,
-                  onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute<void>(
-                          builder: (BuildContext context) => EditRegionPage())),
                 ),
                 const SizedBox(height: 7),
                 SettingCard(
@@ -161,7 +152,7 @@ class EditProfilePageState extends State<EditProfilePage>
                   showDivider: false,
                   trailingText:
                       user.skinIssues != null && user.skinIssues.isNotEmpty
-                          ? user.skinIssues.first
+                          ? user.skinIssues.join(', ')
                           : '',
                   onTap: () => Navigator.push(
                       context,

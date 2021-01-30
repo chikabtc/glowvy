@@ -4,6 +4,7 @@ import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/common/styles.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/generated/i18n.dart';
+import 'package:Dimodo/models/product/review_model.dart';
 import 'package:Dimodo/models/user/user.dart';
 import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/widgets/login_animation.dart';
@@ -58,6 +59,8 @@ class EditGenderPageState extends State<EditGenderPage>
     try {
       // void validateInput(name);
       await userModel.updateUserGender(gender);
+      await Provider.of<ReviewModel>(context, listen: false)
+          .updateReviewerInfo(userModel.user);
       await _doneButtonController.reverse();
       Navigator.pop(context);
     } catch (e) {

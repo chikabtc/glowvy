@@ -128,13 +128,23 @@ class ReviewModel with ChangeNotifier {
     return list;
   }
 
-  Future<void> updateReviewerName(uid, name) async {
+  Future<void> updateReviewerInfo(User user) async {
     final snap = await FirebaseFirestore.instance
         .collection('reviews')
-        .where('user.uid', isEqualTo: uid)
+        .where('user.uid', isEqualTo: user.uid)
         .get();
+    final userJson = {
+      'full_name': user.fullName,
+      'uid': user.uid,
+      'picture': user.picture,
+      'gender': user.gender,
+      'skin_type': user.skinType,
+      'skin_issues': user.skinIssues,
+      'birthyear': user.birthYear,
+      'email': user.email,
+    };
     for (final doc in snap.docs) {
-      await doc.reference.update({'user.full_name': name});
+      await doc.reference.update({'user': userJson});
     }
   }
 
@@ -195,7 +205,7 @@ class ReviewModel with ChangeNotifier {
       query = query.where('user.age', isGreaterThanOrEqualTo: minAge);
       query = query.where('user.age', isLessThanOrEqualTo: maxAge);
       query = query.orderBy('user.age', descending: false).limit(50);
-      // TODO(parker): sort the list locally
+      // TODO(parker): sort the list locall
 
       //The initial orderBy() field '[[FieldPath([created_at]), false]][0][0]' has to be the same as the where() field parameter 'FieldPath([user, age])' when an inequality operator is invoked.
     }

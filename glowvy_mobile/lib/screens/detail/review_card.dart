@@ -73,19 +73,19 @@ class ReviewCard extends StatelessWidget {
     final difference = DateTime.now()
         .difference(DateTime.fromMillisecondsSinceEpoch(review.createdAt));
     if (difference.inMinutes < 1) {
-      print('min');
+      // print('sec');
       return difference.inSeconds.toString() + ' giây trước';
     }
     if (difference.inMinutes < 60) {
-      print('min');
+      // print('min');
       return difference.inMinutes.toString() + ' phút trước';
     } else if (difference.inHours < 24) {
       //
-      print('hour');
+      // print('hour');
 
       return difference.inHours.toString() + ' giờ trước';
     } else if (difference.inDays > 1) {
-      print('day');
+      // print('day');
 
       return difference.inDays.toString() + ' ngày trước';
     }

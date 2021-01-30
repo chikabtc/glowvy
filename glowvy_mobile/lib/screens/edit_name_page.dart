@@ -63,7 +63,7 @@ class EditNamePageState extends State<EditNamePage>
         element.user.fullName = name;
       });
       await Provider.of<ReviewModel>(context, listen: false)
-          .updateReviewerName(userModel.user.uid, name);
+          .updateReviewerInfo(userModel.user);
       //fetch the new reviews
       await _doneButtonController.reverse();
       Navigator.pop(context);

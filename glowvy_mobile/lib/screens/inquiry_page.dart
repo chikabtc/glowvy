@@ -53,13 +53,17 @@ class _InquiryPageState extends State<InquiryPage>
     } else if (inquiry.length > 5000) {
       // content too long (up to 5000 chars)
       throw 'Nội dung quá dài (tối đa 5000 ký tự)';
+    } else if (email == null) {
+      throw 'enter email';
     }
   }
 
   Future sendInquiry(context) async {
     try {
+      validateInput();
       await Tools.sendSlackMessage(
           'inquiry type: $inquiryType\nemail: $email\ninquiry: $inquiry');
+
       await _postButtonController.reverse();
       Popups.showSuccesPopup(context);
       Navigator.of(context).pop();
@@ -80,6 +84,7 @@ class _InquiryPageState extends State<InquiryPage>
           brightness: Brightness.light,
           backgroundColor: kWhite,
           leading: backIcon(context),
+          title: Text('Send feedback', style: textTheme.headline3),
           actions: [
             Center(
               child: Padding(
@@ -108,6 +113,8 @@ class _InquiryPageState extends State<InquiryPage>
               height: screenSize.height,
               child: Consumer<UserModel>(builder: (context, userModel, child) {
                 return ListView(
+                  keyboardDismissBehavior:
+                      ScrollViewKeyboardDismissBehavior.onDrag,
                   children: <Widget>[
                     Container(
                       color: kQuaternaryGrey,
@@ -225,6 +232,7 @@ class _InquiryPageState extends State<InquiryPage>
                               children: [
                                 CustomTextField(
                                   autoFocus: false,
+                                  keyboardType: TextInputType.emailAddress,
                                   height: 48,
                                   onTextChange: (value) {
                                     setState(() {

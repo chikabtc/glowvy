@@ -38,7 +38,7 @@ Widget kIndicator() {
       ? Container(
           width: 24,
           height: 24,
-          child: const CircularProgressIndicator(
+          child: CircularProgressIndicator(
             strokeWidth: 3,
           ),
         )
@@ -169,6 +169,8 @@ class CustomTextField extends StatefulWidget {
 class _CustomTextFieldState extends State<CustomTextField> {
   final TextEditingController _textFieldController = TextEditingController();
   String text;
+  bool isPasswordVisible = false;
+
   final _formKey = GlobalKey<FormState>();
   bool isNumber(String value) {
     if (value == null) {
@@ -203,29 +205,45 @@ class _CustomTextFieldState extends State<CustomTextField> {
           },
           readOnly: widget.isReadOnly,
           decoration: kTextField.copyWith(
-            contentPadding: EdgeInsets.only(
+            contentPadding: const EdgeInsets.only(
               left: 16,
             ),
             hintText: widget.hintText,
-            suffixIcon: (text == null || widget.isReadOnly)
-                ? IconButton(
-                    icon: Icon(
-                      Icons.cancel,
-                      size: 0,
+            suffixIcon: isPasswordVisible
+                ? GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isPasswordVisible = !isPasswordVisible;
+                      });
+                    },
+                    child: Container(
+                      child: Icon(
+                        isPasswordVisible
+                            ? Icons.visibility
+                            : Icons.visibility_off,
+                        color: kDarkSecondary,
+                      ),
                     ),
                   )
-                : IconButton(
-                    icon: Icon(
-                      Icons.cancel,
-                      color: const Color(0xffC4C4C4),
-                      size: 20,
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        text = null;
-                        _textFieldController.clear();
-                      });
-                    }),
+                : (text == null || widget.isReadOnly)
+                    ? const IconButton(
+                        icon: Icon(
+                          Icons.cancel,
+                          size: 0,
+                        ),
+                      )
+                    : IconButton(
+                        icon: Icon(
+                          Icons.cancel,
+                          color: const Color(0xffC4C4C4),
+                          size: 20,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            text = null;
+                            _textFieldController.clear();
+                          });
+                        }),
           ),
         ),
       ),

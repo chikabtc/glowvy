@@ -118,8 +118,9 @@ class BeforeLoginPageState extends State<BeforeLoginPage>
                                 height: 48,
                                 width: kScreenSizeWidth / 2 - 37,
                                 alignment: Alignment.center,
-                                padding: EdgeInsets.symmetric(horizontal: 16),
-                                child: Text('Đăng" ký',
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 16),
+                                child: Text('Đăng nhập',
                                     textAlign: TextAlign.center,
                                     style: textTheme.button.copyWith(
                                         color: kPrimaryOrange,
@@ -143,7 +144,7 @@ class BeforeLoginPageState extends State<BeforeLoginPage>
                                 height: 48,
                                 width: kScreenSizeWidth / 2 - 37,
                                 alignment: Alignment.center,
-                                child: Text('Đăng" ký',
+                                child: Text('Đăng ký',
                                     textAlign: TextAlign.center,
                                     style: textTheme.button.copyWith(
                                         color: kWhite,
@@ -163,7 +164,7 @@ class BeforeLoginPageState extends State<BeforeLoginPage>
                       ),
                       // SvgPicture.asset('assets/icons/pink_logo.svg'),
 
-                      Text('Making Vietnamese Skin Glow',
+                      Text('Make Vietnamese Skin Glow',
                           style: textTheme.bodyText2
                               .copyWith(color: kSecondaryGrey)),
                       const SizedBox(height: 15)

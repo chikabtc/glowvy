@@ -97,9 +97,22 @@ class GenderOnboardingPageState extends State<GenderOnboardingPage>
         body: Column(
           children: [
             // TODO(parker): translate
-            Text('Choose your gender', style: textTheme.headline2),
+            Text('Giới tính',
+                textAlign: TextAlign.center,
+                style: textTheme.headline1.copyWith(
+                    fontStyle: FontStyle.normal, fontWeight: FontWeight.w800)),
             const SizedBox(
-              height: 30,
+              height: 15,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 50.0),
+              child: Text(
+                  'Giới tính được sử dụng để giúp Glowvy lọc ra những sản phẩm và đánh giá phù hợp với làn da của bạn',
+                  textAlign: TextAlign.center,
+                  style: textTheme.bodyText1),
+            ),
+            const SizedBox(
+              height: 45,
             ),
             ListView.builder(
               shrinkWrap: true,
@@ -139,7 +152,7 @@ class GenderOnboardingPageState extends State<GenderOnboardingPage>
                   child: Builder(
                     builder: (context) => StaggerAnimation(
                         btnColor: kPrimaryOrange,
-                        buttonTitle: 'continue',
+                        buttonTitle: 'Tiếp tục',
                         buttonController: _doneButtonController.view,
                         onTap: () {
                           _updateGender(context);
