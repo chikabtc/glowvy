@@ -81,6 +81,7 @@ class _ProductsListViewState extends State<ProductsListView> {
       child: PagedListView.separated(
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
         shrinkWrap: true,
+        addAutomaticKeepAlives: false,
         physics: widget.disableScrolling
             ? const NeverScrollableScrollPhysics()
             : const ClampingScrollPhysics(),

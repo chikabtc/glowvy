@@ -156,7 +156,7 @@ class UserModel with ChangeNotifier {
       final writeRes = await _db.collection('reviews').add(review);
       if (writeRes.id != null) {
         print('review id: ${writeRes.id}');
-        reviews.add(Review.fromJson(review));
+        reviews.insert(0, Review.fromJson(review));
         await discardReviewDraft();
         await reloadUser();
       } else {

@@ -82,36 +82,7 @@ class MainTabsState extends State<MainTabs>
   }
 
   @override
-  void afterFirstLayout(BuildContext context) {
-    print('after first layout!!');
-    // loadTabBar(userModel);
-  }
-
-  // Widget tabView(userModel, Map<String, dynamic> data) {
-  //   switch (data['layout']) {
-  //     case 'category':
-  //       return CategoryScreen();
-  //     case 'search':
-  //       return SearchScreen();
-  //     case 'add':
-  //       return WriteReviewScreen();
-  //     case 'profile':
-  //       return const ProfilePage();
-  //     case 'dynamic':
-  //     default:
-  //       return const HomeScreen();
-  //   }
-  // }
-
-  // void loadTabBar(userModel) {
-  //   final tabData = Provider.of<AppModel>(context, listen: false)
-  //       .appConfig['TabBar'] as List;
-  //   for (var i = 0; i < tabData.length; i++) {
-  //     setState(() {
-  //       _tabView.add(tabView(userModel, Map.from(tabData[i])));
-  //     });
-  //   }
-  // }
+  void afterFirstLayout(BuildContext context) {}
 
   @override
   Widget build(BuildContext context) {
@@ -131,6 +102,8 @@ class MainTabsState extends State<MainTabs>
               await SystemChannels.platform.invokeMethod('SystemNavigator.pop');
               return true;
             } else if (Navigator.of(navStack[_tabController.index]).canPop()) {
+              // TODO(parker): if the user is in search screen, the back button should function same as the one in leading back button
+
               Navigator.of(navStack[_tabController.index]).pop();
               setState(() {
                 _currentPage = _tabController.index;

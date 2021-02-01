@@ -35,10 +35,6 @@ class _UserReviewCardState extends State<UserReviewCard>
   bool showAll = false;
   User user;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  // }
   @override
   void initState() {
     super.initState();
@@ -165,7 +161,9 @@ class _UserReviewCardState extends State<UserReviewCard>
           const SizedBox(height: 10),
           RatingBar(
               itemSize: 18,
-              initialRating: widget.review.rating.toDouble(),
+              initialRating: widget.review.rating == null
+                  ? 0
+                  : widget.review.rating.toDouble(),
               ignoreGestures: true,
               direction: Axis.horizontal,
               itemCount: 5,

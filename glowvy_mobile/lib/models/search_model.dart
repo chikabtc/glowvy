@@ -117,7 +117,6 @@ class SearchModel extends ChangeNotifier {
           });
         });
       });
-      print('length cflt: ${flatCategories.length}');
 
       notifyListeners();
     } catch (err) {
@@ -304,7 +303,7 @@ class SearchModel extends ChangeNotifier {
       };
 
       if (!recentSearchItems.contains(product)) {
-        recentSearchItems.add(product);
+        recentSearchItems.insert(0, product);
         await _db.collection('users').doc(firebaseUser.uid).update({
           'recent_search_items': FieldValue.arrayUnion([json])
         });

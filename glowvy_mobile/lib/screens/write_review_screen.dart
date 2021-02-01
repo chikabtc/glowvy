@@ -53,12 +53,12 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
   void validateInput() {
     if (review.product == null) {
       throw 'Sản phẩm chưa được chọn';
-    } else if (review.rating == 0) {
+    } else if (review.rating == 0 || review.rating == null) {
       throw 'select rating';
     } else if (review.content == null) {
-      throw 'content too show at least over 20 characters';
+      throw 'content too shorts at least over 20 characters';
     } else if (review.content.length < 20) {
-      throw 'content too show at least over 20 characters';
+      throw 'content too shorts at least over 20 characters';
     } else if (review.content.length > 5000) {
       throw 'content too long (up to 5000 chars';
     }

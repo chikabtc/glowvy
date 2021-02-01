@@ -139,59 +139,62 @@ class _ReviewCosmeticsSearchScreenState
           thickness: kScrollbarThickness,
           child: Padding(
             padding: const EdgeInsets.only(left: 16.0, right: 16),
-            child: NestedScrollView(
-                controller: widget.appScrollController,
-                headerSliverBuilder:
-                    (BuildContext context, bool innerBoxIsScrolled) {
-                  return <Widget>[
-                    SliverToBoxAdapter(
-                        child: Container(
-                      color: Colors.white,
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            if (model.recentSearchItems.isNotEmpty)
-                              Row(
-                                children: [
-                                  Text('Tìm kiếm gần đây',
-                                      style: textTheme.bodyText1.copyWith(
-                                          fontWeight: FontWeight.w700)),
-                                  const Spacer(),
-                                  Container(
-                                    height: 24,
-                                    child: PlatformButton(
-                                      onPressed: () => model.clear(),
-                                      materialFlat: (_, __) =>
-                                          MaterialFlatButtonData(
-                                              elevation: 0,
-                                              color: Colors.transparent),
-                                      padding: EdgeInsets.zero,
-                                      child: Text('Xóa',
-                                          style: textTheme.bodyText1.copyWith(
-                                              color: kPrimaryOrange,
-                                              fontWeight: FontWeight.w700)),
+            child: GestureDetector(
+              onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+              child: NestedScrollView(
+                  controller: widget.appScrollController,
+                  headerSliverBuilder:
+                      (BuildContext context, bool innerBoxIsScrolled) {
+                    return <Widget>[
+                      SliverToBoxAdapter(
+                          child: Container(
+                        color: Colors.white,
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              if (model.recentSearchItems.isNotEmpty)
+                                Row(
+                                  children: [
+                                    Text('Tìm kiếm gần đây',
+                                        style: textTheme.bodyText1.copyWith(
+                                            fontWeight: FontWeight.w700)),
+                                    const Spacer(),
+                                    Container(
+                                      height: 24,
+                                      child: PlatformButton(
+                                        onPressed: () => model.clear(),
+                                        materialFlat: (_, __) =>
+                                            MaterialFlatButtonData(
+                                                elevation: 0,
+                                                color: Colors.transparent),
+                                        padding: EdgeInsets.zero,
+                                        child: Text('Xóa',
+                                            style: textTheme.bodyText1.copyWith(
+                                                color: kPrimaryOrange,
+                                                fontWeight: FontWeight.w700)),
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            const SizedBox(height: 5),
-                            kFullSectionDivider,
-                            const SizedBox(height: 5),
-                          ],
+                                  ],
+                                ),
+                              const SizedBox(height: 5),
+                              kFullSectionDivider,
+                              const SizedBox(height: 5),
+                            ],
+                          ),
                         ),
-                      ),
-                    )),
-                  ];
-                },
-                body: model.recentSearchItems.isNotEmpty
-                    ? ProductsListView(
-                        isFromReviewSearch: true,
-                        products: model.recentSearchItems,
-                        isRecentSearchItem: true,
-                      )
-                    : Container()),
+                      )),
+                    ];
+                  },
+                  body: model.recentSearchItems.isNotEmpty
+                      ? ProductsListView(
+                          isFromReviewSearch: true,
+                          products: model.recentSearchItems,
+                          isRecentSearchItem: true,
+                        )
+                      : Container()),
+            ),
           ),
         ),
       );
@@ -379,7 +382,6 @@ class _ReviewCosmeticsSearchScreenState
 
                                         if (bar.isOpen && !bar.isAlwaysOpened) {
                                           bar.close();
-                                          model.clear();
                                           productModel.clearPaginationHistory();
                                         } else if (canPop) {
                                           Navigator.pop(context);

@@ -375,7 +375,6 @@ class _SearchScreenState extends State<SearchScreen>
                   ? ProductsListView(
                       products: model.recentSearchItems,
                       isRecentSearchItem: true,
-                      // isFromReviewSearch: true,
                     )
                   : Container()),
         ),
@@ -383,8 +382,6 @@ class _SearchScreenState extends State<SearchScreen>
     }
 
     Widget showSuggestions(SearchModel model) {
-      print('showsuggestion');
-      const maxSuggestionCount = 5;
       //local auto completes
       ///show only 5 suggestions at most
       return Padding(
@@ -462,214 +459,230 @@ class _SearchScreenState extends State<SearchScreen>
       );
     }
 
-    return Scaffold(
-        resizeToAvoidBottomPadding: false,
-        backgroundColor: Colors.white,
-        body: SafeArea(
-            top: true,
-            bottom: false,
-            child: Container(
-                color: kWhite,
-                child: NestedScrollView(
-                    controller: _scrollController,
-                    headerSliverBuilder:
-                        (BuildContext context, bool innerBoxIsScrolled) {
-                      return <Widget>[
-                        if (!isFocused)
-                          SliverAppBar(
-                              floating: false,
-                              pinned: false,
-                              elevation: 0,
-                              backgroundColor: Colors.white,
-                              title: AnimatedOpacity(
-                                  opacity: 0.0,
-                                  duration: const Duration(milliseconds: 100),
-                                  child: Text(
+    return WillPopScope(
+      onWillPop: () {
+        if (isFocused) {
+          final bar = FloatingSearchAppBar.of(context);
+          setState(() {
+            showResults = false;
+          });
+
+          if (bar.isOpen && !bar.isAlwaysOpened) {
+            bar.close();
+            searchModel.clearSuggestion();
+            productModel.clearPaginationHistory();
+          }
+        }
+      },
+      child: Scaffold(
+          resizeToAvoidBottomPadding: false,
+          backgroundColor: Colors.white,
+          body: SafeArea(
+              top: true,
+              bottom: false,
+              child: Container(
+                  color: kWhite,
+                  child: NestedScrollView(
+                      controller: _scrollController,
+                      headerSliverBuilder:
+                          (BuildContext context, bool innerBoxIsScrolled) {
+                        return <Widget>[
+                          if (!isFocused)
+                            SliverAppBar(
+                                floating: false,
+                                pinned: false,
+                                elevation: 0,
+                                backgroundColor: Colors.white,
+                                title: AnimatedOpacity(
+                                    opacity: 0.0,
+                                    duration: const Duration(milliseconds: 100),
+                                    child: Text(
+                                      S.of(context).search,
+                                      style: textTheme.headline3,
+                                      textAlign: TextAlign.start,
+                                    ))),
+                          SliverToBoxAdapter(
+                              child: Container(
+                            color: Colors.white,
+                            padding: const EdgeInsets.only(top: 0, left: 16),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
                                     S.of(context).search,
-                                    style: textTheme.headline3,
+                                    style: textTheme.headline1.copyWith(
+                                        fontSize: 32,
+                                        fontStyle: FontStyle.normal),
                                     textAlign: TextAlign.start,
-                                  ))),
-                        SliverToBoxAdapter(
-                            child: Container(
-                          color: Colors.white,
-                          padding: const EdgeInsets.only(top: 0, left: 16),
-                          child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  S.of(context).search,
-                                  style: textTheme.headline1.copyWith(
-                                      fontSize: 32,
-                                      fontStyle: FontStyle.normal),
-                                  textAlign: TextAlign.start,
-                                )
-                              ],
+                                  )
+                                ],
+                              ),
                             ),
-                          ),
-                        )),
-                      ];
-                    },
-                    body: Consumer<SearchModel>(builder: (context, model, _) {
-                      return FloatingSearchBar(
-                        height: 36,
-                        onFocusChanged: (isFocused) {
-                          setState(() {
-                            this.isFocused = isFocused;
-                          });
-                          if (_scrollController.hasClients) {
-                            _scrollController.animateTo(isFocused ? 52 : 0,
-                                duration: const Duration(milliseconds: 250),
-                                curve: Curves.easeIn);
-                          }
-                        },
-                        hint: 'Sản phẩm, danh mục, thương hiệu',
-                        elevation: 0,
-                        scrollController: _scrollController,
-                        borderRadius: BorderRadius.circular(10),
-                        backgroundColor: kSearchBarColor,
-                        automaticallyImplyBackButton: false,
-                        controller: searchController,
-                        clearQueryOnClose: true,
-                        accentColor: kPrimaryOrange,
-                        queryStyle: textTheme.headline5
-                            .copyWith(fontSize: 17, height: 1.2),
-                        hintStyle: textTheme.headline5.copyWith(
-                            color: kSecondaryGrey, fontSize: 17, height: 1.2),
-                        iconColor: Colors.grey,
-                        scrollPadding: EdgeInsets.zero,
-                        padding: EdgeInsets.zero,
-                        margins:
-                            const EdgeInsets.only(top: 16, left: 16, right: 16),
-                        transitionDuration: const Duration(milliseconds: 250),
-                        transitionCurve: Curves.linear,
-                        axisAlignment: 0.0,
-                        openAxisAlignment: 0.0,
-                        closeOnBackdropTap: false,
-                        maxWidth: kScreenSizeWidth,
-                        backdropColor: kWhite,
-                        isScrollControlled: true,
-                        leadingActions: [
-                          // FloatingSearchBarAction.hamburgerToBack(),
-
-                          FloatingSearchBarAction(
-                            showIfOpened: true,
-                            showIfClosed: true,
-                            builder: (context, animation) {
-                              final bar = FloatingSearchAppBar.of(context);
-                              return ValueListenableBuilder<String>(
-                                valueListenable: bar.queryNotifer,
-                                builder: (context, query, _) {
-                                  final canPop = Navigator.canPop(context);
-                                  // return Container();
-                                  return GestureDetector(
-                                    onTap: () {
-                                      if (isFocused) {
-                                        final bar =
-                                            FloatingSearchAppBar.of(context);
-                                        setState(() {
-                                          showResults = false;
-                                        });
-
-                                        if (bar.isOpen && !bar.isAlwaysOpened) {
-                                          bar.close();
-                                          model.clearSuggestion();
-                                          productModel.clearPaginationHistory();
-                                        } else if (canPop) {
-                                          Navigator.pop(context);
-                                        }
-                                      }
-                                    },
-                                    child: Padding(
-                                      padding: EdgeInsets.only(
-                                          left: 5.0,
-                                          right: 8,
-                                          bottom: isFocused ? 0 : 1),
-                                      child: Container(
-                                        height: 24,
-                                        width: 24,
-                                        child: isFocused
-                                            ? Icon(
-                                                Icons.arrow_back,
-                                                color: kSecondaryGrey,
-                                                size: 24,
-                                              )
-                                            : SvgPicture.asset(
-                                                'assets/icons/search.svg',
-                                                color: kSecondaryGrey),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              );
-                            },
-                          )
-                        ],
-                        actions: [
-                          if (searchController?.query?.isNotEmpty ?? false)
+                          )),
+                        ];
+                      },
+                      body: Consumer<SearchModel>(builder: (context, model, _) {
+                        return FloatingSearchBar(
+                          height: 36,
+                          onFocusChanged: (isFocused) {
+                            setState(() {
+                              this.isFocused = isFocused;
+                            });
+                            if (_scrollController.hasClients) {
+                              _scrollController.animateTo(isFocused ? 52 : 0,
+                                  duration: const Duration(milliseconds: 250),
+                                  curve: Curves.easeIn);
+                            }
+                          },
+                          hint: 'Sản phẩm, danh mục, thương hiệu',
+                          elevation: 0,
+                          scrollController: _scrollController,
+                          borderRadius: BorderRadius.circular(10),
+                          backgroundColor: kSearchBarColor,
+                          automaticallyImplyBackButton: false,
+                          controller: searchController,
+                          clearQueryOnClose: true,
+                          accentColor: kPrimaryOrange,
+                          queryStyle: textTheme.headline5
+                              .copyWith(fontSize: 17, height: 1.2),
+                          hintStyle: textTheme.headline5.copyWith(
+                              color: kSecondaryGrey, fontSize: 17, height: 1.2),
+                          iconColor: Colors.grey,
+                          scrollPadding: EdgeInsets.zero,
+                          padding: EdgeInsets.zero,
+                          margins: const EdgeInsets.only(
+                              top: 16, left: 16, right: 16),
+                          transitionDuration: const Duration(milliseconds: 250),
+                          transitionCurve: Curves.linear,
+                          axisAlignment: 0.0,
+                          openAxisAlignment: 0.0,
+                          closeOnBackdropTap: false,
+                          maxWidth: kScreenSizeWidth,
+                          backdropColor: kWhite,
+                          isScrollControlled: true,
+                          leadingActions: [
                             FloatingSearchBarAction(
                               showIfOpened: true,
-                              showIfClosed: false,
+                              showIfClosed: true,
                               builder: (context, animation) {
                                 final bar = FloatingSearchAppBar.of(context);
-
                                 return ValueListenableBuilder<String>(
                                   valueListenable: bar.queryNotifer,
                                   builder: (context, query, _) {
-                                    return IconButton(
-                                      tooltip: 'cancel',
-                                      padding: EdgeInsets.zero,
-                                      icon: const Icon(
-                                        Icons.cancel,
-                                        size: 20,
-                                      ),
-                                      onPressed: () {
-                                        final bar =
-                                            FloatingSearchAppBar.of(context);
-                                        bar.clear();
-                                        model.clearSuggestion();
-                                        setState(() {
-                                          showResults = false;
-                                        });
-                                        setState(() {});
+                                    final canPop = Navigator.canPop(context);
+                                    // return Container();
+                                    return GestureDetector(
+                                      onTap: () {
+                                        if (isFocused) {
+                                          final bar =
+                                              FloatingSearchAppBar.of(context);
+                                          setState(() {
+                                            showResults = false;
+                                          });
+
+                                          if (bar.isOpen &&
+                                              !bar.isAlwaysOpened) {
+                                            bar.close();
+                                            model.clearSuggestion();
+                                            productModel
+                                                .clearPaginationHistory();
+                                          } else if (canPop) {
+                                            Navigator.pop(context);
+                                          }
+                                        }
                                       },
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            left: 5.0,
+                                            right: 8,
+                                            bottom: isFocused ? 0 : 1),
+                                        child: Container(
+                                          height: 24,
+                                          width: 24,
+                                          child: isFocused
+                                              ? Icon(
+                                                  Icons.arrow_back,
+                                                  color: kSecondaryGrey,
+                                                  size: 24,
+                                                )
+                                              : SvgPicture.asset(
+                                                  'assets/icons/search.svg',
+                                                  color: kSecondaryGrey),
+                                        ),
+                                      ),
                                     );
                                   },
                                 );
                               },
                             )
-                        ],
-                        debounceDelay: const Duration(milliseconds: 100),
-                        onQueryChanged: (query) {
-                          if (FocusScope.of(context).hasFocus) {
-                            setState(() {
-                              showResults = false;
-                            });
-                          }
-                          model.onQueryChanged(query);
-                        },
-                        onSubmitted: (value) {
-                          if (Provider.of<UserModel>(context, listen: false)
-                              .isLoggedIn) {
-                            searchModel.onQuerySubmitted(value);
-                          }
-                          searchAlgolia();
-                        },
-                        transition: SlideFadeFloatingSearchBarTransition(),
-                        builder: (context, _) {
-                          if (showResults) {
-                            return buildSearchResult();
-                          } else if (searchController?.query?.isNotEmpty ??
-                              false) {
-                            return showSuggestions(model);
-                          } else {
-                            return showRecentSearchItems(model);
-                          }
-                        },
-                        body: buildCategoryPage(),
-                      );
-                    })))));
+                          ],
+                          actions: [
+                            if (searchController?.query?.isNotEmpty ?? false)
+                              FloatingSearchBarAction(
+                                showIfOpened: true,
+                                showIfClosed: false,
+                                builder: (context, animation) {
+                                  final bar = FloatingSearchAppBar.of(context);
+
+                                  return ValueListenableBuilder<String>(
+                                    valueListenable: bar.queryNotifer,
+                                    builder: (context, query, _) {
+                                      return IconButton(
+                                        tooltip: 'cancel',
+                                        padding: EdgeInsets.zero,
+                                        icon: const Icon(
+                                          Icons.cancel,
+                                          size: 20,
+                                        ),
+                                        onPressed: () {
+                                          final bar =
+                                              FloatingSearchAppBar.of(context);
+                                          bar.clear();
+                                          model.clearSuggestion();
+                                          setState(() {
+                                            showResults = false;
+                                          });
+                                          setState(() {});
+                                        },
+                                      );
+                                    },
+                                  );
+                                },
+                              )
+                          ],
+                          debounceDelay: const Duration(milliseconds: 100),
+                          onQueryChanged: (query) {
+                            if (FocusScope.of(context).hasFocus) {
+                              setState(() {
+                                showResults = false;
+                              });
+                            }
+                            model.onQueryChanged(query);
+                          },
+                          onSubmitted: (value) {
+                            if (Provider.of<UserModel>(context, listen: false)
+                                .isLoggedIn) {
+                              searchModel.onQuerySubmitted(value);
+                            }
+                            searchAlgolia();
+                          },
+                          transition: SlideFadeFloatingSearchBarTransition(),
+                          builder: (context, _) {
+                            if (showResults) {
+                              return buildSearchResult();
+                            } else if (searchController?.query?.isNotEmpty ??
+                                false) {
+                              return showSuggestions(model);
+                            } else {
+                              return showRecentSearchItems(model);
+                            }
+                          },
+                          body: buildCategoryPage(),
+                        );
+                      }))))),
+    );
   }
 
   @override
