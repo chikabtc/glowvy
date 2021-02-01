@@ -8,8 +8,11 @@ const fetch = require("node-fetch");
 const {
     math
 } = require("mathjs");
+const {
+    cachedDataVersionTag
+} = require("v8");
 
-var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDQwMjg2NzAsImV4cCI6MTYwNDExNTA3MH0.DLLRs42keSakkGgGP7nY7k0g5vZA0BfwsKA-TNc7KtM'
+var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkZXZpY2VfdXVpZCI6IjI2ZDZjZDkwLTVlYzItMTFlYi04MzY1LWYzNjU2ZmVjZjgzNiIsImlhdCI6MTYxMjEwOTUxNCwiZXhwIjoxNjEyMTk1OTE0fQ.Ro_Q6iCIAIQrrz7O9kU1wth_gZKLhYKyjdMoah-Twfg'
 
 
 async function crawlProductById(admin, id, page) {
@@ -84,6 +87,8 @@ async function crawlProductById(admin, id, page) {
 
         let secondCate = glowvyCategory.second_categories.find(element => element.id == glowpickCategory.idSecondCategory);
         let thirdCategory = secondCate.third_categories.find(element => element.id == glowpickCategory.idThirdCategory);
+
+        // TODO(parker): fetch category from firestore instead of creating custom obj 
 
         var glowvyCategory = {
             'first_category_id': glowvyCategory.id,
@@ -324,6 +329,77 @@ async function uploadThumbs(admin) {
     })
 }
 
+async function getIngredients(admin, id, page) {
+    try {
+        const db = admin.firestore();
+        const glowpickProductURL = `https://www.glowpick.com/product/${id}`;
+        await page.goto(glowpickProductURL, {
+            waitUntil: 'networkidle0'
+        });
+        var glowvyIngredients = [];
+        console.log(id)
+
+        const ingredients = await parser.parseIngredients(page);
+
+        if (ingredients != null) {
+            for (const ingredient of ingredients) {
+                // console.log(tag)
+                let ingredientSnap = await db.collection('ingredients').where('name_en',
+                    '==', ingredient.name_en).get();
+                if (ingredientSnap.empty) {
+                    console.log(`no matching ingredient ${ingredient.name_en}`);
+                    //add this ingredients to the product doc regardless 
+                    glowvyIngredients.push(ingredient);
+                    //add this ingredient to the ingredient collection
+                    await db.collection('missing_ingredients').add(ingredient).then(() => console.log('uploaded missing ingredients ingredient successfully'));
+                    var ingredeientProd = {
+                        'sid': id,
+                        'ing': ingredient
+                    }
+
+                    await db.collection('missing_ingredients_products').add(ingredeientProd).then(() => console.log('added missing ingredients product relationship'))
+                    // update the ingredients purposes on weekly basis using group colleciton query
+                    break;
+                } else {
+                    glowvyIngredients.push(ingredientSnap.docs[0].data());
+                }
+            }
+        }
+        // console.log(glowvyIngredients)
+        return glowvyIngredients
+    } catch (error) {
+        console.log(error);
+
+    }
+
+}
+async function addMissingIngredientsToProducts(puppet, db) {
+    const browser = await puppet.launch({
+        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        headless: true,
+        slowMo: 100,
+        defaultViewport: null,
+    });
+    const page = await browser.newPage();
+    await page.setDefaultNavigationTimeout(0);
+
+    var count = 0
+
+    const snap = await db.collection('products').get()
+    console.log(snap.docs.length)
+    var cates = [];
+    for (const doc of snap.docs) {
+        const ingredientSnap = await doc.ref.collection('ingredients').get()
+        if (ingredientSnap.docs.length == 0) {
+            count++
+            const ingredients = await crawler.getIngredients(admin, doc.data().sid, page)
+            for (const ing of ingredients) {
+                doc.ref.collection('ingredients').add(ing).then(() => console.log('added ingredients'))
+            }
+        }
+
+    }
+}
 
 
 async function crawlProductsByBrand(admin, brandId, offset) {
@@ -373,5 +449,6 @@ module.exports = {
     crawlProductsByBrand: crawlProductsByBrand,
     crawlProductById: crawlProductById,
     uploadThumbs: uploadThumbs,
-    uploadFile: uploadFile
+    uploadFile: uploadFile,
+    getIngredients: getIngredients
 }

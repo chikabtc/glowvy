@@ -1,0 +1,1597 @@
+[
+    {
+        "purpose_machine_translated": "Chất chống oxy hóa",
+        "name": "",
+        "purpose_ko": "산화방지제"
+    },
+    {
+        "purpose_machine_translated": " chất làm se da",
+        "name": "",
+        "purpose_ko": "수렴제"
+    },
+    {
+        "purpose_machine_translated": " chất dưỡng tóc",
+        "name": "",
+        "purpose_ko": "헤어컨디셔닝제"
+    },
+    {
+        "purpose_machine_translated": " chất bảo vệ da",
+        "name": "",
+        "purpose_ko": "피부보호제"
+    },
+    {
+        "purpose_machine_translated": " chất dưỡng da (chất làm mềm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(유연제)"
+    },
+    {
+        "purpose_machine_translated": " chất dưỡng da (chất dưỡng ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(보습제)"
+    },
+    {
+        "purpose_machine_translated": "Hương liệu",
+        "name": "",
+        "purpose_ko": "향료"
+    },
+    {
+        "purpose_machine_translated": " chất làm mờ",
+        "name": "",
+        "purpose_ko": "불투명화제"
+    },
+    {
+        "purpose_machine_translated": " chất làm sạch bề mặt",
+        "name": "",
+        "purpose_ko": "계면활성제-세정제"
+    },
+    {
+        "purpose_machine_translated": " chất nhũ hóa bề mặt",
+        "name": "",
+        "purpose_ko": "계면활성제-유화제"
+    },
+    {
+        "purpose_machine_translated": "Nước hoa",
+        "name": "",
+        "purpose_ko": "향료"
+    },
+    {
+        "purpose_machine_translated": " chất dưỡng da",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제"
+    },
+    {
+        "purpose_machine_translated": "Chất chống đóng bánh",
+        "name": "",
+        "purpose_ko": "안티케이킹제"
+    },
+    {
+        "purpose_machine_translated": " chất tạo màu",
+        "name": "",
+        "purpose_ko": "착색제"
+    },
+    {
+        "purpose_machine_translated": " chất chống trơn trượt",
+        "name": "",
+        "purpose_ko": "미끄럼개선제"
+    },
+    {
+        "purpose_machine_translated": " chất làm đặc không hòa tan",
+        "name": "",
+        "purpose_ko": "점증제-비수용성"
+    },
+    {
+        "purpose_machine_translated": "Surfactant-sữa rửa mặt",
+        "name": "",
+        "purpose_ko": "계면활성제-세정제"
+    },
+    {
+        "purpose_machine_translated": " chất hoạt động bề mặt-chất nhũ hóa",
+        "name": "",
+        "purpose_ko": "계면활성제-유화제"
+    },
+    {
+        "purpose_machine_translated": "Chất kết dính",
+        "name": "",
+        "purpose_ko": "결합제"
+    },
+    {
+        "purpose_machine_translated": " chất điều hòa da (chất chống ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(수분차단제)"
+    },
+    {
+        "purpose_machine_translated": " chất làm tăng độ nhớt (không phải nước)",
+        "name": "",
+        "purpose_ko": "점도증가제(비수성)"
+    },
+    {
+        "purpose_machine_translated": "Chất làm se",
+        "name": "",
+        "purpose_ko": "수렴제"
+    },
+    {
+        "purpose_machine_translated": "Chất điều hòa da (làm mềm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(유연제)"
+    },
+    {
+        "purpose_machine_translated": "Chất điều hòa da (khác)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(기타)"
+    },
+    {
+        "purpose_machine_translated": "Chất ổn định chất nhũ hóa",
+        "name": "",
+        "purpose_ko": "유화안정제"
+    },
+    {
+        "purpose_machine_translated": " màng trước",
+        "name": "",
+        "purpose_ko": "피막형성제"
+    },
+    {
+        "purpose_machine_translated": " chất làm đặc tan trong nước",
+        "name": "",
+        "purpose_ko": "점증제-수용성"
+    },
+    {
+        "purpose_machine_translated": " chất làm phồng",
+        "name": "",
+        "purpose_ko": "벌킹제"
+    },
+    {
+        "purpose_machine_translated": " chất lơ lửng không phải chất hoạt động bề mặt",
+        "name": "",
+        "purpose_ko": "현탁화제-비계면활성제"
+    },
+    {
+        "purpose_machine_translated": " chất làm đặc không tan trong nước",
+        "name": "",
+        "purpose_ko": "점증제-비수용성"
+    },
+    {
+        "purpose_machine_translated": "Dung môi",
+        "name": "",
+        "purpose_ko": "용제"
+    },
+    {
+        "purpose_machine_translated": " chất làm giảm độ nhớt",
+        "name": "",
+        "purpose_ko": "점도감소제"
+    },
+    {
+        "purpose_machine_translated": "Chống oxy hóa",
+        "name": "",
+        "purpose_ko": "산화방지제"
+    },
+    {
+        "purpose_machine_translated": "",
+        "name": "",
+        "purpose_ko": ""
+    },
+    {
+        "purpose_machine_translated": "dung môi",
+        "name": "",
+        "purpose_ko": "용제"
+    },
+    {
+        "purpose_machine_translated": "chất khử mùi",
+        "name": "",
+        "purpose_ko": "탈취제"
+    },
+    {
+        "purpose_machine_translated": "Chất tạo màng",
+        "name": "",
+        "purpose_ko": "피막형성제"
+    },
+    {
+        "purpose_machine_translated": " chất tạo màng",
+        "name": "",
+        "purpose_ko": "피막형성제"
+    },
+    {
+        "purpose_machine_translated": " chất cố định tóc",
+        "name": "",
+        "purpose_ko": "모발고정제"
+    },
+    {
+        "purpose_machine_translated": " chất ổn định nhũ tương",
+        "name": "",
+        "purpose_ko": "유화안정제"
+    },
+    {
+        "purpose_machine_translated": "Chất điều hòa da (chặn ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(수분차단제)"
+    },
+    {
+        "purpose_machine_translated": " chất nhũ hóa",
+        "name": "",
+        "purpose_ko": "유화안정제"
+    },
+    {
+        "purpose_machine_translated": "Chất mài mòn",
+        "name": "",
+        "purpose_ko": "연마제"
+    },
+    {
+        "purpose_machine_translated": " chất hấp thụ",
+        "name": "",
+        "purpose_ko": "흡수제"
+    },
+    {
+        "purpose_machine_translated": " chất tạo bọt (chất kéo dài)",
+        "name": "",
+        "purpose_ko": "벌킹제(증량제)"
+    },
+    {
+        "purpose_machine_translated": "Chất hoạt động bề mặt",
+        "name": "",
+        "purpose_ko": "계면활성제-유화제"
+    },
+    {
+        "purpose_machine_translated": " cố định tóc",
+        "name": "",
+        "purpose_ko": "모발고정제"
+    },
+    {
+        "purpose_machine_translated": "Chất màu",
+        "name": "",
+        "purpose_ko": "착색제"
+    },
+    {
+        "purpose_machine_translated": "Đại lý dưỡng da",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제"
+    },
+    {
+        "purpose_machine_translated": "Dầu dưỡng tóc",
+        "name": "",
+        "purpose_ko": "모발컨디셔인제"
+    },
+    {
+        "purpose_machine_translated": "Kem dưỡng ẩm da",
+        "name": "",
+        "purpose_ko": "피부보습제"
+    },
+    {
+        "purpose_machine_translated": "Chất ngăn chặn bay hơi ẩm",
+        "name": "",
+        "purpose_ko": "수분증발차단제"
+    },
+    {
+        "purpose_machine_translated": " chất điều hòa da",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제"
+    },
+    {
+        "purpose_machine_translated": "Chất dưỡng da",
+        "name": "",
+        "purpose_ko": "스킨컨디셔닝제"
+    },
+    {
+        "purpose_machine_translated": " chất chống bay hơi",
+        "name": "",
+        "purpose_ko": "수분증발차단제"
+    },
+    {
+        "purpose_machine_translated": "Chất làm se da",
+        "name": "",
+        "purpose_ko": "수렴제"
+    },
+    {
+        "purpose_machine_translated": "Hương thơm",
+        "name": "",
+        "purpose_ko": "향료"
+    },
+    {
+        "purpose_machine_translated": " chất tẩy rửa bề mặt",
+        "name": "",
+        "purpose_ko": "계면활성제-세정제"
+    },
+    {
+        "purpose_machine_translated": "Chất điều hòa da (chất làm mềm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(유연제)"
+    },
+    {
+        "purpose_machine_translated": " chất hoạt động bề mặt (chất nhũ hóa)",
+        "name": "",
+        "purpose_ko": "계면활성제(유화제)"
+    },
+    {
+        "purpose_machine_translated": "Đệm pH",
+        "name": "",
+        "purpose_ko": "pH 완충제"
+    },
+    {
+        "purpose_machine_translated": " dưỡng ẩm",
+        "name": "",
+        "purpose_ko": "보습제"
+    },
+    {
+        "purpose_machine_translated": " dưỡng ẩm da",
+        "name": "",
+        "purpose_ko": "피부보습제"
+    },
+    {
+        "purpose_machine_translated": "Chất hấp thụ",
+        "name": "",
+        "purpose_ko": "흡수제"
+    },
+    {
+        "purpose_machine_translated": " chất chống đóng bánh",
+        "name": "",
+        "purpose_ko": "안티케이킹제"
+    },
+    {
+        "purpose_machine_translated": " chất chống trượt",
+        "name": "",
+        "purpose_ko": "미끄럼개선제"
+    },
+    {
+        "purpose_machine_translated": " nước hoa",
+        "name": "",
+        "purpose_ko": "향료"
+    },
+    {
+        "purpose_machine_translated": " chất điều hòa da (làm mềm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(유연제)"
+    },
+    {
+        "purpose_machine_translated": "Chất điều hòa tóc",
+        "name": "",
+        "purpose_ko": "헤어컨디셔닝제"
+    },
+    {
+        "purpose_machine_translated": " dung môi sóng vĩnh viễn / dung môi duỗi tóc",
+        "name": "",
+        "purpose_ko": "퍼머넌트웨이브용제/헤어스트레이트너용제"
+    },
+    {
+        "purpose_machine_translated": " chất điều hòa da (loại khác)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(기타)"
+    },
+    {
+        "purpose_machine_translated": "Chất điều hòa da",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제"
+    },
+    {
+        "purpose_machine_translated": " chất hoạt động bề mặt",
+        "name": "",
+        "purpose_ko": "계면활성제-유화제"
+    },
+    {
+        "purpose_machine_translated": "Tẩy tế bào chết",
+        "name": "",
+        "purpose_ko": "스크럽제"
+    },
+    {
+        "purpose_machine_translated": " hấp thụ",
+        "name": "",
+        "purpose_ko": "흡수제"
+    },
+    {
+        "purpose_machine_translated": "Chất làm sạch bề mặt",
+        "name": "",
+        "purpose_ko": "계면활성제-세정제"
+    },
+    {
+        "purpose_machine_translated": " chất hòa tan chất hoạt động bề mặt",
+        "name": "",
+        "purpose_ko": "계면활성제-용해보조제"
+    },
+    {
+        "purpose_machine_translated": " chất điều chỉnh pH",
+        "name": "",
+        "purpose_ko": "pH 조절제"
+    },
+    {
+        "purpose_machine_translated": "Chất chống tĩnh điện",
+        "name": "",
+        "purpose_ko": "정전기방지제"
+    },
+    {
+        "purpose_machine_translated": " chất hoạt động bề mặt (chất làm sạch)",
+        "name": "",
+        "purpose_ko": "계면활성제(세정제)"
+    },
+    {
+        "purpose_machine_translated": " chất hoạt động bề mặt (chất tăng tốc bọt)",
+        "name": "",
+        "purpose_ko": "계면활성제(거품촉진제)"
+    },
+    {
+        "purpose_machine_translated": " chất làm tăng độ nhớt (dung dịch nước)",
+        "name": "",
+        "purpose_ko": "점도증가제(수성)"
+    },
+    {
+        "purpose_machine_translated": " điều chỉnh pH",
+        "name": "",
+        "purpose_ko": "pH 조절제"
+    },
+    {
+        "purpose_machine_translated": " khử trùng chất bảo quản",
+        "name": "",
+        "purpose_ko": "살균보존제"
+    },
+    {
+        "purpose_machine_translated": "Làm mềm da",
+        "name": "",
+        "purpose_ko": "피부유연화제"
+    },
+    {
+        "purpose_machine_translated": " bảo vệ da",
+        "name": "",
+        "purpose_ko": "피부보호제"
+    },
+    {
+        "purpose_machine_translated": "Chất làm ngọt",
+        "name": "",
+        "purpose_ko": "감미제"
+    },
+    {
+        "purpose_machine_translated": " dưỡng ẩm cho da",
+        "name": "",
+        "purpose_ko": "피부보습제"
+    },
+    {
+        "purpose_machine_translated": "Chất tạo mùi",
+        "name": "",
+        "purpose_ko": "착향제"
+    },
+    {
+        "purpose_machine_translated": " làm mềm da",
+        "name": "",
+        "purpose_ko": "피부연화제"
+    },
+    {
+        "purpose_machine_translated": " chất dưỡng da (những chất khác)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(기타)"
+    },
+    {
+        "purpose_machine_translated": "Chất thơm và chất ngăn chặn hơi nước",
+        "name": "",
+        "purpose_ko": "향료"
+    },
+    {
+        "purpose_machine_translated": "Gia vị",
+        "name": "",
+        "purpose_ko": "향료"
+    },
+    {
+        "purpose_machine_translated": "Chặn ion kim loại",
+        "name": "",
+        "purpose_ko": "금속이온봉쇄제"
+    },
+    {
+        "purpose_machine_translated": " chất làm dịu da (rào cản độ ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(수분차단제)"
+    },
+    {
+        "purpose_machine_translated": "Chất chống đóng cứng",
+        "name": "",
+        "purpose_ko": "안티케이킹제"
+    },
+    {
+        "purpose_machine_translated": "Chất làm mềm da",
+        "name": "",
+        "purpose_ko": "피부유연화제"
+    },
+    {
+        "purpose_machine_translated": " dung môi",
+        "name": "",
+        "purpose_ko": "용제"
+    },
+    {
+        "purpose_machine_translated": "Chất dưỡng tóc",
+        "name": "",
+        "purpose_ko": "모발컨디셔닝제"
+    },
+    {
+        "purpose_machine_translated": " chất điều hòa da (chất làm mềm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(유연제)"
+    },
+    {
+        "purpose_machine_translated": " chất điều hòa da (chất dưỡng ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(보습제)"
+    },
+    {
+        "purpose_machine_translated": " chất chống đổi màu",
+        "name": "",
+        "purpose_ko": "변색방지제"
+    },
+    {
+        "purpose_machine_translated": "Chất huyền phù không phải chất hoạt động bề mặt",
+        "name": "",
+        "purpose_ko": "현탁화제-비계면활성제"
+    },
+    {
+        "purpose_machine_translated": "Chất hoạt động bề mặt - chất nhũ hóa",
+        "name": "",
+        "purpose_ko": "계면활성제-유화제"
+    },
+    {
+        "purpose_machine_translated": " hương vị",
+        "name": "",
+        "purpose_ko": "착향제"
+    },
+    {
+        "purpose_machine_translated": " chất điều hòa da (rào cản độ ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(수분차단제)"
+    },
+    {
+        "purpose_machine_translated": "Đại lý dưỡng tóc",
+        "name": "",
+        "purpose_ko": "모발컨디셔닝제"
+    },
+    {
+        "purpose_machine_translated": " đại lý dưỡng da",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제"
+    },
+    {
+        "purpose_machine_translated": "Chất dưỡng da (chất chặn độ ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(수분차단제)"
+    },
+    {
+        "purpose_machine_translated": "Kem dưỡng ẩm cho da",
+        "name": "",
+        "purpose_ko": "피부보습제"
+    },
+    {
+        "purpose_machine_translated": "Đại lý hương liệu",
+        "name": "",
+        "purpose_ko": "착향제"
+    },
+    {
+        "purpose_machine_translated": " chất điều hòa da (những người khác)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(기타)"
+    },
+    {
+        "purpose_machine_translated": " chất tạo hương",
+        "name": "",
+        "purpose_ko": "착향제"
+    },
+    {
+        "purpose_machine_translated": "Chất điều hòa da (loại khác)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(기타)"
+    },
+    {
+        "purpose_machine_translated": "Đại lý điều hòa tóc",
+        "name": "",
+        "purpose_ko": "모발컨디셔닝제"
+    },
+    {
+        "purpose_machine_translated": " chất ổn định nhũ hóa",
+        "name": "",
+        "purpose_ko": "유화안정제"
+    },
+    {
+        "purpose_machine_translated": " chất làm mềm da",
+        "name": "",
+        "purpose_ko": "피부유연화제"
+    },
+    {
+        "purpose_machine_translated": " chất điều chỉnh độ nhớt",
+        "name": "",
+        "purpose_ko": "점도조절제"
+    },
+    {
+        "purpose_machine_translated": "Chất ngọt",
+        "name": "",
+        "purpose_ko": "감미제"
+    },
+    {
+        "purpose_machine_translated": "Chất tẩy rửa",
+        "name": "",
+        "purpose_ko": "스크럽제"
+    },
+    {
+        "purpose_machine_translated": " thấm",
+        "name": "",
+        "purpose_ko": "흡수제"
+    },
+    {
+        "purpose_machine_translated": " bulking",
+        "name": "",
+        "purpose_ko": "벌킹제"
+    },
+    {
+        "purpose_machine_translated": "Hương liệu và khử trùng chất bảo quản",
+        "name": "",
+        "purpose_ko": "향료"
+    },
+    {
+        "purpose_machine_translated": " chất kết dính",
+        "name": "",
+        "purpose_ko": "결합제"
+    },
+    {
+        "purpose_machine_translated": " chất phủ",
+        "name": "",
+        "purpose_ko": "피막형성제"
+    },
+    {
+        "purpose_machine_translated": "Kem chống nắng",
+        "name": "",
+        "purpose_ko": "자외선차단제"
+    },
+    {
+        "purpose_machine_translated": " ức chế đổi màu",
+        "name": "",
+        "purpose_ko": "변색방지제"
+    },
+    {
+        "purpose_machine_translated": "Chất chống tạo bọt",
+        "name": "",
+        "purpose_ko": "기포방지제"
+    },
+    {
+        "purpose_machine_translated": "Chất bảo vệ da",
+        "name": "",
+        "purpose_ko": "피부보호제"
+    },
+    {
+        "purpose_machine_translated": " chất dưỡng da (loại khác)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(기타)"
+    },
+    {
+        "purpose_machine_translated": "Chất ức chế đổi màu",
+        "name": "",
+        "purpose_ko": "변색방지제"
+    },
+    {
+        "purpose_machine_translated": "Chất hoạt động bề mặt-chất nhũ hóa",
+        "name": "",
+        "purpose_ko": "계면활성제-유화제"
+    },
+    {
+        "purpose_machine_translated": " chất hỗ trợ hòa tan chất hoạt động bề mặt",
+        "name": "",
+        "purpose_ko": "계면활성제-용해보조제"
+    },
+    {
+        "purpose_machine_translated": " chất làm cháy da",
+        "name": "",
+        "purpose_ko": "벌킹제"
+    },
+    {
+        "purpose_machine_translated": " chất khử mùi",
+        "name": "",
+        "purpose_ko": "탈취제"
+    },
+    {
+        "purpose_machine_translated": " làm đặc tan trong nước",
+        "name": "",
+        "purpose_ko": "점증제-수용성"
+    },
+    {
+        "purpose_machine_translated": " chất hoạt động bề mặt (sữa rửa mặt)",
+        "name": "",
+        "purpose_ko": "계면활성제(세정제)"
+    },
+    {
+        "purpose_machine_translated": "Chất hóa dẻo",
+        "name": "",
+        "purpose_ko": "가소제"
+    },
+    {
+        "purpose_machine_translated": " chất giữ ẩm",
+        "name": "",
+        "purpose_ko": "보습제"
+    },
+    {
+        "purpose_machine_translated": " chất làm tăng độ nhớt (không chứa nước)",
+        "name": "",
+        "purpose_ko": "점도증가제(비수성)"
+    },
+    {
+        "purpose_machine_translated": "Hương vị",
+        "name": "",
+        "purpose_ko": "착향제"
+    },
+    {
+        "purpose_machine_translated": "Hương liệu và chất dưỡng tóc",
+        "name": "",
+        "purpose_ko": "향료"
+    },
+    {
+        "purpose_machine_translated": "Chất làm đặc không hòa tan",
+        "name": "",
+        "purpose_ko": "점증제-비수용성"
+    },
+    {
+        "purpose_machine_translated": "Kem dưỡng ẩm",
+        "name": "",
+        "purpose_ko": "보습제"
+    },
+    {
+        "purpose_machine_translated": " làm ngọt",
+        "name": "",
+        "purpose_ko": "감미제"
+    },
+    {
+        "purpose_machine_translated": "Chất làm đặc tan trong nước",
+        "name": "",
+        "purpose_ko": "점증제-수용성"
+    },
+    {
+        "purpose_machine_translated": " chất lơ lửng - chất không phải chất hoạt động bề mặt",
+        "name": "",
+        "purpose_ko": "현탁화제-비계면활성제"
+    },
+    {
+        "purpose_machine_translated": "Chất làm mềm và làm mềm",
+        "name": "",
+        "purpose_ko": "향료"
+    },
+    {
+        "purpose_machine_translated": "Đại lý Bulking",
+        "name": "",
+        "purpose_ko": "벌킹제"
+    },
+    {
+        "purpose_machine_translated": " đại lý điều hòa da",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제"
+    },
+    {
+        "purpose_machine_translated": "Dầu xả",
+        "name": "",
+        "purpose_ko": "모발조정제"
+    },
+    {
+        "purpose_machine_translated": " chất tẩy rửa",
+        "name": "",
+        "purpose_ko": "세정제"
+    },
+    {
+        "purpose_machine_translated": " chất tạo bọt",
+        "name": "",
+        "purpose_ko": "거품형성제"
+    },
+    {
+        "purpose_machine_translated": " đại lý chống trượt",
+        "name": "",
+        "purpose_ko": "미끄럼개선제"
+    },
+    {
+        "purpose_machine_translated": " chất nhũ hóa chất hoạt động bề mặt",
+        "name": "",
+        "purpose_ko": "계면활성제-유화제"
+    },
+    {
+        "purpose_machine_translated": "Chất hoạt động bề mặt (chất nhũ hóa)",
+        "name": "",
+        "purpose_ko": "계면활성제(유화제)"
+    },
+    {
+        "purpose_machine_translated": "Chất dưỡng da (khác)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(기타)"
+    },
+    {
+        "purpose_machine_translated": "Chất bảo quản sát trùng",
+        "name": "",
+        "purpose_ko": "살균보존제"
+    },
+    {
+        "purpose_machine_translated": "Điều chỉnh pH",
+        "name": "",
+        "purpose_ko": "pH 조절제"
+    },
+    {
+        "purpose_machine_translated": "Chất ổn định nhũ hóa",
+        "name": "",
+        "purpose_ko": "유화안정제"
+    },
+    {
+        "purpose_machine_translated": "Chất hoạt động bề mặt hòa tan",
+        "name": "",
+        "purpose_ko": "계면활성제-용해보조제"
+    },
+    {
+        "purpose_machine_translated": " tác nhân bulking",
+        "name": "",
+        "purpose_ko": "벌킹제"
+    },
+    {
+        "purpose_machine_translated": " chất làm ngưng tụ chất làm đặc không tan trong nước",
+        "name": "",
+        "purpose_ko": "현탁화제-비계면활성제 점증제-수용성"
+    },
+    {
+        "purpose_machine_translated": "Surfactant (chất làm sạch)",
+        "name": "",
+        "purpose_ko": "계면활성제(세정제)"
+    },
+    {
+        "purpose_machine_translated": " chất hoạt động bề mặt (chất hòa tan)",
+        "name": "",
+        "purpose_ko": "계면활성제(용해보조제)"
+    },
+    {
+        "purpose_machine_translated": "Chất dưỡng tóc; Chất dưỡng da (chất dưỡng ẩm); Chất dưỡng da (khác)",
+        "name": "",
+        "purpose_ko": "헤어컨디셔닝제 ; 피부컨디셔닝제(보습제); 피부컨디셔닝제(기타)"
+    },
+    {
+        "purpose_machine_translated": " làm đặc nước",
+        "name": "",
+        "purpose_ko": "점증제-수용성"
+    },
+    {
+        "purpose_machine_translated": " chất làm dẻo",
+        "name": "",
+        "purpose_ko": "가소제"
+    },
+    {
+        "purpose_machine_translated": " chất ngọt",
+        "name": "",
+        "purpose_ko": "감미제"
+    },
+    {
+        "purpose_machine_translated": " chất ức chế đổi màu",
+        "name": "",
+        "purpose_ko": "변색방지제"
+    },
+    {
+        "purpose_machine_translated": " dưỡng da",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝"
+    },
+    {
+        "purpose_machine_translated": "Chất hoạt động bề mặt (sữa rửa mặt)",
+        "name": "",
+        "purpose_ko": "계면활성제(세정제)"
+    },
+    {
+        "purpose_machine_translated": " tác nhân bulking và chất cải thiện trượt",
+        "name": "",
+        "purpose_ko": "벌킹제"
+    },
+    {
+        "purpose_machine_translated": "Chất độn",
+        "name": "",
+        "purpose_ko": "벌킹제"
+    },
+    {
+        "purpose_machine_translated": " chất làm se",
+        "name": "",
+        "purpose_ko": "수렴제"
+    },
+    {
+        "purpose_machine_translated": " hương liệu",
+        "name": "",
+        "purpose_ko": "향료"
+    },
+    {
+        "purpose_machine_translated": " chất dưỡng da.",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제."
+    },
+    {
+        "purpose_machine_translated": " đại lý bảo vệ da",
+        "name": "",
+        "purpose_ko": "피부보호제"
+    },
+    {
+        "purpose_machine_translated": "Chặn bay hơi ẩm",
+        "name": "",
+        "purpose_ko": "수분증발차단제,점증제-비수용성"
+    },
+    {
+        "purpose_machine_translated": "Tinh thể liên",
+        "name": "",
+        "purpose_ko": "계면수정제"
+    },
+    {
+        "purpose_machine_translated": "Chất điều hòa da (chất chống ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(수분차단제)"
+    },
+    {
+        "purpose_machine_translated": " chất điều hòa bề mặt",
+        "name": "",
+        "purpose_ko": "표면조정제"
+    },
+    {
+        "purpose_machine_translated": "Chất điều hòa da (hàng rào độ ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(수분차단제)"
+    },
+    {
+        "purpose_machine_translated": "Chất tạo màu",
+        "name": "",
+        "purpose_ko": "착색제"
+    },
+    {
+        "purpose_machine_translated": " hương thơm",
+        "name": "",
+        "purpose_ko": "향료"
+    },
+    {
+        "purpose_machine_translated": "Chất điều hòa da (kem dưỡng ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(보습제)"
+    },
+    {
+        "purpose_machine_translated": " chất hoạt động bề mặt (chất ưa nước)",
+        "name": "",
+        "purpose_ko": "계면활성제(친수제)"
+    },
+    {
+        "purpose_machine_translated": " chất hòa tan",
+        "name": "",
+        "purpose_ko": "용해제"
+    },
+    {
+        "purpose_machine_translated": "Chất nhũ hóa",
+        "name": "",
+        "purpose_ko": "유화안정제"
+    },
+    {
+        "purpose_machine_translated": "Chất chống biến màu",
+        "name": "",
+        "purpose_ko": "변색방지제"
+    },
+    {
+        "purpose_machine_translated": " chống tia cực tím (mỹ phẩm chức năng)",
+        "name": "",
+        "purpose_ko": "자외선차단(기능성화장품)"
+    },
+    {
+        "purpose_machine_translated": "Tác nhân dưỡng tóc",
+        "name": "",
+        "purpose_ko": "헤어컨디셔닝제"
+    },
+    {
+        "purpose_machine_translated": " chất dưỡng da (khác)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(기타)"
+    },
+    {
+        "purpose_machine_translated": "Chất ổn định nhũ tương",
+        "name": "",
+        "purpose_ko": "유화안정제"
+    },
+    {
+        "purpose_machine_translated": "Chất làm dẻo",
+        "name": "",
+        "purpose_ko": "가소제"
+    },
+    {
+        "purpose_machine_translated": " chất dưỡng da (dưỡng ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(보습제)"
+    },
+    {
+        "purpose_machine_translated": "Công cụ thay thế",
+        "name": "",
+        "purpose_ko": "불투명화제"
+    },
+    {
+        "purpose_machine_translated": " chất chặn bay hơi ẩm",
+        "name": "",
+        "purpose_ko": "수분증발차단제"
+    },
+    {
+        "purpose_machine_translated": " chất điều hòa da (khác)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(기타)"
+    },
+    {
+        "purpose_machine_translated": "Chất khử màu",
+        "name": "",
+        "purpose_ko": "변성제"
+    },
+    {
+        "purpose_machine_translated": " kem dưỡng ẩm",
+        "name": "",
+        "purpose_ko": "보습제"
+    },
+    {
+        "purpose_machine_translated": " chất dưỡng da (chất giữ ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(보습제)"
+    },
+    {
+        "purpose_machine_translated": " chất làm dịu da (làm mềm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(유연제)"
+    },
+    {
+        "purpose_machine_translated": "Chà",
+        "name": "",
+        "purpose_ko": "스크럽제"
+    },
+    {
+        "purpose_machine_translated": " đại lý opacifying",
+        "name": "",
+        "purpose_ko": "불투명화제"
+    },
+    {
+        "purpose_machine_translated": "Đại lý chà",
+        "name": "",
+        "purpose_ko": "스크럽제"
+    },
+    {
+        "purpose_machine_translated": " bulking và opacifying",
+        "name": "",
+        "purpose_ko": "벌킹제"
+    },
+    {
+        "purpose_machine_translated": " chất ngăn chặn bay hơi ẩm",
+        "name": "",
+        "purpose_ko": "수분증발차단제"
+    },
+    {
+        "purpose_machine_translated": " cải thiện làm trắng (mỹ phẩm chức năng)",
+        "name": "",
+        "purpose_ko": "미백개선(기능성화장품)"
+    },
+    {
+        "purpose_machine_translated": " chất chặn hơi nước",
+        "name": "",
+        "purpose_ko": "수분증발차단제"
+    },
+    {
+        "purpose_machine_translated": " chất tạo bọt bề mặt",
+        "name": "",
+        "purpose_ko": "계면활성제-거품형성제"
+    },
+    {
+        "purpose_machine_translated": " chất hoạt động bề mặt (chất gia tốc bọt)",
+        "name": "",
+        "purpose_ko": "계면활성제(거품촉진제)"
+    },
+    {
+        "purpose_machine_translated": "Chất tạo hương",
+        "name": "",
+        "purpose_ko": "착향제"
+    },
+    {
+        "purpose_machine_translated": " chất lơ lửng-chất không hoạt động bề mặt",
+        "name": "",
+        "purpose_ko": "현탁화제-비계면활성제"
+    },
+    {
+        "purpose_machine_translated": "mài mòn",
+        "name": "",
+        "purpose_ko": "연마제"
+    },
+    {
+        "purpose_machine_translated": " chất khử",
+        "name": "",
+        "purpose_ko": "환원제"
+    },
+    {
+        "purpose_machine_translated": " chặn bay hơi ẩm",
+        "name": "",
+        "purpose_ko": "수분증발차단제"
+    },
+    {
+        "purpose_machine_translated": " điều hòa da",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제"
+    },
+    {
+        "purpose_machine_translated": " chất làm đặc không-chất hoạt động bề mặt không hòa tan",
+        "name": "",
+        "purpose_ko": "현탁화제-비계면활성제 점증제-비수용성"
+    },
+    {
+        "purpose_machine_translated": "Chất làm tăng độ nhớt (không phải nước)",
+        "name": "",
+        "purpose_ko": "점도증가제(비수성)"
+    },
+    {
+        "purpose_machine_translated": " chất hoạt động bề mặt (chất hỗ trợ hòa tan)",
+        "name": "",
+        "purpose_ko": "계면활성제(용해보조제)"
+    },
+    {
+        "purpose_machine_translated": "Chặn độ ẩm",
+        "name": "",
+        "purpose_ko": "수분차단제"
+    },
+    {
+        "purpose_machine_translated": " chất làm dịu da (chất làm mềm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(유연제)"
+    },
+    {
+        "purpose_machine_translated": " chất dưỡng da (làm mềm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(유연제)"
+    },
+    {
+        "purpose_machine_translated": "Chất dưỡng da (làm mềm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(유연제)"
+    },
+    {
+        "purpose_machine_translated": "Collagen da",
+        "name": "",
+        "purpose_ko": "피부교질화제"
+    },
+    {
+        "purpose_machine_translated": " chống trượt",
+        "name": "",
+        "purpose_ko": "미끄럼개선제"
+    },
+    {
+        "purpose_machine_translated": "Tẩy da chết",
+        "name": "",
+        "purpose_ko": "각질제거제"
+    },
+    {
+        "purpose_machine_translated": " chống đóng bánh",
+        "name": "",
+        "purpose_ko": "안티케이킹제"
+    },
+    {
+        "purpose_machine_translated": " chất chống bay hơi ẩm",
+        "name": "",
+        "purpose_ko": "수분증발차단제"
+    },
+    {
+        "purpose_machine_translated": "Khử mùi",
+        "name": "",
+        "purpose_ko": "탈취제"
+    },
+    {
+        "purpose_machine_translated": " Surfactant-Cleanser",
+        "name": "",
+        "purpose_ko": "계면활성제-세정제"
+    },
+    {
+        "purpose_machine_translated": " Surfactant-Emulsifier",
+        "name": "",
+        "purpose_ko": "계면활성제-유화제"
+    },
+    {
+        "purpose_machine_translated": " Chất điều hòa da",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제"
+    },
+    {
+        "purpose_machine_translated": " Chất làm đặc-Không tan trong nước",
+        "name": "",
+        "purpose_ko": "점증제-비수용성"
+    },
+    {
+        "purpose_machine_translated": " chất hòa tan bề mặt",
+        "name": "",
+        "purpose_ko": "계면활성제-용해보조제"
+    },
+    {
+        "purpose_machine_translated": " đại lý bulking",
+        "name": "",
+        "purpose_ko": "벌킹제"
+    },
+    {
+        "purpose_machine_translated": " chất điều hòa da (kem dưỡng ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(보습제)"
+    },
+    {
+        "purpose_machine_translated": "Làm se da",
+        "name": "",
+        "purpose_ko": "수렴제"
+    },
+    {
+        "purpose_machine_translated": " tẩy da chết",
+        "name": "",
+        "purpose_ko": "각질제거제"
+    },
+    {
+        "purpose_machine_translated": " chất bôi ngoài da",
+        "name": "",
+        "purpose_ko": "피부교질화제"
+    },
+    {
+        "purpose_machine_translated": "Chất ức chế ăn mòn",
+        "name": "",
+        "purpose_ko": "부식방지제"
+    },
+    {
+        "purpose_machine_translated": " chất nhũ hóa-chất nhũ hóa",
+        "name": "",
+        "purpose_ko": "계면활성제-유화제"
+    },
+    {
+        "purpose_machine_translated": " chất làm ngọt",
+        "name": "",
+        "purpose_ko": "감미제"
+    },
+    {
+        "purpose_machine_translated": " chất lơ lửng-không phải chất hoạt động bề mặt",
+        "name": "",
+        "purpose_ko": "현탁화제-비계면활성제"
+    },
+    {
+        "purpose_machine_translated": "Chất chặn độ ẩm",
+        "name": "",
+        "purpose_ko": "수분차단제"
+    },
+    {
+        "purpose_machine_translated": " chất làm đặc không tan",
+        "name": "",
+        "purpose_ko": "점증제-비수용성"
+    },
+    {
+        "purpose_machine_translated": "Nguyên liệu thô này là một ether có cấu trúc như sau.",
+        "name": "",
+        "purpose_ko": "이 원료는 다음의 구조를 갖는 에터이다."
+    },
+    {
+        "purpose_machine_translated": "Điều chỉnh độ nhớt",
+        "name": "",
+        "purpose_ko": "점도조절제"
+    },
+    {
+        "purpose_machine_translated": " Chất làm đặc hòa tan trong nước",
+        "name": "",
+        "purpose_ko": "점증제-수용성"
+    },
+    {
+        "purpose_machine_translated": " chất làm bay hơi ẩm",
+        "name": "",
+        "purpose_ko": "수분증발차단제"
+    },
+    {
+        "purpose_machine_translated": "Chất đệm",
+        "name": "",
+        "purpose_ko": "완충화제"
+    },
+    {
+        "purpose_machine_translated": " chất ức chế ăn mòn",
+        "name": "",
+        "purpose_ko": "부식방지제"
+    },
+    {
+        "purpose_machine_translated": " chất tạo hương vị",
+        "name": "",
+        "purpose_ko": "착향제"
+    },
+    {
+        "purpose_machine_translated": "Chất ngăn chặn ion kim loại",
+        "name": "",
+        "purpose_ko": "금속이온봉쇄제"
+    },
+    {
+        "purpose_machine_translated": " đại lý dưỡng tóc",
+        "name": "",
+        "purpose_ko": "손톱컨디셔닝제"
+    },
+    {
+        "purpose_machine_translated": " điều chế độ nhớt",
+        "name": "",
+        "purpose_ko": "점도조절제"
+    },
+    {
+        "purpose_machine_translated": " chất bảo quản",
+        "name": "",
+        "purpose_ko": "방부제"
+    },
+    {
+        "purpose_machine_translated": " chất làm tan chất hoạt động bề mặt",
+        "name": "",
+        "purpose_ko": "계면활성제-용해보조제"
+    },
+    {
+        "purpose_machine_translated": " cải thiện nếp nhăn (mỹ phẩm chức năng)",
+        "name": "",
+        "purpose_ko": "주름개선(기능성화장품)"
+    },
+    {
+        "purpose_machine_translated": "Surfactant-chất nhũ hóa",
+        "name": "",
+        "purpose_ko": "계면활성제-유화제"
+    },
+    {
+        "purpose_machine_translated": " chặn ion kim loại",
+        "name": "",
+        "purpose_ko": "금속이온봉쇄제"
+    },
+    {
+        "purpose_machine_translated": "Chất hội tụ",
+        "name": "",
+        "purpose_ko": "수렴제"
+    },
+    {
+        "purpose_machine_translated": " chất dưỡng da (kem dưỡng ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(보습제)"
+    },
+    {
+        "purpose_machine_translated": "Chất ổn định nhũ tương; Chất tạo màng; Chất làm tăng độ nhớt (nước)",
+        "name": "",
+        "purpose_ko": "유화안정제; 피막형성제; 점도증가제(수성)"
+    },
+    {
+        "purpose_machine_translated": " chất điều hòa tóc",
+        "name": "",
+        "purpose_ko": "모발컨디셔닝제"
+    },
+    {
+        "purpose_machine_translated": " chất làm dịu da (loại khác)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(기타)"
+    },
+    {
+        "purpose_machine_translated": "Hấp thụ",
+        "name": "",
+        "purpose_ko": "흡수제"
+    },
+    {
+        "purpose_machine_translated": " tác nhân bulking (chất mở rộng)",
+        "name": "",
+        "purpose_ko": "벌킹제(증량제)"
+    },
+    {
+        "purpose_machine_translated": "Chất làm tăng độ nhớt (dung dịch nước)",
+        "name": "",
+        "purpose_ko": "점도증가제(수성)"
+    },
+    {
+        "purpose_machine_translated": "Chất dưỡng da (kem dưỡng ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(보습제)"
+    },
+    {
+        "purpose_machine_translated": "chất tẩy rửa",
+        "name": "",
+        "purpose_ko": "세정제"
+    },
+    {
+        "purpose_machine_translated": " chất điều chỉnh trượt / chất bôi trơn",
+        "name": "",
+        "purpose_ko": "미끄럼조정제/활택제"
+    },
+    {
+        "purpose_machine_translated": " chất điều chỉnh bề mặt",
+        "name": "",
+        "purpose_ko": "표면조정제"
+    },
+    {
+        "purpose_machine_translated": " chất tẩy lông",
+        "name": "",
+        "purpose_ko": "제모제"
+    },
+    {
+        "purpose_machine_translated": " chất lơ lửng chất không phải chất hoạt động bề mặt",
+        "name": "",
+        "purpose_ko": "현탁화제-비계면활성제"
+    },
+    {
+        "purpose_machine_translated": " chất làm đặc-tan trong nước",
+        "name": "",
+        "purpose_ko": "점증제-수용성"
+    },
+    {
+        "purpose_machine_translated": " chất làm đặc-không tan",
+        "name": "",
+        "purpose_ko": "점증제-비수용성"
+    },
+    {
+        "purpose_machine_translated": " chất bảo quản khử trùng",
+        "name": "",
+        "purpose_ko": "살균보존제"
+    },
+    {
+        "purpose_machine_translated": " chất dưỡng da (chất làm ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(보습제)"
+    },
+    {
+        "purpose_machine_translated": " chất làm cháy",
+        "name": "",
+        "purpose_ko": "벌킹제"
+    },
+    {
+        "purpose_machine_translated": "Hàng rào độ ẩm",
+        "name": "",
+        "purpose_ko": "수분차단제"
+    },
+    {
+        "purpose_machine_translated": " chất chống biến màu",
+        "name": "",
+        "purpose_ko": "변색방지제"
+    },
+    {
+        "purpose_machine_translated": " làm se da",
+        "name": "",
+        "purpose_ko": "수렴제"
+    },
+    {
+        "purpose_machine_translated": "Chất phủ",
+        "name": "",
+        "purpose_ko": "피막제"
+    },
+    {
+        "purpose_machine_translated": "đệm pH",
+        "name": "",
+        "purpose_ko": "pH 완충제"
+    },
+    {
+        "purpose_machine_translated": "Tác nhân dưỡng da (dưỡng ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(보습제)"
+    },
+    {
+        "purpose_machine_translated": " chất dưỡng da (rào cản độ ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(수분차단제)"
+    },
+    {
+        "purpose_machine_translated": " khử mùi",
+        "name": "",
+        "purpose_ko": "탈취제"
+    },
+    {
+        "purpose_machine_translated": " giảm độ nhớt",
+        "name": "",
+        "purpose_ko": "점도감소제"
+    },
+    {
+        "purpose_machine_translated": " chất chống nắng",
+        "name": "",
+        "purpose_ko": "자외선차단제"
+    },
+    {
+        "purpose_machine_translated": "Chất tạo cảm xúc",
+        "name": "",
+        "purpose_ko": "피부연화제"
+    },
+    {
+        "purpose_machine_translated": " chất hoạt động bề mặt (chất tẩy rửa)",
+        "name": "",
+        "purpose_ko": "계면활성제(세정제)"
+    },
+    {
+        "purpose_machine_translated": "Chất chống gàu",
+        "name": "",
+        "purpose_ko": "비듬방지제"
+    },
+    {
+        "purpose_machine_translated": " chất chống oxy hóa",
+        "name": "",
+        "purpose_ko": "산화방지제"
+    },
+    {
+        "purpose_machine_translated": " chất ức chế sự đổi màu",
+        "name": "",
+        "purpose_ko": "변색방지제"
+    },
+    {
+        "purpose_machine_translated": " chất làm đặc-không tan trong nước",
+        "name": "",
+        "purpose_ko": "점증제-비수용성"
+    },
+    {
+        "purpose_machine_translated": " ngăn chặn sự bốc hơi ẩm",
+        "name": "",
+        "purpose_ko": "수분증발차단제"
+    },
+    {
+        "purpose_machine_translated": "Tác nhân Bulking (chất mở rộng)",
+        "name": "",
+        "purpose_ko": "벌킹제(증량제)"
+    },
+    {
+        "purpose_machine_translated": "Thuốc nhuộm tóc",
+        "name": "",
+        "purpose_ko": "염모제"
+    },
+    {
+        "purpose_machine_translated": "Hương liệu và chất khử",
+        "name": "",
+        "purpose_ko": "착향제"
+    },
+    {
+        "purpose_machine_translated": " duỗi tóc",
+        "name": "",
+        "purpose_ko": "축모교정제"
+    },
+    {
+        "purpose_machine_translated": " chất dưỡng da (chất chống ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(수분차단제)"
+    },
+    {
+        "purpose_machine_translated": " chất điều hòa da (hàng rào độ ẩm)",
+        "name": "",
+        "purpose_ko": "피부컨디셔닝제(수분차단제)"
+    },
+    {
+        "purpose_machine_translated": " đình chỉ tác nhân-không chất hoạt động bề mặt",
+        "name": "",
+        "purpose_ko": "현탁화제-비계면활성제"
+    },
+    {
+        "purpose_machine_translated": " kem chống nắng",
+        "name": "",
+        "purpose_ko": "자외선차단제"
+    },
+    {
+        "purpose_machine_translated": " bulking (tác nhân mở rộng)",
+        "name": "",
+        "purpose_ko": "벌킹제(증량제)"
+    },
+    {
+        "purpose_machine_translated": "Dầu xả",
+        "name": "",
+        "purpose_ko": "모발조정제"
+    },
+    {
+        "purpose_machine_translated": " chất ngăn bay hơi ẩm",
+        "name": "",
+        "purpose_ko": "수분증발차단제"
+    },
+    {
+        "purpose_machine_translated": "Chất làm ẩm da",
+        "name": "",
+        "purpose_ko": "피부보습제"
+    },
+    {
+        "purpose_machine_translated": "Chất điều chế",
+        "name": "",
+        "purpose_ko": "변성제"
+    },
+    {
+        "purpose_machine_translated": "Tác nhân mờ đục",
+        "name": "",
+        "purpose_ko": "불투명화제"
+    },
+    {
+        "purpose_machine_translated": "Dưỡng ẩm da",
+        "name": "",
+        "purpose_ko": "피부보습제"
+    },
+    {
+        "purpose_machine_translated": "Chất hoạt động bề mặt-bọt",
+        "name": "",
+        "purpose_ko": "계면활성제-거품형성제"
+    },
+    {
+        "purpose_machine_translated": " thấm nước",
+        "name": "",
+        "purpose_ko": "흡수제"
+    },
+    {
+        "purpose_machine_translated": " đệm pH",
+        "name": "",
+        "purpose_ko": "pH 완충제"
+    },
+    {
+        "purpose_machine_translated": "Đại lý điều hòa móng tay",
+        "name": "",
+        "purpose_ko": "손톱컨디셔닝제"
+    },
+    {
+        "purpose_machine_translated": " làm trắng da (mỹ phẩm chức năng)",
+        "name": "",
+        "purpose_ko": "미백개선(기능성화장품)"
+    },
+    {
+        "purpose_machine_translated": " chất tạo màu da",
+        "name": "",
+        "purpose_ko": "피부교질화제"
+    }
+]

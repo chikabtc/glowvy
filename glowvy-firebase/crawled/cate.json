@@ -1,0 +1,4143 @@
+[
+    {
+        "ko_name": "베이비",
+        "grand_total_count": 14,
+        "name": "Chăm sóc trẻ em",
+        "en_name": "Baby",
+        "id": 18,
+        "firstIsNew": false,
+        "sub_categories": [
+            {
+                "secondIsNew": false,
+                "level": 1,
+                "ko_name": "스킨케어",
+                "showMergedChildren": true,
+                "id": 91,
+                "name": "Chăm sóc da",
+                "grand_total_count": 1,
+                "sub_categories": [
+                    {
+                        "en_name": "Lotion & Cream",
+                        "name": "Sữa dưỡng & Kem dưỡng",
+                        "thirdIsNew": false,
+                        "id": 275,
+                        "level": 2,
+                        "ko_name": "로션&크림",
+                        "grand_total_count": 2
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "id": 276,
+                        "ko_name": "수딩젤",
+                        "name": "Gel làm dịu da",
+                        "level": 2,
+                        "en_name": "Soothing gel",
+                        "grand_total_count": 0
+                    }
+                ],
+                "en_name": "Skincare"
+            },
+            {
+                "secondIsNew": false,
+                "ko_name": "선케어",
+                "en_name": "Sun care",
+                "name": "Chống nắng",
+                "showMergedChildren": true,
+                "level": 1,
+                "id": 92,
+                "grand_total_count": 5,
+                "sub_categories": [
+                    {
+                        "en_name": "Sunscreen",
+                        "id": 277,
+                        "thirdIsNew": false,
+                        "ko_name": "선크림",
+                        "name": "Kem chống nắng",
+                        "grand_total_count": 10,
+                        "level": 2
+                    },
+                    {
+                        "level": 2,
+                        "grand_total_count": 0,
+                        "id": 278,
+                        "en_name": "Sun cushion",
+                        "name": "Cushion chống nắng",
+                        "thirdIsNew": false,
+                        "ko_name": "선쿠션"
+                    }
+                ]
+            },
+            {
+                "grand_total_count": 4,
+                "id": 93,
+                "sub_categories": [
+                    {
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "name": "Sữa & Kem dưỡng thể",
+                        "en_name": "Body lotion & cream",
+                        "id": 279,
+                        "ko_name": "바디로션&크림",
+                        "grand_total_count": 4
+                    },
+                    {
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "grand_total_count": 4,
+                        "en_name": "Body oil",
+                        "id": 280,
+                        "name": "Dầu dưỡng thể",
+                        "ko_name": "바디오일"
+                    },
+                    {
+                        "id": 281,
+                        "grand_total_count": 0,
+                        "en_name": "Powder",
+                        "level": 2,
+                        "ko_name": "파우더",
+                        "thirdIsNew": false,
+                        "name": "Phấn rôm"
+                    }
+                ],
+                "en_name": "Body care",
+                "showMergedChildren": true,
+                "ko_name": "바디케어",
+                "secondIsNew": false,
+                "name": "Chăm sóc toàn thân",
+                "level": 1
+            },
+            {
+                "grand_total_count": 4,
+                "ko_name": "클렌징",
+                "showMergedChildren": true,
+                "level": 1,
+                "en_name": "Cleansing",
+                "secondIsNew": false,
+                "id": 94,
+                "sub_categories": [
+                    {
+                        "id": 282,
+                        "name": "Sữa rửa mặt",
+                        "grand_total_count": 2,
+                        "level": 2,
+                        "ko_name": "페이셜클렌저",
+                        "en_name": "Facial cleanser",
+                        "thirdIsNew": false
+                    },
+                    {
+                        "id": 283,
+                        "thirdIsNew": false,
+                        "en_name": "Body & Hair cleanser",
+                        "ko_name": "바디&헤어클렌저",
+                        "name": "Sữa tắm toàn thân",
+                        "level": 2,
+                        "grand_total_count": 6
+                    }
+                ],
+                "name": "Làm sạch"
+            }
+        ],
+        "level": 0,
+        "firstCategoryImage": "https:&&dn5hzapyfrpio.cloudfront.net&home&glowmee&upload&category&20200227&1582766840374.png"
+    },
+    {
+        "firstIsNew": false,
+        "grand_total_count": 202,
+        "level": 0,
+        "name": "Chăm sóc da toàn thân",
+        "en_name": "Bath & Body",
+        "ko_name": "배쓰&바디",
+        "id": 10,
+        "firstCategoryImage": "https:&&dn5hzapyfrpio.cloudfront.net&home&glowmee&upload&category&20200227&1582766751752.png",
+        "sub_categories": [
+            {
+                "showMergedChildren": true,
+                "name": "Kem & Sữa dưỡng thể",
+                "grand_total_count": 58,
+                "secondIsNew": false,
+                "level": 1,
+                "en_name": "Body lotion & cream",
+                "ko_name": "바디로션&크림",
+                "sub_categories": [
+                    {
+                        "ko_name": "바디로션",
+                        "name": "Sữa dưỡng thể",
+                        "grand_total_count": 86,
+                        "id": 153,
+                        "en_name": "Body lotion",
+                        "thirdIsNew": false,
+                        "level": 2
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "ko_name": "바디크림",
+                        "id": 154,
+                        "name": "",
+                        "en_name": "Kem dưỡng thể",
+                        "grand_total_count": 28
+                    },
+                    {
+                        "id": 155,
+                        "ko_name": "바디버터",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "grand_total_count": 0,
+                        "en_name": "Body butter",
+                        "name": "Bơ dưỡng thể"
+                    }
+                ],
+                "id": 49
+            },
+            {
+                "id": 50,
+                "secondIsNew": false,
+                "sub_categories": [
+                    {
+                        "en_name": "Body oil",
+                        "thirdIsNew": false,
+                        "id": 156,
+                        "grand_total_count": 16,
+                        "name": "Dầu dưỡng thể",
+                        "level": 2,
+                        "ko_name": "바디오일"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "grand_total_count": 6,
+                        "en_name": " Body balm",
+                        "name": "Sáp dưỡng thể",
+                        "level": 2,
+                        "ko_name": "바디밤",
+                        "id": 157
+                    }
+                ],
+                "showMergedChildren": true,
+                "en_name": "Body oil & balm",
+                "level": 1,
+                "ko_name": "바디오일&밤",
+                "name": "Dầu & Sáp dưỡng thể",
+                "grand_total_count": 11
+            },
+            {
+                "ko_name": "바디미스트",
+                "secondIsNew": false,
+                "level": 1,
+                "en_name": "Body mist",
+                "showMergedChildren": false,
+                "name": "Xịt thơm toàn thân",
+                "id": 51,
+                "sub_categories": [],
+                "grand_total_count": 8
+            },
+            {
+                "ko_name": "바디슬리밍",
+                "id": 52,
+                "level": 1,
+                "sub_categories": [],
+                "en_name": "Body slimming",
+                "grand_total_count": 2,
+                "secondIsNew": false,
+                "name": "Kem tan mỡ",
+                "showMergedChildren": false
+            },
+            {
+                "en_name": "Deodorant",
+                "name": "Khử mùi dưới cánh tay",
+                "level": 1,
+                "grand_total_count": 23,
+                "sub_categories": [
+                    {
+                        "en_name": "Deodorant stick",
+                        "ko_name": "데오드란트스틱",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "id": 158,
+                        "grand_total_count": 8,
+                        "name": "Sáp khử mùi"
+                    },
+                    {
+                        "grand_total_count": 16,
+                        "name": "Lăn khử mùi",
+                        "level": 2,
+                        "en_name": "Deodorant roll-on",
+                        "thirdIsNew": false,
+                        "id": 159,
+                        "ko_name": "데오드란트롤온"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "ko_name": "데오드란트스프레이",
+                        "id": 160,
+                        "name": "Xịt khử mùi",
+                        "en_name": "Deodorant spray",
+                        "grand_total_count": 20
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "en_name": "Deodorant tissue & cream",
+                        "ko_name": "데오드란트티슈&크림",
+                        "id": 304,
+                        "level": 2,
+                        "name": "Khăn ướt & Kem khử mùi",
+                        "grand_total_count": 2
+                    }
+                ],
+                "secondIsNew": false,
+                "id": 53,
+                "showMergedChildren": true,
+                "ko_name": "데오드란트"
+            },
+            {
+                "name": "Massage toàn thân",
+                "showMergedChildren": true,
+                "ko_name": "바디마사지",
+                "id": 54,
+                "level": 1,
+                "grand_total_count": 0,
+                "sub_categories": [
+                    {
+                        "grand_total_count": 0,
+                        "ko_name": "마사지오일&크림",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "id": 161,
+                        "name": "Dầu & Kem massage",
+                        "en_name": "Massage oil&cream"
+                    },
+                    {
+                        "ko_name": "마사지젤&패치",
+                        "id": 163,
+                        "grand_total_count": 0,
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "name": "Gel & Miếng dán massage",
+                        "en_name": "Massage gel&patch"
+                    }
+                ],
+                "en_name": "Body massage",
+                "secondIsNew": false
+            },
+            {
+                "secondIsNew": false,
+                "grand_total_count": 55,
+                "ko_name": "핸드케어",
+                "id": 55,
+                "en_name": "Hand care",
+                "name": "Chăm sóc da tay",
+                "showMergedChildren": true,
+                "level": 1,
+                "sub_categories": [
+                    {
+                        "thirdIsNew": false,
+                        "id": 165,
+                        "en_name": "Hand cream",
+                        "grand_total_count": 102,
+                        "name": "Kem dưỡng da tay",
+                        "level": 2,
+                        "ko_name": "핸드크림"
+                    },
+                    {
+                        "en_name": "Hand wash",
+                        "level": 2,
+                        "grand_total_count": 2,
+                        "id": 166,
+                        "thirdIsNew": false,
+                        "ko_name": "핸드워시",
+                        "name": "Nước rửa tay"
+                    },
+                    {
+                        "id": 306,
+                        "grand_total_count": 6,
+                        "thirdIsNew": false,
+                        "en_name": "Hand sanitizer",
+                        "ko_name": "핸드새니타이저",
+                        "level": 2,
+                        "name": "Nước rửa tay khô"
+                    },
+                    {
+                        "grand_total_count": 0,
+                        "name": "Mặt nạ dưỡng da tay",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "id": 167,
+                        "ko_name": "핸드마스크",
+                        "en_name": "Hand mask"
+                    }
+                ]
+            },
+            {
+                "showMergedChildren": true,
+                "level": 1,
+                "grand_total_count": 7,
+                "en_name": "Foot care",
+                "name": "Chăm sóc da chân",
+                "secondIsNew": false,
+                "ko_name": "풋케어",
+                "id": 56,
+                "sub_categories": [
+                    {
+                        "en_name": "Foot cream",
+                        "id": 168,
+                        "grand_total_count": 8,
+                        "ko_name": "풋크림",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "name": "Kem dưỡng da chân"
+                    },
+                    {
+                        "name": "Xà phòng rửa chân",
+                        "ko_name": "풋샴푸",
+                        "thirdIsNew": false,
+                        "grand_total_count": 0,
+                        "en_name": "Foot shampoo",
+                        "level": 2,
+                        "id": 169
+                    },
+                    {
+                        "grand_total_count": 4,
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "ko_name": "풋스프레이",
+                        "name": "Xịt chân",
+                        "id": 170,
+                        "en_name": "Footspray"
+                    },
+                    {
+                        "grand_total_count": 2,
+                        "en_name": "Foot mask",
+                        "level": 2,
+                        "ko_name": "풋마스크",
+                        "thirdIsNew": false,
+                        "id": 171,
+                        "name": "Mặt nạ dưỡng da chân"
+                    },
+                    {
+                        "ko_name": "풋스크럽",
+                        "id": 172,
+                        "name": "tẩy da chết cho chân",
+                        "grand_total_count": 0,
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "en_name": "Foot scrubs"
+                    }
+                ]
+            },
+            {
+                "name": "Tắm & Dụng cụ tắm",
+                "grand_total_count": 31,
+                "id": 57,
+                "secondIsNew": false,
+                "level": 1,
+                "en_name": "Bath & Shower",
+                "ko_name": "배쓰&샤워",
+                "showMergedChildren": true,
+                "sub_categories": [
+                    {
+                        "ko_name": "바디워시",
+                        "name": "sữa tắm",
+                        "id": 173,
+                        "level": 2,
+                        "grand_total_count": 36,
+                        "thirdIsNew": false,
+                        "en_name": "body wash"
+                    },
+                    {
+                        "grand_total_count": 2,
+                        "id": 174,
+                        "ko_name": "샤워젤",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "en_name": "Shower gel",
+                        "name": "Gel tắm"
+                    },
+                    {
+                        "name": "Tẩy da chết toàn thân",
+                        "ko_name": "바디스크럽",
+                        "grand_total_count": 12,
+                        "id": 175,
+                        "level": 2,
+                        "synonyms": [
+                            "Tẩy tế bào chết toàn thân"
+                        ],
+                        "thirdIsNew": false,
+                        "en_name": "Body scrubs"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "name": "Bánh tắm tạo bọt",
+                        "id": 176,
+                        "ko_name": "입욕제",
+                        "level": 2,
+                        "en_name": "Bubble bar",
+                        "grand_total_count": 2
+                    },
+                    {
+                        "grand_total_count": 8,
+                        "thirdIsNew": false,
+                        "id": 177,
+                        "en_name": "Body soap",
+                        "ko_name": "바디솝",
+                        "level": 2,
+                        "name": "Xà bông tắm"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "ko_name": "샤워도구",
+                        "id": 178,
+                        "en_name": "Shower tools",
+                        "name": "Dụng cụ tắm",
+                        "grand_total_count": 2,
+                        "level": 2
+                    }
+                ]
+            },
+            {
+                "grand_total_count": 1,
+                "showMergedChildren": false,
+                "id": 58,
+                "level": 1,
+                "ko_name": "바디메이크업",
+                "en_name": "Body makeup",
+                "sub_categories": [],
+                "name": "Trang điểm cơ thể",
+                "secondIsNew": false
+            },
+            {
+                "secondIsNew": false,
+                "ko_name": "제모용품",
+                "name": "Tẩy lông",
+                "id": 59,
+                "en_name": "Hair removal",
+                "showMergedChildren": true,
+                "sub_categories": [
+                    {
+                        "grand_total_count": 2,
+                        "ko_name": "제모왁스",
+                        "level": 2,
+                        "en_name": "Hair wax",
+                        "id": 179,
+                        "name": "Sáp wax lông",
+                        "thirdIsNew": false
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "name": "Kem tẩy lông",
+                        "grand_total_count": 4,
+                        "id": 180,
+                        "level": 2,
+                        "ko_name": "제모크림",
+                        "en_name": "Hair removal cream"
+                    },
+                    {
+                        "level": 2,
+                        "grand_total_count": 6,
+                        "name": "Dụng cụ cạo lông",
+                        "ko_name": "여성면도기",
+                        "thirdIsNew": false,
+                        "id": 181,
+                        "en_name": "Hair shaver"
+                    }
+                ],
+                "level": 1,
+                "grand_total_count": 6
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "firstCategoryImage": "https:&&dn5hzapyfrpio.cloudfront.net&home&glowmee&upload&category&20200227&1582766709637.png",
+        "grand_total_count": 157,
+        "sub_categories": [
+            {
+                "grand_total_count": 77,
+                "en_name": "Brush",
+                "name": "Cọ trang điểm",
+                "showMergedChildren": true,
+                "level": 1,
+                "ko_name": "브러시",
+                "sub_categories": [
+                    {
+                        "thirdIsNew": false,
+                        "name": "Cọ tán nền",
+                        "grand_total_count": 34,
+                        "level": 2,
+                        "ko_name": "파운데이션브러시",
+                        "en_name": "Foundation brush",
+                        "id": 94
+                    },
+                    {
+                        "name": "Cọ phủ phấn",
+                        "ko_name": "파우더브러시",
+                        "grand_total_count": 12,
+                        "level": 2,
+                        "id": 95,
+                        "thirdIsNew": false,
+                        "en_name": "Powder brush"
+                    },
+                    {
+                        "id": 96,
+                        "name": "Cọ đánh má",
+                        "grand_total_count": 30,
+                        "level": 2,
+                        "en_name": "Cheeck brush",
+                        "thirdIsNew": false,
+                        "ko_name": "치크브러시"
+                    },
+                    {
+                        "ko_name": "컨실러브러시",
+                        "thirdIsNew": false,
+                        "en_name": "Concealer brush",
+                        "id": 97,
+                        "name": "Cọ che khuyết điểm",
+                        "level": 2,
+                        "grand_total_count": 6
+                    },
+                    {
+                        "id": 98,
+                        "name": "Cọ tán màu mắt",
+                        "en_name": "Eyeshadow brush",
+                        "thirdIsNew": false,
+                        "ko_name": "아이섀도우브러시",
+                        "grand_total_count": 48,
+                        "level": 2
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "ko_name": "아이브로우브러시",
+                        "en_name": "Eyebrow crush",
+                        "grand_total_count": 10,
+                        "name": "Cọ kẻ mày",
+                        "id": 99
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "grand_total_count": 4,
+                        "name": "Cọ kẻ mắt",
+                        "en_name": "Eyeliner brush",
+                        "id": 100,
+                        "level": 2,
+                        "ko_name": "아이라이너브러시"
+                    },
+                    {
+                        "en_name": "Lip brush",
+                        "level": 2,
+                        "grand_total_count": 4,
+                        "ko_name": "립브러시",
+                        "id": 101,
+                        "thirdIsNew": false,
+                        "name": "Cọ viền môi"
+                    },
+                    {
+                        "en_name": "Brush set",
+                        "thirdIsNew": false,
+                        "ko_name": "브러시세트",
+                        "level": 2,
+                        "grand_total_count": 6,
+                        "id": 102,
+                        "name": "Set cọ trang điểm"
+                    }
+                ],
+                "id": 29,
+                "secondIsNew": false
+            },
+            {
+                "ko_name": "스펀지&퍼프",
+                "id": 30,
+                "en_name": "Sponge & Puff",
+                "level": 1,
+                "showMergedChildren": true,
+                "sub_categories": [
+                    {
+                        "ko_name": "스펀지",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "grand_total_count": 24,
+                        "en_name": "Sponge",
+                        "id": 103,
+                        "name": "Bông tán nền"
+                    },
+                    {
+                        "level": 2,
+                        "ko_name": "퍼프",
+                        "grand_total_count": 24,
+                        "name": "Mút tán cushion",
+                        "id": 104,
+                        "thirdIsNew": false,
+                        "en_name": "Puff"
+                    }
+                ],
+                "secondIsNew": false,
+                "grand_total_count": 24,
+                "name": "Bông mút trang điểm"
+            },
+            {
+                "sub_categories": [
+                    {
+                        "grand_total_count": 2,
+                        "id": 105,
+                        "name": "Mi giả",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "en_name": "Eyelash",
+                        "ko_name": "아이래시"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "grand_total_count": 16,
+                        "name": "Kẹp bấm mi",
+                        "ko_name": "뷰러",
+                        "id": 106,
+                        "level": 2,
+                        "en_name": "Curler"
+                    },
+                    {
+                        "grand_total_count": 6,
+                        "level": 2,
+                        "name": "Dụng cụ tỉa lông mày",
+                        "id": 107,
+                        "thirdIsNew": false,
+                        "en_name": "Eyebrow trimmer",
+                        "ko_name": "눈썹정리도구"
+                    },
+                    {
+                        "grand_total_count": 6,
+                        "id": 108,
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "ko_name": "기름종이",
+                        "name": "Giấy thấm dầu",
+                        "en_name": "Oil control paper"
+                    },
+                    {
+                        "grand_total_count": 54,
+                        "ko_name": "화장솜",
+                        "level": 2,
+                        "name": "Bông tẩy trang",
+                        "id": 109,
+                        "thirdIsNew": false,
+                        "en_name": "Cotton pad"
+                    },
+                    {
+                        "grand_total_count": 6,
+                        "ko_name": "브러시클렌저",
+                        "en_name": "Brush cleanser",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "id": 110,
+                        "name": "Dụng cụ rửa cọ"
+                    },
+                    {
+                        "id": 111,
+                        "thirdIsNew": false,
+                        "ko_name": "기타",
+                        "level": 2,
+                        "grand_total_count": 22,
+                        "name": "khác",
+                        "en_name": "etc."
+                    }
+                ],
+                "level": 1,
+                "secondIsNew": false,
+                "showMergedChildren": true,
+                "ko_name": "메이크업소품",
+                "id": 31,
+                "name": "Phụ kiện trang điểm",
+                "grand_total_count": 56,
+                "en_name": "Makeup accessories"
+            }
+        ],
+        "level": 0,
+        "en_name": "Beauty tool",
+        "name": "Dụng cụ làm đẹp",
+        "ko_name": "뷰티툴",
+        "firstIsNew": false
+    },
+    {
+        "firstCategoryImage": "https:&&dn5hzapyfrpio.cloudfront.net&home&glowmee&upload&category&20200227&1582766717764.png",
+        "en_name": "Cleansing",
+        "level": 0,
+        "sub_categories": [
+            {
+                "secondIsNew": false,
+                "name": "Rửa mặt",
+                "grand_total_count": 201,
+                "id": 32,
+                "showMergedChildren": true,
+                "ko_name": "페이셜클렌저",
+                "sub_categories": [
+                    {
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "grand_total_count": 262,
+                        "en_name": "Cleansing foam",
+                        "id": 112,
+                        "name": "Sữa rửa mặt tạo bọt",
+                        "ko_name": "클렌징폼"
+                    },
+                    {
+                        "grand_total_count": 28,
+                        "en_name": "Bubble cleanser",
+                        "ko_name": "버블클렌저",
+                        "name": "Sữa rửa mặt dạng bọt",
+                        "id": 113,
+                        "level": 2,
+                        "thirdIsNew": false
+                    },
+                    {
+                        "id": 114,
+                        "level": 2,
+                        "en_name": "Cleansing gel",
+                        "name": "Gel rửa mặt",
+                        "grand_total_count": 78,
+                        "ko_name": "클렌징젤",
+                        "synonyms": [
+                            "Rửa mặt dạng gel"
+                        ],
+                        "thirdIsNew": false
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "name": "Soap rửa mặt",
+                        "en_name": "Cleansing soap",
+                        "ko_name": "클렌징솝",
+                        "synonyms": [
+                            "Xà bông rửa mặt"
+                        ],
+                        "id": 115,
+                        "level": 2,
+                        "grand_total_count": 20
+                    },
+                    {
+                        "grand_total_count": 8,
+                        "ko_name": "파우더워시",
+                        "en_name": "Powder cleanser",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "name": "Bột rửa mặt",
+                        "id": 116
+                    }
+                ],
+                "en_name": "Facial cleanser",
+                "level": 1
+            },
+            {
+                "name": "Tẩy trang",
+                "secondIsNew": false,
+                "sub_categories": [
+                    {
+                        "ko_name": "클렌징밤",
+                        "en_name": "Cleansing balm",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "grand_total_count": 24,
+                        "id": 117,
+                        "name": "Sáp tẩy trang"
+                    },
+                    {
+                        "synonyms": [
+                            "Tẩy trang dạng dầu"
+                        ],
+                        "name": "Dầu tẩy trang",
+                        "en_name": "Cleansing oil",
+                        "grand_total_count": 76,
+                        "id": 118,
+                        "ko_name": "클렌징오일",
+                        "level": 2,
+                        "thirdIsNew": false
+                    },
+                    {
+                        "id": 119,
+                        "name": "Nước tẩy trang",
+                        "synonyms": [
+                            "Tẩy trang dạng nước"
+                        ],
+                        "level": 2,
+                        "ko_name": "클렌징워터",
+                        "grand_total_count": 96,
+                        "en_name": "Cleansing water",
+                        "thirdIsNew": false
+                    },
+                    {
+                        "id": 120,
+                        "level": 2,
+                        "synonyms": [
+                            "Tẩy trang dạng sữa"
+                        ],
+                        "name": "Sữa tẩy trang",
+                        "ko_name": "클렌징로션",
+                        "grand_total_count": 20,
+                        "en_name": "Cleansing lotion",
+                        "thirdIsNew": false
+                    },
+                    {
+                        "id": 121,
+                        "thirdIsNew": false,
+                        "en_name": "Cleansing cream",
+                        "ko_name": "클렌징크림",
+                        "level": 2,
+                        "synonyms": [
+                            "Tẩy trang dạng kem"
+                        ],
+                        "grand_total_count": 24,
+                        "name": "Kem tẩy trang"
+                    },
+                    {
+                        "grand_total_count": 20,
+                        "id": 122,
+                        "ko_name": "클렌징티슈",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "name": "Khăn ướt tẩy trang",
+                        "en_name": "Cleansing tissue"
+                    },
+                    {
+                        "synonyms": [
+                            "Pad tẩy trang"
+                        ],
+                        "ko_name": "클렌징패드",
+                        "id": 123,
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "name": "Bông thấm tẩy trang",
+                        "grand_total_count": 10,
+                        "en_name": "Cleansing pad"
+                    }
+                ],
+                "showMergedChildren": true,
+                "grand_total_count": 135,
+                "id": 33,
+                "en_name": "Makeup remover",
+                "level": 1,
+                "ko_name": "메이크업클렌저"
+            },
+            {
+                "showMergedChildren": false,
+                "ko_name": "포인트리무버",
+                "secondIsNew": false,
+                "en_name": "Point remover",
+                "id": 34,
+                "sub_categories": [],
+                "grand_total_count": 30,
+                "level": 1,
+                "name": "Tẩy trang chuyên dụng"
+            },
+            {
+                "synonyms": [
+                    "Tẩy tế bào chết"
+                ],
+                "grand_total_count": 36,
+                "id": 35,
+                "ko_name": "각질케어",
+                "sub_categories": [
+                    {
+                        "en_name": "scrubs",
+                        "level": 2,
+                        "synonyms": [
+                            "Tẩy tế bào chết dạng hạt"
+                        ],
+                        "id": 124,
+                        "name": "Tẩy da chết dạng hạt",
+                        "ko_name": "스크럽",
+                        "thirdIsNew": false,
+                        "grand_total_count": 32
+                    },
+                    {
+                        "name": "Tẩy da chết dạng kì",
+                        "grand_total_count": 34,
+                        "ko_name": "필링젤",
+                        "synonyms": [
+                            "Tẩy tế bào chết dạng kì",
+                            "Gel tẩy da chết",
+                            "Gel tẩy tế bào chết"
+                        ],
+                        "level": 2,
+                        "id": 125,
+                        "thirdIsNew": false,
+                        "en_name": "Peeling gel"
+                    },
+                    {
+                        "en_name": "Peeling pad",
+                        "grand_total_count": 6,
+                        "id": 126,
+                        "synonyms": [
+                            "Bông tẩy tế bào chết",
+                            "Pad tẩy da chết",
+                            "Pad tẩy tế bào chết"
+                        ],
+                        "name": "Bông tẩy da chết",
+                        "level": 2,
+                        "ko_name": "필링패드",
+                        "thirdIsNew": false
+                    }
+                ],
+                "name": "Tẩy da chết",
+                "secondIsNew": false,
+                "en_name": "Exfoliator",
+                "showMergedChildren": true,
+                "level": 1
+            },
+            {
+                "name": "Dụng cụ rửa mặt",
+                "level": 1,
+                "grand_total_count": 12,
+                "en_name": "Cleansing tool",
+                "ko_name": "클렌징도구",
+                "showMergedChildren": false,
+                "id": 36,
+                "sub_categories": [],
+                "secondIsNew": false
+            }
+        ],
+        "name": "Làm sạch",
+        "ko_name": "클렌징",
+        "id": 7,
+        "firstIsNew": false,
+        "grand_total_count": 414
+    },
+    {
+        "level": 0,
+        "id": 14,
+        "firstCategoryImage": "https:&&dn5hzapyfrpio.cloudfront.net&home&glowmee&upload&category&20200227&1582766797876.png",
+        "firstIsNew": false,
+        "name": "Kính áp tròng & Lens",
+        "grand_total_count": 0,
+        "en_name": "Contact lens",
+        "sub_categories": [
+            {
+                "showMergedChildren": true,
+                "secondIsNew": false,
+                "ko_name": "컬러렌즈",
+                "en_name": "Color lens",
+                "sub_categories": [
+                    {
+                        "level": 2,
+                        "id": 238,
+                        "grand_total_count": 0,
+                        "ko_name": "브라운렌즈",
+                        "thirdIsNew": false,
+                        "name": "Lens nâu",
+                        "en_name": "Brown lens"
+                    },
+                    {
+                        "name": "lens xám",
+                        "grand_total_count": 0,
+                        "thirdIsNew": false,
+                        "en_name": "Grey lens",
+                        "ko_name": "그레이렌즈",
+                        "level": 2,
+                        "id": 239
+                    },
+                    {
+                        "level": 2,
+                        "ko_name": "초코렌즈",
+                        "id": 240,
+                        "grand_total_count": 0,
+                        "name": "Lens choco",
+                        "en_name": "Choco lens",
+                        "thirdIsNew": false
+                    },
+                    {
+                        "ko_name": "블랙렌즈",
+                        "level": 2,
+                        "en_name": "black lens",
+                        "id": 241,
+                        "thirdIsNew": false,
+                        "name": "Lens đen",
+                        "grand_total_count": 0
+                    },
+                    {
+                        "ko_name": "블루&그린렌즈",
+                        "thirdIsNew": false,
+                        "name": "Lens xanh",
+                        "grand_total_count": 0,
+                        "en_name": "Blue & Green lens",
+                        "id": 242,
+                        "level": 2
+                    },
+                    {
+                        "id": 243,
+                        "ko_name": "핑크&바이올렛렌즈",
+                        "name": "Lens hồng&tím",
+                        "thirdIsNew": false,
+                        "grand_total_count": 0,
+                        "level": 2,
+                        "en_name": "Pink & Violet lens"
+                    }
+                ],
+                "level": 1,
+                "id": 80,
+                "name": "Lens màu",
+                "grand_total_count": 0
+            },
+            {
+                "grand_total_count": 0,
+                "en_name": "Transparent lens",
+                "id": 81,
+                "name": "Lens trong",
+                "sub_categories": [],
+                "showMergedChildren": false,
+                "level": 1,
+                "secondIsNew": false,
+                "ko_name": "투명렌즈"
+            },
+            {
+                "secondIsNew": false,
+                "ko_name": "렌즈용품",
+                "id": 82,
+                "en_name": "Lens supplies",
+                "showMergedChildren": false,
+                "name": "Sản phẩm bổ trợ đeo lens",
+                "level": 1,
+                "grand_total_count": 0,
+                "sub_categories": []
+            }
+        ],
+        "ko_name": "렌즈"
+    },
+    {
+        "sub_categories": [
+            {
+                "grand_total_count": 40,
+                "ko_name": "블러셔",
+                "level": 1,
+                "secondIsNew": false,
+                "en_name": "Blusher",
+                "name": "má hồng",
+                "sub_categories": [
+                    {
+                        "en_name": "Powder blusher",
+                        "ko_name": "파우더블러셔",
+                        "level": 2,
+                        "id": 85,
+                        "name": "Phấn má",
+                        "thirdIsNew": false,
+                        "grand_total_count": 46
+                    },
+                    {
+                        "id": 86,
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "name": "Má hồng dạng kem & thỏi",
+                        "en_name": "Cream & Stick blusher",
+                        "grand_total_count": 18,
+                        "ko_name": "크림&스틱블러셔"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "id": 87,
+                        "ko_name": "리퀴드블러셔",
+                        "en_name": "Llquid blusher ",
+                        "name": "Má hồng dạng lỏng",
+                        "grand_total_count": 4
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "id": 88,
+                        "level": 2,
+                        "name": "Bảng màu má",
+                        "grand_total_count": 4,
+                        "en_name": "Blusher palette",
+                        "ko_name": "블러셔팔레트"
+                    },
+                    {
+                        "ko_name": "립앤치크",
+                        "name": "kem đa năng trang điểm má & môi",
+                        "level": 2,
+                        "grand_total_count": 6,
+                        "id": 89,
+                        "thirdIsNew": false,
+                        "en_name": "Lip & Cheek"
+                    }
+                ],
+                "id": 26,
+                "showMergedChildren": true
+            },
+            {
+                "level": 1,
+                "sub_categories": [
+                    {
+                        "grand_total_count": 12,
+                        "en_name": "Powder shading",
+                        "level": 2,
+                        "name": "Phấn tạo khối",
+                        "id": 90,
+                        "ko_name": "파우더쉐딩",
+                        "thirdIsNew": false
+                    },
+                    {
+                        "level": 2,
+                        "grand_total_count": 16,
+                        "thirdIsNew": false,
+                        "id": 91,
+                        "en_name": "Cream & Stick shading",
+                        "ko_name": "크림&스틱쉐딩",
+                        "name": "Tạo khối dạng kem & thỏi"
+                    },
+                    {
+                        "name": "Tạo khối dạng nước",
+                        "en_name": "Liquid shading",
+                        "thirdIsNew": false,
+                        "ko_name": "리퀴드쉐딩",
+                        "grand_total_count": 4,
+                        "id": 92,
+                        "level": 2
+                    }
+                ],
+                "en_name": "Shading",
+                "name": "Tạo khối & Shading",
+                "ko_name": "쉐딩",
+                "id": 27,
+                "showMergedChildren": true,
+                "grand_total_count": 16,
+                "secondIsNew": false
+            },
+            {
+                "secondIsNew": false,
+                "sub_categories": [
+                    {
+                        "ko_name": "파우더하이라이터",
+                        "id": 81,
+                        "grand_total_count": 6,
+                        "thirdIsNew": false,
+                        "name": "Phấn bắt sáng",
+                        "en_name": "Powder highligher",
+                        "level": 2
+                    },
+                    {
+                        "ko_name": "크림&스틱하이라이터",
+                        "name": "Highlighter dạng kem & thỏi ",
+                        "id": 82,
+                        "thirdIsNew": false,
+                        "grand_total_count": 14,
+                        "en_name": "Cream & Stick highlighter",
+                        "level": 2
+                    },
+                    {
+                        "id": 83,
+                        "en_name": "Liquid highlighter",
+                        "level": 2,
+                        "ko_name": "리퀴드하이라이터",
+                        "grand_total_count": 8,
+                        "thirdIsNew": false,
+                        "name": "Highlighter dạng lỏng"
+                    },
+                    {
+                        "id": 84,
+                        "ko_name": "하이라이터팔레트",
+                        "en_name": "Palette highlighter",
+                        "level": 2,
+                        "name": "Bảng highlighter",
+                        "grand_total_count": 0,
+                        "thirdIsNew": false
+                    }
+                ],
+                "showMergedChildren": true,
+                "level": 1,
+                "en_name": "Highlighter",
+                "name": "Bắt sáng & Highlighter",
+                "ko_name": "하이라이터",
+                "id": 25,
+                "grand_total_count": 14
+            },
+            {
+                "ko_name": "컨투어링팔레트",
+                "name": "Bảng tạo khối",
+                "showMergedChildren": false,
+                "secondIsNew": false,
+                "sub_categories": [],
+                "id": 28,
+                "level": 1,
+                "grand_total_count": 3,
+                "en_name": "Contouring palette"
+            },
+            {
+                "ko_name": "멀티팔레트",
+                "secondIsNew": false,
+                "showMergedChildren": false,
+                "en_name": "Multi palette",
+                "name": "Bảng màu đa chức năng",
+                "grand_total_count": 4,
+                "level": 1,
+                "sub_categories": [],
+                "id": 102
+            }
+        ],
+        "ko_name": "컨투어링",
+        "grand_total_count": 77,
+        "name": "Má hồng & Tạo khối & Bắt sáng",
+        "firstCategoryImage": "https:&&dn5hzapyfrpio.cloudfront.net&home&glowmee&upload&category&20200227&1582766701551.png",
+        "level": 0,
+        "id": 5,
+        "firstIsNew": false,
+        "en_name": "Contouring"
+    },
+    {
+        "grand_total_count": 4,
+        "sub_categories": [
+            {
+                "showMergedChildren": true,
+                "id": 85,
+                "grand_total_count": 4,
+                "level": 1,
+                "en_name": "Beauty device",
+                "name": "Dụng cụ chăm sóc da",
+                "secondIsNew": false,
+                "sub_categories": [
+                    {
+                        "id": 255,
+                        "grand_total_count": 2,
+                        "en_name": "LED mask",
+                        "name": "Mặt nạ đèn led",
+                        "thirdIsNew": false,
+                        "ko_name": "LED마스크",
+                        "level": 2
+                    },
+                    {
+                        "level": 2,
+                        "en_name": "Massager",
+                        "ko_name": "마사지기",
+                        "thirdIsNew": false,
+                        "id": 256,
+                        "grand_total_count": 0,
+                        "name": "dụng cụ massage"
+                    },
+                    {
+                        "grand_total_count": 4,
+                        "en_name": "Cleansing device",
+                        "level": 2,
+                        "id": 257,
+                        "name": "Máy rửa mặt",
+                        "ko_name": "진동클렌저",
+                        "thirdIsNew": false
+                    },
+                    {
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "grand_total_count": 0,
+                        "id": 258,
+                        "synonyms": [
+                            "Máy tẩy da chết"
+                        ],
+                        "name": "Máy tẩy tế bào chết",
+                        "en_name": "Peeling machine",
+                        "ko_name": "필링기"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "grand_total_count": 0,
+                        "name": "Máy nhổ lông",
+                        "id": 259,
+                        "en_name": "Epilator",
+                        "level": 2,
+                        "ko_name": "제모기"
+                    }
+                ],
+                "ko_name": "뷰티디바이스"
+            },
+            {
+                "showMergedChildren": true,
+                "sub_categories": [
+                    {
+                        "level": 2,
+                        "en_name": "Hair dryer",
+                        "ko_name": "드라이기",
+                        "name": "Máy sấy tóc",
+                        "grand_total_count": 0,
+                        "id": 260,
+                        "thirdIsNew": false
+                    },
+                    {
+                        "name": "Máy duỗi tóc",
+                        "ko_name": "판고데기",
+                        "en_name": "Straightener",
+                        "grand_total_count": 0,
+                        "id": 261,
+                        "thirdIsNew": false,
+                        "level": 2
+                    },
+                    {
+                        "ko_name": "봉고데기",
+                        "thirdIsNew": false,
+                        "name": "Máy uốn tóc",
+                        "id": 262,
+                        "level": 2,
+                        "grand_total_count": 0,
+                        "en_name": "Curling iron"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "ko_name": "미니고데기",
+                        "name": "Máy tạo kiểu mini",
+                        "grand_total_count": 0,
+                        "id": 263,
+                        "level": 2,
+                        "en_name": "Portable styler"
+                    }
+                ],
+                "ko_name": "헤어디바이스",
+                "secondIsNew": false,
+                "id": 86,
+                "en_name": "Hair device",
+                "grand_total_count": 0,
+                "level": 1,
+                "name": "Dụng cụ làm tóc"
+            }
+        ],
+        "firstIsNew": false,
+        "id": 16,
+        "firstCategoryImage": "https:&&dn5hzapyfrpio.cloudfront.net&home&glowmee&upload&category&20200227&1582766820761.png",
+        "en_name": "Device",
+        "name": "Dụng cụ làm đẹp",
+        "level": 0,
+        "ko_name": "디바이스"
+    },
+    {
+        "sub_categories": [
+            {
+                "showMergedChildren": true,
+                "sub_categories": [
+                    {
+                        "id": 71,
+                        "thirdIsNew": false,
+                        "name": "Phấn mắt lẻ",
+                        "ko_name": "싱글섀도우",
+                        "en_name": "Single shadow",
+                        "grand_total_count": 38,
+                        "level": 2
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "ko_name": "크림섀도우",
+                        "en_name": "Cream shadow",
+                        "id": 72,
+                        "name": "Phấn mắt dạng kem",
+                        "grand_total_count": 8,
+                        "level": 2
+                    },
+                    {
+                        "id": 73,
+                        "ko_name": "스틱섀도우",
+                        "name": "Phấn mắt dạng thỏi",
+                        "en_name": "Stick shadow",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "grand_total_count": 14
+                    },
+                    {
+                        "en_name": "Liquid shadow",
+                        "id": 74,
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "ko_name": "리퀴드섀도우",
+                        "grand_total_count": 8,
+                        "name": "Phấn mắt dạng lỏng"
+                    },
+                    {
+                        "name": "Bảng mắt",
+                        "en_name": "Eye palette",
+                        "grand_total_count": 70,
+                        "ko_name": "아이팔레트",
+                        "thirdIsNew": false,
+                        "id": 75,
+                        "level": 2
+                    }
+                ],
+                "ko_name": "아이섀도우",
+                "en_name": "Eye shadow",
+                "grand_total_count": 69,
+                "level": 1,
+                "name": "Phấn mắt",
+                "secondIsNew": false,
+                "id": 22
+            },
+            {
+                "grand_total_count": 59,
+                "ko_name": "아이라이너",
+                "id": 20,
+                "name": "Kẻ mắt",
+                "en_name": "Eyeliner",
+                "secondIsNew": false,
+                "level": 1,
+                "sub_categories": [
+                    {
+                        "grand_total_count": 8,
+                        "ko_name": "젤아이라이너",
+                        "id": 64,
+                        "name": "Gel kẻ mắt",
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "en_name": "Gel eyeliner"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "name": "Chì kẻ mắt",
+                        "ko_name": "펜슬아이라이너",
+                        "id": 65,
+                        "en_name": "Pencil eyeliner",
+                        "grand_total_count": 38
+                    },
+                    {
+                        "grand_total_count": 72,
+                        "name": "Bút dạ kẻ mắt",
+                        "ko_name": "리퀴드아이라이너",
+                        "thirdIsNew": false,
+                        "en_name": "Liquid eyeliner",
+                        "id": 66,
+                        "level": 2
+                    }
+                ],
+                "showMergedChildren": true
+            },
+            {
+                "id": 21,
+                "secondIsNew": false,
+                "en_name": "Eyebrow",
+                "grand_total_count": 44,
+                "ko_name": "아이브로우",
+                "level": 1,
+                "name": "Kẻ mày",
+                "showMergedChildren": true,
+                "sub_categories": [
+                    {
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "name": "Chì kẻ mày",
+                        "en_name": "Eyebrow pencil",
+                        "ko_name": "아이브로우펜슬",
+                        "id": 67,
+                        "grand_total_count": 54
+                    },
+                    {
+                        "en_name": "Powder eyebrow",
+                        "ko_name": "파우더아이브로우",
+                        "grand_total_count": 18,
+                        "name": "Bột kẻ mày",
+                        "thirdIsNew": false,
+                        "id": 68,
+                        "level": 2
+                    },
+                    {
+                        "grand_total_count": 8,
+                        "level": 2,
+                        "en_name": "Liquid eyebrow",
+                        "ko_name": "리퀴드아이브로우",
+                        "name": "Bút dạ & Sáp kẻ mày",
+                        "id": 69,
+                        "thirdIsNew": false
+                    },
+                    {
+                        "grand_total_count": 8,
+                        "en_name": "Eyebrow mascara",
+                        "thirdIsNew": false,
+                        "name": "Mascara mày",
+                        "level": 2,
+                        "id": 70,
+                        "ko_name": "아이브로우마스카라"
+                    }
+                ]
+            },
+            {
+                "ko_name": "마스카라",
+                "secondIsNew": false,
+                "grand_total_count": 111,
+                "sub_categories": [
+                    {
+                        "id": 76,
+                        "level": 2,
+                        "grand_total_count": 84,
+                        "name": "Mascara làm dày mi",
+                        "en_name": "Volumn mascara",
+                        "thirdIsNew": false,
+                        "ko_name": "볼륨마스카라"
+                    },
+                    {
+                        "en_name": "Long lash mascara",
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "id": 77,
+                        "grand_total_count": 66,
+                        "ko_name": "롱래시마스카라",
+                        "name": "Mascara làm dài mi"
+                    },
+                    {
+                        "name": "Mascara làm cong mi",
+                        "grand_total_count": 56,
+                        "level": 2,
+                        "ko_name": "컬링마스카라",
+                        "id": 78,
+                        "thirdIsNew": false,
+                        "en_name": "Curling mascara"
+                    },
+                    {
+                        "en_name": "Mascara fixer",
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "grand_total_count": 14,
+                        "ko_name": "마스카라픽서",
+                        "name": "Lót mi",
+                        "id": 79
+                    },
+                    {
+                        "name": "Dưỡng mi",
+                        "en_name": "Eyelash care",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "ko_name": "속눈썹영양제",
+                        "id": 80,
+                        "grand_total_count": 2
+                    }
+                ],
+                "en_name": "Mascara",
+                "showMergedChildren": true,
+                "level": 1,
+                "name": "Mascara & Chuốt mi",
+                "id": 23
+            },
+            {
+                "id": 24,
+                "level": 1,
+                "showMergedChildren": false,
+                "name": "Kem lót mắt",
+                "sub_categories": [],
+                "ko_name": "아이프라이머",
+                "secondIsNew": false,
+                "grand_total_count": 6,
+                "en_name": "Eye primer"
+            }
+        ],
+        "level": 0,
+        "en_name": "Eye makeup",
+        "ko_name": "아이메이크업",
+        "name": "Trang điểm mắt",
+        "id": 4,
+        "firstIsNew": false,
+        "grand_total_count": 289,
+        "firstCategoryImage": "https:&&dn5hzapyfrpio.cloudfront.net&home&glowmee&upload&category&20200227&1582766687487.png"
+    },
+    {
+        "firstCategoryImage": "https:&&dn5hzapyfrpio.cloudfront.net&home&glowmee&upload&category&20200227&1582766669478.png",
+        "grand_total_count": 342,
+        "name": "Trang điểm mặt",
+        "sub_categories": [
+            {
+                "showMergedChildren": true,
+                "sub_categories": [
+                    {
+                        "en_name": "Liquid foundation",
+                        "level": 2,
+                        "name": "Kem nền dạng lỏng",
+                        "ko_name": "리퀴드파운데이션",
+                        "id": 30,
+                        "thirdIsNew": false,
+                        "grand_total_count": 114
+                    },
+                    {
+                        "ko_name": "쿠션파운데이션",
+                        "id": 31,
+                        "en_name": "Cusion foundation",
+                        "name": "Kem nền dạng cushion",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "grand_total_count": 144
+                    },
+                    {
+                        "id": 32,
+                        "thirdIsNew": false,
+                        "ko_name": "스틱파운데이션",
+                        "grand_total_count": 10,
+                        "name": "Kem nền dạng thỏi",
+                        "en_name": "Stick foundation",
+                        "level": 2
+                    },
+                    {
+                        "en_name": "Cream foundation",
+                        "grand_total_count": 8,
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "ko_name": "크림파운데이션",
+                        "name": "Kem nền dạng mousse",
+                        "id": 33
+                    },
+                    {
+                        "id": 34,
+                        "ko_name": "팩트파운데이션",
+                        "name": "Kem nền dạng nén",
+                        "level": 2,
+                        "grand_total_count": 8,
+                        "en_name": "Pact foundation",
+                        "thirdIsNew": false
+                    },
+                    {
+                        "grand_total_count": 50,
+                        "en_name": "Powder foundation",
+                        "id": 35,
+                        "name": "Phấn nền",
+                        "thirdIsNew": false,
+                        "ko_name": "파우더파운데이션",
+                        "level": 2
+                    }
+                ],
+                "name": "Kem nền",
+                "ko_name": "파운데이션",
+                "level": 1,
+                "secondIsNew": false,
+                "grand_total_count": 170,
+                "en_name": "Foundation",
+                "id": 7
+            },
+            {
+                "level": 1,
+                "showMergedChildren": true,
+                "secondIsNew": false,
+                "grand_total_count": 33,
+                "name": "Phẩn phủ",
+                "sub_categories": [
+                    {
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "ko_name": "루스파우더",
+                        "id": 36,
+                        "grand_total_count": 42,
+                        "en_name": "Loose powder",
+                        "name": "Phấn phủ dạng bột"
+                    },
+                    {
+                        "level": 2,
+                        "grand_total_count": 24,
+                        "ko_name": "프레스드파우더",
+                        "en_name": "Pressed powder",
+                        "id": 37,
+                        "thirdIsNew": false,
+                        "name": "Phấn phủ dạng nén"
+                    }
+                ],
+                "ko_name": "피니시파우더",
+                "id": 8,
+                "en_name": "Fisnish powder"
+            },
+            {
+                "id": 9,
+                "en_name": "Concealer",
+                "ko_name": "컨실러",
+                "sub_categories": [
+                    {
+                        "name": "Che khuyết điểm dạng lỏng",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "ko_name": "리퀴드컨실러",
+                        "id": 38,
+                        "grand_total_count": 62,
+                        "en_name": "Liquid concealer"
+                    },
+                    {
+                        "en_name": "Stick concealer",
+                        "id": 39,
+                        "grand_total_count": 14,
+                        "thirdIsNew": false,
+                        "name": "Che khuyết điểm dạng thỏi",
+                        "level": 2,
+                        "ko_name": "스틱컨실러"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "grand_total_count": 10,
+                        "id": 40,
+                        "name": "Che khuyết điểm dạng hũ",
+                        "level": 2,
+                        "en_name": "Pot concealer",
+                        "ko_name": "팟컨실러"
+                    }
+                ],
+                "grand_total_count": 43,
+                "showMergedChildren": true,
+                "level": 1,
+                "secondIsNew": false,
+                "name": "Che khuyết điểm"
+            },
+            {
+                "en_name": "Base & Primer",
+                "name": "kem lót",
+                "showMergedChildren": true,
+                "id": 10,
+                "ko_name": "베이스&프라이머",
+                "level": 1,
+                "sub_categories": [
+                    {
+                        "en_name": "Primer",
+                        "grand_total_count": 50,
+                        "name": "kem lót",
+                        "level": 2,
+                        "id": 41,
+                        "thirdIsNew": false,
+                        "ko_name": "프라이머"
+                    },
+                    {
+                        "en_name": "Pore primer",
+                        "grand_total_count": 10,
+                        "name": "Kem lót làm mờ lỗ chân lông",
+                        "ko_name": "포어프라이머",
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "id": 42
+                    },
+                    {
+                        "grand_total_count": 30,
+                        "ko_name": "메이크업베이스",
+                        "en_name": "Makeup base",
+                        "id": 43,
+                        "level": 2,
+                        "name": "Kem lót trang điểm",
+                        "thirdIsNew": false
+                    },
+                    {
+                        "level": 2,
+                        "id": 44,
+                        "ko_name": "톤업베이스",
+                        "en_name": "Tone-up base",
+                        "name": "Kem lót nâng tông",
+                        "thirdIsNew": false,
+                        "grand_total_count": 34
+                    },
+                    {
+                        "name": "Kem hiệu chỉnh tông da",
+                        "id": 45,
+                        "ko_name": "컬러코렉터",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "grand_total_count": 0,
+                        "en_name": "Color corrector"
+                    }
+                ],
+                "grand_total_count": 62,
+                "secondIsNew": false
+            },
+            {
+                "showMergedChildren": true,
+                "sub_categories": [
+                    {
+                        "level": 2,
+                        "grand_total_count": 38,
+                        "ko_name": "BB크림",
+                        "id": 311,
+                        "name": "Kem BB",
+                        "en_name": "BB cream",
+                        "thirdIsNew": true
+                    },
+                    {
+                        "id": 312,
+                        "en_name": "BB cusion",
+                        "name": "Phấn nước BB",
+                        "ko_name": "BB쿠션",
+                        "thirdIsNew": true,
+                        "level": 2,
+                        "grand_total_count": 12
+                    }
+                ],
+                "ko_name": "BB크림",
+                "en_name": "BB cream",
+                "grand_total_count": 25,
+                "id": 11,
+                "name": "Kem BB",
+                "level": 1,
+                "secondIsNew": true
+            },
+            {
+                "level": 1,
+                "id": 12,
+                "grand_total_count": 5,
+                "name": "Kem CC",
+                "secondIsNew": true,
+                "en_name": "CC cream",
+                "showMergedChildren": true,
+                "sub_categories": [
+                    {
+                        "ko_name": "CC크림",
+                        "en_name": "CC cream",
+                        "id": 313,
+                        "grand_total_count": 8,
+                        "name": "Kem CC",
+                        "thirdIsNew": true,
+                        "level": 2
+                    },
+                    {
+                        "thirdIsNew": true,
+                        "level": 2,
+                        "ko_name": "CC쿠션",
+                        "grand_total_count": 2,
+                        "name": "Phấn nước CC",
+                        "en_name": "CC cusion",
+                        "id": 314
+                    }
+                ],
+                "ko_name": "CC크림"
+            },
+            {
+                "level": 1,
+                "id": 13,
+                "secondIsNew": false,
+                "ko_name": "메이크업픽서",
+                "en_name": "Makeup fixer",
+                "name": "Xịt khóa nền",
+                "grand_total_count": 4,
+                "sub_categories": [],
+                "showMergedChildren": false
+            }
+        ],
+        "id": 2,
+        "firstIsNew": false,
+        "level": 0,
+        "ko_name": "페이스메이크업",
+        "en_name": "Face makeup"
+    },
+    {
+        "sub_categories": [
+            {
+                "grand_total_count": 24,
+                "secondIsNew": false,
+                "showMergedChildren": true,
+                "en_name": "Perfume",
+                "level": 1,
+                "ko_name": "향수",
+                "id": 83,
+                "name": "Nước hoa",
+                "sub_categories": [
+                    {
+                        "thirdIsNew": false,
+                        "id": 246,
+                        "level": 2,
+                        "name": "nước hoa nữ",
+                        "ko_name": "여성향수",
+                        "grand_total_count": 40,
+                        "en_name": "Women's perfume "
+                    },
+                    {
+                        "ko_name": "남성향수",
+                        "en_name": "Men's perfume ",
+                        "thirdIsNew": false,
+                        "id": 247,
+                        "grand_total_count": 0,
+                        "name": "Nước hoa nam",
+                        "level": 2
+                    },
+                    {
+                        "ko_name": "유니섹스향수",
+                        "level": 2,
+                        "en_name": "Unisex perfume",
+                        "id": 248,
+                        "thirdIsNew": false,
+                        "grand_total_count": 8,
+                        "name": "Nước hoa unisex"
+                    },
+                    {
+                        "en_name": "Solid perfume",
+                        "ko_name": "고체향수",
+                        "id": 249,
+                        "thirdIsNew": false,
+                        "name": "Nước hoa khô",
+                        "grand_total_count": 0,
+                        "level": 2
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "ko_name": "롤온향수",
+                        "grand_total_count": 0,
+                        "en_name": "Roll-on perfume",
+                        "id": 250,
+                        "name": "Thanh lăn nước hoa"
+                    }
+                ]
+            },
+            {
+                "grand_total_count": 12,
+                "secondIsNew": false,
+                "en_name": "Air freshener",
+                "name": "Khử mùi phòng",
+                "id": 84,
+                "showMergedChildren": true,
+                "ko_name": "방향제",
+                "sub_categories": [
+                    {
+                        "en_name": "Textile perfume",
+                        "grand_total_count": 4,
+                        "id": 251,
+                        "name": "Xịt thơm quần áo",
+                        "ko_name": "섬유향수",
+                        "thirdIsNew": false,
+                        "level": 2
+                    },
+                    {
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "id": 252,
+                        "ko_name": "디퓨저",
+                        "grand_total_count": 20,
+                        "en_name": "Defuser",
+                        "name": "Bộ tinh dầu khuếch tán"
+                    },
+                    {
+                        "id": 253,
+                        "level": 2,
+                        "ko_name": "캔들",
+                        "name": "Nến thơm",
+                        "thirdIsNew": false,
+                        "grand_total_count": 0,
+                        "en_name": "Candle"
+                    },
+                    {
+                        "level": 2,
+                        "id": 254,
+                        "grand_total_count": 0,
+                        "en_name": "Room spray",
+                        "thirdIsNew": false,
+                        "ko_name": "룸스프레이",
+                        "name": "Xịt phòng"
+                    }
+                ],
+                "level": 1
+            }
+        ],
+        "ko_name": "프래그런스",
+        "en_name": "Fragrance",
+        "id": 15,
+        "level": 0,
+        "firstCategoryImage": "https:&&dn5hzapyfrpio.cloudfront.net&home&glowmee&upload&category&20200227&1582766810862.png",
+        "firstIsNew": false,
+        "grand_total_count": 36,
+        "name": "Nước hoa"
+    },
+    {
+        "ko_name": "헤어",
+        "en_name": "Hair",
+        "level": 0,
+        "grand_total_count": 110,
+        "id": 11,
+        "name": "Chăm sóc tóc",
+        "firstIsNew": false,
+        "sub_categories": [
+            {
+                "ko_name": "샴푸",
+                "id": 60,
+                "name": "Dầu gội đầu",
+                "level": 1,
+                "grand_total_count": 21,
+                "en_name": "Shampoo",
+                "showMergedChildren": true,
+                "sub_categories": [
+                    {
+                        "grand_total_count": 16,
+                        "level": 2,
+                        "en_name": "Moisturizing & Nutrition shampoo",
+                        "id": 182,
+                        "ko_name": "보습&영양샴푸",
+                        "name": "Dầu gội dưỡng chất",
+                        "thirdIsNew": false
+                    },
+                    {
+                        "name": "Dầu gội phục hồi tóc hư tổn",
+                        "id": 183,
+                        "grand_total_count": 2,
+                        "level": 2,
+                        "en_name": "Damage care shampoo",
+                        "thirdIsNew": false,
+                        "ko_name": "데미지케어샴푸"
+                    },
+                    {
+                        "ko_name": "두피케어샴푸",
+                        "en_name": "Scalp care shampoo",
+                        "grand_total_count": 22,
+                        "thirdIsNew": false,
+                        "name": "Dầu gội chăm sóc da đầu",
+                        "id": 184,
+                        "level": 2
+                    },
+                    {
+                        "en_name": "Anti hair loss shampoo",
+                        "level": 2,
+                        "grand_total_count": 0,
+                        "id": 185,
+                        "thirdIsNew": false,
+                        "ko_name": "탈모케어샴푸",
+                        "name": "Dầu gội ngăn ngừa rụng tóc"
+                    },
+                    {
+                        "name": "Dầu gội làm phồng tóc",
+                        "en_name": "Volumizing shampoo",
+                        "grand_total_count": 0,
+                        "id": 186,
+                        "ko_name": "볼륨케어샴푸",
+                        "level": 2,
+                        "thirdIsNew": false
+                    },
+                    {
+                        "en_name": "Color care shampoo",
+                        "name": "Dầu gội cho tóc nhuộm",
+                        "id": 187,
+                        "ko_name": "컬러케어샴푸",
+                        "grand_total_count": 2,
+                        "level": 2,
+                        "thirdIsNew": false
+                    },
+                    {
+                        "id": 188,
+                        "grand_total_count": 0,
+                        "en_name": "Perfume shampoo",
+                        "name": "Dầu gội hương nước hoa",
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "ko_name": "퍼퓸샴푸"
+                    }
+                ],
+                "secondIsNew": false
+            },
+            {
+                "sub_categories": [
+                    {
+                        "en_name": "Moisturizing & Nutrtion conditioner",
+                        "name": "Dầu xả dưỡng chất",
+                        "ko_name": "보습&영양린스",
+                        "id": 189,
+                        "level": 2,
+                        "grand_total_count": 10,
+                        "thirdIsNew": false
+                    },
+                    {
+                        "level": 2,
+                        "id": 190,
+                        "thirdIsNew": false,
+                        "name": "Dầu xả phục hồi tóc hư tổn",
+                        "ko_name": "데미지케어린스",
+                        "grand_total_count": 2,
+                        "en_name": "Damage care conditioner"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "en_name": "Scalp care conditioner",
+                        "ko_name": "두피케어린스",
+                        "grand_total_count": 0,
+                        "name": "Dầu xả chăm sóc da đầu",
+                        "level": 2,
+                        "id": 191
+                    },
+                    {
+                        "level": 2,
+                        "name": "Dầu xả làm phồng tóc",
+                        "id": 192,
+                        "ko_name": "볼륨케어린스",
+                        "en_name": "volumizing conditioner",
+                        "thirdIsNew": false,
+                        "grand_total_count": 2
+                    },
+                    {
+                        "en_name": "Color care conditioner",
+                        "ko_name": "컬러케어린스",
+                        "name": "Dầu xả cho tóc nhuộm",
+                        "id": 193,
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "grand_total_count": 2
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "en_name": "Perfume conditioner",
+                        "ko_name": "퍼퓸린스",
+                        "name": "Dầu xả hương nước hoa",
+                        "id": 195,
+                        "grand_total_count": 0
+                    }
+                ],
+                "ko_name": "린스&컨디셔너",
+                "grand_total_count": 8,
+                "secondIsNew": false,
+                "id": 61,
+                "en_name": "Conditioner",
+                "level": 1,
+                "showMergedChildren": true,
+                "name": "Dầu xả"
+            },
+            {
+                "secondIsNew": false,
+                "showMergedChildren": true,
+                "grand_total_count": 22,
+                "level": 1,
+                "sub_categories": [
+                    {
+                        "thirdIsNew": false,
+                        "ko_name": "헤어트리트먼트",
+                        "id": 196,
+                        "level": 2,
+                        "en_name": "Hair treatment",
+                        "name": "Sản phẩm đặc trị",
+                        "grand_total_count": 8
+                    },
+                    {
+                        "ko_name": "헤어마스크&팩",
+                        "grand_total_count": 36,
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "id": 197,
+                        "name": "Kem ủ tóc",
+                        "en_name": "Hair mask & pact"
+                    }
+                ],
+                "name": "Chăm sóc tóc chuyên sâu",
+                "en_name": "Hair treatment & Pact",
+                "id": 62,
+                "ko_name": "트리트먼트&팩"
+            },
+            {
+                "name": "Nước dưỡng tóc",
+                "ko_name": "헤어토닉",
+                "sub_categories": [],
+                "id": 63,
+                "level": 1,
+                "grand_total_count": 0,
+                "secondIsNew": false,
+                "en_name": "Hair tonic",
+                "showMergedChildren": false
+            },
+            {
+                "sub_categories": [],
+                "showMergedChildren": false,
+                "en_name": "Dry shampoo",
+                "grand_total_count": 2,
+                "id": 64,
+                "name": "Dầu gội khô",
+                "level": 1,
+                "secondIsNew": false,
+                "ko_name": "드라이샴푸"
+            },
+            {
+                "en_name": "Hair care",
+                "ko_name": "헤어케어",
+                "level": 1,
+                "id": 65,
+                "showMergedChildren": true,
+                "grand_total_count": 39,
+                "name": "Chăm sóc tóc",
+                "sub_categories": [
+                    {
+                        "ko_name": "헤어에센스&세럼",
+                        "id": 198,
+                        "thirdIsNew": false,
+                        "name": "Tinh chất dưỡng tóc",
+                        "level": 2,
+                        "en_name": "Hair essence&serum",
+                        "grand_total_count": 54
+                    },
+                    {
+                        "grand_total_count": 16,
+                        "id": 199,
+                        "ko_name": "헤어오일",
+                        "name": "Dầu dưỡng tóc",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "en_name": "Hair oil"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "ko_name": "헤어미스트",
+                        "grand_total_count": 8,
+                        "en_name": "Hair mist",
+                        "id": 200,
+                        "level": 2,
+                        "name": "Xịt dưỡng tóc"
+                    }
+                ],
+                "secondIsNew": false
+            },
+            {
+                "sub_categories": [
+                    {
+                        "thirdIsNew": false,
+                        "name": "Sáp & Gôm tạo kiểu",
+                        "id": 201,
+                        "grand_total_count": 2,
+                        "ko_name": "헤어왁스&젤",
+                        "en_name": "Hair wax & gel",
+                        "level": 2
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "name": "Xịt giữ nếp",
+                        "ko_name": "헤어스프레이",
+                        "level": 2,
+                        "id": 202,
+                        "grand_total_count": 2,
+                        "en_name": "Hair spray"
+                    }
+                ],
+                "ko_name": "헤어스타일링",
+                "showMergedChildren": true,
+                "en_name": "Hair styling",
+                "secondIsNew": false,
+                "id": 66,
+                "level": 1,
+                "grand_total_count": 2,
+                "name": "Sản phẩm tạo kiểu"
+            },
+            {
+                "level": 1,
+                "grand_total_count": 15,
+                "sub_categories": [
+                    {
+                        "level": 2,
+                        "ko_name": "헤어섀도우",
+                        "en_name": "Hair shadow",
+                        "grand_total_count": 8,
+                        "thirdIsNew": false,
+                        "id": 203,
+                        "name": "Che khuyết điểm tóc"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "id": 204,
+                        "ko_name": "헤어컬러링",
+                        "level": 2,
+                        "grand_total_count": 8,
+                        "en_name": "Hair coloring",
+                        "name": "Thuốc nhuộm tóc tạm thời"
+                    },
+                    {
+                        "name": "Thuốc nhuộm & tẩy & uốn",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "en_name": "Hair dye & bleach & perm",
+                        "ko_name": "염색&탈색&펌",
+                        "id": 205,
+                        "grand_total_count": 14
+                    }
+                ],
+                "name": "Trang điểm tóc",
+                "id": 67,
+                "en_name": "Hair makeup",
+                "showMergedChildren": true,
+                "secondIsNew": false,
+                "ko_name": "헤어메이크업"
+            },
+            {
+                "ko_name": "헤어소품",
+                "secondIsNew": false,
+                "id": 68,
+                "showMergedChildren": true,
+                "name": "Phụ kiện tóc",
+                "level": 1,
+                "grand_total_count": 1,
+                "en_name": "Hair accessories",
+                "sub_categories": [
+                    {
+                        "id": 206,
+                        "name": "lô quấn tóc",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "ko_name": "헤어롤",
+                        "grand_total_count": 2,
+                        "en_name": "hair roll"
+                    },
+                    {
+                        "id": 207,
+                        "ko_name": "헤어브러시",
+                        "name": "Lược chải tóc",
+                        "grand_total_count": 0,
+                        "level": 2,
+                        "en_name": "Hair brush",
+                        "thirdIsNew": false
+                    },
+                    {
+                        "name": "Khác",
+                        "grand_total_count": 0,
+                        "id": 208,
+                        "en_name": "Hair accessories",
+                        "level": 2,
+                        "ko_name": "헤어악세서리",
+                        "thirdIsNew": false
+                    }
+                ]
+            }
+        ],
+        "firstCategoryImage": "https:&&dn5hzapyfrpio.cloudfront.net&home&glowmee&upload&category&20200227&1582766759899.png"
+    },
+    {
+        "level": 0,
+        "name": "Chăm sóc cơ thể từ bên trong",
+        "firstCategoryImage": "https:&&dn5hzapyfrpio.cloudfront.net&home&glowmee&upload&category&20200227&1582766831932.png",
+        "ko_name": "이너뷰티",
+        "grand_total_count": 12,
+        "sub_categories": [
+            {
+                "grand_total_count": 1,
+                "en_name": "For skin",
+                "name": "Chăm sóc da",
+                "ko_name": "피부건강",
+                "id": 88,
+                "sub_categories": [
+                    {
+                        "name": "Collagen dạng uống",
+                        "level": 2,
+                        "ko_name": "콜라겐",
+                        "en_name": "Collagen",
+                        "thirdIsNew": true,
+                        "id": 264,
+                        "grand_total_count": 0
+                    },
+                    {
+                        "ko_name": "히알루론산",
+                        "level": 2,
+                        "thirdIsNew": true,
+                        "grand_total_count": 2,
+                        "name": "Viên uống cấp nước",
+                        "en_name": "Hyaluronic acid",
+                        "id": 265
+                    }
+                ],
+                "secondIsNew": true,
+                "showMergedChildren": true,
+                "level": 1
+            },
+            {
+                "secondIsNew": true,
+                "ko_name": "다이어트",
+                "level": 1,
+                "sub_categories": [
+                    {
+                        "thirdIsNew": true,
+                        "en_name": "Diet supplement",
+                        "id": 266,
+                        "grand_total_count": 8,
+                        "ko_name": "다이어트보조제",
+                        "name": "Viên uống giảm cân",
+                        "level": 2
+                    },
+                    {
+                        "id": 267,
+                        "grand_total_count": 0,
+                        "ko_name": "다이어트식품",
+                        "en_name": "Diet food",
+                        "thirdIsNew": true,
+                        "name": "Thực phẩm bổ sung giảm cân",
+                        "level": 2
+                    }
+                ],
+                "id": 89,
+                "showMergedChildren": true,
+                "en_name": "Diet",
+                "name": "Giảm cân",
+                "grand_total_count": 4
+            },
+            {
+                "name": "Thực phẩm bổ sung",
+                "id": 90,
+                "ko_name": "건강식품",
+                "showMergedChildren": true,
+                "secondIsNew": true,
+                "level": 1,
+                "grand_total_count": 7,
+                "sub_categories": [
+                    {
+                        "id": 268,
+                        "name": "Vitamin",
+                        "level": 2,
+                        "grand_total_count": 6,
+                        "en_name": "Vitamin",
+                        "thirdIsNew": true,
+                        "ko_name": "비타민"
+                    },
+                    {
+                        "thirdIsNew": true,
+                        "grand_total_count": 0,
+                        "ko_name": "유산균",
+                        "id": 269,
+                        "level": 2,
+                        "name": "Lợi khuẩn lactobacillus",
+                        "en_name": "Lactobacillus"
+                    },
+                    {
+                        "grand_total_count": 8,
+                        "thirdIsNew": true,
+                        "name": "Thực phẩm chức năng",
+                        "id": 308,
+                        "level": 2,
+                        "en_name": "Supplement",
+                        "ko_name": "건강기능식품"
+                    },
+                    {
+                        "level": 2,
+                        "name": "Khác",
+                        "en_name": "Others",
+                        "grand_total_count": 0,
+                        "ko_name": "기타건강식품",
+                        "id": 310,
+                        "thirdIsNew": true
+                    }
+                ],
+                "en_name": "Supplement"
+            }
+        ],
+        "firstIsNew": false,
+        "id": 17,
+        "en_name": "Inner beauty"
+    },
+    {
+        "en_name": "Lip makeup",
+        "level": 0,
+        "name": "Son",
+        "firstCategoryImage": "https:&&dn5hzapyfrpio.cloudfront.net&home&glowmee&upload&category&20200227&1582766677348.png",
+        "id": 3,
+        "sub_categories": [
+            {
+                "name": "Son thỏi",
+                "secondIsNew": false,
+                "level": 1,
+                "ko_name": "립스틱",
+                "en_name": "Lipstick",
+                "grand_total_count": 94,
+                "sub_categories": [
+                    {
+                        "thirdIsNew": false,
+                        "id": 46,
+                        "en_name": "Matte lipstick",
+                        "level": 2,
+                        "ko_name": "매트립스틱",
+                        "name": "Son thỏi lì",
+                        "grand_total_count": 70
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "en_name": "Satin lipstick",
+                        "ko_name": "새틴립스틱",
+                        "id": 47,
+                        "name": "Son thỏi lớp satin",
+                        "grand_total_count": 54
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "ko_name": "글로시립스틱",
+                        "id": 48,
+                        "name": "Son thỏi bóng",
+                        "en_name": "Glossy lipstick",
+                        "grand_total_count": 64
+                    }
+                ],
+                "id": 14,
+                "showMergedChildren": true
+            },
+            {
+                "level": 1,
+                "ko_name": "립틴트&라커",
+                "id": 15,
+                "sub_categories": [
+                    {
+                        "name": "Son kem lì",
+                        "id": 49,
+                        "grand_total_count": 48,
+                        "ko_name": "매트&벨벳틴트",
+                        "en_name": "Matte&velvet tint",
+                        "thirdIsNew": false,
+                        "level": 2
+                    },
+                    {
+                        "grand_total_count": 44,
+                        "name": "Son kem bóng & Son gel",
+                        "level": 2,
+                        "en_name": "Glossy & Gel tint",
+                        "id": 50,
+                        "ko_name": "글로시&젤틴트",
+                        "thirdIsNew": false
+                    },
+                    {
+                        "id": 51,
+                        "ko_name": "워터틴트",
+                        "level": 2,
+                        "grand_total_count": 2,
+                        "name": "Son nước",
+                        "thirdIsNew": false,
+                        "en_name": "Water tint"
+                    }
+                ],
+                "secondIsNew": false,
+                "name": "Son tint & Son kem",
+                "grand_total_count": 47,
+                "en_name": "Lip tint & Lacquer",
+                "showMergedChildren": true
+            },
+            {
+                "secondIsNew": false,
+                "showMergedChildren": true,
+                "level": 1,
+                "en_name": "lip pencil",
+                "ko_name": "립펜슬",
+                "sub_categories": [
+                    {
+                        "id": 52,
+                        "ko_name": "립크레용",
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "grand_total_count": 32,
+                        "name": "Son bút chì",
+                        "en_name": "Lip crayon"
+                    },
+                    {
+                        "en_name": "ip liner ",
+                        "ko_name": "립라이너",
+                        "id": 53,
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "grand_total_count": 4,
+                        "name": "Chì kẻ viền môi"
+                    }
+                ],
+                "id": 16,
+                "name": "Son dạng bút",
+                "grand_total_count": 18
+            },
+            {
+                "level": 1,
+                "sub_categories": [
+                    {
+                        "id": 54,
+                        "level": 2,
+                        "grand_total_count": 8,
+                        "en_name": "Lip gloss",
+                        "thirdIsNew": false,
+                        "name": "Son bóng",
+                        "ko_name": "립글로스"
+                    },
+                    {
+                        "ko_name": "립플럼퍼",
+                        "name": "Son làm đầy rãnh môi",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "grand_total_count": 4,
+                        "id": 55,
+                        "en_name": "Lip plumper"
+                    },
+                    {
+                        "level": 2,
+                        "id": 56,
+                        "thirdIsNew": false,
+                        "en_name": "Top coat & Fixer",
+                        "ko_name": "탑코트&픽서",
+                        "name": "Gel khóa son",
+                        "grand_total_count": 2
+                    }
+                ],
+                "ko_name": "립글로스",
+                "id": 17,
+                "name": "Son bóng",
+                "grand_total_count": 7,
+                "showMergedChildren": true,
+                "secondIsNew": false,
+                "en_name": "Lip gloss"
+            },
+            {
+                "grand_total_count": 0,
+                "en_name": "Lip base",
+                "name": "Son lót",
+                "secondIsNew": false,
+                "level": 1,
+                "showMergedChildren": true,
+                "sub_categories": [
+                    {
+                        "ko_name": "립프라이머",
+                        "name": "Son lót",
+                        "id": 57,
+                        "thirdIsNew": false,
+                        "en_name": "Lip primer",
+                        "level": 2,
+                        "grand_total_count": 0
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "en_name": "Lip concealer",
+                        "level": 2,
+                        "name": "Che khuyết điểm môi",
+                        "grand_total_count": 0,
+                        "ko_name": "립컨실러",
+                        "id": 58
+                    }
+                ],
+                "id": 18,
+                "ko_name": "립베이스"
+            },
+            {
+                "grand_total_count": 80,
+                "sub_categories": [
+                    {
+                        "id": 59,
+                        "ko_name": "립밤",
+                        "name": "Son dưỡng",
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "en_name": "Lip balm",
+                        "grand_total_count": 80
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "name": "Son dưỡng có màu",
+                        "en_name": "Color lip balm",
+                        "level": 2,
+                        "ko_name": "컬러립밤",
+                        "id": 60,
+                        "grand_total_count": 62
+                    },
+                    {
+                        "id": 61,
+                        "en_name": "Lip oil",
+                        "name": "Dầu dưỡng môi",
+                        "ko_name": "립오일",
+                        "thirdIsNew": false,
+                        "grand_total_count": 4,
+                        "level": 2
+                    },
+                    {
+                        "grand_total_count": 2,
+                        "id": 62,
+                        "thirdIsNew": false,
+                        "en_name": "Lip scrub",
+                        "name": "Tẩy da chết môi",
+                        "level": 2,
+                        "ko_name": "립스크럽"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "grand_total_count": 12,
+                        "name": "Mặt nạ dưỡng môi",
+                        "ko_name": "립마스크",
+                        "en_name": "Lip mask",
+                        "id": 63
+                    }
+                ],
+                "en_name": "Lip care",
+                "secondIsNew": false,
+                "ko_name": "립케어",
+                "showMergedChildren": true,
+                "name": "Chăm sóc môi",
+                "id": 19,
+                "level": 1
+            }
+        ],
+        "grand_total_count": 246,
+        "firstIsNew": false,
+        "ko_name": "립메이크업"
+    },
+    {
+        "level": 0,
+        "id": 8,
+        "sub_categories": [
+            {
+                "name": "Mặt nạ giấy",
+                "ko_name": "시트마스크",
+                "id": 37,
+                "level": 1,
+                "grand_total_count": 165,
+                "showMergedChildren": true,
+                "sub_categories": [
+                    {
+                        "id": 127,
+                        "en_name": "Hydrating mask",
+                        "level": 2,
+                        "ko_name": "수분마스크",
+                        "grand_total_count": 66,
+                        "name": "Mặt nạ cấp nước",
+                        "thirdIsNew": false
+                    },
+                    {
+                        "ko_name": "보습마스크",
+                        "name": "Mặt nạ cấp ẩm",
+                        "level": 2,
+                        "grand_total_count": 68,
+                        "thirdIsNew": false,
+                        "en_name": "Moisturizing mask",
+                        "id": 128
+                    },
+                    {
+                        "ko_name": "진정마스크",
+                        "level": 2,
+                        "grand_total_count": 78,
+                        "name": "Mặt nạ làm dịu da",
+                        "id": 129,
+                        "thirdIsNew": false,
+                        "en_name": "Soothing mask"
+                    },
+                    {
+                        "grand_total_count": 12,
+                        "ko_name": "모공마스크",
+                        "id": 130,
+                        "name": "Mặt nạ se khít lỗ chân lông",
+                        "level": 2,
+                        "en_name": "Pore mask",
+                        "thirdIsNew": false
+                    },
+                    {
+                        "ko_name": "브라이트닝마스크",
+                        "en_name": "Brightening mask",
+                        "id": 131,
+                        "grand_total_count": 64,
+                        "name": "Mặt nạ dưỡng trắng da",
+                        "thirdIsNew": false,
+                        "level": 2
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "ko_name": "안티에이징마스크",
+                        "level": 2,
+                        "grand_total_count": 42,
+                        "en_name": "Anti-aging mask",
+                        "id": 132,
+                        "name": "Mặt nạ chống lão hóa"
+                    }
+                ],
+                "secondIsNew": false,
+                "en_name": "Sheet mask"
+            },
+            {
+                "id": 38,
+                "name": "Khác",
+                "level": 1,
+                "sub_categories": [
+                    {
+                        "grand_total_count": 84,
+                        "ko_name": "슬리핑팩",
+                        "en_name": "Sleeping mask",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "name": "Mặt nạ ngủ",
+                        "id": 133
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "ko_name": "워시오프팩",
+                        "en_name": "Wash-off mask",
+                        "id": 134,
+                        "grand_total_count": 82,
+                        "name": "Mặt nạ rửa"
+                    },
+                    {
+                        "id": 135,
+                        "grand_total_count": 12,
+                        "thirdIsNew": false,
+                        "ko_name": "필오프팩",
+                        "name": "Mặt nạ lột",
+                        "en_name": "Peel off mask",
+                        "level": 2
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "ko_name": "모델링팩",
+                        "name": "Mặt nạ dạng thạch",
+                        "en_name": "Modeling mask",
+                        "id": 136,
+                        "grand_total_count": 4
+                    },
+                    {
+                        "id": 137,
+                        "level": 2,
+                        "en_name": "Capsule pack",
+                        "grand_total_count": 14,
+                        "ko_name": "캡슐팩",
+                        "name": "Mặt nạ dạng viên & hũ nhỏ",
+                        "thirdIsNew": false
+                    }
+                ],
+                "en_name": "Face mask",
+                "ko_name": "페이스마스크",
+                "secondIsNew": false,
+                "grand_total_count": 98,
+                "showMergedChildren": true
+            },
+            {
+                "level": 1,
+                "showMergedChildren": true,
+                "name": "Mặt nạ theo vùng",
+                "ko_name": "부분마스크",
+                "en_name": "Partial mask",
+                "sub_categories": [
+                    {
+                        "thirdIsNew": false,
+                        "ko_name": "아이패치",
+                        "level": 2,
+                        "grand_total_count": 4,
+                        "name": "Mặt nạ mắt",
+                        "id": 138,
+                        "en_name": "Eye mask"
+                    },
+                    {
+                        "ko_name": "멀티패치",
+                        "level": 2,
+                        "en_name": "Multi patch",
+                        "thirdIsNew": false,
+                        "name": "Các vùng khác",
+                        "id": 305,
+                        "grand_total_count": 4
+                    },
+                    {
+                        "id": 139,
+                        "ko_name": "코팩",
+                        "level": 2,
+                        "en_name": "Nose pack",
+                        "grand_total_count": 20,
+                        "name": "Mặt nạ lột mụn",
+                        "thirdIsNew": false
+                    }
+                ],
+                "secondIsNew": false,
+                "grand_total_count": 16,
+                "id": 39
+            },
+            {
+                "sub_categories": [
+                    {
+                        "name": "Thanh lăn",
+                        "ko_name": "페이스롤러",
+                        "thirdIsNew": false,
+                        "id": 140,
+                        "grand_total_count": 2,
+                        "level": 2,
+                        "en_name": "Face roller"
+                    },
+                    {
+                        "id": 141,
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "grand_total_count": 2,
+                        "name": "Cọ đắp mask & Dụng cụ khác",
+                        "ko_name": "브러시&도구",
+                        "en_name": "Brush & Tool"
+                    }
+                ],
+                "showMergedChildren": true,
+                "level": 1,
+                "ko_name": "마사지도구",
+                "grand_total_count": 2,
+                "id": 40,
+                "en_name": "massage tool",
+                "secondIsNew": false,
+                "name": "dụng cụ massage"
+            }
+        ],
+        "ko_name": "마스크&팩",
+        "name": "Mặt nạ",
+        "firstIsNew": false,
+        "grand_total_count": 281,
+        "firstCategoryImage": "https:&&dn5hzapyfrpio.cloudfront.net&home&glowmee&upload&category&20200227&1582766732888.png",
+        "en_name": "Mask & Pack"
+    },
+    {
+        "en_name": "Men's cosmetics ",
+        "sub_categories": [
+            {
+                "ko_name": "스킨케어",
+                "showMergedChildren": true,
+                "grand_total_count": 24,
+                "name": "Chăm sóc da",
+                "id": 96,
+                "secondIsNew": false,
+                "sub_categories": [
+                    {
+                        "en_name": "Toner",
+                        "grand_total_count": 12,
+                        "ko_name": "스킨&토너",
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "id": 284,
+                        "synonyms": [
+                            "Nước cân bằng"
+                        ],
+                        "name": "Toner & Nước hoa hồng"
+                    },
+                    {
+                        "grand_total_count": 14,
+                        "ko_name": "로션&에멀젼",
+                        "id": 285,
+                        "en_name": "Lotion & Emulsion",
+                        "thirdIsNew": false,
+                        "name": "Sữa dưỡng",
+                        "level": 2
+                    },
+                    {
+                        "ko_name": "에센스&세럼",
+                        "thirdIsNew": false,
+                        "en_name": "Essence & Serum",
+                        "id": 286,
+                        "level": 2,
+                        "grand_total_count": 4,
+                        "name": "Tinh chất"
+                    },
+                    {
+                        "grand_total_count": 2,
+                        "en_name": "Cream",
+                        "name": "Kem dưỡng",
+                        "id": 287,
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "ko_name": "크림"
+                    },
+                    {
+                        "grand_total_count": 10,
+                        "name": "Kem đa năng",
+                        "thirdIsNew": false,
+                        "id": 288,
+                        "en_name": "All-in-one",
+                        "level": 2,
+                        "ko_name": "올인원"
+                    },
+                    {
+                        "en_name": "Mask & Pack",
+                        "ko_name": "마스크&팩",
+                        "grand_total_count": 2,
+                        "id": 289,
+                        "name": "Mặt nạ",
+                        "level": 2,
+                        "thirdIsNew": false
+                    },
+                    {
+                        "grand_total_count": 4,
+                        "thirdIsNew": false,
+                        "ko_name": "선크림",
+                        "id": 290,
+                        "name": "Kem chống nắng",
+                        "level": 2,
+                        "en_name": "Sunscreen"
+                    }
+                ],
+                "en_name": "Skincare",
+                "level": 1
+            },
+            {
+                "name": "Trang điểm",
+                "ko_name": "메이크업",
+                "level": 1,
+                "en_name": "Makeup",
+                "showMergedChildren": true,
+                "secondIsNew": false,
+                "grand_total_count": 3,
+                "id": 97,
+                "sub_categories": [
+                    {
+                        "thirdIsNew": false,
+                        "en_name": "Face makeup",
+                        "level": 2,
+                        "id": 291,
+                        "name": "Trang điểm nền",
+                        "ko_name": "페이스메이크업",
+                        "grand_total_count": 4
+                    },
+                    {
+                        "level": 2,
+                        "id": 292,
+                        "thirdIsNew": false,
+                        "en_name": "Eye makeup",
+                        "grand_total_count": 0,
+                        "ko_name": "아이메이크업",
+                        "name": "Trang điểm mắt"
+                    },
+                    {
+                        "ko_name": "립메이크업",
+                        "thirdIsNew": false,
+                        "id": 293,
+                        "level": 2,
+                        "grand_total_count": 2,
+                        "name": "Trang điểm môi",
+                        "en_name": "Lip makeup"
+                    }
+                ]
+            },
+            {
+                "en_name": "Cleansing",
+                "showMergedChildren": true,
+                "ko_name": "클렌징",
+                "id": 98,
+                "level": 1,
+                "grand_total_count": 1,
+                "name": "Làm sạch",
+                "secondIsNew": false,
+                "sub_categories": [
+                    {
+                        "name": "Sữa rửa mặt",
+                        "thirdIsNew": false,
+                        "en_name": "Facial cleanser",
+                        "id": 294,
+                        "grand_total_count": 2,
+                        "ko_name": "페이셜클렌저",
+                        "level": 2
+                    },
+                    {
+                        "synonyms": [
+                            "Tẩy tế bào chết"
+                        ],
+                        "id": 295,
+                        "en_name": "Scrubs & Peeling",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "name": "Tẩy da chết",
+                        "grand_total_count": 0,
+                        "ko_name": "스크럽&필링"
+                    }
+                ]
+            },
+            {
+                "sub_categories": [
+                    {
+                        "id": 296,
+                        "ko_name": "쉐이빙폼",
+                        "grand_total_count": 0,
+                        "en_name": "Shaving foam",
+                        "name": "Bọt cạo râu",
+                        "thirdIsNew": false,
+                        "level": 2
+                    },
+                    {
+                        "en_name": "Aftershave",
+                        "thirdIsNew": false,
+                        "grand_total_count": 0,
+                        "ko_name": "에프터쉐이브",
+                        "name": "Kem dưỡng sau cạo",
+                        "id": 297,
+                        "level": 2
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "grand_total_count": 0,
+                        "level": 2,
+                        "name": "Dao & Máy cạo râu",
+                        "id": 298,
+                        "ko_name": "면도기",
+                        "en_name": "Shaver"
+                    }
+                ],
+                "id": 99,
+                "name": "Cạo râu",
+                "en_name": "Shaving",
+                "grand_total_count": 0,
+                "showMergedChildren": true,
+                "ko_name": "쉐이빙",
+                "secondIsNew": false,
+                "level": 1
+            },
+            {
+                "showMergedChildren": true,
+                "en_name": "Hair",
+                "ko_name": "헤어",
+                "id": 100,
+                "secondIsNew": false,
+                "name": "Chăm sóc tóc",
+                "sub_categories": [
+                    {
+                        "grand_total_count": 2,
+                        "thirdIsNew": false,
+                        "ko_name": "샴푸&린스",
+                        "en_name": "Shampoo",
+                        "level": 2,
+                        "id": 299,
+                        "name": "Dầu gội"
+                    },
+                    {
+                        "en_name": "Hair styling",
+                        "level": 2,
+                        "ko_name": "헤어스타일링",
+                        "grand_total_count": 0,
+                        "id": 300,
+                        "thirdIsNew": false,
+                        "name": "Sản phẩm tạo kiểu tóc"
+                    }
+                ],
+                "grand_total_count": 1,
+                "level": 1
+            },
+            {
+                "ko_name": "배쓰&바디",
+                "level": 1,
+                "en_name": "Bath & Body",
+                "name": "Cơ thể",
+                "grand_total_count": 2,
+                "id": 101,
+                "showMergedChildren": true,
+                "sub_categories": [
+                    {
+                        "thirdIsNew": false,
+                        "ko_name": "바디케어",
+                        "name": "Chăm sóc cơ thể",
+                        "en_name": "Body care",
+                        "grand_total_count": 0,
+                        "id": 301,
+                        "level": 2
+                    },
+                    {
+                        "en_name": "Bath & Shower",
+                        "level": 2,
+                        "name": "Sữa tắm",
+                        "thirdIsNew": false,
+                        "ko_name": "배쓰&샤워",
+                        "grand_total_count": 2,
+                        "id": 302
+                    },
+                    {
+                        "name": "Lăn khử mùi",
+                        "grand_total_count": 2,
+                        "level": 2,
+                        "id": 303,
+                        "thirdIsNew": false,
+                        "en_name": "Deodorant",
+                        "ko_name": "데오드란트"
+                    }
+                ],
+                "secondIsNew": false
+            }
+        ],
+        "ko_name": "남성화장품",
+        "level": 0,
+        "grand_total_count": 31,
+        "name": "Mỹ phẩm cho nam giới",
+        "firstIsNew": false,
+        "id": 19,
+        "firstCategoryImage": "https:&&dn5hzapyfrpio.cloudfront.net&home&glowmee&upload&category&20200227&1582766850515.png"
+    },
+    {
+        "grand_total_count": 24,
+        "firstIsNew": false,
+        "en_name": "Nail",
+        "ko_name": "네일",
+        "firstCategoryImage": "https:&&dn5hzapyfrpio.cloudfront.net&home&glowmee&upload&category&20200227&1582766771451.png",
+        "level": 0,
+        "id": 12,
+        "name": "Chăm sóc móng",
+        "sub_categories": [
+            {
+                "showMergedChildren": true,
+                "name": "Sơn móng",
+                "ko_name": "폴리시",
+                "secondIsNew": false,
+                "level": 1,
+                "sub_categories": [
+                    {
+                        "name": "Sơn thường",
+                        "grand_total_count": 10,
+                        "en_name": "Nail polish",
+                        "level": 2,
+                        "id": 209,
+                        "thirdIsNew": false,
+                        "ko_name": "네일폴리시"
+                    },
+                    {
+                        "ko_name": "젤네일폴리시",
+                        "en_name": "Gel nail polish",
+                        "grand_total_count": 0,
+                        "thirdIsNew": false,
+                        "name": "Sơn gel",
+                        "level": 2,
+                        "id": 210
+                    }
+                ],
+                "id": 69,
+                "grand_total_count": 5,
+                "en_name": "Polish"
+            },
+            {
+                "level": 1,
+                "grand_total_count": 7,
+                "ko_name": "베이스&탑코트",
+                "secondIsNew": false,
+                "en_name": "Base & Top coat",
+                "showMergedChildren": true,
+                "sub_categories": [
+                    {
+                        "name": "Sơn lót",
+                        "en_name": "base coat",
+                        "ko_name": "베이스코트",
+                        "id": 211,
+                        "level": 2,
+                        "grand_total_count": 4,
+                        "thirdIsNew": false
+                    },
+                    {
+                        "id": 212,
+                        "ko_name": "탑코트",
+                        "grand_total_count": 10,
+                        "name": "Sơn phủ",
+                        "en_name": "Top coat",
+                        "thirdIsNew": false,
+                        "level": 2
+                    }
+                ],
+                "id": 70,
+                "name": "Sơn lót & Sơn phủ"
+            },
+            {
+                "name": "Bộ dán móng tay & móng tip",
+                "id": 71,
+                "en_name": "Nail sticks&tips",
+                "sub_categories": [
+                    {
+                        "grand_total_count": 0,
+                        "id": 214,
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "ko_name": "네일팁",
+                        "name": "Móng tip",
+                        "en_name": "Nail tips"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "en_name": "Nail stickers",
+                        "grand_total_count": 6,
+                        "level": 2,
+                        "id": 215,
+                        "ko_name": "네일스티커",
+                        "name": "Bộ dán móng tay"
+                    }
+                ],
+                "level": 1,
+                "grand_total_count": 3,
+                "showMergedChildren": true,
+                "ko_name": "네일스티커&팁",
+                "secondIsNew": false
+            },
+            {
+                "id": 72,
+                "secondIsNew": false,
+                "level": 1,
+                "grand_total_count": 0,
+                "showMergedChildren": true,
+                "ko_name": "페디스티커&팁",
+                "en_name": "Pedi stickers & tips",
+                "name": "Bộ dán móng chân & móng chân tip",
+                "sub_categories": [
+                    {
+                        "grand_total_count": 0,
+                        "level": 2,
+                        "name": "Móng chân tip",
+                        "en_name": "Pedi tips",
+                        "thirdIsNew": false,
+                        "ko_name": "페디팁",
+                        "id": 216
+                    },
+                    {
+                        "ko_name": "페디스티커",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "en_name": "Pedi sticker",
+                        "id": 217,
+                        "name": "Bộ dán móng chân",
+                        "grand_total_count": 0
+                    }
+                ]
+            },
+            {
+                "secondIsNew": false,
+                "name": "Chăm sóc móng",
+                "grand_total_count": 4,
+                "en_name": "Nail care",
+                "id": 73,
+                "sub_categories": [
+                    {
+                        "level": 2,
+                        "id": 218,
+                        "name": "Tinh chất dưỡng móng",
+                        "ko_name": "네일영양제",
+                        "en_name": "Nail treatment",
+                        "grand_total_count": 0,
+                        "thirdIsNew": false
+                    },
+                    {
+                        "id": 219,
+                        "grand_total_count": 4,
+                        "en_name": "nail enhancer",
+                        "thirdIsNew": false,
+                        "name": "sơn bảo vệ móng",
+                        "ko_name": "네일강화제",
+                        "level": 2
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "en_name": "Cutical care",
+                        "name": "Chăm sóc viền móng",
+                        "level": 2,
+                        "id": 220,
+                        "ko_name": "큐티클케어",
+                        "grand_total_count": 4
+                    }
+                ],
+                "showMergedChildren": true,
+                "level": 1,
+                "ko_name": "네일케어"
+            },
+            {
+                "level": 1,
+                "name": "Nước tẩy sơn móng",
+                "sub_categories": [],
+                "ko_name": "네일리무버",
+                "showMergedChildren": false,
+                "grand_total_count": 5,
+                "en_name": "Nail remover",
+                "secondIsNew": false,
+                "id": 74
+            },
+            {
+                "secondIsNew": false,
+                "grand_total_count": 0,
+                "ko_name": "네일도구",
+                "showMergedChildren": false,
+                "en_name": "Nail tool",
+                "name": "Dụng cụ làm móng",
+                "id": 75,
+                "sub_categories": [],
+                "level": 1
+            }
+        ]
+    },
+    {
+        "sub_categories": [
+            {
+                "id": 76,
+                "grand_total_count": 5,
+                "sub_categories": [
+                    {
+                        "thirdIsNew": false,
+                        "ko_name": "소형생리대",
+                        "en_name": "Small sanitary napkin",
+                        "name": "Băng vệ sinh size nhỏ",
+                        "id": 221,
+                        "level": 2,
+                        "grand_total_count": 0
+                    },
+                    {
+                        "id": 222,
+                        "grand_total_count": 0,
+                        "ko_name": "중형생리대",
+                        "en_name": "Medium-sized sanitary napkin",
+                        "level": 2,
+                        "name": "Băng vệ sinh size vừa",
+                        "thirdIsNew": false
+                    },
+                    {
+                        "en_name": "Large sanitary napkin",
+                        "ko_name": "대형생리대",
+                        "id": 223,
+                        "level": 2,
+                        "grand_total_count": 0,
+                        "name": "Băng vệ sinh size lớn",
+                        "thirdIsNew": false
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "id": 224,
+                        "grand_total_count": 0,
+                        "en_name": "Overnight sanitary napkin",
+                        "level": 2,
+                        "ko_name": "오버나이트",
+                        "name": "Băng vệ sinh ban đêm"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "grand_total_count": 0,
+                        "id": 225,
+                        "ko_name": "팬티라이너",
+                        "level": 2,
+                        "name": "Băng vệ sinh dạng quần",
+                        "en_name": "Panty liner"
+                    },
+                    {
+                        "level": 2,
+                        "id": 226,
+                        "name": "Tampon",
+                        "en_name": "Tampon",
+                        "thirdIsNew": false,
+                        "ko_name": "탐폰",
+                        "grand_total_count": 0
+                    },
+                    {
+                        "level": 2,
+                        "ko_name": "생리컵",
+                        "thirdIsNew": false,
+                        "name": "Cốc nguyệt san",
+                        "id": 227,
+                        "grand_total_count": 0,
+                        "en_name": "Menstrual cup"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "name": "Dung dịch vệ sinh phụ nữ",
+                        "id": 228,
+                        "en_name": "Feminine wash",
+                        "ko_name": "여성청결제",
+                        "grand_total_count": 8
+                    }
+                ],
+                "secondIsNew": false,
+                "showMergedChildren": true,
+                "en_name": "Women's goods",
+                "name": "Đồ dùng cho phụ nữ",
+                "level": 1,
+                "ko_name": "여성용품"
+            },
+            {
+                "id": 77,
+                "ko_name": "위생용품",
+                "name": "Vệ sinh vùng mụn",
+                "level": 1,
+                "grand_total_count": 5,
+                "en_name": "Hygiene products",
+                "secondIsNew": false,
+                "showMergedChildren": true,
+                "sub_categories": [
+                    {
+                        "grand_total_count": 10,
+                        "ko_name": "스팟패치",
+                        "id": 229,
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "name": "Miếng dán mụn",
+                        "en_name": "Spot patch"
+                    }
+                ]
+            },
+            {
+                "id": 78,
+                "sub_categories": [
+                    {
+                        "level": 2,
+                        "name": "Mặt nạ chườm mắt",
+                        "thirdIsNew": false,
+                        "en_name": "Eye mask",
+                        "ko_name": "아이마스크",
+                        "grand_total_count": 0,
+                        "id": 231
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "id": 232,
+                        "name": "Miếng dán chân",
+                        "en_name": "Leg & Foot patch",
+                        "level": 2,
+                        "ko_name": "레그&풋패치",
+                        "grand_total_count": 0
+                    }
+                ],
+                "grand_total_count": 0,
+                "showMergedChildren": true,
+                "secondIsNew": false,
+                "name": "Thư giãn",
+                "level": 1,
+                "en_name": "Relaxing",
+                "ko_name": "릴렉싱"
+            },
+            {
+                "level": 1,
+                "secondIsNew": false,
+                "en_name": "Dental care",
+                "name": "Chăm sóc khoang miệng",
+                "showMergedChildren": true,
+                "ko_name": "덴탈케어",
+                "sub_categories": [
+                    {
+                        "id": 233,
+                        "level": 2,
+                        "ko_name": "치약",
+                        "thirdIsNew": false,
+                        "name": "Kem đánh răng",
+                        "grand_total_count": 0,
+                        "en_name": "Toothpaste"
+                    },
+                    {
+                        "ko_name": "칫솔",
+                        "thirdIsNew": false,
+                        "en_name": "Toothbrush",
+                        "name": "Bàn chải đánh răng",
+                        "level": 2,
+                        "grand_total_count": 0,
+                        "id": 234
+                    },
+                    {
+                        "name": "Chỉ nha khoa",
+                        "ko_name": "치실",
+                        "id": 235,
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "en_name": "Dental floss",
+                        "grand_total_count": 0
+                    },
+                    {
+                        "name": "Nước súc miệng",
+                        "id": 236,
+                        "en_name": "Gargle",
+                        "grand_total_count": 0,
+                        "thirdIsNew": false,
+                        "ko_name": "가글",
+                        "level": 2
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "en_name": "Oral irrigator",
+                        "id": 307,
+                        "ko_name": "구강세정기",
+                        "grand_total_count": 0,
+                        "name": "Máy tăm nước"
+                    }
+                ],
+                "id": 79,
+                "grand_total_count": 0
+            }
+        ],
+        "level": 0,
+        "grand_total_count": 10,
+        "en_name": "Personal goods",
+        "id": 13,
+        "name": "Đồ dùng cá nhân",
+        "ko_name": "생활용품",
+        "firstCategoryImage": "https:&&dn5hzapyfrpio.cloudfront.net&home&glowmee&upload&category&20201015&1602749720889.png",
+        "firstIsNew": false
+    },
+    {
+        "name": "Chăm sóc da",
+        "firstCategoryImage": "https:&&dn5hzapyfrpio.cloudfront.net&home&glowmee&upload&category&20200227&1582766658517.png",
+        "ko_name": "스킨케어",
+        "firstIsNew": false,
+        "sub_categories": [
+            {
+                "showMergedChildren": true,
+                "grand_total_count1": 1,
+                "name": "Toner & Nước hoa hồng",
+                "grand_total_count": 191,
+                "synonyms": [
+                    "Nước cân bằng"
+                ],
+                "secondIsNew": false,
+                "en_name": "Toner",
+                "id": 1,
+                "level": 1,
+                "sub_categories": [
+                    {
+                        "level": 2,
+                        "ko_name": "워터토너",
+                        "en_name": "Water toner",
+                        "name": "Toner dạng nước",
+                        "thirdIsNew": false,
+                        "id": 1,
+                        "grand_total_count": 228
+                    },
+                    {
+                        "level": 2,
+                        "grand_total_count": 2,
+                        "thirdIsNew": false,
+                        "name": "Toner dạng sữa",
+                        "id": 2,
+                        "en_name": "Cream toner",
+                        "ko_name": "크림토너"
+                    },
+                    {
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "en_name": "Essence toner",
+                        "grand_total_count": 108,
+                        "id": 3,
+                        "name": "Toner dạng sệt",
+                        "ko_name": "에센스토너"
+                    },
+                    {
+                        "en_name": "Toner pad",
+                        "id": 4,
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "grand_total_count": 24,
+                        "name": "Bông thấm toner",
+                        "ko_name": "토너패드"
+                    }
+                ],
+                "ko_name": "스킨&토너"
+            },
+            {
+                "level": 1,
+                "sub_categories": [
+                    {
+                        "id": 5,
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "name": "Lotion cấp nước",
+                        "en_name": "Hydrating lotion",
+                        "ko_name": "수분로션",
+                        "grand_total_count": 56
+                    },
+                    {
+                        "grand_total_count": 68,
+                        "en_name": "Moisturizing lotion",
+                        "name": "Lotion cấp ẩm",
+                        "level": 2,
+                        "ko_name": "보습로션",
+                        "id": 6,
+                        "thirdIsNew": false,
+                        "synonyms": [
+                            "Lotion dưỡng ẩm"
+                        ]
+                    },
+                    {
+                        "name": "Lotion làm dịu da",
+                        "ko_name": "진정로션",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "en_name": "Soothing lotion",
+                        "id": 7,
+                        "grand_total_count": 14
+                    },
+                    {
+                        "grand_total_count": 2,
+                        "id": 8,
+                        "level": 2,
+                        "name": "Lotion se khít lỗ chân lông",
+                        "en_name": "Pore lotion",
+                        "ko_name": "모공로션",
+                        "thirdIsNew": false
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "id": 9,
+                        "level": 2,
+                        "ko_name": "트러블로션",
+                        "name": "Lotion cho da mụn",
+                        "en_name": "Trouble lotion",
+                        "grand_total_count": 20
+                    },
+                    {
+                        "id": 10,
+                        "level": 2,
+                        "grand_total_count": 12,
+                        "thirdIsNew": false,
+                        "synonyms": [
+                            "Lotion làm trắng"
+                        ],
+                        "ko_name": "브라이트닝로션",
+                        "en_name": "Brightening lotion",
+                        "name": "Lotion dưỡng trắng"
+                    }
+                ],
+                "ko_name": "로션&에멀젼",
+                "en_name": "Lotion & emulsion",
+                "id": 2,
+                "showMergedChildren": true,
+                "secondIsNew": false,
+                "name": "Lotion & sữa dưỡng",
+                "grand_total_count": 86
+            },
+            {
+                "grand_total_count": 323,
+                "sub_categories": [
+                    {
+                        "grand_total_count": 134,
+                        "en_name": "Hydrating essence",
+                        "ko_name": "수분에센스",
+                        "thirdIsNew": false,
+                        "name": "Tinh chất cấp nước",
+                        "id": 11,
+                        "level": 2
+                    },
+                    {
+                        "level": 2,
+                        "en_name": "Moisturizing essence",
+                        "grand_total_count": 98,
+                        "id": 12,
+                        "synonyms": [
+                            "Tinh chất cấp ẩm"
+                        ],
+                        "ko_name": "보습에센스",
+                        "name": "Tinh chất dưỡng ẩm",
+                        "thirdIsNew": false
+                    },
+                    {
+                        "id": 13,
+                        "grand_total_count": 78,
+                        "ko_name": "진정에센스",
+                        "thirdIsNew": false,
+                        "en_name": "Soothing essence",
+                        "name": "Tinh chất làm dịu da",
+                        "level": 2
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "ko_name": "모공에센스",
+                        "id": 14,
+                        "en_name": "Pore essence",
+                        "name": "Tinh chất se khít lỗ chân lông",
+                        "grand_total_count": 22,
+                        "level": 2
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "ko_name": "트러블에센스",
+                        "grand_total_count": 48,
+                        "id": 15,
+                        "name": "Tinh chất trị mụn",
+                        "en_name": "Trouble essence"
+                    },
+                    {
+                        "en_name": "Brightening essence",
+                        "thirdIsNew": false,
+                        "id": 16,
+                        "grand_total_count": 138,
+                        "name": "Tinh chất dưỡng trắng",
+                        "synonyms": [
+                            "Lotion làm trắng"
+                        ],
+                        "level": 2,
+                        "ko_name": "브라이트닝에센스"
+                    },
+                    {
+                        "id": 17,
+                        "level": 2,
+                        "thirdIsNew": false,
+                        "en_name": "anti-aging essence",
+                        "grand_total_count": 128,
+                        "name": "Tinh chất chống lão hóa",
+                        "ko_name": "안티에이징에센스"
+                    }
+                ],
+                "id": 3,
+                "secondIsNew": false,
+                "showMergedChildren": true,
+                "name": "Tinh chất",
+                "ko_name": "에센스&세럼",
+                "en_name": "Essence&Serum",
+                "level": 1
+            },
+            {
+                "level": 1,
+                "sub_categories": [
+                    {
+                        "ko_name": "수분크림",
+                        "id": 18,
+                        "name": "Kem dưỡng cấp nước",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "grand_total_count": 256,
+                        "en_name": "Hydrating cream"
+                    },
+                    {
+                        "en_name": "Moisturizing cream",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "grand_total_count": 198,
+                        "name": "Kem dưỡng cấp ẩm",
+                        "ko_name": "보습크림",
+                        "synonyms": [
+                            "Kem dưỡng ẩm"
+                        ],
+                        "id": 19
+                    },
+                    {
+                        "name": "Kem nâng tông",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "grand_total_count": 34,
+                        "id": 20,
+                        "ko_name": "톤업크림",
+                        "en_name": "Tone-up cream"
+                    },
+                    {
+                        "grand_total_count": 14,
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "ko_name": "모공크림",
+                        "id": 21,
+                        "en_name": "Pore cream",
+                        "name": "Kem dưỡng se khít lỗ chân lông"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "en_name": "Night cream",
+                        "name": "Kem dưỡng ban đêm",
+                        "id": 22,
+                        "grand_total_count": 26,
+                        "ko_name": "나이트크림"
+                    },
+                    {
+                        "name": "Kem dưỡng vùng mắt",
+                        "thirdIsNew": false,
+                        "grand_total_count": 100,
+                        "ko_name": "아이크림",
+                        "level": 2,
+                        "id": 23,
+                        "en_name": "Eye cream"
+                    },
+                    {
+                        "grand_total_count": 0,
+                        "id": 24,
+                        "level": 2,
+                        "en_name": "Neck cream",
+                        "ko_name": "넥크림",
+                        "name": "Kem dưỡng vùng cổ",
+                        "thirdIsNew": false
+                    },
+                    {
+                        "en_name": "Brightening cream",
+                        "ko_name": "브라이트닝크림",
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "name": "Kem dưỡng trắng da",
+                        "id": 25,
+                        "synonyms": [
+                            "Kem dưỡng làm trắng"
+                        ],
+                        "grand_total_count": 84
+                    },
+                    {
+                        "level": 2,
+                        "ko_name": "안티에이징크림",
+                        "grand_total_count": 108,
+                        "id": 26,
+                        "thirdIsNew": false,
+                        "name": "Kem dưỡng chống lão hóa",
+                        "en_name": "Anti-aging cream"
+                    }
+                ],
+                "grand_total_count": 410,
+                "en_name": "cream",
+                "secondIsNew": false,
+                "id": 4,
+                "ko_name": "크림",
+                "showMergedChildren": true,
+                "name": "Kem dưỡng da"
+            },
+            {
+                "en_name": "Mist",
+                "showMergedChildren": true,
+                "name": "Xịt khoáng",
+                "id": 5,
+                "sub_categories": [
+                    {
+                        "level": 2,
+                        "ko_name": "워터미스트",
+                        "name": "xịt khoáng dạng nước",
+                        "thirdIsNew": false,
+                        "grand_total_count": 62,
+                        "id": 27,
+                        "en_name": "Water mist"
+                    },
+                    {
+                        "en_name": "Oil mist",
+                        "id": 28,
+                        "ko_name": "오일미스트",
+                        "name": "Xịt khoáng chứa dầu",
+                        "grand_total_count": 4,
+                        "level": 2,
+                        "thirdIsNew": false
+                    },
+                    {
+                        "ko_name": "크림미스트",
+                        "en_name": "Cream mist",
+                        "id": 29,
+                        "level": 2,
+                        "grand_total_count": 4,
+                        "thirdIsNew": false,
+                        "name": "Xịt dưỡng da"
+                    }
+                ],
+                "level": 1,
+                "ko_name": "미스트",
+                "secondIsNew": false,
+                "grand_total_count": 35
+            },
+            {
+                "grand_total_count": 24,
+                "secondIsNew": false,
+                "en_name": "facial oil",
+                "ko_name": "페이스오일",
+                "id": 6,
+                "name": "Dầu dưỡng da",
+                "showMergedChildren": true,
+                "level": 1,
+                "sub_categories": []
+            }
+        ],
+        "level": 0,
+        "id": 1,
+        "en_name": "Skincare",
+        "grand_total_count": 1069
+    },
+    {
+        "firstCategoryImage": "https:&&dn5hzapyfrpio.cloudfront.net&home&glowmee&upload&category&20200227&1582766740942.png",
+        "en_name": "Sun care",
+        "sub_categories": [
+            {
+                "id": 41,
+                "level": 1,
+                "name": "Kem chống nắng",
+                "grand_total_count": 162,
+                "sub_categories": [
+                    {
+                        "grand_total_count": 270,
+                        "en_name": "Mild sunscreen",
+                        "thirdIsNew": false,
+                        "name": "Kem chống nắng dịu nhẹ",
+                        "level": 2,
+                        "id": 142,
+                        "ko_name": "마일드선크림"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "ko_name": "톤업선크림",
+                        "name": "Kem chống nắng nâng tông",
+                        "en_name": "Tone-up sunscreen",
+                        "id": 143,
+                        "grand_total_count": 20,
+                        "level": 2
+                    },
+                    {
+                        "ko_name": "워터프루프선크림",
+                        "thirdIsNew": false,
+                        "grand_total_count": 10,
+                        "en_name": "Waterproof sunscreen",
+                        "level": 2,
+                        "name": "Kem chống nắng chống thấm nước",
+                        "id": 144
+                    },
+                    {
+                        "name": "Kem chống nắng làm dịu da",
+                        "ko_name": "진정&쿨링선크림",
+                        "grand_total_count": 16,
+                        "thirdIsNew": false,
+                        "level": 2,
+                        "en_name": "Soothing & cooling sunscreen",
+                        "id": 145
+                    }
+                ],
+                "ko_name": "선크림",
+                "secondIsNew": false,
+                "en_name": "Suncreen",
+                "showMergedChildren": true
+            },
+            {
+                "secondIsNew": false,
+                "ko_name": "선쿠션",
+                "name": "Cushion chống nắng",
+                "id": 42,
+                "level": 1,
+                "grand_total_count": 8,
+                "en_name": "Sun cushion",
+                "showMergedChildren": true,
+                "sub_categories": [
+                    {
+                        "id": 146,
+                        "level": 2,
+                        "ko_name": "마일드선쿠션",
+                        "grand_total_count": 10,
+                        "thirdIsNew": false,
+                        "name": "cushion chống nắng dịu nhẹ",
+                        "en_name": "Mild sun cushion"
+                    },
+                    {
+                        "thirdIsNew": false,
+                        "ko_name": "톤업선쿠션",
+                        "id": 147,
+                        "grand_total_count": 2,
+                        "level": 2,
+                        "en_name": "Tone-up sun cushion",
+                        "name": "Cushion chống nắng nâng tông"
+                    },
+                    {
+                        "level": 2,
+                        "grand_total_count": 4,
+                        "thirdIsNew": false,
+                        "id": 149,
+                        "ko_name": "진정&쿨링선쿠션",
+                        "name": "Cushion chống nắng làm dịu da",
+                        "en_name": "Soothing & Cooling sun cushion"
+                    }
+                ]
+            },
+            {
+                "level": 1,
+                "id": 43,
+                "showMergedChildren": false,
+                "name": "Thanh chống nắng",
+                "secondIsNew": false,
+                "ko_name": "선스틱",
+                "sub_categories": [],
+                "grand_total_count": 21,
+                "en_name": "Sun stick",
+                "synonyms": [
+                    "Chống nắng dạng thanh"
+                ]
+            },
+            {
+                "showMergedChildren": false,
+                "ko_name": "선젤",
+                "synonyms": [
+                    "Chống nắng dạng gel"
+                ],
+                "sub_categories": [],
+                "id": 44,
+                "grand_total_count": 11,
+                "name": "Gel chống nắng",
+                "secondIsNew": false,
+                "level": 1,
+                "en_name": "Sun gel"
+            },
+            {
+                "id": 45,
+                "showMergedChildren": false,
+                "ko_name": "선베이스",
+                "level": 1,
+                "grand_total_count": 15,
+                "sub_categories": [],
+                "secondIsNew": false,
+                "name": "Kem lót chống nắng",
+                "en_name": "Sun base"
+            },
+            {
+                "showMergedChildren": false,
+                "en_name": "Sun spray",
+                "level": 1,
+                "id": 46,
+                "sub_categories": [],
+                "ko_name": "선스프레이",
+                "name": "Xịt chống nắng",
+                "secondIsNew": false,
+                "grand_total_count": 12
+            },
+            {
+                "en_name": "After sun",
+                "ko_name": "에프터선",
+                "secondIsNew": false,
+                "showMergedChildren": true,
+                "id": 48,
+                "sub_categories": [
+                    {
+                        "level": 2,
+                        "synonyms": [
+                            "Gel làm dịu",
+                            "Gel làm mát"
+                        ],
+                        "grand_total_count": 26,
+                        "ko_name": "수딩젤",
+                        "id": 152,
+                        "en_name": "Soothing gel",
+                        "name": "Gel nhả nắng",
+                        "thirdIsNew": false
+                    }
+                ],
+                "name": "Sản phẩm nhả nắng",
+                "level": 1,
+                "grand_total_count": 13
+            }
+        ],
+        "grand_total_count": 242,
+        "name": "Chống nắng",
+        "level": 0,
+        "firstIsNew": false,
+        "id": 9,
+        "ko_name": "선케어"
+    }
+]
