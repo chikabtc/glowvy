@@ -15,15 +15,14 @@ class Brand {
   BusinessInfo businessInfo;
   String email;
   String enName;
-  int id;
+  dynamic id;
   String image;
   String name;
   List<Tag> tags;
   String telephone;
   String text;
   List<Category> categories;
-  int grandTotalCount;
-
+  dynamic grandTotalCount;
   Type type;
 
   Brand(

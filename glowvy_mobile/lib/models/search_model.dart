@@ -171,7 +171,9 @@ class SearchModel extends ChangeNotifier {
 
       if (brandsSnap.docs.isNotEmpty) {
         for (final doc in brandsSnap.docs) {
-          list.add(Brand.fromJson(doc.data()));
+          final brand = Brand.fromJson(doc.data());
+          list.add(brand);
+          // print('brandsn :${brand.id}');
         }
         _brands = list;
       } else {

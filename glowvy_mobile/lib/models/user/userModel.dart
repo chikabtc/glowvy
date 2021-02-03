@@ -201,6 +201,44 @@ class UserModel with ChangeNotifier {
     }
   }
 
+  Future uploadScreenshot(File file, {String path}) async {
+    const profileImageBucketPath = 'feedbacks/screenshots/';
+
+    try {
+      final reference = _storage.ref().child(profileImageBucketPath + '$path');
+
+      await reference.putFile(file);
+      await _db.collection('users').doc(firebaseUser.uid).update({
+        'picture':
+            'http://storage.googleapis.com/glowvy-b6cf4.appspot.com/feedbacks/screenshots/$path',
+      });
+
+      await reloadUser();
+    } catch (e) {
+      print('uploadScreenshot: $e');
+    }
+  }
+
+  // Future uploadProfilePicture(File file) async {
+  //   const profileImageBucketPath = 'users/pictures/';
+  //   final filePath = '${firebaseUser.uid}.jpg';
+
+  //   try {
+  //     final reference =
+  //         _storage.ref().child(profileImageBucketPath + '$filePath');
+
+  //     await reference.putFile(file);
+  //     await _db.collection('users').doc(firebaseUser.uid).update({
+  //       'picture':
+  //           'http://storage.googleapis.com/glowvy-b6cf4.appspot.com/users/pictures/$filePath',
+  //     });
+
+  //     await reloadUser();
+  //   } catch (e) {
+  //     print('uploadProfilePicture: $e');
+  //   }
+  // }
+
   Future updateUserName(name) async {
     await _db.collection('users').doc(firebaseUser.uid).update({
       'full_name': name,

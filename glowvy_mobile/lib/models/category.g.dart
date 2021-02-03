@@ -15,6 +15,7 @@ Category _$CategoryFromJson(Map<String, dynamic> json) {
         ?.map((e) =>
             e == null ? null : Category.fromJson(e as Map<String, dynamic>))
         ?.toList(),
+    synonyms: (json['synonyms'] as List)?.map((e) => e as String)?.toList(),
     grandTotalCount: (json['grand_total_count'] as num)?.toDouble(),
     image: json['image'] as String,
     id: json['id'] as int,
@@ -28,6 +29,7 @@ Map<String, dynamic> _$CategoryToJson(Category instance) => <String, dynamic>{
       'name': instance.name,
       'sub_categories':
           instance.subCategories?.map((e) => e?.toJson())?.toList(),
+      'synonyms': instance.synonyms,
       'image': instance.image,
       'id': instance.id,
       'level': instance.level,

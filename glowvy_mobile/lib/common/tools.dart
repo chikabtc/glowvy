@@ -158,7 +158,7 @@ class Tools {
     }
   }
 
-  static Future sendSlackMessage(String messageText) async {
+  static Future sendSlackMessage({dynamic request}) async {
     //Slack's Webhook URL
     var url =
         'https://hooks.slack.com/services/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';
@@ -166,10 +166,6 @@ class Tools {
     //Makes request headers
     final requestHeader = <String, String>{
       'Content-type': 'application/json',
-    };
-
-    final request = {
-      'text': messageText,
     };
 
     await http.post(url, body: json.encode(request), headers: requestHeader);

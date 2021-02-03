@@ -16,7 +16,7 @@ Brand _$BrandFromJson(Map<String, dynamic> json) {
         : BusinessInfo.fromJson(json['business_info'] as Map<String, dynamic>),
     email: json['email'] as String,
     enName: json['en_name'] as String,
-    id: json['id'] as int,
+    id: json['id'],
     image: json['image'] as String,
     name: json['name'] as String,
     tags: (json['tags'] as List)
@@ -27,7 +27,7 @@ Brand _$BrandFromJson(Map<String, dynamic> json) {
     type: json['type'] == null
         ? null
         : Type.fromJson(json['type'] as Map<String, dynamic>),
-    grandTotalCount: json['grand_total_count'] as int,
+    grandTotalCount: json['grand_total_count'],
   )..categories = (json['categories'] as List)
       ?.map((e) =>
           e == null ? null : Category.fromJson(e as Map<String, dynamic>))

@@ -56,11 +56,11 @@ class _WriteReviewScreenState extends State<WriteReviewScreen>
     } else if (review.rating == 0 || review.rating == null) {
       throw 'select rating';
     } else if (review.content == null) {
-      throw 'content too shorts at least over 20 characters';
+      throw 'Cần nhập tối thiểu 20 ký tự';
     } else if (review.content.length < 20) {
-      throw 'content too shorts at least over 20 characters';
+      throw 'Cần nhập tối thiểu 20 ký tự';
     } else if (review.content.length > 5000) {
-      throw 'content too long (up to 5000 chars';
+      throw 'Nội dung không được quá 5000 ký tự';
     }
   }
 

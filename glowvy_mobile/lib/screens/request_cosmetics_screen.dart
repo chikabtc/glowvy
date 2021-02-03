@@ -193,8 +193,26 @@ class _CosmeticsRequestScreenState extends State<CosmeticsRequestScreen>
                               await _stopAnimation();
                               Popups.showSuccesPopup(context);
                               Navigator.pop(context);
-                              Tools.sendSlackMessage(
-                                  'cosmetics request:\nbrand: ${_productRequest.brandName}\nemail: ${_productRequest.categoryName}\nproduct name: ${_productRequest.productName}\n\n user email:${user.email} \n uid: ${user.uid}');
+                              var attachment = {
+                                'attachments': [
+                                  {
+                                    'fallback':
+                                        'Plain-text summary of the attachment.',
+                                    'color': '#2eb886',
+                                    'user_id': user.uid,
+                                    'user_name': 'user.uid',
+                                    'user_email': user.email,
+                                    'title': 'User Feedback',
+                                    'text':
+                                        'cosmetics request:\nbrand: ${_productRequest.brandName}\nemail: ${_productRequest.categoryName}\nproduct name: ${_productRequest.productName}\n',
+                                    'image_url':
+                                        'https://d9vmi5fxk1gsw.cloudfront.net/home/glowmee/upload/20180417/1523927677516_160.png',
+                                    'ts': DateTime.now().millisecondsSinceEpoch
+                                  },
+                                ]
+                              };
+
+                              Tools.sendSlackMessage(request: attachment);
                             });
                           } catch (err) {
                             //handle errors
