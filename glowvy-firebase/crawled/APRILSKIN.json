@@ -1,0 +1,261 @@
+[
+    {
+        "sid": 121081,
+        "name": "",
+        "sname": "리얼 캐롯 블레미쉬 클리어 세럼",
+        "description": "",
+        "sdescription": "- 강력하고 빠르게 오돌토돌 피부 고민을 해결하는 리얼 당근 유래 3종 (캐롯 워터, 캐롯씨드 오일, 캐롯 단백질) 함유\r\n- 영양소 파괴를 최소화한 최고 등급의 캐롯 씨드 오일을 듬뿍 함유해 (10,000ppm) 뛰어난 진정 및 피부결 개선효과를 부여\r\n- 피부 친화력이 높은 캐롯 단백질을 더해 제품의 흡수력 UP\r\n- 캐롯과 더불어 우수한 효과의 진정 성분을 더해 오돌토돌한 피부를 더욱 빠르게 케어\r\n- 당근의 세포벽에 존재하는 단백질은 피부 천연 보습인자를 함유해 피부 친화력이 높아 피부 장벽을 강화하고 깊은 보습 케어에 도움\r\n- 식약처 고시성분인 나이아신아마이드를 함유하여 피부 톤까지 환하게 케어",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Trouble essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 15,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất trị mụn",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum trị mụn",
+                "essence trị mụn",
+                "tinh chất cho da mụn",
+                "serum cho da mụn",
+                "essence cho da mụn",
+                "tinh chất ngăn ngừa mụn",
+                "serum ngăn ngừa mụn",
+                "essence ngăn ngừa mụn"
+            ]
+        }
+    },
+    {
+        "sid": 100440,
+        "name": "",
+        "sname": "퍼펙트 매직스노우 크림",
+        "description": "",
+        "sdescription": "* 본 제품은 리뉴얼된 제품입니다.\n\n 산뜻한 사용감과 자연스러운 톤업 효과를 선사하는 크림\n\n- 보습 및 미백 특허 성분 2개를 추가로 블렌딩하여, 칙칙함은 환하게 밝혀주고 촉촉하고 건강하게 케어\n- 피부 안전성 테스트 완료",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Tone-up cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 20,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem nâng tông",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem tone up",
+                "kem dưỡng nâng tone da",
+                "kem dưỡng làm trắng tạm thời",
+                "kem dưỡng làm trắng tức thì",
+                "kem dưỡng trắng tone-up"
+            ]
+        }
+    },
+    {
+        "sid": 93770,
+        "name": "",
+        "sname": "매직스노우 선스틱 [SPF50+/PA+++]",
+        "description": "",
+        "sdescription": "국내 최대 자외선차단지수! 백탁, 끈적임 없는 산뜻한 선스틱\r\n\r\n1. 국내 최대 자외선차단지수\r\n 4계절 내내 존재하는 자외선을 국내 최대 자외선 차단지수로 차단해주어 피부 건강을 지켜줍니다.\r\n\r\n2. 백탁 NO! 끈적임 NO!\r\n 파우더 성분이 들어간 불투명한 제품으로 바른 후에도 백탁이나 끈적임 없이 산뜻하게 마무리 됩니다.\r\n\r\n3. 수시로 덧바를 수 있는 간편함\r\n 손으로 펴 바를 필요 없이, 원하는 부위에 그대로 롤링하여 사용할 수 있어서 잦은 야외활동에도 간편하게 수시로 덧바를 수 있습니다.",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Sun stick",
+            "third_category_en_name": null,
+            "first_category_id": 9,
+            "second_category_id": 43,
+            "third_category_id": null,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Thanh chống nắng",
+            "third_category_name": null,
+            "first_category_synonyms": [],
+            "second_category_synonyms": [
+                "Chống nắng dạng thanh",
+                "kem chống nắng dạng thỏi",
+                "thỏi chống nắng",
+                "sáp chống nắng",
+                "chống nắng dạng sáp",
+                "balm chống nắng",
+                "kem chống nắng dạng thỏi lăn",
+                "thanh lăn chống nắng",
+                "sáp chống nắng dạng thỏi",
+                "chống nắng thanh lăn",
+                "kem chống nắng thỏi",
+                "thanh lăn chống nắng dạng thỏi"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 105937,
+        "name": "",
+        "sname": "퍼펙트 수정화장패드",
+        "description": "",
+        "sdescription": "무너진 화장, 1초만에 리셋 1장으로 끝내는 쉽고 빠른 수정화장\r\n\r\n- 1장으로 끝내는 쉽고 빠른 수정화장\r\n오후 3시만 되면 지저분하게 무너지는 화장, 코 옆 뭉침, 주름 끼임, 다크닝을 수정화장패드 1장으로 쉽고 빠르게 해결할 수 있습니다.\r\n\r\n- 클렌징부터 스킨케어까지 한 번에\r\n면봉, 클렌징 티슈, 기름종이, 미스트 없이 수정화장패드만으로 한 번에 끝낼 수 있어서 간편합니다.\r\n\r\n- 화장발 잘 받는 피부로 리셋\r\n식물성 메이크업 부스팅 성분이 함유되어 뭉친 화장을 지워주고 피부를 촉촉하게 만들어줍니다.\r\n\r\n- 휴대가 간편한 미니 티슈 타입\r\n패드를 1장씩 꺼내 쓸 수 있는 미니 사이즈의 티슈 타입이라 휴대가 간편합니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Makeup remover",
+            "third_category_en_name": "Cleansing pad",
+            "first_category_id": 7,
+            "second_category_id": 33,
+            "third_category_id": 123,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang",
+            "third_category_name": "Bông thấm tẩy trang",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Pad tẩy trang"
+            ]
+        }
+    },
+    {
+        "sid": 129020,
+        "name": "",
+        "sname": "리얼 캐롯 아크네 폼 클렌저",
+        "description": "",
+        "sdescription": "여드름성 피부 완화 기능성 폼 클렌저\r\n\r\n- 당근 유래 3종 처방으로 피부 진정\r\n- 살리실삼 함유로 여드름성 피부 케어\r\n- 저자극 테스트 완료한 순한 딥 클렌저",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing foam",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 112,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt tạo bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 99758,
+        "name": "",
+        "sname": "올 킬 모공 브러쉬",
+        "description": "",
+        "sdescription": "약 40만개 미세모로 자극 없이 꼼꼼하게 모공 속 노페물 제거\r\n\r\n1. 약 40만개의 0.05mm 미세모로 모공까지 딥 클렌징\r\n- 머리카락보다 얇은 미세모가 피부에 자극을 주지 않으면서 피부 표면은 물론 모공 속 노폐물과 블랙헤드를 제거하여 피부를 매끈하고 깨끗하게 관리해줍니다.\r\n\r\n2. 실리콘 젤리 브러쉬로 묵은 각질 제거\r\n- 말랑말랑한 실리콘 젤리 브러쉬가 손세안으로는 관리하기 어려운 묵은 피지와 각질을 집중 제거하여 더욱 꼼꼼한 이중세안이 가능합니다.\r\n\r\n3. 견고하고 그립감이 우수한 디자인\r\n- 한 손에 쏙 들어오는 부드러운 곡선형 디자인으로 설계되어 얼굴의 굴곡에 따라 부드럽게 마사지 하는데 용이합니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Cleansing tool",
+            "third_category_en_name": null,
+            "first_category_id": 7,
+            "second_category_id": 36,
+            "third_category_id": null,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Dụng cụ rửa mặt",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 84195,
+        "name": "",
+        "sname": "매직 스노우 미스트",
+        "description": "",
+        "sdescription": "-알로에베라잎 추출물이91%, 서양장미꽃수 10,000ppm 함유되어 급속 피부 수분충전이 가능!\r\n\r\n-미세입자가 피부에 고르게 분사되어, 밀리거나 뭉침없이 빠르게 흡수!\r\n\r\n-미백에 좋은 나이아신아마이드와 주름개선에 효과가 있는 아데노신 함유로, 탄력있고 하얀 피부로 가꾸기 가능!\r\n\r\n-피부 개선에 도움이 되는 마데카소사이드 성분이 피부를 진정시키고 맑게!\r\n\r\n-깃털처럼 가벼운 느낌의 픽서! 미스트의 수분이 피부에 얇은 막을 형성하여, 오랜 시간 수정없이도 광채 메이크업 지속 가능!",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Mist",
+            "third_category_en_name": "Water mist",
+            "first_category_id": 1,
+            "second_category_id": 5,
+            "third_category_id": 27,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Xịt khoáng",
+            "third_category_name": "xịt khoáng dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "xịt dưỡng ẩm",
+                "xịt dưỡng da",
+                "xịt khoáng dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "nước xịt khoáng",
+                "xịt khoáng dưỡng da"
+            ]
+        }
+    },
+    {
+        "sid": 112884,
+        "name": "",
+        "sname": "리얼 카렌둘라 필링 패드",
+        "description": "",
+        "sdescription": "자극은 더 Down! 수분감은 UP! 데일리 저자극 수분 필링 패드\r\n\r\n- 카렌둘라 꽃잎으로 저자극 노폐물 관리\r\n- EWG 그린 등급 성분 저자극 임상 완료\r\n- 뛰어난 수분감과 보습감",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Exfoliator",
+            "third_category_en_name": "Peeling pad",
+            "first_category_id": 7,
+            "second_category_id": 35,
+            "third_category_id": 126,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy da chết",
+            "third_category_name": "Bông tẩy da chết",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [
+                "Tẩy tế bào chết"
+            ],
+            "third_category_synonyms": [
+                "Bông tẩy tế bào chết",
+                "Pad tẩy da chết",
+                "Pad tẩy tế bào chết"
+            ]
+        }
+    },
+    {
+        "sid": 87040,
+        "name": "",
+        "sname": "매직스노우 패드",
+        "description": "",
+        "sdescription": "물기 없는 피부에 가볍고 부드럽게 롤링해주면, 순면 패드에 묻어있던 고마쥬와 묵은 각질이 결합하여 덩어리처럼 뭉쳐 나옵니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Exfoliator",
+            "third_category_en_name": "Peeling pad",
+            "first_category_id": 7,
+            "second_category_id": 35,
+            "third_category_id": 126,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy da chết",
+            "third_category_name": "Bông tẩy da chết",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [
+                "Tẩy tế bào chết"
+            ],
+            "third_category_synonyms": [
+                "Bông tẩy tế bào chết",
+                "Pad tẩy da chết",
+                "Pad tẩy tế bào chết"
+            ]
+        }
+    }
+]

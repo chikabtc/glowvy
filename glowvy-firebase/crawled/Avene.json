@@ -1,0 +1,711 @@
+[
+    {
+        "sid": 26616,
+        "name": "",
+        "sname": "CPI 스킨 리커버리 크림 [중건성용]",
+        "description": "",
+        "sdescription": "민감 피부를 위해 꼭 필요한 성분만 담은 미니멀 크림 중복합성용\n\n- 아벤느의 독자성분 파르세린이 다양한 외부자극으로 민감해진 피부를 케어\n- 크리미한 저자극 텍스처가 피부를 감싸듯 빠르게 흡수되어 산뜻한 수분 공급은 물론 피부 진정, 회복을 동시에\n- 특허받은 밀폐용기로 사용기간 내내 멸균상태를 유지하여 보존제 무첨가",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 99458,
+        "name": "",
+        "sname": "트릭세라 뉴트리 플루이드 로션",
+        "description": "",
+        "sdescription": "72시간 보습, 민감피부를 위한 장벽강화 윤광로션\n\n- 가볍고 얇게 발리는 윤광 텍스처의 로션\n- 식물유래 복함 성분인 리피딕 트리오 + 특허성분 (특허번호 EP1682158B9) 셀렉티오즈® 함유\n- 아벤느 온천수가 가려운 피부에 진정 및 자극 완화 효과 선사",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Soothing lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 7,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion làm dịu da",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "sữa dưỡng làm dịu da",
+                "lotion cho da nhạy cảm",
+                "nước hoa hồng cho da nhạy cảm",
+                "sữa dưỡng cho da nhạy cảm",
+                "lotion làm dịu da kích ứng",
+                "sữa dưỡng làm dịu da kích ứng",
+                "nước hoa hồng làm dịu da kích ứng",
+                "nước cân bằng làm dịu da kích ứng"
+            ]
+        }
+    },
+    {
+        "sid": 8717,
+        "name": "",
+        "sname": "클리낭스 클렌징 젤",
+        "description": "",
+        "sdescription": "피지 잡는 촉촉한 약산성 젤 클렌저\n\n- 솝프리 약산성으로 피부 부담은 줄이고 모공 속까지 깨끗하게 딥 클렌징\n- 과잉 피지는 물론 모공 속 노폐물까지 한번에 말끔하게 케어하고 얼굴 및 바디 사용 가능\n- 각질, 피지, 건조함, 자극 등의 피부 트러블 케어",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing gel",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 114,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Gel rửa mặt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "sữa rửa mặt dạng gel"
+            ]
+        }
+    },
+    {
+        "sid": 88264,
+        "name": "",
+        "sname": "젠틀 토닝 로션 ",
+        "description": "",
+        "sdescription": "토너로 팩까지! 흔들어 쓰는 민감 진정 핑크토너\n\n- 꼭 필요한 8가지 성분으로 민감 피부를 편안하고 건강하게 케어\n- 풍부한 규산염이 함유되어 외부 자극으로부터 피부를 보호\n- 정제수 대신 아벤느 온천수 함유로 피부 장벽 강화, 진정 및 자극 완화 효과 선사",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 26618,
+        "name": "",
+        "sname": "CPI 스킨 리커버리 크림 [건성용]",
+        "description": "",
+        "sdescription": "민감 피부를 위해 꼭 필요한 성분만 담은 미니멀 크림 건성용\n\n- 아벤느의 독자성분 파르세린이 다양한 외부자극으로 민감해진 피부를 케어\n- 크리미하면서도 쫀쫀한 저자극 텍스처로 한층 깊은 보습감을 선사하며 피부 진정, 회복까지 동시에\n- 특허받은 밀폐용기로 사용기간 내내 멸균상태를 유지하여 보존제 무첨가",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 27426,
+        "name": "",
+        "sname": "클리낭스 엑스퍼트",
+        "description": "",
+        "sdescription": "토탈 트러블(각질, 피지, 건조함, 자극 등의 피부 트러블) 케어 수분 에멀전\n\n- 지성 피부 고민을 케어해주는 특허(EP 2 379 484 B1) 성분 디오레닐 함유\n- 번들거림을 억제하여 산뜻한 마무리감 선사",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Trouble lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 9,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion cho da mụn",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "Sữa Dưỡng Dành Cho Da Mụn",
+                "Sữa dưỡng ngăn ngừa mụn",
+                "lotion ngăn ngừa mụn",
+                "Lotion dưỡng da trị mụn",
+                "lotion trị mụn",
+                "nước hoa hồng trị mụn",
+                "nước cân bằng trị mụn"
+            ]
+        }
+    },
+    {
+        "sid": 98298,
+        "name": "",
+        "sname": "시칼파트 블루젤 - 스킨 베이스",
+        "description": "",
+        "sdescription": "산뜻한 데일리 손상개선 크림\n\n- 수분감 있는 블루젤 타입의 텍스처가 끈적임 없이 촉촉하게 흡수되어 효과적인 진정보습 선사\n- 논코메도제닉 / 피부 자극 테스트 완료 / 파라벤6종, 페녹시 에탄올 무첨가\n- 손상개선: 거칠어짐 등의 피부 손상, 손상개선을 의미하며 의학적 효능효과와 연관되지 않음",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 131409,
+        "name": "",
+        "sname": "시칼파트 플러스 S.O.S 크림",
+        "description": "",
+        "sdescription": "* 본 제품은 시칼파트 S.O.S 크림에서 리뉴얼된 제품입니다.\n\n더 강력해진 손상개선! 건조한, 따끔한, 불편한 피부고민을 위한 데일리 손상개선 크림\n\n- 아벤느 온천수에서 찾은 새로운 활성성분 C+Restore™와 구리-아연 복합성분이 손상된 피부를 집중 케어\n- 논코메도제틱테스트완료 / 피부자극테스트완료 / 영유아부터 사용가능한 포뮬라\n- 손상개선: 거칠어짐 등의 피부 손상, 손상개선을 의미하며 의학적 효능효과와 연관되지 않음(기존 시칼파트 대비)",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 10725,
+        "name": "",
+        "sname": "미셀라 로션",
+        "description": "",
+        "sdescription": "꼭 필요한 9가지 성분만 함유된 저자극 클렌징 워터\n\n- 피부결 사이의 미세먼지까지 클렌징(한국피부과학연구원, 피부결 속 미세먼지 세정 효과에 대한 평가, 2016)\n- 당김없이 촉촉한 마무리감 선사\n- 정제수 대신 아벤느 온천수 함유로 피부 장벽 강화, 진정 및 자극 완화 효과",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Makeup remover",
+            "third_category_en_name": "Cleansing water",
+            "first_category_id": 7,
+            "second_category_id": 33,
+            "third_category_id": 119,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang",
+            "third_category_name": "Nước tẩy trang",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Tẩy trang dạng nước"
+            ]
+        }
+    },
+    {
+        "sid": 119049,
+        "name": "",
+        "sname": "트릭세라 뉴트리-플루이드 밤",
+        "description": "",
+        "sdescription": "아벤느 재구매율 1위(2019 아벤느 공식 유통중인 국내 약국채널 내 밤 타입 유형 제품 매출액 기준) 빠르게 스며드는 고보습 장벽 크림\n\n- 식물유래 복함 성분인 리피딕 트리오 및 특허성분(특허번호 EP1682158B9) 셀렉티오즈® 함유\n- 건조로 인해 가려운 피부 진정 및 보습\n",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 1057,
+        "name": "",
+        "sname": "오 떼르말",
+        "description": "",
+        "sdescription": "물이 다른 진정 회복 1등 미스트\n\n- 민감 피부 진정 + 지친피부 회복 + 피부장벽 강화\n- 아벤느 온천수에만 존재하는 특별한 생명력 아쿠아 돌로미아에™의 활성성분\n- 낮은 잔존 미네랄 함량으로 우수한 진정 및 자극완화",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Mist",
+            "third_category_en_name": "Water mist",
+            "first_category_id": 1,
+            "second_category_id": 5,
+            "third_category_id": 27,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Xịt khoáng",
+            "third_category_name": "xịt khoáng dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "xịt dưỡng ẩm",
+                "xịt dưỡng da",
+                "xịt khoáng dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "nước xịt khoáng",
+                "xịt khoáng dưỡng da"
+            ]
+        }
+    },
+    {
+        "sid": 51405,
+        "name": "",
+        "sname": "제라캄 A.D 밤",
+        "description": "",
+        "sdescription": "건조하고 가려운 피부를 위한 고보습 밤 \n\n- 활성성분 아이-모듈리아가 건조로 인한 피부 가려움을 빠르게 진정\n- 아벤느 온천수를 함유한 고보습 밤이 민감하고 자극 받은 피부를 회복\n- 영유아도 사용할 수 있는 순한 성분",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 48021,
+        "name": "",
+        "sname": "젠틀 클렌징 무스 폼",
+        "description": "",
+        "sdescription": "저자극 약산성 버블 클렌저\n\n- 한번의 펌핑으로 만들어지는 풍성한 약산성 거품이 피부 노폐물을 부드럽게 제거\n- 과다하게 분비되는 피지를 조절해주는 특허받은 글루탐산 성분 함유(특허번호: FR2996127B1)\n- 약산성 pH, 솝프리, 민감피부도 사용가능",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Bubble cleanser",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 113,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt dạng bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 124501,
+        "name": "",
+        "sname": "이드랑스 딥 모이스트 로션",
+        "description": "",
+        "sdescription": "* 본 제품은 딥 모이스트 로션에서 리뉴얼된 제품입니다.\n\n쫀쫀한 첫 단계 수분 케어! 수분 가득 투명 토너\n\n- 민감하고 건조한 피부에 빠르게 쏙! 쫀쫀함이 느껴지는 투명한 워터타입 스킨\n- 다양한 수분케어를 위한 멀티활용이 가능한 토너를 찾는다면 PICK\n- 논코메도제닉 테스트 완료, 인공색소 무첨가, 피부과 전문의 감독하 피부 자극 테스트 완료",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 141437,
+        "name": "",
+        "sname": "이드랑스 에센스-인-로션",
+        "description": "",
+        "sdescription": "* 본 제품은 리뉴얼된 제품입니다.\n\n브랜드 3년 연속 에센스 1위(2018-2020, 아벤느 에센스 유형 국내 매출액 기준), 물이 다른 생기 충전 #수분밀착 #파란에센스\n\n- 로션 속에 에센스를 가득 품은 촉촉하고 매끈한 고농축 타입의 벨벳 텍스춰\n- 논코메도제닉 테스트 완료, 피부과 전문의 감독하 피부 자극 테스트 완료\n- 인공색소 무첨가\n",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Hydrating essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 11,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum cấp nước",
+                "essence cấp nước",
+                "tinh chất cho da dầu",
+                "serum cho da dầu",
+                "essence cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 89569,
+        "name": "",
+        "sname": "클리낭스 매트 매티파잉 토너",
+        "description": "",
+        "sdescription": "* 본 제품은 클리낭스 매트 로씨옹에서 리뉴얼된 제품입니다.\n\n흔들어 쓰는 산뜻 모공 토너\n- 과잉 피지를 컨트롤하여 수부지 피부를 산뜻하게 정돈\n- 약산성 토너로 피부 부담은 줄이고 피지와 모공을 깨끗하게 케어\n- 풍부한 규산염과 아벤느 온천수가 민감해진 피부 진정 및 자극 완화",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 139683,
+        "name": "",
+        "sname": "이드랑스 하이드레이팅 아쿠아 크림-인-젤",
+        "description": "",
+        "sdescription": "* 본 제품은 이드랑스 아쿠아 크림-인-젤에서 리뉴얼된 제품입니다.\n\n아벤느 온천수 75배 강화(기존 이드랑스 아쿠아 크림-인-젤 대비) 수분 잠금 올인원 크림\n\n- 탱글탱글! 촉촉함을 듬뿍 머금은 젤 속에 크림이 담긴 포뮬라로 오랜시간 수분 유지\n- 논코메도제닉 테스트완료\n- 인공색소 무첨가",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 135164,
+        "name": "",
+        "sname": "뷰티-프로텍트 [SPF50+/PA++++]",
+        "description": "",
+        "sdescription": "번들거림 없이 보송한 내추럴 톤업 선크림\n\n- 자연스러운 피부톤 보정 효과\n- 건강한 피부를 위한 안티폴루션 케어\n- 아벤느만의 Nude Skin Feel Innovation이 적용되어 산뜻한 마무리감 선사",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Tone-up sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 143,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng nâng tông",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng tone up",
+                "kem chống nắng nâng tone",
+                "kem chống nắng làm sáng da tức thì",
+                "kem chống nắng làm sáng da tạm thời"
+            ]
+        }
+    },
+    {
+        "sid": 90407,
+        "name": "",
+        "sname": "클리낭스 매티파잉 플루이드",
+        "description": "",
+        "sdescription": "피지 잡는 수분 로션\n\n- 피부 유수분 밸런스를 맞춰주어 수부지 피부에 촉촉한 수분 공급\n- 과잉피지를 흡착하여 피부를 깨끗하고 산뜻하게 케어\n- 가벼운 텍스처로 빠르게 흡수되어 보송보송한 피부 유지",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Pore lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 8,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion se khít lỗ chân lông",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                ""
+            ]
+        }
+    },
+    {
+        "sid": 117403,
+        "name": "",
+        "sname": "선 플루이드 [SPF50+/PA++++]",
+        "description": "",
+        "sdescription": "가볍고 산뜻한 플루이드 타입 선크림\n\n- 끈적임 없이 피부에 매끈하게 밀착되어 안 바른 듯 가벼운 데일리 선크림\n- 아벤느만의 Nude Skin Feel Innovation이 적용되어 산뜻한 마무리감 선사\n- 우수한 광안정성으로 햇빛에 노출되어도 쉽게 분해되지 않아 오랜 시간 자외선 차단력 유지",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    },
+    {
+        "sid": 124635,
+        "name": "",
+        "sname": "똘레랑스 엑스트렘 에멀전 D.E.F.I",
+        "description": "",
+        "sdescription": "모든 민감 피부를 위한 진정 에멀전\n\n- 피부의 유수분막 성분을 모방한 단 6가지 성분만 함유(정제수 제외)\n- 특허받은 밀폐용기로 사용기간 내내 멸균상태를 유지하여 보존제 무첨가\n- 산뜻한 울트라 프레쉬 밀크 텍스처",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Soothing lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 7,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion làm dịu da",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "sữa dưỡng làm dịu da",
+                "lotion cho da nhạy cảm",
+                "nước hoa hồng cho da nhạy cảm",
+                "sữa dưỡng cho da nhạy cảm",
+                "lotion làm dịu da kích ứng",
+                "sữa dưỡng làm dịu da kích ứng",
+                "nước hoa hồng làm dịu da kích ứng",
+                "nước cân bằng làm dịu da kích ứng"
+            ]
+        }
+    },
+    {
+        "sid": 107522,
+        "name": "",
+        "sname": "클리낭스 선 스크린 [SPF50+/PA++++]",
+        "description": "",
+        "sdescription": "트러블(각질, 피지, 건조함, 자극 등의 피부 트러블)케어 선크림\n\n- 피지를 잡아 끈적임 없이 보송하게 피부를 케어\n- 아벤느만의 Nude Skin Feel Innovation이 적용되어 산뜻한 마무리감 선사\n- 우수한 광안정성으로 햇빛에 노출되어도 쉽게 분해되지 않아 오랜 시간 자외선 차단력 유지",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    },
+    {
+        "sid": 114757,
+        "name": "",
+        "sname": "이드랑스 리하이드레이팅 세럼",
+        "description": "",
+        "sdescription": "* 본 제품은 이드랑스 하이드레이팅 세럼에서 리뉴얼된 제품입니다.\n\n하루종일 촉촉! 온천수 가득 촉촉 세럼\n\n- 크림을 녹여 만든 듯 빠르게 흡수되는 하이브리드 텍스춰의 24시간 수분지속력(CERPER, 프랑스, 성인여성 16명, 1회 사용 후 수분도 평가, 2015)\n- 파라벤 6종, 페녹시에탄올, 인공색소 무첨가",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Hydrating essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 11,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum cấp nước",
+                "essence cấp nước",
+                "tinh chất cho da dầu",
+                "serum cho da dầu",
+                "essence cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 106421,
+        "name": "",
+        "sname": "안티에이징 선크림 [SPF50+/PA++++]",
+        "description": "",
+        "sdescription": "탄력 케어 선크림\n\n- 피부에 촉촉한 수분을 충전하고 피부 탄력 개선 효과가 있는 선크림, 항산화 물질 토코페롤 함유\n- 우수한 광안정성으로 햇빛에 노출되어도 쉽게 분해되지 않아 오랜 시간 자외선 차단력 유지\n- 피부 탄력 개선 효과: 아이이씨코리아㈜ 22명 4주간 1일 1회 사용 후 효능 평가, 2017",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    },
+    {
+        "sid": 70117,
+        "name": "",
+        "sname": "선 크림 [SPF50+/PA +++]",
+        "description": "",
+        "sdescription": "부드럽고 촉촉한 보습 선크림\n\n- 건조한 피부에도 수분감 있게 밀착\n- 아벤느만의 Nude Skin Feel Innovation이 적용되어 산뜻한 마무리감 선사\n- 우수한 광안정성으로 햇빛에 노출되어도 쉽게 분해되지 않아 오랜 시간 자외선 차단력 유지",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    }
+]

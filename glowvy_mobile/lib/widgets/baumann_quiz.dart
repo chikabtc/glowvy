@@ -234,9 +234,7 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                 itemCount: surveys[currentPage].length,
                                 key: Key(tabList[currentPage]),
                                 controller: swipeController,
-                                physics: surveys[0].length == 1
-                                    ? const NeverScrollableScrollPhysics()
-                                    : const AlwaysScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 itemBuilder: (BuildContext context, int i) {
                                   if (totalProgress == 16) {
                                     totalProgress = totalProgress - 1;
@@ -539,7 +537,8 @@ class _BaumannQuizState extends State<BaumannQuiz>
                                                 Navigator.pushNamed(
                                                     context, '/login');
                                               } else {
-                                                Navigator.pop(context);
+                                                Navigator.of(context).popUntil(
+                                                    (route) => route.isFirst);
                                               }
                                             })),
                                     Text('Make Vietnamese Skin Glow',

@@ -1,0 +1,27 @@
+[
+    {
+        "sid": 132096,
+        "name": "",
+        "sname": "하이드라 클렌징 앰플",
+        "description": "",
+        "sdescription": "당김없이 촉촉한 보습 클렌징을 위한 클렌징앰플\r\n\r\n- 앰플 제형의 저자극 수용성 클렌저\r\n- 하이드라 스킨 앰플 세럼의 유효성분을 그대로 담아 세안 후에도 당김 없는 촉촉한 피부\r\n- 코코넛수 51% 함유로 부습과 영양 공급을 한 번에",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing gel",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 114,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Gel rửa mặt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "sữa rửa mặt dạng gel"
+            ]
+        }
+    }
+]

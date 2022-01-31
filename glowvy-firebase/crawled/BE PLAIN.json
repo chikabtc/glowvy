@@ -1,0 +1,338 @@
+[
+    {
+        "sid": 122567,
+        "name": "",
+        "sname": "캐모마일 약산성 토너",
+        "description": "",
+        "sdescription": "80% 이상 함유된 캐모마일꽃추출물이 피부에 풍부한 수분을 공급하며 약산성 제조로 피부 pH 농도를 안정화시켜 건강한 피부로 가꿔줍니다\r\n\r\n- pH5~6 약산성 토너로 피부 pH 농도를 늘 건강한 약산성 상태로 케어\r\n- 캐모마일꽃추출물 80.6% 함유로 빠른 피부 보습 및 진정에 도움\r\n- 20가지 주의성분 엄격 배제",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 124509,
+        "name": "",
+        "sname": "녹두 약산성 클렌징폼",
+        "description": "",
+        "sdescription": "마일드함과 세정력을 모두 갖춘 편안한 약산성 폼\r\n",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing foam",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 112,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt tạo bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 113519,
+        "name": "",
+        "sname": "바하 필링 앰플",
+        "description": "",
+        "sdescription": "각질, 피지 문제의 일시적 해결이 아닌 근본적 해결로 건강한 피지 순환 주기를 되찾아주는 앰플\n\n- 효과적으로 각질을 녹여주는 바하 성분 함유\n- 80% 이상 함유된 녹차수가 피부 자극을 최소화\n- 바른 후 씻어낼 필요 없이 흡수시켜 간편하게 케어",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Trouble essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 15,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất trị mụn",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum trị mụn",
+                "essence trị mụn",
+                "tinh chất cho da mụn",
+                "serum cho da mụn",
+                "essence cho da mụn",
+                "tinh chất ngăn ngừa mụn",
+                "serum ngăn ngừa mụn",
+                "essence ngăn ngừa mụn"
+            ]
+        }
+    },
+    {
+        "sid": 138753,
+        "name": "",
+        "sname": "클린 오션 모이스처 선스크린 [SPF50+/PA++++]",
+        "description": "",
+        "sdescription": "매일 자주 덧발라도 부담없이 순하고 촉촉한 선크림\n\n- 미백, 주름개선, 자외선 차단 3중 기능성 화장품\n- 해양 생태계를 생각한 성분 배합으로 제조\n- 100% 생분해 가능한 단상자와 튜브 용기",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    },
+    {
+        "sid": 132101,
+        "name": "",
+        "sname": "대나무 수분 앰플",
+        "description": "",
+        "sdescription": "롱래스팅 수분 집중 앰플\r\n\r\n- 고농축 대나무수 80% 함유로 차원이 다른 수분감 선사\r\n- 달라지는 외부 컨디션에도 변함없는 장벽에 도움\r\n- 수분과 진정에 더 집중할 수 있도록 가볍고 빠르게 흡수되는 마무리감",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Hydrating essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 11,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum cấp nước",
+                "essence cấp nước",
+                "tinh chất cho da dầu",
+                "serum cho da dầu",
+                "essence cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 135240,
+        "name": "",
+        "sname": "캐모마일 약산성 로션",
+        "description": "",
+        "sdescription": "지친 피부를 위한 캐모마일 테라피\n\n- 캐모마일꽃추출물 70% 이상 함유\n- pH 5.5 ~ 6.5 이내의 약산성 제조로 편안함 선사\n- 풍부한 세라마이드 성분 함유로 피부 장벽 강화에 도움",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Soothing lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 7,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion làm dịu da",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "sữa dưỡng làm dịu da",
+                "lotion cho da nhạy cảm",
+                "nước hoa hồng cho da nhạy cảm",
+                "sữa dưỡng cho da nhạy cảm",
+                "lotion làm dịu da kích ứng",
+                "sữa dưỡng làm dịu da kích ứng",
+                "nước hoa hồng làm dịu da kích ứng",
+                "nước cân bằng làm dịu da kích ứng"
+            ]
+        }
+    },
+    {
+        "sid": 130117,
+        "name": "",
+        "sname": "비타 브라이트닝 앰플",
+        "description": "",
+        "sdescription": "피부에 바르는 멀티 비타민\r\n\r\n- 비타민나무수의 원료를 그대로 담아 자극 없이 피부에 편안하게 생기를 부여\r\n- 고농축 비타민나무수와 멀티 비타민 성분으로 생기 UP\r\n- 브라이트닝에 효과적인 나이아신아마이드 5% 함유로 밝고 화사한 피부로",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Brightening essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 16,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất dưỡng trắng",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "tinh chất làm trắng da",
+                "tinh chất kích trắng da",
+                "serum kích trắng",
+                "serum dưỡng trắng da",
+                "serum làm trắng da",
+                "essence dưỡng trắng da",
+                "essence làm trắng da",
+                "essence kích trắng"
+            ]
+        }
+    },
+    {
+        "sid": 127852,
+        "name": "",
+        "sname": "히알루로닉 아쿠아 젤",
+        "description": "",
+        "sdescription": "젤 제형의 가벼운 사용감, 그러나 결코 가볍지 않은 수분감의 젤 크림\r\n\r\n- 저분자 히알루론산으로 촉촉하게 수분 케어\r\n- 마데카소사이드, 알란토인을 함유하여 피부 진정에 도움\r\n- 수분 잠금에 특화된 젤 제형으로 사용감은 산뜻, 보습감은 강화",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 136616,
+        "name": "",
+        "sname": "시카풀 쿨링 젤",
+        "description": "",
+        "sdescription": "4계절 내내 손이 가는 데일리 쿨링젤\n\n- 피부 진정과 고민 부위 케어에 도움\n- 민감 피부도 안심하고 사용 가능\n- 수분, 진정, 피부장벽 도움 성분 함유",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "After sun",
+            "third_category_en_name": "Soothing gel",
+            "first_category_id": 9,
+            "second_category_id": 48,
+            "third_category_id": 152,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Sản phẩm nhả nắng",
+            "third_category_name": "Gel nhả nắng",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [
+                "Kem nhả nắng",
+                "gel nhả nắng",
+                "gel lô hội",
+                "kem lô hội",
+                "kem dưỡng làm dịu da",
+                "gel làm dịu da",
+                "kem làm dịu da sau khi đi nắng",
+                "kem phục hồi da sau khi đi nắng",
+                "kem trị cháy nắng",
+                "kem phục hồi da cháy nắng",
+                "kem làm mát da",
+                "gel làm mát da"
+            ],
+            "third_category_synonyms": [
+                "Gel làm dịu",
+                "Gel làm mát"
+            ]
+        }
+    },
+    {
+        "sid": 139220,
+        "name": "",
+        "sname": "하루한쑥 아이버터",
+        "description": "",
+        "sdescription": "유난히 얇은 눈가 피부를 위해 순하고 쫀쫀한 요즘 아이크림\n\n- 쑥추출물 52% 함유로 진정감 부여\n- 피부 자극 테스트 완료로 눈시림 걱정 제로\n- 미백 기능성 성분 및 주름 개선 효능 성분 함유",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Eye cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 23,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng vùng mắt",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem mắt"
+            ]
+        }
+    },
+    {
+        "sid": 138482,
+        "name": "",
+        "sname": "클린 오션 논나노 마일드 선스크린 [SPF50+/PA++++]",
+        "description": "",
+        "sdescription": "순한 논나노 무기자차로 피부를 환하게 보송하게\n\n- 피부와 바다 모두를 지키는 클린 선스크린 레시피\n- 자연스러운 톤업 효과\n- 번들거림 없는 마무리감",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    }
+]

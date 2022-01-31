@@ -1,0 +1,130 @@
+[
+    {
+        "sid": 112123,
+        "name": "",
+        "sname": "엑스퍼트 하이드레이팅 앰플",
+        "description": "",
+        "sdescription": "깊은 바다의 보습으로부터 피부속부터 촉촉하게 차오르는 수분 피부\r\n\r\n- 정제수가 아닌 알래스카 빙하수 71% 함유로 풍부한 미네랄과 보습 인자가 마르지 않는 촉촉한 피부를 유지시켜 줍니다.\r\n- 각종 비타민과 미네랄이 풍부한 33가지 해양 식물과 슈퍼 마린 에너지가 메마른 피부에 수분과 영양을 공급하며 피부 장벽 강화에 도움을 줍니다. \r\n- 고농축 워터 젤 타입의 포뮬러가 바르는 즉시 피부에 빠르게 흡수되며 수분 벨벳 코팅 막을 형성하여 오래도록 보습감을 유지시켜 줍니다.\r\n",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Hydrating essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 11,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum cấp nước",
+                "essence cấp nước",
+                "tinh chất cho da dầu",
+                "serum cho da dầu",
+                "essence cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 84992,
+        "name": "",
+        "sname": "엑스퍼트 수딩 앰플",
+        "description": "",
+        "sdescription": "* 해당 제품 패키지 리뉴얼 된 제품입니다. \r\n\r\n피부 진정에 효과적인 허벌 그린 콤플렉스의 함유로, 예민해진 피부를 편안하게 잠재워 주는 앰플\r\n\r\n1. 허벌 그린 콤플렉스와 EGF 성분이 피부 장벽 강화에 도움을 주며 건강한 피부를 만들어 줍니다.\r\n2. 자연 유래 보습인자 히아루론산이 건조해진 피부를 촉촉하게 유지시켜줍니다.\r\n3. 고농축된 자연 추출 원료가 유효성분들을 그대로 피부에 전달해 줍니다. ",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Soothing essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 13,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất làm dịu da",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum làm dịu da kích ứng",
+                "tinh chất làm dịu da kích ứng",
+                "essence làm dịu da kích ứng",
+                "tinh chất cho da nhạy cảm",
+                "serum cho da nhạy cảm",
+                "essence cho da nhạy cảm"
+            ]
+        }
+    },
+    {
+        "sid": 103377,
+        "name": "",
+        "sname": "엑스퍼트 수딩 시카 크림",
+        "description": "",
+        "sdescription": "울긋불긋, 오돌토돌 성난 피부를 잠재우는 SOS 진정크림\r\n\r\n1. 피부 진정에 효과적인 병품, 마데카소사이드, 감초, 판테놀로 구성된 SOOTHING CICA ™ 솔루션이 예민피부를 편안하게 잠재워 줍니다.\r\n2. 트러블로 인한 울굿 불긋 상처 난 피부 회복에 도움을 주고 맑고 균일한 피부 톤의 민낯 자신감을 돼 찾아 줍니다. \r\n3. 피부 자극을 최소화한 EWG 1-2 그린 등급 성분만을 사용하고 피부 자극 테스트 완료로 민감한 피부도 안심하고 사용 가능합니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 84990,
+        "name": "",
+        "sname": "엑스퍼트 퍼밍 앰플",
+        "description": "",
+        "sdescription": "피부 탄력을 채워주는 이데베논 농축 캡슐과 시들지 않는 강인한 생명력의 에버라스팅 플라워로 차오르는 탄력과 윤기, 보습을 선사하는 고농축 탄력 보습 앰플.\r\n\r\n1. 고농축 이데베논 성분의 노란 캡슐이 피부와 맞닿아 빠르게 흡수되어 상하좌우 빈틈 없이 탄력을 채워 줍니다.\r\n\r\n2. 강인한 생명력의 에버라스팅 플라워가 탄력없이 건조하고 칙칙한 피부에 촘촘하게 차오르는 광채와 윤기를 선사합니다.\r\n\r\n3. 강력 안티 링클 효과로 미세한 주름의 리프팅 효과는 물론 탄력 잃은 피부에 퍼밍 효과를 선사합니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "anti-aging essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 17,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất chống lão hóa",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum chống lão hóa",
+                "essence chống lão hóa"
+            ]
+        }
+    }
+]

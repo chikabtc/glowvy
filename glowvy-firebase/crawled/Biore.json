@@ -1,0 +1,26 @@
+[
+    {
+        "sid": 95176,
+        "name": "",
+        "sname": "UV 아쿠아 리치 워터리 에센스 선크림 [SPF50+/PA++++]",
+        "description": "",
+        "sdescription": "*2017년 2월 리뉴얼된 제품입니다\r\n\r\n-땀, 물에 강한 워터프루프\r\n\r\n-강력한 자외선으로부터 피부를 안전하게 보호해주고 기미, 주근깨를 방지해줍니다.\r\n\r\n-촉촉하고 신선한 과일, 아로마 향이 납니다.\r\n\r\n-피부에 부드럽게 밀착됩니다.\r\n\r\n\r\n",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Waterproof sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 144,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng chống thấm nước",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng waterproof",
+                "kem chống nắng chống mồ hôi"
+            ]
+        }
+    }
+]

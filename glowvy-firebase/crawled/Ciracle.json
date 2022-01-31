@@ -1,0 +1,126 @@
+[
+    {
+        "sid": 22538,
+        "name": "",
+        "sname": "엡솔루트 딥 클린징 오일",
+        "description": "",
+        "sdescription": "워셔블 타입 오일 클렌저로 메이크업을 빠르고 말끔하게 지워주며,세안후에도 촉촉함을 유지시켜줍니다\r\n\r\n-짙은 메이크업의 클렌징+피지관리+모공수축을 클렌징 오일 하나로 해결!\r\n-수용성 오일로 처방된 엡솔루트 딥클렌징 오일!\r\n-초임계 추출법으로 깨끗하고 순도 높은 녹차씨오일을 담았습니다.\r\n-피부에 가장 먼저 하는 클렌징 단계에서 다른 느낌을 전해줍니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Makeup remover",
+            "third_category_en_name": "Cleansing oil",
+            "first_category_id": 7,
+            "second_category_id": 33,
+            "third_category_id": 118,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang",
+            "third_category_name": "Dầu tẩy trang",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Tẩy trang dạng dầu"
+            ]
+        }
+    },
+    {
+        "sid": 22558,
+        "name": "",
+        "sname": "비타민소스 C20",
+        "description": "",
+        "sdescription": "20%의 비타민C가 함유되어 늘어지고 활력없는 피부, 피부다크닝 현상 등을 개선시켜 밝고 생기있는 피부로 가꾸어주는 비타민에센스. 칙칙하고 거친피부를 화사하고 매끈하게 가꾸어줍니다. 에센스 비타민소스C20 !\r\n\r\n-에센스타입의 비타민소스 C20 !\r\n20%의 순수비타민C가 함유되어 늘어지고 탄력없는 피부, 피부다크닝 현상등을 완화시켜 밝고 생기있는 피부로 가꾸어주는 비타민에센스. 칙칙하고 거친피부를 화사하고 매끈하게 가꾸어줍니다. \r\n\r\n-비타민C는 먹는것보다 바르는것이 더 효과적입니다.\r\n먹는 비타민C는 피부에 미치는 영향이 미미해 많은 피부과 전문의들은 직접 피부에 바르는것을 권장하고 있습니다. 국내 최고기술로 안정화시킨 비타민소스 C20은 피부에 바르는 즉시 빠르게 침투하여 비타민C가 가지는 효과를 더 크게 기대할수 있습니다.\r\n\r\n-미백,주름 이중 기능성으로 업그레이드! \r\n식약처 인증 미백성분인 에칠아스코빌에텔과 주름기능성 성분인 아데노신을 추가 배합하였습니다. 고농도의 순수 비타민C가 불필요한 각질을 정리하여 주름,미백성분을 부스팅해주어 피부미백과 피부탄력에 도움을 줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Brightening essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 16,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất dưỡng trắng",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "tinh chất làm trắng da",
+                "tinh chất kích trắng da",
+                "serum kích trắng",
+                "serum dưỡng trắng da",
+                "serum làm trắng da",
+                "essence dưỡng trắng da",
+                "essence làm trắng da",
+                "essence kích trắng"
+            ]
+        }
+    },
+    {
+        "sid": 22566,
+        "name": "",
+        "sname": "레드스팟 크림",
+        "description": "",
+        "sdescription": "여드름성 피부에 사용하기에 적합’ 미백기능성 레드스팟 크림.\r\n\r\n사용감은 더욱 부드럽게~, 효과는 더욱 UP~.[여드름성 피부에 사용 적합, 효능입증완료] 씨라클 브랜드의 가장 인기있는 스테디셀러 제품으로 트러블이 잦은 피부타입을 위한 전용 크림입니다. 트러블이 남기고 간 피부고민부위, 트러블부위 모두 사용이 가능합니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Brightening cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 25,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng trắng da",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng làm trắng",
+                "kem dưỡng kích trắng"
+            ]
+        }
+    },
+    {
+        "sid": 22559,
+        "name": "",
+        "sname": "포어 타이트닝 세럼",
+        "description": "",
+        "sdescription": "늘어지고 넓어진 모공을 수축시켜주며 과도한 피지를 관리해주어 모공없는 탱탱한 피부로 가꾸어주는 모공집중관리 에센스\r\n\r\n오배자, 위치하젤, 윌로운 박, 콩추출물, 계피 추출물 등 탄닌 성분이 다량 함유된 천연물을 첨가하여 모공을 수렴시켜 수축되게 합니다. 멘톨과 휘발 성분이 피부 온도를 낮추어 진정감을 줍니다. 주름특허를 받은 알분민 성분을 첨가하여 늘어진 피부에 더욱 만족스러운 모공 전용 세럼입니다. 피지흡착성분들이 넓어진 모공의 주범인 과잉피지를 제거해줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Pore essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 14,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất se khít lỗ chân lông",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "pore tightening essence",
+                "tinh chất cải thiện lỗ chân lông",
+                "serum cải thiện lỗ chân lông",
+                "essence cải thiện lỗ chân lông",
+                "serum thu nhỏ lỗ chân lông",
+                "tinh chất thu nhỏ lỗ chân lông",
+                "essence thu nhỏ lỗ chân lông"
+            ]
+        }
+    }
+]

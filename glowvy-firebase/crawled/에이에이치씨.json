@@ -1,0 +1,123 @@
+[
+    {
+        "sid": 108014,
+        "name": "",
+        "sname": "캡처 리바이트 솔루션 맥스 앰플",
+        "description": "",
+        "sdescription": "푸석하고 탄력 잃은 피부를 건강하고 윤기있는 피부로 관리해주는 영양 솔루션 앰플",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Moisturizing essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 12,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất dưỡng ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum dưỡng ẩm",
+                "essence dưỡng ẩm",
+                "serum cho da khô",
+                "essence cho da khô",
+                "tinh chất cho da khô",
+                "Tinh chất cấp ẩm",
+                "essence cấp ẩm",
+                "serum cấp ẩm"
+            ]
+        }
+    },
+    {
+        "sid": 142504,
+        "name": "",
+        "sname": "유스 래스팅 리얼 아이크림 포 페이스",
+        "description": "",
+        "sdescription": "탄성, 밀도, 각도까지 트리플 탄력 리프팅 케어! 더 강력해진 안티에이징 아이크림\n\n- 20대 피부에 더 많은 AHC 20s 바이옴 성분을 함유하여 어린 피부 환경으로 개선\n- 모공의 1/500 사이즈 입자로 피부 각질층 지하 10층까지 더 강력해진 흡수력\n- 올인원을 넘은 올 킬 솔루션",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Eye cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 23,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng vùng mắt",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem mắt"
+            ]
+        }
+    },
+    {
+        "sid": 130466,
+        "name": "",
+        "sname": "프라임 엑스퍼트 이엑스 에센스 로션",
+        "description": "",
+        "sdescription": "스타존을 한번에 관리하는 데일리 토탈 안티에이징 로션",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Moisturizing lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 6,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "Lotion dưỡng ẩm",
+                "sữa dưỡng cấp ẩm",
+                "sữa dưỡng ẩm",
+                "lotion dành cho da khô",
+                "sữa dưỡng dành cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 134374,
+        "name": "",
+        "sname": "에센스 케어 파우더워시 에메랄드",
+        "description": "",
+        "sdescription": "고운 입자 파우더로 공기처럼 부드럽게 각질을 케어해주는 에스테틱 파우더 워시",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Powder cleanser",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 116,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Bột rửa mặt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "sữa rửa mặt dạng bột"
+            ]
+        }
+    }
+]

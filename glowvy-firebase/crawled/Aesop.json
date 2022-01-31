@@ -1,0 +1,407 @@
+[
+    {
+        "sid": 8759,
+        "name": "",
+        "sname": "파슬리 씨드 안티 옥시던트 세럼",
+        "description": "",
+        "sdescription": "건성, 지복합성, 또는 민감성 피부를 위한 항산화 성분이 풍부한 보습 세럼\r\n\r\n빠르게 흡수되는 보습 세럼으로 크림이나 오일로 만들어진 보습제 대용으로 완벽한 제품입니다. 가벼운 질감과 상쾌하고 매트한 마무리를 선사하므로 따뜻하거나 다습한 날씨에 사용하기 좋습니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Moisturizing essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 12,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất dưỡng ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum dưỡng ẩm",
+                "essence dưỡng ẩm",
+                "serum cho da khô",
+                "essence cho da khô",
+                "tinh chất cho da khô",
+                "Tinh chất cấp ẩm",
+                "essence cấp ẩm",
+                "serum cấp ẩm"
+            ]
+        }
+    },
+    {
+        "sid": 8736,
+        "name": "",
+        "sname": "파슬리 씨드 안티 옥시던트 페이셜 토너",
+        "description": "",
+        "sdescription": "건성 및 민감성 피부 등 모든 피부에 적합한 항산화 성분이 풍부한 토너\r\n\r\n부드럽고 상쾌한 토너 제품으로 항산화 성분이 풍부하여 피부 균형을 맞춰줍니다. 수분 공급 제품 전단계로도 적합한 제품이며, 과도한 피지와 때를 제거해주고, 향균 및 소염 성분이 부드럽고 깨끗한 피부로 만들어 줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 8737,
+        "name": "",
+        "sname": "카멜리아 너트 페이셜 하이드레이팅 크림",
+        "description": "",
+        "sdescription": "건성 및 민감성 피부용 데일리 영양 보습 크림\r\n\r\n오랜 연구 끝에 탄생한 제품으로 인공 첨가물 등의 민감성 피부를 자극하는 첨가물을 철저히 배제한 제품입니다. 견과류와 식물성 추출물이 복합적으로 작용하여 빠르게 흡수되고 필요한 곳에 최대한의 수분을 공급해줍니다. 하이드레이팅 크림의 풍부한 수분으로 악건성 피부의 놀라운 변화를 경험해보세요.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 8741,
+        "name": "",
+        "sname": "파슬리 씨드 페이셜 클렌저",
+        "description": "",
+        "sdescription": "모든 피부용이나 복합성 또는 트러블성 피부에 가장 적합한 풍부한 거품이 생기는 클렌저\r\n\r\n젖산이 함유된 화합물이 부드럽게 각질을 제거해 주어 깨끗한 무결점 피부를 선사합니다. 오염이 심한 도시 지역에 사는 고객에게 적합한 제품입니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing gel",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 114,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Gel rửa mặt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "sữa rửa mặt dạng gel"
+            ]
+        }
+    },
+    {
+        "sid": 8749,
+        "name": "",
+        "sname": "모이스처 페이셜 하이드로졸 미스트",
+        "description": "",
+        "sdescription": "모든 피부에 적합한 상쾌하고 향기로운 스프레이 보습제. 장미꽃잎 추출물이 함유되어 있으며 피부와 마음에 생기를 불어넣는 스프레이입니다. 장거리 여행시 또는 오랜 시간 책상에서 보내는 분들의 심신을 깨워주는 제품입니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Mist",
+            "third_category_en_name": "Water mist",
+            "first_category_id": 1,
+            "second_category_id": 5,
+            "third_category_id": 27,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Xịt khoáng",
+            "third_category_name": "xịt khoáng dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "xịt dưỡng ẩm",
+                "xịt dưỡng da",
+                "xịt khoáng dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "nước xịt khoáng",
+                "xịt khoáng dưỡng da"
+            ]
+        }
+    },
+    {
+        "sid": 14299,
+        "name": "",
+        "sname": "비 트리플 씨 페이셜 밸런싱 젤",
+        "description": "",
+        "sdescription": "- 비 트리플 씨 젤은 수분 공급, 피부 밸런싱 작용을 하며 피부의 모공을 막지 않고 산뜻하게 해결하는 강력한 비타민 부스터 제품입니다.\r\n- 이 제품의 원료성분의 조합은 습하거나 공해가 많은 지역에 거주하는 고객들에게 좋으며, 특히 전통적으로 크림 타입의 수분 제품이 맞지 않는 지성 또는 복합성 피부를 가진 고객들이 사용하기에 더욱 좋습니다.\r\n- 대부분의 젤 타입 제품들은 피부에 잔여물을 남기고 모공을 막을 수 있는 합성 실리콘을 사용합니다. \r\n- 사이클로메치콘, 디메치콘 이들 두 가지가 대표적인 원료입니다. 그러나 에이솝은 이들 롱체인 실리콘(Long Chain)사용을 거부하고 독자적인 독특한 젤 성형방식을 개발하여 피부에 전혀 부담을 주지 않으면서도 빠르게 흡수되는 천연 젤 테크놀로지를 탄생시켰습니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 8753,
+        "name": "",
+        "sname": "오일 프리 페이셜 하이드레이팅 세럼",
+        "description": "",
+        "sdescription": "지복합성 또는 트러블성 피부를 위한 하이드레이팅 세럼\r\n\r\n비타민B 와 C, 그리고 항산화 성분이 풍부한 세럼으로 가볍고 빠르게 흡수되기 때문에 크림 타입의 보습제 대용으로 완벽합니다. 알로에 베라 성분이 들어있어 끈적이지 않지만 놀라운 수분감을 자랑하는 제품으로 피부를 번들거리지 않고 매끄럽게 만들어줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Hydrating essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 11,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum cấp nước",
+                "essence cấp nước",
+                "tinh chất cho da dầu",
+                "serum cho da dầu",
+                "essence cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 8744,
+        "name": "",
+        "sname": "비 앤 티 밸런싱 토너",
+        "description": "",
+        "sdescription": "모든 피부 및 민감성 피부를 위한 마일드한 데일리 토너\r\n\r\n프로비타민 B5 (판테놀)와 녹차 추출물이 함유되어있어 이름지어진 B 앤 티 밸런싱 토너는 피부의 섬세한 밸런스를 맞춰주고 가벼운 수분감과 항산화 보호를 제공합니다. 모공은 줄여주고 남아있는 잔여물을 닦아 피부를 말끔하게 씻어주고 보습제 흡수를 돕습니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 8748,
+        "name": "",
+        "sname": "퓨리파잉 페이셜 엑스폴리언트 페이스트",
+        "description": "",
+        "sdescription": "각질을 관리해주면서 피부를 매끄럽게 클렌징 해주는 크림 베이스 각질 제거제",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Exfoliator",
+            "third_category_en_name": "scrubs",
+            "first_category_id": 7,
+            "second_category_id": 35,
+            "third_category_id": 124,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy da chết",
+            "third_category_name": "Tẩy da chết dạng hạt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [
+                "Tẩy tế bào chết"
+            ],
+            "third_category_synonyms": [
+                "Tẩy tế bào chết dạng hạt",
+                "tẩy tế bào chết vật lý"
+            ]
+        }
+    },
+    {
+        "sid": 8731,
+        "name": "",
+        "sname": "만다린 페이셜 하이드레이팅 크림",
+        "description": "",
+        "sdescription": "보통 및 복합성 피부에게 적합한 시트러스 오일이 함유된 가벼운 모이스처 크림\r\n\r\n빠르게 흡수되는 크림으로 놀라운 수분 공급 능력을 지니고 있습니다. 시트러스 추출물이 피부를 진정시키고 자연스러운 피부의 결과 밸런스를 찾아주며 피부의 피지 조절을 돕습니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 101697,
+        "name": "",
+        "sname": "라이트웨이트 페이셜 하이드레이팅 세럼",
+        "description": "",
+        "sdescription": "알로에 베라와 프로비타민 B5가 피부의 진정을 도와주면서 가볍고 빠르게 흡수되는 세럼",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Hydrating essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 11,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum cấp nước",
+                "essence cấp nước",
+                "tinh chất cho da dầu",
+                "serum cho da dầu",
+                "essence cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 8746,
+        "name": "",
+        "sname": "프림로즈 페이셜 하이드레이팅 크림",
+        "description": "",
+        "sdescription": "영양이 필요한 보통 또는 건성 피부용 데일리 보습제. 전 세계적인 사랑을 받는 제품으로, 풍부한 지방산과 비타민이 함유돼 영양을 필요로하는 보통, 건성, 또는 스트레스 받은 피부에 적합합니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 8743,
+        "name": "",
+        "sname": "퍼펙트 페이셜 하이드레이팅 크림",
+        "description": "",
+        "sdescription": "집중적인 수분 공급을 필요로하는 피부를 위한 풍부한 비타민C가 함유된 크림\r\n\r\n최고급 오일과 함께 피부 재생을 돕는 비타민이 놀라울만큼 가득 함유된 크림입니다. 풍부하고 크리미한 질감으로 보통 또는 건성 피부를 매끄럽고 매트하게 마무리해줍니다. 오염이 심한 도시 환경에 사는 고객에게 적합한 제품입니다. 프리미엄 크림의 집중적인 수분 공급 능력과 지속력을 경험해보세요.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 8760,
+        "name": "",
+        "sname": "파슬리 씨드 페이셜 클렌징 오일",
+        "description": "",
+        "sdescription": "건성, 복합성, 또는 민감성 피부를 위한 부드러운 메이크업 클렌저\r\n\r\n방부제가 첨가되지 않은 부드러운 클렌징 오일로 가장 진한 화장도 말끔하게 지워주며 풍부한 항산화 작용도 함께 느껴보실 수 있습니다. 맑고 부드러우며 상쾌한 피부를 느껴보세요.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Makeup remover",
+            "third_category_en_name": "Cleansing oil",
+            "first_category_id": 7,
+            "second_category_id": 33,
+            "third_category_id": 118,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang",
+            "third_category_name": "Dầu tẩy trang",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Tẩy trang dạng dầu"
+            ]
+        }
+    }
+]

@@ -612,6 +612,47 @@ async function clearReviewMetas(db) {
         }).then(() => console.log('cleared review metaws'))
     }
 }
+async function collectPurposes(db) {
+    var all_purposes = [];
+    const allIngredientsSnap = await db.collection('ingredients').get();
+    for (const doc of allIngredientsSnap.docs) {
+        var purposes = doc.data().purposes
+        if (purposes != null) {
+            for (i = 0; i < purposes.length; i++) {
+                var purpose = purposes[i]
+                var purpose_ko = doc.data().purpose_ko.split(', ')[i]
+                if (!all_purposes.some(e => e.purpose_machine_translated === purpose)) {
+                    var purposeJson = {
+                        'purpose_machine_translated': purpose,
+                        'name': '',
+                        'purpose_ko': purpose_ko
+                    }
+                    all_purposes.push(purposeJson)
+                }
+            }
+
+        }
+
+    }
+    console.log(all_purposes)
+    console.log(all_purposes.length)
+    utils.writeJsonToFile(all_purposes, './crawled/purposes.json');
+}
+
+async function updateProductBrandInfo(db) {
+    const snap = await db.collection('products').get()
+    for (const doc of snap.docs) {
+        var product = doc.data()
+        var brandDoc = await db.collection('brands').doc(product.brand.name).get()
+        // console.log(brandDoc.data())
+        doc.ref.update({
+            'brand.id': brandDoc.data().sid
+        }).then(() => console.log('updated'))
+
+
+    }
+
+}
 
 async function updateAllCategoriesInfo(db) {
     var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MTEzOTUyODIsImV4cCI6MTYxMTQ4MTY4Mn0.JqXpRF-p6JoOBLrphGgj4In3eh8TfcMTjLb6efdMer0'
@@ -675,6 +716,7 @@ module.exports = {
     deleteDuplicateProducts: deleteDuplicateProducts,
     countGrandTotalBrands: countGrandTotalBrands,
     countGrandTotalCategories: countGrandTotalCategories,
+    updateProductBrandInfo: updateProductBrandInfo,
     updateBrandTotatProductCount: updateBrandTotatProductCount,
     clearBrandAndCategoryCount: clearBrandAndCategoryCount,
 }

@@ -1,0 +1,1244 @@
+[
+    {
+        "sid": 51533,
+        "name": "",
+        "sname": "프로폴리스 앰플 미스트",
+        "description": "",
+        "sdescription": "뿌려도 건조해지지 않는 극광 보습 프로폴리스 영양 미스트\n\n- 미세 입자의 안개분사\n- 프로폴리스 성분이 복합적인 피부 케어\n- 피부에 부담을 덜어주는 저자극",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Mist",
+            "third_category_en_name": "Water mist",
+            "first_category_id": 1,
+            "second_category_id": 5,
+            "third_category_id": 27,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Xịt khoáng",
+            "third_category_name": "xịt khoáng dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "xịt dưỡng ẩm",
+                "xịt dưỡng da",
+                "xịt khoáng dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "nước xịt khoáng",
+                "xịt khoáng dưỡng da"
+            ]
+        }
+    },
+    {
+        "sid": 128438,
+        "name": "",
+        "sname": "프로폴리스 앰플 액티브 크림",
+        "description": "",
+        "sdescription": "피부에 집중적인 영양과 보습을 채워 촉촉하게 빛나는 극강의 광채를 찾아주는 크림\n\n- 프로폴리스 성분이 함유된 포뮬러가 피부에 빛나는 광채를 부여\n- 세라마이드 성분이 함유된 포뮬러가 진한 보습과 탄탄한 피부 장벽을 완성\n- 피부에 맑고 편안하게 펴발리는 부드럽고 흡수가 빠른 텍스쳐",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 51529,
+        "name": "",
+        "sname": "뮤제너 앰플 미스트",
+        "description": "",
+        "sdescription": "자연에서 얻은 순수한 성분이 피부자극을 효과적으로 진정시키고 촉촉한 수분보호막을 만들어 피부를 보호해주는 미스트",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Mist",
+            "third_category_en_name": "Water mist",
+            "first_category_id": 1,
+            "second_category_id": 5,
+            "third_category_id": 27,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Xịt khoáng",
+            "third_category_name": "xịt khoáng dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "xịt dưỡng ẩm",
+                "xịt dưỡng da",
+                "xịt khoáng dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "nước xịt khoáng",
+                "xịt khoáng dưỡng da"
+            ]
+        }
+    },
+    {
+        "sid": 1715,
+        "name": "",
+        "sname": "프로폴리스 에너지 앰플",
+        "description": "",
+        "sdescription": "CNP프로폴리스 에너지 앰플은 항염효과가 뛰어난 천연항생물질인 프로폴리스 추출물이 함유되어 있는 고농축 영양 세럼으로 외부환경으로부터 피부를 보호하고 피부항상성을 유지하도록하여 건강한 피부로 가꾸어 준다. 차앤박화장품의 독자 개발 특허 성분인 CNP진정복합체(CNP Anti-Irritant Complex)와 고삼 추출물이 자극 받은 피부를 효과적으로 진정시켜 준다. 또한 히아루론산 유도체 등 보습성분의 함유로 건조해지기 쉬운 피부에 지속적으로 수분을 공급하여 촉촉한 피부를 유지해주고 피부 거칠음을 방지해주며, 수렴 효과와 진정 완화 효능의 천연 아로마 오일인 제라늄을 함유하고 있으며, 방부제를 사용하지 않아서 피부에 부담을 주지 않고 피부의 집중 작용을 도와 정상화시켜준다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Hydrating essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 11,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum cấp nước",
+                "essence cấp nước",
+                "tinh chất cho da dầu",
+                "serum cho da dầu",
+                "essence cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 84845,
+        "name": "",
+        "sname": "인비져블 필링 클렌징 젤",
+        "description": "",
+        "sdescription": "소프트 각질케어를 더해 피부 속 광채와 결을 되찾는 약산성 클렌징젤\r\n\r\nCNP의 각질케어 전문 노하우로 차세대 각질 관리 성분인 필링부스터의 성분 PHA를 함유해 클렌징만으로 피부 속 광채와 결을 되찾아주는 저자극 촉촉 각질케어 클렌징젤입니다.\r\n\r\n-묵은 각질 제거 클렌징\r\n\r\n-건강한 약산성 세안\r\n\r\n",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing gel",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 114,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Gel rửa mặt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "sữa rửa mặt dạng gel"
+            ]
+        }
+    },
+    {
+        "sid": 80283,
+        "name": "",
+        "sname": "그린 프로폴리스 안티-옥시던트 앰플",
+        "description": "",
+        "sdescription": "그린 프로폴리스로 더욱 강력해진 항산화 파워&이중 보습 효과\r\n",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "anti-aging essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 17,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất chống lão hóa",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum chống lão hóa",
+                "essence chống lão hóa"
+            ]
+        }
+    },
+    {
+        "sid": 15808,
+        "name": "",
+        "sname": "센서티브 마일드 선블록 [SPF35/PA++]",
+        "description": "",
+        "sdescription": "연약하고 민감한 피부를 위한 마일드 선블록\r\n\r\n감나무잎, 녹차등의 식물 추출물들 함유로 피부 진정에 도움을 주고 글라이코스아미노글리칸추출물로 건조함에 도움을 줍니다. 순하고 매끄러운 사용감으로 연약하고 민감한 피부에 추천하는 자외선 차단제입니다.\r\n\r\n- 식물 추출물 피부 진정\r\n- 피부 보호막\r\n- 피부 자극 성분 무첨가\r\n- 뮤제너 성분 함유",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    },
+    {
+        "sid": 105551,
+        "name": "",
+        "sname": "더마 쉴드 선스틱 [SPF50+/PA++++]",
+        "description": "",
+        "sdescription": "자외선 차단은 물론, 칼라민으로 피부 진정까지 더해주는 더마 선스틱\r\n\r\n- 언제 어디서나 간편한 스틱 타입\r\n가볍게 휴대하면 수시로 바를 수 있으며, 손으로 펴바르지 않고 슥슥 그어서 편리하게 자외선을 차단할 수 있습니다.\r\n\r\n- 자외선과 외부 유해 환경으로부터 피부 보호\r\nSPF50+, PA++++로 자외선을 강력하게 차단할 뿐만 아니라 Pollustop의 바이오사카라이드검-4 성분이 외부 환경으로부터 피부를 보호하는데 도움을 줍니다.\r\n\r\n- 칼라민으로만 구현한 피치빛 진정 효과\r\n인공색소 없이 1.5%의 칼라민으로만 구현한 피치빛으로 칼라민이 여름철 달아오른 피부를 진정시키는데 도움을 줍니다.\r\n\r\n- 끈적임 없이 보송보송하게\r\n보송보송한 마무리감으로 끈적임이나 밀릴 걱정 없이 메이크업 위에도 수시로 덧바르면서 자외선으로부터 피부를 보호할 수 있습니다.",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Sun stick",
+            "third_category_en_name": null,
+            "first_category_id": 9,
+            "second_category_id": 43,
+            "third_category_id": null,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Thanh chống nắng",
+            "third_category_name": null,
+            "first_category_synonyms": [],
+            "second_category_synonyms": [
+                "Chống nắng dạng thanh",
+                "kem chống nắng dạng thỏi",
+                "thỏi chống nắng",
+                "sáp chống nắng",
+                "chống nắng dạng sáp",
+                "balm chống nắng",
+                "kem chống nắng dạng thỏi lăn",
+                "thanh lăn chống nắng",
+                "sáp chống nắng dạng thỏi",
+                "chống nắng thanh lăn",
+                "kem chống nắng thỏi",
+                "thanh lăn chống nắng dạng thỏi"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 95942,
+        "name": "",
+        "sname": "이데베논 캡슐 트리트먼트 세럼",
+        "description": "",
+        "sdescription": "강력한 항산화 성분인 이데베논이 오렌지 캡슐 안에 농축되어, 터지는 순간 피부를 매끈하고 탄력있게 케어해주는 안티에이징 세럼\r\n\r\n- 고농축 오렌지 캡슐 속 이데베논 성분이 최적의 안티에이징 효과 부여\r\n\r\n- 탱글탱글 피부 탄력 개선과 막 생기기 시작한 초기 주름부터 적극 대응\r\n\r\n- 이데베논 : 자연노화/광노화 방지 최적화 성분으로 코엔자임 COQ10의 10배, 비타민C의4배! 미국 피부학회에서인정한 최고등급 산화방지제 입니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "anti-aging essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 17,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất chống lão hóa",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum chống lão hóa",
+                "essence chống lão hóa"
+            ]
+        }
+    },
+    {
+        "sid": 52937,
+        "name": "",
+        "sname": "닥터레이 닥터알투 리얼 마데카소사이드 크림",
+        "description": "",
+        "sdescription": "다양한 피부노화고민을 위한 리얼 마데카소사이드 크림\r\n\r\n기존 R2크림보다 10배 증대된 마데카소사이드 성분이 피부 겉과 속을 한번에 케어하고 주름/미백 2중기능성으로 탄력 있고 투명하게 변화하는 피부를 느낄 수 있습니다.\r\n\r\n손상되고 예민해진 피부의 진정에도 효과적입니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 86594,
+        "name": "",
+        "sname": "프로폴리스 앰플 오일 인 크림 ",
+        "description": "",
+        "sdescription": "3중 영양 보습의 극광 초보습 오일 인 크림\r\n\r\n- 극강의 광채보습을 부여\r\n보습 성분을 한층 더 강화한 초보습 크림으로 피부 속광을 만들어내어 피부 안에서부터 매끈하고 촉촉하게 빛나는 피부를 만들어 줍니다.\r\n\r\n- 피부나이를 건강하게\r\n항산화성분인 프로폴리스 성분과 피부 지질 구성성분인 세라마이드가 피부 보호막을 형성해 피부나이를 건강하게 지켜줍니다.\r\n\r\n- 산뜻하고 가볍게 발리는 초보습 크림\r\n피부 흡수도를 높인 특별한 크림 제형 공법으로 5가지 영양오일 성분 함량이 높지만 처음 닿는 느낌이 산뜻하고 가볍게 발립니다.\r\n\r\n- 5가지 영양보습 오일 성분의 힘\r\n5가지 마카다미아씨오일, 아르간오일, 쉐어버터, 서양유채오일, 이테야자열매오일 이 만들어내는 깊은 영양보습이 피부를 보호합니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 2469,
+        "name": "",
+        "sname": "아쿠아 수딩 젤 크림",
+        "description": "",
+        "sdescription": "피부에 닿는 순간 물처럼 흡수되는 가벼운 수분감이 뜨거운 여름철 예민해진 피부를 진정시켜 줍니다. 가벼운 미네랄 오일 프리 수분 크림으로 자극을 일으키는 피지 생성을 유발하지 않아 매끈하고 보송한 피부 감촉을 느끼게 해줍니다. CNP 아쿠아 홀딩 시스템으로 수분보호막을 형성해 피부에 빠르게 수분을 공급하고, 산뜻하고 매끈한 감촉을 남깁니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 1343,
+        "name": "",
+        "sname": "뮤제너 앰플",
+        "description": "",
+        "sdescription": "자연에서 얻은 순수한 성분들로 민감피부 진정 및 붉은기 완화에 효과적인 농축 피부진정 앰플로 손상받기 쉬운 민감피부케어와 자극진정에 효과적이고 자연에서 얻은 순수한 성분이 이상적으로 배합되어 있어 피부보습을 유지합니다. 또한 글라이코스아미노글리칸과 알란토인 성분 등이 정상적인 피부상태로 되돌려주며 건강한 피부로 가꿔줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Soothing essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 13,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất làm dịu da",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum làm dịu da kích ứng",
+                "tinh chất làm dịu da kích ứng",
+                "essence làm dịu da kích ứng",
+                "tinh chất cho da nhạy cảm",
+                "serum cho da nhạy cảm",
+                "essence cho da nhạy cảm"
+            ]
+        }
+    },
+    {
+        "sid": 15816,
+        "name": "",
+        "sname": "인비져블 필링 부스터",
+        "description": "",
+        "sdescription": "닦아내지 않는 신개념 필링 부스터\r\n\r\n- 7일동안, 7가지 피부 개선\r\n- 민감성 피부 OK! 저자극 필링\r\n- 닦아내지 않는 신개념 필링 부스터\r\n- 보습력 강화",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Exfoliator",
+            "third_category_en_name": "Peeling gel",
+            "first_category_id": 7,
+            "second_category_id": 35,
+            "third_category_id": 125,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy da chết",
+            "third_category_name": "Tẩy da chết dạng kì",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [
+                "Tẩy tế bào chết"
+            ],
+            "third_category_synonyms": [
+                "Tẩy tế bào chết dạng kì",
+                "Gel tẩy da chết",
+                "Gel tẩy tế bào chết",
+                "tẩy tế bào chết vật lý"
+            ]
+        }
+    },
+    {
+        "sid": 87620,
+        "name": "",
+        "sname": "닥터레이 닥터알투 리얼마데카소사이드 스킨 밸런서",
+        "description": "",
+        "sdescription": "세안 후 손상된 피부에 피부보습과 진정효과를 주는 토너\r\n\r\n세안으로 건조해지거나 손상된 피부에 피부보습 및 진정효과를 선사하여 건강한 피부에 도움을 주고 풍부한 영양으로 다음 스킨케어의 흡수력과 효과를 높여줍니다.\r\n\r\n피부결 정돈을 도와 매끄럽고 투명한 피부 연출에도 좋습니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 88960,
+        "name": "",
+        "sname": "퀵 프레쉬 비타 앰플 미스트",
+        "description": "",
+        "sdescription": "타우린과 자일리톨 세가지 비타민성분이 지친 피부를 깨우는 미스트\r\n\r\n지친 피부를 깨워주는 타우린과 자일리톨, 비타민B, 비타민C, 비타민E의 세 가지 성분이 함유되어 피부를 생기있게 깨워주고 활력을 주는 저자극 미스트 입니다.\r\n\r\n-초미세 안개분사\r\n-피부자극 테스트 완료",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Mist",
+            "third_category_en_name": "Water mist",
+            "first_category_id": 1,
+            "second_category_id": 5,
+            "third_category_id": 27,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Xịt khoáng",
+            "third_category_name": "xịt khoáng dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "xịt dưỡng ẩm",
+                "xịt dưỡng da",
+                "xịt khoáng dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "nước xịt khoáng",
+                "xịt khoáng dưỡng da"
+            ]
+        }
+    },
+    {
+        "sid": 1123,
+        "name": "",
+        "sname": "듀얼 밸런스 워터락 T/U 세럼",
+        "description": "",
+        "sdescription": "T존의 과잉 피지를 조절하는데 도움을 주고 수분이 필요한 U존에 수분을 공급하여 피부 유, 수분 밸런스를 알맞게 도와주는 지 복합성 피부용 세럼\n\n- T존 피지조절, U존의 부족한 수분공급\n- 피부 피로물질을 제거\n- 피부 자극 방어 기능 강화",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Pore essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 14,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất se khít lỗ chân lông",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "pore tightening essence",
+                "tinh chất cải thiện lỗ chân lông",
+                "serum cải thiện lỗ chân lông",
+                "essence cải thiện lỗ chân lông",
+                "serum thu nhỏ lỗ chân lông",
+                "tinh chất thu nhỏ lỗ chân lông",
+                "essence thu nhỏ lỗ chân lông"
+            ]
+        }
+    },
+    {
+        "sid": 133505,
+        "name": "",
+        "sname": "톤업 프로텍션 선 [SPF42/PA+++]",
+        "description": "",
+        "sdescription": "* 본 제품은 리뉴얼된 제품입니다.\r\n\r\n피부를 맑고 빛나게 해주는 톤 업 선블록\r\n\r\n- SPF42/PA+++ 이중 자외선차단\r\n- 피부결 정돈기능\r\n- 피지분비를 흡수하여 번들거림을 케어",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Tone-up sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 143,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng nâng tông",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng tone up",
+                "kem chống nắng nâng tone",
+                "kem chống nắng làm sáng da tức thì",
+                "kem chống nắng làm sáng da tạm thời"
+            ]
+        }
+    },
+    {
+        "sid": 15810,
+        "name": "",
+        "sname": "오메가 퍼펙션 선블록 [SPF50+/PA+++]",
+        "description": "",
+        "sdescription": "산뜻하고 강력한 롱래스팅 자외선차단제\r\n\r\nUVA, UVB를 동시에 차단해주며 물이나 땀에 쉽게 지워지지 않는 강력한 워터프루프 기능으로 외부환경변화와 자외선으로부터 피부를 보호해줍니다.\r\n\r\n- 강력한 자외선차단 SPF50+ PA+++\r\n- 소프트 & 라이트 사용감\r\n- 피부 자극 성분 무첨가\r\n- 스킨케어 이중효과",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    },
+    {
+        "sid": 26661,
+        "name": "",
+        "sname": "에이클린 퓨리파잉 포밍 클렌저",
+        "description": "",
+        "sdescription": "3 in 1 트리플 클렌저\r\n\r\n클렌징시 피지 컨트롤&모공 딥 클렌징&모공 막힘 예방을 한번에 케어해주며 피부 자극을 최소화하여 약산성으로 유지, 건강한 피부를 만들어드립니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing foam",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 112,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt tạo bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 122645,
+        "name": "",
+        "sname": "비타 비 앰플 미스트",
+        "description": "",
+        "sdescription": "- 7가지 비타민 B 콤플렉스가 맑고 투명한 피부로 가꾸어주며, 수분 코팅을 한 듯 건강한 핑크빛 수분광을 되찾아주는 미스트\r\n- 일상생활 또는 여행 시 토너 대신 활용하여 속당김 없는 피부\r\n- 건조해진 피부에 뿌려 즉각적인 보습효과\r\n- 손쉽게 광채 가득한 피부 연출\r\n- 들뜸없이 밀착감 있는 수정화장 마무리 ",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Mist",
+            "third_category_en_name": "Water mist",
+            "first_category_id": 1,
+            "second_category_id": 5,
+            "third_category_id": 27,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Xịt khoáng",
+            "third_category_name": "xịt khoáng dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "xịt dưỡng ẩm",
+                "xịt dưỡng da",
+                "xịt khoáng dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "nước xịt khoáng",
+                "xịt khoáng dưỡng da"
+            ]
+        }
+    },
+    {
+        "sid": 15787,
+        "name": "",
+        "sname": "듀얼 밸런스 안티 오일리 토너",
+        "description": "",
+        "sdescription": "수분 부족형 지성피부를 위한 수분 토너\r\n\r\n피부의 두얼굴! 볼은 건조하고 이마는 번들번들~ 두가지 피부 고민을 한번에 해결해주는피부 유수분 밸런스 솔루션 토너입니다.\r\n\r\n- 피지조절 & 모공 수렴\r\n- 각질 정돈\r\n- 자극 방어 기능 강화\r\n- 유수분 밸런스",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 137115,
+        "name": "",
+        "sname": "팜슈티컬 울트라 카밍 젤 크림",
+        "description": "",
+        "sdescription": "민감한 피부를 빠르게 진정시키고 깊은 수분감을 채워주는 진정젤크림'\n\n- 청정 자연을 담은 클린 포뮬레이션\n- 산뜻하지만 오래도록 촉촉한 수분크림\n- 피부를 위한 진정 처방 솔루션",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 114577,
+        "name": "",
+        "sname": "하이드로 세라 인텐스 크림",
+        "description": "",
+        "sdescription": "고함량 세라마이드가 함유된 포뮬라가 피부 장벽 강화에 도움을 주어 깊은 보습을 선사하는 크림\r\n\r\n- 더욱 강력해진 듀얼 장벽 강화\r\n- 고함량 세라마이드 함유\r\n- 피부 지질과 근접한 피부 친화적 포뮬라\r\n- 무너지지 않는 탄탄한 보습 장벽",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 114493,
+        "name": "",
+        "sname": "하이드로 세라 딥 세럼",
+        "description": "",
+        "sdescription": "- 듀얼 장벽 강화로 빠져나갈 틈 없는 탄탄한 보습 장벽 완성\r\n- 건조함이 고민인 피부와 피부 장벽이 무너진 피부에 추천\r\n- 속당김이 고민인 수분부족형지성 피부에 추천",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Hydrating essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 11,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum cấp nước",
+                "essence cấp nước",
+                "tinh chất cho da dầu",
+                "serum cho da dầu",
+                "essence cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 100710,
+        "name": "",
+        "sname": "닥터알투 리얼 마데카소사이드 앰플 에센스",
+        "description": "",
+        "sdescription": "더욱 촉촉한 고영양 마데카소사이드 앰플 에센스\r\n\r\n마데카소사이드 성분이 손상된 피부를 건강하고 생기 있게 만들고 병풀잎수와 2중 히알루론산의 수분보호막으로 오래도록 촉촉한 고농축 앰플 에센스입니다. \r\n\r\n자극 받고 메마른 피부에 고영양과 보습감을 선사하고 건강한 윤기를 선사합니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Soothing essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 13,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất làm dịu da",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum làm dịu da kích ứng",
+                "tinh chất làm dịu da kích ứng",
+                "essence làm dịu da kích ứng",
+                "tinh chất cho da nhạy cảm",
+                "serum cho da nhạy cảm",
+                "essence cho da nhạy cảm"
+            ]
+        }
+    },
+    {
+        "sid": 100567,
+        "name": "",
+        "sname": "그린 프로폴리스 스킨 하이드레이팅 인핸서",
+        "description": "",
+        "sdescription": "브라질 그린프로폴리스의 생기를 담은 강력보습 인핸서\r\n\r\n청청한 자연환경에서 추출한 그린 프로폴리스의 주요 항상화 성분이 함유되었고, 강력한 보습보호막으로 변치 않는 촉촉함을 선사해주는 인핸서입니다.\r\n\r\n앰플 사용 전 바르면, 매끈한 피부결 케어 및 보습에 도움을 줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 143501,
+        "name": "",
+        "sname": "히알루로닉 더마텐션 세럼",
+        "description": "",
+        "sdescription": "6종 히알루론산, 2종 콜라겐 성분, 아데노신 성분을 함유한 제형이 탄력감을 선사하는 세럼\n\n- 강력한 탄력보습 충전 효과\n- 생기 넘치는 탄력 부스팅 효과\n- 피부 탄력 고민 개선",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "anti-aging essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 17,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất chống lão hóa",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum chống lão hóa",
+                "essence chống lão hóa"
+            ]
+        }
+    },
+    {
+        "sid": 15795,
+        "name": "",
+        "sname": "에이 클린 올컨트롤 모이스처라이저",
+        "description": "",
+        "sdescription": "피부에 이상적인 유수분 밸런스를 위한 산뜻 세럼\r\n\r\n피지 분비를 컨트롤하여 유수분 밸런스를 맞추고 피부에 건강한 보습을 부여하는 저자극 모이스처라이저입니다.\r\n\r\n- 묵은 각질제거\r\n- 불균형한 피지조절\r\n- 자극방어 기능 강화 및 저자극 피부 진정\r\n- 촉촉한 피부를 위한 수분공급",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Hydrating essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 11,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum cấp nước",
+                "essence cấp nước",
+                "tinh chất cho da dầu",
+                "serum cho da dầu",
+                "essence cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 15819,
+        "name": "",
+        "sname": "안티-블레미쉬 스팟 솔루션",
+        "description": "",
+        "sdescription": "톡톡 바르기만 하면 여드름성 피부에 적합한 솔루션\r\n\r\n차앤박 안티 블레미쉬 컴플렉스 함유와 모공을 막지 않는 촉촉한 리퀴드 타입의 포뮬라로 부드럽게 스며들어 갑작스런 피부 고민 부위에 사용가능한 제품입니다.\r\n\r\n- 피지에 의한 번들거림 방지\r\n- 산뜻한 리퀴드 제형\r\n- 여드름성 피부 사용 적합\r\n- 피부 보습 및 피부자극 완화",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Trouble essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 15,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất trị mụn",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum trị mụn",
+                "essence trị mụn",
+                "tinh chất cho da mụn",
+                "serum cho da mụn",
+                "essence cho da mụn",
+                "tinh chất ngăn ngừa mụn",
+                "serum ngăn ngừa mụn",
+                "essence ngăn ngừa mụn"
+            ]
+        }
+    },
+    {
+        "sid": 103819,
+        "name": "",
+        "sname": "비타 비 에너지 젤 크림",
+        "description": "",
+        "sdescription": "비타민 B가 되찾아 주는 피부 본연의 핑크빛 생기 에너지\r\n\r\n7가지 비타민 B 콤플렉스가 촉촉한 생기 에너지를 부여하며, 맑고 투명한 피부로 가꾸어 핑크빛 수분광을 되찾아주는 화이트닝 기능성 젤 크림",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 103676,
+        "name": "",
+        "sname": "비타 씨 갈바닉 앰플",
+        "description": "",
+        "sdescription": "활력 에너지로 피부 속 맑은 빛을 깨우는 비타민 앰플\r\n\r\n영양감 있는 고농축 비타민 앰플이 화사하게 빛나는 유리알 광채 피부에 도움을 줍니다.\r\n\r\n비타민 안정화를 위한 특별한 황금조합이 비타민 신선도를 효과적으로 유지합니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Brightening essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 16,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất dưỡng trắng",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "tinh chất làm trắng da",
+                "tinh chất kích trắng da",
+                "serum kích trắng",
+                "serum dưỡng trắng da",
+                "serum làm trắng da",
+                "essence dưỡng trắng da",
+                "essence làm trắng da",
+                "essence kích trắng"
+            ]
+        }
+    },
+    {
+        "sid": 95359,
+        "name": "",
+        "sname": "아쿠아 수딩 토너",
+        "description": "",
+        "sdescription": "풍부한 수분감으로 피부온도를 낮추는데 도움을 주며 효과적으로 피부를 진정시켜주는 아쿠아 토너 ",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Essence toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 3,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng sệt",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "nước hoa hồng dạng sệt",
+                "nước hoa hồng tinh chất",
+                "toner tinh chất",
+                "nước hoa hồng dưỡng ẩm",
+                "toner dưỡng ẩm",
+                "nước cân bằng dạng sệt",
+                "nước cân bằng tinh chất",
+                "nước cân bằng dưỡng ẩm",
+                "nước hoa hồng bổ sung tinh chất",
+                "nước cân bằng bổ sung tinh chất",
+                "toner bổ sung tinh chất"
+            ]
+        }
+    },
+    {
+        "sid": 124982,
+        "name": "",
+        "sname": "레드 프로폴리스 앰플",
+        "description": "",
+        "sdescription": "3세대 프로폴리스 레드 프로폴리스 추출물과 로얄 펩타이드를 담은 강력한 항산화 앰플",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "anti-aging essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 17,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất chống lão hóa",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum chống lão hóa",
+                "essence chống lão hóa"
+            ]
+        }
+    },
+    {
+        "sid": 96689,
+        "name": "",
+        "sname": "이데베논 컨센트레이트",
+        "description": "",
+        "sdescription": "초기노화가 시작되는 눈가, 입가의 미세주름을 개선하는 컨센트레이트 크림\r\n\r\n-최적의 안티에이징 효과\r\n\r\n-깨어나는 피부탄력과 리프팅 효과\r\n\r\n-8가지 임상 결과 눈으로 보여지는 효과\r\n\r\n-피부자극 테스트 완료",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Eye cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 23,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng vùng mắt",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem mắt"
+            ]
+        }
+    },
+    {
+        "sid": 15799,
+        "name": "",
+        "sname": "에이클린 안티-블레미쉬 카밍 크림",
+        "description": "",
+        "sdescription": "피부가 가장 편안한 진정 크림\r\n\r\n번들거림, 피부자극, 스트레스 등 피부를 민감하게 만드는 모든 요소로부터 피부를 보호하고, 유수분밸런스를 안정적으로 유지해주는 진정 크림입니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 89708,
+        "name": "",
+        "sname": "마일드 카밍 선로션 [SPF50+/PA++++]",
+        "description": "",
+        "sdescription": "민감한 피부에 순하게, 자외선 차단은 완벽하게 커버하는 선 로션\r\n\r\n1. 민감한 피부도 OK, 강력한 자외선 차단!!\r\n 민감피부도 순하게 사용하는 강력한 선블럭으로, \r\n 물리적 자외선 차단 성분만을 사용하여, \r\n 민감 피부도 순하게 사용할 수 있는 자외선 차단제입니다.\r\n\r\n2. 백탁 없이 부드러운 사용감\r\n 무기 자외선 차단제의 백탁과 뻑뻑함을 개선하여\r\n 부드럽게 발리면서도, 자연스러운 톤업 피부를 표현하여 줍니다.\r\n\r\n3. 식물 추출물로 더 순하게\r\n 수련꽃추출물, 라벤더추출물, 티트리잎추출물, 로즈마리잎추출물 등\r\n 피부 진정에 효과적인 성분이 함유되어 있습니다.\r\n\r\n4. 피부자극 테스트 완료\r\n 글라이코스아미노글리칸을 함유하여 피부진정 개선 및\r\n 건조함에 도움을 줍니다.",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    },
+    {
+        "sid": 1611,
+        "name": "",
+        "sname": "블랙 헤드 클리너",
+        "description": "",
+        "sdescription": "굴곡 있는 코 부위 등의 피지 및 각질 제거에 맞도록 인체 공학적으로 설계된 제품으로 부드러운 실리콘 브러시가 오래되고 지저분한 피부 속 묵은 노폐물과 피지, 각질을 말끔히 제거해 준다. 특수 실리콘 브러시는 마사지 효과가 우수하며 하단의 피지 압출기로 돌출 피지나 남아있는 블랙헤드를 제거할 수 있다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Cleansing tool",
+            "third_category_en_name": null,
+            "first_category_id": 7,
+            "second_category_id": 36,
+            "third_category_id": null,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Dụng cụ rửa mặt",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 15817,
+        "name": "",
+        "sname": "비타 솔루션 화이트닝 앰플",
+        "description": "",
+        "sdescription": "투명한 피부를 되찾아주는 멀티비타민 앰플\r\n\r\n안정화된 비타민C유도체 성분이 칙칙한 피부를 건강하고 맑은 피부로 가꿔줍니다. 건조해지기 쉬운 화이트닝 앰플에 보습을 강화하여 피부 방어력을 높여주어 윤기와 촉촉함을 더하였습니다.\r\n\r\n- 맑은 피부톤 브라이트닝 효과\r\n- 안정화된 미백 효과\r\n- 촉촉한 보습 컨디셔닝 개선\r\n- 피부 촉촉함 & 탄력 유지",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Brightening essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 16,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất dưỡng trắng",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "tinh chất làm trắng da",
+                "tinh chất kích trắng da",
+                "serum kích trắng",
+                "serum dưỡng trắng da",
+                "serum làm trắng da",
+                "essence dưỡng trắng da",
+                "essence làm trắng da",
+                "essence kích trắng"
+            ]
+        }
+    },
+    {
+        "sid": 92331,
+        "name": "",
+        "sname": "브라이트닝 데일리 플루이드 선 [SPF50+/PA++++]",
+        "description": "",
+        "sdescription": "더 완벽한 자외선 차단과 미백 기능성의 데일리 플루이드 선\r\n\r\n- 더 강력한 자외선 차단과 데일리 브라이트닝 효과\r\nSPF50+, PA++++의 강력한 자외선 차단과 함께 미백기능성의 이중 기능성 제품으로 피부를 환하게 밝혀주는 화이트닝 케어 선블럭\r\n\r\n- 백탁없이 산뜻한 마무리\r\n끈적임 없이 부드럽게 발리는 미네랄 오일무첨가로 피지를 케어해 주어 피부결을 균일하게 정돈하여 오랜시간 번들거림 없이 촉촉한 피부로 유지시켜줍니다.\r\n\r\n- 식물 추출물이 피부 진정\r\n수련꽃추출물, 베르가모트열매오일, 만다린껍질오일 등 피부 진정에 효과적인 성분이 함유되어 있습니다.\r\n\r\n- 피부자극테스트 완료\r\n예민하거나 민감한 피부도 사용 가능하도록 피부자극테스트 완료한 제품",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Tone-up sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 143,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng nâng tông",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng tone up",
+                "kem chống nắng nâng tone",
+                "kem chống nắng làm sáng da tức thì",
+                "kem chống nắng làm sáng da tạm thời"
+            ]
+        }
+    },
+    {
+        "sid": 2004,
+        "name": "",
+        "sname": "클렌징 퍼펙타",
+        "description": "",
+        "sdescription": "식물 유래 단백질 분해 효소가 피부 깊숙한 노폐물까지 딥 클렌징해주어 피부결을 매끈하게 해줍니다. 효소 작용으로 피부 표면이 각질을 제거해 턴오버 주기를 활성화하여 건강한 피부로 가꾸어 줍니다. 칙칙한 피부 개선을 위한 나이아신아마이드, 쌀겨추출물이 함유되어 한 층 밝은 피부로 가꾸어 줍니다. 미세한 거품으로 피부에 부담을 주지않고 묵은 각질을 제거해주며 세안후에도 당김없이 촉촉한 피부를 유지시켜 줍니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing gel",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 114,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Gel rửa mặt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "sữa rửa mặt dạng gel"
+            ]
+        }
+    },
+    {
+        "sid": 6514,
+        "name": "",
+        "sname": "오메가 선블록",
+        "description": "",
+        "sdescription": "SPF50+ PA+++로 야외활동이나 전문 시술 후 자외선에 민감해지기 쉬운 피부에 자외선을 완벽하게 차단해줍니다. 백탁현상이 없고 끈적임과 번들거림 없이 피부 밀착성이 우수합니다. \r\n\r\n- 자외선(uva, uvb) 동시 차단 효과\r\n- 방수(water resistant), 방사(sand resistant) 효과\r\n- 민감한 피부도 자극 없이\r\n- 우수한 사용감",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    }
+]

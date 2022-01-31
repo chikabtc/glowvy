@@ -364,6 +364,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                     ]))),
                       ),
                     ),
+                    // if (product.ingredients != null)
                     GestureDetector(
                       onTap: () => product.ingredients != null
                           ? Navigator.push(
@@ -387,38 +388,52 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                                 padding: const EdgeInsets.only(
                                     left: 16, right: 16, top: 5, bottom: 8),
                                 width: MediaQuery.of(context).size.width,
-                                child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      RichText(
-                                        textAlign: TextAlign.center,
-                                        text: TextSpan(
-                                          style: textTheme.caption1.copyWith(
-                                            color: kSecondaryGrey,
-                                          ),
-                                          children: <TextSpan>[
-                                            const TextSpan(
-                                                text: 'Chứa thành phần'),
-                                            TextSpan(
-                                                text: ' rủi ro $hazardLevel',
-                                                style: textTheme.caption1
-                                                    .copyWith(
-                                                        color: hazardLevelColor,
-                                                        fontWeight:
-                                                            FontWeight.bold)),
-                                            const TextSpan(text: ' cho da'),
-                                          ],
-                                        ),
-                                      ),
-                                      const Spacer(),
-                                      Icon(
-                                        Icons.warning,
-                                        size: 20,
-                                        color: Colors.grey.withOpacity(0.7),
-                                      )
-                                    ]))),
+                                child: product.ingredients != null
+                                    ? Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: <Widget>[
+                                            RichText(
+                                              textAlign: TextAlign.center,
+                                              text: TextSpan(
+                                                style:
+                                                    textTheme.caption1.copyWith(
+                                                  color: kSecondaryGrey,
+                                                ),
+                                                children: <TextSpan>[
+                                                  const TextSpan(
+                                                      text: 'Chứa thành phần'),
+                                                  TextSpan(
+                                                      text:
+                                                          ' rủi ro $hazardLevel',
+                                                      style: textTheme.caption1
+                                                          .copyWith(
+                                                              color:
+                                                                  hazardLevelColor,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold)),
+                                                  const TextSpan(
+                                                      text: ' cho da'),
+                                                ],
+                                              ),
+                                            ),
+                                            const Spacer(),
+                                            Icon(
+                                              Icons.warning,
+                                              size: 20,
+                                              color:
+                                                  Colors.grey.withOpacity(0.7),
+                                            )
+                                          ])
+                                    : Text(
+                                        'Sản phẩm không đăng ký thành phần',
+                                        // textAlign: TextAlign.center,
+                                        style: textTheme.caption1
+                                            .copyWith(color: kSecondaryGrey),
+                                      ))),
                       ),
                     ),
 

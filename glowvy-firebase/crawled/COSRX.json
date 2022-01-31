@@ -1,0 +1,122 @@
+[
+    {
+        "sid": 142344,
+        "name": "",
+        "sname": "퓨어 핏 시카 패드",
+        "description": "",
+        "sdescription": "7가지 센텔라 성분 복합체가 83.2% 함유하여 민감해진 피부를 진정시켜주는 수분 진정 패드\n\n- 외부 자극 및 민감한 피부 열을 순하게 쿨링\n- 알란토인과 탄탄한 수분벽을 쌓아주는 판테놀이 건조한 피부를 촉촉하게 케어\n- 워터리한 제형이 가볍게 흡수되어 상쾌한 마무리감",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Toner pad",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 4,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Bông thấm toner",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "miếng bông toner",
+                "giấy thấm toner",
+                "toner dạng miếng",
+                "toning pad",
+                "nước hoa hồng dạng miếng",
+                "nước cân bằng dạng miếng",
+                "giấy thấm nước hoa hồng",
+                "giấy thấm nước cân bằng",
+                "hộp miếng tẩm toner"
+            ]
+        }
+    },
+    {
+        "sid": 111463,
+        "name": "",
+        "sname": "약산성 퍼스트 클렌징 밀크젤 ",
+        "description": "",
+        "sdescription": "- 약산성 ~ 중성 pH 6.0±0.5\r\n\r\n- 순한 1차 클렌저\r\n\r\n- 선크림 세안제\r\n\r\n- 민감성 클렌저",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing gel",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 114,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Gel rửa mặt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "sữa rửa mặt dạng gel"
+            ]
+        }
+    },
+    {
+        "sid": 142341,
+        "name": "",
+        "sname": "포어리스 패드",
+        "description": "",
+        "sdescription": "패드 한 장으로 모공, 블랙헤드, 피지를 한 번에 케어하는 3 in 1 모공 패드\n\n- 최적의 배합으로 구성된 AHA, BHA, PHA, LHA 네 가지 애씨드 성분으로 확실하게 모공 청소\n- 100% 자연 유래 천연 셀룰로오스 시트\n- 워터리한 제형이 가볍게 흡수되어 상쾌한 마무리감",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Toner pad",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 4,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Bông thấm toner",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "miếng bông toner",
+                "giấy thấm toner",
+                "toner dạng miếng",
+                "toning pad",
+                "nước hoa hồng dạng miếng",
+                "nước cân bằng dạng miếng",
+                "giấy thấm nước hoa hồng",
+                "giấy thấm nước cân bằng",
+                "hộp miếng tẩm toner"
+            ]
+        }
+    },
+    {
+        "sid": 22540,
+        "name": "",
+        "sname": "블랙헤드 브러쉬",
+        "description": "",
+        "sdescription": "3만개의 초미세모가 코는 물론 국소부위의 블랙헤드와 각종 노폐물을 빈틈없이 클렌징해주는 펜타입의 국소전용 모공 브러쉬\r\n\r\n피부에서 코는 블랙헤드와 피지가 가장 많이 발생되는 부위로 손 세안이나 기존 모공브러쉬만으론 부족했던 코의 입체적인 굴곡도 놓치지 않고 섬세하게 클렌징하여 블랙헤드.화이트헤드.피지.각질등으로 지저분해진 코를 깨끗하게 클렌징해줍니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Cleansing tool",
+            "third_category_en_name": null,
+            "first_category_id": 7,
+            "second_category_id": 36,
+            "third_category_id": null,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Dụng cụ rửa mặt",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    }
+]

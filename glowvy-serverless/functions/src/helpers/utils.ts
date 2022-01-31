@@ -144,8 +144,12 @@ export async function updateCategoryProductCount(db, productJson, incrementBy) {
   const category = snap.docs[0].data();
   const subCategories = category.sub_categories;
   if (productJson.category.first_category_id !== undefined) {
+    // if the count is zero, don't decrement
+
     if (category.hasOwnProperty('grand_total_count')) {
-      category.grand_total_count += incrementBy;
+      if (category.grand_total_count !== 0 || incrementBy !== -1) {
+        category.grand_total_count += incrementBy;
+      }
     } else {
       category.grand_total_count = 1;
     }
@@ -156,7 +160,10 @@ export async function updateCategoryProductCount(db, productJson, incrementBy) {
         const secondCate = category.sub_categories.find((cate) => cate.id === productJson.category.second_category_id);
         const index = category.sub_categories.findIndex((cate) => secondCate.id === cate.id);
         if (subCategories[index].hasOwnProperty('grand_total_count')) {
-          subCategories[index].grand_total_count += incrementBy;
+          // if the count is zero, don't decrement
+          if (subCategories[index].grand_total_count !== 0 || incrementBy !== -1) {
+            subCategories[index].grand_total_count += incrementBy;
+          }
         } else {
           subCategories[index].grand_total_count = 1;
         }
@@ -168,7 +175,11 @@ export async function updateCategoryProductCount(db, productJson, incrementBy) {
           subCategories[index].sub_categories[thirdIndex].grand_total_count++;
 
           if (subCategories[index].sub_categories[thirdIndex].hasOwnProperty('grand_total_count')) {
-            subCategories[index].sub_categories[thirdIndex].grand_total_count += incrementBy;
+            // if the count is zero, don't decrement
+
+            if (subCategories[index].sub_categories[thirdIndex].grand_total_count !== 0 || incrementBy !== -1) {
+              subCategories[index].sub_categories[thirdIndex].grand_total_count += incrementBy;
+            }
           } else {
             subCategories[index].sub_categories[thirdIndex].grand_total_count = 1;
           }
@@ -186,12 +197,28 @@ export async function updateCategoryProductCount(db, productJson, incrementBy) {
   }
 }
 export async function updateBrandProductCounter(db, productJson, incrementBy) {
-  const { brand } = productJson;
-  console.log(brand);
-  const snap = await db.collection('brands').where('id', '==', brand.id).get();
+  const snap = await db.collection('brands').where('id', '==', productJson.brand.id).get();
   const brandDoc = snap.docs[0];
   const count = brandDoc.data().grand_total_count + incrementBy;
   brandDoc.ref.update({
     grand_total_count: count,
   }).then(() => console.log('incremented'));
+}
+
+export async function incrementProductCount(db, firestore) {
+  await db.collection('product').doc('product_counter').update({
+    count: firestore.FieldValue.increment(1),
+  });
+}
+export async function decrementroductCount(db, firestore) {
+  await db.collection('product').doc('product_counter').update({
+    count: firestore.FieldValue.increment(-1),
+  });
+}
+
+export function getAverageRating(reviewMeta: any, newReviewRating: number) {
+  if (reviewMeta.review_count === 0) {
+    return 0;
+  }
+  return (reviewMeta.average_rating * (reviewMeta.review_count - 1) + newReviewRating) / (reviewMeta.review_count);
 }

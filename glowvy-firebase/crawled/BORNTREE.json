@@ -1,0 +1,135 @@
+[
+    {
+        "sid": 24890,
+        "name": "",
+        "sname": "골드 밀크 크림",
+        "description": "",
+        "sdescription": "산양유 + 당나귀유의 불포화지방산 마유로 피부에 빠르고 오랫동안 촉촉한 보습력을 유지시켜주는 고보습 크림의 탄생 천연방부제 황금 추출물 사용으로 아이부터 어른까지 다함께 사용할 수 있는 신개념 고보습 크림",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 81845,
+        "name": "",
+        "sname": "고트밀크 톤업크림",
+        "description": "",
+        "sdescription": "산양유+세라마이드+화이트닝 콤플렉스로 수분크림과 톤업을 한번에!\r\n\r\n-실세생크림과 비교해도 무방할 정도의 부드럽고 소프트한 텍스처\r\n-우유보다 28배 더 많은 셀레늄 함유로 촉촉한 보습 선사\r\n-산양유추출물과 세라마이드는 피부지질과 유사한 구조를 가지고 있어 뛰어난 보습을 선사\r\n-10가지 브라이트닝 콤플렉스가 함유되어 즉각톤업+꾸준한 화이트닝",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Tone-up cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 20,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem nâng tông",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem tone up",
+                "kem dưỡng nâng tone da",
+                "kem dưỡng làm trắng tạm thời",
+                "kem dưỡng làm trắng tức thì",
+                "kem dưỡng trắng tone-up"
+            ]
+        }
+    },
+    {
+        "sid": 109643,
+        "name": "",
+        "sname": "허브 에센셜 선크림 [SPF50+/PA+++]",
+        "description": "",
+        "sdescription": "- 허브 에센셜 선크림은 화학 차단제 사용으로 자극을 주는 자외선 흡수 차단이 아닌 무기차단제만 적용한 100% 무기자차 선크림으로 피부 표면 반사 차단으로 예민한 피부에도 저자극으로 사용 가능합니다.\r\n\r\n- 자외선 차단은 기본, 밝은피부, 어두운피부 어느피부에 상관없이 자연스럽게 톤업효과는 덤\r\n\r\n- 자외선차단효과, 미백기능성, 주름개선 허브 에센셜 선크림 하나로 3가지 효과를 모두 잡으세요!",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    },
+    {
+        "sid": 66433,
+        "name": "",
+        "sname": "보르톡스 아이크림",
+        "description": "",
+        "sdescription": "자작나무수액+다래나무즙 조합의 특별한 수액 콤플렉스로 근본적인 수분케어부터 확실하게 다잡아, 밑바탕으로부터 차오르는 피부탄력을 경험하게 됩니다.\r\n풍부한 미네랄 수분조합으로 피부결을 더욱 촉촉하게 만듭니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Eye cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 23,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng vùng mắt",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem mắt"
+            ]
+        }
+    },
+    {
+        "sid": 61649,
+        "name": "",
+        "sname": "아하필링토너",
+        "description": "",
+        "sdescription": "깨끗한 피부를 경험하세요!\r\n본트리 아하토너를 매일 화장솜으로 닦아내면 각질제거 정돈되어 기초케어하실 때 피부에 흡수력을 도와드립니다.\r\nAHA 성분은 모공 클렌징에 도움을 주며 피부각질 제거와 화이트헤드, 블랙헤드를 개선해드립니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    }
+]

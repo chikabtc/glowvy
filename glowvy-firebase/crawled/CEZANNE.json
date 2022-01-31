@@ -1,0 +1,27 @@
+[
+    {
+        "sid": 105252,
+        "name": "",
+        "sname": "마일드 클렌징 오일",
+        "description": "",
+        "sdescription": "메이크업을 말끔하고 확실히 제거해줍니다.\r\n\r\n무향료, 무착색, 무알코올",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Makeup remover",
+            "third_category_en_name": "Cleansing oil",
+            "first_category_id": 7,
+            "second_category_id": 33,
+            "third_category_id": 118,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang",
+            "third_category_name": "Dầu tẩy trang",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Tẩy trang dạng dầu"
+            ]
+        }
+    }
+]

@@ -1,0 +1,801 @@
+[
+    {
+        "sid": 139838,
+        "name": "",
+        "sname": "아토베리어365 하이드로 에센스",
+        "description": "",
+        "sdescription": "30가지 수분영양소를 채워주는 장벽 속 수분 에센스\n\n- 피부 건조 및 속당김 해결\n- 피부 장벽을 튼튼하게 보호\n- 액상 타입의 깔끔한 마무리감",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Hydrating essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 11,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum cấp nước",
+                "essence cấp nước",
+                "tinh chất cho da dầu",
+                "serum cho da dầu",
+                "essence cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 115761,
+        "name": "",
+        "sname": "아토베리어 365 로션",
+        "description": "",
+        "sdescription": "피부장벽을 탄탄하게 유지시키는 보습 실키 로션\r\n\r\n- 일상생활에 건조한 피부의 장벽기능을 강화\r\n- 데일리 집중 고보습을 통해 부드럽고 탄탄한 보습막을 형성\r\n- 매일 매일 건조한 피부에 강력한 보습을 제공 ",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Moisturizing lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 6,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "Lotion dưỡng ẩm",
+                "sữa dưỡng cấp ẩm",
+                "sữa dưỡng ẩm",
+                "lotion dành cho da khô",
+                "sữa dưỡng dành cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 134638,
+        "name": "",
+        "sname": "에이시카 스트레스 릴리프 트리트먼트",
+        "description": "",
+        "sdescription": "갑자기 민감해져 집중케어가 필요한 급민감 부위를 위한 고농축 솔루션\n\n- 크림을 녹인 듯한 액상형 시카\n- 바르는 즉시 물리적인 장벽\n- 오래 표면에 머물어 밀착 케어",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 56977,
+        "name": "",
+        "sname": "아토베리어 로션",
+        "description": "",
+        "sdescription": "* 본 제품은 리뉴얼된 제품입니다. \n\n피부에 부드럽게 스며들어 장벽기능을 강화하고, 촉촉함을 제공하는 고보습 로션\n\n- 건조하고 갈라진 피부의 장벽기능을 강화\n- 세계 최초로 개발된 유사 충판소체 더마온을 함유하여 손상된 장벽에 부족한 지질구조체를 외부에서 공급함으로써 피부보호막을 강화",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Moisturizing lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 6,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "Lotion dưỡng ẩm",
+                "sữa dưỡng cấp ẩm",
+                "sữa dưỡng ẩm",
+                "lotion dành cho da khô",
+                "sữa dưỡng dành cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 114650,
+        "name": "",
+        "sname": "테라크네 365 하이드레이션 토너",
+        "description": "",
+        "sdescription": "일상생활에서 유해환경에 노출된 피부의 진정 및 피부보호를 위한 토너\n\n- 지성 피부의 고민인 과다 분비된 피지 케어\n- 여드름성 피부의 모공 과각화 억제\n- 건조한 피부에 수분은 채워주고, 유분은 케어해주는 유수분 밸런싱",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 132019,
+        "name": "",
+        "sname": "에이시카 스트레스 릴리프 크림에센스",
+        "description": "",
+        "sdescription": "급민감해진 피부를 위한 흡수빠른 #액상시카 크림에센스\r\n\r\n- 고함량 크림을 녹여내어 바르는 즉시 흡수되어 급민감 피부에 특화진정\r\n- 급민감 피부를 위한 특화진정 복합포뮬라 함유\r\n- 급민감도 믿고 쓰는 안심포뮬라",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Soothing essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 13,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất làm dịu da",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum làm dịu da kích ứng",
+                "tinh chất làm dịu da kích ứng",
+                "essence làm dịu da kích ứng",
+                "tinh chất cho da nhạy cảm",
+                "serum cho da nhạy cảm",
+                "essence cho da nhạy cảm"
+            ]
+        }
+    },
+    {
+        "sid": 115119,
+        "name": "",
+        "sname": "아토베리어 365 크림 미스트",
+        "description": "",
+        "sdescription": "연약한 피부 장벽을 위한 크림 미스트\n\n- 세라마이드가 피부에 깊은 보습력 제공\n- 유해환경에 노출된 피부의 진정 및 보호\n- 펌핑 타입의 잘개 쪼갠 미세입자의 풍부한 분사량",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Mist",
+            "third_category_en_name": "Cream mist",
+            "first_category_id": 1,
+            "second_category_id": 5,
+            "third_category_id": 29,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Xịt khoáng",
+            "third_category_name": "Xịt dưỡng da",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "xịt dưỡng ẩm",
+                "xịt dưỡng da",
+                "xịt khoáng dưỡng da"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 118804,
+        "name": "",
+        "sname": "아토베리어 365 워터젤 크림",
+        "description": "",
+        "sdescription": "- 일상생활에서 건조한 피부의 장벽기능을 강화하고, 데일리 집중 고보습을 통해 부드럽고 탄탄한 보습막을 형성하여, 매일 매일 건조한 피부에 강력한 보습을 제공\r\n- 세라마이드 4% 고함량으로 피부에 깊은 보습력 제공\r\n- 일상생활에서 유해환경에 노출된 피부의 진정 및 보호\r\n- 부드러운 젤이 피부에 풍부한 보습감 부여",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 25772,
+        "name": "",
+        "sname": "테라크네 에센스",
+        "description": "",
+        "sdescription": "민감해진 피부를 진정시키고 피지분비를 억제해주는 스킨&로션 기능의 에센스\r\n\r\n- 녹차수 성분으로 피부과 처치 후 민감해진 피부를 진정시키거, 피비분지를 억제하여 건강한 피부로 개선시켜 주는데 효과적입니다",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Soothing essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 13,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất làm dịu da",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum làm dịu da kích ứng",
+                "tinh chất làm dịu da kích ứng",
+                "essence làm dịu da kích ứng",
+                "tinh chất cho da nhạy cảm",
+                "serum cho da nhạy cảm",
+                "essence cho da nhạy cảm"
+            ]
+        }
+    },
+    {
+        "sid": 118806,
+        "name": "",
+        "sname": "아토베리어 365 필링젤",
+        "description": "",
+        "sdescription": "- 일상생활에서 건조한 피부의 장벽기능을 강화하고, 데일리 집중 고보습을 통해 부드럽고 탄탄한 보습막을 형성\r\n- 세라마이드 함유로 피부에 깊은 보습력 제공\r\n- 천연 셀룰로오즈가 불필요한 각질을 마일드하게 제거 ",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Exfoliator",
+            "third_category_en_name": "Peeling gel",
+            "first_category_id": 7,
+            "second_category_id": 35,
+            "third_category_id": 125,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy da chết",
+            "third_category_name": "Tẩy da chết dạng kì",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [
+                "Tẩy tế bào chết"
+            ],
+            "third_category_synonyms": [
+                "Tẩy tế bào chết dạng kì",
+                "Gel tẩy da chết",
+                "Gel tẩy tế bào chết",
+                "tẩy tế bào chết vật lý"
+            ]
+        }
+    },
+    {
+        "sid": 118872,
+        "name": "",
+        "sname": "아토베리어 크림 MD",
+        "description": "",
+        "sdescription": "- 건조한 피부 등 피부장벽이 손상된 부위에 피부 보호를 위해 사용하는 점착성투명창상피복재\r\n",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 114612,
+        "name": "",
+        "sname": "테라크네 365 수딩 에멀젼",
+        "description": "",
+        "sdescription": "- 일상생활에서 유해환경에 노출된 피부의 진정 및 피부보호\r\n- 지성 피부의 고민인 과다 분비 피지케어\r\n- 피부의 보습\r\n",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Soothing lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 7,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion làm dịu da",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "sữa dưỡng làm dịu da",
+                "lotion cho da nhạy cảm",
+                "nước hoa hồng cho da nhạy cảm",
+                "sữa dưỡng cho da nhạy cảm",
+                "lotion làm dịu da kích ứng",
+                "sữa dưỡng làm dịu da kích ứng",
+                "nước hoa hồng làm dịu da kích ứng",
+                "nước cân bằng làm dịu da kích ứng"
+            ]
+        }
+    },
+    {
+        "sid": 118802,
+        "name": "",
+        "sname": "테라크네 365 에센스",
+        "description": "",
+        "sdescription": "- 초여름 제주에서 수확하는 녹차를 추출한 녹차수 성분이 과다하게 분비된 피지를 케어하고 유수분 밸런스를 조절\r\n- 일상생활에서 유해환경에 노출된 피부의 진정 및 피부보호\r\n- 건조한 피부에 수분은 채워주고, 유분은 케어해주는 유수분 밸런싱\r\n- 지성 피부의 고민인 과다 분비된 피지 케어 ",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Soothing essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 13,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất làm dịu da",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum làm dịu da kích ứng",
+                "tinh chất làm dịu da kích ứng",
+                "essence làm dịu da kích ứng",
+                "tinh chất cho da nhạy cảm",
+                "serum cho da nhạy cảm",
+                "essence cho da nhạy cảm"
+            ]
+        }
+    },
+    {
+        "sid": 102967,
+        "name": "",
+        "sname": "아토베리어 클렌저",
+        "description": "",
+        "sdescription": "건조하고 연약한 피부에 적합한 젤 타입의 보습 세정제\r\n\r\n- 피부의 청결관리에 마일드하게 작용하는 약산성 세정제 입니다.\r\n- 식물 보습/진정 성분이 피부의 수분 손실을 줄여주며 샤워 후 피부를 촉촉하게 유지시켜줍니다.\r\n- 아토베리어 클렌저는 색소, 인공향, 광물성오일, 보존제를 함유하지 않습니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing gel",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 114,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Gel rửa mặt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "sữa rửa mặt dạng gel"
+            ]
+        }
+    },
+    {
+        "sid": 118811,
+        "name": "",
+        "sname": "리제덤 365 리페어 시그니처 크림",
+        "description": "",
+        "sdescription": "- 피부 활력 개선을 도와주는 피부 에너지 크림\r\n- 외부 유해인자로부터 지친 피부\r\n- 외부 유해인자로 인해 푸석푸석하고 처진 피부\r\n- 외부 유해인자로 인해 주름 케어가 필요한 피부 ",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 74735,
+        "name": "",
+        "sname": "테라크네 수딩 크림",
+        "description": "",
+        "sdescription": "피부치료후 자극, 건조함 케어, 고보습 오일프리 수분크림\r\n",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 118810,
+        "name": "",
+        "sname": "리제덤 365 리페어퍼밍크림",
+        "description": "",
+        "sdescription": "- 피부 안팎의 탄력 증진과 매끈하고 탄탄한 피부 케어를 위한 크림\r\n- 피부 활성을 강화하고, 피부 본연의 힘을 길러주어 탱탱하고 탄력있는 피부로 가꾸어 주는 탄력up 크림\r\n- 외부 유해인자로부터 지친 피부\r\n- 외부 유해인자로부터 푸석푸석하고 처진 피부\r\n- 외부 유해인자로 인해 주름 케어가 필요한 피부\r\n",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Anti-aging cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 26,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng chống lão hóa",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem dưỡng chống nhăn"
+            ]
+        }
+    },
+    {
+        "sid": 118800,
+        "name": "",
+        "sname": "테라크네 365 스팟 트리트먼트",
+        "description": "",
+        "sdescription": "- 초여름 제주에서 수확하는 녹차를 추출한 녹차수 성분이 과다하게 분비된 피지를 케어하고 유수분 밸런스를 조절\r\n- 일상생활에서 유해환경에 노출된 피부의 진정 및 피부보호\r\n- 건조한 피부에 수분은 채워주고, 유분은 케어해주는 유수분 밸런싱\r\n- 지성 피부의 고민인 과다 분비된 피지케어 ",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Trouble essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 15,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất trị mụn",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum trị mụn",
+                "essence trị mụn",
+                "tinh chất cho da mụn",
+                "serum cho da mụn",
+                "essence cho da mụn",
+                "tinh chất ngăn ngừa mụn",
+                "serum ngăn ngừa mụn",
+                "essence ngăn ngừa mụn"
+            ]
+        }
+    },
+    {
+        "sid": 118799,
+        "name": "",
+        "sname": "아토베리어 365 버블 클렌저 ",
+        "description": "",
+        "sdescription": "- 매일매일 연약한 피부에 쌓이는 노폐물을 거품타입의 제형이 피부와의 마찰을 최소화하여 저자극으로 산뜻하게 클렌징\r\n- 식물유래 계면활성제로 더 부드럽고 촉촉하게\r\n- 일상생활 유해환경으로 인한 노폐물을 저자극 세정으로 피부보호\r\n- 펌핑과 동시에 풍부한 거품으로 저자극 세정",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Bubble cleanser",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 113,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt dạng bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 118874,
+        "name": "",
+        "sname": "아토베리어 로션 MD",
+        "description": "",
+        "sdescription": "- 건조한 피부 등 피부장벽이 손상된 부위의 피부 보호를 위해 사용하는 점착성투명창상피북재\r\n- 손상된 피부 장벽에 물리적인 막을 형서앟여 피부장벽 내 수분을 유지시켜 손상된 피부를 보호\r\n",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Moisturizing lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 6,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "Lotion dưỡng ẩm",
+                "sữa dưỡng cấp ẩm",
+                "sữa dưỡng ẩm",
+                "lotion dành cho da khô",
+                "sữa dưỡng dành cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 118807,
+        "name": "",
+        "sname": "아토베리어 365 더마온선크림 [SPF30/PA++]",
+        "description": "",
+        "sdescription": "- 더마온 성분으로 강력한 고보습 저자극 선크림으로 완벽한 자외선 차단\r\n- 자외선으로부터 연약한 피부를 보호하고, 손상된 피부 장벽 기능을 강화시켜주는 고보습 선크림\r\n",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    },
+    {
+        "sid": 115767,
+        "name": "",
+        "sname": "크림 MD",
+        "description": "",
+        "sdescription": "- 손상된 피부 장벽에 물리적인 막을 형성하여 피부 장벽 내 수분을 유지시키고 손상된 피부를 보호\r\n",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 14527,
+        "name": "",
+        "sname": "리제덤RX 듀얼 선크림 [SPF50+/PA+++]",
+        "description": "",
+        "sdescription": "피부과 관리 후 민감해진 피부를 보호하는 UV차단기능과 불균일한 피부톤을 자연스럽게 보정하는 자외선 차단제 입니다\r\n\r\n- 리제덤RX 듀얼 선크림은 피부과 관리 후 약하고 민감해진 피부를 위해 무기 자외선 필터를 사용한 자외선 차단제입니다.\r\n- 피부과 관리 후 불균일한 피부톤을 부드럽게 커버하여 자연스러움을 유지시켜줍니다.\r\n- 외부의 피부 유해인자로부터 피부를 보호하고, 피부 손상을 예방, 개선하여 줍니다.\r\n- 번들거림이나 끈적임 없이 가볍고 자연스럽게 밀착되어 피부에 부담없이 사용할 수 있는 자외선 차단제입니다.\r\n- 민감한 피부를 위한 피부 자극 최소화 (4무처방)",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    },
+    {
+        "sid": 25771,
+        "name": "",
+        "sname": "테라크네 블레미쉬 트리트먼트",
+        "description": "",
+        "sdescription": "예민해진 피부를 맑고 매끄럽게 케어해주는 밤 전용 집중 트리트먼트 제품입니다 :)\r\n- 예민해진 피부를 효과적으로 진정시키며 여드름성 피부에 적합한 제품입니다\r\n- 녹차수 성분이 민감해진 피부를 진정시키고 피부 유수분 밸런스를 조절하여 피부를 산뜻하게 정돈시켜 줍니다",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Trouble essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 15,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất trị mụn",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum trị mụn",
+                "essence trị mụn",
+                "tinh chất cho da mụn",
+                "serum cho da mụn",
+                "essence cho da mụn",
+                "tinh chất ngăn ngừa mụn",
+                "serum ngăn ngừa mụn",
+                "essence ngăn ngừa mụn"
+            ]
+        }
+    },
+    {
+        "sid": 64037,
+        "name": "",
+        "sname": "테라크네 365 버블 클렌저",
+        "description": "",
+        "sdescription": "순하게 피지와 노폐물을 제거하는 여드름성 피부를 위한 세안제입니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Bubble cleanser",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 113,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt dạng bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 138452,
+        "name": "",
+        "sname": "테라크네365 설퍼 클리어 트리트먼트",
+        "description": "",
+        "sdescription": "하루종일 붙이기만 하는 트러블 케어는 그만, 잠재우는 크림 타입 스팟패치\n\n- 강력한 효능 성분이 효과적 케어\n- 유효 성분을 그대로 담은 크림 투 패치 제형 기술\n- 트러블 케어 강력 배합 포뮬라",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 81767,
+        "name": "",
+        "sname": "테라크네 토너",
+        "description": "",
+        "sdescription": "트러블성 피부를 편안하게 케어하고 과다 피지와 각질을 정돈하여 매끄러운 피부결로 가꾸어주는 토너.\r\n90% 녹차수 베이스가 함유된 토너로 청량한 사용감과 보습 에너지가 지친 피부를 편안하게 진정시켜줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    }
+]

@@ -1,0 +1,429 @@
+[
+    {
+        "sid": 33748,
+        "name": "",
+        "sname": "알로에 노워시 클렌징워터",
+        "description": "",
+        "sdescription": "메이크업은 깔끔하게 지우고 피부는 촉촉하게! 물세안 필요없는 노워시 알로에 클렌징 워터!\r\n-제주에서 자란 무농약 알로에 에센스 91% 함유\r\n 알로에베라잎 추출물로서 85% 함유, 알로에의 수분 진정 효과로 촉촉하게 클렌징\r\n-메이크업은 깔끔하게 지우고 피부는 촉촉하고 당김없이 마무리\r\n-인공향, 합성색소, 광물성오일 free\r\n-피부에 마일드한 약산성",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Makeup remover",
+            "third_category_en_name": "Cleansing water",
+            "first_category_id": 7,
+            "second_category_id": 33,
+            "third_category_id": 119,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang",
+            "third_category_name": "Nước tẩy trang",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Tẩy trang dạng nước"
+            ]
+        }
+    },
+    {
+        "sid": 21261,
+        "name": "",
+        "sname": "버블 거품망",
+        "description": "",
+        "sdescription": "풍성한 거품을 빠르게 생성해주는 버블 거품망\r\n\r\n풍성한 클렌징 거품으로 휘핑크림 세안!\r\n비누나 폼 클렌저의 거품을 쉽게 내도록 도와주는 버블 메이커",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Cleansing tool",
+            "third_category_en_name": null,
+            "first_category_id": 7,
+            "second_category_id": 36,
+            "third_category_id": null,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Dụng cụ rửa mặt",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 137718,
+        "name": "",
+        "sname": "메가 마데칸테놀 토너패드",
+        "description": "",
+        "sdescription": "노폐물 제거, 피부결 정리, 수분 공급까지 패드 한장으로 슈퍼 패스\n\n- 마데카소사이드와 판테놀이 만나 듀얼 진정 시저니\n- 닦토부터 부분팩까지 패드 한 장으로 끝\n- 부담없이 쓸 수 있는 8 Free 미니멈 처방",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Toner pad",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 4,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Bông thấm toner",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "miếng bông toner",
+                "giấy thấm toner",
+                "toner dạng miếng",
+                "toning pad",
+                "nước hoa hồng dạng miếng",
+                "nước cân bằng dạng miếng",
+                "giấy thấm nước hoa hồng",
+                "giấy thấm nước cân bằng",
+                "hộp miếng tẩm toner"
+            ]
+        }
+    },
+    {
+        "sid": 1679,
+        "name": "",
+        "sname": "뽀오얀 미소 발효 립&아이 리무버",
+        "description": "",
+        "sdescription": "눈과 입술의 진한 메이크업도 부드럽게 지워주는 곡물 발효 립&아이 리무버. \r\n\r\n최적의 비율로 구성된 발효 워터층과 곡물 오일층이 진한 메이크업도 한번에 지워줍니다. \r\n\r\n소이폴 성분이 눈과 입술에 수분막을 형성하여 눈가를 보호해줍니다. \r\n\r\n안자극 대체 테스트를 완료하여 눈가에 부담없이 사용 가능합니다.\r\n\r\n",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Point remover",
+            "third_category_en_name": null,
+            "first_category_id": 7,
+            "second_category_id": 34,
+            "third_category_id": null,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang chuyên dụng",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [
+                "bông tẩy trang ngón tay",
+                "kén tơ tằm"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 33749,
+        "name": "",
+        "sname": "알로에 노워시 클렌징 티슈",
+        "description": "",
+        "sdescription": "수정할 때 필수! 물세안이 필요없고 간편하게 휴대하는 클렌징 티슈\n\n- 제주도에서 자란 무농약 알로에 에센스 91% 함유\n- 메이크업은 깔끔하게 지우고 피부는 촉촉하고 당김 없이 마무리\n- 피부에 마일드한 약산성",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Makeup remover",
+            "third_category_en_name": "Cleansing tissue",
+            "first_category_id": 7,
+            "second_category_id": 33,
+            "third_category_id": 122,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang",
+            "third_category_name": "Khăn ướt tẩy trang",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "khăn giấy tẩy trang"
+            ]
+        }
+    },
+    {
+        "sid": 79719,
+        "name": "",
+        "sname": "티트리 솔루션 클렌징폼",
+        "description": "",
+        "sdescription": "개운하게 각질을 케어하며 세안해주는 모공 청정 딥클렌징 폼\r\n\r\n1. 치아씨추출물과 병풀추출물 함유로 건강한 클렌징\r\n\r\n2. 티트리잎추출물이 모공 수렴 및 지친 피부 진정\r\n\r\n3. 풍성하고 조밀한 거품으로 모공 속 묵은 각질과 노폐물 세안을 도와줌 ",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing foam",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 112,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt tạo bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 139840,
+        "name": "",
+        "sname": "메가 마데칸테놀 페이셜 크림",
+        "description": "",
+        "sdescription": "진정, 고보습, 건조로 인한 자극 완화까지 크림 하나로 슈퍼패스\n\n- 마데카소사이드와 판테놀이 만나 듀얼 진정 시너지\n- 7% 함유된 판테놀의 강력한 수분잠금 보습효과\n- 부담없이 쓸 수 있는 7free 미니멈 포뮬라",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 14158,
+        "name": "",
+        "sname": "뽀오얀 미소 발효 클렌징폼",
+        "description": "",
+        "sdescription": "미세하고 풍성한 발효거품이 피부를 촉촉하게 가꿔주는 곡물발효 클렌징 폼\r\n\r\n1. 찰진 미세거품이 피부 마찰을 완화하여 부드럽게 클렌징하여 줍니다.\r\n2. 피부 수분손실을 방지하는 폴리쿼터늄-7 성분이 함유되어 세안 후 당김없이 촉촉한 피부로 완성하여 줍니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing foam",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 112,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt tạo bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 14127,
+        "name": "",
+        "sname": "뽀오얀 미소 발효 클렌징 오일",
+        "description": "",
+        "sdescription": "모공 속 노폐물까지 말끔하게 제거해주는 산뜻한 곡물발효 클렌징 오일\r\n\r\n1. 강한 메이크업도 한번에! 워셔블 타입 곡물 클렌징 오일이 강력한 클렌징력으로 진한 메이크업도 말끔하게 클렌징 해줍니다.\r\n2. 촉촉하게! 보습감 있는 오일이 피부 위에 막을 형성하여 부드러운 롤링감을 부여해 매끈하고 촉촉하게 마무리해줍니다.\r\n3. 진정효과까지! 목화와 쉐어버터 추출물이 함유되어 스트레스에 지친 피부를 진정시켜줍니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Makeup remover",
+            "third_category_en_name": "Cleansing oil",
+            "first_category_id": 7,
+            "second_category_id": 33,
+            "third_category_id": 118,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang",
+            "third_category_name": "Dầu tẩy trang",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Tẩy trang dạng dầu"
+            ]
+        }
+    },
+    {
+        "sid": 95362,
+        "name": "",
+        "sname": "파라솔 클리어 선스틱 [SPF50+/PA+++]",
+        "description": "",
+        "sdescription": "가볍게 휴대하면서 손대지 않고 수시로 쓱쓱 바르기 편리하며 끈적이지 않는 매끈 투명한 선스틱\r\n\r\n- 백탁 없이 투명 매끈한 자외선 차단\r\n- 휴대에 최적화된 가볍고 컴팩트한 사이즈\r\n- 알로에 추출물 함유로 건강한 피부 케어!",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Sun stick",
+            "third_category_en_name": null,
+            "first_category_id": 9,
+            "second_category_id": 43,
+            "third_category_id": null,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Thanh chống nắng",
+            "third_category_name": null,
+            "first_category_synonyms": [],
+            "second_category_synonyms": [
+                "Chống nắng dạng thanh",
+                "kem chống nắng dạng thỏi",
+                "thỏi chống nắng",
+                "sáp chống nắng",
+                "chống nắng dạng sáp",
+                "balm chống nắng",
+                "kem chống nắng dạng thỏi lăn",
+                "thanh lăn chống nắng",
+                "sáp chống nắng dạng thỏi",
+                "chống nắng thanh lăn",
+                "kem chống nắng thỏi",
+                "thanh lăn chống nắng dạng thỏi"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 97137,
+        "name": "",
+        "sname": "알로에 수딩젤",
+        "description": "",
+        "sdescription": "메마른 피부를 촉촉하게 가꿔주는 제주 무농약 알로에 에센스 96% 함유 진정 보습 젤\r\n\r\n- 제주 무농약 알로에 에센스 96% 함유 리얼 알로에 수딩젤!\r\n- 여름철, 휴가철 필수 아이템!\r\n- 합성색소, 광물성오일 FREE",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "After sun",
+            "third_category_en_name": "Soothing gel",
+            "first_category_id": 9,
+            "second_category_id": 48,
+            "third_category_id": 152,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Sản phẩm nhả nắng",
+            "third_category_name": "Gel nhả nắng",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [
+                "Kem nhả nắng",
+                "gel nhả nắng",
+                "gel lô hội",
+                "kem lô hội",
+                "kem dưỡng làm dịu da",
+                "gel làm dịu da",
+                "kem làm dịu da sau khi đi nắng",
+                "kem phục hồi da sau khi đi nắng",
+                "kem trị cháy nắng",
+                "kem phục hồi da cháy nắng",
+                "kem làm mát da",
+                "gel làm mát da"
+            ],
+            "third_category_synonyms": [
+                "Gel làm dịu",
+                "Gel làm mát"
+            ]
+        }
+    },
+    {
+        "sid": 93480,
+        "name": "",
+        "sname": "동안 앰플 히알루론산",
+        "description": "",
+        "sdescription": "하나씩 신선하게 따 쓰는 집중 케어 1회용 앰플\r\n\r\n- 저분자와 고분자 히알루론산 함유로 피부를 촉촉하게 가꿔주는 수분 공급 앰플\r\n\r\n1. 갓 딴 오렌지처럼 신선하게 하나씩 따 쓸수 잇는 휴대하기 좋은 형태에요.\r\n\r\n2. 동안 에센셜 TM(NMF+세라마이드+콩 다당체)로 성분을 강화했고 전 제품 주름개선 기능성이에요.\r\n\r\n3. 고무팩 하기 전이나 집중 피부 케어 하고 싶을 때 사용하면 좋아요\r\n\r\n",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Hydrating essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 11,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum cấp nước",
+                "essence cấp nước",
+                "tinh chất cho da dầu",
+                "serum cho da dầu",
+                "essence cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 93776,
+        "name": "",
+        "sname": "동안 앰플미스트 - 콜라겐",
+        "description": "",
+        "sdescription": "* 2017년 6월 리뉴얼 된 제품입니다.\r\n\r\n보들보들하고 깨끗한 동안 피부의 비밀\r\n\r\n가스없이 순수한 내용물만 담은 뿌리는 앰플 동안 앰플 미스트!\r\n\r\n- 가스 없이 순수한 내용물만 듬뿍 담았어요\r\n\r\n- 동안 에센셜 TM (NMF+세라마이드+콩 다당체)로 성분을 강화했어요.\r\n\r\n- 전 제품 주름개선 기능성 화장품이에요\r\n\r\nAD 전 기존 대비 10배 더 풍부한 콜라겐을 함유한 탄력 공급 탱탱 미스트",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Mist",
+            "third_category_en_name": "Water mist",
+            "first_category_id": 1,
+            "second_category_id": 5,
+            "third_category_id": 27,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Xịt khoáng",
+            "third_category_name": "xịt khoáng dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "xịt dưỡng ẩm",
+                "xịt dưỡng da",
+                "xịt khoáng dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "nước xịt khoáng",
+                "xịt khoáng dưỡng da"
+            ]
+        }
+    },
+    {
+        "sid": 93777,
+        "name": "",
+        "sname": "동안 앰플미스트 - 민트",
+        "description": "",
+        "sdescription": "보들보들하고 깨끗한 동안 피부의 비밀\r\n\r\n가스없이 순수한 내용물만 담은 뿌리는 앰플 동안 앰플 미스트!\r\n\r\n- 가스 없이 순수한 내용물만 듬뿍 담았어요\r\n\r\n- 동안 에센셜 TM (NMF+세라마이드+콩 다당체)로 성분을 강화했어요.\r\n\r\n- 전 제품 주름개선 기능성 화장품이에요\r\n\r\n민트 추출물과 식물 유래 당류를 함유한 산뜻 보송 피지 케어 미스트\r\n\r\n- 픽서로 사용 가능한 제품입니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Mist",
+            "third_category_en_name": "Water mist",
+            "first_category_id": 1,
+            "second_category_id": 5,
+            "third_category_id": 27,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Xịt khoáng",
+            "third_category_name": "xịt khoáng dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "xịt dưỡng ẩm",
+                "xịt dưỡng da",
+                "xịt khoáng dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "nước xịt khoáng",
+                "xịt khoáng dưỡng da"
+            ]
+        }
+    },
+    {
+        "sid": 93399,
+        "name": "",
+        "sname": "동안 앰플미스트 - 히알루론산",
+        "description": "",
+        "sdescription": "* 2017년 6월 리뉴얼 된 제품입니다.\r\n\r\n보들보들하고 깨끗한 동안 피부의 비밀\r\n\r\n가스없이 순수한 내용물만 담은 뿌리는 앰플 동안 앰플 미스트!\r\n\r\n- 가스 없이 순수한 내용물만 듬뿍 담았어요\r\n\r\n- 동안 에센셜 TM (NMF+세라마이드+콩 다당체)로 성분을 강화했어요.\r\n\r\n- 전 제품 주름개선 기능성 화장품이에요\r\n\r\nAD 전 기존 대비 10배 더 풍부한 히알루론산을 함유한 수분 공급 촉촉 미스트",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Mist",
+            "third_category_en_name": "Water mist",
+            "first_category_id": 1,
+            "second_category_id": 5,
+            "third_category_id": 27,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Xịt khoáng",
+            "third_category_name": "xịt khoáng dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "xịt dưỡng ẩm",
+                "xịt dưỡng da",
+                "xịt khoáng dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "nước xịt khoáng",
+                "xịt khoáng dưỡng da"
+            ]
+        }
+    }
+]

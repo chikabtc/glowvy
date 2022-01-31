@@ -1,0 +1,28 @@
+[
+    {
+        "sid": 113899,
+        "name": "",
+        "sname": "밀크씨슬 리페어 크림",
+        "description": "",
+        "sdescription": "자극받아 민감해진 피부의 피부 장벽 강화를 위한 고농축 회복크림\r\n\r\n- 정제수가 함유되지 않은 고농축 회복 크림\r\n- 끈적임 없는 부드러운 텍스쳐로 풍부한 보습 유지\r\n- 회복+진정+보습+영양 공급을 위한 특별한 레서피\r\n- 미백+주름 개선 2중 기능성",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    }
+]

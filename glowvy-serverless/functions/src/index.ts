@@ -31,40 +31,85 @@ const runtimeOpts = {
 };
 const db = admin.firestore();
 
-function getAverageRating(reviewMeta: any, newReviewRating: number) {
-  if (reviewMeta.review_count === 0) {
-    return 0;
-  }
-  return (reviewMeta.average_rating * (reviewMeta.review_count - 1) + newReviewRating) / (reviewMeta.review_count);
-}
+const firestoreClient = new firestore.v1.FirestoreAdminClient();
 
-exports.updateProductCount = functions.region('asia-east2').firestore
+// exports.applyCategoryUpdateToProducts = functions.region('asia-east2').firestore
+//   .document('/categories/{documentId}')
+//   .onUpdate((change, context) => {
+//     // Get an object representing the document
+//     // e.g. {'name': 'Marie', 'age': 66}
+//     const newValue = change.after.data();
+
+//     // ...or the previous value before this update
+//     const previousValue = change.before.data();
+
+//     // access a particular field as you would any JS property
+//     const { name } = newValue;
+
+//     // perform desired operations ...
+//   });
+
+exports.decrementroductCount = functions.region('asia-east2').firestore
   .document('/products/{documentId}')
   .onDelete(async (snap: functions.firestore.QueryDocumentSnapshot, context: any) => {
-    await db.collection('product').doc('product_counter').update({
+    await db.collection('counter').doc('product_count').update({
       count: admin.firestore.FieldValue.increment(-1),
     });
   });
 
-exports.onCosmeticsRequest = functions.region('asia-east2').firestore
-  .document('/users/{userId}/{cosmetics_requests}/{documentId}')
+exports.incrementProductCount = functions.region('asia-east2').firestore
+  .document('/products/{documentId}')
   .onCreate(async (snap: functions.firestore.QueryDocumentSnapshot, context: any) => {
-    const requestedCosmetics = snap.data();
-    const web = new WebClient(functions.config().slack.token);
-    try {
-      // Use the `chat.postMessage` method to send a message from this app
-      await web.chat.postMessage({
-        channel: 'C01D94HK7EU',
-        text: `New cosmetics has been requested!
-        name: ${requestedCosmetics?.name}
-        category: ${requestedCosmetics?.category}
-        brand: ${requestedCosmetics?.brand}\n`,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-    // send slack notification about this new product
+    await db.collection('counter').doc('product_count').update({
+      count: admin.firestore.FieldValue.increment(1),
+    });
   });
+
+function backupFirestore() {
+  // const projectId = process.env.GCP_PROJECT || process.env.GCLOUD_PROJECT;
+  const databaseName = firestoreClient.databasePath('glowvy-b6cf4', '(default)');
+  console.log(databaseName);
+
+  return firestoreClient
+    .exportDocuments({
+      name: databaseName,
+      // Add your bucket name here
+      outputUriPrefix: 'gs://glowvy_backup',
+      // Empty array == all collections
+      collectionIds: [],
+    })
+    .then(([response]) => {
+      console.log(`Operation Name: ${response.name}`);
+      return response;
+    })
+    .catch((err) => {
+      console.error(err);
+      throw new Error('Export operation failed');
+    });
+}
+
+// Schedule the automated backup
+exports.backupFirestore = functions.pubsub.schedule('every 24 hours').onRun(backupFirestore);
+
+// exports.onCosmeticsRequest = functions.region('asia-east2').firestore
+//   .document('/users/{userId}/{cosmetics_requests}/{documentId}')
+//   .onCreate(async (snap: functions.firestore.QueryDocumentSnapshot, context: any) => {
+//     const requestedCosmetics = snap.data();
+//     const web = new WebClient(functions.config().slack.token);
+//     try {
+//       // Use the `chat.postMessage` method to send a message from this app
+//       await web.chat.postMessage({
+//         channel: 'C01D94HK7EU',
+//         text: `New cosmetics has been requested!
+//         name: ${requestedCosmetics?.name}
+//         category: ${requestedCosmetics?.category}
+//         brand: ${requestedCosmetics?.brand}\n`,
+//       });
+//     } catch (error) {
+//       console.log(error);
+//     }
+//     // send slack notification about this new product
+//   });
 
 exports.algoliaProductSync = functions.region('asia-east2')
   .firestore.document('products/{documentId}').onWrite(async (change, _context) => {
@@ -80,7 +125,7 @@ exports.algoliaProductSync = functions.region('asia-east2')
       objectID: product?.sid,
       description: product?.description,
       volume: product?.volume,
-      hazard_level: product?.hazard_level,
+      hazard_level: product?.hazad_level,
       // 'sdescription': product.sdescription,
       brand: product?.brand,
       category: product?.category,
@@ -91,18 +136,27 @@ exports.algoliaProductSync = functions.region('asia-east2')
     // creating
     if (!oldData.exists && newData.exists) {
       console.log('product is created');
-      utils.updateAvailableBrandCategories(db, product);
-      utils.updateCategoryProductCount(db, product, 1);
-      utils.updateBrandProductCounter(db, product, 1);
+      console.log(`created product sid: ${newData?.data()?.sid}`);
+      // utils.updateAvailableBrandCategories(db, newData?.data());
+      await utils.updateCategoryProductCount(db, newData?.data(), 1);
+      await utils.updateBrandProductCounter(db, newData?.data(), 1);
+      // utils.incrementProductCount(db, firestore);
 
       // update product count in categories and brands
       return cosmeticsIndex.saveObject(algoliaRecrod);
       // deleting
     } if (!newData.exists && oldData.exists) {
       console.log('product is deleted');
+      console.log(`deleted product sid: ${oldData?.data()?.sid}`);
+      // delete the subcollection
+      const snap = await oldData.ref.collection('ingredients').get();
+      for (const doc of snap.docs) {
+        doc.ref.delete();
+      }
       // update product count in categories and brands
-      utils.updateCategoryProductCount(db, product, -1);
-      utils.updateBrandProductCounter(db, product, -1);
+      await utils.updateCategoryProductCount(db, oldData?.data(), -1);
+      await utils.updateBrandProductCounter(db, oldData?.data(), -1);
+      // utils.decrementroductCount(db, firestore);
 
       return cosmeticsIndex.deleteObject(objectID);
     }
@@ -140,8 +194,8 @@ exports.onReviewUpdate = functions.region('asia-east2')
       reviewMeta.review_count += 1;
       generalReviewMeta.review_count += 1;
 
-      const newRating = getAverageRating(reviewMeta, newReview?.rating);
-      const newGeneralRating = getAverageRating(generalReviewMeta, newReview?.rating);
+      const newRating = utils.getAverageRating(reviewMeta, newReview?.rating);
+      const newGeneralRating = utils.getAverageRating(generalReviewMeta, newReview?.rating);
 
       // update the total review count
       await db.collection('reviews').doc('review_counter').update({
@@ -171,8 +225,8 @@ exports.onReviewUpdate = functions.region('asia-east2')
       reviewMeta.review_count -= 1;
       generalReviewMeta.review_count -= 1;
 
-      const newRating = getAverageRating(reviewMeta, -oldReview?.rating);
-      const newGeneralRating = getAverageRating(generalReviewMeta, -oldReview?.rating);
+      const newRating = utils.getAverageRating(reviewMeta, -oldReview?.rating);
+      const newGeneralRating = utils.getAverageRating(generalReviewMeta, -oldReview?.rating);
       // update the total review count
       await db.collection('reviews').doc('review_counter').update({
         count: firestore.FieldValue.increment(-1),

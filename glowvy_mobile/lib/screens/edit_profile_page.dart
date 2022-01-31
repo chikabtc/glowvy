@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:Dimodo/common/colors.dart';
 import 'package:Dimodo/common/constants.dart';
+import 'package:Dimodo/common/popups.dart';
 import 'package:Dimodo/common/widgets.dart';
 import 'package:Dimodo/generated/i18n.dart';
 import 'package:Dimodo/models/product/review_model.dart';
@@ -10,7 +11,6 @@ import 'package:Dimodo/models/user/userModel.dart';
 import 'package:Dimodo/screens/edit_birthyear_page.dart';
 import 'package:Dimodo/screens/edit_gender_page.dart';
 import 'package:Dimodo/screens/edit_name_page.dart';
-import 'package:Dimodo/screens/edit_region_page.dart';
 import 'package:Dimodo/screens/edit_skin_issues_page.dart';
 import 'package:Dimodo/screens/edit_skin_type_page.dart';
 import 'package:Dimodo/screens/setting.dart';
@@ -19,6 +19,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage();
@@ -42,19 +43,25 @@ class EditProfilePageState extends State<EditProfilePage>
     userModel = Provider.of<UserModel>(context, listen: false);
   }
 
-  Future uploadImage() async {
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
-    setState(() {
-      isLoading = true;
-    });
-    if (pickedFile != null) {
-      await userModel.uploadProfilePicture(File(pickedFile.path));
-    } else {
-      print('No image selected.');
+  Future uploadImage(context) async {
+    try {
+      final pickedFile = await picker.getImage(source: ImageSource.gallery);
+      setState(() {
+        isLoading = true;
+      });
+      if (pickedFile != null) {
+        await userModel.uploadProfilePicture(File(pickedFile.path));
+      } else {
+        print('No image selected.');
+      }
+      setState(() {
+        isLoading = false;
+      });
+    } catch (e) {
+      Popups.failMessage(
+          'the permission is not granted, plesae grand access to the albums in settings',
+          context);
     }
-    setState(() {
-      isLoading = false;
-    });
   }
 
   @override
@@ -82,30 +89,32 @@ class EditProfilePageState extends State<EditProfilePage>
           return Container(
             child: ListView(
               children: <Widget>[
-                SettingCard(
-                    color: kWhite,
-                    title: 'Ảnh đại diện',
-                    trailingWidget: isLoading
-                        ? kIndicator()
-                        : user?.picture == null
-                            ? Image.asset(
-                                'assets/icons/default-avatar.png',
-                              )
-                            : ClipOval(
-                                child: CachedNetworkImage(
-                                  imageUrl: user.picture +
-                                      '?v=${ValueKey(Random().nextInt(100))}',
-                                  key: ValueKey(Random().nextInt(100)),
-                                  width: 64,
-                                  height: 64,
-                                  fit: BoxFit.cover,
+                Builder(
+                  builder: (context) => SettingCard(
+                      color: kWhite,
+                      title: 'Ảnh đại diện',
+                      trailingWidget: isLoading
+                          ? kIndicator()
+                          : user?.picture == null
+                              ? Image.asset(
+                                  'assets/icons/default-avatar.png',
+                                )
+                              : ClipOval(
+                                  child: CachedNetworkImage(
+                                    imageUrl: user.picture +
+                                        '?v=${ValueKey(Random().nextInt(100))}',
+                                    key: ValueKey(Random().nextInt(100)),
+                                    width: 64,
+                                    height: 64,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
-                              ),
-                    onTap: () async {
-                      await uploadImage();
-                      await Provider.of<ReviewModel>(context, listen: false)
-                          .updateReviewerInfo(userModel.user);
-                    }),
+                      onTap: () async {
+                        await uploadImage(context);
+                        await Provider.of<ReviewModel>(context, listen: false)
+                            .updateReviewerInfo(userModel.user);
+                      }),
+                ),
                 SettingCard(
                   color: kWhite,
                   title: 'Tên',

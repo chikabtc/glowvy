@@ -1,0 +1,84 @@
+[
+    {
+        "sid": 134503,
+        "name": "",
+        "sname": "카밍 데일리 선크림 [SPF50+/PA++++]",
+        "description": "",
+        "sdescription": "온가족이 함께 쓸 수 있는 논나노 무기자차 순한 선크림\n\n- 트러블과 민감한 피부도 안심할 수 있는 자외선 차단제\n- 레포츠,야외활동 시 사용 가능한 강력한 선크림\n- 번들거리는유분감,답답함이 없는 선크림",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Soothing & cooling sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 145,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng làm dịu da",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng làm dịu da kích ứng",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng làm mát da"
+            ]
+        }
+    },
+    {
+        "sid": 113867,
+        "name": "",
+        "sname": "크렘 드 블랑풀",
+        "description": "",
+        "sdescription": "피부에 착착 붙는 수분 보습막\r\n\r\n- 수분이 빠져나가지 않도록 수분 보습막을 형성하는 고보습 크림\r\n- 쫀쫀하게 밀착되는 텍스처로 끈적이지 않고 부드러운 발림성\r\n- 미백과 주름개선 성분으로 2중 기능성 인증 크림",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 114449,
+        "name": "",
+        "sname": "미스테센스 로제",
+        "description": "",
+        "sdescription": "수분 가득 오로라 광채로 피부 장벽을 탄탄하게\r\n\r\n- 유수분 밸런스를 맞춰주는 피부장벽 강화의 핵심성분인 세라마이드 함유\r\n- 세라마이드 성분으로 이루어진 블랑풀만의 오로라 광채\r\n- 주름개선에 탁월한 아데노신으로 탄력있는 피부결",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Mist",
+            "third_category_en_name": "Water mist",
+            "first_category_id": 1,
+            "second_category_id": 5,
+            "third_category_id": 27,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Xịt khoáng",
+            "third_category_name": "xịt khoáng dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "xịt dưỡng ẩm",
+                "xịt dưỡng da",
+                "xịt khoáng dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "nước xịt khoáng",
+                "xịt khoáng dưỡng da"
+            ]
+        }
+    }
+]

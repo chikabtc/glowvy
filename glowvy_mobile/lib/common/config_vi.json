@@ -798,7 +798,7 @@
         ]
       },
       {
-        "question": "Mọi người có hay hỏi bạn có bị cháy nắng không ngay cả khi da bạn không phải bị cháy nắng",
+        "question": "Mọi người có hay hỏi bạn có bị cháy nắng không ngay cả khi da bạn không phải bị cháy nắng?",
         "options": [
           "Không",
           "Thỉnh thoảng",
@@ -832,8 +832,8 @@
         "options": [
           "Không có vết nào",
           "Tôi không rõ",
-          "Có, chúng cũng mờ thôi.",
-          "Có, chúng rất đậm."
+          "Có, chúng cũng mờ thôi",
+          "Có, chúng rất đậm"
         ]
       },
       {
@@ -841,7 +841,7 @@
         "options": [
           "Chưa",
           "Có, nhưng sau đó chúng biến mất",
-          "Có, hiện tại tôi cũng đang bị thế.",
+          "Có, hiện tại tôi cũng đang bị thế",
           "Có, tôi đang bị rất trầm trọng đây",
           "Tôi không rõ"
         ]
@@ -850,36 +850,36 @@
     "Căng bóng vs Nhăn nhăn": [{
         "question": "Bạn có nếp nhăn trên mặt không?",
         "options": [
-          "Không, ngay cả khi tôi cười, nhăn mặt hay nhướn lông mày.",
-          "Có, nhưng chỉ khi tôi cười, nhăn mặt hay nhướn lông mày.",
-          "Có, khi tôi có cử động mặt và một vài nếp nhăn cả khi tôi không làm gì.",
-          "Tôi có nếp nhăn ngay cả khi không cười, nhăn mặt hay nhướn lông mày."
+          "Không, ngay cả khi tôi cười, nhăn mặt hay nhướn lông mày",
+          "Có, nhưng chỉ khi tôi cười, nhăn mặt hay nhướn lông mày",
+          "Có, khi tôi có cử động mặt và một vài nếp nhăn cả khi tôi không làm gì",
+          "Tôi có nếp nhăn ngay cả khi không cười, nhăn mặt hay nhướn lông mày"
         ]
       },
       {
         "question": "Da mặt của mẹ bạn như thế nào so với tuổi tác",
         "options": [
           "Trẻ hơn 5-10 tuổi",
-          "Nhìn đúng tuổi.",
-          "Già hơn khoảng 5 tuổi.",
-          "Già hơn trên 5 tuổi",
-          "Không nhớ."
+          "Nhìn đúng tuổi",
+          "Lớn hơn từ 1-5 tuổi",
+          "Lớn hơn trên 5 tuổi",
+          "Không nhớ"
         ]
       },
       {
         "question": "Bạn nghĩ mình trông như thế nào so với độ tuổi?",
         "options": [
-          "Trẻ hơn 1-5 tuổi.",
-          "Như ở tuổi bạn.",
-          "Già hơn tuổi khoảng 5 năm",
-          "Già hơn 5 tuổi"
+          "Trẻ hơn 1-5 tuổi",
+          "Như ở tuổi bạn",
+          "Lớn hơn 1-5 tuổi",
+          "Lớn hơn trên 5 tuổi"
         ]
       },
       {
         "question": "Bạn có thường xuyên ăn rau quả không?",
         "options": [
           "Mỗi bữa",
-          "Một bữa mỗi ngày.",
+          "Một bữa mỗi ngày",
           "Thi thoảng",
           "Không bao giờ"
         ]
@@ -888,14 +888,14 @@
   },
   "Cosmetics_Survey": [{
       "question": "Which age range do you fall into?",
-      "description": "Depending on your age, you may have specific concerns that might be relevant.",
+      "description": "Depending on your age, you may have specific concerns that might be relevant",
       "type": "age",
       "options": ["17 or younger", "18-24", "25-34", "over 35"]
     },
 
     {
       "question": " Where do you call home?",
-      "description": " Different climates and environments call for different approaches to skincare.",
+      "description": " Different climates and environments call for different approaches to skincare",
       "type": "climate",
       "options": ["Sunny & humid tropical", "City dweller", "Cold & Dry year around"]
     },
@@ -906,15 +906,15 @@
     },
     {
       "question": " What type of routine would you like?",
-      "description": " We want to take into account your lifestyle and preferences.",
+      "description": " We want to take into account your lifestyle and preferences",
       "type": "routine",
       "options": ["The Basics - 3 steps", "The Foundation - 5 steps", "The Signature - 10 steps", "Just looking for a few product recommendation not a routine!"]
     },
     {
       "question": " How much time do you set aside to take care of your skin before bed?",
-      "description": " Different climates and environments call for different approaches to skincare.",
+      "description": " Different climates and environments call for different approaches to skincare",
       "type": "skin_care_time",
-      "options": ["Less than a minute - to wash and dry my face", "A few minutes - to throughly wash my face, dab on a spot treatment or eye cream and moisturize", "Five minutes or so - I typically wash my face, exfoliate or wash-off mask occasionally, apply a serum and moisturize."]
+      "options": ["Less than a minute - to wash and dry my face", "A few minutes - to throughly wash my face, dab on a spot treatment or eye cream and moisturize", "Five minutes or so - I typically wash my face, exfoliate or wash-off mask occasionally, apply a serum and moisturize"]
     }, {
       "question": "How do you wash your face?",
       "description": " There’s no wrong answer!",
@@ -922,12 +922,12 @@
       "options": ["Just water", "Warm water + a foaming cleanser", "Warm water + an oil based cleanser"]
     }, {
       "question": " How much time do you set aside to take care of your skin before bed?",
-      "description": " Different climates and environments call for different approaches to skincare.",
+      "description": " Different climates and environments call for different approaches to skincare",
       "type": "skin_care_time",
-      "options": ["Less than a minute - to wash and dry my face", "A few minutes - to throughly wash my face, dab on a spot treatment or eye cream and moisturize", "Five minutes or so - I typically wash my face, exfoliate or wash-off mask occasionally, apply a serum and moisturize."]
+      "options": ["Less than a minute - to wash and dry my face", "A few minutes - to throughly wash my face, dab on a spot treatment or eye cream and moisturize", "Five minutes or so - I typically wash my face, exfoliate or wash-off mask occasionally, apply a serum and moisturize"]
     }, {
       "question": " Which skin care products are you most interested in adding to your routine?",
-      "description": " Certain ingredients help to address specific skin needs. Pick your favorite!",
+      "description": " Certain ingredients help to address specific skin needs Pick your favorite!",
       "type": "favorite_skin_care",
       "options": ["Ones that have acid in them", "Ones that stimulate collagen production and reduce wrinkles", "Ones that contain Vitamin C", "Ones that protect and repair skin", "Ones that are nourishing and hydrating"]
     }, {
@@ -936,7 +936,7 @@
       "options": ["Hardly reactive at all, I can use all products", "Somewhere in the middle, it depends on the ingredients", "Very reactive/ sensitive, I frequently experience redness"]
     }, {
       "question": " Which of the following best describes your skin?",
-      "description": " Though everyone's skin produces oil, sometimes it's more apparent or obvious in some skin types than others.",
+      "description": " Though everyone's skin produces oil, sometimes it's more apparent or obvious in some skin types than others",
       "type": "skin_type",
       "options": ["Rarely gets oily; feels and looks dry", "Not too oily or too dry; overall feels balanced", "Some oilness on my forehead and cheeks; tends to be more noticeable at the end of the day", "Very oily; has a shiny apperance throughout the day"]
     },
@@ -957,7 +957,7 @@
     },
     {
       "question": " What do you value most in skin care products?",
-      "description": " Please select one.",
+      "description": " Please select one",
       "type": "preference",
       "options": ["Affordable price point", "Vegan beauty", "Clean beauty", "Quick Results", "Ones that are nourishing and hydrating"]
     },

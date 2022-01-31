@@ -1,0 +1,116 @@
+[
+    {
+        "sid": 57253,
+        "name": "",
+        "sname": "베르가닉 클린큐어 토너",
+        "description": "",
+        "sdescription": "- 모공 수렴과 리프레싱 효과를 동시에\r\n- 지성, 민감성 피부를 위한 미스트 타입 유기농 토너\r\n유기농 식물 성분의 마일드한 수렴 효과와 함께 피부 표면의 과도한 피지 분비와 자극을 완화해주며 모공에 탄력을 주어 피부를 윤기 있고 상쾌하게 유지시켜 줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 27277,
+        "name": "",
+        "sname": "베르가닉 클린큐어 클렌저 ",
+        "description": "",
+        "sdescription": "유기농 젤 타입의 훼이셜 클렌저로 피부표면의 트러블 및 모공 속 피지와 노폐물을 말끔하게 제거해주며, 페퍼민트, 티트리잎, 로즈마리잎 오일을 함유하고 있어 피부를 윤기있고 건강하게 가꾸어 줍니다. 알로에베라잎 추출물 함유로 세안 후의 피부 건조와 자극을 완화하며, 부드럽고 상쾌한 피부 느낌을 선사합니다.\r\n",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing gel",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 114,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Gel rửa mặt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "sữa rửa mặt dạng gel"
+            ]
+        }
+    },
+    {
+        "sid": 57257,
+        "name": "",
+        "sname": "베르가닉 클린큐어 젤 로션",
+        "description": "",
+        "sdescription": "과다 피지 조절과 산뜻한 보습을 동시에!\r\n\r\n지성 및 예민하고 민감한 피부를 위한 번들거림 없는 유기농 젤 로션\r\n유/수분 밸런스를 조절하여 번들거림 없는 산뜻한 보습을 전해 줍니다.\r\n피부에 빠르게 흡수되어 매끄럽고 윤기 있는 피부를 유지시켜 줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Trouble lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 9,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion cho da mụn",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "Sữa Dưỡng Dành Cho Da Mụn",
+                "Sữa dưỡng ngăn ngừa mụn",
+                "lotion ngăn ngừa mụn",
+                "Lotion dưỡng da trị mụn",
+                "lotion trị mụn",
+                "nước hoa hồng trị mụn",
+                "nước cân bằng trị mụn"
+            ]
+        }
+    },
+    {
+        "sid": 22446,
+        "name": "",
+        "sname": "데이블럭 선 쉴드 로션 [SPF50+/PA+++]",
+        "description": "",
+        "sdescription": "- 꼼꼼하고 강력한 자외선 차단\r\n- 광노화 방지 및 하루 종일 지속되는 보습효과\r\n- 백탁 현상 없이 부드럽고 산뜻한 발림성\r\n- 자외선 차단, 미백, 주름개선 3중 기능성 화장품",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    }
+]

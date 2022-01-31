@@ -1,0 +1,88 @@
+[
+    {
+        "sid": 121116,
+        "name": "",
+        "sname": "시카그린 선크림 [SPF50+/PA++++]",
+        "description": "",
+        "sdescription": "스킨케어처럼 편안한 진정 선크림\r\n\r\n- 무기자차 선크림으로 안심하고 사용\r\n- 공기처럼 가볍고 깃털처럼 산뜻한 마무리감\r\n- 내, 외부로 자극받은 피부를 위한 그린 솔루션",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Soothing & cooling sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 145,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng làm dịu da",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng làm dịu da kích ứng",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng làm mát da"
+            ]
+        }
+    },
+    {
+        "sid": 142360,
+        "name": "",
+        "sname": "딸기퐁당 밀크토너",
+        "description": "",
+        "sdescription": "크림처럼 깊은 수분보습과 라이트한 마무리감의 토너\n\n- 크고 작은 수분 입자가 촘촘하게 수분 공급\n- 제주산 야생 딸기에 6가지 비타 성분이 더해져 피부를 더욱 맑고 생기있게 케어\n- 다섯 가지 과일산과 단풍, 사탕수수의 AHA로 매끈하고 보들한 피부 관리 가능",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Cream toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 2,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng sữa",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "nước hoa hồng dưỡng ẩm",
+                "toner dưỡng ẩm",
+                "nước cân bằng dạng sữa",
+                "toner cân bằng và dưỡng ẩm",
+                "nước hoa hồng dạng sữa"
+            ]
+        }
+    },
+    {
+        "sid": 127404,
+        "name": "",
+        "sname": "그린 프로텍트 토너",
+        "description": "",
+        "sdescription": "피부 스트레스를 잠재우는 진한 티트리잎 한 잔\r\n\r\n- 티트리와 시카 성분이 민감한 피부를 진정\r\n- 깨끗하고 매끈한 피부를 위한 각질 케어\r\n- 수분정화와 장벽강화 에너지 부스터",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    }
+]

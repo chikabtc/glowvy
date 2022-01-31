@@ -1,0 +1,52 @@
+[
+    {
+        "sid": 76110,
+        "name": "",
+        "sname": "울트라 썬 로션",
+        "description": "",
+        "sdescription": "바나나보트의 울트라 썬 로션입니다.",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    },
+    {
+        "sid": 76109,
+        "name": "",
+        "sname": "스포츠 선스크린 로션 [SPF50+/PA+++]",
+        "description": "",
+        "sdescription": "활동적인 라이프 스타일을 완성하는 산뜻하고 기분 좋은 스포츠 선스크린 로션\r\n\r\n수분 및 땀에 강한 포뮬라와 가볍고 끈적이지 않는 사용감으로 자외선으로부터 피부 보호 및 스포츠 활동에 도움을 줍니다.\r\n\r\nAvoTriplex™ 프로텍션 테크놀로지로 자외선(UVA/UVB)을 차단하여 피부 보호에 도움을 줍니다.",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    }
+]

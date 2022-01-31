@@ -1,0 +1,438 @@
+[
+    {
+        "sid": 60516,
+        "name": "",
+        "sname": "마데카 솔루션 에센스 플러스",
+        "description": "",
+        "sdescription": "피부 진정 효과가 탁월한 병풀, 선인장꽃추출물이 함유된 에센스\r\n\r\n- 피토-히알루론산 강력한 집중 보습 효과를 지닌 특허받은 식물 유래 히알루론산 함유\r\n- 햇살, 바람 등으로부터 피부를 보호하는 타마누 오일 함유",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Soothing essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 13,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất làm dịu da",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum làm dịu da kích ứng",
+                "tinh chất làm dịu da kích ứng",
+                "essence làm dịu da kích ứng",
+                "tinh chất cho da nhạy cảm",
+                "serum cho da nhạy cảm",
+                "essence cho da nhạy cảm"
+            ]
+        }
+    },
+    {
+        "sid": 73956,
+        "name": "",
+        "sname": " 마데카 마이크로 세럼",
+        "description": "",
+        "sdescription": "-미백, 주름개선 기능성 화장품\r\n\r\n-마다가스카르산 센텔라 아시아티카(병풀)사용\r\n\r\n-동국제약 7단계 공정을 거쳐 정량 추출한 고순도 테카 (센텔라 아시아티카 정량추출물)\r\n\r\n-센텔리안 24라인 최초 저분자 테카리포좀 기술력 도입\r\n\r\n-정제수 0%, 병풀추출물 44%\r\n\r\n-공인된 임상시험기간에서 테스트 완료",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Soothing essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 13,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất làm dịu da",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum làm dịu da kích ứng",
+                "tinh chất làm dịu da kích ứng",
+                "essence làm dịu da kích ứng",
+                "tinh chất cho da nhạy cảm",
+                "serum cho da nhạy cảm",
+                "essence cho da nhạy cảm"
+            ]
+        }
+    },
+    {
+        "sid": 132757,
+        "name": "",
+        "sname": "마데카크림 스킨 포뮬러",
+        "description": "",
+        "sdescription": "더욱 강력해진 마데카 에너지로 강한 피부를 선사하는 토탈 케어 기능성 크릠\r\n\r\n- 마데카 에너지의 밀도있는 피부 패턴 케어로 건강한 안티에이징 선사\r\n- 동국제약의 핵심 성분인 센텔라아시아티카 정량추출물과 업그레이드된 병풀 독점 성분 함유\r\n- 피부 탄력과 피부 장벽 케어 핵심 성분의 시너지 코어 텐션 효과",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Anti-aging cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 26,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng chống lão hóa",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem dưỡng chống nhăn"
+            ]
+        }
+    },
+    {
+        "sid": 88282,
+        "name": "",
+        "sname": "마데카 크림 센텔라 하이드레이팅 포뮬러(HF)",
+        "description": "",
+        "sdescription": "- 미백, 주름개선 기능성 크림입니다.\r\n- 센텔리아시아티카 정량추출물 1% 함유\r\n- 병풀잎수 48% 함유\r\n- 센텔라 하이드레이팅 조성물 1% 함유\r\n- 피부를 진정시키고 피부 장벽 기능을 강화하여 생기있고 건강한 피부로 다스려줍니다.\r\n- 피부 보호, 수분 공급, 피부 수렴 등에 특허 받은 성분들이 피부 고민 해결에 도움을 주며 피부를 촉촉하게 다스려줍니다.\r\n- 센텔라 하이드레이팅 조성물 추가로 더 강력한 보습을 선사합니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 70949,
+        "name": "",
+        "sname": "마데카 토닝 에센스 트리트먼트",
+        "description": "",
+        "sdescription": "동국제약 47년, 피부연구 노하우로 빚어낸 걸작! 센텔리안24 마데카 토닝 에센스 트리트먼트",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Soothing essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 13,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất làm dịu da",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum làm dịu da kích ứng",
+                "tinh chất làm dịu da kích ứng",
+                "essence làm dịu da kích ứng",
+                "tinh chất cho da nhạy cảm",
+                "serum cho da nhạy cảm",
+                "essence cho da nhạy cảm"
+            ]
+        }
+    },
+    {
+        "sid": 75411,
+        "name": "",
+        "sname": "마데카 파워 앰플",
+        "description": "",
+        "sdescription": "래디언스 집중케어로 물빛광채를 선사하는 미백, 주름개선 이중기능성 화장품. \r\n마다가스카르산 병풀, 고농도 고순도 테카(센텔라아시아티카 정량추출물)함유",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Soothing essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 13,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất làm dịu da",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum làm dịu da kích ứng",
+                "tinh chất làm dịu da kích ứng",
+                "essence làm dịu da kích ứng",
+                "tinh chất cho da nhạy cảm",
+                "serum cho da nhạy cảm",
+                "essence cho da nhạy cảm"
+            ]
+        }
+    },
+    {
+        "sid": 111910,
+        "name": "",
+        "sname": "마데카크림 하이드라 3X 포뮬러",
+        "description": "",
+        "sdescription": "거칠어진 피부에 수분 가득 물찬 탄력을 선사하다\r\n\r\n- 촉촉한 보습효과\r\n- 피부 진정 효과\r\n- 탱탱한 탄력 케어\r\n- 외부자극으로부터 피부보호",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 130866,
+        "name": "",
+        "sname": "마데카 바이탈 캡슐세럼",
+        "description": "",
+        "sdescription": "환한 조명을 켠 듯 탄력 광채 피부로 부스팅하는 마데카광 캡슐 세럼\r\n\r\n- 골든 오렌지빛 코어 캡슐이 함유되어 칙칙해진 피부를 맑고 부드럽게 케어\r\n- 마데카광 효과로 완성하는 탄력 광채 피부 연출\r\n- 쫀쫀하면서 탱글한 질감의 TECA 10,000ppm 함유",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Brightening essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 16,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất dưỡng trắng",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "tinh chất làm trắng da",
+                "tinh chất kích trắng da",
+                "serum kích trắng",
+                "serum dưỡng trắng da",
+                "serum làm trắng da",
+                "essence dưỡng trắng da",
+                "essence làm trắng da",
+                "essence kích trắng"
+            ]
+        }
+    },
+    {
+        "sid": 127397,
+        "name": "",
+        "sname": "엑스퍼트 마데카 멜라 캡처 앰플",
+        "description": "",
+        "sdescription": "일주일만에 피부 빛을 밝히는 진한 한 방울\r\n\r\n- 육안으로 보이는 주근깨, 잡티 개선과 양 볼 기미, 색소침착 개선 및 피부 톤 개선에 도움을 주는 화이트닝 앰플\r\n- 얼굴 전체에 이미 생성된 기미와 색소 침착 개선에 도움을 주어 깨끗한 피부로 케어\r\n- 9중 브라이트닝 효과로 피부 밝기를 개선",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Brightening essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 16,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất dưỡng trắng",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "tinh chất làm trắng da",
+                "tinh chất kích trắng da",
+                "serum kích trắng",
+                "serum dưỡng trắng da",
+                "serum làm trắng da",
+                "essence dưỡng trắng da",
+                "essence làm trắng da",
+                "essence kích trắng"
+            ]
+        }
+    },
+    {
+        "sid": 135232,
+        "name": "",
+        "sname": "마데카 릴리프 크림",
+        "description": "",
+        "sdescription": "여린 피부 강화를 위한 더마 크림\n\n- 민감 피부 진정 및 탄력 케어\n- 외부 자극에 의해 손상된 피부 장벽과 탄력 개선\n- 하이드로 네트워크 구조의 꽉 찬 수분 탄력 효과",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 101478,
+        "name": "",
+        "sname": "마데카 인텐시브 아이크림",
+        "description": "",
+        "sdescription": "동국제약 피부연구 노하우로 빚어낸 걸작, 촉촉하고 탄력 있게 눈가 집중케어\r\n\r\n- 동국제약 기술력의 완성! \"TECA\" 원료 함유\r\n\r\n- 눈가 피부에 최적화된 콰트로 시스템\r\n\r\n- 민감한 눈가에 수분과 영양 공급\r\n\r\n- 피부 속 탄력을 UP해서 탄탄하게!",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Eye cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 23,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng vùng mắt",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem mắt"
+            ]
+        }
+    },
+    {
+        "sid": 91534,
+        "name": "",
+        "sname": "마데카 UV 프로텍션 선스틱 [SPF50/PA++++]",
+        "description": "",
+        "sdescription": "강력한 자외선 차단 효과와 상처받은 피부까지, 마데카 핵심성분 'TECA'의 힘을 경험해 보세요\r\n\r\n\"햇빛은 빈틈없이 차단하고 피부는 손상 없이 케어하세요!\"\r\n\r\n1. UVA+UVB+미세먼지 강력 3중 차단!\r\n 24시간 자외선 공격에 상처 받고 각종 피부 문제의 주범인 미세먼지 오염으로부터 완벽 차단\r\n\r\n2. 손상 피부 개선 효과!\r\n 동국제약의 핵심성분 TECA로 자극 받은 피부 보호 및 손상 피부를 진정시켜 피부 장벽 케어\r\n\r\n3. 피부 겉과 속까지 촉촉 보호!\r\n 자연유래 보습 성분으로 보습과 수분 방패막을 형성하여 2중 수분 레이어드 효과\r\n\r\n4. 백탁 NO! 끈적임 DOWN!\r\n 투명한 스틱 타입의 가벼운 텍스처가 끈적임 없이 흡수되어 메이크업 전후 매끄럽게 피부결 커버",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Sun stick",
+            "third_category_en_name": null,
+            "first_category_id": 9,
+            "second_category_id": 43,
+            "third_category_id": null,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Thanh chống nắng",
+            "third_category_name": null,
+            "first_category_synonyms": [],
+            "second_category_synonyms": [
+                "Chống nắng dạng thanh",
+                "kem chống nắng dạng thỏi",
+                "thỏi chống nắng",
+                "sáp chống nắng",
+                "chống nắng dạng sáp",
+                "balm chống nắng",
+                "kem chống nắng dạng thỏi lăn",
+                "thanh lăn chống nắng",
+                "sáp chống nắng dạng thỏi",
+                "chống nắng thanh lăn",
+                "kem chống nắng thỏi",
+                "thanh lăn chống nắng dạng thỏi"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 74543,
+        "name": "",
+        "sname": "마데카 선크림",
+        "description": "",
+        "sdescription": "마데카 핵심성분 'TECA'에 선블럭을 더하다!\r\n이제 마데카 선크림으로 태양에 노출되는 피부를 보호하세요!\r\n\r\n-자외선차단 최고지수 SPF 50+, PA+++ 기능성 화장품\r\n-고농도 고순도의 TECA와 썬블럭기능 최적의 배합\r\n-정제수 0%, 병풀추출물 28%\r\n-유기&무기 차단제 병용으로 강력한 자외선 차단 효과\r\n-번들거림 끈적임 없는 환한 피부를 가볍고 뽀송하게 유지\r\n-공인된 임상시험기간에서 테스트 완료 ",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Soothing & cooling sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 145,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng làm dịu da",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng làm dịu da kích ứng",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng làm mát da"
+            ]
+        }
+    },
+    {
+        "sid": 110456,
+        "name": "",
+        "sname": "마데카크림 UV포뮬러 [SPF30/PA++]",
+        "description": "",
+        "sdescription": "피부케어와 데일리 자외선 차단을 동시에! 스마트한 3 in 1 썸머 스페셜!\r\n\r\n- 센텔라 정량추출물(TECA)에 자외선 차단 기능을 더하여 수분공급, 손상 피부 케어와 함께 자외선 차단기능까지 더한 스마트한 크림",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    }
+]

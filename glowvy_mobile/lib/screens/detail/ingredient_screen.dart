@@ -149,23 +149,20 @@ class IngredientScreenStates extends State<IngredientScreen>
                           children: <Widget>[
                             Column(children: <Widget>[
                               SvgPicture.asset('assets/icons/grey_shield.svg'),
-                              Text(S.of(context).undecided,
-                                  style: textTheme.caption2)
+                              Text('Không rõ', style: textTheme.caption2)
                             ]),
                             Column(children: <Widget>[
                               SvgPicture.asset('assets/icons/green-shield.svg'),
-                              Text(S.of(context).low, style: textTheme.caption2)
+                              Text('Thấp', style: textTheme.caption2)
                             ]),
                             Column(children: <Widget>[
                               SvgPicture.asset(
                                   'assets/icons/orange_shield.svg'),
-                              Text(S.of(context).moderate,
-                                  style: textTheme.caption2)
+                              Text('Trung bình', style: textTheme.caption2)
                             ]),
                             Column(children: <Widget>[
                               SvgPicture.asset('assets/icons/red_shield.svg'),
-                              Text(S.of(context).high,
-                                  style: textTheme.caption2)
+                              Text('Cao', style: textTheme.caption2)
                             ]),
                           ],
                         ),
@@ -178,7 +175,7 @@ class IngredientScreenStates extends State<IngredientScreen>
                         top: 24, left: 24, right: 24, bottom: 24),
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: widget.ingredients.length,
                     itemBuilder: (context, i) => IngredientCard(
                         ingredient: widget.ingredients[i],

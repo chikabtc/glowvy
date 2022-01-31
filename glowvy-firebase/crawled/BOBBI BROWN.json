@@ -1,0 +1,764 @@
+[
+    {
+        "sid": 15588,
+        "name": "",
+        "sname": "수딩 클렌징 오일",
+        "description": "",
+        "sdescription": "피부 진정 효과와 보습이 한층 강화되어 더욱 효과적이고 부드럽게 메이크업을 지워주는 클렌징 오일입니다.\r\n\r\n1. 자연유래 식물성 오일 함유로 피부 진정 효과\r\n\r\n2. 모공 노폐물 제거 후 수분은 가둬두는 클렌저\r\n\r\n3. 자극 없이 순한 포뮬라",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Makeup remover",
+            "third_category_en_name": "Cleansing oil",
+            "first_category_id": 7,
+            "second_category_id": 33,
+            "third_category_id": 118,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang",
+            "third_category_name": "Dầu tẩy trang",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Tẩy trang dạng dầu"
+            ]
+        }
+    },
+    {
+        "sid": 2091,
+        "name": "",
+        "sname": "엑스트라 페이스 오일",
+        "description": "",
+        "sdescription": "극도로 건조한 피부에 SOS 극처방! 낮에는 강력한 보습과 물광 피부를 연출해주고 밤에는 지친피부에 진정 및 영양을 공급해줍니다.\r\n건조한 피부에 보습력을 더해주는 페이스 오일. 에센스 다음 단계에 사용하면 건조한 피부를 즉각적으로 진정시켜 줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "facial oil",
+            "third_category_en_name": null,
+            "first_category_id": 1,
+            "second_category_id": 6,
+            "third_category_id": null,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Dầu dưỡng da",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dầu dưỡng chăm sóc da",
+                "face oil",
+                "tinh dầu dưỡng da"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 78235,
+        "name": "",
+        "sname": "엑스트라 리페어 모이스춰라이징 밤",
+        "description": "",
+        "sdescription": "즉각적으로 피부에 충분한 수분을 공급해주고, 엑스트라 리페어 복합체가 피부를 탄력있게 만들어주는 고농축 밤",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "facial oil",
+            "third_category_en_name": null,
+            "first_category_id": 1,
+            "second_category_id": 6,
+            "third_category_id": null,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Dầu dưỡng da",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dầu dưỡng chăm sóc da",
+                "face oil",
+                "tinh dầu dưỡng da"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 58193,
+        "name": "",
+        "sname": "하이드레이팅 페이스 토닉",
+        "description": "",
+        "sdescription": "즉각적인 수분 공급, 피부결 정돈, 진정 작용이 뛰어난 토너. \r\n피부를 진정시키고, 이상적인 피부 밸런스로 개선시켜 다음 단계를 위해 완벽한 피부로 준비시켜 줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 1220,
+        "name": "",
+        "sname": "엑스트라 리페어 모이스춰라이징 밤 [SPF25]",
+        "description": "",
+        "sdescription": "어떠한 건성 피부도 자연스러운 물광 피부로 만들어주는 밤",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "facial oil",
+            "third_category_en_name": null,
+            "first_category_id": 1,
+            "second_category_id": 6,
+            "third_category_id": null,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Dầu dưỡng da",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dầu dưỡng chăm sóc da",
+                "face oil",
+                "tinh dầu dưỡng da"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 2347,
+        "name": "",
+        "sname": "비타민 인리치드 페이스 베이스",
+        "description": "",
+        "sdescription": "비타민C,E가 함유되어 피부를 촉촉하고 탄력 있게 만들어주는 진보된 ﻿모이스춰라이저. 메이크업이 잘 될 수있도록 피부를 준비시켜 줍니다.﻿",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 2090,
+        "name": "",
+        "sname": "하이드레이팅 아이 크림",
+        "description": "",
+        "sdescription": "풍부한 수분과 영양을 빠르게 흡수시켜 민감한 눈가 피부를 촉촉하고 부드럽게 가꾸어 주는 아이크림",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Eye cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 23,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng vùng mắt",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem mắt"
+            ]
+        }
+    },
+    {
+        "sid": 23289,
+        "name": "",
+        "sname": "인스턴트 롱웨어 메이크업 리무버",
+        "description": "",
+        "sdescription": "워터프루프 메이크업을 끈적임 없이 손쉽게 지울 수 있는 리무버\r\n\r\n- 노 스머지 마스카라, 롱웨어 젤 아이라이너 또는 타 마스카라 제품을 지울 때 사용\r\n- 립메이크업을 지울 때도 손쉽게 사용",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Point remover",
+            "third_category_en_name": null,
+            "first_category_id": 7,
+            "second_category_id": 34,
+            "third_category_id": null,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang chuyên dụng",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [
+                "bông tẩy trang ngón tay",
+                "kén tơ tằm"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 11289,
+        "name": "",
+        "sname": "프로텍티브 페이스 로션 [SPF15]",
+        "description": "",
+        "sdescription": "피부를 매끄럽게 해주고 메이크업을 하기 전 피부상태를 최적으로 준비시켜주는 오일 -프리 타입 로션\n\n- 수분공급, 유해환경으로부터 피부보호, 메이크업 베이스 기능의 All-in-Three 로션\n- 비타민 C , E, 베타 카로틴이 세월의 흔적을 감소시키고 유해환경으로부터 피부를 보호\n- 카모마일, 감초 추출물이 피부를 진정",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Hydrating lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 5,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "lotion cho da dầu",
+                "sữa dưỡng cho da dầu",
+                "lotion cấp nước cho da dầu",
+                "sữa dưỡng cấp nước cho da dầu",
+                "sữa dưỡng ẩm cấp nước"
+            ]
+        }
+    },
+    {
+        "sid": 1051,
+        "name": "",
+        "sname": "엑스트라 수딩 밤",
+        "description": "",
+        "sdescription": "제라늄과 로즈마리 오일이 함유된 고농축 밤(Balm)으로 건성 부위에 수분을 공급하여 촉촉함을 장시간 유지할 수 있으며 특히 메이크업 후 발라주면 피부에 윤기를 더해줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "facial oil",
+            "third_category_en_name": null,
+            "first_category_id": 1,
+            "second_category_id": 6,
+            "third_category_id": null,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Dầu dưỡng da",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dầu dưỡng chăm sóc da",
+                "face oil",
+                "tinh dầu dưỡng da"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 21332,
+        "name": "",
+        "sname": "엑스트라 트리트먼트 로션",
+        "description": "",
+        "sdescription": "피부에 산뜻하게 스며들어 깊숙이 보습해 줄 뿐만 아니라, 편안하고 부드러운 쿠션감으로 마무리해주는 가볍고 촉촉한 워터 젤 타입의 수분 충전 토너입니다",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Essence toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 3,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng sệt",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "nước hoa hồng dạng sệt",
+                "nước hoa hồng tinh chất",
+                "toner tinh chất",
+                "nước hoa hồng dưỡng ẩm",
+                "toner dưỡng ẩm",
+                "nước cân bằng dạng sệt",
+                "nước cân bằng tinh chất",
+                "nước cân bằng dưỡng ẩm",
+                "nước hoa hồng bổ sung tinh chất",
+                "nước cân bằng bổ sung tinh chất",
+                "toner bổ sung tinh chất"
+            ]
+        }
+    },
+    {
+        "sid": 82370,
+        "name": "",
+        "sname": "엑스트라 리페어 모이스춰 크림",
+        "description": "",
+        "sdescription": "피부에 강력한 수분 및 영양을 공급해주어, 하루 종일 활력 있고 건강한 피부를 만들어주는 부드러운 질감의 수분 크림입니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 80651,
+        "name": "",
+        "sname": "오일 밀크(엑스트라 리페어 너리싱 밀크)",
+        "description": "",
+        "sdescription": "페이스 오일과 세럼의 강력한 보습, 스킨 트리트먼트, 물광 효과를 그대로 선사하는 머스트 해브 스킨케어 아이템! \r\n\r\n가볍고 생기 넘치는 밀크 텍스처가 피부 속까지 영양을 공급해 반짝이는 피부를 만들어줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "facial oil",
+            "third_category_en_name": null,
+            "first_category_id": 1,
+            "second_category_id": 6,
+            "third_category_id": null,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Dầu dưỡng da",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dầu dưỡng chăm sóc da",
+                "face oil",
+                "tinh dầu dưỡng da"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 732,
+        "name": "",
+        "sname": "엑스트라 리페어 세럼",
+        "description": "",
+        "sdescription": "수분 공급과 피부 개선에 효과적인 고농축 프라이밍 세럼 \r\n\r\n1. 피부 속부터 채우는 수분\r\n2. 주름 완화와 탄력 강화\r\n3. 피부 보호 & 진정 ",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Hydrating essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 11,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum cấp nước",
+                "essence cấp nước",
+                "tinh chất cho da dầu",
+                "serum cho da dầu",
+                "essence cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 93217,
+        "name": "",
+        "sname": "레미디 스킨 링클 트리트먼트",
+        "description": "",
+        "sdescription": "피부 주름 및 탄력 고민을 위한 퍼스트 케어 제품입니다.\r\n\r\n탄력을 잃고 주름이 깊은 피부를 위한 해결책.\r\n\r\n미모사 나무에서 추출한 콩 단백질이 피부 본연의 힘을 촉진 시켜주고, 미르나무 뿌리 추출물이 피부 장벽을 강화해 3D 피부를 선사합니다. ",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "anti-aging essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 17,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất chống lão hóa",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum chống lão hóa",
+                "essence chống lão hóa"
+            ]
+        }
+    },
+    {
+        "sid": 73421,
+        "name": "",
+        "sname": "버핑 그레인스 포 페이스",
+        "description": "",
+        "sdescription": "전문 에스테틱 수준의 효과를 내기 위해 특별히 바비 브라운이 만든 럭셔리한 얼굴 스크럽제\r\n\r\n- 일본 아주키 콩으로 만들어진 천연 제품으로 부드럽고 완벽하게 얼굴 각질을 제거한다. \r\n- 맞춤형 각질 제거제 : 사용중인 클렌저에 원하는 만큼 양을 조절해서 섞어 쓸수 있다.\r\n- 세포 재생 주기 활성화 : 피부 표현의 불필요한 죽은 각질을 부드럽게 천연 곡물을 이용하여 탈락 시킨다.\r\n",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Exfoliator",
+            "third_category_en_name": "scrubs",
+            "first_category_id": 7,
+            "second_category_id": 35,
+            "third_category_id": 124,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy da chết",
+            "third_category_name": "Tẩy da chết dạng hạt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [
+                "Tẩy tế bào chết"
+            ],
+            "third_category_synonyms": [
+                "Tẩy tế bào chết dạng hạt",
+                "tẩy tế bào chết vật lý"
+            ]
+        }
+    },
+    {
+        "sid": 53057,
+        "name": "",
+        "sname": "인텐시브 스킨 서플리먼트",
+        "description": "",
+        "sdescription": "흰 자작나무와 포도 추출물이 함유된 \r\n첨단 다기능 세럼으로 피부에 탄력을 더하고, 윤기 있게 가꿔 줍니다.\r\n 스포이트에 1/4정도를 채운 다음 얼굴, 목, 가슴에 3 방울을 떨어뜨리고 펴 바릅니다. 눈 주변은 피해 주세요.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Moisturizing essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 12,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất dưỡng ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum dưỡng ẩm",
+                "essence dưỡng ẩm",
+                "serum cho da khô",
+                "essence cho da khô",
+                "tinh chất cho da khô",
+                "Tinh chất cấp ẩm",
+                "essence cấp ẩm",
+                "serum cấp ẩm"
+            ]
+        }
+    },
+    {
+        "sid": 85007,
+        "name": "",
+        "sname": "레미디 스킨 포터파이어",
+        "description": "",
+        "sdescription": "극도로 건조한 피부를 위한 보호막 강화 케어, 스킨 포터파이어\r\n\r\n내 피부 고민을 위한 퍼스트 케어! 하루 두 방울로 시작하는 퍼스트 케어\r\n\r\n악건성 피부부터 자극받은 피부까지 폭넓은 피부 고민을 해결해 건강하고 아름다운 피부를 만들어주는 스킨케어 라인.\r\n\r\n피부 상태에 따라 단독 또는 다른 레미디 및 스킨케어와 레이어링하여 사용합니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "facial oil",
+            "third_category_en_name": null,
+            "first_category_id": 1,
+            "second_category_id": 6,
+            "third_category_id": null,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Dầu dưỡng da",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dầu dưỡng chăm sóc da",
+                "face oil",
+                "tinh dầu dưỡng da"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 22060,
+        "name": "",
+        "sname": "디럭스 수딩 클렌징 오일",
+        "description": "",
+        "sdescription": "용량이 2배로 Upgrade! 피부 진정 효과와 보습이 한층 강화되어 더욱 효과적이고 부드럽게 메이크업을 지워주는 디럭스 수딩 클렌징 오일입니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Makeup remover",
+            "third_category_en_name": "Cleansing oil",
+            "first_category_id": 7,
+            "second_category_id": 33,
+            "third_category_id": 118,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang",
+            "third_category_name": "Dầu tẩy trang",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Tẩy trang dạng dầu"
+            ]
+        }
+    },
+    {
+        "sid": 111870,
+        "name": "",
+        "sname": "엑스트라 밤 린스",
+        "description": "",
+        "sdescription": "* 해당 제품은 기존 제품에서 패키지, 성분 리뉴얼 된 제품입니다\r\n건조한 피부에 사용하는 딥 클렌저.손바닥의 열로 피부 속 깊이 스팀타월의 효과를 내는 보습 딥 클렌저\r\n\r\n- 사용 추천: 지성 피부를 제외한 모든 피부\r\n- 사용 방법: 아이 메이크업을 지우고 소량을 손에 녹여 얼굴 전체에 30초 정도 마사지한 후, 미지근한 물로 헹궈 냅니다. 눈 주위는 피해 주세요.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Makeup remover",
+            "third_category_en_name": "Cleansing balm",
+            "first_category_id": 7,
+            "second_category_id": 33,
+            "third_category_id": 117,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang",
+            "third_category_name": "Sáp tẩy trang",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "balm tẩy trang",
+                "tẩy trang dạng sáp",
+                "hũ tẩy trang",
+                "tẩy trang dạng hũ"
+            ]
+        }
+    },
+    {
+        "sid": 85003,
+        "name": "",
+        "sname": "레미디 스킨 클래리파이어",
+        "description": "",
+        "sdescription": "모공 및 피지 케어로 깨끗한 피부를 만들어주는 피부 정화 케어, 레미디 스킨 클래리파이어\r\n\r\n내 피부 고민을 위한 퍼스트 케어! 하루 두 방울로 시작하는 퍼스트 케어\r\n\r\n악건성 피부부터 자극받은 피부까지 폭넓은 피부 고민을 해결해 건강하고 아름다운 피부를 만들어주는 스킨케어 라인.\r\n\r\n피부 상태에 따라 단독 또는 다른 레미디 및 스킨케어와 레이어링하여 사용합니다.\r\n",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "facial oil",
+            "third_category_en_name": null,
+            "first_category_id": 1,
+            "second_category_id": 6,
+            "third_category_id": null,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Dầu dưỡng da",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dầu dưỡng chăm sóc da",
+                "face oil",
+                "tinh dầu dưỡng da"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 85010,
+        "name": "",
+        "sname": "레미디 스킨 모이스춰 솔루션",
+        "description": "",
+        "sdescription": "극도로 건조한 피부를 위한 강력 보습 케어, 스킨 모이스춰 솔루션\r\n\r\n내 피부 고민을 위한 퍼스트 케어! 하루 두 방울로 시작하는 퍼스트 케어\r\n\r\n악건성 피부부터 자극받은 피부까지 폭넓은 피부 고민을 해결해 건강하고 아름다운 피부를 만들어주는 스킨케어 라인.\r\n\r\n피부 상태에 따라 단독 또는 다른 레미디 및 스킨케어와 레이어링하여 사용합니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "facial oil",
+            "third_category_en_name": null,
+            "first_category_id": 1,
+            "second_category_id": 6,
+            "third_category_id": null,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Dầu dưỡng da",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dầu dưỡng chăm sóc da",
+                "face oil",
+                "tinh dầu dưỡng da"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 85014,
+        "name": "",
+        "sname": "레미디 스킨 살브 레스큐 밤",
+        "description": "",
+        "sdescription": "갈라지고 건조해진 피부를 케어하는 고농축 만능 밤 “갈.건.밤”\r\n\r\n악건성 피부부터 자극받은 피부까지 폭넓은 피부 고민을 해결해 건강하고 아름다운 피부를 만들어주는 스킨케어 라인\r\n\r\n피부 상태에 따라 단독 또는 다른 레미디 및 스킨케어와 레이어링하여 사용합니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "facial oil",
+            "third_category_en_name": null,
+            "first_category_id": 1,
+            "second_category_id": 6,
+            "third_category_id": null,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Dầu dưỡng da",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dầu dưỡng chăm sóc da",
+                "face oil",
+                "tinh dầu dưỡng da"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 2089,
+        "name": "",
+        "sname": "하이드레이팅 젤 크림",
+        "description": "",
+        "sdescription": "가벼운 젤 텍스쳐가 산뜻한 사용감을 선사하는 지복합성을 위한 수분 크림. 열대 식물 추출물이 즉각적인 수분을 공급하고 이를 보존하는 피부의 천연 보호막을 강화해 피부가 오랫동안 수분을 머금도록 도와줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 86909,
+        "name": "",
+        "sname": "수딩 클렌징 밀크",
+        "description": "",
+        "sdescription": "감성 피부를 위한 순수 식물성 클렌저로 피부 진정 및 자극 완화로 부드러운 세안 효과를 제공하는 데일리 아이템입니다. 촉촉한 쿠션감이 느껴지는 마무리와 피부 본연의 수분 장벽을 강화시켜 줍니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Makeup remover",
+            "third_category_en_name": "Cleansing lotion",
+            "first_category_id": 7,
+            "second_category_id": 33,
+            "third_category_id": 120,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang",
+            "third_category_name": "Sữa tẩy trang",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Tẩy trang dạng sữa"
+            ]
+        }
+    },
+    {
+        "sid": 85005,
+        "name": "",
+        "sname": "레미디 스킨 릴리프",
+        "description": "",
+        "sdescription": "민감하고 자극받은 피부를 위한 피부 진정 케어, 레미디 스킨 릴리프\r\n\r\n내 피부 고민을 위한 퍼스트 케어! 하루 두 방울로 시작하는 퍼스트 케어\r\n\r\n악건성 피부부터 자극받은 피부까지 폭넓은 피부 고민을 해결해 건강하고 아름다운 피부를 만들어주는 스킨케어 라인.\r\n\r\n피부 상태에 따라 단독 또는 다른 레미디 및 스킨케어와 레이어링하여 사용합니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "facial oil",
+            "third_category_en_name": null,
+            "first_category_id": 1,
+            "second_category_id": 6,
+            "third_category_id": null,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Dầu dưỡng da",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dầu dưỡng chăm sóc da",
+                "face oil",
+                "tinh dầu dưỡng da"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 23290,
+        "name": "",
+        "sname": "아이 메이크업 리무버",
+        "description": "",
+        "sdescription": "민감한 눈 주위 메이크업이나 피부 표면의 더러움을 제거하는 워터. 베이스 타입의 아이메이크업 리무버\r\n\r\n- 로즈 워터 향",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Point remover",
+            "third_category_en_name": null,
+            "first_category_id": 7,
+            "second_category_id": 34,
+            "third_category_id": null,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang chuyên dụng",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [
+                "bông tẩy trang ngón tay",
+                "kén tơ tằm"
+            ],
+            "third_category_synonyms": []
+        }
+    }
+]

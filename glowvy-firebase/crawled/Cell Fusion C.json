@@ -1,0 +1,82 @@
+[
+    {
+        "sid": 141496,
+        "name": "",
+        "sname": "트리악 모공톡스 패드",
+        "description": "",
+        "sdescription": "모공타이트닝 특허 성분과 차세대 필링성분 PHA와 pH 4.8 약산성 수분막으로 속은 촉촉, 겉은 보송하게 자극없이 케어해주는 민감 모공 케어 모공톡스패드",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Exfoliator",
+            "third_category_en_name": "Peeling pad",
+            "first_category_id": 7,
+            "second_category_id": 35,
+            "third_category_id": 126,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy da chết",
+            "third_category_name": "Bông tẩy da chết",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [
+                "Tẩy tế bào chết"
+            ],
+            "third_category_synonyms": [
+                "Bông tẩy tế bào chết",
+                "Pad tẩy da chết",
+                "Pad tẩy tế bào chết"
+            ]
+        }
+    },
+    {
+        "sid": 106944,
+        "name": "",
+        "sname": "포스트 알파 큐어 선스크린 100 [SPF50+/PA++++]",
+        "description": "",
+        "sdescription": "파란 에센스와 자외선 차단제의 만남! 민감하고 건조한 피부를 위한 수분 쿨링 선크림\r\n\r\n- 촉촉함과 가벼움을 지닌 사용감으로 백탁 없이 자외선을 차단\r\n- 물방울이 터지는 듯한 워터홀딩 공법으로 수분감 넘치는 촉촉함 부여\r\n- 진정에 도움을 주는 아줄렌이 스트레스 받은 피부를 편안하게 케어",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Soothing & cooling sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 145,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng làm dịu da",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng làm dịu da kích ứng",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng làm mát da"
+            ]
+        }
+    },
+    {
+        "sid": 117788,
+        "name": "",
+        "sname": "토닝 선 스크린 100 [SPF50+/PA++++]",
+        "description": "",
+        "sdescription": "- 스킨케어 노하우가 담긴 독자 성분으로 칙칙한 피부를 생기있는 피부로\r\n- 외부로부터 예민해진 피부 진정과 칙칙한 피부를 밝고 환하게 케어\r\n- 피부 보호와 탄력 강화에 도움\r\n",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    }
+]

@@ -1,0 +1,999 @@
+[
+    {
+        "sid": 1136,
+        "name": "",
+        "sname": "페이스 트리트먼트 플랜트 오일 블루 오키드",
+        "description": "",
+        "sdescription": "100% 식물 추출 성분으로 구성되어 건조한 피부의 수분 부족을 해결해주는 페이스 오일\n\n- 로즈우드, 페츨리 및 블루 오키드 추출물이 함유되어 수분이 부족한 건조한 피부에 탄력과 활력을 선사\n- 헤이즐넛 에센셜 오일이 수분막을 형성해 수분 손실을 예방",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "facial oil",
+            "third_category_en_name": null,
+            "first_category_id": 1,
+            "second_category_id": 6,
+            "third_category_id": null,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Dầu dưỡng da",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dầu dưỡng chăm sóc da",
+                "face oil",
+                "tinh dầu dưỡng da"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 12028,
+        "name": "",
+        "sname": "페이스 오일 로터스",
+        "description": "",
+        "sdescription": "지, 복합성 피부를 위한 100% 식물 추출 리밸런싱 오일\r\n\r\n지,복합성 피부를 위한 아스트린젠트기능의 페이스 오일입니다. 100% 순수 식물 추출물로 클라란스만의 특별한 로즈우드, 제라늄 및 로터스 추출 성분 혼합물이 함유되었습니다. 피부를 깨끗하게 해주고 피 텍스쳐를 개선시켜 주며 피부에 수분을 공급합니다. 헤이즐넛 오일이 피부를 부드럽게 하고 진정시키고 수분 보호막을 형성하여 수분 손실을 최소화 시켜줍니다. 피부에 얼룩이 지지 않습니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "facial oil",
+            "third_category_en_name": null,
+            "first_category_id": 1,
+            "second_category_id": 6,
+            "third_category_id": null,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Dầu dưỡng da",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dầu dưỡng chăm sóc da",
+                "face oil",
+                "tinh dầu dưỡng da"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 12018,
+        "name": "",
+        "sname": "UV 플러스 데이 스크린HP [SPF40]",
+        "description": "",
+        "sdescription": "자외선으로 인한 피부 손상, 100% 미네랄 스크린으로 보호하세요. 100% 미네랄 자외선 차단 성분으로 민감한 피부도 저자극으로 사용 할 수 있습니다.\r\n\r\n클라란스 만의 독자적인 성분인 캔털루프 멜론 추출물로 활성산소를 억제하고, 외부환경으로부터 피부를 보호 합니다. 가벼운 텍스쳐로 끈적임 없이 부드럽게 발리고, 화장 시에도 밀리지 않습니다. \r\n\r\n*베이지 : 여드름 자국과 트러블을 자연스럽게 커버하는 베이지색 텍스쳐\r\n\r\n*뉴트럴(화이트) : 자연스러운 피부 톤을 연출하는 투명한 텍스쳐",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    },
+    {
+        "sid": 1169,
+        "name": "",
+        "sname": "하이드라퀀치 인텐시브 세럼 바이 페이즈",
+        "description": "",
+        "sdescription": "악건성 피부와 건조한 피부에 클라란스가 제시하는 솔루션! \r\n\r\n수분이 극도로 부족한 악건성 피부와 건조한 피부의 괴로움을 빠르고 효과적으로 해결해 줄 보습 세럼입니다. \r\n\r\n세럼 타입의 포뮬러가 산뜻하게 스며들어 충부한 수분감으로 피부가 촉촉하고 생기 있어지며 광채가 생깁니다.\r\n\r\n* 겟잇뷰티 뷰티 어워드 2012 수분 에센스 부문 3위",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Moisturizing essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 12,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất dưỡng ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum dưỡng ẩm",
+                "essence dưỡng ẩm",
+                "serum cho da khô",
+                "essence cho da khô",
+                "tinh chất cho da khô",
+                "Tinh chất cấp ẩm",
+                "essence cấp ẩm",
+                "serum cấp ẩm"
+            ]
+        }
+    },
+    {
+        "sid": 11995,
+        "name": "",
+        "sname": "토닝 로션 중,건성 피부용",
+        "description": "",
+        "sdescription": "피부결을 정돈해 주는 중, 건성용 토너피부결을 정돈하고 부스팅 효과가 있는 중, 건성 피부 전용 스킨 토너\r\n\r\n중건성 피부용 토너로 순한 카모마일, 알파인 허브와 린덴 추출물이 클렌져의 잔여물을 모두 닦아내고 중,건성 피부를 깨끗하고 환하게 가꾸어 줍니다. 피부를 부드럽고 매끈하게 만들어 주며 트러블을 진정시킵니다. 다음 단계에 사용하는 클라란스 제품의 효과를 극대화합니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 1695,
+        "name": "",
+        "sname": "토닝 로션 지,복합성 피부용",
+        "description": "",
+        "sdescription": "지복합성 피부용 무알콜 토너로 퓨리화잉 아이리스와 세이지 추출물이 클렌져의 잔여물을 모두 닦아내고 지성 피부를 깨끗하고 환하게 가꾸어 줍니다. 피지를 잡아주고 모공을 탄력있고 타이트하게 조여줍니다. 다음 단계에 사용하는 클라란스 제품의 효과를 극대화합니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 1233,
+        "name": "",
+        "sname": "하이드라퀀치 리치 크림 베리 드라이 스킨",
+        "description": "",
+        "sdescription": "풍부한 영양을 공급하는 크림이 살을 에는 듯한 추위, 맹렬한 바람으로부터 악건성 피부를 보호해줍니다. 카타프레이 바크 및 클라란스만의 특별한 히알루론산 복합체가 건조하여 생기는 트러블 및 피부 당김을 순식간에 진정시켜 줍니다. 이상적인 편안함과 탁월한 윤기를 제공합니다. 혹독한 날씨 속에서 살아가는 피부를 위해 절대적으로 필요한 머스트 해브 아이템입니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 11982,
+        "name": "",
+        "sname": "엑스트라 컴포트 토닝 로션",
+        "description": "",
+        "sdescription": "피부결을 정돈해 주는 민감성용 토너\r\n\r\n편안함을 주는 린덴, 스위트 아몬드, 머쉬멜로우 및 망고가 엑스트라 컴포트 클렌징 크림의 잔여물을 모두 제거하고 피부에 수분을 공급하면서 탄력있고 균일하며 생기 있게 가꿔줍니다. 건성 또는 민감성 피부가 환하고 투명하게 되살아 납니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Essence toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 3,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng sệt",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "nước hoa hồng dạng sệt",
+                "nước hoa hồng tinh chất",
+                "toner tinh chất",
+                "nước hoa hồng dưỡng ẩm",
+                "toner dưỡng ẩm",
+                "nước cân bằng dạng sệt",
+                "nước cân bằng tinh chất",
+                "nước cân bằng dưỡng ẩm",
+                "nước hoa hồng bổ sung tinh chất",
+                "nước cân bằng bổ sung tinh chất",
+                "toner bổ sung tinh chất"
+            ]
+        }
+    },
+    {
+        "sid": 12006,
+        "name": "",
+        "sname": "화이트 플러스 인텐시브 세럼",
+        "description": "",
+        "sdescription": "결점 없는 피부를 위한 최고의 스킨 케어\r\n\r\n건강한 핑크빛으로 투명하게 빛나는 밝고 균일한 피부 톤을 위한 최고의 스킨 케어입니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Brightening essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 16,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất dưỡng trắng",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "tinh chất làm trắng da",
+                "tinh chất kích trắng da",
+                "serum kích trắng",
+                "serum dưỡng trắng da",
+                "serum làm trắng da",
+                "essence dưỡng trắng da",
+                "essence làm trắng da",
+                "essence kích trắng"
+            ]
+        }
+    },
+    {
+        "sid": 12029,
+        "name": "",
+        "sname": "엑스트라 퍼밍 넥 크림",
+        "description": "",
+        "sdescription": "목 피부를 탄력있고 매끄럽게 해 주는 안티에이징 넥 크림\n\n- 데콜테와 목의 연약한 피부를 탱탱하고 탄력있게 가꿔주고 외부 자극으로부터 보호\n- 클라란스만의 특별한 플럼 알맹이와 해바라기의 옥신 성분 혼합물이 피부에 탄력을 주며 주름을 매끄럽게 케어\n- 순한 포뮬러가 피부 속으로 스며들며 실키한 촉감을 선사",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Neck cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 24,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng vùng cổ",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem thoa cổ",
+                "kem chống nắng vùng cổ",
+                "kem đặc trị vùng da cổ",
+                "kem chống lão hóa vùng cổ",
+                "kem dưỡng trắng da vùng cô"
+            ]
+        }
+    },
+    {
+        "sid": 11987,
+        "name": "",
+        "sname": "젠틀 포밍 클렌저 지복합성 피부",
+        "description": "",
+        "sdescription": "메이크업과 노폐물을 지워주는 지, 복합성용 폼 클렌징\r\n\r\n매일 스파하는 기분으로 클렌징 하세요! 부드러운 타마린드 과일산이 메이크업, 과도한 피지, 오염 물질 및 피부를 칙칙하게 만드는 각질로부터 모공을 깨끗하게 청소해주어 산뜻하고 밝은 안색으로 피부 가꾸어 줍니다. 부드럽고 풍성한 거품으로 간단히 씻어낼 수 있으며, 피부가 건조해지는 것을 방지해줍니다..",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing foam",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 112,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt tạo bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 90070,
+        "name": "",
+        "sname": "UV 플러스 안티폴루션 데이스크린 멀티 프로텍션 - 화이트 [SPF50/PA++++]",
+        "description": "",
+        "sdescription": "빛나는 피부를 유지하도록 자외선, 프리 래디컬, 오염의 유해한 영향으로부터 보호해줍니다.\r\n\r\n1. 식물 성분으로 더 강력해진 보호기능!\r\n 더욱 높아진 자외선 차단 기능으로 UVA/UVB를 차단하는 독특한 필터를 만들어 도심의 자외선과 눈에 띄는 노화 징후로부터 피부를 효과적으로 보호합니다.\r\n\r\n2. 가벼운 오일프리 텍스쳐\r\n 끈적임 없이 부드럽게 잘 펴발리고, 화장 시에도 밀리지 않습니다.\r\n\r\n- 부드러운 발림과 매끄러운 마무리\r\n\r\n- 끈적임 없이 가벼운 사용감\r\n\r\n- 외부 환경 오염으로부터 피부 보호",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    },
+    {
+        "sid": 85687,
+        "name": "",
+        "sname": "젠틀 포밍 클렌저 중복합성 피부용",
+        "description": "",
+        "sdescription": "중, 복합성 피부용 클렌징 타입의 부드러운 페이셜 클렌저\r\n\r\n리플레니싱 클렌징 무스가 피부의 내추럴한 수분 밸런스를 유지시키면서 복합성 피부 속의 노폐물과 지나친 피지, 메이크업 잔여물을 제거해주는 부드러운 페이셜 클렌저입니다. \r\n\r\n컴포팅 코코넛 추출물이 복합성 피부에 영양을 공급하여 부드럽고 화사하게 가꿔줍니다. \r\n\r\n폼 클렌징 성분에 포함된 수딩 포뮬러가 건조 효과를 중화시켜 주는 복합성 피부용 부드러운 페이셜 클렌저입니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing foam",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 112,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt tạo bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 12016,
+        "name": "",
+        "sname": "엑스트라 퍼밍 나이트 리쥬베네이팅 크림 올 스킨 타입",
+        "description": "",
+        "sdescription": "밤동안 피부가 노화되지 않도록 강화하는 탄력 나이트 크림",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Night cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 22,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng ban đêm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 10974,
+        "name": "",
+        "sname": "토탈 V 에센스",
+        "description": "",
+        "sdescription": "구아라나 성분이 얼굴의 불필요한 지방을 배출시켜 주며 제룸베 생강이 피부의 미세 순환을 자극하여 붓기를 감소시켜 주고 감 성분이 콜라겐 섬유를 보호하여 보다 탄력있는 피부로 만들어줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "anti-aging essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 17,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất chống lão hóa",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum chống lão hóa",
+                "essence chống lão hóa"
+            ]
+        }
+    },
+    {
+        "sid": 11993,
+        "name": "",
+        "sname": "토탈 클렌징 오일",
+        "description": "",
+        "sdescription": "피부 표면의 먼지와 공해 물질, 워터프루프 메이크업 및 자외선 차단제뿐만 아니라 보이지 않는 피부깊은 곳까지 말끔하게 씻어주는 토탈 클렌징 오일\r\n\r\n- 피부에 골고루 밀착되어 잔여물없이 노폐물을 완벽하게 녹여내는 딥클렌징 액션\r\n- 풍부한 필수 지방산 함유로 피부 유수분 보호막 보호\r\n- 은은한 아로마향은 물론 미끈거림 없이 산뜻하게",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Makeup remover",
+            "third_category_en_name": "Cleansing oil",
+            "first_category_id": 7,
+            "second_category_id": 33,
+            "third_category_id": 118,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang",
+            "third_category_name": "Dầu tẩy trang",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Tẩy trang dạng dầu"
+            ]
+        }
+    },
+    {
+        "sid": 85690,
+        "name": "",
+        "sname": "엑스트라 퍼밍 트리트먼트 에센스",
+        "description": "",
+        "sdescription": "다음 단계의 제품이 최상의 효과를 낼 수 있도록 피부를 준비시켜 부드럽고 탄력 있는 빛나는 광채 피부로 가꾸어줍니다.\r\n\r\n피부의 구조를 강화합니다\r\n\r\n피부의 탄력을 개선하고 주름을 완화해 줍니다. \r\n\r\n피부를 탄탄하게 하고, 미세 주름을 완화합니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "anti-aging essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 17,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất chống lão hóa",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum chống lão hóa",
+                "essence chống lão hóa"
+            ]
+        }
+    },
+    {
+        "sid": 10968,
+        "name": "",
+        "sname": "원 스텝 젠틀 엑스폴리에이팅 클렌저",
+        "description": "",
+        "sdescription": "클렌저와 각질 제거제의 효과를 한 번에 느낄 수 있는 얼굴 각질 제거 기능성 폼 클렌저\r\n\r\n클라란스의 순한 원 스텝 젠틀 엑스폴리에이팅 클렌저는 메이크업 잔여물 및 피부에 쌓인 노폐물과 얼굴 각질을 한 번에 제거하여 피부를 환하고 부드럽게 가꿔 줍니다. \r\n\r\n오렌지 추출물이 피부를 부드럽게 하고 생기를 되찾아 주고, 모링가 씨 추출물이 피부를 깨끗하고 균일하게 만들어 주는 클렌저와 각질 제거제의 조합이 효과적입니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing foam",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 112,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt tạo bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 11985,
+        "name": "",
+        "sname": "인스턴트 아이 메이크업 리무버",
+        "description": "",
+        "sdescription": "민감한 눈 보호\r\n\r\n피부를 진정시키는 로즈와 콘플라워 추출물, 울트라 파인 오일이 함유된 두 가지 포뮬러로 구성된 리프레싱 로션으로 워터 프루프 화장이나 진한 아이 메이크업을 깨끗하고 부드럽게 지워줍니다. 콘택트 렌즈 착용자를 포함해 민감한 눈에도 적합한 순한 포뮬러입니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Point remover",
+            "third_category_en_name": null,
+            "first_category_id": 7,
+            "second_category_id": 34,
+            "third_category_id": null,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang chuyên dụng",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [
+                "bông tẩy trang ngón tay",
+                "kén tơ tằm"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 11989,
+        "name": "",
+        "sname": "클렌징 밀크 중&건성 피부용 점보",
+        "description": "",
+        "sdescription": "메이크업과 노폐물을 지워주는 지, 복합성용 클렌징 밀크\r\n\r\n중건성 피부를 위한 수딩 클렌징 밀크로 스파를 한 것 같은 효과로 메이크업과 노폐물을 닦아냅니다. 클라란스만의 특별한 소프트닝 토닝 효과가 있는 식물 추출 성분인 알파인 허브, 세인트존스워트, 스위트 아몬드, 머쉬멜로우 및 린덴이 부드러우며 탄력있고 생기가 넘치는 피부로 가꾸어줍니다.\r\n",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Makeup remover",
+            "third_category_en_name": "Cleansing lotion",
+            "first_category_id": 7,
+            "second_category_id": 33,
+            "third_category_id": 120,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang",
+            "third_category_name": "Sữa tẩy trang",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Tẩy trang dạng sữa"
+            ]
+        }
+    },
+    {
+        "sid": 1129,
+        "name": "",
+        "sname": "화이트 플러스 TL 펄 투 크림 브라이트닝 클렌저",
+        "description": "",
+        "sdescription": "풍성한 거품을 만들어내는 부드러운 크림으로 깨끗하고 산뜻하며 환해진 결점 없는 피부로 만들어 주는 제품이다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing foam",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 112,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt tạo bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 18224,
+        "name": "",
+        "sname": "엑스트라 퍼밍 아이 컴플리트 리쥬베네이팅 크림",
+        "description": "",
+        "sdescription": "아시아 여성들의 눈가를 위해 특별히 개발된 엑스트라 퍼밍 아이 컴프리트 리쥬비네이팅 크림. 강력한 식물로부터 추출한 테크놀로지는 동안을 위한 2개의 트라이앵글. 눈꼬리와 눈 밑 부분에 작용합니다. \r\n\r\n눈 주변의 노화 징후들을 관리해 젊고 어려보이는 동안 눈매를 만들어 드립니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Eye cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 23,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng vùng mắt",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem mắt"
+            ]
+        }
+    },
+    {
+        "sid": 85692,
+        "name": "",
+        "sname": "플랜트 골드 에멀전",
+        "description": "",
+        "sdescription": "식물이 선사하는 풍부한 향과 영양의 아로마 피토 케어 에멀전\n\n- 영양과 활력을 되찾아 줄 오일과 에멀전의 믹스 2in1 포물러\n- 끈적이지 않는 가벼운 텍스처가 편안함을 선사\n- 블루오키드 추출물과 페츌리 에센셜 오일이 피부에 활력과 광채 부여",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Moisturizing lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 6,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "Lotion dưỡng ẩm",
+                "sữa dưỡng cấp ẩm",
+                "sữa dưỡng ẩm",
+                "lotion dành cho da khô",
+                "sữa dưỡng dành cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 12027,
+        "name": "",
+        "sname": "페이스 오일 샌탈",
+        "description": "",
+        "sdescription": "건조하고 민감한 피부를 위한 100% 식물 추출 리밸런싱 오일\r\n\r\n건성 또는 악건성 피부를 진정시켜 줍니다. 100% 순수 식물 추출물로 클라란스의 샌탈우드, 카다몬 및 라벤더의 에센셜 오일이 건조한 피부, 트러블과 스트레스로 지친 피부에 탄력을 부여하고 피부를 편안하게 해줍니다. 헤이즐넛 오일이 피부를 부드럽고 매끄럽게 하고 수분 손실을 보호해 줍니다. 피부에 얼룩이 지지 않습니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "facial oil",
+            "third_category_en_name": null,
+            "first_category_id": 1,
+            "second_category_id": 6,
+            "third_category_id": null,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Dầu dưỡng da",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dầu dưỡng chăm sóc da",
+                "face oil",
+                "tinh dầu dưỡng da"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 12021,
+        "name": "",
+        "sname": "젠틀 리뉴잉 브라이트닝 필",
+        "description": "",
+        "sdescription": "생기를 되찾아 주는 엑스폴리에이팅 로션이 칙칙하게 변색된 피부 표피 세포를 벗겨내고 더 밝고 고른 피부 톤을 안겨줍니다. 주근깨와 다크 스팟이 점차 사라져 더 밝고 젊어 보이는 안색을 선사합니다. 연속으로 일주일에 두 번 브라이트 플러스 HP 인텐시브 브라이트닝 마스크를 사용하면 최대의 효과를 얻을 수 있습니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Exfoliator",
+            "third_category_en_name": "Peeling gel",
+            "first_category_id": 7,
+            "second_category_id": 35,
+            "third_category_id": 125,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy da chết",
+            "third_category_name": "Tẩy da chết dạng kì",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [
+                "Tẩy tế bào chết"
+            ],
+            "third_category_synonyms": [
+                "Tẩy tế bào chết dạng kì",
+                "Gel tẩy da chết",
+                "Gel tẩy tế bào chết",
+                "tẩy tế bào chết vật lý"
+            ]
+        }
+    },
+    {
+        "sid": 85689,
+        "name": "",
+        "sname": "멀티 액티브 트리트먼트 에센스",
+        "description": "",
+        "sdescription": "이 트리트먼트 에센스는 다음 단계의 제품이 최상의 효과를 낼 수 있도록 피부를 준비시켜 부드럽고 탄력 있는 빛나는 광채 피부로 가꾸어줍니다.\r\n",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Hydrating essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 11,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum cấp nước",
+                "essence cấp nước",
+                "tinh chất cho da dầu",
+                "serum cho da dầu",
+                "essence cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 11994,
+        "name": "",
+        "sname": "클렌징 에센셜 워터 (민트)",
+        "description": "",
+        "sdescription": "물로 씻어낼 필요가 없는 익스프레스 메이크업 리무버\r\n\r\n지 복합성 타입의 피부를 위한 클렌징 에센셜 워터\r\n민트에서 추출한 에센셜 워터가 피부를 정화시켜 주고 유수분 밸런스를 맞춰 피부를 깨끗하고 건강하게 가꾸어 줍니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Makeup remover",
+            "third_category_en_name": "Cleansing water",
+            "first_category_id": 7,
+            "second_category_id": 33,
+            "third_category_id": 119,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang",
+            "third_category_name": "Nước tẩy trang",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Tẩy trang dạng nước"
+            ]
+        }
+    },
+    {
+        "sid": 1183,
+        "name": "",
+        "sname": "화이트 플러스 HP 리페어링 화이트닝 나이트 크림",
+        "description": "",
+        "sdescription": "더블 화이트닝 효과의 밤 전용 화이트닝 크림으로 당신이 잠들어 있는 동안, 화이트닝 리페어링 나이트 크림은 자외선에 의한 색소 침착을 컨트롤하고 아침부터 저녁까지 쌓인 스트레스를 완화시킵니다. 자고 일어나면 한결 환하게 빛나는 피부를 확인할 수 있습니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Brightening cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 25,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng trắng da",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng làm trắng",
+                "kem dưỡng kích trắng"
+            ]
+        }
+    },
+    {
+        "sid": 11998,
+        "name": "",
+        "sname": "하이드라퀀치 인핸싱 에멀젼",
+        "description": "",
+        "sdescription": "매우 부드럽고 가벼운 텍스쳐로 피부에 즉각적으로 빠르게 흡수되며 상쾌한 웰빙의 느낌을 선사해주는 수분케어 밀키 로션. 피부에 산뜻함과 부드러움을 선사해주고 다음에 사용하는 스킨케어 제품의 효과를 최적화 시켜주는 기초케어의 준비 단계를 위한 완벽한 제품입니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Hydrating lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 5,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "lotion cho da dầu",
+                "sữa dưỡng cho da dầu",
+                "lotion cấp nước cho da dầu",
+                "sữa dưỡng cấp nước cho da dầu",
+                "sữa dưỡng ẩm cấp nước"
+            ]
+        }
+    },
+    {
+        "sid": 12013,
+        "name": "",
+        "sname": "엑스트라 퍼밍 데이 크림",
+        "description": "",
+        "sdescription": "낮동안 피부가 노화되지 않도록 보호하는 탄력 데이 크림\r\n\r\n40대부터는 빼놓을 수 없는 데이 전용 크림으로 리프팅 효과를 선사합니다. 피부 탄력을 유지시키고 피부 주름 개선에 도움을 줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Anti-aging cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 26,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng chống lão hóa",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem dưỡng chống nhăn"
+            ]
+        }
+    },
+    {
+        "sid": 20791,
+        "name": "",
+        "sname": "페이스 트리트먼트 플랜트 오일 쌍딸",
+        "description": "",
+        "sdescription": "건성 또는 악건성 피부를 진정시켜 줍니다. \r\n\r\n100% 순수 식물 추출물로 클라란스의 샌탈우드, 카다몬 및 라벤더의 에센셜 오일이 건조한 피부, 트러블과 스트레스로 지친 피부에 탄력을 부여하고 피부를 편안하게 해줍니다. \r\n\r\n헤이즐넛 오일이 피부를 부드럽고 매끄럽게 하고 수분 손실을 보호해 줍니다. 피부에 얼룩이 지지 않습니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "facial oil",
+            "third_category_en_name": null,
+            "first_category_id": 1,
+            "second_category_id": 6,
+            "third_category_id": null,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Dầu dưỡng da",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dầu dưỡng chăm sóc da",
+                "face oil",
+                "tinh dầu dưỡng da"
+            ],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 11986,
+        "name": "",
+        "sname": "클렌징 밀크 지&복합성 피부용 점보",
+        "description": "",
+        "sdescription": "메이크업과 노폐물을 지워주는 지,복합성용 클렌징 밀크\r\n\r\n지복합성 피부를 위한 수딩 클렌징 밀크로 스파를 한 것 같은 효과으로 메이크업과 노폐물을 닦아냅니다. 클라란스만의 특별한 퓨리화잉 식물 추출 성분인 젠티안, 호손 및 세이지가 부드러우며 탄력있고 생기가 넘치는 피부로 가꾸어줍니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Makeup remover",
+            "third_category_en_name": "Cleansing lotion",
+            "first_category_id": 7,
+            "second_category_id": 33,
+            "third_category_id": 120,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang",
+            "third_category_name": "Sữa tẩy trang",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Tẩy trang dạng sữa"
+            ]
+        }
+    },
+    {
+        "sid": 12014,
+        "name": "",
+        "sname": "멀티 액티브 나이트 유쓰 리커버리 컴포트 크림",
+        "description": "",
+        "sdescription": "밤동안 피부를 건강하고 젊게 유지해 주는 나이트 크림\r\n\r\n피부 재생을 최적화시켜 피부의 젊은 활력을 회복시켜주는 나이트 크림으로 세포간 커뮤니케이션을 촉진해 피부의 방어 시스템을 활발하게 한다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Night cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 22,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng ban đêm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 115043,
+        "name": "",
+        "sname": "하이드라-에센셜 실키 크림",
+        "description": "",
+        "sdescription": "실키한 포뮬러의 크림은 수분이 빠져나가지 않도록 막아주고, 피부 한가득 수분을 채워줍니다.\r\n강력한 천연 모이스처 액티베이터, 칼란코에 추출물이 보습 작용을 하는 히알루론산이 부족해지지 않도록 합니다.\r\n촉촉한 수분을 머금어 편안하고 윤이 나는 피부를 느껴보세요.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 14466,
+        "name": "",
+        "sname": "젠틀 엑스폴리에이터 브라이트닝 토너",
+        "description": "",
+        "sdescription": "클라란스의 젠틀 엑스폴리에이팅 토너는 피부를 부드럽고 맑게 개선하는데 도움을 줍니다. \r\n\r\n타마린드 추출물이 피부 각질 관리에 도움을 주고, 화이트 네틀 추출물은 모공 케어에 도움을 주어 부드럽고 건강해 보이는 피부를 갖게 만들어줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 38802,
+        "name": "",
+        "sname": "선 링클 컨트롤 크림 포 페이스 [SPF50+]",
+        "description": "",
+        "sdescription": "피부에 유해한 자외선과 햇빛에 장시간노출된 피부를 보호해줍니다\r\n\r\n-알로에 베라 성분이 피부의 수분 보유 능력을 강화해주고 자극받은 피부를 진정\r\n\r\n-주름과 자외선을 동시에 관리하는 번들거리지 않고 가벼운 페이스 크림",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Soothing & cooling sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 145,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng làm dịu da",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng làm dịu da kích ứng",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng làm mát da"
+            ]
+        }
+    }
+]

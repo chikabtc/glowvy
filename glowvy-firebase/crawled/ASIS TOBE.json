@@ -1,0 +1,208 @@
+[
+    {
+        "sid": 133519,
+        "name": "",
+        "sname": "그린티 모이스처 선블록 [SPF50+/PA++++]",
+        "description": "",
+        "sdescription": "제주 담은 녹차수로 강한 자외선을 막아주는 수분 방어 선크림\n\n- 제주 청정 녹차수가 56.4% 함유되어 민감한 피부를 진정\n- 고순도 7중 히알루론산과 미세한 분자량의 아쿠아GG 성분이 피부 깊숙이 작용해 메마를 틈 없는 수분감 선사\n- 백탁 현상 없이 부드럽게 스며들고 과도하게 분비되는 피지량을 조절",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    },
+    {
+        "sid": 79194,
+        "name": "",
+        "sname": "히아루로닉 에센셜 토너",
+        "description": "",
+        "sdescription": "풍부한 수분감과 보습효과로 수분 가득한 피부로 가꿔주는 히아루로닉 에센셜 토너\n\n- 히알루론산 성분의 보습인자가 피부에 수분감을 채워주고 피부 활성화에 도움\n- 치마 버섯 유래 발효성분인 베타글루칸이 피부에 수분 보호막을 형성하여 수분손실을 방지\n- 피부 장벽강화에 도움을 주는 락토바실러스 발효 여과물이 보습력을 향상시켜 촉촉하고 탄력있는 피부로 케어",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Essence toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 3,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng sệt",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "nước hoa hồng dạng sệt",
+                "nước hoa hồng tinh chất",
+                "toner tinh chất",
+                "nước hoa hồng dưỡng ẩm",
+                "toner dưỡng ẩm",
+                "nước cân bằng dạng sệt",
+                "nước cân bằng tinh chất",
+                "nước cân bằng dưỡng ẩm",
+                "nước hoa hồng bổ sung tinh chất",
+                "nước cân bằng bổ sung tinh chất",
+                "toner bổ sung tinh chất"
+            ]
+        }
+    },
+    {
+        "sid": 108591,
+        "name": "",
+        "sname": "아쿠아 부스팅 크림",
+        "description": "",
+        "sdescription": "피부의 수분 통로를 열어 촘촘하고 빠르게 수분을 채워주는 수분 크림\n\n- 글리세릴 글루코사이드가 아쿠아포린을 활성화\n- 피부 본연의 자체 수분력 강화에 도움\n- 사계절 내내 모든 피부가 사용할 수 있는 데일리 크림",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 100312,
+        "name": "",
+        "sname": "로즈 인퓨전 크림",
+        "description": "",
+        "sdescription": "- 로즈에센스를 머금은 더블 모이스처 크림\r\n- 피부결 개선\r\n- 피부 장벽 강화\r\n- 미백, 주름개선 이중기능성 화장품",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 79192,
+        "name": "",
+        "sname": "프레쉬 릴리프 모이스처라이저",
+        "description": "",
+        "sdescription": "민감한 피부의 진정과 산뜻한 텍스처로 끈적임 없는 촉촉한 프레쉬 릴리프 모이스처라이저\n\n- 센텔라 아시아티카 추출물 11% 함유로 자극받은 피부를 빠르고 편안한게 진정\n- 저자극 포뮬러로 피부 유수분 밸런스를 조절하여 촉촉함을 유지\n- 번들거림 없이 가볍고 산뜻한 크림 제형",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 128781,
+        "name": "",
+        "sname": "마린콜라겐 81세럼",
+        "description": "",
+        "sdescription": "피부 흡수율이 높은 마린 콜라겐 81% 함유한 세럼\r\n\r\n- 고농축 8중 히알루론산 함유로 풍부한 수분감 선사\r\n- 피부 진정에 탁월한 자연유래의 7가지 복합추출물 함유",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "anti-aging essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 17,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất chống lão hóa",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum chống lão hóa",
+                "essence chống lão hóa"
+            ]
+        }
+    },
+    {
+        "sid": 79193,
+        "name": "",
+        "sname": "아하 퓨리파잉 토너",
+        "description": "",
+        "sdescription": "각질과 피지를 동시에 케어해주며 피부에 진정과 수분감을 제공하는 데일리 필링 토너\n\n- 피부 표면의 묵은 각질을 제거하고 잔여물을 깨끗하게 정돈\n- 필링 후 자극받은 피부에 즉각적인 진정과 수분 공급\n- 모공 수렴에 도움을 주어 탄력있는 피부로 케어",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    }
+]

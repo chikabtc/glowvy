@@ -1,0 +1,521 @@
+[
+    {
+        "sid": 131704,
+        "name": "",
+        "sname": "센텔카밍샷 앰플",
+        "description": "",
+        "sdescription": "끓이지 않은 병풀로 만든 진정 앰플\r\n\r\n- 진정 유효성분을 진하게 담기 위한 농축 기술로 병풀줄기세포배양액 성분이 고농축 함유\r\n- 예민한 피부에 필요한 카밍 특허 성분 함유\r\n- 6가지 성분 무첨가의 건강한 처방",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Soothing essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 13,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất làm dịu da",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum làm dịu da kích ứng",
+                "tinh chất làm dịu da kích ứng",
+                "essence làm dịu da kích ứng",
+                "tinh chất cho da nhạy cảm",
+                "serum cho da nhạy cảm",
+                "essence cho da nhạy cảm"
+            ]
+        }
+    },
+    {
+        "sid": 90751,
+        "name": "",
+        "sname": "펩타이드샷 앰플",
+        "description": "",
+        "sdescription": "리즈시절처럼 탄탄한 피부로 가꾸어주는 탄력 여왕 앰플로, 진주추출물을 함유한 펩타이드 실과 피부 친화력이 뛰어난 리포솜이 과학적으로 처방된 더마 탄력 앰플\r\n\r\n- 미친 탄력, 탄력 소환: 고농축된 펩타이드를 함유한 실이 스며들어 리즈시절처럼 탄력있는 피부로 가꾸어줍니다.\r\n\r\n- 3종 탄력 펩타이드: 피부 탄력을 케어하는 펩타이드 3종을 엄선하여 우수한 피부 탄력 케어 효과를 느낄 수 있습니다. \r\n\r\n- 짱짱한 리프팅 앰플: 탄탄하고 영양감 넘치는 피부를 선사하는 앰플입니다. ",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Moisturizing essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 12,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất dưỡng ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum dưỡng ẩm",
+                "essence dưỡng ẩm",
+                "serum cho da khô",
+                "essence cho da khô",
+                "tinh chất cho da khô",
+                "Tinh chất cấp ẩm",
+                "essence cấp ẩm",
+                "serum cấp ẩm"
+            ]
+        }
+    },
+    {
+        "sid": 112867,
+        "name": "",
+        "sname": "세라마이드샷 앰플",
+        "description": "",
+        "sdescription": "겨울에도 찬바람 들지 않는 높은 장벽을 세워주는 앰플\n\n- 세라풀 콜플렉스 50,000PPM 함유\n- 특허 레시피로 완성, 베리어를 부탁해\n- 자극 걱정 덜은 순한 앰플",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Moisturizing essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 12,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất dưỡng ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum dưỡng ẩm",
+                "essence dưỡng ẩm",
+                "serum cho da khô",
+                "essence cho da khô",
+                "tinh chất cho da khô",
+                "Tinh chất cấp ẩm",
+                "essence cấp ẩm",
+                "serum cấp ẩm"
+            ]
+        }
+    },
+    {
+        "sid": 90745,
+        "name": "",
+        "sname": "히알루론샷 앰플",
+        "description": "",
+        "sdescription": "피부에 빠르게 흡수되어 숨겨진 물광을 찾아주는 물광 폭탄 앰플\n\n- 저분자 히알루론산과 세라마이드가 과학적으로 처방\n- 히알루론산, 세라마이드, 자일리톨 콤플렉스를 특별한 마이크로 더마샷 테크놀로지를 적용해 물광 피부를 선사\n- 보습 특화 원료인 삼색 제비꽃 추출물이 피부 수분 순환력을 높이는 데 도움 \n",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Hydrating essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 11,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum cấp nước",
+                "essence cấp nước",
+                "tinh chất cho da dầu",
+                "serum cho da dầu",
+                "essence cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 90747,
+        "name": "",
+        "sname": "히알루론샷 토너",
+        "description": "",
+        "sdescription": "이후 단계 제품들의 효과를 높여주는 물광 부스팅 토너로, 보습의 결정체, 저분자 히알루론산과 세라마이드가 과학적으로 처방된 더마 보습 토너\r\n\r\n- 물광 피부 부스팅: 이후 단계 제품들의 효과를 높여주고, 바탕을 가꿔주는 물광 부스팅 역할을 합니다.\r\n\r\n- 넘치는 수분 생명력: 수분 생명력이 풍부한 트레할로스 성분을 통해 오래도록 촉촉한 피부로 가꿔줍니다. \r\n\r\n- 바르는 히알루론샷: 앰플엔의 특별한 마이크로 더마-샷 테크놀로지가 피부에 수분을 충전해줍니다. ",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Essence toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 3,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng sệt",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "nước hoa hồng dạng sệt",
+                "nước hoa hồng tinh chất",
+                "toner tinh chất",
+                "nước hoa hồng dưỡng ẩm",
+                "toner dưỡng ẩm",
+                "nước cân bằng dạng sệt",
+                "nước cân bằng tinh chất",
+                "nước cân bằng dưỡng ẩm",
+                "nước hoa hồng bổ sung tinh chất",
+                "nước cân bằng bổ sung tinh chất",
+                "toner bổ sung tinh chất"
+            ]
+        }
+    },
+    {
+        "sid": 118042,
+        "name": "",
+        "sname": "히알루론샷 라이트 앰플",
+        "description": "",
+        "sdescription": "- 뒤끝없이 산뜻 촉촉한 수부지 정착 앰플\r\n- 7겹 수분 레이어링\r\n- 수분 맞춤 레시피, 수분을 부탁해\r\n",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Hydrating essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 11,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum cấp nước",
+                "essence cấp nước",
+                "tinh chất cho da dầu",
+                "serum cho da dầu",
+                "essence cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 104651,
+        "name": "",
+        "sname": "브이씨샷 앰플",
+        "description": "",
+        "sdescription": "미백의 결정체! 나이아신아마이드와 비타민C유도체 크리스탈을 가득 담아 과학적으로 처방한 더마 광채 앰플\r\n\r\n- 비타민C유도체를 담은 크리스탈 결정체가 바를수록 투명해지는 피부를 느끼게 합니다.\r\n\r\n- 비타민C유도체와 특허받은 비타민나무 발효 추출물이 이상적인 비율로 배합되어 피부 광채를 이끌어 냅니다.\r\n\r\n- 크리스탈 결정체가 피부 온도에 반응해 터지며, 글로우한 워터 제형으로 피부에 촉촉하게 스며듭니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Brightening essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 16,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất dưỡng trắng",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "tinh chất làm trắng da",
+                "tinh chất kích trắng da",
+                "serum kích trắng",
+                "serum dưỡng trắng da",
+                "serum làm trắng da",
+                "essence dưỡng trắng da",
+                "essence làm trắng da",
+                "essence kích trắng"
+            ]
+        }
+    },
+    {
+        "sid": 114154,
+        "name": "",
+        "sname": "세라마이드샷크림",
+        "description": "",
+        "sdescription": "고보습 장벽의 기준을 세우다\r\n\r\n- 약한 피부장벽을 대신하는 겹겹의 구조\r\n- 피부장벽 강화에 효과\r\n- 단단한 리얼 보습막 형성\r\n- 모든 피부도 순하게 사용 가능",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 122014,
+        "name": "",
+        "sname": "세라마이드샷 선케어 [SPF50+/PA++++]",
+        "description": "",
+        "sdescription": "- 민감 피부에 순하고, 부드럽게 발리는 무기자차\r\n- 백탁과 번들거림 없이 촉촉 산뜻하게 마무리\r\n- 100% 무기자차 성분을 적용하고, 저자극 테스트를 완료\r\n",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    },
+    {
+        "sid": 90748,
+        "name": "",
+        "sname": "히알루론샷 에멀션",
+        "description": "",
+        "sdescription": "물광 유효성분을 꼼꼼하게 잠가주어 촉촉하게 가꾸어주는 에멀션으로, 보습의 결정체, 저분자 히알루론산과 세라마이드가 과학적으로 처방된 더마 보습 에멀션\r\n\r\n- 촉촉하게, 물광 잠금: 물광 유효성분을 꼼꼼하게 잠가주어 오래도록 촉촉합니다.\r\n\r\n- 풍부한 미네랄 보습: 진주 추출물에 함유된 아미노산과 무기질이 건강하고 촉촉한 피부로 가꾸어줍니다. \r\n\r\n- 바르는 히알루론샷: 앰플엔의 특별한 마이크로 더마-샷 테크놀로지가 피부에 수분을 충전해줍니다. \r\n",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Hydrating lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 5,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "lotion cho da dầu",
+                "sữa dưỡng cho da dầu",
+                "lotion cấp nước cho da dầu",
+                "sữa dưỡng cấp nước cho da dầu",
+                "sữa dưỡng ẩm cấp nước"
+            ]
+        }
+    },
+    {
+        "sid": 133778,
+        "name": "",
+        "sname": "히알루론샷 버블 클렌저",
+        "description": "",
+        "sdescription": "풍성하고 부드러운 대용량 거품 약산성 저자극 클렌저\r\n\r\n- 풍성한 왕버블로 부드러운 세안\r\n- 미세먼지, 초미세먼지 말끔하게 제거\r\n- 히알루론샷 앰플 특허성분 배합",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Bubble cleanser",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 113,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt dạng bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 106669,
+        "name": "",
+        "sname": "퓨리파잉샷 토너",
+        "description": "",
+        "sdescription": "피지, 노폐물, 묵은 각질을 빠르게 쓱싹쓱싹 청소 토너 [주름개선 기능성]\r\n\r\n- 노폐물과 묵은 갈질까지 말끔히 청소\r\n깨끗이 닦이지 않은 피지, 노폐물 등을 말끔하게 관리해주어 트러블을 케어하는 데 도움을 주는 닦아내는 토너입니다.\r\n\r\n- 효과 빠른 퓨리파잉 레시피\r\n특허받은 지실추출물이 모공 케어에 도움을 주고 피부 보호에 도움이 되는 푸른 연꽃 추출물을 함유해 건강한 피부 바탕으로 가꾸어줍니다.\r\n\r\n- 상쾌하고 가벼운 청량 워터\r\n상쾌한 마무리감의 워터가, 여러 번 닦아내도 부담감 없이 매끄러운 피부 결로 케어해줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 127318,
+        "name": "",
+        "sname": "퓨리파잉샷 호박효소 필링젤",
+        "description": "",
+        "sdescription": "호박을 발효시켜 추출한 효소로 묵은 각질 제거 효과를 선사하는 필링젤\r\n\r\n- 호박에서 추출한 영양성분과 발효 효소, 식물유래 BHA 성분으로 집에서 쉽고 간편하게 필링케어할 수 있는 호박필\r\n- 특허받은 지실 추출물과 푸른연꽃추출물이 과학적으로 배합되어 모공케어에 도움\r\n- 목화에서 추출한 자연유래 셀룰로오스가 물에 젖은 상태에서도 마일드한 필링을 선사",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Exfoliator",
+            "third_category_en_name": "Peeling gel",
+            "first_category_id": 7,
+            "second_category_id": 35,
+            "third_category_id": 125,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy da chết",
+            "third_category_name": "Tẩy da chết dạng kì",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [
+                "Tẩy tế bào chết"
+            ],
+            "third_category_synonyms": [
+                "Tẩy tế bào chết dạng kì",
+                "Gel tẩy da chết",
+                "Gel tẩy tế bào chết",
+                "tẩy tế bào chết vật lý"
+            ]
+        }
+    },
+    {
+        "sid": 90749,
+        "name": "",
+        "sname": "히알루론30샷 크림",
+        "description": "",
+        "sdescription": "지친 피부를 빈틈없이 물광 코팅해주는 크림으로, 보습의 결정체, 저분자 히알루론산과 세라마이드가 과학적으로 처방된 더마 보습 크림\r\n\r\n- 빈틈없는 물광코팅: 지친 피부를 수분감 넘치는 물광 피부로 케어해줍니다.\r\n\r\n- 깊게 전달되는 영양보습: 해바라기씨 오일, 메도우폼씨 오일 성분이 피부에 영양을 선사합니다. \r\n\r\n- 바르는 히알루론샷: 앰플엔의 특별한 마이크로 더마-샷 테크놀로지가 피부에 수분을 충전해줍니다. \r\n",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 106716,
+        "name": "",
+        "sname": "히알루론샷 앰플 선 케어 [SPF50+/PA++++]",
+        "description": "",
+        "sdescription": "태양광선을 강력하게 차단하고, 피부를 촉촉하게 진정시키는 물광 앰플 선\r\n\r\n- 국내 최초 자외선, 근적외선 동시 차단기술이 적용된 선블록\r\n자외선(태양빛)뿐만 아니라 피부손상을 일으키는 근적외선(태양열)까지 동시에 차단하는 특허성분을 함유했습니다.\r\n\r\n- 수분 가득한 워터드롭\r\n수분 앰플의 유효성분이 터져나와 피부가 촉촉하고 산뜻하게 마무리 됩니다.\r\n\r\n- 수분 맞춤 레시피, 수분을 부탁해\r\n특허를 적용한 히알루론산 성분과 자일리톨 콤플렉스가 이상적인 비율로 배합되어, 피부를 촉촉히 적셔줍니다.\r\n\r\n- 민감피부도 걱정 없는 순한 처방\r\n저자극 테스트 완료, 천연향 사용, 無 파라벤, 진정케어에 좋은 식물 추출물 함유",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    },
+    {
+        "sid": 124593,
+        "name": "",
+        "sname": "퓨리파잉샷 크림 클렌저",
+        "description": "",
+        "sdescription": "-탄력감이 느껴지는 크림 제형의 클렌저가 쫀득한 거품을 만들어 피부에 꼼꼼하게 밀착되고, 세안 후 당김을 줄인 촉촉한 세안을 선사합니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing foam",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 112,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt tạo bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 90750,
+        "name": "",
+        "sname": "히알루론샷 아이크림",
+        "description": "",
+        "sdescription": "눈가 피부를 촉촉하게 물광 코팅해주는 아이크림으로, 보습의 결정체, 저분자 히알루론산과 세라마이드가 과학적으로 처방된 더마 보습 아이크림\r\n\r\n- 촉촉 눈가 물광 코팅: 빈틈없이, 부드럽게 발리는 보습제형이 수분감 넘치는 눈가로 케어해줍니다.\r\n\r\n- 고품격 보습 영양: 세계 3대 진미인 캐비어 성분과 트러플 성분에 함유된 영양분이 눈가에 풍부한 보습감과 영양감을 전달합니다. \r\n\r\n- 바르는 히알루론샷: 앰플엔의 특별한 마이크로 더마-샷 테크놀로지가 피부에 수분을 충전해줍니다. ",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Eye cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 23,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng vùng mắt",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem mắt"
+            ]
+        }
+    }
+]

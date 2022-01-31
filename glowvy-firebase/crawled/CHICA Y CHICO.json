@@ -1,0 +1,145 @@
+[
+    {
+        "sid": 20151,
+        "name": "",
+        "sname": "토타에스3.0",
+        "description": "",
+        "sdescription": "외부 환경으로 인한 문제성 스팟 진정 크림\r\n\r\n- 과다 피지와 피부 자극 케어\r\n- 외부 환경으로 인한 문제성 스팟 진정\r\n- 토타롤 성분으로 피부 장벽 강화",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Trouble essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 15,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất trị mụn",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum trị mụn",
+                "essence trị mụn",
+                "tinh chất cho da mụn",
+                "serum cho da mụn",
+                "essence cho da mụn",
+                "tinh chất ngăn ngừa mụn",
+                "serum ngăn ngừa mụn",
+                "essence ngăn ngừa mụn"
+            ]
+        }
+    },
+    {
+        "sid": 20152,
+        "name": "",
+        "sname": "베타살릭2.0 플러스",
+        "description": "",
+        "sdescription": "자기 전 바르면 각질을 스르르 녹여내는 굿밤 크림\r\n\r\n- 매끄러운 아기 피부결로 케어\r\n- 각질케어와 수분 공급을 동시에\r\n- 피부 진정과 트러블 예방",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Night cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 22,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng ban đêm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 80389,
+        "name": "",
+        "sname": "누드판타지 화이트닝 크림",
+        "description": "",
+        "sdescription": "부드럽고 새하얀 생크림 제형의 톤업 크림\r\n\r\n- 촉촉한 보습감으로 들뜨지 않는 화사함\r\n- 끈적이지 않고 묻어나지 않는 뽀송한 마무리\r\n- 미백, 주름개선 2중 기능으로 톤업케어",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Tone-up cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 20,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem nâng tông",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem tone up",
+                "kem dưỡng nâng tone da",
+                "kem dưỡng làm trắng tạm thời",
+                "kem dưỡng làm trắng tức thì",
+                "kem dưỡng trắng tone-up"
+            ]
+        }
+    },
+    {
+        "sid": 114681,
+        "name": "",
+        "sname": "토타에스 토너",
+        "description": "",
+        "sdescription": "끈적임 없이 빠르게 흡수되는 라이트한 워터 타입 토너\r\n\r\n- 민감하고 문제있는 모든 피부의 자극 진정케어\r\n- 자연유래 성분으로 자극없이 순하게 각질케어\r\n- 토타롤 성분으로 피부 장벽 강화",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 20150,
+        "name": "",
+        "sname": "아스타제트4.0",
+        "description": "",
+        "sdescription": "피부문제로 인한 붉은 흔적들, 자외선으로 인한 거뭇한 흔적들을 환하게 밝혀주는 미백 기능성 페이셜 크림\r\n\r\n- 흔적 개선과 피부 재생을 동시에\r\n- 외부 유해환경으로부터 피부 보호 및 수분 공급\r\n- 강력한 아스타잔틴 성분으로 얼룩없이 깨끗하게",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Brightening cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 25,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng trắng da",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng làm trắng",
+                "kem dưỡng kích trắng"
+            ]
+        }
+    }
+]

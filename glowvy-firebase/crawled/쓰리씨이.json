@@ -1,0 +1,86 @@
+[
+    {
+        "sid": 77300,
+        "name": "",
+        "sname": "화이트 밀크 쿠션 [SPF50+/PA+++]",
+        "description": "",
+        "sdescription": "쌩얼 톤 업은 그대로, 강력한 썬 필터가 자외선까지 막아주는 뽀얀 화이트 밀크 쿠션\r\n\r\n- 촉촉하지만 산뜻한 피부를 유지하는 부드러운 밀크 크림 텍스처\r\n- 덧발라도 뭉치지 않아 즉각적으로 맑은 쌩얼로 보정",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Sun cushion",
+            "third_category_en_name": "Tone-up sun cushion",
+            "first_category_id": 9,
+            "second_category_id": 42,
+            "third_category_id": 147,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Cushion chống nắng",
+            "third_category_name": "Cushion chống nắng nâng tông",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [
+                "phấn nước chống nắng"
+            ],
+            "third_category_synonyms": [
+                "phấn nước chống nắng nâng tone",
+                "phấn nước chống nắng nâng tông",
+                "phấn nước chống nắng tone up",
+                "cushion chống nắng tone up",
+                "phấn nước chống nắng làm sáng da tạm thời",
+                "cushion chống nắng làm sáng da tạm thời"
+            ]
+        }
+    },
+    {
+        "sid": 5829,
+        "name": "",
+        "sname": "너리싱 크림",
+        "description": "",
+        "sdescription": "깊은 영양감과 보습감은 물론 피부에 윤기와 광택을 주는 밤타입의 고보습 멀티 광크림",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Moisturizing cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 19,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp ẩm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Kem dưỡng ẩm",
+                "kem dưỡng cho da khô"
+            ]
+        }
+    },
+    {
+        "sid": 97308,
+        "name": "",
+        "sname": "화이트 밀크 크림",
+        "description": "",
+        "sdescription": "그늘진 피부는 즉각적으로 밝혀주고, 피부 속 잡티는 집중적으로 케어해 매일매일 우윳빛 피부로 가꾸어주는 촉촉한 마무리 크림",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    }
+]

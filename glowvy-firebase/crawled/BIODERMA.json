@@ -1,0 +1,27 @@
+[
+    {
+        "sid": 14312,
+        "name": "",
+        "sname": "센시비오 클렌징 밀크",
+        "description": "",
+        "sdescription": "- 센시비오 클렌징 밀크는 표피를 진정시켜주고 유연하게 가꾸어줍니다.\r\n- 계면활성제, 방부제, 향이 들어있지 않아 얼굴과 눈가 피부의 자극이 적습니다.\r\n- 과민감한 피부를 위한 새로운 트리트먼트로 특허 받은 톨레리딘 복합체를 함유하여 피부의 저항력을 증가시키고 외부 요소로부터 피부를 보호하는데 도움을 줍니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Makeup remover",
+            "third_category_en_name": "Cleansing lotion",
+            "first_category_id": 7,
+            "second_category_id": 33,
+            "third_category_id": 120,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang",
+            "third_category_name": "Sữa tẩy trang",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Tẩy trang dạng sữa"
+            ]
+        }
+    }
+]

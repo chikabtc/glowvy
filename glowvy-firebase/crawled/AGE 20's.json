@@ -1,0 +1,30 @@
+[
+    {
+        "sid": 109645,
+        "name": "",
+        "sname": "클리어 에센스 클렌징 프레쉬 밤",
+        "description": "",
+        "sdescription": "수분을 가득 머금은 젤 텍스처가 롤링 마사지를 통해 오일로 트랜스포밍되어 수분공급과 함께 피부 불순물을 제거해주는 팁 클렌징 프레쉬 밤",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Makeup remover",
+            "third_category_en_name": "Cleansing balm",
+            "first_category_id": 7,
+            "second_category_id": 33,
+            "third_category_id": 117,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang",
+            "third_category_name": "Sáp tẩy trang",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "balm tẩy trang",
+                "tẩy trang dạng sáp",
+                "hũ tẩy trang",
+                "tẩy trang dạng hũ"
+            ]
+        }
+    }
+]

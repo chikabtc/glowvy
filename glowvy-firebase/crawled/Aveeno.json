@@ -1,0 +1,111 @@
+[
+    {
+        "sid": 5265,
+        "name": "",
+        "sname": "컨티뉴어스 프로텍션 선블럭 로션",
+        "description": "",
+        "sdescription": "야외활동시 갈렬한 유해 자외선에 노출된 피부를 효과적으로 보호해주며 (UVA, UVB 동시차단) 피부에 순하게 작용하느 내추럴 선블럭 로션입니다. 특히, 항산화작용이 뛰어난 내추럴 소이 성분이 자외선에 의해 피부 노화를 유발하는 활성 산소 생성을 완화하여 지켜줍니다.",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    },
+    {
+        "sid": 49537,
+        "name": "",
+        "sname": "클리어 컴플렉션 데일리 모이스춰라이저",
+        "description": "",
+        "sdescription": "아비노만의 독특한 포뮬라 토탈 소이 컴플렉스가\r\n당신의 균일하고 매끈한 피부결을 되찾아줍니다.\r\n깨끗한 피부와 함께 나날이 더 촉촉해지세요!",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Hydrating lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 5,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "lotion cho da dầu",
+                "sữa dưỡng cho da dầu",
+                "lotion cấp nước cho da dầu",
+                "sữa dưỡng cấp nước cho da dầu",
+                "sữa dưỡng ẩm cấp nước"
+            ]
+        }
+    },
+    {
+        "sid": 5264,
+        "name": "",
+        "sname": "내추럴 프로텍션 선블록 로션 [SPF50+/PA+++]",
+        "description": "",
+        "sdescription": "민감한 피부를 위해 자극을 최소화하는 미네랄 블록 테크놀로지로 피부 위에 내추럴 보호막을 만들어 자외선으로부터 피부를 보호해 줍니다. UVA, UVB 의 유해 자외선을 효과적으로 차단해 줄 뿐 아니라, 오트밀이 함유되어 자극받은 피부를 효과적으로 진정시키고 촉촉하게 가꿔줍니다. 무향, 무색소\r\n\r\nSPF50+ PA+++",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    },
+    {
+        "sid": 75993,
+        "name": "",
+        "sname": "프로텍트+하이드레이트 선 스크린 로션 브로드 스펙트럼 [SPF50+/PA+++]",
+        "description": "",
+        "sdescription": "끈적임 없는 산뜻한 사용감이 특징인 ‘아비노 프로텍트+하이드레이트 선 스크린 로션 브로드 스펙트럼 SPF 50+ PA+++’은 아비노의 핵심 성분인 오트밀을 더해 하루종일 지속되는 촉촉함까지 선사합니다.",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Suncreen",
+            "third_category_en_name": "Mild sunscreen",
+            "first_category_id": 9,
+            "second_category_id": 41,
+            "third_category_id": 142,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem chống nắng",
+            "third_category_name": "Kem chống nắng dịu nhẹ",
+            "first_category_synonyms": [],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "kem chống nắng cho da nhạy cảm",
+                "kem chống nắng cho da kích ứng",
+                "kem chống nắng an toàn cho da"
+            ]
+        }
+    }
+]

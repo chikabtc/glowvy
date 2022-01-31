@@ -1,0 +1,104 @@
+[
+    {
+        "sid": 27179,
+        "name": "",
+        "sname": "크레마 클로리스 수분크림",
+        "description": "",
+        "sdescription": "5가지 꽃의 추출물이 피부에 활력을 부여합니다.\r\n수분을 공급하는 “소듐 하이알루로네이트”와 탄력을 부여하는 “하이드롤라이즈드 하이알루로닉 애씨드” 성분이 만나 수분과 탄\r\n력을 동시에 충전해 최강의 시너지 효과를 볼 수 있습니다.\r\n5가지의 식물추출물로 이루어진 Natural AHAs (Alpha hydroxy acids)가 적은 자극으로,\r\n안전하게 묵은 각질을 탈락시켜 거친 피부결을 정돈해주고 안색을 화사하게 가꿔줍니다",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 35856,
+        "name": "",
+        "sname": "갈라테이아 페이셜 클렌저",
+        "description": "",
+        "sdescription": "- 5가지 발효성분의 쫀쫀함으로 세정력을 높여주었습니다.\r\n\r\n- 자연게면활성제와 쫀쫀한 발효 성분의 시너지 효과로 자극 DOWN! 세정력 UP!",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing foam",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 112,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt tạo bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 27174,
+        "name": "",
+        "sname": "크레마 갈라테이아 토너",
+        "description": "",
+        "sdescription": "수레국화,황련 등 10가지 꽃 추출물로 피부 관리의 핵심인 pH밸런스 밸런스를 맞춰주는 제품으로\r\n피부의 턴오버 주기를 정상화 시켜 피부결을 맑게 정돈해 줍니다.\r\n월계수 잎을 주원료로 한 알코올 프리 토너로 민감하고 건조한 피부를 효과적으로 진정시켜주며 촉촉하게 보호해줍니다.\r\n갈라테이아 라인의 은은한 아로마가 릴랙싱 효과를 주며 계절에 상관없이 모든 피부타입이 순하게 사용할수 있습니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 27172,
+        "name": "",
+        "sname": "크레마 갈라테이아 나이트 크림",
+        "description": "",
+        "sdescription": "피부 속 수분을 지켜주고 깊숙이 영양을 공급하여 피부의 에너지를 채워주는 나이트 크림\n \n- 신선한 올리브의 깊은 영양과 월계수의 생기를 끈적임 없이 깊숙이 피부에 전하는 제품으로 모든 피부 타입이 사용하기 적합 \n- 피부 속 수분 증발을 막아주고 깊숙이 영양을 공급하며 지친 피부를 진정 시켜 탄력과 피부 본래의 기능 회복을 도움\n- 부드러운 아로마가 릴랙싱을 돕고 숙면을 도와 피부를 더욱 건강하고 아름답게",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Night cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 22,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng ban đêm",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    }
+]

@@ -1,0 +1,25 @@
+[
+    {
+        "sid": 78621,
+        "name": "",
+        "sname": "큐브 UV 선 프라이머",
+        "description": "",
+        "sdescription": "피부톤과 결을 화사하고 자연스럽게 보정\r\n\r\n미세 펄 입자로 화사하고 입체적인 표현\r\n\r\n래스팅 폴리머로 단단히 밀착되어 메이크업 지속력 UP!\r\n\r\nSPF 50+ PA+++로 선크림 대용 사용 가능",
+        "category": {
+            "first_category_en_name": "Sun care",
+            "second_category_en_name": "Sun base",
+            "third_category_en_name": null,
+            "first_category_id": 9,
+            "second_category_id": 45,
+            "third_category_id": null,
+            "first_category_name": "Chống nắng",
+            "second_category_name": "Kem lót chống nắng",
+            "third_category_name": null,
+            "first_category_synonyms": [],
+            "second_category_synonyms": [
+                "base chống nắng"
+            ],
+            "third_category_synonyms": []
+        }
+    }
+]

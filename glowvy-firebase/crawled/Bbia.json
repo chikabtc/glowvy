@@ -1,0 +1,28 @@
+[
+    {
+        "sid": 129793,
+        "name": "",
+        "sname": "소프트 젠틀 립&아이 리무버",
+        "description": "",
+        "sdescription": "* 본 제품은 리뉴얼된 제품입니다.\r\n\r\n메이크업 잔여물을 7FREE 처방으로 자극없이 깨끗하게 클렌징해주는 리무버\r\n\r\n- 에코서트 인증 성분이 함유된 저자극 립&아이 리무버\r\n- 워터프루프 메이크업도 깔끔하게 클렌징\r\n- 민감한 피부에도 순하게 작용하는 리무버",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Point remover",
+            "third_category_en_name": null,
+            "first_category_id": 7,
+            "second_category_id": 34,
+            "third_category_id": null,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Tẩy trang chuyên dụng",
+            "third_category_name": null,
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [
+                "bông tẩy trang ngón tay",
+                "kén tơ tằm"
+            ],
+            "third_category_synonyms": []
+        }
+    }
+]

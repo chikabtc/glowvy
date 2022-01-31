@@ -1,0 +1,554 @@
+[
+    {
+        "sid": 21829,
+        "name": "",
+        "sname": "에이 클리어링 포밍 클렌저",
+        "description": "",
+        "sdescription": "트러블이 초기에 생기기 시작하면 쉽게 여기저기 번지게 됩니다. 초기에 번지는 트러블을 잡기 위해서는 에이 클리어링 포밍클렌저로 트러블을 깨끗하게 없애주는 것이 필요합니다.\r\n\r\n에이클리어링 포밍클렌저는 트러블에 효과적인 이소프로필메칠페놀 및 다양한 성분이 함유된 독자적인 엔젤 테크놀로지에 피부진정 성분이 강화되어 트러블의 원인까지도 효과적으로 케어해줍니다.\r\n\r\n또한 솜사탕처럼 가볍고 풍부한 거품이 순하고 부드럽게 세안을 도와주어 세안 후 깔끔하고 산뜻한 느낌을 느낄 수 있습니다. 가벼운 메이크업도 깨끗하게 없애주므로 평소 가벼운 메이크업을 하는 청소년들에게는 더욱 필요한 제품입니다. 트러블이 한 두개 생길 때 방심하지 말고 빠르고 효과적인 처방~ 에이 클리어링 포밍클렌저로 관리해주세요.\r\n\r\n- 독자적인 앤젤테크놀로지로 트러블의 원인까지 효과적으로 케어\r\n- 사용이 간편한 가벼운 거품타입의 클렌저 \r\n- 산뜻하고 개운한 사용감 \r\n- 가벼운 메이크업까지 깔끔하게\r\n- 의약외품으로 검증된 효과",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing foam",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 112,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt tạo bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 21820,
+        "name": "",
+        "sname": "후르츠 클렌저 브라이트닝 레몬",
+        "description": "",
+        "sdescription": "비타민C가 풍부한 레몬 추출 포뮬러로 트러블 걱정 없이 깨끗하고 밝은 투명 피부\r\n\r\n누르면 바로 나오는 레몬 추출 성분이 함유된 부드러운 거품이 피부의 피지, 각질, 먼지 등의 불순물을 깨끗이 제거하여 피부 트러블 케어에 도움을 줍니다. 또한, 비타민C가 풍부한 상큼한 향의 레몬 추출 포뮬러가 밝고 깨끗한 피부로 가꾸어 줍니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Bubble cleanser",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 113,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt dạng bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 21821,
+        "name": "",
+        "sname": "에센셜 클렌징 토너",
+        "description": "",
+        "sdescription": "클린앤드클리어의 클렌징 토너는 세안 후 한번 더 깨끗하게 닦아주어, 피부에 남아 있을 수 있는 세안제의 잔여물과 먼지에 대해 확실한 클렌징 효과를 줍니다. 적당량의 알코올이 함유되어 시원한 느낌과 함께 과다 피지를 효과적으로 닦아 주고 모공을 관리해 줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 21831,
+        "name": "",
+        "sname": "에이 클리어링 내추럴 케어 클렌저",
+        "description": "",
+        "sdescription": "님 잎 추출물로 모공 속까지 깨끗하게! 알로에 추출물로 당김없이 촉촉하게! 건조감 없이 순하게 트러블을 깨끗하게!\r\n\r\n한두개씩 올라오는 트러블을 케어하고 싶을 때 트러블이 잠잠해진 상태를 유지하고 싶을 때 트러블로 인한 색소 침착, 건조함까지 관리하고 싶을 때, 에이 클리어링 내추럴 케어 클렌저는 자연에서 유래된 항균 성분이 매일매일 순하고 부드럽게 트러블의 원인을 케어하여 트러블 생성을 예방할 수 있도록 도와주며, 진정 및 보습 효과가 있는 알로에 성분이 세안 후 얼굴이 건조해 지지 않도록 도와줍니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing foam",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 112,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt tạo bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 21837,
+        "name": "",
+        "sname": "워터리라이트 하이드레이팅 젤 크림",
+        "description": "",
+        "sdescription": "미세한 쌀단백질 함유로 피지는 쏙 잡아주고, 95%이상 수분을 함유한 오이 추출물 포뮬러가 피부를 24시간 촉촉하게 유지시켜주는 수분 전용 크림! 가벼운 젤 타입으로 끈적임 없이 하루 종일 속부터 차오르는 촉촉한 피부로!\r\n\r\n* 피부과 테스트 완료\r\n* 모공을 막지 않아 트러블 방지",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "cream",
+            "third_category_en_name": "Hydrating cream",
+            "first_category_id": 1,
+            "second_category_id": 4,
+            "third_category_id": 18,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Kem dưỡng da",
+            "third_category_name": "Kem dưỡng cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": [
+                "Gel dưỡng da",
+                "gel dưỡng ẩm",
+                "gel dưỡng cấp nước",
+                "kem dưỡng cho da dầu"
+            ]
+        }
+    },
+    {
+        "sid": 21825,
+        "name": "",
+        "sname": "클리어 훼어니스 로션 [SPF30/PA++]",
+        "description": "",
+        "sdescription": "비타민이 함유된 수분 베이스의 포뮬러가 피부를 더욱 뽀얗게 연출해주며, 가벼운 질감으로 모공을 막지 않아, 피부트러블 걱정 없이 밝고 환한 피부로 가꾸어 줍니다\r\n\r\n또한 SPF30/PA++로 자외선으로부터 피부를 보호해줍니다. 피부를 환하게 가꿔주고 피부 밖에서 자외선으로부터 피부를 지켜주는 제품입니다. 클리어 훼어니스 클렌저, 스킨 토너와 함께 매일매일 사용하세요. 더욱 깨끗하고 환해진 피부를 느낄 수 있습니다",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Trouble lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 9,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion cho da mụn",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "Sữa Dưỡng Dành Cho Da Mụn",
+                "Sữa dưỡng ngăn ngừa mụn",
+                "lotion ngăn ngừa mụn",
+                "Lotion dưỡng da trị mụn",
+                "lotion trị mụn",
+                "nước hoa hồng trị mụn",
+                "nước cân bằng trị mụn"
+            ]
+        }
+    },
+    {
+        "sid": 21823,
+        "name": "",
+        "sname": "에센셜 모이스처라이저",
+        "description": "",
+        "sdescription": "클린앤드클리어의 모이스처라이저는 기름기는 빼고,수분은 더한 모이스처라이저로 10대 피부에 적합한 제품입니다.\r\n\r\n흔히 번들거리는 피부 혹은 트러블이 있는 피부에는 로션을 사용하면 좋지 않다고 잘못 알고 있는 경우가 있으나 클린앤드클리어는 피부를 유분기 없이 촉촉하고 부드럽게 만들어주며 사용 후 빨리 스며들어 끈적임이 전혀 없이 산뜻한 느낌을 느낄 수 있습니다. 또한 피부 트러블을 막아주는 살리실산 성분이 들어있어 트러블이 생기는 것과 모공이 막히는 현상을 막아줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Hydrating lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 5,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "lotion cho da dầu",
+                "sữa dưỡng cho da dầu",
+                "lotion cấp nước cho da dầu",
+                "sữa dưỡng cấp nước cho da dầu",
+                "sữa dưỡng ẩm cấp nước"
+            ]
+        }
+    },
+    {
+        "sid": 21836,
+        "name": "",
+        "sname": "워터리라이트 하이드레이팅 로션",
+        "description": "",
+        "sdescription": "미세한 쌀단백질 함유로 피지는 쏙 잡아주고, 95%이상 수분을 함유한 오이 추출물이 피부를 촉촉하게 정돈해주는 수분 전용 로션! 끈적임 없이 빠르게 스며들어 하루종일 촉촉한 피부로!\r\n\r\n* 피부과 테스트 완료\r\n* 모공을 막지 않아 트러블 방지",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Hydrating lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 5,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion cấp nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "lotion cho da dầu",
+                "sữa dưỡng cho da dầu",
+                "lotion cấp nước cho da dầu",
+                "sữa dưỡng cấp nước cho da dầu",
+                "sữa dưỡng ẩm cấp nước"
+            ]
+        }
+    },
+    {
+        "sid": 21835,
+        "name": "",
+        "sname": "워터리라이트 하이드레이팅 토너",
+        "description": "",
+        "sdescription": "미세한 쌀단백질 함유로 피지는 쏙 잡아주고, 95%이상 수분을 함유한 오이 추출물이 피부를 촉촉하게 정돈해주는 수분 전용 토너! 끈적임 없이 빠르게 스며들어 산뜻하고 번들거림 없는 피부로!\r\n\r\n* 피부과 테스트 완료\r\n* 모공을 막지 않아 트러블 방지",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 21824,
+        "name": "",
+        "sname": "클리어 훼어니스 폼 클렌저",
+        "description": "",
+        "sdescription": "피부각질과 노폐물의 제거는 밝고 환한 피부를 위해 클렌징에서 해결해 주는 것이 필요합니다.\r\n\r\n밝고 환한 피부를 위한 1단계~ 클리어훼어니스 폼클렌저는 비타민이 풍부한 체리 추출물과 부드러운 브라이트닝 비즈가 함유되어 피부톤을 효과적으로 개선해 주고 마이크로 오일 흡수 시스템으로 밝고 환한 피부가 계속 유지될 수 있도록 도와줍니다. 또한 사용하기 편리한 튜브형 타입이며 클리어 훼어니스 스킨토너, 로션과 함께 매일매일 사용시면. 더욱 깨끗하고 환해진 피부를 느낄 수 있습니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing foam",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 112,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt tạo bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 107480,
+        "name": "",
+        "sname": "딥 액션 폼 클렌저",
+        "description": "",
+        "sdescription": "클린앤드클리어 딥 액션 폼 클렌저는 순하고 부드러운 거품이 모공 속 깊숙이 닦아주어 과다피지, 더러움, 메이크업의 잔여물까지 깨끗이 씻어줍니다.\r\n\r\n또한 쌀단백질 성분의 혁신적인 \"피지 흡수 시스템“으로 8시간 동안 피지를 조절해 주어 산뜻한 피부로 가꾸어 줍니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing foam",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 112,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt tạo bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 21819,
+        "name": "",
+        "sname": "에센셜 훼이셜 포밍 클렌저",
+        "description": "",
+        "sdescription": "클린앤드클리어 훼이셜 포밍 클렌저는 누르면 바로 나오는 풍부한 거품이 뛰어난 세정력으로 부드럽게~ 깊숙이~ 기름기와 노폐물을 깨끗하게 닦아줍니다. \r\n풍부하고 부드러운 거품이 피부속의 더러움과 피지를 깔끔하게 닦아주며 뛰어난 세정력으로 세안 후 잔여물이 얼굴에 남지 않습니다.\r\n또한 부드러운 사용감으로 부담없이 매일매일 사용가능하며 싱그러운 플로랄 향으로 사용후 상쾌함을 느끼실 수 있습니다.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Bubble cleanser",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 113,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt dạng bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 21822,
+        "name": "",
+        "sname": "에센셜 클리어 스킨",
+        "description": "",
+        "sdescription": "클린앤드클리어 클리어 스킨은, 피부에 빠르게 흡수되어 끈적이지 않으며 산뜻한 보습 성분이 세안 후 거칠어진 피부를 정돈해 주어 모이스처라이저의 흡수를 도와줍니다. 가벼운 알코올 함유로 부드럽게 모공까지 정돈하여 주며 살리실산이 들어있어 피부 트러블이 생기는 것을 막아줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 21833,
+        "name": "",
+        "sname": "에이 클리어링 모이스처라이저",
+        "description": "",
+        "sdescription": "트러블과 트러블 자국까지 부드럽게 케어해주는 촉촉한 로션!\r\n\r\n자연 유래성분 및 살리실산이 함유된 클클의 앤젤 테크놀로지™가 트러블은 물론 트러블 자국까지 자극 걱정없이 케어해주고, 수분은 더해주어 깨끗하고 촉촉한 피부로!\r\n\r\n*살리실산 성분 함유 포뮬러로 트러블 및 트러블 자국 케어\r\n*보습 성분이 피부를 촉촉하게\r\n*채송화 추출 성분 함유로 자극 걱정없는 트러블 진정 효과",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Lotion&emulsion",
+            "third_category_en_name": "Trouble lotion",
+            "first_category_id": 1,
+            "second_category_id": 2,
+            "third_category_id": 9,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Lotion&sữa dưỡng",
+            "third_category_name": "Lotion cho da mụn",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "dung dịch dưỡng ẩm",
+                "nước cân bằng da",
+                "nước hoa hồng",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "Sữa Dưỡng Dành Cho Da Mụn",
+                "Sữa dưỡng ngăn ngừa mụn",
+                "lotion ngăn ngừa mụn",
+                "Lotion dưỡng da trị mụn",
+                "lotion trị mụn",
+                "nước hoa hồng trị mụn",
+                "nước cân bằng trị mụn"
+            ]
+        }
+    },
+    {
+        "sid": 21826,
+        "name": "",
+        "sname": "클리어 훼어니스 스킨토너",
+        "description": "",
+        "sdescription": "모공을 수렴해 주고 피부결을 부드럽고 촉촉하게 정돈해 주는 스킨토너로 가벼운 보습 효과를 주는 것은 물론 다음 단계의 스킨 케어 효과를 상승사켜 줍니다.\r\n\r\n비타민이 풍부한 체리 추출물이 들어간 브라이트닝 포뮬러가 모공 깊숙이 스며들어, 피부를 촉촉하게 정돈해 주고, 피부가 브라이트닝 성분을 잘 흡수할 수 있도록 도와주어 더욱 밝고 환한 피부로 가꾸어줍니다.\r\n\r\n클리어 훼어니스 스킨토너는 저자극성 제품으로 모공을 막지 않아 트러블을 일으키지 않습니다\r\n클리어 훼어니스 폼클렌저,로션과 함께 매일매일 사용하세요. 더욱 깨끗하고 환해진 피부를 느낄 수 있습니다",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 21828,
+        "name": "",
+        "sname": "에이 클리어링 스피드 케어 클렌저",
+        "description": "",
+        "sdescription": "트러블 붉은기, 이제 빠르게 없애자!\r\n에이 클리어링 스피드 케어 클렌저는 엔젤 테크놀로지™가 적용되어 15초*만에 트러블 원인균 P. Acnes를 해결, 빠른 트러블 완화에 도움을 줍니다. 살리실산 성분 함유로 모공 속 트러블을 빠르고 효과적으로 케어 아틀라스 시더우드 및 채송화 추출 성분 함유로 자극 걱정 없는 트러블 진정효과",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing foam",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 112,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt tạo bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 21832,
+        "name": "",
+        "sname": "에이 클리어닝 토닝 스킨",
+        "description": "",
+        "sdescription": "트러블과 트러블 자국까지 부드럽게 케어해주는 깔끔한 토닝 스킨!\r\n\r\n자연 유래성분 및 살리실산이 함유된 클클의 앤젤 테크놀로지가™가 트러블은 물론 트러블 자국까지 자극 걱정없이 케어해주고, 모공의 노폐물과 피지를 정돈해주어 깔끔한 피부로!\r\n\r\n*살리실산 성분 함유로 트러블 및 트러블 자국 케어\r\n*노폐물 및 피지를 깔금하게 닦아주는 정돈 효과\r\n*채송화 추출 성분 함유로 자극 걱정없는 트러블 진정 효과",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Toner",
+            "third_category_en_name": "Water toner",
+            "first_category_id": 1,
+            "second_category_id": 1,
+            "third_category_id": 1,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Toner & Nước hoa hồng",
+            "third_category_name": "Toner dạng nước",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "Nước cân bằng da",
+                "dung dịch cân bằng da"
+            ],
+            "third_category_synonyms": [
+                "toner dạng lỏng"
+            ]
+        }
+    },
+    {
+        "sid": 21830,
+        "name": "",
+        "sname": "에이 클리어링 엑스폴리에이팅 클렌저",
+        "description": "",
+        "sdescription": "“트러블 자국이 고민이라면? 에이클리어링 엑스폴리에이팅 클렌저로!”\r\n\r\n살리실산이 함유된 혁신적인 엔젤 테크놀로지가 트러블에 효과적으로 작용할뿐 아니라, 미세한 젠틀 스크럽 비즈가 함유되어 트러블자국에도 작용하여 트러블뿐만 아니라 자국까지 깨끗하게 케어하는데 도움을 줍니다.\r\n매일매일 관리해주어 일주일만에 깨끗해진 피부를 경험해보세요!\r\n\r\n더 나은 트러블 및 자국 완화를 위하여 에이클리어링 토닝 스킨과 모이스처라이저를 사용해주세요.",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing foam",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 112,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt tạo bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    },
+    {
+        "sid": 21834,
+        "name": "",
+        "sname": "에이 클리어링 스피드 젤",
+        "description": "",
+        "sdescription": "클클의 내추럴 앤젤 테크놀로지™의 마이크로젤 포뮬러가 트러블을 빠르게 진정시켜주고, 트러블 자국도 깨끗하게 케어하는데 도움을 줍니다.\r\n\r\n1. 빠른 트러블 진정 : 채송화 추출성분 함유의 앤젤 테크놀로지™가 트러블을 빠르게 진정시키는데 도움을 줍니다.\r\n2. 효과적인 트러블 자국 케어 : 마이크로젤 포뮬러가 피부를 깨끗하게 하여 트러블 자국을 케어하는데 도움을 줍니다.",
+        "category": {
+            "first_category_en_name": "Skincare",
+            "second_category_en_name": "Essence&Serum",
+            "third_category_en_name": "Trouble essence",
+            "first_category_id": 1,
+            "second_category_id": 3,
+            "third_category_id": 15,
+            "first_category_name": "Chăm sóc da",
+            "second_category_name": "Tinh chất",
+            "third_category_name": "Tinh chất trị mụn",
+            "first_category_synonyms": [
+                ""
+            ],
+            "second_category_synonyms": [
+                "essence",
+                "serum",
+                "tinh chất dưỡng da",
+                "huyết thanh dưỡng da"
+            ],
+            "third_category_synonyms": [
+                "serum trị mụn",
+                "essence trị mụn",
+                "tinh chất cho da mụn",
+                "serum cho da mụn",
+                "essence cho da mụn",
+                "tinh chất ngăn ngừa mụn",
+                "serum ngăn ngừa mụn",
+                "essence ngăn ngừa mụn"
+            ]
+        }
+    },
+    {
+        "sid": 35871,
+        "name": "",
+        "sname": "딥 액션 블랙헤드 데일리 클렌저",
+        "description": "",
+        "sdescription": "사과추출물과 비즈가 모공 자극없이\r\n블랙헤드를 깨끗하게 싹!",
+        "category": {
+            "first_category_en_name": "Cleansing",
+            "second_category_en_name": "Facial cleanser",
+            "third_category_en_name": "Cleansing foam",
+            "first_category_id": 7,
+            "second_category_id": 32,
+            "third_category_id": 112,
+            "first_category_name": "Làm sạch",
+            "second_category_name": "Rửa mặt",
+            "third_category_name": "Sữa rửa mặt tạo bọt",
+            "first_category_synonyms": [
+                "Sản phẩm làm sạch da"
+            ],
+            "second_category_synonyms": [],
+            "third_category_synonyms": []
+        }
+    }
+]
